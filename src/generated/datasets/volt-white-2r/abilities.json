@@ -1,0 +1,2163 @@
+{
+  "schemaVersion": 1,
+  "gameId": "volt-white-2r",
+  "kind": "abilities",
+  "records": {
+    "stench": {
+      "num": 1,
+      "id": "stench",
+      "name": "Stench",
+      "calcName": "Stench",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Stench",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "drizzle": {
+      "num": 2,
+      "id": "drizzle",
+      "name": "Drizzle",
+      "calcName": "Drizzle",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Drizzle",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "speedboost": {
+      "num": 3,
+      "id": "speedboost",
+      "name": "Speed Boost",
+      "calcName": "Speed Boost",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Speed Boost",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "battlearmor": {
+      "num": 4,
+      "id": "battlearmor",
+      "name": "Battle Armor",
+      "calcName": "Battle Armor",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Battle Armor",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "sturdy": {
+      "num": 5,
+      "id": "sturdy",
+      "name": "Sturdy",
+      "calcName": "Sturdy",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Sturdy",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "damp": {
+      "num": 6,
+      "id": "damp",
+      "name": "Damp",
+      "calcName": "Damp",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Damp",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "limber": {
+      "num": 7,
+      "id": "limber",
+      "name": "Limber",
+      "calcName": "Limber",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Limber",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "sandveil": {
+      "num": 8,
+      "id": "sandveil",
+      "name": "Sand Veil",
+      "calcName": "Sand Veil",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Sand Veil",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "static": {
+      "num": 9,
+      "id": "static",
+      "name": "Static",
+      "calcName": "Static",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Static",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "voltabsorb": {
+      "num": 10,
+      "id": "voltabsorb",
+      "name": "Volt Absorb",
+      "calcName": "Volt Absorb",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Volt Absorb",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "waterabsorb": {
+      "num": 11,
+      "id": "waterabsorb",
+      "name": "Water Absorb",
+      "calcName": "Water Absorb",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Water Absorb",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "oblivious": {
+      "num": 12,
+      "id": "oblivious",
+      "name": "Oblivious",
+      "calcName": "Oblivious",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Oblivious",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "cloudnine": {
+      "num": 13,
+      "id": "cloudnine",
+      "name": "Cloud Nine",
+      "calcName": "Cloud Nine",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Cloud Nine",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "compoundeyes": {
+      "num": 14,
+      "id": "compoundeyes",
+      "name": "Compound Eyes",
+      "calcName": "Compound Eyes",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Compound Eyes",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "insomnia": {
+      "num": 15,
+      "id": "insomnia",
+      "name": "Insomnia",
+      "calcName": "Insomnia",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Insomnia",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "colorchange": {
+      "num": 16,
+      "id": "colorchange",
+      "name": "Color Change",
+      "calcName": "Color Change",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Color Change",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "immunity": {
+      "num": 17,
+      "id": "immunity",
+      "name": "Immunity",
+      "calcName": "Immunity",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Immunity",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "flashfire": {
+      "num": 18,
+      "id": "flashfire",
+      "name": "Flash Fire",
+      "calcName": "Flash Fire",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Flash Fire",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "shielddust": {
+      "num": 19,
+      "id": "shielddust",
+      "name": "Shield Dust",
+      "calcName": "Shield Dust",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Shield Dust",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "owntempo": {
+      "num": 20,
+      "id": "owntempo",
+      "name": "Own Tempo",
+      "calcName": "Own Tempo",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Own Tempo",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "suctioncups": {
+      "num": 21,
+      "id": "suctioncups",
+      "name": "Suction Cups",
+      "calcName": "Suction Cups",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Suction Cups",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "intimidate": {
+      "num": 22,
+      "id": "intimidate",
+      "name": "Intimidate",
+      "calcName": "Intimidate",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Intimidate",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "shadowtag": {
+      "num": 23,
+      "id": "shadowtag",
+      "name": "Shadow Tag",
+      "calcName": "Shadow Tag",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Shadow Tag",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "roughskin": {
+      "num": 24,
+      "id": "roughskin",
+      "name": "Rough Skin",
+      "calcName": "Rough Skin",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Rough Skin",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "wonderguard": {
+      "num": 25,
+      "id": "wonderguard",
+      "name": "Wonder Guard",
+      "calcName": "Wonder Guard",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Wonder Guard",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "levitate": {
+      "num": 26,
+      "id": "levitate",
+      "name": "Levitate",
+      "calcName": "Levitate",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Levitate",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "effectspore": {
+      "num": 27,
+      "id": "effectspore",
+      "name": "Effect Spore",
+      "calcName": "Effect Spore",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Effect Spore",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "synchronize": {
+      "num": 28,
+      "id": "synchronize",
+      "name": "Synchronize",
+      "calcName": "Synchronize",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Synchronize",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "clearbody": {
+      "num": 29,
+      "id": "clearbody",
+      "name": "Clear Body",
+      "calcName": "Clear Body",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Clear Body",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "naturalcure": {
+      "num": 30,
+      "id": "naturalcure",
+      "name": "Natural Cure",
+      "calcName": "Natural Cure",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Natural Cure",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "lightningrod": {
+      "num": 31,
+      "id": "lightningrod",
+      "name": "Lightning Rod",
+      "calcName": "Lightning Rod",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Lightning Rod",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "serenegrace": {
+      "num": 32,
+      "id": "serenegrace",
+      "name": "Serene Grace",
+      "calcName": "Serene Grace",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Serene Grace",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "swiftswim": {
+      "num": 33,
+      "id": "swiftswim",
+      "name": "Swift Swim",
+      "calcName": "Swift Swim",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Swift Swim",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "chlorophyll": {
+      "num": 34,
+      "id": "chlorophyll",
+      "name": "Chlorophyll",
+      "calcName": "Chlorophyll",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Chlorophyll",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "illuminate": {
+      "num": 35,
+      "id": "illuminate",
+      "name": "Illuminate",
+      "calcName": "Illuminate",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Illuminate",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "trace": {
+      "num": 36,
+      "id": "trace",
+      "name": "Trace",
+      "calcName": "Trace",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Trace",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "hugepower": {
+      "num": 37,
+      "id": "hugepower",
+      "name": "Huge Power",
+      "calcName": "Huge Power",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Huge Power",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "poisonpoint": {
+      "num": 38,
+      "id": "poisonpoint",
+      "name": "Poison Point",
+      "calcName": "Poison Point",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Poison Point",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "innerfocus": {
+      "num": 39,
+      "id": "innerfocus",
+      "name": "Inner Focus",
+      "calcName": "Inner Focus",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Inner Focus",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "magmaarmor": {
+      "num": 40,
+      "id": "magmaarmor",
+      "name": "Magma Armor",
+      "calcName": "Magma Armor",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Magma Armor",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "waterveil": {
+      "num": 41,
+      "id": "waterveil",
+      "name": "Water Veil",
+      "calcName": "Water Veil",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Water Veil",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "magnetpull": {
+      "num": 42,
+      "id": "magnetpull",
+      "name": "Magnet Pull",
+      "calcName": "Magnet Pull",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Magnet Pull",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "soundproof": {
+      "num": 43,
+      "id": "soundproof",
+      "name": "Soundproof",
+      "calcName": "Soundproof",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Soundproof",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "raindish": {
+      "num": 44,
+      "id": "raindish",
+      "name": "Rain Dish",
+      "calcName": "Rain Dish",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Rain Dish",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "sandstream": {
+      "num": 45,
+      "id": "sandstream",
+      "name": "Sand Stream",
+      "calcName": "Sand Stream",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Sand Stream",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "pressure": {
+      "num": 46,
+      "id": "pressure",
+      "name": "Pressure",
+      "calcName": "Pressure",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Pressure",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "thickfat": {
+      "num": 47,
+      "id": "thickfat",
+      "name": "Thick Fat",
+      "calcName": "Thick Fat",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Thick Fat",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "earlybird": {
+      "num": 48,
+      "id": "earlybird",
+      "name": "Early Bird",
+      "calcName": "Early Bird",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Early Bird",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "flamebody": {
+      "num": 49,
+      "id": "flamebody",
+      "name": "Flame Body",
+      "calcName": "Flame Body",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Flame Body",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "runaway": {
+      "num": 50,
+      "id": "runaway",
+      "name": "Run Away",
+      "calcName": "Run Away",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Run Away",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "keeneye": {
+      "num": 51,
+      "id": "keeneye",
+      "name": "Keen Eye",
+      "calcName": "Keen Eye",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Keen Eye",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "hypercutter": {
+      "num": 52,
+      "id": "hypercutter",
+      "name": "Hyper Cutter",
+      "calcName": "Hyper Cutter",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Hyper Cutter",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "pickup": {
+      "num": 53,
+      "id": "pickup",
+      "name": "Pickup",
+      "calcName": "Pickup",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Pickup",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "truant": {
+      "num": 54,
+      "id": "truant",
+      "name": "Truant",
+      "calcName": "Truant",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Truant",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "hustle": {
+      "num": 55,
+      "id": "hustle",
+      "name": "Hustle",
+      "calcName": "Hustle",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Hustle",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "cutecharm": {
+      "num": 56,
+      "id": "cutecharm",
+      "name": "Cute Charm",
+      "calcName": "Cute Charm",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Cute Charm",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "plus": {
+      "num": 57,
+      "id": "plus",
+      "name": "Plus",
+      "calcName": "Plus",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Plus",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "minus": {
+      "num": 58,
+      "id": "minus",
+      "name": "Minus",
+      "calcName": "Minus",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Minus",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "forecast": {
+      "num": 59,
+      "id": "forecast",
+      "name": "Forecast",
+      "calcName": "Forecast",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Forecast",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "stickyhold": {
+      "num": 60,
+      "id": "stickyhold",
+      "name": "Sticky Hold",
+      "calcName": "Sticky Hold",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Sticky Hold",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "shedskin": {
+      "num": 61,
+      "id": "shedskin",
+      "name": "Shed Skin",
+      "calcName": "Shed Skin",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Shed Skin",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "guts": {
+      "num": 62,
+      "id": "guts",
+      "name": "Guts",
+      "calcName": "Guts",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Guts",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "marvelscale": {
+      "num": 63,
+      "id": "marvelscale",
+      "name": "Marvel Scale",
+      "calcName": "Marvel Scale",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Marvel Scale",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "liquidooze": {
+      "num": 64,
+      "id": "liquidooze",
+      "name": "Liquid Ooze",
+      "calcName": "Liquid Ooze",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Liquid Ooze",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "overgrow": {
+      "num": 65,
+      "id": "overgrow",
+      "name": "Overgrow",
+      "calcName": "Overgrow",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Overgrow",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "blaze": {
+      "num": 66,
+      "id": "blaze",
+      "name": "Blaze",
+      "calcName": "Blaze",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Blaze",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "torrent": {
+      "num": 67,
+      "id": "torrent",
+      "name": "Torrent",
+      "calcName": "Torrent",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Torrent",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "swarm": {
+      "num": 68,
+      "id": "swarm",
+      "name": "Swarm",
+      "calcName": "Swarm",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Swarm",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "rockhead": {
+      "num": 69,
+      "id": "rockhead",
+      "name": "Rock Head",
+      "calcName": "Rock Head",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Rock Head",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "drought": {
+      "num": 70,
+      "id": "drought",
+      "name": "Drought",
+      "calcName": "Drought",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Drought",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "arenatrap": {
+      "num": 71,
+      "id": "arenatrap",
+      "name": "Arena Trap",
+      "calcName": "Arena Trap",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Arena Trap",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "vitalspirit": {
+      "num": 72,
+      "id": "vitalspirit",
+      "name": "Vital Spirit",
+      "calcName": "Vital Spirit",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Vital Spirit",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "whitesmoke": {
+      "num": 73,
+      "id": "whitesmoke",
+      "name": "White Smoke",
+      "calcName": "White Smoke",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "White Smoke",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "purepower": {
+      "num": 74,
+      "id": "purepower",
+      "name": "Pure Power",
+      "calcName": "Pure Power",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Pure Power",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "shellarmor": {
+      "num": 75,
+      "id": "shellarmor",
+      "name": "Shell Armor",
+      "calcName": "Shell Armor",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Shell Armor",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "airlock": {
+      "num": 76,
+      "id": "airlock",
+      "name": "Air Lock",
+      "calcName": "Air Lock",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Air Lock",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "tangledfeet": {
+      "num": 77,
+      "id": "tangledfeet",
+      "name": "Tangled Feet",
+      "calcName": "Tangled Feet",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Tangled Feet",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "motordrive": {
+      "num": 78,
+      "id": "motordrive",
+      "name": "Motor Drive",
+      "calcName": "Motor Drive",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Motor Drive",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "rivalry": {
+      "num": 79,
+      "id": "rivalry",
+      "name": "Rivalry",
+      "calcName": "Rivalry",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Rivalry",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "steadfast": {
+      "num": 80,
+      "id": "steadfast",
+      "name": "Steadfast",
+      "calcName": "Steadfast",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Steadfast",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "snowcloak": {
+      "num": 81,
+      "id": "snowcloak",
+      "name": "Snow Cloak",
+      "calcName": "Snow Cloak",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Snow Cloak",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "gluttony": {
+      "num": 82,
+      "id": "gluttony",
+      "name": "Gluttony",
+      "calcName": "Gluttony",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Gluttony",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "angerpoint": {
+      "num": 83,
+      "id": "angerpoint",
+      "name": "Anger Point",
+      "calcName": "Anger Point",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Anger Point",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "unburden": {
+      "num": 84,
+      "id": "unburden",
+      "name": "Unburden",
+      "calcName": "Unburden",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Unburden",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "heatproof": {
+      "num": 85,
+      "id": "heatproof",
+      "name": "Heatproof",
+      "calcName": "Heatproof",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Heatproof",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "simple": {
+      "num": 86,
+      "id": "simple",
+      "name": "Simple",
+      "calcName": "Simple",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Simple",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "dryskin": {
+      "num": 87,
+      "id": "dryskin",
+      "name": "Dry Skin",
+      "calcName": "Dry Skin",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Dry Skin",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "download": {
+      "num": 88,
+      "id": "download",
+      "name": "Download",
+      "calcName": "Download",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Download",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "ironfist": {
+      "num": 89,
+      "id": "ironfist",
+      "name": "Iron Fist",
+      "calcName": "Iron Fist",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Iron Fist",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "poisonheal": {
+      "num": 90,
+      "id": "poisonheal",
+      "name": "Poison Heal",
+      "calcName": "Poison Heal",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Poison Heal",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "adaptability": {
+      "num": 91,
+      "id": "adaptability",
+      "name": "Adaptability",
+      "calcName": "Adaptability",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Adaptability",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "skilllink": {
+      "num": 92,
+      "id": "skilllink",
+      "name": "Skill Link",
+      "calcName": "Skill Link",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Skill Link",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "hydration": {
+      "num": 93,
+      "id": "hydration",
+      "name": "Hydration",
+      "calcName": "Hydration",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Hydration",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "solarpower": {
+      "num": 94,
+      "id": "solarpower",
+      "name": "Solar Power",
+      "calcName": "Solar Power",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Solar Power",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "quickfeet": {
+      "num": 95,
+      "id": "quickfeet",
+      "name": "Quick Feet",
+      "calcName": "Quick Feet",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Quick Feet",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "normalize": {
+      "num": 96,
+      "id": "normalize",
+      "name": "Normalize",
+      "calcName": "Normalize",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Normalize",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "sniper": {
+      "num": 97,
+      "id": "sniper",
+      "name": "Sniper",
+      "calcName": "Sniper",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Sniper",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "magicguard": {
+      "num": 98,
+      "id": "magicguard",
+      "name": "Magic Guard",
+      "calcName": "Magic Guard",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Magic Guard",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "noguard": {
+      "num": 99,
+      "id": "noguard",
+      "name": "No Guard",
+      "calcName": "No Guard",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "No Guard",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "stall": {
+      "num": 100,
+      "id": "stall",
+      "name": "Stall",
+      "calcName": "Stall",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Stall",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "technician": {
+      "num": 101,
+      "id": "technician",
+      "name": "Technician",
+      "calcName": "Technician",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Technician",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "leafguard": {
+      "num": 102,
+      "id": "leafguard",
+      "name": "Leaf Guard",
+      "calcName": "Leaf Guard",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Leaf Guard",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "klutz": {
+      "num": 103,
+      "id": "klutz",
+      "name": "Klutz",
+      "calcName": "Klutz",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Klutz",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "moldbreaker": {
+      "num": 104,
+      "id": "moldbreaker",
+      "name": "Mold Breaker",
+      "calcName": "Mold Breaker",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Mold Breaker",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "superluck": {
+      "num": 105,
+      "id": "superluck",
+      "name": "Super Luck",
+      "calcName": "Super Luck",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Super Luck",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "aftermath": {
+      "num": 106,
+      "id": "aftermath",
+      "name": "Aftermath",
+      "calcName": "Aftermath",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Aftermath",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "anticipation": {
+      "num": 107,
+      "id": "anticipation",
+      "name": "Anticipation",
+      "calcName": "Anticipation",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Anticipation",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "forewarn": {
+      "num": 108,
+      "id": "forewarn",
+      "name": "Forewarn",
+      "calcName": "Forewarn",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Forewarn",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "unaware": {
+      "num": 109,
+      "id": "unaware",
+      "name": "Unaware",
+      "calcName": "Unaware",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Unaware",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "tintedlens": {
+      "num": 110,
+      "id": "tintedlens",
+      "name": "Tinted Lens",
+      "calcName": "Tinted Lens",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Tinted Lens",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "filter": {
+      "num": 111,
+      "id": "filter",
+      "name": "Filter",
+      "calcName": "Filter",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Filter",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "slowstart": {
+      "num": 112,
+      "id": "slowstart",
+      "name": "Slow Start",
+      "calcName": "Slow Start",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Slow Start",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "scrappy": {
+      "num": 113,
+      "id": "scrappy",
+      "name": "Scrappy",
+      "calcName": "Scrappy",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Scrappy",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "stormdrain": {
+      "num": 114,
+      "id": "stormdrain",
+      "name": "Storm Drain",
+      "calcName": "Storm Drain",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Storm Drain",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "icebody": {
+      "num": 115,
+      "id": "icebody",
+      "name": "Ice Body",
+      "calcName": "Ice Body",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Ice Body",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "solidrock": {
+      "num": 116,
+      "id": "solidrock",
+      "name": "Solid Rock",
+      "calcName": "Solid Rock",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Solid Rock",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "snowwarning": {
+      "num": 117,
+      "id": "snowwarning",
+      "name": "Snow Warning",
+      "calcName": "Snow Warning",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Snow Warning",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "honeygather": {
+      "num": 118,
+      "id": "honeygather",
+      "name": "Honey Gather",
+      "calcName": "Honey Gather",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Honey Gather",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "frisk": {
+      "num": 119,
+      "id": "frisk",
+      "name": "Frisk",
+      "calcName": "Frisk",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Frisk",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "reckless": {
+      "num": 120,
+      "id": "reckless",
+      "name": "Reckless",
+      "calcName": "Reckless",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Reckless",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "multitype": {
+      "num": 121,
+      "id": "multitype",
+      "name": "Multitype",
+      "calcName": "Multitype",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Multitype",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "flowergift": {
+      "num": 122,
+      "id": "flowergift",
+      "name": "Flower Gift",
+      "calcName": "Flower Gift",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Flower Gift",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "baddreams": {
+      "num": 123,
+      "id": "baddreams",
+      "name": "Bad Dreams",
+      "calcName": "Bad Dreams",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Bad Dreams",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "pickpocket": {
+      "num": 124,
+      "id": "pickpocket",
+      "name": "Pickpocket",
+      "calcName": "Pickpocket",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Pickpocket",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "sheerforce": {
+      "num": 125,
+      "id": "sheerforce",
+      "name": "Sheer Force",
+      "calcName": "Sheer Force",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Sheer Force",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "contrary": {
+      "num": 126,
+      "id": "contrary",
+      "name": "Contrary",
+      "calcName": "Contrary",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Contrary",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "unnerve": {
+      "num": 127,
+      "id": "unnerve",
+      "name": "Unnerve",
+      "calcName": "Unnerve",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Unnerve",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "defiant": {
+      "num": 128,
+      "id": "defiant",
+      "name": "Defiant",
+      "calcName": "Defiant",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Defiant",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "defeatist": {
+      "num": 129,
+      "id": "defeatist",
+      "name": "Defeatist",
+      "calcName": "Defeatist",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Defeatist",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "cursedbody": {
+      "num": 130,
+      "id": "cursedbody",
+      "name": "Cursed Body",
+      "calcName": "Cursed Body",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Cursed Body",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "healer": {
+      "num": 131,
+      "id": "healer",
+      "name": "Healer",
+      "calcName": "Healer",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Healer",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "friendguard": {
+      "num": 132,
+      "id": "friendguard",
+      "name": "Friend Guard",
+      "calcName": "Friend Guard",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Friend Guard",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "weakarmor": {
+      "num": 133,
+      "id": "weakarmor",
+      "name": "Weak Armor",
+      "calcName": "Weak Armor",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Weak Armor",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "heavymetal": {
+      "num": 134,
+      "id": "heavymetal",
+      "name": "Heavy Metal",
+      "calcName": "Heavy Metal",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Heavy Metal",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "lightmetal": {
+      "num": 135,
+      "id": "lightmetal",
+      "name": "Light Metal",
+      "calcName": "Light Metal",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Light Metal",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "multiscale": {
+      "num": 136,
+      "id": "multiscale",
+      "name": "Multiscale",
+      "calcName": "Multiscale",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Multiscale",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "toxicboost": {
+      "num": 137,
+      "id": "toxicboost",
+      "name": "Toxic Boost",
+      "calcName": "Toxic Boost",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Toxic Boost",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "flareboost": {
+      "num": 138,
+      "id": "flareboost",
+      "name": "Flare Boost",
+      "calcName": "Flare Boost",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Flare Boost",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "harvest": {
+      "num": 139,
+      "id": "harvest",
+      "name": "Harvest",
+      "calcName": "Harvest",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Harvest",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "telepathy": {
+      "num": 140,
+      "id": "telepathy",
+      "name": "Telepathy",
+      "calcName": "Telepathy",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Telepathy",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "moody": {
+      "num": 141,
+      "id": "moody",
+      "name": "Moody",
+      "calcName": "Moody",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Moody",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "overcoat": {
+      "num": 142,
+      "id": "overcoat",
+      "name": "Overcoat",
+      "calcName": "Overcoat",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Overcoat",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "poisontouch": {
+      "num": 143,
+      "id": "poisontouch",
+      "name": "Poison Touch",
+      "calcName": "Poison Touch",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Poison Touch",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "regenerator": {
+      "num": 144,
+      "id": "regenerator",
+      "name": "Regenerator",
+      "calcName": "Regenerator",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Regenerator",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "bigpecks": {
+      "num": 145,
+      "id": "bigpecks",
+      "name": "Big Pecks",
+      "calcName": "Big Pecks",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Big Pecks",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "sandrush": {
+      "num": 146,
+      "id": "sandrush",
+      "name": "Sand Rush",
+      "calcName": "Sand Rush",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Sand Rush",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "wonderskin": {
+      "num": 147,
+      "id": "wonderskin",
+      "name": "Wonder Skin",
+      "calcName": "Wonder Skin",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Wonder Skin",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "analytic": {
+      "num": 148,
+      "id": "analytic",
+      "name": "Analytic",
+      "calcName": "Analytic",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Analytic",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "illusion": {
+      "num": 149,
+      "id": "illusion",
+      "name": "Illusion",
+      "calcName": "Illusion",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Illusion",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "imposter": {
+      "num": 150,
+      "id": "imposter",
+      "name": "Imposter",
+      "calcName": "Imposter",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Imposter",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "infiltrator": {
+      "num": 151,
+      "id": "infiltrator",
+      "name": "Infiltrator",
+      "calcName": "Infiltrator",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Infiltrator",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "mummy": {
+      "num": 152,
+      "id": "mummy",
+      "name": "Mummy",
+      "calcName": "Mummy",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Mummy",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "moxie": {
+      "num": 153,
+      "id": "moxie",
+      "name": "Moxie",
+      "calcName": "Moxie",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Moxie",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "justified": {
+      "num": 154,
+      "id": "justified",
+      "name": "Justified",
+      "calcName": "Justified",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Justified",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "rattled": {
+      "num": 155,
+      "id": "rattled",
+      "name": "Rattled",
+      "calcName": "Rattled",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Rattled",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "magicbounce": {
+      "num": 156,
+      "id": "magicbounce",
+      "name": "Magic Bounce",
+      "calcName": "Magic Bounce",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Magic Bounce",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "sapsipper": {
+      "num": 157,
+      "id": "sapsipper",
+      "name": "Sap Sipper",
+      "calcName": "Sap Sipper",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Sap Sipper",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "prankster": {
+      "num": 158,
+      "id": "prankster",
+      "name": "Prankster",
+      "calcName": "Prankster",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Prankster",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "sandforce": {
+      "num": 159,
+      "id": "sandforce",
+      "name": "Sand Force",
+      "calcName": "Sand Force",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Sand Force",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "ironbarbs": {
+      "num": 160,
+      "id": "ironbarbs",
+      "name": "Iron Barbs",
+      "calcName": "Iron Barbs",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Iron Barbs",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "zenmode": {
+      "num": 161,
+      "id": "zenmode",
+      "name": "Zen Mode",
+      "calcName": "Zen Mode",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Zen Mode",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "victorystar": {
+      "num": 162,
+      "id": "victorystar",
+      "name": "Victory Star",
+      "calcName": "Victory Star",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Victory Star",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "turboblaze": {
+      "num": 163,
+      "id": "turboblaze",
+      "name": "Turboblaze",
+      "calcName": "Turboblaze",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Turboblaze",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "teravolt": {
+      "num": 164,
+      "id": "teravolt",
+      "name": "Teravolt",
+      "calcName": "Teravolt",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "mechanicsBase": "Teravolt",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "sourceConfidence": "consumer-derived"
+    },
+    "": {
+      "num": 0,
+      "id": "",
+      "name": " ",
+      "calcName": " ",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "calculatorAvailability": "not-in-canonical-baseline",
+      "sourceConfidence": "consumer-derived"
+    },
+    "electric": {
+      "num": 0,
+      "id": "electric",
+      "name": "electric",
+      "calcName": "electric",
+      "desc": {
+        "battle": "",
+        "overworld": ""
+      },
+      "calculatorAvailability": "not-in-canonical-baseline",
+      "sourceConfidence": "consumer-derived"
+    }
+  }
+}

@@ -1,0 +1,3020 @@
+import { clone, normalizeRange, shortHash, stableStringify, toId } from "./primitives.js";
+import { effectiveCombatantMove } from "./combatant_moves.js";
+import { createDefaultVolatiles, normalizeFieldCondition, resetTurnFlags, updateStateHash } from "./plan.js";
+import { actionEntries, actionList, activeEntries, activeKey, activeKeys, activeSlotEntries, actorSlot, pendingReplacementSlots, replacementList, setActiveKey, setPendingReplacementSlots } from "./battle_slots.js";
+import { moveSupport as defaultMoveSupport } from "../rulesets/core_move_support.js";
+import {
+  criticalHitProbability,
+  endOfTurnSupportIssue,
+  effectiveAccuracy,
+  itemResidualRule,
+  protectSuccessProbability,
+  statusApplicationResult,
+  statusResidualRule,
+  weatherIsSuppressed,
+  weatherResidualRule
+} from "../rulesets/battle_rules.js";
+import {
+  applyExactHpChange,
+  damagingMoveImmunity,
+  entryAbilityEffects,
+  entryHazardEffects,
+  outgoingSwitchEffects
+} from "../rulesets/switch_rules.js?v=20260825-download";
+import { applyDefeatedEnemyExperience, registerSwitchExperienceParticipation } from "../rulesets/vw2r_experience.js";
+
+export class ResolutionError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = "ResolutionError";
+  }
+}
+
+function sideActiveKey(state, side) {
+  return activeKeys(state, side)[0] || null;
+}
+
+function opposite(side) {
+  return side === "player" ? "enemy" : "player";
+}
+
+function stageMultiplier(stage) {
+  const value = Math.max(-6, Math.min(6, Number(stage || 0)));
+  return value >= 0 ? (2 + value) / 2 : 2 / (2 - value);
+}
+
+export function effectiveSpeed(combatant, state, generation = 5) {
+  let speed = Number(state.currentStats?.spe ?? combatant.calculatedStats?.spe ?? 0) * stageMultiplier(state.statStages?.spe);
+  if (state.majorStatus === "par" || state.majorStatus === "paralysis") speed *= Number(generation) >= 7 ? 0.5 : 0.25;
+  return Math.floor(speed);
+}
+
+function currentCalculatedStat(plan, state, combatantKey, stat) {
+  const combatantState = state.combatantStates[combatantKey];
+  return Number(combatantState?.currentStats?.[stat] ?? plan.combatants[combatantKey]?.calculatedStats?.[stat] ?? 0);
+}
+
+function entryComparisonState(plan, state, combatantKey) {
+  const combatantState = state.combatantStates[combatantKey];
+  return {
+    ...combatantState,
+    currentStats: {
+      ...(plan.combatants[combatantKey]?.calculatedStats || {}),
+      ...(combatantState?.currentStats || {})
+    }
+  };
+}
+
+function actionPriority(action, dataset, plan, state) {
+  if (action.actionType === "switch") return 6;
+  const combatant = plan.combatants[action.actorKey];
+  return Number(effectiveCombatantMove(dataset, combatant, state.combatantStates[action.actorKey], action.moveId)?.priority || 0);
+}
+
+function actionSide(action, plan) {
+  return plan.combatants[action.actorKey]?.side || action.side || null;
+}
+
+function permutations(entries) {
+  if (entries.length < 2) return [entries];
+  return entries.flatMap((entry, index) => permutations(entries.filter((_, other) => other !== index)).map(rest => [entry, ...rest]));
+}
+
+function orderedActions(plan, state, actions, dataset) {
+  const generation = Number(dataset.mechanics?.damageGeneration || 5);
+  const trickRoom = Number(state.fieldState?.global?.trickRoomTurns || 0) > 0;
+  const entries = actionEntries(state, actions).map(entry => {
+    const combatant = plan.combatants[entry.action.actorKey];
+    let speed = effectiveSpeed(combatant, state.combatantStates[combatant.combatantKey], generation);
+    if (Number(state.fieldState?.sides?.[entry.side]?.tailwindTurns || 0) > 0) speed *= 2;
+    if (Number(state.fieldState?.sides?.[entry.side]?.swampTurns || 0) > 0) speed *= 0.25;
+    let priority = actionPriority(entry.action, dataset, plan, state);
+    if (entry.action.actionType === "move" && entry.action.moveId === "pursuit") {
+      const targetKey = entry.action.targetKeys?.[0];
+      if (actionEntries(state, actions).some(candidate => candidate.action.actorKey === targetKey && candidate.action.actionType === "switch")) priority = 7;
+    }
+    return { ...entry, priority, speed };
+  });
+  entries.sort((left, right) => right.priority - left.priority || (trickRoom ? left.speed - right.speed : right.speed - left.speed) || left.side.localeCompare(right.side) || left.slot - right.slot);
+  let orders = [{ entries: [], probability: 1, conditions: [] }];
+  for (let index = 0; index < entries.length;) {
+    let end = index + 1;
+    while (end < entries.length && entries[end].priority === entries[index].priority && entries[end].speed === entries[index].speed) end += 1;
+    const tied = entries.slice(index, end);
+    const variants = tied.length > 1 ? permutations(tied) : [tied];
+    const tieProbability = 1 / variants.length;
+    orders = orders.flatMap(order => variants.map(variant => ({
+      entries: [...order.entries, ...variant],
+      probability: order.probability * tieProbability,
+      conditions: tied.length > 1 ? [...order.conditions, `speed-tie:${tied.map(entry => entry.action.actorKey).join(",")}`] : [...order.conditions]
+    })));
+    index = end;
+  }
+  if (orders.length > 96) throw new ResolutionError("Action-order branching exceeds the safe Doubles limit");
+  return orders;
+}
+
+function canonicalTarget(move) {
+  return String(move?.target || "normal").toLowerCase().replace(/[^a-z]/g, "");
+}
+
+function legalTargetKeys(state, side, actorKey, targetMode, legalIncomingTargets = []) {
+  const own = activeKeys(state, side).filter(key => Number(state.combatantStates[key]?.hp?.max) > 0);
+  const opponents = [...activeKeys(state, opposite(side)), ...legalIncomingTargets].filter(key => Number(state.combatantStates[key]?.hp?.max) > 0);
+  if (targetMode === "adjacentally") return own.filter(key => key !== actorKey);
+  if (targetMode === "adjacentallyorself") return own;
+  if (targetMode === "any") return [...opponents, ...own.filter(key => key !== actorKey)];
+  return opponents;
+}
+
+function validateAction(side, slot, action, plan, state, dataset, moveSupport, legalIncomingTargets = []) {
+  if (!action || !["move", "switch"].includes(action.actionType)) throw new ResolutionError(`${side} needs a Move or Switch action`);
+  const actorActiveKey = activeKey(state, side, slot);
+  if (action.actorKey !== actorActiveKey) throw new ResolutionError(`${side} action actor is not the active Pokémon`);
+  const actor = plan.combatants[actorActiveKey];
+  const actorState = state.combatantStates[actorActiveKey];
+  if (!actor || !actorState || Number(actorState.hp?.max) <= 0) throw new ResolutionError(`${side} active Pokémon has fainted`);
+  if (action.actionType === "switch") {
+    const target = plan.combatants[action.switchToKey];
+    const targetState = state.combatantStates[action.switchToKey];
+    if (!target || target.side !== side) throw new ResolutionError(`${side} switch target is invalid`);
+    if (activeKeys(state, side).includes(target.combatantKey)) throw new ResolutionError(`${side} switch target is already active`);
+    if (!targetState || Number(targetState.hp?.max) <= 0) throw new ResolutionError(`${side} switch target has fainted`);
+    return;
+  }
+  const move = effectiveCombatantMove(dataset, actor, actorState, action.moveId);
+  const knownMoves = actorState.moveSetOverride || actor.moves;
+  if (!move || !knownMoves.some(entry => entry.moveId === action.moveId)) throw new ResolutionError(`${actor.displayName} does not know ${action.moveId}`);
+  if (Number(actorState.volatileConditions?.tauntTurns || 0) > 0 && String(move.category).toLowerCase() === "status") throw new ResolutionError(`${actor.displayName} is taunted`);
+  if (actorState.volatileConditions?.disabledMoveId === action.moveId) throw new ResolutionError(`${move.name} is disabled`);
+  if (actorState.volatileConditions?.encoredMoveId && actorState.volatileConditions.encoredMoveId !== action.moveId) throw new ResolutionError(`${actor.displayName} must use its encored move`);
+  if (actorState.volatileConditions?.choiceLockedMoveId && actorState.volatileConditions.choiceLockedMoveId !== action.moveId) throw new ResolutionError(`${actor.displayName} is locked into another move`);
+  if (Number(actorState.volatileConditions?.bideTurns || 0) > 0 && action.moveId !== "bide") throw new ResolutionError(`${actor.displayName} must continue Bide`);
+  if (Number(actorState.volatileConditions?.uproarTurns || 0) > 0 && action.moveId !== "uproar") throw new ResolutionError(`${actor.displayName} must continue Uproar`);
+  const continuingBide = action.moveId === "bide" && Number(actorState.volatileConditions?.bideTurns || 0) > 0;
+  if (!continuingBide && Number(actorState.movePp?.[action.moveId] || 0) <= 0) throw new ResolutionError(`${move.name} has no PP`);
+  const support = moveSupport(move, dataset);
+  if (!support.supported) throw new ResolutionError(support.reason);
+  const chargingMoveId = actorState.volatileConditions?.chargingMoveId;
+  if (chargingMoveId && chargingMoveId !== action.moveId) throw new ResolutionError(`${actor.displayName} must continue ${chargingMoveId}`);
+  if (actorState.volatileConditions?.torment && actorState.lastMoveId === action.moveId) throw new ResolutionError(`${actor.displayName} cannot repeat a move under Torment`);
+  if (Number(actorState.volatileConditions?.healBlockTurns || 0) > 0 && support.flags?.heal) throw new ResolutionError(`${actor.displayName} cannot use a healing move under Heal Block`);
+  const imprisoned = activeKeys(state, opposite(side)).some(key => {
+    const opponentState = state.combatantStates[key];
+    const opponent = plan.combatants[key];
+    return opponentState?.volatileConditions?.imprison
+      && (opponentState.moveSetOverride || opponent.moves).some(entry => entry.moveId === action.moveId);
+  });
+  if (imprisoned) throw new ResolutionError(`${move.name} is sealed by Imprison`);
+  if (support.target === "target") {
+    const targetMode = support.targetMode || canonicalTarget(move);
+    const legal = legalTargetKeys(state, side, actorActiveKey, targetMode, legalIncomingTargets);
+    if (legal.length && (!Array.isArray(action.targetKeys) || action.targetKeys.length !== 1 || !legal.includes(action.targetKeys[0]))) {
+      throw new ResolutionError(`${move.name} needs one legal active target`);
+    }
+    if (!legal.length && Array.isArray(action.targetKeys) && action.targetKeys.length) {
+      throw new ResolutionError(`${move.name} has no legal target in this position`);
+    }
+  }
+  if (support.operations?.some(operation => operation.kind === "self-switch")) {
+    const switchToKey = action.mechanicActivations?.find(entry => entry?.id === "after-move-switch")?.switchToKey;
+    const replacement = plan.combatants[switchToKey];
+    if (!replacement || replacement.side !== side || activeKeys(state, side).includes(switchToKey) || Number(state.combatantStates[switchToKey]?.hp?.max) <= 0) {
+      throw new ResolutionError(`${move.name} needs a legal after-move switch-in`);
+    }
+  }
+}
+
+export function validateTurnActions({ plan, parentState, actions, dataset, moveSupport = defaultMoveSupport }) {
+  const pending = pendingReplacementSlots(parentState);
+  if (pending.length) {
+    throw new ResolutionError(`Resolve forced replacement for ${pending.map(entry => `${entry.side} slot ${entry.slot + 1}`).join(" and ")} before selecting turn actions`);
+  }
+  const actuallyEnded = ["player", "enemy"].some(side => !Object.values(plan.combatants).some(combatant =>
+    combatant.side === side && Number(parentState.combatantStates[combatant.combatantKey]?.hp?.max) > 0
+  ));
+  if (actuallyEnded) throw new ResolutionError("The battle has ended");
+  const requiredSlots = [];
+  for (const side of ["player", "enemy"]) {
+    const sideActions = actionList(actions, side);
+    const entries = activeSlotEntries(parentState, side).filter(entry => Number(parentState.combatantStates[entry.combatantKey]?.hp?.max) > 0);
+    if (sideActions.length !== entries.length) throw new ResolutionError(`${side} needs ${entries.length} slot actions`);
+    const switchTargets = sideActions.filter(action => action.actionType === "switch").map(action => action.switchToKey);
+    if (new Set(switchTargets).size !== switchTargets.length) throw new ResolutionError(`${side} cannot switch both slots to the same Pokémon`);
+    const legalIncomingTargets = actionList(actions, opposite(side)).filter(action => action.actionType === "switch").map(action => action.switchToKey);
+    for (const action of sideActions) {
+      const slot = actorSlot(parentState, side, action.actorKey);
+      validateAction(side, slot, action, plan, parentState, dataset, moveSupport, legalIncomingTargets);
+      requiredSlots.push({ side, slot, actorKey: action.actorKey });
+    }
+  }
+  return { ready: true, requiredSides: ["player", "enemy"], requiredSlots };
+}
+
+function probabilityProduct(left, right) {
+  if (left === null || right === null || left === undefined || right === undefined) return null;
+  return Number(left) * Number(right);
+}
+
+const RANDOM_STATUS_COUNTERS = Object.freeze([2, 3, 4, 5]);
+
+function normalizedCounterDistribution(entries) {
+  if (!Array.isArray(entries)) return null;
+  const grouped = new Map();
+  for (const entry of entries) {
+    const value = Math.floor(Number(entry?.value));
+    const probability = Number(entry?.probability);
+    if (!Number.isFinite(value) || value < 1 || !Number.isFinite(probability) || probability <= 0) continue;
+    grouped.set(value, (grouped.get(value) || 0) + probability);
+  }
+  const total = [...grouped.values()].reduce((sum, probability) => sum + probability, 0);
+  if (!total) return null;
+  return [...grouped.entries()].sort((left, right) => left[0] - right[0]).map(([value, probability]) => ({ value, probability: probability / total }));
+}
+
+function uniformStatusCounterDistribution() {
+  return RANDOM_STATUS_COUNTERS.map(value => ({ value, probability: 1 / RANDOM_STATUS_COUNTERS.length }));
+}
+
+function statusCounterDistribution(volatiles, kind) {
+  const distributionKey = `${kind}CounterDistribution`;
+  const current = normalizedCounterDistribution(volatiles?.[distributionKey]);
+  if (current) return current;
+  const legacyValue = Number(volatiles?.[`${kind}Turns`]);
+  if (Number.isFinite(legacyValue) && legacyValue >= 0) {
+    const value = kind === "sleep" ? legacyValue + 1 : legacyValue;
+    return value >= 1 ? [{ value, probability: 1 }] : null;
+  }
+  return kind === "sleep" ? [{ value: 2, probability: 1 }] : null;
+}
+
+function setStatusCounterDistribution(volatiles, kind, entries) {
+  const normalized = normalizedCounterDistribution(entries);
+  volatiles[`${kind}CounterDistribution`] = normalized;
+  volatiles[`${kind}Turns`] = normalized?.length === 1
+    ? Math.max(0, normalized[0].value - (kind === "sleep" ? 1 : 0))
+    : null;
+  return normalized;
+}
+
+function advanceStatusCounter(entries) {
+  const current = normalizedCounterDistribution(entries) || [];
+  let endedProbability = 0;
+  const active = [];
+  for (const entry of current) {
+    const value = entry.value - 1;
+    if (value <= 0) endedProbability += entry.probability;
+    else active.push({ value, probability: entry.probability });
+  }
+  const activeProbability = Math.max(0, 1 - endedProbability);
+  return {
+    endedProbability,
+    activeProbability,
+    activeDistribution: activeProbability > 0
+      ? active.map(entry => ({ value: entry.value, probability: entry.probability / activeProbability }))
+      : null
+  };
+}
+
+function distributionFor(state) {
+  if (Array.isArray(state.hpDistribution) && state.hpDistribution.length) return state.hpDistribution;
+  const hp = normalizeRange(state.hp);
+  if (hp.min === hp.max) return [{ value: hp.min, probability: 1 }];
+  return null;
+}
+
+function setHpDistribution(state, entries) {
+  const grouped = new Map();
+  for (const entry of entries) grouped.set(entry.value, (grouped.get(entry.value) || 0) + Number(entry.probability || 0));
+  const total = [...grouped.values()].reduce((sum, value) => sum + value, 0) || 1;
+  state.hpDistribution = [...grouped.entries()].sort((a, b) => a[0] - b[0]).map(([value, probability]) => ({ value, probability: probability / total }));
+  const values = state.hpDistribution.map(entry => entry.value);
+  state.hp = { min: Math.min(...values), max: Math.max(...values), maxHp: state.hp.maxHp };
+}
+
+function clampStage(value) {
+  return Math.max(-6, Math.min(6, Number(value || 0)));
+}
+
+function event(branch, details) {
+  const next = { ...details, source: "planned", changes: details.changes || [], metadata: details.metadata || {} };
+  branch.events.push(next);
+  return next;
+}
+
+function switchEvent(branch, details) {
+  return event(branch, { actorKey: null, targetKey: null, moveId: null, ...details });
+}
+
+function applySwitchEffect(branch, targetKey, side, effect, opposingKey = null) {
+  const targetState = branch.state.combatantStates[targetKey];
+  if (effect.kind === "unsupported") throw new ResolutionError(effect.reason);
+  if (effect.kind === "damage") {
+    if (!targetState.abilitySuppressed && String(targetState.currentAbilityId || "").toLowerCase() === "magicguard") return [branch];
+    return applyResidualDamage(branch, targetKey, { ...effect, eventType: "entry-hazard-damage" });
+  }
+  if (effect.kind === "heal") {
+    const before = clone(targetState.hp);
+    applyExactHpChange(targetState, effect.amount);
+    switchEvent(branch, { eventType: "switch-heal", targetKey, healingHp: { min: effect.amount, max: effect.amount }, metadata: { cause: effect.cause, resultLabel: `${effect.cause} recovery` }, changes: [{ path: `combatantStates.${targetKey}.hp`, from: before, to: clone(targetState.hp) }] });
+    return [branch];
+  }
+  if (effect.kind === "clear-status") {
+    const previous = targetState.majorStatus;
+    targetState.majorStatus = null;
+    targetState.toxicCounter = 0;
+    switchEvent(branch, { eventType: "status-cleared", targetKey, metadata: { cause: effect.cause, resultLabel: "Status cured" }, changes: [{ path: `combatantStates.${targetKey}.majorStatus`, from: previous, to: null }] });
+    return [branch];
+  }
+  if (effect.kind === "absorb-toxic-spikes") {
+    const hazards = branch.state.fieldState.sides[side].hazards;
+    const previous = hazards.toxicSpikes;
+    hazards.toxicSpikes = 0;
+    switchEvent(branch, { eventType: "hazard-cleared", targetKey, metadata: { cause: effect.cause, resultLabel: "Toxic Spikes absorbed" }, changes: [{ path: `fieldState.sides.${side}.hazards.toxicSpikes`, from: previous, to: 0 }] });
+    return [branch];
+  }
+  if (effect.kind === "status") {
+    targetState.majorStatus = effect.statusId;
+    targetState.toxicCounter = effect.statusId === "tox" ? 1 : 0;
+    switchEvent(branch, { eventType: "major-status", targetKey, metadata: { cause: effect.cause, statusId: effect.statusId, resultLabel: `Inflicted ${effect.statusId.toUpperCase()}` }, changes: [{ path: `combatantStates.${targetKey}.majorStatus`, from: null, to: effect.statusId }] });
+    return [branch];
+  }
+  if (effect.kind === "stat-stage") {
+    const affectedKey = effect.target === "opponent" ? (opposingKey || sideActiveKey(branch.state, opposite(side))) : targetKey;
+    const affectedState = branch.state.combatantStates[affectedKey];
+    const from = clampStage(affectedState.statStages[effect.stat]);
+    const to = clampStage(from + Number(effect.delta));
+    affectedState.statStages[effect.stat] = to;
+    switchEvent(branch, { eventType: "stat-stage-change", actorKey: targetKey, targetKey: affectedKey, metadata: { cause: effect.cause, resultLabel: `${STAT_LABELS[effect.stat] || effect.stat} ${to - from >= 0 ? "+" : ""}${to - from}` }, changes: [{ path: `combatantStates.${affectedKey}.statStages.${effect.stat}`, from, to }] });
+    return [branch];
+  }
+  if (effect.kind === "intimidate-blocked") {
+    switchEvent(branch, { eventType: "ability-blocked", actorKey: targetKey, targetKey: opposingKey || sideActiveKey(branch.state, opposite(side)), metadata: { cause: effect.cause, resultLabel: "Intimidate blocked" } });
+    return [branch];
+  }
+  if (effect.kind === "weather") {
+    const previous = clone(branch.state.fieldState.global.weather);
+    const condition = normalizeFieldCondition("weather", {
+      id: effect.weatherId,
+      source: `ability:${effect.cause}`,
+      durationMode: effect.durationMode,
+      remainingTurns: effect.remainingTurns
+    });
+    branch.state.fieldState.global.weather = condition;
+    switchEvent(branch, { eventType: "field-change", actorKey: targetKey, metadata: { cause: effect.cause, fieldKind: "weather", fieldId: effect.weatherId, resultLabel: `${effect.weatherId} weather` }, changes: [{ path: "fieldState.global.weather", from: previous, to: clone(condition) }] });
+    return [branch];
+  }
+  return [branch];
+}
+
+function applySwitch(branch, side, slot, action, plan, dataset) {
+  const outgoingKey = activeKey(branch.state, side, slot);
+  const outgoingState = branch.state.combatantStates[outgoingKey];
+  const sleepCounterStart = outgoingState.majorStatus === "slp"
+    ? normalizedCounterDistribution(outgoingState.volatileConditions?.sleepCounterStartDistribution)
+      || statusCounterDistribution(outgoingState.volatileConditions, "sleep")
+    : null;
+  const batonPassState = action.switchMode === "copyvolatile" ? {
+    statStages: clone(outgoingState.statStages),
+    volatileConditions: clone(outgoingState.volatileConditions)
+  } : null;
+  if (batonPassState) {
+    batonPassState.volatileConditions.protectStreak = 0;
+    batonPassState.volatileConditions.rechargeRequired = false;
+    batonPassState.volatileConditions.chargingMoveId = null;
+    batonPassState.volatileConditions.selfDestructResolved = false;
+  }
+  let branches = [branch];
+  const switchKind = action.switchKind || "voluntary";
+  if (switchKind !== "forced") {
+    for (const effect of outgoingSwitchEffects(outgoingState)) {
+      branches = branches.flatMap(current => applySwitchEffect(current, outgoingKey, side, effect));
+    }
+  }
+  branch = branches[0];
+  const outgoing = plan.combatants[outgoingKey];
+  outgoingState.statStages = { atk: 0, def: 0, spa: 0, spd: 0, spe: 0, accuracy: 0, evasion: 0 };
+  outgoingState.volatileConditions = createDefaultVolatiles();
+  if (sleepCounterStart) {
+    setStatusCounterDistribution(outgoingState.volatileConditions, "sleep", sleepCounterStart);
+    outgoingState.volatileConditions.sleepCounterStartDistribution = clone(sleepCounterStart);
+  }
+  outgoingState.currentAbilityId = outgoing.originalAbilityId;
+  outgoingState.abilitySuppressed = false;
+  outgoingState.currentTypeIds = [...outgoing.originalTypeIds];
+  outgoingState.lastMoveId = null;
+  outgoingState.usedMoveIds = [];
+  delete outgoingState.moveSetOverride;
+  delete outgoingState.calculatedStatOverrides;
+  delete outgoingState.transformedIntoKey;
+  if (outgoingState.majorStatus === "tox") outgoingState.toxicCounter = 1;
+  setActiveKey(branch.state, side, slot, action.switchToKey);
+  registerSwitchExperienceParticipation(branch.state, side, action.switchToKey);
+  event(branch, {
+    eventType: "switch",
+    actorKey: outgoingKey,
+    targetKey: action.switchToKey,
+    moveId: null,
+    metadata: { side, slot, switchKind, displayName: plan.combatants[action.switchToKey].displayName }
+  });
+  const enteringState = branch.state.combatantStates[action.switchToKey];
+  const entering = plan.combatants[action.switchToKey];
+  enteringState.currentAbilityId = entering.originalAbilityId;
+  enteringState.abilitySuppressed = false;
+  enteringState.currentTypeIds = [...entering.originalTypeIds];
+  enteringState.enteredTurnNumber = Number(branch.state.turnNumber || 0) + 1;
+  if (batonPassState) {
+    enteringState.statStages = batonPassState.statStages;
+    enteringState.volatileConditions = { ...enteringState.volatileConditions, ...batonPassState.volatileConditions };
+  }
+  const generation = Number(dataset.mechanics?.damageGeneration || 5);
+  const hazards = entryHazardEffects({ state: enteringState, fieldState: branch.state.fieldState, side, dataset, generation });
+  branches = [branch];
+  for (const effect of hazards) branches = branches.flatMap(current => applySwitchEffect(current, action.switchToKey, side, effect));
+  for (const current of branches) {
+    if (Number(current.state.combatantStates[action.switchToKey].hp?.max) <= 0) continue;
+    const opponents = activeKeys(current.state, opposite(side)).filter(key => Number(current.state.combatantStates[key]?.hp?.max) > 0);
+    const opposingStates = opponents.map(key => entryComparisonState(plan, current.state, key));
+    const firstEffects = entryAbilityEffects({
+      enteringState: current.state.combatantStates[action.switchToKey],
+      opposingState: opposingStates[0] || null,
+      opposingStates,
+      generation
+    });
+    const targetsEachOpponent = firstEffects.some(effect => effect.target === "opponent" || effect.kind === "intimidate-blocked");
+    if (targetsEachOpponent) {
+      for (const opposingKey of opponents) {
+        const effects = entryAbilityEffects({
+          enteringState: current.state.combatantStates[action.switchToKey],
+          opposingState: entryComparisonState(plan, current.state, opposingKey),
+          opposingStates,
+          generation
+        });
+        for (const effect of effects) applySwitchEffect(current, action.switchToKey, side, effect, opposingKey);
+      }
+    } else {
+      for (const effect of firstEffects) applySwitchEffect(current, action.switchToKey, side, effect, opponents[0] || null);
+    }
+    const slotEffects = current.state.fieldState.sides[side].slotEffects || {};
+    const slotEffect = slotEffects[slot];
+    if (slotEffect && Number(current.state.combatantStates[action.switchToKey].hp?.max) > 0) {
+      const switchedInState = current.state.combatantStates[action.switchToKey];
+      setExactCurrentHp(switchedInState, switchedInState.hp.maxHp);
+      clearStatus(switchedInState);
+      if (slotEffect.restorePp) {
+        switchedInState.movePp = Object.fromEntries((switchedInState.moveSetOverride || entering.moves).map(entry => [entry.moveId, entry.maxPp]));
+      }
+      delete slotEffects[slot];
+      switchEvent(current, {
+        eventType: "slot-heal",
+        targetKey: action.switchToKey,
+        metadata: { cause: slotEffect.id, resultLabel: slotEffect.restorePp ? "HP, status, and PP restored" : "HP and status restored" }
+      });
+    }
+  }
+  return branches;
+}
+
+function markMoved(branch, actorKey, moveId, consumePp = true) {
+  const state = branch.state.combatantStates[actorKey];
+  state.turnFlags.hasMoved = true;
+  state.lastMoveId = moveId;
+  state.usedMoveIds ||= [];
+  if (!state.usedMoveIds.includes(moveId)) state.usedMoveIds.push(moveId);
+  branch.state.fieldState.global.lastMoveId = moveId;
+  if (consumePp) state.movePp[moveId] = Math.max(0, Number(state.movePp[moveId] || 0) - 1);
+}
+
+function recordBideDamage(state, actorKey, amount) {
+  const volatiles = state.volatileConditions || {};
+  if (Number(volatiles.bideTurns || 0) <= 0 || Number(amount) <= 0) return;
+  volatiles.bideDamage = Number(volatiles.bideDamage || 0) + Number(amount);
+  volatiles.bideSourceKey = actorKey;
+}
+
+function applyDestinyBond(branch, faintedKey, sourceKey, move) {
+  const faintedState = branch.state.combatantStates[faintedKey];
+  const sourceState = branch.state.combatantStates[sourceKey];
+  if (!faintedState?.volatileConditions?.destinybond || !sourceState || Number(sourceState.hp?.max) <= 0 || faintedKey === sourceKey) return;
+  setExactCurrentHp(sourceState, 0);
+  event(branch, {
+    eventType: "destiny-bond",
+    actorKey: faintedKey,
+    targetKey: sourceKey,
+    moveId: move.id,
+    metadata: { resultLabel: "Destiny Bond knocked out the attacker" }
+  });
+}
+
+function applyDamageReactions(branch, targetKey, sourceKey, move, fainted) {
+  const targetState = branch.state.combatantStates[targetKey];
+  const sourceState = branch.state.combatantStates[sourceKey];
+  if (targetState?.volatileConditions?.rage && !fainted) {
+    const from = clampStage(targetState.statStages.atk);
+    const to = clampStage(from + 1);
+    targetState.statStages.atk = to;
+    event(branch, { eventType: "stat-stage-change", actorKey: targetKey, targetKey, moveId: "rage", metadata: { cause: "rage", resultLabel: `Attack +${to - from}` } });
+  }
+  if (fainted && targetState?.volatileConditions?.grudge && sourceState?.movePp && move?.id in sourceState.movePp) {
+    sourceState.movePp[move.id] = 0;
+    event(branch, { eventType: "pp-change", actorKey: targetKey, targetKey: sourceKey, moveId: move.id, metadata: { cause: "grudge", resultLabel: `${move.name} lost all PP` } });
+  }
+}
+
+function applySubstituteDamage(branch, { actorKey, targetKey, move, damageValues, damageDistribution, criticalHit, criticalHits, criticalHitProbability: critProbability }) {
+  const targetState = branch.state.combatantStates[targetKey];
+  const substituteHp = Math.max(1, Number(targetState.volatileConditions.substituteHp || 0));
+  const rolls = damageValues.map(Number).filter(value => Number.isFinite(value) && value >= 0);
+  const rollEntries = Array.isArray(damageDistribution) && damageDistribution.length
+    ? damageDistribution.map(entry => ({ damage: Number(entry.damage), probability: Number(entry.probability) })).filter(entry => Number.isFinite(entry.damage) && Number.isFinite(entry.probability) && entry.probability > 0)
+    : rolls.map(damage => ({ damage, probability: 1 / Math.max(1, rolls.length) }));
+  if (!rollEntries.length) throw new ResolutionError(`${move.name} returned no usable substitute damage rolls`);
+  const grouped = new Map();
+  for (const roll of rollEntries) {
+    const remaining = Math.max(0, substituteHp - roll.damage);
+    const current = grouped.get(remaining) || { probability: 0, damages: [] };
+    current.probability += roll.probability;
+    current.damages.push(roll.damage);
+    grouped.set(remaining, current);
+  }
+  return [...grouped.entries()].map(([remaining, details]) => {
+    const next = clone(branch);
+    next.probability = probabilityProduct(branch.probability, details.probability);
+    next.probabilityStatus = next.probability === null ? "unknown" : "known";
+    next.state.combatantStates[targetKey].volatileConditions.substituteHp = remaining;
+    next.substituteAbsorbedTargetKey = targetKey;
+    event(next, {
+      eventType: remaining ? "substitute-damage" : "substitute-broken",
+      actorKey,
+      targetKey,
+      moveId: move.id,
+      damageHp: { min: Math.min(...details.damages), max: Math.max(...details.damages) },
+      metadata: { substituteHp: remaining, criticalHit, criticalHits, criticalHitProbability: critProbability, resultLabel: remaining ? `Substitute has ${remaining} HP` : "Substitute broke" }
+    });
+    return next;
+  });
+}
+
+function skipped(branch, actorKey, reason) {
+  event(branch, { eventType: "action-skipped", actorKey, targetKey: null, moveId: null, reason });
+  return [branch];
+}
+
+function markDamageTaken(state, actorKey, move, damageMax) {
+  const damaged = Number(damageMax) > 0;
+  if (!damaged) return;
+  state.turnFlags.wasDamaged = true;
+  state.turnFlags.damageTaken = Number(damageMax);
+  state.turnFlags.damagingHitsTaken = Number(state.turnFlags.damagingHitsTaken || 0) + 1;
+  state.turnFlags.lastDamageSourceKey = actorKey;
+  state.turnFlags.lastDamageCategory = String(move.category || "").toLowerCase();
+}
+
+function activeHeldItemId(state, fieldState) {
+  if (state?.itemState !== "held") return "";
+  if (Number(state.volatileConditions?.embargoTurns || 0) > 0) return "";
+  if (Number(fieldState?.global?.magicRoomTurns || 0) > 0) return "";
+  if (!state.abilitySuppressed && toId(state.currentAbilityId) === "klutz") return "";
+  return toId(state.currentItemId);
+}
+
+function focusSashCanActivate(branch, targetState, move) {
+  return toId(move?.id || move?.name) !== "confusion"
+    && activeHeldItemId(targetState, branch.state.fieldState) === "focussash";
+}
+
+function consumeFocusSash(branch, actorKey, targetKey, move) {
+  const targetState = branch.state.combatantStates[targetKey];
+  const itemId = targetState.currentItemId;
+  targetState.lastItemId = itemId;
+  targetState.currentItemId = "";
+  targetState.itemState = "consumed";
+  event(branch, {
+    eventType: "item-consumed",
+    actorKey,
+    targetKey,
+    moveId: move.id,
+    metadata: { itemId: "focussash", cause: "survive-lethal-move", resultLabel: "Focus Sash activated" },
+    changes: [
+      { path: `combatantStates.${targetKey}.currentItemId`, from: itemId, to: "" },
+      { path: `combatantStates.${targetKey}.itemState`, from: "held", to: "consumed" }
+    ]
+  });
+}
+
+function applyDamage(branch, { actorKey, targetKey, move, damageValues, damageDistribution, damageSequenceDistribution, descriptor, effectiveBasePower, powerConditionMet, moveHits, criticalHit = false, criticalHits = 0, criticalHitProbability: critProbability = 0 }) {
+  const targetState = branch.state.combatantStates[targetKey];
+  if (targetKey !== actorKey && Number(targetState.volatileConditions?.substituteHp || 0) > 0 && !descriptor.flags?.sound && !descriptor.flags?.bypasssub) {
+    return applySubstituteDamage(branch, { actorKey, targetKey, move, damageValues, damageDistribution, criticalHit, criticalHits, criticalHitProbability: critProbability });
+  }
+  const hpDistribution = distributionFor(targetState);
+  const maxHp = Number(targetState.hp.maxHp);
+  const targetHpBefore = clone(targetState.hp);
+  const rolls = damageValues.map(Number).filter(value => Number.isFinite(value) && value >= 0);
+  if (!rolls.length) throw new ResolutionError(`${move.name} returned no usable damage rolls`);
+  const enduring = targetState.turnFlags.enduring === true;
+  const rollEntries = Array.isArray(damageSequenceDistribution) && damageSequenceDistribution.length
+    ? damageSequenceDistribution.map(entry => ({
+      damage: Number(entry.damage),
+      firstDamage: Number(entry.firstDamage),
+      remainingDamage: Number(entry.remainingDamage),
+      probability: Number(entry.probability)
+    })).filter(entry => Number.isFinite(entry.damage) && entry.damage >= 0
+      && Number.isFinite(entry.firstDamage) && entry.firstDamage >= 0
+      && Number.isFinite(entry.remainingDamage) && entry.remainingDamage >= 0
+      && Number.isFinite(entry.probability) && entry.probability > 0)
+    : Array.isArray(damageDistribution) && damageDistribution.length
+    ? damageDistribution.map(entry => ({ damage: Number(entry.damage), probability: Number(entry.probability) })).filter(entry => Number.isFinite(entry.damage) && entry.damage >= 0 && Number.isFinite(entry.probability) && entry.probability > 0)
+    : rolls.map(damage => ({ damage, probability: 1 / rolls.length }));
+
+  if (!hpDistribution) {
+    const damageMin = Math.min(...rolls);
+    const damageMax = Math.max(...rolls);
+    const hp = normalizeRange(targetState.hp);
+    const canKo = !enduring && damageMax >= hp.min;
+    const canSurvive = damageMin < hp.max;
+    const thresholdAmbiguous = canKo && canSurvive;
+    const outcomes = [];
+    if (canKo) {
+      const ko = clone(branch);
+      if (thresholdAmbiguous) {
+        ko.probability = null;
+        ko.probabilityStatus = "unknown";
+      }
+      ko.state.combatantStates[targetKey].hp = { min: 0, max: 0, maxHp };
+      ko.state.combatantStates[targetKey].hpDistribution = [{ value: 0, probability: 1 }];
+      markDamageTaken(ko.state.combatantStates[targetKey], actorKey, move, damageMax);
+      recordBideDamage(ko.state.combatantStates[targetKey], actorKey, damageMax);
+      event(ko, { eventType: "damage", actorKey, targetKey, moveId: move.id, damageHp: { min: damageMin, max: damageMax }, damagePercent: { min: damageMin / maxHp * 100, max: damageMax / maxHp * 100 }, metadata: { thresholdOutcome: "ko", criticalHit, criticalHits, criticalHitProbability: critProbability, effectiveBasePower, powerConditionMet, moveHits, targetHpBefore, damageRolls: rolls.slice(0, 512) } });
+      applyDamageReactions(ko, targetKey, actorKey, move, true);
+      applyDestinyBond(ko, targetKey, actorKey, move);
+      outcomes.push(ko);
+    }
+    if (canSurvive) {
+      const survive = clone(branch);
+      if (thresholdAmbiguous) {
+        survive.probability = null;
+        survive.probabilityStatus = "unknown";
+      }
+      survive.state.combatantStates[targetKey].hp = { min: Math.max(1, hp.min - damageMax), max: Math.max(1, hp.max - damageMin), maxHp };
+      delete survive.state.combatantStates[targetKey].hpDistribution;
+      markDamageTaken(survive.state.combatantStates[targetKey], actorKey, move, damageMax);
+      recordBideDamage(survive.state.combatantStates[targetKey], actorKey, damageMax);
+      event(survive, { eventType: "damage", actorKey, targetKey, moveId: move.id, damageHp: { min: damageMin, max: damageMax }, damagePercent: { min: damageMin / maxHp * 100, max: damageMax / maxHp * 100 }, metadata: { thresholdOutcome: "survive", criticalHit, criticalHits, criticalHitProbability: critProbability, effectiveBasePower, powerConditionMet, moveHits, targetHpBefore, damageRolls: rolls.slice(0, 512) } });
+      applyDamageReactions(survive, targetKey, actorKey, move, false);
+      outcomes.push(survive);
+    }
+    return outcomes;
+  }
+
+  const buckets = new Map();
+  const focusSashActive = focusSashCanActivate(branch, targetState, move);
+  for (const hpEntry of hpDistribution) {
+    for (const roll of rollEntries) {
+      const damage = roll.damage;
+      const probability = Number(hpEntry.probability) * roll.probability;
+      const nonlethal = branch.nonlethalCurrentMove === true;
+      const hpBefore = Number(hpEntry.value);
+      const firstDamage = Number.isFinite(roll.firstDamage) ? roll.firstDamage : damage;
+      const remainingDamage = Number.isFinite(roll.remainingDamage) ? roll.remainingDamage : 0;
+      const focusSashActivated = !enduring
+        && !nonlethal
+        && focusSashActive
+        && hpBefore === maxHp
+        && firstDamage >= hpBefore;
+      const remainingAfterFirst = focusSashActivated ? 1 : Math.max(enduring || nonlethal ? 1 : 0, hpBefore - firstDamage);
+      const remaining = Math.max(enduring || nonlethal ? 1 : 0, remainingAfterFirst - remainingDamage);
+      const kind = remaining === 0 ? "ko" : "survive";
+      const bucketKey = `${kind}:${focusSashActivated ? "sash" : "ordinary"}`;
+      const entries = buckets.get(bucketKey) || { kind, focusSashActivated, values: [] };
+      entries.values.push({ value: remaining, probability, damage, actualDamage: Math.max(0, hpBefore - remaining) });
+      buckets.set(bucketKey, entries);
+    }
+  }
+  const outcomes = [];
+  for (const { kind, focusSashActivated, values: entries } of buckets.values()) {
+    const localProbability = entries.reduce((sum, entry) => sum + entry.probability, 0);
+    const next = clone(branch);
+    next.probability = probabilityProduct(branch.probability, localProbability);
+    next.probabilityStatus = next.probability === null ? "unknown" : "known";
+    setHpDistribution(next.state.combatantStates[targetKey], entries.map(entry => ({ value: entry.value, probability: entry.probability / localProbability })));
+    const damages = entries.map(entry => entry.damage);
+    const damageMin = Math.min(...damages);
+    const damageMax = Math.max(...damages);
+    const target = next.state.combatantStates[targetKey];
+    const actualDamageMax = Math.max(...entries.map(entry => entry.actualDamage));
+    if (focusSashActivated) consumeFocusSash(next, actorKey, targetKey, move);
+    markDamageTaken(target, actorKey, move, actualDamageMax);
+    recordBideDamage(target, actorKey, actualDamageMax);
+    event(next, {
+      eventType: "damage",
+      actorKey,
+      targetKey,
+      moveId: move.id,
+      damageHp: { min: damageMin, max: damageMax },
+      damagePercent: { min: damageMin / maxHp * 100, max: damageMax / maxHp * 100 },
+      metadata: { thresholdOutcome: kind, criticalHit, criticalHits, criticalHitProbability: critProbability, effectiveBasePower, powerConditionMet, moveHits, targetHpBefore, damageRolls: damages.slice(0, 512), focusSashActivated }
+    });
+    if (kind === "ko") applyDestinyBond(next, targetKey, actorKey, move);
+    applyDamageReactions(next, targetKey, actorKey, move, kind === "ko");
+    if (descriptor.effectId === "damage-with-recoil") {
+      const [numerator, denominator] = descriptor.recoil;
+      const recoilMin = Math.floor(damageMin * numerator / denominator);
+      const recoilMax = Math.floor(damageMax * numerator / denominator);
+      const actorHp = normalizeRange(next.state.combatantStates[actorKey].hp);
+      const changed = next.state.combatantStates[actorKey];
+      changed.hp = { min: Math.max(0, actorHp.min - recoilMax), max: Math.max(0, actorHp.max - recoilMin), maxHp: actorHp.maxHp };
+      delete changed.hpDistribution;
+      event(next, { eventType: "recoil", actorKey, targetKey: actorKey, moveId: move.id, damageHp: { min: recoilMin, max: recoilMax } });
+    }
+    outcomes.push(next);
+  }
+  return outcomes;
+}
+
+const STAT_LABELS = Object.freeze({ atk: "Attack", def: "Defense", spa: "Sp. Atk", spd: "Sp. Def", spe: "Speed", accuracy: "Accuracy", evasion: "Evasion" });
+
+function applySelfStatStages(branch, actorKey, move, descriptor) {
+  const actorState = branch.state.combatantStates[actorKey];
+  const changes = [];
+  for (const [stat, requestedDelta] of Object.entries(descriptor.statStages || {})) {
+    const from = clampStage(actorState.statStages[stat]);
+    const to = clampStage(from + Number(requestedDelta));
+    actorState.statStages[stat] = to;
+    changes.push({
+      path: `combatantStates.${actorKey}.statStages.${stat}`,
+      stat,
+      from,
+      to,
+      requestedDelta: Number(requestedDelta),
+      appliedDelta: to - from
+    });
+  }
+  const resultLabel = changes.map(change => {
+    const delta = change.appliedDelta;
+    return `${STAT_LABELS[change.stat] || change.stat} ${delta >= 0 ? "+" : ""}${delta}`;
+  }).join(", ");
+  event(branch, {
+    eventType: "stat-stage-change",
+    actorKey,
+    targetKey: actorKey,
+    moveId: move.id,
+    changes,
+    metadata: { target: "self", resultLabel }
+  });
+  return [branch];
+}
+
+function applyStatStages(branch, actorKey, targetKey, move, operation) {
+  const affectedKey = operation.target === "self" ? actorKey : targetKey;
+  if (!affectedKey) throw new ResolutionError(`${move.name} has no stat-stage target`);
+  const affectedState = branch.state.combatantStates[affectedKey];
+  const changes = [];
+  for (const [stat, requestedDelta] of Object.entries(operation.statStages || {})) {
+    const from = clampStage(affectedState.statStages[stat]);
+    const to = clampStage(from + Number(requestedDelta));
+    affectedState.statStages[stat] = to;
+    changes.push({
+      path: `combatantStates.${affectedKey}.statStages.${stat}`,
+      stat,
+      from,
+      to,
+      requestedDelta: Number(requestedDelta),
+      appliedDelta: to - from
+    });
+  }
+  event(branch, {
+    eventType: "stat-stage-change",
+    actorKey,
+    targetKey: affectedKey,
+    moveId: move.id,
+    changes,
+    metadata: {
+      target: operation.target,
+      resultLabel: changes.map(change => `${STAT_LABELS[change.stat] || change.stat} ${change.appliedDelta >= 0 ? "+" : ""}${change.appliedDelta}`).join(", ")
+    }
+  });
+  return [branch];
+}
+
+function applySelfHeal(branch, actorKey, move, descriptor) {
+  const actorState = branch.state.combatantStates[actorKey];
+  const maxHp = Number(actorState.hp.maxHp);
+  const [numerator, denominator] = descriptor.heal;
+  const requested = Math.floor(maxHp * Number(numerator) / Number(denominator));
+  const hpDistribution = distributionFor(actorState);
+  let healedValues;
+  if (hpDistribution) {
+    healedValues = hpDistribution.map(entry => Math.max(0, Math.min(requested, maxHp - Number(entry.value))));
+    setHpDistribution(actorState, hpDistribution.map(entry => ({
+      value: Math.min(maxHp, Number(entry.value) + requested),
+      probability: entry.probability
+    })));
+  } else {
+    const hp = normalizeRange(actorState.hp);
+    healedValues = [Math.max(0, Math.min(requested, maxHp - hp.max)), Math.max(0, Math.min(requested, maxHp - hp.min))];
+    actorState.hp = { min: Math.min(maxHp, hp.min + requested), max: Math.min(maxHp, hp.max + requested), maxHp };
+    delete actorState.hpDistribution;
+  }
+  const healingHp = { min: Math.min(...healedValues), max: Math.max(...healedValues) };
+  const resultLabel = healingHp.min === healingHp.max ? `Healed ${healingHp.min} HP` : `Healed ${healingHp.min}–${healingHp.max} HP`;
+  event(branch, {
+    eventType: "heal",
+    actorKey,
+    targetKey: actorKey,
+    moveId: move.id,
+    changes: [{ path: `combatantStates.${actorKey}.hp`, healingHp }],
+    healingHp,
+    metadata: { target: "self", requestedHp: requested, resultLabel }
+  });
+  return [branch];
+}
+
+function applyProtect(branch, actorKey, move, descriptor, dataset, isLastAction) {
+  const actorState = branch.state.combatantStates[actorKey];
+  const streak = Number(actorState.volatileConditions?.protectStreak || 0);
+  if (descriptor.failsIfLastAction && isLastAction) {
+    actorState.turnFlags.protected = false;
+    actorState.volatileConditions.protectStreak = 0;
+    event(branch, {
+      eventType: "protect",
+      actorKey,
+      targetKey: actorKey,
+      moveId: move.id,
+      metadata: { success: false, successProbability: 0, reason: "last-action", resultLabel: "Protect failed" }
+    });
+    return [branch];
+  }
+  const probability = protectSuccessProbability(dataset.mechanics?.damageGeneration, streak);
+  const successful = clone(branch);
+  successful.state.combatantStates[actorKey].turnFlags.protected = true;
+  successful.state.combatantStates[actorKey].volatileConditions.protectStreak = streak + 1;
+  successful.probability = probabilityProduct(branch.probability, probability);
+  successful.probabilityStatus = successful.probability === null ? "unknown" : "known";
+  event(successful, {
+    eventType: "protect",
+    actorKey,
+    targetKey: actorKey,
+    moveId: move.id,
+    metadata: { success: true, successProbability: probability, resultLabel: "Protected" }
+  });
+  if (probability >= 1) return [successful];
+  const failed = clone(branch);
+  failed.state.combatantStates[actorKey].turnFlags.protected = false;
+  failed.state.combatantStates[actorKey].volatileConditions.protectStreak = 0;
+  failed.probability = probabilityProduct(branch.probability, 1 - probability);
+  failed.probabilityStatus = failed.probability === null ? "unknown" : "known";
+  event(failed, {
+    eventType: "protect",
+    actorKey,
+    targetKey: actorKey,
+    moveId: move.id,
+    metadata: { success: false, successProbability: probability, resultLabel: "Protect failed" }
+  });
+  return [successful, failed];
+}
+
+function applyMajorStatus(branch, actorKey, targetKey, move, descriptor, dataset) {
+  const targetState = branch.state.combatantStates[targetKey];
+  if (descriptor.statusId === "slp" && activeStates(branch).some(state => Number(state.volatileConditions?.uproarTurns || 0) > 0)) {
+    event(branch, { eventType: "status-failed", actorKey, targetKey, moveId: move.id, metadata: { statusId: "slp", reason: "uproar", resultLabel: "Uproar prevents sleep" } });
+    return [branch];
+  }
+  const targetAbility = targetState.abilitySuppressed ? "" : String(targetState.currentAbilityId || "").toLowerCase();
+  if (!descriptor.ignoreReaction && targetAbility === "magicbounce" && String(move.category || "status").toLowerCase() === "status" && actorKey !== targetKey) {
+    event(branch, { eventType: "status-reflected", actorKey: targetKey, targetKey: actorKey, moveId: move.id, metadata: { cause: "magic-bounce", resultLabel: "Magic Bounce reflected the status" } });
+    return applyMajorStatus(branch, targetKey, actorKey, move, { ...descriptor, ignoreReaction: true }, dataset);
+  }
+  const result = statusApplicationResult({
+    descriptor,
+    attackerState: branch.state.combatantStates[actorKey],
+    targetState,
+    fieldState: branch.state.fieldState,
+    generation: dataset.mechanics?.damageGeneration
+  });
+  if (result.unsupported) throw new ResolutionError(result.reason);
+  if (!result.applies) {
+    event(branch, {
+      eventType: "status-failed",
+      actorKey,
+      targetKey,
+      moveId: move.id,
+      metadata: { statusId: descriptor.statusId, reason: result.reason, resultLabel: "Status failed" }
+    });
+    return [branch];
+  }
+  targetState.majorStatus = descriptor.statusId;
+  targetState.toxicCounter = descriptor.statusId === "tox" ? 1 : 0;
+  event(branch, {
+    eventType: "major-status",
+    actorKey,
+    targetKey,
+    moveId: move.id,
+    changes: [{ path: `combatantStates.${targetKey}.majorStatus`, from: null, to: descriptor.statusId }],
+    metadata: { statusId: descriptor.statusId, resultLabel: `Inflicted ${descriptor.statusId.toUpperCase()}` }
+  });
+  if (descriptor.statusId === "slp") {
+    const distribution = uniformStatusCounterDistribution();
+    setStatusCounterDistribution(targetState.volatileConditions, "sleep", distribution);
+    targetState.volatileConditions.sleepCounterStartDistribution = clone(distribution);
+  }
+  if (!descriptor.ignoreReaction && targetAbility === "synchronize" && ["brn", "par", "psn", "tox"].includes(descriptor.statusId) && actorKey !== targetKey) {
+    const synchronized = applyMajorStatus(branch, targetKey, actorKey, move, { ...descriptor, ignoreReaction: true }, dataset);
+    for (const outcome of synchronized) {
+      event(outcome, { eventType: "status-reflected", actorKey: targetKey, targetKey: actorKey, moveId: move.id, metadata: { cause: "synchronize", resultLabel: "Synchronize shared the status" } });
+    }
+    return synchronized;
+  }
+  return [branch];
+}
+
+function applySetField(branch, actorKey, move, descriptor) {
+  const actorState = branch.state.combatantStates[actorKey];
+  const extensionItems = { rain: "damprock", sun: "heatrock", sand: "smoothrock", hail: "icyrock" };
+  const heldItem = actorState.itemState === "held" ? String(actorState.currentItemId || "").toLowerCase() : "";
+  const durationTurns = extensionItems[descriptor.fieldId] === heldItem ? 8 : descriptor.durationTurns;
+  const condition = normalizeFieldCondition(descriptor.fieldKind, {
+    id: descriptor.fieldId,
+    source: `move:${move.id}`,
+    durationMode: "turns",
+    remainingTurns: durationTurns
+  });
+  const previous = branch.state.fieldState.global[descriptor.fieldKind];
+  branch.state.fieldState.global[descriptor.fieldKind] = condition;
+  event(branch, {
+    eventType: "field-change",
+    actorKey,
+    targetKey: null,
+    moveId: move.id,
+    changes: [{ path: `fieldState.global.${descriptor.fieldKind}`, from: previous, to: condition }],
+    metadata: { fieldKind: descriptor.fieldKind, fieldId: descriptor.fieldId, resultLabel: `${descriptor.fieldId} ${descriptor.fieldKind}` }
+  });
+  return [branch];
+}
+
+function applyVolatileStatus(branch, actorKey, targetKey, move, operation) {
+  const affectedKey = operation.target === "self" ? actorKey : targetKey;
+  if (!affectedKey) throw new ResolutionError(`${move.name} has no volatile-status target`);
+  const affectedState = branch.state.combatantStates[affectedKey];
+  const volatileId = operation.volatileStatusId;
+  const volatiles = affectedState.volatileConditions;
+  if (volatileId === "flinch") affectedState.turnFlags.flinched = true;
+  else if (volatileId === "taunt") volatiles.tauntTurns = 3;
+  else if (volatileId === "disable") {
+    volatiles.disabledMoveId = affectedState.lastMoveId;
+    volatiles.disableTurns = 4;
+  } else if (volatileId === "encore") {
+    volatiles.encoredMoveId = affectedState.lastMoveId;
+    volatiles.encoreTurns = 3;
+  } else if (volatileId === "magnetrise") volatiles.magnetRiseTurns = 5;
+  else if (volatileId === "telekinesis") volatiles.telekinesisTurns = 3;
+  else if (volatileId === "leechseed") {
+    volatiles.leechSeeded = true;
+    volatiles.leechSeedSourceKey = actorKey;
+  } else if (volatileId === "mustrecharge") volatiles.rechargeRequired = true;
+  else if (volatileId === "partiallytrapped") {
+    volatiles.partiallyTrappedTurns = 4;
+    volatiles.partiallyTrappedSourceKey = actorKey;
+  } else if (volatileId === "yawn") {
+    volatiles.yawnTurns = 2;
+    volatiles.yawnSourceKey = actorKey;
+  } else if (volatileId === "healblock") volatiles.healBlockTurns = 5;
+  else if (volatileId === "embargo") volatiles.embargoTurns = 5;
+  else if (volatileId === "uproar") volatiles.uproarTurns = 3;
+  else if (volatileId === "gastroacid") {
+    affectedState.abilitySuppressed = true;
+    volatiles.gastroacid = true;
+  }
+  else if (volatileId === "stockpile") {
+    volatiles.stockpileLayers = Math.min(3, Number(volatiles.stockpileLayers || 0) + 1);
+    applyStatStages(branch, actorKey, affectedKey, move, { target: affectedKey === actorKey ? "self" : "target", statStages: { def: 1, spd: 1 } });
+  } else if (volatileId === "substitute") {
+    const cost = Math.floor(Number(affectedState.hp.maxHp) / 4);
+    if (Number(affectedState.hp.max) <= cost) {
+      event(branch, { eventType: "volatile-status-failed", actorKey, targetKey: affectedKey, moveId: move.id, metadata: { volatileStatusId: volatileId, reason: "insufficient-hp", resultLabel: "Substitute failed" } });
+      return [branch];
+    }
+    applyExactHpChange(affectedState, -cost);
+    volatiles.substituteHp = cost;
+  } else if (volatileId === "confusion") {
+    setStatusCounterDistribution(volatiles, "confusion", uniformStatusCounterDistribution());
+  } else volatiles[volatileId] = operation.durationTurns || true;
+  event(branch, {
+    eventType: "volatile-status",
+    actorKey,
+    targetKey: affectedKey,
+    moveId: move.id,
+    changes: [{ path: `combatantStates.${affectedKey}.${volatileId === "flinch" ? "turnFlags.flinched" : "volatileConditions"}`, to: volatileId === "flinch" ? true : clone(volatiles) }],
+    metadata: { volatileStatusId: volatileId, resultLabel: volatileId === "flinch" ? "Flinched" : volatileId === "confusion" ? "Confused" : volatileId }
+  });
+  return [branch];
+}
+
+function applySideCondition(branch, side, actorKey, move, operation) {
+  const affectedSide = operation.targetSide === "own" ? side : opposite(side);
+  const sideState = branch.state.fieldState.sides[affectedSide];
+  const id = operation.sideConditionId;
+  const hazardCaps = { spikes: 3, toxicspikes: 2, stealthrock: 1, stickyweb: 1 };
+  const hazardFields = { spikes: "spikes", toxicspikes: "toxicSpikes", stealthrock: "stealthRock", stickyweb: "stickyWeb" };
+  let path;
+  let from;
+  let to;
+  if (hazardCaps[id]) {
+    const field = hazardFields[id];
+    path = `fieldState.sides.${affectedSide}.hazards.${field}`;
+    from = Number(sideState.hazards[field] || 0);
+    to = Math.min(hazardCaps[id], from + 1);
+    sideState.hazards[field] = to;
+  } else {
+    const durationFields = {
+      reflect: ["reflectTurns", 5],
+      lightscreen: ["lightScreenTurns", 5],
+      safeguard: ["safeguardTurns", 5],
+      mist: ["mistTurns", 5],
+      tailwind: ["tailwindTurns", 4],
+      quickguard: ["quickGuardTurns", 1],
+      wideguard: ["wideGuardTurns", 1],
+      luckychant: ["luckyChantTurns", 5]
+    };
+    const [field, turns] = durationFields[id] || [`${id}Turns`, 1];
+    path = `fieldState.sides.${affectedSide}.${field}`;
+    from = Number(sideState[field] || 0);
+    to = turns;
+    sideState[field] = turns;
+  }
+  event(branch, {
+    eventType: hazardCaps[id] ? "hazard-set" : "side-condition",
+    actorKey,
+    targetKey: null,
+    moveId: move.id,
+    changes: [{ path, from, to }],
+    metadata: { side: affectedSide, sideConditionId: id, resultLabel: move.name }
+  });
+  return [branch];
+}
+
+function applyPseudoWeather(branch, actorKey, move, operation) {
+  const fields = {
+    trickroom: "trickRoomTurns",
+    gravity: "gravityTurns",
+    magicroom: "magicRoomTurns",
+    wonderroom: "wonderRoomTurns"
+  };
+  const field = fields[operation.pseudoWeatherId];
+  if (!field) throw new ResolutionError(`${move.name} uses unsupported field effect ${operation.pseudoWeatherId}`);
+  const from = Number(branch.state.fieldState.global[field] || 0);
+  const to = from > 0 && operation.pseudoWeatherId === "trickroom" ? 0 : 5;
+  branch.state.fieldState.global[field] = to;
+  event(branch, {
+    eventType: "field-change",
+    actorKey,
+    targetKey: null,
+    moveId: move.id,
+    changes: [{ path: `fieldState.global.${field}`, from, to }],
+    metadata: { fieldKind: "pseudo-weather", fieldId: operation.pseudoWeatherId, resultLabel: move.name }
+  });
+  return [branch];
+}
+
+function damageEventFor(branch, actorKey, targetKey, moveId) {
+  return [...branch.events].reverse().find(entry => entry.eventType === "damage" && entry.actorKey === actorKey && entry.targetKey === targetKey && entry.moveId === moveId);
+}
+
+function applyDamageRecovery(branch, actorKey, targetKey, move, operation) {
+  const damageEvent = damageEventFor(branch, actorKey, targetKey, move.id);
+  if (!damageEvent) return [branch];
+  const actorState = branch.state.combatantStates[actorKey];
+  const hp = normalizeRange(actorState.hp);
+  const maxHp = Number(hp.maxHp);
+  if (operation.drain) {
+    const [numerator, denominator] = operation.drain;
+    const healMin = Math.floor(Number(damageEvent.damageHp.min) * numerator / denominator);
+    const healMax = Math.floor(Number(damageEvent.damageHp.max) * numerator / denominator);
+    actorState.hp = { min: Math.min(maxHp, hp.min + healMin), max: Math.min(maxHp, hp.max + healMax), maxHp };
+    delete actorState.hpDistribution;
+    event(branch, { eventType: "heal", actorKey, targetKey: actorKey, moveId: move.id, healingHp: { min: healMin, max: healMax }, metadata: { cause: "drain", resultLabel: `Drained ${healMin === healMax ? healMin : `${healMin}–${healMax}`} HP` } });
+  }
+  if (operation.recoil) {
+    const current = normalizeRange(actorState.hp);
+    const [numerator, denominator] = operation.recoil;
+    const recoilMin = Math.floor(Number(damageEvent.damageHp.min) * numerator / denominator);
+    const recoilMax = Math.floor(Number(damageEvent.damageHp.max) * numerator / denominator);
+    actorState.hp = { min: Math.max(0, current.min - recoilMax), max: Math.max(0, current.max - recoilMin), maxHp: current.maxHp };
+    delete actorState.hpDistribution;
+    event(branch, { eventType: "recoil", actorKey, targetKey: actorKey, moveId: move.id, damageHp: { min: recoilMin, max: recoilMax }, metadata: { resultLabel: `${recoilMin === recoilMax ? recoilMin : `${recoilMin}–${recoilMax}`} recoil` } });
+  }
+  return [branch];
+}
+
+function applyStructuredOperation(branch, context, operation) {
+  const { side, actorKey, targetKey, move, dataset, plan, action } = context;
+  const affectsTargetCombatant = ["stat-stages", "heal", "major-status", "volatile-status", "force-switch"].includes(operation.kind)
+    && operation.target !== "self";
+  if (affectsTargetCombatant && targetKey && Number(branch.state.combatantStates[targetKey]?.hp?.max || 0) <= 0) return [branch];
+  if (branch.substituteAbsorbedTargetKey === targetKey && operation.target !== "self") return [branch];
+  if (operation.kind === "stat-stages") return applyStatStages(branch, actorKey, targetKey, move, operation);
+  if (operation.kind === "heal") return applySelfHeal(branch, operation.target === "target" ? targetKey : actorKey, move, { heal: operation.fraction });
+  if (operation.kind === "major-status") {
+    const affectedKey = operation.target === "self" ? actorKey : targetKey;
+    return applyMajorStatus(branch, actorKey, affectedKey, move, operation, dataset);
+  }
+  if (operation.kind === "field-condition") return applySetField(branch, actorKey, move, { fieldKind: operation.fieldKind, fieldId: operation.fieldId, durationTurns: operation.durationTurns });
+  if (operation.kind === "volatile-status") return applyVolatileStatus(branch, actorKey, targetKey, move, operation);
+  if (operation.kind === "side-condition") return applySideCondition(branch, side, actorKey, move, operation);
+  if (operation.kind === "pseudo-weather") return applyPseudoWeather(branch, actorKey, move, operation);
+  if (operation.kind === "slot-condition") return applyVolatileStatus(branch, actorKey, targetKey, move, { target: "target", volatileStatusId: operation.slotConditionId });
+  if (operation.kind === "self-switch") {
+    if (Number(branch.state.combatantStates[actorKey]?.hp?.max) <= 0) return [branch];
+    const switchToKey = action?.mechanicActivations?.find(entry => entry?.id === "after-move-switch")?.switchToKey;
+    const slot = actorSlot(branch.state, side, actorKey);
+    if (slot < 0 || !switchToKey) return [branch];
+    return applySwitch(branch, side, slot, { actionType: "switch", actorKey, switchToKey, switchKind: "pivot", switchMode: operation.switchMode }, plan, dataset);
+  }
+  if (operation.kind === "force-switch") {
+    if (!targetKey || Number(branch.state.combatantStates[targetKey]?.hp?.max) <= 0) return [branch];
+    const affectedSide = opposite(side);
+    const slot = actorSlot(branch.state, affectedSide, targetKey);
+    const active = activeKeys(branch.state, affectedSide);
+    const candidates = Object.values(plan.combatants).filter(combatant => combatant.side === affectedSide && !active.includes(combatant.combatantKey) && Number(branch.state.combatantStates[combatant.combatantKey]?.hp?.max) > 0);
+    if (slot < 0 || !candidates.length) return [branch];
+    return candidates.flatMap(candidate => {
+      const next = clone(branch);
+      next.probability = probabilityProduct(branch.probability, 1 / candidates.length);
+      next.probabilityStatus = next.probability === null ? "unknown" : "known";
+      return applySwitch(next, affectedSide, slot, { actionType: "switch", actorKey: targetKey, switchToKey: candidate.combatantKey, switchKind: "forced" }, plan, dataset);
+    });
+  }
+  throw new ResolutionError(`${move.name} uses unsupported structured operation ${operation.kind}`);
+}
+
+function applyStructuredOperations(branches, context, operations) {
+  let current = branches;
+  for (const operation of operations) {
+    if (operation.kind === "chance") {
+      current = current.flatMap(branch => {
+        if (branch.substituteAbsorbedTargetKey === context.targetKey && operation.operations.every(nested => nested.target !== "self")) return [branch];
+        if (context.targetKey && Number(branch.state.combatantStates[context.targetKey]?.hp?.max || 0) <= 0
+          && operation.operations.every(nested => nested.target !== "self")) return [branch];
+        const rainbowMultiplier = Number(branch.state.fieldState.sides?.[context.side]?.rainbowTurns || 0) > 0 ? 2 : 1;
+        const chance = Math.max(0, Math.min(100, Number(operation.chance) * rainbowMultiplier)) / 100;
+        if (chance >= 1) return applyStructuredOperations([branch], context, operation.operations);
+        if (chance <= 0) return [branch];
+        const applied = clone(branch);
+        applied.probability = probabilityProduct(branch.probability, chance);
+        applied.probabilityStatus = applied.probability === null ? "unknown" : "known";
+        const skippedBranch = clone(branch);
+        skippedBranch.probability = probabilityProduct(branch.probability, 1 - chance);
+        skippedBranch.probabilityStatus = skippedBranch.probability === null ? "unknown" : "known";
+        event(skippedBranch, { eventType: "secondary-effect-missed", actorKey: context.actorKey, targetKey: context.targetKey, moveId: context.move.id, metadata: { chance: Number(operation.chance), resultLabel: "No secondary effect" } });
+        return [...applyStructuredOperations([applied], context, operation.operations), skippedBranch];
+      });
+    } else {
+      current = current.flatMap(branch => applyStructuredOperation(branch, context, operation));
+    }
+  }
+  return current;
+}
+
+function specialHandlerEvent(branch, actorKey, targetKey, move, handlerId, resultLabel, changes = [], metadata = {}) {
+  event(branch, {
+    eventType: "special-move-effect",
+    actorKey,
+    targetKey,
+    moveId: move.id,
+    changes,
+    metadata: { handlerId, resultLabel, ...metadata }
+  });
+  return [branch];
+}
+
+function clearStatus(state) {
+  const from = state.majorStatus;
+  state.majorStatus = null;
+  state.toxicCounter = 0;
+  state.volatileConditions.sleepTurns = null;
+  state.volatileConditions.sleepCounterDistribution = null;
+  state.volatileConditions.sleepCounterStartDistribution = null;
+  return from;
+}
+
+function setExactCurrentHp(state, value) {
+  const maxHp = Number(state.hp.maxHp);
+  const next = Math.max(0, Math.min(maxHp, Math.floor(Number(value))));
+  state.hp = { min: next, max: next, maxHp };
+  state.hpDistribution = [{ value: next, probability: 1 }];
+}
+
+function swapStageGroups(left, right, stats) {
+  for (const stat of stats) [left.statStages[stat], right.statStages[stat]] = [right.statStages[stat], left.statStages[stat]];
+}
+
+function applyCrashDamage(branch, actorKey, move, reason) {
+  const actorState = branch.state.combatantStates[actorKey];
+  const damage = Math.max(1, Math.floor(Number(actorState.hp.maxHp) / 2));
+  event(branch, {
+    eventType: "crash",
+    actorKey,
+    targetKey: actorKey,
+    moveId: move.id,
+    metadata: { reason, resultLabel: `${move.name} crash damage` }
+  });
+  return applyDamage(branch, {
+    actorKey,
+    targetKey: actorKey,
+    move: { id: `${move.id}-crash`, name: `${move.name} crash`, category: "physical" },
+    damageValues: [damage],
+    descriptor: {},
+    effectiveBasePower: 0
+  });
+}
+
+function applySpecialHandler(branch, context, handlerId) {
+  const { side, actorKey, targetKey, move, dataset, plan, action, previousLastMoveId, damageAdapter, isLastAction, pendingActions = [] } = context;
+  const actorState = branch.state.combatantStates[actorKey];
+  const targetState = targetKey ? branch.state.combatantStates[targetKey] : null;
+  const targetSide = targetKey ? plan.combatants[targetKey]?.side : null;
+  const fail = reason => specialHandlerEvent(branch, actorKey, targetKey, move, handlerId, `${move.name} failed`, [], { failed: true, reason });
+  if (handlerId === "bide") {
+    const turns = Number(actorState.volatileConditions.bideTurns || 0);
+    branch.skipCurrentMoveDamage = true;
+    if (!turns) {
+      actorState.volatileConditions.bideTurns = 2;
+      actorState.volatileConditions.bideDamage = 0;
+      actorState.volatileConditions.bideSourceKey = null;
+      return specialHandlerEvent(branch, actorKey, actorKey, move, handlerId, "Bide started storing damage", [], { charging: true, remainingTurns: 2 });
+    }
+    if (turns > 1) {
+      actorState.volatileConditions.bideTurns = turns - 1;
+      return specialHandlerEvent(branch, actorKey, actorKey, move, handlerId, "Bide is storing energy", [], { charging: true, remainingTurns: turns - 1 });
+    }
+    const damage = Number(actorState.volatileConditions.bideDamage || 0) * 2;
+    const sourceKey = actorState.volatileConditions.bideSourceKey;
+    actorState.volatileConditions.bideTurns = 0;
+    actorState.volatileConditions.bideDamage = 0;
+    actorState.volatileConditions.bideSourceKey = null;
+    if (!damage || !sourceKey || Number(branch.state.combatantStates[sourceKey]?.hp?.max) <= 0) return fail("no-stored-damage-source");
+    return applyDamage(branch, {
+      actorKey,
+      targetKey: sourceKey,
+      move,
+      damageValues: [damage],
+      descriptor: {},
+      effectiveBasePower: 0
+    });
+  }
+  if (handlerId === "destiny-bond") return [branch];
+  if (handlerId === "delayed-attack") {
+    const targetSlot = actorSlot(branch.state, opposite(side), targetKey);
+    if (targetSlot < 0) {
+      branch.skipCurrentMoveDamage = true;
+      return fail("target-slot-unavailable");
+    }
+    const delayed = branch.state.fieldState.global.delayedAttacks ||= [];
+    if (delayed.some(entry => entry.side === opposite(side) && Number(entry.slot) === targetSlot)) {
+      branch.skipCurrentMoveDamage = true;
+      return fail("target-slot-already-has-delayed-attack");
+    }
+    delayed.push({ side: opposite(side), slot: targetSlot, sourceKey: actorKey, moveId: move.id, remainingTurns: 3 });
+    branch.skipCurrentMoveDamage = true;
+    return specialHandlerEvent(branch, actorKey, targetKey, move, handlerId, `${move.name} was foreseen`, [], { delayedTurns: 2, targetSlot });
+  }
+  if (handlerId === "nonlethal-damage") {
+    branch.nonlethalCurrentMove = true;
+    return [branch];
+  }
+  if (handlerId === "requires-undamaged-before-action") {
+    if (actorState.turnFlags.wasDamaged) {
+      branch.skipCurrentMoveDamage = true;
+      return fail("lost-focus-after-taking-damage");
+    }
+    return [branch];
+  }
+  if (handlerId === "crash-on-failure") return [branch];
+  if (handlerId === "self-destruct") {
+    if (!actorState.volatileConditions.selfDestructResolved) {
+      actorState.volatileConditions.selfDestructResolved = true;
+      setExactCurrentHp(actorState, 0);
+      specialHandlerEvent(branch, actorKey, actorKey, move, handlerId, `${plan.combatants[actorKey].displayName} fainted`);
+    }
+    return [branch];
+  }
+  if (["healing-wish", "lunar-dance"].includes(handlerId)) {
+    const slot = actorSlot(branch.state, side, actorKey);
+    const canSwitch = Object.values(plan.combatants).some(combatant => combatant.side === side
+      && !activeKeys(branch.state, side).includes(combatant.combatantKey)
+      && Number(branch.state.combatantStates[combatant.combatantKey]?.hp?.max) > 0);
+    if (slot < 0 || !canSwitch) return fail("no-available-switch-in");
+    const slotEffects = branch.state.fieldState.sides[side].slotEffects ||= {};
+    slotEffects[slot] = { id: handlerId, restorePp: handlerId === "lunar-dance" };
+    setExactCurrentHp(actorState, 0);
+    return specialHandlerEvent(branch, actorKey, actorKey, move, handlerId, handlerId === "lunar-dance" ? "Lunar Dance awaits the replacement" : "Healing Wish awaits the replacement", [], { slot });
+  }
+  if (handlerId === "wish") {
+    const slot = actorSlot(branch.state, side, actorKey);
+    const delayed = branch.state.fieldState.global.delayedHeals ||= [];
+    if (slot < 0 || delayed.some(entry => entry.side === side && Number(entry.slot) === slot)) return fail("slot-already-has-wish");
+    delayed.push({ side, slot, sourceKey: actorKey, amount: Math.max(1, Math.floor(Number(actorState.hp.maxHp) / 2)), remainingTurns: 2 });
+    return specialHandlerEvent(branch, actorKey, actorKey, move, handlerId, "Wish will heal this slot next turn", [], { slot });
+  }
+  if (handlerId === "curse") {
+    const ghostCurse = actorState.currentTypeIds.map(type => String(type).toLowerCase()).includes("ghost");
+    if (!ghostCurse) {
+      return applyStatStages(branch, actorKey, actorKey, move, { target: "self", statStages: { atk: 1, def: 1, spe: -1 } });
+    }
+    if (!targetState || targetKey === actorKey) return fail("ghost-curse-needs-opponent");
+    applyExactHpChange(actorState, -Math.max(1, Math.floor(Number(actorState.hp.maxHp) / 2)));
+    targetState.volatileConditions.curseSourceKey = actorKey;
+    return specialHandlerEvent(branch, actorKey, targetKey, move, handlerId, "Target was afflicted by the curse");
+  }
+  if (handlerId === "attract") {
+    if (!targetState) return fail("target-unavailable");
+    const actorGender = String(plan.combatants[actorKey].gender || "").toLowerCase();
+    const targetGender = String(plan.combatants[targetKey].gender || "").toLowerCase();
+    if (!actorGender || !targetGender || actorGender === targetGender || !["m", "f", "male", "female"].includes(actorGender) || !["m", "f", "male", "female"].includes(targetGender)) {
+      return fail("incompatible-gender");
+    }
+    targetState.volatileConditions.attractSourceKey = actorKey;
+    return specialHandlerEvent(branch, actorKey, targetKey, move, handlerId, "Target fell in love");
+  }
+  if (handlerId === "present") {
+    const variants = [
+      { probability: 0.4, basePower: 40 },
+      { probability: 0.3, basePower: 80 },
+      { probability: 0.1, basePower: 120 },
+      { probability: 0.2, heal: true }
+    ];
+    return variants.flatMap(variant => {
+      const next = clone(branch);
+      next.probability = probabilityProduct(branch.probability, variant.probability);
+      next.probabilityStatus = next.probability === null ? "unknown" : "known";
+      if (variant.heal) {
+        next.skipCurrentMoveDamage = true;
+        return applySelfHeal(next, targetKey, move, { heal: [1, 4] });
+      }
+      next.currentMoveOverrides = { basePower: variant.basePower };
+      event(next, { eventType: "random-move-power", actorKey, targetKey, moveId: move.id, metadata: { basePower: variant.basePower, resultLabel: `${variant.basePower} base power` } });
+      return [next];
+    });
+  }
+  if (handlerId === "magnitude") {
+    if (branch.randomMoveOutcome?.moveId === move.id) {
+      branch.currentMoveOverrides = { basePower: branch.randomMoveOutcome.basePower };
+      return [branch];
+    }
+    const variants = [
+      [4, 10, 0.05], [5, 30, 0.1], [6, 50, 0.2], [7, 70, 0.3], [8, 90, 0.2], [9, 110, 0.1], [10, 150, 0.05]
+    ];
+    return variants.map(([level, basePower, probability]) => {
+      const next = clone(branch);
+      next.probability = probabilityProduct(branch.probability, probability);
+      next.probabilityStatus = next.probability === null ? "unknown" : "known";
+      next.currentMoveOverrides = { basePower };
+      next.randomMoveOutcome = { moveId: move.id, basePower, magnitude: level };
+      event(next, { eventType: "random-move-power", actorKey, targetKey, moveId: move.id, metadata: { magnitude: level, basePower, resultLabel: `Magnitude ${level}` } });
+      return next;
+    });
+  }
+  if (handlerId === "incinerate-berry") {
+    if (targetState?.itemState === "held" && String(targetState.currentItemId || "").toLowerCase().endsWith("berry")) {
+      targetState.lastItemId = targetState.currentItemId;
+      targetState.currentItemId = "";
+      targetState.itemState = "consumed";
+      return specialHandlerEvent(branch, actorKey, targetKey, move, handlerId, "Target's Berry was incinerated");
+    }
+    return [branch];
+  }
+  if (handlerId === "last-resort") {
+    const known = (actorState.moveSetOverride || plan.combatants[actorKey].moves).map(entry => entry.moveId).filter(id => id !== move.id);
+    if (!known.length || known.some(id => !actorState.usedMoveIds?.includes(id))) {
+      branch.skipCurrentMoveDamage = true;
+      return fail("other-known-moves-have-not-all-been-used");
+    }
+    return [branch];
+  }
+  if (handlerId === "sky-drop") {
+    if (actorState.volatileConditions.chargingMoveId !== move.id) {
+      actorState.volatileConditions.chargingMoveId = move.id;
+      if (targetState) targetState.volatileConditions.skyDropSourceKey = actorKey;
+      branch.skipCurrentMoveDamage = true;
+      return specialHandlerEvent(branch, actorKey, targetKey, move, handlerId, "Target was carried into the sky", [], { charging: true });
+    }
+    actorState.volatileConditions.chargingMoveId = null;
+    if (targetState) targetState.volatileConditions.skyDropSourceKey = null;
+    return [branch];
+  }
+  if (handlerId === "pledge") {
+    const pledgeIds = new Set(["firepledge", "grasspledge", "waterpledge"]);
+    if (branch.pendingPledge) {
+      const pair = new Set([branch.pendingPledge.moveId, move.id]);
+      delete branch.pendingPledge;
+      branch.currentMoveOverrides = { basePower: 150 };
+      const affectedSide = pair.has("firepledge") && pair.has("waterpledge") ? side : opposite(side);
+      const condition = pair.has("firepledge") && pair.has("waterpledge") ? "rainbow"
+        : pair.has("firepledge") && pair.has("grasspledge") ? "seaOfFire"
+          : "swamp";
+      branch.state.fieldState.sides[affectedSide][`${condition}Turns`] = 4;
+      return specialHandlerEvent(branch, actorKey, targetKey, move, handlerId, "Pledge combination", [], { combination: condition, basePower: 150, affectedSide });
+    }
+    const partner = pendingActions.find(entry => entry.side === side && entry.action?.actorKey !== actorKey && pledgeIds.has(entry.action?.moveId));
+    if (!partner) return [branch];
+    branch.pendingPledge = { moveId: move.id, actorKey };
+    branch.actionOrderDirective = { kind: "move-next", targetKey: partner.action.actorKey };
+    branch.skipCurrentMoveDamage = true;
+    return specialHandlerEvent(branch, actorKey, targetKey, move, handlerId, "Waiting to combine pledges", [], { waitingForKey: partner.action.actorKey });
+  }
+  if (["counter-damage", "mirror-coat-damage", "metal-burst-damage"].includes(handlerId)) {
+    const requiredCategory = handlerId === "counter-damage" ? "physical" : handlerId === "mirror-coat-damage" ? "special" : null;
+    const valid = actorState.turnFlags.wasDamaged
+      && actorState.turnFlags.lastDamageSourceKey === targetKey
+      && (!requiredCategory || actorState.turnFlags.lastDamageCategory === requiredCategory);
+    if (!valid) {
+      branch.skipCurrentMoveDamage = true;
+      return fail("no-matching-damage-this-turn");
+    }
+    const multiplier = handlerId === "metal-burst-damage" ? 1.5 : 2;
+    const damage = Math.max(1, Math.floor(Number(actorState.turnFlags.damageTaken) * multiplier));
+    branch.skipCurrentMoveDamage = true;
+    return applyDamage(branch, { actorKey, targetKey, move, damageValues: [damage], descriptor: {}, effectiveBasePower: 0 });
+  }
+  if (["final-gambit-damage", "endeavor-damage", "half-current-hp-damage"].includes(handlerId)) {
+    if (!targetState) {
+      branch.skipCurrentMoveDamage = true;
+      return fail("target-unavailable");
+    }
+    const actorHp = normalizeRange(actorState.hp);
+    const targetHp = normalizeRange(targetState.hp);
+    const damageValues = handlerId === "final-gambit-damage"
+      ? [actorHp.min, actorHp.max]
+      : handlerId === "endeavor-damage"
+        ? [Math.max(0, targetHp.min - actorHp.max), Math.max(0, targetHp.max - actorHp.min)]
+        : [Math.max(1, Math.floor(targetHp.min / 2)), Math.max(1, Math.floor(targetHp.max / 2))];
+    branch.skipCurrentMoveDamage = true;
+    const outcomes = applyDamage(branch, { actorKey, targetKey, move, damageValues, descriptor: {}, effectiveBasePower: 0 });
+    if (handlerId === "final-gambit-damage") for (const outcome of outcomes) setExactCurrentHp(outcome.state.combatantStates[actorKey], 0);
+    return outcomes;
+  }
+  if (handlerId === "first-turn-only") {
+    if (Number(actorState.enteredTurnNumber || 0) !== Number(branch.state.turnNumber || 0)) {
+      branch.skipCurrentMoveDamage = true;
+      return fail("not-first-active-turn");
+    }
+    return [branch];
+  }
+  if (handlerId === "requires-sleeping-target") {
+    if (targetState?.majorStatus !== "slp") {
+      branch.skipCurrentMoveDamage = true;
+      return fail("target-not-asleep");
+    }
+    return [branch];
+  }
+  if (handlerId === "requires-damaging-target-action") {
+    const pending = pendingActions.find(entry => entry.action?.actorKey === targetKey)?.action;
+    const selectedMove = pending?.actionType === "move" ? dataset.get("moves", pending.moveId) : null;
+    if (!targetState || targetState.turnFlags.hasMoved || !selectedMove || String(selectedMove.category).toLowerCase() === "status") {
+      branch.skipCurrentMoveDamage = true;
+      return fail("target-is-not-pending-a-damaging-move");
+    }
+    return [branch];
+  }
+  if (handlerId === "two-turn-charge") {
+    const weather = branch.state.fieldState.global.weather?.id;
+    const powerHerb = actorState.itemState === "held" && String(actorState.currentItemId || "").toLowerCase() === "powerherb";
+    const immediate = move.id === "solarbeam" && weather === "sun" || powerHerb;
+    if (powerHerb && actorState.volatileConditions.chargingMoveId !== move.id) {
+      actorState.lastItemId = actorState.currentItemId;
+      actorState.currentItemId = "";
+      actorState.itemState = "consumed";
+      event(branch, { eventType: "item-consumed", actorKey, targetKey: actorKey, moveId: move.id, metadata: { itemId: "powerherb", resultLabel: "Power Herb skipped charging" } });
+    }
+    if (!immediate && actorState.volatileConditions.chargingMoveId !== move.id) {
+      actorState.volatileConditions.chargingMoveId = move.id;
+      branch.skipCurrentMoveDamage = true;
+      return specialHandlerEvent(branch, actorKey, actorKey, move, handlerId, `Charging ${move.name}`, [], { charging: true });
+    }
+    actorState.volatileConditions.chargingMoveId = null;
+    return [branch];
+  }
+  if (handlerId === "sport-field") {
+    actorState.volatileConditions[move.id] = true;
+    return specialHandlerEvent(branch, actorKey, actorKey, move, handlerId, `${move.name} is active`);
+  }
+  if (handlerId === "spit-up") {
+    const layers = Math.max(0, Math.min(3, Number(actorState.volatileConditions.stockpileLayers || 0)));
+    if (!layers) {
+      branch.skipCurrentMoveDamage = true;
+      return fail("no-stockpile");
+    }
+    branch.currentMoveOverrides = { basePower: layers * 100 };
+    actorState.volatileConditions.stockpileLayers = 0;
+    return [branch];
+  }
+  if (handlerId === "clear-target-stat-stages") {
+    if (targetState) for (const stat of Object.keys(targetState.statStages)) targetState.statStages[stat] = 0;
+    return specialHandlerEvent(branch, actorKey, targetKey, move, handlerId, "Target stat changes cleared");
+  }
+  if (["steal-item", "remove-item"].includes(handlerId)) {
+    if (!targetState || targetState.itemState !== "held") return [branch];
+    const itemId = targetState.currentItemId;
+    targetState.lastItemId = itemId;
+    targetState.currentItemId = "";
+    targetState.itemState = "consumed";
+    if (handlerId === "steal-item" && actorState.itemState !== "held") {
+      actorState.currentItemId = itemId;
+      actorState.itemState = "held";
+    }
+    return specialHandlerEvent(branch, actorKey, targetKey, move, handlerId, handlerId === "steal-item" ? "Item stolen" : "Item removed");
+  }
+  if (handlerId === "clear-own-hazards") {
+    branch.state.fieldState.sides[side].hazards = {};
+    actorState.volatileConditions.leechSeeded = false;
+    actorState.volatileConditions.partiallyTrappedTurns = 0;
+    return specialHandlerEvent(branch, actorKey, actorKey, move, handlerId, "Hazards and trapping cleared");
+  }
+  if (handlerId === "break-target-screens") {
+    if (targetSide) {
+      const fields = branch.state.fieldState.sides[targetSide];
+      fields.reflectTurns = 0;
+      fields.lightScreenTurns = 0;
+      fields.auroraVeilTurns = 0;
+    }
+    return specialHandlerEvent(branch, actorKey, targetKey, move, handlerId, "Target screens cleared");
+  }
+  if (handlerId === "wake-target") {
+    if (targetState?.majorStatus === "slp") clearStatus(targetState);
+    return specialHandlerEvent(branch, actorKey, targetKey, move, handlerId, "Target woke up");
+  }
+  if (handlerId === "protect") return applyProtect(branch, actorKey, move, { failsIfLastAction: true }, dataset, isLastAction);
+  if (handlerId === "endure") {
+    actorState.turnFlags.enduring = true;
+    return specialHandlerEvent(branch, actorKey, actorKey, move, handlerId, "Will endure lethal damage");
+  }
+  if (handlerId === "no-op") return specialHandlerEvent(branch, actorKey, actorKey, move, handlerId, "No additional effect");
+  if (handlerId === "clear-all-stat-stages") {
+    for (const entry of activeEntries(branch.state)) {
+      const stages = branch.state.combatantStates[entry.combatantKey].statStages;
+      for (const stat of Object.keys(stages)) stages[stat] = 0;
+    }
+    return specialHandlerEvent(branch, actorKey, null, move, handlerId, "All stat changes cleared");
+  }
+  if (handlerId === "rest") {
+    if (["insomnia", "vitalspirit"].includes(String(actorState.currentAbilityId || "").toLowerCase())) return fail("ability-prevents-sleep");
+    if (actorState.majorStatus === "slp" || Number(actorState.hp.max) >= Number(actorState.hp.maxHp)) return fail("already-asleep-or-full-hp");
+    clearStatus(actorState);
+    actorState.majorStatus = "slp";
+    setStatusCounterDistribution(actorState.volatileConditions, "sleep", [{ value: 3, probability: 1 }]);
+    actorState.volatileConditions.sleepCounterStartDistribution = [{ value: 3, probability: 1 }];
+    return applySelfHeal(branch, actorKey, move, { heal: [1, 1] });
+  }
+  if (["set-water-type", "copy-types", "camouflage", "conversion", "conversion-2"].includes(handlerId)) {
+    let typeIds = null;
+    if (handlerId === "set-water-type") typeIds = ["water"];
+    if (handlerId === "copy-types" && targetState) typeIds = [...targetState.currentTypeIds];
+    if (handlerId === "camouflage") typeIds = [{ electric: "electric", grassy: "grass", misty: "fairy", psychic: "psychic" }[branch.state.fieldState.global.terrain?.id] || "normal"];
+    if (handlerId === "conversion") {
+      const firstMove = dataset.get("moves", plan.combatants[actorKey].moves[0]?.moveId);
+      if (firstMove) typeIds = [String(firstMove.type || "normal").toLowerCase()];
+    }
+    if (handlerId === "conversion-2") {
+      const declared = action?.mechanicActivations?.find(entry => entry?.id === "conversion-type")?.typeId;
+      if (declared) typeIds = [String(declared).toLowerCase()];
+      else return fail("conversion-type-outcome-not-selected");
+    }
+    const affectedState = handlerId === "set-water-type" || handlerId === "copy-types" ? targetState : actorState;
+    if (!affectedState || !typeIds?.length) return fail("type-unavailable");
+    const from = [...affectedState.currentTypeIds];
+    affectedState.currentTypeIds = typeIds;
+    return specialHandlerEvent(branch, actorKey, handlerId === "set-water-type" || handlerId === "copy-types" ? targetKey : actorKey, move, handlerId, `Type changed to ${typeIds.join("/")}`, [{ path: `combatantStates.${handlerId === "set-water-type" || handlerId === "copy-types" ? targetKey : actorKey}.currentTypeIds`, from, to: typeIds }]);
+  }
+  if (handlerId === "trap-target") return applyVolatileStatus(branch, actorKey, targetKey, move, { target: "target", volatileStatusId: "trapped" });
+  if (handlerId === "sure-hit") {
+    actorState.volatileConditions.sureHitTargetKey = targetKey;
+    return specialHandlerEvent(branch, actorKey, targetKey, move, handlerId, "Next move cannot miss");
+  }
+  if (handlerId === "defog") {
+    if (targetState) applyStatStages(branch, actorKey, targetKey, move, { target: "target", statStages: { evasion: -1 } });
+    for (const affectedSide of [side, targetSide].filter(Boolean)) {
+      branch.state.fieldState.sides[affectedSide].hazards = {};
+    }
+    if (targetSide) {
+      const targetFields = branch.state.fieldState.sides[targetSide];
+      for (const field of ["reflectTurns", "lightScreenTurns", "safeguardTurns", "mistTurns"]) targetFields[field] = 0;
+    }
+    return specialHandlerEvent(branch, actorKey, targetKey, move, handlerId, "Hazards and target screens cleared");
+  }
+  if (handlerId === "recycle-item") {
+    if (actorState.itemState === "held" || !actorState.lastItemId) return fail("no-recyclable-item");
+    actorState.currentItemId = actorState.lastItemId;
+    actorState.itemState = "held";
+    actorState.lastItemId = null;
+    return specialHandlerEvent(branch, actorKey, actorKey, move, handlerId, "Item restored");
+  }
+  if (["clear-self-status", "clear-party-status"].includes(handlerId)) {
+    const keys = handlerId === "clear-self-status" ? [actorKey] : Object.values(plan.combatants).filter(entry => entry.side === side).map(entry => entry.combatantKey);
+    const cleared = keys.filter(key => clearStatus(branch.state.combatantStates[key]));
+    return specialHandlerEvent(branch, actorKey, handlerId === "clear-self-status" ? actorKey : null, move, handlerId, cleared.length ? "Status cleared" : "No status to clear", [], { clearedKeys: cleared });
+  }
+  if (handlerId === "copy-stat-stages") {
+    if (!targetState) return fail("target-unavailable");
+    actorState.statStages = { ...targetState.statStages };
+    return specialHandlerEvent(branch, actorKey, targetKey, move, handlerId, "Stat changes copied");
+  }
+  if (handlerId === "weather-heal") {
+    const weather = branch.state.fieldState.global.weather?.id;
+    const heal = weather === "sun" ? [2, 3] : ["rain", "sand", "hail"].includes(weather) ? [1, 4] : [1, 2];
+    return applySelfHeal(branch, actorKey, move, { heal });
+  }
+  if (handlerId === "belly-drum") {
+    if (Number(actorState.hp.max) <= Math.floor(Number(actorState.hp.maxHp) / 2) || actorState.statStages.atk >= 6) return fail("insufficient-hp-or-max-attack");
+    applyExactHpChange(actorState, -Math.floor(Number(actorState.hp.maxHp) / 2));
+    actorState.statStages.atk = 6;
+    return specialHandlerEvent(branch, actorKey, actorKey, move, handlerId, "HP halved; Attack +6");
+  }
+  if (["swap-defensive-stages", "swap-offensive-stages", "swap-all-stages"].includes(handlerId)) {
+    if (!targetState) return fail("target-unavailable");
+    const stats = handlerId === "swap-defensive-stages" ? ["def", "spd"] : handlerId === "swap-offensive-stages" ? ["atk", "spa"] : Object.keys(actorState.statStages);
+    swapStageGroups(actorState, targetState, stats);
+    return specialHandlerEvent(branch, actorKey, targetKey, move, handlerId, "Stat changes swapped");
+  }
+  if (handlerId === "target-heal") return targetState ? applySelfHeal(branch, targetKey, move, { heal: [1, 2] }) : fail("target-unavailable");
+  if (handlerId === "pain-split") {
+    if (!targetState) return fail("target-unavailable");
+    const actorHp = normalizeRange(actorState.hp);
+    const targetHp = normalizeRange(targetState.hp);
+    const sharedMin = Math.floor((actorHp.min + targetHp.min) / 2);
+    const sharedMax = Math.floor((actorHp.max + targetHp.max) / 2);
+    actorState.hp = { min: Math.min(actorHp.maxHp, sharedMin), max: Math.min(actorHp.maxHp, sharedMax), maxHp: actorHp.maxHp };
+    targetState.hp = { min: Math.min(targetHp.maxHp, sharedMin), max: Math.min(targetHp.maxHp, sharedMax), maxHp: targetHp.maxHp };
+    delete actorState.hpDistribution;
+    delete targetState.hpDistribution;
+    return specialHandlerEvent(branch, actorKey, targetKey, move, handlerId, "HP shared equally");
+  }
+  if (["swap-abilities", "swap-items"].includes(handlerId)) {
+    if (!targetState) return fail("target-unavailable");
+    if (handlerId === "swap-abilities") [actorState.currentAbilityId, targetState.currentAbilityId] = [targetState.currentAbilityId, actorState.currentAbilityId];
+    else {
+      [actorState.currentItemId, targetState.currentItemId] = [targetState.currentItemId, actorState.currentItemId];
+      [actorState.itemState, targetState.itemState] = [targetState.itemState, actorState.itemState];
+    }
+    return specialHandlerEvent(branch, actorKey, targetKey, move, handlerId, handlerId === "swap-abilities" ? "Abilities swapped" : "Items swapped");
+  }
+  if (["set-insomnia", "set-simple", "copy-ability", "share-ability"].includes(handlerId)) {
+    if (!targetState && handlerId !== "copy-ability") return fail("target-unavailable");
+    if (handlerId === "set-insomnia") targetState.currentAbilityId = "insomnia";
+    if (handlerId === "set-simple") targetState.currentAbilityId = "simple";
+    if (handlerId === "copy-ability") actorState.currentAbilityId = targetState?.currentAbilityId || actorState.currentAbilityId;
+    if (handlerId === "share-ability") targetState.currentAbilityId = actorState.currentAbilityId;
+    return specialHandlerEvent(branch, actorKey, targetKey, move, handlerId, "Ability changed");
+  }
+  if (handlerId === "random-stat-boost") {
+    const affectedKey = targetKey || actorKey;
+    const eligible = Object.keys(branch.state.combatantStates[affectedKey].statStages).filter(stat => branch.state.combatantStates[affectedKey].statStages[stat] < 6);
+    if (!eligible.length) return fail("all-stats-maximized");
+    return eligible.map(stat => {
+      const next = clone(branch);
+      next.probability = probabilityProduct(branch.probability, 1 / eligible.length);
+      next.probabilityStatus = next.probability === null ? "unknown" : "known";
+      applyStatStages(next, actorKey, affectedKey, move, { target: affectedKey === actorKey ? "self" : "target", statStages: { [stat]: 2 } });
+      return next;
+    });
+  }
+  if (handlerId === "ally-switch") {
+    const slot = actorSlot(branch.state, side, actorKey);
+    const allyKey = activeSlotEntries(branch.state, side).find(entry => entry.slot !== slot)?.combatantKey;
+    if (!allyKey) return fail("no-active-ally");
+    setActiveKey(branch.state, side, slot, allyKey);
+    setActiveKey(branch.state, side, slot === 0 ? 1 : 0, actorKey);
+    return specialHandlerEvent(branch, actorKey, allyKey, move, handlerId, "Active positions swapped");
+  }
+  if (["split-defenses", "split-offenses"].includes(handlerId)) {
+    if (!targetState) return fail("target-unavailable");
+    const stats = handlerId === "split-defenses" ? ["def", "spd"] : ["atk", "spa"];
+    actorState.calculatedStatOverrides ||= {};
+    targetState.calculatedStatOverrides ||= {};
+    for (const stat of stats) {
+      const shared = Math.floor((currentCalculatedStat(plan, branch.state, actorKey, stat) + currentCalculatedStat(plan, branch.state, targetKey, stat)) / 2);
+      actorState.calculatedStatOverrides[stat] = shared;
+      targetState.calculatedStatOverrides[stat] = shared;
+    }
+    return specialHandlerEvent(branch, actorKey, targetKey, move, handlerId, "Stats averaged");
+  }
+  if (handlerId === "perish-song") {
+    const affected = [];
+    for (const entry of activeEntries(branch.state)) {
+      const state = branch.state.combatantStates[entry.combatantKey];
+      if (!state.volatileConditions.perishTurns) {
+        state.volatileConditions.perishTurns = 3;
+        affected.push(entry.combatantKey);
+      }
+    }
+    return specialHandlerEvent(branch, actorKey, null, move, handlerId, "Perish count set to 3", [], { affectedKeys: affected });
+  }
+  if (handlerId === "psycho-shift") {
+    if (!targetState || !actorState.majorStatus) return fail("no-status-to-transfer");
+    const statusId = actorState.majorStatus;
+    const outcomes = applyMajorStatus(branch, actorKey, targetKey, move, { statusId }, dataset);
+    for (const outcome of outcomes) clearStatus(outcome.state.combatantStates[actorKey]);
+    return outcomes;
+  }
+  if (handlerId === "give-item") {
+    if (!targetState || targetState.itemState === "held" || actorState.itemState !== "held") return fail("item-transfer-unavailable");
+    targetState.currentItemId = actorState.currentItemId;
+    targetState.itemState = "held";
+    actorState.currentItemId = "";
+    actorState.itemState = "none";
+    return specialHandlerEvent(branch, actorKey, targetKey, move, handlerId, "Item given");
+  }
+  if (handlerId === "swallow") {
+    const layers = Math.max(0, Math.min(3, Number(actorState.volatileConditions.stockpileLayers || 0)));
+    if (!layers) return fail("no-stockpile");
+    actorState.volatileConditions.stockpileLayers = 0;
+    return applySelfHeal(branch, actorKey, move, { heal: layers === 1 ? [1, 4] : layers === 2 ? [1, 2] : [1, 1] });
+  }
+  if (handlerId === "reduce-last-move-pp") {
+    const lastMoveId = targetState?.lastMoveId;
+    if (!lastMoveId || !Number(targetState.movePp[lastMoveId])) return fail("target-has-no-last-move-pp");
+    const from = Number(targetState.movePp[lastMoveId]);
+    targetState.movePp[lastMoveId] = Math.max(0, from - 4);
+    return specialHandlerEvent(branch, actorKey, targetKey, move, handlerId, `${lastMoveId} lost ${from - targetState.movePp[lastMoveId]} PP`);
+  }
+  if (handlerId === "copy-last-move") {
+    const copiedMoveId = targetState?.lastMoveId;
+    const index = plan.combatants[actorKey].moves.findIndex(entry => entry.moveId === move.id);
+    const copied = dataset.get("moves", copiedMoveId);
+    if (!copiedMoveId || !copied || index < 0) return fail("copy-source-unavailable");
+    actorState.moveSetOverride = [...(actorState.moveSetOverride || plan.combatants[actorKey].moves)].map((entry, moveIndex) => moveIndex === index ? { moveId: copiedMoveId, maxPp: copied.pp } : { ...entry });
+    delete actorState.movePp[move.id];
+    actorState.movePp[copiedMoveId] = copied.pp;
+    return specialHandlerEvent(branch, actorKey, targetKey, move, handlerId, `Copied ${copied.name}`);
+  }
+  if (handlerId === "transform") {
+    if (!targetState) return fail("target-unavailable");
+    actorState.currentAbilityId = targetState.currentAbilityId;
+    actorState.currentTypeIds = [...targetState.currentTypeIds];
+    actorState.statStages = { ...targetState.statStages };
+    actorState.transformedIntoKey = targetKey;
+    actorState.calculatedStatOverrides = {
+      ...plan.combatants[targetKey].calculatedStats,
+      ...(targetState.currentStats || {}),
+      hp: currentCalculatedStat(plan, branch.state, actorKey, "hp")
+    };
+    actorState.moveSetOverride = plan.combatants[targetKey].moves.map(entry => ({ moveId: entry.moveId, maxPp: Math.min(5, entry.maxPp) }));
+    actorState.movePp = Object.fromEntries(actorState.moveSetOverride.map(entry => [entry.moveId, entry.maxPp]));
+    return specialHandlerEvent(branch, actorKey, targetKey, move, handlerId, `Transformed into ${plan.combatants[targetKey].displayName}`);
+  }
+  if (["move-last", "move-next"].includes(handlerId)) {
+    if (!targetKey || activeKeys(branch.state, side).length < 2 && activeKeys(branch.state, opposite(side)).length < 2) return fail("requires-doubles");
+    if (!pendingActions.some(entry => entry.action?.actorKey === targetKey)) return fail("target-has-already-acted");
+    branch.actionOrderDirective = { kind: handlerId, targetKey };
+    return specialHandlerEvent(branch, actorKey, targetKey, move, handlerId, handlerId === "move-last" ? "Target acts last" : "Target acts next", [], { orderControl: handlerId });
+  }
+  if (["call-party-move", "call-last-field-move", "call-target-move", "call-random-move", "call-target-last-move", "nature-power", "sleep-talk"].includes(handlerId)) {
+    const declaredActivation = action?.mechanicActivations?.find(entry => entry?.id === "called-move");
+    const declared = declaredActivation?.moveId;
+    const automatic = handlerId === "call-last-field-move" ? previousLastMoveId
+      : handlerId === "call-target-move" || handlerId === "call-target-last-move" ? targetState?.lastMoveId
+        : handlerId === "nature-power" ? ({ electric: "thunderbolt", grassy: "energyball", misty: "moonblast", psychic: "psychic" }[branch.state.fieldState.global.terrain?.id] || "triattack")
+          : null;
+    const calledMoveId = declared || automatic;
+    if (!calledMoveId || !dataset.get("moves", calledMoveId)) return fail("called-move-outcome-not-selected");
+    if (calledMoveId === move.id) return fail("called-move-cannot-call-itself");
+    const calledMove = dataset.get("moves", calledMoveId);
+    const calledDescriptor = defaultMoveSupport(calledMove, dataset);
+    if (!calledDescriptor.supported) return fail("called-move-is-unsupported");
+    event(branch, { eventType: "move-called", actorKey, targetKey, moveId: move.id, metadata: { handlerId, calledMoveId, resultLabel: `Calls ${calledMove.name}` } });
+    const calledMode = calledDescriptor.targetMode || canonicalTarget(calledMove);
+    const legalCalledTargets = calledDescriptor.target === "target" ? legalTargetKeys(branch.state, side, actorKey, calledMode) : [];
+    const calledTargetKey = declaredActivation?.targetKey || (legalCalledTargets.includes(targetKey) ? targetKey : legalCalledTargets[0]);
+    const calledAction = { ...action, moveId: calledMoveId, targetKeys: calledTargetKey ? [calledTargetKey] : [], mechanicActivations: [] };
+    const targets = moveTargets(branch.state, side, calledAction, calledDescriptor, calledMove, null);
+    if (!targets.length && calledDescriptor.target === "target") return fail("called-move-has-no-target");
+    let calledBranches = [branch];
+    for (const calledTargetKey of targets.length ? targets : [null]) {
+      calledBranches = calledBranches.flatMap(current => applyMoveToTarget(current, {
+        side,
+        action: calledAction,
+        actorKey,
+        actor: plan.combatants[actorKey],
+        move: calledMove,
+        descriptor: calledDescriptor,
+        targetKey: calledTargetKey,
+        targetCount: Math.max(1, targets.length),
+        plan,
+        dataset,
+        damageAdapter,
+        isLastAction,
+        previousLastMoveId,
+        pendingActions
+      }));
+    }
+    return calledBranches;
+  }
+  return fail("handler-not-implemented");
+}
+
+function damageOverrides(descriptor, actorState, targetKey) {
+  if (descriptor.effectId !== "conditional-damage") return { moveOverrides: undefined, powerConditionMet: undefined };
+  if (descriptor.powerCondition !== "damaged-by-target-this-turn") {
+    throw new ResolutionError(`Unsupported conditional power rule ${descriptor.powerCondition}`);
+  }
+  const powerConditionMet = actorState.turnFlags.wasDamaged === true
+    && actorState.turnFlags.lastDamageSourceKey === targetKey;
+  return {
+    moveOverrides: { basePower: powerConditionMet ? descriptor.conditionBasePower : descriptor.basePower },
+    powerConditionMet
+  };
+}
+
+function multiHitOutcomes(operation, actorState, generation) {
+  const multihit = operation?.multihit;
+  if (!multihit) return [{ moveHits: undefined, probability: 1 }];
+  if (Number.isInteger(Number(multihit))) return [{ moveHits: Number(multihit), probability: 1 }];
+  if (!Array.isArray(multihit) || multihit.length !== 2) return [{ moveHits: undefined, probability: 1 }];
+  const min = Number(multihit[0]);
+  const max = Number(multihit[1]);
+  if (String(actorState.currentAbilityId || "").toLowerCase() === "skilllink") return [{ moveHits: max, probability: 1 }];
+  if (Number(generation) === 5 && min === 2 && max === 5) {
+    return [
+      { moveHits: 2, probability: 3 / 8 },
+      { moveHits: 3, probability: 3 / 8 },
+      { moveHits: 4, probability: 1 / 8 },
+      { moveHits: 5, probability: 1 / 8 }
+    ];
+  }
+  const count = max - min + 1;
+  return Array.from({ length: count }, (_, index) => ({ moveHits: min + index, probability: 1 / count }));
+}
+
+function dynamicMoveOverrides(branch, { side, move, actor, target, actorState, targetState, previousLastMoveId, pendingActions }, existing) {
+  const type = String(move.type || "").toLowerCase();
+  let basePower = Number(existing?.basePower ?? move.basePower ?? 0);
+  let adjusted = existing;
+  const moveId = String(move.id || "").toLowerCase();
+  if (existing?.basePower === undefined) {
+    const actorHp = normalizeRange(actorState.hp);
+    const targetHp = normalizeRange(targetState.hp);
+    const actorRatio = Number(actorHp.max) / Math.max(1, Number(actorHp.maxHp));
+    const targetRatio = Number(targetHp.max) / Math.max(1, Number(targetHp.maxHp));
+    if (moveId === "acrobatics" && actorState.itemState !== "held") basePower *= 2;
+    else if (moveId === "assurance" && targetState.turnFlags.wasDamaged) basePower *= 2;
+    else if (["avalanche", "revenge"].includes(moveId) && actorState.turnFlags.wasDamaged && actorState.turnFlags.lastDamageSourceKey === target.combatantKey) basePower *= 2;
+    else if (moveId === "brine" && targetRatio <= 0.5) basePower *= 2;
+    else if (["crushgrip", "wringout"].includes(moveId)) basePower = Math.max(1, Math.floor(120 * targetRatio) + 1);
+    else if (["eruption", "waterspout"].includes(moveId)) basePower = Math.max(1, Math.floor(150 * actorRatio));
+    else if (moveId === "facade" && actorState.majorStatus && !["slp", "frz"].includes(actorState.majorStatus)) basePower *= 2;
+    else if (["flail", "reversal"].includes(moveId)) {
+      const bucket = Math.floor(48 * actorRatio);
+      basePower = bucket <= 1 ? (bucket === 0 ? 200 : 150) : bucket === 2 ? 100 : bucket === 3 ? 80 : bucket <= 8 ? 40 : 20;
+    } else if (moveId === "gyroball") {
+      const actorSpeed = Math.max(1, effectiveSpeed(actor, actorState, 5));
+      const targetSpeed = Math.max(1, effectiveSpeed(target, targetState, 5));
+      basePower = Math.min(150, Math.floor(25 * targetSpeed / actorSpeed) + 1);
+    } else if (moveId === "electroball") {
+      const actorSpeed = Math.max(1, effectiveSpeed(actor, actorState, 5));
+      const targetSpeed = Math.max(1, effectiveSpeed(target, targetState, 5));
+      const ratio = actorSpeed / targetSpeed;
+      basePower = ratio >= 4 ? 150 : ratio >= 3 ? 120 : ratio >= 2 ? 80 : ratio >= 1 ? 60 : 40;
+    } else if (moveId === "hex" && targetState.majorStatus) basePower *= 2;
+    else if (moveId === "payback" && targetState.turnFlags.hasMoved) basePower *= 2;
+    else if (moveId === "pursuit" && pendingActions.some(entry => entry.action?.actorKey === target.combatantKey && entry.action?.actionType === "switch")) basePower *= 2;
+    else if (moveId === "storedpower") basePower = 20 + 20 * Object.values(actorState.statStages).filter(value => Number(value) > 0).reduce((sum, value) => sum + Number(value), 0);
+    else if (moveId === "trumpcard") {
+      const pp = Number(actorState.movePp[move.id] || 0);
+      basePower = pp >= 4 ? 40 : pp === 3 ? 50 : pp === 2 ? 60 : pp === 1 ? 80 : 200;
+    } else if (moveId === "venoshock" && ["psn", "tox"].includes(targetState.majorStatus)) basePower *= 2;
+    else if (moveId === "wakeupslap" && targetState.majorStatus === "slp") basePower *= 2;
+    else if (["fusionbolt", "fusionflare"].includes(moveId) && ["fusionbolt", "fusionflare"].includes(previousLastMoveId) && previousLastMoveId !== moveId) basePower *= 2;
+    else if (["furycutter", "rollout", "iceball"].includes(moveId)) {
+      const count = Math.max(1, Number(actorState.volatileConditions.consecutiveMoveCount || 1));
+      basePower = Math.min(moveId === "furycutter" ? 160 : basePower * 16, basePower * (2 ** (count - 1)));
+      if (["rollout", "iceball"].includes(moveId) && actorState.volatileConditions.defensecurl) basePower *= 2;
+    } else if (moveId === "stomp" && targetState.volatileConditions.minimize) basePower *= 2;
+    else if (["gust", "twister"].includes(moveId) && ["fly", "bounce", "skydrop"].includes(targetState.volatileConditions.chargingMoveId)) basePower *= 2;
+    else if (["earthquake", "magnitude"].includes(moveId) && targetState.volatileConditions.chargingMoveId === "dig") basePower *= 2;
+    else if (["surf", "whirlpool"].includes(moveId) && targetState.volatileConditions.chargingMoveId === "dive") basePower *= 2;
+    adjusted = { ...(existing || {}), basePower };
+  }
+  if (type === "electric" && actorState.volatileConditions?.charge) {
+    basePower *= 2;
+    adjusted = { ...(adjusted || {}), basePower };
+  }
+  const mudSportActive = type === "electric" && activeStates(branch).some(state => state.volatileConditions?.mudsport);
+  if (!mudSportActive) return adjusted;
+  const sportPower = Math.max(1, Math.floor((Math.floor(basePower * 1352) + 2047) / 4096));
+  return { ...(adjusted || {}), basePower: sportPower };
+}
+
+function resultDamageDistribution(result) {
+  const supplied = Array.isArray(result.damageDistribution) ? result.damageDistribution : [];
+  const values = Array.isArray(result.damage) ? result.damage : [result.damage];
+  const entries = supplied.length
+    ? supplied.map(entry => ({ damage: Number(entry.damage), probability: Number(entry.probability) }))
+    : values.map(damage => ({ damage: Number(damage), probability: 1 / Math.max(1, values.length) }));
+  const grouped = new Map();
+  for (const entry of entries) {
+    if (!Number.isFinite(entry.damage) || !Number.isFinite(entry.probability) || entry.probability <= 0) continue;
+    grouped.set(entry.damage, (grouped.get(entry.damage) || 0) + entry.probability);
+  }
+  const total = [...grouped.values()].reduce((sum, probability) => sum + probability, 0);
+  if (!total) return [];
+  return [...grouped.entries()].sort((left, right) => left[0] - right[0]).map(([damage, probability]) => ({ damage, probability: probability / total }));
+}
+
+function convolveDamageDistributions(left, right) {
+  const grouped = new Map();
+  for (const first of left) {
+    for (const second of right) {
+      const damage = Number(first.damage) + Number(second.damage);
+      grouped.set(damage, (grouped.get(damage) || 0) + Number(first.probability) * Number(second.probability));
+    }
+  }
+  return [...grouped.entries()].sort((a, b) => a[0] - b[0]).map(([damage, probability]) => ({ damage, probability }));
+}
+
+function repeatedDamageDistribution(distribution, count) {
+  let result = [{ damage: 0, probability: 1 }];
+  for (let index = 0; index < count; index += 1) result = convolveDamageDistributions(result, distribution);
+  return result;
+}
+
+function damageSequenceDistribution(firstDistribution, remainingDistribution, weight = 1) {
+  const grouped = new Map();
+  for (const first of firstDistribution) {
+    for (const remaining of remainingDistribution) {
+      const firstDamage = Number(first.damage);
+      const remainingDamage = Number(remaining.damage);
+      const probability = Number(first.probability) * Number(remaining.probability) * weight;
+      const key = `${firstDamage}:${remainingDamage}`;
+      const existing = grouped.get(key) || { firstDamage, remainingDamage, damage: firstDamage + remainingDamage, probability: 0 };
+      existing.probability += probability;
+      grouped.set(key, existing);
+    }
+  }
+  return [...grouped.values()];
+}
+
+function normalizeDamageSequences(entries) {
+  const grouped = new Map();
+  for (const entry of entries) {
+    const key = `${entry.firstDamage}:${entry.remainingDamage}`;
+    const existing = grouped.get(key) || { ...entry, probability: 0 };
+    existing.probability += Number(entry.probability);
+    grouped.set(key, existing);
+  }
+  const total = [...grouped.values()].reduce((sum, entry) => sum + entry.probability, 0) || 1;
+  return [...grouped.values()].map(entry => ({ ...entry, probability: entry.probability / total }));
+}
+
+function totalDamageDistributionFromSequences(entries) {
+  const grouped = new Map();
+  for (const entry of entries) grouped.set(entry.damage, (grouped.get(entry.damage) || 0) + Number(entry.probability));
+  return [...grouped.entries()].sort((left, right) => left[0] - right[0]).map(([damage, probability]) => ({ damage, probability }));
+}
+
+function binomialCoefficient(total, selected) {
+  const count = Math.min(selected, total - selected);
+  let value = 1;
+  for (let index = 1; index <= count; index += 1) value = value * (total - count + index) / index;
+  return value;
+}
+
+function calculateDamageVariants(branch, { actor, target, actorState, targetState, move, descriptor, damageAdapter, dataset, battleFormat, spreadTargetCount, moveOverrides, moveHits }) {
+  let critProbability = criticalHitProbability({
+    generation: dataset.mechanics?.damageGeneration,
+    descriptor,
+    attacker: actor,
+    attackerState: actorState,
+    defenderState: targetState,
+    defenderSideState: branch.state.fieldState.sides?.[target?.side]
+  });
+  if (critProbability === null) throw new ResolutionError(`Critical-hit branching is unavailable for generation ${dataset.mechanics?.damageGeneration}`);
+  if (damageAdapter.supportsCriticalHits !== true) critProbability = 0;
+
+  const calculate = (criticalHit, requestedHits = moveHits) => {
+    const result = damageAdapter.calculate({
+      attacker: actor,
+      defender: target,
+      attackerState: actorState,
+      defenderState: targetState,
+      move,
+      fieldState: branch.state.fieldState,
+      moveOverrides,
+      moveHits: requestedHits,
+      criticalHit,
+      battleFormat,
+      spreadTargetCount
+    });
+    if (result.status !== "ok") throw new ResolutionError(result.reason || `${move.name} cannot be calculated`);
+    return result;
+  };
+
+  const totalHits = Number(moveHits || 1);
+  const focusSashSequenceRequired = totalHits > 1
+    && focusSashCanActivate(branch, targetState, move)
+    && Number(targetState.hp?.max) === Number(targetState.hp?.maxHp);
+  if (focusSashSequenceRequired) {
+    const normalResult = calculate(false, 1);
+    const normalDistribution = resultDamageDistribution(normalResult);
+    let criticalResult = critProbability > 0 ? calculate(true, 1) : null;
+    if (criticalResult && criticalResult.criticalHit !== true) {
+      critProbability = 0;
+      criticalResult = null;
+    }
+    const criticalDistribution = criticalResult ? resultDamageDistribution(criticalResult) : normalDistribution;
+    const criticalHitCounts = critProbability <= 0
+      ? [0]
+      : critProbability >= 1
+        ? [totalHits]
+        : Array.from({ length: totalHits + 1 }, (_, index) => index);
+    return criticalHitCounts.map(criticalHits => {
+      const normalHits = totalHits - criticalHits;
+      const localProbability = critProbability <= 0 || critProbability >= 1
+        ? 1
+        : binomialCoefficient(totalHits, criticalHits)
+          * (critProbability ** criticalHits)
+          * ((1 - critProbability) ** normalHits);
+      const next = criticalHitCounts.length === 1 ? branch : clone(branch);
+      next.probability = probabilityProduct(branch.probability, localProbability);
+      next.probabilityStatus = next.probability === null ? "unknown" : "known";
+      const sequences = [];
+      if (criticalHits > 0) {
+        const remaining = convolveDamageDistributions(
+          repeatedDamageDistribution(criticalDistribution, criticalHits - 1),
+          repeatedDamageDistribution(normalDistribution, normalHits)
+        );
+        sequences.push(...damageSequenceDistribution(criticalDistribution, remaining, criticalHits / totalHits));
+      }
+      if (normalHits > 0) {
+        const remaining = convolveDamageDistributions(
+          repeatedDamageDistribution(criticalDistribution, criticalHits),
+          repeatedDamageDistribution(normalDistribution, normalHits - 1)
+        );
+        sequences.push(...damageSequenceDistribution(normalDistribution, remaining, normalHits / totalHits));
+      }
+      const normalizedSequences = normalizeDamageSequences(sequences);
+      const totalDistribution = totalDamageDistributionFromSequences(normalizedSequences);
+      const criticalHit = criticalHits > 0;
+      if (criticalHit) next.conditions.push(`critical-hit:${actor.combatantKey}:${target.combatantKey}:${move.id}:${criticalHits}`);
+      const baseResult = criticalHit ? criticalResult : normalResult;
+      return {
+        branch: next,
+        result: {
+          ...baseResult,
+          criticalHit,
+          damage: totalDistribution.map(entry => entry.damage),
+          damageDistribution: totalDistribution,
+          damageSequenceDistribution: normalizedSequences
+        },
+        criticalHit,
+        criticalHits,
+        criticalHitProbability: critProbability
+      };
+    });
+  }
+  if (totalHits > 1 && critProbability > 0 && critProbability < 1) {
+    const normal = calculate(false, 1);
+    const critical = calculate(true, 1);
+    if (critical.criticalHit !== true) return [{ branch, result: calculate(false), criticalHit: false, criticalHits: 0, criticalHitProbability: 0 }];
+    const normalDistribution = resultDamageDistribution(normal);
+    const criticalDistribution = resultDamageDistribution(critical);
+    return Array.from({ length: totalHits + 1 }, (_, criticalHits) => {
+      const next = clone(branch);
+      const localProbability = binomialCoefficient(totalHits, criticalHits)
+        * (critProbability ** criticalHits)
+        * ((1 - critProbability) ** (totalHits - criticalHits));
+      next.probability = probabilityProduct(branch.probability, localProbability);
+      next.probabilityStatus = next.probability === null ? "unknown" : "known";
+      let distribution = [{ damage: 0, probability: 1 }];
+      for (let index = 0; index < totalHits - criticalHits; index += 1) distribution = convolveDamageDistributions(distribution, normalDistribution);
+      for (let index = 0; index < criticalHits; index += 1) distribution = convolveDamageDistributions(distribution, criticalDistribution);
+      const criticalHit = criticalHits > 0;
+      if (criticalHit) next.conditions.push(`critical-hit:${actor.combatantKey}:${target.combatantKey}:${move.id}:${criticalHits}`);
+      return {
+        branch: next,
+        result: { status: "ok", damage: distribution.map(entry => entry.damage), damageDistribution: distribution },
+        criticalHit,
+        criticalHits,
+        criticalHitProbability: critProbability
+      };
+    });
+  }
+
+  const modes = critProbability <= 0
+    ? [{ criticalHit: false, probability: 1 }]
+    : critProbability >= 1
+      ? [{ criticalHit: true, probability: 1 }]
+      : [{ criticalHit: false, probability: 1 - critProbability }, { criticalHit: true, probability: critProbability }];
+  return modes.map(mode => {
+    const next = modes.length === 1 ? branch : clone(branch);
+    next.probability = probabilityProduct(branch.probability, mode.probability);
+    next.probabilityStatus = next.probability === null ? "unknown" : "known";
+    const result = calculate(mode.criticalHit);
+    const criticalHit = result.criticalHit === true;
+    if (criticalHit) next.conditions.push(`critical-hit:${actor.combatantKey}:${target.combatantKey}:${move.id}:1`);
+    return { branch: next, result, criticalHit, criticalHits: criticalHit ? totalHits : 0, criticalHitProbability: critProbability };
+  });
+}
+
+const POST_DAMAGE_HANDLERS = new Set([
+  "clear-target-stat-stages",
+  "steal-item",
+  "remove-item",
+  "clear-own-hazards",
+  "break-target-screens",
+  "wake-target"
+]);
+
+function applyMoveEffect(branch, { side, actorKey, targetKey, actor, target, actorState, targetState, move, descriptor, damageAdapter, dataset, isLastAction, battleFormat, spreadTargetCount, plan, action, previousLastMoveId, pendingActions }) {
+  if (descriptor.effectId === "self-stat-stages") return applySelfStatStages(branch, actorKey, move, descriptor);
+  if (descriptor.effectId === "self-heal") return applySelfHeal(branch, actorKey, move, descriptor);
+  if (descriptor.effectId === "protect") return applyProtect(branch, actorKey, move, descriptor, dataset, isLastAction);
+  if (descriptor.effectId === "major-status") return applyMajorStatus(branch, actorKey, targetKey, move, descriptor, dataset);
+  if (descriptor.effectId === "set-field") return applySetField(branch, actorKey, move, descriptor);
+  if (descriptor.effectId === "structured-move") {
+    const damageOperation = descriptor.operations.find(operation => operation.kind === "damage");
+    const otherOperations = descriptor.operations.filter(operation => operation !== damageOperation);
+    const postDamageHandler = POST_DAMAGE_HANDLERS.has(descriptor.specialHandlerId) ? descriptor.specialHandlerId : null;
+    let branches = descriptor.specialHandlerId && !postDamageHandler
+      ? applySpecialHandler(branch, { side, actorKey, targetKey, move, dataset, plan, action, previousLastMoveId, damageAdapter, isLastAction, pendingActions }, descriptor.specialHandlerId)
+      : [branch];
+    if (damageOperation) {
+      branches = branches.flatMap(current => {
+        if (current.skipCurrentMoveDamage) {
+          delete current.skipCurrentMoveDamage;
+          return [current];
+        }
+        const currentActorState = current.state.combatantStates[actorKey];
+        const currentTargetState = current.state.combatantStates[targetKey];
+        const hitOutcomes = multiHitOutcomes(damageOperation, currentActorState, dataset.mechanics?.damageGeneration);
+        return hitOutcomes.flatMap(hitOutcome => {
+          const damageBranch = hitOutcomes.length === 1 ? current : clone(current);
+          damageBranch.probability = probabilityProduct(current.probability, hitOutcome.probability);
+          damageBranch.probabilityStatus = damageBranch.probability === null ? "unknown" : "known";
+          const calculatedOverrides = damageOverrides(descriptor, currentActorState, targetKey);
+          const moveOverrides = dynamicMoveOverrides(damageBranch, { side, move, actor, target, actorState: currentActorState, targetState: currentTargetState, previousLastMoveId, pendingActions }, damageBranch.currentMoveOverrides || calculatedOverrides.moveOverrides);
+          const powerConditionMet = calculatedOverrides.powerConditionMet;
+          const variants = calculateDamageVariants(damageBranch, {
+            actor,
+            target,
+            actorState: currentActorState,
+            targetState: currentTargetState,
+            move,
+            descriptor,
+            damageAdapter,
+            dataset,
+            battleFormat,
+            spreadTargetCount,
+            moveOverrides,
+            moveHits: hitOutcome.moveHits
+          });
+          return variants.flatMap(variant => applyDamage(variant.branch, {
+            actorKey,
+            targetKey,
+            move,
+            damageValues: variant.result.damage,
+            damageDistribution: variant.result.damageDistribution,
+            damageSequenceDistribution: variant.result.damageSequenceDistribution,
+            descriptor,
+            effectiveBasePower: moveOverrides?.basePower ?? Number(move.basePower || 0),
+            powerConditionMet,
+            moveHits: hitOutcome.moveHits,
+            criticalHit: variant.criticalHit,
+            criticalHits: variant.criticalHits,
+            criticalHitProbability: variant.criticalHitProbability
+          }).flatMap(next => applyDamageRecovery(next, actorKey, targetKey, move, damageOperation)));
+        });
+      });
+    }
+    if (postDamageHandler) {
+      branches = branches.flatMap(current => current.substituteAbsorbedTargetKey === targetKey
+        ? [current]
+        : applySpecialHandler(current, { side, actorKey, targetKey, move, dataset, plan, action, previousLastMoveId, damageAdapter, isLastAction, pendingActions }, postDamageHandler));
+    }
+    return applyStructuredOperations(branches, { side, actorKey, targetKey, move, dataset, plan, action }, otherOperations);
+  }
+  const { moveOverrides, powerConditionMet } = damageOverrides(descriptor, actorState, targetKey);
+  const effectiveBasePower = moveOverrides?.basePower ?? Number(move.basePower || 0);
+  const variants = calculateDamageVariants(branch, {
+    actor,
+    target,
+    actorState,
+    targetState,
+    move,
+    descriptor,
+    damageAdapter,
+    dataset,
+    battleFormat,
+    spreadTargetCount,
+    moveOverrides
+  });
+  return variants.flatMap(variant => applyDamage(variant.branch, {
+    actorKey,
+    targetKey,
+    move,
+    damageValues: variant.result.damage,
+    damageDistribution: variant.result.damageDistribution,
+    damageSequenceDistribution: variant.result.damageSequenceDistribution,
+    descriptor,
+    effectiveBasePower,
+    powerConditionMet,
+    criticalHit: variant.criticalHit,
+    criticalHits: variant.criticalHits,
+    criticalHitProbability: variant.criticalHitProbability
+  }));
+}
+
+function moveTargets(state, side, action, descriptor, move, declaredTargetSlots) {
+  if (descriptor.target === "self") return [action.actorKey];
+  if (descriptor.target === "field") return [null];
+  const mode = descriptor.targetMode || canonicalTarget(move);
+  if (mode === "all") return [null];
+  if (mode === "alladjacentfoes") return activeKeys(state, opposite(side)).filter(key => Number(state.combatantStates[key]?.hp?.max) > 0);
+  if (mode === "alladjacent") {
+    return activeEntries(state).map(entry => entry.combatantKey).filter(key => key !== action.actorKey && Number(state.combatantStates[key]?.hp?.max) > 0);
+  }
+  if (mode === "scripted") {
+    const sourceKey = state.combatantStates[action.actorKey]?.turnFlags?.lastDamageSourceKey;
+    return sourceKey ? [sourceKey] : [];
+  }
+  const selected = (action.targetKeys || []).map(targetKey => {
+    const declaredSlot = declaredTargetSlots?.[targetKey];
+    return declaredSlot ? activeKey(state, declaredSlot.side, declaredSlot.slot) : targetKey;
+  }).filter(Boolean);
+  if (["normal", "any", "adjacentfoe", "randomnormal"].includes(mode) && selected.length === 1) {
+    const targetSide = selected[0] && state.active.playerCombatantKeys?.includes(selected[0]) ? "player"
+      : selected[0] && state.active.enemyCombatantKeys?.includes(selected[0]) ? "enemy"
+        : null;
+    if (targetSide && targetSide !== side) {
+      const redirector = activeKeys(state, targetSide).find(key => {
+        const targetState = state.combatantStates[key];
+        return Number(targetState?.hp?.max) > 0 && (targetState.volatileConditions?.followme || targetState.volatileConditions?.ragepowder);
+      });
+      if (redirector) return [redirector];
+    }
+  }
+  return selected;
+}
+
+function applyMoveToTarget(branch, { side, action, actorKey, actor, move, descriptor, targetKey, targetCount, plan, dataset, damageAdapter, isLastAction, previousLastMoveId, pendingActions }) {
+  const actorState = branch.state.combatantStates[actorKey];
+  const target = targetKey ? plan.combatants[targetKey] : null;
+  const targetState = targetKey ? branch.state.combatantStates[targetKey] : actorState;
+  if (targetKey && Number(targetState?.hp?.max) <= 0) {
+    event(branch, { eventType: "action-skipped", actorKey, targetKey, moveId: move.id, reason: "target-fainted-before-action", metadata: { resultLabel: "Target already fainted" } });
+    return [branch];
+  }
+  const targetSide = targetKey ? plan.combatants[targetKey]?.side : null;
+  const opposingTarget = targetSide && targetSide !== side;
+  const targetSideState = targetSide ? branch.state.fieldState.sides[targetSide] : null;
+  const spreadMove = ["alladjacent", "alladjacentfoes"].includes(descriptor.targetMode || canonicalTarget(move));
+  const guarded = opposingTarget && descriptor.breaksProtect !== true && (
+    Number(targetSideState?.wideGuardTurns || 0) > 0 && spreadMove
+    || Number(targetSideState?.quickGuardTurns || 0) > 0 && Number(move.priority || 0) > 0
+  );
+  if (guarded) {
+    event(branch, { eventType: "move-blocked", actorKey, targetKey, moveId: move.id, metadata: { reason: spreadMove ? "wide-guard" : "quick-guard", resultLabel: spreadMove ? "Blocked by Wide Guard" : "Blocked by Quick Guard" } });
+    return [branch];
+  }
+  if (descriptor.target !== "self" && descriptor.target !== "field" && targetState.turnFlags.protected && descriptor.breaksProtect !== true) {
+    event(branch, { eventType: "move-blocked", actorKey, targetKey, moveId: move.id, metadata: { reason: "protect", resultLabel: "Blocked by Protect" } });
+    return descriptor.specialHandlerId === "crash-on-failure" ? applyCrashDamage(branch, actorKey, move, "protect") : [branch];
+  }
+  if (descriptor.specialHandlerId === "crash-on-failure" && Number(branch.state.fieldState.global.gravityTurns || 0) > 0) {
+    event(branch, { eventType: "move-failed", actorKey, targetKey, moveId: move.id, metadata: { reason: "gravity", resultLabel: `${move.name} failed under Gravity` } });
+    return applyCrashDamage(branch, actorKey, move, "gravity");
+  }
+  const immunity = descriptor.target === "field" || descriptor.target === "self"
+    ? null
+    : damagingMoveImmunity({
+      dataset,
+      move,
+      attackerState: actorState,
+      defenderState: targetState,
+      fieldState: branch.state.fieldState,
+      attackerSide: side,
+      defenderSide: targetSide
+    });
+  if (immunity) {
+    event(branch, {
+      eventType: "move-immune",
+      actorKey,
+      targetKey,
+      moveId: move.id,
+      metadata: { reason: immunity.reason, moveType: immunity.moveType, abilityId: immunity.abilityId || null, resultLabel: "Immune" }
+    });
+    return [branch];
+  }
+  const accuracy = descriptor.target === "field" || descriptor.target === "self"
+    ? 100
+    : effectiveAccuracy({ move, attackerState: actorState, defenderState: targetState, fieldState: branch.state.fieldState, generation: dataset.mechanics?.damageGeneration });
+  const branches = [];
+  if (accuracy < 100) {
+    const miss = clone(branch);
+    miss.probability = probabilityProduct(branch.probability, (100 - accuracy) / 100);
+    miss.probabilityStatus = miss.probability === null ? "unknown" : "known";
+    event(miss, { eventType: "miss", actorKey, targetKey, moveId: move.id });
+    branches.push(...(descriptor.specialHandlerId === "crash-on-failure" ? applyCrashDamage(miss, actorKey, move, "miss") : [miss]));
+    branch.probability = probabilityProduct(branch.probability, accuracy / 100);
+    branch.probabilityStatus = branch.probability === null ? "unknown" : "known";
+  }
+  branches.push(...applyMoveEffect(branch, {
+    side, actorKey, targetKey, actor, target, actorState, targetState, move, descriptor, damageAdapter, dataset, isLastAction,
+    battleFormat: plan.game?.battleFormat || "singles",
+    spreadTargetCount: targetCount,
+    plan,
+    action,
+    previousLastMoveId,
+    pendingActions
+  }));
+  return branches;
+}
+
+function applyMove(branch, side, slot, action, plan, dataset, damageAdapter, moveSupport, isLastAction = false, declaredTargetSlots = null, pendingActions = []) {
+  const actorKey = action.actorKey;
+  const actorState = branch.state.combatantStates[actorKey];
+  if (Number(actorState.hp?.max) <= 0) return skipped(branch, actorKey, "actor-fainted-before-moving");
+  const currentSlot = actorSlot(branch.state, side, actorKey);
+  if (currentSlot < 0) return skipped(branch, actorKey, "actor-no-longer-active");
+  const actor = plan.combatants[actorKey];
+  const move = effectiveCombatantMove(dataset, actor, actorState, action.moveId);
+  const descriptor = moveSupport(move, dataset);
+  const previousLastMoveId = branch.state.fieldState.global.lastMoveId || null;
+  actorState.volatileConditions.consecutiveMoveCount = actorState.lastMoveId === action.moveId
+    ? Number(actorState.volatileConditions.consecutiveMoveCount || 1) + 1
+    : 1;
+  if (action.moveId !== "destinybond") actorState.volatileConditions.destinybond = false;
+  const continuingBide = action.moveId === "bide" && Number(actorState.volatileConditions.bideTurns || 0) > 0;
+  markMoved(branch, actorKey, action.moveId, !continuingBide);
+  if (descriptor.effectId !== "protect" && descriptor.specialHandlerId !== "protect") actorState.volatileConditions.protectStreak = 0;
+  const targets = moveTargets(branch.state, side, action, descriptor, move, declaredTargetSlots);
+  if (!targets.length) return skipped(branch, actorKey, "no-legal-target");
+  let branches = [branch];
+  for (const targetKey of targets) {
+    branches = branches.flatMap(current => applyMoveToTarget(current, { side, action, actorKey, actor, move, descriptor, targetKey, targetCount: targets.length, plan, dataset, damageAdapter, isLastAction, previousLastMoveId, pendingActions }));
+  }
+  for (const current of branches) delete current.state.combatantStates[actorKey].volatileConditions.helpinghand;
+  if (String(move.type || "").toLowerCase() === "electric" && String(move.category || "").toLowerCase() !== "status") {
+    for (const current of branches) current.state.combatantStates[actorKey].volatileConditions.charge = false;
+  }
+  for (const current of branches) delete current.randomMoveOutcome;
+  for (const current of branches) delete current.substituteAbsorbedTargetKey;
+  return branches;
+}
+
+function applyMoveAfterStatusChecks(branch, side, slot, action, context) {
+  return applyMove(branch, side, slot, action, context.plan, context.dataset, context.damageAdapter, context.moveSupport, context.isLastAction, context.declaredTargetSlots, context.pendingActions);
+}
+
+function applyAfterConfusionCheck(branch, side, slot, action, context) {
+  const actorKey = action.actorKey;
+  const actorState = branch.state.combatantStates[actorKey];
+  if (actorState.majorStatus === "par") {
+    const unable = clone(branch);
+    unable.probability = probabilityProduct(branch.probability, 0.25);
+    unable.probabilityStatus = unable.probability === null ? "unknown" : "known";
+    unable.state.combatantStates[actorKey].turnFlags.hasMoved = true;
+    unable.state.combatantStates[actorKey].volatileConditions.protectStreak = 0;
+    event(unable, { eventType: "action-skipped", actorKey, targetKey: null, moveId: action.moveId, reason: "full-paralysis", metadata: { resultLabel: "Fully paralyzed" } });
+    const acted = clone(branch);
+    acted.probability = probabilityProduct(branch.probability, 0.75);
+    acted.probabilityStatus = acted.probability === null ? "unknown" : "known";
+    return [unable, ...applyMoveAfterStatusChecks(acted, side, slot, action, context)];
+  }
+  return applyMoveAfterStatusChecks(branch, side, slot, action, context);
+}
+
+function applyConfusionCheck(branch, side, slot, action, context) {
+  const actorKey = action.actorKey;
+  const actorState = branch.state.combatantStates[actorKey];
+  const distribution = statusCounterDistribution(actorState.volatileConditions, "confusion");
+  if (!distribution) return applyAfterConfusionCheck(branch, side, slot, action, context);
+  const advanced = advanceStatusCounter(distribution);
+  const outcomes = [];
+  if (advanced.endedProbability > 0) {
+    const snapped = clone(branch);
+    snapped.probability = probabilityProduct(branch.probability, advanced.endedProbability);
+    snapped.probabilityStatus = snapped.probability === null ? "unknown" : "known";
+    setStatusCounterDistribution(snapped.state.combatantStates[actorKey].volatileConditions, "confusion", null);
+    event(snapped, { eventType: "volatile-status-cleared", actorKey, targetKey: actorKey, moveId: action.moveId, metadata: { volatileStatusId: "confusion", resultLabel: "Snapped out of confusion" } });
+    outcomes.push(...applyAfterConfusionCheck(snapped, side, slot, action, context));
+  }
+  if (advanced.activeProbability > 0) {
+    const activeProbability = advanced.activeProbability * 0.5;
+    const selfHit = clone(branch);
+    selfHit.probability = probabilityProduct(branch.probability, activeProbability);
+    selfHit.probabilityStatus = selfHit.probability === null ? "unknown" : "known";
+    setStatusCounterDistribution(selfHit.state.combatantStates[actorKey].volatileConditions, "confusion", advanced.activeDistribution);
+    selfHit.state.combatantStates[actorKey].turnFlags.hasMoved = true;
+    const combatant = context.plan.combatants[actorKey];
+    const selfState = selfHit.state.combatantStates[actorKey];
+    const attack = Number(selfState.calculatedStatOverrides?.atk ?? selfState.currentStats?.atk ?? combatant.calculatedStats.atk) * stageMultiplier(selfState.statStages.atk) * (selfState.majorStatus === "brn" ? 0.5 : 1);
+    const defense = Number(selfState.calculatedStatOverrides?.def ?? selfState.currentStats?.def ?? combatant.calculatedStats.def) * stageMultiplier(selfState.statStages.def);
+    const currentLevel = Number(selfState.currentLevel ?? combatant.level);
+    const base = Math.floor(Math.floor(Math.floor((Math.floor(2 * currentLevel / 5) + 2) * 40 * attack / Math.max(1, defense)) / 50) + 2);
+    const rolls = Array.from({ length: 16 }, (_, index) => Math.max(1, Math.floor(base * (85 + index) / 100)));
+    event(selfHit, { eventType: "confusion-self-hit", actorKey, targetKey: actorKey, moveId: action.moveId, metadata: { resultLabel: "Hurt itself in confusion" } });
+    outcomes.push(...applyDamage(selfHit, { actorKey, targetKey: actorKey, move: { id: "confusion", name: "Confusion", category: "physical" }, damageValues: rolls, descriptor: {}, effectiveBasePower: 40 }));
+
+    const acted = clone(branch);
+    acted.probability = probabilityProduct(branch.probability, activeProbability);
+    acted.probabilityStatus = acted.probability === null ? "unknown" : "known";
+    setStatusCounterDistribution(acted.state.combatantStates[actorKey].volatileConditions, "confusion", advanced.activeDistribution);
+    event(acted, { eventType: "confusion-check", actorKey, targetKey: actorKey, moveId: action.moveId, metadata: { outcome: "acted", resultLabel: "Acts through confusion" } });
+    outcomes.push(...applyAfterConfusionCheck(acted, side, slot, action, context));
+  }
+  return outcomes;
+}
+
+function applyAfterSleepCheck(branch, side, slot, action, context) {
+  const actorKey = action.actorKey;
+  const actorState = branch.state.combatantStates[actorKey];
+  if (actorState.majorStatus === "frz") {
+    const frozen = clone(branch);
+    frozen.probability = probabilityProduct(branch.probability, 0.8);
+    frozen.probabilityStatus = frozen.probability === null ? "unknown" : "known";
+    frozen.state.combatantStates[actorKey].turnFlags.hasMoved = true;
+    event(frozen, { eventType: "action-skipped", actorKey, targetKey: null, moveId: action.moveId, reason: "freeze", metadata: { resultLabel: "Frozen" } });
+    const thawed = clone(branch);
+    thawed.probability = probabilityProduct(branch.probability, 0.2);
+    thawed.probabilityStatus = thawed.probability === null ? "unknown" : "known";
+    thawed.state.combatantStates[actorKey].majorStatus = null;
+    event(thawed, { eventType: "status-cleared", actorKey, targetKey: actorKey, moveId: action.moveId, metadata: { cause: "thaw", resultLabel: "Thawed out" } });
+    return [frozen, ...applyConfusionCheck(thawed, side, slot, action, context)];
+  }
+  return applyConfusionCheck(branch, side, slot, action, context);
+}
+
+function applyStatusActionChecks(branch, side, slot, action, context) {
+  const actorKey = action.actorKey;
+  const actorState = branch.state.combatantStates[actorKey];
+  if (actorState.majorStatus !== "slp" || action.moveId === "sleeptalk") return applyAfterSleepCheck(branch, side, slot, action, context);
+  const distribution = statusCounterDistribution(actorState.volatileConditions, "sleep");
+  const advanced = advanceStatusCounter(distribution);
+  const outcomes = [];
+  if (advanced.endedProbability > 0) {
+    const woke = clone(branch);
+    woke.probability = probabilityProduct(branch.probability, advanced.endedProbability);
+    woke.probabilityStatus = woke.probability === null ? "unknown" : "known";
+    clearStatus(woke.state.combatantStates[actorKey]);
+    event(woke, { eventType: "status-cleared", actorKey, targetKey: actorKey, moveId: action.moveId, metadata: { cause: "wake", resultLabel: "Woke up" } });
+    outcomes.push(...applyAfterSleepCheck(woke, side, slot, action, context));
+  }
+  if (advanced.activeProbability > 0) {
+    const asleep = clone(branch);
+    asleep.probability = probabilityProduct(branch.probability, advanced.activeProbability);
+    asleep.probabilityStatus = asleep.probability === null ? "unknown" : "known";
+    setStatusCounterDistribution(asleep.state.combatantStates[actorKey].volatileConditions, "sleep", advanced.activeDistribution);
+    asleep.state.combatantStates[actorKey].turnFlags.hasMoved = true;
+    event(asleep, { eventType: "action-skipped", actorKey, targetKey: null, moveId: action.moveId, reason: "sleep", metadata: { resultLabel: "Asleep" } });
+    outcomes.push(asleep);
+  }
+  return outcomes;
+}
+
+function applyAction(branch, side, slot, action, context) {
+  if (action.actionType === "switch") {
+    const currentSlot = actorSlot(branch.state, side, action.actorKey);
+    return currentSlot < 0 ? skipped(branch, action.actorKey, "actor-no-longer-active") : applySwitch(branch, side, currentSlot, action, context.plan, context.dataset);
+  }
+  const actorKey = action.actorKey;
+  const actorState = branch.state.combatantStates[actorKey];
+  if (actorState.volatileConditions?.skyDropSourceKey) {
+    actorState.turnFlags.hasMoved = true;
+    event(branch, { eventType: "action-skipped", actorKey, targetKey: null, moveId: action.moveId, reason: "sky-drop", metadata: { resultLabel: "Unable to move during Sky Drop" } });
+    return [branch];
+  }
+  if (actorState.volatileConditions?.attractSourceKey && !actorState.turnFlags.attractChecked) {
+    const sourceKey = actorState.volatileConditions.attractSourceKey;
+    const sourceActive = activeEntries(branch.state).some(entry => entry.combatantKey === sourceKey);
+    if (!sourceActive || Number(branch.state.combatantStates[sourceKey]?.hp?.max) <= 0) {
+      actorState.volatileConditions.attractSourceKey = null;
+    } else {
+      const unable = clone(branch);
+      unable.probability = probabilityProduct(branch.probability, 0.5);
+      unable.probabilityStatus = unable.probability === null ? "unknown" : "known";
+      unable.state.combatantStates[actorKey].turnFlags.hasMoved = true;
+      unable.state.combatantStates[actorKey].turnFlags.attractChecked = true;
+      event(unable, { eventType: "action-skipped", actorKey, targetKey: null, moveId: action.moveId, reason: "attract", metadata: { resultLabel: "Immobilized by love" } });
+      const acted = clone(branch);
+      acted.probability = probabilityProduct(branch.probability, 0.5);
+      acted.probabilityStatus = acted.probability === null ? "unknown" : "known";
+      acted.state.combatantStates[actorKey].turnFlags.attractChecked = true;
+      return [unable, ...applyAction(acted, side, slot, action, context)];
+    }
+  }
+  if (actorState.turnFlags.flinched) {
+    actorState.turnFlags.hasMoved = true;
+    event(branch, { eventType: "action-skipped", actorKey, targetKey: null, moveId: action.moveId, reason: "flinch", metadata: { resultLabel: "Flinched" } });
+    return [branch];
+  }
+  if (actorState.volatileConditions?.rechargeRequired) {
+    actorState.volatileConditions.rechargeRequired = false;
+    actorState.volatileConditions.protectStreak = 0;
+    actorState.turnFlags.hasMoved = true;
+    event(branch, { eventType: "action-skipped", actorKey, targetKey: null, moveId: action.moveId, reason: "recharge", metadata: { resultLabel: "Must recharge" } });
+    return [branch];
+  }
+  return applyStatusActionChecks(branch, side, slot, action, context);
+}
+
+function fixedHpAmount(state, rule) {
+  if (Number.isFinite(Number(rule.amount))) return Math.max(0, Number(rule.amount));
+  return Math.max(1, Math.floor(Number(state.hp.maxHp) * Number(rule.numerator) / Number(rule.denominator)));
+}
+
+function applyResidualDamage(branch, targetKey, rule) {
+  const targetState = branch.state.combatantStates[targetKey];
+  const amount = fixedHpAmount(targetState, rule);
+  const maxHp = Number(targetState.hp.maxHp);
+  const distribution = distributionFor(targetState);
+  if (!distribution) {
+    const hp = normalizeRange(targetState.hp);
+    const outcomes = [];
+    if (amount >= hp.min) {
+      const fainted = clone(branch);
+      fainted.probability = null;
+      fainted.probabilityStatus = "unknown";
+      fainted.state.combatantStates[targetKey].hp = { min: 0, max: 0, maxHp };
+      fainted.state.combatantStates[targetKey].hpDistribution = [{ value: 0, probability: 1 }];
+      event(fainted, { eventType: rule.eventType || "residual-damage", actorKey: null, targetKey, moveId: null, damageHp: { min: amount, max: amount }, damagePercent: { min: amount / maxHp * 100, max: amount / maxHp * 100 }, metadata: { cause: rule.cause, thresholdOutcome: "ko", resultLabel: `${rule.cause} damage` } });
+      outcomes.push(fainted);
+    }
+    if (amount < hp.max) {
+      const survived = clone(branch);
+      survived.probability = null;
+      survived.probabilityStatus = "unknown";
+      survived.state.combatantStates[targetKey].hp = { min: Math.max(1, hp.min - amount), max: hp.max - amount, maxHp };
+      delete survived.state.combatantStates[targetKey].hpDistribution;
+      event(survived, { eventType: rule.eventType || "residual-damage", actorKey: null, targetKey, moveId: null, damageHp: { min: amount, max: amount }, damagePercent: { min: amount / maxHp * 100, max: amount / maxHp * 100 }, metadata: { cause: rule.cause, thresholdOutcome: "survive", resultLabel: `${rule.cause} damage` } });
+      outcomes.push(survived);
+    }
+    return outcomes;
+  }
+  const buckets = { ko: [], survive: [] };
+  for (const entry of distribution) {
+    const remaining = Math.max(0, Number(entry.value) - amount);
+    buckets[remaining === 0 ? "ko" : "survive"].push({ value: remaining, probability: Number(entry.probability) });
+  }
+  const outcomes = [];
+  for (const [kind, entries] of Object.entries(buckets)) {
+    if (!entries.length) continue;
+    const localProbability = entries.reduce((sum, entry) => sum + entry.probability, 0);
+    const next = clone(branch);
+    next.probability = probabilityProduct(branch.probability, localProbability);
+    next.probabilityStatus = next.probability === null ? "unknown" : "known";
+    setHpDistribution(next.state.combatantStates[targetKey], entries.map(entry => ({ value: entry.value, probability: entry.probability / localProbability })));
+    event(next, { eventType: rule.eventType || "residual-damage", actorKey: null, targetKey, moveId: null, damageHp: { min: amount, max: amount }, damagePercent: { min: amount / maxHp * 100, max: amount / maxHp * 100 }, metadata: { cause: rule.cause, thresholdOutcome: kind, resultLabel: `${rule.cause} damage` } });
+    outcomes.push(next);
+  }
+  return outcomes;
+}
+
+function applyResidualHeal(branch, targetKey, rule) {
+  const targetState = branch.state.combatantStates[targetKey];
+  const amount = fixedHpAmount(targetState, rule);
+  const maxHp = Number(targetState.hp.maxHp);
+  const distribution = distributionFor(targetState);
+  let healedValues;
+  if (distribution) {
+    healedValues = distribution.map(entry => Math.max(0, Math.min(amount, maxHp - Number(entry.value))));
+    setHpDistribution(targetState, distribution.map(entry => ({ value: Math.min(maxHp, Number(entry.value) + amount), probability: entry.probability })));
+  } else {
+    const hp = normalizeRange(targetState.hp);
+    healedValues = [Math.max(0, Math.min(amount, maxHp - hp.max)), Math.max(0, Math.min(amount, maxHp - hp.min))];
+    targetState.hp = { min: Math.min(maxHp, hp.min + amount), max: Math.min(maxHp, hp.max + amount), maxHp };
+    delete targetState.hpDistribution;
+  }
+  const healingHp = { min: Math.min(...healedValues), max: Math.max(...healedValues) };
+  event(branch, { eventType: "residual-heal", actorKey: null, targetKey, moveId: null, healingHp, metadata: { cause: rule.cause, resultLabel: `${rule.cause} recovery` } });
+  return [branch];
+}
+
+function applyResidualRule(branch, targetKey, rule) {
+  if (!rule) return [branch];
+  if (rule.unsupported) throw new ResolutionError(rule.reason);
+  const outcomes = rule.kind === "heal"
+    ? applyResidualHeal(branch, targetKey, rule)
+    : applyResidualDamage(branch, targetKey, rule);
+  if (rule.nextToxicCounter !== null && rule.nextToxicCounter !== undefined) {
+    for (const outcome of outcomes) outcome.state.combatantStates[targetKey].toxicCounter = rule.nextToxicCounter;
+  }
+  return outcomes;
+}
+
+function activeStates(branch) {
+  return activeEntries(branch.state).map(entry => branch.state.combatantStates[entry.combatantKey]).filter(Boolean);
+}
+
+function resolveDueDelayedAttacks(branch, plan, dataset, damageAdapter) {
+  const delayed = branch.state.fieldState.global.delayedAttacks || [];
+  const index = delayed.findIndex(entry => Number(entry.remainingTurns) <= 0);
+  if (index < 0) return [branch];
+  const [entry] = delayed.splice(index, 1);
+  const targetKey = activeKey(branch.state, entry.side, Number(entry.slot));
+  const source = plan.combatants[entry.sourceKey];
+  const target = plan.combatants[targetKey];
+  const sourceState = branch.state.combatantStates[entry.sourceKey];
+  const targetState = branch.state.combatantStates[targetKey];
+  const move = dataset.get("moves", entry.moveId);
+  if (!source || !target || !sourceState || !targetState || !move || Number(targetState.hp?.max) <= 0) {
+    event(branch, { eventType: "delayed-attack-failed", actorKey: entry.sourceKey, targetKey: targetKey || null, moveId: entry.moveId, metadata: { resultLabel: `${entry.moveId} had no target` } });
+    return resolveDueDelayedAttacks(branch, plan, dataset, damageAdapter);
+  }
+  const result = damageAdapter.calculate({
+    attacker: source,
+    defender: target,
+    attackerState: sourceState,
+    defenderState: targetState,
+    move,
+    fieldState: branch.state.fieldState,
+    battleFormat: plan.game?.battleFormat || "singles",
+    spreadTargetCount: 1
+  });
+  if (result.status !== "ok") throw new ResolutionError(result.reason || `${move.name} delayed damage cannot be calculated`);
+  event(branch, { eventType: "delayed-attack", actorKey: entry.sourceKey, targetKey, moveId: move.id, metadata: { resultLabel: `${move.name} struck` } });
+  return applyDamage(branch, {
+    actorKey: entry.sourceKey,
+    targetKey,
+    move,
+    damageValues: result.damage,
+    damageDistribution: result.damageDistribution,
+    descriptor: {},
+    effectiveBasePower: Number(move.basePower || 0)
+  }).flatMap(next => resolveDueDelayedAttacks(next, plan, dataset, damageAdapter));
+}
+
+function applyDelayedEffects(branch, plan, dataset, damageAdapter) {
+  for (const entry of branch.state.fieldState.global.delayedAttacks || []) entry.remainingTurns = Number(entry.remainingTurns) - 1;
+  for (const entry of branch.state.fieldState.global.delayedHeals || []) entry.remainingTurns = Number(entry.remainingTurns) - 1;
+  let branches = resolveDueDelayedAttacks(branch, plan, dataset, damageAdapter);
+  branches = branches.flatMap(current => {
+    const delayed = current.state.fieldState.global.delayedHeals || [];
+    const due = delayed.filter(entry => Number(entry.remainingTurns) <= 0);
+    current.state.fieldState.global.delayedHeals = delayed.filter(entry => Number(entry.remainingTurns) > 0);
+    let healed = [current];
+    for (const entry of due) {
+      healed = healed.flatMap(next => {
+        const targetKey = activeKey(next.state, entry.side, Number(entry.slot));
+        const state = next.state.combatantStates[targetKey];
+        if (!state || Number(state.hp?.max) <= 0) {
+          event(next, { eventType: "delayed-heal-failed", actorKey: entry.sourceKey, targetKey: targetKey || null, moveId: "wish", metadata: { resultLabel: "Wish had no target" } });
+          return [next];
+        }
+        event(next, { eventType: "delayed-heal", actorKey: entry.sourceKey, targetKey, moveId: "wish", metadata: { resultLabel: "Wish came true" } });
+        return applyResidualHeal(next, targetKey, { kind: "heal", amount: Number(entry.amount), cause: "wish" });
+      });
+    }
+    return healed;
+  });
+  return branches;
+}
+
+function applyVolatileEndOfTurn(branch, targetKey, dataset) {
+  const state = branch.state.combatantStates[targetKey];
+  const volatiles = state.volatileConditions || {};
+  let branches = [branch];
+  for (const [flag, rule] of [
+    ["aquaRing", { kind: "heal", numerator: 1, denominator: 16, cause: "aqua-ring" }],
+    ["aquaring", { kind: "heal", numerator: 1, denominator: 16, cause: "aqua-ring" }],
+    ["ingrain", { kind: "heal", numerator: 1, denominator: 16, cause: "ingrain" }],
+    ["nightmare", state.majorStatus === "slp" ? { kind: "damage", numerator: 1, denominator: 4, cause: "nightmare" } : null],
+    ["curseSourceKey", volatiles.curseSourceKey ? { kind: "damage", numerator: 1, denominator: 4, cause: "curse" } : null],
+    ["partiallyTrappedTurns", Number(volatiles.partiallyTrappedTurns || 0) > 0 ? { kind: "damage", numerator: 1, denominator: 8, cause: "partial-trap" } : null]
+  ]) {
+    if (volatiles[flag] && rule) branches = branches.flatMap(current => applyResidualRule(current, targetKey, rule));
+  }
+  if (volatiles.leechSeeded) {
+    const sourceKey = volatiles.leechSeedSourceKey;
+    const amount = Math.max(1, Math.floor(Number(state.hp.maxHp) / 8));
+    branches = branches.flatMap(current => applyResidualDamage(current, targetKey, { kind: "damage", amount, cause: "leech-seed" }).flatMap(next => {
+      const sourceState = next.state.combatantStates[sourceKey];
+      if (!sourceState || Number(sourceState.hp.max) <= 0) return [next];
+      return applyResidualHeal(next, sourceKey, { kind: "heal", amount, cause: "leech-seed" });
+    }));
+  }
+  const targetSide = activeKeys(branch.state, "player").includes(targetKey) ? "player" : "enemy";
+  if (Number(branch.state.fieldState.sides[targetSide]?.seaOfFireTurns || 0) > 0 && !state.currentTypeIds.map(type => String(type).toLowerCase()).includes("fire")) {
+    branches = branches.flatMap(current => applyResidualDamage(current, targetKey, { kind: "damage", numerator: 1, denominator: 8, cause: "sea-of-fire" }));
+  }
+  for (const current of branches) {
+    const currentVolatiles = current.state.combatantStates[targetKey].volatileConditions;
+    if (Number(currentVolatiles.partiallyTrappedTurns || 0) > 0) currentVolatiles.partiallyTrappedTurns -= 1;
+  }
+  branches = branches.flatMap(current => {
+    const currentState = current.state.combatantStates[targetKey];
+    const currentVolatiles = currentState.volatileConditions;
+    if (Number(currentVolatiles.yawnTurns || 0) > 0) {
+      currentVolatiles.yawnTurns -= 1;
+      if (currentVolatiles.yawnTurns === 0) {
+        return applyMajorStatus(current, currentVolatiles.yawnSourceKey || targetKey, targetKey, { id: "yawn", name: "Yawn" }, { statusId: "slp", immuneAbilities: ["insomnia", "vitalspirit", "sweetveil"] }, dataset);
+      }
+    }
+    return [current];
+  });
+  for (const current of branches) {
+    const currentState = current.state.combatantStates[targetKey];
+    const perish = Number(currentState.volatileConditions.perishTurns || 0);
+    if (perish > 0) {
+      const next = perish - 1;
+      currentState.volatileConditions.perishTurns = next;
+      event(current, { eventType: "perish-count", actorKey: null, targetKey, moveId: null, metadata: { remainingTurns: next, resultLabel: next ? `Perish count ${next}` : "Perished" } });
+      if (next === 0) setExactCurrentHp(currentState, 0);
+    }
+  }
+  return branches;
+}
+
+function applyEndOfTurn(branch, dataset, plan, damageAdapter) {
+  let branches = applyDelayedEffects(branch, plan, dataset, damageAdapter);
+  const initialStates = activeStates(branch);
+  for (const [index, state] of initialStates.entries()) {
+    const issue = endOfTurnSupportIssue(state, branch.state.fieldState, initialStates[index === 0 ? 1 : 0]);
+    if (issue) throw new ResolutionError(issue);
+  }
+  for (const phase of ["weather", "status", "item"]) {
+    for (const entry of activeEntries(branch.state)) {
+      branches = branches.flatMap(current => {
+        const targetKey = activeKey(current.state, entry.side, entry.slot);
+        const state = current.state.combatantStates[targetKey];
+        if (!state || Number(state.hp?.max) <= 0) return [current];
+        let rule = null;
+        if (phase === "weather" && !weatherIsSuppressed(activeStates(current))) {
+          rule = weatherResidualRule(current.state.fieldState?.global?.weather, state);
+        } else if (phase === "status") {
+          rule = statusResidualRule(state, dataset.mechanics?.damageGeneration);
+        } else if (phase === "item") {
+          rule = itemResidualRule(state);
+        }
+        return applyResidualRule(current, targetKey, rule);
+      });
+    }
+  }
+  for (const entry of activeEntries(branch.state)) {
+    branches = branches.flatMap(current => {
+      const targetKey = activeKey(current.state, entry.side, entry.slot);
+      const state = current.state.combatantStates[targetKey];
+      return !state || Number(state.hp?.max) <= 0 ? [current] : applyVolatileEndOfTurn(current, targetKey, dataset);
+    });
+  }
+  for (const current of branches) decrementTurnLimitedEffects(current);
+  return branches;
+}
+
+function decrementFieldCondition(branch, kind) {
+  const current = normalizeFieldCondition(kind, branch.state.fieldState?.global?.[kind]);
+  if (current.durationMode !== "turns" || !Number.isFinite(Number(current.remainingTurns))) {
+    branch.state.fieldState.global[kind] = current;
+    return;
+  }
+  const remainingTurns = Math.max(0, Number(current.remainingTurns) - 1);
+  const next = remainingTurns > 0 ? { ...current, remainingTurns } : normalizeFieldCondition(kind, null);
+  branch.state.fieldState.global[kind] = next;
+  event(branch, {
+    eventType: remainingTurns > 0 ? "field-duration" : "field-expired",
+    actorKey: null,
+    targetKey: null,
+    moveId: null,
+    changes: [{ path: `fieldState.global.${kind}.remainingTurns`, from: current.remainingTurns, to: remainingTurns }],
+    metadata: { fieldKind: kind, fieldId: current.id, remainingTurns }
+  });
+}
+
+function decrementTurnLimitedEffects(branch) {
+  decrementFieldCondition(branch, "weather");
+  decrementFieldCondition(branch, "terrain");
+  for (const key of ["trickRoomTurns", "gravityTurns", "magicRoomTurns", "wonderRoomTurns"]) {
+    const current = Number(branch.state.fieldState.global[key] || 0);
+    if (current > 0) branch.state.fieldState.global[key] = current - 1;
+  }
+  for (const side of ["player", "enemy"]) {
+    const sideState = branch.state.fieldState.sides?.[side] || {};
+    for (const key of ["reflectTurns", "lightScreenTurns", "auroraVeilTurns", "tailwindTurns", "safeguardTurns", "mistTurns", "luckyChantTurns", "quickGuardTurns", "wideGuardTurns", "rainbowTurns", "swampTurns", "seaOfFireTurns"]) {
+      const current = Number(sideState[key] || 0);
+      if (current > 0) sideState[key] = current - 1;
+    }
+  }
+  for (const state of Object.values(branch.state.combatantStates)) {
+    const volatiles = state.volatileConditions || {};
+    volatiles.followme = false;
+    volatiles.ragepowder = false;
+    volatiles.selfDestructResolved = false;
+    volatiles.roost = false;
+    const uproarTurns = Number(volatiles.uproarTurns || 0);
+    if (uproarTurns > 0) volatiles.uproarTurns = uproarTurns - 1;
+    for (const [turnField, valueField] of [["tauntTurns", null], ["disableTurns", "disabledMoveId"], ["encoreTurns", "encoredMoveId"], ["magnetRiseTurns", null], ["telekinesisTurns", null], ["healBlockTurns", null], ["embargoTurns", null]]) {
+      const turns = Number(volatiles[turnField] || 0);
+      if (turns <= 0) continue;
+      volatiles[turnField] = turns - 1;
+      if (volatiles[turnField] === 0 && valueField) volatiles[valueField] = null;
+    }
+  }
+}
+
+function updateBattleBoundary(branch, plan) {
+  const pending = [];
+  let ended = false;
+  for (const side of ["player", "enemy"]) {
+    const slotEntries = activeSlotEntries(branch.state, side);
+    const sideActiveKeys = slotEntries.map(entry => entry.combatantKey);
+    const faintedSlots = slotEntries.filter(entry => Number(branch.state.combatantStates[entry.combatantKey]?.hp?.max) <= 0);
+    const livingActive = slotEntries.filter(entry => Number(branch.state.combatantStates[entry.combatantKey]?.hp?.max) > 0);
+    const available = Object.values(plan.combatants).filter(combatant =>
+      combatant.side === side
+      && !sideActiveKeys.includes(combatant.combatantKey)
+      && Number(branch.state.combatantStates[combatant.combatantKey]?.hp?.max) > 0
+    );
+    const sideEnded = livingActive.length + available.length === 0;
+    if (sideEnded) ended = true;
+    const replacementCount = Math.min(available.length, faintedSlots.length);
+    pending.push(...faintedSlots.slice(0, replacementCount).map(entry => ({ side, slot: entry.slot })));
+    const canLeaveSlotEmpty = plan.game?.battleFormat === "doubles" && !sideEnded;
+    for (const entry of canLeaveSlotEmpty ? faintedSlots.slice(replacementCount) : []) {
+      setActiveKey(branch.state, side, entry.slot, null);
+      event(branch, {
+        eventType: "slot-emptied",
+        actorKey: null,
+        targetKey: entry.combatantKey,
+        moveId: null,
+        changes: [{ path: `active.${side}CombatantKeys.${entry.slot}`, from: entry.combatantKey, to: null }],
+        metadata: { side, slot: entry.slot, resultLabel: `${side} Slot ${entry.slot + 1} is empty` }
+      });
+    }
+  }
+  setPendingReplacementSlots(branch.state, ended ? [] : pending);
+  branch.state.battleEnded = ended;
+  if (!ended && pending.length) {
+    event(branch, {
+      eventType: "replacement-required",
+      actorKey: null,
+      targetKey: null,
+      moveId: null,
+      metadata: { slots: clone(pending), sides: [...new Set(pending.map(entry => entry.side))], resultLabel: `Replace ${pending.map(entry => `${entry.side} ${entry.slot + 1}`).join(" and ")}` }
+    });
+  }
+  if (ended) {
+    event(branch, {
+      eventType: "battle-ended",
+      actorKey: null,
+      targetKey: null,
+      moveId: null,
+      metadata: { resultLabel: "Battle ended" }
+    });
+  }
+}
+
+function outcomeLabel(branch) {
+  const lastDamage = [...branch.events].reverse().find(entry => ["damage", "residual-damage"].includes(entry.eventType));
+  if (lastDamage?.metadata?.thresholdOutcome === "ko") {
+    const target = branch.planCombatants?.[lastDamage.targetKey];
+    return `${target?.displayName || "Pokémon"} faints`;
+  }
+  if (branch.events.some(entry => entry.eventType === "miss")) return "A selected move misses";
+  if (branch.events.some(entry => entry.eventType === "switch")) return "Switch line resolves";
+  const structuredEffect = [...branch.events].reverse().find(entry => ["stat-stage-change", "heal", "protect", "major-status", "status-failed", "field-change", "move-blocked", "residual-damage", "residual-heal"].includes(entry.eventType));
+  if (structuredEffect?.metadata?.resultLabel) return structuredEffect.metadata.resultLabel;
+  return activeEntries(branch.state).length > 2 ? "All active Pokémon survive" : "Both Pokémon survive";
+}
+
+function mergeEquivalent(branches) {
+  const map = new Map();
+  for (const branch of branches) {
+    updateStateHash(branch.state);
+    const criticalSignature = branch.events
+      .filter(entry => entry.metadata?.criticalHit === true)
+      .map(entry => `${entry.eventType}:${entry.actorKey || ""}:${entry.targetKey || ""}:${entry.moveId || ""}:${entry.metadata?.criticalHits || 1}`)
+      .join("|");
+    const key = `${branch.state.stateHash}::${criticalSignature}`;
+    const existing = map.get(key);
+    if (!existing) {
+      map.set(key, branch);
+      continue;
+    }
+    if (existing.probability !== null && branch.probability !== null) existing.probability += branch.probability;
+    else {
+      existing.probability = null;
+      existing.probabilityStatus = "unknown";
+    }
+    existing.conditions.push(...branch.conditions);
+  }
+  return [...map.values()];
+}
+
+function applyActionOrderDirective(branch, remaining) {
+  const directive = branch.actionOrderDirective;
+  if (!directive) return remaining;
+  delete branch.actionOrderDirective;
+  const index = remaining.findIndex(entry => entry.action?.actorKey === directive.targetKey);
+  if (index < 0) return remaining;
+  const reordered = [...remaining];
+  const [target] = reordered.splice(index, 1);
+  if (directive.kind === "move-next") reordered.unshift(target);
+  else reordered.push(target);
+  return reordered;
+}
+
+function resolveActionEntries(branch, entries, context) {
+  if (!entries.length) return [branch];
+  const [entry, ...remaining] = entries;
+  const applied = applyAction(branch, entry.side, entry.slot, entry.action, {
+    ...context,
+    isLastAction: remaining.length === 0,
+    pendingActions: remaining
+  });
+  const rewarded = applied.map(next => applyDefeatedEnemyExperience(next, context.plan, context.dataset));
+  const resolved = rewarded.flatMap(next => resolveActionEntries(next, applyActionOrderDirective(next, remaining), context));
+  if (resolved.length > 1024) throw new ResolutionError("Outcome branching exceeds the safe Doubles limit");
+  return resolved;
+}
+
+export function resolveTurn({ plan, parentStateNodeId, actions, dataset, damageAdapter, moveSupport = defaultMoveSupport }) {
+  const parentState = plan.stateNodes[parentStateNodeId];
+  if (!parentState) throw new ResolutionError(`State ${parentStateNodeId} is unavailable`);
+  validateTurnActions({ plan, parentState, actions, dataset, moveSupport });
+  const orders = orderedActions(plan, parentState, actions, dataset);
+  const declaredTargetSlots = Object.fromEntries(activeEntries(parentState).map(entry => [entry.combatantKey, { side: entry.side, slot: entry.slot }]));
+  for (const entry of actionEntries(parentState, actions)) {
+    if (entry.action.actionType === "switch") declaredTargetSlots[entry.action.switchToKey] = { side: entry.side, slot: entry.slot };
+  }
+  let resolved = [];
+  for (const order of orders) {
+    const state = clone(parentState);
+    state.parentActionGroupId = null;
+    state.parentReplacementTransitionId = null;
+    state.childActionGroupIds = [];
+    state.childReplacementTransitionIds = [];
+    state.resolutionEventIds = [];
+    for (const monState of Object.values(state.combatantStates)) monState.turnFlags = resetTurnFlags();
+    let branches = [{ state, events: [], probability: order.probability, probabilityStatus: "known", conditions: [...order.conditions], planCombatants: plan.combatants }];
+    branches = branches.flatMap(branch => resolveActionEntries(branch, order.entries, { plan, dataset, damageAdapter, moveSupport, declaredTargetSlots }));
+    branches = branches.flatMap(branch => applyEndOfTurn(branch, dataset, plan, damageAdapter));
+    branches = branches.map(branch => applyDefeatedEnemyExperience(branch, plan, dataset));
+    for (const branch of branches) updateBattleBoundary(branch, plan);
+    resolved.push(...branches);
+  }
+  resolved = mergeEquivalent(resolved);
+  const totalKnown = resolved.every(branch => branch.probability !== null);
+  if (totalKnown) {
+    const total = resolved.reduce((sum, branch) => sum + branch.probability, 0) || 1;
+    for (const branch of resolved) branch.probability /= total;
+  }
+  return resolved.map((branch, index) => ({
+    previewOutcomeId: `preview-${index + 1}-${shortHash(stableStringify({ state: branch.state.stateHash, conditions: branch.conditions }))}`,
+    state: branch.state,
+    events: branch.events,
+    outcome: {
+      kind: resolved.length > 1 ? "chance" : "decision",
+      label: outcomeLabel(branch),
+      probability: branch.probability,
+      probabilityStatus: branch.probability === null ? "unknown" : resolved.length > 1 && resolved.every(other => other.probability === branch.probability) ? "tied" : "known",
+      conditions: branch.conditions.map(condition => ({ kind: "resolver", expression: condition }))
+    }
+  }));
+}
+
+export function resolveForcedReplacement({ plan, parentStateNodeId, replacements, dataset }) {
+  const parentState = plan.stateNodes[parentStateNodeId];
+  if (!parentState) throw new ResolutionError(`State ${parentStateNodeId} is unavailable`);
+  const required = pendingReplacementSlots(parentState);
+  if (!required.length) throw new ResolutionError("No forced replacement is required");
+  let branches = [{
+    state: clone(parentState),
+    events: [],
+    probability: 1,
+    probabilityStatus: "known",
+    conditions: [],
+    planCombatants: plan.combatants
+  }];
+  const selectedTargets = [];
+  for (const { side, slot } of required) {
+    const action = replacementList(replacements, side).find(candidate => Number(candidate.slot ?? 0) === slot);
+    if (!action || action.actionType !== "replacement" || action.side !== side || action.consumesTurn !== false) {
+      throw new ResolutionError(`${side} slot ${slot + 1} needs a forced replacement`);
+    }
+    const currentActiveKey = activeKey(parentState, side, slot);
+    const target = plan.combatants[action.switchToKey];
+    const targetState = parentState.combatantStates[action.switchToKey];
+    if (!target || target.side !== side || activeKeys(parentState, side).includes(target.combatantKey) || selectedTargets.includes(target.combatantKey) || Number(targetState?.hp?.max) <= 0) {
+      throw new ResolutionError(`${side} slot ${slot + 1} replacement target is invalid`);
+    }
+    selectedTargets.push(target.combatantKey);
+    branches = branches.flatMap(branch => applySwitch(branch, side, slot, {
+      actionType: "switch",
+      actorKey: currentActiveKey,
+      switchToKey: action.switchToKey,
+      switchKind: "forced"
+    }, plan, dataset));
+  }
+  branches = branches.map(branch => applyDefeatedEnemyExperience(branch, plan, dataset));
+  for (const branch of branches) updateBattleBoundary(branch, plan);
+  return mergeEquivalent(branches).map((branch, index) => ({
+    previewOutcomeId: `replacement-${index + 1}-${shortHash(stableStringify({ state: branch.state.stateHash, conditions: branch.conditions }))}`,
+    state: branch.state,
+    events: branch.events,
+    outcome: {
+      kind: branch.probability === 1 ? "decision" : "chance",
+      label: pendingReplacementSlots(branch.state).length ? "Replacement faints on entry" : "Replacement enters battle",
+      probability: branch.probability,
+      probabilityStatus: branch.probability === null ? "unknown" : "known",
+      conditions: branch.conditions.map(condition => ({ kind: "resolver", expression: condition }))
+    }
+  }));
+}

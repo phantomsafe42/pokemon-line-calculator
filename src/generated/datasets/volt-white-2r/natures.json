@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "gameId": "volt-white-2r",
+  "kind": "natures",
+  "records": {
+    "hardy": {
+      "num": 0,
+      "id": "hardy",
+      "name": "Hardy",
+      "boostedStat": "atk",
+      "nerfedStat": "atk",
+      "sourceConfidence": "consumer-derived"
+    },
+    "lonely": {
+      "num": 1,
+      "id": "lonely",
+      "name": "Lonely",
+      "boostedStat": "atk",
+      "nerfedStat": "def",
+      "sourceConfidence": "consumer-derived"
+    },
+    "brave": {
+      "num": 2,
+      "id": "brave",
+      "name": "Brave",
+      "boostedStat": "atk",
+      "nerfedStat": "spe",
+      "sourceConfidence": "consumer-derived"
+    },
+    "adamant": {
+      "num": 3,
+      "id": "adamant",
+      "name": "Adamant",
+      "boostedStat": "atk",
+      "nerfedStat": "spa",
+      "sourceConfidence": "consumer-derived"
+    },
+    "naughty": {
+      "num": 4,
+      "id": "naughty",
+      "name": "Naughty",
+      "boostedStat": "atk",
+      "nerfedStat": "spd",
+      "sourceConfidence": "consumer-derived"
+    },
+    "bold": {
+      "num": 5,
+      "id": "bold",
+      "name": "Bold",
+      "boostedStat": "def",
+      "nerfedStat": "atk",
+      "sourceConfidence": "consumer-derived"
+    },
+    "docile": {
+      "num": 6,
+      "id": "docile",
+      "name": "Docile",
+      "boostedStat": "def",
+      "nerfedStat": "def",
+      "sourceConfidence": "consumer-derived"
+    },
+    "relaxed": {
+      "num": 7,
+      "id": "relaxed",
+      "name": "Relaxed",
+      "boostedStat": "def",
+      "nerfedStat": "spe",
+      "sourceConfidence": "consumer-derived"
+    },
+    "impish": {
+      "num": 8,
+      "id": "impish",
+      "name": "Impish",
+      "boostedStat": "def",
+      "nerfedStat": "spa",
+      "sourceConfidence": "consumer-derived"
+    },
+    "lax": {
+      "num": 9,
+      "id": "lax",
+      "name": "Lax",
+      "boostedStat": "def",
+      "nerfedStat": "spd",
+      "sourceConfidence": "consumer-derived"
+    },
+    "timid": {
+      "num": 10,
+      "id": "timid",
+      "name": "Timid",
+      "boostedStat": "spe",
+      "nerfedStat": "atk",
+      "sourceConfidence": "consumer-derived"
+    },
+    "hasty": {
+      "num": 11,
+      "id": "hasty",
+      "name": "Hasty",
+      "boostedStat": "spe",
+      "nerfedStat": "def",
+      "sourceConfidence": "consumer-derived"
+    },
+    "serious": {
+      "num": 12,
+      "id": "serious",
+      "name": "Serious",
+      "boostedStat": "spa",
+      "nerfedStat": "spa",
+      "sourceConfidence": "consumer-derived"
+    },
+    "jolly": {
+      "num": 13,
+      "id": "jolly",
+      "name": "Jolly",
+      "boostedStat": "spe",
+      "nerfedStat": "spa",
+      "sourceConfidence": "consumer-derived"
+    },
+    "naive": {
+      "num": 14,
+      "id": "naive",
+      "name": "Naive",
+      "boostedStat": "spe",
+      "nerfedStat": "spd",
+      "sourceConfidence": "consumer-derived"
+    },
+    "modest": {
+      "num": 15,
+      "id": "modest",
+      "name": "Modest",
+      "boostedStat": "spa",
+      "nerfedStat": "atk",
+      "sourceConfidence": "consumer-derived"
+    },
+    "mild": {
+      "num": 16,
+      "id": "mild",
+      "name": "Mild",
+      "boostedStat": "spa",
+      "nerfedStat": "def",
+      "sourceConfidence": "consumer-derived"
+    },
+    "quiet": {
+      "num": 17,
+      "id": "quiet",
+      "name": "Quiet",
+      "boostedStat": "spa",
+      "nerfedStat": "spe",
+      "sourceConfidence": "consumer-derived"
+    },
+    "bashful": {
+      "num": 18,
+      "id": "bashful",
+      "name": "Bashful",
+      "boostedStat": "spd",
+      "nerfedStat": "spd",
+      "sourceConfidence": "consumer-derived"
+    },
+    "rash": {
+      "num": 19,
+      "id": "rash",
+      "name": "Rash",
+      "boostedStat": "spa",
+      "nerfedStat": "spd",
+      "sourceConfidence": "consumer-derived"
+    },
+    "calm": {
+      "num": 20,
+      "id": "calm",
+      "name": "Calm",
+      "boostedStat": "spd",
+      "nerfedStat": "atk",
+      "sourceConfidence": "consumer-derived"
+    },
+    "gentle": {
+      "num": 21,
+      "id": "gentle",
+      "name": "Gentle",
+      "boostedStat": "spd",
+      "nerfedStat": "def",
+      "sourceConfidence": "consumer-derived"
+    },
+    "sassy": {
+      "num": 22,
+      "id": "sassy",
+      "name": "Sassy",
+      "boostedStat": "spd",
+      "nerfedStat": "spe",
+      "sourceConfidence": "consumer-derived"
+    },
+    "careful": {
+      "num": 23,
+      "id": "careful",
+      "name": "Careful",
+      "boostedStat": "spd",
+      "nerfedStat": "spa",
+      "sourceConfidence": "consumer-derived"
+    },
+    "quirky": {
+      "num": 24,
+      "id": "quirky",
+      "name": "Quirky",
+      "boostedStat": "spe",
+      "nerfedStat": "spe",
+      "sourceConfidence": "consumer-derived"
+    }
+  }
+}

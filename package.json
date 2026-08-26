@@ -1,0 +1,25 @@
+{
+  "name": "pokemon-line-calculator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node tools/run_portable_tests.mjs",
+    "test:workspace": "node --test tests/local_testing_state_endpoint.test.mjs tests/server_projection.test.mjs",
+    "test:contract": "node --test tests/contract.test.mjs tests/graph.test.mjs",
+    "test:browser": "node tests/browser_smoke.mjs",
+    "test:browser:public": "node tests/public_browser_smoke.mjs",
+    "build:move-reference": "node tools/build_showdown_move_reference.mjs",
+    "check:move-reference": "node tools/build_showdown_move_reference.mjs --check",
+    "sync:workspace-dependencies": "node tools/sync_workspace_dependencies.mjs --sync",
+    "check:workspace-dependencies": "node tools/sync_workspace_dependencies.mjs --check",
+    "check:generated": "node tools/verify_generated_dependencies.mjs",
+    "build:public": "node tools/build_public.mjs && node tools/check_public_build.mjs",
+    "check:public": "node tools/check_public_build.mjs",
+    "check:publication": "node tools/check_repository_publication.mjs",
+    "check": "node tools/check_javascript_syntax.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

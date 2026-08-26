@@ -1,0 +1,336 @@
+{
+  "kind": "pokemon-battle-plan",
+  "schemaVersion": 1,
+  "planId": "plan-vw2r-contract-fixture",
+  "name": "VW2R Branch Contract Fixture",
+  "createdAt": "2026-08-23T00:00:00.000Z",
+  "updatedAt": "2026-08-23T00:00:00.000Z",
+  "documentRevision": 4,
+  "game": {
+    "gameId": "volt-white-2r",
+    "battleFormat": "singles",
+    "trainerId": "fixture-trainer",
+    "trainerVariantId": null
+  },
+  "mechanicsFingerprint": {
+    "engineId": "smogon-calc",
+    "engineVersion": "0.11.0",
+    "damageGeneration": 5,
+    "canonicalDataGeneration": 9,
+    "mechanicsProfile": "vw2r-complete-pchal-egglocke-challenge-v1",
+    "datasetManifestHash": "fixture-manifest",
+    "battleMechanicsHash": "fixture-mechanics"
+  },
+  "sourceSnapshot": {
+    "playerCollectionUpdatedAt": "2026-08-23T00:00:00.000Z",
+    "playerRosterHash": "fixture-player-roster",
+    "trainerSnapshotHash": "fixture-trainer-roster"
+  },
+  "combatants": {
+    "player:unique:samurott-fixture": {
+      "combatantKey": "player:unique:samurott-fixture",
+      "side": "player",
+      "source": {
+        "kind": "fixture",
+        "pid": 1001,
+        "uniqueKey": "samurott-fixture",
+        "trainerId": null,
+        "trainerVariantId": null,
+        "trainerSlot": null
+      },
+      "speciesId": "samurott",
+      "formId": null,
+      "displayName": "Samurott",
+      "nickname": "Example",
+      "level": 40,
+      "gender": "M",
+      "natureId": "adamant",
+      "ivs": { "hp": 31, "atk": 31, "def": 31, "spa": 31, "spd": 31, "spe": 31 },
+      "evs": { "hp": 0, "atk": 0, "def": 0, "spa": 0, "spd": 0, "spe": 0 },
+      "originalAbilityId": "torrent",
+      "originalItemId": "mysticwater",
+      "originalTypeIds": ["water"],
+      "moves": [
+        { "moveId": "aquajet", "maxPp": 20 },
+        { "moveId": "revenge", "maxPp": 10 }
+      ]
+    },
+    "player:unique:lucario-fixture": {
+      "combatantKey": "player:unique:lucario-fixture",
+      "side": "player",
+      "source": {
+        "kind": "fixture",
+        "pid": 1002,
+        "uniqueKey": "lucario-fixture",
+        "trainerId": null,
+        "trainerVariantId": null,
+        "trainerSlot": null
+      },
+      "speciesId": "lucario",
+      "formId": null,
+      "displayName": "Lucario",
+      "nickname": "Branch",
+      "level": 40,
+      "gender": "F",
+      "natureId": "jolly",
+      "ivs": { "hp": 31, "atk": 31, "def": 31, "spa": 31, "spd": 31, "spe": 31 },
+      "evs": { "hp": 0, "atk": 0, "def": 0, "spa": 0, "spd": 0, "spe": 0 },
+      "originalAbilityId": "innerfocus",
+      "originalItemId": null,
+      "originalTypeIds": ["fighting", "steel"],
+      "moves": [
+        { "moveId": "drainpunch", "maxPp": 10 }
+      ]
+    },
+    "enemy:trainer:fixture-trainer:slot:1": {
+      "combatantKey": "enemy:trainer:fixture-trainer:slot:1",
+      "side": "enemy",
+      "source": {
+        "kind": "standardized-trainer",
+        "pid": null,
+        "uniqueKey": null,
+        "trainerId": "fixture-trainer",
+        "trainerVariantId": null,
+        "trainerSlot": 1
+      },
+      "speciesId": "krookodile",
+      "formId": null,
+      "displayName": "Krookodile",
+      "nickname": "",
+      "level": 40,
+      "gender": "F",
+      "natureId": "adamant",
+      "ivs": { "hp": 31, "atk": 31, "def": 31, "spa": 31, "spd": 31, "spe": 31 },
+      "evs": { "hp": 0, "atk": 0, "def": 0, "spa": 0, "spd": 0, "spe": 0 },
+      "originalAbilityId": "intimidate",
+      "originalItemId": "sitrusberry",
+      "originalTypeIds": ["ground", "dark"],
+      "moves": [
+        { "moveId": "crunch", "maxPp": 15 }
+      ]
+    }
+  },
+  "initialStateNodeId": "state-root",
+  "stateNodes": {
+    "state-root": {
+      "stateNodeId": "state-root",
+      "parentActionGroupId": null,
+      "turnNumber": 0,
+      "createdOrder": 0,
+      "outcome": {
+        "kind": "initial",
+        "label": "Initial state",
+        "probability": 1,
+        "probabilityStatus": "known",
+        "conditions": []
+      },
+      "active": {
+        "playerCombatantKey": "player:unique:samurott-fixture",
+        "enemyCombatantKey": "enemy:trainer:fixture-trainer:slot:1"
+      },
+      "combatantStates": {
+        "player:unique:samurott-fixture": { "hp": { "min": 120, "max": 120, "maxHp": 120 }, "majorStatus": null },
+        "player:unique:lucario-fixture": { "hp": { "min": 110, "max": 110, "maxHp": 110 }, "majorStatus": null },
+        "enemy:trainer:fixture-trainer:slot:1": { "hp": { "min": 130, "max": 130, "maxHp": 130 }, "majorStatus": null }
+      },
+      "fieldState": { "global": {}, "sides": { "player": {}, "enemy": {} } },
+      "resolutionEventIds": [],
+      "childActionGroupIds": ["actions-turn-1-main"],
+      "stateHash": "fixture-state-root",
+      "status": "resolved",
+      "displaySnapshot": {
+        "turnNumber": 0,
+        "outcomeLabel": "Initial state",
+        "player": { "combatantKey": "player:unique:samurott-fixture", "speciesId": "samurott", "displayName": "Samurott", "spriteId": "samurott", "action": null },
+        "enemy": { "combatantKey": "enemy:trainer:fixture-trainer:slot:1", "speciesId": "krookodile", "displayName": "Krookodile", "spriteId": "krookodile", "action": null }
+      }
+    },
+    "state-turn-1-main": {
+      "stateNodeId": "state-turn-1-main",
+      "parentActionGroupId": "actions-turn-1-main",
+      "turnNumber": 1,
+      "createdOrder": 2,
+      "outcome": {
+        "kind": "chance",
+        "label": "Both Pokémon survive",
+        "probability": 1,
+        "probabilityStatus": "known",
+        "conditions": []
+      },
+      "active": {
+        "playerCombatantKey": "player:unique:samurott-fixture",
+        "enemyCombatantKey": "enemy:trainer:fixture-trainer:slot:1"
+      },
+      "combatantStates": {
+        "player:unique:samurott-fixture": { "hp": { "min": 91, "max": 98, "maxHp": 120 }, "majorStatus": null },
+        "player:unique:lucario-fixture": { "hp": { "min": 110, "max": 110, "maxHp": 110 }, "majorStatus": null },
+        "enemy:trainer:fixture-trainer:slot:1": { "hp": { "min": 110, "max": 114, "maxHp": 130 }, "majorStatus": null }
+      },
+      "fieldState": { "global": {}, "sides": { "player": {}, "enemy": {} } },
+      "resolutionEventIds": ["event-turn-1-player-damage", "event-turn-1-enemy-damage"],
+      "childActionGroupIds": ["actions-turn-2-revenge", "actions-turn-2-switch"],
+      "stateHash": "fixture-state-turn-1-main",
+      "status": "resolved",
+      "displaySnapshot": {
+        "turnNumber": 1,
+        "outcomeLabel": "Both Pokémon survive",
+        "player": { "combatantKey": "player:unique:samurott-fixture", "speciesId": "samurott", "displayName": "Samurott", "spriteId": "samurott", "action": { "actionType": "move", "moveId": "aquajet", "moveName": "Aqua Jet", "damagePercent": { "min": 12.3, "max": 15.4, "label": "12.3–15.4%" } } },
+        "enemy": { "combatantKey": "enemy:trainer:fixture-trainer:slot:1", "speciesId": "krookodile", "displayName": "Krookodile", "spriteId": "krookodile", "action": { "actionType": "move", "moveId": "crunch", "moveName": "Crunch", "damagePercent": { "min": 18.3, "max": 24.2, "label": "18.3–24.2%" } } }
+      }
+    },
+    "state-turn-2-ko": {
+      "stateNodeId": "state-turn-2-ko",
+      "parentActionGroupId": "actions-turn-2-revenge",
+      "turnNumber": 2,
+      "createdOrder": 4,
+      "outcome": {
+        "kind": "chance",
+        "label": "Enemy faints",
+        "probability": 0.1875,
+        "probabilityStatus": "known",
+        "conditions": [{ "kind": "damage-threshold", "expression": "damage >= target current HP" }]
+      },
+      "active": {
+        "playerCombatantKey": "player:unique:samurott-fixture",
+        "enemyCombatantKey": "enemy:trainer:fixture-trainer:slot:1"
+      },
+      "combatantStates": {
+        "player:unique:samurott-fixture": { "hp": { "min": 91, "max": 98, "maxHp": 120 }, "majorStatus": null },
+        "player:unique:lucario-fixture": { "hp": { "min": 110, "max": 110, "maxHp": 110 }, "majorStatus": null },
+        "enemy:trainer:fixture-trainer:slot:1": { "hp": { "min": 0, "max": 0, "maxHp": 130 }, "majorStatus": null }
+      },
+      "fieldState": { "global": {}, "sides": { "player": {}, "enemy": {} } },
+      "resolutionEventIds": ["event-turn-2-revenge-ko", "event-turn-2-enemy-skipped"],
+      "childActionGroupIds": [],
+      "stateHash": "fixture-state-turn-2-ko",
+      "status": "resolved",
+      "displaySnapshot": {
+        "turnNumber": 2,
+        "outcomeLabel": "Enemy faints",
+        "player": { "combatantKey": "player:unique:samurott-fixture", "speciesId": "samurott", "displayName": "Samurott", "spriteId": "samurott", "action": { "actionType": "move", "moveId": "revenge", "moveName": "Revenge", "damagePercent": { "min": 84.6, "max": 100, "label": "84.6–100%" } } },
+        "enemy": { "combatantKey": "enemy:trainer:fixture-trainer:slot:1", "speciesId": "krookodile", "displayName": "Krookodile", "spriteId": "krookodile", "action": { "actionType": "move", "moveId": "crunch", "moveName": "Crunch", "resultLabel": "Fainted before moving" } }
+      }
+    },
+    "state-turn-2-survive": {
+      "stateNodeId": "state-turn-2-survive",
+      "parentActionGroupId": "actions-turn-2-revenge",
+      "turnNumber": 2,
+      "createdOrder": 5,
+      "outcome": {
+        "kind": "chance",
+        "label": "Enemy survives",
+        "probability": 0.8125,
+        "probabilityStatus": "known",
+        "conditions": [{ "kind": "damage-threshold", "expression": "damage < target current HP" }]
+      },
+      "active": {
+        "playerCombatantKey": "player:unique:samurott-fixture",
+        "enemyCombatantKey": "enemy:trainer:fixture-trainer:slot:1"
+      },
+      "combatantStates": {
+        "player:unique:samurott-fixture": { "hp": { "min": 62, "max": 76, "maxHp": 120 }, "majorStatus": null },
+        "player:unique:lucario-fixture": { "hp": { "min": 110, "max": 110, "maxHp": 110 }, "majorStatus": null },
+        "enemy:trainer:fixture-trainer:slot:1": { "hp": { "min": 1, "max": 20, "maxHp": 130 }, "majorStatus": null }
+      },
+      "fieldState": { "global": {}, "sides": { "player": {}, "enemy": {} } },
+      "resolutionEventIds": ["event-turn-2-revenge-survive", "event-turn-2-crunch"],
+      "childActionGroupIds": [],
+      "stateHash": "fixture-state-turn-2-survive",
+      "status": "resolved",
+      "displaySnapshot": {
+        "turnNumber": 2,
+        "outcomeLabel": "Enemy survives",
+        "player": { "combatantKey": "player:unique:samurott-fixture", "speciesId": "samurott", "displayName": "Samurott", "spriteId": "samurott", "action": { "actionType": "move", "moveId": "revenge", "moveName": "Revenge", "damagePercent": { "min": 84.6, "max": 99.2, "label": "84.6–99.2%" } } },
+        "enemy": { "combatantKey": "enemy:trainer:fixture-trainer:slot:1", "speciesId": "krookodile", "displayName": "Krookodile", "spriteId": "krookodile", "action": { "actionType": "move", "moveId": "crunch", "moveName": "Crunch", "damagePercent": { "min": 18.3, "max": 24.2, "label": "18.3–24.2%" } } }
+      }
+    },
+    "state-turn-2-switch": {
+      "stateNodeId": "state-turn-2-switch",
+      "parentActionGroupId": "actions-turn-2-switch",
+      "turnNumber": 2,
+      "createdOrder": 7,
+      "outcome": {
+        "kind": "decision",
+        "label": "Lucario switches in",
+        "probability": null,
+        "probabilityStatus": "unknown",
+        "conditions": []
+      },
+      "active": {
+        "playerCombatantKey": "player:unique:lucario-fixture",
+        "enemyCombatantKey": "enemy:trainer:fixture-trainer:slot:1"
+      },
+      "combatantStates": {
+        "player:unique:samurott-fixture": { "hp": { "min": 91, "max": 98, "maxHp": 120 }, "majorStatus": null },
+        "player:unique:lucario-fixture": { "hp": { "min": 78, "max": 86, "maxHp": 110 }, "majorStatus": null },
+        "enemy:trainer:fixture-trainer:slot:1": { "hp": { "min": 110, "max": 114, "maxHp": 130 }, "majorStatus": null }
+      },
+      "fieldState": { "global": {}, "sides": { "player": {}, "enemy": {} } },
+      "resolutionEventIds": ["event-turn-2-switch", "event-turn-2-crunch-switch"],
+      "childActionGroupIds": [],
+      "stateHash": "fixture-state-turn-2-switch",
+      "status": "resolved",
+      "displaySnapshot": {
+        "turnNumber": 2,
+        "outcomeLabel": "Lucario switches in",
+        "player": { "combatantKey": "player:unique:lucario-fixture", "speciesId": "lucario", "displayName": "Lucario", "spriteId": "lucario", "action": { "actionType": "switch", "switchToKey": "player:unique:lucario-fixture", "resultLabel": "Switch to Lucario" } },
+        "enemy": { "combatantKey": "enemy:trainer:fixture-trainer:slot:1", "speciesId": "krookodile", "displayName": "Krookodile", "spriteId": "krookodile", "action": { "actionType": "move", "moveId": "crunch", "moveName": "Crunch", "damagePercent": { "min": 21.8, "max": 29.1, "label": "21.8–29.1%" } } }
+      }
+    }
+  },
+  "actionGroups": {
+    "actions-turn-1-main": {
+      "actionGroupId": "actions-turn-1-main",
+      "parentStateNodeId": "state-root",
+      "turnNumber": 1,
+      "createdOrder": 1,
+      "actions": {
+        "player": { "actionType": "move", "actorKey": "player:unique:samurott-fixture", "moveId": "aquajet", "targetKeys": ["enemy:trainer:fixture-trainer:slot:1"], "mechanicActivations": [], "declaredAtStateHash": "fixture-state-root" },
+        "enemy": { "actionType": "move", "actorKey": "enemy:trainer:fixture-trainer:slot:1", "moveId": "crunch", "targetKeys": ["player:unique:samurott-fixture"], "mechanicActivations": [], "declaredAtStateHash": "fixture-state-root" }
+      },
+      "actionSignature": "fixture-turn-1-aquajet-crunch",
+      "outcomeStateNodeIds": ["state-turn-1-main"],
+      "defaultOutcomeStateNodeId": "state-turn-1-main",
+      "status": "resolved"
+    },
+    "actions-turn-2-revenge": {
+      "actionGroupId": "actions-turn-2-revenge",
+      "parentStateNodeId": "state-turn-1-main",
+      "turnNumber": 2,
+      "createdOrder": 3,
+      "actions": {
+        "player": { "actionType": "move", "actorKey": "player:unique:samurott-fixture", "moveId": "revenge", "targetKeys": ["enemy:trainer:fixture-trainer:slot:1"], "mechanicActivations": [], "declaredAtStateHash": "fixture-state-turn-1-main" },
+        "enemy": { "actionType": "move", "actorKey": "enemy:trainer:fixture-trainer:slot:1", "moveId": "crunch", "targetKeys": ["player:unique:samurott-fixture"], "mechanicActivations": [], "declaredAtStateHash": "fixture-state-turn-1-main" }
+      },
+      "actionSignature": "fixture-turn-2-revenge-crunch",
+      "outcomeStateNodeIds": ["state-turn-2-ko", "state-turn-2-survive"],
+      "defaultOutcomeStateNodeId": "state-turn-2-survive",
+      "status": "resolved"
+    },
+    "actions-turn-2-switch": {
+      "actionGroupId": "actions-turn-2-switch",
+      "parentStateNodeId": "state-turn-1-main",
+      "turnNumber": 2,
+      "createdOrder": 6,
+      "actions": {
+        "player": { "actionType": "switch", "actorKey": "player:unique:samurott-fixture", "switchToKey": "player:unique:lucario-fixture", "switchKind": "voluntary", "declaredAtStateHash": "fixture-state-turn-1-main" },
+        "enemy": { "actionType": "move", "actorKey": "enemy:trainer:fixture-trainer:slot:1", "moveId": "crunch", "targetKeys": ["player:unique:lucario-fixture"], "mechanicActivations": [], "declaredAtStateHash": "fixture-state-turn-1-main" }
+      },
+      "actionSignature": "fixture-turn-2-switch-crunch",
+      "outcomeStateNodeIds": ["state-turn-2-switch"],
+      "defaultOutcomeStateNodeId": "state-turn-2-switch",
+      "status": "resolved"
+    }
+  },
+  "resolutionEvents": {
+    "event-turn-1-player-damage": { "eventId": "event-turn-1-player-damage", "source": "planned", "turnNumber": 1, "step": 1, "eventType": "damage", "actorKey": "player:unique:samurott-fixture", "targetKey": "enemy:trainer:fixture-trainer:slot:1", "moveId": "aquajet", "damageHp": { "min": 16, "max": 20 }, "damagePercent": { "min": 12.3, "max": 15.4 }, "changes": [], "metadata": {} },
+    "event-turn-1-enemy-damage": { "eventId": "event-turn-1-enemy-damage", "source": "planned", "turnNumber": 1, "step": 2, "eventType": "damage", "actorKey": "enemy:trainer:fixture-trainer:slot:1", "targetKey": "player:unique:samurott-fixture", "moveId": "crunch", "damageHp": { "min": 22, "max": 29 }, "damagePercent": { "min": 18.3, "max": 24.2 }, "changes": [], "metadata": {} },
+    "event-turn-2-revenge-ko": { "eventId": "event-turn-2-revenge-ko", "source": "planned", "turnNumber": 2, "step": 1, "eventType": "damage", "actorKey": "player:unique:samurott-fixture", "targetKey": "enemy:trainer:fixture-trainer:slot:1", "moveId": "revenge", "damageHp": { "min": 110, "max": 130 }, "damagePercent": { "min": 84.6, "max": 100 }, "changes": [], "metadata": { "thresholdOutcome": "ko" } },
+    "event-turn-2-enemy-skipped": { "eventId": "event-turn-2-enemy-skipped", "source": "planned", "turnNumber": 2, "step": 2, "eventType": "action-skipped", "actorKey": "enemy:trainer:fixture-trainer:slot:1", "reason": "actor-fainted-before-moving", "changes": [], "metadata": {} },
+    "event-turn-2-revenge-survive": { "eventId": "event-turn-2-revenge-survive", "source": "planned", "turnNumber": 2, "step": 1, "eventType": "damage", "actorKey": "player:unique:samurott-fixture", "targetKey": "enemy:trainer:fixture-trainer:slot:1", "moveId": "revenge", "damageHp": { "min": 90, "max": 109 }, "damagePercent": { "min": 69.2, "max": 83.8 }, "changes": [], "metadata": { "thresholdOutcome": "survive" } },
+    "event-turn-2-crunch": { "eventId": "event-turn-2-crunch", "source": "planned", "turnNumber": 2, "step": 2, "eventType": "damage", "actorKey": "enemy:trainer:fixture-trainer:slot:1", "targetKey": "player:unique:samurott-fixture", "moveId": "crunch", "damageHp": { "min": 22, "max": 29 }, "damagePercent": { "min": 18.3, "max": 24.2 }, "changes": [], "metadata": {} },
+    "event-turn-2-switch": { "eventId": "event-turn-2-switch", "source": "planned", "turnNumber": 2, "step": 1, "eventType": "switch", "actorKey": "player:unique:samurott-fixture", "targetKey": "player:unique:lucario-fixture", "changes": [], "metadata": {} },
+    "event-turn-2-crunch-switch": { "eventId": "event-turn-2-crunch-switch", "source": "planned", "turnNumber": 2, "step": 2, "eventType": "damage", "actorKey": "enemy:trainer:fixture-trainer:slot:1", "targetKey": "player:unique:lucario-fixture", "moveId": "crunch", "damageHp": { "min": 24, "max": 32 }, "damagePercent": { "min": 21.8, "max": 29.1 }, "changes": [], "metadata": {} }
+  },
+  "workingDraft": null
+}

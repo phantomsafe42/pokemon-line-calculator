@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "save-mechanics-generated-copy/v1alpha1",
+  "coreVersion": "0.0.0-development",
+  "consumer": "plc-vw2r",
+  "adapter": "adapters/src/gen45/plc-vw2r.js",
+  "sourceTreeSha256": "6ACD810B89B7EC4DF6B91EF39CC1DC733A520D2E11C55E80FC7DD833366FF380",
+  "generatorVersion": "1.0.0",
+  "parityValidated": true,
+  "files": [
+    {
+      "path": "adapters/src/gen45/experience.js",
+      "bytes": 1171,
+      "sha256": "32947E57123C81FD44CBDD158662E6F8AC32566B6BFA5385A7583999A4BD9C21"
+    },
+    {
+      "path": "adapters/src/gen45/plc-vw2r.js",
+      "bytes": 6016,
+      "sha256": "1EAFEFFDFB0CA83EC49C114089378FFACCA9D08DB77651F037E19C8E99022142"
+    },
+    {
+      "path": "core/src/binary/little-endian.js",
+      "bytes": 2186,
+      "sha256": "011B7713078E3236F2D6E1C911228E77DC3940D00C38383876FED60E39D64A8D"
+    },
+    {
+      "path": "core/src/gen45/pokemon.js",
+      "bytes": 7122,
+      "sha256": "AECBF0DDF0BF5FF955C36A0A241FD301A497C95E9AAEC172C7E4177E53804DCC"
+    },
+    {
+      "path": "core/src/gen45/save-layout.js",
+      "bytes": 8045,
+      "sha256": "3FAE8B9A5DFFC3B54B89ED7C413CC76CBAC0B1EA05A45D7EC564E2B37FA35623"
+    },
+    {
+      "path": "package.json",
+      "bytes": 102,
+      "sha256": "851D0618B4CBE6BC9CC2835A25F6F42204357F863B0A50754522B50DDE319D37"
+    }
+  ]
+}

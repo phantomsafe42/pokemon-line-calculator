@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="plc-build-profile" content="local">
+  <title>Pokémon Line Calculator</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./styles.css?v=20260826-node-lanes">
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-title">
+      <p class="eyebrow">PLC · Battle planner</p>
+      <h1>Pokémon Line Calculator</h1>
+    </div>
+    <label class="game-control">Game
+      <select id="game-select">
+        <option value="">Select game…</option>
+        <option value="volt-white-2r">Pokémon Volt White 2 Redux Egglocke</option>
+      </select>
+    </label>
+    <p id="app-status" class="status" role="status">Select a game to begin.</p>
+  </header>
+
+  <main class="app-shell">
+    <section id="game-gate" class="panel game-gate">
+      <p class="eyebrow">First step</p>
+      <h2>Select the game you are planning</h2>
+      <p>Boxes, trainers, mechanics, and active plans are scoped to the selected game. Volt White 2 Redux is the first planner-ready adapter.</p>
+    </section>
+
+    <nav id="app-tabs" class="tabs" aria-label="PLC sections" hidden>
+      <button id="plc-tab" class="tab-button" type="button" role="tab" aria-selected="true" aria-controls="plc-panel">PLC</button>
+      <button id="boxes-tab" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="boxes-panel">Boxes</button>
+    </nav>
+
+    <section id="plc-panel" role="tabpanel" aria-labelledby="plc-tab" hidden>
+      <div class="planner-toolbar" aria-label="Plan actions">
+        <div>
+          <p class="eyebrow">Active plan</p>
+          <p id="plan-toolbar-label" class="toolbar-label">No battle plan open</p>
+        </div>
+        <div class="toolbar-actions">
+          <!-- PLC_LOCAL_ONLY_START --><span id="output-state-anchor"></span><!-- PLC_LOCAL_ONLY_END -->
+          <button id="commit-turn" type="button" disabled>Next Turn</button>
+          <button id="save-plan" type="button" class="secondary">Save Plan</button>
+          <!-- PLC_LOCAL_ONLY_START --><span id="live-edit-anchor"></span><!-- PLC_LOCAL_ONLY_END -->
+          <button id="new-plan" type="button" class="secondary">Begin Clean Plan</button>
+        </div>
+      </div>
+
+      <section id="workspace" class="workspace" hidden>
+        <section class="panel node-panel" aria-labelledby="tree-title">
+          <div class="section-heading compact-heading">
+            <div>
+              <p class="eyebrow">Navigation</p>
+              <h2 id="tree-title">Plan nodes</h2>
+            </div>
+            <div class="heading-meta"><span id="turn-label" class="pill"></span><span id="revision-label" class="pill"></span></div>
+          </div>
+          <div id="node-tree" class="node-tree" role="tree" aria-label="Battle plan nodes"></div>
+        </section>
+
+        <div id="battle-workspace" class="battle-workspace">
+          <section id="player-action-panel" class="panel action-panel" aria-label="Player Action"></section>
+
+          <div class="center-column">
+            <section class="panel field-panel" aria-labelledby="field-title">
+              <div class="section-heading compact-heading"><div><p class="eyebrow">Battle state</p><h2 id="field-title">Field</h2></div></div>
+              <div id="field-state"></div>
+            </section>
+            <section class="panel outcomes-panel" aria-labelledby="preview-title">
+              <div class="section-heading compact-heading">
+                <div><p class="eyebrow">Selected line</p><h2 id="preview-title">Possible outcomes</h2></div>
+              </div>
+              <p id="readiness" class="fine-print">Choose a move or switch on both sides.</p>
+              <div id="preview-outcomes" class="outcomes"><p class="empty">Choose a move or switch on both sides to calculate the turn.</p></div>
+            </section>
+          </div>
+
+          <section id="enemy-action-panel" class="panel action-panel" aria-label="Enemy Action"></section>
+        </div>
+      </section>
+
+      <section id="empty-plan" class="panel empty-plan">
+        <h2>No active plan</h2>
+        <p>Select or import Pokémon in Boxes, then use <strong>Begin Clean Plan</strong> to choose a party and trainer.</p>
+      </section>
+    </section>
+
+    <section id="boxes-panel" role="tabpanel" aria-labelledby="boxes-tab" hidden>
+      <div class="box-toolbar panel">
+        <div>
+          <p class="eyebrow">Game-scoped library</p>
+          <h2 id="boxes-heading">Boxes</h2>
+          <p class="fine-print">A Pokémon is stored once per Box. Every Party in that Box references the same editable record.</p>
+        </div>
+        <div class="toolbar-actions">
+          <label class="file-button">Import .sav
+            <input id="save-import" type="file" accept=".sav,.dsv,application/octet-stream">
+          </label>
+          <button id="showdown-open" type="button" class="secondary">Showdown Import</button>
+          <button id="new-box" type="button" class="secondary">New Box</button>
+          <button id="export-boxes" type="button" class="secondary">Export Boxes JSON</button>
+          <label class="file-button secondary">Import Boxes JSON
+            <input id="import-boxes" type="file" accept=".json,application/json">
+          </label>
+        </div>
+      </div>
+      <div id="boxes-list" class="boxes-list"></div>
+    </section>
+  </main>
+
+  <dialog id="save-import-dialog" class="wide-dialog" aria-labelledby="save-import-title">
+    <form method="dialog" class="dialog-card">
+      <div class="section-heading">
+        <div><p class="eyebrow">Read-only save snapshot</p><h2 id="save-import-title">Select PC Boxes</h2></div>
+        <button type="submit" value="cancel" class="icon-button secondary" aria-label="Close">×</button>
+      </div>
+      <div class="save-import-summary">
+        <strong id="save-import-filename">Selected save</strong>
+        <p id="save-import-party-summary">The active party is always imported.</p>
+      </div>
+      <div class="section-heading compact-heading save-import-heading">
+        <div><h3>PC Boxes</h3><p class="fine-print">Choose any PC Boxes to add beside the mandatory party. Pokémon previews stay hidden until this import is saved.</p></div>
+        <div class="toolbar-actions"><button id="select-all-save-boxes" type="button" class="secondary">Select All</button><button id="clear-save-boxes" type="button" class="secondary">Clear</button></div>
+      </div>
+      <div id="save-import-pc-boxes" class="save-box-selection"></div>
+      <p id="save-import-status" class="fine-print">No PC Boxes selected. The active party will still be imported.</p>
+      <div class="dialog-actions"><button type="submit" value="cancel" class="secondary">Cancel</button><button id="confirm-save-import" type="button">Import Party + Selected Boxes</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="plan-context-dialog" class="wide-dialog" aria-labelledby="plan-context-title">
+    <form method="dialog" class="dialog-card" id="plan-context-form">
+      <div class="section-heading">
+        <div><p class="eyebrow">Plan context</p><h2 id="plan-context-title">Begin a clean plan</h2></div>
+        <button id="plan-context-close" type="submit" value="cancel" class="icon-button secondary" aria-label="Close">×</button>
+      </div>
+      <div class="context-grid">
+        <label>Trainer
+          <select id="trainer-select"><option value="">Select trainer…</option></select>
+        </label>
+        <label>Battle format
+          <input id="battle-format" value="Select a trainer" readonly>
+        </label>
+        <label id="variant-field" hidden>ROM trainer variant
+          <select id="variant-select"></select>
+        </label>
+        <label>Plan name
+          <input id="plan-name" maxlength="240" value="VW2R Battle Plan">
+        </label>
+        <label>Starting weather
+          <select id="initial-weather">
+            <option value="">Clear</option><option value="rain">Rain</option><option value="sun">Sun</option><option value="sand">Sand</option><option value="hail">Hail</option>
+          </select>
+        </label>
+        <label>Starting terrain
+          <select id="initial-terrain">
+            <option value="">None</option><option value="electric">Electric</option><option value="grassy">Grassy</option><option value="misty">Misty</option><option value="psychic">Psychic</option>
+          </select>
+        </label>
+      </div>
+
+      <section class="party-selector-panel">
+        <div class="section-heading compact-heading">
+          <div><p class="eyebrow">Player roster</p><h3>Party selector</h3></div>
+          <button id="edit-party-selection" type="button" class="secondary" hidden>Edit selection</button>
+        </div>
+        <div id="party-selector-controls">
+          <div class="context-grid party-source-controls">
+            <label>Box
+              <select id="context-box-select"><option value="">Select Box…</option></select>
+            </label>
+            <label>Selection source
+              <select id="party-source-mode"><option value="party">Saved Party</option><option value="manual">Choose up to 6</option></select>
+            </label>
+            <label id="saved-party-field">Party
+              <select id="context-party-select"><option value="">Select Party…</option></select>
+            </label>
+          </div>
+          <div id="context-pokemon-grid" class="context-pokemon-grid"><p class="empty">Choose a Box. If you do not have one yet, open the Boxes tab and import a save or Showdown set.</p></div>
+          <div class="dialog-actions"><button id="save-party-selection" type="button" disabled>Save Party Selection</button></div>
+        </div>
+        <div id="party-selection-summary" class="party-selection-summary" hidden></div>
+      </section>
+
+      <div class="dialog-actions split-actions">
+        <p id="context-status" class="fine-print">Select a trainer and save a party selection.</p>
+        <button id="begin-plan" type="button" disabled>Begin</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="pokemon-editor-dialog" class="wide-dialog" aria-labelledby="pokemon-editor-title">
+    <form method="dialog" id="pokemon-editor-form" class="dialog-card">
+      <div class="section-heading">
+        <div class="editor-heading-identity">
+          <div id="editor-sprite-preview" class="editor-sprite-preview" aria-label="Selected species sprite"></div>
+          <div><p class="eyebrow">Canonical Box record</p><h2 id="pokemon-editor-title">Edit Pokémon</h2></div>
+        </div>
+        <button type="submit" value="cancel" class="icon-button secondary" aria-label="Close">×</button>
+      </div>
+      <input id="editor-box-id" type="hidden"><input id="editor-pokemon-id" type="hidden"><input id="editor-context" type="hidden">
+      <div class="editor-grid">
+        <label>Species<select id="editor-species"></select></label>
+        <label>Nickname<input id="editor-nickname" maxlength="40"></label>
+        <label>Level<input id="editor-level" type="number" min="1" max="100"></label>
+        <label>Gender<select id="editor-gender"><option value="">Unspecified</option><option value="M">Male</option><option value="F">Female</option><option value="N">Genderless</option></select></label>
+        <label>Nature<select id="editor-nature"></select></label>
+        <label>Ability<select id="editor-ability"></select></label>
+        <label>Item<select id="editor-item"></select></label>
+        <label>Hidden Power type<select id="editor-hidden-power-type"></select><small>Auto derives from IVs. Selecting a type does not change IVs.</small></label>
+        <label id="editor-hp-field" hidden>Starting HP<input id="editor-starting-hp" type="number" min="0"></label>
+        <label id="editor-status-field" hidden>Starting status<select id="editor-starting-status"><option value="">None</option><option value="brn">Burn</option><option value="par">Paralysis</option><option value="psn">Poison</option><option value="tox">Bad poison</option><option value="slp">Sleep</option><option value="frz">Freeze</option></select></label>
+      </div>
+      <div class="stat-editor-wrap">
+        <table class="stat-editor"><thead><tr><th>Stat</th><th>Base</th><th>IV</th><th>EV</th><th>Actual</th></tr></thead><tbody id="editor-stats"></tbody></table>
+      </div>
+      <section class="move-editor-section"><h3>Moves</h3><div id="editor-moves" class="move-editor"></div></section>
+      <p id="editor-error" class="fine-print error-text" role="alert"></p>
+      <div class="dialog-actions"><button type="submit" value="cancel" class="secondary">Cancel</button><button id="save-pokemon" type="button">Save Pokémon</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="showdown-dialog" aria-labelledby="showdown-title">
+    <form method="dialog" class="dialog-card">
+      <div class="section-heading"><div><p class="eyebrow">Import / export</p><h2 id="showdown-title">Showdown Tool</h2></div><button type="submit" value="cancel" class="icon-button secondary" aria-label="Close">×</button></div>
+      <textarea id="showdown-text" rows="14" placeholder="Paste one or more Showdown sets…"></textarea>
+      <div class="context-grid"><label>Destination<select id="showdown-destination"><option value="new">Create a new Box</option></select></label></div>
+      <p id="showdown-status" class="fine-print">Showdown imports can create a Box or add records to an existing Box.</p>
+      <div class="dialog-actions"><button id="copy-showdown" type="button" class="secondary">Copy</button><button id="import-showdown" type="button">Import</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="output-dialog" class="wide-dialog" aria-labelledby="export-title">
+    <form method="dialog" class="dialog-card">
+      <div class="section-heading"><div><p class="eyebrow">Portable file</p><h2 id="export-title">Output selection</h2></div><button type="submit" value="cancel" class="icon-button secondary" aria-label="Close">×</button></div>
+      <div id="export-selection" class="export-selection"></div>
+      <div class="file-actions"><button id="output-plan" type="button" disabled>Output Plan File</button><button id="recalculate-plan" type="button" hidden>Recalculate Plan</button><label class="file-button secondary">Import Plan File<input id="import-plan" type="file" accept=".json,.plc-plan.json,application/json"></label></div>
+      <p id="file-status" class="fine-print">Import and output never publish anything to Overlay or OBS.</p>
+    </form>
+  </dialog>
+
+  <!-- PLC_LOCAL_ONLY_START --><dialog id="live-stop-dialog" aria-labelledby="live-stop-title">
+    <form method="dialog" class="dialog-card"><h2 id="live-stop-title">Live writing has ended</h2><p>The Overlay may keep reading the final revision until its own Live Edit session is stopped. Choose whether to open ordinary plan output selection now.</p><div class="dialog-actions"><button id="live-save-quit" value="save" type="submit">Save and Quit</button><button id="live-keep-editing" value="keep" type="submit">Keep Editing</button></div></form>
+  </dialog><!-- PLC_LOCAL_ONLY_END -->
+
+  <dialog id="destructive-dialog" aria-labelledby="destructive-title">
+    <form method="dialog" class="dialog-card"><h2 id="destructive-title">Replace active planning context?</h2><p id="destructive-message"></p><div class="dialog-actions"><button id="destructive-cancel" value="cancel" type="submit" class="secondary">Cancel</button><button id="destructive-output" value="output" type="submit">Output Plan, Then Continue</button><button id="destructive-discard" value="discard" type="submit" class="danger">Discard and Continue</button></div></form>
+  </dialog>
+
+  <script type="module" src="./src/app.js?v=20260826-node-lanes"></script>
+</body>
+</html>

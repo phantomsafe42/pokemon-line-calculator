@@ -1,0 +1,321 @@
+{
+  "schemaVersion": 1,
+  "gameId": "volt-white-2r",
+  "kind": "types",
+  "records": {
+    "normal": {
+      "id": "normal",
+      "name": "Normal",
+      "weak": [
+        "fighting"
+      ],
+      "resist": [],
+      "immune": [
+        "ghost"
+      ],
+      "sourceConfidence": "consumer-derived"
+    },
+    "fighting": {
+      "id": "fighting",
+      "name": "Fighting",
+      "weak": [
+        "flying",
+        "psychic",
+        "fairy"
+      ],
+      "resist": [
+        "rock",
+        "bug",
+        "dark"
+      ],
+      "immune": [],
+      "sourceConfidence": "consumer-derived"
+    },
+    "flying": {
+      "id": "flying",
+      "name": "Flying",
+      "weak": [
+        "rock",
+        "electric",
+        "ice"
+      ],
+      "resist": [
+        "fighting",
+        "bug",
+        "grass"
+      ],
+      "immune": [
+        "ground"
+      ],
+      "sourceConfidence": "consumer-derived"
+    },
+    "poison": {
+      "id": "poison",
+      "name": "Poison",
+      "weak": [
+        "ground",
+        "psychic"
+      ],
+      "resist": [
+        "fighting",
+        "poison",
+        "bug",
+        "grass",
+        "fairy"
+      ],
+      "immune": [],
+      "sourceConfidence": "consumer-derived"
+    },
+    "ground": {
+      "id": "ground",
+      "name": "Ground",
+      "weak": [
+        "water",
+        "grass",
+        "ice"
+      ],
+      "resist": [
+        "poison",
+        "rock"
+      ],
+      "immune": [
+        "electric"
+      ],
+      "sourceConfidence": "consumer-derived"
+    },
+    "rock": {
+      "id": "rock",
+      "name": "Rock",
+      "weak": [
+        "fighting",
+        "ground",
+        "steel",
+        "water",
+        "grass"
+      ],
+      "resist": [
+        "normal",
+        "flying",
+        "poison",
+        "fire"
+      ],
+      "immune": [],
+      "sourceConfidence": "consumer-derived"
+    },
+    "bug": {
+      "id": "bug",
+      "name": "Bug",
+      "weak": [
+        "flying",
+        "rock",
+        "fire"
+      ],
+      "resist": [
+        "fighting",
+        "ground",
+        "grass"
+      ],
+      "immune": [],
+      "sourceConfidence": "consumer-derived"
+    },
+    "ghost": {
+      "id": "ghost",
+      "name": "Ghost",
+      "weak": [
+        "ghost",
+        "dark"
+      ],
+      "resist": [
+        "poison",
+        "bug"
+      ],
+      "immune": [
+        "normal",
+        "fighting"
+      ],
+      "sourceConfidence": "consumer-derived"
+    },
+    "steel": {
+      "id": "steel",
+      "name": "Steel",
+      "weak": [
+        "fighting",
+        "ground",
+        "fire"
+      ],
+      "resist": [
+        "normal",
+        "flying",
+        "rock",
+        "bug",
+        "steel",
+        "grass",
+        "psychic",
+        "ice",
+        "dragon",
+        "fairy"
+      ],
+      "immune": [
+        "poison"
+      ],
+      "sourceConfidence": "consumer-derived"
+    },
+    "mystery": {
+      "id": "mystery",
+      "name": "???",
+      "weak": [],
+      "resist": [],
+      "immune": [],
+      "sourceConfidence": "consumer-derived"
+    },
+    "fire": {
+      "id": "fire",
+      "name": "Fire",
+      "weak": [
+        "ground",
+        "rock",
+        "water"
+      ],
+      "resist": [
+        "bug",
+        "steel",
+        "fire",
+        "grass",
+        "ice",
+        "fairy"
+      ],
+      "immune": [],
+      "sourceConfidence": "consumer-derived"
+    },
+    "water": {
+      "id": "water",
+      "name": "Water",
+      "weak": [
+        "grass",
+        "electric"
+      ],
+      "resist": [
+        "steel",
+        "fire",
+        "water",
+        "ice"
+      ],
+      "immune": [],
+      "sourceConfidence": "consumer-derived"
+    },
+    "grass": {
+      "id": "grass",
+      "name": "Grass",
+      "weak": [
+        "flying",
+        "poison",
+        "bug",
+        "fire",
+        "ice"
+      ],
+      "resist": [
+        "ground",
+        "water",
+        "grass",
+        "electric"
+      ],
+      "immune": [],
+      "sourceConfidence": "consumer-derived"
+    },
+    "electric": {
+      "id": "electric",
+      "name": "Electric",
+      "weak": [
+        "ground"
+      ],
+      "resist": [
+        "flying",
+        "steel",
+        "electric"
+      ],
+      "immune": [],
+      "sourceConfidence": "consumer-derived"
+    },
+    "psychic": {
+      "id": "psychic",
+      "name": "Psychic",
+      "weak": [
+        "bug",
+        "ghost",
+        "dark"
+      ],
+      "resist": [
+        "fighting",
+        "psychic"
+      ],
+      "immune": [],
+      "sourceConfidence": "consumer-derived"
+    },
+    "ice": {
+      "id": "ice",
+      "name": "Ice",
+      "weak": [
+        "fighting",
+        "rock",
+        "steel",
+        "fire"
+      ],
+      "resist": [
+        "ice"
+      ],
+      "immune": [],
+      "sourceConfidence": "consumer-derived"
+    },
+    "dragon": {
+      "id": "dragon",
+      "name": "Dragon",
+      "weak": [
+        "ice",
+        "dragon",
+        "fairy"
+      ],
+      "resist": [
+        "fire",
+        "water",
+        "grass",
+        "electric"
+      ],
+      "immune": [],
+      "sourceConfidence": "consumer-derived"
+    },
+    "dark": {
+      "id": "dark",
+      "name": "Dark",
+      "weak": [
+        "fighting",
+        "bug",
+        "fairy"
+      ],
+      "resist": [
+        "ghost",
+        "dark"
+      ],
+      "immune": [
+        "psychic"
+      ],
+      "sourceConfidence": "consumer-derived"
+    },
+    "fairy": {
+      "id": "fairy",
+      "name": "Fairy",
+      "weak": [
+        "poison",
+        "steel"
+      ],
+      "resist": [
+        "fighting",
+        "bug",
+        "dark"
+      ],
+      "immune": [
+        "dragon"
+      ],
+      "sourceConfidence": "consumer-derived"
+    }
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "gameId": "volt-white-2r",
+  "displayName": "Pokémon Volt White 2 Redux Egglocke",
+  "sourceProfile": "egglocke-definitive",
+  "upstream": {
+    "game": "Pokémon White 2",
+    "reduxVariant": "Volt White 2 Redux Complete",
+    "pchalKalaayLayer": "Redux QoL patch 1.3.0",
+    "localEgglockeLayer": "ability persistence plus selected opening-heal removal"
+  },
+  "buildIdentities": {
+    "cleanWhite2RomSha256": "3e50aec3db401332175a5d2b5fe2a68ac1a05ec63995dba9d1506b1b51837446",
+    "reduxPchalBaseRomSha256": "e79c34ad710cc8c8da0394a4ef76704cd5fbec9d4b1fa75d934725c010162f2e",
+    "pchalPatchSha256": "6f5e43f90b2a92edb5a033a81a58d4f870f302556980dc576e36ad8559959960",
+    "finalEgglockeRomSha256": "d568cb67b2bb86b078871da30c0d2a0564240a06cda79cd806858b7c9efcb4b7"
+  },
+  "buildInputHashes": {
+    "VW2R_Stats_Learnsets.xlsx": "2ed23037a8fbb9382a13134a7a3fc91ca961f92567931e0fdfb697397f169792",
+    "VW2R_Trainer_Battles.xlsx": "ce91712d697b4122f66e33e2b2f49a6147f5ba9885c80c1e30ed8189651d139d",
+    "VW2R_Encounters.xlsx": "d79b533cecf630d921aa9965e986e5acfb57f105e0b5e4f0fdd70e58da349f8a",
+    "vw2redux1-4.js": "ae883034edfeec54f7a514756944c659a77f2ff6a06c4b539be56ab69482324f",
+    "gen5_save_form_ids.json": "149a027ef2e5c3bd4469970957ebfbc3df5f04199bd968cb5fbf3274c85a43a2",
+    "smogon-calc-0.11.0/data.production.min.js": "364be40ea1aec31f413d0036445f717d826ece9c33ec25a02399c3a287c99529",
+    "pchalReadmeLogicalSource": "553ff99e72a4ec8310460c8394022c063bfe2cb463794ca93c8bad54c6821e8c",
+    "abilityPersistenceReportLogicalSource": "5be6ea70c4b6340fd91d0f3eb569b83e1daa187114c5de5299b1dba25a119726",
+    "noOpeningHealsReportLogicalSource": "112693cec418e6d55bba72b96566909e2194c2c6244e924559c33f827e8bbcf8"
+  },
+  "authorities": [
+    {
+      "id": "current-consumers",
+      "role": "migration seed and compatibility oracle",
+      "paths": [
+        "VW2R_data.json",
+        "VW2R_party_order.js",
+        "VW2R_sets.js",
+        "calc-data/VW2R_abilities.js",
+        "calc-data/VW2R_categories.js",
+        "calc-data/VW2R_encounter_methods.js",
+        "calc-data/VW2R_items.js",
+        "calc-data/VW2R_locations.js",
+        "calc-data/VW2R_moves.js",
+        "calc-data/VW2R_natures.js",
+        "calc-data/VW2R_species.js",
+        "calc-data/VW2R_stats.js",
+        "calc-data/VW2R_types.js"
+      ]
+    },
+    {
+      "id": "clean-white-2-rom",
+      "role": "hash-pinned vanilla personal-table inheritance baseline for growth rate and base experience yield",
+      "sha256": "3e50aec3db401332175a5d2b5fe2a68ac1a05ec63995dba9d1506b1b51837446",
+      "narcPath": "a/0/1/6"
+    },
+    {
+      "id": "redux-docs",
+      "role": "bundled primary prose/workbook reference",
+      "path": "VW2R_Documentation and VW2R_*.xlsx"
+    },
+    {
+      "id": "redux-wiki",
+      "role": "external verification and missing trainer/progression annotations",
+      "url": "https://github.com/SmilingZero/BlazeBlack2ReduxWiki",
+      "commit": "bbbc76b84806629bce625579dd182d7baea63e9e"
+    },
+    {
+      "id": "vw2r-1.4-calculator-export",
+      "role": "independent move target/override and trainer mechanics reference",
+      "path": "vw2redux1-4.js",
+      "sha256": "ae883034edfeec54f7a514756944c659a77f2ff6a06c4b539be56ab69482324f"
+    },
+    {
+      "id": "trainer-tyrant",
+      "role": "independent BW2 TRData/TRPoke format reference",
+      "url": "https://github.com/ThirdLemon/TrainerTyrant",
+      "commit": "d4ef8a6ffc6392ebaf3e3622d0f7b0228f0c9992",
+      "sourceFile": "TrainerTyrant/TrainerRepresentation.cs",
+      "sha256": "9ee11aca8abfad28460f628be546a6f36188cab220bdac3616836fc105026447"
+    },
+    {
+      "id": "pkhex-gen5-save-forms",
+      "role": "independent PK5 packed-form encoding and Generation 5 raw form-order reference",
+      "url": "https://github.com/kwsch/PKHeX",
+      "commit": "19c356c357d4b37b6215906a397024b6906b78e7",
+      "referenceFile": "gen5_save_form_ids.json",
+      "sha256": "149a027ef2e5c3bd4469970957ebfbc3df5f04199bd968cb5fbf3274c85a43a2",
+      "upstreamSources": [
+        {
+          "sourceFile": "PKHeX.Core/PKM/PK5.cs",
+          "sha256": "f34a608897d7efb0484223fb77a32bb87175a171478484c3be8b7fb74885afe7"
+        },
+        {
+          "sourceFile": "PKHeX.Core/PKM/Util/Conversion/FormConverter.cs",
+          "sha256": "e6bafa9fed9beb88f095f2b6a9e0bdcf840e48ae57db4acacb081a696e93bac0"
+        },
+        {
+          "sourceFile": "PKHeX.Core/PersonalInfo/Info/PersonalInfo5B2W2.cs",
+          "sha256": "1387c7258b6b71d65e537fe49b52ef1543e02932889f6946f6aa0bb7b1155daf"
+        },
+        {
+          "sourceFile": "PKHeX.Core/PersonalInfo/Table/PersonalTable5B2W2.cs",
+          "sha256": "5ce25ecc407528da9298e17147ccf0091bb00b2ddcdd35160e54692bbe9cfbb5"
+        }
+      ]
+    },
+    {
+      "id": "smogon-calc-canonical",
+      "role": "declared canonical mechanics inheritance baseline",
+      "path": "Overlays/Source/standardized/vendor/smogon-calc-0.11.0/data.production.min.js",
+      "sha256": "364be40ea1aec31f413d0036445f717d826ece9c33ec25a02399c3a287c99529",
+      "generation": 9
+    },
+    {
+      "id": "pchal-kalaay",
+      "role": "definitive changes layered over Redux",
+      "logicalSource": "PChal_README.md"
+    },
+    {
+      "id": "egglocke-project",
+      "role": "final local patch scope and ROM-script audits",
+      "logicalSource": "Volt White 2 Redux Egglocke project reports"
+    }
+  ],
+  "standardizedSources": [
+    "species.json",
+    "moves.json",
+    "abilities.json",
+    "items.json",
+    "learnsets.json",
+    "evolutions.json",
+    "trainers.json",
+    "trainer_order.json",
+    "trainer_battle_groups.json",
+    "progression.json",
+    "locations.json",
+    "encounters.json",
+    "encounter_methods.json",
+    "types.json",
+    "natures.json",
+    "stats.json",
+    "categories.json",
+    "save_id_maps.json",
+    "aliases.json",
+    "source_audit.json",
+    "game_rules.json",
+    "battle_mechanics.json",
+    "custom_combatants.json",
+    "encounter_groups.json",
+    "recovery_sites.json"
+  ],
+  "consumerProjection": {
+    "status": "staged-authoritative-candidate",
+    "profile": "egglocke-challenge",
+    "difficulty": "challenge",
+    "starterBranch": "oshawott",
+    "stableFiles": [
+      "VW2R_data.json",
+      "VW2R_party_order.js",
+      "VW2R_sets.js",
+      "calc-data/VW2R_*.js"
+    ],
+    "invariant": "No Normal/Easy or alternate starter data may enter current consumers until consumers explicitly support profile selection.",
+    "contract": "consumer_projection.json",
+    "builder": "build_consumers.js",
+    "defaultOutput": "../build/consumers",
+    "immutableLegacyGoldens": "legacy_consumer_goldens.json"
+  }
+}

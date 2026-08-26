@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "gameId": "volt-white-2r",
+  "kind": "battle-mechanics",
+  "engine": {
+    "id": "smogon-calc",
+    "version": "0.11.0"
+  },
+  "damageGeneration": 5,
+  "canonicalDataGeneration": 9,
+  "canonicalDataSource": {
+    "file": "Overlays/Source/standardized/vendor/smogon-calc-0.11.0/data.production.min.js",
+    "sha256": "364be40ea1aec31f413d0036445f717d826ece9c33ec25a02399c3a287c99529",
+    "policy": "Generation 9 supplies the canonical metadata required by Redux post-Generation-5 moves; every VW2R species NFE value and every hack-specific move mechanic is explicitly overridden in standardized source."
+  },
+  "typeChartSource": "types.json",
+  "mechanicsProfile": "vw2r-complete-pchal-egglocke-challenge-v1",
+  "trainerBattleProfile": "challenge",
+  "runtimeDefaults": {},
+  "features": {
+    "challengeModeDisplayedLevelStatBug": {
+      "enabled": true,
+      "statLevelDeltaMemberField": "damageFormulaLevelDelta",
+      "suppressionMemberField": "suppressDamageFormulaLevelAdjustment",
+      "displayedLevelField": "level"
+    },
+    "fixedFriendshipMovePower": {
+      "return": 102,
+      "frustration": 102,
+      "source": "PChal_README.md"
+    },
+    "playerEvGainDisabled": true
+  },
+  "validation": {
+    "status": "passed",
+    "unresolved": 0,
+    "sourceFiles": [
+      "species.json",
+      "moves.json",
+      "abilities.json",
+      "items.json",
+      "natures.json",
+      "types.json",
+      "trainers.json"
+    ],
+    "blockingIssues": {
+      "trainerNatureConflicts": 0,
+      "trainerOccurrencesWithoutUniqueVW2R14Match": 0,
+      "trainerMembersWithoutExactGender": 0,
+      "trainerOccurrencesWithoutExactBattleFormat": 0,
+      "requestedAbilitiesWithoutCanonicalMechanics": 0,
+      "requestedItemsWithoutCanonicalMechanics": 0,
+      "calculationKnownAnswerSuite": 0
+    },
+    "knownAnswerSuite": {
+      "file": "Overlays/Source/standardized/tests/vw2r_known_answers.test.js",
+      "sha256": "31c1c8182c05c35f3983d8ec67bd98bdda77115d33184c05f894b2b4f606e0f8",
+      "cases": [
+        "ordinary",
+        "spread",
+        "fixed-damage",
+        "multi-hit",
+        "drain",
+        "recoil",
+        "guaranteed-critical",
+        "weight-based",
+        "item",
+        "ability",
+        "challenge-level-adjustment",
+        "trainer-variant-selection"
+      ]
+    },
+    "note": "Independent source verification and the pinned known-answer calculator suite passed with no unresolved calculation fields."
+  }
+}

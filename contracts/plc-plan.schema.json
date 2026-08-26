@@ -1,0 +1,346 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://phantomsafe.local/schemas/plc-plan-v2.schema.json",
+  "title": "Pokemon Line Calculator Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "kind",
+    "schemaVersion",
+    "planId",
+    "name",
+    "createdAt",
+    "updatedAt",
+    "documentRevision",
+    "game",
+    "mechanicsFingerprint",
+    "sourceSnapshot",
+    "combatants",
+    "initialStateNodeId",
+    "stateNodes",
+    "actionGroups",
+    "resolutionEvents",
+    "workingDraft"
+  ],
+  "properties": {
+    "kind": { "const": "pokemon-battle-plan" },
+    "schemaVersion": { "const": 2 },
+    "planId": { "$ref": "#/$defs/id" },
+    "name": { "$ref": "#/$defs/label" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" },
+    "documentRevision": { "type": "integer", "minimum": 0 },
+    "game": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gameId", "battleFormat", "trainerId", "trainerVariantId"],
+      "properties": {
+        "gameId": { "$ref": "#/$defs/id" },
+        "battleFormat": { "enum": ["singles", "doubles"] },
+        "trainerId": { "type": ["string", "integer"] },
+        "trainerVariantId": { "type": ["string", "integer", "null"] }
+      }
+    },
+    "mechanicsFingerprint": { "type": "object" },
+    "sourceSnapshot": { "type": "object" },
+    "exportSelection": {
+      "type": "object",
+      "required": ["selectedStateNodeIds", "includedStateNodeIds", "includedActionGroupIds", "includedReplacementTransitionIds"],
+      "properties": {
+        "selectedStateNodeIds": { "$ref": "#/$defs/idArray" },
+        "includedStateNodeIds": { "$ref": "#/$defs/idArray" },
+        "includedActionGroupIds": { "$ref": "#/$defs/idArray" },
+        "includedReplacementTransitionIds": { "$ref": "#/$defs/idArray" }
+      }
+    },
+    "combatants": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/combatant" }
+    },
+    "initialStateNodeId": { "$ref": "#/$defs/id" },
+    "stateNodes": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "$ref": "#/$defs/stateNode" }
+    },
+    "actionGroups": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/actionGroup" }
+    },
+    "replacementTransitions": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/replacementTransition" }
+    },
+    "resolutionEvents": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/event" }
+    },
+    "workingDraft": { "type": ["object", "null"] }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9:._-]*$"
+    },
+    "label": { "type": "string", "minLength": 1, "maxLength": 240 },
+    "idArray": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/id" }
+    },
+    "range": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min", "max"],
+      "properties": {
+        "min": { "type": "number" },
+        "max": { "type": "number" },
+        "maxHp": { "type": "number", "minimum": 1 }
+      }
+    },
+    "statTable": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hp", "atk", "def", "spa", "spd", "spe"],
+      "properties": {
+        "hp": { "type": "number" },
+        "atk": { "type": "number" },
+        "def": { "type": "number" },
+        "spa": { "type": "number" },
+        "spd": { "type": "number" },
+        "spe": { "type": "number" }
+      }
+    },
+    "combatant": {
+      "type": "object",
+      "required": [
+        "combatantKey",
+        "side",
+        "source",
+        "speciesId",
+        "displayName",
+        "level",
+        "natureId",
+        "ivs",
+        "evs",
+        "originalAbilityId",
+        "originalItemId",
+        "originalTypeIds",
+        "moves"
+      ],
+      "properties": {
+        "combatantKey": { "$ref": "#/$defs/id" },
+        "side": { "enum": ["player", "enemy"] },
+        "source": { "type": "object" },
+        "speciesId": { "$ref": "#/$defs/id" },
+        "formId": { "type": ["string", "null"] },
+        "displayName": { "$ref": "#/$defs/label" },
+        "nickname": { "type": "string", "maxLength": 240 },
+        "level": { "type": "integer", "minimum": 1, "maximum": 100 },
+        "experience": { "type": "integer", "minimum": 0 },
+        "growthRate": { "enum": ["Medium Fast", "Erratic", "Fluctuating", "Medium Slow", "Fast", "Slow", null] },
+        "baseExperienceYield": { "type": ["integer", "null"], "minimum": 1, "maximum": 65535 },
+        "gender": { "type": ["string", "null"], "maxLength": 16 },
+        "natureId": { "type": ["string", "null"] },
+        "ivs": { "$ref": "#/$defs/statTable" },
+        "evs": { "$ref": "#/$defs/statTable" },
+        "originalAbilityId": { "type": ["string", "null"] },
+        "originalItemId": { "type": ["string", "null"] },
+        "originalTypeIds": { "$ref": "#/$defs/idArray" },
+        "moves": {
+          "type": "array",
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "required": ["moveId", "maxPp"],
+            "properties": {
+              "moveId": { "$ref": "#/$defs/id" },
+              "maxPp": { "type": "integer", "minimum": 0, "maximum": 99 }
+            }
+          }
+        }
+      }
+    },
+    "stateNode": {
+      "type": "object",
+      "required": [
+        "stateNodeId",
+        "parentActionGroupId",
+        "turnNumber",
+        "createdOrder",
+        "outcome",
+        "active",
+        "combatantStates",
+        "fieldState",
+        "resolutionEventIds",
+        "childActionGroupIds",
+        "pendingReplacementSlots",
+        "battleEnded",
+        "stateHash",
+        "status",
+        "displaySnapshot"
+      ],
+      "properties": {
+        "stateNodeId": { "$ref": "#/$defs/id" },
+        "parentActionGroupId": { "type": ["string", "null"] },
+        "parentReplacementTransitionId": { "type": ["string", "null"] },
+        "turnNumber": { "type": "integer", "minimum": 0 },
+        "createdOrder": { "type": "integer", "minimum": 0 },
+        "outcome": { "type": "object" },
+        "active": {
+          "type": "object",
+          "required": ["playerCombatantKeys", "enemyCombatantKeys", "playerCombatantKey", "enemyCombatantKey"],
+          "properties": {
+            "playerCombatantKeys": { "$ref": "#/$defs/activeKeys" },
+            "enemyCombatantKeys": { "$ref": "#/$defs/activeKeys" },
+            "playerCombatantKey": { "$ref": "#/$defs/id" },
+            "enemyCombatantKey": { "$ref": "#/$defs/id" }
+          }
+        },
+        "combatantStates": { "type": "object" },
+        "experienceState": {
+          "type": "object",
+          "required": ["participantsByEnemyKey", "rewardedEnemyKeys"],
+          "properties": {
+            "participantsByEnemyKey": {
+              "type": "object",
+              "additionalProperties": { "$ref": "#/$defs/idArray" }
+            },
+            "rewardedEnemyKeys": { "$ref": "#/$defs/idArray" }
+          }
+        },
+        "fieldState": { "type": "object" },
+        "resolutionEventIds": { "$ref": "#/$defs/idArray" },
+        "childActionGroupIds": { "$ref": "#/$defs/idArray" },
+        "childReplacementTransitionIds": { "$ref": "#/$defs/idArray" },
+        "pendingReplacementSides": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "enum": ["player", "enemy"] }
+        },
+        "pendingReplacementSlots": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/battleSlot" }
+        },
+        "battleEnded": { "type": "boolean" },
+        "transitionKind": { "enum": ["replacement"] },
+        "stateHash": { "type": "string", "minLength": 1, "maxLength": 160 },
+        "status": { "enum": ["resolved", "preview", "stale", "invalid", "incomplete"] },
+        "displaySnapshot": { "type": "object" }
+      }
+    },
+    "actionGroup": {
+      "type": "object",
+      "required": [
+        "actionGroupId",
+        "parentStateNodeId",
+        "turnNumber",
+        "createdOrder",
+        "actions",
+        "actionSignature",
+        "outcomeStateNodeIds",
+        "defaultOutcomeStateNodeId",
+        "status"
+      ],
+      "properties": {
+        "actionGroupId": { "$ref": "#/$defs/id" },
+        "parentStateNodeId": { "$ref": "#/$defs/id" },
+        "turnNumber": { "type": "integer", "minimum": 1 },
+        "createdOrder": { "type": "integer", "minimum": 0 },
+        "actions": {
+          "type": "object",
+          "required": ["player", "enemy"],
+          "properties": {
+            "player": { "$ref": "#/$defs/turnActions" },
+            "enemy": { "$ref": "#/$defs/turnActions" }
+          }
+        },
+        "actionSignature": { "type": "string", "minLength": 1 },
+        "outcomeSelectionMode": { "enum": ["complete", "crafted"] },
+        "outcomeStateNodeIds": { "$ref": "#/$defs/idArray" },
+        "defaultOutcomeStateNodeId": { "type": ["string", "null"] },
+        "status": { "enum": ["resolved", "preview", "stale", "invalid", "incomplete"] }
+      }
+    },
+    "replacementTransition": {
+      "type": "object",
+      "required": [
+        "replacementTransitionId",
+        "parentStateNodeId",
+        "turnNumber",
+        "createdOrder",
+        "actions",
+        "outcomeStateNodeIds",
+        "defaultOutcomeStateNodeId",
+        "status"
+      ],
+      "properties": {
+        "replacementTransitionId": { "$ref": "#/$defs/id" },
+        "parentStateNodeId": { "$ref": "#/$defs/id" },
+        "turnNumber": { "type": "integer", "minimum": 0 },
+        "createdOrder": { "type": "integer", "minimum": 0 },
+        "actions": {
+          "type": "object",
+          "minProperties": 1,
+          "properties": {
+            "player": { "type": "array", "minItems": 1, "maxItems": 2, "items": { "$ref": "#/$defs/replacementAction" } },
+            "enemy": { "type": "array", "minItems": 1, "maxItems": 2, "items": { "$ref": "#/$defs/replacementAction" } }
+          }
+        },
+        "outcomeStateNodeIds": { "$ref": "#/$defs/idArray" },
+        "defaultOutcomeStateNodeId": { "type": ["string", "null"] },
+        "status": { "enum": ["resolved", "preview", "stale", "invalid", "incomplete"] }
+      }
+    },
+    "replacementAction": {
+      "type": "object",
+      "required": ["actionType", "side", "slot", "switchToKey", "reason", "consumesTurn"],
+      "properties": {
+        "actionType": { "const": "replacement" },
+        "side": { "enum": ["player", "enemy"] },
+        "slot": { "type": "integer", "minimum": 0, "maximum": 1 },
+        "switchToKey": { "$ref": "#/$defs/id" },
+        "reason": { "$ref": "#/$defs/id" },
+        "consumesTurn": { "const": false }
+      }
+    },
+    "activeKeys": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 2,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/id" }
+    },
+    "battleSlot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["side", "slot"],
+      "properties": {
+        "side": { "enum": ["player", "enemy"] },
+        "slot": { "type": "integer", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "turnActions": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 2,
+      "items": { "type": "object" }
+    },
+    "event": {
+      "type": "object",
+      "required": ["eventId", "source", "turnNumber", "step", "eventType", "changes", "metadata"],
+      "properties": {
+        "eventId": { "$ref": "#/$defs/id" },
+        "source": { "enum": ["planned", "observed"] },
+        "turnNumber": { "type": "integer", "minimum": 0 },
+        "step": { "type": "integer", "minimum": 0 },
+        "eventType": { "$ref": "#/$defs/id" },
+        "changes": { "type": "array" },
+        "metadata": { "type": "object" }
+      }
+    }
+  }
+}

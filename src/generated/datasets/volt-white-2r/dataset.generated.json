@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "plc-generated-dataset/v1alpha1",
+  "consumer": "plc-vw2r-dataset",
+  "source": "Datasets/Volt White 2R/source-data",
+  "sourceTreeSha256": "C9111F699100FAE8E2352CDB209A7C589E6F53B0BE5BDB161ACEB269D00449D2",
+  "files": [
+    {
+      "path": "dataset_manifest.json",
+      "bytes": 6684,
+      "sha256": "DE9979F696E3A1614B0EDC2D4D288EF298F3A5FE522E53F28E9736E4FFB49D87"
+    },
+    {
+      "path": "battle_mechanics.json",
+      "bytes": 2477,
+      "sha256": "475238105C6E4467C9FFDC8BBF5F9452E345C27B604405DD2F7094223A01E893"
+    },
+    {
+      "path": "species.json",
+      "bytes": 571264,
+      "sha256": "3D2FF49076297D1171BDD023F9C2B38E5A52A4E149169913307F80939F117401"
+    },
+    {
+      "path": "moves.json",
+      "bytes": 369190,
+      "sha256": "592CBD2EFE457280D01505817DECE211C802F741B6F38112D5537FA744B94F06"
+    },
+    {
+      "path": "abilities.json",
+      "bytes": 56962,
+      "sha256": "64251B4468FE9F544050F11090192CB993EFD446B361A126A3ED7CFDA495864B"
+    },
+    {
+      "path": "items.json",
+      "bytes": 179414,
+      "sha256": "526AA69E8FB1B35D9E005BC41F2BC9295D4CAE8AE70C99AD72D25C17A5D6A187"
+    },
+    {
+      "path": "natures.json",
+      "bytes": 4695,
+      "sha256": "7A170035E0CD1BBBF4DB5B780C599CAB51D9C5809D6E412323EB50D74C520FEC"
+    },
+    {
+      "path": "types.json",
+      "bytes": 5647,
+      "sha256": "6C07D2461DAE853BEE8CB5B7D91E1C1C327C0EB6796EB63424817ADDC0730068"
+    },
+    {
+      "path": "trainers.json",
+      "bytes": 2419887,
+      "sha256": "EC8794728F8144E7B040F3ADF3C7F8F4FE7C03322449567D874F3C48D0F7E175"
+    },
+    {
+      "path": "trainer_order.json",
+      "bytes": 174809,
+      "sha256": "1D8A90D85A302AD57030DE9EE86FE3F8D18B41ACD2BCC27E30DDC0AD3C90F675"
+    },
+    {
+      "path": "progression.json",
+      "bytes": 11006,
+      "sha256": "2C79A1CD9C17AA53205628D75A7149DF2454A8595DB2D1642A9C8EBBDA935FE3"
+    },
+    {
+      "path": "save_id_maps.json",
+      "bytes": 132350,
+      "sha256": "9F5CEFB97D878CAE9CF79FE82C3921F778DF2B02C6D303159F3F753BE80C4150"
+    }
+  ]
+}

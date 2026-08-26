@@ -1,0 +1,525 @@
+{
+  "schemaVersion": 1,
+  "gameId": "volt-white-2r",
+  "kind": "progression",
+  "consumerProfile": {
+    "id": "egglocke-challenge",
+    "difficulty": "challenge",
+    "starterBranch": "oshawott",
+    "splits": [
+      {
+        "id": "cheren",
+        "label": "Cheren",
+        "firstOrder": 1,
+        "lastOrder": 23,
+        "levelCap": 14,
+        "leaderTrainerId": "vw2r-trainer-0023"
+      },
+      {
+        "id": "roxie",
+        "label": "Roxie",
+        "firstOrder": 24,
+        "lastOrder": 38,
+        "levelCap": 21,
+        "leaderTrainerId": "vw2r-trainer-0038"
+      },
+      {
+        "id": "burgh",
+        "label": "Burgh",
+        "firstOrder": 39,
+        "lastOrder": 73,
+        "levelCap": 29,
+        "leaderTrainerId": "vw2r-trainer-0073"
+      },
+      {
+        "id": "elesa",
+        "label": "Elesa",
+        "firstOrder": 74,
+        "lastOrder": 122,
+        "levelCap": 38,
+        "leaderTrainerId": "vw2r-trainer-0122"
+      },
+      {
+        "id": "clay",
+        "label": "Clay",
+        "firstOrder": 123,
+        "lastOrder": 153,
+        "levelCap": 45,
+        "leaderTrainerId": "vw2r-trainer-0153"
+      },
+      {
+        "id": "skyla",
+        "label": "Skyla",
+        "firstOrder": 154,
+        "lastOrder": 220,
+        "levelCap": 55,
+        "leaderTrainerId": "vw2r-trainer-0220"
+      },
+      {
+        "id": "drayden",
+        "label": "Drayden",
+        "firstOrder": 221,
+        "lastOrder": 304,
+        "levelCap": 64,
+        "leaderTrainerId": "vw2r-trainer-0304"
+      },
+      {
+        "id": "marlon",
+        "label": "Marlon",
+        "firstOrder": 305,
+        "lastOrder": 338,
+        "levelCap": 68,
+        "leaderTrainerId": "vw2r-trainer-0338"
+      },
+      {
+        "id": "ghetsis",
+        "label": "Ghetsis",
+        "firstOrder": 339,
+        "lastOrder": 378,
+        "levelCap": 72,
+        "leaderTrainerId": "vw2r-trainer-0378"
+      },
+      {
+        "id": "champion",
+        "label": "Champion",
+        "firstOrder": 379,
+        "lastOrder": 427,
+        "levelCap": 79,
+        "leaderTrainerId": "vw2r-trainer-0427"
+      }
+    ],
+    "compatibilityBoundary": "This is the only profile projected into current overlay consumers."
+  },
+  "referenceProfiles": {
+    "reduxNormal": [
+      {
+        "order": 1,
+        "label": "Cheren",
+        "levelCap": 13
+      },
+      {
+        "order": 2,
+        "label": "Roxie",
+        "levelCap": 20
+      },
+      {
+        "order": 3,
+        "label": "Burgh",
+        "levelCap": 27
+      },
+      {
+        "order": 4,
+        "label": "Elesa",
+        "levelCap": 36
+      },
+      {
+        "order": 5,
+        "label": "Clay",
+        "levelCap": 43
+      },
+      {
+        "order": 6,
+        "label": "Skyla",
+        "levelCap": 52
+      },
+      {
+        "order": 7,
+        "label": "Drayden",
+        "levelCap": 60
+      },
+      {
+        "order": 8,
+        "label": "Marlon",
+        "levelCap": 64
+      },
+      {
+        "order": 9,
+        "label": "Ghetsis",
+        "levelCap": 68
+      },
+      {
+        "order": 10,
+        "label": "Elite Four et al",
+        "levelCap": 74
+      },
+      {
+        "order": 11,
+        "label": "Iris",
+        "levelCap": 75
+      }
+    ],
+    "reduxChallengeSummary": [
+      {
+        "order": 1,
+        "label": "Cheren",
+        "levelCap": 14
+      },
+      {
+        "order": 2,
+        "label": "Roxie",
+        "levelCap": 21
+      },
+      {
+        "order": 3,
+        "label": "New to Redux",
+        "levelCap": 23
+      },
+      {
+        "order": 4,
+        "label": "Burgh",
+        "levelCap": 29
+      },
+      {
+        "order": 5,
+        "label": "New to Redux",
+        "levelCap": 33
+      },
+      {
+        "order": 6,
+        "label": "Subway Masters",
+        "levelCap": 36
+      },
+      {
+        "order": 7,
+        "label": "Elesa",
+        "levelCap": 38
+      },
+      {
+        "order": 8,
+        "label": "Charles",
+        "levelCap": 39
+      },
+      {
+        "order": 9,
+        "label": "Rood",
+        "levelCap": 41
+      },
+      {
+        "order": 10,
+        "label": "Clay",
+        "levelCap": 45
+      },
+      {
+        "order": 11,
+        "label": "New to Redux",
+        "levelCap": 53
+      },
+      {
+        "order": 12,
+        "label": "Skyla",
+        "levelCap": 55
+      },
+      {
+        "order": 13,
+        "label": "New to Redux",
+        "levelCap": 56
+      },
+      {
+        "order": 14,
+        "label": "Hugh",
+        "levelCap": 58
+      },
+      {
+        "order": 15,
+        "label": "New to Redux",
+        "levelCap": 62
+      },
+      {
+        "order": 16,
+        "label": "Drayden",
+        "levelCap": 64
+      },
+      {
+        "order": 17,
+        "label": "Marlon",
+        "levelCap": 68
+      },
+      {
+        "order": 18,
+        "label": "Ghetsis",
+        "levelCap": 72
+      },
+      {
+        "order": 19,
+        "label": "New to Redux",
+        "levelCap": 76
+      },
+      {
+        "order": 20,
+        "label": "Elite Four et al",
+        "levelCap": 78
+      },
+      {
+        "order": 21,
+        "label": "Iris",
+        "levelCap": 79
+      }
+    ],
+    "reduxChallengeAllCaps": [
+      {
+        "order": 1,
+        "mandatory": true,
+        "levelCap": 11,
+        "label": "Hugh",
+        "highlighted": false
+      },
+      {
+        "order": 2,
+        "mandatory": false,
+        "levelCap": 13,
+        "label": "Roxanne",
+        "highlighted": false
+      },
+      {
+        "order": 3,
+        "mandatory": true,
+        "levelCap": 14,
+        "label": "Cheren",
+        "highlighted": true
+      },
+      {
+        "order": 4,
+        "mandatory": false,
+        "levelCap": 20,
+        "label": "Brawly",
+        "highlighted": false
+      },
+      {
+        "order": 5,
+        "mandatory": true,
+        "levelCap": 21,
+        "label": "Roxie",
+        "highlighted": true
+      },
+      {
+        "order": 6,
+        "mandatory": true,
+        "levelCap": 23,
+        "label": "Brycen",
+        "highlighted": false
+      },
+      {
+        "order": 7,
+        "mandatory": false,
+        "levelCap": 29,
+        "label": "Wattson",
+        "highlighted": false
+      },
+      {
+        "order": 8,
+        "mandatory": true,
+        "levelCap": 29,
+        "label": "Burgh",
+        "highlighted": true
+      },
+      {
+        "order": 9,
+        "mandatory": true,
+        "levelCap": 30,
+        "label": "Colress",
+        "highlighted": false
+      },
+      {
+        "order": 10,
+        "mandatory": true,
+        "levelCap": 33,
+        "label": "Lenora and Hawes",
+        "highlighted": false
+      },
+      {
+        "order": 11,
+        "mandatory": false,
+        "levelCap": 36,
+        "label": "Subway Bosses",
+        "highlighted": false
+      },
+      {
+        "order": 12,
+        "mandatory": false,
+        "levelCap": 37,
+        "label": "Flannery",
+        "highlighted": false
+      },
+      {
+        "order": 13,
+        "mandatory": true,
+        "levelCap": 38,
+        "label": "Elesa",
+        "highlighted": true
+      },
+      {
+        "order": 14,
+        "mandatory": true,
+        "levelCap": 39,
+        "label": "Charles",
+        "highlighted": false
+      },
+      {
+        "order": 15,
+        "mandatory": true,
+        "levelCap": 41,
+        "label": "Rood",
+        "highlighted": false
+      },
+      {
+        "order": 16,
+        "mandatory": false,
+        "levelCap": 44,
+        "label": "Norman",
+        "highlighted": false
+      },
+      {
+        "order": 17,
+        "mandatory": true,
+        "levelCap": 45,
+        "label": "Clay",
+        "highlighted": true
+      },
+      {
+        "order": 18,
+        "mandatory": true,
+        "levelCap": 47,
+        "label": "Hugh",
+        "highlighted": false
+      },
+      {
+        "order": 19,
+        "mandatory": true,
+        "levelCap": 53,
+        "label": "Colress",
+        "highlighted": false
+      },
+      {
+        "order": 20,
+        "mandatory": false,
+        "levelCap": 54,
+        "label": "Juan",
+        "highlighted": false
+      },
+      {
+        "order": 21,
+        "mandatory": true,
+        "levelCap": 55,
+        "label": "Skyla",
+        "highlighted": true
+      },
+      {
+        "order": 22,
+        "mandatory": true,
+        "levelCap": 56,
+        "label": "Bianca",
+        "highlighted": false
+      },
+      {
+        "order": 23,
+        "mandatory": true,
+        "levelCap": 58,
+        "label": "Hugh",
+        "highlighted": false
+      },
+      {
+        "order": 24,
+        "mandatory": true,
+        "levelCap": 60,
+        "label": "Zinzolin",
+        "highlighted": false
+      },
+      {
+        "order": 25,
+        "mandatory": true,
+        "levelCap": 62,
+        "label": "Benga",
+        "highlighted": false
+      },
+      {
+        "order": 26,
+        "mandatory": false,
+        "levelCap": 63,
+        "label": "Winona",
+        "highlighted": false
+      },
+      {
+        "order": 27,
+        "mandatory": true,
+        "levelCap": 64,
+        "label": "Drayden",
+        "highlighted": true
+      },
+      {
+        "order": 28,
+        "mandatory": true,
+        "levelCap": 64,
+        "label": "Zinzolin",
+        "highlighted": false
+      },
+      {
+        "order": 29,
+        "mandatory": false,
+        "levelCap": 67,
+        "label": "Tate and Liza",
+        "highlighted": false
+      },
+      {
+        "order": 30,
+        "mandatory": true,
+        "levelCap": 68,
+        "label": "Marlon",
+        "highlighted": true
+      },
+      {
+        "order": 31,
+        "mandatory": true,
+        "levelCap": 68,
+        "label": "Zinzolin",
+        "highlighted": false
+      },
+      {
+        "order": 32,
+        "mandatory": true,
+        "levelCap": 70,
+        "label": "Zinzolin",
+        "highlighted": false
+      },
+      {
+        "order": 33,
+        "mandatory": true,
+        "levelCap": 70,
+        "label": "Colress",
+        "highlighted": false
+      },
+      {
+        "order": 34,
+        "mandatory": true,
+        "levelCap": 72,
+        "label": "Ghetsis",
+        "highlighted": true
+      },
+      {
+        "order": 35,
+        "mandatory": true,
+        "levelCap": 76,
+        "label": "Lance",
+        "highlighted": false
+      },
+      {
+        "order": 36,
+        "mandatory": true,
+        "levelCap": 77,
+        "label": "Hugh",
+        "highlighted": false
+      },
+      {
+        "order": 37,
+        "mandatory": true,
+        "levelCap": 78,
+        "label": "The Pokémon League",
+        "highlighted": true
+      }
+    ]
+  },
+  "unresolved": [
+    "Exact story flags and route gates are prose-only in the wiki and are not encoded by current consumers.",
+    "Starter-dependent rival branches exist; current consumers and overlays are pinned to the Oshawott player branch.",
+    "Recovery boundaries require ROM-script evidence. The local Egglocke patch removes 36 opening heals and preserves protected between-fight recoveries."
+  ]
+}

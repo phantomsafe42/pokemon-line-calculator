@@ -1,0 +1,33 @@
+# Local workspace guidance and Codex state are deliberately not public source.
+AGENTS.md
+**/AGENTS.md
+SETTLED_HISTORY.md
+**/SETTLED_HISTORY.md
+.codex-project-root
+.codex/
+.codex-*/
+**/.codex/
+**/.codex-*/
+
+# Local test/runtime output.
+.codex-tmp/
+coverage/
+dist/
+node_modules/
+*.log
+
+# Machine-local configuration and secrets.
+.env
+.env.*
+!.env.example
+
+# Saves, ROMs, and emulator state must never enter this repository.
+*.sav
+*.srm
+*.dsv
+*.nds
+*.gba
+*.gbc
+*.gb
+*.3ds
+*.cia
