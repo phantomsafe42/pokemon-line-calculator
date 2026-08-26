@@ -124,6 +124,9 @@ function validateGraph(plan, issues) {
     validateId(key, path, issues);
     if (!Number.isInteger(Number(state.turnNumber)) || Number(state.turnNumber) < 0) issue(issues, `${path}.turnNumber`, "must be a non-negative integer");
     if (!STATE_STATUSES.has(state.status)) issue(issues, `${path}.status`, "is not a supported state status");
+    for (const field of ["notes", "draftNote"]) {
+      if (state[field] !== undefined && typeof state[field] !== "string") issue(issues, `${path}.${field}`, "must be text");
+    }
     for (const side of ["player", "enemy"]) {
       const active = schemaVersion >= 2 ? state.active?.[`${side}CombatantKeys`] : [state.active?.[`${side}CombatantKey`]];
       if (!Array.isArray(active) || active.length !== slotCount) issue(issues, `${path}.active.${side}CombatantKeys`, `must contain ${slotCount} active combatant keys`);

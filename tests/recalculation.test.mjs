@@ -4,6 +4,7 @@ import { mechanicsCompatibility, validatePlanReferences } from "../src/contracts
 import { parsePlan } from "../src/contracts/plan_file.js";
 import { commitPreview, previewTurn } from "../src/core/planner.js";
 import { recalculatePlanDocument } from "../src/core/recalculation.js";
+import { currentMechanicsFingerprint } from "../src/rulesets/resolver_profile.js";
 import { damageAdapter, fixturePlan } from "./helpers.mjs";
 
 function declaredMove(state, actorKey, moveId, targetKey) {
@@ -40,11 +41,44 @@ test("recalculation replays the saved graph under the current mechanics fingerpr
     now: "2026-08-23T12:00:00.000Z",
     previewTurnFn: request => previewTurn({ ...request, dataset, damageAdapter: adapter })
   });
-  assert.deepEqual(rebuilt.mechanicsFingerprint, dataset.fingerprint);
+  assert.deepEqual(rebuilt.mechanicsFingerprint, currentMechanicsFingerprint(dataset));
   assert.equal(Object.keys(rebuilt.actionGroups).length, 1);
   assert.equal(Object.keys(rebuilt.stateNodes).length, Object.keys(committed.stateNodes).length);
   assert.equal(mechanicsCompatibility(rebuilt, dataset).editable, true);
   assert.equal(validatePlanReferences(rebuilt, dataset).valid, true);
+});
+
+test("resolver-version recalculation preserves a selected crafted outcome", async () => {
+  const { dataset, players, enemies, plan: initial } = fixturePlan();
+  const state = initial.stateNodes[initial.initialStateNodeId];
+  initial.combatants[players[0].combatantKey].moves[0] = { moveId: "toxic", maxPp: 10 };
+  state.combatantStates[players[0].combatantKey].movePp.toxic = 10;
+  const actions = {
+    player: declaredMove(state, players[0].combatantKey, "toxic", enemies[0].combatantKey),
+    enemy: declaredMove(state, enemies[0].combatantKey, "tackle", players[0].combatantKey)
+  };
+  const adapter = damageAdapter(() => [10]);
+  const preview = previewTurn({ plan: initial, parentStateNodeId: initial.initialStateNodeId, actions, dataset, damageAdapter: adapter });
+  const selected = preview.outcomes.find(outcome => outcome.events.some(event => event.eventType === "miss" && event.actorKey === players[0].combatantKey));
+  assert.ok(selected);
+  const committed = commitPreview(initial, preview, dataset, {
+    selectedPreviewOutcomeId: selected.previewOutcomeId,
+    commitSelectedOnly: true
+  }).plan;
+  delete committed.mechanicsFingerprint.plcResolverRulesetVersion;
+  assert.deepEqual(mechanicsCompatibility(committed, dataset).differences, ["plcResolverRulesetVersion"]);
+
+  const rebuilt = await recalculatePlanDocument(committed, {
+    dataset,
+    previewTurnFn: request => previewTurn({ ...request, dataset, damageAdapter: adapter })
+  });
+  const group = Object.values(rebuilt.actionGroups)[0];
+  assert.equal(group.outcomeStateNodeIds.length, 1);
+  const outcome = rebuilt.stateNodes[group.defaultOutcomeStateNodeId];
+  const events = outcome.resolutionEventIds.map(id => rebuilt.resolutionEvents[id]);
+  assert.ok(events.some(event => event.eventType === "miss" && event.actorKey === players[0].combatantKey));
+  assert.ok(!events.some(event => event.eventType === "major-status" && event.actorKey === players[0].combatantKey));
+  assert.equal(mechanicsCompatibility(rebuilt, dataset).editable, true);
 });
 
 test("reference validation rejects missing standardized records", () => {

@@ -33,6 +33,32 @@ function statusSignature(event) {
   return null;
 }
 
+const STAT_LABELS = Object.freeze({
+  atk: "Attack",
+  def: "Defense",
+  spa: "Sp. Atk",
+  spd: "Sp. Def",
+  spe: "Speed",
+  accuracy: "Accuracy",
+  evasion: "Evasion"
+});
+
+function statStageProfile(event) {
+  if (event.eventType !== "stat-stage-change") return null;
+  const changes = (event.changes || []).filter(change => change?.stat);
+  if (!changes.length) return null;
+  const entries = changes.map(change => ({
+    stat: String(change.stat),
+    delta: Number(change.requestedDelta ?? change.appliedDelta ?? Number(change.to) - Number(change.from))
+  })).filter(entry => Number.isFinite(entry.delta));
+  if (!entries.length) return null;
+  entries.sort((left, right) => left.stat.localeCompare(right.stat));
+  return {
+    signature: `stat:${entries.map(entry => `${entry.stat}:${entry.delta}`).join(",")}`,
+    label: entries.map(entry => `${STAT_LABELS[entry.stat] || entry.stat} ${entry.delta >= 0 ? "+" : ""}${entry.delta}`).join(", ")
+  };
+}
+
 function statusLabel(signature) {
   const id = String(signature || "").split(":")[1] || "status";
   const labels = {
@@ -46,6 +72,12 @@ function statusLabel(signature) {
     tox: "Bad poison"
   };
   return labels[id] || id.replace(/(^|[-_])(\w)/g, (_, prefix, letter) => `${prefix ? " " : ""}${letter.toUpperCase()}`);
+}
+
+function secondaryProfile(event) {
+  const status = statusSignature(event);
+  if (status) return { signature: status, label: statusLabel(status) };
+  return statStageProfile(event);
 }
 
 function actionCheckValue(events, actorKey) {
@@ -87,20 +119,36 @@ function moveTargetKeys(outcomes, action) {
 }
 
 function secondaryProfiles(outcomes, action, targetKey) {
-  const profiles = new Set();
+  const profiles = new Map();
   for (const entry of outcomes) {
     for (const event of eventsForMove(outcomeEvents(entry), action)) {
       if (event.targetKey !== targetKey) continue;
-      const signature = statusSignature(event);
-      if (signature) profiles.add(signature);
+      const profile = secondaryProfile(event);
+      if (profile) profiles.set(profile.signature, profile);
     }
   }
-  return [...profiles];
+  return [...profiles.values()];
+}
+
+function secondaryMissedForTarget(moveEvents, targetKey) {
+  return eventFor(moveEvents, event => event.eventType === "secondary-effect-missed"
+    && (event.targetKey === targetKey || event.metadata?.secondaryTargetKeys?.includes(targetKey)));
 }
 
 function choicesForOutcome(entry, outcomes, actions, definitions) {
   const events = outcomeEvents(entry);
   const choices = {};
+  for (const orderEvent of events.filter(event => event.eventType === "order-modifier" && event.metadata?.modifierId)) {
+    addChoice(choices, definitions, {
+      id: dimensionKey(["order-modifier", orderEvent.actorKey, orderEvent.metadata.modifierId]),
+      scope: "action",
+      kind: "order-modifier",
+      actorKey: orderEvent.actorKey,
+      label: orderEvent.metadata.sourceName || "Action order"
+    }, orderEvent.metadata.activated
+      ? { id: "activated", label: "Activated" }
+      : { id: "not-activated", label: "Did not activate" });
+  }
   for (const { side, slot, action } of flattenedActions(actions)) {
     if (!action?.actorKey) continue;
     const check = actionCheckValue(events, action.actorKey);
@@ -134,6 +182,13 @@ function choicesForOutcome(entry, outcomes, actions, definitions) {
     }, miss ? { id: "miss", label: "Misses" } : skipped || !executed ? { id: "not-reached", label: "Not reached" } : { id: "hit", label: "Hits" });
 
     const damageEvents = moveEvents.filter(event => event.eventType === "damage");
+    const criticalChoice = damageEvents.length
+      ? damageEvents.every(event => event.metadata?.criticalHit === true)
+        ? { id: "critical", label: "Crit" }
+        : damageEvents.every(event => event.metadata?.criticalHit !== true)
+          ? { id: "normal", label: "Normal" }
+          : { id: "mixed", label: "Mixed critical hits", hidden: true }
+      : { id: "not-reached", label: "Not reached" };
     addChoice(choices, definitions, {
       id: dimensionKey(["critical", action.actorKey, action.moveId]),
       scope: "move",
@@ -143,9 +198,7 @@ function choicesForOutcome(entry, outcomes, actions, definitions) {
       side,
       slot,
       label: "Critical hit"
-    }, damageEvents.length
-      ? damageEvents.some(event => event.metadata?.criticalHit === true) ? { id: "critical", label: "Crit" } : { id: "normal", label: "Normal" }
-      : { id: "not-reached", label: "Not reached" });
+    }, criticalChoice);
 
     for (const targetKey of moveTargetKeys(outcomes, action)) {
       const damage = eventFor(damageEvents, event => event.targetKey === targetKey);
@@ -165,11 +218,11 @@ function choicesForOutcome(entry, outcomes, actions, definitions) {
       } : { id: "not-reached", label: "Not reached" });
 
       for (const profile of secondaryProfiles(outcomes, action, targetKey)) {
-        const applied = eventFor(moveEvents, event => event.targetKey === targetKey && statusSignature(event) === profile);
-        const missedSecondary = eventFor(moveEvents, event => event.targetKey === targetKey && event.eventType === "secondary-effect-missed");
-        const label = statusLabel(profile);
+        const applied = eventFor(moveEvents, event => event.targetKey === targetKey && secondaryProfile(event)?.signature === profile.signature);
+        const missedSecondary = secondaryMissedForTarget(moveEvents, targetKey);
+        const label = profile.label;
         addChoice(choices, definitions, {
-          id: dimensionKey(["secondary", action.actorKey, action.moveId, targetKey, profile]),
+          id: dimensionKey(["secondary", action.actorKey, action.moveId, targetKey, profile.signature]),
           scope: "move",
           kind: "secondary",
           actorKey: action.actorKey,
@@ -192,6 +245,7 @@ function dimensionIsSelectable(dimension) {
   if (dimension.kind === "critical") return optionIds.has("normal") && optionIds.has("critical");
   if (dimension.kind === "damage-result") return optionIds.has("survive") && optionIds.has("ko");
   if (dimension.kind === "secondary") return optionIds.has("applied") && optionIds.has("not-applied");
+  if (dimension.kind === "order-modifier") return optionIds.has("activated") && optionIds.has("not-activated");
   return dimension.options.length > 1;
 }
 
@@ -218,7 +272,7 @@ export function createBranchEventModel({ outcomes = [], actions = {}, defaultOut
       else option.probability += probability;
       optionMap.set(choice.id, option);
     }
-    const options = [...optionMap.values()].sort((left, right) => {
+    const options = [...optionMap.values()].filter(option => option.hidden !== true).sort((left, right) => {
       if (left.id === "not-reached") return 1;
       if (right.id === "not-reached") return -1;
       if (left.probabilityStatus === "known" && right.probabilityStatus === "known" && right.probability !== left.probability) return right.probability - left.probability;

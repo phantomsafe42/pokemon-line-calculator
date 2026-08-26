@@ -18,8 +18,56 @@ export function formatDamageRollCounts(values) {
   }).join(", ");
 }
 
+export function readableMechanicName(value) {
+  return String(value || "Recovery")
+    .trim()
+    .split(/[-_\s]+/)
+    .filter(Boolean)
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(" ");
+}
+
+function numericRange(value) {
+  const min = Number(value?.min);
+  const max = Number(value?.max);
+  if (!Number.isFinite(min) || !Number.isFinite(max)) return null;
+  return { min: Math.min(min, max), max: Math.max(min, max) };
+}
+
+function healingPercentRange(event, maxHp) {
+  const declared = numericRange(event?.healingPercent);
+  if (declared) return declared;
+  const healing = numericRange(event?.healingHp);
+  const maximum = Number(maxHp);
+  if (!healing || !Number.isFinite(maximum) || maximum <= 0) return null;
+  return { min: healing.min / maximum * 100, max: healing.max / maximum * 100 };
+}
+
+function rangeLabel(range, formatter, separator = "–") {
+  if (!range) return null;
+  const min = formatter(range.min);
+  const max = formatter(range.max);
+  return range.min === range.max ? min : `${min}${separator}${max}`;
+}
+
+export function healingEventDescription(event, { moveName = null, maxHp = null } = {}) {
+  if (!["heal", "residual-heal", "switch-heal"].includes(event?.eventType)) return null;
+  const healing = numericRange(event.healingHp);
+  if (!healing) return null;
+  const source = moveName || readableMechanicName(event.metadata?.cause);
+  const verb = event.metadata?.cause === "drain" ? "Drained" : "Healed";
+  const hp = rangeLabel(healing, value => String(Math.round(value)));
+  const percent = rangeLabel(healingPercentRange(event, maxHp), value => `${value.toFixed(1)}%`, " - ");
+  return `${source} · ${verb} ${hp} HP${percent ? ` (${percent})` : ""}`;
+}
+
 export function outcomePanelEvents(events) {
-  return (events || []).filter(event => event?.eventType !== "experience-gain");
+  return (events || []).filter(event => {
+    if (event?.metadata?.hiddenFromOutcomes === true) return false;
+    if (["experience-gain", "replacement-required"].includes(event?.eventType)) return false;
+    if (event?.eventType !== "action-skipped") return true;
+    return !["actor-fainted-before-moving", "target-fainted-before-action"].includes(event.reason);
+  });
 }
 
 function outcomeFor(entry) {

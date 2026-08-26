@@ -22,6 +22,7 @@ import {
   outgoingSwitchEffects
 } from "../rulesets/switch_rules.js?v=20260825-download";
 import { applyDefeatedEnemyExperience, registerSwitchExperienceParticipation } from "../rulesets/vw2r_experience.js";
+import { actionOrderAlternatives, applyActionOrderState, effectiveActionSpeed, effectiveMovePriority } from "../rulesets/action_order.js";
 
 export class ResolutionError extends Error {
   constructor(message) {
@@ -44,9 +45,7 @@ function stageMultiplier(stage) {
 }
 
 export function effectiveSpeed(combatant, state, generation = 5) {
-  let speed = Number(state.currentStats?.spe ?? combatant.calculatedStats?.spe ?? 0) * stageMultiplier(state.statStages?.spe);
-  if (state.majorStatus === "par" || state.majorStatus === "paralysis") speed *= Number(generation) >= 7 ? 0.5 : 0.25;
-  return Math.floor(speed);
+  return effectiveActionSpeed({ combatant, combatantState: state, generation });
 }
 
 function currentCalculatedStat(plan, state, combatantKey, stat) {
@@ -68,7 +67,9 @@ function entryComparisonState(plan, state, combatantKey) {
 function actionPriority(action, dataset, plan, state) {
   if (action.actionType === "switch") return 6;
   const combatant = plan.combatants[action.actorKey];
-  return Number(effectiveCombatantMove(dataset, combatant, state.combatantStates[action.actorKey], action.moveId)?.priority || 0);
+  const combatantState = state.combatantStates[action.actorKey];
+  const move = effectiveCombatantMove(dataset, combatant, combatantState, action.moveId);
+  return effectiveMovePriority({ action, move, combatantState, generation: Number(dataset.mechanics?.damageGeneration || 5) });
 }
 
 function actionSide(action, plan) {
@@ -83,34 +84,61 @@ function permutations(entries) {
 function orderedActions(plan, state, actions, dataset) {
   const generation = Number(dataset.mechanics?.damageGeneration || 5);
   const trickRoom = Number(state.fieldState?.global?.trickRoomTurns || 0) > 0;
-  const entries = actionEntries(state, actions).map(entry => {
+  const activeCombatantStates = activeEntries(state).map(entry => state.combatantStates[entry.combatantKey]).filter(Boolean);
+  const suppressedWeather = weatherIsSuppressed(activeCombatantStates);
+  const baseEntries = actionEntries(state, actions).map(entry => {
     const combatant = plan.combatants[entry.action.actorKey];
-    let speed = effectiveSpeed(combatant, state.combatantStates[combatant.combatantKey], generation);
-    if (Number(state.fieldState?.sides?.[entry.side]?.tailwindTurns || 0) > 0) speed *= 2;
-    if (Number(state.fieldState?.sides?.[entry.side]?.swampTurns || 0) > 0) speed *= 0.25;
+    const combatantState = state.combatantStates[combatant.combatantKey];
+    const move = entry.action.actionType === "move" ? effectiveCombatantMove(dataset, combatant, combatantState, entry.action.moveId) : null;
+    const speed = effectiveActionSpeed({ combatant, combatantState, battleState: state, side: entry.side, generation, weatherSuppressed: suppressedWeather });
     let priority = actionPriority(entry.action, dataset, plan, state);
     if (entry.action.actionType === "move" && entry.action.moveId === "pursuit") {
       const targetKey = entry.action.targetKeys?.[0];
       if (actionEntries(state, actions).some(candidate => candidate.action.actorKey === targetKey && candidate.action.actionType === "switch")) priority = 7;
     }
-    return { ...entry, priority, speed };
+    return { ...entry, priority, speed, orderAlternatives: actionOrderAlternatives({ action: entry.action, move, combatantState, battleState: state, generation }) };
   });
-  entries.sort((left, right) => right.priority - left.priority || (trickRoom ? left.speed - right.speed : right.speed - left.speed) || left.side.localeCompare(right.side) || left.slot - right.slot);
-  let orders = [{ entries: [], probability: 1, conditions: [] }];
-  for (let index = 0; index < entries.length;) {
-    let end = index + 1;
-    while (end < entries.length && entries[end].priority === entries[index].priority && entries[end].speed === entries[index].speed) end += 1;
-    const tied = entries.slice(index, end);
-    const variants = tied.length > 1 ? permutations(tied) : [tied];
-    const tieProbability = 1 / variants.length;
-    orders = orders.flatMap(order => variants.map(variant => ({
-      entries: [...order.entries, ...variant],
-      probability: order.probability * tieProbability,
-      conditions: tied.length > 1 ? [...order.conditions, `speed-tie:${tied.map(entry => entry.action.actorKey).join(",")}`] : [...order.conditions]
+
+  let configurations = [{ entries: [], probability: 1, conditions: [] }];
+  for (const entry of baseEntries) {
+    configurations = configurations.flatMap(configuration => entry.orderAlternatives.map(alternative => ({
+      entries: [...configuration.entries, { ...entry, fractionalPriority: Number(alternative.fractionalPriority || 0), orderAlternative: alternative }],
+      probability: probabilityProduct(configuration.probability, alternative.probability),
+      conditions: alternative.orderEvent
+        ? [...configuration.conditions, `order:${entry.action.actorKey}:${alternative.orderEvent.modifierId}:${alternative.orderEvent.activated ? "activated" : "not-activated"}`]
+        : [...configuration.conditions]
     })));
-    index = end;
   }
-  if (orders.length > 96) throw new ResolutionError("Action-order branching exceeds the safe Doubles limit");
+
+  let orders = [];
+  for (const configuration of configurations) {
+    const entries = [...configuration.entries].sort((left, right) =>
+      right.priority - left.priority
+      || right.fractionalPriority - left.fractionalPriority
+      || (trickRoom ? left.speed - right.speed : right.speed - left.speed)
+      || left.side.localeCompare(right.side)
+      || left.slot - right.slot
+    );
+    let variants = [{ entries: [], probability: configuration.probability, conditions: configuration.conditions }];
+    for (let index = 0; index < entries.length;) {
+      let end = index + 1;
+      while (end < entries.length
+        && entries[end].priority === entries[index].priority
+        && entries[end].fractionalPriority === entries[index].fractionalPriority
+        && entries[end].speed === entries[index].speed) end += 1;
+      const tied = entries.slice(index, end);
+      const permutationsForTie = tied.length > 1 ? permutations(tied) : [tied];
+      const tieProbability = 1 / permutationsForTie.length;
+      variants = variants.flatMap(order => permutationsForTie.map(variant => ({
+        entries: [...order.entries, ...variant],
+        probability: probabilityProduct(order.probability, tieProbability),
+        conditions: tied.length > 1 ? [...order.conditions, `speed-tie:${tied.map(candidate => candidate.action.actorKey).join(",")}`] : [...order.conditions]
+      })));
+      index = end;
+    }
+    orders.push(...variants);
+  }
+  if (orders.length > 256) throw new ResolutionError("Action-order branching exceeds the safe Doubles limit");
   return orders;
 }
 
@@ -302,6 +330,30 @@ function event(branch, details) {
   return next;
 }
 
+function readableMechanicName(value) {
+  return String(value || "recovery")
+    .trim()
+    .split(/[-_\s]+/)
+    .filter(Boolean)
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(" ");
+}
+
+function percentRange(range, maxHp) {
+  const maximum = Number(maxHp);
+  if (!range || !Number.isFinite(maximum) || maximum <= 0) return null;
+  return { min: Number(range.min) / maximum * 100, max: Number(range.max) / maximum * 100 };
+}
+
+function actualHealingRange(before, after) {
+  const previous = normalizeRange(before);
+  const current = normalizeRange(after);
+  return {
+    min: Math.max(0, current.max - previous.max),
+    max: Math.max(0, current.min - previous.min)
+  };
+}
+
 function switchEvent(branch, details) {
   return event(branch, { actorKey: null, targetKey: null, moveId: null, ...details });
 }
@@ -316,7 +368,8 @@ function applySwitchEffect(branch, targetKey, side, effect, opposingKey = null) 
   if (effect.kind === "heal") {
     const before = clone(targetState.hp);
     applyExactHpChange(targetState, effect.amount);
-    switchEvent(branch, { eventType: "switch-heal", targetKey, healingHp: { min: effect.amount, max: effect.amount }, metadata: { cause: effect.cause, resultLabel: `${effect.cause} recovery` }, changes: [{ path: `combatantStates.${targetKey}.hp`, from: before, to: clone(targetState.hp) }] });
+    const healingHp = actualHealingRange(before, targetState.hp);
+    switchEvent(branch, { eventType: "switch-heal", targetKey, healingHp, healingPercent: percentRange(healingHp, targetState.hp.maxHp), metadata: { cause: effect.cause, resultLabel: `${readableMechanicName(effect.cause)} recovery` }, changes: [{ path: `combatantStates.${targetKey}.hp`, from: before, to: clone(targetState.hp) }] });
     return [branch];
   }
   if (effect.kind === "clear-status") {
@@ -564,10 +617,15 @@ function markDamageTaken(state, actorKey, move, damageMax) {
   const damaged = Number(damageMax) > 0;
   if (!damaged) return;
   state.turnFlags.wasDamaged = true;
+  state.turnFlags.hpLostThisTurn = true;
   state.turnFlags.damageTaken = Number(damageMax);
   state.turnFlags.damagingHitsTaken = Number(state.turnFlags.damagingHitsTaken || 0) + 1;
   state.turnFlags.lastDamageSourceKey = actorKey;
   state.turnFlags.lastDamageCategory = String(move.category || "").toLowerCase();
+}
+
+function markHpLostThisTurn(state, amount) {
+  if (Number(amount) > 0) state.turnFlags.hpLostThisTurn = true;
 }
 
 function activeHeldItemId(state, fieldState) {
@@ -725,6 +783,7 @@ function applyDamage(branch, { actorKey, targetKey, move, damageValues, damageDi
       const changed = next.state.combatantStates[actorKey];
       changed.hp = { min: Math.max(0, actorHp.min - recoilMax), max: Math.max(0, actorHp.max - recoilMin), maxHp: actorHp.maxHp };
       delete changed.hpDistribution;
+      markHpLostThisTurn(changed, recoilMax);
       event(next, { eventType: "recoil", actorKey, targetKey: actorKey, moveId: move.id, damageHp: { min: recoilMin, max: recoilMax } });
     }
     outcomes.push(next);
@@ -825,6 +884,7 @@ function applySelfHeal(branch, actorKey, move, descriptor) {
     moveId: move.id,
     changes: [{ path: `combatantStates.${actorKey}.hp`, healingHp }],
     healingHp,
+    healingPercent: percentRange(healingHp, maxHp),
     metadata: { target: "self", requestedHp: requested, resultLabel }
   });
   return [branch];
@@ -1092,7 +1152,8 @@ function applyDamageRecovery(branch, actorKey, targetKey, move, operation) {
     const healMax = Math.floor(Number(damageEvent.damageHp.max) * numerator / denominator);
     actorState.hp = { min: Math.min(maxHp, hp.min + healMin), max: Math.min(maxHp, hp.max + healMax), maxHp };
     delete actorState.hpDistribution;
-    event(branch, { eventType: "heal", actorKey, targetKey: actorKey, moveId: move.id, healingHp: { min: healMin, max: healMax }, metadata: { cause: "drain", resultLabel: `Drained ${healMin === healMax ? healMin : `${healMin}–${healMax}`} HP` } });
+    const healingHp = actualHealingRange(hp, actorState.hp);
+    event(branch, { eventType: "heal", actorKey, targetKey: actorKey, moveId: move.id, healingHp, healingPercent: percentRange(healingHp, maxHp), metadata: { cause: "drain", resultLabel: `Drained ${healingHp.min === healingHp.max ? healingHp.min : `${healingHp.min}–${healingHp.max}`} HP` } });
   }
   if (operation.recoil) {
     const current = normalizeRange(actorState.hp);
@@ -1101,6 +1162,7 @@ function applyDamageRecovery(branch, actorKey, targetKey, move, operation) {
     const recoilMax = Math.floor(Number(damageEvent.damageHp.max) * numerator / denominator);
     actorState.hp = { min: Math.max(0, current.min - recoilMax), max: Math.max(0, current.max - recoilMin), maxHp: current.maxHp };
     delete actorState.hpDistribution;
+    markHpLostThisTurn(actorState, recoilMax);
     event(branch, { eventType: "recoil", actorKey, targetKey: actorKey, moveId: move.id, damageHp: { min: recoilMin, max: recoilMax }, metadata: { resultLabel: `${recoilMin === recoilMax ? recoilMin : `${recoilMin}–${recoilMax}`} recoil` } });
   }
   return [branch];
@@ -1165,7 +1227,14 @@ function applyStructuredOperations(branches, context, operations) {
         const skippedBranch = clone(branch);
         skippedBranch.probability = probabilityProduct(branch.probability, 1 - chance);
         skippedBranch.probabilityStatus = skippedBranch.probability === null ? "unknown" : "known";
-        event(skippedBranch, { eventType: "secondary-effect-missed", actorKey: context.actorKey, targetKey: context.targetKey, moveId: context.move.id, metadata: { chance: Number(operation.chance), resultLabel: "No secondary effect" } });
+        const secondaryTargetKeys = [...new Set(operation.operations.map(nested => nested.target === "self" ? context.actorKey : context.targetKey).filter(Boolean))];
+        event(skippedBranch, {
+          eventType: "secondary-effect-missed",
+          actorKey: context.actorKey,
+          targetKey: secondaryTargetKeys.length === 1 ? secondaryTargetKeys[0] : context.targetKey,
+          moveId: context.move.id,
+          metadata: { chance: Number(operation.chance), secondaryTargetKeys, resultLabel: "No secondary effect" }
+        });
         return [...applyStructuredOperations([applied], context, operation.operations), skippedBranch];
       });
     } else {
@@ -1785,8 +1854,9 @@ function applySpecialHandler(branch, context, handlerId) {
     const legalCalledTargets = calledDescriptor.target === "target" ? legalTargetKeys(branch.state, side, actorKey, calledMode) : [];
     const calledTargetKey = declaredActivation?.targetKey || (legalCalledTargets.includes(targetKey) ? targetKey : legalCalledTargets[0]);
     const calledAction = { ...action, moveId: calledMoveId, targetKeys: calledTargetKey ? [calledTargetKey] : [], mechanicActivations: [] };
-    const targets = moveTargets(branch.state, side, calledAction, calledDescriptor, calledMove, null);
+    const { targetKeys: targets, redirects } = moveTargets(branch.state, side, calledAction, calledDescriptor, calledMove, null);
     if (!targets.length && calledDescriptor.target === "target") return fail("called-move-has-no-target");
+    recordMoveRedirects(branch, actorKey, calledMove.id, redirects);
     let calledBranches = [branch];
     for (const calledTargetKey of targets.length ? targets : [null]) {
       calledBranches = calledBranches.flatMap(current => applyMoveToTarget(current, {
@@ -1844,7 +1914,7 @@ function multiHitOutcomes(operation, actorState, generation) {
   return Array.from({ length: count }, (_, index) => ({ moveHits: min + index, probability: 1 / count }));
 }
 
-function dynamicMoveOverrides(branch, { side, move, actor, target, actorState, targetState, previousLastMoveId, pendingActions }, existing) {
+function dynamicMoveOverrides(branch, { side, move, actor, target, actorState, targetState, previousLastMoveId, pendingActions, dataset }, existing) {
   const type = String(move.type || "").toLowerCase();
   let basePower = Number(existing?.basePower ?? move.basePower ?? 0);
   let adjusted = existing;
@@ -1855,8 +1925,9 @@ function dynamicMoveOverrides(branch, { side, move, actor, target, actorState, t
     const actorRatio = Number(actorHp.max) / Math.max(1, Number(actorHp.maxHp));
     const targetRatio = Number(targetHp.max) / Math.max(1, Number(targetHp.maxHp));
     if (moveId === "acrobatics" && actorState.itemState !== "held") basePower *= 2;
-    else if (moveId === "assurance" && targetState.turnFlags.wasDamaged) basePower *= 2;
+    else if (moveId === "assurance" && targetState.turnFlags.hpLostThisTurn) basePower *= 2;
     else if (["avalanche", "revenge"].includes(moveId) && actorState.turnFlags.wasDamaged && actorState.turnFlags.lastDamageSourceKey === target.combatantKey) basePower *= 2;
+    else if (moveId === "retaliate" && branch.state.fieldState.sides?.[side]?.retaliateReady === true) basePower *= 2;
     else if (moveId === "brine" && targetRatio <= 0.5) basePower *= 2;
     else if (["crushgrip", "wringout"].includes(moveId)) basePower = Math.max(1, Math.floor(120 * targetRatio) + 1);
     else if (["eruption", "waterspout"].includes(moveId)) basePower = Math.max(1, Math.floor(150 * actorRatio));
@@ -1865,12 +1936,16 @@ function dynamicMoveOverrides(branch, { side, move, actor, target, actorState, t
       const bucket = Math.floor(48 * actorRatio);
       basePower = bucket <= 1 ? (bucket === 0 ? 200 : 150) : bucket === 2 ? 100 : bucket === 3 ? 80 : bucket <= 8 ? 40 : 20;
     } else if (moveId === "gyroball") {
-      const actorSpeed = Math.max(1, effectiveSpeed(actor, actorState, 5));
-      const targetSpeed = Math.max(1, effectiveSpeed(target, targetState, 5));
+      const generation = Number(dataset?.mechanics?.damageGeneration || 5);
+      const weatherSuppressed = weatherIsSuppressed(activeStates(branch));
+      const actorSpeed = Math.max(1, effectiveActionSpeed({ combatant: actor, combatantState: actorState, battleState: branch.state, side: actor.side, generation, weatherSuppressed }));
+      const targetSpeed = Math.max(1, effectiveActionSpeed({ combatant: target, combatantState: targetState, battleState: branch.state, side: target.side, generation, weatherSuppressed }));
       basePower = Math.min(150, Math.floor(25 * targetSpeed / actorSpeed) + 1);
     } else if (moveId === "electroball") {
-      const actorSpeed = Math.max(1, effectiveSpeed(actor, actorState, 5));
-      const targetSpeed = Math.max(1, effectiveSpeed(target, targetState, 5));
+      const generation = Number(dataset?.mechanics?.damageGeneration || 5);
+      const weatherSuppressed = weatherIsSuppressed(activeStates(branch));
+      const actorSpeed = Math.max(1, effectiveActionSpeed({ combatant: actor, combatantState: actorState, battleState: branch.state, side: actor.side, generation, weatherSuppressed }));
+      const targetSpeed = Math.max(1, effectiveActionSpeed({ combatant: target, combatantState: targetState, battleState: branch.state, side: target.side, generation, weatherSuppressed }));
       const ratio = actorSpeed / targetSpeed;
       basePower = ratio >= 4 ? 150 : ratio >= 3 ? 120 : ratio >= 2 ? 80 : ratio >= 1 ? 60 : 40;
     } else if (moveId === "hex" && targetState.majorStatus) basePower *= 2;
@@ -2150,7 +2225,7 @@ function applyMoveEffect(branch, { side, actorKey, targetKey, actor, target, act
           damageBranch.probability = probabilityProduct(current.probability, hitOutcome.probability);
           damageBranch.probabilityStatus = damageBranch.probability === null ? "unknown" : "known";
           const calculatedOverrides = damageOverrides(descriptor, currentActorState, targetKey);
-          const moveOverrides = dynamicMoveOverrides(damageBranch, { side, move, actor, target, actorState: currentActorState, targetState: currentTargetState, previousLastMoveId, pendingActions }, damageBranch.currentMoveOverrides || calculatedOverrides.moveOverrides);
+          const moveOverrides = dynamicMoveOverrides(damageBranch, { side, move, actor, target, actorState: currentActorState, targetState: currentTargetState, previousLastMoveId, pendingActions, dataset }, damageBranch.currentMoveOverrides || calculatedOverrides.moveOverrides);
           const powerConditionMet = calculatedOverrides.powerConditionMet;
           const variants = calculateDamageVariants(damageBranch, {
             actor,
@@ -2223,21 +2298,33 @@ function applyMoveEffect(branch, { side, actorKey, targetKey, actor, target, act
 }
 
 function moveTargets(state, side, action, descriptor, move, declaredTargetSlots) {
-  if (descriptor.target === "self") return [action.actorKey];
-  if (descriptor.target === "field") return [null];
+  if (descriptor.target === "self") return { targetKeys: [action.actorKey], redirects: [] };
+  if (descriptor.target === "field") return { targetKeys: [null], redirects: [] };
   const mode = descriptor.targetMode || canonicalTarget(move);
-  if (mode === "all") return [null];
-  if (mode === "alladjacentfoes") return activeKeys(state, opposite(side)).filter(key => Number(state.combatantStates[key]?.hp?.max) > 0);
+  if (mode === "all") return { targetKeys: [null], redirects: [] };
+  if (mode === "alladjacentfoes") return { targetKeys: activeKeys(state, opposite(side)).filter(key => Number(state.combatantStates[key]?.hp?.max) > 0), redirects: [] };
   if (mode === "alladjacent") {
-    return activeEntries(state).map(entry => entry.combatantKey).filter(key => key !== action.actorKey && Number(state.combatantStates[key]?.hp?.max) > 0);
+    return {
+      targetKeys: activeEntries(state).map(entry => entry.combatantKey).filter(key => key !== action.actorKey && Number(state.combatantStates[key]?.hp?.max) > 0),
+      redirects: []
+    };
   }
   if (mode === "scripted") {
     const sourceKey = state.combatantStates[action.actorKey]?.turnFlags?.lastDamageSourceKey;
-    return sourceKey ? [sourceKey] : [];
+    return { targetKeys: sourceKey ? [sourceKey] : [], redirects: [] };
   }
+  const redirects = [];
   const selected = (action.targetKeys || []).map(targetKey => {
     const declaredSlot = declaredTargetSlots?.[targetKey];
-    return declaredSlot ? activeKey(state, declaredSlot.side, declaredSlot.slot) : targetKey;
+    const currentTargetKey = declaredSlot ? activeKey(state, declaredSlot.side, declaredSlot.slot) : targetKey;
+    const targetSide = declaredSlot?.side
+      || (state.active.playerCombatantKeys?.includes(currentTargetKey) ? "player" : null)
+      || (state.active.enemyCombatantKeys?.includes(currentTargetKey) ? "enemy" : null);
+    if (!["normal", "any", "adjacentfoe", "randomnormal"].includes(mode) || !targetSide || targetSide === side) return currentTargetKey;
+    if (currentTargetKey && Number(state.combatantStates[currentTargetKey]?.hp?.max) > 0) return currentTargetKey;
+    const redirectedTargetKey = activeKeys(state, targetSide).find(key => Number(state.combatantStates[key]?.hp?.max) > 0) || null;
+    if (redirectedTargetKey) redirects.push({ fromTargetKey: currentTargetKey || targetKey, targetKey: redirectedTargetKey, reason: "target-fainted" });
+    return redirectedTargetKey;
   }).filter(Boolean);
   if (["normal", "any", "adjacentfoe", "randomnormal"].includes(mode) && selected.length === 1) {
     const targetSide = selected[0] && state.active.playerCombatantKeys?.includes(selected[0]) ? "player"
@@ -2248,10 +2335,29 @@ function moveTargets(state, side, action, descriptor, move, declaredTargetSlots)
         const targetState = state.combatantStates[key];
         return Number(targetState?.hp?.max) > 0 && (targetState.volatileConditions?.followme || targetState.volatileConditions?.ragepowder);
       });
-      if (redirector) return [redirector];
+      if (redirector && redirector !== selected[0]) {
+        redirects.push({ fromTargetKey: selected[0], targetKey: redirector, reason: "attention-redirection" });
+        return { targetKeys: [redirector], redirects };
+      }
     }
   }
-  return selected;
+  return { targetKeys: selected, redirects };
+}
+
+function recordMoveRedirects(branch, actorKey, moveId, redirects) {
+  for (const redirect of redirects || []) {
+    event(branch, {
+      eventType: "move-redirected",
+      actorKey,
+      targetKey: redirect.targetKey,
+      moveId,
+      metadata: {
+        fromTargetKey: redirect.fromTargetKey || null,
+        reason: redirect.reason,
+        resultLabel: "Move redirected"
+      }
+    });
+  }
 }
 
 function applyMoveToTarget(branch, { side, action, actorKey, actor, move, descriptor, targetKey, targetCount, plan, dataset, damageAdapter, isLastAction, previousLastMoveId, pendingActions }) {
@@ -2345,8 +2451,9 @@ function applyMove(branch, side, slot, action, plan, dataset, damageAdapter, mov
   const continuingBide = action.moveId === "bide" && Number(actorState.volatileConditions.bideTurns || 0) > 0;
   markMoved(branch, actorKey, action.moveId, !continuingBide);
   if (descriptor.effectId !== "protect" && descriptor.specialHandlerId !== "protect") actorState.volatileConditions.protectStreak = 0;
-  const targets = moveTargets(branch.state, side, action, descriptor, move, declaredTargetSlots);
+  const { targetKeys: targets, redirects } = moveTargets(branch.state, side, action, descriptor, move, declaredTargetSlots);
   if (!targets.length) return skipped(branch, actorKey, "no-legal-target");
+  recordMoveRedirects(branch, actorKey, move.id, redirects);
   let branches = [branch];
   for (const targetKey of targets) {
     branches = branches.flatMap(current => applyMoveToTarget(current, { side, action, actorKey, actor, move, descriptor, targetKey, targetCount: targets.length, plan, dataset, damageAdapter, isLastAction, previousLastMoveId, pendingActions }));
@@ -2535,6 +2642,7 @@ function applyResidualDamage(branch, targetKey, rule) {
       fainted.probabilityStatus = "unknown";
       fainted.state.combatantStates[targetKey].hp = { min: 0, max: 0, maxHp };
       fainted.state.combatantStates[targetKey].hpDistribution = [{ value: 0, probability: 1 }];
+      markHpLostThisTurn(fainted.state.combatantStates[targetKey], amount);
       event(fainted, { eventType: rule.eventType || "residual-damage", actorKey: null, targetKey, moveId: null, damageHp: { min: amount, max: amount }, damagePercent: { min: amount / maxHp * 100, max: amount / maxHp * 100 }, metadata: { cause: rule.cause, thresholdOutcome: "ko", resultLabel: `${rule.cause} damage` } });
       outcomes.push(fainted);
     }
@@ -2544,6 +2652,7 @@ function applyResidualDamage(branch, targetKey, rule) {
       survived.probabilityStatus = "unknown";
       survived.state.combatantStates[targetKey].hp = { min: Math.max(1, hp.min - amount), max: hp.max - amount, maxHp };
       delete survived.state.combatantStates[targetKey].hpDistribution;
+      markHpLostThisTurn(survived.state.combatantStates[targetKey], amount);
       event(survived, { eventType: rule.eventType || "residual-damage", actorKey: null, targetKey, moveId: null, damageHp: { min: amount, max: amount }, damagePercent: { min: amount / maxHp * 100, max: amount / maxHp * 100 }, metadata: { cause: rule.cause, thresholdOutcome: "survive", resultLabel: `${rule.cause} damage` } });
       outcomes.push(survived);
     }
@@ -2562,6 +2671,7 @@ function applyResidualDamage(branch, targetKey, rule) {
     next.probability = probabilityProduct(branch.probability, localProbability);
     next.probabilityStatus = next.probability === null ? "unknown" : "known";
     setHpDistribution(next.state.combatantStates[targetKey], entries.map(entry => ({ value: entry.value, probability: entry.probability / localProbability })));
+    markHpLostThisTurn(next.state.combatantStates[targetKey], amount);
     event(next, { eventType: rule.eventType || "residual-damage", actorKey: null, targetKey, moveId: null, damageHp: { min: amount, max: amount }, damagePercent: { min: amount / maxHp * 100, max: amount / maxHp * 100 }, metadata: { cause: rule.cause, thresholdOutcome: kind, resultLabel: `${rule.cause} damage` } });
     outcomes.push(next);
   }
@@ -2584,7 +2694,7 @@ function applyResidualHeal(branch, targetKey, rule) {
     delete targetState.hpDistribution;
   }
   const healingHp = { min: Math.min(...healedValues), max: Math.max(...healedValues) };
-  event(branch, { eventType: "residual-heal", actorKey: null, targetKey, moveId: null, healingHp, metadata: { cause: rule.cause, resultLabel: `${rule.cause} recovery` } });
+  event(branch, { eventType: "residual-heal", actorKey: null, targetKey, moveId: null, healingHp, healingPercent: percentRange(healingHp, maxHp), metadata: { cause: rule.cause, resultLabel: `${readableMechanicName(rule.cause)} recovery` } });
   return [branch];
 }
 
@@ -2823,6 +2933,7 @@ function updateBattleBoundary(branch, plan) {
       && Number(branch.state.combatantStates[combatant.combatantKey]?.hp?.max) > 0
     );
     const sideEnded = livingActive.length + available.length === 0;
+    branch.state.fieldState.sides[side].retaliateReady = faintedSlots.length > 0;
     if (sideEnded) ended = true;
     const replacementCount = Math.min(available.length, faintedSlots.length);
     pending.push(...faintedSlots.slice(0, replacementCount).map(entry => ({ side, slot: entry.slot })));
@@ -2861,17 +2972,23 @@ function updateBattleBoundary(branch, plan) {
   }
 }
 
+function battleRosterEnded(state, plan) {
+  return ["player", "enemy"].some(side => !Object.values(plan.combatants).some(combatant =>
+    combatant.side === side && Number(state.combatantStates[combatant.combatantKey]?.hp?.max) > 0
+  ));
+}
+
 function outcomeLabel(branch) {
   const lastDamage = [...branch.events].reverse().find(entry => ["damage", "residual-damage"].includes(entry.eventType));
   if (lastDamage?.metadata?.thresholdOutcome === "ko") {
     const target = branch.planCombatants?.[lastDamage.targetKey];
-    return `${target?.displayName || "Pokémon"} faints`;
+    return `${target?.displayName || "Pokémon"} fainted`;
   }
-  if (branch.events.some(entry => entry.eventType === "miss")) return "A selected move misses";
-  if (branch.events.some(entry => entry.eventType === "switch")) return "Switch line resolves";
+  if (branch.events.some(entry => entry.eventType === "miss")) return "A selected move missed";
+  if (branch.events.some(entry => entry.eventType === "switch")) return "Switch line resolved";
   const structuredEffect = [...branch.events].reverse().find(entry => ["stat-stage-change", "heal", "protect", "major-status", "status-failed", "field-change", "move-blocked", "residual-damage", "residual-heal"].includes(entry.eventType));
   if (structuredEffect?.metadata?.resultLabel) return structuredEffect.metadata.resultLabel;
-  return activeEntries(branch.state).length > 2 ? "All active Pokémon survive" : "Both Pokémon survive";
+  return activeEntries(branch.state).length > 2 ? "All active Pokémon survived" : "Both Pokémon survived";
 }
 
 function mergeEquivalent(branches) {
@@ -2920,7 +3037,9 @@ function resolveActionEntries(branch, entries, context) {
     pendingActions: remaining
   });
   const rewarded = applied.map(next => applyDefeatedEnemyExperience(next, context.plan, context.dataset));
-  const resolved = rewarded.flatMap(next => resolveActionEntries(next, applyActionOrderDirective(next, remaining), context));
+  const resolved = rewarded.flatMap(next => battleRosterEnded(next.state, context.plan)
+    ? [next]
+    : resolveActionEntries(next, applyActionOrderDirective(next, remaining), context));
   if (resolved.length > 1024) throw new ResolutionError("Outcome branching exceeds the safe Doubles limit");
   return resolved;
 }
@@ -2936,16 +3055,24 @@ export function resolveTurn({ plan, parentStateNodeId, actions, dataset, damageA
   }
   let resolved = [];
   for (const order of orders) {
-    const state = clone(parentState);
+    const preparedOrder = applyActionOrderState(parentState, order.entries);
+    const state = preparedOrder.state;
     state.parentActionGroupId = null;
     state.parentReplacementTransitionId = null;
     state.childActionGroupIds = [];
     state.childReplacementTransitionIds = [];
     state.resolutionEventIds = [];
     for (const monState of Object.values(state.combatantStates)) monState.turnFlags = resetTurnFlags();
-    let branches = [{ state, events: [], probability: order.probability, probabilityStatus: "known", conditions: [...order.conditions], planCombatants: plan.combatants }];
+    let branches = [{
+      state,
+      events: preparedOrder.initialEvents.map(details => ({ ...details, source: "planned", changes: details.changes || [], metadata: details.metadata || {} })),
+      probability: order.probability,
+      probabilityStatus: order.probability === null ? "unknown" : "known",
+      conditions: [...order.conditions],
+      planCombatants: plan.combatants
+    }];
     branches = branches.flatMap(branch => resolveActionEntries(branch, order.entries, { plan, dataset, damageAdapter, moveSupport, declaredTargetSlots }));
-    branches = branches.flatMap(branch => applyEndOfTurn(branch, dataset, plan, damageAdapter));
+    branches = branches.flatMap(branch => battleRosterEnded(branch.state, plan) ? [branch] : applyEndOfTurn(branch, dataset, plan, damageAdapter));
     branches = branches.map(branch => applyDefeatedEnemyExperience(branch, plan, dataset));
     for (const branch of branches) updateBattleBoundary(branch, plan);
     resolved.push(...branches);

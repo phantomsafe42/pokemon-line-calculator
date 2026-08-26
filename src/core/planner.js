@@ -1,7 +1,7 @@
 import { assertValidPlanDocument } from "../contracts/plan_contract.js";
-import { actionSignature, nextCreatedOrder, touchPlan, updateStateHash } from "./plan.js";
+import { actionSignature, nextCreatedOrder, touchPlan, updateStateHash } from "./plan.js?v=20260826-order-notes-import";
 import { clone, shortHash, stableStringify } from "./primitives.js";
-import { resolveForcedReplacement, resolveTurn } from "./resolver.js?v=20260826-focus-sash";
+import { resolveForcedReplacement, resolveTurn } from "./resolver.js?v=20260826-order-notes-import";
 import { actionList, activeKey, activeSlotEntries, normalizeActionsForPlan, normalizeReplacementsForPlan, pendingReplacementSlots, replacementList } from "./battle_slots.js";
 
 function displayAction(action, events, plan, dataset) {
@@ -91,7 +91,7 @@ function outcomeIdentity(entry, suppliedEvents = null) {
   const conditions = (outcome.conditions || []).map(condition => condition?.expression || condition).filter(Boolean).sort();
   const branchEvents = events.filter(event => [
     "action-skipped", "confusion-check", "confusion-self-hit", "damage", "major-status", "miss", "move-blocked", "move-immune",
-    "secondary-effect-missed", "status-cleared", "volatile-status", "volatile-status-cleared"
+    "order-modifier", "secondary-effect-missed", "status-cleared", "volatile-status", "volatile-status-cleared"
   ].includes(event.eventType)).map(event => ({
     eventType: event.eventType,
     actorKey: event.actorKey || null,
@@ -101,7 +101,9 @@ function outcomeIdentity(entry, suppliedEvents = null) {
     criticalHit: event.metadata?.criticalHit ?? null,
     thresholdOutcome: event.metadata?.thresholdOutcome || null,
     statusId: event.metadata?.statusId || event.metadata?.volatileStatusId || null,
-    outcome: event.metadata?.outcome || null
+    outcome: event.metadata?.outcome || null,
+    orderModifierId: event.metadata?.modifierId || null,
+    orderModifierActivated: event.metadata?.activated ?? null
   }));
   return stableStringify({ stateHash: state?.stateHash || null, conditions, branchEvents });
 }
@@ -197,6 +199,22 @@ function leadingReplacementEvents(plan, stateNodeId) {
   }));
 }
 
+function leadingInitialEntryEvents(plan, stateNodeId) {
+  if (stateNodeId !== plan.initialStateNodeId) return [];
+  const root = plan.stateNodes[stateNodeId];
+  return (root?.resolutionEventIds || []).map(eventId => plan.resolutionEvents[eventId]).filter(Boolean).map(entry => ({
+    ...clone(entry),
+    metadata: { ...(entry.metadata || {}), phase: "initial-entry" }
+  }));
+}
+
+function leadingTurnEvents(plan, stateNodeId) {
+  return [
+    ...leadingInitialEntryEvents(plan, stateNodeId),
+    ...leadingReplacementEvents(plan, stateNodeId)
+  ];
+}
+
 function committedEvent(rawEvent, eventId, turnNumber, step) {
   const saved = clone(rawEvent);
   delete saved.eventId;
@@ -210,6 +228,7 @@ export function previewTurn({ plan, parentStateNodeId, actions, dataset, damageA
   const signature = actionSignature(parentStateNodeId, actions);
   const existing = Object.values(plan.actionGroups).find(group => group.parentStateNodeId === parentStateNodeId && group.actionSignature === signature);
   if (existing && !expandExisting) {
+    const leadingEvents = leadingTurnEvents(plan, parentStateNodeId);
     return {
       baseStateNodeId: parentStateNodeId,
       proposedTurnNumber: existing.turnNumber,
@@ -221,12 +240,15 @@ export function previewTurn({ plan, parentStateNodeId, actions, dataset, damageA
       outcomes: existing.outcomeStateNodeIds.map(id => {
         const state = clone(plan.stateNodes[id]);
         state.events = (state.resolutionEventIds || []).map(eventId => clone(plan.resolutionEvents[eventId])).filter(Boolean);
+        if (leadingEvents.length && !state.events.some(event => ["initial-entry", "start-of-turn-replacement"].includes(event.metadata?.phase))) {
+          state.events = [...clone(leadingEvents), ...state.events];
+        }
         return state;
       }),
       defaultPreviewOutcomeId: existing.defaultOutcomeStateNodeId
     };
   }
-  const leadingEvents = leadingReplacementEvents(plan, parentStateNodeId);
+  const leadingEvents = leadingTurnEvents(plan, parentStateNodeId);
   const outcomes = resolveTurn({ plan, parentStateNodeId, actions, dataset, damageAdapter, moveSupport }).map(outcome => ({
     ...outcome,
     events: [...clone(leadingEvents), ...outcome.events]
@@ -266,6 +288,8 @@ function appendCommittedOutcome(next, group, preview, outcome, outcomeIndex, ord
     eventIds.push(eventId);
   });
   const state = clone(outcome.state);
+  state.notes = String(next.stateNodes[preview.baseStateNodeId]?.draftNote || "");
+  state.draftNote = "";
   state.stateNodeId = stateId;
   state.parentActionGroupId = groupId;
   state.parentReplacementTransitionId = null;
@@ -310,6 +334,7 @@ export function commitPreview(plan, preview, dataset, { selectedPreviewOutcomeId
     const next = clone(plan);
     const group = next.actionGroups[preview.existingActionGroupId];
     const stateId = appendCommittedOutcome(next, group, preview, selected, group.outcomeStateNodeIds.length, nextCreatedOrder(next), dataset);
+    next.stateNodes[preview.baseStateNodeId].draftNote = "";
     next.workingDraft = null;
     touchPlan(next);
     assertValidPlanDocument(next);
@@ -346,6 +371,7 @@ export function commitPreview(plan, preview, dataset, { selectedPreviewOutcomeId
   group.defaultOutcomeStateNodeId = previewToState.get(selectedId) || previewToState.get(preview.defaultPreviewOutcomeId) || group.outcomeStateNodeIds[0];
   next.actionGroups[groupId] = group;
   parent.childActionGroupIds.push(groupId);
+  parent.draftNote = "";
   next.workingDraft = null;
   touchPlan(next);
   assertValidPlanDocument(next);
@@ -430,6 +456,7 @@ export function commitForcedReplacement(plan, preview, dataset) {
       eventIds.push(eventId);
     });
     const state = clone(outcome.state);
+    state.draftNote = String(parent.draftNote || "");
     state.stateNodeId = stateId;
     state.parentActionGroupId = null;
     state.parentReplacementTransitionId = signature;
@@ -456,6 +483,7 @@ export function commitForcedReplacement(plan, preview, dataset) {
   transition.defaultOutcomeStateNodeId = previewToState.get(preview.defaultPreviewOutcomeId) || transition.outcomeStateNodeIds[0];
   next.replacementTransitions[signature] = transition;
   parent.childReplacementTransitionIds.push(signature);
+  parent.draftNote = "";
   next.workingDraft = null;
   touchPlan(next);
   assertValidPlanDocument(next);

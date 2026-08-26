@@ -114,6 +114,17 @@ function normalizeBox(box) {
   };
 }
 
+function derivedNextImportNumber(rawGame, boxes) {
+  let highest = 0;
+  for (const box of Object.values(boxes || {})) {
+    const sourceNumber = Number(box.source?.importNumber);
+    if (Number.isInteger(sourceNumber) && sourceNumber > highest) highest = sourceNumber;
+    const nameMatch = /^Import\s+(\d+)$/i.exec(String(box.name || "").trim());
+    if (nameMatch) highest = Math.max(highest, Number(nameMatch[1]));
+  }
+  return Math.max(1, Number(rawGame?.nextImportNumber) || 1, highest + 1);
+}
+
 export function createEmptyBoxLibrary() {
   return {
     kind: BOX_LIBRARY_KIND,
@@ -138,6 +149,7 @@ export function normalizeBoxLibrary(value) {
     games[gameId] = {
       gameId,
       nextBoxNumber: Math.max(1, requireInteger(rawGame.nextBoxNumber ?? boxEntries.length + 1, "Next box number", 1, 1_000_000)),
+      nextImportNumber: Math.max(1, requireInteger(derivedNextImportNumber(rawGame, boxes), "Next import number", 1, 1_000_000)),
       boxes,
       boxOrder: [...new Set([...(rawGame.boxOrder || []).map(String), ...Object.keys(boxes)])].filter(key => boxes[key])
     };
@@ -160,7 +172,7 @@ function changed(library) {
 function mutableGame(library, gameId) {
   const normalizedId = toId(gameId);
   if (!normalizedId) throw new Error("Game ID is required");
-  library.games[normalizedId] ||= { gameId: normalizedId, nextBoxNumber: 1, boxes: {}, boxOrder: [] };
+  library.games[normalizedId] ||= { gameId: normalizedId, nextBoxNumber: 1, nextImportNumber: 1, boxes: {}, boxOrder: [] };
   return library.games[normalizedId];
 }
 
@@ -310,6 +322,7 @@ export function mergeBoxLibrary(currentValue, importedValue) {
       game.boxOrder.push(box.id);
     }
     game.nextBoxNumber = Math.max(game.nextBoxNumber, importedGame.nextBoxNumber);
+    game.nextImportNumber = Math.max(game.nextImportNumber, importedGame.nextImportNumber);
   }
   return changed(current);
 }

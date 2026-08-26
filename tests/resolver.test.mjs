@@ -66,6 +66,22 @@ test("priority move KOs first and the fainted opponent action is skipped", () =>
   assert.deepEqual(outcomes[0].state.pendingReplacementSides, ["enemy"]);
 });
 
+test("the final opposing KO ended the battle before later queued actions resolved", () => {
+  const { dataset, players, enemies, plan } = fixturePlan();
+  const root = plan.stateNodes[plan.initialStateNodeId];
+  root.combatantStates[enemies[1].combatantKey].hp = { ...root.combatantStates[enemies[1].combatantKey].hp, min: 0, max: 0 };
+  delete root.combatantStates[enemies[1].combatantKey].hpDistribution;
+  const actions = {
+    player: move(players[0].combatantKey, "aquajet", enemies[0].combatantKey),
+    enemy: move(enemies[0].combatantKey, "tackle", players[0].combatantKey)
+  };
+  const [outcome] = resolveTurn({ plan, parentStateNodeId: plan.initialStateNodeId, actions, dataset, damageAdapter: damageAdapter(() => [999]) });
+  assert.equal(outcome.state.battleEnded, true);
+  assert.ok(outcome.events.some(event => event.eventType === "battle-ended"));
+  assert.equal(outcome.events.some(event => event.eventType === "action-skipped"), false);
+  assert.equal(outcome.events.some(event => ["residual-damage", "residual-heal"].includes(event.eventType)), false);
+});
+
 test("a faster defense boost changes the defender state used by the slower attack", () => {
   const { dataset, players, enemies, plan } = fixturePlan();
   const actions = {
@@ -141,6 +157,10 @@ test("self-healing updates an existing HP distribution before the opponent moves
   const heal = outcome.events.find(entry => entry.eventType === "heal");
   assert.equal(heal.metadata.requestedHp, Math.floor(maxHp / 2));
   assert.deepEqual(heal.healingHp, { min: expectedAfterRecover - startingHp, max: expectedAfterRecover - startingHp });
+  assert.deepEqual(heal.healingPercent, {
+    min: (expectedAfterRecover - startingHp) / maxHp * 100,
+    max: (expectedAfterRecover - startingHp) / maxHp * 100
+  });
 });
 
 test("Protect blocks the later opposing move and repeated use branches by its Gen 5 success chance", () => {
@@ -247,6 +267,32 @@ test("bad poison applies escalating deterministic residual damage across committ
   assert.equal(secondDefault.state.combatantStates[enemies[0].combatantKey].toxicCounter, 3);
   const secondResidual = secondDefault.events.find(entry => entry.eventType === "residual-damage" && entry.metadata.cause === "bad-poison");
   assert.equal(secondResidual.damageHp.min, Math.max(1, Math.floor(firstState.hp.maxHp * 2 / 16)));
+});
+
+test("Poison Heal records its actual HP recovery and max-HP percentage", () => {
+  const { dataset, players, enemies, plan } = fixturePlan();
+  const playerKey = players[0].combatantKey;
+  const playerState = plan.stateNodes[plan.initialStateNodeId].combatantStates[playerKey];
+  playerState.currentAbilityId = "poisonheal";
+  playerState.majorStatus = "psn";
+  playerState.hp = { min: playerState.hp.maxHp - 40, max: playerState.hp.maxHp - 40, maxHp: playerState.hp.maxHp };
+  playerState.hpDistribution = [{ value: playerState.hp.max, probability: 1 }];
+  const preview = previewTurn({
+    plan,
+    parentStateNodeId: plan.initialStateNodeId,
+    actions: {
+      player: move(playerKey, "tackle", enemies[0].combatantKey),
+      enemy: move(enemies[0].combatantKey, "tackle", playerKey)
+    },
+    dataset,
+    damageAdapter: damageAdapter(() => [1])
+  });
+  const outcome = preview.outcomes.find(entry => entry.previewOutcomeId === preview.defaultPreviewOutcomeId);
+  const recovery = outcome.events.find(event => event.eventType === "residual-heal" && event.metadata?.cause === "poison-heal");
+  const expected = Math.max(1, Math.floor(playerState.hp.maxHp / 8));
+  assert.deepEqual(recovery.healingHp, { min: expected, max: expected });
+  assert.deepEqual(recovery.healingPercent, { min: expected / playerState.hp.maxHp * 100, max: expected / playerState.hp.maxHp * 100 });
+  assert.equal(recovery.metadata.resultLabel, "Poison Heal recovery");
 });
 
 test("weather set by the first action reaches later damage and resolves duration and sand chip", () => {
@@ -469,7 +515,7 @@ test("crafted outcome commit adds only the user-selected resolver result", () =>
   const group = committed.plan.actionGroups[committed.actionGroupId];
   assert.equal(group.outcomeStateNodeIds.length, 1);
   assert.equal(committed.cursorStateNodeId, group.outcomeStateNodeIds[0]);
-  assert.match(committed.plan.stateNodes[committed.cursorStateNodeId].outcome.label, /faints/i);
+  assert.match(committed.plan.stateNodes[committed.cursorStateNodeId].outcome.label, /fainted/i);
 
   const expanded = previewTurn({
     plan: committed.plan,

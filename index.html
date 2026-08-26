@@ -6,7 +6,7 @@
   <meta name="plc-build-profile" content="local">
   <title>Pokémon Line Calculator</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./styles.css?v=20260826-node-lanes">
+  <link rel="stylesheet" href="./styles.css?v=20260826-order-notes-import">
 </head>
 <body>
   <header class="app-header">
@@ -45,6 +45,7 @@
           <!-- PLC_LOCAL_ONLY_START --><span id="output-state-anchor"></span><!-- PLC_LOCAL_ONLY_END -->
           <button id="commit-turn" type="button" disabled>Next Turn</button>
           <button id="save-plan" type="button" class="secondary">Save Plan</button>
+          <label class="file-button secondary toolbar-file-button">Import Plan<input id="import-plan" type="file" accept=".json,.plc-plan.json,application/json"></label>
           <!-- PLC_LOCAL_ONLY_START --><span id="live-edit-anchor"></span><!-- PLC_LOCAL_ONLY_END -->
           <button id="new-plan" type="button" class="secondary">Begin Clean Plan</button>
         </div>
@@ -76,6 +77,14 @@
               </div>
               <p id="readiness" class="fine-print">Choose a move or switch on both sides.</p>
               <div id="preview-outcomes" class="outcomes"><p class="empty">Choose a move or switch on both sides to calculate the turn.</p></div>
+            </section>
+            <section class="panel notes-panel" aria-labelledby="notes-title">
+              <div class="section-heading compact-heading">
+                <div><p class="eyebrow">Node annotation</p><h2 id="notes-title">Notes</h2></div>
+              </div>
+              <label class="sr-only" for="node-notes">Notes for the selected plan node</label>
+              <textarea id="node-notes" maxlength="4096" rows="8" placeholder="Add battle notes for this turn…"></textarea>
+              <p id="notes-status" class="fine-print">Notes are saved with this node in the plan.</p>
             </section>
           </div>
 
@@ -238,7 +247,7 @@
     <form method="dialog" class="dialog-card">
       <div class="section-heading"><div><p class="eyebrow">Portable file</p><h2 id="export-title">Output selection</h2></div><button type="submit" value="cancel" class="icon-button secondary" aria-label="Close">×</button></div>
       <div id="export-selection" class="export-selection"></div>
-      <div class="file-actions"><button id="output-plan" type="button" disabled>Output Plan File</button><button id="recalculate-plan" type="button" hidden>Recalculate Plan</button><label class="file-button secondary">Import Plan File<input id="import-plan" type="file" accept=".json,.plc-plan.json,application/json"></label></div>
+      <div class="file-actions"><button id="select-all-export" type="button" class="secondary">Select All</button><button id="output-plan" type="button" disabled>Output Plan File</button><button id="recalculate-plan" type="button" hidden>Recalculate Plan</button></div>
       <p id="file-status" class="fine-print">Import and output never publish anything to Overlay or OBS.</p>
     </form>
   </dialog>
@@ -251,6 +260,6 @@
     <form method="dialog" class="dialog-card"><h2 id="destructive-title">Replace active planning context?</h2><p id="destructive-message"></p><div class="dialog-actions"><button id="destructive-cancel" value="cancel" type="submit" class="secondary">Cancel</button><button id="destructive-output" value="output" type="submit">Output Plan, Then Continue</button><button id="destructive-discard" value="discard" type="submit" class="danger">Discard and Continue</button></div></form>
   </dialog>
 
-  <script type="module" src="./src/app.js?v=20260826-node-lanes"></script>
+  <script type="module" src="./src/app.js?v=20260826-plan-compat-recalc"></script>
 </body>
 </html>

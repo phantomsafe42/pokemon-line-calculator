@@ -1,4 +1,5 @@
 import { stableStringify, toId } from "../core/primitives.js";
+import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js";
 
 export class PlanCompatibilityError extends Error {
   constructor(issues) {
@@ -35,7 +36,7 @@ export function validatePlanReferences(plan, dataset, { throwOnError = true } = 
 
 export function mechanicsCompatibility(plan, dataset) {
   const expected = plan.mechanicsFingerprint || {};
-  const actual = dataset.fingerprint || {};
+  const actual = currentMechanicsFingerprint(dataset);
   const fields = [
     "engineId",
     "engineVersion",
@@ -43,7 +44,8 @@ export function mechanicsCompatibility(plan, dataset) {
     "canonicalDataGeneration",
     "mechanicsProfile",
     "datasetManifestHash",
-    "battleMechanicsHash"
+    "battleMechanicsHash",
+    "plcResolverRulesetVersion"
   ];
   const differences = fields.filter(field => stableStringify(expected[field]) !== stableStringify(actual[field]));
   return {

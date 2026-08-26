@@ -6,22 +6,23 @@ import { downloadPlan, exportSelectedPlan, migratePlanDocument, parsePlan } from
 import { assertValidPlanDocument } from "./contracts/plan_contract.js";
 import { mechanicsCompatibility, validatePlanReferences } from "./contracts/plan_compatibility.js";
 import { actionList, activeKey, activeKeys, activeSlotEntries, actorSlot, pendingReplacementSlots } from "./core/battle_slots.js";
-import { createBranchEventModel, selectBranchEventOutcome, selectedBranchChoices } from "./core/branch_events.js";
-import { boundedSlotDamageLabel, highestDamageCandidateKeys, resolvedCombatantMovePreview } from "./core/combatant_moves.js?v=20260826-node-visuals";
-import { planTreeOrder, planTurnTreeOrder, stateLineage, turnNodeVisuals } from "./core/graph.js?v=20260826-node-lanes";
+import { createBranchEventModel, selectBranchEventOutcome, selectedBranchChoices } from "./core/branch_events.js?v=20260826-order-notes-import";
+import { boundedSlotDamageLabel, highestDamageCandidateKeys, resolvedCombatantMovePreview } from "./core/combatant_moves.js?v=20260826-fiery-crit";
+import { exportBranchGroups, planTreeOrder, planTurnTreeOrder, preferredImportedReviewStateId, stateLineage, turnNodeVisuals } from "./core/graph.js?v=20260826-order-notes-import";
 import { HIDDEN_POWER_TYPES, hiddenPowerTypeFromIvs, resolvedHiddenPowerType } from "./core/hidden_power.js";
-import { formatDamageRollCounts, isCriticalOhkoOutcome, isHighRollKoOutcome, outcomePanelEvents } from "./core/outcome_presentation.js?v=20260826-hp-immunity";
-import { createPlanDocument, planHasWork, upgradeInitialEntryEffects } from "./core/plan.js?v=20260825-download";
-import { commitForcedReplacement, commitLabel, commitPreview, previewForcedReplacement, refreshUnknownCommittedProbabilities, repairStaleLeafBattleEnd } from "./core/planner.js?v=20260826-turn-nodes";
-import { recalculatePlanDocument } from "./core/recalculation.js";
+import { formatDamageRollCounts, healingEventDescription, isCriticalOhkoOutcome, isHighRollKoOutcome, outcomePanelEvents, readableMechanicName } from "./core/outcome_presentation.js?v=20260826-order-notes-import";
+import { createPlanDocument, planHasWork, setStateNodeNote, upgradeInitialEntryEffects } from "./core/plan.js?v=20260826-plan-compat-recalc";
+import { commitForcedReplacement, commitLabel, commitPreview, previewForcedReplacement, refreshUnknownCommittedProbabilities, repairStaleLeafBattleEnd } from "./core/planner.js?v=20260826-order-notes-import";
+import { recalculatePlanDocument } from "./core/recalculation.js?v=20260826-plan-compat-recalc";
 import { moveSupport } from "./rulesets/core_move_support.js";
 import { experienceForLevel, experienceToNextLevel, projectVw2rExperience } from "./rulesets/vw2r_experience.js";
-import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260826-turn-nodes";
+import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260826-order-notes-import";
 import { battleCompletionState } from "./core/battle_completion.js?v=20260826-turn-nodes";
 import {
   addBox, addParty, boxesForGame, createEmptyBoxLibrary, exportBoxLibrary, IndexedDbBoxLibraryStore,
   mergeBoxLibrary, parseBoxLibrary, removeBox, removeParty, removePokemon, renameBox, updateParty, upsertPokemon
-} from "./boxes/library.js?v=20260825-hidden-power";
+} from "./boxes/library.js?v=20260826-order-notes-import";
+import { addImportedPlanParty } from "./boxes/plan_import.js?v=20260826-order-notes-import";
 import { exportShowdown, parseShowdown } from "./boxes/showdown.js?v=20260825-hidden-power-v2";
 import { parseVw2rSave, selectVw2rSavePokemon } from "./boxes/vw2r_save_import.js";
 
@@ -42,7 +43,7 @@ const ui = Object.fromEntries([
   "game-select", "app-status", "game-gate", "app-tabs", "plc-tab", "boxes-tab", "plc-panel", "boxes-panel",
   "plan-toolbar-label", "output-state-anchor", "commit-turn", "save-plan", "new-plan", "live-edit-anchor", "workspace", "empty-plan",
   "node-tree", "turn-label", "revision-label", "battle-workspace", "player-action-panel", "enemy-action-panel", "field-state",
-  "readiness", "preview-outcomes", "boxes-list", "save-import", "save-import-dialog", "save-import-filename",
+  "readiness", "preview-outcomes", "node-notes", "notes-status", "boxes-list", "save-import", "save-import-dialog", "save-import-filename",
   "save-import-party-summary", "save-import-pc-boxes", "save-import-status", "select-all-save-boxes", "clear-save-boxes",
   "confirm-save-import", "showdown-open", "new-box", "export-boxes", "import-boxes",
   "plan-context-dialog", "trainer-select", "battle-format", "variant-field", "variant-select", "plan-name",
@@ -53,7 +54,7 @@ const ui = Object.fromEntries([
   "editor-nickname", "editor-level", "editor-gender", "editor-nature", "editor-ability", "editor-item", "editor-hidden-power-type",
   "editor-hp-field", "editor-starting-hp", "editor-status-field", "editor-starting-status", "editor-stats",
   "editor-moves", "editor-error", "save-pokemon", "showdown-dialog", "showdown-text", "showdown-destination",
-  "showdown-status", "copy-showdown", "import-showdown", "output-dialog", "export-selection", "output-plan",
+  "showdown-status", "copy-showdown", "import-showdown", "output-dialog", "export-selection", "select-all-export", "output-plan",
   "recalculate-plan", "import-plan", "file-status", "live-stop-dialog", "live-save-quit", "live-keep-editing",
   "destructive-dialog", "destructive-message", "destructive-output", "destructive-discard"
 ].map(id => [id, byId(id)]));
@@ -84,6 +85,7 @@ let activeTab = "plc";
 let destructiveResolver = null;
 let editorMoveRows = [];
 let actionDraft = emptyActionDraft();
+let notesPersistTimer = null;
 let contextSelection = emptyContextSelection();
 let pendingSaveImport = null;
 
@@ -1031,6 +1033,54 @@ function selectedState() {
   return plan?.stateNodes?.[cursorStateNodeId] || null;
 }
 
+function selectedNoteTarget() {
+  if (!plan) return null;
+  if (reviewOutcomeStateNodeId && plan.stateNodes[reviewOutcomeStateNodeId]) {
+    return { stateNodeId: reviewOutcomeStateNodeId, field: "notes", turnNumber: Number(plan.stateNodes[reviewOutcomeStateNodeId].turnNumber), committed: true };
+  }
+  const state = selectedState();
+  if (!state) return null;
+  if (battleActuallyEnded(state)) return { stateNodeId: state.stateNodeId, field: "notes", turnNumber: Number(state.turnNumber), committed: true };
+  return { stateNodeId: state.stateNodeId, field: "draftNote", turnNumber: Number(state.turnNumber) + 1, committed: false };
+}
+
+function renderNotes() {
+  const target = selectedNoteTarget();
+  ui["node-notes"].disabled = !target || needsRecalculation;
+  if (!target) {
+    ui["node-notes"].value = "";
+    ui["notes-status"].textContent = "Open a plan to add node notes.";
+    return;
+  }
+  const value = String(plan.stateNodes[target.stateNodeId]?.[target.field] || "");
+  const sameTarget = ui["node-notes"].dataset.stateNodeId === target.stateNodeId && ui["node-notes"].dataset.noteField === target.field;
+  if (document.activeElement !== ui["node-notes"] || !sameTarget) ui["node-notes"].value = value;
+  ui["node-notes"].dataset.stateNodeId = target.stateNodeId;
+  ui["node-notes"].dataset.noteField = target.field;
+  ui["notes-status"].textContent = `${target.committed ? "Committed" : "Draft"} Turn ${target.turnNumber} note · saved in plan files and restored on import.`;
+}
+
+function scheduleNotesPersistence() {
+  clearTimeout(notesPersistTimer);
+  notesPersistTimer = setTimeout(async () => {
+    notesPersistTimer = null;
+    try {
+      await persistDraft();
+      await flushLiveEdit();
+      if (ui["notes-status"]) ui["notes-status"].textContent = `${ui["notes-status"].textContent.replace(/ · (Saving…|Saved)$/, "")} · Saved`;
+    } catch (error) { setStatus(`Notes could not be saved: ${error.message}`, true); }
+  }, 300);
+}
+
+function updateSelectedNote() {
+  const target = selectedNoteTarget();
+  if (!target || needsRecalculation) return;
+  setStateNodeNote(plan, target.stateNodeId, target.field, ui["node-notes"].value);
+  ui["revision-label"].textContent = `Draft r${plan.documentRevision}`;
+  ui["notes-status"].textContent = `${target.committed ? "Committed" : "Draft"} Turn ${target.turnNumber} note · Saving…`;
+  scheduleNotesPersistence();
+}
+
 function defaultPreviewEntry() {
   if (!currentPreview || currentPreview.baseStateNodeId !== cursorStateNodeId) return null;
   const outcomes = currentPreview.outcomes || [];
@@ -1345,6 +1395,15 @@ function applyDamageLabel(span, result, boundedSlotRange) {
   updateEnemyThreatHighlights(span.closest(".combatant-card"));
 }
 
+function selectedCriticalPreview(actorKey, moveId) {
+  const dimension = branchEventModel?.dimensions?.find(entry => entry.kind === "critical" && entry.actorKey === actorKey && entry.moveId === moveId);
+  if (!dimension) return undefined;
+  const selected = selectedBranchChoices(branchEventModel, selectedPreviewOutcomeId)[dimension.id]?.id;
+  if (selected === "critical") return true;
+  if (selected === "normal") return false;
+  return undefined;
+}
+
 function requestDamageLabel(span, actorKey, targetKey, moveId, { boundedSlotRange = false, enemyThreat = false } = {}) {
   const generation = damageGeneration;
   if (!targetKey) { span.textContent = "Field"; span.dataset.damageResolved = "true"; return; }
@@ -1362,7 +1421,14 @@ function requestDamageLabel(span, actorKey, targetKey, moveId, { boundedSlotRang
     applyDamageLabel(span, resolvedPreview, boundedSlotRange);
     return;
   }
-  worker.damagePreview({ plan, stateNodeId: cursorStateNodeId, actorKey, targetKey: previewTargetKey, moveId }).then(result => {
+  worker.damagePreview({
+    plan,
+    stateNodeId: cursorStateNodeId,
+    actorKey,
+    targetKey: previewTargetKey,
+    moveId,
+    criticalHit: selectedCriticalPreview(actorKey, moveId)
+  }).then(result => {
     if (generation === damageGeneration && span.isConnected) applyDamageLabel(span, result, boundedSlotRange);
   }).catch(error => {
     if (generation !== damageGeneration || !span.isConnected) return;
@@ -1737,18 +1803,23 @@ function koDescription(rolls, targetHp) {
   for (let hits = 1; hits <= 9; hits += 1) {
     if (max * hits < hp) continue;
     const label = hits === 1 ? "OHKO" : `${hits}HKO`;
-    if (min * hits >= hp) return `guaranteed ${label}`;
+    if (min * hits >= hp) return `Guaranteed ${label}`;
     if (hits <= 4) {
       const chance = koChance(values, hp, hits) * 100;
       return `${chance.toFixed(chance < 1 ? 2 : 1).replace(/\.0$/, "")}% chance to ${label}`;
     }
-    return `possible ${label}`;
+    return `Possible ${label}`;
   }
-  return "more than 9 hits to KO";
+  return "More than 9 hits to KO";
 }
 
 function eventDescription(event) {
   const move = dataset.get("moves", event.moveId || event.metadata?.moveId);
+  const healingTargetKey = event.targetKey || event.actorKey;
+  const healingStates = [defaultPreviewEntry()?.state || defaultPreviewEntry(), selectedState()].filter(Boolean);
+  const healingMaxHp = healingStates.map(state => Number(state.combatantStates?.[healingTargetKey]?.hp?.maxHp)).find(Number.isFinite);
+  const healing = healingEventDescription(event, { moveName: move?.name || null, maxHp: healingMaxHp });
+  if (healing) return { line: healing };
   const targetPrefix = event.targetKey && event.targetKey !== event.actorKey ? outcomeTargetSlotLabel(event.targetKey) : null;
   if (event.eventType === "damage") {
     const damage = event.damageHp || {};
@@ -1758,48 +1829,142 @@ function eventDescription(event) {
     const ko = koDescription(rolls.length ? rolls : [damage.min, damage.max], hpBefore);
     const critical = event.metadata?.criticalHit === true ? " · Critical hit" : "";
     return {
-      line: [targetPrefix, move?.name || event.moveId, `${damage.min}-${damage.max} (${Number(percent.min).toFixed(1)} - ${Number(percent.max).toFixed(1)}%)${critical}${ko ? ` -- ${ko}` : ""}`].filter(Boolean).join(" · "),
-      detail: rolls.length ? `Possible damage amounts: (${formatDamageRollCounts(rolls)})` : null
+      line: [targetPrefix, move?.name || event.moveId, `${damage.min}-${damage.max} (${Number(percent.min).toFixed(1)} - ${Number(percent.max).toFixed(1)}%)${critical}`].filter(Boolean).join(" · "),
+      trailing: [ko || null, rolls.length ? `Possible damage amounts: (${formatDamageRollCounts(rolls)})` : null].filter(Boolean)
     };
   }
-  if (event.eventType === "switch") return { line: [targetPrefix, "Switch", event.metadata?.resultLabel || "Replacement sent out"].filter(Boolean).join(" · ") };
+  if (event.eventType === "move-redirected") return { line: [`Redirected to ${outcomeTargetSlotLabel(event.targetKey)}`, move?.name || event.moveId].filter(Boolean).join(" · ") };
+  if (event.eventType === "switch") {
+    const slotLabel = outcomeTargetSlotLabel(event.targetKey);
+    const forced = event.metadata?.switchKind === "forced" || event.metadata?.phase === "start-of-turn-replacement";
+    if (forced) return { line: `Entered ${slotLabel}` };
+    return { line: `${slotLabel} · Switched to ${recordName(plan.combatants[event.targetKey])}` };
+  }
+  if (event.eventType === "combatant-fainted") return { line: `${outcomeTargetSlotLabel(event.targetKey)} · Fainted` };
+  if (event.eventType === "stat-stage-change" && move) {
+    return {
+      line: [targetPrefix, move.name].filter(Boolean).join(" · "),
+      subline: event.metadata?.resultLabel || "Stats changed"
+    };
+  }
   const parts = [targetPrefix, move?.name, event.metadata?.resultLabel || event.reason || event.eventType].filter(Boolean);
   return { line: parts.join(" · ") };
 }
 
+function outcomeEventGroupKey(event, index) {
+  if (event.eventType === "switch") return `switch:${index}`;
+  if (event.eventType === "combatant-fainted") return `fainted:${event.targetKey}:${index}`;
+  if (event.moveId && event.actorKey) return `move:${event.actorKey}:${event.moveId}`;
+  if (event.metadata?.cause && event.actorKey) return `cause:${event.actorKey}:${event.metadata.cause}`;
+  if (event.eventType === "battle-ended") return `battle-ended:${index}`;
+  return `${event.eventType}:${event.actorKey || event.targetKey || "field"}`;
+}
+
+function outcomeGroupSpriteKeys(group) {
+  const first = group.events[0];
+  if (!first) return [];
+  if (first.eventType === "switch") {
+    const forced = first.metadata?.switchKind === "forced" || first.metadata?.phase === "start-of-turn-replacement";
+    return forced ? [first.targetKey] : [first.actorKey, first.targetKey].filter(Boolean);
+  }
+  if (first.eventType === "combatant-fainted") return [first.targetKey].filter(Boolean);
+  return [first.actorKey || first.targetKey].filter(Boolean);
+}
+
 function outcomeActionGroups(events) {
   const groups = [];
-  for (const event of events) {
-    const displayKey = event.actorKey || event.targetKey || null;
+  for (const [index, event] of events.entries()) {
+    const groupKey = outcomeEventGroupKey(event, index);
     const previous = groups.at(-1);
-    if (previous && previous.displayKey === displayKey) previous.events.push(event);
-    else groups.push({ displayKey, events: [event] });
+    if (previous && previous.groupKey === groupKey) previous.events.push(event);
+    else groups.push({ groupKey, events: [event] });
   }
-  return groups;
+  const presented = [];
+  for (const group of groups) {
+    group.spriteKeys = outcomeGroupSpriteKeys(group);
+    presented.push(group);
+    const faintedKeys = [...new Set(group.events
+      .filter(event => ["damage", "residual-damage"].includes(event.eventType) && event.metadata?.thresholdOutcome === "ko")
+      .map(event => event.targetKey)
+      .filter(Boolean))];
+    for (const targetKey of faintedKeys) {
+      presented.push({
+        groupKey: `fainted:${targetKey}`,
+        spriteKeys: [targetKey],
+        events: [{ eventType: "combatant-fainted", actorKey: null, targetKey, moveId: null, metadata: {} }]
+      });
+    }
+  }
+  return presented;
 }
 
 function renderOutcomeAction(group, fallbackLabel = null) {
   const item = document.createElement("li"); item.className = "outcome-action";
   const spriteBox = document.createElement("div"); spriteBox.className = "outcome-action-sprite";
-  const mon = group.displayKey ? plan.combatants[group.displayKey] : null;
-  if (mon) spriteBox.append(sprite(mon, `${recordName(mon)} sprite`));
-  else spriteBox.setAttribute("aria-hidden", "true");
+  const spriteKeys = [...new Set(group.spriteKeys || [])];
+  item.classList.toggle("has-two-sprites", spriteKeys.length > 1);
+  for (const combatantKey of spriteKeys) {
+    const mon = plan.combatants[combatantKey];
+    if (mon) spriteBox.append(sprite(mon, `${recordName(mon)} sprite`));
+  }
+  if (!spriteBox.childElementCount) spriteBox.setAttribute("aria-hidden", "true");
   const copy = document.createElement("div"); copy.className = "outcome-action-copy";
-  for (const event of group.events) {
-    const description = eventDescription(event);
-    const detail = document.createElement("div"); detail.className = "outcome-event-detail";
-    const line = document.createElement("p"); line.className = "event-line"; line.textContent = description.line;
-    if (event.eventType === "battle-ended") line.classList.add("battle-ended-text");
-    detail.append(line);
-    if (description.detail) {
-      const amounts = document.createElement("p"); amounts.className = "damage-amounts"; amounts.textContent = description.detail;
-      detail.append(amounts);
+  const appendLine = (text, className = "event-line") => {
+    const line = document.createElement("p"); line.className = className; line.textContent = text;
+    copy.append(line);
+    return line;
+  };
+  const abilityStatEvents = group.events.length && group.events.every(event =>
+    event.eventType === "stat-stage-change" && !event.moveId && event.metadata?.cause === group.events[0].metadata?.cause
+  );
+  if (abilityStatEvents) {
+    appendLine(readableMechanicName(group.events[0].metadata.cause));
+    for (const event of group.events) {
+      const target = event.targetKey && event.targetKey !== event.actorKey ? outcomeTargetSlotLabel(event.targetKey) : null;
+      appendLine([target, event.metadata?.resultLabel || "Stats changed"].filter(Boolean).join(" · "), "outcome-effect-line");
     }
-    copy.append(detail);
+  } else {
+    let pendingDamage = null;
+    const flushDamageDetails = () => {
+      if (!pendingDamage) return;
+      for (const trailing of pendingDamage.trailing) {
+        const amounts = document.createElement("p"); amounts.className = "damage-amounts"; amounts.textContent = trailing;
+        pendingDamage.detail.append(amounts);
+      }
+      pendingDamage = null;
+    };
+    for (const event of group.events) {
+      const extendsDamage = event.eventType === "stat-stage-change"
+        && event.moveId
+        && pendingDamage?.event.moveId === event.moveId
+        && pendingDamage.event.targetKey === event.targetKey;
+      if (extendsDamage) {
+        const effect = document.createElement("p"); effect.className = "outcome-effect-line";
+        effect.textContent = event.metadata?.resultLabel || "Stats changed";
+        pendingDamage.detail.append(effect);
+        continue;
+      }
+      flushDamageDetails();
+      const description = eventDescription(event);
+      const detail = document.createElement("div"); detail.className = "outcome-event-detail";
+      const line = document.createElement("p"); line.className = "event-line"; line.textContent = description.line;
+      if (event.eventType === "battle-ended") line.classList.add("battle-ended-text");
+      detail.append(line);
+      if (description.subline) {
+        const effect = document.createElement("p"); effect.className = "outcome-effect-line"; effect.textContent = description.subline;
+        detail.append(effect);
+      }
+      copy.append(detail);
+      if (event.eventType === "damage") pendingDamage = { event, detail, trailing: description.trailing || [] };
+      else for (const trailing of description.trailing || []) {
+        const amounts = document.createElement("p"); amounts.className = "damage-amounts"; amounts.textContent = trailing;
+        detail.append(amounts);
+      }
+    }
+    flushDamageDetails();
   }
   if (!group.events.length && fallbackLabel) {
-    const line = document.createElement("p"); line.className = "event-line"; line.textContent = fallbackLabel;
-    copy.append(line);
+    appendLine(fallbackLabel);
   }
   item.append(spriteBox, copy);
   return item;
@@ -1808,25 +1973,27 @@ function renderOutcomeAction(group, fallbackLabel = null) {
 function outcomeSplitReason(entry, allEntries) {
   const outcome = entry.outcome || entry;
   const events = outcomePanelEvents(entry.events || []);
+  const orderModifier = events.find(event => event.eventType === "order-modifier" && event.metadata?.activated === true);
+  if (orderModifier) return orderModifier.metadata.resultLabel || `${orderModifier.metadata.sourceName || "Action order"} activated`;
   const criticalOhko = isCriticalOhkoOutcome(entry);
   const highRollKo = isHighRollKoOutcome(entry, allEntries);
   if (criticalOhko) return "Critical-hit OHKO";
-  if (highRollKo) return "Damage high roll causes a KO";
+  if (highRollKo) return "Damage high roll caused a KO";
   const miss = events.find(event => event.eventType === "miss");
-  if (miss) return `${dataset.get("moves", miss.moveId)?.name || miss.moveId} misses`;
+  if (miss) return `${dataset.get("moves", miss.moveId)?.name || miss.moveId} missed`;
   const skipped = events.find(event => event.eventType === "action-skipped");
   if (skipped) return skipped.metadata?.resultLabel || skipped.reason || "Action skipped";
   const noSecondary = events.find(event => event.eventType === "secondary-effect-missed");
   if (noSecondary) return `${dataset.get("moves", noSecondary.moveId)?.name || noSecondary.moveId}: no secondary effect`;
   const critical = events.find(event => event.eventType === "damage" && event.metadata?.criticalHit === true);
-  if (critical) return `${dataset.get("moves", critical.moveId)?.name || critical.moveId} lands a critical hit`;
+  if (critical) return `${dataset.get("moves", critical.moveId)?.name || critical.moveId} landed a critical hit`;
   const branchingEffect = events.find(event => [
     "major-status", "volatile-status", "status-failed", "volatile-status-failed", "move-blocked", "move-immune",
     "protect", "stat-stage-change", "heal", "field-change", "confusion-self-hit"
   ].includes(event.eventType) && event.metadata?.resultLabel);
   if (branchingEffect) return branchingEffect.metadata.resultLabel;
   const ko = events.find(event => event.eventType === "damage" && event.metadata?.thresholdOutcome === "ko");
-  if (ko) return `${recordName(plan.combatants[ko.targetKey])} faints`;
+  if (ko) return `${recordName(plan.combatants[ko.targetKey])} fainted`;
   const conditions = (outcome.conditions || []).map(condition => condition.expression).filter(Boolean);
   if (conditions.length) return conditions.map(condition => condition.startsWith("speed-tie:") ? "Speed-tie order" : condition).join(" · ");
   return outcome.label || entry.displaySnapshot?.outcomeLabel || "Resolved outcome";
@@ -2104,8 +2271,10 @@ function renderTree() {
         const mon = plan.combatants[combatantKey];
         const holder = document.createElement("span"); holder.className = "node-sprite";
         const fainted = visuals.faintedCombatantKeys.has(combatantKey);
+        const switchedIn = visuals.switchedInCombatantKeys.has(combatantKey);
+        holder.classList.toggle("has-switch-in", switchedIn);
         holder.classList.toggle("has-faint", fainted);
-        holder.title = `${recordName(mon)}${fainted ? " fainted" : ""}`;
+        holder.title = `${recordName(mon)}${switchedIn ? " switched in" : ""}${fainted ? " fainted" : ""}`;
         holder.append(sprite(mon)); sprites.append(holder);
       }
       const summary = entry.kind === "committed"
@@ -2156,19 +2325,51 @@ function prefillActions(suppliedGroup = null) {
 }
 
 function renderExportSelection() {
-  if (!plan) { ui["export-selection"].replaceChildren(Object.assign(document.createElement("p"), { className: "empty", textContent: "No active plan. Import a plan file or begin a clean plan." })); ui["output-plan"].disabled = true; return; }
+  if (!plan) {
+    ui["export-selection"].replaceChildren(Object.assign(document.createElement("p"), { className: "empty", textContent: "No active plan. Import a plan file or begin a clean plan." }));
+    ui["select-all-export"].disabled = true;
+    ui["output-plan"].disabled = true;
+    return;
+  }
   const visibleEntries = planTreeOrder(plan, { includeReplacementStates: false }).filter(entry => entry.state.turnNumber > 0);
   const visibleIds = new Set(visibleEntries.map(entry => entry.state.stateNodeId));
   for (const stateId of exportSelection) if (!visibleIds.has(stateId)) exportSelection.delete(stateId);
-  const nodes = visibleEntries.map(({ state }) => {
-    const label = document.createElement("label");
-    const checkbox = document.createElement("input"); checkbox.type = "checkbox"; checkbox.checked = exportSelection.has(state.stateNodeId);
-    checkbox.addEventListener("change", () => { checkbox.checked ? exportSelection.add(state.stateNodeId) : exportSelection.delete(state.stateNodeId); ui["output-plan"].disabled = needsRecalculation || !exportSelection.size; });
-    const text = document.createElement("span"); text.textContent = `Turn ${state.turnNumber} · ${state.outcome.label} · ${nodeActionSummary(state)}`;
-    label.append(checkbox, text); return label;
+  const byId = new Map(visibleEntries.map(({ state }) => [state.stateNodeId, state]));
+  const branchGroups = exportBranchGroups(plan);
+  const nodes = branchGroups.map(group => {
+    const section = document.createElement("section"); section.className = "export-branch";
+    const header = document.createElement("label"); header.className = "export-branch-header";
+    const branchCheckbox = document.createElement("input"); branchCheckbox.type = "checkbox";
+    const selectedCount = group.stateNodeIds.filter(stateId => exportSelection.has(stateId)).length;
+    branchCheckbox.checked = selectedCount === group.stateNodeIds.length;
+    branchCheckbox.indeterminate = selectedCount > 0 && selectedCount < group.stateNodeIds.length;
+    branchCheckbox.addEventListener("change", () => {
+      const preserve = branchCheckbox.checked
+        ? []
+        : branchGroups.filter(other => other.branchNumber !== group.branchNumber && other.stateNodeIds.every(stateId => exportSelection.has(stateId)));
+      for (const stateId of group.stateNodeIds) branchCheckbox.checked ? exportSelection.add(stateId) : exportSelection.delete(stateId);
+      for (const other of preserve) for (const stateId of other.stateNodeIds) exportSelection.add(stateId);
+      renderExportSelection();
+    });
+    const branchText = document.createElement("strong"); branchText.textContent = `Branch ${group.branchNumber}`;
+    header.append(branchCheckbox, branchText);
+    const turns = document.createElement("div"); turns.className = "export-branch-turns";
+    for (const stateId of group.stateNodeIds) {
+      const state = byId.get(stateId);
+      if (!state) continue;
+      const label = document.createElement("label");
+      const checkbox = document.createElement("input"); checkbox.type = "checkbox"; checkbox.checked = exportSelection.has(stateId);
+      checkbox.addEventListener("change", () => { checkbox.checked ? exportSelection.add(stateId) : exportSelection.delete(stateId); renderExportSelection(); });
+      const text = document.createElement("span"); text.textContent = `Turn ${state.turnNumber} · ${state.outcome.label} · ${nodeActionSummary(state)}`;
+      label.append(checkbox, text); turns.append(label);
+    }
+    section.append(header, turns);
+    return section;
   });
+  if (!nodes.length) nodes.push(Object.assign(document.createElement("p"), { className: "empty", textContent: "Commit at least one turn before saving a plan." }));
   ui["export-selection"].replaceChildren(...nodes);
   ui["output-plan"].disabled = needsRecalculation || !exportSelection.size;
+  ui["select-all-export"].disabled = !visibleIds.size;
 }
 
 function renderWorkspace() {
@@ -2187,7 +2388,7 @@ function renderWorkspace() {
   const turnNumber = reviewed ? Number(reviewed.turnNumber) : battleActuallyEnded(selected) ? Number(selected.turnNumber) : Number(selected.turnNumber) + 1;
   ui["turn-label"].textContent = `Turn ${turnNumber}`;
   ui["commit-turn"].textContent = battleCompletionState(plan, selected).commitLabel;
-  renderTree(); renderField(); renderActionPanels(); renderExportSelection();
+  renderTree(); renderField(); renderActionPanels(); renderNotes(); renderExportSelection();
   if (battleActuallyEnded(selectedState())) { ui.readiness.textContent = "The battle has ended."; clearPreview("The battle has ended."); }
   else if (needsRecalculation) { ui.readiness.textContent = "Recalculation is required."; clearPreview("This imported plan needs recalculation under the current mechanics fingerprint."); }
   else refreshPreview();
@@ -2257,18 +2458,27 @@ async function importPlanFile(file) {
     needsRecalculation = mechanicsCompatibility(imported, dataset).needsRecalculation || (initialUpgrade.changed && hasResolvedBranches);
     const probabilityRepair = needsRecalculation ? { plan: imported, refreshedStateNodeIds: [] } : await repairUnknownGraphProbabilities(imported);
     plan = probabilityRepair.plan;
-    cursorStateNodeId = plan.initialStateNodeId;
-    reviewOutcomeStateNodeId = null;
+    const importedParty = addImportedPlanParty(boxLibrary, plan, dataset);
+    const importedReviewStateId = preferredImportedReviewStateId(plan);
+    const importedReviewState = importedReviewStateId ? plan.stateNodes[importedReviewStateId] : null;
+    const importedReviewGroup = importedReviewState?.parentActionGroupId ? plan.actionGroups[importedReviewState.parentActionGroupId] : null;
+    cursorStateNodeId = importedReviewGroup?.parentStateNodeId || plan.initialStateNodeId;
+    reviewOutcomeStateNodeId = importedReviewGroup ? importedReviewStateId : null;
     actionDraft = emptyActionDraft();
+    if (importedReviewGroup) prefillActions(importedReviewGroup);
     exportSelection.clear();
     draftRecord = createDraftRecord(plan, cursorStateNodeId);
     draftRecord.needsRecalculation = needsRecalculation;
     await draftStore.save(draftRecord);
+    boxLibrary = importedParty.library;
+    await boxStore.save(boxLibrary);
+    renderBoxes();
+    refreshContextBoxSelect();
     renderWorkspace();
-    ui["output-dialog"].close();
+    if (ui["output-dialog"].open) ui["output-dialog"].close();
     setStatus(needsRecalculation
-      ? "Plan imported read-only; mechanics fingerprints differ and recalculation is required."
-      : `Plan imported into the local draft.${probabilityRepair.refreshedStateNodeIds.length ? ` Repaired ${probabilityRepair.refreshedStateNodeIds.length} stale graph ${probabilityRepair.refreshedStateNodeIds.length === 1 ? "probability" : "probabilities"}.` : ""} Nothing has been sent to Overlay.`, needsRecalculation);
+      ? `Plan imported read-only; mechanics fingerprints differ and recalculation is required. Player party added to Boxes as Import ${importedParty.importNumber}.`
+      : `Plan imported into the local draft. Player party added to Boxes as Import ${importedParty.importNumber}.${probabilityRepair.refreshedStateNodeIds.length ? ` Repaired ${probabilityRepair.refreshedStateNodeIds.length} stale graph ${probabilityRepair.refreshedStateNodeIds.length === 1 ? "probability" : "probabilities"}.` : ""} Nothing has been sent to Overlay.`, needsRecalculation);
   } catch (error) { setStatus(error.message, true); }
   finally { ui["import-plan"].value = ""; }
 }
@@ -2419,7 +2629,9 @@ async function restoreDraft() {
     const initialUpgrade = upgradeInitialEntryEffects(restored, dataset);
     restored = initialUpgrade.plan;
     const hasResolvedBranches = Object.keys(restored.actionGroups || {}).length > 0 || Object.keys(restored.replacementTransitions || {}).length > 0;
-    needsRecalculation = Boolean(cached.needsRecalculation) || (initialUpgrade.changed && hasResolvedBranches);
+    needsRecalculation = Boolean(cached.needsRecalculation)
+      || mechanicsCompatibility(restored, dataset).needsRecalculation
+      || (initialUpgrade.changed && hasResolvedBranches);
     const probabilityRepair = needsRecalculation ? { plan: restored, refreshedStateNodeIds: [] } : await repairUnknownGraphProbabilities(restored);
     restored = probabilityRepair.plan;
     plan = restored;
@@ -2510,13 +2722,25 @@ function wireEvents() {
   ui["new-plan"].addEventListener("click", () => openPlanContext());
   ui["commit-turn"].addEventListener("click", commitCurrentPreview);
   ui["save-plan"].addEventListener("click", () => { renderExportSelection(); ui["output-dialog"].showModal(); });
+  ui["select-all-export"].addEventListener("click", () => {
+    if (!plan) return;
+    for (const { state } of planTreeOrder(plan, { includeReplacementStates: false })) if (Number(state.turnNumber) > 0) exportSelection.add(state.stateNodeId);
+    renderExportSelection();
+  });
   ui["output-plan"].addEventListener("click", outputPlan);
   ui["import-plan"].addEventListener("change", () => importPlanFile(ui["import-plan"].files?.[0]));
+  ui["node-notes"].addEventListener("input", updateSelectedNote);
+  ui["node-notes"].addEventListener("change", () => {
+    if (!notesPersistTimer) return;
+    clearTimeout(notesPersistTimer);
+    notesPersistTimer = null;
+    persistDraft().then(flushLiveEdit).catch(error => setStatus(`Notes could not be saved: ${error.message}`, true));
+  });
   ui["recalculate-plan"].addEventListener("click", recalculateImportedPlan);
   ui["live-save-quit"]?.addEventListener("click", () => setTimeout(() => { renderExportSelection(); ui["output-dialog"].showModal(); }, 0));
   ui["live-keep-editing"]?.addEventListener("click", () => setStatus("Live writing remains stopped. The same local draft is still open."));
   ui["destructive-dialog"].addEventListener("close", () => resolveDestructive(ui["destructive-dialog"].returnValue));
-  window.addEventListener("beforeunload", () => { worker?.terminate(); liveWriter?.stopHeartbeat?.(); });
+  window.addEventListener("beforeunload", () => { clearTimeout(notesPersistTimer); worker?.terminate(); liveWriter?.stopHeartbeat?.(); });
 }
 
 async function start() {

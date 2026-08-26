@@ -23,8 +23,8 @@ let previewCombatantMove = null;
 async function initialize(datasetBaseUrl) {
   const datasetModule = await import("../adapters/standardized_dataset.js");
   const damageModule = await import("../adapters/shared_damage_adapter.js?v=20260825-hidden-power");
-  const plannerModule = await import("../core/planner.js?v=20260826-turn-nodes");
-  const combatantMovesModule = await import("../core/combatant_moves.js?v=20260826-ability-immunity");
+  const plannerModule = await import("../core/planner.js?v=20260826-order-notes-import");
+  const combatantMovesModule = await import("../core/combatant_moves.js?v=20260826-fiery-crit");
   dataset = await datasetModule.loadStandardizedDataset({ baseUrl: datasetBaseUrl });
   const runtime = self.SharedDamageCalculator.createFromDocuments(
     { gameId: dataset.gameId },

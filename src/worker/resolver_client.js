@@ -1,5 +1,5 @@
 export class ResolverWorkerClient {
-  constructor(url = new URL("./resolver_worker.js?v=20260826-turn-nodes", import.meta.url)) {
+  constructor(url = new URL("./resolver_worker.js?v=20260826-order-notes-import", import.meta.url)) {
     this.worker = new Worker(url);
     this.requestId = 0;
     this.latestPreviewRequest = 0;

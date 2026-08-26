@@ -66,6 +66,37 @@ export function selectedLeafStateIds(plan, selectedStateNodeIds) {
   }));
 }
 
+export function exportBranchGroups(plan) {
+  const visibleEntries = planTreeOrder(plan, { includeReplacementStates: false })
+    .filter(({ state }) => Number(state.turnNumber) > 0);
+  const visibleIds = visibleEntries.map(({ state }) => state.stateNodeId);
+  const visibleSet = new Set(visibleIds);
+  const leafSet = new Set(selectedLeafStateIds(plan, visibleIds));
+  return visibleEntries
+    .filter(({ state }) => leafSet.has(state.stateNodeId))
+    .map(({ state }, index) => ({
+      branchNumber: index + 1,
+      leafStateNodeId: state.stateNodeId,
+      stateNodeIds: stateLineage(plan, state.stateNodeId).filter(stateId => visibleSet.has(stateId))
+    }));
+}
+
+export function preferredImportedReviewStateId(plan) {
+  const selected = (plan.exportSelection?.selectedStateNodeIds || [])
+    .filter(stateId => Number(plan.stateNodes?.[stateId]?.turnNumber) > 0 && !plan.stateNodes[stateId].parentReplacementTransitionId);
+  const leaves = selectedLeafStateIds(plan, selected);
+  if (!leaves.length) return null;
+  const terminalLeaves = leaves.filter(stateId => Boolean(plan.stateNodes[stateId]?.battleEnded));
+  const candidates = terminalLeaves.length ? terminalLeaves : leaves;
+  return [...candidates].sort((leftId, rightId) => {
+    const left = plan.stateNodes[leftId];
+    const right = plan.stateNodes[rightId];
+    return Number(right?.turnNumber || 0) - Number(left?.turnNumber || 0)
+      || Number(right?.createdOrder || 0) - Number(left?.createdOrder || 0)
+      || leftId.localeCompare(rightId);
+  })[0];
+}
+
 export function deriveDisplayColumns(plan, selectedStateNodeIds) {
   const selected = [...new Set(selectedStateNodeIds || [])];
   for (const stateId of selected) {
@@ -105,6 +136,7 @@ export function createPlanSubset(plan, selectedStateNodeIds, options = {}) {
     state.childActionGroupIds = (state.childActionGroupIds || []).filter(id => includedGroups.has(id));
     state.childReplacementTransitionIds = (state.childReplacementTransitionIds || []).filter(id => includedReplacements.has(id));
     state.resolutionEventIds = [...(state.resolutionEventIds || [])];
+    delete state.draftNote;
     for (const eventId of state.resolutionEventIds) eventIds.add(eventId);
     stateNodes[stateId] = state;
   }
@@ -260,6 +292,7 @@ export function planTurnTreeOrder(plan, { additionalDraftStateNodeIds = [] } = {
 export function turnNodeVisuals(plan, decisionStateNodeId, outcomeState, actions) {
   const decisionState = plan?.stateNodes?.[decisionStateNodeId];
   const faintedCombatantKeys = new Set();
+  const switchedInCombatantKeys = new Set();
   if (decisionState && outcomeState) {
     for (const combatantKey of Object.keys(plan.combatants || {})) {
       const before = Number(decisionState.combatantStates?.[combatantKey]?.hp?.max || 0);
@@ -274,7 +307,12 @@ export function turnNodeVisuals(plan, decisionStateNodeId, outcomeState, actions
         ? action.switchToKey
         : action?.actorKey || action?.switchToKey;
       if (combatantKey && plan.combatants?.[combatantKey] && !combatantKeys.includes(combatantKey)) combatantKeys.push(combatantKey);
+      if (action?.actionType === "switch" && action.switchKind !== "forced" && action.switchToKey) switchedInCombatantKeys.add(action.switchToKey);
     }
+  }
+  for (const eventId of outcomeState?.resolutionEventIds || []) {
+    const entry = plan.resolutionEvents?.[eventId];
+    if (entry?.eventType === "switch" && entry.metadata?.switchKind !== "forced" && entry.targetKey) switchedInCombatantKeys.add(entry.targetKey);
   }
   for (const combatantKey of faintedCombatantKeys) {
     if (!combatantKeys.includes(combatantKey)) combatantKeys.push(combatantKey);
@@ -282,6 +320,7 @@ export function turnNodeVisuals(plan, decisionStateNodeId, outcomeState, actions
   return {
     combatantKeys: combatantKeys.slice(0, 4),
     faintedCombatantKeys,
+    switchedInCombatantKeys,
     hasFaint: faintedCombatantKeys.size > 0
   };
 }

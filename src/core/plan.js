@@ -3,6 +3,7 @@ import { clone, exactRange, makeStableId, nowIso, shortHash, stableStringify, to
 import { activeKeys, battleFormat as normalizeBattleFormat, slotsPerSide } from "./battle_slots.js";
 import { createInitialExperienceState } from "../rulesets/vw2r_experience.js";
 import { entryAbilityEffects } from "../rulesets/switch_rules.js?v=20260825-download";
+import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js";
 
 export const INITIAL_ENTRY_EFFECTS_VERSION = 1;
 
@@ -68,6 +69,7 @@ export function resetTurnFlags() {
   return {
     hasMoved: false,
     wasDamaged: false,
+    hpLostThisTurn: false,
     damageTaken: 0,
     damagingHitsTaken: 0,
     lastDamageSourceKey: null,
@@ -139,8 +141,8 @@ export function createInitialState({ combatants, playerActiveKeys, enemyActiveKe
         delayedHeals: []
       },
       sides: {
-        player: { reflectTurns: 0, lightScreenTurns: 0, auroraVeilTurns: 0, tailwindTurns: 0, safeguardTurns: 0, mistTurns: 0, luckyChantTurns: 0, hazards: {}, slotEffects: {} },
-        enemy: { reflectTurns: 0, lightScreenTurns: 0, auroraVeilTurns: 0, tailwindTurns: 0, safeguardTurns: 0, mistTurns: 0, luckyChantTurns: 0, hazards: {}, slotEffects: {} }
+        player: { reflectTurns: 0, lightScreenTurns: 0, auroraVeilTurns: 0, tailwindTurns: 0, safeguardTurns: 0, mistTurns: 0, luckyChantTurns: 0, retaliateReady: false, hazards: {}, slotEffects: {} },
+        enemy: { reflectTurns: 0, lightScreenTurns: 0, auroraVeilTurns: 0, tailwindTurns: 0, safeguardTurns: 0, mistTurns: 0, luckyChantTurns: 0, retaliateReady: false, hazards: {}, slotEffects: {} }
       }
     },
     pendingReplacementSlots: [],
@@ -156,7 +158,8 @@ export function createInitialState({ combatants, playerActiveKeys, enemyActiveKe
       outcomeLabel: "Initial state",
       players: [],
       enemies: []
-    }
+    },
+    draftNote: ""
   };
   state.stateHash = `state-${shortHash(stableStringify({
     active: state.active,
@@ -332,7 +335,7 @@ export function createPlanDocument({
     updatedAt: now,
     documentRevision: 0,
     game: { gameId: dataset.gameId, battleFormat: format, trainerId, trainerVariantId },
-    mechanicsFingerprint: clone(dataset.fingerprint),
+    mechanicsFingerprint: currentMechanicsFingerprint(dataset),
     sourceSnapshot: clone(sourceSnapshot || {}),
     combatants,
     initialStateNodeId: root.stateNodeId,
@@ -378,5 +381,15 @@ export function updateStateHash(state) {
 export function touchPlan(plan, now = nowIso()) {
   plan.documentRevision = Number(plan.documentRevision || 0) + 1;
   plan.updatedAt = now;
+  return plan;
+}
+
+export function setStateNodeNote(plan, stateNodeId, field, value, now = nowIso()) {
+  if (!plan?.stateNodes?.[stateNodeId]) throw new Error(`State ${stateNodeId} is unavailable`);
+  if (!["notes", "draftNote"].includes(field)) throw new Error(`Unsupported state note field ${field}`);
+  const text = String(value ?? "");
+  if (text.length > 4096) throw new Error("Node notes cannot exceed 4096 characters");
+  plan.stateNodes[stateNodeId][field] = text;
+  touchPlan(plan, now);
   return plan;
 }

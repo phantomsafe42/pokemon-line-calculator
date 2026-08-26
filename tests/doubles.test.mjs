@@ -60,6 +60,84 @@ test("four active actions resolve in priority and speed order", () => {
   assert.equal(outcome.events.filter(event => event.eventType === "damage").length, 4);
 });
 
+test("Revenge keeps negative priority and doubles only against the opponent that damaged its user", () => {
+  const { dataset, plan, players, enemies } = fixtureDoublesPlan();
+  const user = players[0];
+  plan.combatants[user.combatantKey].moves[0] = { moveId: "revenge", maxPp: dataset.get("moves", "revenge").pp };
+  plan.stateNodes[plan.initialStateNodeId].combatantStates[user.combatantKey].movePp.revenge = dataset.get("moves", "revenge").pp;
+  const powers = [];
+  const attackOrder = [];
+  const outcomes = resolveTurn({
+    plan,
+    parentStateNodeId: plan.initialStateNodeId,
+    actions: {
+      player: [move(user.combatantKey, "revenge", [enemies[1].combatantKey]), move(players[1].combatantKey, "protect", [players[1].combatantKey])],
+      enemy: [move(enemies[0].combatantKey, "tackle", [user.combatantKey]), move(enemies[1].combatantKey, "tackle", [players[1].combatantKey])]
+    },
+    dataset,
+    damageAdapter: damageAdapter(input => {
+      attackOrder.push(input.attacker.combatantKey);
+      if (input.move.id === "revenge") powers.push(input.moveOverrides?.basePower);
+      return [1];
+    })
+  });
+  assert.equal(attackOrder.at(-1), user.combatantKey, "Revenge resolves after ordinary attacks despite the user's higher Speed");
+  assert.ok(powers.length > 0 && powers.every(power => power === 60), "damage from the other opposing slot does not empower Revenge against its target");
+  assert.ok(outcomes.every(outcome => {
+    const revengeIndex = outcome.events.findIndex(event => event.eventType === "damage" && event.actorKey === user.combatantKey);
+    const earlierEnemyDamage = outcome.events.findIndex(event => event.eventType === "damage" && event.actorKey === enemies[0].combatantKey);
+    return earlierEnemyDamage >= 0 && revengeIndex > earlierEnemyDamage;
+  }));
+});
+
+test("a single-target move was redirected when its opposing slot target fainted earlier in the turn", () => {
+  const { dataset, plan, players, enemies } = fixtureDoublesPlan();
+  setDistinctSpeeds(plan, players, enemies);
+  const actions = turnActions(players, enemies, {
+    player: [
+      move(players[0].combatantKey, "tackle", [enemies[0].combatantKey]),
+      move(players[1].combatantKey, "tackle", [enemies[0].combatantKey])
+    ]
+  });
+  const [outcome] = resolveTurn({
+    plan,
+    parentStateNodeId: plan.initialStateNodeId,
+    actions,
+    dataset,
+    damageAdapter: damageAdapter(({ attacker }) => attacker.combatantKey === players[0].combatantKey ? [999] : attacker.combatantKey === players[1].combatantKey ? [10] : [1])
+  });
+  const redirect = outcome.events.find(event => event.eventType === "move-redirected" && event.actorKey === players[1].combatantKey);
+  assert.equal(redirect?.targetKey, enemies[1].combatantKey);
+  assert.equal(redirect?.metadata?.reason, "target-fainted");
+  assert.ok(outcome.events.some(event => event.eventType === "damage" && event.actorKey === players[1].combatantKey && event.targetKey === enemies[1].combatantKey));
+  assert.equal(outcome.events.some(event => event.reason === "target-fainted-before-action"), false);
+});
+
+test("a queued single-target move failed when both opposing slots were empty but reserves remained", () => {
+  const { dataset, plan, players, enemies } = fixtureDoublesPlan();
+  plan.combatants[players[1].combatantKey].calculatedStats.spe = 140;
+  plan.combatants[players[0].combatantKey].calculatedStats.spe = 120;
+  plan.combatants[enemies[0].combatantKey].calculatedStats.spe = 80;
+  plan.combatants[enemies[1].combatantKey].calculatedStats.spe = 60;
+  const actions = turnActions(players, enemies, {
+    player: [
+      move(players[0].combatantKey, "tackle", [enemies[0].combatantKey]),
+      move(players[1].combatantKey, "surf", [enemies[0].combatantKey, enemies[1].combatantKey])
+    ]
+  });
+  const [outcome] = resolveTurn({
+    plan,
+    parentStateNodeId: plan.initialStateNodeId,
+    actions,
+    dataset,
+    damageAdapter: damageAdapter(({ attacker }) => attacker.combatantKey === players[1].combatantKey ? [999] : [1])
+  });
+  assert.ok(outcome.events.some(event => event.eventType === "action-skipped" && event.actorKey === players[0].combatantKey && event.reason === "no-legal-target"));
+  assert.equal(outcome.events.some(event => event.eventType === "move-redirected" && event.actorKey === players[0].combatantKey), false);
+  assert.equal(outcome.state.battleEnded, false);
+  assert.deepEqual(outcome.state.pendingReplacementSlots, [{ side: "enemy", slot: 0 }, { side: "enemy", slot: 1 }]);
+});
+
 test("Earthquake reaches the ally and both foes while Surf reaches only both foes", () => {
   const { dataset, plan, players, enemies } = fixtureDoublesPlan();
   setDistinctSpeeds(plan, players, enemies);
@@ -132,6 +210,8 @@ test("two fainted slots require and accept distinct same-turn forced replacement
   const [fainted] = resolveTurn({ plan, parentStateNodeId: plan.initialStateNodeId, actions, dataset, damageAdapter: damageAdapter(() => [10]) });
   assert.deepEqual(fainted.state.pendingReplacementSlots, [{ side: "player", slot: 0 }, { side: "player", slot: 1 }]);
   assert.equal(fainted.state.battleEnded, false);
+  assert.equal(fainted.state.fieldState.sides.player.retaliateReady, true);
+  assert.equal(fainted.state.fieldState.sides.enemy.retaliateReady, false);
   plan.stateNodes.fainted = { ...fainted.state, stateNodeId: "fainted" };
   const replacements = { player: [
     { actionType: "replacement", side: "player", slot: 0, switchToKey: players[2].combatantKey, reason: "previous-active-fainted", consumesTurn: false },

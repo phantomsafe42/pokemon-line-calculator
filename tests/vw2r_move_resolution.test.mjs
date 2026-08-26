@@ -4,6 +4,7 @@ import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 import { boundedSlotDamageLabel, highestDamageCandidateKeys, previewCombatantMove, resolvedCombatantMovePreview } from "../src/core/combatant_moves.js";
+import { createBranchEventModel } from "../src/core/branch_events.js";
 import { createPlanDocument } from "../src/core/plan.js";
 import { resolveTurn } from "../src/core/resolver.js";
 import { vw2rMoveSupport } from "../src/rulesets/vw2r_move_support.js";
@@ -54,6 +55,28 @@ test("Doubles slot damage labels use two decimals and cap display at 999.99 perc
   assert.equal(boundedSlotDamageLabel(null, undefined), null);
 });
 
+test("damage previews forward an explicit critical-hit selection", () => {
+  const { dataset, plan, players, enemies } = fixturePlan();
+  let observedCriticalHit = null;
+  const result = previewCombatantMove({
+    plan,
+    stateNodeId: plan.initialStateNodeId,
+    actorKey: players[0].combatantKey,
+    targetKey: enemies[0].combatantKey,
+    moveId: "tackle",
+    criticalHit: true,
+    dataset,
+    damageAdapter: {
+      calculate(input) {
+        observedCriticalHit = input.criticalHit;
+        return { status: "ok", label: "20–24%", minPercent: 20, maxPercent: 24, damage: [20, 24] };
+      }
+    }
+  });
+  assert.equal(observedCriticalHit, true);
+  assert.equal(result.label, "20–24%");
+});
+
 test("VW2R drain and secondary stat effects execute from the Showdown reference", () => {
   {
     const { dataset, plan, playerKey, enemyKey } = vw2rFixture("megadrain");
@@ -66,7 +89,7 @@ test("VW2R drain and secondary stat effects execute from the Showdown reference"
       dataset,
       damageAdapter: damageAdapter(({ move }) => move.id === "megadrain" ? [20] : [0])
     });
-    assert.ok(outcomes.every(outcome => outcome.events.some(entry => entry.eventType === "heal" && entry.metadata.cause === "drain" && entry.healingHp.min === 10)));
+    assert.ok(outcomes.every(outcome => outcome.events.some(entry => entry.eventType === "heal" && entry.metadata.cause === "drain" && entry.healingHp.min === 10 && Number.isFinite(entry.healingPercent?.min))));
   }
 
   {
@@ -93,6 +116,56 @@ test("VW2R Sludge Bomb branches its 30 percent poison chance", () => {
   });
   assert.ok(outcomes.some(outcome => outcome.events.some(entry => entry.eventType === "major-status" && entry.metadata.statusId === "psn")));
   assert.ok(outcomes.some(outcome => outcome.events.some(entry => entry.eventType === "secondary-effect-missed")));
+});
+
+test("VW2R Fiery Dance branches its 50 percent self Sp. Atk boost", () => {
+  const { dataset, plan, playerKey, enemyKey } = vw2rFixture("fierydance");
+  const actions = { player: action(playerKey, "fierydance", [enemyKey]), enemy: action(enemyKey, "tackle", [playerKey]) };
+  const outcomes = resolveTurn({
+    plan,
+    parentStateNodeId: plan.initialStateNodeId,
+    actions,
+    dataset,
+    damageAdapter: damageAdapter(() => [10])
+  });
+  const boosted = outcomes.find(outcome => outcome.events.some(entry => entry.eventType === "stat-stage-change" && entry.moveId === "fierydance"));
+  const unboosted = outcomes.find(outcome => outcome.events.some(entry => entry.eventType === "secondary-effect-missed" && entry.moveId === "fierydance"));
+  assert.ok(boosted);
+  assert.equal(boosted.state.combatantStates[playerKey].statStages.spa, 1);
+  assert.equal(boosted.events.find(entry => entry.eventType === "stat-stage-change" && entry.moveId === "fierydance").targetKey, playerKey);
+  assert.ok(unboosted);
+  assert.deepEqual(unboosted.events.find(entry => entry.eventType === "secondary-effect-missed" && entry.moveId === "fierydance").metadata.secondaryTargetKeys, [playerKey]);
+  const model = createBranchEventModel({ outcomes, actions, defaultOutcomeId: unboosted.previewOutcomeId });
+  const selector = model.dimensions.find(entry => entry.kind === "secondary" && entry.actorKey === playerKey && entry.moveId === "fierydance");
+  assert.equal(selector?.targetKey, playerKey);
+  assert.equal(selector?.effectLabel, "Sp. Atk +1");
+  assert.deepEqual(new Set(selector.options.map(entry => entry.label)), new Set(["Sp. Atk +1", "No Sp. Atk +1"]));
+});
+
+test("VW2R Retaliate doubles only when its side lost a Pokemon on the previous turn", () => {
+  const { dataset, plan, playerKey, enemyKey } = vw2rFixture("retaliate");
+  const root = plan.stateNodes[plan.initialStateNodeId];
+  const observed = [];
+  const adapter = damageAdapter(input => {
+    if (input.move.id === "retaliate") observed.push(input.moveOverrides?.basePower);
+    return [10];
+  });
+  resolveTurn({
+    plan,
+    parentStateNodeId: plan.initialStateNodeId,
+    actions: { player: action(playerKey, "retaliate", [enemyKey]), enemy: action(enemyKey, "tackle", [playerKey]) },
+    dataset,
+    damageAdapter: adapter
+  });
+  root.fieldState.sides.player.retaliateReady = true;
+  resolveTurn({
+    plan,
+    parentStateNodeId: plan.initialStateNodeId,
+    actions: { player: action(playerKey, "retaliate", [enemyKey]), enemy: action(enemyKey, "tackle", [playerKey]) },
+    dataset,
+    damageAdapter: adapter
+  });
+  assert.deepEqual(observed, [70, 140]);
 });
 
 test("VW2R type immunity suppresses damage rolls and Psybeam confusion after a switch", () => {
@@ -599,6 +672,24 @@ test("Doubles order control and redirection follow Showdown targeting", () => {
 });
 
 test("Showdown dynamic-power conditions are passed to the shared calculator", () => {
+  {
+    const { dataset, plan, playerKey, enemies, enemyKey } = vw2rFixture("assurance");
+    const benchKey = enemies[1].combatantKey;
+    plan.stateNodes[plan.initialStateNodeId].fieldState.sides.enemy.hazards.stealthRock = 1;
+    const observed = [];
+    resolveTurn({
+      plan,
+      parentStateNodeId: plan.initialStateNodeId,
+      actions: {
+        player: action(playerKey, "assurance", [benchKey]),
+        enemy: { actionType: "switch", actorKey: enemyKey, switchToKey: benchKey, switchKind: "voluntary", declaredAtStateHash: "fixture" }
+      },
+      dataset,
+      damageAdapter: damageAdapter(input => { if (input.move.id === "assurance") observed.push(input.moveOverrides.basePower); return [0]; })
+    });
+    assert.deepEqual(observed, [Number(vw2rMoves.assurance.basePower) * 2], "entry-hazard HP loss empowers Assurance against the switch-in");
+  }
+
   {
     const { dataset, plan, playerKey, enemyKey } = vw2rFixture("brine");
     const targetState = plan.stateNodes[plan.initialStateNodeId].combatantStates[enemyKey];

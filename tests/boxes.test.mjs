@@ -15,8 +15,10 @@ import {
   updateParty,
   upsertPokemon
 } from "../src/boxes/library.js";
+import { addImportedPlanParty } from "../src/boxes/plan_import.js";
 import { exportShowdown, parseShowdown } from "../src/boxes/showdown.js";
 import { parseVw2rSave, selectVw2rSavePokemon } from "../src/boxes/vw2r_save_import.js";
+import { fixturePlan } from "./helpers.mjs";
 
 function vw2rDataset() {
   const root = fileURLToPath(new URL("../src/generated/datasets/volt-white-2r/", import.meta.url));
@@ -117,6 +119,25 @@ test("Boxes JSON is versioned, portable, mergeable, and game scoped", () => {
   assert.equal(boxesForGame(parsed, "another-game").length, 0);
   const merged = mergeBoxLibrary(library, parsed);
   assert.equal(boxesForGame(merged, dataset.gameId).length, 2);
+});
+
+test("plan imports create incrementing Import boxes with a referenced player party", () => {
+  const fixture = fixturePlan();
+  const first = addImportedPlanParty(createEmptyBoxLibrary(), fixture.plan, fixture.dataset);
+  const second = addImportedPlanParty(first.library, fixture.plan, fixture.dataset);
+  const boxes = boxesForGame(second.library, fixture.dataset.gameId);
+  assert.deepEqual(boxes.map(box => box.name), ["Import 1", "Import 2"]);
+  assert.equal(second.importNumber, 2);
+  for (const box of boxes) {
+    assert.equal(box.pokemonOrder.length, 2);
+    assert.equal(box.partyOrder.length, 1);
+    assert.deepEqual(box.parties[box.partyOrder[0]].pokemonIds, box.pokemonOrder);
+    assert.equal(box.pokemon[box.pokemonOrder[0]].abilityId, "pressure");
+    assert.equal(box.pokemon[box.pokemonOrder[0]].moves[0].name, "Aqua Jet");
+  }
+  const parsed = parseBoxLibrary(exportBoxLibrary(second.library));
+  const third = addImportedPlanParty(parsed, fixture.plan, fixture.dataset);
+  assert.equal(boxesForGame(third.library, fixture.dataset.gameId).at(-1).name, "Import 3");
 });
 
 test("VW2R save identity keeps the empty held-item sentinel unmapped", () => {

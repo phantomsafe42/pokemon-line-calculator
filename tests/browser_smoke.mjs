@@ -9,6 +9,7 @@ const appUrl = process.env.PLC_APP_URL || "http://127.0.0.1:8000/Web%20Tools/Pok
 const saveFixture = process.env.PLC_VW2R_SAVE_FIXTURE ? path.resolve(process.env.PLC_VW2R_SAVE_FIXTURE) : null;
 const testingStateFile = process.env.PLC_TESTING_STATE_FILE ? path.resolve(process.env.PLC_TESTING_STATE_FILE) : null;
 const layoutStateFile = process.env.PLC_LAYOUT_STATE_FILE ? path.resolve(process.env.PLC_LAYOUT_STATE_FILE) : null;
+const compatibilityPlanFixture = process.env.PLC_COMPATIBILITY_PLAN_FIXTURE ? path.resolve(process.env.PLC_COMPATIBILITY_PLAN_FIXTURE) : null;
 const expectTestingState = process.env.PLC_EXPECT_TESTING_STATE === "1";
 const debugPort = await new Promise((resolve, reject) => {
   const server = createServer();
@@ -21,12 +22,14 @@ const screenshots = {
   desktop: path.join(tempRoot, "plc-redesign-desktop.png"),
   crafted: path.join(tempRoot, "plc-crafted-outcome.png"),
   boxes: path.join(tempRoot, "plc-redesign-boxes.png"),
+  savePlan: path.join(tempRoot, "plc-save-plan-selection.png"),
   saveBox: path.join(tempRoot, "plc-save-box-keldeo.png"),
   saveImport: path.join(tempRoot, "plc-save-import-selection.png"),
   doubles: path.join(tempRoot, "plc-redesign-doubles.png"),
   doublesWide: path.join(tempRoot, "plc-redesign-doubles-wide.png"),
   mobile: path.join(tempRoot, "plc-redesign-mobile.png"),
   battleEnd: path.join(tempRoot, "plc-battle-end-preview.png"),
+  notes: path.join(tempRoot, "plc-node-notes.png"),
   battleEndLocked: path.join(tempRoot, "plc-battle-end-locked.png"),
   branchLanes: path.join(tempRoot, "plc-branch-lanes.png")
 };
@@ -105,6 +108,7 @@ async function capture(page, file) {
 }
 
 try {
+  await fs.rm(profile, { recursive: true, force: true });
   await fs.mkdir(profile, { recursive: true });
   let layoutPlanFixture = null;
   if (layoutStateFile) {
@@ -511,8 +515,9 @@ Serious Nature
   assert.ok(turn.outcomePresentation.branchButtons.includes("Misses"));
   assert.ok(turn.outcomePresentation.damageBranchButtons.includes("Crit"));
   assert.equal(turn.outcomePresentation.craftedCards, 1);
-  assert.ok(turn.outcomePresentation.craftedReasons.some(reason => /misses/i.test(reason)));
+  assert.ok(turn.outcomePresentation.craftedReasons.some(reason => /missed/i.test(reason)));
   assert.notEqual(turn.outcomePresentation.craftedProbabilities[0], turn.outcomePresentation.collapsedProbabilities[0]);
+  assert.ok(turn.lines.some(line => /Moonlight · Healed 24–28 HP \(30\.0% - 35\.0%\)/.test(line)));
   assert.equal(turn.unsupported, 0);
   assert.equal(turn.draftTurnLabel, "Turn 1");
   assert.equal(turn.draftSpriteCount, 2);
@@ -576,6 +581,38 @@ Serious Nature
   assert.equal(committed.persistedMoonlight.persisted, true);
   assert.equal(committed.persistedMoonlight.blue, true);
   await capture(page, screenshots.desktop);
+
+  const exportControls = await evaluate(page, `(async () => {
+    document.getElementById('save-plan').click();
+    await new Promise(resolve => setTimeout(resolve, 50));
+    const dialog = document.getElementById('output-dialog');
+    const branchHeaders = [...dialog.querySelectorAll('.export-branch-header strong')].map(node => node.textContent.trim());
+    document.getElementById('select-all-export').click();
+    const turnChecks = [...dialog.querySelectorAll('.export-branch-turns input[type="checkbox"]')];
+    const result = {
+      dialogOpen: dialog.open,
+      importInToolbar: Boolean(document.getElementById('import-plan').closest('.toolbar-actions')),
+      importInDialog: dialog.contains(document.getElementById('import-plan')),
+      selectAllLabel: document.getElementById('select-all-export').textContent.trim(),
+      branchHeaders,
+      branchChecks: [...dialog.querySelectorAll('.export-branch-header input[type="checkbox"]')].map(input => input.checked),
+      turnCount: turnChecks.length,
+      allTurnsSelected: turnChecks.every(input => input.checked),
+      outputEnabled: !document.getElementById('output-plan').disabled
+    };
+    return result;
+  })()`, true);
+  assert.equal(exportControls.dialogOpen, true);
+  assert.equal(exportControls.importInToolbar, true);
+  assert.equal(exportControls.importInDialog, false);
+  assert.equal(exportControls.selectAllLabel, "Select All");
+  assert.deepEqual(exportControls.branchHeaders, ["Branch 1"]);
+  assert.deepEqual(exportControls.branchChecks, [true]);
+  assert.equal(exportControls.turnCount, 1);
+  assert.equal(exportControls.allTurnsSelected, true);
+  assert.equal(exportControls.outputEnabled, true);
+  await capture(page, screenshots.savePlan);
+  await evaluate(page, `document.getElementById('output-dialog').close()`);
 
   let savePlan = { skipped: true };
   if (saveFixture) {
@@ -876,14 +913,40 @@ Serious Nature
 
   const targetRefreshStability = await evaluate(page, `(async () => {
     const wait = (predicate, message) => new Promise((resolve, reject) => { const deadline = Date.now() + 20000; const poll = () => predicate() ? resolve() : Date.now() > deadline ? reject(new Error(message + ': ' + document.getElementById('app-status').textContent)) : setTimeout(poll, 50); poll(); });
+    const playerFirstGroup = [...document.querySelectorAll('#player-action-panel .combatant-card:first-of-type .move-button-group')].find(group => group.querySelectorAll('.damage-slot').length === 2 && !group.querySelector('.move-button')?.disabled);
+    const playerFirstMove = playerFirstGroup?.querySelector('.move-button');
     const playerSecondMove = document.querySelector('#player-action-panel .combatant-card:nth-child(2) .move-button:not(:disabled)');
     const enemySecondMove = document.querySelector('#enemy-action-panel .combatant-card:nth-child(2) .move-button:not(:disabled)');
-    if (!playerSecondMove || !enemySecondMove) throw new Error('Moves needed for complete-preview stability test were unavailable');
+    if (!playerFirstMove || !playerSecondMove || !enemySecondMove) throw new Error('Moves needed for complete-preview stability test were unavailable');
+    playerFirstMove.click();
     playerSecondMove.click();
     enemySecondMove.click();
     await wait(() => !document.getElementById('commit-turn').disabled && globalThis.__PLC_TESTING_STATE__.capture().transientTurn.currentPreview, 'complete Doubles preview');
     const draftNode = document.querySelector('.node-button[data-kind="draft"]');
     const draftSpriteCount = draftNode?.querySelectorAll('.node-sprite').length || 0;
+    const outcomeLines = [...document.querySelectorAll('.event-line, .outcome-effect-line')].map(node => node.textContent);
+    const criticalControl = [...document.querySelectorAll('#player-action-panel .branch-control')].find(node => [...node.querySelectorAll('.branch-option')].some(button => button.textContent === 'Crit'));
+    const criticalCombatantName = criticalControl?.closest('.combatant-card')?.querySelector('.combatant-name')?.textContent;
+    const selectedPlayerCard = () => [...document.querySelectorAll('#player-action-panel .combatant-card')].find(card => card.querySelector('.combatant-name')?.textContent === criticalCombatantName);
+    const selectedPlayerMoveName = selectedPlayerCard()?.querySelector('.move-button[aria-pressed="true"] strong')?.textContent;
+    const selectedPlayerMoveGroup = () => {
+      const card = selectedPlayerCard();
+      const selectedMove = [...card.querySelectorAll('.move-button[aria-pressed="true"]')].find(node => node.querySelector('strong')?.textContent === selectedPlayerMoveName);
+      return selectedMove?.closest('.move-button-group') || selectedMove;
+    };
+    const selectedPlayerDamageValues = () => [...(selectedPlayerMoveGroup()?.querySelectorAll('.damage-slot-value') || [])].map(node => node.textContent);
+    const normalCriticalValues = selectedPlayerDamageValues();
+    const critButton = [...selectedPlayerCard().querySelectorAll('.action-aux .branch-option')].find(node => node.textContent === 'Crit');
+    if (!critButton) throw new Error('Doubles Crit selector was unavailable for ' + selectedPlayerMoveName + ': ' + [...document.querySelectorAll('.branch-control')].map(node => [node.closest('.panel')?.id, node.closest('.combatant-card')?.querySelector('.combatant-name')?.textContent, node.textContent].join('/')).join('|'));
+    critButton.click();
+    await wait(() => {
+      const values = selectedPlayerDamageValues();
+      return values.length === normalCriticalValues.length && values.length === 2 && values.every((value, index) => value !== '…' && value !== normalCriticalValues[index]);
+    }, 'all-slot critical damage refresh');
+    const selectedCriticalValues = selectedPlayerDamageValues();
+    const normalButton = [...selectedPlayerCard().querySelectorAll('.action-aux .branch-option')].find(node => node.textContent === 'Normal');
+    normalButton?.click();
+    await wait(() => selectedPlayerDamageValues().every((value, index) => value === normalCriticalValues[index]), 'normal damage restoration');
 
     const measure = () => {
       const player = document.getElementById('player-action-panel').getBoundingClientRect();
@@ -907,16 +970,44 @@ Serious Nature
     group = selectedEnemy?.closest('.move-button-group');
     group?.querySelector('button.damage-slot')?.click();
     await wait(() => !document.getElementById('commit-turn').disabled, 'restored first target preview');
+    const switchButton = document.querySelector('#player-action-panel .combatant-card:first-of-type .switch-button');
+    switchButton.click();
+    const voluntarySwitchTarget = document.querySelector('#player-action-panel .combatant-card:first-of-type .switch-target:not(.is-current)');
+    if (!voluntarySwitchTarget) throw new Error('A voluntary switch target was unavailable for node presentation');
+    const switchTargetName = voluntarySwitchTarget.querySelector('span')?.textContent || '';
+    voluntarySwitchTarget.click();
+    await wait(() => !document.getElementById('commit-turn').disabled && globalThis.__PLC_TESTING_STATE__.capture().transientTurn.currentPreview, 'voluntary switch preview');
+    const switchRow = [...document.querySelectorAll('.outcome-action')].find(row => /Switched to/.test(row.textContent));
+    const switchedDraftNode = document.querySelector('.node-button[data-kind="draft"]');
+    const switchedSprite = switchedDraftNode?.querySelector('.node-sprite.has-switch-in');
+    const blueProbe = document.createElement('span'); blueProbe.style.color = 'var(--accent-2)'; document.body.append(blueProbe);
+    const switchNodeBlueBorder = switchedSprite ? getComputedStyle(switchedSprite).borderTopColor === getComputedStyle(blueProbe).color : false;
+    blueProbe.remove();
     return {
       immediatePreviewRetained: Boolean(immediateSnapshot.transientTurn.currentPreview),
       immediateLayoutDelta: delta(before, immediate),
       settledLayoutDelta: delta(before, settled),
-      draftSpriteCount
+      draftSpriteCount,
+      normalCriticalValues,
+      selectedCriticalValues,
+      initialIntimidateShown: outcomeLines.some(line => line === 'Intimidate') && outcomeLines.filter(line => /Attack -1/.test(line)).length >= 2,
+      switchOutcomeLine: switchRow?.querySelector('.event-line')?.textContent || null,
+      switchRowSpriteCount: switchRow?.querySelectorAll('.outcome-action-sprite img').length || 0,
+      switchNodeBlueCount: switchedDraftNode?.querySelectorAll('.node-sprite.has-switch-in').length || 0,
+      switchNodeBlueBorder,
+      switchTargetName
     };
   })()`, true);
   assert.equal(targetRefreshStability.immediatePreviewRetained, true);
   assert.ok(targetRefreshStability.immediateLayoutDelta < 0.5);
   assert.equal(targetRefreshStability.draftSpriteCount, 4);
+  assert.equal(targetRefreshStability.normalCriticalValues.length, 2);
+  assert.ok(targetRefreshStability.selectedCriticalValues.every((value, index) => value !== targetRefreshStability.normalCriticalValues[index]));
+  assert.equal(targetRefreshStability.initialIntimidateShown, true);
+  assert.equal(targetRefreshStability.switchOutcomeLine, `Slot 1 · Switched to ${targetRefreshStability.switchTargetName}`);
+  assert.equal(targetRefreshStability.switchRowSpriteCount, 2);
+  assert.equal(targetRefreshStability.switchNodeBlueCount, 1);
+  assert.equal(targetRefreshStability.switchNodeBlueBorder, true);
   await capture(page, screenshots.doubles);
 
   await page.send("Emulation.setDeviceMetricsOverride", { width: 2560, height: 1390, deviceScaleFactor: 1, mobile: false });
@@ -926,6 +1017,8 @@ Serious Nature
     const playerPanel = document.getElementById('player-action-panel').getBoundingClientRect();
     const centerColumn = document.querySelector('.center-column').getBoundingClientRect();
     const enemyPanel = document.getElementById('enemy-action-panel').getBoundingClientRect();
+    const outcomesPanel = document.querySelector('.outcomes-panel').getBoundingClientRect();
+    const notesPanel = document.querySelector('.notes-panel').getBoundingClientRect();
     const playerRects = [...document.querySelectorAll('#player-action-panel .combatant-card')].map(card => card.getBoundingClientRect());
     const enemyRects = [...document.querySelectorAll('#enemy-action-panel .combatant-card')].map(card => card.getBoundingClientRect());
     return {
@@ -936,6 +1029,7 @@ Serious Nature
       playerCardsHorizontal: playerRects.length === 2 && Math.abs(playerRects[0].top - playerRects[1].top) < 2 && playerRects[1].left > playerRects[0].left,
       enemyCardsHorizontal: enemyRects.length === 2 && Math.abs(enemyRects[0].top - enemyRects[1].top) < 2 && enemyRects[1].left > enemyRects[0].left,
       centerBetweenSides: playerPanel.right < centerColumn.left && centerColumn.right < enemyPanel.left && Math.abs(playerPanel.top - centerColumn.top) < 2 && Math.abs(centerColumn.top - enemyPanel.top) < 2,
+      notesBelowOutcomes: notesPanel.top >= outcomesPanel.bottom,
       cardWidths: playerRects.map(rect => Math.round(rect.width))
     };
   })()`);
@@ -944,6 +1038,7 @@ Serious Nature
   assert.equal(doublesWide.playerCardsHorizontal, true);
   assert.equal(doublesWide.enemyCardsHorizontal, true);
   assert.equal(doublesWide.centerBetweenSides, true);
+  assert.equal(doublesWide.notesBelowOutcomes, true);
   assert.ok(doublesWide.cardWidths.every(width => width >= 480));
   await capture(page, screenshots.doublesWide);
 
@@ -990,6 +1085,9 @@ Serious Nature
     if (!enemyMove) throw new Error('Enemy move unavailable for battle-end preview');
     enemyMove.click();
     await wait(() => globalThis.__PLC_TESTING_STATE__.capture().transientTurn.currentPreview && !document.getElementById('commit-turn').disabled, 'battle-end preview');
+    const notes = document.getElementById('node-notes');
+    notes.value = 'Preserve the terminal winning line.';
+    notes.dispatchEvent(new Event('input', { bubbles: true }));
     if (!document.querySelector('.outcome.battle-victory')) throw new Error('winning preview unavailable: ' + JSON.stringify({
       button: document.getElementById('commit-turn').textContent,
       outcomes: [...document.querySelectorAll('.outcome')].map(node => ({ className: node.className, text: node.textContent })),
@@ -1013,7 +1111,10 @@ Serious Nature
       draftNodeRed: draftNode ? getComputedStyle(draftNode).borderTopColor === getComputedStyle(redProbe).color : false,
       draftSpriteCount: draftNode?.querySelectorAll('.node-sprite').length || 0,
       draftFaintSpriteCount: draftNode?.querySelectorAll('.node-sprite.has-faint').length || 0,
-      draftFaintSpriteRed: faintSprite ? getComputedStyle(faintSprite).borderTopColor === getComputedStyle(redProbe).color : false
+      draftFaintSpriteRed: faintSprite ? getComputedStyle(faintSprite).borderTopColor === getComputedStyle(redProbe).color : false,
+      koLine: [...card.querySelectorAll('.damage-amounts')].map(node => node.textContent).find(text => /HKO/.test(text)) || null,
+      notesValue: notes.value,
+      notesStatus: document.getElementById('notes-status').textContent
     };
     goldProbe.remove(); greenProbe.remove(); redProbe.remove();
     return presentation;
@@ -1029,8 +1130,15 @@ Serious Nature
   assert.equal(battleEndPreview.draftSpriteCount, 2);
   assert.equal(battleEndPreview.draftFaintSpriteCount, 1);
   assert.equal(battleEndPreview.draftFaintSpriteRed, true);
+  assert.equal(battleEndPreview.koLine, "Guaranteed OHKO");
+  assert.equal(battleEndPreview.notesValue, "Preserve the terminal winning line.");
+  assert.match(battleEndPreview.notesStatus, /Draft Turn 1 note/);
   await delay(150);
   await capture(page, screenshots.battleEnd);
+  await evaluate(page, `document.querySelector('.notes-panel').scrollIntoView({ block: 'center' })`);
+  await delay(150);
+  await capture(page, screenshots.notes);
+  await evaluate(page, `document.querySelector('.outcomes-panel').scrollIntoView({ block: 'center' })`);
 
   const battleEndLocked = await evaluate(page, `(async () => {
     const wait = (predicate, message) => new Promise((resolve, reject) => { const deadline = Date.now() + 20000; const poll = () => predicate() ? resolve() : Date.now() > deadline ? reject(new Error(message + ': ' + document.getElementById('app-status').textContent)) : setTimeout(poll, 100); poll(); });
@@ -1063,14 +1171,56 @@ Serious Nature
   assert.equal(battleEndLocked.lockedFaintSpriteCount, 1);
   assert.equal(battleEndLocked.lockedFaintSpriteRed, true);
   await capture(page, screenshots.battleEndLocked);
-  const battleEnd = { ...battleEndPreview, ...battleEndLocked };
+  const terminalPlanText = await evaluate(page, `(async () => {
+    document.getElementById('save-plan').click();
+    document.getElementById('select-all-export').click();
+    const snapshot = globalThis.__PLC_TESTING_STATE__.capture();
+    const { exportSelectedPlan } = await import('./src/contracts/plan_file.js');
+    const exported = exportSelectedPlan(snapshot.plan, snapshot.app.exportSelection);
+    document.getElementById('output-dialog').close();
+    return exported.text;
+  })()`, true);
+  const terminalPlanFixture = path.join(profile, "terminal-lock-roundtrip.plc-plan.json");
+  await fs.writeFile(terminalPlanFixture, terminalPlanText, "utf8");
+  const terminalInputDocument = await page.send("DOM.getDocument", { depth: -1, pierce: true });
+  const terminalInput = await page.send("DOM.querySelector", { nodeId: terminalInputDocument.root.nodeId, selector: "#import-plan" });
+  await page.send("DOM.setFileInputFiles", { nodeId: terminalInput.nodeId, files: [terminalPlanFixture] });
+  const terminalRoundTrip = await evaluate(page, `(async () => {
+    const wait = (predicate, message) => new Promise((resolve, reject) => { const deadline = Date.now() + 20000; const poll = () => predicate() ? resolve() : Date.now() > deadline ? reject(new Error(message + ': ' + document.getElementById('app-status').textContent)) : setTimeout(poll, 100); poll(); });
+    await wait(() => document.getElementById('destructive-dialog').open, 'terminal import confirmation');
+    document.getElementById('destructive-discard').click();
+    await wait(() => /Plan imported/.test(document.getElementById('app-status').textContent) && globalThis.__PLC_TESTING_STATE__.capture().transientTurn.currentPreview, 'terminal plan import');
+    const snapshot = globalThis.__PLC_TESTING_STATE__.capture();
+    return {
+      turnLabel: document.getElementById('turn-label').textContent,
+      button: document.getElementById('commit-turn').textContent,
+      playerMove: document.querySelector('#player-action-panel .move-button[aria-pressed="true"] .move-copy strong')?.textContent || null,
+      enemyMove: document.querySelector('#enemy-action-panel .move-button[aria-pressed="true"] .move-copy strong')?.textContent || null,
+      reviewOutcomeStateNodeId: snapshot.app.reviewOutcomeStateNodeId,
+      draftNodes: document.querySelectorAll('.node-button[data-kind="draft"]').length,
+      committedNodes: document.querySelectorAll('.node-button[data-kind="committed"]').length,
+      actionGroups: Object.keys(snapshot.plan.actionGroups).length,
+      notesValue: document.getElementById('node-notes').value,
+      importBoxNames: [...document.querySelectorAll('.box-name-input')].map(input => input.value).filter(name => /^Import \\d+$/.test(name))
+    };
+  })()`, true);
+  assert.equal(terminalRoundTrip.turnLabel, "Turn 1");
+  assert.equal(terminalRoundTrip.button, "Lock Branch");
+  assert.equal(terminalRoundTrip.playerMove, "Hyper Beam");
+  assert.ok(terminalRoundTrip.enemyMove);
+  assert.ok(terminalRoundTrip.reviewOutcomeStateNodeId);
+  assert.equal(terminalRoundTrip.draftNodes, 0);
+  assert.equal(terminalRoundTrip.committedNodes, 1);
+  assert.equal(terminalRoundTrip.actionGroups, 1);
+  assert.equal(terminalRoundTrip.notesValue, "Preserve the terminal winning line.");
+  assert.deepEqual(terminalRoundTrip.importBoxNames, ["Import 1"]);
+  const battleEnd = { ...battleEndPreview, ...battleEndLocked, terminalRoundTrip };
 
   let branchLanes = { skipped: true };
   if (layoutPlanFixture) {
     const domDocument = await page.send("DOM.getDocument", { depth: -1, pierce: true });
     const input = await page.send("DOM.querySelector", { nodeId: domDocument.root.nodeId, selector: "#import-plan" });
     assert.ok(input.nodeId, "Plan import input is available for the branch-lane fixture");
-    await evaluate(page, `document.getElementById('save-plan').click()`);
     await page.send("DOM.setFileInputFiles", { nodeId: input.nodeId, files: [layoutPlanFixture] });
     await evaluate(page, `(async () => {
       const deadline = Date.now() + 10000;
@@ -1108,6 +1258,47 @@ Serious Nature
     await capture(page, screenshots.branchLanes);
   }
 
+  let compatibilityPlanReview = { skipped: true };
+  if (compatibilityPlanFixture) {
+    const domDocument = await page.send("DOM.getDocument", { depth: -1, pierce: true });
+    const input = await page.send("DOM.querySelector", { nodeId: domDocument.root.nodeId, selector: "#import-plan" });
+    assert.ok(input.nodeId, "Plan import input is available for the compatibility fixture");
+    await page.send("DOM.setFileInputFiles", { nodeId: input.nodeId, files: [compatibilityPlanFixture] });
+    compatibilityPlanReview = await evaluate(page, `(async () => {
+      const wait = (predicate, message, timeout = 30000) => new Promise((resolve, reject) => { const deadline = Date.now() + timeout; const poll = () => predicate() ? resolve() : Date.now() > deadline ? reject(new Error(message + ': ' + JSON.stringify({ status: document.getElementById('app-status')?.textContent, readiness: document.getElementById('readiness')?.textContent, snapshot: globalThis.__PLC_TESTING_STATE__.capture().transientTurn }))) : setTimeout(poll, 75); poll(); });
+      await wait(() => document.getElementById('destructive-dialog').open, 'compatibility import confirmation');
+      const previousPlanId = globalThis.__PLC_TESTING_STATE__.capture().plan.planId;
+      document.getElementById('destructive-discard').click();
+      await wait(() => globalThis.__PLC_TESTING_STATE__.capture().plan.planId !== previousPlanId, 'compatibility plan import');
+      const initial = globalThis.__PLC_TESTING_STATE__.capture();
+      const requiredRecalculation = initial.app.needsRecalculation;
+      if (requiredRecalculation) {
+        document.getElementById('recalculate-plan').click();
+        await wait(() => !globalThis.__PLC_TESTING_STATE__.capture().app.needsRecalculation && /Recalculation completed/.test(document.getElementById('app-status').textContent), 'compatibility recalculation', 60000);
+      }
+      const stateIds = [...document.querySelectorAll('.node-button[data-kind="committed"]')].map(node => node.dataset.stateNodeId);
+      const reviews = [];
+      for (const stateId of stateIds) {
+        document.querySelector('.node-button[data-kind="committed"][data-state-node-id="' + CSS.escape(stateId) + '"]').click();
+        await wait(() => {
+          const snapshot = globalThis.__PLC_TESTING_STATE__.capture();
+          return snapshot.transientTurn.currentPreview;
+        }, 'committed node review ' + stateId);
+        const snapshot = globalThis.__PLC_TESTING_STATE__.capture();
+        reviews.push({
+          stateId,
+          label: document.getElementById('commit-turn').textContent,
+          previewStatus: snapshot.transientTurn.currentPreview.previewStatus,
+          reviewedStateId: snapshot.app.reviewOutcomeStateNodeId
+        });
+      }
+      return { requiredRecalculation, stateNodes: stateIds.length, reviews, newBranchLabels: reviews.filter(review => review.label === 'New Branch').length };
+    })()`, true);
+    assert.equal(compatibilityPlanReview.stateNodes, 20);
+    assert.equal(compatibilityPlanReview.newBranchLabels, 0);
+    assert.ok(compatibilityPlanReview.reviews.every(review => review.previewStatus === "existing-expanded" && review.reviewedStateId === review.stateId));
+  }
+
   const browserErrors = page.events.filter(event => event.method === "Runtime.exceptionThrown").map(event => event.params.exceptionDetails.exception?.description || event.params.exceptionDetails.text);
   assert.deepEqual(browserErrors, []);
   let storedTestingState = null;
@@ -1119,7 +1310,7 @@ Serious Nature
     assert.equal(storedTestingState.plan.kind, "pokemon-battle-plan");
   }
   page.close();
-  console.log(JSON.stringify({ selected, imported, edited, saveReview, planReady, turn, committed, savePlan, responsive, doubles, testingState, targetRefreshStability, storedTestingState: storedTestingState ? { capturedAt: storedTestingState.capturedAt, storedAt: storedTestingState.storedAt } : null, doublesWide, mobile, battleEnd, branchLanes, screenshots }, null, 2));
+  console.log(JSON.stringify({ selected, imported, edited, saveReview, planReady, turn, committed, savePlan, responsive, doubles, testingState, targetRefreshStability, storedTestingState: storedTestingState ? { capturedAt: storedTestingState.capturedAt, storedAt: storedTestingState.storedAt } : null, doublesWide, mobile, battleEnd, branchLanes, compatibilityPlanReview, screenshots }, null, 2));
 } finally {
   if (browser && browser.exitCode === null) browser.kill();
   await fs.rm(profile, { recursive: true, force: true }).catch(() => {});

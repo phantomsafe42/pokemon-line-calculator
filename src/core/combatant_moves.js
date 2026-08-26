@@ -68,7 +68,7 @@ export function resolvedCombatantMovePreview({ events = [], actorKey, targetKey,
   return null;
 }
 
-export function previewCombatantMove({ plan, stateNodeId, actorKey, targetKey, moveId, dataset, damageAdapter }) {
+export function previewCombatantMove({ plan, stateNodeId, actorKey, targetKey, moveId, criticalHit, dataset, damageAdapter }) {
   const state = plan?.stateNodes?.[stateNodeId];
   const actor = plan?.combatants?.[actorKey];
   const target = plan?.combatants?.[targetKey];
@@ -99,6 +99,7 @@ export function previewCombatantMove({ plan, stateNodeId, actorKey, targetKey, m
     defenderState: targetState,
     move,
     fieldState: state.fieldState,
+    criticalHit,
     battleFormat: plan.game?.battleFormat || "singles"
   });
   if (result.status === "ok") return { status: "ok", label: result.label, minPercent: result.minPercent, maxPercent: result.maxPercent, damage: result.damage };

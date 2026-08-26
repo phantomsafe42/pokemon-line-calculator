@@ -1,8 +1,9 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createPlanDocument, INITIAL_ENTRY_EFFECTS_VERSION } from "../src/core/plan.js";
+import { previewTurn } from "../src/core/planner.js";
 import { entryAbilityEffects, entryHazardEffects, isGrounded, outgoingSwitchEffects, typeEffectiveness } from "../src/rulesets/switch_rules.js";
-import { fixtureDataset, fixtureDoublesPlan, fixturePlan } from "./helpers.mjs";
+import { damageAdapter, fixtureDataset, fixtureDoublesPlan, fixturePlan } from "./helpers.mjs";
 
 function state({ types = ["normal"], ability = "pressure", item = null, status = null, hp = 100, maxHp = 120, stats = { def: 100, spd: 100 }, stages = {} } = {}) {
   return {
@@ -86,6 +87,22 @@ test("starting Intimidate applies to every opposing active slot and records root
   for (const enemyKey of root.active.enemyCombatantKeys) assert.equal(root.combatantStates[enemyKey].statStages.atk, -1);
   const events = root.resolutionEventIds.map(eventId => plan.resolutionEvents[eventId]);
   assert.equal(events.filter(event => event.metadata?.cause === "intimidate" && event.eventType === "stat-stage-change").length, 2);
+
+  const move = (actorKey, targetKey) => ({ actionType: "move", actorKey, moveId: "tackle", targetKeys: [targetKey], mechanicActivations: [], declaredAtStateHash: root.stateHash });
+  const preview = previewTurn({
+    plan,
+    parentStateNodeId: plan.initialStateNodeId,
+    actions: {
+      player: [move(players[0].combatantKey, enemies[0].combatantKey), move(players[1].combatantKey, enemies[1].combatantKey)],
+      enemy: [move(enemies[0].combatantKey, players[0].combatantKey), move(enemies[1].combatantKey, players[1].combatantKey)]
+    },
+    dataset,
+    damageAdapter: damageAdapter(() => [1])
+  });
+  assert.ok(preview.outcomes.length > 0);
+  for (const outcome of preview.outcomes) {
+    assert.equal(outcome.events.filter(event => event.metadata?.phase === "initial-entry" && event.metadata?.cause === "intimidate").length, 2);
+  }
 });
 
 test("starting Intimidate applies in Singles before the first turn", () => {

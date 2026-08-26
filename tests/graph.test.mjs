@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
-import { deriveDisplayColumns, createPlanSubset, planTurnTreeOrder, stateLineage, turnNodeVisuals } from "../src/core/graph.js";
+import { deriveDisplayColumns, createPlanSubset, exportBranchGroups, planTurnTreeOrder, preferredImportedReviewStateId, stateLineage, turnNodeVisuals } from "../src/core/graph.js";
 import { parsePlan, serializePlan } from "../src/contracts/plan_file.js";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -21,6 +21,26 @@ test("shared parent plus two outcomes derives two display columns", () => {
     ["state-turn-1-main", "state-turn-2-ko"],
     ["state-turn-1-main", "state-turn-2-survive"]
   ]);
+});
+
+test("save selection groups every leaf lineage into a numbered branch", () => {
+  assert.deepEqual(exportBranchGroups(plan), [
+    { branchNumber: 1, leafStateNodeId: "state-turn-2-ko", stateNodeIds: ["state-turn-1-main", "state-turn-2-ko"] },
+    { branchNumber: 2, leafStateNodeId: "state-turn-2-survive", stateNodeIds: ["state-turn-1-main", "state-turn-2-survive"] },
+    { branchNumber: 3, leafStateNodeId: "state-turn-2-switch", stateNodeIds: ["state-turn-1-main", "state-turn-2-switch"] }
+  ]);
+});
+
+test("an imported terminal export reopens its final saved action group", () => {
+  const terminal = structuredClone(plan);
+  terminal.stateNodes["state-turn-2-ko"].battleEnded = true;
+  terminal.exportSelection = {
+    selectedStateNodeIds: ["state-turn-1-main", "state-turn-2-ko", "state-turn-2-survive"],
+    includedStateNodeIds: [],
+    includedActionGroupIds: [],
+    includedReplacementTransitionIds: []
+  };
+  assert.equal(preferredImportedReviewStateId(terminal), "state-turn-2-ko");
 });
 
 test("selected export closes over ancestry and omits sibling branches", () => {
@@ -105,4 +125,11 @@ test("turn-node visuals use action combatants and identify newly fainted Pokemon
     "enemy:trainer:fixture-trainer:slot:1"
   ]);
   assert.equal(switched.hasFaint, false);
+  assert.deepEqual([...switched.switchedInCombatantKeys], ["player:unique:lucario-fixture"]);
+
+  const forced = turnNodeVisuals(plan, switchGroup.parentStateNodeId, { ...switchState, resolutionEventIds: [] }, {
+    player: [{ actionType: "replacement", switchToKey: "player:unique:lucario-fixture", switchKind: "forced" }],
+    enemy: []
+  });
+  assert.deepEqual([...forced.switchedInCombatantKeys], []);
 });

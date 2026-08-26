@@ -3,6 +3,7 @@ import test from "node:test";
 import {
   collapsedOutcomeEntries,
   formatDamageRollCounts,
+  healingEventDescription,
   isCriticalOhkoOutcome,
   isHighRollKoOutcome,
   outcomePanelEvents,
@@ -14,6 +15,31 @@ test("damage roll display collapses duplicates into superscript occurrence count
   assert.equal(formatDamageRollCounts([100, 100, 100, 100, 100, 100, 100, 100, 100, 100]), "100¹⁰");
 });
 
+test("healing events use readable sources plus HP and max-HP percentages", () => {
+  assert.equal(healingEventDescription({
+    eventType: "residual-heal",
+    targetKey: "player",
+    healingHp: { min: 10, max: 10 },
+    healingPercent: { min: 12.5, max: 12.5 },
+    metadata: { cause: "poison-heal" }
+  }), "Poison Heal · Healed 10 HP (12.5%)");
+  assert.equal(healingEventDescription({
+    eventType: "switch-heal",
+    targetKey: "player",
+    healingHp: { min: 30, max: 40 },
+    metadata: { cause: "regenerator" }
+  }, { maxHp: 120 }), "Regenerator · Healed 30–40 HP (25.0% - 33.3%)");
+  assert.equal(healingEventDescription({
+    eventType: "heal",
+    actorKey: "player",
+    targetKey: "player",
+    healingHp: { min: 12, max: 15 },
+    healingPercent: { min: 15, max: 18.75 },
+    metadata: { cause: "drain" }
+  }, { moveName: "Mega Drain" }), "Mega Drain · Drained 12–15 HP (15.0% - 18.8%)");
+  assert.equal(healingEventDescription({ eventType: "damage", damageHp: { min: 10, max: 10 } }), null);
+});
+
 test("Possible Outcomes omits EXP events while leaving them in resolver state", () => {
   const events = [
     { eventType: "damage", moveId: "tackle" },
@@ -22,6 +48,17 @@ test("Possible Outcomes omits EXP events while leaving them in resolver state", 
   ];
   assert.deepEqual(outcomePanelEvents(events), [events[0], events[2]]);
   assert.equal(events.length, 3);
+});
+
+test("Possible Outcomes omits replacement prompts and obsolete faint-before-action notices", () => {
+  const events = [
+    { eventType: "replacement-required", metadata: { resultLabel: "Replace enemy 1" } },
+    { eventType: "action-skipped", actorKey: "enemy", reason: "actor-fainted-before-moving" },
+    { eventType: "action-skipped", actorKey: "player", reason: "target-fainted-before-action" },
+    { eventType: "action-skipped", actorKey: "player", reason: "no-legal-target" },
+    { eventType: "battle-ended", metadata: { resultLabel: "Battle ended" } }
+  ];
+  assert.deepEqual(outcomePanelEvents(events), [events[3], events[4]]);
 });
 
 function damage(thresholdOutcome, overrides = {}) {
