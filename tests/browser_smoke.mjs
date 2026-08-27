@@ -27,6 +27,7 @@ const screenshots = {
   saveImport: path.join(tempRoot, "plc-save-import-selection.png"),
   doubles: path.join(tempRoot, "plc-redesign-doubles.png"),
   doublesWide: path.join(tempRoot, "plc-redesign-doubles-wide.png"),
+  triples: path.join(tempRoot, "plc-redesign-triples.png"),
   mobile: path.join(tempRoot, "plc-redesign-mobile.png"),
   battleEnd: path.join(tempRoot, "plc-battle-end-preview.png"),
   notes: path.join(tempRoot, "plc-node-notes.png"),
@@ -369,6 +370,16 @@ Serious Nature
     const neil = [...trainer.options].find(entry => /School Kid Neil/i.test(entry.textContent));
     if (!neil) throw new Error('School Kid Neil unavailable');
     trainer.value = neil.value; trainer.dispatchEvent(new Event('change', { bubbles: true }));
+    const enemyTeamPanel = document.getElementById('enemy-team-panel');
+    const partyPanel = document.getElementById('party-selector-controls').closest('.party-selector-panel');
+    const enemyTeam = {
+      cards: [...document.querySelectorAll('#enemy-team-summary .context-pokemon')].map(card => ({
+        name: card.querySelector('strong')?.textContent || '',
+        detail: card.querySelector('small')?.textContent || ''
+      })),
+      buttons: document.querySelectorAll('#enemy-team-summary button').length,
+      aboveParty: Boolean(enemyTeamPanel.compareDocumentPosition(partyPanel) & Node.DOCUMENT_POSITION_FOLLOWING)
+    };
     const box = document.getElementById('context-box-select'); box.value = box.options[1].value; box.dispatchEvent(new Event('change', { bubbles: true }));
     const party = document.getElementById('context-party-select'); party.value = party.options[1].value; party.dispatchEvent(new Event('change', { bubbles: true }));
     document.getElementById('save-party-selection').click();
@@ -380,6 +391,9 @@ Serious Nature
       player: document.querySelector('#player-action-panel .combatant-name').textContent,
       playerMeta: document.querySelector('#player-action-panel .meta-row').textContent,
       enemy: document.querySelector('#enemy-action-panel .combatant-name').textContent,
+      enemySubtitle: document.querySelector('#enemy-action-panel .combatant-species').textContent,
+      enemySubtitleHeight: document.querySelector('#enemy-action-panel .combatant-species').getBoundingClientRect().height,
+      enemyTeam,
       nodes: document.querySelectorAll('.node-button').length,
       expHeadings: [...document.querySelectorAll('.field-exp[data-exp-projection] strong')].map(node => node.textContent),
       expLines: [...document.querySelectorAll('.field-exp[data-exp-projection] .field-exp-line')].map(node => node.textContent)
@@ -388,6 +402,12 @@ Serious Nature
   assert.equal(planReady.format, "Singles");
   assert.match(planReady.player, /Clefairy/i);
   assert.match(planReady.playerMeta, /Lv\. 26/);
+  assert.ok(planReady.enemyTeam.cards.length >= 1);
+  assert.ok(planReady.enemyTeam.cards.every(card => card.name && /Lv\. \d+/.test(card.detail)));
+  assert.equal(planReady.enemyTeam.buttons, 0);
+  assert.equal(planReady.enemyTeam.aboveParty, true);
+  assert.equal(planReady.enemySubtitle, "");
+  assert.ok(planReady.enemySubtitleHeight > 0);
   assert.equal(planReady.nodes, 1);
   assert.ok(planReady.expHeadings.some(text => /If Swellow faints/i.test(text)));
   assert.ok(planReady.expLines.some(text => /Clefairy \+[\d,]+ EXP/i.test(text)));
@@ -1042,11 +1062,156 @@ Serious Nature
   assert.ok(doublesWide.cardWidths.every(width => width >= 480));
   await capture(page, screenshots.doublesWide);
 
+  const triples = await evaluate(page, `(async () => {
+    const wait = (predicate, message) => new Promise((resolve, reject) => { const deadline = Date.now() + 30000; const poll = () => predicate() ? resolve() : Date.now() > deadline ? reject(new Error(message + ': ' + document.getElementById('app-status').textContent)) : setTimeout(poll, 100); poll(); });
+    document.getElementById('new-plan').click();
+    const trainer = document.getElementById('trainer-select');
+    let chosen = null;
+    for (const entry of [...trainer.options].filter(option => option.value)) {
+      trainer.value = entry.value; trainer.dispatchEvent(new Event('change', { bubbles: true }));
+      if (document.getElementById('battle-format').value === 'Triples') { chosen = entry; break; }
+    }
+    if (!chosen) throw new Error('No Triple trainer found');
+    const box = document.getElementById('context-box-select'); box.value = box.options[1].value; box.dispatchEvent(new Event('change', { bubbles: true }));
+    const party = document.getElementById('context-party-select'); party.value = party.options[1].value; party.dispatchEvent(new Event('change', { bubbles: true }));
+    document.getElementById('save-party-selection').click();
+    if (document.getElementById('begin-plan').disabled) throw new Error(document.getElementById('context-status').textContent);
+    document.getElementById('begin-plan').click();
+    await wait(() => document.getElementById('destructive-dialog').open || document.querySelectorAll('#player-action-panel .combatant-card').length === 3, 'Triple transition');
+    if (document.getElementById('destructive-dialog').open) document.getElementById('destructive-discard').click();
+    await wait(() => document.querySelectorAll('#player-action-panel .combatant-card').length === 3 && document.querySelectorAll('#enemy-action-panel .combatant-card').length === 3, 'Triple workspace');
+    await new Promise(resolve => setTimeout(resolve, 250));
+    const cardInfo = panelId => [...document.querySelectorAll('#' + panelId + ' .combatant-card')].map(card => {
+      const rect = card.getBoundingClientRect();
+      return {
+        actionSlot: Number(card.dataset.actionSlot),
+        displaySlot: Number(card.dataset.displaySlot),
+        label: card.querySelector('.combatant-slot-heading')?.textContent.trim() || '',
+        name: card.querySelector('.combatant-name')?.textContent || '',
+        subtitle: card.querySelector('.combatant-species')?.textContent || '',
+        left: Math.round(rect.left),
+        top: Math.round(rect.top),
+        width: Math.round(rect.width)
+      };
+    });
+    const playerInitial = cardInfo('player-action-panel');
+    const enemyInitial = cardInfo('enemy-action-panel');
+    const panelReach = panelId => [...document.querySelectorAll('#' + panelId + ' .combatant-card')]
+      .sort((left, right) => Number(left.dataset.displaySlot) - Number(right.dataset.displaySlot))
+      .map(card => {
+        const displaySlot = Number(card.dataset.displaySlot);
+        const expectedOutOfRange = displaySlot === 1 ? 0 : 1;
+        const groups = [...card.querySelectorAll('.move-button-group')].filter(entry => entry.querySelectorAll('.damage-slot').length === 3);
+        const group = groups.find(entry => entry.querySelectorAll('.damage-slot.is-out-of-range').length === expectedOutOfRange) || groups[0];
+        return {
+          displaySlot,
+          actionSlot: Number(card.dataset.actionSlot),
+          label: card.querySelector('.combatant-slot-heading')?.textContent.trim() || '',
+          name: card.querySelector('.combatant-name')?.textContent || '',
+          targets: [...(group?.querySelectorAll('.damage-slot') || [])].map(target => ({
+            label: target.dataset.slotLabel,
+            reachable: !target.classList.contains('is-out-of-range'),
+            selectable: target.tagName === 'BUTTON'
+          }))
+        };
+      });
+    const playerReach = panelReach('player-action-panel');
+    const enemyReach = panelReach('enemy-action-panel');
+    const edgeGroups = [...document.querySelectorAll('#player-action-panel .combatant-card[data-action-slot="0"] .move-button-group')];
+    const centerGroups = [...document.querySelectorAll('#player-action-panel .combatant-card[data-action-slot="1"] .move-button-group')];
+    const edgeRangeShown = edgeGroups.some(group => group.querySelectorAll('.damage-slot').length === 3 && group.querySelectorAll('.damage-slot.is-out-of-range').length === 1);
+    const centerRangeShown = centerGroups.some(group => group.querySelectorAll('.damage-slot').length === 3 && group.querySelectorAll('.damage-slot.is-out-of-range').length === 0);
+    const edgeTargetGroup = edgeGroups.find(group => group.querySelectorAll('.damage-slot').length === 3 && group.querySelectorAll('.damage-slot.is-out-of-range').length === 1);
+    const edgeTargetReach = [...(edgeTargetGroup?.querySelectorAll('.damage-slot') || [])].map(slot => ({ label: slot.dataset.slotLabel, reachable: !slot.classList.contains('is-out-of-range') }));
+    const initialCenterShiftButtons = document.querySelectorAll('.combatant-card[data-display-slot="1"] .shift-button').length;
+    const shift = document.querySelector('#player-action-panel .combatant-card[data-action-slot="0"] .shift-button');
+    if (!shift) throw new Error('Left-slot Shift control was unavailable');
+    const initialLeftName = document.querySelector('#player-action-panel .combatant-card[data-display-slot="0"] .combatant-name').textContent;
+    const initialCenterName = document.querySelector('#player-action-panel .combatant-card[data-display-slot="1"] .combatant-name').textContent;
+    shift.click();
+    await wait(() => document.querySelector('#player-action-panel .combatant-card[data-display-slot="0"]')?.dataset.actionSlot === '1'
+      && document.querySelector('#player-action-panel .combatant-card[data-display-slot="1"]')?.dataset.actionSlot === '0', 'Shift formation preview');
+    const shiftedLeftName = document.querySelector('#player-action-panel .combatant-card[data-display-slot="0"] .combatant-name').textContent;
+    const shiftedCenterName = document.querySelector('#player-action-panel .combatant-card[data-display-slot="1"] .combatant-name').textContent;
+    const snapshot = globalThis.__PLC_TESTING_STATE__.capture();
+    return {
+      trainer: chosen.textContent,
+      format: document.querySelector('#player-action-panel .pill').textContent,
+      workspaceClass: document.getElementById('battle-workspace').className,
+      playerInitial,
+      enemyInitial,
+      playerReach,
+      enemyReach,
+      edgeRangeShown,
+      centerRangeShown,
+      edgeTargetReach,
+      shiftButtons: document.querySelectorAll('.shift-button').length,
+      centerShiftButtons: initialCenterShiftButtons,
+      shiftDraft: snapshot.transientTurn.actionDraft.player[0].type || null,
+      initialLeftName,
+      initialCenterName,
+      shiftedLeftName,
+      shiftedCenterName,
+      shiftedSelected: document.querySelector('#player-action-panel .combatant-card[data-action-slot="0"] .shift-button')?.getAttribute('aria-pressed') === 'true',
+      nodeSpriteCount: document.querySelector('.node-button[data-kind="draft"] .node-sprites.is-triples')?.querySelectorAll('.node-sprite').length || 0,
+      nodeSpriteOrder: [...(document.querySelector('.node-button[data-kind="draft"] .node-sprites.is-triples')?.querySelectorAll('.node-sprite') || [])].map(holder => holder.title),
+      pageOverflow: document.documentElement.scrollWidth - innerWidth
+    };
+  })()`, true);
+  assert.equal(triples.format, "Triples");
+  assert.match(triples.workspaceClass, /is-triples/);
+  assert.deepEqual(triples.playerInitial.map(card => card.label), ["Slot 1 · Left", "Slot 2 · Center", "Slot 3 · Right"]);
+  assert.deepEqual(triples.enemyInitial.map(card => card.label), ["Slot 4 · Left", "Slot 5 · Center", "Slot 6 · Right"]);
+  assert.deepEqual(triples.enemyInitial.map(card => card.name), ["Lanturn", "Electivire", "Emolga"]);
+  assert.ok(triples.enemyInitial.every(card => card.subtitle === ""));
+  assert.deepEqual(triples.enemyInitial.map(card => card.actionSlot), [1, 2, 0]);
+  assert.equal(triples.playerInitial[0].top, triples.playerInitial[1].top);
+  assert.ok(triples.playerInitial[2].top > triples.playerInitial[1].top);
+  assert.ok(triples.playerInitial[1].left > triples.playerInitial[0].left);
+  assert.equal(triples.enemyInitial[0].top, triples.enemyInitial[1].top);
+  assert.ok(triples.enemyInitial[2].top > triples.enemyInitial[0].top);
+  assert.ok(triples.enemyInitial[0].left > triples.enemyInitial[1].left);
+  assert.equal(triples.enemyInitial[2].left, triples.enemyInitial[1].left);
+  assert.equal(triples.edgeRangeShown, true);
+  assert.equal(triples.centerRangeShown, true);
+  assert.deepEqual(triples.edgeTargetReach, [
+    { label: "Slot 4", reachable: true },
+    { label: "Slot 5", reachable: true },
+    { label: "Slot 6", reachable: false }
+  ]);
+  const reach = values => values.map((reachable, index) => ({ label: `Slot ${index + 1}`, reachable, selectable: reachable }));
+  const enemyTargets = values => values.map((reachable, index) => ({ label: `Slot ${index + 4}`, reachable, selectable: reachable }));
+  assert.deepEqual(triples.playerReach.map(card => card.targets), [
+    enemyTargets([true, true, false]),
+    enemyTargets([true, true, true]),
+    enemyTargets([false, true, true])
+  ]);
+  assert.deepEqual(triples.enemyReach.map(card => card.targets.map(({ label, reachable }) => ({ label, reachable }))), [
+    reach([true, true, false]).map(({ label, reachable }) => ({ label, reachable })),
+    reach([true, true, true]).map(({ label, reachable }) => ({ label, reachable })),
+    reach([false, true, true]).map(({ label, reachable }) => ({ label, reachable }))
+  ]);
+  assert.equal(triples.shiftButtons, 4);
+  assert.equal(triples.centerShiftButtons, 0);
+  assert.equal(triples.shiftDraft, "shift");
+  assert.equal(triples.shiftedLeftName, triples.initialCenterName);
+  assert.equal(triples.shiftedCenterName, triples.initialLeftName);
+  assert.equal(triples.shiftedSelected, true);
+  assert.equal(triples.nodeSpriteCount, 6);
+  assert.deepEqual(triples.nodeSpriteOrder, [...triples.playerInitial.map(card => card.name), ...triples.enemyInitial.map(card => card.name)]);
+  assert.ok(triples.pageOverflow <= 0);
+  await capture(page, screenshots.triples);
+
   await page.send("Emulation.setDeviceMetricsOverride", { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
   await delay(300);
-  const mobile = await evaluate(page, `({ viewport: innerWidth, scrollWidth: document.documentElement.scrollWidth, columns: getComputedStyle(document.querySelector('.battle-workspace')).gridTemplateColumns })`);
+  const mobile = await evaluate(page, `(() => {
+    const order = panelId => [...document.querySelectorAll('#' + panelId + ' .combatant-card')].sort((a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top).map(card => Number(card.dataset.displaySlot));
+    return { viewport: innerWidth, scrollWidth: document.documentElement.scrollWidth, columns: getComputedStyle(document.querySelector('.battle-workspace')).gridTemplateColumns, playerOrder: order('player-action-panel'), enemyOrder: order('enemy-action-panel') };
+  })()`);
   assert.ok(mobile.scrollWidth <= mobile.viewport);
   assert.equal(mobile.columns.split(" ").length, 1);
+  assert.deepEqual(mobile.playerOrder, [0, 1, 2]);
+  assert.deepEqual(mobile.enemyOrder, [0, 1, 2]);
   await capture(page, screenshots.mobile);
 
   await page.send("Emulation.setDeviceMetricsOverride", { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
@@ -1144,6 +1309,17 @@ Serious Nature
     const wait = (predicate, message) => new Promise((resolve, reject) => { const deadline = Date.now() + 20000; const poll = () => predicate() ? resolve() : Date.now() > deadline ? reject(new Error(message + ': ' + document.getElementById('app-status').textContent)) : setTimeout(poll, 100); poll(); });
     document.getElementById('commit-turn').click();
     await wait(() => document.querySelectorAll('.node-button[data-kind="draft"]').length === 0 && document.querySelectorAll('.node-button[data-kind="committed"]').length === 1, 'locked terminal branch');
+    await wait(() => document.getElementById('progression-dialog').open, 'locked branch progression prompt');
+    const progressionPrompt = document.getElementById('progression-dialog').textContent;
+    document.querySelector('#progression-dialog button[value="yes"]').click();
+    await wait(() => !document.getElementById('progression-dialog').open && /Saved absolute EXP and levels/.test(document.getElementById('app-status').textContent), 'locked branch progression save');
+    const testingSnapshot = globalThis.__PLC_TESTING_STATE__.capture();
+    const lockedPlanState = testingSnapshot.plan.stateNodes[testingSnapshot.app.cursorStateNodeId];
+    const eligiblePlayers = Object.values(testingSnapshot.plan.combatants).filter(entry => entry.side === 'player' && entry.source?.uniqueKey);
+    const player = eligiblePlayers.find(entry => Number.isInteger(lockedPlanState.combatantStates[entry.combatantKey]?.experience)) || eligiblePlayers[0];
+    const rootState = testingSnapshot.plan.stateNodes[testingSnapshot.plan.initialStateNodeId].combatantStates[player.combatantKey];
+    const lockedState = lockedPlanState.combatantStates[player.combatantKey];
+    const boxRecord = Object.values(testingSnapshot.boxLibrary.games).flatMap(game => Object.values(game.boxes)).map(box => box.pokemon[player.source.uniqueKey]).find(Boolean);
     const redProbe = document.createElement('span'); redProbe.style.color = 'var(--red)'; document.body.append(redProbe);
     const lockedNode = document.querySelector('.node-button[data-kind="committed"]');
     const lockedFaintSprite = lockedNode?.querySelector('.node-sprite.has-faint');
@@ -1158,7 +1334,16 @@ Serious Nature
       lockedNodeRed: lockedNode ? getComputedStyle(lockedNode).borderTopColor === redColor : false,
       lockedSpriteCount: lockedNode?.querySelectorAll('.node-sprite').length || 0,
       lockedFaintSpriteCount: lockedNode?.querySelectorAll('.node-sprite.has-faint').length || 0,
-      lockedFaintSpriteRed: lockedFaintSprite ? getComputedStyle(lockedFaintSprite).borderTopColor === redColor : false
+      lockedFaintSpriteRed: lockedFaintSprite ? getComputedStyle(lockedFaintSprite).borderTopColor === redColor : false,
+      progressionPrompt,
+      progressionSavedStatus: document.getElementById('app-status').textContent,
+      rootExperience: rootState.experience,
+      lockedExperience: lockedState.experience,
+      boxExperience: boxRecord?.experience,
+      boxExperienceMatches: !Number.isInteger(lockedState.experience) || boxRecord?.experience === lockedState.experience,
+      rootLevel: rootState.currentLevel,
+      lockedLevel: lockedState.currentLevel,
+      boxLevel: boxRecord?.level
     };
   })()`, true);
   assert.deepEqual(battleEndLocked.lockedColumns, ["Turn 1"]);
@@ -1170,6 +1355,11 @@ Serious Nature
   assert.equal(battleEndLocked.lockedSpriteCount, 2);
   assert.equal(battleEndLocked.lockedFaintSpriteCount, 1);
   assert.equal(battleEndLocked.lockedFaintSpriteRed, true);
+  assert.match(battleEndLocked.progressionPrompt, /Save EXP and level changes\?/);
+  assert.match(battleEndLocked.progressionPrompt, /current plan remains frozen/i);
+  assert.match(battleEndLocked.progressionSavedStatus, /Saved absolute EXP and levels/);
+  assert.equal(battleEndLocked.boxExperienceMatches, true);
+  assert.equal(battleEndLocked.boxLevel, battleEndLocked.lockedLevel);
   await capture(page, screenshots.battleEndLocked);
   const terminalPlanText = await evaluate(page, `(async () => {
     document.getElementById('save-plan').click();
@@ -1310,7 +1500,7 @@ Serious Nature
     assert.equal(storedTestingState.plan.kind, "pokemon-battle-plan");
   }
   page.close();
-  console.log(JSON.stringify({ selected, imported, edited, saveReview, planReady, turn, committed, savePlan, responsive, doubles, testingState, targetRefreshStability, storedTestingState: storedTestingState ? { capturedAt: storedTestingState.capturedAt, storedAt: storedTestingState.storedAt } : null, doublesWide, mobile, battleEnd, branchLanes, compatibilityPlanReview, screenshots }, null, 2));
+  console.log(JSON.stringify({ selected, imported, edited, saveReview, planReady, turn, committed, savePlan, responsive, doubles, testingState, targetRefreshStability, storedTestingState: storedTestingState ? { capturedAt: storedTestingState.capturedAt, storedAt: storedTestingState.storedAt } : null, doublesWide, triples, mobile, battleEnd, branchLanes, compatibilityPlanReview, screenshots }, null, 2));
 } finally {
   if (browser && browser.exitCode === null) browser.kill();
   await fs.rm(profile, { recursive: true, force: true }).catch(() => {});

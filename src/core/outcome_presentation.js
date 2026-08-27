@@ -19,6 +19,15 @@ export function formatDamageRollCounts(values) {
 }
 
 export function readableMechanicName(value) {
+  const compact = String(value || "").toLowerCase().replace(/[^a-z0-9]+/g, "");
+  const known = {
+    baddreams: "Bad Dreams", cursedbody: "Cursed Body", dryskin: "Dry Skin", effectspore: "Effect Spore",
+    flamebody: "Flame Body", flashfire: "Flash Fire", icebody: "Ice Body", ironbarbs: "Iron Barbs",
+    lightningrod: "Lightning Rod", motordrive: "Motor Drive", poisonpoint: "Poison Point", raindish: "Rain Dish",
+    roughskin: "Rough Skin", sapsipper: "Sap Sipper", shedskin: "Shed Skin", solarpower: "Solar Power",
+    speedboost: "Speed Boost", stormdrain: "Storm Drain", waterabsorb: "Water Absorb", weakarmor: "Weak Armor"
+  }[compact];
+  if (known) return known;
   return String(value || "Recovery")
     .trim()
     .split(/[-_\s]+/)

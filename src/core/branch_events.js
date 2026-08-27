@@ -138,6 +138,19 @@ function secondaryMissedForTarget(moveEvents, targetKey) {
 function choicesForOutcome(entry, outcomes, actions, definitions) {
   const events = outcomeEvents(entry);
   const choices = {};
+  for (const traceEvent of events.filter(event => event.eventType === "ability-change" && event.metadata?.cause === "trace")) {
+    const copiedAbilityId = String(traceEvent.metadata?.copiedAbilityId || "ability");
+    addChoice(choices, definitions, {
+      id: dimensionKey(["trace", traceEvent.actorKey]),
+      scope: "action",
+      kind: "trace",
+      actorKey: traceEvent.actorKey,
+      label: "Trace"
+    }, {
+      id: String(traceEvent.metadata?.copiedFromKey || copiedAbilityId),
+      label: `Copied ${copiedAbilityId.replace(/(^|[-_])(\w)/g, (_, prefix, letter) => `${prefix ? " " : ""}${letter.toUpperCase()}`)}`
+    });
+  }
   for (const orderEvent of events.filter(event => event.eventType === "order-modifier" && event.metadata?.modifierId)) {
     addChoice(choices, definitions, {
       id: dimensionKey(["order-modifier", orderEvent.actorKey, orderEvent.metadata.modifierId]),

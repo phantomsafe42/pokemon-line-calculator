@@ -1,4 +1,6 @@
-import { damagingMoveImmunity } from "../rulesets/switch_rules.js";
+import { damagingMoveImmunity } from "../rulesets/switch_rules.js?v=20260827-ability-state-events";
+import { adjacentActiveEntries } from "../rulesets/triple_battle.js?v=20260827-triples-slot-display";
+import { toId } from "./primitives.js";
 
 export function boundedSlotDamageLabel(minPercent, maxPercent) {
   if (minPercent === null || minPercent === undefined || maxPercent === null || maxPercent === undefined) return null;
@@ -40,6 +42,17 @@ export function effectiveCombatantMove(dataset, combatant, combatantState, moveI
   };
 }
 
+function currentSpreadTargetCount(plan, state, actorKey, side, move) {
+  const mode = toId(move?.target);
+  if (!["alladjacent", "alladjacentfoes"].includes(mode)) return null;
+  const format = plan.game?.battleFormat || "singles";
+  const living = entry => Number(state.combatantStates[entry.combatantKey]?.hp?.max) > 0;
+  const opponents = adjacentActiveEntries(state, side, actorKey, side === "player" ? "enemy" : "player", format).filter(living);
+  if (mode === "alladjacentfoes") return opponents.length;
+  const allies = adjacentActiveEntries(state, side, actorKey, side, format).filter(living);
+  return allies.length + opponents.length;
+}
+
 export function resolvedCombatantMovePreview({ events = [], actorKey, targetKey, moveId }) {
   const matching = events.filter(event => event.actorKey === actorKey
     && event.targetKey === targetKey
@@ -68,7 +81,7 @@ export function resolvedCombatantMovePreview({ events = [], actorKey, targetKey,
   return null;
 }
 
-export function previewCombatantMove({ plan, stateNodeId, actorKey, targetKey, moveId, criticalHit, dataset, damageAdapter }) {
+export function previewCombatantMove({ plan, stateNodeId, actorKey, positionActorKey = actorKey, targetKey, moveId, criticalHit, dataset, damageAdapter }) {
   const state = plan?.stateNodes?.[stateNodeId];
   const actor = plan?.combatants?.[actorKey];
   const target = plan?.combatants?.[targetKey];
@@ -100,7 +113,8 @@ export function previewCombatantMove({ plan, stateNodeId, actorKey, targetKey, m
     move,
     fieldState: state.fieldState,
     criticalHit,
-    battleFormat: plan.game?.battleFormat || "singles"
+    battleFormat: plan.game?.battleFormat || "singles",
+    spreadTargetCount: currentSpreadTargetCount(plan, state, positionActorKey, actor.side, move)
   });
   if (result.status === "ok") return { status: "ok", label: result.label, minPercent: result.minPercent, maxPercent: result.maxPercent, damage: result.damage };
   if (result.status === "status") return { status: "status", label: "Status" };

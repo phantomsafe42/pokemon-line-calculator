@@ -57,6 +57,7 @@ export function addImportedPlanParty(libraryValue, plan, dataset) {
   const game = library.games[gameId];
   const importNumber = Number(game?.nextImportNumber || 1);
   const pokemon = planPlayerPartyRecords(plan, dataset);
+  const recordIdByCombatantKey = Object.fromEntries(playerCombatants(plan).map((combatant, index) => [combatant.combatantKey, pokemon[index].id]));
   if (!pokemon.length) throw new Error("Imported plan has no player party to add to Boxes");
   const result = addBox(library, gameId, {
     name: `Import ${importNumber}`,
@@ -65,5 +66,19 @@ export function addImportedPlanParty(libraryValue, plan, dataset) {
     source: { kind: "plan-import", importNumber, planId: plan.planId, planName: plan.name }
   });
   result.library.games[gameId].nextImportNumber = importNumber + 1;
-  return { ...result, library: normalizeBoxLibrary(result.library), importNumber };
+  return { ...result, library: normalizeBoxLibrary(result.library), importNumber, recordIdByCombatantKey };
+}
+
+export function bindPlanPlayerPartyToImportedBox(plan, importedParty) {
+  for (const [combatantKey, recordId] of Object.entries(importedParty?.recordIdByCombatantKey || {})) {
+    const combatant = plan?.combatants?.[combatantKey];
+    if (!combatant) continue;
+    combatant.source = {
+      ...combatant.source,
+      kind: "boxes-library",
+      uniqueKey: recordId,
+      boxId: importedParty.boxId
+    };
+  }
+  return plan;
 }

@@ -10,7 +10,7 @@ Current proving game: Pokémon Volt White 2 Redux Egglocke (`volt-white-2r`)
 
 This document defines the game selection, Boxes storage, ingest, calculation, branching, caching, portable plan-file, local live-edit, node-tree, and Overlay projection contracts for the Pokemon Line Calculator (PLC), a shared Pokémon battle-planning Web Tool.
 
-The planner is a planning and education tool. It models proposed Singles and Doubles battles turn by turn, previews all materially different outcomes before a turn is committed, retains alternate strategic and probabilistic branches, and lets the user explicitly choose which saved turn instances the Overlay should display on stream.
+The planner is a planning and education tool. The accepted product models proposed Singles, Doubles, and Generation 5 Triple battles turn by turn, previews all materially different outcomes before a turn is committed, retains alternate strategic and probabilistic branches, and lets the user explicitly choose which saved turn instances the Overlay should display on stream. Triple presentation in Overlay is not yet implemented or accepted.
 
 VW2R is the first proving game. The core planner must remain game-neutral. Other games opt in through standardized dataset, mechanics, trainer, and save-ingest contracts rather than game-specific UI forks.
 
@@ -22,7 +22,7 @@ The schema-v2 Singles/Doubles planner, game-first Boxes workflow, calculator red
 
 The following decisions are settled for the first implementation:
 
-- The core resolver supports Singles and Doubles. Triple and Rotation trainer profiles fail closed.
+- The accepted planner UI and core resolver support Singles, Doubles, and schema-v3 Generation 5 Triple battles. Overlay projection supports Singles and Doubles; Triple Overlay projection and every Rotation profile still fail closed.
 - Doubles requires one action per live active slot, explicit single-target selection, distinct switch/replacement destinations, spread targeting from canonical move data, and the shared calculator's Doubles format modifier.
 - The planner is a browser-compatible static application. Local Stream Tools use is served by the existing custom server; the published build runs without that server.
 - Core calculation and branching run in browser-compatible code. Expensive resolution work runs in a Web Worker.
@@ -31,7 +31,7 @@ The following decisions are settled for the first implementation:
 - The local build accepts a user-selected save as a read-only pre-battle snapshot when that game has an explicit save adapter. Showdown and portable Boxes JSON provide portable/manual input. No mode continuously rereads or writes a save during a planned battle.
 - Combatants begin at 100% HP, with no status, zero stat stages, full PP, their original ability active, and their original item held unless the user declares a pre-battle override.
 - Manual initial overrides are allowed for pre-existing damage, major status, map weather/terrain, and other unusual starting conditions. Normal mid-battle changes must come from resolved actions and events.
-- The VW2R effect library covers every standardized VW2R move ID in Singles and Doubles, including priority and speed order, Doubles order control and redirection, direct and conditional damage, multi-hit and random-power distributions, stat changes, healing, recoil, major and volatile status, weather/terrain/room changes, delayed attacks/heals, switching and Baton Pass, Protect/Quick Guard/Wide Guard prevention, supported residual effects, item/ability changes required by moves, fainting, and action cancellation.
+- The VW2R effect library covers every standardized VW2R move ID in Singles and Doubles, and every move can enter the logic-only Triple resolver from a legal center position. Coverage includes priority and speed order, multi-active order control and redirection, direct and conditional damage, multi-hit and random-power distributions, stat changes, healing, recoil, major and volatile status, weather/terrain/room changes, delayed attacks/heals, switching and Baton Pass, Protect/Quick Guard/Wide Guard prevention, supported residual effects, item/ability changes required by moves, fainting, and action cancellation.
 - VW2R save snapshots retain total EXP. Raw move, ability, item, and nature identifiers resolve through the standardized save-ID contract rather than battle-data `num` coercion; an unmapped held-item value `0` means no held item. A raw species ID first resolves to the unique base standardized record sharing that number, because alternate forms reuse the species number and are encoded in a separate packed form field. Non-base save-form resolution remains disabled until Dataset publishes an explicit packed-form identity map. The standardized species contract supplies `baseExp`, which PLC normalizes to the portable plan's `baseExperienceYield` field. The VW2R-only EXP adapter projects Gen 5 trainer-battle payouts for player Pokémon, including per-enemy participation through switches, Exp. Share and Lucky Egg, level-up state, and one-time faint rewards. Missing yield data disables only EXP projection and is never repaired inside PLC.
 - Battle-item actions are represented by the shared schema but disabled for VW2R initially.
 - The resolver generates every materially different candidate outcome internally. The UI condenses those candidates into branch-event controls and commits only the crafted outcome the user selected.
@@ -1119,6 +1119,8 @@ A supported save import always creates a new Box and a default Party from the ac
 
 Beginning a plan copies the selected Box records into an immutable plan combatant snapshot. Later Box edits do not rewrite an active plan. Starting absolute HP and major status are plan-context declarations and are not written back to canonical Box records.
 
+Locking a battle-ending branch may explicitly write its player party's absolute final EXP and levels to the originating canonical Box records. The write uses stable record and Box identities, updates every tracked party record to the selected branch's totals, and never applies an EXP delta to the current Box value. Therefore saving a different terminal branch from the same plan replaces the earlier saved result, including restoring a record to the plan baseline when the later branch gave it no EXP. The active plan, its root state, and its other branches remain immutable; the saved progression is consumed only when a new plan snapshots those Box records. Imported portable plans bind their automatically created `Import #` party to the local records before this write is offered.
+
 ## 22. Cross-game readiness contract
 
 The planner core supports a game only when an adapter can provide:
@@ -1356,7 +1358,7 @@ Implementations must preserve these invariants:
 ### Stage 6: Calculator interaction design
 
 - Game-first shell with separate PLC and Boxes tabs.
-- Modal Plan Context with a trainer selector grouped by standardized progression split and canonical within-split order, trainer-derived format, Box/Party selection, plan-only starting HP/status, and an explicit Begin action.
+- Modal Plan Context with a trainer selector grouped by standardized progression split and canonical within-split order, trainer-derived format, a read-only selected-enemy-team preview above Box/Party selection, plan-only starting HP/status, and an explicit Begin action.
 - Horizontal state-node columns with equal player/enemy action summaries on every committed node.
 - HZLA-inspired two-sided static combatant/action interface, centered current-effects Field panel, and HZLA-style outcome range/raw-roll descriptions.
 - Save-derived total EXP displayed as `current total/next-level total threshold`, plus Field-panel projected/actual per-Pokémon EXP lines. Level and stat changes follow the same red-current-turn, gold-persisted, default-restored tone rules as other iterative state.
@@ -1382,9 +1384,83 @@ The following remain expansion decisions after the first game-first Boxes and ca
 - Whether move names accompany damage percentages in every Overlay cell.
 - Column ordering and manual column reordering.
 - Additional ability/item residual and switch-in interactions beyond the bounded structured registries.
-- Triple and Rotation battle formats.
+- Triple Overlay projection and Rotation battle logic/visuals.
 - Enabled battle-item UI.
 - Live battle-log ingestion and observed-branch matching.
 - Distribution, remote local-service integration, and other-device OBS setup.
 
 These deferred items must not require a rewrite of the plan document, action-group/outcome graph, display-selection, or projection contracts above.
+
+## 28. Gen 5 Triple Battle logic extension
+
+Triple Battles are enabled only by a game profile whose standardized trainer format is `triple` or `triples`. The VW2R profile uses Generation 5 mechanics. Other generations and games must opt into their own format profile; Triple behavior must not leak into Singles, Doubles, or Rotation Battles.
+
+### 28.1 Positions and identity
+
+- Each side has three stable displayed positions in one shared player-view coordinate system: left `0`, center `1`, and right `2`. Player action slots map directly to those positions. Enemy action slots preserve trainer lead order and map to displayed positions as action slots `[1, 2, 0]` for Left, Center, Right; every label, target list, adjacency check, Shift, Ally Switch, and automatic-centering rule resolves through that mapping.
+- Portable schema-v3 Triple plans store three active/action entries per side. Existing schema-v1 Singles and schema-v2 Singles/Doubles plans remain readable without semantic migration.
+- UI slot labels may number the player and enemy rows globally, but the resolver uses `{ side, position }`; display numbers never determine reach.
+- Same-side adjacency is `abs(sourcePosition - targetPosition) === 1`.
+- Both rows use the player's shared top-down left/center/right coordinates. Cross-side adjacency is `abs(sourcePosition - targetPosition) <= 1`; for example, player Slot 1 reaches enemy Slots 4 and 5, not Slots 5 and 6.
+- Initial deployment uses the first three eligible party members as left, center, and right.
+
+### 28.2 Targeting and spread damage
+
+- Target legality is checked when actions are declared and checked again against the current positions when each action executes.
+- `allAdjacentFoes` and `allAdjacent` dynamically filter targets by the actor's execution-time position.
+- A move with canonical distance reach may target any legal field position. Distance reach comes from structured mechanics metadata such as the pinned original move definition; temporary type changes never create or remove that property.
+- Source-response effects such as Counter, Mirror Coat, Metal Burst, Bide, Destiny Bond, and Grudge retain their source relationship across distance where Generation 5 permits it.
+- A living target made unreachable by an earlier positional change causes the move to fail. A target that fainted may be redirected only to a surviving opponent the move can legally reach.
+- Attention redirection applies only when the move can legally reach the redirecting Pokémon.
+- Multi-target damage uses the Doubles/Triples 0.75 spread modifier when more than one target exists at execution. If exactly one target exists, normal single-target damage applies.
+
+### 28.3 Shift action
+
+- `shift` is a schema-v3 turn action available only to a Pokémon declared in an edge position.
+- The acting edge Pokémon exchanges positions with the current center occupant. The center Pokémon cannot predeclare a contingent Shift.
+- Shift has priority `0`, uses the initiating Pokémon's effective Speed, and resolves among moves. Move-only fractional-order effects such as Quick Claw and Custap Berry do not activate for Shift. Both edge Pokémon may declare Shift and resolve sequentially in one turn.
+- Shift consumes the initiating Pokémon's action but consumes no PP or item.
+- Shift is not switching: it does not trigger hazards, entry/exit Abilities, switch healing, Pursuit, EXP participation, or state resets.
+- Stat stages, types, Ability state, item state, major and volatile status, counters, move locks, and current HP remain attached to each Pokémon.
+- Sleep, freeze, paralysis, confusion, flinch, Truant, Encore, and similar move-prevention checks do not prevent Shift. Their action counters do not advance merely because the Pokémon shifted.
+- Later queued actions follow their acting Pokémon to its new position. Their selected target location is revalidated from that position; an ally target that becomes the user itself fails.
+
+### 28.4 Positional effects
+
+- Intimidate affects only adjacent opposing Pokémon at the moment the user enters battle.
+- Follow Me and Rage Powder redirect only reachable moves.
+- Flame Burst applies its one-sixteenth maximum-HP collateral damage only to allies adjacent to the struck target, including when the direct hit is absorbed by Substitute; Magic Guard prevents that collateral damage.
+- Acupressure may select only the user or an adjacent ally according to its canonical target rules.
+- Generation 5 Ally Switch fails from center and otherwise exchanges the user with the ally on the opposite edge. It remains distinct from Shift.
+- Effects defined for a side, team, field, or all active combatants remain non-positional unless their structured Generation 5 rule says otherwise.
+
+### 28.5 Field, fainting, and replacement behavior
+
+- Weather is one global field condition regardless of its move or Ability source. Position does not limit weather activation, damage, healing, accuracy, or stat effects, and Shift does not restart it.
+- Screens, hazards, rooms, and other existing side/global state retain their established scope.
+- Forced replacements enter the selected vacated position. When fewer reserves remain than fainted positions, the user chooses which positions receive the available replacements; every unchosen position becomes empty while the battle continues.
+- If exactly one living Pokémon remains on each roster and their active positions are non-adjacent, both move automatically to center after end-of-turn effects.
+- Battle completion continues to depend on living roster members, not occupied slot count.
+
+### 28.6 Exact action-order resolution
+
+- Six-actor ordering must not eagerly materialize every full Speed-tie permutation.
+- Equal-order actors resolve lazily, with each remaining tied actor having equal conditional probability at each step.
+- Equivalent resolver states merge while preserving exact total probability and significant branch-event conditions.
+- No low-probability order or outcome may be silently discarded or approximated. A safety ceiling must fail closed with a diagnostic.
+
+### 28.7 Logic and local-interface acceptance gates
+
+Automated tests must cover the full adjacency matrix, distance exceptions, one and two Shift actions, Shift under status, Shift item-order exclusions, dynamic range failure, spread target counts, position-aware Intimidate and redirection, Flame Burst through Substitute, Ally Switch, global weather, forced replacements, empty positions, automatic centering, priority, Trick Room, six-way Speed ties, schema round trips, and complete Singles/Doubles regression.
+
+The local Triple interface uses opposing L-shaped formations viewed from above. The player center occupies the inside upper-right cell, while the enemy center occupies the mirrored inside upper-left cell and the enemy's Right card folds below it on the left. Both sides use the player's shared Left/Center/Right viewpoint. Cards are labelled with global Slots 1–3 for the player and Slots 4–6 for the enemy, with numbers increasing Left to Right. Edge cards expose Shift with the current center slot, target damage sections are ordered by displayed opposing slot and mark only unreachable positions `Out of range`, and Shift previews swap the affected cards without detaching their chosen actions from combatant identity. At narrow widths, each side stacks Left, Center, then Right.
+
+Triple node rows always reserve six sprite positions in global Slot 1, 2, 3, 4, 5, then 6 order. They use the turn's end positions, preserve empty placeholders, and retain the existing red faint and blue voluntary-switch borders. Triple plans remain local-only for display integration: Live Edit is disabled and Overlay projection must fail closed until its owning component gains and validates a schema-v3 presentation contract.
+
+## 29. Gen 5 form-dependent Ability state
+
+- Trace filters out non-copyable Abilities and branches equally over eligible adjacent opposing Pokémon before action ordering. The selected copied Ability becomes ordinary current Ability state and executes its entry effect when applicable.
+- Forecast reacts to effective weather immediately. Castform's current species, type, calculated stats, and sprite switch among its standardized Normal, Sunny, Rainy, and Snowy forms and revert when weather is absent or suppressed.
+- Flower Gift reacts to effective sun immediately. Cherrim uses an explicit Sunshine sprite state and each side exposes whether a living active Flower Gift Cherrim supplies the Gen 5 ally modifier. PLC passes this side flag to Battle Mechanics; that owner must allowlist `isFlowerGift` in its shared side-options contract before the pinned calculator applies the ally modifier.
+- Zen Mode checks at residual order 29. Exact HP distributions that straddle half HP branch into Standard and Zen states; current species, Fire/Psychic typing, calculated stats, and sprites follow the selected state and revert when the threshold or Ability no longer applies.
+- Current form identity is resolver state rather than a Dataset rewrite. It persists through node commits and plan files, drives damage requests and planner sprites, and resets through the ordinary switch/Transform rules.

@@ -82,10 +82,10 @@ test("deterministic Gen 5 residual rules cover poison, burn, and damaging weathe
   assert.equal(weatherResidualRule({ id: "snow" }, state()), null, "snow does not reuse hail chip damage");
 });
 
-test("unimplemented state-changing residual interactions fail closed", () => {
+test("implemented ability residuals no longer fail closed while unsupported item activation still does", () => {
   const field = { global: { weather: { id: "rain" } } };
   const rainDish = state({ ability: "Rain Dish" });
   rainDish.hp.max = 80;
-  assert.match(endOfTurnSupportIssue(rainDish, field, state()), /Rain Dish/i);
+  assert.equal(endOfTurnSupportIssue(rainDish, field, state()), null);
   assert.match(endOfTurnSupportIssue(state({ item: "Toxic Orb" }), { global: { weather: null } }, state()), /toxicorb/i);
 });

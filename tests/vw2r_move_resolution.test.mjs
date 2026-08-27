@@ -8,7 +8,7 @@ import { createBranchEventModel } from "../src/core/branch_events.js";
 import { createPlanDocument } from "../src/core/plan.js";
 import { resolveTurn } from "../src/core/resolver.js";
 import { vw2rMoveSupport } from "../src/rulesets/vw2r_move_support.js";
-import { damageAdapter, fixtureDoublesPlan, fixturePlan } from "./helpers.mjs";
+import { damageAdapter, fixtureDoublesPlan, fixturePlan, fixtureTriplePlan } from "./helpers.mjs";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const vw2rMoves = JSON.parse(fs.readFileSync(
@@ -75,6 +75,45 @@ test("damage previews forward an explicit critical-hit selection", () => {
   });
   assert.equal(observedCriticalHit, true);
   assert.equal(result.label, "20–24%");
+});
+
+test("switch previews use the incoming Pokemon's stats and Ability while retaining the occupied field position", () => {
+  const { dataset, plan, players, enemies } = fixtureTriplePlan();
+  const root = plan.stateNodes[plan.initialStateNodeId];
+  const positionActorKey = players[1].combatantKey;
+  const incoming = players[3];
+  incoming.originalAbilityId = "ironfist";
+  root.combatantStates[incoming.combatantKey].currentAbilityId = "ironfist";
+  incoming.moves = [{ moveId: "tackle", maxPp: 35 }];
+  root.combatantStates[incoming.combatantKey].movePp = { tackle: 35 };
+  dataset.indexes.moves.set("tackle", { ...dataset.get("moves", "tackle"), target: "allAdjacent" });
+  const observed = [];
+
+  previewCombatantMove({
+    plan,
+    stateNodeId: plan.initialStateNodeId,
+    actorKey: incoming.combatantKey,
+    positionActorKey,
+    targetKey: enemies[0].combatantKey,
+    moveId: "tackle",
+    dataset,
+    damageAdapter: {
+      calculate(input) {
+        observed.push({
+          attackerKey: input.attacker.combatantKey,
+          abilityId: input.attackerState.currentAbilityId,
+          spreadTargetCount: input.spreadTargetCount
+        });
+        return { status: "ok", label: "20–24%", minPercent: 20, maxPercent: 24, damage: [20, 24] };
+      }
+    }
+  });
+
+  assert.deepEqual(observed, [{
+    attackerKey: incoming.combatantKey,
+    abilityId: "ironfist",
+    spreadTargetCount: 5
+  }]);
 });
 
 test("VW2R drain and secondary stat effects execute from the Showdown reference", () => {
@@ -837,6 +876,64 @@ test("every VW2R move can enter the Doubles resolver without an unsupported fail
         actions: {
           player: [action(actorKey, move.id, targetKeys, mechanicActivations), action(allyKey, "tackle", [enemies[1].combatantKey])],
           enemy: [action(enemyKey, "tackle", [actorKey]), action(enemies[1].combatantKey, "tackle", [allyKey])]
+        },
+        dataset,
+        damageAdapter: damageAdapter(({ moveHits }) => [Math.max(0, Number(moveHits || 1))])
+      });
+      assert.ok(outcomes.length > 0);
+    } catch (error) {
+      failures.push(`${move.id}: ${error.message}`);
+    }
+  }
+  assert.deepEqual(failures, []);
+});
+
+test("every VW2R move can enter the Triple resolver from a legal center position", () => {
+  const failures = [];
+  for (const move of Object.values(vw2rMoves)) {
+    try {
+      const { dataset, plan, players, enemies } = fixtureTriplePlan();
+      dataset.gameId = "volt-white-2r";
+      dataset.indexes.moves.set(move.id, move);
+      const actorKey = players[1].combatantKey;
+      const allyKey = players[0].combatantKey;
+      const enemyKey = enemies[1].combatantKey;
+      const benchKey = players[3].combatantKey;
+      const removed = plan.combatants[actorKey].moves.pop();
+      delete plan.stateNodes[plan.initialStateNodeId].combatantStates[actorKey].movePp[removed.moveId];
+      plan.combatants[actorKey].moves.push({ moveId: move.id, maxPp: move.pp });
+      plan.stateNodes[plan.initialStateNodeId].combatantStates[actorKey].movePp[move.id] = move.pp;
+      const ordered = [
+        [players[0], 250], [players[1], 225], [players[2], 200],
+        [enemies[0], 175], [enemies[1], 150], [enemies[2], 125]
+      ];
+      for (const [combatant, speed] of ordered) plan.combatants[combatant.combatantKey].calculatedStats.spe = speed;
+      const support = vw2rMoveSupport(move);
+      const targetKeys = support.target === "self" || support.targetMode === "adjacentallyorself"
+        ? [actorKey]
+        : support.targetMode === "adjacentally"
+          ? [allyKey]
+          : support.target === "target"
+            ? [enemyKey]
+            : [];
+      const mechanicActivations = [];
+      if (["call-party-move", "call-random-move", "sleep-talk"].includes(support.specialHandlerId)) mechanicActivations.push({ id: "called-move", moveId: "tackle", targetKey: enemyKey });
+      if (support.specialHandlerId === "conversion-2") mechanicActivations.push({ id: "conversion-type", typeId: "water" });
+      if (support.operations?.some(operation => operation.kind === "self-switch")) mechanicActivations.push({ id: "after-move-switch", switchToKey: benchKey });
+      const outcomes = resolveTurn({
+        plan,
+        parentStateNodeId: plan.initialStateNodeId,
+        actions: {
+          player: [
+            action(players[0].combatantKey, "tackle", [enemies[1].combatantKey]),
+            action(actorKey, move.id, targetKeys, mechanicActivations),
+            action(players[2].combatantKey, "tackle", [enemies[0].combatantKey])
+          ],
+          enemy: [
+            action(enemies[0].combatantKey, "tackle", [players[2].combatantKey]),
+            action(enemies[1].combatantKey, "tackle", [players[0].combatantKey]),
+            action(enemies[2].combatantKey, "tackle", [players[1].combatantKey])
+          ]
         },
         dataset,
         damageAdapter: damageAdapter(({ moveHits }) => [Math.max(0, Number(moveHits || 1))])

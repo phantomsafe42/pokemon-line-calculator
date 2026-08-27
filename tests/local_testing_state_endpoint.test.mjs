@@ -7,7 +7,7 @@ import path from "node:path";
 import test from "node:test";
 import { detectLocalTestingStateCapability, storeLocalTestingState } from "../src/integrations/local_testing_state.js";
 import { createTestingStateSnapshot } from "../src/testing/state_snapshot.js";
-import { fixturePlan } from "./helpers.mjs";
+import { fixturePlan, fixtureTriplePlan } from "./helpers.mjs";
 
 async function availablePort() {
   return new Promise((resolve, reject) => {
@@ -71,6 +71,26 @@ test("loopback testing-state endpoint stores one fixed safe snapshot", async () 
     assert.deepEqual(stored.transientTurn.actionDraft.player[1], {});
     assert.equal(stored.transientTurn.currentPreview, null);
 
+    const { plan: triplePlan } = fixtureTriplePlan();
+    const tripleSnapshot = createTestingStateSnapshot({
+      capturedAt: "2026-08-26T12:00:00.000Z",
+      selectedGameId: "volt-white-2r",
+      plan: triplePlan,
+      cursorStateNodeId: triplePlan.initialStateNodeId,
+      actionDraft: {
+        player: [{ type: "move", moveId: "tackle", targetKey: "enemy:a" }, { type: "shift", actorKey: "player:b" }, {}],
+        enemy: [{}, { type: "move", moveId: "tackle", targetKey: "player:b" }, {}]
+      }
+    });
+    const tripleReceipt = await storeLocalTestingState(tripleSnapshot, localFetch);
+    assert.equal(tripleReceipt.ok, true);
+    const current = await fs.readFile(latestPath, "utf8");
+    const storedTriple = JSON.parse(current);
+    assert.equal(storedTriple.plan.schemaVersion, 3);
+    assert.equal(storedTriple.plan.game.battleFormat, "triples");
+    assert.equal(storedTriple.transientTurn.actionDraft.player.length, 3);
+    assert.equal(storedTriple.transientTurn.actionDraft.player[1].type, "shift");
+
     const wrongOrigin = await fetch(`${baseUrl}/__stream-tools/plc-testing-state`, {
       method: "POST",
       headers: { "Content-Type": "application/json", Origin: "http://example.invalid" },
@@ -84,7 +104,7 @@ test("loopback testing-state endpoint stores one fixed safe snapshot", async () 
       body: JSON.stringify({ ...snapshot, sessionId: "not-allowed" })
     });
     assert.equal(forbidden.status, 400);
-    assert.equal(await fs.readFile(latestPath, "utf8"), original);
+    assert.equal(await fs.readFile(latestPath, "utf8"), current);
   } finally {
     if (child.exitCode === null) child.kill();
     await fs.rm(stateRoot, { recursive: true, force: true });

@@ -1,8 +1,8 @@
 import { assertValidPlanDocument } from "../contracts/plan_contract.js";
 import { clone, nowIso, stableStringify } from "./primitives.js";
-import { commitForcedReplacement, commitPreview, previewForcedReplacement } from "./planner.js?v=20260826-order-notes-import";
-import { updateStateHash } from "./plan.js?v=20260826-plan-compat-recalc";
-import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js";
+import { commitForcedReplacement, commitPreview, previewForcedReplacement } from "./planner.js?v=20260827-ability-form-events";
+import { updateStateHash } from "./plan.js?v=20260827-ability-form-events";
+import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260827-ability-form-events";
 
 function branchSignatureFromEvents(state, events) {
   const normalizedEvents = events.map(entry => ({
@@ -104,7 +104,7 @@ function currentActions(actions, parentStateHash) {
   return Object.fromEntries(Object.entries(actions || {}).map(([side, raw]) => {
     const update = action => ({
       ...(action ? clone(action) : {}),
-      ...(action && (action.actionType === "move" || action.actionType === "switch") ? { declaredAtStateHash: parentStateHash } : {})
+      ...(action && ["move", "switch", "shift"].includes(action.actionType) ? { declaredAtStateHash: parentStateHash } : {})
     });
     const preserveEmptySlot = action => action ? update(action) : null;
     return [side, Array.isArray(raw) ? raw.map(preserveEmptySlot) : update(raw)];

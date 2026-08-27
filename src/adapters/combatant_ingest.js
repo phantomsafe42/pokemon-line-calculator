@@ -93,6 +93,7 @@ export function normalizePlayerCollection(payload, dataset) {
         kind: mon.source?.kind || mon.sourceKind || "save-tracker",
         pid: mon.pid ?? null,
         uniqueKey: mon.uniqueKey ?? null,
+        boxId: mon.source?.boxId ?? null,
         trainerId: null,
         trainerVariantId: null,
         trainerSlot: null,

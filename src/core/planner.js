@@ -1,7 +1,7 @@
 import { assertValidPlanDocument } from "../contracts/plan_contract.js";
-import { actionSignature, nextCreatedOrder, touchPlan, updateStateHash } from "./plan.js?v=20260826-order-notes-import";
+import { actionSignature, nextCreatedOrder, touchPlan, updateStateHash } from "./plan.js?v=20260827-ability-form-events";
 import { clone, shortHash, stableStringify } from "./primitives.js";
-import { resolveForcedReplacement, resolveTurn } from "./resolver.js?v=20260826-order-notes-import";
+import { resolveForcedReplacement, resolveTurn } from "./resolver.js?v=20260827-ability-form-events";
 import { actionList, activeKey, activeSlotEntries, normalizeActionsForPlan, normalizeReplacementsForPlan, pendingReplacementSlots, replacementList } from "./battle_slots.js";
 
 function displayAction(action, events, plan, dataset) {
@@ -11,6 +11,12 @@ function displayAction(action, events, plan, dataset) {
       actionType: "switch",
       switchToKey: action.switchToKey,
       resultLabel: `Switch to ${plan.combatants[action.switchToKey].displayName}`
+    };
+  }
+  if (action.actionType === "shift") {
+    return {
+      actionType: "shift",
+      resultLabel: "Shifted position"
     };
   }
   const move = dataset.get("moves", action.moveId);
@@ -49,12 +55,13 @@ function displayAction(action, events, plan, dataset) {
 function displaySide(side, slot, state, actions, events, plan, dataset) {
   const key = activeKey(state, side, slot);
   const mon = plan.combatants[key];
+  const monState = state.combatantStates[key];
   const action = actionList(actions, side).find(entry => entry.actorKey === key || (entry.actionType === "switch" && entry.switchToKey === key));
   return {
     combatantKey: key,
-    speciesId: mon.speciesId,
+    speciesId: monState?.currentSpeciesId || mon.speciesId,
     displayName: mon.nickname || mon.displayName,
-    spriteId: mon.formId || mon.speciesId,
+    spriteId: monState?.currentSpriteId || mon.formId || mon.speciesId,
     slot,
     action: displayAction(action, events, plan, dataset)
   };
@@ -63,12 +70,13 @@ function displaySide(side, slot, state, actions, events, plan, dataset) {
 function replacementDisplaySide(side, slot, state, replacements, plan) {
   const key = activeKey(state, side, slot);
   const mon = plan.combatants[key];
+  const monState = state.combatantStates[key];
   const action = replacementList(replacements, side).find(entry => Number(entry.slot ?? 0) === slot);
   return {
     combatantKey: key,
-    speciesId: mon.speciesId,
+    speciesId: monState?.currentSpeciesId || mon.speciesId,
     displayName: mon.nickname || mon.displayName,
-    spriteId: mon.formId || mon.speciesId,
+    spriteId: monState?.currentSpriteId || mon.formId || mon.speciesId,
     slot,
     action: action ? {
       actionType: "replacement",
@@ -90,7 +98,7 @@ function outcomeIdentity(entry, suppliedEvents = null) {
   const events = suppliedEvents || entry?.events || [];
   const conditions = (outcome.conditions || []).map(condition => condition?.expression || condition).filter(Boolean).sort();
   const branchEvents = events.filter(event => [
-    "action-skipped", "confusion-check", "confusion-self-hit", "damage", "major-status", "miss", "move-blocked", "move-immune",
+    "ability-change", "action-skipped", "confusion-check", "confusion-self-hit", "damage", "form-change", "major-status", "miss", "move-blocked", "move-immune",
     "order-modifier", "secondary-effect-missed", "status-cleared", "volatile-status", "volatile-status-cleared"
   ].includes(event.eventType)).map(event => ({
     eventType: event.eventType,

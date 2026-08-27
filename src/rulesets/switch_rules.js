@@ -76,6 +76,31 @@ export function damagingMoveAbilityImmunity({ dataset, move, attackerState, defe
     const effectiveness = typeEffectiveness(dataset, moveType, defenderState?.currentTypeIds || []);
     if (effectiveness > 0 && effectiveness <= 1) return { immune: true, reason: "ability-immunity", abilityId: defenderAbility, moveType };
   }
+  const absorbedType = {
+    waterabsorb: "water",
+    dryskin: "water",
+    stormdrain: "water",
+    voltabsorb: "electric",
+    lightningrod: "electric",
+    motordrive: "electric",
+    flashfire: "fire",
+    sapsipper: "grass"
+  }[defenderAbility];
+  const generation = Number(dataset?.mechanics?.damageGeneration || 5);
+  if (["lightningrod", "stormdrain"].includes(defenderAbility) && generation < 5) return null;
+  if (absorbedType === moveType) {
+    const effect = {
+      waterabsorb: { kind: "heal", numerator: 1, denominator: 4 },
+      dryskin: { kind: "heal", numerator: 1, denominator: 4 },
+      stormdrain: { kind: "stat-stage", stat: "spa", delta: 1 },
+      voltabsorb: { kind: "heal", numerator: 1, denominator: 4 },
+      lightningrod: { kind: "stat-stage", stat: "spa", delta: 1 },
+      motordrive: { kind: "stat-stage", stat: "spe", delta: 1 },
+      flashfire: { kind: "volatile", volatileId: "flashFire" },
+      sapsipper: { kind: "stat-stage", stat: "atk", delta: 1 }
+    }[defenderAbility];
+    return { immune: true, reason: "ability-immunity", abilityId: defenderAbility, moveType, effect };
+  }
   return null;
 }
 
@@ -135,12 +160,6 @@ function modifiedEntryStat(state, stat) {
 export function entryAbilityEffects({ enteringState, opposingState, opposingStates = null, generation }) {
   const ability = abilityId(enteringState);
   if (ability === "intimidate") {
-    const blocking = new Set(["clearbody", "whitesmoke", "hypercutter", "fullmetalbody"]);
-    if (Number(generation) >= 8) ["innerfocus", "oblivious", "owntempo", "scrappy"].forEach(id => blocking.add(id));
-    if (blocking.has(abilityId(opposingState))) return [{ kind: "intimidate-blocked", cause: "intimidate" }];
-    if (["contrary", "defiant", "competitive"].includes(abilityId(opposingState))) {
-      return [{ kind: "unsupported", reason: `${abilityId(opposingState)} Intimidate reaction is not enabled` }];
-    }
     return [{ kind: "stat-stage", stat: "atk", delta: -1, target: "opponent", cause: "intimidate" }];
   }
   const weather = {
@@ -180,9 +199,10 @@ export function entryAbilityEffects({ enteringState, opposingState, opposingStat
       comparison: totals
     }];
   }
-  if (["trace", "imposter", "slowstart", "forecast", "flowergift", "zenmode"].includes(ability)) {
-    return [{ kind: "unsupported", reason: `${ability} switch-in behavior is not enabled` }];
+  if (ability === "trace") {
+    return [{ kind: "copy-opponent-ability", cause: ability, randomEligibleTarget: true }];
   }
+  if (ability === "imposter") return [{ kind: "transform-opponent", cause: ability }];
   return [];
 }
 

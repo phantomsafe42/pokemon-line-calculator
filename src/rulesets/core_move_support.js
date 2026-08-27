@@ -5,25 +5,26 @@ import { vw2rMoveSupport, vw2rReferenceMoveIds } from "./vw2r_move_support.js";
 // is represented here. A move is never treated as simple damage just because its
 // human-readable description looks simple.
 const EFFECTS = Object.freeze({
-  tackle: { effectId: "direct-damage" },
-  pound: { effectId: "direct-damage" },
-  scratch: { effectId: "direct-damage" },
-  aquajet: { effectId: "direct-damage" },
-  quickattack: { effectId: "direct-damage" },
-  extremespeed: { effectId: "direct-damage" },
+  tackle: { effectId: "direct-damage", flags: { contact: true } },
+  pound: { effectId: "direct-damage", flags: { contact: true } },
+  scratch: { effectId: "direct-damage", flags: { contact: true } },
+  aquajet: { effectId: "direct-damage", flags: { contact: true } },
+  quickattack: { effectId: "direct-damage", flags: { contact: true } },
+  extremespeed: { effectId: "direct-damage", flags: { contact: true } },
   earthquake: { effectId: "direct-damage" },
   surf: { effectId: "direct-damage" },
-  strength: { effectId: "direct-damage" },
-  return: { effectId: "direct-damage" },
-  frustration: { effectId: "direct-damage" },
+  strength: { effectId: "direct-damage", flags: { contact: true } },
+  return: { effectId: "direct-damage", flags: { contact: true } },
+  frustration: { effectId: "direct-damage", flags: { contact: true } },
   seismictoss: { effectId: "direct-damage" },
   nightshade: { effectId: "direct-damage" },
-  doubleedge: { effectId: "damage-with-recoil", recoil: [33, 100] },
+  doubleedge: { effectId: "damage-with-recoil", recoil: [33, 100], flags: { contact: true } },
   revenge: {
     effectId: "conditional-damage",
     powerCondition: "damaged-by-target-this-turn",
     basePower: 60,
-    conditionBasePower: 120
+    conditionBasePower: 120,
+    flags: { contact: true }
   },
   swordsdance: { effectId: "self-stat-stages", target: "self", statStages: { atk: 2 } },
   irondefense: { effectId: "self-stat-stages", target: "self", statStages: { def: 2 } },
@@ -51,9 +52,9 @@ const EFFECTS = Object.freeze({
 });
 
 export const RESOLVER_RULESET = Object.freeze({
-  id: "plc-core-v2",
-  battleFormats: ["singles", "doubles"],
-  actionTypes: ["move", "switch"],
+  id: "plc-core-v3",
+  battleFormats: ["singles", "doubles", "triples"],
+  actionTypes: ["move", "switch", "shift"],
   battleItemsEnabled: false
 });
 

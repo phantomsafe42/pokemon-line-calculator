@@ -101,6 +101,7 @@ export function trainerBattleFormat(trainer, mechanics) {
   const format = String(raw || "single").toLowerCase();
   if (format === "single" || format === "singles") return "singles";
   if (format === "double" || format === "doubles") return "doubles";
+  if (format === "triple" || format === "triples") return "triples";
   throw new DatasetReadinessError(`${trainer?.displayName || trainer?.id || "Trainer"} uses unsupported ${format || "unknown"} battle format`);
 }
 

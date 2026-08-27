@@ -9,7 +9,7 @@
   "damageGeneration": 5,
   "canonicalDataGeneration": 9,
   "canonicalDataSource": {
-    "file": "Overlays/Source/standardized/vendor/smogon-calc-0.11.0/data.production.min.js",
+    "file": "Battle Mechanics/vendor/smogon-calc-0.11.0/data.production.min.js",
     "sha256": "364be40ea1aec31f413d0036445f717d826ece9c33ec25a02399c3a287c99529",
     "policy": "Generation 9 supplies the canonical metadata required by Redux post-Generation-5 moves; every VW2R species NFE value and every hack-specific move mechanic is explicitly overridden in standardized source."
   },
@@ -53,8 +53,8 @@
       "calculationKnownAnswerSuite": 0
     },
     "knownAnswerSuite": {
-      "file": "Overlays/Source/standardized/tests/vw2r_known_answers.test.js",
-      "sha256": "31c1c8182c05c35f3983d8ec67bd98bdda77115d33184c05f894b2b4f606e0f8",
+      "file": "Battle Mechanics/tests/vw2r_known_answers.test.js",
+      "sha256": "d2a04ad895830cb91a8ad69736a7db2f81d84d41d5c1f677580a88eebbbdc6f0",
       "cases": [
         "ordinary",
         "spread",

@@ -325,6 +325,232 @@ test("weather set by the first action reaches later damage and resolves duration
   assert.equal(sandOutcome.state.fieldState.global.weather.remainingTurns, 4);
 });
 
+test("Solar Power applies its Gen 5 sun residual and leaves the next turn selectable", () => {
+  const { dataset, players, enemies, plan } = fixturePlan();
+  const playerKey = players[0].combatantKey;
+  const enemyKey = enemies[0].combatantKey;
+  const root = plan.stateNodes[plan.initialStateNodeId];
+  const playerState = root.combatantStates[playerKey];
+  playerState.currentAbilityId = "solarpower";
+  root.fieldState.global.weather = { id: "sun", source: "ability:drought", durationMode: "permanent", remainingTurns: null };
+  const before = playerState.hp.max;
+  const expectedDamage = Math.max(1, Math.floor(playerState.hp.maxHp / 8));
+  const preview = previewTurn({
+    plan,
+    parentStateNodeId: plan.initialStateNodeId,
+    actions: { player: move(playerKey, "tackle", enemyKey), enemy: move(enemyKey, "tackle", playerKey) },
+    dataset,
+    damageAdapter: damageAdapter(() => [0])
+  });
+  const outcome = preview.outcomes.find(entry => entry.previewOutcomeId === preview.defaultPreviewOutcomeId);
+  assert.equal(outcome.state.combatantStates[playerKey].hp.max, before - expectedDamage);
+  assert.ok(outcome.events.some(entry => entry.eventType === "residual-damage" && entry.metadata?.cause === "solarpower" && entry.damageHp.min === expectedDamage));
+  const committed = commitPreview(plan, preview, dataset);
+  assert.equal(committed.plan.stateNodes[committed.cursorStateNodeId].battleEnded, false);
+  assert.doesNotThrow(() => previewTurn({
+    plan: committed.plan,
+    parentStateNodeId: committed.cursorStateNodeId,
+    actions: { player: move(playerKey, "tackle", enemyKey), enemy: move(enemyKey, "tackle", playerKey) },
+    dataset,
+    damageAdapter: damageAdapter(() => [0])
+  }));
+});
+
+test("weather-triggered Solar Power resolves before major-status residual damage", () => {
+  const { dataset, players, enemies, plan } = fixturePlan();
+  const playerKey = players[0].combatantKey;
+  const enemyKey = enemies[0].combatantKey;
+  const root = plan.stateNodes[plan.initialStateNodeId];
+  const playerState = root.combatantStates[playerKey];
+  playerState.currentAbilityId = "solarpower";
+  playerState.majorStatus = "brn";
+  root.fieldState.global.weather = { id: "sun", source: "ability:drought", durationMode: "permanent", remainingTurns: null };
+  const solarDamage = Math.max(1, Math.floor(playerState.hp.maxHp / 8));
+  playerState.hp = { ...playerState.hp, min: solarDamage, max: solarDamage };
+  delete playerState.hpDistribution;
+  const [outcome] = resolveTurn({
+    plan,
+    parentStateNodeId: plan.initialStateNodeId,
+    actions: { player: move(playerKey, "tackle", enemyKey), enemy: move(enemyKey, "tackle", playerKey) },
+    dataset,
+    damageAdapter: damageAdapter(() => [0])
+  });
+  const residualCauses = outcome.events
+    .filter(entry => entry.eventType === "residual-damage" && entry.targetKey === playerKey)
+    .map(entry => entry.metadata?.cause);
+  assert.deepEqual(residualCauses, ["solarpower"], "Solar Power faints the user during the weather step before burn can resolve");
+});
+
+test("Gen 5 Ability weather persists across turns until another Ability replaces it", () => {
+  const { dataset, players, enemies, plan: source } = fixturePlan();
+  players[0].originalAbilityId = "drizzle";
+  players[1].originalAbilityId = "drought";
+  let plan = createPlanDocument({
+    dataset,
+    trainerId: "trainer",
+    playerCombatants: players,
+    enemyCombatants: enemies,
+    sourceSnapshot: source.sourceSnapshot,
+    now: "2026-08-27T00:00:00.000Z"
+  });
+  const playerKey = players[0].combatantKey;
+  const benchKey = players[1].combatantKey;
+  const enemyKey = enemies[0].combatantKey;
+  let cursor = plan.initialStateNodeId;
+  assert.deepEqual(plan.stateNodes[cursor].fieldState.global.weather, { id: "rain", source: "ability:drizzle", durationMode: "permanent", remainingTurns: null });
+  for (let turn = 0; turn < 2; turn += 1) {
+    const preview = previewTurn({
+      plan,
+      parentStateNodeId: cursor,
+      actions: { player: move(playerKey, "tackle", enemyKey), enemy: move(enemyKey, "tackle", playerKey) },
+      dataset,
+      damageAdapter: damageAdapter(() => [0])
+    });
+    const committed = commitPreview(plan, preview, dataset);
+    plan = committed.plan;
+    cursor = committed.cursorStateNodeId;
+    assert.deepEqual(plan.stateNodes[cursor].fieldState.global.weather, { id: "rain", source: "ability:drizzle", durationMode: "permanent", remainingTurns: null });
+  }
+  const replacement = previewTurn({
+    plan,
+    parentStateNodeId: cursor,
+    actions: {
+      player: { actionType: "switch", actorKey: playerKey, switchToKey: benchKey, switchKind: "voluntary", mechanicActivations: [], declaredAtStateHash: plan.stateNodes[cursor].stateHash },
+      enemy: move(enemyKey, "tackle", playerKey)
+    },
+    dataset,
+    damageAdapter: damageAdapter(() => [0])
+  });
+  const replacementOutcome = replacement.outcomes.find(entry => entry.previewOutcomeId === replacement.defaultPreviewOutcomeId);
+  assert.deepEqual(replacementOutcome.state.fieldState.global.weather, { id: "sun", source: "ability:drought", durationMode: "permanent", remainingTurns: null });
+});
+
+test("end-of-turn Abilities update state and preserve exact chance branches", () => {
+  const speedFixture = fixturePlan();
+  const speedKey = speedFixture.players[0].combatantKey;
+  const speedEnemy = speedFixture.enemies[0].combatantKey;
+  speedFixture.plan.stateNodes[speedFixture.plan.initialStateNodeId].combatantStates[speedKey].currentAbilityId = "speedboost";
+  const [speedOutcome] = resolveTurn({
+    plan: speedFixture.plan,
+    parentStateNodeId: speedFixture.plan.initialStateNodeId,
+    actions: { player: move(speedKey, "tackle", speedEnemy), enemy: move(speedEnemy, "tackle", speedKey) },
+    dataset: speedFixture.dataset,
+    damageAdapter: damageAdapter(() => [0])
+  });
+  assert.equal(speedOutcome.state.combatantStates[speedKey].statStages.spe, 1);
+
+  const shedFixture = fixturePlan();
+  const shedKey = shedFixture.players[0].combatantKey;
+  const shedEnemy = shedFixture.enemies[0].combatantKey;
+  const shedState = shedFixture.plan.stateNodes[shedFixture.plan.initialStateNodeId].combatantStates[shedKey];
+  shedState.currentAbilityId = "shedskin";
+  shedState.majorStatus = "brn";
+  const shedOutcomes = resolveTurn({
+    plan: shedFixture.plan,
+    parentStateNodeId: shedFixture.plan.initialStateNodeId,
+    actions: { player: move(shedKey, "tackle", shedEnemy), enemy: move(shedEnemy, "tackle", shedKey) },
+    dataset: shedFixture.dataset,
+    damageAdapter: damageAdapter(() => [0])
+  });
+  const curedProbability = shedOutcomes.filter(outcome => !outcome.state.combatantStates[shedKey].majorStatus).reduce((sum, outcome) => sum + outcome.outcome.probability, 0);
+  assert.ok(Math.abs(curedProbability - 1 / 3) < 1e-9);
+
+  const hydrationFixture = fixturePlan();
+  const hydrationKey = hydrationFixture.players[0].combatantKey;
+  const hydrationEnemy = hydrationFixture.enemies[0].combatantKey;
+  const hydrationRoot = hydrationFixture.plan.stateNodes[hydrationFixture.plan.initialStateNodeId];
+  hydrationRoot.combatantStates[hydrationKey].currentAbilityId = "hydration";
+  hydrationRoot.combatantStates[hydrationKey].majorStatus = "par";
+  hydrationRoot.fieldState.global.weather = { id: "rain", source: "ability:drizzle", durationMode: "permanent", remainingTurns: null };
+  const [hydrationOutcome] = resolveTurn({
+    plan: hydrationFixture.plan,
+    parentStateNodeId: hydrationFixture.plan.initialStateNodeId,
+    actions: { player: move(hydrationKey, "tackle", hydrationEnemy), enemy: move(hydrationEnemy, "tackle", hydrationKey) },
+    dataset: hydrationFixture.dataset,
+    damageAdapter: damageAdapter(() => [0])
+  });
+  assert.equal(hydrationOutcome.state.combatantStates[hydrationKey].majorStatus, null);
+});
+
+test("hit-triggered Abilities branch contact status, absorb damage, and reward KOs", () => {
+  const staticFixture = fixturePlan();
+  const staticPlayer = staticFixture.players[0].combatantKey;
+  const staticEnemy = staticFixture.enemies[0].combatantKey;
+  staticFixture.plan.stateNodes[staticFixture.plan.initialStateNodeId].combatantStates[staticEnemy].currentAbilityId = "static";
+  const staticOutcomes = resolveTurn({
+    plan: staticFixture.plan,
+    parentStateNodeId: staticFixture.plan.initialStateNodeId,
+    actions: { player: move(staticPlayer, "tackle", staticEnemy), enemy: move(staticEnemy, "tackle", staticPlayer) },
+    dataset: staticFixture.dataset,
+    damageAdapter: damageAdapter(() => [1])
+  });
+  const paralysisProbability = staticOutcomes.filter(outcome => outcome.state.combatantStates[staticPlayer].majorStatus === "par").reduce((sum, outcome) => sum + outcome.outcome.probability, 0);
+  assert.ok(Math.abs(paralysisProbability - 0.3) < 1e-9);
+
+  const absorbFixture = fixturePlan();
+  const absorbPlayer = absorbFixture.players[0].combatantKey;
+  const absorbEnemy = absorbFixture.enemies[0].combatantKey;
+  const absorbState = absorbFixture.plan.stateNodes[absorbFixture.plan.initialStateNodeId].combatantStates[absorbEnemy];
+  absorbState.currentAbilityId = "waterabsorb";
+  absorbState.hp.min -= 20;
+  absorbState.hp.max -= 20;
+  absorbState.hpDistribution = [{ value: absorbState.hp.max, probability: 1 }];
+  let playerDamageCalculations = 0;
+  const [absorbOutcome] = resolveTurn({
+    plan: absorbFixture.plan,
+    parentStateNodeId: absorbFixture.plan.initialStateNodeId,
+    actions: { player: move(absorbPlayer, "aquajet", absorbEnemy), enemy: move(absorbEnemy, "tackle", absorbPlayer) },
+    dataset: absorbFixture.dataset,
+    damageAdapter: damageAdapter(({ attacker }) => { if (attacker.combatantKey === absorbPlayer) playerDamageCalculations += 1; return [0]; })
+  });
+  assert.equal(playerDamageCalculations, 0);
+  assert.ok(absorbOutcome.events.some(entry => entry.eventType === "move-immune" && entry.metadata?.abilityId === "waterabsorb"));
+  assert.ok(absorbOutcome.events.some(entry => entry.eventType === "residual-heal" && entry.metadata?.cause === "waterabsorb"));
+
+  const moxieFixture = fixturePlan();
+  const moxiePlayer = moxieFixture.players[0].combatantKey;
+  const moxieEnemy = moxieFixture.enemies[0].combatantKey;
+  moxieFixture.plan.stateNodes[moxieFixture.plan.initialStateNodeId].combatantStates[moxiePlayer].currentAbilityId = "moxie";
+  const [moxieOutcome] = resolveTurn({
+    plan: moxieFixture.plan,
+    parentStateNodeId: moxieFixture.plan.initialStateNodeId,
+    actions: { player: move(moxiePlayer, "tackle", moxieEnemy), enemy: move(moxieEnemy, "tackle", moxiePlayer) },
+    dataset: moxieFixture.dataset,
+    damageAdapter: damageAdapter(({ attacker }) => attacker.combatantKey === moxiePlayer ? [999] : [0])
+  });
+  assert.equal(moxieOutcome.state.combatantStates[moxiePlayer].statStages.atk, 1);
+});
+
+test("Truant alternates move turns and Pressure consumes one additional PP", () => {
+  const { dataset, players, enemies, plan: source } = fixturePlan();
+  players[0].originalAbilityId = "truant";
+  let plan = createPlanDocument({ dataset, trainerId: "trainer", playerCombatants: players, enemyCombatants: enemies, sourceSnapshot: source.sourceSnapshot, now: "2026-08-27T00:00:00.000Z" });
+  const playerKey = players[0].combatantKey;
+  const enemyKey = enemies[0].combatantKey;
+  const initialPp = plan.stateNodes[plan.initialStateNodeId].combatantStates[playerKey].movePp.tackle;
+  const first = previewTurn({
+    plan,
+    parentStateNodeId: plan.initialStateNodeId,
+    actions: { player: move(playerKey, "tackle", enemyKey), enemy: move(enemyKey, "tackle", playerKey) },
+    dataset,
+    damageAdapter: damageAdapter(() => [0])
+  });
+  const firstOutcome = first.outcomes.find(entry => entry.previewOutcomeId === first.defaultPreviewOutcomeId);
+  assert.equal(firstOutcome.state.combatantStates[playerKey].movePp.tackle, initialPp - 2);
+  let committed = commitPreview(plan, first, dataset);
+  plan = committed.plan;
+  const second = previewTurn({
+    plan,
+    parentStateNodeId: committed.cursorStateNodeId,
+    actions: { player: move(playerKey, "tackle", enemyKey), enemy: move(enemyKey, "tackle", playerKey) },
+    dataset,
+    damageAdapter: damageAdapter(() => [0])
+  });
+  const secondOutcome = second.outcomes.find(entry => entry.previewOutcomeId === second.defaultPreviewOutcomeId);
+  assert.ok(secondOutcome.events.some(entry => entry.eventType === "action-skipped" && entry.actorKey === playerKey && entry.reason === "truant"));
+  assert.equal(secondOutcome.state.combatantStates[playerKey].movePp.tackle, initialPp - 2);
+});
+
 test("damage rolls crossing the KO threshold create known KO and survival branches", () => {
   const { dataset, players, enemies, plan } = fixturePlan();
   const actions = {
@@ -419,6 +645,32 @@ test("Focus Sash consumes at full HP and leaves the holder at exactly 1 HP", () 
   assert.ok(sashIndex >= 0 && sashIndex < damageIndex, "Focus Sash resolves before the damage event");
   assert.equal(outcome.events[damageIndex].metadata.thresholdOutcome, "survive");
   assert.equal(outcome.events[damageIndex].metadata.focusSashActivated, true);
+});
+
+test("Sturdy survives a full-HP lethal hit but is bypassed by damage or Mold Breaker", () => {
+  for (const scenario of [
+    { name: "full HP", expectedHp: 1, prepare() {} },
+    { name: "damaged", expectedHp: 0, prepare(_actor, target) { target.hp.min -= 1; target.hp.max -= 1; target.hpDistribution = [{ value: target.hp.max, probability: 1 }]; } },
+    { name: "Mold Breaker", expectedHp: 0, prepare(actor) { actor.currentAbilityId = "moldbreaker"; } }
+  ]) {
+    const { dataset, players, enemies, plan } = fixturePlan();
+    const playerKey = players[0].combatantKey;
+    const enemyKey = enemies[0].combatantKey;
+    const root = plan.stateNodes[plan.initialStateNodeId];
+    const actor = root.combatantStates[playerKey];
+    const target = root.combatantStates[enemyKey];
+    target.currentAbilityId = "sturdy";
+    scenario.prepare(actor, target);
+    const outcomes = resolveTurn({
+      plan,
+      parentStateNodeId: plan.initialStateNodeId,
+      actions: { player: move(playerKey, "tackle", enemyKey), enemy: move(enemyKey, "tackle", playerKey) },
+      dataset,
+      damageAdapter: damageAdapter(({ attacker }) => attacker.combatantKey === playerKey ? [999] : [0])
+    });
+    assert.ok(outcomes.every(outcome => outcome.state.combatantStates[enemyKey].hp.max === scenario.expectedHp), scenario.name);
+    assert.equal(outcomes.some(outcome => outcome.events.some(entry => entry.metadata?.cause === "sturdy")), scenario.expectedHp === 1, scenario.name);
+  }
 });
 
 test("Focus Sash does not activate below full HP or while its effects are suppressed", () => {

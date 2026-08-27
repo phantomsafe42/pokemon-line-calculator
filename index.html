@@ -6,7 +6,7 @@
   <meta name="plc-build-profile" content="local">
   <title>Pokémon Line Calculator</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./styles.css?v=20260826-order-notes-import">
+  <link rel="stylesheet" href="./styles.css?v=20260827-lock-progression">
 </head>
 <body>
   <header class="app-header">
@@ -172,6 +172,13 @@
         </label>
       </div>
 
+      <section id="enemy-team-panel" class="party-selector-panel">
+        <div class="section-heading compact-heading">
+          <div><p class="eyebrow">Opponent roster</p><h3>Enemy team</h3></div>
+        </div>
+        <div id="enemy-team-summary" class="party-selection-summary"><p class="empty">Select a trainer to view the enemy team.</p></div>
+      </section>
+
       <section class="party-selector-panel">
         <div class="section-heading compact-heading">
           <div><p class="eyebrow">Player roster</p><h3>Party selector</h3></div>
@@ -256,10 +263,20 @@
     <form method="dialog" class="dialog-card"><h2 id="live-stop-title">Live writing has ended</h2><p>The Overlay may keep reading the final revision until its own Live Edit session is stopped. Choose whether to open ordinary plan output selection now.</p><div class="dialog-actions"><button id="live-save-quit" value="save" type="submit">Save and Quit</button><button id="live-keep-editing" value="keep" type="submit">Keep Editing</button></div></form>
   </dialog><!-- PLC_LOCAL_ONLY_END -->
 
+  <dialog id="progression-dialog" aria-labelledby="progression-title">
+    <form method="dialog" class="dialog-card">
+      <div class="section-heading"><div><p class="eyebrow">Locked branch</p><h2 id="progression-title">Save EXP and level changes?</h2></div></div>
+      <p>Update the party's Box records to the absolute EXP and levels at the end of this branch?</p>
+      <div id="progression-summary" class="progression-summary"></div>
+      <p class="fine-print">The current plan remains frozen to its original starting values. These updates take effect in battle state only when a new plan begins. Saving a different locked branch from this plan overwrites the Box records with that branch's totals.</p>
+      <div class="dialog-actions"><button value="no" type="submit" class="secondary">No</button><button value="yes" type="submit">Yes, Save Changes</button></div>
+    </form>
+  </dialog>
+
   <dialog id="destructive-dialog" aria-labelledby="destructive-title">
     <form method="dialog" class="dialog-card"><h2 id="destructive-title">Replace active planning context?</h2><p id="destructive-message"></p><div class="dialog-actions"><button id="destructive-cancel" value="cancel" type="submit" class="secondary">Cancel</button><button id="destructive-output" value="output" type="submit">Output Plan, Then Continue</button><button id="destructive-discard" value="discard" type="submit" class="danger">Discard and Continue</button></div></form>
   </dialog>
 
-  <script type="module" src="./src/app.js?v=20260826-plan-compat-recalc"></script>
+  <script type="module" src="./src/app.js?v=20260827-lock-progression"></script>
 </body>
 </html>

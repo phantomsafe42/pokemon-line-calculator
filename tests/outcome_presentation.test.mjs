@@ -30,6 +30,13 @@ test("healing events use readable sources plus HP and max-HP percentages", () =>
     metadata: { cause: "regenerator" }
   }, { maxHp: 120 }), "Regenerator · Healed 30–40 HP (25.0% - 33.3%)");
   assert.equal(healingEventDescription({
+    eventType: "residual-heal",
+    targetKey: "player",
+    healingHp: { min: 20, max: 20 },
+    healingPercent: { min: 25, max: 25 },
+    metadata: { cause: "waterabsorb" }
+  }), "Water Absorb · Healed 20 HP (25.0%)");
+  assert.equal(healingEventDescription({
     eventType: "heal",
     actorKey: "player",
     targetKey: "player",

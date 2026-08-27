@@ -1,4 +1,5 @@
 import { toId } from "../core/primitives.js";
+import { abilityStatusImmunity } from "./ability_rules.js?v=20260827-ability-state-events";
 
 const WEATHER_NAMES = Object.freeze({
   rain: "Rain",
@@ -124,6 +125,8 @@ export function statusApplicationResult({ descriptor, attackerState, targetState
     return { applies: false, reason: "target-is-immune-to-move-type" };
   }
   if ((descriptor.immuneAbilities || []).map(toId).includes(ability)) return { applies: false, reason: "target-ability-is-immune" };
+  const immuneAbility = abilityStatusImmunity({ state: targetState, statusId: descriptor.statusId, fieldState });
+  if (immuneAbility) return { applies: false, reason: `target-ability-${immuneAbility}-is-immune` };
   return { applies: true, reason: null };
 }
 
@@ -182,15 +185,6 @@ export function itemResidualRule(state) {
 export function endOfTurnSupportIssue(state, fieldState, opponentState) {
   const ability = abilityId(state);
   const item = itemId(state);
-  const weather = conditionId(fieldState?.global?.weather);
-  if (["speedboost", "moody"].includes(ability)) return `${ability} end-of-turn changes are not enabled`;
-  if (ability === "shedskin" && state.majorStatus) return "Shed Skin cure branching is not enabled";
-  if (ability === "hydration" && state.majorStatus && weather === "rain") return "Hydration end-of-turn curing is not enabled";
-  if (ability === "raindish" && weather === "rain" && Number(state.hp.max) < Number(state.hp.maxHp)) return "Rain Dish recovery is not enabled";
-  if (ability === "dryskin" && ["rain", "sun"].includes(weather)) return "Dry Skin weather residuals are not enabled";
-  if (ability === "icebody" && weather === "hail" && Number(state.hp.max) < Number(state.hp.maxHp)) return "Ice Body recovery is not enabled";
-  if (ability === "solarpower" && weather === "sun") return "Solar Power residual damage is not enabled";
-  if (ability === "baddreams" && opponentState?.majorStatus === "slp") return "Bad Dreams residual damage is not enabled";
   if (["flameorb", "toxicorb"].includes(item) && !state.majorStatus) return `${item} status activation is not enabled`;
   if (item === "stickybarb" && ability !== "magicguard") return "Sticky Barb residual damage is not enabled";
   return null;

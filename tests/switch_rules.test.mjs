@@ -42,7 +42,22 @@ test("switch abilities expose only structured supported effects", () => {
   assert.deepEqual(outgoingSwitchEffects(state({ ability: "naturalcure", status: "brn" })), [{ kind: "clear-status", from: "brn", cause: "natural-cure" }]);
   assert.deepEqual(outgoingSwitchEffects(state({ ability: "regenerator", hp: 60, maxHp: 120 })), [{ kind: "heal", amount: 40, cause: "regenerator" }]);
   assert.deepEqual(entryAbilityEffects({ enteringState: state({ ability: "intimidate" }), opposingState: state(), generation: 5 })[0], { kind: "stat-stage", stat: "atk", delta: -1, target: "opponent", cause: "intimidate" });
-  assert.equal(entryAbilityEffects({ enteringState: state({ ability: "drizzle" }), opposingState: state(), generation: 5 })[0].durationMode, "permanent");
+  for (const [ability, weatherId] of [["drizzle", "rain"], ["drought", "sun"], ["sandstream", "sand"], ["snowwarning", "hail"]]) {
+    assert.deepEqual(entryAbilityEffects({ enteringState: state({ ability }), opposingState: state(), generation: 5 })[0], {
+      kind: "weather",
+      weatherId,
+      durationMode: "permanent",
+      remainingTurns: null,
+      cause: ability
+    });
+  }
+  assert.deepEqual(entryAbilityEffects({ enteringState: state({ ability: "drizzle" }), opposingState: state(), generation: 6 })[0], {
+    kind: "weather",
+    weatherId: "rain",
+    durationMode: "turns",
+    remainingTurns: 5,
+    cause: "drizzle"
+  });
   assert.deepEqual(
     entryAbilityEffects({ enteringState: state({ ability: "download" }), opposingState: state({ stats: { def: 80, spd: 120 } }), generation: 5 })[0],
     { kind: "stat-stage", stat: "atk", delta: 1, target: "self", cause: "download", comparison: { defense: 80, specialDefense: 120, complete: true } }

@@ -102,6 +102,7 @@ const SPECIAL_HANDLERS = Object.freeze({
   entrainment: "share-ability",
   acupressure: "random-stat-boost",
   allyswitch: "ally-switch",
+  flameburst: "flame-burst",
   guardsplit: "split-defenses",
   powersplit: "split-offenses",
   perishsong: "perish-song",

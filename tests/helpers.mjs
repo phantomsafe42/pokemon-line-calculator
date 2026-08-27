@@ -153,6 +153,30 @@ export function fixtureDoublesPlan() {
   return { dataset, players, enemies, plan };
 }
 
+export function fixtureTriplePlan() {
+  const dataset = fixtureDataset();
+  const players = normalizePlayerCollection({
+    collection: [
+      { uniqueKey: "triple-left", speciesId: "fastmon", species: "Fastmon", displayName: "Player Left", level: 50, nature: "Hardy", ability: "Pressure", item: null, ivs: stats(31), moves: ["aqua jet", "tackle", "earthquake", "protect"], storage: "party", slot: 1 },
+      { uniqueKey: "triple-center", speciesId: "fastmon", species: "Fastmon", displayName: "Player Center", level: 50, nature: "Hardy", ability: "Pressure", item: null, ivs: stats(31), moves: ["surf", "tackle", "iron defense", "protect"], storage: "party", slot: 2 },
+      { uniqueKey: "triple-right", speciesId: "benchmon", species: "Benchmon", displayName: "Player Right", level: 50, nature: "Hardy", ability: "Pressure", item: null, ivs: stats(31), moves: ["tackle"], storage: "party", slot: 3 },
+      { uniqueKey: "triple-bench", speciesId: "benchmon", species: "Benchmon", displayName: "Player Bench", level: 50, nature: "Hardy", ability: "Pressure", item: null, ivs: stats(31), moves: ["tackle"], storage: "party", slot: 4 }
+    ]
+  }, dataset);
+  const enemies = normalizeTrainerRoster("doubles", null, dataset);
+  const sourceSnapshot = snapshotFingerprint(players, enemies, "2026-08-26T00:00:00.000Z");
+  const plan = createPlanDocument({
+    dataset,
+    trainerId: "doubles",
+    playerCombatants: players,
+    enemyCombatants: enemies,
+    battleFormat: "triples",
+    sourceSnapshot,
+    now: "2026-08-26T00:00:00.000Z"
+  });
+  return { dataset, players, enemies, plan };
+}
+
 export function damageAdapter(fn) {
   return { calculate: input => ({ status: "ok", damage: fn(input) }) };
 }

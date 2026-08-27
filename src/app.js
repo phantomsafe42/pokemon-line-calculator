@@ -4,25 +4,28 @@ import { loadStandardizedDataset } from "./adapters/standardized_dataset.js";
 import { createDraftRecord, destructiveTransitionNotice, IndexedDbDraftStore, markExported, markLiveFlushed, setLocalLiveEdit, updateDraftRecord } from "./cache/active_draft.js";
 import { downloadPlan, exportSelectedPlan, migratePlanDocument, parsePlan } from "./contracts/plan_file.js";
 import { assertValidPlanDocument } from "./contracts/plan_contract.js";
-import { mechanicsCompatibility, validatePlanReferences } from "./contracts/plan_compatibility.js";
-import { actionList, activeKey, activeKeys, activeSlotEntries, actorSlot, pendingReplacementSlots } from "./core/battle_slots.js";
+import { mechanicsCompatibility, validatePlanReferences } from "./contracts/plan_compatibility.js?v=20260827-ability-form-events";
+import { actionList, activeKey, activeKeys, activeSlotEntries, actorSlot, pendingReplacementSlots, setActiveKey, slotsPerSide } from "./core/battle_slots.js";
 import { createBranchEventModel, selectBranchEventOutcome, selectedBranchChoices } from "./core/branch_events.js?v=20260826-order-notes-import";
-import { boundedSlotDamageLabel, highestDamageCandidateKeys, resolvedCombatantMovePreview } from "./core/combatant_moves.js?v=20260826-fiery-crit";
+import { boundedSlotDamageLabel, highestDamageCandidateKeys, resolvedCombatantMovePreview } from "./core/combatant_moves.js?v=20260827-lock-progression";
 import { exportBranchGroups, planTreeOrder, planTurnTreeOrder, preferredImportedReviewStateId, stateLineage, turnNodeVisuals } from "./core/graph.js?v=20260826-order-notes-import";
 import { HIDDEN_POWER_TYPES, hiddenPowerTypeFromIvs, resolvedHiddenPowerType } from "./core/hidden_power.js";
-import { formatDamageRollCounts, healingEventDescription, isCriticalOhkoOutcome, isHighRollKoOutcome, outcomePanelEvents, readableMechanicName } from "./core/outcome_presentation.js?v=20260826-order-notes-import";
-import { createPlanDocument, planHasWork, setStateNodeNote, upgradeInitialEntryEffects } from "./core/plan.js?v=20260826-plan-compat-recalc";
-import { commitForcedReplacement, commitLabel, commitPreview, previewForcedReplacement, refreshUnknownCommittedProbabilities, repairStaleLeafBattleEnd } from "./core/planner.js?v=20260826-order-notes-import";
-import { recalculatePlanDocument } from "./core/recalculation.js?v=20260826-plan-compat-recalc";
+import { formatDamageRollCounts, healingEventDescription, isCriticalOhkoOutcome, isHighRollKoOutcome, outcomePanelEvents, readableMechanicName } from "./core/outcome_presentation.js?v=20260827-ability-state-events";
+import { createPlanDocument, planHasWork, setStateNodeNote, upgradeInitialEntryEffects } from "./core/plan.js?v=20260827-ability-form-events";
+import { commitForcedReplacement, commitLabel, commitPreview, previewForcedReplacement, refreshUnknownCommittedProbabilities, repairStaleLeafBattleEnd } from "./core/planner.js?v=20260827-ability-form-events";
+import { recalculatePlanDocument } from "./core/recalculation.js?v=20260827-ability-form-events";
 import { moveSupport } from "./rulesets/core_move_support.js";
+import { effectiveActionSpeed } from "./rulesets/action_order.js?v=20260827-triples-slot-display";
+import { areSlotsAdjacent, canSelectShift, shiftWithCenter, triplePositionForSlot, tripleSlotForPosition } from "./rulesets/triple_battle.js?v=20260827-triples-slot-display";
 import { experienceForLevel, experienceToNextLevel, projectVw2rExperience } from "./rulesets/vw2r_experience.js";
-import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260826-order-notes-import";
+import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260827-lock-progression";
 import { battleCompletionState } from "./core/battle_completion.js?v=20260826-turn-nodes";
 import {
   addBox, addParty, boxesForGame, createEmptyBoxLibrary, exportBoxLibrary, IndexedDbBoxLibraryStore,
   mergeBoxLibrary, parseBoxLibrary, removeBox, removeParty, removePokemon, renameBox, updateParty, upsertPokemon
 } from "./boxes/library.js?v=20260826-order-notes-import";
-import { addImportedPlanParty } from "./boxes/plan_import.js?v=20260826-order-notes-import";
+import { addImportedPlanParty, bindPlanPlayerPartyToImportedBox } from "./boxes/plan_import.js?v=20260827-lock-progression";
+import { applyBranchProgressionToLibrary, branchProgressionSnapshot } from "./boxes/progression.js?v=20260827-lock-progression";
 import { exportShowdown, parseShowdown } from "./boxes/showdown.js?v=20260825-hidden-power-v2";
 import { parseVw2rSave, selectVw2rSavePokemon } from "./boxes/vw2r_save_import.js";
 
@@ -49,14 +52,14 @@ const ui = Object.fromEntries([
   "plan-context-dialog", "trainer-select", "battle-format", "variant-field", "variant-select", "plan-name",
   "initial-weather", "initial-terrain", "context-box-select", "party-source-mode", "saved-party-field",
   "context-party-select", "context-pokemon-grid", "save-party-selection", "party-selector-controls",
-  "party-selection-summary", "edit-party-selection", "context-status", "begin-plan", "pokemon-editor-dialog",
+  "enemy-team-summary", "party-selection-summary", "edit-party-selection", "context-status", "begin-plan", "pokemon-editor-dialog",
   "pokemon-editor-form", "pokemon-editor-title", "editor-sprite-preview", "editor-box-id", "editor-pokemon-id", "editor-context", "editor-species",
   "editor-nickname", "editor-level", "editor-gender", "editor-nature", "editor-ability", "editor-item", "editor-hidden-power-type",
   "editor-hp-field", "editor-starting-hp", "editor-status-field", "editor-starting-status", "editor-stats",
   "editor-moves", "editor-error", "save-pokemon", "showdown-dialog", "showdown-text", "showdown-destination",
   "showdown-status", "copy-showdown", "import-showdown", "output-dialog", "export-selection", "select-all-export", "output-plan",
   "recalculate-plan", "import-plan", "file-status", "live-stop-dialog", "live-save-quit", "live-keep-editing",
-  "destructive-dialog", "destructive-message", "destructive-output", "destructive-discard"
+  "progression-dialog", "progression-summary", "destructive-dialog", "destructive-message", "destructive-output", "destructive-discard"
 ].map(id => [id, byId(id)]));
 
 const draftStore = new IndexedDbDraftStore();
@@ -88,9 +91,10 @@ let actionDraft = emptyActionDraft();
 let notesPersistTimer = null;
 let contextSelection = emptyContextSelection();
 let pendingSaveImport = null;
+let progressionResolver = null;
 
 function emptyActionDraft() {
-  return { player: [{}, {}], enemy: [{}, {}] };
+  return { player: [{}, {}, {}], enemy: [{}, {}, {}] };
 }
 
 function emptyContextSelection() {
@@ -134,6 +138,16 @@ function recordName(record) {
   return record?.nickname || record?.displayName || record?.speciesId || "Pokémon";
 }
 
+function currentSpriteRecord(record, state) {
+  if (!record || !state) return record;
+  return {
+    ...record,
+    speciesId: state.currentSpeciesId || record.speciesId,
+    formId: null,
+    spriteId: state.currentSpriteId || record.formId || record.speciesId
+  };
+}
+
 function selectedGameBoxes() {
   return selectedGameId ? boxesForGame(boxLibrary, selectedGameId) : [];
 }
@@ -147,6 +161,37 @@ async function saveLibrary(message = null) {
   renderBoxes();
   refreshContextBoxSelect();
   if (message) setStatus(message);
+}
+
+function requestProgressionSave(entries) {
+  const changed = entries.filter(entry => entry.changed);
+  if (changed.length) {
+    ui["progression-summary"].replaceChildren(...changed.map(entry => {
+      const row = document.createElement("div");
+      row.className = "progression-change";
+      const name = document.createElement("strong"); name.textContent = entry.displayName;
+      const details = [];
+      if (entry.experience !== entry.initialExperience) details.push(`EXP ${entry.initialExperience?.toLocaleString() ?? "—"} → ${entry.experience?.toLocaleString() ?? "—"}`);
+      if (entry.level !== entry.initialLevel) details.push(`Level ${entry.initialLevel ?? "—"} → ${entry.level ?? "—"}`);
+      const summary = document.createElement("span"); summary.textContent = details.join(" · ");
+      row.append(name, summary);
+      return row;
+    }));
+  } else {
+    ui["progression-summary"].replaceChildren(Object.assign(document.createElement("p"), {
+      className: "empty",
+      textContent: "This branch has no EXP or level changes. Saving will restore the tracked party records to this plan's starting totals."
+    }));
+  }
+  ui["progression-dialog"].returnValue = "";
+  ui["progression-dialog"].showModal();
+  return new Promise(resolve => { progressionResolver = resolve; });
+}
+
+function resolveProgressionPrompt() {
+  const resolve = progressionResolver;
+  progressionResolver = null;
+  resolve?.(ui["progression-dialog"].returnValue === "yes");
 }
 
 function downloadText(text, filename, type = "application/json") {
@@ -813,11 +858,44 @@ function updateVariantSelect() {
   ui["variant-select"].replaceChildren();
   for (const variant of variants) ui["variant-select"].append(option(variant.id, variant.displayName || variant.name || `Variant ${variant.id}`));
   if (trainer) {
-    try { ui["battle-format"].value = dataset.trainerBattleFormat(trainer.id) === "doubles" ? "Doubles" : "Singles"; }
+    try {
+      const format = dataset.trainerBattleFormat(trainer.id);
+      ui["battle-format"].value = format === "triples" ? "Triples" : format === "doubles" ? "Doubles" : "Singles";
+    }
     catch (error) { ui["battle-format"].value = error.message; }
     ui["plan-name"].value = `${trainer.displayName || trainer.name} Plan`;
   } else ui["battle-format"].value = "Select a trainer";
+  renderEnemyTeamSummary();
   updateBeginAvailability();
+}
+
+function enemyTeamPreviewRecord(member) {
+  const speciesId = member.speciesId || member.species || member.displaySpecies;
+  const species = dataset?.get("species", speciesId);
+  return {
+    speciesId,
+    formId: member.form ? String(member.form) : null,
+    displayName: member.displaySpecies || species?.name || String(speciesId || "Pokémon"),
+    nickname: "",
+    level: Number(member.level)
+  };
+}
+
+function renderEnemyTeamSummary() {
+  const trainer = dataset?.trainer(ui["trainer-select"].value);
+  if (!trainer) {
+    ui["enemy-team-summary"].replaceChildren(Object.assign(document.createElement("p"), { className: "empty", textContent: "Select a trainer to view the enemy team." }));
+    return;
+  }
+  let members;
+  try { members = dataset.trainerTeam(trainer.id, ui["variant-select"].value || null); }
+  catch { members = trainer.team || []; }
+  const records = members.map(enemyTeamPreviewRecord);
+  if (!records.length) {
+    ui["enemy-team-summary"].replaceChildren(Object.assign(document.createElement("p"), { className: "empty", textContent: "This trainer has no available team data." }));
+    return;
+  }
+  ui["enemy-team-summary"].replaceChildren(...records.map(record => contextPokemonCard(null, record, true, false, { editable: false })));
 }
 
 function refreshContextBoxSelect() {
@@ -845,7 +923,7 @@ function ensureContextInitial(record) {
   contextSelection.initialConditions[record.id] = { currentHp: calculateStats(record, dataset).hp, majorStatus: null };
 }
 
-function contextPokemonCard(box, record, selected, manual) {
+function contextPokemonCard(box, record, selected, manual, { editable = true } = {}) {
   const card = document.createElement("article");
   card.className = `context-pokemon${selected ? " is-selected" : ""}`;
   card.append(sprite(record));
@@ -865,9 +943,12 @@ function contextPokemonCard(box, record, selected, manual) {
     });
     actions.append(choose);
   }
-  const edit = button("Edit", "secondary");
-  edit.addEventListener("click", () => { ensureContextInitial(record); openPokemonEditor(box.id, record.id, true); });
-  actions.append(edit); card.append(actions);
+  if (editable) {
+    const edit = button("Edit", "secondary");
+    edit.addEventListener("click", () => { ensureContextInitial(record); openPokemonEditor(box.id, record.id, true); });
+    actions.append(edit);
+  }
+  if (actions.childElementCount) card.append(actions);
   return card;
 }
 
@@ -924,8 +1005,15 @@ function savePartySelection() {
 function updateBeginAvailability() {
   const trainer = dataset?.trainer(ui["trainer-select"].value);
   let required = 1;
+  let format = "singles";
   if (trainer) {
-    try { required = dataset.trainerBattleFormat(trainer.id) === "doubles" ? 2 : 1; } catch { required = 1; }
+    try {
+      format = dataset.trainerBattleFormat(trainer.id);
+      required = slotsPerSide(format);
+    } catch {
+      required = 1;
+      format = "singles";
+    }
   }
   const enough = contextSelection.saved && selectedContextRecords().length >= required;
   const variantReady = !trainer?.mechanicsVariants?.length || Boolean(ui["variant-select"].value);
@@ -949,7 +1037,7 @@ function openPlanContext({ reset = true } = {}) {
   if (!ui["plan-context-dialog"].open) ui["plan-context-dialog"].showModal();
 }
 
-function boxRecordToSnapshot(record) {
+function boxRecordToSnapshot(record, boxId = null) {
   const hiddenPowerType = record.moves.some(move => move.moveId === "hiddenpower")
     ? resolvedHiddenPowerType(record.ivs, record.hiddenPowerTypeOverride, { generation: dataset.mechanics.damageGeneration })
     : null;
@@ -974,7 +1062,7 @@ function boxRecordToSnapshot(record) {
       basePower: move.basePower,
       type: move.moveId === "hiddenpower" ? hiddenPowerType : move.type
     })),
-    source: { kind: "boxes-library" }
+    source: { kind: "boxes-library", boxId }
   };
 }
 
@@ -998,7 +1086,7 @@ async function beginPlanFromContext() {
     const trainer = dataset.trainer(ui["trainer-select"].value);
     const variantId = trainer.mechanicsVariants?.length ? ui["variant-select"].value : null;
     const records = selectedContextRecords();
-    const players = normalizePlayerCollection({ party: records.map(boxRecordToSnapshot) }, dataset);
+    const players = normalizePlayerCollection({ party: records.map(record => boxRecordToSnapshot(record, contextSelection.boxId)) }, dataset);
     const enemies = normalizeTrainerRoster(trainer.id, variantId, dataset);
     const sourceSnapshot = snapshotFingerprint(players, enemies, boxLibrary.updatedAt);
     plan = createPlanDocument({
@@ -1025,7 +1113,8 @@ async function beginPlanFromContext() {
     ui["plan-context-dialog"].close();
     setTab("plc");
     renderWorkspace();
-    setStatus(`Clean ${plan.game.battleFormat === "doubles" ? "Doubles" : "Singles"} plan ready for ${trainer.displayName}. Nothing has been sent to Overlay.`);
+    const formatLabel = plan.game.battleFormat === "triples" ? "Triples" : plan.game.battleFormat === "doubles" ? "Doubles" : "Singles";
+    setStatus(`Clean ${formatLabel} plan ready for ${trainer.displayName}. Nothing has been sent to Overlay.`);
   } catch (error) { setStatus(error.message, true); }
 }
 
@@ -1111,18 +1200,75 @@ function canonicalTarget(move) {
   return String(move?.target || "normal").toLowerCase().replace(/[^a-z]/g, "");
 }
 
-function legalTargets(state, side, actorKey, targetMode) {
+function battleFormatLabel(format = plan?.game?.battleFormat) {
+  return format === "triples" ? "Triples" : format === "doubles" ? "Doubles" : "Singles";
+}
+
+function legalTargets(state, side, actorKey, targetMode, support = null) {
   const own = activeKeys(state, side).filter(key => Number(state.combatantStates[key]?.hp?.max) > 0);
   const otherSide = side === "player" ? "enemy" : "player";
   const opposing = activeKeys(state, otherSide).filter(key => Number(state.combatantStates[key]?.hp?.max) > 0);
-  if (targetMode === "adjacentally") return own.filter(key => key !== actorKey);
-  if (targetMode === "adjacentallyorself") return own;
-  if (targetMode === "any") return [...opposing, ...own.filter(key => key !== actorKey)];
-  return opposing;
+  if (plan?.game?.battleFormat !== "triples") {
+    if (targetMode === "adjacentally") return own.filter(key => key !== actorKey);
+    if (targetMode === "adjacentallyorself") return own;
+    if (targetMode === "any") return [...opposing, ...own.filter(key => key !== actorKey)];
+    return opposing;
+  }
+  const actorPosition = actorSlot(state, side, actorKey);
+  const distanceMove = Boolean(support?.flags?.distance);
+  const adjacentOwn = own.filter(key => key !== actorKey && areSlotsAdjacent(plan, side, actorPosition, side, actorSlot(state, side, key)));
+  const reachableOpposing = opposing.filter(key => distanceMove || areSlotsAdjacent(plan, side, actorPosition, otherSide, actorSlot(state, otherSide, key)));
+  if (targetMode === "adjacentally") return adjacentOwn;
+  if (targetMode === "adjacentallyorself") return [actorKey, ...adjacentOwn];
+  if (targetMode === "any") return [...reachableOpposing, ...adjacentOwn];
+  return reachableOpposing;
 }
 
 function battleSlotNumber(side, slot) {
-  return side === "player" ? slot + 1 : slot + 3;
+  return battleSlotNumberForPosition(side, triplePositionForSlot(plan, side, slot));
+}
+
+function battleSlotNumberForPosition(side, position) {
+  return side === "player" ? position + 1 : position + 1 + slotsPerSide(plan);
+}
+
+function slotPositionLabel(slot) {
+  return ["Left", "Center", "Right"][slot] || "";
+}
+
+function tripleFormationPreviewState(state) {
+  if (!state || plan?.game?.battleFormat !== "triples") return state;
+  const preview = structuredClone(state);
+  const shifts = [];
+  for (const side of ["player", "enemy"]) {
+    for (const entry of activeSlotEntries(state, side)) {
+      if (actionForSlot(side, entry.slot).type !== "shift") continue;
+      const combatantState = state.combatantStates[entry.combatantKey];
+      shifts.push({
+        side,
+        originalSlot: entry.slot,
+        actorKey: entry.combatantKey,
+        speed: effectiveActionSpeed({
+          combatant: plan.combatants[entry.combatantKey],
+          combatantState,
+          battleState: state,
+          side,
+          generation: Number(dataset.mechanics?.damageGeneration || 5)
+        })
+      });
+    }
+  }
+  const trickRoom = Number(state.fieldState?.global?.trickRoomTurns || 0) > 0;
+  shifts.sort((left, right) => (trickRoom ? left.speed - right.speed : right.speed - left.speed)
+    || (left.side === right.side ? 0 : left.side === "player" ? -1 : 1)
+    || left.originalSlot - right.originalSlot);
+  for (const entry of shifts) {
+    const shift = shiftWithCenter(preview, entry.side, entry.actorKey);
+    if (!shift) continue;
+    setActiveKey(preview, entry.side, shift.fromSlot, shift.centerKey);
+    setActiveKey(preview, entry.side, shift.centerSlot, entry.actorKey);
+  }
+  return preview;
 }
 
 function targetSlotLabel(state, combatantKey) {
@@ -1249,7 +1395,7 @@ function setDraft(side, slot, next) {
 function configureMoveDraft(side, slot, actorKey, move, support) {
   const state = selectedState();
   const targetMode = support.targetMode || canonicalTarget(move);
-  const candidates = legalTargets(state, side, actorKey, targetMode);
+  const candidates = legalTargets(state, side, actorKey, targetMode, support);
   const targetKey = support.target === "self" ? actorKey : support.target === "target" ? candidates[0] || null : null;
   setDraft(side, slot, { type: "move", moveId: move.id, targetKey, mechanicValue: null });
 }
@@ -1302,11 +1448,12 @@ function renderMoveBranchControls(container, actorKey, moveId) {
 function renderActionAux(container, side, slot, actorKey, move, support, draft) {
   const state = selectedState();
   const targetMode = support.targetMode || canonicalTarget(move);
-  const candidates = legalTargets(state, side, actorKey, targetMode);
-  const opposingTargets = opposingMovePreviewTargets(state, side, actorKey, move, support);
+  const candidates = legalTargets(state, side, actorKey, targetMode, support);
+  const opposingTargets = opposingMovePreviewEntries(state, side, actorKey, move, support);
+  const opposingKeys = new Set(opposingTargets.map(entry => entry.combatantKey));
   const usesSlotSelection = support.target === "target"
     && candidates.length > 1
-    && opposingTargets.length === candidates.length;
+    && candidates.every(key => opposingKeys.has(key));
   const aux = document.createElement("div"); aux.className = "action-aux";
   if (support.target === "target" && candidates.length > 1 && !usesSlotSelection) {
     const label = document.createElement("label"); label.textContent = "Target";
@@ -1404,7 +1551,7 @@ function selectedCriticalPreview(actorKey, moveId) {
   return undefined;
 }
 
-function requestDamageLabel(span, actorKey, targetKey, moveId, { boundedSlotRange = false, enemyThreat = false } = {}) {
+function requestDamageLabel(span, actorKey, targetKey, moveId, { boundedSlotRange = false, enemyThreat = false, positionActorKey = actorKey } = {}) {
   const generation = damageGeneration;
   if (!targetKey) { span.textContent = "Field"; span.dataset.damageResolved = "true"; return; }
   const previewTargetKey = pendingSwitchTargetKey(selectedState(), targetKey);
@@ -1425,6 +1572,7 @@ function requestDamageLabel(span, actorKey, targetKey, moveId, { boundedSlotRang
     plan,
     stateNodeId: cursorStateNodeId,
     actorKey,
+    positionActorKey,
     targetKey: previewTargetKey,
     moveId,
     criticalHit: selectedCriticalPreview(actorKey, moveId)
@@ -1436,33 +1584,45 @@ function requestDamageLabel(span, actorKey, targetKey, moveId, { boundedSlotRang
   });
 }
 
-function opposingMovePreviewTargets(state, side, actorKey, move, support) {
-  if (plan.game?.battleFormat !== "doubles") return [];
+function opposingMovePreviewEntries(state, side, actorKey, move, support) {
+  if (slotsPerSide(plan) < 2) return [];
   if (["self", "field"].includes(support.target)) return [];
   const opposingSide = side === "player" ? "enemy" : "player";
-  const opposing = new Set(activeKeys(state, opposingSide));
+  const opposing = activeSlotEntries(state, opposingSide)
+    .filter(entry => Number(state.combatantStates[entry.combatantKey]?.hp?.max) > 0)
+    .sort((left, right) => triplePositionForSlot(plan, opposingSide, left.slot) - triplePositionForSlot(plan, opposingSide, right.slot));
   const targetMode = support.targetMode || canonicalTarget(move);
-  return legalTargets(state, side, actorKey, targetMode).filter(key => opposing.has(key));
+  const declared = new Set(legalTargets(state, side, actorKey, targetMode, support));
+  const formationState = tripleFormationPreviewState(state);
+  const previewReachable = new Set(legalTargets(formationState, side, actorKey, targetMode, support));
+  return opposing.map(entry => ({
+    combatantKey: entry.combatantKey,
+    declaredReachable: declared.has(entry.combatantKey),
+    previewReachable: previewReachable.has(entry.combatantKey)
+  }));
 }
 
-function renderDamagePreview(moveButton, side, actorKey, targetKey, moveId) {
+function renderDamagePreview(moveButton, side, actorKey, targetKey, moveId, { positionActorKey = actorKey } = {}) {
   const damage = document.createElement("span");
   damage.className = "damage-label";
   damage.textContent = "…";
   moveButton.append(damage);
-  requestDamageLabel(damage, actorKey, targetKey, moveId, { enemyThreat: side === "enemy" });
+  requestDamageLabel(damage, actorKey, targetKey, moveId, { enemyThreat: side === "enemy", positionActorKey });
 }
 
-function renderSlotDamagePreviews(container, side, slot, actorKey, move, opposingTargets, draft, selectable) {
-  for (const opposingKey of opposingTargets) {
-    const section = selectable ? button("", "damage-slot") : document.createElement("span");
+function renderSlotDamagePreviews(container, side, slot, actorKey, move, opposingTargets, draft, selectable, { positionActorKey = actorKey } = {}) {
+  for (const target of opposingTargets) {
+    const opposingKey = target.combatantKey;
+    const canSelect = selectable && target.declaredReachable;
+    const section = canSelect ? button("", "damage-slot") : document.createElement("span");
     section.className = "damage-slot";
     const slotName = targetSlotLabel(selectedState(), opposingKey);
     section.dataset.slotLabel = slotName;
     const label = document.createElement("small"); label.className = "damage-slot-label"; label.textContent = slotName;
     const value = document.createElement("span"); value.className = "damage-slot-value"; value.textContent = "…";
     section.append(label, value);
-    if (selectable) {
+    section.classList.toggle("is-out-of-range", !target.previewReachable);
+    if (canSelect) {
       section.setAttribute("aria-label", `${move.name} targeting ${slotName}`);
       section.setAttribute("aria-pressed", String(draft.type === "move" && draft.moveId === move.id && draft.targetKey === opposingKey));
       section.addEventListener("click", () => {
@@ -1471,11 +1631,16 @@ function renderSlotDamagePreviews(container, side, slot, actorKey, move, opposin
       });
     }
     container.append(section);
-    requestDamageLabel(value, actorKey, opposingKey, move.id, { boundedSlotRange: true, enemyThreat: side === "enemy" });
+    if (!target.previewReachable) {
+      value.textContent = "Out of range";
+      value.dataset.damageResolved = "true";
+    } else {
+      requestDamageLabel(value, actorKey, opposingKey, move.id, { boundedSlotRange: true, enemyThreat: side === "enemy", positionActorKey });
+    }
   }
 }
 
-function renderSwitchStrip(container, side, slot, actorKey, draft) {
+function renderSwitchStrip(container, side, slot, actorKey, draft, { replacement = false } = {}) {
   const state = selectedState();
   const strip = document.createElement("div"); strip.className = "switch-strip";
   const current = plan.combatants[actorKey];
@@ -1490,9 +1655,20 @@ function renderSwitchStrip(container, side, slot, actorKey, draft) {
     target.classList.toggle("is-current", isCurrent);
     target.setAttribute("aria-label", `${recordName(mon)}${isCurrent ? " (current Pokémon; preview staying in)" : ""}`);
     target.setAttribute("aria-pressed", String(previewKey === mon.combatantKey));
-    target.addEventListener("click", () => setDraft(side, slot, isCurrent
-      ? { type: "switch", actorKey, previewSwitchToKey: actorKey }
-      : { type: "switch", actorKey, switchToKey: mon.combatantKey, previewSwitchToKey: mon.combatantKey }));
+    target.addEventListener("click", () => {
+      if (replacement && !isCurrent) {
+        const sameSidePending = pendingReplacementSlots(state).filter(entry => entry.side === side);
+        const required = replacementRequirement(state, side);
+        for (const entry of sameSidePending) {
+          if (entry.slot === slot) continue;
+          const sibling = actionForSlot(side, entry.slot);
+          if (required === 1 || sibling.switchToKey === mon.combatantKey) actionDraft[side][entry.slot] = { type: "switch", actorKey: activeKey(state, side, entry.slot) };
+        }
+      }
+      setDraft(side, slot, isCurrent
+        ? { type: "switch", actorKey, previewSwitchToKey: actorKey }
+        : { type: "switch", actorKey, switchToKey: mon.combatantKey, previewSwitchToKey: mon.combatantKey });
+    });
     strip.append(target);
   }
   if (!candidates.length) strip.append(Object.assign(document.createElement("p"), { className: "empty", textContent: "No healthy bench Pokémon are available." }));
@@ -1501,33 +1677,50 @@ function renderSwitchStrip(container, side, slot, actorKey, draft) {
 
 function replacementSelectionReady(state) {
   const pending = pendingReplacementSlots(state);
-  return pending.length > 0 && pending.every(entry => actionForSlot(entry.side, entry.slot).switchToKey);
+  if (!pending.length) return false;
+  return ["player", "enemy"].every(side => {
+    const required = replacementRequirement(state, side);
+    const selected = pending.filter(entry => entry.side === side).map(entry => actionForSlot(side, entry.slot).switchToKey).filter(Boolean);
+    return selected.length === required && new Set(selected).size === selected.length;
+  });
 }
 
-function renderCombatantCard(side, slot) {
+function replacementRequirement(state, side) {
+  const pendingCount = pendingReplacementSlots(state).filter(entry => entry.side === side).length;
+  return Math.min(pendingCount, possibleSwitches(state, side).length);
+}
+
+function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
   const { state, committedState, events: previewEvents, previewing } = renderedStateContext();
   const actorKey = activeKey(committedState, side, slot);
   const original = plan.combatants[actorKey];
   const pending = pendingReplacementSlots(committedState).some(entry => entry.side === side && entry.slot === slot);
-  const draft = actionForSlot(side, slot);
+  let draft = actionForSlot(side, slot);
+  if (draft.type === "shift" && !canSelectShift(plan, committedState, side, actorKey)) {
+    actionDraft[side][slot] = {};
+    draft = actionDraft[side][slot];
+  }
   if (pending && draft.type !== "switch") Object.assign(draft, { type: "switch", actorKey });
   const displayKey = draft.type === "switch" && (draft.switchToKey || draft.previewSwitchToKey) ? draft.switchToKey || draft.previewSwitchToKey : actorKey;
   const mon = plan.combatants[displayKey] || original;
   const committedMonState = committedState.combatantStates[displayKey];
   const monState = state.combatantStates[displayKey] || committedMonState;
   const rootState = rootCombatantState(displayKey);
-  const card = document.createElement("article"); card.className = "combatant-card";
-  if (plan.game?.battleFormat === "doubles") {
+  const card = document.createElement("article"); card.className = `combatant-card slot-position-${displaySlot}`;
+  card.dataset.side = side;
+  card.dataset.actionSlot = String(slot);
+  card.dataset.displaySlot = String(displaySlot);
+  if (slotsPerSide(plan) > 1) {
     const slotHeading = document.createElement("div");
     slotHeading.className = "combatant-slot-heading";
-    slotHeading.textContent = `Slot ${battleSlotNumber(side, slot)}`;
+    slotHeading.textContent = `Slot ${battleSlotNumberForPosition(side, displaySlot)}${plan.game?.battleFormat === "triples" ? ` · ${slotPositionLabel(displaySlot)}` : ""}`;
     card.append(slotHeading);
   }
   const header = document.createElement("div"); header.className = "combatant-header";
-  const spriteBox = document.createElement("div"); spriteBox.className = "combatant-sprite"; spriteBox.append(sprite(mon));
+  const spriteBox = document.createElement("div"); spriteBox.className = "combatant-sprite"; spriteBox.append(sprite(currentSpriteRecord(mon, monState)));
   const identity = document.createElement("div");
   const name = document.createElement("h3"); name.className = "combatant-name"; name.textContent = recordName(mon);
-  const species = document.createElement("p"); species.className = "combatant-species"; species.textContent = mon.nickname ? mon.displayName : `${side === "player" ? "Player" : "Enemy"} slot ${slot + 1}`;
+  const species = document.createElement("p"); species.className = "combatant-species"; species.textContent = side === "enemy" ? "" : mon.nickname ? mon.displayName : `Player slot ${battleSlotNumberForPosition(side, displaySlot)}`;
   const meta = document.createElement("div"); meta.className = "meta-row";
   const typeChanged = JSON.stringify(monState.currentTypeIds) !== JSON.stringify(rootState.currentTypeIds);
   const typePreviewChanged = previewing && JSON.stringify(monState.currentTypeIds) !== JSON.stringify(committedMonState.currentTypeIds);
@@ -1599,9 +1792,9 @@ function renderCombatantCard(side, slot) {
       const move = dataset.get("moves", entry.moveId);
       const support = moveSupport(move, dataset);
       const moveButton = button("", "move-button");
-      const switchSelected = draft.type === "switch";
-      moveButton.disabled = switchSelected || !support.supported || Number(committedMonState.movePp?.[entry.moveId] ?? entry.maxPp) <= 0;
-      moveButton.title = switchSelected ? "Switch is selected for this slot" : support.supported ? "" : support.reason;
+      const positionSelected = draft.type === "switch" || draft.type === "shift";
+      moveButton.disabled = positionSelected || !support.supported || Number(committedMonState.movePp?.[entry.moveId] ?? entry.maxPp) <= 0;
+      moveButton.title = draft.type === "switch" ? "Switch is selected for this slot" : draft.type === "shift" ? "Shift is selected for this slot" : support.supported ? "" : support.reason;
       moveButton.setAttribute("aria-pressed", String(draft.type === "move" && draft.moveId === entry.moveId));
       const copy = document.createElement("span"); copy.className = "move-copy";
       const moveName = document.createElement("strong"); moveName.textContent = move?.name || entry.moveId;
@@ -1614,20 +1807,21 @@ function renderCombatantCard(side, slot) {
       moveButton.addEventListener("click", () => configureMoveDraft(side, slot, actorKey, move, support));
       if (support.supported) {
         const targetMode = support.targetMode || canonicalTarget(move);
-        const candidates = legalTargets(committedState, side, actorKey, targetMode);
+        const candidates = legalTargets(committedState, side, actorKey, targetMode, support);
         const targetKey = support.target === "self" ? actorKey : support.target === "field" ? null : draft.moveId === move.id && draft.targetKey ? draft.targetKey : candidates[0];
-        const opposingTargets = opposingMovePreviewTargets(committedState, side, actorKey, move, support);
-        const selectableSlots = !switchSelected
+        const opposingTargets = opposingMovePreviewEntries(committedState, side, actorKey, move, support);
+        const opposingKeys = new Set(opposingTargets.map(target => target.combatantKey));
+        const selectableSlots = !positionSelected
           && support.target === "target"
-          && opposingTargets.length > 0
-          && opposingTargets.length === candidates.length;
+          && candidates.length > 0
+          && candidates.every(key => opposingKeys.has(key));
         if (opposingTargets.length) {
           const group = document.createElement("div"); group.className = "move-button-group";
           group.append(moveButton);
-          renderSlotDamagePreviews(group, side, slot, actorKey, move, opposingTargets, draft, selectableSlots);
+          renderSlotDamagePreviews(group, side, slot, displayKey, move, opposingTargets, draft, selectableSlots, { positionActorKey: actorKey });
           moveActions.append(group);
         } else {
-          renderDamagePreview(moveButton, side, actorKey, targetKey, move.id);
+          renderDamagePreview(moveButton, side, displayKey, targetKey, move.id, { positionActorKey: actorKey });
           moveActions.append(moveButton);
         }
       } else {
@@ -1637,10 +1831,18 @@ function renderCombatantCard(side, slot) {
     if (draft.type === "move" && draft.moveId === entry.moveId) renderActionAux(moveActions, side, slot, actorKey, move, support, draft);
   }
   const replacementReady = pending && replacementSelectionReady(committedState) && currentPreview?.previewKind === "replacement";
-  const replacementCount = pendingReplacementSlots(committedState).length;
+  const replacementCount = replacementRequirement(committedState, side);
+  if (!pending && canSelectShift(plan, committedState, side, actorKey)) {
+    const shiftButton = button(`Shift with Slot ${battleSlotNumberForPosition(side, 1)}`, "shift-button");
+    shiftButton.setAttribute("aria-pressed", String(draft.type === "shift"));
+    shiftButton.addEventListener("click", () => draft.type === "shift"
+      ? setDraft(side, slot, {})
+      : setDraft(side, slot, { type: "shift", actorKey }));
+    moveActions.append(shiftButton);
+  }
   const switchButton = button(
     pending
-      ? replacementReady ? `Confirm Replacement${replacementCount > 1 ? "s" : ""}` : `Choose Replacement${replacementCount > 1 ? "s" : ""}`
+      ? replacementReady && draft.switchToKey ? `Confirm Replacement${replacementCount > 1 ? "s" : ""}` : `Choose Replacement${replacementCount > 1 ? "s" : ""}`
       : "Switch",
     "switch-button"
   );
@@ -1654,7 +1856,7 @@ function renderCombatantCard(side, slot) {
     else setDraft(side, slot, { type: "switch", actorKey });
   });
   moveActions.append(switchButton);
-  if (draft.type === "switch") renderSwitchStrip(moveActions, side, slot, actorKey, draft);
+  if (draft.type === "switch") renderSwitchStrip(moveActions, side, slot, actorKey, draft, { replacement: pending });
   card.append(moveActions);
   if (side === "enemy") updateEnemyThreatHighlights(card);
   return card;
@@ -1667,12 +1869,15 @@ function slotIsEmpty(state, side, slot) {
   return !pending && Number(state.combatantStates[key]?.hp?.max) <= 0;
 }
 
-function renderEmptyCombatantSlot(side, slot) {
+function renderEmptyCombatantSlot(side, slot, { displaySlot = triplePositionForSlot(plan, side, slot) } = {}) {
   const card = document.createElement("article");
-  card.className = "combatant-card empty-combatant-slot";
+  card.className = `combatant-card empty-combatant-slot slot-position-${displaySlot}`;
+  card.dataset.side = side;
+  card.dataset.actionSlot = String(slot);
+  card.dataset.displaySlot = String(displaySlot);
   const slotHeading = document.createElement("div");
   slotHeading.className = "combatant-slot-heading";
-  slotHeading.textContent = `Slot ${battleSlotNumber(side, slot)}`;
+  slotHeading.textContent = `Slot ${battleSlotNumberForPosition(side, displaySlot)}${plan.game?.battleFormat === "triples" ? ` · ${slotPositionLabel(displaySlot)}` : ""}`;
   const empty = document.createElement("p");
   empty.className = "empty-slot-label";
   empty.textContent = "Empty slot";
@@ -1683,14 +1888,25 @@ function renderEmptyCombatantSlot(side, slot) {
 function renderActionPanel(side) {
   const panel = ui[`${side}-action-panel`];
   const doubles = plan.game.battleFormat === "doubles";
+  const triples = plan.game.battleFormat === "triples";
   panel.classList.toggle("is-doubles", doubles);
+  panel.classList.toggle("is-triples", triples);
+  panel.classList.toggle("is-player", side === "player");
+  panel.classList.toggle("is-enemy", side === "enemy");
   const heading = document.createElement("div"); heading.className = "action-panel-title";
   const title = document.createElement("h2"); title.textContent = `${side === "player" ? "Player" : "Enemy"} Action`;
-  const format = document.createElement("span"); format.className = "pill"; format.textContent = doubles ? "Doubles" : "Singles";
+  const format = document.createElement("span"); format.className = "pill"; format.textContent = battleFormatLabel();
   heading.append(title, format);
   const state = selectedState();
-  const slots = doubles ? [0, 1] : [0];
-  const cards = slots.map(slot => slotIsEmpty(state, side, slot) ? renderEmptyCombatantSlot(side, slot) : renderCombatantCard(side, slot));
+  const formationState = triples ? tripleFormationPreviewState(state) : state;
+  const slots = Array.from({ length: slotsPerSide(plan) }, (_, slot) => slot);
+  const cards = slots.map(displaySlot => {
+    const formationSlot = triples ? tripleSlotForPosition(plan, side, displaySlot) : displaySlot;
+    if (slotIsEmpty(formationState, side, formationSlot)) return renderEmptyCombatantSlot(side, formationSlot, { displaySlot });
+    const displayKey = activeKey(formationState, side, formationSlot);
+    const actionSlot = actorSlot(state, side, displayKey);
+    return renderCombatantCard(side, actionSlot >= 0 ? actionSlot : formationSlot, { displaySlot });
+  });
   const cardGrid = document.createElement("div"); cardGrid.className = "action-panel-cards"; cardGrid.append(...cards);
   panel.replaceChildren(heading, cardGrid);
 }
@@ -1709,6 +1925,7 @@ function actionFromDraft(side, slot) {
   const pending = pendingReplacementSlots(state).some(entry => entry.side === side && entry.slot === slot);
   if (pending) return draft.switchToKey ? { actionType: "replacement", side, slot, switchToKey: draft.switchToKey, reason: "previous-active-fainted", consumesTurn: false } : null;
   if (draft.type === "switch") return draft.switchToKey ? { actionType: "switch", actorKey, switchToKey: draft.switchToKey, switchKind: "voluntary", declaredAtStateHash: state.stateHash } : null;
+  if (draft.type === "shift") return { actionType: "shift", actorKey, declaredAtStateHash: state.stateHash };
   if (draft.type !== "move" || !draft.moveId) return null;
   const move = dataset.get("moves", draft.moveId);
   const support = moveSupport(move, dataset);
@@ -1734,8 +1951,12 @@ function actionsFromDraft() {
   const pending = pendingReplacementSlots(state);
   if (pending.length) {
     const replacements = { player: [], enemy: [] };
-    for (const entry of pending) replacements[entry.side].push(actionFromDraft(entry.side, entry.slot));
-    return [...replacements.player, ...replacements.enemy].every(Boolean) ? replacements : null;
+    for (const entry of pending) {
+      const replacement = actionFromDraft(entry.side, entry.slot);
+      if (replacement) replacements[entry.side].push(replacement);
+    }
+    const ready = ["player", "enemy"].every(side => replacements[side].length === replacementRequirement(state, side));
+    return ready ? replacements : null;
   }
   const actions = { player: [], enemy: [] };
   for (const side of ["player", "enemy"]) {
@@ -1821,6 +2042,12 @@ function eventDescription(event) {
   const healing = healingEventDescription(event, { moveName: move?.name || null, maxHp: healingMaxHp });
   if (healing) return { line: healing };
   const targetPrefix = event.targetKey && event.targetKey !== event.actorKey ? outcomeTargetSlotLabel(event.targetKey) : null;
+  if (event.eventType === "shift") {
+    const actor = plan.combatants[event.actorKey];
+    const side = actor?.side || "player";
+    const slot = Number(event.metadata?.toSlot);
+    return { line: `Shifted to Slot ${battleSlotNumber(side, Number.isInteger(slot) ? slot : 1)}` };
+  }
   if (event.eventType === "damage") {
     const damage = event.damageHp || {};
     const percent = event.damagePercent || {};
@@ -1988,7 +2215,7 @@ function outcomeSplitReason(entry, allEntries) {
   const critical = events.find(event => event.eventType === "damage" && event.metadata?.criticalHit === true);
   if (critical) return `${dataset.get("moves", critical.moveId)?.name || critical.moveId} landed a critical hit`;
   const branchingEffect = events.find(event => [
-    "major-status", "volatile-status", "status-failed", "volatile-status-failed", "move-blocked", "move-immune",
+    "ability-change", "form-change", "major-status", "volatile-status", "status-failed", "volatile-status-failed", "move-blocked", "move-immune",
     "protect", "stat-stage-change", "heal", "field-change", "confusion-self-hit"
   ].includes(event.eventType) && event.metadata?.resultLabel);
   if (branchingEffect) return branchingEffect.metadata.resultLabel;
@@ -2109,7 +2336,7 @@ function renderField() {
   const wrapper = document.createElement("div"); wrapper.className = "field-summary";
   const identity = document.createElement("div"); identity.className = "field-identity";
   const trainer = document.createElement("strong"); trainer.textContent = currentTrainerName();
-  const format = document.createElement("span"); format.textContent = plan.game.battleFormat === "doubles" ? "Doubles" : "Singles";
+  const format = document.createElement("span"); format.textContent = battleFormatLabel();
   identity.append(trainer, format); wrapper.append(identity);
   const effects = [];
   const global = state.fieldState.global;
@@ -2190,7 +2417,9 @@ function nodeActionSummary(state) {
     const actions = actionList(group.actions, side);
     for (const action of actions) {
       const actor = plan.combatants[action.actorKey] || plan.combatants[action.switchToKey];
-      const result = action.actionType === "move" ? dataset.get("moves", action.moveId)?.name || action.moveId : `Switch to ${recordName(plan.combatants[action.switchToKey])}`;
+      const result = action.actionType === "move" ? dataset.get("moves", action.moveId)?.name || action.moveId
+        : action.actionType === "shift" ? "Shifted position"
+          : `Switch to ${recordName(plan.combatants[action.switchToKey])}`;
       entries.push(`${side === "player" ? "P" : "E"}: ${recordName(actor)} · ${result}`);
     }
   }
@@ -2267,7 +2496,20 @@ function renderTree() {
       const visuals = turnNodeVisuals(plan, entry.decisionStateNodeId, visualOutcomeState, visualActions);
       node.classList.toggle("has-faint", visuals.hasFaint);
       const sprites = document.createElement("span"); sprites.className = "node-sprites";
-      for (const combatantKey of visuals.combatantKeys) {
+      const tripleNode = plan.game?.battleFormat === "triples";
+      if (tripleNode) sprites.classList.add("is-triples");
+      const nodePositionState = visualOutcomeState || state;
+      const nodeCombatantKeys = tripleNode
+        ? ["player", "enemy"].flatMap(side => Array.from({ length: 3 }, (_, position) => activeKey(nodePositionState, side, tripleSlotForPosition(plan, side, position))))
+        : visuals.combatantKeys;
+      for (const combatantKey of nodeCombatantKeys) {
+        if (!combatantKey) {
+          const emptyHolder = document.createElement("span");
+          emptyHolder.className = "node-sprite is-empty";
+          emptyHolder.setAttribute("aria-hidden", "true");
+          sprites.append(emptyHolder);
+          continue;
+        }
         const mon = plan.combatants[combatantKey];
         const holder = document.createElement("span"); holder.className = "node-sprite";
         const fainted = visuals.faintedCombatantKeys.has(combatantKey);
@@ -2275,7 +2517,7 @@ function renderTree() {
         holder.classList.toggle("has-switch-in", switchedIn);
         holder.classList.toggle("has-faint", fainted);
         holder.title = `${recordName(mon)}${switchedIn ? " switched in" : ""}${fainted ? " fainted" : ""}`;
-        holder.append(sprite(mon)); sprites.append(holder);
+        holder.append(sprite(currentSpriteRecord(mon, nodePositionState?.combatantStates?.[combatantKey]))); sprites.append(holder);
       }
       const summary = entry.kind === "committed"
         ? `${state.outcome.label} · ${nodeActionSummary(state)}`
@@ -2319,7 +2561,8 @@ function prefillActions(suppliedGroup = null) {
       if (slot < 0) return;
       actionDraft[side][slot] = action.actionType === "switch"
         ? { type: "switch", actorKey: action.actorKey, switchToKey: action.switchToKey, previewSwitchToKey: action.switchToKey }
-        : { type: "move", moveId: action.moveId, targetKey: action.targetKeys?.[0] || null, mechanicValue: action.mechanicActivations?.[0]?.switchToKey || action.mechanicActivations?.[0]?.typeId || action.mechanicActivations?.[0]?.moveId || null };
+        : action.actionType === "shift" ? { type: "shift", actorKey: action.actorKey }
+          : { type: "move", moveId: action.moveId, targetKey: action.targetKeys?.[0] || null, mechanicValue: action.mechanicActivations?.[0]?.switchToKey || action.mechanicActivations?.[0]?.typeId || action.mechanicActivations?.[0]?.moveId || null };
     });
   }
 }
@@ -2377,9 +2620,15 @@ function renderWorkspace() {
   ui.workspace.hidden = !hasPlan;
   ui["empty-plan"].hidden = hasPlan;
   ui["battle-workspace"].classList.toggle("is-doubles", hasPlan && plan.game.battleFormat === "doubles");
-  ui["plan-toolbar-label"].textContent = hasPlan ? `${plan.name} · ${currentTrainerName()} · ${plan.game.battleFormat === "doubles" ? "Doubles" : "Singles"}` : "No battle plan open";
+  ui["battle-workspace"].classList.toggle("is-triples", hasPlan && plan.game.battleFormat === "triples");
+  ui["plan-toolbar-label"].textContent = hasPlan ? `${plan.name} · ${currentTrainerName()} · ${battleFormatLabel()}` : "No battle plan open";
   ui["commit-turn"].disabled = true;
-  if (liveButton) { liveButton.disabled = !hasPlan || needsRecalculation; liveButton.textContent = liveWriter?.active ? "Stop Live Edit" : "Begin Live Edit"; }
+  if (liveButton) {
+    const overlayCompatible = !hasPlan || plan.game.battleFormat !== "triples";
+    liveButton.disabled = !hasPlan || needsRecalculation || !overlayCompatible;
+    liveButton.textContent = liveWriter?.active ? "Stop Live Edit" : "Begin Live Edit";
+    liveButton.title = overlayCompatible ? "" : "Triple plans stay local until Overlay gains Triple projection support";
+  }
   ui["recalculate-plan"].hidden = !hasPlan || !needsRecalculation;
   if (!hasPlan) return;
   ui["revision-label"].textContent = `Draft r${plan.documentRevision}`;
@@ -2426,6 +2675,16 @@ async function commitCurrentPreview() {
     await flushLiveEdit();
     renderWorkspace();
     setStatus(lockingBattleEnd ? "Battle-ending branch locked in the local draft." : replacementCommit ? "Replacement prepared for the next turn." : result.outcomeAdded ? "Crafted outcome branch added to the local draft." : result.created ? "Turn committed to the local draft." : "Opened the existing branch.");
+    if (lockingBattleEnd) {
+      const progression = branchProgressionSnapshot(plan, cursorStateNodeId);
+      if (progression.length && await requestProgressionSave(progression)) {
+        const saved = applyBranchProgressionToLibrary(boxLibrary, plan, cursorStateNodeId);
+        boxLibrary = saved.library;
+        await saveLibrary();
+        const skipped = saved.skipped.length ? ` ${saved.skipped.length} record${saved.skipped.length === 1 ? " was" : "s were"} not updated because the Box identity could not be resolved.` : "";
+        setStatus(`Saved absolute EXP and levels for ${saved.updated.length} party Pokémon. The active plan still uses its original starting snapshot; the saved values apply when a new plan begins.${skipped}`, saved.updated.length === 0);
+      }
+    }
   } catch (error) { setStatus(error.message, true); }
 }
 
@@ -2459,6 +2718,7 @@ async function importPlanFile(file) {
     const probabilityRepair = needsRecalculation ? { plan: imported, refreshedStateNodeIds: [] } : await repairUnknownGraphProbabilities(imported);
     plan = probabilityRepair.plan;
     const importedParty = addImportedPlanParty(boxLibrary, plan, dataset);
+    bindPlanPlayerPartyToImportedBox(plan, importedParty);
     const importedReviewStateId = preferredImportedReviewStateId(plan);
     const importedReviewState = importedReviewStateId ? plan.stateNodes[importedReviewStateId] : null;
     const importedReviewGroup = importedReviewState?.parentActionGroupId ? plan.actionGroups[importedReviewState.parentActionGroupId] : null;
@@ -2711,7 +2971,7 @@ function wireEvents() {
     finally { ui["import-boxes"].value = ""; }
   });
   ui["trainer-select"].addEventListener("change", updateVariantSelect);
-  ui["variant-select"].addEventListener("change", updateBeginAvailability);
+  ui["variant-select"].addEventListener("change", () => { renderEnemyTeamSummary(); updateBeginAvailability(); });
   ui["context-box-select"].addEventListener("change", () => { contextSelection = { ...emptyContextSelection(), boxId: ui["context-box-select"].value || null }; refreshContextPartySelect(); renderContextPokemonGrid(); });
   ui["party-source-mode"].addEventListener("change", () => { contextSelection.pokemonIds = []; contextSelection.partyId = null; contextSelection.saved = false; refreshContextPartySelect(); renderContextPokemonGrid(); });
   ui["context-party-select"].addEventListener("change", () => { contextSelection.partyId = ui["context-party-select"].value || null; contextSelection.saved = false; renderContextPokemonGrid(); });
@@ -2740,6 +3000,7 @@ function wireEvents() {
   ui["live-save-quit"]?.addEventListener("click", () => setTimeout(() => { renderExportSelection(); ui["output-dialog"].showModal(); }, 0));
   ui["live-keep-editing"]?.addEventListener("click", () => setStatus("Live writing remains stopped. The same local draft is still open."));
   ui["destructive-dialog"].addEventListener("close", () => resolveDestructive(ui["destructive-dialog"].returnValue));
+  ui["progression-dialog"].addEventListener("close", resolveProgressionPrompt);
   window.addEventListener("beforeunload", () => { clearTimeout(notesPersistTimer); worker?.terminate(); liveWriter?.stopHeartbeat?.(); });
 }
 

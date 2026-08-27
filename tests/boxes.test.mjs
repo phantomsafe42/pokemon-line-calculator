@@ -15,7 +15,8 @@ import {
   updateParty,
   upsertPokemon
 } from "../src/boxes/library.js";
-import { addImportedPlanParty } from "../src/boxes/plan_import.js";
+import { addImportedPlanParty, bindPlanPlayerPartyToImportedBox } from "../src/boxes/plan_import.js";
+import { applyBranchProgressionToLibrary, branchProgressionSnapshot } from "../src/boxes/progression.js";
 import { exportShowdown, parseShowdown } from "../src/boxes/showdown.js";
 import { parseVw2rSave, selectVw2rSavePokemon } from "../src/boxes/vw2r_save_import.js";
 import { fixturePlan } from "./helpers.mjs";
@@ -124,6 +125,11 @@ test("Boxes JSON is versioned, portable, mergeable, and game scoped", () => {
 test("plan imports create incrementing Import boxes with a referenced player party", () => {
   const fixture = fixturePlan();
   const first = addImportedPlanParty(createEmptyBoxLibrary(), fixture.plan, fixture.dataset);
+  bindPlanPlayerPartyToImportedBox(fixture.plan, first);
+  for (const combatant of Object.values(fixture.plan.combatants).filter(entry => entry.side === "player")) {
+    assert.equal(combatant.source.boxId, first.boxId);
+    assert.ok(first.library.games[fixture.dataset.gameId].boxes[first.boxId].pokemon[combatant.source.uniqueKey]);
+  }
   const second = addImportedPlanParty(first.library, fixture.plan, fixture.dataset);
   const boxes = boxesForGame(second.library, fixture.dataset.gameId);
   assert.deepEqual(boxes.map(box => box.name), ["Import 1", "Import 2"]);
@@ -138,6 +144,56 @@ test("plan imports create incrementing Import boxes with a referenced player par
   const parsed = parseBoxLibrary(exportBoxLibrary(second.library));
   const third = addImportedPlanParty(parsed, fixture.plan, fixture.dataset);
   assert.equal(boxesForGame(third.library, fixture.dataset.gameId).at(-1).name, "Import 3");
+});
+
+test("locked branch progression writes absolute totals and a later branch overwrites instead of compounding", () => {
+  const fixture = fixturePlan();
+  const [record] = parseShowdown(sampleShowdown, dataset);
+  record.level = 26;
+  record.experience = 15_000;
+  const added = addBox(createEmptyBoxLibrary(), fixture.dataset.gameId, { pokemon: [record], partyPokemonIds: [record.id] });
+  const player = fixture.players[0];
+  const plannedPlayer = fixture.plan.combatants[player.combatantKey];
+  plannedPlayer.source = { ...plannedPlayer.source, kind: "boxes-library", uniqueKey: record.id, boxId: added.boxId };
+  plannedPlayer.level = 26;
+  plannedPlayer.experience = 15_000;
+  const root = fixture.plan.stateNodes[fixture.plan.initialStateNodeId];
+  root.combatantStates[player.combatantKey].currentLevel = 26;
+  root.combatantStates[player.combatantKey].experience = 15_000;
+
+  const firstBranch = structuredClone(root);
+  firstBranch.stateNodeId = "state-exp-first";
+  firstBranch.turnNumber = 1;
+  firstBranch.combatantStates[player.combatantKey].currentLevel = 27;
+  firstBranch.combatantStates[player.combatantKey].experience = 17_100;
+  fixture.plan.stateNodes[firstBranch.stateNodeId] = firstBranch;
+
+  const secondBranch = structuredClone(root);
+  secondBranch.stateNodeId = "state-exp-second";
+  secondBranch.turnNumber = 1;
+  secondBranch.combatantStates[player.combatantKey].currentLevel = 26;
+  secondBranch.combatantStates[player.combatantKey].experience = 15_000;
+  fixture.plan.stateNodes[secondBranch.stateNodeId] = secondBranch;
+
+  const snapshot = branchProgressionSnapshot(fixture.plan, firstBranch.stateNodeId).find(entry => entry.combatantKey === player.combatantKey);
+  assert.deepEqual({ initialExperience: snapshot.initialExperience, experience: snapshot.experience, initialLevel: snapshot.initialLevel, level: snapshot.level }, {
+    initialExperience: 15_000,
+    experience: 17_100,
+    initialLevel: 26,
+    level: 27
+  });
+
+  const firstSave = applyBranchProgressionToLibrary(added.library, fixture.plan, firstBranch.stateNodeId);
+  let savedRecord = boxesForGame(firstSave.library, fixture.dataset.gameId)[0].pokemon[record.id];
+  assert.equal(savedRecord.experience, 17_100);
+  assert.equal(savedRecord.level, 27);
+
+  const secondSave = applyBranchProgressionToLibrary(firstSave.library, fixture.plan, secondBranch.stateNodeId);
+  savedRecord = boxesForGame(secondSave.library, fixture.dataset.gameId)[0].pokemon[record.id];
+  assert.equal(savedRecord.experience, 15_000);
+  assert.equal(savedRecord.level, 26);
+  assert.equal(root.combatantStates[player.combatantKey].experience, 15_000);
+  assert.equal(root.combatantStates[player.combatantKey].currentLevel, 26);
 });
 
 test("VW2R save identity keeps the empty held-item sentinel unmapped", () => {

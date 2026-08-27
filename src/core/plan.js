@@ -1,11 +1,15 @@
-import { assertValidPlanDocument } from "../contracts/plan_contract.js";
+import { assertValidPlanDocument, PLAN_SCHEMA_VERSION } from "../contracts/plan_contract.js";
 import { clone, exactRange, makeStableId, nowIso, shortHash, stableStringify, toId } from "./primitives.js";
 import { activeKeys, battleFormat as normalizeBattleFormat, slotsPerSide } from "./battle_slots.js";
 import { createInitialExperienceState } from "../rulesets/vw2r_experience.js";
-import { entryAbilityEffects } from "../rulesets/switch_rules.js?v=20260825-download";
-import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js";
+import { entryAbilityEffects } from "../rulesets/switch_rules.js?v=20260827-ability-state-events";
+import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260827-ability-form-events";
+import { combatantsAreAdjacent } from "../rulesets/triple_battle.js?v=20260827-triples-slot-display";
+import { abilityStatStageRule, activeAbilityId } from "../rulesets/ability_rules.js?v=20260827-ability-state-events";
+import { weatherIsSuppressed } from "../rulesets/battle_rules.js?v=20260827-ability-state-events";
+import { ABILITY_FORM_STATE_VERSION, applyCombatantFormState, desiredWeatherAbilityForm } from "../rulesets/form_rules.js";
 
-export const INITIAL_ENTRY_EFFECTS_VERSION = 1;
+export const INITIAL_ENTRY_EFFECTS_VERSION = 2;
 
 const INITIAL_STAT_LABELS = Object.freeze({ atk: "Attack", def: "Defense", spa: "Sp. Atk", spd: "Sp. Def", spe: "Speed", accuracy: "Accuracy", evasion: "Evasion" });
 
@@ -29,7 +33,8 @@ export function createDefaultVolatiles() {
     rechargeRequired: false,
     protectStreak: 0,
     magnetRiseTurns: 0,
-    telekinesisTurns: 0
+    telekinesisTurns: 0,
+    tracePending: false
   };
 }
 
@@ -98,11 +103,13 @@ export function createCombatantState(combatant, override = {}) {
     currentItemId: combatant.originalItemId,
     itemState: combatant.originalItemId ? "held" : "none",
     currentTypeIds: [...combatant.originalTypeIds],
+    currentSpeciesId: combatant.speciesId,
+    currentSpriteId: combatant.formId || combatant.speciesId,
     lastMoveId: null,
     usedMoveIds: [],
     enteredTurnNumber: 0,
     movePp: Object.fromEntries(combatant.moves.map(move => [move.moveId, move.maxPp])),
-    volatileConditions: createDefaultVolatiles(),
+    volatileConditions: { ...createDefaultVolatiles(), tracePending: toId(combatant.originalAbilityId) === "trace" },
     turnFlags: resetTurnFlags()
   };
 }
@@ -197,14 +204,19 @@ function entryComparisonState(plan, state, combatantKey) {
   };
 }
 
-function applyInitialEntryEffect(root, events, actorKey, side, effect, opposingKey = null) {
+function applyInitialEntryEffect(root, events, actorKey, side, effect, opposingKey = null, generation = 5, plan = null) {
   if (effect.kind === "unsupported") throw new Error(effect.reason);
   if (effect.kind === "stat-stage") {
     const affectedKey = effect.target === "opponent" ? opposingKey : actorKey;
     const affectedState = root.combatantStates[affectedKey];
     if (!affectedState) return;
     const from = Math.max(-6, Math.min(6, Number(affectedState.statStages[effect.stat] || 0)));
-    const to = Math.max(-6, Math.min(6, from + Number(effect.delta || 0)));
+    const rule = abilityStatStageRule({ targetState: affectedState, sourceKey: actorKey, targetKey: affectedKey, stat: effect.stat, requestedDelta: effect.delta, generation });
+    if (rule.blockedBy) {
+      initialEntryEvent(events, { eventType: "ability-blocked", actorKey: affectedKey, targetKey: affectedKey, metadata: { cause: rule.blockedBy, resultLabel: `${rule.blockedBy} prevented the stat drop` } });
+      return;
+    }
+    const to = Math.max(-6, Math.min(6, from + Number(rule.delta || 0)));
     affectedState.statStages[effect.stat] = to;
     initialEntryEvent(events, {
       eventType: "stat-stage-change",
@@ -213,6 +225,9 @@ function applyInitialEntryEffect(root, events, actorKey, side, effect, opposingK
       metadata: { cause: effect.cause, resultLabel: `${INITIAL_STAT_LABELS[effect.stat] || effect.stat} ${to - from >= 0 ? "+" : ""}${to - from}` },
       changes: [{ path: `combatantStates.${affectedKey}.statStages.${effect.stat}`, from, to }]
     });
+    if (rule.reaction && to < from) {
+      applyInitialEntryEffect(root, events, affectedKey, side, { kind: "stat-stage", target: "self", stat: rule.reaction.stat, delta: rule.reaction.delta, cause: rule.reaction.cause }, affectedKey, generation, plan);
+    }
     return;
   }
   if (effect.kind === "intimidate-blocked") {
@@ -234,20 +249,48 @@ function applyInitialEntryEffect(root, events, actorKey, side, effect, opposingK
       metadata: { cause: effect.cause, fieldKind: "weather", fieldId: effect.weatherId, resultLabel: `${effect.weatherId} weather` },
       changes: [{ path: "fieldState.global.weather", from: previous, to: clone(condition) }]
     });
+    return;
+  }
+  if (effect.kind === "copy-opponent-ability") {
+    const state = root.combatantStates[actorKey];
+    state.volatileConditions ||= createDefaultVolatiles();
+    state.volatileConditions.tracePending = true;
+    return;
+  }
+  if (effect.kind === "transform-opponent" && plan && opposingKey) {
+    const actorState = root.combatantStates[actorKey];
+    const targetState = root.combatantStates[opposingKey];
+    if (!targetState?.volatileConditions?.substituteHp && !targetState?.transformedIntoKey) {
+      actorState.currentAbilityId = targetState.currentAbilityId;
+      actorState.currentTypeIds = [...targetState.currentTypeIds];
+      actorState.statStages = { ...targetState.statStages };
+      actorState.transformedIntoKey = opposingKey;
+      actorState.calculatedStatOverrides = { ...plan.combatants[opposingKey].calculatedStats, ...(targetState.currentStats || {}), hp: plan.combatants[actorKey].calculatedStats.hp };
+      actorState.moveSetOverride = plan.combatants[opposingKey].moves.map(entry => ({ moveId: entry.moveId, maxPp: Math.min(5, entry.maxPp) }));
+      actorState.movePp = Object.fromEntries(actorState.moveSetOverride.map(entry => [entry.moveId, entry.maxPp]));
+      initialEntryEvent(events, { eventType: "ability-change", actorKey, targetKey: opposingKey, metadata: { cause: effect.cause, resultLabel: `Transformed into ${plan.combatants[opposingKey].displayName}` } });
+    }
   }
 }
 
 export function upgradeInitialEntryEffects(plan, dataset) {
-  if (Number(plan?.initialEntryEffectsVersion || 0) >= INITIAL_ENTRY_EFFECTS_VERSION) return { plan, changed: false };
+  const needsEntryEffects = Number(plan?.initialEntryEffectsVersion || 0) < INITIAL_ENTRY_EFFECTS_VERSION;
+  const needsFormState = Number(plan?.initialAbilityFormStateVersion || 0) < ABILITY_FORM_STATE_VERSION;
+  if (!needsEntryEffects && !needsFormState) return { plan, changed: false };
   const next = clone(plan);
   const root = next.stateNodes[next.initialStateNodeId];
   if (!root) throw new Error("The plan has no initial state for switch-in ability resolution");
   const generation = Number(dataset.mechanics?.damageGeneration || 5);
-  const events = [];
-  for (const entry of initialEntryOrder(next, root)) {
+  const events = needsEntryEffects ? [] : (root.resolutionEventIds || []).map(eventId => next.resolutionEvents?.[eventId]).filter(Boolean).map(event => {
+    const { eventId, turnNumber, step, ...details } = event;
+    return details;
+  });
+  if (needsEntryEffects) for (const entry of initialEntryOrder(next, root)) {
     const otherSide = entry.side === "player" ? "enemy" : "player";
     const opponents = activeKeys(root, otherSide).filter(key => Number(root.combatantStates[key]?.hp?.max) > 0);
-    const firstOpponent = opponents[0] || null;
+    const firstOpponent = activeAbilityId(root.combatantStates[entry.combatantKey]) === "imposter"
+      ? activeKeys(root, otherSide)[entry.slot] || opponents[0] || null
+      : opponents[0] || null;
     const opposingStates = opponents.map(key => entryComparisonState(next, root, key));
     const firstEffects = entryAbilityEffects({
       enteringState: root.combatantStates[entry.combatantKey],
@@ -257,27 +300,59 @@ export function upgradeInitialEntryEffects(plan, dataset) {
     });
     const targetsEachOpponent = firstEffects.some(effect => effect.target === "opponent" || effect.kind === "intimidate-blocked");
     if (targetsEachOpponent) {
-      for (const opposingKey of opponents) {
+      const eligibleOpponents = String(root.combatantStates[entry.combatantKey]?.currentAbilityId || "").toLowerCase() === "intimidate"
+        ? opponents.filter(opposingKey => combatantsAreAdjacent(root, entry.side, entry.combatantKey, otherSide, opposingKey, next))
+        : opponents;
+      for (const opposingKey of eligibleOpponents) {
         const effects = entryAbilityEffects({
           enteringState: root.combatantStates[entry.combatantKey],
           opposingState: entryComparisonState(next, root, opposingKey),
           opposingStates,
           generation
         });
-        for (const effect of effects) applyInitialEntryEffect(root, events, entry.combatantKey, entry.side, effect, opposingKey);
+        for (const effect of effects) applyInitialEntryEffect(root, events, entry.combatantKey, entry.side, effect, opposingKey, generation, next);
       }
     } else {
-      for (const effect of firstEffects) applyInitialEntryEffect(root, events, entry.combatantKey, entry.side, effect, firstOpponent);
+      for (const effect of firstEffects) applyInitialEntryEffect(root, events, entry.combatantKey, entry.side, effect, firstOpponent, generation, next);
     }
   }
+  for (const [combatantKey, state] of Object.entries(root.combatantStates)) {
+    const combatant = next.combatants[combatantKey];
+    state.currentSpeciesId ||= combatant.speciesId;
+    state.currentSpriteId ||= combatant.formId || combatant.speciesId;
+  }
+  const activeStates = activeKeys(root, "player").concat(activeKeys(root, "enemy")).map(key => root.combatantStates[key]).filter(Boolean);
+  const weatherSuppressed = weatherIsSuppressed(activeStates);
+  for (const entry of initialEntryOrder(next, root)) {
+    const state = root.combatantStates[entry.combatantKey];
+    const form = desiredWeatherAbilityForm({ combatant: next.combatants[entry.combatantKey], state, fieldState: root.fieldState, weatherSuppressed });
+    const changes = applyCombatantFormState({ combatant: next.combatants[entry.combatantKey], state, dataset, form });
+    if (changes.length) {
+      initialEntryEvent(events, {
+        eventType: "form-change",
+        actorKey: entry.combatantKey,
+        targetKey: entry.combatantKey,
+        metadata: { cause: form.cause, speciesId: form.speciesId, spriteId: form.spriteId, resultLabel: `${form.cause === "forecast" ? "Forecast" : "Flower Gift"} changed form` },
+        changes: changes.map(change => ({ path: `combatantStates.${entry.combatantKey}.${change.field}`, from: change.from, to: change.to }))
+      });
+    }
+  }
+  for (const side of ["player", "enemy"]) {
+    root.fieldState.sides[side].isFlowerGift = activeKeys(root, side).some(key => {
+      const state = root.combatantStates[key];
+      return activeAbilityId(state) === "flowergift" && state.currentSpriteId === "cherrim-sunshine" && Number(state.hp?.max) > 0;
+    });
+  }
   next.resolutionEvents ||= {};
+  for (const eventId of root.resolutionEventIds || []) delete next.resolutionEvents[eventId];
   root.resolutionEventIds = [];
   events.forEach((rawEvent, index) => {
     const eventId = `event-initial-${index + 1}-${shortHash(stableStringify(rawEvent))}`;
     next.resolutionEvents[eventId] = { eventId, turnNumber: 0, step: index + 1, ...rawEvent };
     root.resolutionEventIds.push(eventId);
   });
-  next.initialEntryEffectsVersion = INITIAL_ENTRY_EFFECTS_VERSION;
+  if (needsEntryEffects) next.initialEntryEffectsVersion = INITIAL_ENTRY_EFFECTS_VERSION;
+  next.initialAbilityFormStateVersion = ABILITY_FORM_STATE_VERSION;
   updateStateHash(root);
   return { plan: assertValidPlanDocument(next), changed: true };
 }
@@ -328,7 +403,7 @@ export function createPlanDocument({
   const identity = { gameId: dataset.gameId, trainerId, trainerVariantId, sourceSnapshot };
   const plan = {
     kind: "pokemon-battle-plan",
-    schemaVersion: 2,
+    schemaVersion: format === "triples" ? PLAN_SCHEMA_VERSION : 2,
     planId: makeStableId("plan", identity),
     name: name || `${dataset.displayName} Battle Plan`,
     createdAt: now,

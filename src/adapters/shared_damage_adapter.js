@@ -1,4 +1,4 @@
-import { calculatorFieldName } from "../rulesets/battle_rules.js";
+import { calculatorFieldName } from "../rulesets/battle_rules.js?v=20260827-ability-state-events";
 import { isHiddenPowerType } from "../core/hidden_power.js";
 
 export function calculatorMoveName(move) {
@@ -24,9 +24,10 @@ function displayCombatant(combatant, state) {
     ? state.currentTypeIds.filter(type => String(type).toLowerCase() !== "flying")
     : state.currentTypeIds;
   return {
-    species: combatant.speciesId,
+    species: state.currentSpeciesId || combatant.formId || combatant.speciesId,
     level: Number(state.currentLevel ?? combatant.level),
     ability: state.currentAbilityId || "",
+    abilityOn: Boolean(state.volatileConditions?.flashFire),
     item: Number(state.volatileConditions?.embargoTurns || 0) > 0 ? "" : state.currentItemId || "",
     nature: combatant.natureId,
     gender: combatant.gender || undefined,
@@ -48,7 +49,7 @@ export function createSharedDamageAdapter(runtime) {
   }
   return {
     supportsCriticalHits: true,
-    calculate({ attacker, defender, attackerState, defenderState, move, fieldState, moveOverrides, moveHits, criticalHit, battleFormat = "singles" }) {
+    calculate({ attacker, defender, attackerState, defenderState, move, fieldState, moveOverrides, moveHits, criticalHit, battleFormat = "singles", spreadTargetCount = null }) {
       let weather;
       let terrain;
       try {
@@ -76,7 +77,7 @@ export function createSharedDamageAdapter(runtime) {
         defenderTrainerId: defenderSource.trainerId,
         defenderTrainerVariantId: defenderSource.trainerVariantId,
         defenderSlot: defenderSource.slot,
-        battleFormat: String(battleFormat).toLowerCase() === "doubles" ? "double" : "single",
+        battleFormat: ["doubles", "triples"].includes(String(battleFormat).toLowerCase()) && Number(spreadTargetCount) !== 1 ? "double" : "single",
         isGravity: Number(fieldState?.global?.gravityTurns || 0) > 0,
         isMagicRoom: Number(fieldState?.global?.magicRoomTurns || 0) > 0,
         isWonderRoom: Number(fieldState?.global?.wonderRoomTurns || 0) > 0,
