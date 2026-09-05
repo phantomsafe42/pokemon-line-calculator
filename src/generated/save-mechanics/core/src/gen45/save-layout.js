@@ -19,7 +19,7 @@ export const GEN45_SAVE_LAYOUTS = Object.freeze({
     partyRecordSize: 236,
     boxDataRelativeOffset: 4,
     boxRecordSize: 136,
-    boxSlotCount: 420,
+    boxSlotCount: 540,
     boxPadding: 0,
   }),
   hgss: Object.freeze({
@@ -46,7 +46,7 @@ export const GEN45_SAVE_LAYOUTS = Object.freeze({
     partyRecordSize: 220,
     boxDataRelativeOffset: 0x400,
     boxRecordSize: 136,
-    boxSlotCount: 210,
+    boxSlotCount: 720,
     boxPadding: 16,
   }),
 });

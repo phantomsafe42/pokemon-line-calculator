@@ -1,0 +1,1975 @@
+{
+  "schemaVersion": 1,
+  "gameId": "storm-silver",
+  "kind": "evolutions",
+  "records": [
+    {
+      "id": "bulbasaur-to-ivysaur-1",
+      "fromSpeciesId": "bulbasaur",
+      "toSpeciesId": "ivysaur",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "ivysaur-to-venusaur-1",
+      "fromSpeciesId": "ivysaur",
+      "toSpeciesId": "venusaur",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "charmander-to-charmeleon-1",
+      "fromSpeciesId": "charmander",
+      "toSpeciesId": "charmeleon",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "charmeleon-to-charizard-1",
+      "fromSpeciesId": "charmeleon",
+      "toSpeciesId": "charizard",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "squirtle-to-wartortle-1",
+      "fromSpeciesId": "squirtle",
+      "toSpeciesId": "wartortle",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "wartortle-to-blastoise-1",
+      "fromSpeciesId": "wartortle",
+      "toSpeciesId": "blastoise",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "caterpie-to-metapod-1",
+      "fromSpeciesId": "caterpie",
+      "toSpeciesId": "metapod",
+      "method": "Level",
+      "parameter": "7",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "metapod-to-butterfree-1",
+      "fromSpeciesId": "metapod",
+      "toSpeciesId": "butterfree",
+      "method": "Level",
+      "parameter": "10",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "weedle-to-kakuna-1",
+      "fromSpeciesId": "weedle",
+      "toSpeciesId": "kakuna",
+      "method": "Level",
+      "parameter": "7",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "kakuna-to-beedrill-1",
+      "fromSpeciesId": "kakuna",
+      "toSpeciesId": "beedrill",
+      "method": "Level",
+      "parameter": "10",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "pidgey-to-pidgeotto-1",
+      "fromSpeciesId": "pidgey",
+      "toSpeciesId": "pidgeotto",
+      "method": "Level",
+      "parameter": "18",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "pidgeotto-to-pidgeot-1",
+      "fromSpeciesId": "pidgeotto",
+      "toSpeciesId": "pidgeot",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "rattata-to-raticate-1",
+      "fromSpeciesId": "rattata",
+      "toSpeciesId": "raticate",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "spearow-to-fearow-1",
+      "fromSpeciesId": "spearow",
+      "toSpeciesId": "fearow",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "ekans-to-arbok-1",
+      "fromSpeciesId": "ekans",
+      "toSpeciesId": "arbok",
+      "method": "Level",
+      "parameter": "22",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "pikachu-to-raichu-1",
+      "fromSpeciesId": "pikachu",
+      "toSpeciesId": "raichu",
+      "method": "Item",
+      "parameter": "thunderstone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "sandshrew-to-sandslash-1",
+      "fromSpeciesId": "sandshrew",
+      "toSpeciesId": "sandslash",
+      "method": "Item",
+      "parameter": "icestone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "nidoranf-to-nidorina-1",
+      "fromSpeciesId": "nidoranf",
+      "toSpeciesId": "nidorina",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "nidorina-to-nidoqueen-1",
+      "fromSpeciesId": "nidorina",
+      "toSpeciesId": "nidoqueen",
+      "method": "Item",
+      "parameter": "moonstone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "nidoranm-to-nidorino-1",
+      "fromSpeciesId": "nidoranm",
+      "toSpeciesId": "nidorino",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "nidorino-to-nidoking-1",
+      "fromSpeciesId": "nidorino",
+      "toSpeciesId": "nidoking",
+      "method": "Item",
+      "parameter": "moonstone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "clefairy-to-clefable-1",
+      "fromSpeciesId": "clefairy",
+      "toSpeciesId": "clefable",
+      "method": "Item",
+      "parameter": "moonstone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "vulpix-to-ninetales-1",
+      "fromSpeciesId": "vulpix",
+      "toSpeciesId": "ninetales",
+      "method": "Item",
+      "parameter": "icestone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "jigglypuff-to-wigglytuff-1",
+      "fromSpeciesId": "jigglypuff",
+      "toSpeciesId": "wigglytuff",
+      "method": "Item",
+      "parameter": "moonstone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "zubat-to-golbat-1",
+      "fromSpeciesId": "zubat",
+      "toSpeciesId": "golbat",
+      "method": "Level",
+      "parameter": "22",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "golbat-to-crobat-1",
+      "fromSpeciesId": "golbat",
+      "toSpeciesId": "crobat",
+      "method": "Level",
+      "parameter": null,
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "oddish-to-gloom-1",
+      "fromSpeciesId": "oddish",
+      "toSpeciesId": "gloom",
+      "method": "Level",
+      "parameter": "21",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "gloom-to-vileplume-1",
+      "fromSpeciesId": "gloom",
+      "toSpeciesId": "vileplume",
+      "method": "Item",
+      "parameter": "leafstone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "gloom-to-bellossom-2",
+      "fromSpeciesId": "gloom",
+      "toSpeciesId": "bellossom",
+      "method": "Item",
+      "parameter": "sunstone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "paras-to-parasect-1",
+      "fromSpeciesId": "paras",
+      "toSpeciesId": "parasect",
+      "method": "Level",
+      "parameter": "24",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "venonat-to-venomoth-1",
+      "fromSpeciesId": "venonat",
+      "toSpeciesId": "venomoth",
+      "method": "Level",
+      "parameter": "31",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "diglett-to-dugtrio-1",
+      "fromSpeciesId": "diglett",
+      "toSpeciesId": "dugtrio",
+      "method": "Level",
+      "parameter": "26",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "meowth-to-persian-1",
+      "fromSpeciesId": "meowth",
+      "toSpeciesId": "persian",
+      "method": "Level",
+      "parameter": null,
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "psyduck-to-golduck-1",
+      "fromSpeciesId": "psyduck",
+      "toSpeciesId": "golduck",
+      "method": "Level",
+      "parameter": "33",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "mankey-to-primeape-1",
+      "fromSpeciesId": "mankey",
+      "toSpeciesId": "primeape",
+      "method": "Level",
+      "parameter": "28",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "growlithe-to-arcanine-1",
+      "fromSpeciesId": "growlithe",
+      "toSpeciesId": "arcanine",
+      "method": "Item",
+      "parameter": "firestone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "poliwag-to-poliwhirl-1",
+      "fromSpeciesId": "poliwag",
+      "toSpeciesId": "poliwhirl",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "poliwhirl-to-poliwrath-1",
+      "fromSpeciesId": "poliwhirl",
+      "toSpeciesId": "poliwrath",
+      "method": "Item",
+      "parameter": "waterstone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "poliwhirl-to-politoed-2",
+      "fromSpeciesId": "poliwhirl",
+      "toSpeciesId": "politoed",
+      "method": "Item",
+      "parameter": "kingsrock",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "abra-to-kadabra-1",
+      "fromSpeciesId": "abra",
+      "toSpeciesId": "kadabra",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "kadabra-to-alakazam-1",
+      "fromSpeciesId": "kadabra",
+      "toSpeciesId": "alakazam",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "machop-to-machoke-1",
+      "fromSpeciesId": "machop",
+      "toSpeciesId": "machoke",
+      "method": "Level",
+      "parameter": "28",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "machoke-to-machamp-1",
+      "fromSpeciesId": "machoke",
+      "toSpeciesId": "machamp",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "bellsprout-to-weepinbell-1",
+      "fromSpeciesId": "bellsprout",
+      "toSpeciesId": "weepinbell",
+      "method": "Level",
+      "parameter": "21",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "weepinbell-to-victreebel-1",
+      "fromSpeciesId": "weepinbell",
+      "toSpeciesId": "victreebel",
+      "method": "Item",
+      "parameter": "leafstone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "tentacool-to-tentacruel-1",
+      "fromSpeciesId": "tentacool",
+      "toSpeciesId": "tentacruel",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "geodude-to-graveler-1",
+      "fromSpeciesId": "geodude",
+      "toSpeciesId": "graveler",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "graveler-to-golem-1",
+      "fromSpeciesId": "graveler",
+      "toSpeciesId": "golem",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "ponyta-to-rapidash-1",
+      "fromSpeciesId": "ponyta",
+      "toSpeciesId": "rapidash",
+      "method": "Level",
+      "parameter": "35",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "slowpoke-to-slowking-1",
+      "fromSpeciesId": "slowpoke",
+      "toSpeciesId": "slowking",
+      "method": "Item",
+      "parameter": "kingsrock",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "slowpoke-to-slowbro-2",
+      "fromSpeciesId": "slowpoke",
+      "toSpeciesId": "slowbro",
+      "method": "Level",
+      "parameter": "33",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "magnemite-to-magneton-1",
+      "fromSpeciesId": "magnemite",
+      "toSpeciesId": "magneton",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "magneton-to-magnezone-1",
+      "fromSpeciesId": "magneton",
+      "toSpeciesId": "magnezone",
+      "method": "Item",
+      "parameter": "thunderstone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "doduo-to-dodrio-1",
+      "fromSpeciesId": "doduo",
+      "toSpeciesId": "dodrio",
+      "method": "Level",
+      "parameter": "31",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "seel-to-dewgong-1",
+      "fromSpeciesId": "seel",
+      "toSpeciesId": "dewgong",
+      "method": "Level",
+      "parameter": "34",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "grimer-to-muk-1",
+      "fromSpeciesId": "grimer",
+      "toSpeciesId": "muk",
+      "method": "Level",
+      "parameter": "35",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "shellder-to-cloyster-1",
+      "fromSpeciesId": "shellder",
+      "toSpeciesId": "cloyster",
+      "method": "Item",
+      "parameter": "waterstone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "gastly-to-haunter-1",
+      "fromSpeciesId": "gastly",
+      "toSpeciesId": "haunter",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "haunter-to-gengar-1",
+      "fromSpeciesId": "haunter",
+      "toSpeciesId": "gengar",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "onix-to-steelix-1",
+      "fromSpeciesId": "onix",
+      "toSpeciesId": "steelix",
+      "method": "Item",
+      "parameter": "metalcoat",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "drowzee-to-hypno-1",
+      "fromSpeciesId": "drowzee",
+      "toSpeciesId": "hypno",
+      "method": "Level",
+      "parameter": "26",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "krabby-to-kingler-1",
+      "fromSpeciesId": "krabby",
+      "toSpeciesId": "kingler",
+      "method": "Level",
+      "parameter": "28",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "voltorb-to-electrode-1",
+      "fromSpeciesId": "voltorb",
+      "toSpeciesId": "electrode",
+      "method": "Item",
+      "parameter": "leafstone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "exeggcute-to-exeggutor-1",
+      "fromSpeciesId": "exeggcute",
+      "toSpeciesId": "exeggutor",
+      "method": "Item",
+      "parameter": "leafstone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "cubone-to-marowak-1",
+      "fromSpeciesId": "cubone",
+      "toSpeciesId": "marowak",
+      "method": "Level",
+      "parameter": "28",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "lickitung-to-lickilicky-1",
+      "fromSpeciesId": "lickitung",
+      "toSpeciesId": "lickilicky",
+      "method": "Level",
+      "parameter": null,
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "koffing-to-weezing-1",
+      "fromSpeciesId": "koffing",
+      "toSpeciesId": "weezing",
+      "method": "Level",
+      "parameter": "35",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "rhyhorn-to-rhydon-1",
+      "fromSpeciesId": "rhyhorn",
+      "toSpeciesId": "rhydon",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "rhydon-to-rhyperior-1",
+      "fromSpeciesId": "rhydon",
+      "toSpeciesId": "rhyperior",
+      "method": "Item",
+      "parameter": "protector",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "chansey-to-blissey-1",
+      "fromSpeciesId": "chansey",
+      "toSpeciesId": "blissey",
+      "method": "Level",
+      "parameter": null,
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "tangela-to-tangrowth-1",
+      "fromSpeciesId": "tangela",
+      "toSpeciesId": "tangrowth",
+      "method": "Level",
+      "parameter": null,
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "horsea-to-seadra-1",
+      "fromSpeciesId": "horsea",
+      "toSpeciesId": "seadra",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "seadra-to-kingdra-1",
+      "fromSpeciesId": "seadra",
+      "toSpeciesId": "kingdra",
+      "method": "Item",
+      "parameter": "dragonscale",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "goldeen-to-seaking-1",
+      "fromSpeciesId": "goldeen",
+      "toSpeciesId": "seaking",
+      "method": "Level",
+      "parameter": "33",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "staryu-to-starmie-1",
+      "fromSpeciesId": "staryu",
+      "toSpeciesId": "starmie",
+      "method": "Item",
+      "parameter": "waterstone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "scyther-to-scizor-1",
+      "fromSpeciesId": "scyther",
+      "toSpeciesId": "scizor",
+      "method": "Item",
+      "parameter": "metalcoat",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "electabuzz-to-electivire-1",
+      "fromSpeciesId": "electabuzz",
+      "toSpeciesId": "electivire",
+      "method": "Item",
+      "parameter": "electirizer",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "magmar-to-magmortar-1",
+      "fromSpeciesId": "magmar",
+      "toSpeciesId": "magmortar",
+      "method": "Item",
+      "parameter": "magmarizer",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "magikarp-to-gyarados-1",
+      "fromSpeciesId": "magikarp",
+      "toSpeciesId": "gyarados",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "eevee-to-vaporeon-1",
+      "fromSpeciesId": "eevee",
+      "toSpeciesId": "vaporeon",
+      "method": "Item",
+      "parameter": "waterstone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "eevee-to-jolteon-2",
+      "fromSpeciesId": "eevee",
+      "toSpeciesId": "jolteon",
+      "method": "Item",
+      "parameter": "thunderstone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "eevee-to-flareon-3",
+      "fromSpeciesId": "eevee",
+      "toSpeciesId": "flareon",
+      "method": "Item",
+      "parameter": "firestone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "eevee-to-espeon-4",
+      "fromSpeciesId": "eevee",
+      "toSpeciesId": "espeon",
+      "method": "Item",
+      "parameter": "sunstone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "eevee-to-umbreon-5",
+      "fromSpeciesId": "eevee",
+      "toSpeciesId": "umbreon",
+      "method": "Item",
+      "parameter": "moonstone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "eevee-to-leafeon-6",
+      "fromSpeciesId": "eevee",
+      "toSpeciesId": "leafeon",
+      "method": "Item",
+      "parameter": "leafstone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "eevee-to-glaceon-7",
+      "fromSpeciesId": "eevee",
+      "toSpeciesId": "glaceon",
+      "method": "Item",
+      "parameter": "icestone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "porygon-to-porygon2-1",
+      "fromSpeciesId": "porygon",
+      "toSpeciesId": "porygon2",
+      "method": "Item",
+      "parameter": "upgrade",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "omanyte-to-omastar-1",
+      "fromSpeciesId": "omanyte",
+      "toSpeciesId": "omastar",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "kabuto-to-kabutops-1",
+      "fromSpeciesId": "kabuto",
+      "toSpeciesId": "kabutops",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "dratini-to-dragonair-1",
+      "fromSpeciesId": "dratini",
+      "toSpeciesId": "dragonair",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "dragonair-to-dragonite-1",
+      "fromSpeciesId": "dragonair",
+      "toSpeciesId": "dragonite",
+      "method": "Level",
+      "parameter": "55",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "chikorita-to-bayleef-1",
+      "fromSpeciesId": "chikorita",
+      "toSpeciesId": "bayleef",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "bayleef-to-meganium-1",
+      "fromSpeciesId": "bayleef",
+      "toSpeciesId": "meganium",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "cyndaquil-to-quilava-1",
+      "fromSpeciesId": "cyndaquil",
+      "toSpeciesId": "quilava",
+      "method": "Level",
+      "parameter": "17",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "quilava-to-typhlosion-1",
+      "fromSpeciesId": "quilava",
+      "toSpeciesId": "typhlosion",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "totodile-to-croconaw-1",
+      "fromSpeciesId": "totodile",
+      "toSpeciesId": "croconaw",
+      "method": "Level",
+      "parameter": "18",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "croconaw-to-feraligatr-1",
+      "fromSpeciesId": "croconaw",
+      "toSpeciesId": "feraligatr",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "sentret-to-furret-1",
+      "fromSpeciesId": "sentret",
+      "toSpeciesId": "furret",
+      "method": "Level",
+      "parameter": "15",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "hoothoot-to-noctowl-1",
+      "fromSpeciesId": "hoothoot",
+      "toSpeciesId": "noctowl",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "ledyba-to-ledian-1",
+      "fromSpeciesId": "ledyba",
+      "toSpeciesId": "ledian",
+      "method": "Level",
+      "parameter": "18",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "spinarak-to-ariados-1",
+      "fromSpeciesId": "spinarak",
+      "toSpeciesId": "ariados",
+      "method": "Level",
+      "parameter": "22",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "chinchou-to-lanturn-1",
+      "fromSpeciesId": "chinchou",
+      "toSpeciesId": "lanturn",
+      "method": "Level",
+      "parameter": "27",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "pichu-to-pikachu-1",
+      "fromSpeciesId": "pichu",
+      "toSpeciesId": "pikachu",
+      "method": "Level",
+      "parameter": null,
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "cleffa-to-clefairy-1",
+      "fromSpeciesId": "cleffa",
+      "toSpeciesId": "clefairy",
+      "method": "Level",
+      "parameter": null,
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "igglybuff-to-jigglypuff-1",
+      "fromSpeciesId": "igglybuff",
+      "toSpeciesId": "jigglypuff",
+      "method": "Level",
+      "parameter": null,
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "togepi-to-togetic-1",
+      "fromSpeciesId": "togepi",
+      "toSpeciesId": "togetic",
+      "method": "Level",
+      "parameter": null,
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "togetic-to-togekiss-1",
+      "fromSpeciesId": "togetic",
+      "toSpeciesId": "togekiss",
+      "method": "Item",
+      "parameter": "shinystone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "natu-to-xatu-1",
+      "fromSpeciesId": "natu",
+      "toSpeciesId": "xatu",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "mareep-to-flaaffy-1",
+      "fromSpeciesId": "mareep",
+      "toSpeciesId": "flaaffy",
+      "method": "Level",
+      "parameter": "15",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "flaaffy-to-ampharos-1",
+      "fromSpeciesId": "flaaffy",
+      "toSpeciesId": "ampharos",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "marill-to-azumarill-1",
+      "fromSpeciesId": "marill",
+      "toSpeciesId": "azumarill",
+      "method": "Level",
+      "parameter": "18",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "hoppip-to-skiploom-1",
+      "fromSpeciesId": "hoppip",
+      "toSpeciesId": "skiploom",
+      "method": "Level",
+      "parameter": "18",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "skiploom-to-jumpluff-1",
+      "fromSpeciesId": "skiploom",
+      "toSpeciesId": "jumpluff",
+      "method": "Level",
+      "parameter": "27",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "aipom-to-ambipom-1",
+      "fromSpeciesId": "aipom",
+      "toSpeciesId": "ambipom",
+      "method": "Level",
+      "parameter": null,
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "sunkern-to-sunflora-1",
+      "fromSpeciesId": "sunkern",
+      "toSpeciesId": "sunflora",
+      "method": "Item",
+      "parameter": "sunstone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "yanma-to-yanmega-1",
+      "fromSpeciesId": "yanma",
+      "toSpeciesId": "yanmega",
+      "method": "Level",
+      "parameter": null,
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "wooper-to-quagsire-1",
+      "fromSpeciesId": "wooper",
+      "toSpeciesId": "quagsire",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "murkrow-to-honchkrow-1",
+      "fromSpeciesId": "murkrow",
+      "toSpeciesId": "honchkrow",
+      "method": "Item",
+      "parameter": "duskstone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "misdreavus-to-mismagius-1",
+      "fromSpeciesId": "misdreavus",
+      "toSpeciesId": "mismagius",
+      "method": "Item",
+      "parameter": "duskstone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "pineco-to-forretress-1",
+      "fromSpeciesId": "pineco",
+      "toSpeciesId": "forretress",
+      "method": "Level",
+      "parameter": "31",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "gligar-to-gliscor-1",
+      "fromSpeciesId": "gligar",
+      "toSpeciesId": "gliscor",
+      "method": "Level",
+      "parameter": null,
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "snubbull-to-granbull-1",
+      "fromSpeciesId": "snubbull",
+      "toSpeciesId": "granbull",
+      "method": "Level",
+      "parameter": "23",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "sneasel-to-weavile-1",
+      "fromSpeciesId": "sneasel",
+      "toSpeciesId": "weavile",
+      "method": "Level",
+      "parameter": null,
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "teddiursa-to-ursaring-1",
+      "fromSpeciesId": "teddiursa",
+      "toSpeciesId": "ursaring",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "slugma-to-magcargo-1",
+      "fromSpeciesId": "slugma",
+      "toSpeciesId": "magcargo",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "swinub-to-piloswine-1",
+      "fromSpeciesId": "swinub",
+      "toSpeciesId": "piloswine",
+      "method": "Level",
+      "parameter": "33",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "piloswine-to-mamoswine-1",
+      "fromSpeciesId": "piloswine",
+      "toSpeciesId": "mamoswine",
+      "method": "Level",
+      "parameter": null,
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "remoraid-to-octillery-1",
+      "fromSpeciesId": "remoraid",
+      "toSpeciesId": "octillery",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "houndour-to-houndoom-1",
+      "fromSpeciesId": "houndour",
+      "toSpeciesId": "houndoom",
+      "method": "Level",
+      "parameter": "24",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "phanpy-to-donphan-1",
+      "fromSpeciesId": "phanpy",
+      "toSpeciesId": "donphan",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "porygon2-to-porygonz-1",
+      "fromSpeciesId": "porygon2",
+      "toSpeciesId": "porygonz",
+      "method": "Item",
+      "parameter": "dubiousdisc",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "tyrogue-to-hitmonlee-1",
+      "fromSpeciesId": "tyrogue",
+      "toSpeciesId": "hitmonlee",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "tyrogue-to-hitmonchan-2",
+      "fromSpeciesId": "tyrogue",
+      "toSpeciesId": "hitmonchan",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "tyrogue-to-hitmontop-3",
+      "fromSpeciesId": "tyrogue",
+      "toSpeciesId": "hitmontop",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "smoochum-to-jynx-1",
+      "fromSpeciesId": "smoochum",
+      "toSpeciesId": "jynx",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "elekid-to-electabuzz-1",
+      "fromSpeciesId": "elekid",
+      "toSpeciesId": "electabuzz",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "magby-to-magmar-1",
+      "fromSpeciesId": "magby",
+      "toSpeciesId": "magmar",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "larvitar-to-pupitar-1",
+      "fromSpeciesId": "larvitar",
+      "toSpeciesId": "pupitar",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "pupitar-to-tyranitar-1",
+      "fromSpeciesId": "pupitar",
+      "toSpeciesId": "tyranitar",
+      "method": "Level",
+      "parameter": "55",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "treecko-to-grovyle-1",
+      "fromSpeciesId": "treecko",
+      "toSpeciesId": "grovyle",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "grovyle-to-sceptile-1",
+      "fromSpeciesId": "grovyle",
+      "toSpeciesId": "sceptile",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "torchic-to-combusken-1",
+      "fromSpeciesId": "torchic",
+      "toSpeciesId": "combusken",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "combusken-to-blaziken-1",
+      "fromSpeciesId": "combusken",
+      "toSpeciesId": "blaziken",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "mudkip-to-marshtomp-1",
+      "fromSpeciesId": "mudkip",
+      "toSpeciesId": "marshtomp",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "marshtomp-to-swampert-1",
+      "fromSpeciesId": "marshtomp",
+      "toSpeciesId": "swampert",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "poochyena-to-mightyena-1",
+      "fromSpeciesId": "poochyena",
+      "toSpeciesId": "mightyena",
+      "method": "Level",
+      "parameter": "18",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "zigzagoon-to-linoone-1",
+      "fromSpeciesId": "zigzagoon",
+      "toSpeciesId": "linoone",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "wurmple-to-silcoon-1",
+      "fromSpeciesId": "wurmple",
+      "toSpeciesId": "silcoon",
+      "method": "Level",
+      "parameter": "7",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "wurmple-to-cascoon-2",
+      "fromSpeciesId": "wurmple",
+      "toSpeciesId": "cascoon",
+      "method": "Level",
+      "parameter": "7",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "silcoon-to-beautifly-1",
+      "fromSpeciesId": "silcoon",
+      "toSpeciesId": "beautifly",
+      "method": "Level",
+      "parameter": "10",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "cascoon-to-dustox-1",
+      "fromSpeciesId": "cascoon",
+      "toSpeciesId": "dustox",
+      "method": "Level",
+      "parameter": "10",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "lotad-to-lombre-1",
+      "fromSpeciesId": "lotad",
+      "toSpeciesId": "lombre",
+      "method": "Level",
+      "parameter": "14",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "lombre-to-ludicolo-1",
+      "fromSpeciesId": "lombre",
+      "toSpeciesId": "ludicolo",
+      "method": "Item",
+      "parameter": "waterstone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "seedot-to-nuzleaf-1",
+      "fromSpeciesId": "seedot",
+      "toSpeciesId": "nuzleaf",
+      "method": "Level",
+      "parameter": "14",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "nuzleaf-to-shiftry-1",
+      "fromSpeciesId": "nuzleaf",
+      "toSpeciesId": "shiftry",
+      "method": "Item",
+      "parameter": "leafstone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "taillow-to-swellow-1",
+      "fromSpeciesId": "taillow",
+      "toSpeciesId": "swellow",
+      "method": "Level",
+      "parameter": "22",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "wingull-to-pelipper-1",
+      "fromSpeciesId": "wingull",
+      "toSpeciesId": "pelipper",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "ralts-to-kirlia-1",
+      "fromSpeciesId": "ralts",
+      "toSpeciesId": "kirlia",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "kirlia-to-gardevoir-1",
+      "fromSpeciesId": "kirlia",
+      "toSpeciesId": "gardevoir",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "kirlia-to-gallade-2",
+      "fromSpeciesId": "kirlia",
+      "toSpeciesId": "gallade",
+      "method": "Item",
+      "parameter": "dawnstone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "surskit-to-masquerain-1",
+      "fromSpeciesId": "surskit",
+      "toSpeciesId": "masquerain",
+      "method": "Level",
+      "parameter": "22",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "shroomish-to-breloom-1",
+      "fromSpeciesId": "shroomish",
+      "toSpeciesId": "breloom",
+      "method": "Level",
+      "parameter": "23",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "slakoth-to-vigoroth-1",
+      "fromSpeciesId": "slakoth",
+      "toSpeciesId": "vigoroth",
+      "method": "Level",
+      "parameter": "18",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "vigoroth-to-slaking-1",
+      "fromSpeciesId": "vigoroth",
+      "toSpeciesId": "slaking",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "nincada-to-ninjask-1",
+      "fromSpeciesId": "nincada",
+      "toSpeciesId": "ninjask",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "nincada-to-shedinja-2",
+      "fromSpeciesId": "nincada",
+      "toSpeciesId": "shedinja",
+      "method": "Trigger 4",
+      "parameter": null,
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "whismur-to-loudred-1",
+      "fromSpeciesId": "whismur",
+      "toSpeciesId": "loudred",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "loudred-to-exploud-1",
+      "fromSpeciesId": "loudred",
+      "toSpeciesId": "exploud",
+      "method": "Level",
+      "parameter": "40",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "makuhita-to-hariyama-1",
+      "fromSpeciesId": "makuhita",
+      "toSpeciesId": "hariyama",
+      "method": "Level",
+      "parameter": "24",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "azurill-to-marill-1",
+      "fromSpeciesId": "azurill",
+      "toSpeciesId": "marill",
+      "method": "Level",
+      "parameter": null,
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "nosepass-to-probopass-1",
+      "fromSpeciesId": "nosepass",
+      "toSpeciesId": "probopass",
+      "method": "Item",
+      "parameter": "thunderstone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "skitty-to-delcatty-1",
+      "fromSpeciesId": "skitty",
+      "toSpeciesId": "delcatty",
+      "method": "Item",
+      "parameter": "moonstone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "aron-to-lairon-1",
+      "fromSpeciesId": "aron",
+      "toSpeciesId": "lairon",
+      "method": "Level",
+      "parameter": "24",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "lairon-to-aggron-1",
+      "fromSpeciesId": "lairon",
+      "toSpeciesId": "aggron",
+      "method": "Level",
+      "parameter": "40",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "meditite-to-medicham-1",
+      "fromSpeciesId": "meditite",
+      "toSpeciesId": "medicham",
+      "method": "Level",
+      "parameter": "33",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "electrike-to-manectric-1",
+      "fromSpeciesId": "electrike",
+      "toSpeciesId": "manectric",
+      "method": "Level",
+      "parameter": "26",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "roselia-to-roserade-1",
+      "fromSpeciesId": "roselia",
+      "toSpeciesId": "roserade",
+      "method": "Item",
+      "parameter": "shinystone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "gulpin-to-swalot-1",
+      "fromSpeciesId": "gulpin",
+      "toSpeciesId": "swalot",
+      "method": "Level",
+      "parameter": "26",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "carvanha-to-sharpedo-1",
+      "fromSpeciesId": "carvanha",
+      "toSpeciesId": "sharpedo",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "wailmer-to-wailord-1",
+      "fromSpeciesId": "wailmer",
+      "toSpeciesId": "wailord",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "numel-to-camerupt-1",
+      "fromSpeciesId": "numel",
+      "toSpeciesId": "camerupt",
+      "method": "Level",
+      "parameter": "33",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "spoink-to-grumpig-1",
+      "fromSpeciesId": "spoink",
+      "toSpeciesId": "grumpig",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "trapinch-to-vibrava-1",
+      "fromSpeciesId": "trapinch",
+      "toSpeciesId": "vibrava",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "vibrava-to-flygon-1",
+      "fromSpeciesId": "vibrava",
+      "toSpeciesId": "flygon",
+      "method": "Level",
+      "parameter": "45",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "cacnea-to-cacturne-1",
+      "fromSpeciesId": "cacnea",
+      "toSpeciesId": "cacturne",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "swablu-to-altaria-1",
+      "fromSpeciesId": "swablu",
+      "toSpeciesId": "altaria",
+      "method": "Level",
+      "parameter": "35",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "barboach-to-whiscash-1",
+      "fromSpeciesId": "barboach",
+      "toSpeciesId": "whiscash",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "corphish-to-crawdaunt-1",
+      "fromSpeciesId": "corphish",
+      "toSpeciesId": "crawdaunt",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "baltoy-to-claydol-1",
+      "fromSpeciesId": "baltoy",
+      "toSpeciesId": "claydol",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "lileep-to-cradily-1",
+      "fromSpeciesId": "lileep",
+      "toSpeciesId": "cradily",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "anorith-to-armaldo-1",
+      "fromSpeciesId": "anorith",
+      "toSpeciesId": "armaldo",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "feebas-to-milotic-1",
+      "fromSpeciesId": "feebas",
+      "toSpeciesId": "milotic",
+      "method": "Item",
+      "parameter": "prismscale",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "shuppet-to-banette-1",
+      "fromSpeciesId": "shuppet",
+      "toSpeciesId": "banette",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "duskull-to-dusclops-1",
+      "fromSpeciesId": "duskull",
+      "toSpeciesId": "dusclops",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "dusclops-to-dusknoir-1",
+      "fromSpeciesId": "dusclops",
+      "toSpeciesId": "dusknoir",
+      "method": "Item",
+      "parameter": "reapercloth",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "wynaut-to-wobbuffet-1",
+      "fromSpeciesId": "wynaut",
+      "toSpeciesId": "wobbuffet",
+      "method": "Level",
+      "parameter": "15",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "snorunt-to-froslass-1",
+      "fromSpeciesId": "snorunt",
+      "toSpeciesId": "froslass",
+      "method": "Item",
+      "parameter": "dawnstone",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "snorunt-to-glalie-2",
+      "fromSpeciesId": "snorunt",
+      "toSpeciesId": "glalie",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "spheal-to-sealeo-1",
+      "fromSpeciesId": "spheal",
+      "toSpeciesId": "sealeo",
+      "method": "Level",
+      "parameter": "24",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "sealeo-to-walrein-1",
+      "fromSpeciesId": "sealeo",
+      "toSpeciesId": "walrein",
+      "method": "Level",
+      "parameter": "40",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "clamperl-to-huntail-1",
+      "fromSpeciesId": "clamperl",
+      "toSpeciesId": "huntail",
+      "method": "Item",
+      "parameter": "deepseatooth",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "clamperl-to-gorebyss-2",
+      "fromSpeciesId": "clamperl",
+      "toSpeciesId": "gorebyss",
+      "method": "Item",
+      "parameter": "deepseascale",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "bagon-to-shelgon-1",
+      "fromSpeciesId": "bagon",
+      "toSpeciesId": "shelgon",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "shelgon-to-salamence-1",
+      "fromSpeciesId": "shelgon",
+      "toSpeciesId": "salamence",
+      "method": "Level",
+      "parameter": "50",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "beldum-to-metang-1",
+      "fromSpeciesId": "beldum",
+      "toSpeciesId": "metang",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "metang-to-metagross-1",
+      "fromSpeciesId": "metang",
+      "toSpeciesId": "metagross",
+      "method": "Level",
+      "parameter": "45",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "turtwig-to-grotle-1",
+      "fromSpeciesId": "turtwig",
+      "toSpeciesId": "grotle",
+      "method": "Level",
+      "parameter": "18",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "grotle-to-torterra-1",
+      "fromSpeciesId": "grotle",
+      "toSpeciesId": "torterra",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "chimchar-to-monferno-1",
+      "fromSpeciesId": "chimchar",
+      "toSpeciesId": "monferno",
+      "method": "Level",
+      "parameter": "14",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "monferno-to-infernape-1",
+      "fromSpeciesId": "monferno",
+      "toSpeciesId": "infernape",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "piplup-to-prinplup-1",
+      "fromSpeciesId": "piplup",
+      "toSpeciesId": "prinplup",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "prinplup-to-empoleon-1",
+      "fromSpeciesId": "prinplup",
+      "toSpeciesId": "empoleon",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "starly-to-staravia-1",
+      "fromSpeciesId": "starly",
+      "toSpeciesId": "staravia",
+      "method": "Level",
+      "parameter": "14",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "staravia-to-staraptor-1",
+      "fromSpeciesId": "staravia",
+      "toSpeciesId": "staraptor",
+      "method": "Level",
+      "parameter": "34",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "bidoof-to-bibarel-1",
+      "fromSpeciesId": "bidoof",
+      "toSpeciesId": "bibarel",
+      "method": "Level",
+      "parameter": "15",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "kricketot-to-kricketune-1",
+      "fromSpeciesId": "kricketot",
+      "toSpeciesId": "kricketune",
+      "method": "Level",
+      "parameter": "10",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "shinx-to-luxio-1",
+      "fromSpeciesId": "shinx",
+      "toSpeciesId": "luxio",
+      "method": "Level",
+      "parameter": "15",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "luxio-to-luxray-1",
+      "fromSpeciesId": "luxio",
+      "toSpeciesId": "luxray",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "budew-to-roselia-1",
+      "fromSpeciesId": "budew",
+      "toSpeciesId": "roselia",
+      "method": "Friendship",
+      "parameter": null,
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "cranidos-to-rampardos-1",
+      "fromSpeciesId": "cranidos",
+      "toSpeciesId": "rampardos",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "shieldon-to-bastiodon-1",
+      "fromSpeciesId": "shieldon",
+      "toSpeciesId": "bastiodon",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "burmy-to-wormadam-1",
+      "fromSpeciesId": "burmy",
+      "toSpeciesId": "wormadam",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "burmy-to-mothim-2",
+      "fromSpeciesId": "burmy",
+      "toSpeciesId": "mothim",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "combee-to-vespiquen-1",
+      "fromSpeciesId": "combee",
+      "toSpeciesId": "vespiquen",
+      "method": "Level",
+      "parameter": "21",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "buizel-to-floatzel-1",
+      "fromSpeciesId": "buizel",
+      "toSpeciesId": "floatzel",
+      "method": "Level",
+      "parameter": "26",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "cherubi-to-cherrim-1",
+      "fromSpeciesId": "cherubi",
+      "toSpeciesId": "cherrim",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "shellos-to-gastrodon-1",
+      "fromSpeciesId": "shellos",
+      "toSpeciesId": "gastrodon",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "drifloon-to-drifblim-1",
+      "fromSpeciesId": "drifloon",
+      "toSpeciesId": "drifblim",
+      "method": "Level",
+      "parameter": "28",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "buneary-to-lopunny-1",
+      "fromSpeciesId": "buneary",
+      "toSpeciesId": "lopunny",
+      "method": "Level",
+      "parameter": null,
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "glameow-to-purugly-1",
+      "fromSpeciesId": "glameow",
+      "toSpeciesId": "purugly",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "chingling-to-chimecho-1",
+      "fromSpeciesId": "chingling",
+      "toSpeciesId": "chimecho",
+      "method": "Friendship",
+      "parameter": null,
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "stunky-to-skuntank-1",
+      "fromSpeciesId": "stunky",
+      "toSpeciesId": "skuntank",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "bronzor-to-bronzong-1",
+      "fromSpeciesId": "bronzor",
+      "toSpeciesId": "bronzong",
+      "method": "Level",
+      "parameter": "33",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "bonsly-to-sudowoodo-1",
+      "fromSpeciesId": "bonsly",
+      "toSpeciesId": "sudowoodo",
+      "method": "Level",
+      "parameter": null,
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "mimejr-to-mrmime-1",
+      "fromSpeciesId": "mimejr",
+      "toSpeciesId": "mrmime",
+      "method": "Level",
+      "parameter": null,
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "happiny-to-chansey-1",
+      "fromSpeciesId": "happiny",
+      "toSpeciesId": "chansey",
+      "method": "Level",
+      "parameter": null,
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "gible-to-gabite-1",
+      "fromSpeciesId": "gible",
+      "toSpeciesId": "gabite",
+      "method": "Level",
+      "parameter": "24",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "gabite-to-garchomp-1",
+      "fromSpeciesId": "gabite",
+      "toSpeciesId": "garchomp",
+      "method": "Level",
+      "parameter": "48",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "munchlax-to-snorlax-1",
+      "fromSpeciesId": "munchlax",
+      "toSpeciesId": "snorlax",
+      "method": "Level",
+      "parameter": null,
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "riolu-to-lucario-1",
+      "fromSpeciesId": "riolu",
+      "toSpeciesId": "lucario",
+      "method": "Friendship",
+      "parameter": null,
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "hippopotas-to-hippowdon-1",
+      "fromSpeciesId": "hippopotas",
+      "toSpeciesId": "hippowdon",
+      "method": "Level",
+      "parameter": "34",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "skorupi-to-drapion-1",
+      "fromSpeciesId": "skorupi",
+      "toSpeciesId": "drapion",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "croagunk-to-toxicroak-1",
+      "fromSpeciesId": "croagunk",
+      "toSpeciesId": "toxicroak",
+      "method": "Level",
+      "parameter": "33",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "finneon-to-lumineon-1",
+      "fromSpeciesId": "finneon",
+      "toSpeciesId": "lumineon",
+      "method": "Level",
+      "parameter": "31",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "mantyke-to-mantine-1",
+      "fromSpeciesId": "mantyke",
+      "toSpeciesId": "mantine",
+      "method": "Level",
+      "parameter": null,
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    {
+      "id": "snover-to-abomasnow-1",
+      "fromSpeciesId": "snover",
+      "toSpeciesId": "abomasnow",
+      "method": "Level",
+      "parameter": "40",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    }
+  ]
+}

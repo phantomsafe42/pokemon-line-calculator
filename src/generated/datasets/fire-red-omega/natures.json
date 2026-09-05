@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "gameId": "fire-red-omega",
+  "kind": "natures",
+  "records": {
+    "hardy": {
+      "num": 0,
+      "id": "hardy",
+      "name": "Hardy",
+      "boostedStat": "atk",
+      "nerfedStat": "atk",
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "lonely": {
+      "num": 1,
+      "id": "lonely",
+      "name": "Lonely",
+      "boostedStat": "atk",
+      "nerfedStat": "def",
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "brave": {
+      "num": 2,
+      "id": "brave",
+      "name": "Brave",
+      "boostedStat": "atk",
+      "nerfedStat": "spe",
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "adamant": {
+      "num": 3,
+      "id": "adamant",
+      "name": "Adamant",
+      "boostedStat": "atk",
+      "nerfedStat": "spa",
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "naughty": {
+      "num": 4,
+      "id": "naughty",
+      "name": "Naughty",
+      "boostedStat": "atk",
+      "nerfedStat": "spd",
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "bold": {
+      "num": 5,
+      "id": "bold",
+      "name": "Bold",
+      "boostedStat": "def",
+      "nerfedStat": "atk",
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "docile": {
+      "num": 6,
+      "id": "docile",
+      "name": "Docile",
+      "boostedStat": "def",
+      "nerfedStat": "def",
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "relaxed": {
+      "num": 7,
+      "id": "relaxed",
+      "name": "Relaxed",
+      "boostedStat": "def",
+      "nerfedStat": "spe",
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "impish": {
+      "num": 8,
+      "id": "impish",
+      "name": "Impish",
+      "boostedStat": "def",
+      "nerfedStat": "spa",
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "lax": {
+      "num": 9,
+      "id": "lax",
+      "name": "Lax",
+      "boostedStat": "def",
+      "nerfedStat": "spd",
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "timid": {
+      "num": 10,
+      "id": "timid",
+      "name": "Timid",
+      "boostedStat": "spe",
+      "nerfedStat": "atk",
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "hasty": {
+      "num": 11,
+      "id": "hasty",
+      "name": "Hasty",
+      "boostedStat": "spe",
+      "nerfedStat": "def",
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "serious": {
+      "num": 12,
+      "id": "serious",
+      "name": "Serious",
+      "boostedStat": "spa",
+      "nerfedStat": "spa",
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "jolly": {
+      "num": 13,
+      "id": "jolly",
+      "name": "Jolly",
+      "boostedStat": "spe",
+      "nerfedStat": "spa",
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "naive": {
+      "num": 14,
+      "id": "naive",
+      "name": "Naive",
+      "boostedStat": "spe",
+      "nerfedStat": "spd",
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "modest": {
+      "num": 15,
+      "id": "modest",
+      "name": "Modest",
+      "boostedStat": "spa",
+      "nerfedStat": "atk",
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "mild": {
+      "num": 16,
+      "id": "mild",
+      "name": "Mild",
+      "boostedStat": "spa",
+      "nerfedStat": "def",
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "quiet": {
+      "num": 17,
+      "id": "quiet",
+      "name": "Quiet",
+      "boostedStat": "spa",
+      "nerfedStat": "spe",
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "bashful": {
+      "num": 18,
+      "id": "bashful",
+      "name": "Bashful",
+      "boostedStat": "spd",
+      "nerfedStat": "spd",
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "rash": {
+      "num": 19,
+      "id": "rash",
+      "name": "Rash",
+      "boostedStat": "spa",
+      "nerfedStat": "spd",
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "calm": {
+      "num": 20,
+      "id": "calm",
+      "name": "Calm",
+      "boostedStat": "spd",
+      "nerfedStat": "atk",
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "gentle": {
+      "num": 21,
+      "id": "gentle",
+      "name": "Gentle",
+      "boostedStat": "spd",
+      "nerfedStat": "def",
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "sassy": {
+      "num": 22,
+      "id": "sassy",
+      "name": "Sassy",
+      "boostedStat": "spd",
+      "nerfedStat": "spe",
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "careful": {
+      "num": 23,
+      "id": "careful",
+      "name": "Careful",
+      "boostedStat": "spd",
+      "nerfedStat": "spa",
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "quirky": {
+      "num": 24,
+      "id": "quirky",
+      "name": "Quirky",
+      "boostedStat": "spe",
+      "nerfedStat": "spe",
+      "sourceConfidence": "legacy-base-table-projection"
+    }
+  }
+}

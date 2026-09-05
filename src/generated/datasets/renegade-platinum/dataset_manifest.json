@@ -1,0 +1,314 @@
+{
+  "schemaVersion": 1,
+  "gameId": "renegade-platinum",
+  "displayName": "Pokémon Renegade Platinum",
+  "folderName": "Renegade Platinum",
+  "filenamePrefix": "RP",
+  "datasetScope": "game",
+  "migrationStatus": "standardized-source-authoritative",
+  "completenessStatus": "partial",
+  "platform": "Nintendo DS",
+  "generation": 4,
+  "baseGame": "Pokémon Platinum",
+  "sourceProfile": "platinum",
+  "supportedLanguage": "English",
+  "buildInputs": {
+    "RP_Trainer_Battles.xlsx": {
+      "sha256": "debf709ca9584f8176cd114b34d3e4a16f471abcc681412e3c307f41108967ea",
+      "role": "immutable game-specific reference"
+    },
+    "source-data/renegade_platinum_documentation.xlsx": {
+      "sha256": "e45c6843f0422feab3b8a1cb405058cb7e700e0ed5d597de14ea0acfdd65eaf7",
+      "role": "immutable game-specific reference"
+    },
+    "source-data/imports/reference-docs/Renegade Platinum Mastersheet.xlsx": {
+      "sha256": "2c2e07b836385c80e444114f0693164fe81a377f80172149c5f0be20b8d868fb",
+      "role": "immutable game-specific reference"
+    },
+    "source-data/imports/reference-docs/Ren Plat changelog.md": {
+      "sha256": "95739de21dfbf91b08685643719ed3220892276df4af3aa1d43b97e6836f273a",
+      "role": "immutable game-specific reference"
+    },
+    "source-data/imports/reference-docs/Ren Plat ForumPostWithMoreInfo.txt": {
+      "sha256": "191f92c4bfe83da4651eb54a97e9789d92403d021522565edf7d0d0cb63be1e6",
+      "role": "immutable game-specific reference"
+    },
+    "source-data/imports/reference-docs/RenPlat Changelog_v2.txt": {
+      "sha256": "35e660bda243f1ae30b7392606b0c164cbe1c19b73ed61902bbaf8726a9832d6",
+      "role": "immutable game-specific reference"
+    },
+    "source-data/imports/reference-docs/PChal_README.md": {
+      "sha256": "553ff99e72a4ec8310460c8394022c063bfe2cb463794ca93c8bad54c6821e8c",
+      "role": "immutable game-specific reference"
+    },
+    "imports/legacy-consumers/legacy_consumer_manifest.json": {
+      "sha256": "bb01757546435badb83a99e788c545be87e8afd76ff135d2061d622711861338",
+      "role": "immutable pre-cutover legacy consumer input manifest"
+    },
+    "source-data/trainer_documentation.json": {
+      "sha256": "68268bef6fd3c3e83477f6bdf80930ccaef13d2a6a816a1a84041da5fb3252d7",
+      "role": "deterministic field-level projection of native trainer workbook order, locations, and mandatory fill classifications"
+    },
+    "source-data/trainer_wiki_evidence.json": {
+      "sha256": "ca008dd6d87aa37c3c9cd59a7219480c53dc668a94b5e9b53ed66fb6ffc9bbed",
+      "role": "deterministic supplemental route, rematch, Master Trainer, and postgame classification evidence"
+    },
+    "source-data/species_ability_slots.json": {
+      "sha256": "888098970b1d7ea4b7adad4424adc93c548f867fcf7525728a5b07c5e81bc4dc",
+      "role": "ordered two-slot species ability authority from the Complete documentation and hash-pinned supported PChal ROM"
+    },
+    "source-data/imports/trainer-ai/renegade-platinum-rom-audit.json": {
+      "sha256": "8ebd96361d1ce0871a0b3d3bc55823e28465f05f258cc033a694e03511a87ca6",
+      "role": "deterministic immutable audit of the supported ROM, exact patch reproduction, Trainer AI binary inheritance, move table, and reachable trainer-item records"
+    },
+    "source-data/imports/trainer-ai/renegade-platinum-trainer-initial-values.json": {
+      "sha256": "d43b7a41b67f44c8e4050c7438cb24b296864d7e2046e5504ea451f6ed49a792",
+      "role": "source- and ROM-verified initial trainer gender/friendship and four exact-build custom party overrides; physical empty slots retained"
+    },
+    "source-data/imports/trainer-ai/renegade-platinum-library-evidence.json": {
+      "sha256": "dd7557a23cee716408f0b22853661ca59ac6fa8f2c017f31387ef988bc997b8d",
+      "role": "AI-called library function inheritance and relocated type-chart order"
+    },
+    "source-data/imports/trainer-ai/renegade-platinum-item-parameters.json": {
+      "sha256": "f6b59f9de7e1d4a8dcb260bf7010ed33832dbcb9ad37856e21e12cd49c14d3b6",
+      "role": "complete supported-ROM held-item parameters"
+    }
+  },
+  "inheritedBaseTables": {
+    "path": "../Gen 4/source-data/base_engine_tables.json",
+    "profile": "platinum",
+    "sha256": "f21e8a2b3f458b54728611d22e166fd27ef18c26f9c109bdfb70b02a5df4ee44"
+  },
+  "calculationReference": {
+    "engine": {
+      "id": "smogon-calc",
+      "version": "0.11.0"
+    },
+    "files": {
+      "Battle Mechanics/vendor/smogon-calc-0.11.0/data.production.min.js": {
+        "sha256": "364be40ea1aec31f413d0036445f717d826ece9c33ec25a02399c3a287c99529"
+      },
+      "Battle Mechanics/vendor/smogon-calc-0.11.0/engine.production.min.js": {
+        "sha256": "e77a129dccf6812dcd299fc79d1f5de8afa77e8eb6de89bca283f468c968e124"
+      }
+    }
+  },
+  "patchReference": {
+    "sha256": "fc74d833ee661950c1dc2fb4933701274fd8e4e9a0892277b3827f4b210332b9",
+    "role": "external Renegade Platinum patch identity; patch bytes remain outside the workspace"
+  },
+  "romVerification": {
+    "sha256": "8985afd54c01256c54e140dc286b58d4202401e0283d056560bf3aa95c2ecce4",
+    "role": "approved local final PChal/Complete ROM evidence; bytes and machine-local path remain outside the workspace",
+    "inspectedArchives": [
+      "species personal ability slots"
+    ]
+  },
+  "sourceRequirements": {
+    "trainerInitialState": {
+      "source": "imports/trainer-ai/renegade-platinum-trainer-initial-values.json",
+      "matchedTrainers": 1055,
+      "overriddenTrainers": [
+        "renegade-platinum-trainer-0996",
+        "renegade-platinum-trainer-0997",
+        "renegade-platinum-trainer-0998",
+        "renegade-platinum-trainer-0999"
+      ],
+      "unmatchedParties": [],
+      "fields": [
+        "gender",
+        "initialFriendship"
+      ],
+      "inheritance": "matched source trainer and party slot only; exact-build partyOverrides take precedence over legacy teams; never a player default"
+    },
+    "speciesAbilitySlots": {
+      "required": true,
+      "slotCount": 2,
+      "orderedBySaveSelector": true,
+      "source": "species_ability_slots.json",
+      "status": "passed",
+      "unresolved": 0
+    },
+    "trainerAiMasks": {
+      "required": true,
+      "source": "trainer_ai_evidence.json",
+      "status": "passed",
+      "storedMaskBindings": 1059,
+      "scriptedWildRuntimeBindings": 0,
+      "unresolvedProfiles": 0
+    },
+    "trainerAiEvaluatorAuthority": {
+      "required": true,
+      "source": "imports/trainer-ai/renegade-platinum-rom-audit.json",
+      "status": "passed",
+      "exactPatchReproduction": true,
+      "inheritedTrainerAiFunctions": 136,
+      "compiledTrainerAiFunctions": 136,
+      "moveRecords": 471,
+      "reachableTrainerItemRecords": 10,
+      "auditToolSha256": "252779fad4f3896842c0d7399328d1ab45f8e3e0c7b6f7991c810c62f8e56cfa",
+      "auditRequirementsSha256": "74d4867f80b855f3d1a809dd84021a2867aa9bc01090b306742745b1a674361a"
+    }
+  },
+  "standardizedSources": [
+    "species.json",
+    "moves.json",
+    "abilities.json",
+    "items.json",
+    "learnsets.json",
+    "evolutions.json",
+    "trainers.json",
+    "trainer_order.json",
+    "trainer_battle_groups.json",
+    "progression.json",
+    "locations.json",
+    "encounters.json",
+    "encounter_methods.json",
+    "types.json",
+    "natures.json",
+    "stats.json",
+    "categories.json",
+    "save_id_maps.json",
+    "aliases.json",
+    "source_audit.json",
+    "game_rules.json",
+    "battle_mechanics.json",
+    "experience_mechanics.json",
+    "trainer_ai.json"
+  ],
+  "extensions": [
+    "source_verification_report.json",
+    "consumer_projection.json",
+    "trainer_reconciliation_report.json",
+    "species_ability_slots.json",
+    "trainer_documentation.json",
+    "trainer_wiki_evidence.json",
+    "trainer_ai_evidence.json",
+    "imports/trainer-ai/renegade-platinum-rom-audit.json"
+  ],
+  "builders": {
+    "build": "node ..\\tools\\standardize_legacy_game.js renegade-platinum",
+    "deterministicCheck": "node ..\\tools\\standardize_legacy_game.js renegade-platinum --check",
+    "trainerDocumentationBuild": "python ..\\tools\\build_drayano_trainer_documentation.py renegade-platinum",
+    "trainerDocumentationDeterministicCheck": "python ..\\tools\\build_drayano_trainer_documentation.py renegade-platinum --check",
+    "trainerWikiEvidenceBuild": "python ..\\tools\\build_renegade_platinum_wiki_trainers.py",
+    "trainerWikiEvidenceDeterministicCheck": "python ..\\tools\\build_renegade_platinum_wiki_trainers.py --check",
+    "speciesAbilityBuild": "python ..\\tools\\build_drayano_species_abilities.py --game renegade-platinum --rom <approved-local-final-rom>",
+    "speciesAbilityDeterministicCheck": "python ..\\tools\\build_drayano_species_abilities.py --game renegade-platinum --rom <approved-local-final-rom> --check",
+    "trainerAiEvidenceBuild": "python ..\\tools\\build_trainer_ai_evidence.py --game renegade-platinum --renegade-platinum-rom <approved-local-final-rom>",
+    "trainerAiEvidenceDeterministicCheck": "python ..\\tools\\build_trainer_ai_evidence.py --game renegade-platinum --renegade-platinum-rom <approved-local-final-rom> --check",
+    "trainerAiRomAuditBuild": "<gen4-rom-research-root>\\.venv\\Scripts\\python.exe <gen4-rom-research-root>\\tools\\audit_gen4_trainer_ai.py --retail-rom <approved-clean-platinum-rom> --hack-rom <approved-renegade-platinum-rom> --patch-file <approved-renegade-platinum-patch> --xdelta-executable <approved-xdelta3> --source-root <gen4-rom-research-root>\\pret-pokeplatinum --trainer-ai-object <gen4-rom-research-root>\\build\\platinum-retail-rev1-objects\\trainer_ai.c.o --trainer-ai-script-object <gen4-rom-research-root>\\pret-pokeplatinum\\build-short\\trainer_ai_script.o --battle-lib-object <gen4-rom-research-root>\\build\\platinum-retail-rev1-objects\\battle_lib.c.o --output source-data\\imports\\trainer-ai\\renegade-platinum-rom-audit.json",
+    "trainerAiRomAuditDeterministicCheck": "Run trainerAiRomAuditBuild to a temporary output and require byte-identical SHA-256 with source-data\\imports\\trainer-ai\\renegade-platinum-rom-audit.json",
+    "trainerAiBuild": "node ..\\tools\\build_trainer_ai_profiles.js",
+    "trainerAiDeterministicCheck": "node ..\\tools\\build_trainer_ai_profiles.js --check",
+    "consumerBuild": "node ..\\tools\\build_standardized_consumers.js --game renegade-platinum",
+    "consumerDeterministicCheck": "node ..\\tools\\build_standardized_consumers.js --game renegade-platinum --check",
+    "validation": "node ..\\tools\\validate_standardized_dataset.js --game renegade-platinum"
+  },
+  "categoryApplicability": {
+    "species": {
+      "status": "applicable"
+    },
+    "moves": {
+      "status": "applicable"
+    },
+    "abilities": {
+      "status": "applicable"
+    },
+    "items": {
+      "status": "applicable"
+    },
+    "learnsets": {
+      "status": "applicable"
+    },
+    "evolutions": {
+      "status": "applicable"
+    },
+    "trainers": {
+      "status": "applicable"
+    },
+    "trainer_order": {
+      "status": "applicable"
+    },
+    "trainer_battle_groups": {
+      "status": "applicable"
+    },
+    "progression": {
+      "status": "applicable"
+    },
+    "locations": {
+      "status": "applicable"
+    },
+    "encounters": {
+      "status": "applicable"
+    },
+    "encounter_methods": {
+      "status": "applicable"
+    },
+    "types": {
+      "status": "applicable"
+    },
+    "natures": {
+      "status": "applicable"
+    },
+    "stats": {
+      "status": "applicable"
+    },
+    "categories": {
+      "status": "applicable"
+    },
+    "save_id_maps": {
+      "status": "applicable"
+    },
+    "aliases": {
+      "status": "applicable"
+    },
+    "source_audit": {
+      "status": "applicable"
+    },
+    "game_rules": {
+      "status": "applicable"
+    },
+    "battle_mechanics": {
+      "status": "applicable"
+    },
+    "experience_mechanics": {
+      "status": "applicable"
+    },
+    "trainer_ai": {
+      "status": "applicable"
+    }
+  },
+  "calculationCompatibility": {
+    "battle": {
+      "source": "battle_mechanics.json",
+      "status": "passed",
+      "unresolved": 0
+    },
+    "experience": {
+      "source": "experience_mechanics.json",
+      "status": "passed",
+      "unresolved": 0,
+      "experienceGeneration": 4,
+      "model": "generation-4-unscaled-trainer"
+    }
+  },
+  "saveCompatibility": {
+    "status": "partial",
+    "detail": "Ordered species ability selectors are final-ROM verified; species, move, and item numeric maps are present, while remaining location or numeric-identity gaps stay explicit."
+  },
+  "knownOmissions": [
+    {
+      "category": "progression",
+      "reason": "Native workbook split/order/location/red-blue classification is applied to 495 matched trainers; 0 unmatched complete cards are materialized source-only and branch prerequisites still need script evidence."
+    },
+    {
+      "category": "rom-verification",
+      "reason": "Final patched ROM verification covers every projected species personal-table ability slot plus the explicitly named trainer records; other categories remain documentation-led."
+    }
+  ],
+  "deterministicAssumptions": [
+    "The Complete Mastersheet defines hack semantics, the supported PChal build is the top override layer, and unchanged mechanics inherit the pinned Platinum table."
+  ],
+  "lastValidationDate": "2026-08-28"
+}

@@ -1,5 +1,5 @@
 import { toId } from "../core/primitives.js";
-import { vw2rMoveSupport, vw2rReferenceMoveIds } from "./vw2r_move_support.js";
+import { hasShowdownMoveReference, vw2rMoveSupport, vw2rReferenceMoveIds } from "./vw2r_move_support.js";
 
 // The core registry intentionally enables only canonical moves whose complete turn effect
 // is represented here. A move is never treated as simple damage just because its
@@ -60,7 +60,7 @@ export const RESOLVER_RULESET = Object.freeze({
 
 export function moveSupport(move, dataset = null) {
   if (!move) return { supported: false, reason: "Move data is unavailable" };
-  if (dataset?.gameId === "volt-white-2r") return vw2rMoveSupport(move);
+  if (hasShowdownMoveReference(dataset)) return vw2rMoveSupport(move, dataset);
   const descriptor = EFFECTS[toId(move.id || move.name)];
   if (!descriptor) {
     return {
@@ -75,5 +75,5 @@ export function moveSupport(move, dataset = null) {
 }
 
 export function supportedMoveIds(dataset = null) {
-  return dataset?.gameId === "volt-white-2r" ? vw2rReferenceMoveIds() : Object.keys(EFFECTS);
+  return hasShowdownMoveReference(dataset) ? vw2rReferenceMoveIds(dataset) : Object.keys(EFFECTS);
 }

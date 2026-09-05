@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 2,
+  "gameId": "volt-white-2r",
+  "kind": "trainer-ai",
+  "profileId": "vw2r-gen5-b2w2-trainer-ai-v1",
+  "status": "optional-reference",
+  "inheritance": {
+    "profileId": "gen5-b2w2-trainer-ai-v1",
+    "sourceGameId": "generation-5",
+    "sourceFile": "../../Gen 5/source-data/trainer_ai.json",
+    "sourceSha256": "a96a704d25a44a7c0b60e646b4e77a722e6c3704b2bdade6aa79d09d23a901e6",
+    "verificationReport": "../../Gen 5/source-data/trainer_ai_verification_report.json",
+    "verificationReportSha256": "d08db757756ae047e4f7b619df35433f33a683240e2aefec526e08eb0c103bff",
+    "semanticVerificationReport": "../../Gen 5/source-data/trainer_ai_semantics_verification_report.json",
+    "semanticVerificationReportSha256": "d0b3f72d67e45409aedfc1500ec6c014ad6b8a7ee7818a52ed60efff7e89abf2",
+    "onlineResearchVerificationReport": "../../Gen 5/source-data/trainer_ai_online_research_verification_report.json",
+    "onlineResearchVerificationReportSha256": "6ab81bd812f8e6d279b5401396e8acb5ffd8818c94943889ec0a440e2d4e49d3",
+    "engineBindingsVerificationReport": "../../Gen 5/source-data/trainer_ai_engine_bindings_verification_report.json",
+    "engineBindingsVerificationReportSha256": "c822473e978a5feb1dbd03d51583b39360a2169272cffa3cc8adf591c0aa0a8b",
+    "engineSemanticsVerificationReport": "../../Gen 5/source-data/trainer_ai_engine_semantics_verification_report.json",
+    "engineSemanticsVerificationReportSha256": "8a25aae80e2510376671fe60ccb126312ec43ffe4891950f5ed0130410160830",
+    "actionSemanticsSource": "../../Gen 5/source-data/trainer_ai_action_semantics.json",
+    "actionSemanticsSourceSha256": "7746d15d6acb8ffbc5fe6bfe290f514c844d9395614423276a12c2e36687d6e1",
+    "actionSemanticsVerificationReport": "../../Gen 5/source-data/trainer_ai_action_semantics_verification_report.json",
+    "actionSemanticsVerificationReportSha256": "cd6f59baba0c8acd6dca7cb4f06ccc241a302d4105eea47c61c925bf49f2912d",
+    "itemBattleParametersSource": "../../Gen 5/source-data/trainer_ai_item_battle_parameters.json",
+    "itemBattleParametersSourceSha256": "4ac6d61d2b26a06b3f5592e7bb078429ff3c851082af37ad5db13de9a89aebca",
+    "evaluatorVerificationReport": "../../Gen 5/source-data/trainer_ai_evaluator_verification_report.json",
+    "evaluatorVerificationReportSha256": "fc361e053918e422fea9b948e43c45cb6c4d38805f359d50ca1204f52731f473",
+    "overrides": [],
+    "evidence": "The supported final VW2R ROM a/1/6/9 archive is byte-identical to the pinned clean White 2 archive and every bundled flag binary."
+  },
+  "evaluatorBinding": {
+    "schemaVersion": "trainer-ai-evaluator-profile/v1alpha1",
+    "profileId": "gen5-b2w2-trainer-ai-evaluator-v1alpha1",
+    "profilePath": "../../Gen 5/source-data/trainer_ai.json#evaluator",
+    "activeFlagIds": [
+      "flag0",
+      "flag1",
+      "flag2",
+      "flag3",
+      "flag4",
+      "flag5",
+      "flag7"
+    ],
+    "readiness": "exact-for-active-flag-and-item-closure",
+    "activation": "enabled-fail-closed-per-path-readiness",
+    "unresolvedActiveCommandIds": [],
+    "trainerItemUseStatus": "exact-for-reachable-vw2r-items",
+    "activeTrainerItemNumericIds": [
+      23,
+      24,
+      25,
+      26,
+      27,
+      57,
+      58,
+      61,
+      62
+    ],
+    "unclassifiedActiveTrainerItemNumericIds": [],
+    "overrides": []
+  },
+  "semanticCoverage": {
+    "actionModelField": "inherited profile actionModel",
+    "activeFlagIds": [
+      "flag0",
+      "flag1",
+      "flag2",
+      "flag3",
+      "flag4",
+      "flag5",
+      "flag7"
+    ],
+    "activeOpcodeCount": 91,
+    "activeExecutableOpcodeCount": 91,
+    "activeDocumentedExecutableOpcodeCount": 33,
+    "activeEngineVerifiedExecutableOpcodeCount": 59,
+    "exactHandlerIdentityOpcodeCount": 91,
+    "unresolvedActiveOpcodes": []
+  },
+  "predictionReadiness": {
+    "exactActionProbabilities": true,
+    "status": "ready-for-verified-active-closure",
+    "blockers": [],
+    "unresolvedActiveOpcodeCount": 0,
+    "activeTrainerItemNumericIds": [
+      23,
+      24,
+      25,
+      26,
+      27,
+      57,
+      58,
+      61,
+      62
+    ],
+    "unclassifiedActiveTrainerItemNumericIds": [],
+    "consumerRule": "Exact only when every state/query dependency reached by the selected trainer path is present; missing runtime state remains path-local fail-closed."
+  },
+  "bindings": {
+    "trainers": {
+      "sourceFile": "trainers.json",
+      "profile": "challenge",
+      "aiMaskField": "aiMask",
+      "decodedFlagIdsField": "aiFlagIds",
+      "trainerBagItemIdsField": "bagItemIds",
+      "compatibilityLowByteField": "ai",
+      "exactRomTrainerOccurrences": 409,
+      "mechanicsVariantRecords": 32,
+      "staticOrScriptedExceptions": 2
+    },
+    "moves": {
+      "sourceFile": "moves.json",
+      "effectIdField": "aiEffectId",
+      "effectTokenField": "aiEffect",
+      "boundMoves": 559
+    }
+  },
+  "consumerActivation": {
+    "enabled": true,
+    "consumers": [
+      "pokemon-line-calculator-local"
+    ],
+    "mode": "generated-copy-fail-closed-per-path-readiness",
+    "note": "The local PLC consumes a digest-verified generated copy and must supply the actual trainer mechanics variant when required."
+  },
+  "limitations": [
+    {
+      "id": "pdf-command-glossary-incomplete",
+      "status": "documented-unresolved-semantics",
+      "documentedOpcodeRange": [
+        0,
+        42
+      ],
+      "glossaryStopsAt": "0x2B heading without a name or definition",
+      "unresolvedUsedOpcodes": [
+        61,
+        62,
+        63,
+        108
+      ],
+      "note": "Commands after 0x2A are preserved with exact binary opcode, plaintext token, parameters, and use sites. Only commands listed in the independently verified engine-semantics batch are executable; all others remain unresolved."
+    },
+    {
+      "id": "opcode-09-documentation-conflict",
+      "status": "resolved-by-exact-engine-semantics",
+      "opcode": 9,
+      "note": "The supplied PDF gives JumpIfHasAnyStatus a positive heading but duplicates JumpIfHasNoStatus prose. Exact handler analysis proves the nonzero-status branch, so the heading is authoritative."
+    },
+    {
+      "id": "flag12-unknown-commands",
+      "status": "engine-source-layout-conflict",
+      "scriptId": "flag12",
+      "commands": [
+        "UNKNOWN_3E",
+        "UNKNOWN_3F"
+      ],
+      "note": "The supplied source presentation assigns one 32-bit word to each command, but the exact AINop62/AINop63 handlers consume zero operands under the verified VM model. Preserve the bytes and keep flag12 non-executable until the stream is independently re-decoded."
+    },
+    {
+      "id": "online-command-research-not-executable-semantics",
+      "status": "documented-unresolved-semantics",
+      "sourceIds": [
+        "frost-gen5-editor-command-dictionary",
+        "swan-white2-symbols",
+        "white2-overlay-170-dispatcher"
+      ],
+      "note": "The pinned public sources and exact overlay 170 dispatcher bind all 120 opcodes to handlers, but handler identity is not behavior. Implementation analysis and independent known-answer validation remain required before prediction can consume unresolved opcodes."
+    },
+    {
+      "id": "black-white-bytecode-not-bundled",
+      "status": "out-of-profile",
+      "note": "Do not use these B2W2 binaries as byte-exact Black/White scripts without a separately pinned and verified Black/White profile."
+    }
+  ]
+}

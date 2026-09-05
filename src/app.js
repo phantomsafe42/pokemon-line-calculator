@@ -1,7 +1,9 @@
 import { calculateStats, normalizePlayerCollection, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js";
-import { showdownSpriteUrl } from "./adapters/showdown_sprites.js?v=20260825-form-compatibility";
+import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260828-central-sprites";
 import { loadStandardizedDataset } from "./adapters/standardized_dataset.js";
+import { loadTrainerAiDocumentation } from "./adapters/trainer_ai.js?v=20260905-rule-titles-slot-ledger";
 import { createDraftRecord, destructiveTransitionNotice, IndexedDbDraftStore, markExported, markLiveFlushed, setLocalLiveEdit, updateDraftRecord } from "./cache/active_draft.js";
+import { TrainerAiForecastCache } from "./cache/trainer_ai_forecast.js?v=20260904-static-node-forecast";
 import { downloadPlan, exportSelectedPlan, migratePlanDocument, parsePlan } from "./contracts/plan_file.js";
 import { assertValidPlanDocument } from "./contracts/plan_contract.js";
 import { mechanicsCompatibility, validatePlanReferences } from "./contracts/plan_compatibility.js?v=20260827-ability-form-events";
@@ -12,13 +14,14 @@ import { exportBranchGroups, planTreeOrder, planTurnTreeOrder, preferredImported
 import { HIDDEN_POWER_TYPES, hiddenPowerTypeFromIvs, resolvedHiddenPowerType } from "./core/hidden_power.js";
 import { formatDamageRollCounts, healingEventDescription, isCriticalOhkoOutcome, isHighRollKoOutcome, outcomePanelEvents, readableMechanicName } from "./core/outcome_presentation.js?v=20260827-ability-state-events";
 import { createPlanDocument, planHasWork, setStateNodeNote, upgradeInitialEntryEffects } from "./core/plan.js?v=20260827-ability-form-events";
-import { commitForcedReplacement, commitLabel, commitPreview, previewForcedReplacement, refreshUnknownCommittedProbabilities, repairStaleLeafBattleEnd } from "./core/planner.js?v=20260827-ability-form-events";
+import { commitForcedReplacement, commitLabel, commitPreview, previewForcedReplacement, refreshUnknownCommittedProbabilities, repairStaleLeafBattleEnd, replacementCommitLabel } from "./core/planner.js?v=20260904-replacement-nodes";
 import { recalculatePlanDocument } from "./core/recalculation.js?v=20260827-ability-form-events";
 import { moveSupport } from "./rulesets/core_move_support.js";
 import { effectiveActionSpeed } from "./rulesets/action_order.js?v=20260827-triples-slot-display";
 import { areSlotsAdjacent, canSelectShift, shiftWithCenter, triplePositionForSlot, tripleSlotForPosition } from "./rulesets/triple_battle.js?v=20260827-triples-slot-display";
-import { experienceForLevel, experienceToNextLevel, projectVw2rExperience } from "./rulesets/vw2r_experience.js";
-import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260827-lock-progression";
+import { rotationFrontKey, rotationFrontSlot } from "./rulesets/rotation_battle.js";
+import { experienceForLevel, experienceToNextLevel, projectExperience } from "./rulesets/vw2r_experience.js";
+import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260905-rule-titles-slot-ledger";
 import { battleCompletionState } from "./core/battle_completion.js?v=20260826-turn-nodes";
 import {
   addBox, addParty, boxesForGame, createEmptyBoxLibrary, exportBoxLibrary, IndexedDbBoxLibraryStore,
@@ -27,32 +30,87 @@ import {
 import { addImportedPlanParty, bindPlanPlayerPartyToImportedBox } from "./boxes/plan_import.js?v=20260827-lock-progression";
 import { applyBranchProgressionToLibrary, branchProgressionSnapshot } from "./boxes/progression.js?v=20260827-lock-progression";
 import { exportShowdown, parseShowdown } from "./boxes/showdown.js?v=20260825-hidden-power-v2";
-import { parseVw2rSave, selectVw2rSavePokemon } from "./boxes/vw2r_save_import.js";
+import { parseSave, selectSavePokemon } from "./boxes/save_import.js";
 
 const GAME_REGISTRY = Object.freeze({
+  "fire-red-omega": {
+    name: "Fire Red Omega",
+    credit: "by Drayano",
+    expectedDamageGeneration: 3,
+    activationReady: true,
+    datasetBaseUrl: new URL("./generated/datasets/fire-red-omega", import.meta.url).href,
+    trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
+    capabilities: Object.freeze({ liveEdit: false, battleTracker: false })
+  },
+  "pokemon-unbound": {
+    name: "Unbound",
+    credit: "by Skeli",
+    expectedDamageGeneration: 3,
+    activationReady: true,
+    datasetBaseUrl: new URL("./generated/datasets/pokemon-unbound", import.meta.url).href,
+    trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
+    capabilities: Object.freeze({ liveEdit: false, battleTracker: false })
+  },
+  "platinum-kaizo": {
+    name: "Platinum Kaizo",
+    credit: "by SHF",
+    expectedDamageGeneration: 4,
+    activationReady: true,
+    datasetBaseUrl: new URL("./generated/datasets/platinum-kaizo", import.meta.url).href,
+    trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
+    capabilities: Object.freeze({ liveEdit: false, battleTracker: false })
+  },
+  "renegade-platinum": {
+    name: "Renegade Platinum",
+    credit: "by Drayano",
+    expectedDamageGeneration: 4,
+    activationReady: true,
+    datasetBaseUrl: new URL("./generated/datasets/renegade-platinum", import.meta.url).href,
+    trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
+    capabilities: Object.freeze({ liveEdit: false, battleTracker: false })
+  },
+  "storm-silver": {
+    name: "Storm Silver",
+    credit: "by Drayano",
+    expectedDamageGeneration: 4,
+    activationReady: true,
+    datasetBaseUrl: new URL("./generated/datasets/storm-silver", import.meta.url).href,
+    trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
+    capabilities: Object.freeze({ liveEdit: false, battleTracker: false })
+  },
   "volt-white-2r": {
-    name: "Pokémon Volt White 2 Redux Egglocke",
-    datasetBaseUrl: new URL("./generated/datasets/volt-white-2r", import.meta.url).href
+    name: "Volt White 2 Redux - Challenge Mode",
+    credit: "by AphexCubed and Drayano",
+    expectedDamageGeneration: 5,
+    activationReady: true,
+    datasetBaseUrl: new URL("./generated/datasets/volt-white-2r", import.meta.url).href,
+    trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
+    capabilities: Object.freeze({ liveEdit: true, battleTracker: true })
   }
 });
-const PUBLIC_BUILD = document.querySelector('meta[name="plc-build-profile"]')?.content === "public";
+const BUILD_PROFILE = document.querySelector('meta[name="plc-build-profile"]')?.content || "unknown";
+const pokemonAssetResolver = globalThis.PokemonAssets?.createResolver();
+const PUBLIC_BUILD = BUILD_PROFILE === "public";
 const LOOPBACK_HOSTS = new Set(["127.0.0.1", "localhost", "::1", "[::1]"]);
+const PRIVATE_INTEGRATIONS_ALLOWED = !PUBLIC_BUILD && (
+  LOOPBACK_HOSTS.has(location.hostname) || BUILD_PROFILE === "private-remote"
+);
 const SELECTED_GAME_KEY = "plc-selected-game-v1";
 const STAT_KEYS = Object.freeze(["hp", "atk", "def", "spa", "spd", "spe"]);
 const STAT_LABELS = Object.freeze({ hp: "HP", atk: "Atk", def: "Def", spa: "SpA", spd: "SpD", spe: "Spe" });
-const STATUS_LABELS = Object.freeze({ brn: "Burn", par: "Paralysis", psn: "Poison", tox: "Bad poison", slp: "Sleep", frz: "Freeze" });
+const STATUS_LABELS = Object.freeze({ brn: "Burn", par: "Paralysis", psn: "Poison", tox: "Badly Poisoned", slp: "Sleep", frz: "Freeze" });
 const byId = id => document.getElementById(id);
 const ui = Object.fromEntries([
-  "game-select", "app-status", "game-gate", "app-tabs", "plc-tab", "boxes-tab", "plc-panel", "boxes-panel",
-  "plan-toolbar-label", "output-state-anchor", "commit-turn", "save-plan", "new-plan", "live-edit-anchor", "workspace", "empty-plan",
+  "game-select", "game-credit", "app-status", "game-gate", "app-tabs", "plc-tab", "boxes-tab", "plc-panel", "boxes-panel",
+  "plan-toolbar-label", "output-state-anchor", "battle-tracker-anchor", "battle-tracker-detail", "commit-turn", "save-plan", "new-plan", "live-edit-anchor", "workspace", "empty-plan",
   "node-tree", "turn-label", "revision-label", "battle-workspace", "player-action-panel", "enemy-action-panel", "field-state",
-  "readiness", "preview-outcomes", "node-notes", "notes-status", "boxes-list", "save-import", "save-import-dialog", "save-import-filename",
+  "readiness", "preview-outcomes", "ai-forecast-toggle", "ai-forecast-body", "ai-notes", "notes-toggle", "notes-body", "node-notes", "notes-status", "boxes-list", "save-import", "save-import-dialog", "save-import-filename",
   "save-import-party-summary", "save-import-pc-boxes", "save-import-status", "select-all-save-boxes", "clear-save-boxes",
   "confirm-save-import", "showdown-open", "new-box", "export-boxes", "import-boxes",
   "plan-context-dialog", "trainer-select", "battle-format", "variant-field", "variant-select", "plan-name",
   "initial-weather", "initial-terrain", "context-box-select", "party-source-mode", "saved-party-field",
   "context-party-select", "context-pokemon-grid", "save-party-selection", "party-selector-controls",
-  "enemy-team-summary", "party-selection-summary", "edit-party-selection", "context-status", "begin-plan", "pokemon-editor-dialog",
+  "enemy-team-summary", "party-selection-summary", "edit-party-selection", "edge-party-exp", "context-status", "begin-plan", "pokemon-editor-dialog",
   "pokemon-editor-form", "pokemon-editor-title", "editor-sprite-preview", "editor-box-id", "editor-pokemon-id", "editor-context", "editor-species",
   "editor-nickname", "editor-level", "editor-gender", "editor-nature", "editor-ability", "editor-item", "editor-hidden-power-type",
   "editor-hp-field", "editor-starting-hp", "editor-status-field", "editor-starting-status", "editor-stats",
@@ -66,6 +124,7 @@ const draftStore = new IndexedDbDraftStore();
 const boxStore = new IndexedDbBoxLibraryStore();
 let selectedGameId = null;
 let dataset = null;
+let trainerAi = null;
 let worker = null;
 let boxLibrary = createEmptyBoxLibrary();
 let plan = null;
@@ -84,11 +143,19 @@ let liveButton = null;
 let outputStateButton = null;
 let localTestingStateApi = null;
 let createLocalTestingStateSnapshot = null;
+let battleTracker = null;
+let battleTrackerButton = null;
+let battleTrackerSnapshot = null;
+let compareTrackerTurnsFn = null;
+let selectedTrackerTurnNumber = null;
 let activeTab = "plc";
 let destructiveResolver = null;
 let editorMoveRows = [];
 let actionDraft = emptyActionDraft();
 let notesPersistTimer = null;
+let trainerAiAnalysisCache = new TrainerAiForecastCache();
+let aiForecastExpanded = false;
+let notesExpanded = false;
 let contextSelection = emptyContextSelection();
 let pendingSaveImport = null;
 let progressionResolver = null;
@@ -106,12 +173,57 @@ function setStatus(message, error = false) {
   ui["app-status"].classList.toggle("error", error);
 }
 
+function renderGameCredit(gameId) {
+  ui["game-credit"].textContent = GAME_REGISTRY[gameId]?.credit || "";
+}
+
 function option(value, label, { disabled = false } = {}) {
   const node = document.createElement("option");
   node.value = value ?? "";
   node.textContent = label;
   node.disabled = disabled;
   return node;
+}
+
+async function generatedGameIsReady(config) {
+  if (config.activationReady !== true) return false;
+  try {
+    const root = String(config.datasetBaseUrl).replace(/\/$/, "");
+    const [manifestResponse, mechanicsResponse, experienceResponse] = await Promise.all([
+      fetch(`${root}/dataset_manifest.json`, { cache: "no-store" }),
+      fetch(`${root}/battle_mechanics.json`, { cache: "no-store" }),
+      fetch(`${root}/experience_mechanics.json`, { cache: "no-store" })
+    ]);
+    if (!manifestResponse.ok || !mechanicsResponse.ok || !experienceResponse.ok) return false;
+    const [manifest, mechanics, experience] = await Promise.all([manifestResponse.json(), mechanicsResponse.json(), experienceResponse.json()]);
+    const damageGeneration = Number(mechanics?.damageGeneration);
+    return manifest?.gameId === mechanics?.gameId
+      && Number.isInteger(damageGeneration)
+      && damageGeneration >= 1
+      && damageGeneration <= 9
+      && (config.expectedDamageGeneration === undefined || damageGeneration === Number(config.expectedDamageGeneration))
+      && mechanics?.validation?.status === "passed"
+      && Number(mechanics?.validation?.unresolved) === 0
+      && experience?.gameId === manifest?.gameId
+      && experience?.validation?.status === "passed"
+      && Number(experience?.validation?.unresolved) === 0
+      && experience?.consumerActivation?.experienceProjectionReady === true;
+  } catch {
+    return false;
+  }
+}
+
+async function populateGameOptions() {
+  const availability = await Promise.all(Object.entries(GAME_REGISTRY).map(async ([gameId, config]) => [
+    gameId,
+    await generatedGameIsReady(config)
+  ]));
+  const readyByGame = new Map(availability);
+  ui["game-select"].replaceChildren(option("", "Select game…"));
+  for (const [gameId, config] of Object.entries(GAME_REGISTRY)) {
+    const ready = readyByGame.get(gameId) === true;
+    ui["game-select"].append(option(gameId, ready ? config.name : `${config.name} — standardization pending`, { disabled: !ready }));
+  }
 }
 
 function button(label, className = "") {
@@ -124,13 +236,16 @@ function button(label, className = "") {
 
 function sprite(record, alt = "") {
   const image = document.createElement("img");
-  image.src = showdownSpriteUrl(record, dataset);
   image.alt = alt || record?.displayName || "Pokémon";
   image.loading = "lazy";
-  image.addEventListener("error", () => {
+  if (pokemonAssetResolver) {
+    void setPokemonAssetImage(pokemonAssetResolver, image, record, dataset).then(result => {
+      if (result.status !== "ok") image.classList.add("sprite-unavailable");
+    });
+  } else {
     image.classList.add("sprite-unavailable");
-    image.alt = "";
-  }, { once: true });
+    image.hidden = true;
+  }
   return image;
 }
 
@@ -268,7 +383,8 @@ function currentTestingState() {
     controls: testingControlState(),
     openDialogIds: [...document.querySelectorAll("dialog[open][id]")].map(dialog => dialog.id),
     focusedElement: focused,
-    liveEditActive: Boolean(liveWriter?.active)
+    liveEditActive: Boolean(liveWriter?.active),
+    battleTracker: battleTrackerSnapshot
   });
 }
 
@@ -286,7 +402,7 @@ async function outputTestingState() {
 }
 
 async function installTestingStateOutput() {
-  if (PUBLIC_BUILD || !LOOPBACK_HOSTS.has(location.hostname) || !ui["output-state-anchor"]) return;
+  if (!PRIVATE_INTEGRATIONS_ALLOWED || !ui["output-state-anchor"]) return;
   const [testingApi, snapshotApi] = await Promise.all([
     import("./integrations/local_testing_state.js"),
     import("./testing/state_snapshot.js")
@@ -480,7 +596,7 @@ function renderBoxes() {
   const boxes = selectedGameBoxes();
   if (!boxes.length) {
     ui["boxes-list"].replaceChildren(Object.assign(document.createElement("section"), {
-      className: "panel empty-plan", innerHTML: "<h2>No Boxes yet</h2><p>Import a .sav, paste Showdown sets, or create an empty Box.</p>"
+      className: "panel empty-plan", innerHTML: "<h2>No Boxes yet</h2><p>Import a .sav or .dsv, paste Showdown sets, or create an empty Box.</p>"
     }));
     return;
   }
@@ -730,12 +846,13 @@ async function savePokemonEditor() {
       const record = selectedBox(boxId).pokemon[result.pokemonId];
       const maxHp = calculateStats(record, dataset).hp;
       const hp = Math.max(0, Math.min(maxHp, Number(ui["editor-starting-hp"].value)));
-      contextSelection.initialConditions[result.pokemonId] = { currentHp: hp, majorStatus: ui["editor-starting-status"].value || null };
+      contextSelection.initialConditions[result.pokemonId] = { ...contextSelection.initialConditions[result.pokemonId], currentHp: hp, majorStatus: ui["editor-starting-status"].value || null };
       if (existingId && !contextSelection.pokemonIds.includes(existingId)) contextSelection.pokemonIds.push(existingId);
     }
     await saveLibrary("Pokémon saved. Every Party in this Box now uses the updated record.");
     ui["pokemon-editor-dialog"].close();
     renderContextPokemonGrid();
+    if (contextSelection.saved) renderPartySummary();
   } catch (error) { ui["editor-error"].textContent = error.message; }
 }
 
@@ -803,8 +920,11 @@ function renderSaveImportSelection(fileName, imported) {
 async function prepareSaveImport(file) {
   if (!file) return;
   try {
+    if (!/\.(sav|dsv)$/i.test(file.name)) {
+      throw new Error("Save import accepts .sav and .dsv files only");
+    }
     setStatus(`Reading ${file.name} without modifying it…`);
-    const imported = parseVw2rSave(await file.arrayBuffer(), dataset, { sourceName: file.name });
+    const imported = parseSave(await file.arrayBuffer(), dataset, { sourceName: file.name });
     pendingSaveImport = { fileName: file.name, imported };
     renderSaveImportSelection(file.name, imported);
     ui["save-import-dialog"].returnValue = "";
@@ -817,7 +937,7 @@ async function prepareSaveImport(file) {
 async function confirmSaveImport() {
   if (!pendingSaveImport) return;
   try {
-    const selected = selectVw2rSavePokemon(pendingSaveImport.imported, selectedSavePcBoxes());
+    const selected = selectSavePokemon(pendingSaveImport.imported, selectedSavePcBoxes());
     const result = addBox(boxLibrary, selectedGameId, {
       name: pendingSaveImport.fileName.replace(/\.(sav|dsv)$/i, ""),
       pokemon: selected.pokemon,
@@ -860,7 +980,7 @@ function updateVariantSelect() {
   if (trainer) {
     try {
       const format = dataset.trainerBattleFormat(trainer.id);
-      ui["battle-format"].value = format === "triples" ? "Triples" : format === "doubles" ? "Doubles" : "Singles";
+      ui["battle-format"].value = format === "rotation" ? "Rotation" : format === "triples" ? "Triples" : format === "doubles" ? "Doubles" : "Singles";
     }
     catch (error) { ui["battle-format"].value = error.message; }
     ui["plan-name"].value = `${trainer.displayName || trainer.name} Plan`;
@@ -877,14 +997,15 @@ function enemyTeamPreviewRecord(member) {
     formId: member.form ? String(member.form) : null,
     displayName: member.displaySpecies || species?.name || String(speciesId || "Pokémon"),
     nickname: "",
-    level: Number(member.level)
+    level: Number(member.level),
+    itemId: member.itemId || null
   };
 }
 
 function renderEnemyTeamSummary() {
   const trainer = dataset?.trainer(ui["trainer-select"].value);
   if (!trainer) {
-    ui["enemy-team-summary"].replaceChildren(Object.assign(document.createElement("p"), { className: "empty", textContent: "Select a trainer to view the enemy team." }));
+    ui["enemy-team-summary"].replaceChildren();
     return;
   }
   let members;
@@ -931,6 +1052,23 @@ function contextPokemonCard(box, record, selected, manual, { editable = true } =
   const name = document.createElement("strong"); name.textContent = recordName(record);
   const detail = document.createElement("small"); detail.textContent = `${record.displayName} · Lv. ${record.level}`;
   body.append(name, detail); card.append(body);
+  const item = document.createElement("small");
+  item.className = "context-held-item";
+  const startingItem = editable && Object.hasOwn(contextSelection.initialConditions[record.id] || {}, "itemId")
+    ? contextSelection.initialConditions[record.id].itemId : record.itemId;
+  item.textContent = startingItem ? dataset.get("items", startingItem)?.name || startingItem : "None";
+  body.append(item);
+  if (editable) {
+    ensureContextInitial(record);
+    const initial = contextSelection.initialConditions[record.id];
+    const maxHp = calculateStats(record, dataset).hp;
+    if (initial.currentHp < maxHp) {
+      const hp = document.createElement("small");
+      hp.className = "context-starting-hp";
+      hp.textContent = `HP ${initial.currentHp} / ${maxHp}`;
+      body.append(hp);
+    }
+  }
   const actions = document.createElement("div"); actions.className = "context-pokemon-actions";
   if (manual) {
     const choose = button(selected ? "Remove" : "Select", selected ? "" : "secondary");
@@ -947,6 +1085,23 @@ function contextPokemonCard(box, record, selected, manual, { editable = true } =
     const edit = button("Edit", "secondary");
     edit.addEventListener("click", () => { ensureContextInitial(record); openPokemonEditor(box.id, record.id, true); });
     actions.append(edit);
+    const status = document.createElement("select");
+    status.className = "context-pre-status";
+    status.setAttribute("aria-label", `Pre-status for ${recordName(record)}`);
+    for (const [value, label] of [["", "No Status"], ["brn", "Burned"], ["par", "Paralyzed"], ["psn", "Poisoned"], ["tox", "Badly Poisoned"], ["slp", "Asleep"], ["frz", "Frozen"]]) status.append(option(value, label));
+    status.value = contextSelection.initialConditions[record.id].majorStatus || "";
+    status.addEventListener("change", () => { contextSelection.initialConditions[record.id].majorStatus = status.value || null; });
+    const heldItem = document.createElement("select");
+    heldItem.className = "context-pre-item";
+    heldItem.setAttribute("aria-label", `Item for ${recordName(record)}`);
+    heldItem.append(...[...ui["editor-item"].options].map(entry => option(entry.value, entry.value ? entry.textContent : "None")));
+    const initial = contextSelection.initialConditions[record.id];
+    heldItem.value = Object.hasOwn(initial, "itemId") ? initial.itemId || "" : record.itemId || "";
+    heldItem.addEventListener("change", () => {
+      initial.itemId = heldItem.value || null;
+      item.textContent = heldItem.selectedOptions[0]?.textContent || "None";
+    });
+    actions.append(heldItem, status);
   }
   if (actions.childElementCount) card.append(actions);
   return card;
@@ -962,7 +1117,7 @@ function renderContextPokemonGrid() {
   contextSelection.boxId = box?.id || null;
   const manual = ui["party-source-mode"].value === "manual";
   if (!box) {
-    ui["context-pokemon-grid"].replaceChildren(Object.assign(document.createElement("p"), { className: "empty", textContent: "Choose a Box. If you do not have one yet, open the Boxes tab and import a save or Showdown set." }));
+    ui["context-pokemon-grid"].replaceChildren();
     ui["save-party-selection"].disabled = true;
     return;
   }
@@ -972,7 +1127,7 @@ function renderContextPokemonGrid() {
     contextSelection.pokemonIds = party ? [...party.pokemonIds] : [];
   }
   const records = manual ? box.pokemonOrder.map(id => box.pokemon[id]) : contextSelection.pokemonIds.map(id => box.pokemon[id]).filter(Boolean);
-  if (!records.length) ui["context-pokemon-grid"].replaceChildren(Object.assign(document.createElement("p"), { className: "empty", textContent: manual ? "This Box has no Pokémon." : "Select a saved Party with at least one Pokémon." }));
+  if (!records.length) ui["context-pokemon-grid"].replaceChildren();
   else ui["context-pokemon-grid"].replaceChildren(...records.map(record => contextPokemonCard(box, record, contextSelection.pokemonIds.includes(record.id), manual)));
   ui["save-party-selection"].disabled = contextSelection.pokemonIds.length < 1 || contextSelection.pokemonIds.length > 6;
   updateBeginAvailability();
@@ -983,14 +1138,30 @@ function renderPartySummary() {
   ui["party-selection-summary"].replaceChildren(...records.map(record => {
     ensureContextInitial(record);
     const card = contextPokemonCard(selectedBox(contextSelection.boxId), record, true, false);
-    const details = card.querySelector("small");
-    const initial = contextSelection.initialConditions[record.id];
-    details.textContent += ` · ${initial.currentHp} HP${initial.majorStatus ? ` · ${STATUS_LABELS[initial.majorStatus]}` : ""}`;
     return card;
   }));
   ui["party-selector-controls"].hidden = true;
   ui["party-selection-summary"].hidden = false;
   ui["edit-party-selection"].hidden = false;
+  ui["edge-party-exp"].hidden = false;
+}
+
+async function edgePartyExperience() {
+  try {
+    const records = selectedContextRecords().filter(record => record.level < 100);
+    let nextLibrary = boxLibrary;
+    for (const record of records) {
+      const growthRate = dataset.get("species", record.speciesId)?.growthRate;
+      if (!growthRate) throw new Error(`Missing EXP growth rate for ${recordName(record)}.`);
+      nextLibrary = upsertPokemon(nextLibrary, selectedGameId, contextSelection.boxId, {
+        ...record, experience: experienceForLevel(record.level + 1, growthRate) - 1
+      }).library;
+    }
+    boxLibrary = nextLibrary;
+    await saveLibrary("Selected party edged to 1 EXP before the next level. Level 100 Pokémon were unchanged.");
+    renderPartySummary();
+    ui["context-status"].textContent = records.length ? "Selected party is 1 EXP from leveling up." : "Selected party is already at level 100.";
+  } catch (error) { ui["context-status"].textContent = error.message; }
 }
 
 function savePartySelection() {
@@ -1031,6 +1202,7 @@ function openPlanContext({ reset = true } = {}) {
   ui["party-selector-controls"].hidden = false;
   ui["party-selection-summary"].hidden = true;
   ui["edit-party-selection"].hidden = true;
+  ui["edge-party-exp"].hidden = true;
   ui["party-source-mode"].value = "party";
   updateVariantSelect();
   renderContextPokemonGrid();
@@ -1050,6 +1222,7 @@ function boxRecordToSnapshot(record, boxId = null) {
     level: record.level,
     experience: record.experience,
     gender: record.gender,
+    ...(Number.isInteger(record.friendship) ? { friendship: record.friendship } : {}),
     natureId: record.natureId,
     abilityId: record.abilityId,
     itemId: record.itemId,
@@ -1086,7 +1259,10 @@ async function beginPlanFromContext() {
     const trainer = dataset.trainer(ui["trainer-select"].value);
     const variantId = trainer.mechanicsVariants?.length ? ui["variant-select"].value : null;
     const records = selectedContextRecords();
-    const players = normalizePlayerCollection({ party: records.map(record => boxRecordToSnapshot(record, contextSelection.boxId)) }, dataset);
+    const players = normalizePlayerCollection({ party: records.map(record => {
+      const initial = contextSelection.initialConditions[record.id];
+      return boxRecordToSnapshot(initial && Object.hasOwn(initial, "itemId") ? { ...record, itemId: initial.itemId } : record, contextSelection.boxId);
+    }) }, dataset);
     const enemies = normalizeTrainerRoster(trainer.id, variantId, dataset);
     const sourceSnapshot = snapshotFingerprint(players, enemies, boxLibrary.updatedAt);
     plan = createPlanDocument({
@@ -1113,7 +1289,7 @@ async function beginPlanFromContext() {
     ui["plan-context-dialog"].close();
     setTab("plc");
     renderWorkspace();
-    const formatLabel = plan.game.battleFormat === "triples" ? "Triples" : plan.game.battleFormat === "doubles" ? "Doubles" : "Singles";
+    const formatLabel = battleFormatLabel(plan.game.battleFormat);
     setStatus(`Clean ${formatLabel} plan ready for ${trainer.displayName}. Nothing has been sent to Overlay.`);
   } catch (error) { setStatus(error.message, true); }
 }
@@ -1125,7 +1301,7 @@ function selectedState() {
 function selectedNoteTarget() {
   if (!plan) return null;
   if (reviewOutcomeStateNodeId && plan.stateNodes[reviewOutcomeStateNodeId]) {
-    return { stateNodeId: reviewOutcomeStateNodeId, field: "notes", turnNumber: Number(plan.stateNodes[reviewOutcomeStateNodeId].turnNumber), committed: true };
+    return { stateNodeId: reviewOutcomeStateNodeId, field: "notes", turnNumber: displayTurnNumber(plan.stateNodes[reviewOutcomeStateNodeId]), committed: true };
   }
   const state = selectedState();
   if (!state) return null;
@@ -1133,8 +1309,111 @@ function selectedNoteTarget() {
   return { stateNodeId: state.stateNodeId, field: "draftNote", turnNumber: Number(state.turnNumber) + 1, committed: false };
 }
 
+function displayTurnNumber(state) {
+  return Number(state?.turnNumber || 0) + (state?.parentReplacementTransitionId ? 1 : 0);
+}
+
+function setNotesExpanded(expanded) {
+  notesExpanded = Boolean(expanded);
+  ui["notes-body"].hidden = !notesExpanded;
+  ui["notes-toggle"].textContent = notesExpanded ? "▾" : "▸";
+  ui["notes-toggle"].setAttribute("aria-expanded", String(notesExpanded));
+  ui["notes-toggle"].setAttribute("aria-label", `${notesExpanded ? "Collapse" : "Expand"} Notes`);
+}
+
+function setAiForecastExpanded(expanded) {
+  aiForecastExpanded = Boolean(expanded);
+  ui["ai-forecast-toggle"].checked = aiForecastExpanded;
+  ui["ai-forecast-toggle"].setAttribute("aria-expanded", String(aiForecastExpanded));
+  ui["ai-forecast-body"].hidden = !aiForecastExpanded;
+}
+
+function aiProbabilityLabel(weight) {
+  const probability = Number(weight?.decimal ?? weight);
+  if (!Number.isFinite(probability)) return "—";
+  return `${(probability * 100).toFixed(2).replace(/\.00$/, "").replace(/(\.\d)0$/, "$1")}%`;
+}
+
+function aiIncentiveDescription(summary) {
+  return String(summary || "")
+    .replace(/;?\s*(?:its|this move's)\s+(?:fresh|independent)\s+128\/256 incentive check passed\.?/gi, ".")
+    .replace(/\s+passed\s+(?:a|another|its)\s+(?:fresh|independent)\s+128\/256(?:\s+incentive)?\s+check\.?/gi, ".")
+    .replace(/\s+passed\s+its\s+fresh\s+128\/256\s+check\.?/gi, ".")
+    .replace(/\.{2,}/g, ".")
+    .replace(/\s+\./g, ".")
+    .trim();
+}
+
+function appendAiMoveLedger(container, move) {
+  const ledger = move.incentiveLedger;
+  if (!ledger) return;
+  const highlightsLikelihoodSource = new Set(["likely", "very-likely", "guaranteed"]).has(move.turnLikelihood?.id);
+
+  const distributions = ledger.finalScoreDistributions || [];
+  for (const distribution of distributions) {
+  const table = document.createElement("table");
+  table.className = "ai-incentive-table";
+  if (highlightsLikelihoodSource && distribution.influencesLikelihood) table.classList.add("is-likelihood-source");
+  const caption = document.createElement("caption");
+  caption.textContent = Number.isInteger(distribution.targetSlot)
+    ? `Slot ${battleSlotNumber(distribution.targetSide || "player", distribution.targetSlot)}` : "Field";
+  table.append(caption);
+  const head = document.createElement("thead");
+  const headRow = document.createElement("tr");
+  for (const label of ["Probability", "Points", "AI Behaviour"]) {
+    const cell = document.createElement("th");
+    cell.scope = "col";
+    cell.textContent = label;
+    headRow.append(cell);
+  }
+  head.append(headRow);
+  const body = document.createElement("tbody");
+  const adjustmentProbability = adjustment => {
+    const weight = adjustment.probability || adjustment.modeledWeight;
+    const value = weight == null ? NaN : Number(weight.decimal ?? weight);
+    return Number.isFinite(value) ? value : -1;
+  };
+  const adjustments = (ledger.adjustments || []).filter(adjustment => !adjustment.candidateId || adjustment.candidateId === distribution.candidateId).sort((left, right) =>
+    adjustmentProbability(right) - adjustmentProbability(left)
+    || Math.sign(Number(right.delta)) - Math.sign(Number(left.delta)));
+  for (const adjustment of adjustments) {
+    const row = document.createElement("tr");
+    const probability = document.createElement("td");
+    probability.textContent = aiProbabilityLabel(adjustment.probability || adjustment.modeledWeight);
+    const points = document.createElement("td");
+    points.className = Number(adjustment.delta) > 0 ? "is-positive" : Number(adjustment.delta) < 0 ? "is-negative" : "";
+    points.textContent = `${Number(adjustment.delta) > 0 ? "+" : ""}${Number(adjustment.delta)}`;
+    const reason = document.createElement("td");
+    const ruleTitle = document.createElement("span");
+    ruleTitle.className = "ai-rule-title";
+    ruleTitle.textContent = adjustment.title || "AI rule";
+    ruleTitle.title = aiIncentiveDescription(adjustment.summary);
+    ruleTitle.tabIndex = 0;
+    ruleTitle.setAttribute("aria-label", `${ruleTitle.textContent}: ${ruleTitle.title}`);
+    reason.append(ruleTitle);
+    row.append(probability, points, reason);
+    body.append(row);
+  }
+  table.append(head, body);
+  const footer = document.createElement("tfoot");
+  for (const outcome of [...(distribution.scores || [])].sort((left, right) => adjustmentProbability(right) - adjustmentProbability(left))) {
+    const row = document.createElement("tr");
+    const probability = document.createElement("td");
+    probability.textContent = aiProbabilityLabel(outcome.modeledWeight);
+    const score = document.createElement("td");
+    score.textContent = String(outcome.score);
+    score.setAttribute("aria-label", `Final score ${outcome.score}`);
+    row.append(probability, score, document.createElement("td"));
+    footer.append(row);
+  }
+  table.append(footer);
+  container.append(table);
+  }
+}
+
 function renderNotes() {
   const target = selectedNoteTarget();
+  renderTrainerAiNotes(target?.stateNodeId ? plan?.stateNodes?.[target.stateNodeId] : selectedState());
   ui["node-notes"].disabled = !target || needsRecalculation;
   if (!target) {
     ui["node-notes"].value = "";
@@ -1147,6 +1426,131 @@ function renderNotes() {
   ui["node-notes"].dataset.stateNodeId = target.stateNodeId;
   ui["node-notes"].dataset.noteField = target.field;
   ui["notes-status"].textContent = `${target.committed ? "Committed" : "Draft"} Turn ${target.turnNumber} note · saved in plan files and restored on import.`;
+}
+
+function renderTrainerAiNotes(state) {
+  const container = ui["ai-notes"];
+  if (!container) return;
+  const forecastSupported = ["volt-white-2r", "renegade-platinum"].includes(selectedGameId);
+  container.closest(".ai-forecast-panel").hidden = !forecastSupported;
+  if (!forecastSupported) return;
+  if (!plan || !state || !dataset || !trainerAi || !worker) {
+    container.replaceChildren(Object.assign(document.createElement("p"), { className: "empty", textContent: "Enemy AI documentation is unavailable for this node." }));
+    return;
+  }
+  const analysis = trainerAiAnalysisCache.get(plan, state);
+  if (!analysis) {
+    container.replaceChildren(Object.assign(document.createElement("p"), { className: "empty", textContent: "Evaluating the enemy AI from this battle state…" }));
+    trainerAiAnalysisCache.resolve(plan, state, () => worker.trainerAi({ plan, state })).then(() => {
+      const target = selectedNoteTarget();
+      const displayedState = target?.stateNodeId ? plan?.stateNodes?.[target.stateNodeId] : selectedState();
+      if (trainerAiAnalysisCache.key(plan, displayedState) === trainerAiAnalysisCache.key(plan, state)) renderTrainerAiNotes(displayedState);
+    }).catch(error => {
+      const target = selectedNoteTarget();
+      const displayedState = target?.stateNodeId ? plan?.stateNodes?.[target.stateNodeId] : selectedState();
+      if (trainerAiAnalysisCache.key(plan, displayedState) === trainerAiAnalysisCache.key(plan, state)) {
+        container.replaceChildren(Object.assign(document.createElement("p"), { className: "empty", textContent: `Enemy AI evaluation failed: ${error.message || String(error)}` }));
+      }
+    });
+    return;
+  }
+  const nodes = [];
+  const turnHeading = document.createElement("h4"); turnHeading.className = "ai-section-title"; turnHeading.textContent = "Move Selection"; nodes.push(turnHeading);
+  for (const actor of analysis.actors) {
+    const article = document.createElement("details"); article.className = "ai-actor-note";
+    const title = document.createElement("summary");
+    title.textContent = `${actor.name} · Slot ${slotsPerSide(plan) + actor.slot + 1}${plan.game.battleFormat === "rotation" ? actor.front ? " · currently front" : " · waiting" : ""}`;
+    if (actor.forecastStatus === "available") {
+      const overview = document.createElement("span");
+      overview.className = "ai-collapsed-moves";
+      for (const move of actor.moves || []) {
+        const line = document.createElement("span"); line.className = "ai-collapsed-move";
+        const likelihood = document.createElement("strong");
+        likelihood.textContent = move.turnLikelihood?.label || "Forecast error";
+        line.append(document.createTextNode(`${move.name}: `), likelihood);
+        overview.append(line);
+      }
+      title.append(overview);
+    }
+    article.append(title);
+    if (actor.forecastStatus !== "available") {
+      const error = document.createElement("p");
+      error.className = "ai-error-note";
+      error.textContent = `Forecast error: ${actor.forecastError || "the complete turn-action pipeline could not be evaluated from this state."}`;
+      article.append(error);
+      nodes.push(article);
+      continue;
+    }
+    for (const action of actor.actions || []) {
+      if (action.action?.type === "move") continue;
+      const line = document.createElement("p");
+      line.className = `ai-forecast-option likelihood-${action.turnLikelihood?.id || "error"}`;
+      const likelihood = document.createElement("strong");
+      likelihood.textContent = action.turnLikelihood?.label || "Forecast error";
+      const equal = action.equalLikelihood?.labels?.length ? ` Equally likely with ${action.equalLikelihood.labels.join(", ")}.` : "";
+      line.append(document.createTextNode(`${action.displayName}: `), likelihood, document.createTextNode(`. ${action.explanation}${equal}`));
+      article.append(line);
+    }
+    for (const move of actor.moves) {
+      const option = document.createElement("section");
+      option.className = `ai-forecast-option ai-move-forecast likelihood-${move.turnLikelihood?.id || "error"}`;
+      const line = document.createElement("p");
+      line.className = "ai-move-forecast-heading";
+      const likelihood = document.createElement("strong");
+      likelihood.textContent = move.turnLikelihood?.label || "Forecast error";
+      const equal = move.equalLikelihood?.labels?.length ? ` Equally likely with ${move.equalLikelihood.labels.join(", ")}.` : "";
+      line.append(document.createTextNode(`${move.name}: `), likelihood, document.createTextNode(`.${equal}`));
+      option.append(line);
+      appendAiMoveLedger(option, move);
+      if (!move.incentiveLedger && move.evaluatorStatus === "error" && move.explanation) {
+        option.append(Object.assign(document.createElement("p"), { className: "ai-error-note", textContent: move.explanation }));
+      }
+      article.append(option);
+    }
+    if (!actor.moves.length) article.append(Object.assign(document.createElement("p"), { textContent: "No usable move remains; the game will use Struggle if this Pokémon acts." }));
+    nodes.push(article);
+  }
+  const replacementHeading = document.createElement("h4");
+  replacementHeading.className = "ai-section-title";
+  replacementHeading.textContent = "Replace on Faint";
+  nodes.push(replacementHeading);
+  for (const replacement of analysis.replacementForecasts || []) {
+    const article = document.createElement("article");
+    article.className = "ai-replacement-note";
+    const title = document.createElement("h4");
+    title.textContent = `If ${replacement.name} faints`;
+    article.append(title);
+    if (replacement.status === "error") {
+      article.append(Object.assign(document.createElement("p"), { className: "ai-error-note", textContent: `Forecast error: ${replacement.error}` }));
+    } else if (replacement.status !== "not-applicable") {
+      for (const option of replacement.options) {
+        const line = document.createElement("p");
+        line.className = `ai-forecast-option likelihood-${option.likelihood.id}`;
+        const likelihood = document.createElement("strong");
+        likelihood.textContent = option.likelihood.label;
+        const references = option.highestDamageReferences?.length
+          ? option.highestDamageReferences
+          : option.highestDamageReference ? [option.highestDamageReference] : [];
+        const referencesBySlot = new Map();
+        for (const reference of references) {
+          const targetSlot = Number(reference.targetSlot);
+          if (!Number.isInteger(targetSlot)) continue;
+          const moveNames = referencesBySlot.get(targetSlot) || [];
+          if (reference.moveName && !moveNames.includes(reference.moveName)) moveNames.push(reference.moveName);
+          referencesBySlot.set(targetSlot, moveNames);
+        }
+        const reasons = [...referencesBySlot.entries()].map(([targetSlot, moveNames]) => {
+          if (!moveNames.length) return null;
+          return `${moveNames.join(" / ")} ${moveNames.length === 1 ? "is" : "are"} highest damage into Slot ${battleSlotNumber("player", targetSlot)}`;
+        }).filter(Boolean);
+        line.append(document.createTextNode(`${option.name}: `), likelihood);
+        if (reasons.length) line.append(document.createTextNode(` · ${reasons.join(" · ")}`));
+        article.append(line);
+      }
+    }
+    nodes.push(article);
+  }
+  container.replaceChildren(...nodes);
 }
 
 function scheduleNotesPersistence() {
@@ -1201,13 +1605,20 @@ function canonicalTarget(move) {
 }
 
 function battleFormatLabel(format = plan?.game?.battleFormat) {
-  return format === "triples" ? "Triples" : format === "doubles" ? "Doubles" : "Singles";
+  return format === "rotation" ? "Rotation" : format === "triples" ? "Triples" : format === "doubles" ? "Doubles" : "Singles";
 }
 
 function legalTargets(state, side, actorKey, targetMode, support = null) {
   const own = activeKeys(state, side).filter(key => Number(state.combatantStates[key]?.hp?.max) > 0);
   const otherSide = side === "player" ? "enemy" : "player";
   const opposing = activeKeys(state, otherSide).filter(key => Number(state.combatantStates[key]?.hp?.max) > 0);
+  if (plan?.game?.battleFormat === "rotation") {
+    const selectedSlot = actionDraft[otherSide].findIndex(entry => entry?.type === "move");
+    const opposingFront = selectedSlot >= 0 ? activeKey(state, otherSide, selectedSlot) : rotationFrontKey(state, otherSide);
+    if (targetMode === "adjacentally") return [];
+    if (targetMode === "adjacentallyorself") return [actorKey];
+    return opposingFront && Number(state.combatantStates[opposingFront]?.hp?.max) > 0 ? [opposingFront] : [];
+  }
   if (plan?.game?.battleFormat !== "triples") {
     if (targetMode === "adjacentally") return own.filter(key => key !== actorKey);
     if (targetMode === "adjacentallyorself") return own;
@@ -1359,9 +1770,12 @@ function initialStageBaseline(key, stat) {
 
 function staticDetail(label, value, className = "") {
   const cell = document.createElement("div"); cell.className = "static-detail";
-  const small = document.createElement("small"); small.textContent = label;
+  if (label) {
+    const small = document.createElement("small"); small.textContent = label;
+    cell.append(small);
+  }
   const strong = document.createElement("strong"); strong.textContent = value; if (className) strong.className = className;
-  cell.append(small, strong); return cell;
+  cell.append(strong); return cell;
 }
 
 function actionForSlot(side, slot) {
@@ -1377,6 +1791,9 @@ function setDraft(side, slot, next) {
     && previous.moveId === next.moveId
     && previous.targetKey !== next.targetKey
     && previous.mechanicValue === next.mechanicValue);
+  if (plan?.game?.battleFormat === "rotation" && next?.type) {
+    actionDraft[side] = actionDraft[side].map((entry, index) => index === slot ? entry : {});
+  }
   actionDraft[side][slot] = next;
   reviewOutcomeStateNodeId = null;
   if (preserveRenderedPreview) {
@@ -1400,11 +1817,11 @@ function configureMoveDraft(side, slot, actorKey, move, support) {
   setDraft(side, slot, { type: "move", moveId: move.id, targetKey, mechanicValue: null });
 }
 
-function chooseBranchEvent(dimensionId, optionId) {
+function chooseBranchEvent(dimensionId, optionId, selectionModel = branchEventModel) {
   if (!currentPreview || !branchEventModel) return;
   reviewOutcomeStateNodeId = null;
   selectedPreviewOutcomeId = selectBranchEventOutcome(
-    branchEventModel,
+    selectionModel,
     selectedPreviewOutcomeId,
     dimensionId,
     optionId,
@@ -1441,7 +1858,42 @@ function renderMoveBranchControls(container, actorKey, moveId) {
   const dimensions = (branchEventModel?.dimensions || []).filter(entry => entry.scope === "move" && entry.actorKey === actorKey && entry.moveId === moveId);
   if (!dimensions.length) return;
   const wrapper = document.createElement("div"); wrapper.className = "move-branch-controls";
-  for (const dimension of dimensions) wrapper.append(renderBranchControl(dimension));
+  const choices = selectedBranchChoices(branchEventModel, selectedPreviewOutcomeId);
+  const critical = dimensions.find(entry => entry.kind === "critical");
+  const kills = dimensions.filter(entry => entry.kind === "damage-result");
+  const addToggle = (label, requirements, fallback) => {
+    const matching = required => branchEventModel.outcomeIds.filter(id => {
+      const candidate = branchEventModel.choicesByOutcome.get(id) || {};
+      return Object.entries(required).every(([key, value]) => candidate[key]?.id === value);
+    });
+    const outcomeIds = matching(requirements);
+    if (!outcomeIds.length) return;
+    const selected = Object.entries(requirements).every(([key, value]) => choices[key]?.id === value);
+    const control = button(label, "branch-option");
+    control.setAttribute("aria-pressed", String(selected));
+    control.addEventListener("click", () => {
+      const ids = selected ? matching(fallback) : outcomeIds;
+      if (!ids.length) return;
+      const id = "move-display-selection";
+      chooseBranchEvent(id, "selected", { ...branchEventModel, dimensions: [...branchEventModel.dimensions, { id, options: [{ id: "selected", outcomeIds: ids }] }] });
+    });
+    wrapper.append(control);
+  };
+  const survive = Object.fromEntries(kills.map(entry => [entry.id, "survive"]));
+  if (critical) addToggle("Crit", { [critical.id]: "critical", ...survive }, { [critical.id]: "normal", ...survive });
+  for (const dimension of kills) {
+    const suffix = kills.length > 1 ? ` · ${targetSlotLabel(selectedState(), dimension.targetKey)}` : "";
+    const normal = critical ? { [critical.id]: "normal" } : {};
+    addToggle(`Kill${suffix}`, { ...normal, [dimension.id]: "ko" }, { ...normal, [dimension.id]: "survive" });
+    if (critical) addToggle(`Crit Kill${suffix}`, { [critical.id]: "critical", [dimension.id]: "ko" }, { [critical.id]: "normal", [dimension.id]: "survive" });
+  }
+  for (const dimension of dimensions) {
+    if (dimension.kind === "accuracy") addToggle("Misses", { [dimension.id]: "miss" }, { [dimension.id]: "hit" });
+    if (dimension.kind === "secondary") {
+      const applied = dimension.options.find(entry => entry.id === "applied");
+      if (applied) addToggle(applied.label, { [dimension.id]: "applied" }, { [dimension.id]: "not-applied" });
+    }
+  }
   container.append(wrapper);
 }
 
@@ -1707,59 +2159,87 @@ function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
   const monState = state.combatantStates[displayKey] || committedMonState;
   const rootState = rootCombatantState(displayKey);
   const card = document.createElement("article"); card.className = `combatant-card slot-position-${displaySlot}`;
+  const rotation = plan.game?.battleFormat === "rotation";
+  const rotationFront = rotation && slot === rotationFrontSlot(committedState, side);
+  card.classList.toggle("is-rotation-front", rotationFront);
+  card.classList.toggle("will-rotate", rotation && draft.type === "move" && !rotationFront);
   card.dataset.side = side;
   card.dataset.actionSlot = String(slot);
   card.dataset.displaySlot = String(displaySlot);
   if (slotsPerSide(plan) > 1) {
     const slotHeading = document.createElement("div");
     slotHeading.className = "combatant-slot-heading";
-    slotHeading.textContent = `Slot ${battleSlotNumberForPosition(side, displaySlot)}${plan.game?.battleFormat === "triples" ? ` · ${slotPositionLabel(displaySlot)}` : ""}`;
+    const rotationRole = rotation ? ` · ${rotationFront ? "Front" : "Waiting"}` : "";
+    slotHeading.textContent = `Slot ${battleSlotNumberForPosition(side, displaySlot)}${plan.game?.battleFormat === "triples" ? ` · ${slotPositionLabel(displaySlot)}` : rotationRole}`;
     card.append(slotHeading);
   }
   const header = document.createElement("div"); header.className = "combatant-header";
   const spriteBox = document.createElement("div"); spriteBox.className = "combatant-sprite"; spriteBox.append(sprite(currentSpriteRecord(mon, monState)));
   const identity = document.createElement("div");
   const name = document.createElement("h3"); name.className = "combatant-name"; name.textContent = recordName(mon);
-  const species = document.createElement("p"); species.className = "combatant-species"; species.textContent = side === "enemy" ? "" : mon.nickname ? mon.displayName : `Player slot ${battleSlotNumberForPosition(side, displaySlot)}`;
+  if (mon.gender === "M" || mon.gender === "F") {
+    const gender = document.createElement("span");
+    gender.className = `combatant-gender gender-${mon.gender.toLowerCase()}`;
+    gender.textContent = mon.gender === "M" ? "♂" : "♀";
+    gender.setAttribute("aria-label", mon.gender === "M" ? "Male" : "Female");
+    name.append(" ", gender);
+  }
+  if (side === "player" && mon.nickname) {
+    const species = document.createElement("span"); species.className = "combatant-species"; species.textContent = mon.displayName;
+    name.append(" ", species);
+  }
   const meta = document.createElement("div"); meta.className = "meta-row";
+  const typeIcons = document.createElement("div"); typeIcons.className = "combatant-types";
   const typeChanged = JSON.stringify(monState.currentTypeIds) !== JSON.stringify(rootState.currentTypeIds);
   const typePreviewChanged = previewing && JSON.stringify(monState.currentTypeIds) !== JSON.stringify(committedMonState.currentTypeIds);
   for (const type of monState.currentTypeIds) {
-    const chip = document.createElement("span"); chip.className = `meta-chip ${valueTone(state, displayKey, `combatantStates.${displayKey}.currentTypeIds`, typeChanged, { previewChanged: typePreviewChanged, events: previewEvents })}`.trim(); chip.textContent = dataset.get("types", type)?.name || type; meta.append(chip);
+    const chip = document.createElement("span"); chip.className = `combatant-type ${valueTone(state, displayKey, `combatantStates.${displayKey}.currentTypeIds`, typeChanged, { previewChanged: typePreviewChanged, events: previewEvents })}`.trim();
+    const label = dataset.get("types", type)?.name || type;
+    const icon = document.createElement("img"); icon.alt = label; icon.title = label; icon.width = 85; icon.height = 17;
+    chip.append(icon); typeIcons.append(chip);
+    if (pokemonAssetResolver) void pokemonAssetResolver.setAssetImage(icon, { kind: "type-icon", presentation: "name", style: "home", locale: "en", type }, { onUnavailable: () => { chip.textContent = label; } });
+    else chip.textContent = label;
   }
-  const genderChip = document.createElement("span"); genderChip.className = "meta-chip"; genderChip.textContent = mon.gender || "—"; meta.append(genderChip);
+  meta.append(typeIcons);
   const currentLevel = Number(monState.currentLevel ?? mon.level);
   const rootLevel = Number(rootState.currentLevel ?? mon.level);
   const committedLevel = Number(committedMonState.currentLevel ?? mon.level);
   const levelChip = document.createElement("span");
-  levelChip.className = `meta-chip ${valueTone(state, displayKey, `combatantStates.${displayKey}.currentLevel`, currentLevel !== rootLevel, { previewChanged: previewing && currentLevel !== committedLevel, events: previewEvents })}`.trim();
-  levelChip.textContent = `Lv. ${currentLevel}`;
+  levelChip.className = `combatant-level ${valueTone(state, displayKey, `combatantStates.${displayKey}.currentLevel`, currentLevel !== rootLevel, { previewChanged: previewing && currentLevel !== committedLevel, events: previewEvents })}`.trim();
+  const nature = dataset.get("natures", mon.natureId) || {};
+  const natureBoostedStat = nature?.boostedStat;
+  const natureNerfedStat = nature?.nerfedStat;
+  let levelText = `Lv. ${currentLevel}`;
+  if (side === "player" && Number.isInteger(monState.experience) && mon.growthRate) {
+    const levelThreshold = experienceForLevel(currentLevel, mon.growthRate);
+    const nextLevelThreshold = currentLevel < 100 ? experienceForLevel(currentLevel + 1, mon.growthRate) : null;
+    const levelExperience = Math.max(0, monState.experience - levelThreshold);
+    const nextLevelExperience = nextLevelThreshold === null ? "Max" : `${levelExperience.toLocaleString()}/${(nextLevelThreshold - levelThreshold).toLocaleString()}`;
+    levelText = `${levelText} · ${nextLevelExperience}`;
+  }
+  levelChip.textContent = levelText;
   meta.append(levelChip);
-  identity.append(name, species, meta); header.append(spriteBox, identity); card.append(header);
+  identity.append(name, meta); header.append(spriteBox, identity); card.append(header);
   const details = document.createElement("div"); details.className = "static-details";
-  const nature = dataset.get("natures", mon.natureId)?.name || "—";
   const ability = dataset.get("abilities", monState.currentAbilityId)?.name || "—";
   const item = monState.currentItemId ? dataset.get("items", monState.currentItemId)?.name || monState.currentItemId : "None";
   const hpChanged = monState.hp.min !== rootState.hp.min || monState.hp.max !== rootState.hp.max;
   const statusChanged = monState.majorStatus !== rootState.majorStatus;
   const abilityChanged = monState.currentAbilityId !== rootState.currentAbilityId;
   const itemChanged = monState.currentItemId !== rootState.currentItemId;
+  const statCornerStack = document.createElement("div");
+  statCornerStack.className = "combatant-corner-stats";
+  const hpCell = staticDetail("", formatHpRemaining(monState.hp), valueTone(state, displayKey, `combatantStates.${displayKey}.hp`, hpChanged, { previewChanged: previewing && (monState.hp.min !== committedMonState.hp.min || monState.hp.max !== committedMonState.hp.max || monState.hp.maxHp !== committedMonState.hp.maxHp), events: previewEvents }));
+  const statusCell = staticDetail("", monState.majorStatus ? STATUS_LABELS[monState.majorStatus] || monState.majorStatus : "Healthy", valueTone(state, displayKey, `combatantStates.${displayKey}.majorStatus`, statusChanged, { previewChanged: previewing && monState.majorStatus !== committedMonState.majorStatus, events: previewEvents }));
+  hpCell.classList.add("combatant-detail-corner");
+  statusCell.classList.add("combatant-detail-corner", "combatant-status-detail");
+  statusCell.dataset.status = monState.majorStatus || "healthy";
+  statCornerStack.append(hpCell, statusCell);
+  header.append(statCornerStack);
   details.append(
-    staticDetail("Nature", nature),
     staticDetail("Ability", ability, valueTone(state, displayKey, `combatantStates.${displayKey}.currentAbilityId`, abilityChanged, { previewChanged: previewing && monState.currentAbilityId !== committedMonState.currentAbilityId, events: previewEvents })),
-    staticDetail("Item", item, valueTone(state, displayKey, `combatantStates.${displayKey}.currentItemId`, itemChanged, { previewChanged: previewing && monState.currentItemId !== committedMonState.currentItemId, events: previewEvents })),
-    staticDetail("Status", monState.majorStatus ? STATUS_LABELS[monState.majorStatus] || monState.majorStatus : "None", valueTone(state, displayKey, `combatantStates.${displayKey}.majorStatus`, statusChanged, { previewChanged: previewing && monState.majorStatus !== committedMonState.majorStatus, events: previewEvents })),
-    staticDetail("HP", formatHpRemaining(monState.hp), valueTone(state, displayKey, `combatantStates.${displayKey}.hp`, hpChanged, { previewChanged: previewing && (monState.hp.min !== committedMonState.hp.min || monState.hp.max !== committedMonState.hp.max || monState.hp.maxHp !== committedMonState.hp.maxHp), events: previewEvents }))
+    staticDetail("Item", item, valueTone(state, displayKey, `combatantStates.${displayKey}.currentItemId`, itemChanged, { previewChanged: previewing && monState.currentItemId !== committedMonState.currentItemId, events: previewEvents }))
   );
-  if (side === "player" && Number.isInteger(monState.experience)) {
-    const expChanged = monState.experience !== rootState.experience;
-    const nextLevelThreshold = currentLevel < 100 ? experienceForLevel(currentLevel + 1, mon.growthRate) : null;
-    details.append(staticDetail(
-      "EXP",
-      `${monState.experience.toLocaleString()}/${nextLevelThreshold === null ? "Max" : nextLevelThreshold.toLocaleString()}`,
-      valueTone(state, displayKey, `combatantStates.${displayKey}.experience`, expChanged, { previewChanged: previewing && monState.experience !== committedMonState.experience, events: previewEvents })
-    ));
-  }
   card.append(details);
   const table = document.createElement("table"); table.className = "stat-table";
   const head = document.createElement("thead"); head.innerHTML = "<tr><th>Stat</th><th>Actual</th><th>Stage</th></tr>"; table.append(head);
@@ -1770,6 +2250,10 @@ function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
     const committedStage = Number(committedMonState.statStages[stat] || 0);
     const row = document.createElement("tr");
     const label = document.createElement("th"); label.scope = "row"; label.textContent = STAT_LABELS[stat];
+    if (natureBoostedStat && natureNerfedStat && natureBoostedStat !== natureNerfedStat) {
+      if (stat === natureBoostedStat) label.classList.add("combatant-stat-name-buff");
+      if (stat === natureNerfedStat) label.classList.add("combatant-stat-name-debuff");
+    }
     const currentBaseStat = Number(monState.currentStats?.[stat] ?? mon.calculatedStats[stat]);
     const rootBaseStat = Number(rootState.currentStats?.[stat] ?? mon.calculatedStats[stat]);
     const committedBaseStat = Number(committedMonState.currentStats?.[stat] ?? mon.calculatedStats[stat]);
@@ -1792,6 +2276,7 @@ function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
       const move = dataset.get("moves", entry.moveId);
       const support = moveSupport(move, dataset);
       const moveButton = button("", "move-button");
+      moveButton.dataset.moveType = String(entry.typeOverride || move?.type || "unknown").toLowerCase();
       const positionSelected = draft.type === "switch" || draft.type === "shift";
       moveButton.disabled = positionSelected || !support.supported || Number(committedMonState.movePp?.[entry.moveId] ?? entry.maxPp) <= 0;
       moveButton.title = draft.type === "switch" ? "Switch is selected for this slot" : draft.type === "shift" ? "Shift is selected for this slot" : support.supported ? "" : support.reason;
@@ -1800,7 +2285,14 @@ function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
       const moveName = document.createElement("strong"); moveName.textContent = move?.name || entry.moveId;
       const currentPp = monState.movePp?.[entry.moveId] ?? entry.maxPp;
       const rootPp = rootState.movePp?.[entry.moveId] ?? entry.maxPp;
-      const moveMeta = document.createElement("small"); moveMeta.textContent = `${move?.type || "—"} · ${currentPp} PP${support.supported ? "" : " · unsupported"}`;
+      const moveBp = move?.basePower ?? move?.bp;
+      const moveAccuracy = move?.accuracy;
+      const metaParts = [];
+      if (moveBp && moveBp !== 0 && moveBp !== "0") metaParts.push(`${moveBp} BP`);
+      if (moveAccuracy && moveAccuracy !== true && moveAccuracy !== "true") metaParts.push(`${moveAccuracy} AC`);
+      metaParts.push(`${currentPp} PP`);
+      const moveMeta = document.createElement("small");
+      moveMeta.textContent = `${metaParts.join(" · ")}${support.supported ? "" : " · unsupported"}`;
       moveMeta.className = valueTone(state, displayKey, `combatantStates.${displayKey}.movePp.${entry.moveId}`, currentPp !== rootPp, { previewChanged: previewing && currentPp !== Number(committedMonState.movePp?.[entry.moveId] ?? entry.maxPp), events: previewEvents });
       copy.append(moveName, moveMeta);
       moveButton.append(copy);
@@ -1830,8 +2322,6 @@ function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
       }
     if (draft.type === "move" && draft.moveId === entry.moveId) renderActionAux(moveActions, side, slot, actorKey, move, support, draft);
   }
-  const replacementReady = pending && replacementSelectionReady(committedState) && currentPreview?.previewKind === "replacement";
-  const replacementCount = replacementRequirement(committedState, side);
   if (!pending && canSelectShift(plan, committedState, side, actorKey)) {
     const shiftButton = button(`Shift with Slot ${battleSlotNumberForPosition(side, 1)}`, "shift-button");
     shiftButton.setAttribute("aria-pressed", String(draft.type === "shift"));
@@ -1840,23 +2330,25 @@ function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
       : setDraft(side, slot, { type: "shift", actorKey }));
     moveActions.append(shiftButton);
   }
-  const switchButton = button(
-    pending
-      ? replacementReady && draft.switchToKey ? `Confirm Replacement${replacementCount > 1 ? "s" : ""}` : `Choose Replacement${replacementCount > 1 ? "s" : ""}`
-      : "Switch",
-    "switch-button"
-  );
-  switchButton.setAttribute("aria-pressed", String(draft.type === "switch"));
-  switchButton.addEventListener("click", () => {
-    if (pending) {
-      if (replacementReady) commitCurrentPreview();
-      return;
-    }
-    if (draft.type === "switch") setDraft(side, slot, {});
-    else setDraft(side, slot, { type: "switch", actorKey });
-  });
-  moveActions.append(switchButton);
-  if (draft.type === "switch") renderSwitchStrip(moveActions, side, slot, actorKey, draft, { replacement: pending });
+  if (pending) {
+    const replacementCount = replacementRequirement(committedState, side);
+    const prompt = document.createElement("p");
+    prompt.className = "replacement-prompt";
+    prompt.textContent = `Choose Replacement${replacementCount > 1 ? "s" : ""}`;
+    moveActions.append(prompt);
+    renderSwitchStrip(moveActions, side, slot, actorKey, draft, { replacement: true });
+  } else {
+    const switchButton = button("Switch", "switch-button");
+    switchButton.setAttribute("aria-pressed", String(draft.type === "switch"));
+    switchButton.disabled = rotation && !rotationFront;
+    if (switchButton.disabled) switchButton.title = "Rotate this Pokémon to the front before switching it out";
+    switchButton.addEventListener("click", () => {
+      if (draft.type === "switch") setDraft(side, slot, {});
+      else setDraft(side, slot, { type: "switch", actorKey });
+    });
+    moveActions.append(switchButton);
+    if (draft.type === "switch") renderSwitchStrip(moveActions, side, slot, actorKey, draft);
+  }
   card.append(moveActions);
   if (side === "enemy") updateEnemyThreatHighlights(card);
   return card;
@@ -1877,7 +2369,8 @@ function renderEmptyCombatantSlot(side, slot, { displaySlot = triplePositionForS
   card.dataset.displaySlot = String(displaySlot);
   const slotHeading = document.createElement("div");
   slotHeading.className = "combatant-slot-heading";
-  slotHeading.textContent = `Slot ${battleSlotNumberForPosition(side, displaySlot)}${plan.game?.battleFormat === "triples" ? ` · ${slotPositionLabel(displaySlot)}` : ""}`;
+  const rotationRole = plan.game?.battleFormat === "rotation" ? ` · ${slot === rotationFrontSlot(selectedState(), side) ? "Front" : "Waiting"}` : "";
+  slotHeading.textContent = `Slot ${battleSlotNumberForPosition(side, displaySlot)}${plan.game?.battleFormat === "triples" ? ` · ${slotPositionLabel(displaySlot)}` : rotationRole}`;
   const empty = document.createElement("p");
   empty.className = "empty-slot-label";
   empty.textContent = "Empty slot";
@@ -1889,8 +2382,10 @@ function renderActionPanel(side) {
   const panel = ui[`${side}-action-panel`];
   const doubles = plan.game.battleFormat === "doubles";
   const triples = plan.game.battleFormat === "triples";
+  const rotation = plan.game.battleFormat === "rotation";
   panel.classList.toggle("is-doubles", doubles);
   panel.classList.toggle("is-triples", triples);
+  panel.classList.toggle("is-rotation", rotation);
   panel.classList.toggle("is-player", side === "player");
   panel.classList.toggle("is-enemy", side === "enemy");
   const heading = document.createElement("div"); heading.className = "action-panel-title";
@@ -1934,6 +2429,7 @@ function actionFromDraft(side, slot) {
   const opponent = side === "player" ? "enemy" : "player";
   const targetKeys = support.target === "self" ? [actorKey]
     : support.target === "field" ? []
+      : support.target === "automatic" && plan.game?.battleFormat === "rotation" ? [rotationFrontKey(state, opponent)].filter(Boolean)
       : support.target === "automatic" ? mode === "alladjacent" ? [...activeKeys(state, opponent), ...activeKeys(state, side).filter(key => key !== actorKey)]
         : mode === "all" ? [...activeKeys(state, "player"), ...activeKeys(state, "enemy")] : activeKeys(state, opponent)
         : draft.targetKey ? [draft.targetKey] : [];
@@ -1960,11 +2456,23 @@ function actionsFromDraft() {
   }
   const actions = { player: [], enemy: [] };
   for (const side of ["player", "enemy"]) {
-    actions[side] = activeSlotEntries(state, side)
+    const sideActions = activeSlotEntries(state, side)
       .filter(entry => Number(state.combatantStates[entry.combatantKey]?.hp?.max) > 0)
       .map(entry => actionFromDraft(side, entry.slot));
+    actions[side] = plan.game?.battleFormat === "rotation" ? sideActions.filter(Boolean) : sideActions;
   }
+  if (plan.game?.battleFormat === "rotation") return actions.player.length === 1 && actions.enemy.length === 1 ? actions : null;
   return [...actions.player, ...actions.enemy].every(Boolean) ? actions : null;
+}
+
+function selectedReplacementDraftActions() {
+  const state = selectedState();
+  const replacements = { player: [], enemy: [] };
+  for (const entry of pendingReplacementSlots(state)) {
+    const replacement = actionFromDraft(entry.side, entry.slot);
+    if (replacement) replacements[entry.side].push(replacement);
+  }
+  return replacements;
 }
 
 function probabilityLabel(outcome) {
@@ -1993,7 +2501,7 @@ function selectedPreviewBattleEnded() {
 
 function previewCommitLabel() {
   if (!currentPreview) return "Next Turn";
-  if (currentPreview.previewKind === "replacement") return "Next Turn";
+  if (currentPreview.previewKind === "replacement") return replacementCommitLabel(plan, cursorStateNodeId, currentPreview.replacements);
   if (selectedPreviewBattleEnded()) return battleCompletionState(plan, selectedPreviewState()).commitLabel;
   if (currentPreview.previewStatus === "existing-expanded") {
     return currentPreview.savedPreviewOutcomeIds?.includes(selectedPreviewOutcomeId) ? "Open Branch" : "New Branch";
@@ -2241,17 +2749,6 @@ function renderPreview(preview) {
     for (const dimension of centralDimensions) controls.append(renderBranchControl(dimension));
     nodes.push(controls);
   }
-  const selectedChoices = selectedBranchChoices(branchEventModel, selectedPreviewOutcomeId);
-  const selectedDimensions = (branchEventModel?.dimensions || []).filter(dimension => selectedChoices[dimension.id]);
-  if (selectedDimensions.length) {
-    const summary = document.createElement("div"); summary.className = "branch-selection-summary";
-    for (const dimension of selectedDimensions) {
-      const chip = document.createElement("span");
-      chip.textContent = `${dimension.label}: ${selectedChoices[dimension.id].label}`;
-      summary.append(chip);
-    }
-    nodes.push(summary);
-  }
   const outcome = entry.outcome || entry;
   const events = outcomePanelEvents(entry.events || []);
   const card = document.createElement("article"); card.className = "outcome crafted-outcome";
@@ -2322,7 +2819,7 @@ async function refreshPreview() {
       ? "This exact action set already exists."
       : `${preview.outcomes.length} resolver possibilities condensed into one crafted outcome.`;
     ui["commit-turn"].textContent = previewCommitLabel();
-    ui["commit-turn"].disabled = replacement;
+    ui["commit-turn"].disabled = false;
   } catch (error) {
     if (error.name === "StalePreviewError" || generation !== previewGeneration) return;
     ui.readiness.textContent = error.message;
@@ -2338,8 +2835,31 @@ function renderField() {
   const trainer = document.createElement("strong"); trainer.textContent = currentTrainerName();
   const format = document.createElement("span"); format.textContent = battleFormatLabel();
   identity.append(trainer, format); wrapper.append(identity);
+  const battleProfile = dataset.trainer(plan.game.trainerId)?.battleProfiles?.[dataset.mechanics.trainerBattleProfile];
+  const flags = document.createElement("div"); flags.className = "field-ai-flags";
+  for (const flag of battleProfile?.aiFlagIds || []) {
+    if (trainerAi?.generation === 5 && flag === "flag5"
+      && !Object.values(plan.combatants).some(mon => mon.side === "enemy" && ["reshiram", "zekrom"].includes(mon.speciesId))) continue;
+    const chip = document.createElement("span"); chip.className = "field-effect";
+    const script = trainerAi?.profile?.scripts?.find(entry => entry.id === flag);
+    const descriptiveNames = { "No Effect": "Avoid Ineffective Moves", Evaluate: "Evaluate Attacks", Expert: "Expert Move Effects", Status: "Setup / Status", "Vs Rivals First Battles": "Turn 1 Damage", "Double/Triple Battle": "Doubles / Triples Strategy", "HP-Based": "Check HP" };
+    const name = script?.name || String(flag).replace(/^AI_FLAG_/, "").replace(/_/g, " ").replace(/([a-z])([A-Z])/g, "$1 $2").toLowerCase().replace(/\b\w/g, letter => letter.toUpperCase());
+    chip.textContent = descriptiveNames[name] || name;
+    chip.title = script?.summary ? `${flag}: ${script.summary}` : String(flag);
+    flags.append(chip);
+  }
+  identity.insertBefore(flags, format);
   const effects = [];
   const global = state.fieldState.global;
+  if (!global.weather?.id) effects.push({ label: "No Weather" });
+  if (!global.terrain?.id) effects.push({ label: "No Terrain" });
+  for (const [key, verb] of [["delayedAttacks", "Hits"], ["delayedHeals", "Heals"]]) {
+    for (const entry of global[key] || []) {
+      const turns = Number(entry.remainingTurns);
+      const name = entry.moveId ? dataset.get("moves", entry.moveId)?.name || entry.moveId : "Wish";
+      effects.push({ label: `${name} · ${verb} Slot ${battleSlotNumber(entry.side, entry.slot)} ${turns <= 1 ? "next turn" : `in ${turns} turns`}` });
+    }
+  }
   if (global.weather?.id) effects.push({ label: `Weather · ${global.weather.id}${global.weather.remainingTurns ? ` (${global.weather.remainingTurns})` : ""}`, current: previewing && JSON.stringify(global.weather) !== JSON.stringify(committedState.fieldState.global.weather), persisted: JSON.stringify(global.weather) !== JSON.stringify(rootState.fieldState.global.weather) });
   if (global.terrain?.id) effects.push({ label: `Terrain · ${global.terrain.id}${global.terrain.remainingTurns ? ` (${global.terrain.remainingTurns})` : ""}`, current: previewing && JSON.stringify(global.terrain) !== JSON.stringify(committedState.fieldState.global.terrain), persisted: JSON.stringify(global.terrain) !== JSON.stringify(rootState.fieldState.global.terrain) });
   for (const key of ["trickRoomTurns", "gravityTurns", "magicRoomTurns", "wonderRoomTurns"]) if (Number(global[key]) > 0) effects.push({ label: `${key.replace(/Turns$/, "").replace(/([A-Z])/g, " $1")} · ${global[key]}`, current: previewing && Number(global[key]) !== Number(committedState.fieldState.global[key]), persisted: Number(global[key]) !== Number(rootState.fieldState.global[key]) });
@@ -2375,7 +2895,7 @@ function renderField() {
   }
   const projections = activeKeys(state, "enemy")
     .filter(enemyKey => Number(state.combatantStates[enemyKey]?.hp?.max) > 0)
-    .map(enemyKey => ({ enemyKey, projection: projectVw2rExperience(plan, state, enemyKey) }))
+    .map(enemyKey => ({ enemyKey, projection: projectExperience(plan, state, enemyKey, dataset) }))
     .filter(entry => entry.projection.available && entry.projection.rewards.length);
   for (const { enemyKey, projection } of projections) {
     const section = document.createElement("section"); section.className = "field-exp"; section.dataset.expProjection = enemyKey;
@@ -2428,6 +2948,7 @@ function nodeActionSummary(state) {
 
 function selectStateNode(stateId, { prefill = false } = {}) {
   if (!plan.stateNodes[stateId]) return;
+  selectedTrackerTurnNumber = null;
   cursorStateNodeId = stateId;
   reviewOutcomeStateNodeId = null;
   actionDraft = emptyActionDraft();
@@ -2443,6 +2964,7 @@ function selectTurnOutcome(stateId) {
   const state = plan.stateNodes[stateId];
   const group = state?.parentActionGroupId ? plan.actionGroups[state.parentActionGroupId] : null;
   if (!state || !group) return;
+  selectedTrackerTurnNumber = null;
   cursorStateNodeId = group.parentStateNodeId;
   reviewOutcomeStateNodeId = stateId;
   actionDraft = emptyActionDraft();
@@ -2454,6 +2976,89 @@ function selectTurnOutcome(stateId) {
   persistDraft();
 }
 
+function selectReplacementOutcome(stateId) {
+  const state = plan.stateNodes[stateId];
+  const transition = state?.parentReplacementTransitionId ? plan.replacementTransitions?.[state.parentReplacementTransitionId] : null;
+  if (!state || !transition) return;
+  selectedTrackerTurnNumber = null;
+  cursorStateNodeId = transition.parentStateNodeId;
+  reviewOutcomeStateNodeId = stateId;
+  actionDraft = emptyActionDraft();
+  prefillReplacementActions(transition);
+  currentPreview = null;
+  branchEventModel = null;
+  selectedPreviewOutcomeId = null;
+  renderWorkspace();
+  persistDraft();
+}
+
+function currentTrackerTurns() {
+  return compareTrackerTurnsFn && plan && battleTrackerSnapshot
+    ? compareTrackerTurnsFn(plan, battleTrackerSnapshot, dataset)
+    : [];
+}
+
+function trackerStatusLabel(turn) {
+  return {
+    matched: "Matched",
+    ambiguous: "Ambiguous",
+    unmatched: "Unplanned",
+    insufficient: "Observed",
+    "in-progress": "Live"
+  }[turn?.status] || "Observed";
+}
+
+function renderBattleTrackerDetail() {
+  const container = ui["battle-tracker-detail"];
+  if (!container) return;
+  if (!battleTrackerSnapshot || (!battleTrackerSnapshot.active && !battleTrackerSnapshot.battleId)) {
+    container.hidden = true;
+    container.replaceChildren();
+    return;
+  }
+  const heading = document.createElement("div"); heading.className = "battle-tracker-detail-heading";
+  const title = document.createElement("strong"); title.textContent = "Actual battle tracker";
+  const status = document.createElement("span"); status.className = "pill";
+  status.textContent = battleTrackerSnapshot.active
+    ? battleTrackerSnapshot.waitingForBattle ? "Waiting for battle" : "Following live battle"
+    : "Tracker stopped";
+  heading.append(title, status);
+  const nodes = [heading];
+  const selected = currentTrackerTurns().find(turn => Number(turn.turnNumber) === Number(selectedTrackerTurnNumber));
+  if (!selected) {
+    const message = document.createElement("p"); message.className = "fine-print";
+    message.textContent = battleTrackerSnapshot.waitingForBattle
+      ? "The reader is attached. Actual nodes will appear when the next VW2R battle begins."
+      : "Select an Actual node to inspect its observed events and branch-match status.";
+    nodes.push(message);
+  } else {
+    const summary = document.createElement("p");
+    summary.innerHTML = `<strong>Turn ${selected.turnNumber} · ${trackerStatusLabel(selected)}</strong>`;
+    const explanation = document.createElement("span"); explanation.textContent = ` ${selected.explanation}`; summary.append(explanation);
+    const list = document.createElement("ol"); list.className = "battle-tracker-events";
+    for (const event of selected.events.filter(event => event.kind !== "turn")) {
+      const item = document.createElement("li");
+      const kind = document.createElement("span"); kind.className = "tracker-event-kind"; kind.textContent = event.kind;
+      item.append(kind, document.createTextNode(event.text || "Observed event"));
+      list.append(item);
+    }
+    if (!list.childElementCount) list.append(Object.assign(document.createElement("li"), { textContent: "No semantic event has been decoded for this turn yet." }));
+    nodes.push(summary, list);
+    const branch = button("Create Branch from Actual", "secondary");
+    branch.disabled = selected.status !== "matched" || !selected.matchedStateNodeId;
+    branch.title = branch.disabled ? selected.explanation : "Continue planning from the uniquely matched observed state";
+    branch.addEventListener("click", () => {
+      const matchedStateId = selected.matchedStateNodeId;
+      if (!matchedStateId || !plan?.stateNodes?.[matchedStateId]) return;
+      selectStateNode(matchedStateId);
+      setStatus(`Turn ${selected.turnNumber} actual events matched ${matchedStateId}. The next action creates or opens a branch from that observed state.`);
+    });
+    nodes.push(branch);
+  }
+  container.hidden = false;
+  container.replaceChildren(...nodes);
+}
+
 function renderTree() {
   const currentState = selectedState();
   const selectedCommittedStateNodeId = reviewOutcomeStateNodeId || (battleActuallyEnded(currentState) ? cursorStateNodeId : null);
@@ -2462,45 +3067,92 @@ function renderTree() {
   const ordered = planTurnTreeOrder(plan, { additionalDraftStateNodeIds });
   const groups = new Map();
   for (const entry of ordered) {
-    const key = Number(entry.turnNumber);
-    if (!groups.has(key)) groups.set(key, []);
-    groups.get(key).push(entry);
+    if (!groups.has(entry.columnKey)) groups.set(entry.columnKey, {
+      entries: [],
+      order: Number(entry.columnOrder),
+      title: entry.columnTitle,
+      turnNumber: Number(entry.turnNumber)
+    });
+    groups.get(entry.columnKey).entries.push(entry);
   }
-  const columns = [...groups.entries()].sort(([a], [b]) => a - b).map(([turn, entries], columnIndex) => {
+  const trackerTurns = currentTrackerTurns();
+  for (const trackerTurn of trackerTurns) {
+    const turnNumber = Number(trackerTurn.turnNumber);
+    const key = `turn-${turnNumber}`;
+    if (!groups.has(key)) groups.set(key, { entries: [], order: turnNumber * 100, title: `Turn ${turnNumber}`, turnNumber });
+  }
+  const trackerLane = Math.max(-1, ...ordered.map(entry => Number(entry.lane) || 0)) + 1;
+  const orderedGroups = [...groups.entries()].sort(([, left], [, right]) => left.order - right.order);
+  const columnIndexByKey = new Map(orderedGroups.map(([key], index) => [key, index]));
+  const entryByOutcomeStateId = new Map(ordered.filter(entry => entry.outcomeStateNodeId).map(entry => [entry.outcomeStateNodeId, entry]));
+  const columns = orderedGroups.map(([, group], columnIndex) => {
+    const { entries, turnNumber: turn } = group;
     const column = document.createElement("div"); column.className = "node-column"; column.dataset.column = columnIndex;
-    const title = document.createElement("p"); title.className = "node-column-title"; title.textContent = `Turn ${turn}`; column.append(title);
+    const title = document.createElement("p"); title.className = "node-column-title"; title.textContent = group.title || "\u00a0";
+    if (!group.title) { title.classList.add("is-placeholder"); title.setAttribute("aria-hidden", "true"); }
+    column.append(title);
+    const previousSiblingLaneByDecision = new Map();
     entries.forEach((entry, rowIndex) => {
       const state = entry.kind === "committed" ? plan.stateNodes[entry.outcomeStateNodeId] : plan.stateNodes[entry.decisionStateNodeId];
       const draftPreview = entry.kind === "draft"
         && !reviewOutcomeStateNodeId
         && entry.decisionStateNodeId === cursorStateNodeId
-        && currentPreview?.previewKind !== "replacement"
+        && (entry.transitionKind === "replacement" ? currentPreview?.previewKind === "replacement" : currentPreview?.previewKind !== "replacement")
         && currentPreview?.baseStateNodeId === cursorStateNodeId
         ? defaultPreviewEntry()
         : null;
-      const outcome = entry.kind === "committed" ? state.outcome : draftPreview?.outcome || null;
+      const replacementNode = entry.transitionKind === "replacement";
+      const outcome = replacementNode ? null : entry.kind === "committed" ? state.outcome : draftPreview?.outcome || null;
       const node = button("", "node-button");
       node.dataset.column = columnIndex; node.dataset.row = rowIndex; node.dataset.lane = entry.lane; node.style.gridColumn = "1"; node.style.gridRow = String(Number(entry.lane) + 2); node.setAttribute("role", "treeitem");
       node.dataset.kind = entry.kind;
       node.dataset.stateNodeId = entry.outcomeStateNodeId || entry.decisionStateNodeId;
+      node.dataset.parentStateNodeId = entry.decisionStateNodeId;
       const selected = entry.kind === "committed"
         ? entry.outcomeStateNodeId === selectedCommittedStateNodeId
         : !reviewOutcomeStateNodeId && entry.decisionStateNodeId === cursorStateNodeId && !battleActuallyEnded(state);
       node.setAttribute("aria-selected", String(selected));
       node.classList.toggle("is-draft", entry.kind === "draft");
+      node.classList.toggle("is-replacement", replacementNode);
       node.classList.toggle("is-ancestor", entry.kind === "committed" && selectedLineage.has(entry.outcomeStateNodeId) && !selected);
+      const parentEntry = entryByOutcomeStateId.get(entry.decisionStateNodeId);
+      const parentColumnIndex = parentEntry ? columnIndexByKey.get(parentEntry.columnKey) : null;
+      const incomingColumnSpan = Number.isInteger(parentColumnIndex) ? columnIndex - parentColumnIndex : 1;
+      node.dataset.incomingColumnSpan = String(incomingColumnSpan);
+      if (incomingColumnSpan > 1) {
+        const currentInset = replacementNode ? "(var(--node-column-width) - 100%) / 2 + " : "";
+        node.style.setProperty(
+          "--incoming-connector-length",
+          `calc(${currentInset}${incomingColumnSpan - 1} * (var(--node-column-width) + var(--node-column-gap)) + var(--node-column-gap))`
+        );
+      }
+      const previousSiblingLane = previousSiblingLaneByDecision.get(entry.decisionStateNodeId);
+      const branchRiseRows = Number.isFinite(previousSiblingLane) ? Number(entry.lane) - previousSiblingLane : 0;
+      if (branchRiseRows > 0 && columnIndex > 0) {
+        node.classList.add("is-branch-start");
+        node.style.setProperty("--branch-rise-rows", String(branchRiseRows));
+        const rise = document.createElement("span");
+        rise.className = "node-branch-rise";
+        rise.setAttribute("aria-hidden", "true");
+        node.append(rise);
+      }
+      previousSiblingLaneByDecision.set(entry.decisionStateNodeId, Number(entry.lane));
       const probability = outcome ? probabilityLabel(outcome) : "—";
       const visibleProbability = document.createElement("span"); visibleProbability.className = "node-probability"; visibleProbability.textContent = probability;
       const visualOutcomeState = entry.kind === "committed" ? state : draftPreview?.state || draftPreview || null;
-      const visualActions = entry.kind === "committed" ? plan.actionGroups[state.parentActionGroupId]?.actions : draftPreview ? currentPreview?.actions : null;
+      const visualActions = entry.kind === "committed"
+        ? replacementNode ? plan.replacementTransitions[state.parentReplacementTransitionId]?.actions : plan.actionGroups[state.parentActionGroupId]?.actions
+        : draftPreview ? replacementNode ? currentPreview?.replacements : currentPreview?.actions : replacementNode ? selectedReplacementDraftActions() : null;
       const visuals = turnNodeVisuals(plan, entry.decisionStateNodeId, visualOutcomeState, visualActions);
       node.classList.toggle("has-faint", visuals.hasFaint);
       const sprites = document.createElement("span"); sprites.className = "node-sprites";
-      const tripleNode = plan.game?.battleFormat === "triples";
-      if (tripleNode) sprites.classList.add("is-triples");
+      const sixSlotNode = ["triples", "rotation"].includes(plan.game?.battleFormat);
+      if (sixSlotNode) sprites.classList.add("is-triples");
       const nodePositionState = visualOutcomeState || state;
-      const nodeCombatantKeys = tripleNode
-        ? ["player", "enemy"].flatMap(side => Array.from({ length: 3 }, (_, position) => activeKey(nodePositionState, side, tripleSlotForPosition(plan, side, position))))
+      const nodeCombatantKeys = replacementNode
+        ? visuals.combatantKeys
+        : sixSlotNode
+        ? ["player", "enemy"].flatMap(side => Array.from({ length: 3 }, (_, position) => activeKey(nodePositionState, side, plan.game?.battleFormat === "triples" ? tripleSlotForPosition(plan, side, position) : position)))
         : visuals.combatantKeys;
       for (const combatantKey of nodeCombatantKeys) {
         if (!combatantKey) {
@@ -2521,12 +3173,14 @@ function renderTree() {
       }
       const summary = entry.kind === "committed"
         ? `${state.outcome.label} · ${nodeActionSummary(state)}`
-        : draftPreview ? `${(draftPreview.outcome || draftPreview).label || "Crafted outcome"}` : "Awaiting turn actions";
+        : draftPreview ? `${(draftPreview.outcome || draftPreview).label || "Crafted outcome"}` : replacementNode ? "Awaiting replacement selection" : "Awaiting turn actions";
       const faintSummary = visuals.hasFaint ? ` · Fainted: ${[...visuals.faintedCombatantKeys].map(key => recordName(plan.combatants[key])).join(", ")}` : "";
-      node.setAttribute("aria-label", `Turn ${turn} · ${probability} · ${summary}${faintSummary}`);
-      node.append(visibleProbability);
+      node.setAttribute("aria-label", replacementNode ? `Replacement before Turn ${turn} · ${summary}${faintSummary}` : `Turn ${turn} · ${probability} · ${summary}${faintSummary}`);
+      if (!replacementNode) node.append(visibleProbability);
       if (sprites.childElementCount) node.append(sprites);
-      node.addEventListener("click", () => entry.kind === "committed" ? selectTurnOutcome(entry.outcomeStateNodeId) : selectStateNode(entry.decisionStateNodeId));
+      node.addEventListener("click", () => entry.kind === "committed"
+        ? replacementNode ? selectReplacementOutcome(entry.outcomeStateNodeId) : selectTurnOutcome(entry.outcomeStateNodeId)
+        : selectStateNode(entry.decisionStateNodeId));
       node.addEventListener("keydown", event => {
         const cols = [...ui["node-tree"].querySelectorAll(".node-column")];
         let target = null;
@@ -2545,9 +3199,31 @@ function renderTree() {
       });
       column.append(node);
     });
+    const trackerTurn = trackerTurns.find(entry => Number(entry.turnNumber) === Number(turn));
+    if (trackerTurn) {
+      const node = button("", "node-button is-actual");
+      node.dataset.column = columnIndex;
+      node.dataset.lane = trackerLane;
+      node.dataset.kind = "actual";
+      node.style.gridColumn = "1";
+      node.style.gridRow = String(trackerLane + 2);
+      node.setAttribute("role", "treeitem");
+      node.setAttribute("aria-selected", String(Number(selectedTrackerTurnNumber) === Number(turn)));
+      node.setAttribute("aria-label", `Actual Turn ${turn} · ${trackerStatusLabel(trackerTurn)} · ${trackerTurn.explanation}`);
+      const actual = document.createElement("span"); actual.className = "node-probability"; actual.textContent = "Actual";
+      const match = document.createElement("small"); match.className = "node-actual-status"; match.textContent = trackerStatusLabel(trackerTurn);
+      node.append(actual, match);
+      node.addEventListener("click", () => {
+        selectedTrackerTurnNumber = Number(turn);
+        renderTree();
+        renderBattleTrackerDetail();
+      });
+      column.append(node);
+    }
     return column;
   });
   ui["node-tree"].replaceChildren(...columns);
+  renderBattleTrackerDetail();
 }
 
 function prefillActions(suppliedGroup = null) {
@@ -2564,6 +3240,23 @@ function prefillActions(suppliedGroup = null) {
         : action.actionType === "shift" ? { type: "shift", actorKey: action.actorKey }
           : { type: "move", moveId: action.moveId, targetKey: action.targetKeys?.[0] || null, mechanicValue: action.mechanicActivations?.[0]?.switchToKey || action.mechanicActivations?.[0]?.typeId || action.mechanicActivations?.[0]?.moveId || null };
     });
+  }
+}
+
+function prefillReplacementActions(transition) {
+  const state = selectedState();
+  if (!state || !transition) return;
+  for (const side of ["player", "enemy"]) {
+    for (const action of actionList(transition.actions, side)) {
+      const slot = Number(action.slot ?? 0);
+      if (!Number.isInteger(slot) || slot < 0 || slot >= actionDraft[side].length) continue;
+      actionDraft[side][slot] = {
+        type: "switch",
+        actorKey: activeKey(state, side, slot),
+        switchToKey: action.switchToKey,
+        previewSwitchToKey: action.switchToKey
+      };
+    }
   }
 }
 
@@ -2621,21 +3314,24 @@ function renderWorkspace() {
   ui["empty-plan"].hidden = hasPlan;
   ui["battle-workspace"].classList.toggle("is-doubles", hasPlan && plan.game.battleFormat === "doubles");
   ui["battle-workspace"].classList.toggle("is-triples", hasPlan && plan.game.battleFormat === "triples");
+  ui["battle-workspace"].classList.toggle("is-rotation", hasPlan && plan.game.battleFormat === "rotation");
   ui["plan-toolbar-label"].textContent = hasPlan ? `${plan.name} · ${currentTrainerName()} · ${battleFormatLabel()}` : "No battle plan open";
   ui["commit-turn"].disabled = true;
   if (liveButton) {
-    const overlayCompatible = !hasPlan || plan.game.battleFormat !== "triples";
+    const overlayCompatible = !hasPlan || !["triples", "rotation"].includes(plan.game.battleFormat);
     liveButton.disabled = !hasPlan || needsRecalculation || !overlayCompatible;
     liveButton.textContent = liveWriter?.active ? "Stop Live Edit" : "Begin Live Edit";
-    liveButton.title = overlayCompatible ? "" : "Triple plans stay local until Overlay gains Triple projection support";
+    liveButton.title = overlayCompatible ? "" : `${battleFormatLabel()} plans stay local until Overlay gains this projection format`;
   }
+  updateBattleTrackerButton();
   ui["recalculate-plan"].hidden = !hasPlan || !needsRecalculation;
   if (!hasPlan) return;
   ui["revision-label"].textContent = `Draft r${plan.documentRevision}`;
   const selected = selectedState();
   const reviewed = reviewOutcomeStateNodeId ? plan.stateNodes[reviewOutcomeStateNodeId] : null;
-  const turnNumber = reviewed ? Number(reviewed.turnNumber) : battleActuallyEnded(selected) ? Number(selected.turnNumber) : Number(selected.turnNumber) + 1;
-  ui["turn-label"].textContent = `Turn ${turnNumber}`;
+  const replacementPhase = Boolean(reviewed?.parentReplacementTransitionId) || (!reviewed && pendingReplacementSlots(selected).length > 0);
+  const turnNumber = reviewed ? displayTurnNumber(reviewed) : battleActuallyEnded(selected) ? Number(selected.turnNumber) : Number(selected.turnNumber) + 1;
+  ui["turn-label"].textContent = `Turn ${turnNumber}${replacementPhase ? " · Replacement" : ""}`;
   ui["commit-turn"].textContent = battleCompletionState(plan, selected).commitLabel;
   renderTree(); renderField(); renderActionPanels(); renderNotes(); renderExportSelection();
   if (battleActuallyEnded(selectedState())) { ui.readiness.textContent = "The battle has ended."; clearPreview("The battle has ended."); }
@@ -2786,7 +3482,10 @@ async function stopLiveEdit() {
 }
 
 async function installLocalLiveEdit() {
-  if (PUBLIC_BUILD || !LOOPBACK_HOSTS.has(location.hostname) || !ui["live-edit-anchor"]) return;
+  if (!PRIVATE_INTEGRATIONS_ALLOWED || !ui["live-edit-anchor"]) return;
+  const enabledForGame = GAME_REGISTRY[selectedGameId]?.capabilities?.liveEdit === true;
+  ui["live-edit-anchor"].hidden = !enabledForGame;
+  if (!enabledForGame) return;
   const { detectLocalLiveEditCapability, LocalLiveEditWriter } = await import("./integrations/local_live_edit.js");
   const capability = await detectLocalLiveEditCapability();
   if (!capability || liveButton) return;
@@ -2806,6 +3505,73 @@ async function installLocalLiveEdit() {
     }
   }
   renderWorkspace();
+}
+
+function updateBattleTrackerButton() {
+  if (!battleTrackerButton) return;
+  const enabledForGame = GAME_REGISTRY[selectedGameId]?.capabilities?.battleTracker === true;
+  ui["battle-tracker-anchor"].hidden = !enabledForGame;
+  battleTrackerButton.disabled = !enabledForGame || !plan || needsRecalculation;
+  battleTrackerButton.textContent = battleTracker?.active ? "Stop Battle Tracker" : "Begin Battle Tracker";
+  battleTrackerButton.title = plan
+    ? "Follow the private VW2R battle log as an Actual node branch"
+    : "Open a VW2R plan before following the battle log";
+}
+
+async function toggleBattleTracker() {
+  if (!battleTracker || !plan) return;
+  if (battleTracker.active) {
+    battleTracker.stop();
+    updateBattleTrackerButton();
+    renderTree();
+    setStatus("Battle Tracker stopped. The captured Actual branch remains available for review until tracking begins again.");
+    return;
+  }
+  battleTrackerButton.disabled = true;
+  try {
+    selectedTrackerTurnNumber = null;
+    battleTrackerSnapshot = await battleTracker.begin();
+    updateBattleTrackerButton();
+    renderTree();
+    setStatus(battleTrackerSnapshot.waitingForBattle
+      ? "Battle Tracker is attached and waiting for the next VW2R battle."
+      : "Battle Tracker attached to the active VW2R battle; Actual nodes will update as events arrive.");
+  } catch (error) {
+    updateBattleTrackerButton();
+    setStatus(`Battle Tracker could not start: ${error.message}`, true);
+  }
+}
+
+async function installLocalBattleTracker() {
+  if (!PRIVATE_INTEGRATIONS_ALLOWED || !ui["battle-tracker-anchor"]) return;
+  const enabledForGame = GAME_REGISTRY[selectedGameId]?.capabilities?.battleTracker === true;
+  ui["battle-tracker-anchor"].hidden = !enabledForGame;
+  if (!enabledForGame) {
+    battleTracker?.stop();
+    return;
+  }
+  if (battleTrackerButton) {
+    updateBattleTrackerButton();
+    return;
+  }
+  const trackerApi = await import("./integrations/local_battle_tracker.js");
+  const capability = await trackerApi.detectLocalBattleTrackerCapability();
+  if (!capability) return;
+  compareTrackerTurnsFn = trackerApi.compareTrackerTurns;
+  battleTracker = new trackerApi.LocalBattleTracker({
+    onUpdate: snapshot => {
+      battleTrackerSnapshot = snapshot;
+      updateBattleTrackerButton();
+      if (plan) renderTree();
+      else renderBattleTrackerDetail();
+    },
+    onError: error => setStatus(`Battle Tracker polling failed: ${error.message}`, true)
+  });
+  battleTrackerButton = button("Begin Battle Tracker", "secondary");
+  battleTrackerButton.id = "battle-tracker";
+  battleTrackerButton.addEventListener("click", toggleBattleTracker);
+  ui["battle-tracker-anchor"].append(battleTrackerButton);
+  updateBattleTrackerButton();
 }
 
 async function confirmDestructive(actionLabel) {
@@ -2841,6 +3607,9 @@ async function resolveDestructive(choice) {
 }
 
 async function clearActiveContext() {
+  battleTracker?.stop();
+  battleTrackerSnapshot = null;
+  selectedTrackerTurnNumber = null;
   plan = null; draftRecord = null; cursorStateNodeId = null; currentPreview = null; branchEventModel = null; selectedPreviewOutcomeId = null; reviewOutcomeStateNodeId = null; needsRecalculation = false;
   actionDraft = emptyActionDraft(); exportSelection.clear();
   await draftStore.clear();
@@ -2908,9 +3677,10 @@ async function restoreDraft() {
 }
 
 async function selectGame(gameId) {
-  if (!gameId) return;
+  if (!gameId) { renderGameCredit(""); return; }
   if (selectedGameId && selectedGameId !== gameId && (liveWriter?.active || planHasWork(plan)) && !(await confirmDestructive("Changing games"))) {
     ui["game-select"].value = selectedGameId;
+    renderGameCredit(selectedGameId);
     return;
   }
   const config = GAME_REGISTRY[gameId];
@@ -2919,10 +3689,15 @@ async function selectGame(gameId) {
     setStatus(`Loading ${config.name} data and battle mechanics…`);
     if (selectedGameId && selectedGameId !== gameId) await clearActiveContext();
     worker?.terminate();
-    dataset = await loadStandardizedDataset({ baseUrl: config.datasetBaseUrl });
+    [dataset, trainerAi] = await Promise.all([
+      loadStandardizedDataset({ baseUrl: config.datasetBaseUrl }),
+      loadTrainerAiDocumentation({ baseUrl: config.trainerAiBaseUrl, gameId })
+    ]);
     worker = new ResolverWorkerClient();
-    await worker.initialize(config.datasetBaseUrl);
+    await worker.initialize(config.datasetBaseUrl, config.trainerAiBaseUrl, gameId);
+    trainerAiAnalysisCache.clear();
     selectedGameId = gameId;
+    renderGameCredit(gameId);
     localStorage.setItem(SELECTED_GAME_KEY, gameId);
     ui["game-gate"].hidden = true;
     ui["app-tabs"].hidden = false;
@@ -2933,16 +3708,21 @@ async function selectGame(gameId) {
     setTab(activeTab);
     const restored = await restoreDraft();
     await installLocalLiveEdit();
+    await installLocalBattleTracker();
     setStatus(restored ? `Recovered the active ${config.name} draft. Nothing has been sent to Overlay.` : `${config.name} is ready. Add or select a Box party to begin.`);
     if (!restored) queueMicrotask(() => openPlanContext());
   } catch (error) {
     setStatus(error.message, true);
     ui["game-select"].value = selectedGameId || "";
+    renderGameCredit(selectedGameId);
   }
 }
 
 function wireEvents() {
-  ui["game-select"].addEventListener("change", () => selectGame(ui["game-select"].value));
+  ui["game-select"].addEventListener("change", () => {
+    renderGameCredit(ui["game-select"].value);
+    selectGame(ui["game-select"].value);
+  });
   ui["plc-tab"].addEventListener("click", () => setTab("plc"));
   ui["boxes-tab"].addEventListener("click", () => setTab("boxes"));
   ui["new-box"].addEventListener("click", async () => { const result = addBox(boxLibrary, selectedGameId); boxLibrary = result.library; await saveLibrary("Box added."); });
@@ -2976,7 +3756,8 @@ function wireEvents() {
   ui["party-source-mode"].addEventListener("change", () => { contextSelection.pokemonIds = []; contextSelection.partyId = null; contextSelection.saved = false; refreshContextPartySelect(); renderContextPokemonGrid(); });
   ui["context-party-select"].addEventListener("change", () => { contextSelection.partyId = ui["context-party-select"].value || null; contextSelection.saved = false; renderContextPokemonGrid(); });
   ui["save-party-selection"].addEventListener("click", savePartySelection);
-  ui["edit-party-selection"].addEventListener("click", () => { contextSelection.saved = false; ui["party-selector-controls"].hidden = false; ui["party-selection-summary"].hidden = true; ui["edit-party-selection"].hidden = true; renderContextPokemonGrid(); });
+  ui["edge-party-exp"].addEventListener("click", edgePartyExperience);
+  ui["edit-party-selection"].addEventListener("click", () => { contextSelection.saved = false; ui["party-selector-controls"].hidden = false; ui["party-selection-summary"].hidden = true; ui["edit-party-selection"].hidden = true; ui["edge-party-exp"].hidden = true; renderContextPokemonGrid(); });
   ui["begin-plan"].addEventListener("click", beginPlanFromContext);
   ui["save-pokemon"].addEventListener("click", savePokemonEditor);
   ui["new-plan"].addEventListener("click", () => openPlanContext());
@@ -2989,6 +3770,8 @@ function wireEvents() {
   });
   ui["output-plan"].addEventListener("click", outputPlan);
   ui["import-plan"].addEventListener("change", () => importPlanFile(ui["import-plan"].files?.[0]));
+  ui["notes-toggle"].addEventListener("click", () => setNotesExpanded(!notesExpanded));
+  ui["ai-forecast-toggle"].addEventListener("change", () => setAiForecastExpanded(ui["ai-forecast-toggle"].checked));
   ui["node-notes"].addEventListener("input", updateSelectedNote);
   ui["node-notes"].addEventListener("change", () => {
     if (!notesPersistTimer) return;
@@ -3001,13 +3784,15 @@ function wireEvents() {
   ui["live-keep-editing"]?.addEventListener("click", () => setStatus("Live writing remains stopped. The same local draft is still open."));
   ui["destructive-dialog"].addEventListener("close", () => resolveDestructive(ui["destructive-dialog"].returnValue));
   ui["progression-dialog"].addEventListener("close", resolveProgressionPrompt);
-  window.addEventListener("beforeunload", () => { clearTimeout(notesPersistTimer); worker?.terminate(); liveWriter?.stopHeartbeat?.(); });
+  window.addEventListener("beforeunload", () => { clearTimeout(notesPersistTimer); worker?.terminate(); liveWriter?.stopHeartbeat?.(); battleTracker?.stop(); });
 }
 
 async function start() {
   wireEvents();
+  setAiForecastExpanded(false);
   await installTestingStateOutput();
   try {
+    await populateGameOptions();
     boxLibrary = await boxStore.load() || createEmptyBoxLibrary();
     setStatus("Select a game to load its Boxes, trainers, and mechanics.");
   } catch (error) { setStatus(`Boxes storage could not be opened: ${error.message}`, true); }

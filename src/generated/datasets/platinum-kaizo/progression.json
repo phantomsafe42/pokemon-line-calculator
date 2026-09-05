@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "gameId": "platinum-kaizo",
+  "kind": "progression",
+  "consumerProfile": {
+    "id": "documented-main-game",
+    "splits": [
+      {
+        "id": "roark",
+        "label": "Roark",
+        "firstOrder": 1,
+        "lastOrder": 22,
+        "levelCap": 16,
+        "leaderTrainerId": "platinum-kaizo-trainer-0246",
+        "sourceConfidence": "native-platinum-kaizo-trainer-documentation-split-tab"
+      },
+      {
+        "id": "gardenia",
+        "label": "Gardenia",
+        "firstOrder": 23,
+        "lastOrder": 63,
+        "levelCap": 28,
+        "leaderTrainerId": "platinum-kaizo-trainer-0911",
+        "sourceConfidence": "native-platinum-kaizo-trainer-documentation-split-tab"
+      },
+      {
+        "id": "fantina",
+        "label": "Fantina",
+        "firstOrder": 64,
+        "lastOrder": 103,
+        "levelCap": 38,
+        "leaderTrainerId": "platinum-kaizo-trainer-0913",
+        "sourceConfidence": "native-platinum-kaizo-trainer-documentation-split-tab"
+      },
+      {
+        "id": "maylene",
+        "label": "Maylene",
+        "firstOrder": 104,
+        "lastOrder": 141,
+        "levelCap": 47,
+        "leaderTrainerId": "platinum-kaizo-trainer-0317",
+        "sourceConfidence": "native-platinum-kaizo-trainer-documentation-split-tab"
+      },
+      {
+        "id": "wake",
+        "label": "Wake",
+        "firstOrder": 142,
+        "lastOrder": 172,
+        "levelCap": 54,
+        "leaderTrainerId": "platinum-kaizo-trainer-0316",
+        "sourceConfidence": "native-platinum-kaizo-trainer-documentation-split-tab"
+      },
+      {
+        "id": "byron",
+        "label": "Byron",
+        "firstOrder": 173,
+        "lastOrder": 230,
+        "levelCap": 65,
+        "leaderTrainerId": "platinum-kaizo-trainer-0250",
+        "sourceConfidence": "native-platinum-kaizo-trainer-documentation-split-tab"
+      },
+      {
+        "id": "candice",
+        "label": "Candice",
+        "firstOrder": 231,
+        "lastOrder": 268,
+        "levelCap": 74,
+        "leaderTrainerId": "platinum-kaizo-trainer-0319",
+        "sourceConfidence": "native-platinum-kaizo-trainer-documentation-split-tab"
+      },
+      {
+        "id": "volkner",
+        "label": "Volkner",
+        "firstOrder": 269,
+        "lastOrder": 287,
+        "levelCap": 84,
+        "leaderTrainerId": "platinum-kaizo-trainer-0320",
+        "sourceConfidence": "native-platinum-kaizo-trainer-documentation-split-tab"
+      },
+      {
+        "id": "galactic",
+        "label": "Galactic",
+        "firstOrder": 288,
+        "lastOrder": 368,
+        "levelCap": 100,
+        "leaderTrainerId": "platinum-kaizo-trainer-0960",
+        "sourceConfidence": "native-platinum-kaizo-trainer-documentation-split-tab"
+      },
+      {
+        "id": "elitefour",
+        "label": "Elite Four",
+        "firstOrder": 369,
+        "lastOrder": 389,
+        "sourceConfidence": "native-platinum-kaizo-trainer-documentation-split-tab"
+      }
+    ],
+    "compatibilityBoundary": "Native workbook split tabs define the main-game trainer sequence; mechanics-only reference records are excluded from canonical order."
+  },
+  "referenceProfiles": [],
+  "unresolved": [
+    "5 complete trainer cards could not be joined to the immutable legacy trainer snapshot and were materialized as source-only trainer records.",
+    "479 matched trainer occurrences have no authoritative mandatory classification in the supplied workbook; mandatory remains null.",
+    "Story flags, mutually exclusive route choices, and branch prerequisites beyond workbook notes require script or ROM evidence."
+  ],
+  "source": {
+    "workbook": "PK_Trainer_Documentation.xlsx",
+    "sha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+    "spreadsheetId": "1wDGnIqs1IXxp-lo_1YDaXorwv2cdWM_nao5oRQDWObo"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "datasetId": "pokemon-assets",
+  "releaseVersion": "0.4.0-dev.1",
+  "generated": true,
+  "assetCatalog": {
+    "path": "asset-index.json",
+    "sha256": "e4f2ba67022287a2688e3a180d681a7a49e6938b399d9e2fd64e065ef60aa562",
+    "bytes": 1697
+  },
+  "profiles": [
+    {
+      "profileId": "gen5-animated",
+      "indexPath": "profiles/gen5-animated/index.json",
+      "indexSha256": "b5eb2103fb238ab2e39134164c726fdbe299335f75c05799a27c50394c911172",
+      "indexBytes": 1303911,
+      "appearances": 731,
+      "assets": 3308,
+      "assetBytes": 145170080,
+      "coverageGaps": 0,
+      "aliases": 0
+    },
+    {
+      "profileId": "gen5-static",
+      "indexPath": "profiles/gen5-static/index.json",
+      "indexSha256": "161288461ab028e5a26eb878296d8ffd5a2971fb6ac0be09b4a64a5993785d1e",
+      "indexBytes": 2378988,
+      "appearances": 1408,
+      "assets": 6024,
+      "assetBytes": 9971258,
+      "coverageGaps": 0,
+      "aliases": 2
+    },
+    {
+      "profileId": "pixel",
+      "indexPath": "profiles/pixel/index.json",
+      "indexSha256": "1a3f0b54b3678f7250ed232274050e42297236714e20911eb37fad4584b598e2",
+      "indexBytes": 3736391,
+      "appearances": 1556,
+      "assets": 9706,
+      "assetBytes": 11748612,
+      "coverageGaps": 0,
+      "aliases": 0
+    }
+  ]
+}

@@ -1,0 +1,1983 @@
+{
+  "schemaVersion": 1,
+  "gameId": "platinum-kaizo",
+  "kind": "evolutions",
+  "records": [
+    {
+      "id": "bulbasaur-to-ivysaur-1",
+      "fromSpeciesId": "bulbasaur",
+      "toSpeciesId": "ivysaur",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "ivysaur-to-venusaur-1",
+      "fromSpeciesId": "ivysaur",
+      "toSpeciesId": "venusaur",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "charmander-to-charmeleon-1",
+      "fromSpeciesId": "charmander",
+      "toSpeciesId": "charmeleon",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "charmeleon-to-charizard-1",
+      "fromSpeciesId": "charmeleon",
+      "toSpeciesId": "charizard",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "squirtle-to-wartortle-1",
+      "fromSpeciesId": "squirtle",
+      "toSpeciesId": "wartortle",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "wartortle-to-blastoise-1",
+      "fromSpeciesId": "wartortle",
+      "toSpeciesId": "blastoise",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "caterpie-to-metapod-1",
+      "fromSpeciesId": "caterpie",
+      "toSpeciesId": "metapod",
+      "method": "Level",
+      "parameter": "7",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "metapod-to-butterfree-1",
+      "fromSpeciesId": "metapod",
+      "toSpeciesId": "butterfree",
+      "method": "Level",
+      "parameter": "10",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "weedle-to-kakuna-1",
+      "fromSpeciesId": "weedle",
+      "toSpeciesId": "kakuna",
+      "method": "Level",
+      "parameter": "7",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "kakuna-to-beedrill-1",
+      "fromSpeciesId": "kakuna",
+      "toSpeciesId": "beedrill",
+      "method": "Level",
+      "parameter": "10",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "pidgey-to-pidgeotto-1",
+      "fromSpeciesId": "pidgey",
+      "toSpeciesId": "pidgeotto",
+      "method": "Level",
+      "parameter": "14",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "pidgeotto-to-pidgeot-1",
+      "fromSpeciesId": "pidgeotto",
+      "toSpeciesId": "pidgeot",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "rattata-to-raticate-1",
+      "fromSpeciesId": "rattata",
+      "toSpeciesId": "raticate",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "spearow-to-fearow-1",
+      "fromSpeciesId": "spearow",
+      "toSpeciesId": "fearow",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "ekans-to-arbok-1",
+      "fromSpeciesId": "ekans",
+      "toSpeciesId": "arbok",
+      "method": "Level",
+      "parameter": "22",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "pikachu-to-raichu-1",
+      "fromSpeciesId": "pikachu",
+      "toSpeciesId": "raichu",
+      "method": "Item",
+      "parameter": "thunderstone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "sandshrew-to-sandslash-1",
+      "fromSpeciesId": "sandshrew",
+      "toSpeciesId": "sandslash",
+      "method": "Level",
+      "parameter": "22",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "nidoranf-to-nidorina-1",
+      "fromSpeciesId": "nidoranf",
+      "toSpeciesId": "nidorina",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "nidorina-to-nidoqueen-1",
+      "fromSpeciesId": "nidorina",
+      "toSpeciesId": "nidoqueen",
+      "method": "Item",
+      "parameter": "moonstone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "nidoranm-to-nidorino-1",
+      "fromSpeciesId": "nidoranm",
+      "toSpeciesId": "nidorino",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "nidorino-to-nidoking-1",
+      "fromSpeciesId": "nidorino",
+      "toSpeciesId": "nidoking",
+      "method": "Item",
+      "parameter": "moonstone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "clefairy-to-clefable-1",
+      "fromSpeciesId": "clefairy",
+      "toSpeciesId": "clefable",
+      "method": "Item",
+      "parameter": "moonstone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "vulpix-to-ninetales-1",
+      "fromSpeciesId": "vulpix",
+      "toSpeciesId": "ninetales",
+      "method": "Item",
+      "parameter": "firestone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "jigglypuff-to-wigglytuff-1",
+      "fromSpeciesId": "jigglypuff",
+      "toSpeciesId": "wigglytuff",
+      "method": "Item",
+      "parameter": "moonstone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "zubat-to-golbat-1",
+      "fromSpeciesId": "zubat",
+      "toSpeciesId": "golbat",
+      "method": "Level",
+      "parameter": "22",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "golbat-to-crobat-1",
+      "fromSpeciesId": "golbat",
+      "toSpeciesId": "crobat",
+      "method": "Level",
+      "parameter": "48",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "oddish-to-gloom-1",
+      "fromSpeciesId": "oddish",
+      "toSpeciesId": "gloom",
+      "method": "Level",
+      "parameter": "15",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "gloom-to-vileplume-1",
+      "fromSpeciesId": "gloom",
+      "toSpeciesId": "vileplume",
+      "method": "Item",
+      "parameter": "leafstone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "gloom-to-bellossom-2",
+      "fromSpeciesId": "gloom",
+      "toSpeciesId": "bellossom",
+      "method": "Item",
+      "parameter": "sunstone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "paras-to-parasect-1",
+      "fromSpeciesId": "paras",
+      "toSpeciesId": "parasect",
+      "method": "Level",
+      "parameter": "24",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "venonat-to-venomoth-1",
+      "fromSpeciesId": "venonat",
+      "toSpeciesId": "venomoth",
+      "method": "Level",
+      "parameter": "28",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "diglett-to-dugtrio-1",
+      "fromSpeciesId": "diglett",
+      "toSpeciesId": "dugtrio",
+      "method": "Level",
+      "parameter": "26",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "meowth-to-persian-1",
+      "fromSpeciesId": "meowth",
+      "toSpeciesId": "persian",
+      "method": "Level",
+      "parameter": "28",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "psyduck-to-golduck-1",
+      "fromSpeciesId": "psyduck",
+      "toSpeciesId": "golduck",
+      "method": "Level",
+      "parameter": "33",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "mankey-to-primeape-1",
+      "fromSpeciesId": "mankey",
+      "toSpeciesId": "primeape",
+      "method": "Level",
+      "parameter": "28",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "growlithe-to-arcanine-1",
+      "fromSpeciesId": "growlithe",
+      "toSpeciesId": "arcanine",
+      "method": "Item",
+      "parameter": "firestone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "poliwag-to-poliwhirl-1",
+      "fromSpeciesId": "poliwag",
+      "toSpeciesId": "poliwhirl",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "poliwhirl-to-poliwrath-1",
+      "fromSpeciesId": "poliwhirl",
+      "toSpeciesId": "poliwrath",
+      "method": "Item",
+      "parameter": "waterstone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "poliwhirl-to-politoed-2",
+      "fromSpeciesId": "poliwhirl",
+      "toSpeciesId": "politoed",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "abra-to-kadabra-1",
+      "fromSpeciesId": "abra",
+      "toSpeciesId": "kadabra",
+      "method": "Level",
+      "parameter": "45",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "kadabra-to-alakazam-1",
+      "fromSpeciesId": "kadabra",
+      "toSpeciesId": "alakazam",
+      "method": "Item (Day)",
+      "parameter": "twistedspoon",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "machop-to-machoke-1",
+      "fromSpeciesId": "machop",
+      "toSpeciesId": "machoke",
+      "method": "Level",
+      "parameter": "48",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "machop-to-machoke-2",
+      "fromSpeciesId": "machop",
+      "toSpeciesId": "machoke",
+      "method": "Item",
+      "parameter": "hardstone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "machoke-to-machamp-1",
+      "fromSpeciesId": "machoke",
+      "toSpeciesId": "machamp",
+      "method": "Party Pokemon",
+      "parameter": "graveler",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "bellsprout-to-weepinbell-1",
+      "fromSpeciesId": "bellsprout",
+      "toSpeciesId": "weepinbell",
+      "method": "Level",
+      "parameter": "15",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "weepinbell-to-victreebel-1",
+      "fromSpeciesId": "weepinbell",
+      "toSpeciesId": "victreebel",
+      "method": "Item",
+      "parameter": "leafstone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "tentacool-to-tentacruel-1",
+      "fromSpeciesId": "tentacool",
+      "toSpeciesId": "tentacruel",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "geodude-to-graveler-1",
+      "fromSpeciesId": "geodude",
+      "toSpeciesId": "graveler",
+      "method": "Level",
+      "parameter": "48",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "geodude-to-graveler-2",
+      "fromSpeciesId": "geodude",
+      "toSpeciesId": "graveler",
+      "method": "Item",
+      "parameter": "hardstone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "graveler-to-golem-1",
+      "fromSpeciesId": "graveler",
+      "toSpeciesId": "golem",
+      "method": "Party Pokemon",
+      "parameter": "machoke",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "ponyta-to-rapidash-1",
+      "fromSpeciesId": "ponyta",
+      "toSpeciesId": "rapidash",
+      "method": "Level",
+      "parameter": "34",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "slowpoke-to-slowbro-1",
+      "fromSpeciesId": "slowpoke",
+      "toSpeciesId": "slowbro",
+      "method": "Party Pokemon",
+      "parameter": "shellder",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "slowpoke-to-slowking-2",
+      "fromSpeciesId": "slowpoke",
+      "toSpeciesId": "slowking",
+      "method": "Item",
+      "parameter": "kingsrock",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "magnemite-to-magneton-1",
+      "fromSpeciesId": "magnemite",
+      "toSpeciesId": "magneton",
+      "method": "Magnetic Field",
+      "parameter": "0",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "magneton-to-magnezone-1",
+      "fromSpeciesId": "magneton",
+      "toSpeciesId": "magnezone",
+      "method": "Level",
+      "parameter": "80",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "doduo-to-dodrio-1",
+      "fromSpeciesId": "doduo",
+      "toSpeciesId": "dodrio",
+      "method": "Level",
+      "parameter": "31",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "seel-to-dewgong-1",
+      "fromSpeciesId": "seel",
+      "toSpeciesId": "dewgong",
+      "method": "Level",
+      "parameter": "34",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "grimer-to-muk-1",
+      "fromSpeciesId": "grimer",
+      "toSpeciesId": "muk",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "shellder-to-cloyster-1",
+      "fromSpeciesId": "shellder",
+      "toSpeciesId": "cloyster",
+      "method": "Item",
+      "parameter": "waterstone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "gastly-to-haunter-1",
+      "fromSpeciesId": "gastly",
+      "toSpeciesId": "haunter",
+      "method": "Level",
+      "parameter": "45",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "haunter-to-gengar-1",
+      "fromSpeciesId": "haunter",
+      "toSpeciesId": "gengar",
+      "method": "Item (Night)",
+      "parameter": "twistedspoon",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "onix-to-steelix-1",
+      "fromSpeciesId": "onix",
+      "toSpeciesId": "steelix",
+      "method": "Item",
+      "parameter": "metalcoat",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "drowzee-to-hypno-1",
+      "fromSpeciesId": "drowzee",
+      "toSpeciesId": "hypno",
+      "method": "Level",
+      "parameter": "38",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "krabby-to-kingler-1",
+      "fromSpeciesId": "krabby",
+      "toSpeciesId": "kingler",
+      "method": "Level",
+      "parameter": "28",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "voltorb-to-electrode-1",
+      "fromSpeciesId": "voltorb",
+      "toSpeciesId": "electrode",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "exeggcute-to-exeggutor-1",
+      "fromSpeciesId": "exeggcute",
+      "toSpeciesId": "exeggutor",
+      "method": "Item",
+      "parameter": "leafstone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "cubone-to-marowak-1",
+      "fromSpeciesId": "cubone",
+      "toSpeciesId": "marowak",
+      "method": "Level",
+      "parameter": "28",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "lickitung-to-lickilicky-1",
+      "fromSpeciesId": "lickitung",
+      "toSpeciesId": "lickilicky",
+      "method": "Move learned",
+      "parameter": "powerwhip",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "koffing-to-weezing-1",
+      "fromSpeciesId": "koffing",
+      "toSpeciesId": "weezing",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "rhyhorn-to-rhydon-1",
+      "fromSpeciesId": "rhyhorn",
+      "toSpeciesId": "rhydon",
+      "method": "Level",
+      "parameter": "42",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "rhydon-to-rhyperior-1",
+      "fromSpeciesId": "rhydon",
+      "toSpeciesId": "rhyperior",
+      "method": "Item",
+      "parameter": "protector",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "chansey-to-blissey-1",
+      "fromSpeciesId": "chansey",
+      "toSpeciesId": "blissey",
+      "method": "Friendship",
+      "parameter": "0",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "tangela-to-tangrowth-1",
+      "fromSpeciesId": "tangela",
+      "toSpeciesId": "tangrowth",
+      "method": "Level",
+      "parameter": "90",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "horsea-to-seadra-1",
+      "fromSpeciesId": "horsea",
+      "toSpeciesId": "seadra",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "seadra-to-kingdra-1",
+      "fromSpeciesId": "seadra",
+      "toSpeciesId": "kingdra",
+      "method": "Item",
+      "parameter": "dragonscale",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "goldeen-to-seaking-1",
+      "fromSpeciesId": "goldeen",
+      "toSpeciesId": "seaking",
+      "method": "Level",
+      "parameter": "23",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "staryu-to-starmie-1",
+      "fromSpeciesId": "staryu",
+      "toSpeciesId": "starmie",
+      "method": "Item (Night)",
+      "parameter": "waterstone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "scyther-to-scizor-1",
+      "fromSpeciesId": "scyther",
+      "toSpeciesId": "scizor",
+      "method": "Item",
+      "parameter": "metalcoat",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "electabuzz-to-electivire-1",
+      "fromSpeciesId": "electabuzz",
+      "toSpeciesId": "electivire",
+      "method": "Item",
+      "parameter": "electirizer",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "magmar-to-magmortar-1",
+      "fromSpeciesId": "magmar",
+      "toSpeciesId": "magmortar",
+      "method": "Item",
+      "parameter": "magmarizer",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "magikarp-to-gyarados-1",
+      "fromSpeciesId": "magikarp",
+      "toSpeciesId": "gyarados",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "eevee-to-leafeon-1",
+      "fromSpeciesId": "eevee",
+      "toSpeciesId": "leafeon",
+      "method": "Moss Rock",
+      "parameter": "0",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "eevee-to-glaceon-2",
+      "fromSpeciesId": "eevee",
+      "toSpeciesId": "glaceon",
+      "method": "Ice Rock",
+      "parameter": "0",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "eevee-to-jolteon-3",
+      "fromSpeciesId": "eevee",
+      "toSpeciesId": "jolteon",
+      "method": "Item",
+      "parameter": "thunderstone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "eevee-to-vaporeon-4",
+      "fromSpeciesId": "eevee",
+      "toSpeciesId": "vaporeon",
+      "method": "Item",
+      "parameter": "waterstone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "eevee-to-flareon-5",
+      "fromSpeciesId": "eevee",
+      "toSpeciesId": "flareon",
+      "method": "Item",
+      "parameter": "firestone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "eevee-to-espeon-6",
+      "fromSpeciesId": "eevee",
+      "toSpeciesId": "espeon",
+      "method": "Item",
+      "parameter": "dawnstone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "eevee-to-umbreon-7",
+      "fromSpeciesId": "eevee",
+      "toSpeciesId": "umbreon",
+      "method": "Item",
+      "parameter": "duskstone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "porygon-to-porygon2-1",
+      "fromSpeciesId": "porygon",
+      "toSpeciesId": "porygon2",
+      "method": "Item",
+      "parameter": "upgrade",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "omanyte-to-omastar-1",
+      "fromSpeciesId": "omanyte",
+      "toSpeciesId": "omastar",
+      "method": "Magnetic Field",
+      "parameter": "40",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "kabuto-to-kabutops-1",
+      "fromSpeciesId": "kabuto",
+      "toSpeciesId": "kabutops",
+      "method": "Magnetic Field",
+      "parameter": "40",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "dratini-to-dragonair-1",
+      "fromSpeciesId": "dratini",
+      "toSpeciesId": "dragonair",
+      "method": "Level",
+      "parameter": "45",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "dragonair-to-dragonite-1",
+      "fromSpeciesId": "dragonair",
+      "toSpeciesId": "dragonite",
+      "method": "Level",
+      "parameter": "100",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "chikorita-to-bayleef-1",
+      "fromSpeciesId": "chikorita",
+      "toSpeciesId": "bayleef",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "bayleef-to-meganium-1",
+      "fromSpeciesId": "bayleef",
+      "toSpeciesId": "meganium",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "cyndaquil-to-quilava-1",
+      "fromSpeciesId": "cyndaquil",
+      "toSpeciesId": "quilava",
+      "method": "Level",
+      "parameter": "14",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "quilava-to-typhlosion-1",
+      "fromSpeciesId": "quilava",
+      "toSpeciesId": "typhlosion",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "totodile-to-croconaw-1",
+      "fromSpeciesId": "totodile",
+      "toSpeciesId": "croconaw",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "croconaw-to-feraligatr-1",
+      "fromSpeciesId": "croconaw",
+      "toSpeciesId": "feraligatr",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "sentret-to-furret-1",
+      "fromSpeciesId": "sentret",
+      "toSpeciesId": "furret",
+      "method": "Level",
+      "parameter": "15",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "hoothoot-to-noctowl-1",
+      "fromSpeciesId": "hoothoot",
+      "toSpeciesId": "noctowl",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "ledyba-to-ledian-1",
+      "fromSpeciesId": "ledyba",
+      "toSpeciesId": "ledian",
+      "method": "Level",
+      "parameter": "14",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "spinarak-to-ariados-1",
+      "fromSpeciesId": "spinarak",
+      "toSpeciesId": "ariados",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "chinchou-to-lanturn-1",
+      "fromSpeciesId": "chinchou",
+      "toSpeciesId": "lanturn",
+      "method": "Level",
+      "parameter": "27",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "pichu-to-pikachu-1",
+      "fromSpeciesId": "pichu",
+      "toSpeciesId": "pikachu",
+      "method": "Level",
+      "parameter": "15",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "cleffa-to-clefairy-1",
+      "fromSpeciesId": "cleffa",
+      "toSpeciesId": "clefairy",
+      "method": "Magnetic Field",
+      "parameter": "15",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "igglybuff-to-jigglypuff-1",
+      "fromSpeciesId": "igglybuff",
+      "toSpeciesId": "jigglypuff",
+      "method": "Level",
+      "parameter": "15",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "togepi-to-togetic-1",
+      "fromSpeciesId": "togepi",
+      "toSpeciesId": "togetic",
+      "method": "Level",
+      "parameter": "15",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "togetic-to-togekiss-1",
+      "fromSpeciesId": "togetic",
+      "toSpeciesId": "togekiss",
+      "method": "Item",
+      "parameter": "shinystone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "natu-to-xatu-1",
+      "fromSpeciesId": "natu",
+      "toSpeciesId": "xatu",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "mareep-to-flaaffy-1",
+      "fromSpeciesId": "mareep",
+      "toSpeciesId": "flaaffy",
+      "method": "Level",
+      "parameter": "15",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "flaaffy-to-ampharos-1",
+      "fromSpeciesId": "flaaffy",
+      "toSpeciesId": "ampharos",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "marill-to-azumarill-1",
+      "fromSpeciesId": "marill",
+      "toSpeciesId": "azumarill",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "hoppip-to-skiploom-1",
+      "fromSpeciesId": "hoppip",
+      "toSpeciesId": "skiploom",
+      "method": "Level",
+      "parameter": "18",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "skiploom-to-jumpluff-1",
+      "fromSpeciesId": "skiploom",
+      "toSpeciesId": "jumpluff",
+      "method": "Level",
+      "parameter": "27",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "aipom-to-ambipom-1",
+      "fromSpeciesId": "aipom",
+      "toSpeciesId": "ambipom",
+      "method": "Move learned",
+      "parameter": "doublehit",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "sunkern-to-sunflora-1",
+      "fromSpeciesId": "sunkern",
+      "toSpeciesId": "sunflora",
+      "method": "Item",
+      "parameter": "sunstone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "wooper-to-quagsire-1",
+      "fromSpeciesId": "wooper",
+      "toSpeciesId": "quagsire",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "murkrow-to-honchkrow-1",
+      "fromSpeciesId": "murkrow",
+      "toSpeciesId": "honchkrow",
+      "method": "Item",
+      "parameter": "duskstone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "misdreavus-to-mismagius-1",
+      "fromSpeciesId": "misdreavus",
+      "toSpeciesId": "mismagius",
+      "method": "Item",
+      "parameter": "duskstone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "pineco-to-forretress-1",
+      "fromSpeciesId": "pineco",
+      "toSpeciesId": "forretress",
+      "method": "Level",
+      "parameter": "41",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "gligar-to-gliscor-1",
+      "fromSpeciesId": "gligar",
+      "toSpeciesId": "gliscor",
+      "method": "Item (Night)",
+      "parameter": "razorfang",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "snubbull-to-granbull-1",
+      "fromSpeciesId": "snubbull",
+      "toSpeciesId": "granbull",
+      "method": "Level",
+      "parameter": "23",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "sneasel-to-weavile-1",
+      "fromSpeciesId": "sneasel",
+      "toSpeciesId": "weavile",
+      "method": "Item (Night)",
+      "parameter": "razorclaw",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "teddiursa-to-ursaring-1",
+      "fromSpeciesId": "teddiursa",
+      "toSpeciesId": "ursaring",
+      "method": "Level",
+      "parameter": "34",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "slugma-to-magcargo-1",
+      "fromSpeciesId": "slugma",
+      "toSpeciesId": "magcargo",
+      "method": "Level",
+      "parameter": "24",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "swinub-to-piloswine-1",
+      "fromSpeciesId": "swinub",
+      "toSpeciesId": "piloswine",
+      "method": "Level",
+      "parameter": "38",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "piloswine-to-mamoswine-1",
+      "fromSpeciesId": "piloswine",
+      "toSpeciesId": "mamoswine",
+      "method": "Ice Rock",
+      "parameter": "80",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "remoraid-to-octillery-1",
+      "fromSpeciesId": "remoraid",
+      "toSpeciesId": "octillery",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "houndour-to-houndoom-1",
+      "fromSpeciesId": "houndour",
+      "toSpeciesId": "houndoom",
+      "method": "Level",
+      "parameter": "54",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "phanpy-to-donphan-1",
+      "fromSpeciesId": "phanpy",
+      "toSpeciesId": "donphan",
+      "method": "Level",
+      "parameter": "34",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "porygon2-to-porygonz-1",
+      "fromSpeciesId": "porygon2",
+      "toSpeciesId": "porygonz",
+      "method": "Item",
+      "parameter": "dubiousdisc",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "tyrogue-to-hitmonchan-1",
+      "fromSpeciesId": "tyrogue",
+      "toSpeciesId": "hitmonchan",
+      "method": "Atk < Def",
+      "parameter": "20",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "tyrogue-to-hitmonlee-2",
+      "fromSpeciesId": "tyrogue",
+      "toSpeciesId": "hitmonlee",
+      "method": "Atk > Def",
+      "parameter": "20",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "tyrogue-to-hitmontop-3",
+      "fromSpeciesId": "tyrogue",
+      "toSpeciesId": "hitmontop",
+      "method": "Atk = Def",
+      "parameter": "20",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "smoochum-to-jynx-1",
+      "fromSpeciesId": "smoochum",
+      "toSpeciesId": "jynx",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "elekid-to-electabuzz-1",
+      "fromSpeciesId": "elekid",
+      "toSpeciesId": "electabuzz",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "magby-to-magmar-1",
+      "fromSpeciesId": "magby",
+      "toSpeciesId": "magmar",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "larvitar-to-pupitar-1",
+      "fromSpeciesId": "larvitar",
+      "toSpeciesId": "pupitar",
+      "method": "Level",
+      "parameter": "64",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "pupitar-to-tyranitar-1",
+      "fromSpeciesId": "pupitar",
+      "toSpeciesId": "tyranitar",
+      "method": "Magnetic Field",
+      "parameter": "100",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "treecko-to-grovyle-1",
+      "fromSpeciesId": "treecko",
+      "toSpeciesId": "grovyle",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "grovyle-to-sceptile-1",
+      "fromSpeciesId": "grovyle",
+      "toSpeciesId": "sceptile",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "torchic-to-combusken-1",
+      "fromSpeciesId": "torchic",
+      "toSpeciesId": "combusken",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "combusken-to-blaziken-1",
+      "fromSpeciesId": "combusken",
+      "toSpeciesId": "blaziken",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "mudkip-to-marshtomp-1",
+      "fromSpeciesId": "mudkip",
+      "toSpeciesId": "marshtomp",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "marshtomp-to-swampert-1",
+      "fromSpeciesId": "marshtomp",
+      "toSpeciesId": "swampert",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "poochyena-to-mightyena-1",
+      "fromSpeciesId": "poochyena",
+      "toSpeciesId": "mightyena",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "zigzagoon-to-linoone-1",
+      "fromSpeciesId": "zigzagoon",
+      "toSpeciesId": "linoone",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "wurmple-to-silcoon-1",
+      "fromSpeciesId": "wurmple",
+      "toSpeciesId": "silcoon",
+      "method": "Random",
+      "parameter": "7",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "wurmple-to-cascoon-2",
+      "fromSpeciesId": "wurmple",
+      "toSpeciesId": "cascoon",
+      "method": "Random",
+      "parameter": "7",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "silcoon-to-beautifly-1",
+      "fromSpeciesId": "silcoon",
+      "toSpeciesId": "beautifly",
+      "method": "Level",
+      "parameter": "10",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "cascoon-to-dustox-1",
+      "fromSpeciesId": "cascoon",
+      "toSpeciesId": "dustox",
+      "method": "Level",
+      "parameter": "10",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "lotad-to-lombre-1",
+      "fromSpeciesId": "lotad",
+      "toSpeciesId": "lombre",
+      "method": "Level",
+      "parameter": "14",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "lombre-to-ludicolo-1",
+      "fromSpeciesId": "lombre",
+      "toSpeciesId": "ludicolo",
+      "method": "Item",
+      "parameter": "waterstone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "seedot-to-nuzleaf-1",
+      "fromSpeciesId": "seedot",
+      "toSpeciesId": "nuzleaf",
+      "method": "Level",
+      "parameter": "14",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "nuzleaf-to-shiftry-1",
+      "fromSpeciesId": "nuzleaf",
+      "toSpeciesId": "shiftry",
+      "method": "Item",
+      "parameter": "leafstone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "taillow-to-swellow-1",
+      "fromSpeciesId": "taillow",
+      "toSpeciesId": "swellow",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "wingull-to-pelipper-1",
+      "fromSpeciesId": "wingull",
+      "toSpeciesId": "pelipper",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "ralts-to-kirlia-1",
+      "fromSpeciesId": "ralts",
+      "toSpeciesId": "kirlia",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "kirlia-to-gardevoir-1",
+      "fromSpeciesId": "kirlia",
+      "toSpeciesId": "gardevoir",
+      "method": "Item",
+      "parameter": "dawnstone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "kirlia-to-gallade-2",
+      "fromSpeciesId": "kirlia",
+      "toSpeciesId": "gallade",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "surskit-to-masquerain-1",
+      "fromSpeciesId": "surskit",
+      "toSpeciesId": "masquerain",
+      "method": "Item",
+      "parameter": "waterstone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "shroomish-to-breloom-1",
+      "fromSpeciesId": "shroomish",
+      "toSpeciesId": "breloom",
+      "method": "Level",
+      "parameter": "23",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "slakoth-to-vigoroth-1",
+      "fromSpeciesId": "slakoth",
+      "toSpeciesId": "vigoroth",
+      "method": "Level",
+      "parameter": "18",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "vigoroth-to-slaking-1",
+      "fromSpeciesId": "vigoroth",
+      "toSpeciesId": "slaking",
+      "method": "Level",
+      "parameter": "90",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "nincada-to-ninjask-1",
+      "fromSpeciesId": "nincada",
+      "toSpeciesId": "ninjask",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "nincada-to-shedinja-2",
+      "fromSpeciesId": "nincada",
+      "toSpeciesId": "shedinja",
+      "method": "Level (Party slot)",
+      "parameter": "20",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "whismur-to-loudred-1",
+      "fromSpeciesId": "whismur",
+      "toSpeciesId": "loudred",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "loudred-to-exploud-1",
+      "fromSpeciesId": "loudred",
+      "toSpeciesId": "exploud",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "makuhita-to-hariyama-1",
+      "fromSpeciesId": "makuhita",
+      "toSpeciesId": "hariyama",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "azurill-to-marill-1",
+      "fromSpeciesId": "azurill",
+      "toSpeciesId": "marill",
+      "method": "Level",
+      "parameter": "15",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "nosepass-to-probopass-1",
+      "fromSpeciesId": "nosepass",
+      "toSpeciesId": "probopass",
+      "method": "Magnetic Field",
+      "parameter": "70",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "skitty-to-delcatty-1",
+      "fromSpeciesId": "skitty",
+      "toSpeciesId": "delcatty",
+      "method": "Item",
+      "parameter": "moonstone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "aron-to-lairon-1",
+      "fromSpeciesId": "aron",
+      "toSpeciesId": "lairon",
+      "method": "Level",
+      "parameter": "26",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "lairon-to-aggron-1",
+      "fromSpeciesId": "lairon",
+      "toSpeciesId": "aggron",
+      "method": "Level",
+      "parameter": "42",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "meditite-to-medicham-1",
+      "fromSpeciesId": "meditite",
+      "toSpeciesId": "medicham",
+      "method": "Level",
+      "parameter": "47",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "electrike-to-manectric-1",
+      "fromSpeciesId": "electrike",
+      "toSpeciesId": "manectric",
+      "method": "Level",
+      "parameter": "26",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "roselia-to-roserade-1",
+      "fromSpeciesId": "roselia",
+      "toSpeciesId": "roserade",
+      "method": "Item",
+      "parameter": "leafstone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "gulpin-to-swalot-1",
+      "fromSpeciesId": "gulpin",
+      "toSpeciesId": "swalot",
+      "method": "Level",
+      "parameter": "26",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "carvanha-to-sharpedo-1",
+      "fromSpeciesId": "carvanha",
+      "toSpeciesId": "sharpedo",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "wailmer-to-wailord-1",
+      "fromSpeciesId": "wailmer",
+      "toSpeciesId": "wailord",
+      "method": "Level",
+      "parameter": "95",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "numel-to-camerupt-1",
+      "fromSpeciesId": "numel",
+      "toSpeciesId": "camerupt",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "spoink-to-grumpig-1",
+      "fromSpeciesId": "spoink",
+      "toSpeciesId": "grumpig",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "trapinch-to-vibrava-1",
+      "fromSpeciesId": "trapinch",
+      "toSpeciesId": "vibrava",
+      "method": "Level",
+      "parameter": "35",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "vibrava-to-flygon-1",
+      "fromSpeciesId": "vibrava",
+      "toSpeciesId": "flygon",
+      "method": "Level",
+      "parameter": "64",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "cacnea-to-cacturne-1",
+      "fromSpeciesId": "cacnea",
+      "toSpeciesId": "cacturne",
+      "method": "Level",
+      "parameter": "28",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "swablu-to-altaria-1",
+      "fromSpeciesId": "swablu",
+      "toSpeciesId": "altaria",
+      "method": "Level",
+      "parameter": "35",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "barboach-to-whiscash-1",
+      "fromSpeciesId": "barboach",
+      "toSpeciesId": "whiscash",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "corphish-to-crawdaunt-1",
+      "fromSpeciesId": "corphish",
+      "toSpeciesId": "crawdaunt",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "baltoy-to-claydol-1",
+      "fromSpeciesId": "baltoy",
+      "toSpeciesId": "claydol",
+      "method": "Magnetic Field",
+      "parameter": "42",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "lileep-to-cradily-1",
+      "fromSpeciesId": "lileep",
+      "toSpeciesId": "cradily",
+      "method": "Magnetic Field",
+      "parameter": "40",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "anorith-to-armaldo-1",
+      "fromSpeciesId": "anorith",
+      "toSpeciesId": "armaldo",
+      "method": "Magnetic Field",
+      "parameter": "40",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "feebas-to-milotic-1",
+      "fromSpeciesId": "feebas",
+      "toSpeciesId": "milotic",
+      "method": "Beauty",
+      "parameter": "170",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "shuppet-to-banette-1",
+      "fromSpeciesId": "shuppet",
+      "toSpeciesId": "banette",
+      "method": "Level",
+      "parameter": "37",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "duskull-to-dusclops-1",
+      "fromSpeciesId": "duskull",
+      "toSpeciesId": "dusclops",
+      "method": "Level",
+      "parameter": "47",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "dusclops-to-dusknoir-1",
+      "fromSpeciesId": "dusclops",
+      "toSpeciesId": "dusknoir",
+      "method": "Item",
+      "parameter": "reapercloth",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "wynaut-to-wobbuffet-1",
+      "fromSpeciesId": "wynaut",
+      "toSpeciesId": "wobbuffet",
+      "method": "Magnetic Field",
+      "parameter": "90",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "snorunt-to-glalie-1",
+      "fromSpeciesId": "snorunt",
+      "toSpeciesId": "glalie",
+      "method": "Level",
+      "parameter": "33",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "snorunt-to-froslass-2",
+      "fromSpeciesId": "snorunt",
+      "toSpeciesId": "froslass",
+      "method": "Item (Female)",
+      "parameter": "dawnstone",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "spheal-to-sealeo-1",
+      "fromSpeciesId": "spheal",
+      "toSpeciesId": "sealeo",
+      "method": "Level",
+      "parameter": "24",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "sealeo-to-walrein-1",
+      "fromSpeciesId": "sealeo",
+      "toSpeciesId": "walrein",
+      "method": "Level",
+      "parameter": "44",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "clamperl-to-huntail-1",
+      "fromSpeciesId": "clamperl",
+      "toSpeciesId": "huntail",
+      "method": "Item",
+      "parameter": "deepseatooth",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "clamperl-to-gorebyss-2",
+      "fromSpeciesId": "clamperl",
+      "toSpeciesId": "gorebyss",
+      "method": "Item",
+      "parameter": "deepseascale",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "bagon-to-shelgon-1",
+      "fromSpeciesId": "bagon",
+      "toSpeciesId": "shelgon",
+      "method": "Level",
+      "parameter": "45",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "shelgon-to-salamence-1",
+      "fromSpeciesId": "shelgon",
+      "toSpeciesId": "salamence",
+      "method": "Level",
+      "parameter": "100",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "beldum-to-metang-1",
+      "fromSpeciesId": "beldum",
+      "toSpeciesId": "metang",
+      "method": "Magnetic Field",
+      "parameter": "45",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "metang-to-metagross-1",
+      "fromSpeciesId": "metang",
+      "toSpeciesId": "metagross",
+      "method": "Magnetic Field",
+      "parameter": "100",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "turtwig-to-grotle-1",
+      "fromSpeciesId": "turtwig",
+      "toSpeciesId": "grotle",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "grotle-to-torterra-1",
+      "fromSpeciesId": "grotle",
+      "toSpeciesId": "torterra",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "chimchar-to-monferno-1",
+      "fromSpeciesId": "chimchar",
+      "toSpeciesId": "monferno",
+      "method": "Level",
+      "parameter": "15",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "monferno-to-infernape-1",
+      "fromSpeciesId": "monferno",
+      "toSpeciesId": "infernape",
+      "method": "Level",
+      "parameter": "34",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "piplup-to-prinplup-1",
+      "fromSpeciesId": "piplup",
+      "toSpeciesId": "prinplup",
+      "method": "Level",
+      "parameter": "14",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "prinplup-to-empoleon-1",
+      "fromSpeciesId": "prinplup",
+      "toSpeciesId": "empoleon",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "starly-to-staravia-1",
+      "fromSpeciesId": "starly",
+      "toSpeciesId": "staravia",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "staravia-to-staraptor-1",
+      "fromSpeciesId": "staravia",
+      "toSpeciesId": "staraptor",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "bidoof-to-bibarel-1",
+      "fromSpeciesId": "bidoof",
+      "toSpeciesId": "bibarel",
+      "method": "Level",
+      "parameter": "15",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "kricketot-to-kricketune-1",
+      "fromSpeciesId": "kricketot",
+      "toSpeciesId": "kricketune",
+      "method": "Level",
+      "parameter": "10",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "shinx-to-luxio-1",
+      "fromSpeciesId": "shinx",
+      "toSpeciesId": "luxio",
+      "method": "Level",
+      "parameter": "15",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "luxio-to-luxray-1",
+      "fromSpeciesId": "luxio",
+      "toSpeciesId": "luxray",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "budew-to-roselia-1",
+      "fromSpeciesId": "budew",
+      "toSpeciesId": "roselia",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "cranidos-to-rampardos-1",
+      "fromSpeciesId": "cranidos",
+      "toSpeciesId": "rampardos",
+      "method": "Magnetic Field",
+      "parameter": "40",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "shieldon-to-bastiodon-1",
+      "fromSpeciesId": "shieldon",
+      "toSpeciesId": "bastiodon",
+      "method": "Magnetic Field",
+      "parameter": "40",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "burmy-to-wormadam-1",
+      "fromSpeciesId": "burmy",
+      "toSpeciesId": "wormadam",
+      "method": "Level (Female)",
+      "parameter": "16",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "burmy-to-mothim-2",
+      "fromSpeciesId": "burmy",
+      "toSpeciesId": "mothim",
+      "method": "Level (Male)",
+      "parameter": "16",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "combee-to-vespiquen-1",
+      "fromSpeciesId": "combee",
+      "toSpeciesId": "vespiquen",
+      "method": "Level (Female)",
+      "parameter": "21",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "combee-to-vespiquen-2",
+      "fromSpeciesId": "combee",
+      "toSpeciesId": "vespiquen",
+      "method": "Level (Male)",
+      "parameter": "67",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "combee-to-vespiquen-3",
+      "fromSpeciesId": "combee",
+      "toSpeciesId": "vespiquen",
+      "method": "Beauty",
+      "parameter": "46",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "buizel-to-floatzel-1",
+      "fromSpeciesId": "buizel",
+      "toSpeciesId": "floatzel",
+      "method": "Level",
+      "parameter": "26",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "cherubi-to-cherrim-1",
+      "fromSpeciesId": "cherubi",
+      "toSpeciesId": "cherrim",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "shellos-to-gastrodon-1",
+      "fromSpeciesId": "shellos",
+      "toSpeciesId": "gastrodon",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "drifloon-to-drifblim-1",
+      "fromSpeciesId": "drifloon",
+      "toSpeciesId": "drifblim",
+      "method": "Level",
+      "parameter": "38",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "buneary-to-lopunny-1",
+      "fromSpeciesId": "buneary",
+      "toSpeciesId": "lopunny",
+      "method": "Level",
+      "parameter": "28",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "glameow-to-purugly-1",
+      "fromSpeciesId": "glameow",
+      "toSpeciesId": "purugly",
+      "method": "Level",
+      "parameter": "28",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "chingling-to-chimecho-1",
+      "fromSpeciesId": "chingling",
+      "toSpeciesId": "chimecho",
+      "method": "Level",
+      "parameter": "21",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "stunky-to-skuntank-1",
+      "fromSpeciesId": "stunky",
+      "toSpeciesId": "skuntank",
+      "method": "Level",
+      "parameter": "34",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "bonsly-to-sudowoodo-1",
+      "fromSpeciesId": "bonsly",
+      "toSpeciesId": "sudowoodo",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "mimejr-to-mrmime-1",
+      "fromSpeciesId": "mimejr",
+      "toSpeciesId": "mrmime",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "gible-to-gabite-1",
+      "fromSpeciesId": "gible",
+      "toSpeciesId": "gabite",
+      "method": "Level",
+      "parameter": "45",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "gabite-to-garchomp-1",
+      "fromSpeciesId": "gabite",
+      "toSpeciesId": "garchomp",
+      "method": "Level",
+      "parameter": "100",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "munchlax-to-snorlax-1",
+      "fromSpeciesId": "munchlax",
+      "toSpeciesId": "snorlax",
+      "method": "Moss Rock",
+      "parameter": "70",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "riolu-to-lucario-1",
+      "fromSpeciesId": "riolu",
+      "toSpeciesId": "lucario",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "hippopotas-to-hippowdon-1",
+      "fromSpeciesId": "hippopotas",
+      "toSpeciesId": "hippowdon",
+      "method": "Level",
+      "parameter": "64",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "skorupi-to-drapion-1",
+      "fromSpeciesId": "skorupi",
+      "toSpeciesId": "drapion",
+      "method": "Level",
+      "parameter": "40",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "croagunk-to-toxicroak-1",
+      "fromSpeciesId": "croagunk",
+      "toSpeciesId": "toxicroak",
+      "method": "Level",
+      "parameter": "37",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "finneon-to-lumineon-1",
+      "fromSpeciesId": "finneon",
+      "toSpeciesId": "lumineon",
+      "method": "Level",
+      "parameter": "24",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "mantyke-to-mantine-1",
+      "fromSpeciesId": "mantyke",
+      "toSpeciesId": "mantine",
+      "method": "Party Pokemon",
+      "parameter": "remoraid",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    },
+    {
+      "id": "snover-to-abomasnow-1",
+      "fromSpeciesId": "snover",
+      "toSpeciesId": "abomasnow",
+      "method": "Level",
+      "parameter": "40",
+      "sourceConfidence": "hash-pinned-official-pkcalc-2026-08-28"
+    }
+  ]
+}

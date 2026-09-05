@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "gameId": "volt-white-2r",
+  "kind": "experience-mechanics",
+  "experienceGeneration": 5,
+  "inheritedFromDamageGeneration": false,
+  "mechanicsProfile": "vw2r-complete-pchal-egglocke-trainer-experience-v1",
+  "source": {
+    "authority": "accepted Black 2/White 2 trainer-experience behavior with pinned known answers",
+    "note": "The formula is independently declared here and is not inferred from damageGeneration."
+  },
+  "levelCurve": {
+    "growthRateField": "species.json#records.*.growthRate",
+    "status": "passed"
+  },
+  "baseYield": {
+    "field": "species.json#records.*.baseExp",
+    "status": "passed"
+  },
+  "trainerBattleFormula": {
+    "model": "generation-5-scaled-trainer",
+    "basePool": "floor(baseExp * defeatedLevel / 5)",
+    "trainerMultiplier": {
+      "numerator": 3,
+      "denominator": 2,
+      "rounding": "floor"
+    },
+    "participantAndExpShareSplit": "half-pools when at least one Exp. Share holder exists; otherwise divide the full pool among participants",
+    "levelScaling": "floor(amount * floor((2*defeatedLevel+10)^2.5/4) / floor((defeatedLevel+recipientLevel+10)^2.5/4)) + 1",
+    "operationOrder": [
+      "base-pool",
+      "trainer-multiplier",
+      "participant-and-exp-share-split",
+      "Lucky-Egg",
+      "level-scaling"
+    ]
+  },
+  "validation": {
+    "status": "passed",
+    "unresolved": 0,
+    "knownAnswers": [
+      {
+        "baseExp": 100,
+        "defeatedLevel": 20,
+        "recipientLevel": 20,
+        "participants": 1,
+        "trainer": true,
+        "resultBeforeOptionalBonuses": 601
+      }
+    ]
+  },
+  "consumerActivation": {
+    "experienceProjectionReady": true
+  }
+}

@@ -1,0 +1,1729 @@
+{
+  "schemaVersion": 1,
+  "gameId": "platinum-kaizo",
+  "kind": "abilities",
+  "records": {
+    "stench": {
+      "num": 1,
+      "id": "stench",
+      "name": "Stench",
+      "calcName": "Stench",
+      "desc": {
+        "battle": "",
+        "overworld": "Decreases wild Pokémon encounter rates by 50%, if the user is the first member of the party."
+      },
+      "romId": 1,
+      "mechanicsBase": "Stench",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "drizzle": {
+      "num": 2,
+      "id": "drizzle",
+      "name": "Drizzle",
+      "calcName": "Drizzle",
+      "desc": {
+        "battle": "Summons rain when the user switches in, which lasts indefinitely until replaced by another weather condition.",
+        "overworld": ""
+      },
+      "romId": 2,
+      "mechanicsBase": "Drizzle",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "speedboost": {
+      "num": 3,
+      "id": "speedboost",
+      "name": "Speed Boost",
+      "calcName": "Speed Boost",
+      "desc": {
+        "battle": "Raises the Speed stat of the user by one stage at the end of every turn.",
+        "overworld": ""
+      },
+      "romId": 3,
+      "mechanicsBase": "Speed Boost",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "battlearmor": {
+      "num": 4,
+      "id": "battlearmor",
+      "name": "Battle Armor",
+      "calcName": "Battle Armor",
+      "desc": {
+        "battle": "Protects the user from critical hits.",
+        "overworld": ""
+      },
+      "romId": 4,
+      "mechanicsBase": "Battle Armor",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "sturdy": {
+      "num": 5,
+      "id": "sturdy",
+      "name": "Sturdy",
+      "calcName": "Sturdy",
+      "desc": {
+        "battle": "Protects the Pokémon from one-hit KO moves.",
+        "overworld": ""
+      },
+      "romId": 5,
+      "mechanicsBase": "Sturdy",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "damp": {
+      "num": 6,
+      "id": "damp",
+      "name": "Damp",
+      "calcName": "Damp",
+      "desc": {
+        "battle": "Prevents all Pokémon on the field from using <span data-target=\"move/selfdestruct\">Selfdestruct</span>, <span data-target=\"move/explosion\">Explosion</span>, or <span data-target=\"move/memento\">Memento</span>, and prevents <span data-target=\"ability/aftermath\">Aftermath</span>.",
+        "overworld": ""
+      },
+      "romId": 6,
+      "mechanicsBase": "Damp",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "limber": {
+      "num": 7,
+      "id": "limber",
+      "name": "Limber",
+      "calcName": "Limber",
+      "desc": {
+        "battle": "Protects the user from Paralysis.",
+        "overworld": ""
+      },
+      "romId": 7,
+      "mechanicsBase": "Limber",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "sandveil": {
+      "num": 8,
+      "id": "sandveil",
+      "name": "Sand Veil",
+      "calcName": "Sand Veil",
+      "desc": {
+        "battle": "Decreases the accuracy of moves targeting the user by 20% in sandstorm, and protects it from sandstorm damage.",
+        "overworld": "Decreases wild Pokémon encounter rates by 50% in sandstorm, if the user is the first member of the party."
+      },
+      "romId": 8,
+      "mechanicsBase": "Sand Veil",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "static": {
+      "num": 9,
+      "id": "static",
+      "name": "Static",
+      "calcName": "Static",
+      "desc": {
+        "battle": "Has a 30% chance to paralyze Pokémon that make contact with the user.",
+        "overworld": "Has a 50% chance to force an <span data-target=\"type/electric\">Electric</span> type wild encounter, if the user is the first member of the party."
+      },
+      "romId": 9,
+      "mechanicsBase": "Static",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "voltabsorb": {
+      "num": 10,
+      "id": "voltabsorb",
+      "name": "Volt Absorb",
+      "calcName": "Volt Absorb",
+      "desc": {
+        "battle": "Heals the user by 25% of its total HP when hit by an <span data-target=\"type/electric\">Electric</span> type move.",
+        "overworld": ""
+      },
+      "romId": 10,
+      "mechanicsBase": "Volt Absorb",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "waterabsorb": {
+      "num": 11,
+      "id": "waterabsorb",
+      "name": "Water Absorb",
+      "calcName": "Water Absorb",
+      "desc": {
+        "battle": "Heals the user by 25% of its total HP when hit by an <span data-target=\"type/water\">Water</span> type move.",
+        "overworld": ""
+      },
+      "romId": 11,
+      "mechanicsBase": "Water Absorb",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "oblivious": {
+      "num": 12,
+      "id": "oblivious",
+      "name": "Oblivious",
+      "calcName": "Oblivious",
+      "desc": {
+        "battle": "Protects the user from infatuation and <span data-target=\"move/captivate\">Captivate</span>",
+        "overworld": ""
+      },
+      "romId": 12,
+      "mechanicsBase": "Oblivious",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "cloudnine": {
+      "num": 13,
+      "id": "cloudnine",
+      "name": "Cloud Nine",
+      "calcName": "Cloud Nine",
+      "desc": {
+        "battle": "Negates all weather effects while the user is on the field.",
+        "overworld": ""
+      },
+      "romId": 13,
+      "mechanicsBase": "Cloud Nine",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "compoundeyes": {
+      "num": 14,
+      "id": "compoundeyes",
+      "name": "Compoundeyes",
+      "calcName": "Compound Eyes",
+      "desc": {
+        "battle": "Increases the accuracy of the user's moves by 30%.",
+        "overworld": "Increases the chance to find a wild Pokémon with a held item from 50%/5% to 60%/20%."
+      },
+      "romId": 14,
+      "mechanicsBase": "Compound Eyes",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "insomnia": {
+      "num": 15,
+      "id": "insomnia",
+      "name": "Insomnia",
+      "calcName": "Insomnia",
+      "desc": {
+        "battle": "Protects the user from Sleep.",
+        "overworld": ""
+      },
+      "romId": 15,
+      "mechanicsBase": "Insomnia",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "colorchange": {
+      "num": 16,
+      "id": "colorchange",
+      "name": "Color Change",
+      "calcName": "Color Change",
+      "desc": {
+        "battle": "Changes the user's type to the type of the move it was hit by.",
+        "overworld": ""
+      },
+      "romId": 16,
+      "mechanicsBase": "Color Change",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "immunity": {
+      "num": 17,
+      "id": "immunity",
+      "name": "Immunity",
+      "calcName": "Immunity",
+      "desc": {
+        "battle": "Protects the user from Poison.",
+        "overworld": "Prevents the user from taking poison damage when walking."
+      },
+      "romId": 17,
+      "mechanicsBase": "Immunity",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "flashfire": {
+      "num": 18,
+      "id": "flashfire",
+      "name": "Flash Fire",
+      "calcName": "Flash Fire",
+      "desc": {
+        "battle": "Makes the user immune to <span data-target=\"type/fire\">Fire</span> type moves, and increases the user's Attack or Special Attack by 50% when using a <span data-target=\"type/fire\">Fire</span> type move after being hit by one.",
+        "overworld": ""
+      },
+      "romId": 18,
+      "mechanicsBase": "Flash Fire",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "shielddust": {
+      "num": 19,
+      "id": "shielddust",
+      "name": "Shield Dust",
+      "calcName": "Shield Dust",
+      "desc": {
+        "battle": "Protects the user from the secondary effects of Pokémon's moves.",
+        "overworld": ""
+      },
+      "romId": 19,
+      "mechanicsBase": "Shield Dust",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "owntempo": {
+      "num": 20,
+      "id": "owntempo",
+      "name": "Own Tempo",
+      "calcName": "Own Tempo",
+      "desc": {
+        "battle": "Protects the user from confusion.",
+        "overworld": ""
+      },
+      "romId": 20,
+      "mechanicsBase": "Own Tempo",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "suctioncups": {
+      "num": 21,
+      "id": "suctioncups",
+      "name": "Suction Cups",
+      "calcName": "Suction Cups",
+      "desc": {
+        "battle": "Protects the user from being phazed out by <span data-target=\"move/whirlwind\">Whirlwind</span> or <span data-target=\"move/roar\">Roar</span>.",
+        "overworld": ""
+      },
+      "romId": 21,
+      "mechanicsBase": "Suction Cups",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "intimidate": {
+      "num": 22,
+      "id": "intimidate",
+      "name": "Intimidate",
+      "calcName": "Intimidate",
+      "desc": {
+        "battle": "Lowers the Attack stat of all opposing Pokémon by one stage when the user enters the field.",
+        "overworld": "Decreases wild Pokémon encounter rates at least 5 levels lower than the user by 50%, if the user is the first member of the party."
+      },
+      "romId": 22,
+      "mechanicsBase": "Intimidate",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "shadowtag": {
+      "num": 23,
+      "id": "shadowtag",
+      "name": "Shadow Tag",
+      "calcName": "Shadow Tag",
+      "desc": {
+        "battle": "Prevents all opposing Pokémon from switching out or fleeing, and protects the user from the effect of opposing Shadow Tag.",
+        "overworld": ""
+      },
+      "romId": 23,
+      "mechanicsBase": "Shadow Tag",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "roughskin": {
+      "num": 24,
+      "id": "roughskin",
+      "name": "Rough Skin",
+      "calcName": "Rough Skin",
+      "desc": {
+        "battle": "Damages Pokémon that make contact with the user by 1/8 of their total HP.",
+        "overworld": ""
+      },
+      "romId": 24,
+      "mechanicsBase": "Rough Skin",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "wonderguard": {
+      "num": 25,
+      "id": "wonderguard",
+      "name": "Wonder Guard",
+      "calcName": "Wonder Guard",
+      "desc": {
+        "battle": "Makes the user immune to damaging moves that are not Super-Effective.",
+        "overworld": ""
+      },
+      "romId": 25,
+      "mechanicsBase": "Wonder Guard",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "levitate": {
+      "num": 26,
+      "id": "levitate",
+      "name": "Levitate",
+      "calcName": "Levitate",
+      "desc": {
+        "battle": "Makes the user immune to <span data-target=\"type/ground\">Ground</span> type moves, <span data-target=\"ability/arenatrap\">Arena Trap</span>, <span data-target=\"move/spikes\">Spikes</span>, and <span data-target=\"move/toxicspikes\">Toxic Spikes</span>.",
+        "overworld": ""
+      },
+      "romId": 26,
+      "mechanicsBase": "Levitate",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "effectspore": {
+      "num": 27,
+      "id": "effectspore",
+      "name": "Effect Spore",
+      "calcName": "Effect Spore",
+      "desc": {
+        "battle": "Has a 30% chance to affect Pokémon that make contact with the user with Poison, Paralysis, or Sleep.",
+        "overworld": ""
+      },
+      "romId": 27,
+      "mechanicsBase": "Effect Spore",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "synchronize": {
+      "num": 28,
+      "id": "synchronize",
+      "name": "Synchronize",
+      "calcName": "Synchronize",
+      "desc": {
+        "battle": "When the user is burned, poisoned, or paralyzed by another Pokémon, that Pokémon is also inflicted with that status condition.",
+        "overworld": "Has a 50% chance to force a wild encounter with the same nature as the user, if the user is the first member of the party."
+      },
+      "romId": 28,
+      "mechanicsBase": "Synchronize",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "clearbody": {
+      "num": 29,
+      "id": "clearbody",
+      "name": "Clear Body",
+      "calcName": "Clear Body",
+      "desc": {
+        "battle": "Protects the user from stat drops caused by other Pokémon.",
+        "overworld": ""
+      },
+      "romId": 29,
+      "mechanicsBase": "Clear Body",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "naturalcure": {
+      "num": 30,
+      "id": "naturalcure",
+      "name": "Natural Cure",
+      "calcName": "Natural Cure",
+      "desc": {
+        "battle": "Cures the user's status condition upon switching out, or at the end of a battle if the user was on the field.",
+        "overworld": ""
+      },
+      "romId": 30,
+      "mechanicsBase": "Natural Cure",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "lightningrod": {
+      "num": 31,
+      "id": "lightningrod",
+      "name": "Lightningrod",
+      "calcName": "Lightning Rod",
+      "desc": {
+        "battle": "Forces <span data-target=\"type/electric\">Electric</span> type single-target moves to redirect to the user.",
+        "overworld": ""
+      },
+      "romId": 31,
+      "mechanicsBase": "Lightning Rod",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "serenegrace": {
+      "num": 32,
+      "id": "serenegrace",
+      "name": "Serene Grace",
+      "calcName": "Serene Grace",
+      "desc": {
+        "battle": "Doubles the chance of additional effects of moves.",
+        "overworld": ""
+      },
+      "romId": 32,
+      "mechanicsBase": "Serene Grace",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "swiftswim": {
+      "num": 33,
+      "id": "swiftswim",
+      "name": "Swift Swim",
+      "calcName": "Swift Swim",
+      "desc": {
+        "battle": "Doubles the Speed stat of the user in rain.",
+        "overworld": ""
+      },
+      "romId": 33,
+      "mechanicsBase": "Swift Swim",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "chlorophyll": {
+      "num": 34,
+      "id": "chlorophyll",
+      "name": "Chlorophyll",
+      "calcName": "Chlorophyll",
+      "desc": {
+        "battle": "Doubles the Speed stat of the user in sun.",
+        "overworld": ""
+      },
+      "romId": 34,
+      "mechanicsBase": "Chlorophyll",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "illuminate": {
+      "num": 35,
+      "id": "illuminate",
+      "name": "Illuminate",
+      "calcName": "Illuminate",
+      "desc": {
+        "battle": "",
+        "overworld": "Increases wild Pokémon encounter rates by 100%, if the user is the first member of the party."
+      },
+      "romId": 35,
+      "mechanicsBase": "Illuminate",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "trace": {
+      "num": 36,
+      "id": "trace",
+      "name": "Trace",
+      "calcName": "Trace",
+      "desc": {
+        "battle": "Copies the ability of an opposing Pokémon when the user enters the field.",
+        "overworld": ""
+      },
+      "romId": 36,
+      "mechanicsBase": "Trace",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "hugepower": {
+      "num": 37,
+      "id": "hugepower",
+      "name": "Huge Power",
+      "calcName": "Huge Power",
+      "desc": {
+        "battle": "Doubles the Attack stat of the user.",
+        "overworld": ""
+      },
+      "romId": 37,
+      "mechanicsBase": "Huge Power",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "poisonpoint": {
+      "num": 38,
+      "id": "poisonpoint",
+      "name": "Poison Point",
+      "calcName": "Poison Point",
+      "desc": {
+        "battle": "Has a 30% chance to poison Pokémon that make contact with the user.",
+        "overworld": ""
+      },
+      "romId": 38,
+      "mechanicsBase": "Poison Point",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "innerfocus": {
+      "num": 39,
+      "id": "innerfocus",
+      "name": "Inner Focus",
+      "calcName": "Inner Focus",
+      "desc": {
+        "battle": "Protects the user from flinching.",
+        "overworld": ""
+      },
+      "romId": 39,
+      "mechanicsBase": "Inner Focus",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "magmaarmor": {
+      "num": 40,
+      "id": "magmaarmor",
+      "name": "Magma Armor",
+      "calcName": "Magma Armor",
+      "desc": {
+        "battle": "Protects the user from Freeze.",
+        "overworld": "Halves the number of cycles required for Eggs in the party to hatch."
+      },
+      "romId": 40,
+      "mechanicsBase": "Magma Armor",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "waterveil": {
+      "num": 41,
+      "id": "waterveil",
+      "name": "Water Veil",
+      "calcName": "Water Veil",
+      "desc": {
+        "battle": "Protects the user from Burn.",
+        "overworld": ""
+      },
+      "romId": 41,
+      "mechanicsBase": "Water Veil",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "magnetpull": {
+      "num": 42,
+      "id": "magnetpull",
+      "name": "Magnet Pull",
+      "calcName": "Magnet Pull",
+      "desc": {
+        "battle": "Prevents all opposing <span data-target=\"type/steel\">Steel</span> type Pokémon from switching out or fleeing.",
+        "overworld": "Has a 50% chance to force an <span data-target=\"type/steel\">Steel</span> type wild encounter, if the user is the first member of the party."
+      },
+      "romId": 42,
+      "mechanicsBase": "Magnet Pull",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "soundproof": {
+      "num": 43,
+      "id": "soundproof",
+      "name": "Soundproof",
+      "calcName": "Soundproof",
+      "desc": {
+        "battle": "Makes the user immune to Sound-based moves.",
+        "overworld": ""
+      },
+      "romId": 43,
+      "mechanicsBase": "Soundproof",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "raindish": {
+      "num": 44,
+      "id": "raindish",
+      "name": "Rain Dish",
+      "calcName": "Rain Dish",
+      "desc": {
+        "battle": "Heals the user by 1/16 of its total HP at the end of every turn in rain.",
+        "overworld": ""
+      },
+      "romId": 44,
+      "mechanicsBase": "Rain Dish",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "sandstream": {
+      "num": 45,
+      "id": "sandstream",
+      "name": "Sand Stream",
+      "calcName": "Sand Stream",
+      "desc": {
+        "battle": "Summons a sandstorm when the user switches in, which lasts indefinitely until replaced by another weather condition",
+        "overworld": ""
+      },
+      "romId": 45,
+      "mechanicsBase": "Sand Stream",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "pressure": {
+      "num": 46,
+      "id": "pressure",
+      "name": "Pressure",
+      "calcName": "Pressure",
+      "desc": {
+        "battle": "Forces all Pokémon on the field to use an additional PP for every move that targets the user or the field.",
+        "overworld": "Has a 50% chance to force a wild encounter at the upper bound of its level range, if the user is the first member of the party."
+      },
+      "romId": 46,
+      "mechanicsBase": "Pressure",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "thickfat": {
+      "num": 47,
+      "id": "thickfat",
+      "name": "Thick Fat",
+      "calcName": "Thick Fat",
+      "desc": {
+        "battle": "Halves the damage of <span data-target=\"type/fire\">Fire</span> or <span data-target=\"type/ice\">Ice</span> type moves targeting the user.",
+        "overworld": ""
+      },
+      "romId": 47,
+      "mechanicsBase": "Thick Fat",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "earlybird": {
+      "num": 48,
+      "id": "earlybird",
+      "name": "Early Bird",
+      "calcName": "Early Bird",
+      "desc": {
+        "battle": "Halves the number of Sleep turns the user is put to sleep (from 1-4 to 0-2).",
+        "overworld": ""
+      },
+      "romId": 48,
+      "mechanicsBase": "Early Bird",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "flamebody": {
+      "num": 49,
+      "id": "flamebody",
+      "name": "Flame Body",
+      "calcName": "Flame Body",
+      "desc": {
+        "battle": "Has a 30% chance to burn Pokémon that make contact with the user.",
+        "overworld": "Halves the number of cycles required for Eggs in the party to hatch."
+      },
+      "romId": 49,
+      "mechanicsBase": "Flame Body",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "runaway": {
+      "num": 50,
+      "id": "runaway",
+      "name": "Run Away",
+      "calcName": "Run Away",
+      "desc": {
+        "battle": "The user can always flee or use <span data-target=\"move/teleport\">Teleport</span> successfully.",
+        "overworld": ""
+      },
+      "romId": 50,
+      "mechanicsBase": "Run Away",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "keeneye": {
+      "num": 51,
+      "id": "keeneye",
+      "name": "Keen Eye",
+      "calcName": "Keen Eye",
+      "desc": {
+        "battle": "Protects the user from accuracy drops caused by other Pokémon.",
+        "overworld": "Decreases wild Pokémon encounter rates at least 5 levels lower than the user by 50%, if the user is the first member of the party"
+      },
+      "romId": 51,
+      "mechanicsBase": "Keen Eye",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "hypercutter": {
+      "num": 52,
+      "id": "hypercutter",
+      "name": "Hyper Cutter",
+      "calcName": "Hyper Cutter",
+      "desc": {
+        "battle": "Protects the user from Attack drops caused by other Pokémon.",
+        "overworld": ""
+      },
+      "romId": 52,
+      "mechanicsBase": "Hyper Cutter",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "pickup": {
+      "num": 53,
+      "id": "pickup",
+      "name": "Pickup",
+      "calcName": "Pickup",
+      "desc": {
+        "battle": "",
+        "overworld": "Has a 10% chance to give the user an item after the end of a battle, if it is not holding one."
+      },
+      "romId": 53,
+      "mechanicsBase": "Pickup",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "truant": {
+      "num": 54,
+      "id": "truant",
+      "name": "Truant",
+      "calcName": "Truant",
+      "desc": {
+        "battle": "The user cannot move every other turn.",
+        "overworld": ""
+      },
+      "romId": 54,
+      "mechanicsBase": "Truant",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "hustle": {
+      "num": 55,
+      "id": "hustle",
+      "name": "Hustle",
+      "calcName": "Hustle",
+      "desc": {
+        "battle": "Increases the Attack stat of the user by 50%, but lowers the accuracy of its <span data-target=\"category/physical\">Physical moves</span> by 20%.",
+        "overworld": "Has a 50% chance to force a wild encounter at the upper bound of its level range, if the user is the first member of the party."
+      },
+      "romId": 55,
+      "mechanicsBase": "Hustle",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "cutecharm": {
+      "num": 56,
+      "id": "cutecharm",
+      "name": "Cute Charm",
+      "calcName": "Cute Charm",
+      "desc": {
+        "battle": "Has a 30% chance to infatuate Pokémon of the opposite gender that make contact with the user.",
+        "overworld": "Has a 2/3 chance to force a wild encounter of the opposite gender of the user, if the user is the first member of the party."
+      },
+      "romId": 56,
+      "mechanicsBase": "Cute Charm",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "plus": {
+      "num": 57,
+      "id": "plus",
+      "name": "Plus",
+      "calcName": "Plus",
+      "desc": {
+        "battle": "Increases the user's Special Attack stat by 50% if its ally has the ability <span data-target=\"abiliity/minus\">Minus</span>.",
+        "overworld": ""
+      },
+      "romId": 57,
+      "mechanicsBase": "Plus",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "minus": {
+      "num": 58,
+      "id": "minus",
+      "name": "Minus",
+      "calcName": "Minus",
+      "desc": {
+        "battle": "Increases the user's Special Attack stat by 50% if its ally has the ability <span data-target=\"abiliity/plus\">Plus</span>.",
+        "overworld": ""
+      },
+      "romId": 58,
+      "mechanicsBase": "Minus",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "forecast": {
+      "num": 59,
+      "id": "forecast",
+      "name": "Forecast",
+      "calcName": "Forecast",
+      "desc": {
+        "battle": "Changes <span data-target=\"species/Castform\">Castform</span>'s form depending on the current weather condition.",
+        "overworld": ""
+      },
+      "romId": 59,
+      "mechanicsBase": "Forecast",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "stickyhold": {
+      "num": 60,
+      "id": "stickyhold",
+      "name": "Sticky Hold",
+      "calcName": "Sticky Hold",
+      "desc": {
+        "battle": "Prevents the user from losing its held item by <span data-target=\"move/bugbite\">Bug Bite</span>, <span data-target=\"move/pluck\">Pluck</span>, or <span data-target=\"move/knockoff\">Knock Off</span>.",
+        "overworld": ""
+      },
+      "romId": 60,
+      "mechanicsBase": "Sticky Hold",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "shedskin": {
+      "num": 61,
+      "id": "shedskin",
+      "name": "Shed Skin",
+      "calcName": "Shed Skin",
+      "desc": {
+        "battle": "Has a 30% chance to cure the user's status condition at the end of every turn.",
+        "overworld": ""
+      },
+      "romId": 61,
+      "mechanicsBase": "Shed Skin",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "guts": {
+      "num": 62,
+      "id": "guts",
+      "name": "Guts",
+      "calcName": "Guts",
+      "desc": {
+        "battle": "Increases the user's Attack stat by 50% if it has a status condition, and the user does not lose Attack from Burn.",
+        "overworld": ""
+      },
+      "romId": 62,
+      "mechanicsBase": "Guts",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "marvelscale": {
+      "num": 63,
+      "id": "marvelscale",
+      "name": "Marvel Scale",
+      "calcName": "Marvel Scale",
+      "desc": {
+        "battle": "Increases the user's Defense stat by 50% if it has a status condition.",
+        "overworld": ""
+      },
+      "romId": 63,
+      "mechanicsBase": "Marvel Scale",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "liquidooze": {
+      "num": 64,
+      "id": "liquidooze",
+      "name": "Liquid Ooze",
+      "calcName": "Liquid Ooze",
+      "desc": {
+        "battle": "Causes draining moves targeting the user to damage the attacker instead of healing it.",
+        "overworld": ""
+      },
+      "romId": 64,
+      "mechanicsBase": "Liquid Ooze",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "overgrow": {
+      "num": 65,
+      "id": "overgrow",
+      "name": "Overgrow",
+      "calcName": "Overgrow",
+      "desc": {
+        "battle": "Increases the power of <span data-target=\"type/grass\">Grass</span> type moves when the user's HP is equal to or lower than 33% of its maximum HP.",
+        "overworld": ""
+      },
+      "romId": 65,
+      "mechanicsBase": "Overgrow",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "blaze": {
+      "num": 66,
+      "id": "blaze",
+      "name": "Blaze",
+      "calcName": "Blaze",
+      "desc": {
+        "battle": "Increases the power of <span data-target=\"type/fire\">Fire</span> type moves when the user's HP is equal to or lower than 33% of its maximum HP.",
+        "overworld": ""
+      },
+      "romId": 66,
+      "mechanicsBase": "Blaze",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "torrent": {
+      "num": 67,
+      "id": "torrent",
+      "name": "Torrent",
+      "calcName": "Torrent",
+      "desc": {
+        "battle": "Increases the power of <span data-target=\"type/water\">Water</span> type moves when the user's HP is equal to or lower than 33% of its maximum HP.",
+        "overworld": ""
+      },
+      "romId": 67,
+      "mechanicsBase": "Torrent",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "swarm": {
+      "num": 68,
+      "id": "swarm",
+      "name": "Swarm",
+      "calcName": "Swarm",
+      "desc": {
+        "battle": "Increases the power of <span data-target=\"type/bug\">Bug</span> type moves when the user's HP is equal to or lower than 33% of its maximum HP.",
+        "overworld": ""
+      },
+      "romId": 68,
+      "mechanicsBase": "Swarm",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "rockhead": {
+      "num": 69,
+      "id": "rockhead",
+      "name": "Rock Head",
+      "calcName": "Rock Head",
+      "desc": {
+        "battle": "Prevents the user from taking recoil damage.",
+        "overworld": ""
+      },
+      "romId": 69,
+      "mechanicsBase": "Rock Head",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "drought": {
+      "num": 70,
+      "id": "drought",
+      "name": "Drought",
+      "calcName": "Drought",
+      "desc": {
+        "battle": "Summons sun when the user switches in, which lasts indefinitely until replaced by another weather condition.",
+        "overworld": ""
+      },
+      "romId": 70,
+      "mechanicsBase": "Drought",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "arenatrap": {
+      "num": 71,
+      "id": "arenatrap",
+      "name": "Arena Trap",
+      "calcName": "Arena Trap",
+      "desc": {
+        "battle": "Prevents all opposing grounded Pokémon from switching out or fleeing.",
+        "overworld": "Increases wild Pokémon encounter rates by 100%, if the user is the first member of the party."
+      },
+      "romId": 71,
+      "mechanicsBase": "Arena Trap",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "vitalspirit": {
+      "num": 72,
+      "id": "vitalspirit",
+      "name": "Vital Spirit",
+      "calcName": "Vital Spirit",
+      "desc": {
+        "battle": "Protects the user from Sleep.",
+        "overworld": "Has a 50% chance to force a wild encounter at the upper bound of its level range, if the user is the first member of the party."
+      },
+      "romId": 72,
+      "mechanicsBase": "Vital Spirit",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "whitesmoke": {
+      "num": 73,
+      "id": "whitesmoke",
+      "name": "White Smoke",
+      "calcName": "White Smoke",
+      "desc": {
+        "battle": "Protects the user from stat drops caused by other Pokémon.",
+        "overworld": "Decreases wild Pokémon encounter rates by 50%, if the user is the first member of the party."
+      },
+      "romId": 73,
+      "mechanicsBase": "White Smoke",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "purepower": {
+      "num": 74,
+      "id": "purepower",
+      "name": "Pure Power",
+      "calcName": "Pure Power",
+      "desc": {
+        "battle": "Doubles the Attack stat of the user.",
+        "overworld": ""
+      },
+      "romId": 74,
+      "mechanicsBase": "Pure Power",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "shellarmor": {
+      "num": 75,
+      "id": "shellarmor",
+      "name": "Shell Armor",
+      "calcName": "Shell Armor",
+      "desc": {
+        "battle": "Protects the user from critical hits.",
+        "overworld": ""
+      },
+      "romId": 75,
+      "mechanicsBase": "Shell Armor",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "airlock": {
+      "num": 76,
+      "id": "airlock",
+      "name": "Air Lock",
+      "calcName": "Air Lock",
+      "desc": {
+        "battle": "Negates all weather effects while the user is on the field.",
+        "overworld": ""
+      },
+      "romId": 76,
+      "mechanicsBase": "Air Lock",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "tangledfeet": {
+      "num": 77,
+      "id": "tangledfeet",
+      "name": "Tangled Feet",
+      "calcName": "Tangled Feet",
+      "desc": {
+        "battle": "Halves the accuracy of moves targeting the user when it is confused.",
+        "overworld": ""
+      },
+      "romId": 77,
+      "mechanicsBase": "Tangled Feet",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "motordrive": {
+      "num": 78,
+      "id": "motordrive",
+      "name": "Motor Drive",
+      "calcName": "Motor Drive",
+      "desc": {
+        "battle": "Raises the Speed stat of the user by one stage when hit by an <span data-target=\"type/electric\">Electric</span> type move.",
+        "overworld": ""
+      },
+      "romId": 78,
+      "mechanicsBase": "Motor Drive",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "rivalry": {
+      "num": 79,
+      "id": "rivalry",
+      "name": "Rivalry",
+      "calcName": "Rivalry",
+      "desc": {
+        "battle": "Increases the damage the of user's moves by 25% if the target is of the same gender, and reduces it by 25% if they are of opposite genders.",
+        "overworld": ""
+      },
+      "romId": 79,
+      "mechanicsBase": "Rivalry",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "steadfast": {
+      "num": 80,
+      "id": "steadfast",
+      "name": "Steadfast",
+      "calcName": "Steadfast",
+      "desc": {
+        "battle": "Raises the Speed stat of the user when it flinches.",
+        "overworld": ""
+      },
+      "romId": 80,
+      "mechanicsBase": "Steadfast",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "snowcloak": {
+      "num": 81,
+      "id": "snowcloak",
+      "name": "Snow Cloak",
+      "calcName": "Snow Cloak",
+      "desc": {
+        "battle": "Decreases the accuracy of moves targeting the user by 20% in hail, and protects it from hail damage.",
+        "overworld": "Decreases wild Pokémon encounter rates by 50% in hail, if the user is the first member of the party."
+      },
+      "romId": 81,
+      "mechanicsBase": "Snow Cloak",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "gluttony": {
+      "num": 82,
+      "id": "gluttony",
+      "name": "Gluttony",
+      "calcName": "Gluttony",
+      "desc": {
+        "battle": "Causes the user to consume berries that are normally consumed at 25% of its total HP, at 50% of its total HP.",
+        "overworld": ""
+      },
+      "romId": 82,
+      "mechanicsBase": "Gluttony",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "angerpoint": {
+      "num": 83,
+      "id": "angerpoint",
+      "name": "Anger Point",
+      "calcName": "Anger Point",
+      "desc": {
+        "battle": "Raises the Attack stat of the user to +6 when hit by a critical hit.",
+        "overworld": ""
+      },
+      "romId": 83,
+      "mechanicsBase": "Anger Point",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "unburden": {
+      "num": 84,
+      "id": "unburden",
+      "name": "Unburden",
+      "calcName": "Unburden",
+      "desc": {
+        "battle": "Increases the Speed stat of the user by 100% when its held item is consumed or lost.",
+        "overworld": ""
+      },
+      "romId": 84,
+      "mechanicsBase": "Unburden",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "heatproof": {
+      "num": 85,
+      "id": "heatproof",
+      "name": "Heatproof",
+      "calcName": "Heatproof",
+      "desc": {
+        "battle": "Halves damage done to the user by <span data-target=\"type/fire\">Fire</span> type moves and Burn.",
+        "overworld": ""
+      },
+      "romId": 85,
+      "mechanicsBase": "Heatproof",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "simple": {
+      "num": 86,
+      "id": "simple",
+      "name": "Simple",
+      "calcName": "Simple",
+      "desc": {
+        "battle": "Doubles the effectiveness of stat stages.",
+        "overworld": ""
+      },
+      "romId": 86,
+      "mechanicsBase": "Simple",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "dryskin": {
+      "num": 87,
+      "id": "dryskin",
+      "name": "Dry Skin",
+      "calcName": "Dry Skin",
+      "desc": {
+        "battle": "In rain, heals the user by 1/8 of its total HP at the end of every turn, and heals it by 25% of its total HP when hit by a <span data-target=\"type/water\">Water</span> type move. In sun, damages the user by 1/8 of its total HP at the end of every turn, and causes the it to take 25% more damage from a <span data-target=\"type/fire\">Fire</span> type move.",
+        "overworld": ""
+      },
+      "romId": 87,
+      "mechanicsBase": "Dry Skin",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "download": {
+      "num": 88,
+      "id": "download",
+      "name": "Download",
+      "calcName": "Download",
+      "desc": {
+        "battle": "When the user enters the field, raises its Attack stat if the opposing Pokémon's Defense stat is lower than its Special Defense stat, otherwise raises the user's Special Attack. In a double battle, it calculates the averages of the opposing team's Defense stats and Special Defense stats.",
+        "overworld": ""
+      },
+      "romId": 88,
+      "mechanicsBase": "Download",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "ironfist": {
+      "num": 89,
+      "id": "ironfist",
+      "name": "Iron Fist",
+      "calcName": "Iron Fist",
+      "desc": {
+        "battle": "Increases the power of Punching moves by 20%.",
+        "overworld": ""
+      },
+      "romId": 89,
+      "mechanicsBase": "Iron Fist",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "poisonheal": {
+      "num": 90,
+      "id": "poisonheal",
+      "name": "Poison Heal",
+      "calcName": "Poison Heal",
+      "desc": {
+        "battle": "If the user is poisoned, heals it by 1/8 of its total HP at the end of every turn instead of damaging it.",
+        "overworld": "The user still takes poison damage when walking."
+      },
+      "romId": 90,
+      "mechanicsBase": "Poison Heal",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "adaptability": {
+      "num": 91,
+      "id": "adaptability",
+      "name": "Adaptability",
+      "calcName": "Adaptability",
+      "desc": {
+        "battle": "Increases the user's STAB from 1.5x to 2x.",
+        "overworld": ""
+      },
+      "romId": 91,
+      "mechanicsBase": "Adaptability",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "skilllink": {
+      "num": 92,
+      "id": "skilllink",
+      "name": "Skill Link",
+      "calcName": "Skill Link",
+      "desc": {
+        "battle": "Forces moves that hit up to 5 times to hit all 5 times.",
+        "overworld": ""
+      },
+      "romId": 92,
+      "mechanicsBase": "Skill Link",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "hydration": {
+      "num": 93,
+      "id": "hydration",
+      "name": "Hydration",
+      "calcName": "Hydration",
+      "desc": {
+        "battle": "Cures the user's status condition at the end of every turn in rain.",
+        "overworld": ""
+      },
+      "romId": 93,
+      "mechanicsBase": "Hydration",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "solarpower": {
+      "num": 94,
+      "id": "solarpower",
+      "name": "Solar Power",
+      "calcName": "Solar Power",
+      "desc": {
+        "battle": "In sun, increases the user's Special attack by 50%, but damages it by 1/8 of its total HP at the end of every turn.",
+        "overworld": ""
+      },
+      "romId": 94,
+      "mechanicsBase": "Solar Power",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "quickfeet": {
+      "num": 95,
+      "id": "quickfeet",
+      "name": "Quick Feet",
+      "calcName": "Quick Feet",
+      "desc": {
+        "battle": "Increases the user's Speed stat by 50% if it has a status condition, and the user does not lose Speed from Paralysis.",
+        "overworld": "Decreases wild Pokémon encounter rates by 50%, if the user is the first member of the party."
+      },
+      "romId": 95,
+      "mechanicsBase": "Quick Feet",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "normalize": {
+      "num": 96,
+      "id": "normalize",
+      "name": "Normalize",
+      "calcName": "Normalize",
+      "desc": {
+        "battle": "Changes the type of all moves used by the user to the <span data-target=\"type/normal\">Normal</span> type.",
+        "overworld": ""
+      },
+      "romId": 96,
+      "mechanicsBase": "Normalize",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "sniper": {
+      "num": 97,
+      "id": "sniper",
+      "name": "Sniper",
+      "calcName": "Sniper",
+      "desc": {
+        "battle": "Increases critical hit damage by 50%.",
+        "overworld": ""
+      },
+      "romId": 97,
+      "mechanicsBase": "Sniper",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "magicguard": {
+      "num": 98,
+      "id": "magicguard",
+      "name": "Magic Guard",
+      "calcName": "Magic Guard",
+      "desc": {
+        "battle": "Protects the user from indirect damage.",
+        "overworld": "The user still takes poison damage when walking."
+      },
+      "romId": 98,
+      "mechanicsBase": "Magic Guard",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "noguard": {
+      "num": 99,
+      "id": "noguard",
+      "name": "No Guard",
+      "calcName": "No Guard",
+      "desc": {
+        "battle": "Prevents the user from missing its moves.",
+        "overworld": "Increases wild Pokémon encounter rates by 100%, if the user is the first member of the party."
+      },
+      "romId": 99,
+      "mechanicsBase": "No Guard",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "stall": {
+      "num": 100,
+      "id": "stall",
+      "name": "Stall",
+      "calcName": "Stall",
+      "desc": {
+        "battle": "Forces the user to move last in its priority bracket.",
+        "overworld": ""
+      },
+      "romId": 100,
+      "mechanicsBase": "Stall",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "technician": {
+      "num": 101,
+      "id": "technician",
+      "name": "Technician",
+      "calcName": "Technician",
+      "desc": {
+        "battle": "Increases the power of moves with a base power of 60 or less by 50%.",
+        "overworld": ""
+      },
+      "romId": 101,
+      "mechanicsBase": "Technician",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "leafguard": {
+      "num": 102,
+      "id": "leafguard",
+      "name": "Leaf Guard",
+      "calcName": "Leaf Guard",
+      "desc": {
+        "battle": "Protects the user from status conditions in sun.",
+        "overworld": ""
+      },
+      "romId": 102,
+      "mechanicsBase": "Leaf Guard",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "klutz": {
+      "num": 103,
+      "id": "klutz",
+      "name": "Klutz",
+      "calcName": "Klutz",
+      "desc": {
+        "battle": "Prevents the effects of the user's held item.",
+        "overworld": ""
+      },
+      "romId": 103,
+      "mechanicsBase": "Klutz",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "moldbreaker": {
+      "num": 104,
+      "id": "moldbreaker",
+      "name": "Mold Breaker",
+      "calcName": "Mold Breaker",
+      "desc": {
+        "battle": "When the user makes a move, prevents the effects of any abilities on the field that would affect that move.",
+        "overworld": ""
+      },
+      "romId": 104,
+      "mechanicsBase": "Mold Breaker",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "superluck": {
+      "num": 105,
+      "id": "superluck",
+      "name": "Super Luck",
+      "calcName": "Super Luck",
+      "desc": {
+        "battle": "Raises the user's critical hit ratio by 1 stage.",
+        "overworld": ""
+      },
+      "romId": 105,
+      "mechanicsBase": "Super Luck",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "aftermath": {
+      "num": 106,
+      "id": "aftermath",
+      "name": "Aftermath",
+      "calcName": "Aftermath",
+      "desc": {
+        "battle": "If the user faints to a move that made contact, the attacker loses 25% of its total HP, if there is not a Pokémon on the field with the ability <span data-target=\"ability/damp\">Damp</span>.",
+        "overworld": ""
+      },
+      "romId": 106,
+      "mechanicsBase": "Aftermath",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "anticipation": {
+      "num": 107,
+      "id": "anticipation",
+      "name": "Anticipation",
+      "calcName": "Anticipation",
+      "desc": {
+        "battle": "Causes the user to \"shudder\" when it enters the battle, if an opposing Pokémon has a Super-Effective move, an OHKO move, or an exploding move.",
+        "overworld": ""
+      },
+      "romId": 107,
+      "mechanicsBase": "Anticipation",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "forewarn": {
+      "num": 108,
+      "id": "forewarn",
+      "name": "Forewarn",
+      "calcName": "Forewarn",
+      "desc": {
+        "battle": "Warns the user of the opposing team's highest damaging move.",
+        "overworld": ""
+      },
+      "romId": 108,
+      "mechanicsBase": "Forewarn",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "unaware": {
+      "num": 109,
+      "id": "unaware",
+      "name": "Unaware",
+      "calcName": "Unaware",
+      "desc": {
+        "battle": "Ignores the user's and the opposing Pokémon's stat changes when calculating damage.",
+        "overworld": ""
+      },
+      "romId": 109,
+      "mechanicsBase": "Unaware",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "tintedlens": {
+      "num": 110,
+      "id": "tintedlens",
+      "name": "Tinted Lens",
+      "calcName": "Tinted Lens",
+      "desc": {
+        "battle": "Doubles the damage of Not-Very-Effective moves.",
+        "overworld": ""
+      },
+      "romId": 110,
+      "mechanicsBase": "Tinted Lens",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "filter": {
+      "num": 111,
+      "id": "filter",
+      "name": "Filter",
+      "calcName": "Filter",
+      "desc": {
+        "battle": "Decreases damage from Super-Effective moves by 25%.",
+        "overworld": ""
+      },
+      "romId": 111,
+      "mechanicsBase": "Filter",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "slowstart": {
+      "num": 112,
+      "id": "slowstart",
+      "name": "Slow Start",
+      "calcName": "Slow Start",
+      "desc": {
+        "battle": "Halves the user's Attack and Speed stats for the first five turns after it enters the field.",
+        "overworld": ""
+      },
+      "romId": 112,
+      "mechanicsBase": "Slow Start",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "scrappy": {
+      "num": 113,
+      "id": "scrappy",
+      "name": "Scrappy",
+      "calcName": "Scrappy",
+      "desc": {
+        "battle": "Enables the user to hit <span data-target=\"type/ghost\">Ghost</span type Pokémon with <span data-target=\"type/normal\">Normal</span> or <span data-target=\"type/fighting\">Fighting</span> type moves.",
+        "overworld": ""
+      },
+      "romId": 113,
+      "mechanicsBase": "Scrappy",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "stormdrain": {
+      "num": 114,
+      "id": "stormdrain",
+      "name": "Storm Drain",
+      "calcName": "Storm Drain",
+      "desc": {
+        "battle": "Forces <span data-target=\"type/water\">Water</span> type single-target moves to redirect to the user.",
+        "overworld": ""
+      },
+      "romId": 114,
+      "mechanicsBase": "Storm Drain",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "icebody": {
+      "num": 115,
+      "id": "icebody",
+      "name": "Ice Body",
+      "calcName": "Ice Body",
+      "desc": {
+        "battle": "Heals the user by 1/16 of its total HP at the end of every turn in hail, and protects it from hail damage.",
+        "overworld": ""
+      },
+      "romId": 115,
+      "mechanicsBase": "Ice Body",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "solidrock": {
+      "num": 116,
+      "id": "solidrock",
+      "name": "Solid Rock",
+      "calcName": "Solid Rock",
+      "desc": {
+        "battle": "Decreases damage from Super-Effective moves by 25%.",
+        "overworld": ""
+      },
+      "romId": 116,
+      "mechanicsBase": "Solid Rock",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "snowwarning": {
+      "num": 117,
+      "id": "snowwarning",
+      "name": "Snow Warning",
+      "calcName": "Snow Warning",
+      "desc": {
+        "battle": "Summons hail when the user switches in, which lasts indefinitely until replaced by another weather condition.",
+        "overworld": ""
+      },
+      "romId": 117,
+      "mechanicsBase": "Snow Warning",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "honeygather": {
+      "num": 118,
+      "id": "honeygather",
+      "name": "Honey Gather",
+      "calcName": "Honey Gather",
+      "desc": {
+        "battle": "",
+        "overworld": "Has a chance to give the user <span data-target=\"item/honey\">Honey</span> after the end of a battle, if it is not holding an item."
+      },
+      "romId": 118,
+      "mechanicsBase": "Honey Gather",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "frisk": {
+      "num": 119,
+      "id": "frisk",
+      "name": "Frisk",
+      "calcName": "Frisk",
+      "desc": {
+        "battle": "Reveals the held item of an opposing Pokémon when the user enters the field.",
+        "overworld": ""
+      },
+      "romId": 119,
+      "mechanicsBase": "Frisk",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "reckless": {
+      "num": 120,
+      "id": "reckless",
+      "name": "Reckless",
+      "calcName": "Reckless",
+      "desc": {
+        "battle": "Increases the power of recoil or crash damage moves by 20%.",
+        "overworld": ""
+      },
+      "romId": 120,
+      "mechanicsBase": "Reckless",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "multitype": {
+      "num": 121,
+      "id": "multitype",
+      "name": "Multitype",
+      "calcName": "Multitype",
+      "desc": {
+        "battle": "Changes the user's type depending on the plate it is holding.",
+        "overworld": ""
+      },
+      "romId": 121,
+      "mechanicsBase": "Multitype",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "flowergift": {
+      "num": 122,
+      "id": "flowergift",
+      "name": "Flower Gift",
+      "calcName": "Flower Gift",
+      "desc": {
+        "battle": "Increases the Attack and Special Attack stats of the user and its allies by 50% in sun.",
+        "overworld": ""
+      },
+      "romId": 122,
+      "mechanicsBase": "Flower Gift",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    },
+    "baddreams": {
+      "num": 123,
+      "id": "baddreams",
+      "name": "Bad Dreams",
+      "calcName": "Bad Dreams",
+      "desc": {
+        "battle": "Damages opposing sleeping Pokémon by 1/8 of their total HP at the end of every turn.",
+        "overworld": ""
+      },
+      "romId": 123,
+      "mechanicsBase": "Bad Dreams",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "documentation-derived-legacy-projection"
+    }
+  }
+}

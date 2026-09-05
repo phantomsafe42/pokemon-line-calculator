@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "plc-generated-dataset/v1alpha1",
+  "consumer": "plc-pk-dataset",
+  "source": "Datasets/Platinum Kaizo/source-data",
+  "sourceTreeSha256": "BF3EA2621DDF685BCBF34DE7409CE4A7AF629DF7F702F1A25CE01623C432CBB4",
+  "files": [
+    {
+      "path": "dataset_manifest.json",
+      "bytes": 9068,
+      "sha256": "A0D682F7915F304C992A77153C8079F7AC3DFD6737C9145A885B89F1E5F75E8B"
+    },
+    {
+      "path": "battle_mechanics.json",
+      "bytes": 10769,
+      "sha256": "E2D32E153CD28566D172627EC4166987F229666B157475410130009184F99979"
+    },
+    {
+      "path": "experience_mechanics.json",
+      "bytes": 1632,
+      "sha256": "6FD03ADD8FCD74EFA405044F65A0CEBA4A935BD4FE44C0C0FFE704BC3AD5B861"
+    },
+    {
+      "path": "species.json",
+      "bytes": 3387341,
+      "sha256": "60103C20C7CF30DEC1A8469B1143E01A5E071BCB519DF09C192B74230D729D50"
+    },
+    {
+      "path": "moves.json",
+      "bytes": 476649,
+      "sha256": "30739CC54AF3542BA309490693B868CB11B379368DAE53BF7A5F7FDD92B384BC"
+    },
+    {
+      "path": "abilities.json",
+      "bytes": 62114,
+      "sha256": "E02DD6195627A7C5E0E7C9E0AC736C135A17202A87C312B7EA373F3AA03B5F77"
+    },
+    {
+      "path": "items.json",
+      "bytes": 252818,
+      "sha256": "6D2BC7606E26DF679286FA298612417B7EF26147DEAEF4117130031473589A13"
+    },
+    {
+      "path": "natures.json",
+      "bytes": 4996,
+      "sha256": "22541C3E002FD201C55B0AECAF291F0A5D8748AA7BC5FDF6E3C9626A8216AB8C"
+    },
+    {
+      "path": "types.json",
+      "bytes": 5504,
+      "sha256": "ECB02D9FC03544D9AF42E4610CCCB5444B98C91DB1E533669B09A20400050696"
+    },
+    {
+      "path": "trainers.json",
+      "bytes": 5616265,
+      "sha256": "45D8A6CDE06F740351A546303F6A17F958F8E3FAE1F257D64F22FD54768A5519"
+    },
+    {
+      "path": "trainer_order.json",
+      "bytes": 303511,
+      "sha256": "BF8E62AA0F0F1008411B5D2A2AA0BCEF52561BD4AA5CC32EDF98E65D6CD5131C"
+    },
+    {
+      "path": "progression.json",
+      "bytes": 3810,
+      "sha256": "33C20D5A262A30490DDF234891765D42DF3AF2A175E510256F8D91E62B61F687"
+    },
+    {
+      "path": "evolutions.json",
+      "bytes": 58358,
+      "sha256": "A1582ED340AEDA153F117314F0022B3B8507134072520E66870C1C6BA0C2F5C5"
+    },
+    {
+      "path": "save_id_maps.json",
+      "bytes": 122356,
+      "sha256": "57598FD0A4B8C716D2D76F79E41F5D6AFC25BF3A44519C7AB477D97A13361F67"
+    }
+  ]
+}

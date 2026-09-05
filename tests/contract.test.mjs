@@ -19,7 +19,7 @@ test("VW2R branch fixture validates and round-trips without semantic loss", () =
 
 test("contract rejects unsupported schema versions", () => {
   const plan = JSON.parse(fixtureText);
-  plan.schemaVersion = 4;
+  plan.schemaVersion = 5;
   const result = validatePlanDocument(plan);
   assert.equal(result.valid, false);
   assert.ok(result.issues.some(entry => entry.path === "$.schemaVersion"));

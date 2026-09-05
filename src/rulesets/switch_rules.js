@@ -14,10 +14,13 @@ function hasType(state, typeId) {
 
 export function isGrounded(state, fieldState) {
   if (Number(fieldState?.global?.gravityTurns || 0) > 0) return true;
-  if (state?.volatileConditions?.smackdown || state?.volatileConditions?.ingrain) return true;
+  if (state?.volatileConditions?.smackdown || state?.volatileConditions?.smackDown || state?.volatileConditions?.ingrain) return true;
+  const activeItem = abilityId(state) !== "klutz" && !(state?.volatileConditions?.embargoTurns > 0)
+    && !(fieldState?.global?.magicRoomTurns > 0) ? itemId(state) : "";
+  if (activeItem === "ironball") return true;
   if (hasType(state, "flying")) return false;
   if (abilityId(state) === "levitate") return false;
-  if (itemId(state) === "airballoon") return false;
+  if (activeItem === "airballoon") return false;
   if (state?.volatileConditions?.magnetRiseTurns > 0 || state?.volatileConditions?.telekinesisTurns > 0) return false;
   return true;
 }

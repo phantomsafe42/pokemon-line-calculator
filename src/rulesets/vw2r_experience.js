@@ -2,7 +2,6 @@ import { calculateStats } from "../adapters/combatant_ingest.js";
 import { clone } from "../core/primitives.js";
 import { activeKeys } from "../core/battle_slots.js";
 
-const VW2R_GAME_ID = "volt-white-2r";
 const EXP_SHARE_ITEM_ID = "expshare";
 const LUCKY_EGG_ITEM_ID = "luckyegg";
 
@@ -95,8 +94,123 @@ function scaledExperience(amount, faintedLevel, recipientLevel) {
   return Math.floor(amount * numerator / denominator) + 1;
 }
 
-function rewardContext(plan, state, enemyKey) {
-  if (plan?.game?.gameId !== VW2R_GAME_ID) return { available: false, reason: "not-vw2r", rewards: [] };
+export function unboundExperienceAmount({
+  trainerFactor = 10,
+  tradeFactor = 10,
+  baseExp,
+  luckyEggFactor = 10,
+  defeatedLevel,
+  recipientLevel,
+  passPowerFactor = 1,
+  affectionFactor = 10,
+  evolutionFactor = 10,
+  distributionDivisor = 1,
+  raid = false,
+  hardCap = false,
+} = {}) {
+  if (hardCap) return 1;
+  const a = Number(trainerFactor);
+  const t = Number(tradeFactor);
+  const b = Number(baseExp);
+  const e = Number(luckyEggFactor);
+  const defeated = Number(defeatedLevel);
+  const recipient = Number(recipientLevel);
+  const p = Number(passPowerFactor);
+  const f = Number(affectionFactor);
+  const v = Number(evolutionFactor);
+  const s = Number(distributionDivisor);
+  if (![a, t, b, e, defeated, recipient, p, f, v, s].every(Number.isFinite) || s <= 0) {
+    throw new Error("Unbound EXP calculation requires complete finite inputs");
+  }
+  const upper = 2 * defeated + 10;
+  const lower = defeated + recipient + 10;
+  let amount = Math.floor(a * b * defeated / (10 * 5 * s));
+  amount = Math.floor(amount * upper ** 2 / (lower ** 2 * Math.floor(Math.sqrt(lower))));
+  amount = amount * Math.floor(Math.sqrt(upper)) + 1;
+  amount = Math.floor(amount * t * e * v / 1000);
+  amount = Math.floor(amount * p * f / 10);
+  if (raid) amount *= 2;
+  return Math.max(1, Math.min(1_640_000, amount));
+}
+
+function readyExperienceMechanics(dataset) {
+  const profile = dataset?.experienceMechanics;
+  return profile?.validation?.status === "passed"
+    && Number(profile?.validation?.unresolved) === 0
+    && profile?.consumerActivation?.experienceProjectionReady === true
+    ? profile
+    : null;
+}
+
+function hasAvailableLevelEvolution(plan, combatantKey, dataset, level) {
+  const speciesId = plan.combatants?.[combatantKey]?.speciesId;
+  if (!speciesId) return false;
+  return [...(dataset?.indexes?.evolutions?.values?.() || [])].some(entry =>
+    entry?.fromSpeciesId === speciesId
+    && String(entry?.method || "").toLowerCase() === "level"
+    && Number.isFinite(Number(entry?.parameter))
+    && Number(entry.parameter) <= Number(level)
+  );
+}
+
+function unboundRewards(plan, state, enemyKey, dataset, participants, playerKeys, enemy, enemyState) {
+  const profile = dataset.experienceMechanics;
+  if (profile?.trainerBattleFormula?.model !== "unbound-2.1.1.1-cfru-scaled-gen5-gen7") {
+    return { available: false, reason: "experience-profile-unavailable", rewards: [] };
+  }
+  const enemyLevel = Number(enemyState.currentLevel ?? enemy.level);
+  const rewards = [];
+  for (const combatantKey of playerKeys.filter(key => live(state, key))) {
+    const mon = plan.combatants[combatantKey];
+    const monState = state.combatantStates[combatantKey];
+    const recipientLevel = Number(monState.currentLevel ?? mon.level);
+    if (recipientLevel >= 100) continue;
+    const participant = participants.has(combatantKey);
+    const luckyEgg = monState.currentItemId === LUCKY_EGG_ITEM_ID;
+    const evolutionReady = hasAvailableLevelEvolution(plan, combatantKey, dataset, recipientLevel);
+    const amount = unboundExperienceAmount({
+      trainerFactor: Number(profile.knownFeatures?.trainerFactor?.trainerBeforeGameClear ?? 10),
+      tradeFactor: 10,
+      baseExp: enemy.baseExperienceYield,
+      luckyEggFactor: luckyEgg ? Number(profile.knownFeatures?.luckyEgg?.level1 ?? 15) : Number(profile.knownFeatures?.luckyEgg?.withoutItem ?? 10),
+      defeatedLevel: enemyLevel,
+      recipientLevel,
+      passPowerFactor: 1,
+      affectionFactor: 10,
+      evolutionFactor: evolutionReady ? 12 : 10,
+      distributionDivisor: participant
+        ? Number(profile.distribution?.participantDivisor ?? 1)
+        : Number(profile.distribution?.nonParticipantExpShareDivisor ?? 2),
+      raid: false,
+      hardCap: false,
+    });
+    const fromExperience = Number.isInteger(monState.experience) ? monState.experience : null;
+    const maximumExperience = experienceForLevel(100, mon.growthRate);
+    const toExperience = fromExperience === null ? null : Math.min(maximumExperience, fromExperience + amount);
+    const toLevel = toExperience === null ? recipientLevel : levelFromExperience(toExperience, mon.growthRate);
+    rewards.push({
+      combatantKey,
+      enemyKey,
+      amount,
+      participant,
+      expShare: !participant,
+      luckyEgg,
+      evolutionReady,
+      fromExperience,
+      toExperience,
+      fromLevel: recipientLevel,
+      toLevel,
+      toNextLevel: toExperience === null ? null : experienceToNextLevel(toExperience, mon.growthRate, toLevel)
+    });
+  }
+  return { available: true, enemyKey, generation: "custom", mechanicsProfile: profile.mechanicsProfile, rewards };
+}
+
+function rewardContext(plan, state, enemyKey, dataset) {
+  const profile = readyExperienceMechanics(dataset);
+  if (!profile) return { available: false, reason: "experience-profile-unavailable", rewards: [] };
+  const generation = profile.experienceGeneration === "custom" ? "custom" : Number(profile.experienceGeneration);
+  if (!(generation === "custom" || [3, 4, 5].includes(generation))) return { available: false, reason: "experience-generation-unavailable", rewards: [] };
   const enemy = plan.combatants?.[enemyKey];
   const enemyState = state?.combatantStates?.[enemyKey];
   if (!enemy || enemy.side !== "enemy" || !enemyState) return { available: false, reason: "enemy-unavailable", rewards: [] };
@@ -107,12 +221,13 @@ function rewardContext(plan, state, enemyKey) {
   if (!tracking || (tracking.rewardedEnemyKeys || []).includes(enemyKey)) return { available: false, reason: "already-rewarded", rewards: [] };
   const playerKeys = Object.values(plan.combatants).filter(mon => mon.side === "player").map(mon => mon.combatantKey);
   const participants = new Set((tracking.participantsByEnemyKey?.[enemyKey] || []).filter(key => playerKeys.includes(key) && live(state, key)));
+  if (generation === "custom") return unboundRewards(plan, state, enemyKey, dataset, participants, playerKeys, enemy, enemyState);
   const shareHolders = new Set(playerKeys.filter(key => live(state, key) && state.combatantStates[key]?.currentItemId === EXP_SHARE_ITEM_ID));
   if (!participants.size && !shareHolders.size) return { available: true, enemyKey, basePool: 0, rewards: [] };
 
   const enemyLevel = Number(enemyState.currentLevel ?? enemy.level);
-  let basePool = Math.floor(Number(enemy.baseExperienceYield) * enemyLevel / 5);
-  basePool = Math.floor(basePool * 3 / 2);
+  let basePool = Math.floor(Number(enemy.baseExperienceYield) * enemyLevel / (generation === 5 ? 5 : 7));
+  if (generation === 5) basePool = Math.floor(basePool * 3 / 2);
   const participantShare = shareHolders.size
     ? Math.max(1, Math.floor(Math.floor(basePool / 2) / Math.max(1, participants.size)))
     : Math.max(1, Math.floor(basePool / Math.max(1, participants.size)));
@@ -129,7 +244,8 @@ function rewardContext(plan, state, enemyKey) {
     let amount = (participant ? participantShare : 0) + (expShare ? holderShare : 0);
     const luckyEgg = monState.currentItemId === LUCKY_EGG_ITEM_ID;
     if (luckyEgg) amount = Math.floor(amount * 3 / 2);
-    amount = scaledExperience(amount, enemyLevel, recipientLevel);
+    if (generation <= 4) amount = Math.floor(amount * 3 / 2);
+    else amount = scaledExperience(amount, enemyLevel, recipientLevel);
     const fromExperience = Number.isInteger(monState.experience) ? monState.experience : null;
     const maximumExperience = experienceForLevel(100, mon.growthRate);
     const toExperience = fromExperience === null ? null : Math.min(maximumExperience, fromExperience + amount);
@@ -148,11 +264,21 @@ function rewardContext(plan, state, enemyKey) {
       toNextLevel: toExperience === null ? null : experienceToNextLevel(toExperience, mon.growthRate, toLevel)
     });
   }
-  return { available: true, enemyKey, basePool, rewards };
+  return { available: true, enemyKey, basePool, generation, rewards };
+}
+
+export function projectExperience(plan, state, enemyKey, dataset) {
+  return rewardContext(plan, state, enemyKey, dataset);
 }
 
 export function projectVw2rExperience(plan, state, enemyKey) {
-  return rewardContext(plan, state, enemyKey);
+  return projectExperience(plan, state, enemyKey, {
+    experienceMechanics: {
+      experienceGeneration: 5,
+      validation: { status: "passed", unresolved: 0 },
+      consumerActivation: { experienceProjectionReady: true }
+    }
+  });
 }
 
 function event(branch, details) {
@@ -213,12 +339,12 @@ function applyReward(branch, plan, dataset, reward) {
 }
 
 export function applyDefeatedEnemyExperience(branch, plan, dataset) {
-  if (plan?.game?.gameId !== VW2R_GAME_ID || !branch?.state?.experienceState) return branch;
+  if (!readyExperienceMechanics(dataset) || !branch?.state?.experienceState) return branch;
   const tracking = experienceState(branch.state);
   const rewarded = new Set(tracking.rewardedEnemyKeys);
   for (const enemy of Object.values(plan.combatants).filter(mon => mon.side === "enemy")) {
     if (rewarded.has(enemy.combatantKey) || Number(branch.state.combatantStates[enemy.combatantKey]?.hp?.max) > 0) continue;
-    const projection = rewardContext(plan, branch.state, enemy.combatantKey);
+    const projection = rewardContext(plan, branch.state, enemy.combatantKey, dataset);
     if (!projection.available) continue;
     tracking.rewardedEnemyKeys.push(enemy.combatantKey);
     rewarded.add(enemy.combatantKey);

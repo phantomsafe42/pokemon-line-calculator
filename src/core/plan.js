@@ -1,6 +1,7 @@
 import { assertValidPlanDocument, PLAN_SCHEMA_VERSION } from "../contracts/plan_contract.js";
 import { clone, exactRange, makeStableId, nowIso, shortHash, stableStringify, toId } from "./primitives.js";
 import { activeKeys, battleFormat as normalizeBattleFormat, slotsPerSide } from "./battle_slots.js";
+import { participatingActiveEntries, participatingActiveKeys } from "../rulesets/rotation_battle.js";
 import { createInitialExperienceState } from "../rulesets/vw2r_experience.js";
 import { entryAbilityEffects } from "../rulesets/switch_rules.js?v=20260827-ability-state-events";
 import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260827-ability-form-events";
@@ -106,6 +107,8 @@ export function createCombatantState(combatant, override = {}) {
     currentSpeciesId: combatant.speciesId,
     currentSpriteId: combatant.formId || combatant.speciesId,
     lastMoveId: null,
+    lastHitMoveId: null,
+    lastHitSourceKey: null,
     usedMoveIds: [],
     enteredTurnNumber: 0,
     movePp: Object.fromEntries(combatant.moves.map(move => [move.moveId, move.maxPp])),
@@ -133,6 +136,7 @@ export function createInitialState({ combatants, playerActiveKeys, enemyActiveKe
       playerCombatantKey: playerActiveKeys[0],
       enemyCombatantKey: enemyActiveKeys[0]
     },
+    ...(normalizeBattleFormat(battleFormat) === "rotation" ? { rotation: { frontSlots: { player: 0, enemy: 0 } } } : {}),
     combatantStates,
     ...(initialExperienceState ? { experienceState: initialExperienceState } : {}),
     fieldState: {
@@ -143,6 +147,8 @@ export function createInitialState({ combatants, playerActiveKeys, enemyActiveKe
         gravityTurns: Number(initialConditions.gravityTurns || 0),
         magicRoomTurns: Number(initialConditions.magicRoomTurns || 0),
         wonderRoomTurns: Number(initialConditions.wonderRoomTurns || 0),
+        ionDelugeTurns: 0,
+        fairyLockTurns: 0,
         lastMoveId: null,
         delayedAttacks: [],
         delayedHeals: []
@@ -170,6 +176,7 @@ export function createInitialState({ combatants, playerActiveKeys, enemyActiveKe
   };
   state.stateHash = `state-${shortHash(stableStringify({
     active: state.active,
+    rotation: state.rotation || null,
     combatantStates,
     experienceState: state.experienceState || null,
     fieldState: state.fieldState,
@@ -180,7 +187,7 @@ export function createInitialState({ combatants, playerActiveKeys, enemyActiveKe
 }
 
 function initialEntryOrder(plan, root) {
-  return ["player", "enemy"].flatMap((side, sideOrder) => activeKeys(root, side).map((combatantKey, slot) => ({
+  return ["player", "enemy"].flatMap((side, sideOrder) => participatingActiveEntries(root).filter(entry => entry.side === side).map(({ combatantKey, slot }) => ({
     side,
     sideOrder,
     slot,
@@ -287,9 +294,9 @@ export function upgradeInitialEntryEffects(plan, dataset) {
   });
   if (needsEntryEffects) for (const entry of initialEntryOrder(next, root)) {
     const otherSide = entry.side === "player" ? "enemy" : "player";
-    const opponents = activeKeys(root, otherSide).filter(key => Number(root.combatantStates[key]?.hp?.max) > 0);
+    const opponents = participatingActiveKeys(root, otherSide).filter(key => Number(root.combatantStates[key]?.hp?.max) > 0);
     const firstOpponent = activeAbilityId(root.combatantStates[entry.combatantKey]) === "imposter"
-      ? activeKeys(root, otherSide)[entry.slot] || opponents[0] || null
+      ? participatingActiveKeys(root, otherSide)[0] || opponents[0] || null
       : opponents[0] || null;
     const opposingStates = opponents.map(key => entryComparisonState(next, root, key));
     const firstEffects = entryAbilityEffects({
@@ -321,7 +328,7 @@ export function upgradeInitialEntryEffects(plan, dataset) {
     state.currentSpeciesId ||= combatant.speciesId;
     state.currentSpriteId ||= combatant.formId || combatant.speciesId;
   }
-  const activeStates = activeKeys(root, "player").concat(activeKeys(root, "enemy")).map(key => root.combatantStates[key]).filter(Boolean);
+  const activeStates = participatingActiveEntries(root).map(entry => root.combatantStates[entry.combatantKey]).filter(Boolean);
   const weatherSuppressed = weatherIsSuppressed(activeStates);
   for (const entry of initialEntryOrder(next, root)) {
     const state = root.combatantStates[entry.combatantKey];
@@ -338,7 +345,7 @@ export function upgradeInitialEntryEffects(plan, dataset) {
     }
   }
   for (const side of ["player", "enemy"]) {
-    root.fieldState.sides[side].isFlowerGift = activeKeys(root, side).some(key => {
+    root.fieldState.sides[side].isFlowerGift = participatingActiveKeys(root, side).some(key => {
       const state = root.combatantStates[key];
       return activeAbilityId(state) === "flowergift" && state.currentSpriteId === "cherrim-sunshine" && Number(state.hp?.max) > 0;
     });
@@ -403,7 +410,7 @@ export function createPlanDocument({
   const identity = { gameId: dataset.gameId, trainerId, trainerVariantId, sourceSnapshot };
   const plan = {
     kind: "pokemon-battle-plan",
-    schemaVersion: format === "triples" ? PLAN_SCHEMA_VERSION : 2,
+    schemaVersion: format === "rotation" ? PLAN_SCHEMA_VERSION : format === "triples" ? 3 : 2,
     planId: makeStableId("plan", identity),
     name: name || `${dataset.displayName} Battle Plan`,
     createdAt: now,
@@ -444,6 +451,7 @@ export function nextCreatedOrder(plan) {
 export function updateStateHash(state) {
   state.stateHash = `state-${shortHash(stableStringify({
     active: state.active,
+    rotation: state.rotation || null,
     combatantStates: state.combatantStates,
     experienceState: state.experienceState || null,
     fieldState: state.fieldState,

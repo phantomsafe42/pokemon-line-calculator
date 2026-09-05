@@ -71,9 +71,18 @@ for (const relativePath of actual) {
 }
 
 const html = fs.readFileSync(path.join(outputRoot, "index.html"), "utf8");
-for (const forbiddenId of ["output-state", "output-state-anchor", "live-edit-anchor", "live-stop-dialog"]) {
+for (const forbiddenId of ["output-state", "output-state-anchor", "live-edit-anchor", "live-stop-dialog", "battle-tracker", "battle-tracker-anchor", "battle-tracker-detail"]) {
   if (new RegExp(`id=["']${forbiddenId}["']`, "i").test(html)) throw new Error(`Public HTML still exposes ${forbiddenId}`);
 }
 if (!html.includes('<meta name="plc-build-profile" content="public">')) throw new Error("Public HTML does not declare the public profile");
+const assetBase = html.match(/<meta name="pokemon-asset-release-base" content="([^"]+)">/)?.[1] || "";
+if (!assetBase || assetBase.includes("/Datasets/") || assetBase === "__POKEMON_ASSET_RELEASE_BASE__") throw new Error("Public HTML does not declare a usable Pokemon asset release base");
+if (assetBase === './public-assets') {
+  const projection = JSON.parse(fs.readFileSync(path.join(outputRoot, 'public-assets/projection.json'), 'utf8'));
+  for (const file of projection.files) {
+    const bytes = fs.readFileSync(path.join(outputRoot, 'public-assets', file.path));
+    if (sha256(bytes) !== file.sha256.toUpperCase() || bytes.length !== file.bytes) throw new Error(`Asset projection mismatch: ${file.path}`);
+  }
+}
 
-console.log(JSON.stringify({ status: "public-build-valid", files: actual.length, bytes: manifest.files.reduce((sum, file) => sum + file.bytes, 0) }, null, 2));
+console.log(JSON.stringify({ status: "public-build-valid", files: actual.length, bytes: manifest.files.reduce((sum, file) => sum + file.bytes, 0), pokemonAssetBaseConfigured: assetBase !== "__POKEMON_ASSET_RELEASE_BASE__" }, null, 2));

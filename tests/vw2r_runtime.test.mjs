@@ -6,7 +6,7 @@ import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 import { normalizePlayerCollection, normalizeTrainerRoster, snapshotFingerprint } from "../src/adapters/combatant_ingest.js";
 import { createSharedDamageAdapter } from "../src/adapters/shared_damage_adapter.js";
-import { showdownSpriteId, showdownSpriteUrl } from "../src/adapters/showdown_sprites.js";
+import { pokemonAssetAppearanceId, pokemonAssetQuery } from "../src/adapters/pokemon_assets.js";
 import { createDatasetContext, REQUIRED_DATASET_SOURCES } from "../src/adapters/standardized_dataset.js";
 import { createPlanDocument } from "../src/core/plan.js";
 import { previewTurn } from "../src/core/planner.js";
@@ -52,15 +52,15 @@ function loadVw2rDataset() {
   return createDatasetContext({ manifest, mechanics, documents });
 }
 
-test("VW2R form sprites use Showdown's punctuation-preserving canonical names", () => {
+test("VW2R form sprites use the centralized asset resolver's canonical appearance IDs", () => {
   const dataset = loadVw2rDataset();
   const record = { speciesId: "keldeoresolute", formId: "keldeoresolute", displayName: "Keldeo - Resolute" };
-  assert.equal(showdownSpriteId(record, dataset), "keldeo-resolute");
-  assert.equal(showdownSpriteUrl(record, dataset), "https://play.pokemonshowdown.com/sprites/gen5ani/keldeo-resolute.gif");
-  assert.equal(showdownSpriteId({ speciesId: "keldeo", formId: "keldeoresolute" }, dataset), "keldeo-resolute");
-  assert.equal(showdownSpriteId({ speciesId: "charmeleon", formId: "charmander" }, dataset), "charmeleon");
-  assert.equal(showdownSpriteId({ speciesId: "nidoranf" }, dataset), "nidoranf");
-  assert.equal(showdownSpriteId({ speciesId: "mrmime" }, dataset), "mrmime");
+  assert.equal(pokemonAssetAppearanceId(record, dataset), "keldeo-resolute");
+  assert.equal(pokemonAssetQuery(record, dataset).spriteType, "g5-animated");
+  assert.equal(pokemonAssetAppearanceId({ speciesId: "keldeo", formId: "keldeoresolute" }, dataset), "keldeo-resolute");
+  assert.equal(pokemonAssetAppearanceId({ speciesId: "charmeleon", formId: "charmander" }, dataset), "charmeleon");
+  assert.equal(pokemonAssetAppearanceId({ speciesId: "nidoranf" }, dataset), "nidoranf");
+  assert.equal(pokemonAssetAppearanceId({ speciesId: "mrmime" }, dataset), "mrmime");
 });
 
 test("VW2R Dataset baseExp values normalize for every School Kid Neil combatant", () => {

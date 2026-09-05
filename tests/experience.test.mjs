@@ -7,8 +7,10 @@ import {
   experienceForLevel,
   experienceToNextLevel,
   levelFromExperience,
+  projectExperience,
   projectVw2rExperience,
-  registerSwitchExperienceParticipation
+  registerSwitchExperienceParticipation,
+  unboundExperienceAmount
 } from "../src/rulesets/vw2r_experience.js";
 import { damageAdapter, fixtureDoublesPlan, fixturePlan } from "./helpers.mjs";
 
@@ -83,6 +85,52 @@ test("VW2R Gen 5 trainer EXP applies exact split, Exp. Share, and Lucky Egg roun
   projection = projectVw2rExperience(plan, root, enemies[0].combatantKey);
   assert.equal(projection.rewards[0].amount, 2251);
   assert.equal(projection.rewards[0].luckyEgg, true);
+});
+
+test("Generation 3 and 4 trainer EXP use the unscaled divide-by-seven formula and in-game rounding order", () => {
+  const { plan, players, enemies } = fixturePlan();
+  const root = enableExperience(plan, players, enemies);
+  const enemyKey = enemies[0].combatantKey;
+  const enemyLevel = Number(root.combatantStates[enemyKey].currentLevel);
+  const base = Math.floor(100 * enemyLevel / 7);
+  for (const generation of [3, 4]) {
+    const dataset = {
+      experienceMechanics: {
+        experienceGeneration: generation,
+        validation: { status: "passed", unresolved: 0 },
+        consumerActivation: { experienceProjectionReady: true }
+      }
+    };
+    let projection = projectExperience(plan, root, enemyKey, dataset);
+    assert.equal(projection.rewards[0].amount, Math.floor(base * 3 / 2));
+
+    root.combatantStates[players[1].combatantKey].currentItemId = "expshare";
+    projection = projectExperience(plan, root, enemyKey, dataset);
+    assert.deepEqual(projection.rewards.map(entry => entry.amount), [
+      Math.floor(Math.max(1, Math.floor(base / 2)) * 3 / 2),
+      Math.floor(Math.max(1, Math.floor(base / 2)) * 3 / 2),
+    ]);
+    root.combatantStates[players[1].combatantKey].currentItemId = null;
+  }
+});
+
+test("Unbound custom EXP follows the pinned integer stages independently from damage generation", () => {
+  assert.equal(unboundExperienceAmount({
+    trainerFactor: 10, tradeFactor: 10, baseExp: 100, luckyEggFactor: 10,
+    defeatedLevel: 20, recipientLevel: 20, passPowerFactor: 1,
+    affectionFactor: 10, evolutionFactor: 10, distributionDivisor: 1
+  }), 400);
+  assert.equal(unboundExperienceAmount({
+    trainerFactor: 10, tradeFactor: 10, baseExp: 100, luckyEggFactor: 10,
+    defeatedLevel: 20, recipientLevel: 20, passPowerFactor: 1,
+    affectionFactor: 10, evolutionFactor: 10, distributionDivisor: 2
+  }), 197);
+  assert.equal(unboundExperienceAmount({
+    trainerFactor: 15, tradeFactor: 15, baseExp: 261, luckyEggFactor: 60,
+    defeatedLevel: 50, recipientLevel: 50, passPowerFactor: 1,
+    affectionFactor: 12, evolutionFactor: 12, distributionDivisor: 1,
+    raid: true, hardCap: true
+  }), 1);
 });
 
 test("switch participation persists on the benched Pokémon and both participants receive the later payout", () => {

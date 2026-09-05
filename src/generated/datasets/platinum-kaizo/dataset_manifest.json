@@ -1,0 +1,252 @@
+{
+  "schemaVersion": 1,
+  "gameId": "platinum-kaizo",
+  "displayName": "Pokémon Platinum Kaizo",
+  "folderName": "Platinum Kaizo",
+  "filenamePrefix": "PK",
+  "datasetScope": "game",
+  "migrationStatus": "standardized-source-authoritative",
+  "completenessStatus": "partial",
+  "platform": "Nintendo DS",
+  "generation": 4,
+  "baseGame": "Pokémon Platinum",
+  "sourceProfile": "platinum",
+  "supportedLanguage": "English",
+  "buildInputs": {
+    "PokemonPersonalData.csv": {
+      "sha256": "7ca52d09e1a7ec473157c83908d39557ab84420ebf7e431536dbe3bf104ecc55",
+      "role": "immutable game-specific reference"
+    },
+    "Trainer Pokemon.csv": {
+      "sha256": "bb6231712c46daf87ae7d046a5a664bce0851cecad3fdbd7dde36a66b4582888",
+      "role": "immutable game-specific reference"
+    },
+    "PK_Trainer_Documentation.xlsx": {
+      "sha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+      "role": "immutable game-specific reference"
+    },
+    "source-data/imports/reference-docs/PChal_README.md": {
+      "sha256": "553ff99e72a4ec8310460c8394022c063bfe2cb463794ca93c8bad54c6821e8c",
+      "role": "immutable game-specific reference"
+    },
+    "source-data/imports/official-pkcalc/2026-08-28/source_manifest.json": {
+      "sha256": "0718d0094d40aeb8265bdaf9d4d61643bb3b75ace39b5ef259d4be9d1d017dda",
+      "role": "immutable game-specific reference"
+    },
+    "source-data/imports/official-pkcalc/2026-08-28/index.html": {
+      "sha256": "c114891adc816d70eb463f7414c86f54e199e95d7934b5faed65d270d398de9e",
+      "role": "immutable game-specific reference"
+    },
+    "source-data/imports/official-pkcalc/2026-08-28/species.js": {
+      "sha256": "c76625722229fe2fc27dab41766e4dd712b34ed35e3d978b88f55d576fa087b7",
+      "role": "immutable game-specific reference"
+    },
+    "source-data/imports/official-pkcalc/2026-08-28/moveset_import.js": {
+      "sha256": "c427da889db9d72afb784496e829d3152044c37fe1df8fcc15135331779466ae",
+      "role": "immutable game-specific reference"
+    },
+    "imports/legacy-consumers/legacy_consumer_manifest.json": {
+      "sha256": "2c3d8cbb6394ecd498230f8c39fc009786a5a22cead49482ea37ae597cc81684",
+      "role": "immutable pre-cutover legacy consumer input manifest"
+    },
+    "source-data/trainer_documentation.json": {
+      "sha256": "14657ba4aeb8d3bfa53f96e409d9013f7c5412e59abd2f0242b0d0c138e5ee22",
+      "role": "deterministic field-level projection of native trainer workbook order and location headers; mandatory classification is not supplied"
+    },
+    "source-data/trainer_table.json": {
+      "sha256": "cfe81fb3d008f8db3306a6d9177355e09338fac7a4fb360ae89c3396c529e506",
+      "role": "deterministic numeric trainer-table projection of battle format, bag items, and AI flag booleans"
+    }
+  },
+  "inheritedBaseTables": {
+    "path": "../Gen 4/source-data/base_engine_tables.json",
+    "profile": "platinum",
+    "sha256": "f21e8a2b3f458b54728611d22e166fd27ef18c26f9c109bdfb70b02a5df4ee44"
+  },
+  "calculationReference": {
+    "engine": {
+      "id": "smogon-calc",
+      "version": "0.11.0"
+    },
+    "files": {
+      "Battle Mechanics/vendor/smogon-calc-0.11.0/data.production.min.js": {
+        "sha256": "364be40ea1aec31f413d0036445f717d826ece9c33ec25a02399c3a287c99529"
+      },
+      "Battle Mechanics/vendor/smogon-calc-0.11.0/engine.production.min.js": {
+        "sha256": "e77a129dccf6812dcd299fc79d1f5de8afa77e8eb6de89bca283f468c968e124"
+      }
+    }
+  },
+  "patchReference": {
+    "sha256": "b787e743b5fa78e1b31bae9277e656482b7248b82e490a6e95236606ae92f433",
+    "role": "external Platinum Kaizo patch identity; patch bytes remain outside the workspace"
+  },
+  "sourceRequirements": {
+    "officialPkcalcSpeciesReference": {
+      "required": true,
+      "source": "pkcalc_reference_audit.json",
+      "snapshot": "source-data/imports/official-pkcalc/2026-08-28/source_manifest.json",
+      "status": "passed",
+      "unresolved": 0,
+      "runtimeNetworkDependency": false
+    }
+  },
+  "standardizedSources": [
+    "species.json",
+    "moves.json",
+    "abilities.json",
+    "items.json",
+    "learnsets.json",
+    "evolutions.json",
+    "trainers.json",
+    "trainer_order.json",
+    "trainer_battle_groups.json",
+    "progression.json",
+    "locations.json",
+    "encounters.json",
+    "encounter_methods.json",
+    "types.json",
+    "natures.json",
+    "stats.json",
+    "categories.json",
+    "save_id_maps.json",
+    "aliases.json",
+    "source_audit.json",
+    "game_rules.json",
+    "battle_mechanics.json",
+    "experience_mechanics.json",
+    "trainer_ai.json"
+  ],
+  "extensions": [
+    "source_verification_report.json",
+    "consumer_projection.json",
+    "trainer_reconciliation_report.json",
+    "pkcalc_reference_audit.json",
+    "trainer_documentation.json"
+  ],
+  "builders": {
+    "build": "node ..\\tools\\standardize_legacy_game.js platinum-kaizo",
+    "deterministicCheck": "node ..\\tools\\standardize_legacy_game.js platinum-kaizo --check",
+    "trainerDocumentationBuild": "python ..\\tools\\build_platinum_kaizo_trainer_documentation.py",
+    "trainerDocumentationDeterministicCheck": "python ..\\tools\\build_platinum_kaizo_trainer_documentation.py --check",
+    "trainerTableBuild": "python ..\\tools\\build_platinum_kaizo_trainer_table.py",
+    "trainerTableDeterministicCheck": "python ..\\tools\\build_platinum_kaizo_trainer_table.py --check",
+    "officialPkcalcVerification": "node ..\\tools\\verify_platinum_kaizo_pkcalc_reference.js",
+    "officialPkcalcInputVerification": "node ..\\tools\\verify_platinum_kaizo_pkcalc_reference.js --inputs-only",
+    "trainerAiBuild": "node ..\\tools\\build_trainer_ai_profiles.js",
+    "trainerAiDeterministicCheck": "node ..\\tools\\build_trainer_ai_profiles.js --check",
+    "consumerBuild": "node ..\\tools\\build_standardized_consumers.js --game platinum-kaizo",
+    "consumerDeterministicCheck": "node ..\\tools\\build_standardized_consumers.js --game platinum-kaizo --check",
+    "validation": "node ..\\tools\\validate_standardized_dataset.js --game platinum-kaizo"
+  },
+  "categoryApplicability": {
+    "species": {
+      "status": "applicable"
+    },
+    "moves": {
+      "status": "applicable"
+    },
+    "abilities": {
+      "status": "applicable"
+    },
+    "items": {
+      "status": "applicable"
+    },
+    "learnsets": {
+      "status": "applicable"
+    },
+    "evolutions": {
+      "status": "applicable"
+    },
+    "trainers": {
+      "status": "applicable"
+    },
+    "trainer_order": {
+      "status": "applicable"
+    },
+    "trainer_battle_groups": {
+      "status": "applicable"
+    },
+    "progression": {
+      "status": "applicable"
+    },
+    "locations": {
+      "status": "applicable"
+    },
+    "encounters": {
+      "status": "applicable"
+    },
+    "encounter_methods": {
+      "status": "applicable"
+    },
+    "types": {
+      "status": "applicable"
+    },
+    "natures": {
+      "status": "applicable"
+    },
+    "stats": {
+      "status": "applicable"
+    },
+    "categories": {
+      "status": "applicable"
+    },
+    "save_id_maps": {
+      "status": "applicable"
+    },
+    "aliases": {
+      "status": "applicable"
+    },
+    "source_audit": {
+      "status": "applicable"
+    },
+    "game_rules": {
+      "status": "applicable"
+    },
+    "battle_mechanics": {
+      "status": "applicable"
+    },
+    "experience_mechanics": {
+      "status": "applicable"
+    },
+    "trainer_ai": {
+      "status": "applicable"
+    }
+  },
+  "calculationCompatibility": {
+    "battle": {
+      "source": "battle_mechanics.json",
+      "status": "passed",
+      "unresolved": 0
+    },
+    "experience": {
+      "source": "experience_mechanics.json",
+      "status": "passed",
+      "unresolved": 0,
+      "experienceGeneration": 4,
+      "model": "generation-4-unscaled-trainer"
+    }
+  },
+  "saveCompatibility": {
+    "status": "partial",
+    "detail": "Species, move, and item numeric maps are present; ability and location identities retain explicit verification gaps where noted."
+  },
+  "knownOmissions": [
+    {
+      "category": "progression",
+      "reason": "Native workbook split/order/location evidence is applied to 475 matched trainers; 5 unmatched complete cards are materialized source-only, mandatory classification is unavailable, and branch prerequisites still need script evidence."
+    },
+    {
+      "category": "trainer-ai",
+      "reason": "418 trainer masks/formats/items are corroborated by numeric ID and party cardinality; 66 custom or divergent trainer records remain fail-closed with null AI masks."
+    },
+    {
+      "category": "rom-verification",
+      "reason": "No final patched ROM was read during this documentation-led migration."
+    }
+  ],
+  "deterministicAssumptions": [
+    "The hash-pinned deployed official PKCalc is the top field-specific authority for the species fields and movepools it publishes. Local exported personal and trainer tables remain authoritative only for compatible fields the calculator does not publish. Encounter/progression documentation remains incomplete locally."
+  ],
+  "lastValidationDate": "2026-08-28"
+}

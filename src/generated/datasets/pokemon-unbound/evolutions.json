@@ -1,0 +1,5223 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-unbound",
+  "kind": "evolutions",
+  "records": [
+    {
+      "id": "bulbasaur-to-ivysaur-1",
+      "fromSpeciesId": "bulbasaur",
+      "toSpeciesId": "ivysaur",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "ivysaur-to-venusaur-1",
+      "fromSpeciesId": "ivysaur",
+      "toSpeciesId": "venusaur",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "venusaur-to-venusaurmega-1",
+      "fromSpeciesId": "venusaur",
+      "toSpeciesId": "venusaurmega",
+      "method": "Mega",
+      "parameter": "ITEM_VENUSAURITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "venusaur-to-venusaurgiga-2",
+      "fromSpeciesId": "venusaur",
+      "toSpeciesId": "venusaurgiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "charmander-to-charmeleon-1",
+      "fromSpeciesId": "charmander",
+      "toSpeciesId": "charmeleon",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "charmeleon-to-charizard-1",
+      "fromSpeciesId": "charmeleon",
+      "toSpeciesId": "charizard",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "charizard-to-charizardmegax-1",
+      "fromSpeciesId": "charizard",
+      "toSpeciesId": "charizardmegax",
+      "method": "Mega",
+      "parameter": "ITEM_CHARIZARDITE_X",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "charizard-to-charizardmegay-2",
+      "fromSpeciesId": "charizard",
+      "toSpeciesId": "charizardmegay",
+      "method": "Mega",
+      "parameter": "ITEM_CHARIZARDITE_Y",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "charizard-to-charizardgiga-3",
+      "fromSpeciesId": "charizard",
+      "toSpeciesId": "charizardgiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "squirtle-to-wartortle-1",
+      "fromSpeciesId": "squirtle",
+      "toSpeciesId": "wartortle",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "wartortle-to-blastoise-1",
+      "fromSpeciesId": "wartortle",
+      "toSpeciesId": "blastoise",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "blastoise-to-blastoisemega-1",
+      "fromSpeciesId": "blastoise",
+      "toSpeciesId": "blastoisemega",
+      "method": "Mega",
+      "parameter": "ITEM_BLASTOISINITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "blastoise-to-blastoisegiga-2",
+      "fromSpeciesId": "blastoise",
+      "toSpeciesId": "blastoisegiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "caterpie-to-metapod-1",
+      "fromSpeciesId": "caterpie",
+      "toSpeciesId": "metapod",
+      "method": "Level",
+      "parameter": "7",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "metapod-to-butterfree-1",
+      "fromSpeciesId": "metapod",
+      "toSpeciesId": "butterfree",
+      "method": "Level",
+      "parameter": "10",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "butterfree-to-butterfreegiga-1",
+      "fromSpeciesId": "butterfree",
+      "toSpeciesId": "butterfreegiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "weedle-to-kakuna-1",
+      "fromSpeciesId": "weedle",
+      "toSpeciesId": "kakuna",
+      "method": "Level",
+      "parameter": "7",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "kakuna-to-beedrill-1",
+      "fromSpeciesId": "kakuna",
+      "toSpeciesId": "beedrill",
+      "method": "Level",
+      "parameter": "10",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "beedrill-to-beedrillmega-1",
+      "fromSpeciesId": "beedrill",
+      "toSpeciesId": "beedrillmega",
+      "method": "Mega",
+      "parameter": "ITEM_BEEDRILLITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pidgey-to-pidgeotto-1",
+      "fromSpeciesId": "pidgey",
+      "toSpeciesId": "pidgeotto",
+      "method": "Level",
+      "parameter": "18",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pidgeotto-to-pidgeot-1",
+      "fromSpeciesId": "pidgeotto",
+      "toSpeciesId": "pidgeot",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pidgeot-to-pidgeotmega-1",
+      "fromSpeciesId": "pidgeot",
+      "toSpeciesId": "pidgeotmega",
+      "method": "Mega",
+      "parameter": "ITEM_PIDGEOTITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "rattata-to-raticate-1",
+      "fromSpeciesId": "rattata",
+      "toSpeciesId": "raticate",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "spearow-to-fearow-1",
+      "fromSpeciesId": "spearow",
+      "toSpeciesId": "fearow",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "ekans-to-arbok-1",
+      "fromSpeciesId": "ekans",
+      "toSpeciesId": "arbok",
+      "method": "Level",
+      "parameter": "22",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pikachu-to-raichu-1",
+      "fromSpeciesId": "pikachu",
+      "toSpeciesId": "raichu",
+      "method": "Item",
+      "parameter": "ITEM_THUNDER_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pikachu-to-raichua-2",
+      "fromSpeciesId": "pikachu",
+      "toSpeciesId": "raichua",
+      "method": "Item Location",
+      "parameter": "ITEM_THUNDER_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pikachu-to-pikachugiga-3",
+      "fromSpeciesId": "pikachu",
+      "toSpeciesId": "pikachugiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "sandshrew-to-sandslash-1",
+      "fromSpeciesId": "sandshrew",
+      "toSpeciesId": "sandslash",
+      "method": "Level",
+      "parameter": "22",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "nidoranf-to-nidorina-1",
+      "fromSpeciesId": "nidoranf",
+      "toSpeciesId": "nidorina",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "nidorina-to-nidoqueen-1",
+      "fromSpeciesId": "nidorina",
+      "toSpeciesId": "nidoqueen",
+      "method": "Item",
+      "parameter": "ITEM_MOON_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "nidoranm-to-nidorino-1",
+      "fromSpeciesId": "nidoranm",
+      "toSpeciesId": "nidorino",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "nidorino-to-nidoking-1",
+      "fromSpeciesId": "nidorino",
+      "toSpeciesId": "nidoking",
+      "method": "Item",
+      "parameter": "ITEM_MOON_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "clefairy-to-clefable-1",
+      "fromSpeciesId": "clefairy",
+      "toSpeciesId": "clefable",
+      "method": "Item",
+      "parameter": "ITEM_MOON_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "vulpix-to-ninetales-1",
+      "fromSpeciesId": "vulpix",
+      "toSpeciesId": "ninetales",
+      "method": "Item",
+      "parameter": "ITEM_FIRE_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "jigglypuff-to-wigglytuff-1",
+      "fromSpeciesId": "jigglypuff",
+      "toSpeciesId": "wigglytuff",
+      "method": "Item",
+      "parameter": "ITEM_MOON_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "zubat-to-golbat-1",
+      "fromSpeciesId": "zubat",
+      "toSpeciesId": "golbat",
+      "method": "Level",
+      "parameter": "22",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "golbat-to-crobat-1",
+      "fromSpeciesId": "golbat",
+      "toSpeciesId": "crobat",
+      "method": "Friendship",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "oddish-to-gloom-1",
+      "fromSpeciesId": "oddish",
+      "toSpeciesId": "gloom",
+      "method": "Level",
+      "parameter": "21",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "gloom-to-vileplume-1",
+      "fromSpeciesId": "gloom",
+      "toSpeciesId": "vileplume",
+      "method": "Item",
+      "parameter": "ITEM_LEAF_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "gloom-to-bellossom-2",
+      "fromSpeciesId": "gloom",
+      "toSpeciesId": "bellossom",
+      "method": "Item",
+      "parameter": "ITEM_SUN_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "paras-to-parasect-1",
+      "fromSpeciesId": "paras",
+      "toSpeciesId": "parasect",
+      "method": "Level",
+      "parameter": "24",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "venonat-to-venomoth-1",
+      "fromSpeciesId": "venonat",
+      "toSpeciesId": "venomoth",
+      "method": "Level",
+      "parameter": "31",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "diglett-to-dugtrio-1",
+      "fromSpeciesId": "diglett",
+      "toSpeciesId": "dugtrio",
+      "method": "Level",
+      "parameter": "26",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "meowth-to-persian-1",
+      "fromSpeciesId": "meowth",
+      "toSpeciesId": "persian",
+      "method": "Level",
+      "parameter": "28",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "meowth-to-meowthgiga-2",
+      "fromSpeciesId": "meowth",
+      "toSpeciesId": "meowthgiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "psyduck-to-golduck-1",
+      "fromSpeciesId": "psyduck",
+      "toSpeciesId": "golduck",
+      "method": "Level",
+      "parameter": "33",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "mankey-to-primeape-1",
+      "fromSpeciesId": "mankey",
+      "toSpeciesId": "primeape",
+      "method": "Level",
+      "parameter": "28",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "growlithe-to-arcanine-1",
+      "fromSpeciesId": "growlithe",
+      "toSpeciesId": "arcanine",
+      "method": "Item",
+      "parameter": "ITEM_FIRE_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "poliwag-to-poliwhirl-1",
+      "fromSpeciesId": "poliwag",
+      "toSpeciesId": "poliwhirl",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "poliwhirl-to-poliwrath-1",
+      "fromSpeciesId": "poliwhirl",
+      "toSpeciesId": "poliwrath",
+      "method": "Item",
+      "parameter": "ITEM_WATER_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "poliwhirl-to-politoed-2",
+      "fromSpeciesId": "poliwhirl",
+      "toSpeciesId": "politoed",
+      "method": "Trade Item",
+      "parameter": "ITEM_KINGS_ROCK",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "poliwhirl-to-politoed-3",
+      "fromSpeciesId": "poliwhirl",
+      "toSpeciesId": "politoed",
+      "method": "Item",
+      "parameter": "ITEM_KINGS_ROCK",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "abra-to-kadabra-1",
+      "fromSpeciesId": "abra",
+      "toSpeciesId": "kadabra",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "kadabra-to-alakazam-1",
+      "fromSpeciesId": "kadabra",
+      "toSpeciesId": "alakazam",
+      "method": "Trade",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "kadabra-to-alakazam-2",
+      "fromSpeciesId": "kadabra",
+      "toSpeciesId": "alakazam",
+      "method": "Item",
+      "parameter": "ITEM_LINK_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "alakazam-to-alakazammega-1",
+      "fromSpeciesId": "alakazam",
+      "toSpeciesId": "alakazammega",
+      "method": "Mega",
+      "parameter": "ITEM_ALAKAZITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "machop-to-machoke-1",
+      "fromSpeciesId": "machop",
+      "toSpeciesId": "machoke",
+      "method": "Level",
+      "parameter": "28",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "machoke-to-machamp-1",
+      "fromSpeciesId": "machoke",
+      "toSpeciesId": "machamp",
+      "method": "Trade",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "machoke-to-machamp-2",
+      "fromSpeciesId": "machoke",
+      "toSpeciesId": "machamp",
+      "method": "Item",
+      "parameter": "ITEM_LINK_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "machamp-to-machampgiga-1",
+      "fromSpeciesId": "machamp",
+      "toSpeciesId": "machampgiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "bellsprout-to-weepinbell-1",
+      "fromSpeciesId": "bellsprout",
+      "toSpeciesId": "weepinbell",
+      "method": "Level",
+      "parameter": "21",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "weepinbell-to-victreebel-1",
+      "fromSpeciesId": "weepinbell",
+      "toSpeciesId": "victreebel",
+      "method": "Item",
+      "parameter": "ITEM_LEAF_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "tentacool-to-tentacruel-1",
+      "fromSpeciesId": "tentacool",
+      "toSpeciesId": "tentacruel",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "geodude-to-graveler-1",
+      "fromSpeciesId": "geodude",
+      "toSpeciesId": "graveler",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "graveler-to-golem-1",
+      "fromSpeciesId": "graveler",
+      "toSpeciesId": "golem",
+      "method": "Item",
+      "parameter": "ITEM_LINK_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "graveler-to-golem-2",
+      "fromSpeciesId": "graveler",
+      "toSpeciesId": "golem",
+      "method": "Trade",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "ponyta-to-rapidash-1",
+      "fromSpeciesId": "ponyta",
+      "toSpeciesId": "rapidash",
+      "method": "Level",
+      "parameter": "40",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "slowpoke-to-slowbro-1",
+      "fromSpeciesId": "slowpoke",
+      "toSpeciesId": "slowbro",
+      "method": "Level",
+      "parameter": "37",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "slowpoke-to-slowking-2",
+      "fromSpeciesId": "slowpoke",
+      "toSpeciesId": "slowking",
+      "method": "Trade Item",
+      "parameter": "ITEM_KINGS_ROCK",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "slowpoke-to-slowking-3",
+      "fromSpeciesId": "slowpoke",
+      "toSpeciesId": "slowking",
+      "method": "Item",
+      "parameter": "ITEM_KINGS_ROCK",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "slowbro-to-slowbromega-1",
+      "fromSpeciesId": "slowbro",
+      "toSpeciesId": "slowbromega",
+      "method": "Mega",
+      "parameter": "ITEM_SLOWBRONITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "magnemite-to-magneton-1",
+      "fromSpeciesId": "magnemite",
+      "toSpeciesId": "magneton",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "magneton-to-magnezone-1",
+      "fromSpeciesId": "magneton",
+      "toSpeciesId": "magnezone",
+      "method": "Map",
+      "parameter": "MAPSEC_THUNDERCAP_MOUNTAIN",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "magneton-to-magnezone-2",
+      "fromSpeciesId": "magneton",
+      "toSpeciesId": "magnezone",
+      "method": "Item",
+      "parameter": "ITEM_THUNDER_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "doduo-to-dodrio-1",
+      "fromSpeciesId": "doduo",
+      "toSpeciesId": "dodrio",
+      "method": "Level",
+      "parameter": "31",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "seel-to-dewgong-1",
+      "fromSpeciesId": "seel",
+      "toSpeciesId": "dewgong",
+      "method": "Level",
+      "parameter": "34",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "grimer-to-muk-1",
+      "fromSpeciesId": "grimer",
+      "toSpeciesId": "muk",
+      "method": "Level",
+      "parameter": "38",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "shellder-to-cloyster-1",
+      "fromSpeciesId": "shellder",
+      "toSpeciesId": "cloyster",
+      "method": "Item",
+      "parameter": "ITEM_WATER_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "gastly-to-haunter-1",
+      "fromSpeciesId": "gastly",
+      "toSpeciesId": "haunter",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "haunter-to-gengar-1",
+      "fromSpeciesId": "haunter",
+      "toSpeciesId": "gengar",
+      "method": "Trade",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "haunter-to-gengar-2",
+      "fromSpeciesId": "haunter",
+      "toSpeciesId": "gengar",
+      "method": "Item",
+      "parameter": "ITEM_LINK_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "gengar-to-gengarmega-1",
+      "fromSpeciesId": "gengar",
+      "toSpeciesId": "gengarmega",
+      "method": "Mega",
+      "parameter": "ITEM_GENGARITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "gengar-to-gengargiga-2",
+      "fromSpeciesId": "gengar",
+      "toSpeciesId": "gengargiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "onix-to-steelix-1",
+      "fromSpeciesId": "onix",
+      "toSpeciesId": "steelix",
+      "method": "Trade Item",
+      "parameter": "ITEM_METAL_COAT",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "onix-to-steelix-2",
+      "fromSpeciesId": "onix",
+      "toSpeciesId": "steelix",
+      "method": "Item",
+      "parameter": "ITEM_METAL_COAT",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "drowzee-to-hypno-1",
+      "fromSpeciesId": "drowzee",
+      "toSpeciesId": "hypno",
+      "method": "Level",
+      "parameter": "26",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "krabby-to-kingler-1",
+      "fromSpeciesId": "krabby",
+      "toSpeciesId": "kingler",
+      "method": "Level",
+      "parameter": "28",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "kingler-to-kinglergiga-1",
+      "fromSpeciesId": "kingler",
+      "toSpeciesId": "kinglergiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "voltorb-to-electrode-1",
+      "fromSpeciesId": "voltorb",
+      "toSpeciesId": "electrode",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "exeggcute-to-exeggutor-1",
+      "fromSpeciesId": "exeggcute",
+      "toSpeciesId": "exeggutor",
+      "method": "Item",
+      "parameter": "ITEM_LEAF_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "cubone-to-marowak-1",
+      "fromSpeciesId": "cubone",
+      "toSpeciesId": "marowak",
+      "method": "Level Day",
+      "parameter": "28",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "cubone-to-marowaka-2",
+      "fromSpeciesId": "cubone",
+      "toSpeciesId": "marowaka",
+      "method": "Level Night",
+      "parameter": "28",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "lickitung-to-lickilicky-1",
+      "fromSpeciesId": "lickitung",
+      "toSpeciesId": "lickilicky",
+      "method": "Move",
+      "parameter": "MOVE_ROLLOUT",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "koffing-to-weezing-1",
+      "fromSpeciesId": "koffing",
+      "toSpeciesId": "weezing",
+      "method": "Level",
+      "parameter": "35",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "rhyhorn-to-rhydon-1",
+      "fromSpeciesId": "rhyhorn",
+      "toSpeciesId": "rhydon",
+      "method": "Level",
+      "parameter": "42",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "rhydon-to-rhyperior-1",
+      "fromSpeciesId": "rhydon",
+      "toSpeciesId": "rhyperior",
+      "method": "Item",
+      "parameter": "ITEM_PROTECTOR",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "rhydon-to-rhyperior-2",
+      "fromSpeciesId": "rhydon",
+      "toSpeciesId": "rhyperior",
+      "method": "Trade Item",
+      "parameter": "ITEM_PROTECTOR",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "chansey-to-blissey-1",
+      "fromSpeciesId": "chansey",
+      "toSpeciesId": "blissey",
+      "method": "Friendship",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "tangela-to-tangrowth-1",
+      "fromSpeciesId": "tangela",
+      "toSpeciesId": "tangrowth",
+      "method": "Move",
+      "parameter": "MOVE_ANCIENTPOWER",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "kangaskhan-to-kangaskhanmega-1",
+      "fromSpeciesId": "kangaskhan",
+      "toSpeciesId": "kangaskhanmega",
+      "method": "Mega",
+      "parameter": "ITEM_KANGASKHANITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "horsea-to-seadra-1",
+      "fromSpeciesId": "horsea",
+      "toSpeciesId": "seadra",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "seadra-to-kingdra-1",
+      "fromSpeciesId": "seadra",
+      "toSpeciesId": "kingdra",
+      "method": "Trade Item",
+      "parameter": "ITEM_DRAGON_SCALE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "seadra-to-kingdra-2",
+      "fromSpeciesId": "seadra",
+      "toSpeciesId": "kingdra",
+      "method": "Item",
+      "parameter": "ITEM_DRAGON_SCALE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "goldeen-to-seaking-1",
+      "fromSpeciesId": "goldeen",
+      "toSpeciesId": "seaking",
+      "method": "Level",
+      "parameter": "33",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "staryu-to-starmie-1",
+      "fromSpeciesId": "staryu",
+      "toSpeciesId": "starmie",
+      "method": "Item",
+      "parameter": "ITEM_WATER_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "scyther-to-scizor-1",
+      "fromSpeciesId": "scyther",
+      "toSpeciesId": "scizor",
+      "method": "Trade Item",
+      "parameter": "ITEM_METAL_COAT",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "scyther-to-scizor-2",
+      "fromSpeciesId": "scyther",
+      "toSpeciesId": "scizor",
+      "method": "Item",
+      "parameter": "ITEM_METAL_COAT",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "scyther-to-kleavor-3",
+      "fromSpeciesId": "scyther",
+      "toSpeciesId": "kleavor",
+      "method": "Trade Item",
+      "parameter": "ITEM_BLACK_AUGURITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "scyther-to-kleavor-4",
+      "fromSpeciesId": "scyther",
+      "toSpeciesId": "kleavor",
+      "method": "Item",
+      "parameter": "ITEM_BLACK_AUGURITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "electabuzz-to-electivire-1",
+      "fromSpeciesId": "electabuzz",
+      "toSpeciesId": "electivire",
+      "method": "Item",
+      "parameter": "ITEM_ELECTIRIZER",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "electabuzz-to-electivire-2",
+      "fromSpeciesId": "electabuzz",
+      "toSpeciesId": "electivire",
+      "method": "Trade Item",
+      "parameter": "ITEM_ELECTIRIZER",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "magmar-to-magmortar-1",
+      "fromSpeciesId": "magmar",
+      "toSpeciesId": "magmortar",
+      "method": "Trade Item",
+      "parameter": "ITEM_MAGMARIZER",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "magmar-to-magmortar-2",
+      "fromSpeciesId": "magmar",
+      "toSpeciesId": "magmortar",
+      "method": "Item",
+      "parameter": "ITEM_MAGMARIZER",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pinsir-to-pinsirmega-1",
+      "fromSpeciesId": "pinsir",
+      "toSpeciesId": "pinsirmega",
+      "method": "Mega",
+      "parameter": "ITEM_PINSIRITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "magikarp-to-gyarados-1",
+      "fromSpeciesId": "magikarp",
+      "toSpeciesId": "gyarados",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "gyarados-to-gyaradosmega-1",
+      "fromSpeciesId": "gyarados",
+      "toSpeciesId": "gyaradosmega",
+      "method": "Mega",
+      "parameter": "ITEM_GYARADOSITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "lapras-to-laprasgiga-1",
+      "fromSpeciesId": "lapras",
+      "toSpeciesId": "laprasgiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "eevee-to-espeon-1",
+      "fromSpeciesId": "eevee",
+      "toSpeciesId": "espeon",
+      "method": "Friendship Day",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "eevee-to-umbreon-2",
+      "fromSpeciesId": "eevee",
+      "toSpeciesId": "umbreon",
+      "method": "Friendship Night",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "eevee-to-sylveon-3",
+      "fromSpeciesId": "eevee",
+      "toSpeciesId": "sylveon",
+      "method": "Move Type",
+      "parameter": "TYPE_FAIRY",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "eevee-to-flareon-4",
+      "fromSpeciesId": "eevee",
+      "toSpeciesId": "flareon",
+      "method": "Item",
+      "parameter": "ITEM_FIRE_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "eevee-to-jolteon-5",
+      "fromSpeciesId": "eevee",
+      "toSpeciesId": "jolteon",
+      "method": "Item",
+      "parameter": "ITEM_THUNDER_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "eevee-to-vaporeon-6",
+      "fromSpeciesId": "eevee",
+      "toSpeciesId": "vaporeon",
+      "method": "Item",
+      "parameter": "ITEM_WATER_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "eevee-to-leafeon-7",
+      "fromSpeciesId": "eevee",
+      "toSpeciesId": "leafeon",
+      "method": "Item",
+      "parameter": "ITEM_LEAF_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "eevee-to-glaceon-8",
+      "fromSpeciesId": "eevee",
+      "toSpeciesId": "glaceon",
+      "method": "Item",
+      "parameter": "ITEM_ICE_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "eevee-to-eeveegiga-9",
+      "fromSpeciesId": "eevee",
+      "toSpeciesId": "eeveegiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "porygon-to-porygon2-1",
+      "fromSpeciesId": "porygon",
+      "toSpeciesId": "porygon2",
+      "method": "Item",
+      "parameter": "ITEM_UP_GRADE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "porygon-to-porygon2-2",
+      "fromSpeciesId": "porygon",
+      "toSpeciesId": "porygon2",
+      "method": "Trade Item",
+      "parameter": "ITEM_UP_GRADE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "omanyte-to-omastar-1",
+      "fromSpeciesId": "omanyte",
+      "toSpeciesId": "omastar",
+      "method": "Level",
+      "parameter": "40",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "kabuto-to-kabutops-1",
+      "fromSpeciesId": "kabuto",
+      "toSpeciesId": "kabutops",
+      "method": "Level",
+      "parameter": "40",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "aerodactyl-to-aerodactylmega-1",
+      "fromSpeciesId": "aerodactyl",
+      "toSpeciesId": "aerodactylmega",
+      "method": "Mega",
+      "parameter": "ITEM_AERODACTYLITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "snorlax-to-snorlaxgiga-1",
+      "fromSpeciesId": "snorlax",
+      "toSpeciesId": "snorlaxgiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "dratini-to-dragonair-1",
+      "fromSpeciesId": "dratini",
+      "toSpeciesId": "dragonair",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "dragonair-to-dragonite-1",
+      "fromSpeciesId": "dragonair",
+      "toSpeciesId": "dragonite",
+      "method": "Level",
+      "parameter": "55",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "mewtwo-to-mewtwomegax-1",
+      "fromSpeciesId": "mewtwo",
+      "toSpeciesId": "mewtwomegax",
+      "method": "Mega",
+      "parameter": "ITEM_MEWTWONITE_X",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "mewtwo-to-mewtwomegay-2",
+      "fromSpeciesId": "mewtwo",
+      "toSpeciesId": "mewtwomegay",
+      "method": "Mega",
+      "parameter": "ITEM_MEWTWONITE_Y",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "chikorita-to-bayleef-1",
+      "fromSpeciesId": "chikorita",
+      "toSpeciesId": "bayleef",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "bayleef-to-meganium-1",
+      "fromSpeciesId": "bayleef",
+      "toSpeciesId": "meganium",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "cyndaquil-to-quilava-1",
+      "fromSpeciesId": "cyndaquil",
+      "toSpeciesId": "quilava",
+      "method": "Level",
+      "parameter": "14",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "quilava-to-typhlosion-1",
+      "fromSpeciesId": "quilava",
+      "toSpeciesId": "typhlosion",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "quilava-to-typhlosionh-2",
+      "fromSpeciesId": "quilava",
+      "toSpeciesId": "typhlosionh",
+      "method": "Level Hold Hisui Rock",
+      "parameter": "36",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "totodile-to-croconaw-1",
+      "fromSpeciesId": "totodile",
+      "toSpeciesId": "croconaw",
+      "method": "Level",
+      "parameter": "18",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "croconaw-to-feraligatr-1",
+      "fromSpeciesId": "croconaw",
+      "toSpeciesId": "feraligatr",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "sentret-to-furret-1",
+      "fromSpeciesId": "sentret",
+      "toSpeciesId": "furret",
+      "method": "Level",
+      "parameter": "15",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "hoothoot-to-noctowl-1",
+      "fromSpeciesId": "hoothoot",
+      "toSpeciesId": "noctowl",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "ledyba-to-ledian-1",
+      "fromSpeciesId": "ledyba",
+      "toSpeciesId": "ledian",
+      "method": "Level",
+      "parameter": "18",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "spinarak-to-ariados-1",
+      "fromSpeciesId": "spinarak",
+      "toSpeciesId": "ariados",
+      "method": "Level",
+      "parameter": "22",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "chinchou-to-lanturn-1",
+      "fromSpeciesId": "chinchou",
+      "toSpeciesId": "lanturn",
+      "method": "Level",
+      "parameter": "27",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pichu-to-pikachu-1",
+      "fromSpeciesId": "pichu",
+      "toSpeciesId": "pikachu",
+      "method": "Friendship",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "cleffa-to-clefairy-1",
+      "fromSpeciesId": "cleffa",
+      "toSpeciesId": "clefairy",
+      "method": "Friendship",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "igglybuff-to-jigglypuff-1",
+      "fromSpeciesId": "igglybuff",
+      "toSpeciesId": "jigglypuff",
+      "method": "Friendship",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "togepi-to-togetic-1",
+      "fromSpeciesId": "togepi",
+      "toSpeciesId": "togetic",
+      "method": "Friendship",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "togetic-to-togekiss-1",
+      "fromSpeciesId": "togetic",
+      "toSpeciesId": "togekiss",
+      "method": "Item",
+      "parameter": "ITEM_SHINY_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "natu-to-xatu-1",
+      "fromSpeciesId": "natu",
+      "toSpeciesId": "xatu",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "mareep-to-flaaffy-1",
+      "fromSpeciesId": "mareep",
+      "toSpeciesId": "flaaffy",
+      "method": "Level",
+      "parameter": "15",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "flaaffy-to-ampharos-1",
+      "fromSpeciesId": "flaaffy",
+      "toSpeciesId": "ampharos",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "ampharos-to-ampharosmega-1",
+      "fromSpeciesId": "ampharos",
+      "toSpeciesId": "ampharosmega",
+      "method": "Mega",
+      "parameter": "ITEM_AMPHAROSITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "marill-to-azumarill-1",
+      "fromSpeciesId": "marill",
+      "toSpeciesId": "azumarill",
+      "method": "Level",
+      "parameter": "18",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "hoppip-to-skiploom-1",
+      "fromSpeciesId": "hoppip",
+      "toSpeciesId": "skiploom",
+      "method": "Level",
+      "parameter": "18",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "skiploom-to-jumpluff-1",
+      "fromSpeciesId": "skiploom",
+      "toSpeciesId": "jumpluff",
+      "method": "Level",
+      "parameter": "27",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "aipom-to-ambipom-1",
+      "fromSpeciesId": "aipom",
+      "toSpeciesId": "ambipom",
+      "method": "Move",
+      "parameter": "MOVE_DOUBLEHIT",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "sunkern-to-sunflora-1",
+      "fromSpeciesId": "sunkern",
+      "toSpeciesId": "sunflora",
+      "method": "Item",
+      "parameter": "ITEM_SUN_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "yanma-to-yanmega-1",
+      "fromSpeciesId": "yanma",
+      "toSpeciesId": "yanmega",
+      "method": "Move",
+      "parameter": "MOVE_ANCIENTPOWER",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "wooper-to-quagsire-1",
+      "fromSpeciesId": "wooper",
+      "toSpeciesId": "quagsire",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "murkrow-to-honchkrow-1",
+      "fromSpeciesId": "murkrow",
+      "toSpeciesId": "honchkrow",
+      "method": "Item",
+      "parameter": "ITEM_DUSK_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "misdreavus-to-mismagius-1",
+      "fromSpeciesId": "misdreavus",
+      "toSpeciesId": "mismagius",
+      "method": "Item",
+      "parameter": "ITEM_DUSK_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pineco-to-forretress-1",
+      "fromSpeciesId": "pineco",
+      "toSpeciesId": "forretress",
+      "method": "Level",
+      "parameter": "31",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "gligar-to-gliscor-1",
+      "fromSpeciesId": "gligar",
+      "toSpeciesId": "gliscor",
+      "method": "Hold Item Night",
+      "parameter": "ITEM_RAZOR_FANG",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "steelix-to-steelixmega-1",
+      "fromSpeciesId": "steelix",
+      "toSpeciesId": "steelixmega",
+      "method": "Mega",
+      "parameter": "ITEM_STEELIXITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "snubbull-to-granbull-1",
+      "fromSpeciesId": "snubbull",
+      "toSpeciesId": "granbull",
+      "method": "Level",
+      "parameter": "23",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "scizor-to-scizormega-1",
+      "fromSpeciesId": "scizor",
+      "toSpeciesId": "scizormega",
+      "method": "Mega",
+      "parameter": "ITEM_SCIZORITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "heracross-to-heracrossmega-1",
+      "fromSpeciesId": "heracross",
+      "toSpeciesId": "heracrossmega",
+      "method": "Mega",
+      "parameter": "ITEM_HERACRONITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "sneasel-to-weavile-1",
+      "fromSpeciesId": "sneasel",
+      "toSpeciesId": "weavile",
+      "method": "Hold Item Night",
+      "parameter": "ITEM_RAZOR_CLAW",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "teddiursa-to-ursaring-1",
+      "fromSpeciesId": "teddiursa",
+      "toSpeciesId": "ursaring",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "ursaring-to-ursaluna-1",
+      "fromSpeciesId": "ursaring",
+      "toSpeciesId": "ursaluna",
+      "method": "Item Night",
+      "parameter": "ITEM_PEAT_BLOCK",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "slugma-to-magcargo-1",
+      "fromSpeciesId": "slugma",
+      "toSpeciesId": "magcargo",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "swinub-to-piloswine-1",
+      "fromSpeciesId": "swinub",
+      "toSpeciesId": "piloswine",
+      "method": "Level",
+      "parameter": "33",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "piloswine-to-mamoswine-1",
+      "fromSpeciesId": "piloswine",
+      "toSpeciesId": "mamoswine",
+      "method": "Move",
+      "parameter": "MOVE_ANCIENTPOWER",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "remoraid-to-octillery-1",
+      "fromSpeciesId": "remoraid",
+      "toSpeciesId": "octillery",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "houndour-to-houndoom-1",
+      "fromSpeciesId": "houndour",
+      "toSpeciesId": "houndoom",
+      "method": "Level",
+      "parameter": "24",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "houndoom-to-houndoommega-1",
+      "fromSpeciesId": "houndoom",
+      "toSpeciesId": "houndoommega",
+      "method": "Mega",
+      "parameter": "ITEM_HOUNDOOMINITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "phanpy-to-donphan-1",
+      "fromSpeciesId": "phanpy",
+      "toSpeciesId": "donphan",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "porygon2-to-porygonz-1",
+      "fromSpeciesId": "porygon2",
+      "toSpeciesId": "porygonz",
+      "method": "Trade Item",
+      "parameter": "ITEM_DUBIOUS_DISC",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "porygon2-to-porygonz-2",
+      "fromSpeciesId": "porygon2",
+      "toSpeciesId": "porygonz",
+      "method": "Item",
+      "parameter": "ITEM_DUBIOUS_DISC",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "stantler-to-wyrdeer-1",
+      "fromSpeciesId": "stantler",
+      "toSpeciesId": "wyrdeer",
+      "method": "Move",
+      "parameter": "MOVE_PSYSHIELDBASH",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "tyrogue-to-hitmonlee-1",
+      "fromSpeciesId": "tyrogue",
+      "toSpeciesId": "hitmonlee",
+      "method": "Level Atk Gt Def",
+      "parameter": "20",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "tyrogue-to-hitmontop-2",
+      "fromSpeciesId": "tyrogue",
+      "toSpeciesId": "hitmontop",
+      "method": "Level Atk Eq Def",
+      "parameter": "20",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "tyrogue-to-hitmonchan-3",
+      "fromSpeciesId": "tyrogue",
+      "toSpeciesId": "hitmonchan",
+      "method": "Level Atk Lt Def",
+      "parameter": "20",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "smoochum-to-jynx-1",
+      "fromSpeciesId": "smoochum",
+      "toSpeciesId": "jynx",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "elekid-to-electabuzz-1",
+      "fromSpeciesId": "elekid",
+      "toSpeciesId": "electabuzz",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "magby-to-magmar-1",
+      "fromSpeciesId": "magby",
+      "toSpeciesId": "magmar",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "larvitar-to-pupitar-1",
+      "fromSpeciesId": "larvitar",
+      "toSpeciesId": "pupitar",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pupitar-to-tyranitar-1",
+      "fromSpeciesId": "pupitar",
+      "toSpeciesId": "tyranitar",
+      "method": "Level",
+      "parameter": "48",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "tyranitar-to-tyranitarmega-1",
+      "fromSpeciesId": "tyranitar",
+      "toSpeciesId": "tyranitarmega",
+      "method": "Mega",
+      "parameter": "ITEM_TYRANITARITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "treecko-to-grovyle-1",
+      "fromSpeciesId": "treecko",
+      "toSpeciesId": "grovyle",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "grovyle-to-sceptile-1",
+      "fromSpeciesId": "grovyle",
+      "toSpeciesId": "sceptile",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "sceptile-to-sceptilemega-1",
+      "fromSpeciesId": "sceptile",
+      "toSpeciesId": "sceptilemega",
+      "method": "Mega",
+      "parameter": "ITEM_SCEPTILITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "torchic-to-combusken-1",
+      "fromSpeciesId": "torchic",
+      "toSpeciesId": "combusken",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "combusken-to-blaziken-1",
+      "fromSpeciesId": "combusken",
+      "toSpeciesId": "blaziken",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "blaziken-to-blazikenmega-1",
+      "fromSpeciesId": "blaziken",
+      "toSpeciesId": "blazikenmega",
+      "method": "Mega",
+      "parameter": "ITEM_BLAZIKENITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "mudkip-to-marshtomp-1",
+      "fromSpeciesId": "mudkip",
+      "toSpeciesId": "marshtomp",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "marshtomp-to-swampert-1",
+      "fromSpeciesId": "marshtomp",
+      "toSpeciesId": "swampert",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "swampert-to-swampertmega-1",
+      "fromSpeciesId": "swampert",
+      "toSpeciesId": "swampertmega",
+      "method": "Mega",
+      "parameter": "ITEM_SWAMPERTITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "poochyena-to-mightyena-1",
+      "fromSpeciesId": "poochyena",
+      "toSpeciesId": "mightyena",
+      "method": "Level",
+      "parameter": "18",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "zigzagoon-to-linoone-1",
+      "fromSpeciesId": "zigzagoon",
+      "toSpeciesId": "linoone",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "wurmple-to-silcoon-1",
+      "fromSpeciesId": "wurmple",
+      "toSpeciesId": "silcoon",
+      "method": "Level Silcoon",
+      "parameter": "7",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "wurmple-to-cascoon-2",
+      "fromSpeciesId": "wurmple",
+      "toSpeciesId": "cascoon",
+      "method": "Level Cascoon",
+      "parameter": "7",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "silcoon-to-beautifly-1",
+      "fromSpeciesId": "silcoon",
+      "toSpeciesId": "beautifly",
+      "method": "Level",
+      "parameter": "10",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "cascoon-to-dustox-1",
+      "fromSpeciesId": "cascoon",
+      "toSpeciesId": "dustox",
+      "method": "Level",
+      "parameter": "10",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "lotad-to-lombre-1",
+      "fromSpeciesId": "lotad",
+      "toSpeciesId": "lombre",
+      "method": "Level",
+      "parameter": "14",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "lombre-to-ludicolo-1",
+      "fromSpeciesId": "lombre",
+      "toSpeciesId": "ludicolo",
+      "method": "Item",
+      "parameter": "ITEM_WATER_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "seedot-to-nuzleaf-1",
+      "fromSpeciesId": "seedot",
+      "toSpeciesId": "nuzleaf",
+      "method": "Level",
+      "parameter": "14",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "nuzleaf-to-shiftry-1",
+      "fromSpeciesId": "nuzleaf",
+      "toSpeciesId": "shiftry",
+      "method": "Item",
+      "parameter": "ITEM_LEAF_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "nincada-to-ninjask-1",
+      "fromSpeciesId": "nincada",
+      "toSpeciesId": "ninjask",
+      "method": "Level Ninjask",
+      "parameter": "20",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "nincada-to-shedinja-2",
+      "fromSpeciesId": "nincada",
+      "toSpeciesId": "shedinja",
+      "method": "Level Shedinja",
+      "parameter": "20",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "taillow-to-swellow-1",
+      "fromSpeciesId": "taillow",
+      "toSpeciesId": "swellow",
+      "method": "Level",
+      "parameter": "22",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "shroomish-to-breloom-1",
+      "fromSpeciesId": "shroomish",
+      "toSpeciesId": "breloom",
+      "method": "Level",
+      "parameter": "23",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "wingull-to-pelipper-1",
+      "fromSpeciesId": "wingull",
+      "toSpeciesId": "pelipper",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "surskit-to-masquerain-1",
+      "fromSpeciesId": "surskit",
+      "toSpeciesId": "masquerain",
+      "method": "Level",
+      "parameter": "22",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "wailmer-to-wailord-1",
+      "fromSpeciesId": "wailmer",
+      "toSpeciesId": "wailord",
+      "method": "Level",
+      "parameter": "40",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "skitty-to-delcatty-1",
+      "fromSpeciesId": "skitty",
+      "toSpeciesId": "delcatty",
+      "method": "Item",
+      "parameter": "ITEM_MOON_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "baltoy-to-claydol-1",
+      "fromSpeciesId": "baltoy",
+      "toSpeciesId": "claydol",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "nosepass-to-probopass-1",
+      "fromSpeciesId": "nosepass",
+      "toSpeciesId": "probopass",
+      "method": "Map",
+      "parameter": "MAPSEC_THUNDERCAP_MOUNTAIN",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "nosepass-to-probopass-2",
+      "fromSpeciesId": "nosepass",
+      "toSpeciesId": "probopass",
+      "method": "Item",
+      "parameter": "ITEM_THUNDER_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "sableye-to-sableyemega-1",
+      "fromSpeciesId": "sableye",
+      "toSpeciesId": "sableyemega",
+      "method": "Mega",
+      "parameter": "ITEM_SABLENITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "barboach-to-whiscash-1",
+      "fromSpeciesId": "barboach",
+      "toSpeciesId": "whiscash",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "corphish-to-crawdaunt-1",
+      "fromSpeciesId": "corphish",
+      "toSpeciesId": "crawdaunt",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "feebas-to-milotic-1",
+      "fromSpeciesId": "feebas",
+      "toSpeciesId": "milotic",
+      "method": "Beauty",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "feebas-to-milotic-2",
+      "fromSpeciesId": "feebas",
+      "toSpeciesId": "milotic",
+      "method": "Item",
+      "parameter": "ITEM_PRISM_SCALE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "feebas-to-milotic-3",
+      "fromSpeciesId": "feebas",
+      "toSpeciesId": "milotic",
+      "method": "Trade Item",
+      "parameter": "ITEM_PRISM_SCALE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "carvanha-to-sharpedo-1",
+      "fromSpeciesId": "carvanha",
+      "toSpeciesId": "sharpedo",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "sharpedo-to-sharpedomega-1",
+      "fromSpeciesId": "sharpedo",
+      "toSpeciesId": "sharpedomega",
+      "method": "Mega",
+      "parameter": "ITEM_SHARPEDONITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "trapinch-to-vibrava-1",
+      "fromSpeciesId": "trapinch",
+      "toSpeciesId": "vibrava",
+      "method": "Level",
+      "parameter": "35",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "vibrava-to-flygon-1",
+      "fromSpeciesId": "vibrava",
+      "toSpeciesId": "flygon",
+      "method": "Level",
+      "parameter": "45",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "makuhita-to-hariyama-1",
+      "fromSpeciesId": "makuhita",
+      "toSpeciesId": "hariyama",
+      "method": "Level",
+      "parameter": "24",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "electrike-to-manectric-1",
+      "fromSpeciesId": "electrike",
+      "toSpeciesId": "manectric",
+      "method": "Level",
+      "parameter": "26",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "manectric-to-manectricmega-1",
+      "fromSpeciesId": "manectric",
+      "toSpeciesId": "manectricmega",
+      "method": "Mega",
+      "parameter": "ITEM_MANECTITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "numel-to-camerupt-1",
+      "fromSpeciesId": "numel",
+      "toSpeciesId": "camerupt",
+      "method": "Level",
+      "parameter": "33",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "camerupt-to-cameruptmega-1",
+      "fromSpeciesId": "camerupt",
+      "toSpeciesId": "cameruptmega",
+      "method": "Mega",
+      "parameter": "ITEM_CAMERUPTITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "spheal-to-sealeo-1",
+      "fromSpeciesId": "spheal",
+      "toSpeciesId": "sealeo",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "sealeo-to-walrein-1",
+      "fromSpeciesId": "sealeo",
+      "toSpeciesId": "walrein",
+      "method": "Level",
+      "parameter": "44",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "cacnea-to-cacturne-1",
+      "fromSpeciesId": "cacnea",
+      "toSpeciesId": "cacturne",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "snorunt-to-glalie-1",
+      "fromSpeciesId": "snorunt",
+      "toSpeciesId": "glalie",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "snorunt-to-froslass-2",
+      "fromSpeciesId": "snorunt",
+      "toSpeciesId": "froslass",
+      "method": "Item",
+      "parameter": "ITEM_DAWN_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "glalie-to-glaliemega-1",
+      "fromSpeciesId": "glalie",
+      "toSpeciesId": "glaliemega",
+      "method": "Mega",
+      "parameter": "ITEM_GLALITITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "azurill-to-marill-1",
+      "fromSpeciesId": "azurill",
+      "toSpeciesId": "marill",
+      "method": "Friendship",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "spoink-to-grumpig-1",
+      "fromSpeciesId": "spoink",
+      "toSpeciesId": "grumpig",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "mawile-to-mawilemega-1",
+      "fromSpeciesId": "mawile",
+      "toSpeciesId": "mawilemega",
+      "method": "Mega",
+      "parameter": "ITEM_MAWILITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "meditite-to-medicham-1",
+      "fromSpeciesId": "meditite",
+      "toSpeciesId": "medicham",
+      "method": "Level",
+      "parameter": "37",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "medicham-to-medichammega-1",
+      "fromSpeciesId": "medicham",
+      "toSpeciesId": "medichammega",
+      "method": "Mega",
+      "parameter": "ITEM_MEDICHAMITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "swablu-to-altaria-1",
+      "fromSpeciesId": "swablu",
+      "toSpeciesId": "altaria",
+      "method": "Level",
+      "parameter": "35",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "altaria-to-altariamega-1",
+      "fromSpeciesId": "altaria",
+      "toSpeciesId": "altariamega",
+      "method": "Mega",
+      "parameter": "ITEM_ALTARIANITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "wynaut-to-wobbuffet-1",
+      "fromSpeciesId": "wynaut",
+      "toSpeciesId": "wobbuffet",
+      "method": "Level",
+      "parameter": "15",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "duskull-to-dusclops-1",
+      "fromSpeciesId": "duskull",
+      "toSpeciesId": "dusclops",
+      "method": "Level",
+      "parameter": "37",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "dusclops-to-dusknoir-1",
+      "fromSpeciesId": "dusclops",
+      "toSpeciesId": "dusknoir",
+      "method": "Item",
+      "parameter": "ITEM_REAPER_CLOTH",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "dusclops-to-dusknoir-2",
+      "fromSpeciesId": "dusclops",
+      "toSpeciesId": "dusknoir",
+      "method": "Trade Item",
+      "parameter": "ITEM_REAPER_CLOTH",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "roselia-to-roserade-1",
+      "fromSpeciesId": "roselia",
+      "toSpeciesId": "roserade",
+      "method": "Item",
+      "parameter": "ITEM_SHINY_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "slakoth-to-vigoroth-1",
+      "fromSpeciesId": "slakoth",
+      "toSpeciesId": "vigoroth",
+      "method": "Level",
+      "parameter": "18",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "vigoroth-to-slaking-1",
+      "fromSpeciesId": "vigoroth",
+      "toSpeciesId": "slaking",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "gulpin-to-swalot-1",
+      "fromSpeciesId": "gulpin",
+      "toSpeciesId": "swalot",
+      "method": "Level",
+      "parameter": "26",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "whismur-to-loudred-1",
+      "fromSpeciesId": "whismur",
+      "toSpeciesId": "loudred",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "loudred-to-exploud-1",
+      "fromSpeciesId": "loudred",
+      "toSpeciesId": "exploud",
+      "method": "Level",
+      "parameter": "40",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "clamperl-to-huntail-1",
+      "fromSpeciesId": "clamperl",
+      "toSpeciesId": "huntail",
+      "method": "Item",
+      "parameter": "ITEM_DEEP_SEA_TOOTH",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "clamperl-to-gorebyss-2",
+      "fromSpeciesId": "clamperl",
+      "toSpeciesId": "gorebyss",
+      "method": "Item",
+      "parameter": "ITEM_DEEP_SEA_SCALE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "clamperl-to-huntail-3",
+      "fromSpeciesId": "clamperl",
+      "toSpeciesId": "huntail",
+      "method": "Trade Item",
+      "parameter": "ITEM_DEEP_SEA_TOOTH",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "clamperl-to-gorebyss-4",
+      "fromSpeciesId": "clamperl",
+      "toSpeciesId": "gorebyss",
+      "method": "Trade Item",
+      "parameter": "ITEM_DEEP_SEA_SCALE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "absol-to-absolmega-1",
+      "fromSpeciesId": "absol",
+      "toSpeciesId": "absolmega",
+      "method": "Mega",
+      "parameter": "ITEM_ABSOLITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "shuppet-to-banette-1",
+      "fromSpeciesId": "shuppet",
+      "toSpeciesId": "banette",
+      "method": "Level",
+      "parameter": "37",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "banette-to-banettemega-1",
+      "fromSpeciesId": "banette",
+      "toSpeciesId": "banettemega",
+      "method": "Mega",
+      "parameter": "ITEM_BANETTITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "aron-to-lairon-1",
+      "fromSpeciesId": "aron",
+      "toSpeciesId": "lairon",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "lairon-to-aggron-1",
+      "fromSpeciesId": "lairon",
+      "toSpeciesId": "aggron",
+      "method": "Level",
+      "parameter": "42",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "aggron-to-aggronmega-1",
+      "fromSpeciesId": "aggron",
+      "toSpeciesId": "aggronmega",
+      "method": "Mega",
+      "parameter": "ITEM_AGGRONITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "lileep-to-cradily-1",
+      "fromSpeciesId": "lileep",
+      "toSpeciesId": "cradily",
+      "method": "Level",
+      "parameter": "40",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "anorith-to-armaldo-1",
+      "fromSpeciesId": "anorith",
+      "toSpeciesId": "armaldo",
+      "method": "Level",
+      "parameter": "40",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "ralts-to-kirlia-1",
+      "fromSpeciesId": "ralts",
+      "toSpeciesId": "kirlia",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "kirlia-to-gardevoir-1",
+      "fromSpeciesId": "kirlia",
+      "toSpeciesId": "gardevoir",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "kirlia-to-gallade-2",
+      "fromSpeciesId": "kirlia",
+      "toSpeciesId": "gallade",
+      "method": "Item",
+      "parameter": "ITEM_DAWN_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "gardevoir-to-gardevoirmega-1",
+      "fromSpeciesId": "gardevoir",
+      "toSpeciesId": "gardevoirmega",
+      "method": "Mega",
+      "parameter": "ITEM_GARDEVOIRITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "bagon-to-shelgon-1",
+      "fromSpeciesId": "bagon",
+      "toSpeciesId": "shelgon",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "shelgon-to-salamence-1",
+      "fromSpeciesId": "shelgon",
+      "toSpeciesId": "salamence",
+      "method": "Level",
+      "parameter": "50",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "salamence-to-salamencemega-1",
+      "fromSpeciesId": "salamence",
+      "toSpeciesId": "salamencemega",
+      "method": "Mega",
+      "parameter": "ITEM_SALAMENCITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "beldum-to-metang-1",
+      "fromSpeciesId": "beldum",
+      "toSpeciesId": "metang",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "metang-to-metagross-1",
+      "fromSpeciesId": "metang",
+      "toSpeciesId": "metagross",
+      "method": "Level",
+      "parameter": "45",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "metagross-to-metagrossmega-1",
+      "fromSpeciesId": "metagross",
+      "toSpeciesId": "metagrossmega",
+      "method": "Mega",
+      "parameter": "ITEM_METAGROSSITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "kyogre-to-kyogreprimal-1",
+      "fromSpeciesId": "kyogre",
+      "toSpeciesId": "kyogreprimal",
+      "method": "Mega",
+      "parameter": "ITEM_BLUE_ORB",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "groudon-to-groudonprimal-1",
+      "fromSpeciesId": "groudon",
+      "toSpeciesId": "groudonprimal",
+      "method": "Mega",
+      "parameter": "ITEM_RED_ORB",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "rayquaza-to-rayquazamega-1",
+      "fromSpeciesId": "rayquaza",
+      "toSpeciesId": "rayquazamega",
+      "method": "Mega",
+      "parameter": "MOVE_DRAGONASCENT",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "latias-to-latiasmega-1",
+      "fromSpeciesId": "latias",
+      "toSpeciesId": "latiasmega",
+      "method": "Mega",
+      "parameter": "ITEM_LATIASITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "latios-to-latiosmega-1",
+      "fromSpeciesId": "latios",
+      "toSpeciesId": "latiosmega",
+      "method": "Mega",
+      "parameter": "ITEM_LATIOSITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "turtwig-to-grotle-1",
+      "fromSpeciesId": "turtwig",
+      "toSpeciesId": "grotle",
+      "method": "Level",
+      "parameter": "18",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "grotle-to-torterra-1",
+      "fromSpeciesId": "grotle",
+      "toSpeciesId": "torterra",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "chimchar-to-monferno-1",
+      "fromSpeciesId": "chimchar",
+      "toSpeciesId": "monferno",
+      "method": "Level",
+      "parameter": "14",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "monferno-to-infernape-1",
+      "fromSpeciesId": "monferno",
+      "toSpeciesId": "infernape",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "piplup-to-prinplup-1",
+      "fromSpeciesId": "piplup",
+      "toSpeciesId": "prinplup",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "prinplup-to-empoleon-1",
+      "fromSpeciesId": "prinplup",
+      "toSpeciesId": "empoleon",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "starly-to-staravia-1",
+      "fromSpeciesId": "starly",
+      "toSpeciesId": "staravia",
+      "method": "Level",
+      "parameter": "14",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "staravia-to-staraptor-1",
+      "fromSpeciesId": "staravia",
+      "toSpeciesId": "staraptor",
+      "method": "Level",
+      "parameter": "34",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "bidoof-to-bibarel-1",
+      "fromSpeciesId": "bidoof",
+      "toSpeciesId": "bibarel",
+      "method": "Level",
+      "parameter": "15",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "kricketot-to-kricketune-1",
+      "fromSpeciesId": "kricketot",
+      "toSpeciesId": "kricketune",
+      "method": "Level",
+      "parameter": "10",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "shinx-to-luxio-1",
+      "fromSpeciesId": "shinx",
+      "toSpeciesId": "luxio",
+      "method": "Level",
+      "parameter": "15",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "luxio-to-luxray-1",
+      "fromSpeciesId": "luxio",
+      "toSpeciesId": "luxray",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "budew-to-roselia-1",
+      "fromSpeciesId": "budew",
+      "toSpeciesId": "roselia",
+      "method": "Friendship Day",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "cranidos-to-rampardos-1",
+      "fromSpeciesId": "cranidos",
+      "toSpeciesId": "rampardos",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "shieldon-to-bastiodon-1",
+      "fromSpeciesId": "shieldon",
+      "toSpeciesId": "bastiodon",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "burmy-to-wormadam-1",
+      "fromSpeciesId": "burmy",
+      "toSpeciesId": "wormadam",
+      "method": "Female Level",
+      "parameter": "20",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "burmy-to-mothim-2",
+      "fromSpeciesId": "burmy",
+      "toSpeciesId": "mothim",
+      "method": "Male Level",
+      "parameter": "20",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "combee-to-vespiquen-1",
+      "fromSpeciesId": "combee",
+      "toSpeciesId": "vespiquen",
+      "method": "Female Level",
+      "parameter": "21",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "buizel-to-floatzel-1",
+      "fromSpeciesId": "buizel",
+      "toSpeciesId": "floatzel",
+      "method": "Level",
+      "parameter": "26",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "cherubi-to-cherrim-1",
+      "fromSpeciesId": "cherubi",
+      "toSpeciesId": "cherrim",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "shellos-to-gastrodon-1",
+      "fromSpeciesId": "shellos",
+      "toSpeciesId": "gastrodon",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "drifloon-to-drifblim-1",
+      "fromSpeciesId": "drifloon",
+      "toSpeciesId": "drifblim",
+      "method": "Level",
+      "parameter": "28",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "buneary-to-lopunny-1",
+      "fromSpeciesId": "buneary",
+      "toSpeciesId": "lopunny",
+      "method": "Friendship",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "lopunny-to-lopunnymega-1",
+      "fromSpeciesId": "lopunny",
+      "toSpeciesId": "lopunnymega",
+      "method": "Mega",
+      "parameter": "ITEM_LOPUNNITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "glameow-to-purugly-1",
+      "fromSpeciesId": "glameow",
+      "toSpeciesId": "purugly",
+      "method": "Level",
+      "parameter": "34",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "chingling-to-chimecho-1",
+      "fromSpeciesId": "chingling",
+      "toSpeciesId": "chimecho",
+      "method": "Friendship Night",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "stunky-to-skuntank-1",
+      "fromSpeciesId": "stunky",
+      "toSpeciesId": "skuntank",
+      "method": "Level",
+      "parameter": "34",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "bronzor-to-bronzong-1",
+      "fromSpeciesId": "bronzor",
+      "toSpeciesId": "bronzong",
+      "method": "Level",
+      "parameter": "33",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "bonsly-to-sudowoodo-1",
+      "fromSpeciesId": "bonsly",
+      "toSpeciesId": "sudowoodo",
+      "method": "Move",
+      "parameter": "MOVE_MIMIC",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "mimejr-to-mrmime-1",
+      "fromSpeciesId": "mimejr",
+      "toSpeciesId": "mrmime",
+      "method": "Move",
+      "parameter": "MOVE_MIMIC",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "happiny-to-chansey-1",
+      "fromSpeciesId": "happiny",
+      "toSpeciesId": "chansey",
+      "method": "Hold Item Day",
+      "parameter": "ITEM_OVAL_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "gible-to-gabite-1",
+      "fromSpeciesId": "gible",
+      "toSpeciesId": "gabite",
+      "method": "Level",
+      "parameter": "24",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "gabite-to-garchomp-1",
+      "fromSpeciesId": "gabite",
+      "toSpeciesId": "garchomp",
+      "method": "Level",
+      "parameter": "48",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "garchomp-to-garchompmega-1",
+      "fromSpeciesId": "garchomp",
+      "toSpeciesId": "garchompmega",
+      "method": "Mega",
+      "parameter": "ITEM_GARCHOMPITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "munchlax-to-snorlax-1",
+      "fromSpeciesId": "munchlax",
+      "toSpeciesId": "snorlax",
+      "method": "Friendship",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "riolu-to-lucario-1",
+      "fromSpeciesId": "riolu",
+      "toSpeciesId": "lucario",
+      "method": "Friendship Day",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "lucario-to-lucariomega-1",
+      "fromSpeciesId": "lucario",
+      "toSpeciesId": "lucariomega",
+      "method": "Mega",
+      "parameter": "ITEM_LUCARIONITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "hippopotas-to-hippowdon-1",
+      "fromSpeciesId": "hippopotas",
+      "toSpeciesId": "hippowdon",
+      "method": "Level",
+      "parameter": "34",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "skorupi-to-drapion-1",
+      "fromSpeciesId": "skorupi",
+      "toSpeciesId": "drapion",
+      "method": "Level",
+      "parameter": "40",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "croagunk-to-toxicroak-1",
+      "fromSpeciesId": "croagunk",
+      "toSpeciesId": "toxicroak",
+      "method": "Level",
+      "parameter": "37",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "finneon-to-lumineon-1",
+      "fromSpeciesId": "finneon",
+      "toSpeciesId": "lumineon",
+      "method": "Level",
+      "parameter": "31",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "mantyke-to-mantine-1",
+      "fromSpeciesId": "mantyke",
+      "toSpeciesId": "mantine",
+      "method": "Other Party Mon",
+      "parameter": "SPECIES_REMORAID",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "snover-to-abomasnow-1",
+      "fromSpeciesId": "snover",
+      "toSpeciesId": "abomasnow",
+      "method": "Level",
+      "parameter": "40",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "abomasnow-to-abomasnowmega-1",
+      "fromSpeciesId": "abomasnow",
+      "toSpeciesId": "abomasnowmega",
+      "method": "Mega",
+      "parameter": "ITEM_ABOMASITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "gallade-to-gallademega-1",
+      "fromSpeciesId": "gallade",
+      "toSpeciesId": "gallademega",
+      "method": "Mega",
+      "parameter": "ITEM_GALLADITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "snivy-to-servine-1",
+      "fromSpeciesId": "snivy",
+      "toSpeciesId": "servine",
+      "method": "Level",
+      "parameter": "17",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "servine-to-serperior-1",
+      "fromSpeciesId": "servine",
+      "toSpeciesId": "serperior",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "tepig-to-pignite-1",
+      "fromSpeciesId": "tepig",
+      "toSpeciesId": "pignite",
+      "method": "Level",
+      "parameter": "17",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pignite-to-emboar-1",
+      "fromSpeciesId": "pignite",
+      "toSpeciesId": "emboar",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "oshawott-to-dewott-1",
+      "fromSpeciesId": "oshawott",
+      "toSpeciesId": "dewott",
+      "method": "Level",
+      "parameter": "17",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "dewott-to-samurott-1",
+      "fromSpeciesId": "dewott",
+      "toSpeciesId": "samurott",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "dewott-to-samurotth-2",
+      "fromSpeciesId": "dewott",
+      "toSpeciesId": "samurotth",
+      "method": "Level Hold Hisui Rock",
+      "parameter": "36",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "patrat-to-watchog-1",
+      "fromSpeciesId": "patrat",
+      "toSpeciesId": "watchog",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "lillipup-to-herdier-1",
+      "fromSpeciesId": "lillipup",
+      "toSpeciesId": "herdier",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "herdier-to-stoutland-1",
+      "fromSpeciesId": "herdier",
+      "toSpeciesId": "stoutland",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "purrloin-to-liepard-1",
+      "fromSpeciesId": "purrloin",
+      "toSpeciesId": "liepard",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pansage-to-simisage-1",
+      "fromSpeciesId": "pansage",
+      "toSpeciesId": "simisage",
+      "method": "Item",
+      "parameter": "ITEM_LEAF_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pansear-to-simisear-1",
+      "fromSpeciesId": "pansear",
+      "toSpeciesId": "simisear",
+      "method": "Item",
+      "parameter": "ITEM_FIRE_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "panpour-to-simipour-1",
+      "fromSpeciesId": "panpour",
+      "toSpeciesId": "simipour",
+      "method": "Item",
+      "parameter": "ITEM_WATER_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "munna-to-musharna-1",
+      "fromSpeciesId": "munna",
+      "toSpeciesId": "musharna",
+      "method": "Item",
+      "parameter": "ITEM_MOON_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pidove-to-tranquill-1",
+      "fromSpeciesId": "pidove",
+      "toSpeciesId": "tranquill",
+      "method": "Level",
+      "parameter": "21",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "tranquill-to-unfezant-1",
+      "fromSpeciesId": "tranquill",
+      "toSpeciesId": "unfezant",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "blitzle-to-zebstrika-1",
+      "fromSpeciesId": "blitzle",
+      "toSpeciesId": "zebstrika",
+      "method": "Level",
+      "parameter": "27",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "roggenrola-to-boldore-1",
+      "fromSpeciesId": "roggenrola",
+      "toSpeciesId": "boldore",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "boldore-to-gigalith-1",
+      "fromSpeciesId": "boldore",
+      "toSpeciesId": "gigalith",
+      "method": "Item",
+      "parameter": "ITEM_LINK_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "boldore-to-gigalith-2",
+      "fromSpeciesId": "boldore",
+      "toSpeciesId": "gigalith",
+      "method": "Trade",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "woobat-to-swoobat-1",
+      "fromSpeciesId": "woobat",
+      "toSpeciesId": "swoobat",
+      "method": "Friendship",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "drilbur-to-excadrill-1",
+      "fromSpeciesId": "drilbur",
+      "toSpeciesId": "excadrill",
+      "method": "Level",
+      "parameter": "31",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "audino-to-audinomega-1",
+      "fromSpeciesId": "audino",
+      "toSpeciesId": "audinomega",
+      "method": "Mega",
+      "parameter": "ITEM_AUDINITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "timburr-to-gurdurr-1",
+      "fromSpeciesId": "timburr",
+      "toSpeciesId": "gurdurr",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "gurdurr-to-conkeldurr-1",
+      "fromSpeciesId": "gurdurr",
+      "toSpeciesId": "conkeldurr",
+      "method": "Trade",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "gurdurr-to-conkeldurr-2",
+      "fromSpeciesId": "gurdurr",
+      "toSpeciesId": "conkeldurr",
+      "method": "Item",
+      "parameter": "ITEM_LINK_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "tympole-to-palpitoad-1",
+      "fromSpeciesId": "tympole",
+      "toSpeciesId": "palpitoad",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "palpitoad-to-seismitoad-1",
+      "fromSpeciesId": "palpitoad",
+      "toSpeciesId": "seismitoad",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "sewaddle-to-swadloon-1",
+      "fromSpeciesId": "sewaddle",
+      "toSpeciesId": "swadloon",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "swadloon-to-leavanny-1",
+      "fromSpeciesId": "swadloon",
+      "toSpeciesId": "leavanny",
+      "method": "Friendship",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "venipede-to-whirlipede-1",
+      "fromSpeciesId": "venipede",
+      "toSpeciesId": "whirlipede",
+      "method": "Level",
+      "parameter": "22",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "whirlipede-to-scolipede-1",
+      "fromSpeciesId": "whirlipede",
+      "toSpeciesId": "scolipede",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "cottonee-to-whimsicott-1",
+      "fromSpeciesId": "cottonee",
+      "toSpeciesId": "whimsicott",
+      "method": "Item",
+      "parameter": "ITEM_SUN_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "petilil-to-lilligant-1",
+      "fromSpeciesId": "petilil",
+      "toSpeciesId": "lilligant",
+      "method": "Item",
+      "parameter": "ITEM_SUN_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "petilil-to-lilliganth-2",
+      "fromSpeciesId": "petilil",
+      "toSpeciesId": "lilliganth",
+      "method": "Item Hold Hisui Rock",
+      "parameter": "ITEM_SUN_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "sandile-to-krokorok-1",
+      "fromSpeciesId": "sandile",
+      "toSpeciesId": "krokorok",
+      "method": "Level",
+      "parameter": "29",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "krokorok-to-krookodile-1",
+      "fromSpeciesId": "krokorok",
+      "toSpeciesId": "krookodile",
+      "method": "Level",
+      "parameter": "40",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "darumaka-to-darmanitan-1",
+      "fromSpeciesId": "darumaka",
+      "toSpeciesId": "darmanitan",
+      "method": "Level",
+      "parameter": "35",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "dwebble-to-crustle-1",
+      "fromSpeciesId": "dwebble",
+      "toSpeciesId": "crustle",
+      "method": "Level",
+      "parameter": "34",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "scraggy-to-scrafty-1",
+      "fromSpeciesId": "scraggy",
+      "toSpeciesId": "scrafty",
+      "method": "Level",
+      "parameter": "39",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "yamask-to-cofagrigus-1",
+      "fromSpeciesId": "yamask",
+      "toSpeciesId": "cofagrigus",
+      "method": "Level",
+      "parameter": "34",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "tirtouga-to-carracosta-1",
+      "fromSpeciesId": "tirtouga",
+      "toSpeciesId": "carracosta",
+      "method": "Level",
+      "parameter": "37",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "archen-to-archeops-1",
+      "fromSpeciesId": "archen",
+      "toSpeciesId": "archeops",
+      "method": "Level",
+      "parameter": "37",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "trubbish-to-garbodor-1",
+      "fromSpeciesId": "trubbish",
+      "toSpeciesId": "garbodor",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "garbodor-to-garbodorgiga-1",
+      "fromSpeciesId": "garbodor",
+      "toSpeciesId": "garbodorgiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "zorua-to-zoroark-1",
+      "fromSpeciesId": "zorua",
+      "toSpeciesId": "zoroark",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "minccino-to-cinccino-1",
+      "fromSpeciesId": "minccino",
+      "toSpeciesId": "cinccino",
+      "method": "Item",
+      "parameter": "ITEM_SHINY_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "gothita-to-gothorita-1",
+      "fromSpeciesId": "gothita",
+      "toSpeciesId": "gothorita",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "gothorita-to-gothitelle-1",
+      "fromSpeciesId": "gothorita",
+      "toSpeciesId": "gothitelle",
+      "method": "Level",
+      "parameter": "41",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "solosis-to-duosion-1",
+      "fromSpeciesId": "solosis",
+      "toSpeciesId": "duosion",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "duosion-to-reuniclus-1",
+      "fromSpeciesId": "duosion",
+      "toSpeciesId": "reuniclus",
+      "method": "Level",
+      "parameter": "41",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "ducklett-to-swanna-1",
+      "fromSpeciesId": "ducklett",
+      "toSpeciesId": "swanna",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "vanillite-to-vanillish-1",
+      "fromSpeciesId": "vanillite",
+      "toSpeciesId": "vanillish",
+      "method": "Level",
+      "parameter": "24",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "vanillish-to-vanilluxe-1",
+      "fromSpeciesId": "vanillish",
+      "toSpeciesId": "vanilluxe",
+      "method": "Level",
+      "parameter": "42",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "deerling-to-sawsbuck-1",
+      "fromSpeciesId": "deerling",
+      "toSpeciesId": "sawsbuck",
+      "method": "Level",
+      "parameter": "34",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "karrablast-to-escavalier-1",
+      "fromSpeciesId": "karrablast",
+      "toSpeciesId": "escavalier",
+      "method": "Item",
+      "parameter": "ITEM_LINK_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "karrablast-to-escavalier-2",
+      "fromSpeciesId": "karrablast",
+      "toSpeciesId": "escavalier",
+      "method": "Trade",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "foongus-to-amoonguss-1",
+      "fromSpeciesId": "foongus",
+      "toSpeciesId": "amoonguss",
+      "method": "Level",
+      "parameter": "39",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "frillish-to-jellicent-1",
+      "fromSpeciesId": "frillish",
+      "toSpeciesId": "jellicent",
+      "method": "Level",
+      "parameter": "40",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "joltik-to-galvantula-1",
+      "fromSpeciesId": "joltik",
+      "toSpeciesId": "galvantula",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "ferroseed-to-ferrothorn-1",
+      "fromSpeciesId": "ferroseed",
+      "toSpeciesId": "ferrothorn",
+      "method": "Level",
+      "parameter": "40",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "klink-to-klang-1",
+      "fromSpeciesId": "klink",
+      "toSpeciesId": "klang",
+      "method": "Level",
+      "parameter": "35",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "klang-to-klinklang-1",
+      "fromSpeciesId": "klang",
+      "toSpeciesId": "klinklang",
+      "method": "Level",
+      "parameter": "45",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "tynamo-to-eelektrik-1",
+      "fromSpeciesId": "tynamo",
+      "toSpeciesId": "eelektrik",
+      "method": "Level",
+      "parameter": "39",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "eelektrik-to-eelektross-1",
+      "fromSpeciesId": "eelektrik",
+      "toSpeciesId": "eelektross",
+      "method": "Item",
+      "parameter": "ITEM_THUNDER_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "elgyem-to-beheeyem-1",
+      "fromSpeciesId": "elgyem",
+      "toSpeciesId": "beheeyem",
+      "method": "Level",
+      "parameter": "42",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "litwick-to-lampent-1",
+      "fromSpeciesId": "litwick",
+      "toSpeciesId": "lampent",
+      "method": "Level",
+      "parameter": "41",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "lampent-to-chandelure-1",
+      "fromSpeciesId": "lampent",
+      "toSpeciesId": "chandelure",
+      "method": "Item",
+      "parameter": "ITEM_DUSK_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "axew-to-fraxure-1",
+      "fromSpeciesId": "axew",
+      "toSpeciesId": "fraxure",
+      "method": "Level",
+      "parameter": "38",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "fraxure-to-haxorus-1",
+      "fromSpeciesId": "fraxure",
+      "toSpeciesId": "haxorus",
+      "method": "Level",
+      "parameter": "48",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "cubchoo-to-beartic-1",
+      "fromSpeciesId": "cubchoo",
+      "toSpeciesId": "beartic",
+      "method": "Level",
+      "parameter": "37",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "shelmet-to-accelgor-1",
+      "fromSpeciesId": "shelmet",
+      "toSpeciesId": "accelgor",
+      "method": "Item",
+      "parameter": "ITEM_LINK_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "shelmet-to-accelgor-2",
+      "fromSpeciesId": "shelmet",
+      "toSpeciesId": "accelgor",
+      "method": "Trade",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "mienfoo-to-mienshao-1",
+      "fromSpeciesId": "mienfoo",
+      "toSpeciesId": "mienshao",
+      "method": "Level",
+      "parameter": "46",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "golett-to-golurk-1",
+      "fromSpeciesId": "golett",
+      "toSpeciesId": "golurk",
+      "method": "Level",
+      "parameter": "43",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pawniard-to-bisharp-1",
+      "fromSpeciesId": "pawniard",
+      "toSpeciesId": "bisharp",
+      "method": "Level",
+      "parameter": "52",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "rufflet-to-braviary-1",
+      "fromSpeciesId": "rufflet",
+      "toSpeciesId": "braviary",
+      "method": "Level",
+      "parameter": "50",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "rufflet-to-braviaryh-2",
+      "fromSpeciesId": "rufflet",
+      "toSpeciesId": "braviaryh",
+      "method": "Level Hold Hisui Rock",
+      "parameter": "50",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "vullaby-to-mandibuzz-1",
+      "fromSpeciesId": "vullaby",
+      "toSpeciesId": "mandibuzz",
+      "method": "Level",
+      "parameter": "50",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "deino-to-zweilous-1",
+      "fromSpeciesId": "deino",
+      "toSpeciesId": "zweilous",
+      "method": "Level",
+      "parameter": "50",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "zweilous-to-hydreigon-1",
+      "fromSpeciesId": "zweilous",
+      "toSpeciesId": "hydreigon",
+      "method": "Level",
+      "parameter": "64",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "larvesta-to-volcarona-1",
+      "fromSpeciesId": "larvesta",
+      "toSpeciesId": "volcarona",
+      "method": "Level",
+      "parameter": "59",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "frillishf-to-jellicentf-1",
+      "fromSpeciesId": "frillishf",
+      "toSpeciesId": "jellicentf",
+      "method": "Level",
+      "parameter": "40",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "burmysandy-to-wormadamsandy-1",
+      "fromSpeciesId": "burmysandy",
+      "toSpeciesId": "wormadamsandy",
+      "method": "Female Level",
+      "parameter": "20",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "burmysandy-to-mothim-2",
+      "fromSpeciesId": "burmysandy",
+      "toSpeciesId": "mothim",
+      "method": "Male Level",
+      "parameter": "20",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "burmytrash-to-wormadamtrash-1",
+      "fromSpeciesId": "burmytrash",
+      "toSpeciesId": "wormadamtrash",
+      "method": "Female Level",
+      "parameter": "20",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "burmytrash-to-mothim-2",
+      "fromSpeciesId": "burmytrash",
+      "toSpeciesId": "mothim",
+      "method": "Male Level",
+      "parameter": "20",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "shelloseast-to-gastrodoneast-1",
+      "fromSpeciesId": "shelloseast",
+      "toSpeciesId": "gastrodoneast",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "deerlingsummer-to-sawsbucksummer-1",
+      "fromSpeciesId": "deerlingsummer",
+      "toSpeciesId": "sawsbucksummer",
+      "method": "Level",
+      "parameter": "34",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "deerlingautumn-to-sawsbuckautumn-1",
+      "fromSpeciesId": "deerlingautumn",
+      "toSpeciesId": "sawsbuckautumn",
+      "method": "Level",
+      "parameter": "34",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "deerlingwinter-to-sawsbuckwinter-1",
+      "fromSpeciesId": "deerlingwinter",
+      "toSpeciesId": "sawsbuckwinter",
+      "method": "Level",
+      "parameter": "34",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "hippopotasf-to-hippowdonf-1",
+      "fromSpeciesId": "hippopotasf",
+      "toSpeciesId": "hippowdonf",
+      "method": "Level",
+      "parameter": "34",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "chespin-to-quilladin-1",
+      "fromSpeciesId": "chespin",
+      "toSpeciesId": "quilladin",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "quilladin-to-chesnaught-1",
+      "fromSpeciesId": "quilladin",
+      "toSpeciesId": "chesnaught",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "fennekin-to-braixen-1",
+      "fromSpeciesId": "fennekin",
+      "toSpeciesId": "braixen",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "braixen-to-delphox-1",
+      "fromSpeciesId": "braixen",
+      "toSpeciesId": "delphox",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "froakie-to-frogadier-1",
+      "fromSpeciesId": "froakie",
+      "toSpeciesId": "frogadier",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "frogadier-to-greninja-1",
+      "fromSpeciesId": "frogadier",
+      "toSpeciesId": "greninja",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "bunnelby-to-diggersby-1",
+      "fromSpeciesId": "bunnelby",
+      "toSpeciesId": "diggersby",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "fletchling-to-fletchinder-1",
+      "fromSpeciesId": "fletchling",
+      "toSpeciesId": "fletchinder",
+      "method": "Level",
+      "parameter": "17",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "fletchinder-to-talonflame-1",
+      "fromSpeciesId": "fletchinder",
+      "toSpeciesId": "talonflame",
+      "method": "Level",
+      "parameter": "35",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "scatterbug-to-spewpa-1",
+      "fromSpeciesId": "scatterbug",
+      "toSpeciesId": "spewpa",
+      "method": "Level",
+      "parameter": "9",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "spewpa-to-vivillon-1",
+      "fromSpeciesId": "spewpa",
+      "toSpeciesId": "vivillon",
+      "method": "Level",
+      "parameter": "12",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "litleo-to-pyroar-1",
+      "fromSpeciesId": "litleo",
+      "toSpeciesId": "pyroar",
+      "method": "Level",
+      "parameter": "35",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "flabebe-to-floette-1",
+      "fromSpeciesId": "flabebe",
+      "toSpeciesId": "floette",
+      "method": "Level",
+      "parameter": "19",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "floette-to-florges-1",
+      "fromSpeciesId": "floette",
+      "toSpeciesId": "florges",
+      "method": "Item",
+      "parameter": "ITEM_SHINY_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "skiddo-to-gogoat-1",
+      "fromSpeciesId": "skiddo",
+      "toSpeciesId": "gogoat",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pancham-to-pangoro-1",
+      "fromSpeciesId": "pancham",
+      "toSpeciesId": "pangoro",
+      "method": "Type In Party",
+      "parameter": "32",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "espurr-to-meowstic-1",
+      "fromSpeciesId": "espurr",
+      "toSpeciesId": "meowstic",
+      "method": "Male Level",
+      "parameter": "25",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "espurr-to-meowsticfemale-2",
+      "fromSpeciesId": "espurr",
+      "toSpeciesId": "meowsticfemale",
+      "method": "Female Level",
+      "parameter": "25",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "honedge-to-doublade-1",
+      "fromSpeciesId": "honedge",
+      "toSpeciesId": "doublade",
+      "method": "Level",
+      "parameter": "35",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "doublade-to-aegislash-1",
+      "fromSpeciesId": "doublade",
+      "toSpeciesId": "aegislash",
+      "method": "Item",
+      "parameter": "ITEM_DUSK_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "spritzee-to-aromatisse-1",
+      "fromSpeciesId": "spritzee",
+      "toSpeciesId": "aromatisse",
+      "method": "Item",
+      "parameter": "ITEM_SACHET",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "spritzee-to-aromatisse-2",
+      "fromSpeciesId": "spritzee",
+      "toSpeciesId": "aromatisse",
+      "method": "Trade Item",
+      "parameter": "ITEM_SACHET",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "swirlix-to-slurpuff-1",
+      "fromSpeciesId": "swirlix",
+      "toSpeciesId": "slurpuff",
+      "method": "Item",
+      "parameter": "ITEM_WHIPPED_DREAM",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "swirlix-to-slurpuff-2",
+      "fromSpeciesId": "swirlix",
+      "toSpeciesId": "slurpuff",
+      "method": "Trade Item",
+      "parameter": "ITEM_WHIPPED_DREAM",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "inkay-to-malamar-1",
+      "fromSpeciesId": "inkay",
+      "toSpeciesId": "malamar",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "binacle-to-barbaracle-1",
+      "fromSpeciesId": "binacle",
+      "toSpeciesId": "barbaracle",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "skrelp-to-dragalge-1",
+      "fromSpeciesId": "skrelp",
+      "toSpeciesId": "dragalge",
+      "method": "Level",
+      "parameter": "48",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "clauncher-to-clawitzer-1",
+      "fromSpeciesId": "clauncher",
+      "toSpeciesId": "clawitzer",
+      "method": "Level",
+      "parameter": "37",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "helioptile-to-heliolisk-1",
+      "fromSpeciesId": "helioptile",
+      "toSpeciesId": "heliolisk",
+      "method": "Item",
+      "parameter": "ITEM_SUN_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "tyrunt-to-tyrantrum-1",
+      "fromSpeciesId": "tyrunt",
+      "toSpeciesId": "tyrantrum",
+      "method": "Level Day",
+      "parameter": "39",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "amaura-to-aurorus-1",
+      "fromSpeciesId": "amaura",
+      "toSpeciesId": "aurorus",
+      "method": "Level Night",
+      "parameter": "39",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "goomy-to-sliggoo-1",
+      "fromSpeciesId": "goomy",
+      "toSpeciesId": "sliggoo",
+      "method": "Level",
+      "parameter": "40",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "goomy-to-sliggooh-2",
+      "fromSpeciesId": "goomy",
+      "toSpeciesId": "sliggooh",
+      "method": "Level Hold Hisui Rock",
+      "parameter": "40",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "sliggoo-to-goodra-1",
+      "fromSpeciesId": "sliggoo",
+      "toSpeciesId": "goodra",
+      "method": "Rainy Foggy Ow",
+      "parameter": "50",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "phantump-to-trevenant-1",
+      "fromSpeciesId": "phantump",
+      "toSpeciesId": "trevenant",
+      "method": "Trade",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "phantump-to-trevenant-2",
+      "fromSpeciesId": "phantump",
+      "toSpeciesId": "trevenant",
+      "method": "Item",
+      "parameter": "ITEM_LINK_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pumpkaboo-to-gourgeist-1",
+      "fromSpeciesId": "pumpkaboo",
+      "toSpeciesId": "gourgeist",
+      "method": "Trade",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pumpkaboo-to-gourgeist-2",
+      "fromSpeciesId": "pumpkaboo",
+      "toSpeciesId": "gourgeist",
+      "method": "Item",
+      "parameter": "ITEM_LINK_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "bergmite-to-avalugg-1",
+      "fromSpeciesId": "bergmite",
+      "toSpeciesId": "avalugg",
+      "method": "Level",
+      "parameter": "37",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "bergmite-to-avaluggh-2",
+      "fromSpeciesId": "bergmite",
+      "toSpeciesId": "avaluggh",
+      "method": "Level Hold Hisui Rock",
+      "parameter": "37",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "noibat-to-noivern-1",
+      "fromSpeciesId": "noibat",
+      "toSpeciesId": "noivern",
+      "method": "Level",
+      "parameter": "48",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "diancie-to-dianciemega-1",
+      "fromSpeciesId": "diancie",
+      "toSpeciesId": "dianciemega",
+      "method": "Mega",
+      "parameter": "ITEM_DIANCITE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "flabebeblue-to-floetteblue-1",
+      "fromSpeciesId": "flabebeblue",
+      "toSpeciesId": "floetteblue",
+      "method": "Level",
+      "parameter": "19",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "flabebeorange-to-floetteorange-1",
+      "fromSpeciesId": "flabebeorange",
+      "toSpeciesId": "floetteorange",
+      "method": "Level",
+      "parameter": "19",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "flabebeyellow-to-floetteyellow-1",
+      "fromSpeciesId": "flabebeyellow",
+      "toSpeciesId": "floetteyellow",
+      "method": "Level",
+      "parameter": "19",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "flabebewhite-to-floettewhite-1",
+      "fromSpeciesId": "flabebewhite",
+      "toSpeciesId": "floettewhite",
+      "method": "Level",
+      "parameter": "19",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "floetteblue-to-florgesblue-1",
+      "fromSpeciesId": "floetteblue",
+      "toSpeciesId": "florgesblue",
+      "method": "Item",
+      "parameter": "ITEM_SHINY_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "floetteorange-to-florgesorange-1",
+      "fromSpeciesId": "floetteorange",
+      "toSpeciesId": "florgesorange",
+      "method": "Item",
+      "parameter": "ITEM_SHINY_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "floetteyellow-to-florgesyellow-1",
+      "fromSpeciesId": "floetteyellow",
+      "toSpeciesId": "florgesyellow",
+      "method": "Item",
+      "parameter": "ITEM_SHINY_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "floettewhite-to-florgeswhite-1",
+      "fromSpeciesId": "floettewhite",
+      "toSpeciesId": "florgeswhite",
+      "method": "Item",
+      "parameter": "ITEM_SHINY_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pumpkabooxl-to-gourgeistxl-1",
+      "fromSpeciesId": "pumpkabooxl",
+      "toSpeciesId": "gourgeistxl",
+      "method": "Trade",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pumpkabooxl-to-gourgeistxl-2",
+      "fromSpeciesId": "pumpkabooxl",
+      "toSpeciesId": "gourgeistxl",
+      "method": "Item",
+      "parameter": "ITEM_LINK_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pumpkabool-to-gourgeistl-1",
+      "fromSpeciesId": "pumpkabool",
+      "toSpeciesId": "gourgeistl",
+      "method": "Trade",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pumpkabool-to-gourgeistl-2",
+      "fromSpeciesId": "pumpkabool",
+      "toSpeciesId": "gourgeistl",
+      "method": "Item",
+      "parameter": "ITEM_LINK_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pumpkaboom-to-gourgeistm-1",
+      "fromSpeciesId": "pumpkaboom",
+      "toSpeciesId": "gourgeistm",
+      "method": "Trade",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pumpkaboom-to-gourgeistm-2",
+      "fromSpeciesId": "pumpkaboom",
+      "toSpeciesId": "gourgeistm",
+      "method": "Item",
+      "parameter": "ITEM_LINK_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "groudonprimal-to-groudon-1",
+      "fromSpeciesId": "groudonprimal",
+      "toSpeciesId": "groudon",
+      "method": "Mega",
+      "parameter": "ITEM_NONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "kyogreprimal-to-kyogre-1",
+      "fromSpeciesId": "kyogreprimal",
+      "toSpeciesId": "kyogre",
+      "method": "Mega",
+      "parameter": "ITEM_NONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "rowlet-to-dartrix-1",
+      "fromSpeciesId": "rowlet",
+      "toSpeciesId": "dartrix",
+      "method": "Level",
+      "parameter": "17",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "dartrix-to-decidueye-1",
+      "fromSpeciesId": "dartrix",
+      "toSpeciesId": "decidueye",
+      "method": "Level",
+      "parameter": "34",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "dartrix-to-decidueyeh-2",
+      "fromSpeciesId": "dartrix",
+      "toSpeciesId": "decidueyeh",
+      "method": "Level Hold Hisui Rock",
+      "parameter": "34",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "litten-to-torracat-1",
+      "fromSpeciesId": "litten",
+      "toSpeciesId": "torracat",
+      "method": "Level",
+      "parameter": "17",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "torracat-to-incineroar-1",
+      "fromSpeciesId": "torracat",
+      "toSpeciesId": "incineroar",
+      "method": "Level",
+      "parameter": "34",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "popplio-to-brionne-1",
+      "fromSpeciesId": "popplio",
+      "toSpeciesId": "brionne",
+      "method": "Level",
+      "parameter": "17",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "brionne-to-primarina-1",
+      "fromSpeciesId": "brionne",
+      "toSpeciesId": "primarina",
+      "method": "Level",
+      "parameter": "34",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pikipek-to-trumbeak-1",
+      "fromSpeciesId": "pikipek",
+      "toSpeciesId": "trumbeak",
+      "method": "Level",
+      "parameter": "14",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "trumbeak-to-toucannon-1",
+      "fromSpeciesId": "trumbeak",
+      "toSpeciesId": "toucannon",
+      "method": "Level",
+      "parameter": "28",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "yungoos-to-gumshoos-1",
+      "fromSpeciesId": "yungoos",
+      "toSpeciesId": "gumshoos",
+      "method": "Level Day",
+      "parameter": "20",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "grubbin-to-charjabug-1",
+      "fromSpeciesId": "grubbin",
+      "toSpeciesId": "charjabug",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "charjabug-to-vikavolt-1",
+      "fromSpeciesId": "charjabug",
+      "toSpeciesId": "vikavolt",
+      "method": "Map",
+      "parameter": "MAPSEC_THUNDERCAP_MOUNTAIN",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "charjabug-to-vikavolt-2",
+      "fromSpeciesId": "charjabug",
+      "toSpeciesId": "vikavolt",
+      "method": "Item",
+      "parameter": "ITEM_THUNDER_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "crabrawler-to-crabominable-1",
+      "fromSpeciesId": "crabrawler",
+      "toSpeciesId": "crabominable",
+      "method": "Item",
+      "parameter": "ITEM_ICE_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "crabrawler-to-crabominable-2",
+      "fromSpeciesId": "crabrawler",
+      "toSpeciesId": "crabominable",
+      "method": "Map",
+      "parameter": "MAPSEC_FROST_MOUNTAIN",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "crabrawler-to-crabominable-3",
+      "fromSpeciesId": "crabrawler",
+      "toSpeciesId": "crabominable",
+      "method": "Map",
+      "parameter": "MAPSEC_ROUTE_8",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "crabrawler-to-crabominable-4",
+      "fromSpeciesId": "crabrawler",
+      "toSpeciesId": "crabominable",
+      "method": "Map",
+      "parameter": "MAPSEC_BLIZZARD_CITY",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "crabrawler-to-crabominable-5",
+      "fromSpeciesId": "crabrawler",
+      "toSpeciesId": "crabominable",
+      "method": "Map",
+      "parameter": "MAPSEC_FROZEN_FOREST",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "cutiefly-to-ribombee-1",
+      "fromSpeciesId": "cutiefly",
+      "toSpeciesId": "ribombee",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "rockruff-to-lycanroc-1",
+      "fromSpeciesId": "rockruff",
+      "toSpeciesId": "lycanroc",
+      "method": "Level Day",
+      "parameter": "25",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "rockruff-to-lycanrocn-2",
+      "fromSpeciesId": "rockruff",
+      "toSpeciesId": "lycanrocn",
+      "method": "Level Night",
+      "parameter": "25",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "rockruff-to-lycanrocdusk-3",
+      "fromSpeciesId": "rockruff",
+      "toSpeciesId": "lycanrocdusk",
+      "method": "Level Specific Time Range",
+      "parameter": "25",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "mareanie-to-toxapex-1",
+      "fromSpeciesId": "mareanie",
+      "toSpeciesId": "toxapex",
+      "method": "Level",
+      "parameter": "38",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "mudbray-to-mudsdale-1",
+      "fromSpeciesId": "mudbray",
+      "toSpeciesId": "mudsdale",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "dewpider-to-araquanid-1",
+      "fromSpeciesId": "dewpider",
+      "toSpeciesId": "araquanid",
+      "method": "Level",
+      "parameter": "22",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "fomantis-to-lurantis-1",
+      "fromSpeciesId": "fomantis",
+      "toSpeciesId": "lurantis",
+      "method": "Level Day",
+      "parameter": "34",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "morelull-to-shiinotic-1",
+      "fromSpeciesId": "morelull",
+      "toSpeciesId": "shiinotic",
+      "method": "Level",
+      "parameter": "24",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "salandit-to-salazzle-1",
+      "fromSpeciesId": "salandit",
+      "toSpeciesId": "salazzle",
+      "method": "Female Level",
+      "parameter": "33",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "stufful-to-bewear-1",
+      "fromSpeciesId": "stufful",
+      "toSpeciesId": "bewear",
+      "method": "Level",
+      "parameter": "27",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "bounsweet-to-steenee-1",
+      "fromSpeciesId": "bounsweet",
+      "toSpeciesId": "steenee",
+      "method": "Level",
+      "parameter": "18",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "steenee-to-tsareena-1",
+      "fromSpeciesId": "steenee",
+      "toSpeciesId": "tsareena",
+      "method": "Move",
+      "parameter": "MOVE_STOMP",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "wimpod-to-golisopod-1",
+      "fromSpeciesId": "wimpod",
+      "toSpeciesId": "golisopod",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "sandygast-to-palossand-1",
+      "fromSpeciesId": "sandygast",
+      "toSpeciesId": "palossand",
+      "method": "Level",
+      "parameter": "42",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "typenull-to-silvally-1",
+      "fromSpeciesId": "typenull",
+      "toSpeciesId": "silvally",
+      "method": "Friendship",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "jangmoo-to-hakamoo-1",
+      "fromSpeciesId": "jangmoo",
+      "toSpeciesId": "hakamoo",
+      "method": "Level",
+      "parameter": "35",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "hakamoo-to-kommoo-1",
+      "fromSpeciesId": "hakamoo",
+      "toSpeciesId": "kommoo",
+      "method": "Level",
+      "parameter": "45",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "cosmog-to-cosmoem-1",
+      "fromSpeciesId": "cosmog",
+      "toSpeciesId": "cosmoem",
+      "method": "Level",
+      "parameter": "43",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "cosmoem-to-solgaleo-1",
+      "fromSpeciesId": "cosmoem",
+      "toSpeciesId": "solgaleo",
+      "method": "Level Day",
+      "parameter": "53",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "cosmoem-to-lunala-2",
+      "fromSpeciesId": "cosmoem",
+      "toSpeciesId": "lunala",
+      "method": "Level Night",
+      "parameter": "53",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "rattataa-to-raticatea-1",
+      "fromSpeciesId": "rattataa",
+      "toSpeciesId": "raticatea",
+      "method": "Level Night",
+      "parameter": "20",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "sandshrewa-to-sandslasha-1",
+      "fromSpeciesId": "sandshrewa",
+      "toSpeciesId": "sandslasha",
+      "method": "Item",
+      "parameter": "ITEM_ICE_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "vulpixa-to-ninetalesa-1",
+      "fromSpeciesId": "vulpixa",
+      "toSpeciesId": "ninetalesa",
+      "method": "Item",
+      "parameter": "ITEM_ICE_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "digletta-to-dugtrioa-1",
+      "fromSpeciesId": "digletta",
+      "toSpeciesId": "dugtrioa",
+      "method": "Level",
+      "parameter": "26",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "meowtha-to-persiana-1",
+      "fromSpeciesId": "meowtha",
+      "toSpeciesId": "persiana",
+      "method": "Friendship",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "geodudea-to-gravelera-1",
+      "fromSpeciesId": "geodudea",
+      "toSpeciesId": "gravelera",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "gravelera-to-golema-1",
+      "fromSpeciesId": "gravelera",
+      "toSpeciesId": "golema",
+      "method": "Item",
+      "parameter": "ITEM_LINK_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "gravelera-to-golema-2",
+      "fromSpeciesId": "gravelera",
+      "toSpeciesId": "golema",
+      "method": "Trade",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "grimera-to-muka-1",
+      "fromSpeciesId": "grimera",
+      "toSpeciesId": "muka",
+      "method": "Level",
+      "parameter": "38",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "exeggcutea-to-exeggutora-1",
+      "fromSpeciesId": "exeggcutea",
+      "toSpeciesId": "exeggutora",
+      "method": "Item",
+      "parameter": "ITEM_LEAF_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "cubonea-to-marowaka-1",
+      "fromSpeciesId": "cubonea",
+      "toSpeciesId": "marowaka",
+      "method": "Level Night",
+      "parameter": "28",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "poipole-to-naganadel-1",
+      "fromSpeciesId": "poipole",
+      "toSpeciesId": "naganadel",
+      "method": "Move",
+      "parameter": "MOVE_DRAGONPULSE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "necrozmaduskmane-to-necrozmaultra-1",
+      "fromSpeciesId": "necrozmaduskmane",
+      "toSpeciesId": "necrozmaultra",
+      "method": "Mega",
+      "parameter": "ITEM_ULTRANECROZIUM_Z",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "necrozmadawnwings-to-necrozmaultra-1",
+      "fromSpeciesId": "necrozmadawnwings",
+      "toSpeciesId": "necrozmaultra",
+      "method": "Mega",
+      "parameter": "ITEM_ULTRANECROZIUM_Z",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "necrozmaultra-to-necrozmaduskmane-1",
+      "fromSpeciesId": "necrozmaultra",
+      "toSpeciesId": "necrozmaduskmane",
+      "method": "Mega",
+      "parameter": "ITEM_NONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "necrozmaultra-to-necrozmadawnwings-2",
+      "fromSpeciesId": "necrozmaultra",
+      "toSpeciesId": "necrozmadawnwings",
+      "method": "Mega",
+      "parameter": "ITEM_NONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "meltan-to-melmetal-1",
+      "fromSpeciesId": "meltan",
+      "toSpeciesId": "melmetal",
+      "method": "Item",
+      "parameter": "ITEM_METAL_COAT",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "meltan-to-melmetal-2",
+      "fromSpeciesId": "meltan",
+      "toSpeciesId": "melmetal",
+      "method": "Item",
+      "parameter": "ITEM_METAL_POWDER",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "melmetal-to-melmetalgiga-1",
+      "fromSpeciesId": "melmetal",
+      "toSpeciesId": "melmetalgiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pikachusurfing-to-pikachugiga-1",
+      "fromSpeciesId": "pikachusurfing",
+      "toSpeciesId": "pikachugiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pikachuflying-to-pikachugiga-1",
+      "fromSpeciesId": "pikachuflying",
+      "toSpeciesId": "pikachugiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pikachucosplay-to-pikachugiga-1",
+      "fromSpeciesId": "pikachucosplay",
+      "toSpeciesId": "pikachugiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pikachulibre-to-pikachugiga-1",
+      "fromSpeciesId": "pikachulibre",
+      "toSpeciesId": "pikachugiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pikachupopstar-to-pikachugiga-1",
+      "fromSpeciesId": "pikachupopstar",
+      "toSpeciesId": "pikachugiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pikachurockstar-to-pikachugiga-1",
+      "fromSpeciesId": "pikachurockstar",
+      "toSpeciesId": "pikachugiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pikachubelle-to-pikachugiga-1",
+      "fromSpeciesId": "pikachubelle",
+      "toSpeciesId": "pikachugiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pikachuphd-to-pikachugiga-1",
+      "fromSpeciesId": "pikachuphd",
+      "toSpeciesId": "pikachugiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pikachucaporiginal-to-pikachugiga-1",
+      "fromSpeciesId": "pikachucaporiginal",
+      "toSpeciesId": "pikachugiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pikachucaphoenn-to-pikachugiga-1",
+      "fromSpeciesId": "pikachucaphoenn",
+      "toSpeciesId": "pikachugiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pikachucapsinnoh-to-pikachugiga-1",
+      "fromSpeciesId": "pikachucapsinnoh",
+      "toSpeciesId": "pikachugiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pikachucapunova-to-pikachugiga-1",
+      "fromSpeciesId": "pikachucapunova",
+      "toSpeciesId": "pikachugiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pikachucapkalos-to-pikachugiga-1",
+      "fromSpeciesId": "pikachucapkalos",
+      "toSpeciesId": "pikachugiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pikachucapalola-to-pikachugiga-1",
+      "fromSpeciesId": "pikachucapalola",
+      "toSpeciesId": "pikachugiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "pikachucappartner-to-pikachugiga-1",
+      "fromSpeciesId": "pikachucappartner",
+      "toSpeciesId": "pikachugiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "grookey-to-thwackey-1",
+      "fromSpeciesId": "grookey",
+      "toSpeciesId": "thwackey",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "thwackey-to-rillaboom-1",
+      "fromSpeciesId": "thwackey",
+      "toSpeciesId": "rillaboom",
+      "method": "Level",
+      "parameter": "35",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "rillaboom-to-rillaboomgiga-1",
+      "fromSpeciesId": "rillaboom",
+      "toSpeciesId": "rillaboomgiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "scorbunny-to-raboot-1",
+      "fromSpeciesId": "scorbunny",
+      "toSpeciesId": "raboot",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "raboot-to-cinderace-1",
+      "fromSpeciesId": "raboot",
+      "toSpeciesId": "cinderace",
+      "method": "Level",
+      "parameter": "35",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "cinderace-to-cinderacegiga-1",
+      "fromSpeciesId": "cinderace",
+      "toSpeciesId": "cinderacegiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "sobble-to-drizzile-1",
+      "fromSpeciesId": "sobble",
+      "toSpeciesId": "drizzile",
+      "method": "Level",
+      "parameter": "16",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "drizzile-to-inteleon-1",
+      "fromSpeciesId": "drizzile",
+      "toSpeciesId": "inteleon",
+      "method": "Level",
+      "parameter": "35",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "inteleon-to-inteleongiga-1",
+      "fromSpeciesId": "inteleon",
+      "toSpeciesId": "inteleongiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "skwovet-to-greedent-1",
+      "fromSpeciesId": "skwovet",
+      "toSpeciesId": "greedent",
+      "method": "Level",
+      "parameter": "24",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "rookidee-to-corvisquire-1",
+      "fromSpeciesId": "rookidee",
+      "toSpeciesId": "corvisquire",
+      "method": "Level",
+      "parameter": "18",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "corvisquire-to-corviknight-1",
+      "fromSpeciesId": "corvisquire",
+      "toSpeciesId": "corviknight",
+      "method": "Level",
+      "parameter": "38",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "corviknight-to-corviknightgiga-1",
+      "fromSpeciesId": "corviknight",
+      "toSpeciesId": "corviknightgiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "blipbug-to-dottler-1",
+      "fromSpeciesId": "blipbug",
+      "toSpeciesId": "dottler",
+      "method": "Level",
+      "parameter": "10",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "dottler-to-orbeetle-1",
+      "fromSpeciesId": "dottler",
+      "toSpeciesId": "orbeetle",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "orbeetle-to-orbeetlegiga-1",
+      "fromSpeciesId": "orbeetle",
+      "toSpeciesId": "orbeetlegiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "nickit-to-thievul-1",
+      "fromSpeciesId": "nickit",
+      "toSpeciesId": "thievul",
+      "method": "Level",
+      "parameter": "18",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "gossifleur-to-eldegoss-1",
+      "fromSpeciesId": "gossifleur",
+      "toSpeciesId": "eldegoss",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "wooloo-to-dubwool-1",
+      "fromSpeciesId": "wooloo",
+      "toSpeciesId": "dubwool",
+      "method": "Level",
+      "parameter": "24",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "chewtle-to-drednaw-1",
+      "fromSpeciesId": "chewtle",
+      "toSpeciesId": "drednaw",
+      "method": "Level",
+      "parameter": "22",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "drednaw-to-drednawgiga-1",
+      "fromSpeciesId": "drednaw",
+      "toSpeciesId": "drednawgiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "yamper-to-boltund-1",
+      "fromSpeciesId": "yamper",
+      "toSpeciesId": "boltund",
+      "method": "Level",
+      "parameter": "25",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "rolycoly-to-carkol-1",
+      "fromSpeciesId": "rolycoly",
+      "toSpeciesId": "carkol",
+      "method": "Level",
+      "parameter": "18",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "carkol-to-coalossal-1",
+      "fromSpeciesId": "carkol",
+      "toSpeciesId": "coalossal",
+      "method": "Level",
+      "parameter": "34",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "coalossal-to-coalossalgiga-1",
+      "fromSpeciesId": "coalossal",
+      "toSpeciesId": "coalossalgiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "applin-to-flapple-1",
+      "fromSpeciesId": "applin",
+      "toSpeciesId": "flapple",
+      "method": "Item",
+      "parameter": "ITEM_TART_APPLE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "applin-to-appletun-2",
+      "fromSpeciesId": "applin",
+      "toSpeciesId": "appletun",
+      "method": "Item",
+      "parameter": "ITEM_SWEET_APPLE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "flapple-to-flapplegiga-1",
+      "fromSpeciesId": "flapple",
+      "toSpeciesId": "flapplegiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "appletun-to-appletungiga-1",
+      "fromSpeciesId": "appletun",
+      "toSpeciesId": "appletungiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "silicobra-to-sandaconda-1",
+      "fromSpeciesId": "silicobra",
+      "toSpeciesId": "sandaconda",
+      "method": "Level",
+      "parameter": "36",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "sandaconda-to-sandacondagiga-1",
+      "fromSpeciesId": "sandaconda",
+      "toSpeciesId": "sandacondagiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "arrokuda-to-barraskewda-1",
+      "fromSpeciesId": "arrokuda",
+      "toSpeciesId": "barraskewda",
+      "method": "Level",
+      "parameter": "26",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "toxel-to-toxtricity-1",
+      "fromSpeciesId": "toxel",
+      "toSpeciesId": "toxtricity",
+      "method": "Nature High",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "toxel-to-toxtricitylowkey-2",
+      "fromSpeciesId": "toxel",
+      "toSpeciesId": "toxtricitylowkey",
+      "method": "Nature Low",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "toxtricity-to-toxtricitygiga-1",
+      "fromSpeciesId": "toxtricity",
+      "toSpeciesId": "toxtricitygiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "sizzlipede-to-centiskorch-1",
+      "fromSpeciesId": "sizzlipede",
+      "toSpeciesId": "centiskorch",
+      "method": "Level",
+      "parameter": "28",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "centiskorch-to-centiskorchgiga-1",
+      "fromSpeciesId": "centiskorch",
+      "toSpeciesId": "centiskorchgiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "clobbopus-to-grapploct-1",
+      "fromSpeciesId": "clobbopus",
+      "toSpeciesId": "grapploct",
+      "method": "Move",
+      "parameter": "MOVE_TAUNT",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "sinistea-to-polteageist-1",
+      "fromSpeciesId": "sinistea",
+      "toSpeciesId": "polteageist",
+      "method": "Item",
+      "parameter": "ITEM_CRACKED_POT",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "hatenna-to-hattrem-1",
+      "fromSpeciesId": "hatenna",
+      "toSpeciesId": "hattrem",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "hattrem-to-hatterene-1",
+      "fromSpeciesId": "hattrem",
+      "toSpeciesId": "hatterene",
+      "method": "Level",
+      "parameter": "42",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "hatterene-to-hatterenegiga-1",
+      "fromSpeciesId": "hatterene",
+      "toSpeciesId": "hatterenegiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "impidimp-to-morgrem-1",
+      "fromSpeciesId": "impidimp",
+      "toSpeciesId": "morgrem",
+      "method": "Level",
+      "parameter": "32",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "morgrem-to-grimmsnarl-1",
+      "fromSpeciesId": "morgrem",
+      "toSpeciesId": "grimmsnarl",
+      "method": "Level",
+      "parameter": "42",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "grimmsnarl-to-grimmsnarlgiga-1",
+      "fromSpeciesId": "grimmsnarl",
+      "toSpeciesId": "grimmsnarlgiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "milcery-to-alcremiestrawberry-1",
+      "fromSpeciesId": "milcery",
+      "toSpeciesId": "alcremiestrawberry",
+      "method": "Item",
+      "parameter": "ITEM_STRAWBERRY_SWEET",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "milcery-to-alcremieberry-2",
+      "fromSpeciesId": "milcery",
+      "toSpeciesId": "alcremieberry",
+      "method": "Item",
+      "parameter": "ITEM_BERRY_SWEET",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "milcery-to-alcremielove-3",
+      "fromSpeciesId": "milcery",
+      "toSpeciesId": "alcremielove",
+      "method": "Item",
+      "parameter": "ITEM_LOVE_SWEET",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "milcery-to-alcremieclover-4",
+      "fromSpeciesId": "milcery",
+      "toSpeciesId": "alcremieclover",
+      "method": "Item",
+      "parameter": "ITEM_CLOVER_SWEET",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "milcery-to-alcremieflower-5",
+      "fromSpeciesId": "milcery",
+      "toSpeciesId": "alcremieflower",
+      "method": "Item",
+      "parameter": "ITEM_FLOWER_SWEET",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "milcery-to-alcremieribbon-6",
+      "fromSpeciesId": "milcery",
+      "toSpeciesId": "alcremieribbon",
+      "method": "Item",
+      "parameter": "ITEM_RIBBON_SWEET",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "milcery-to-alcremiestar-7",
+      "fromSpeciesId": "milcery",
+      "toSpeciesId": "alcremiestar",
+      "method": "Item",
+      "parameter": "ITEM_STAR_SWEET",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "alcremiestrawberry-to-alcremiegiga-1",
+      "fromSpeciesId": "alcremiestrawberry",
+      "toSpeciesId": "alcremiegiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "snom-to-frosmoth-1",
+      "fromSpeciesId": "snom",
+      "toSpeciesId": "frosmoth",
+      "method": "Friendship Night",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "cufant-to-copperajah-1",
+      "fromSpeciesId": "cufant",
+      "toSpeciesId": "copperajah",
+      "method": "Level",
+      "parameter": "34",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "copperajah-to-copperajahgiga-1",
+      "fromSpeciesId": "copperajah",
+      "toSpeciesId": "copperajahgiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "duraludon-to-duraludongiga-1",
+      "fromSpeciesId": "duraludon",
+      "toSpeciesId": "duraludongiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "dreepy-to-drakloak-1",
+      "fromSpeciesId": "dreepy",
+      "toSpeciesId": "drakloak",
+      "method": "Level",
+      "parameter": "50",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "drakloak-to-dragapult-1",
+      "fromSpeciesId": "drakloak",
+      "toSpeciesId": "dragapult",
+      "method": "Level",
+      "parameter": "60",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "kubfu-to-urshifusingle-1",
+      "fromSpeciesId": "kubfu",
+      "toSpeciesId": "urshifusingle",
+      "method": "Item",
+      "parameter": "ITEM_DUSK_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "kubfu-to-urshifurapid-2",
+      "fromSpeciesId": "kubfu",
+      "toSpeciesId": "urshifurapid",
+      "method": "Item",
+      "parameter": "ITEM_WATER_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "urshifusingle-to-urshifusinglegiga-1",
+      "fromSpeciesId": "urshifusingle",
+      "toSpeciesId": "urshifusinglegiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "toxtricitylowkey-to-toxtricitylowkeygiga-1",
+      "fromSpeciesId": "toxtricitylowkey",
+      "toSpeciesId": "toxtricitylowkeygiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "sinisteachipped-to-polteageistchipped-1",
+      "fromSpeciesId": "sinisteachipped",
+      "toSpeciesId": "polteageistchipped",
+      "method": "Item",
+      "parameter": "ITEM_CHIPPED_POT",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "alcremieberry-to-alcremiegiga-1",
+      "fromSpeciesId": "alcremieberry",
+      "toSpeciesId": "alcremiegiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "alcremieclover-to-alcremiegiga-1",
+      "fromSpeciesId": "alcremieclover",
+      "toSpeciesId": "alcremiegiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "alcremieflower-to-alcremiegiga-1",
+      "fromSpeciesId": "alcremieflower",
+      "toSpeciesId": "alcremiegiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "alcremielove-to-alcremiegiga-1",
+      "fromSpeciesId": "alcremielove",
+      "toSpeciesId": "alcremiegiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "alcremieribbon-to-alcremiegiga-1",
+      "fromSpeciesId": "alcremieribbon",
+      "toSpeciesId": "alcremiegiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "alcremiestar-to-alcremiegiga-1",
+      "fromSpeciesId": "alcremiestar",
+      "toSpeciesId": "alcremiegiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "urshifurapid-to-urshifurapidgiga-1",
+      "fromSpeciesId": "urshifurapid",
+      "toSpeciesId": "urshifurapidgiga",
+      "method": "Gigantamax",
+      "parameter": "TRUE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "meowthg-to-perrserker-1",
+      "fromSpeciesId": "meowthg",
+      "toSpeciesId": "perrserker",
+      "method": "Level",
+      "parameter": "28",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "ponytag-to-rapidashg-1",
+      "fromSpeciesId": "ponytag",
+      "toSpeciesId": "rapidashg",
+      "method": "Level",
+      "parameter": "40",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "slowpokeg-to-slowbrog-1",
+      "fromSpeciesId": "slowpokeg",
+      "toSpeciesId": "slowbrog",
+      "method": "Item",
+      "parameter": "ITEM_GALARICA_CUFF",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "slowpokeg-to-slowkingg-2",
+      "fromSpeciesId": "slowpokeg",
+      "toSpeciesId": "slowkingg",
+      "method": "Item",
+      "parameter": "ITEM_GALARICA_WREATH",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "farfetchdg-to-sirfetchd-1",
+      "fromSpeciesId": "farfetchdg",
+      "toSpeciesId": "sirfetchd",
+      "method": "Critical Hit",
+      "parameter": "0",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "koffingg-to-weezingg-1",
+      "fromSpeciesId": "koffingg",
+      "toSpeciesId": "weezingg",
+      "method": "Level",
+      "parameter": "35",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "mrmimeg-to-mrrime-1",
+      "fromSpeciesId": "mrmimeg",
+      "toSpeciesId": "mrrime",
+      "method": "Level",
+      "parameter": "42",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "corsolag-to-cursola-1",
+      "fromSpeciesId": "corsolag",
+      "toSpeciesId": "cursola",
+      "method": "Level",
+      "parameter": "38",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "zigzagoong-to-linooneg-1",
+      "fromSpeciesId": "zigzagoong",
+      "toSpeciesId": "linooneg",
+      "method": "Level",
+      "parameter": "20",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "linooneg-to-obstagoon-1",
+      "fromSpeciesId": "linooneg",
+      "toSpeciesId": "obstagoon",
+      "method": "Level Night",
+      "parameter": "35",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "mimejrg-to-mrmimeg-1",
+      "fromSpeciesId": "mimejrg",
+      "toSpeciesId": "mrmimeg",
+      "method": "Move",
+      "parameter": "MOVE_MIMIC",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "darumakag-to-darmanitang-1",
+      "fromSpeciesId": "darumakag",
+      "toSpeciesId": "darmanitang",
+      "method": "Item",
+      "parameter": "ITEM_ICE_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "yamaskg-to-runerigus-1",
+      "fromSpeciesId": "yamaskg",
+      "toSpeciesId": "runerigus",
+      "method": "Level",
+      "parameter": "35",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "yamaskg-to-runerigus-2",
+      "fromSpeciesId": "yamaskg",
+      "toSpeciesId": "runerigus",
+      "method": "Damage Location",
+      "parameter": "49",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "growlitheh-to-arcanineh-1",
+      "fromSpeciesId": "growlitheh",
+      "toSpeciesId": "arcanineh",
+      "method": "Item",
+      "parameter": "ITEM_FIRE_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "voltorbh-to-electrodeh-1",
+      "fromSpeciesId": "voltorbh",
+      "toSpeciesId": "electrodeh",
+      "method": "Item",
+      "parameter": "ITEM_LEAF_STONE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "qwilfishh-to-overqwil-1",
+      "fromSpeciesId": "qwilfishh",
+      "toSpeciesId": "overqwil",
+      "method": "Move",
+      "parameter": "MOVE_BARBBARRAGE",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "sneaselh-to-sneasler-1",
+      "fromSpeciesId": "sneaselh",
+      "toSpeciesId": "sneasler",
+      "method": "Hold Item Day",
+      "parameter": "ITEM_RAZOR_CLAW",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "basculinh-to-basculegionm-1",
+      "fromSpeciesId": "basculinh",
+      "toSpeciesId": "basculegionm",
+      "method": "Move Male",
+      "parameter": "MOVE_WAVECRASH",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "basculinh-to-basculegionf-2",
+      "fromSpeciesId": "basculinh",
+      "toSpeciesId": "basculegionf",
+      "method": "Move Female",
+      "parameter": "MOVE_WAVECRASH",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "zoruah-to-zoroarkh-1",
+      "fromSpeciesId": "zoruah",
+      "toSpeciesId": "zoroarkh",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    },
+    {
+      "id": "sliggooh-to-goodrah-1",
+      "fromSpeciesId": "sliggooh",
+      "toSpeciesId": "goodrah",
+      "method": "Rainy Foggy Ow",
+      "parameter": "50",
+      "sourceConfidence": "pinned-unbound-dpe-evolution-table"
+    }
+  ]
+}

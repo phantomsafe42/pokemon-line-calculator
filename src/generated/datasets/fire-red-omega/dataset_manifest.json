@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 1,
+  "gameId": "fire-red-omega",
+  "displayName": "Pokémon Fire Red Omega",
+  "folderName": "Fire Red Omega",
+  "filenamePrefix": "FRO",
+  "datasetScope": "game",
+  "migrationStatus": "standardized-source-authoritative",
+  "completenessStatus": "partial",
+  "platform": "Game Boy Advance",
+  "generation": 3,
+  "baseGame": "Pokémon FireRed",
+  "sourceProfile": "pokemon-firered-us-decomp",
+  "supportedLanguage": "English",
+  "buildInputs": {
+    "FRO_Stats_Learnsets.xlsx": {
+      "sha256": "26e29378b057d06bbc026cc69cc335b47476c6256bcf4ff386541cbde54f7b56",
+      "role": "immutable game-specific reference"
+    },
+    "FRO Trainer Battles.xlsx": {
+      "sha256": "54d7731874715664bc894040113cbc8ef9e02eb0a9b57a487fc14d6d2debfbaa",
+      "role": "immutable game-specific reference"
+    },
+    "FRO Updated Stats.csv": {
+      "sha256": "9bbef821ae8a4111dc425c537d46d858029ce37b61f8a0f9cb41351c88fba3d3",
+      "role": "immutable game-specific reference"
+    },
+    "source-data/fire_red_omega_documentation.xlsx": {
+      "sha256": "0cd02a2779b31f3abe356b48e8a02ec7e75c8972588f66f435863684da1c2aff",
+      "role": "immutable game-specific reference"
+    },
+    "source-data/imports/reference-docs/FRO Changes.txt": {
+      "sha256": "ba7a0461b63633fe534e20798727d38e6da2c3a7a01c6932e6484a6ef3cf04c3",
+      "role": "immutable game-specific reference"
+    },
+    "source-data/imports/reference-docs/FRO WildPokemon.txt": {
+      "sha256": "f11057b56c4f8e1d4e3acbd1263472d2324f8121114673752f55347b751b94e3",
+      "role": "immutable game-specific reference"
+    },
+    "source-data/imports/reference-docs/PChal_README.md": {
+      "sha256": "553ff99e72a4ec8310460c8394022c063bfe2cb463794ca93c8bad54c6821e8c",
+      "role": "immutable game-specific reference"
+    },
+    "imports/legacy-consumers/legacy_consumer_manifest.json": {
+      "sha256": "7f0949ef4bb4bf862bcaac392909212b902e70b73156abb404fbe2d28b8546a6",
+      "role": "immutable pre-cutover legacy consumer input manifest"
+    },
+    "source-data/trainer_documentation.json": {
+      "sha256": "9e5a0712d61dbb5255b4e6140a3ac7a90cd1ed611065d0c128f149572c6c6a10",
+      "role": "deterministic field-level projection of native trainer workbook order, locations, and mandatory fill classifications"
+    },
+    "source-data/species_ability_slots.json": {
+      "sha256": "df2b981792f516827f13c33e6e5684e517dab0e7dda158f686f89a5869e84685",
+      "role": "ordered two-slot species ability authority from the Complete documentation and hash-pinned supported PChal ROM"
+    }
+  },
+  "inheritedBaseTables": {
+    "path": "../Gen 3/source-data/base_engine_tables.json",
+    "profile": "pokemon-firered-us-decomp",
+    "sha256": "4d6e6554e1cd19efdcbf7ed14c1c0bb3e3f56cb87b959a222789d5194f5cb9b0"
+  },
+  "calculationReference": {
+    "engine": {
+      "id": "smogon-calc",
+      "version": "0.11.0"
+    },
+    "files": {
+      "Battle Mechanics/vendor/smogon-calc-0.11.0/data.production.min.js": {
+        "sha256": "364be40ea1aec31f413d0036445f717d826ece9c33ec25a02399c3a287c99529"
+      },
+      "Battle Mechanics/vendor/smogon-calc-0.11.0/engine.production.min.js": {
+        "sha256": "e77a129dccf6812dcd299fc79d1f5de8afa77e8eb6de89bca283f468c968e124"
+      }
+    }
+  },
+  "patchReference": {
+    "sha256": "e3f52e0d3a74bac61c801deb9d8fa907eb074580f41bed0d22ac5c5b89c74d97",
+    "role": "external Fire Red Omega patch identity; patch bytes remain outside the workspace"
+  },
+  "romVerification": {
+    "sha256": "588260015ae3d0d6e50ccd3c1177a47ec89b47aa5c475dcc36ae5805ff2f1492",
+    "role": "approved local final PChal/Complete ROM evidence; bytes and machine-local path remain outside the workspace",
+    "inspectedTables": [
+      "species personal ability slots"
+    ]
+  },
+  "sourceRequirements": {
+    "speciesAbilitySlots": {
+      "required": true,
+      "slotCount": 2,
+      "orderedBySaveSelector": true,
+      "source": "species_ability_slots.json",
+      "status": "passed",
+      "unresolved": 0
+    },
+    "trainerAiMasks": {
+      "required": true,
+      "source": "trainer_ai_evidence.json",
+      "status": "passed-with-explicit-unresolved-calculator-only-records",
+      "storedMaskBindings": 666,
+      "scriptedWildRuntimeBindings": 0,
+      "unresolvedProfiles": 8
+    }
+  },
+  "standardizedSources": [
+    "species.json",
+    "moves.json",
+    "abilities.json",
+    "items.json",
+    "learnsets.json",
+    "evolutions.json",
+    "trainers.json",
+    "trainer_order.json",
+    "trainer_battle_groups.json",
+    "progression.json",
+    "locations.json",
+    "encounters.json",
+    "encounter_methods.json",
+    "types.json",
+    "natures.json",
+    "stats.json",
+    "categories.json",
+    "save_id_maps.json",
+    "aliases.json",
+    "source_audit.json",
+    "game_rules.json",
+    "battle_mechanics.json",
+    "experience_mechanics.json",
+    "trainer_ai.json"
+  ],
+  "extensions": [
+    "source_verification_report.json",
+    "consumer_projection.json",
+    "trainer_reconciliation_report.json",
+    "species_ability_slots.json",
+    "trainer_documentation.json",
+    "trainer_ai_evidence.json"
+  ],
+  "builders": {
+    "build": "node ..\\tools\\standardize_legacy_game.js fire-red-omega",
+    "deterministicCheck": "node ..\\tools\\standardize_legacy_game.js fire-red-omega --check",
+    "trainerDocumentationBuild": "python ..\\tools\\build_drayano_trainer_documentation.py fire-red-omega",
+    "trainerDocumentationDeterministicCheck": "python ..\\tools\\build_drayano_trainer_documentation.py fire-red-omega --check",
+    "speciesAbilityBuild": "python ..\\tools\\build_drayano_species_abilities.py --game fire-red-omega --rom <approved-local-final-rom>",
+    "speciesAbilityDeterministicCheck": "python ..\\tools\\build_drayano_species_abilities.py --game fire-red-omega --rom <approved-local-final-rom> --check",
+    "trainerAiEvidenceBuild": "python ..\\tools\\build_trainer_ai_evidence.py --game fire-red-omega --fire-red-omega-rom <approved-local-final-rom>",
+    "trainerAiEvidenceDeterministicCheck": "python ..\\tools\\build_trainer_ai_evidence.py --game fire-red-omega --fire-red-omega-rom <approved-local-final-rom> --check",
+    "trainerAiBuild": "node ..\\tools\\build_trainer_ai_profiles.js",
+    "trainerAiDeterministicCheck": "node ..\\tools\\build_trainer_ai_profiles.js --check",
+    "consumerBuild": "node ..\\tools\\build_standardized_consumers.js --game fire-red-omega",
+    "consumerDeterministicCheck": "node ..\\tools\\build_standardized_consumers.js --game fire-red-omega --check",
+    "validation": "node ..\\tools\\validate_standardized_dataset.js --game fire-red-omega"
+  },
+  "categoryApplicability": {
+    "species": {
+      "status": "applicable"
+    },
+    "moves": {
+      "status": "applicable"
+    },
+    "abilities": {
+      "status": "applicable"
+    },
+    "items": {
+      "status": "applicable"
+    },
+    "learnsets": {
+      "status": "applicable"
+    },
+    "evolutions": {
+      "status": "applicable"
+    },
+    "trainers": {
+      "status": "applicable"
+    },
+    "trainer_order": {
+      "status": "applicable"
+    },
+    "trainer_battle_groups": {
+      "status": "applicable"
+    },
+    "progression": {
+      "status": "applicable"
+    },
+    "locations": {
+      "status": "applicable"
+    },
+    "encounters": {
+      "status": "applicable"
+    },
+    "encounter_methods": {
+      "status": "applicable"
+    },
+    "types": {
+      "status": "applicable"
+    },
+    "natures": {
+      "status": "applicable"
+    },
+    "stats": {
+      "status": "applicable"
+    },
+    "categories": {
+      "status": "applicable"
+    },
+    "save_id_maps": {
+      "status": "applicable"
+    },
+    "aliases": {
+      "status": "applicable"
+    },
+    "source_audit": {
+      "status": "applicable"
+    },
+    "game_rules": {
+      "status": "applicable"
+    },
+    "battle_mechanics": {
+      "status": "applicable"
+    },
+    "experience_mechanics": {
+      "status": "applicable"
+    },
+    "trainer_ai": {
+      "status": "applicable"
+    }
+  },
+  "calculationCompatibility": {
+    "battle": {
+      "source": "battle_mechanics.json",
+      "status": "passed",
+      "unresolved": 0
+    },
+    "experience": {
+      "source": "experience_mechanics.json",
+      "status": "passed",
+      "unresolved": 0,
+      "experienceGeneration": 3,
+      "model": "generation-3-unscaled-trainer"
+    }
+  },
+  "saveCompatibility": {
+    "status": "partial",
+    "detail": "Ordered species ability selectors are final-ROM verified; species, move, and item numeric maps are present, while remaining location or numeric-identity gaps stay explicit."
+  },
+  "knownOmissions": [
+    {
+      "category": "progression",
+      "reason": "Native workbook split/order/location/red-blue classification is applied to 365 matched trainers; 0 unmatched complete cards are materialized source-only and branch prerequisites still need script evidence."
+    },
+    {
+      "category": "rom-verification",
+      "reason": "Final patched ROM verification covers every projected species personal-table ability slot plus the explicitly named trainer records; other categories remain documentation-led."
+    }
+  ],
+  "deterministicAssumptions": [
+    "The Complete documentation defines hack semantics, the supported PChal build is the top override layer, and unchanged mechanics inherit the pinned FireRed table."
+  ],
+  "lastValidationDate": "2026-08-28"
+}

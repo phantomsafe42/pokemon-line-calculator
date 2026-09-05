@@ -1,9 +1,15 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { normalizePlayerCollection, normalizeTrainerRoster } from "../src/adapters/combatant_ingest.js";
-import { DatasetReadinessError } from "../src/adapters/standardized_dataset.js";
+import { canonicalTrainerMember, DatasetReadinessError } from "../src/adapters/standardized_dataset.js";
 import { effectiveCombatantMove } from "../src/core/combatant_moves.js";
 import { fixtureDataset } from "./helpers.mjs";
+
+test("trainer gender labels normalize without treating unknown gender as genderless", () => {
+  for (const [input, expected] of [["Male", "M"], ["Female", "F"], ["M", "M"], ["F", "F"], ["N", "N"], [null, null], [undefined, null]]) {
+    assert.equal(canonicalTrainerMember({ gender: input }).gender, expected);
+  }
+});
 
 test("Save Tracker stat aliases normalize and explicit speciesId wins over display text", () => {
   const dataset = fixtureDataset();
@@ -41,6 +47,13 @@ test("trainer navigation follows standardized split and within-split order", () 
   assert.deepEqual(groups.map(group => [group.id, group.label, group.trainers.map(trainer => trainer.id)]), [
     ["first", "First Split", ["trainer", "combined"]],
     ["second", "Second Split", ["doubles"]]
+  ]);
+});
+
+test("trainer navigation preserves full-game order without inventing unresolved splits", () => {
+  const groups = fixtureDataset({ flatProgression: true }).trainerGroups();
+  assert.deepEqual(groups.map(group => [group.id, group.label, group.levelCap, group.trainers.map(trainer => trainer.id)]), [
+    ["full-game", "Full Game", null, ["trainer", "combined", "doubles"]]
   ]);
 });
 

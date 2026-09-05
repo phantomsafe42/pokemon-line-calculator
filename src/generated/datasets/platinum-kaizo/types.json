@@ -1,0 +1,300 @@
+{
+  "schemaVersion": 1,
+  "gameId": "platinum-kaizo",
+  "kind": "types",
+  "records": {
+    "normal": {
+      "id": "normal",
+      "name": "Normal",
+      "weak": [
+        "fighting"
+      ],
+      "resist": [],
+      "immune": [
+        "ghost"
+      ],
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "fighting": {
+      "id": "fighting",
+      "name": "Fighting",
+      "weak": [
+        "flying",
+        "psychic"
+      ],
+      "resist": [
+        "rock",
+        "bug",
+        "dark"
+      ],
+      "immune": [],
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "flying": {
+      "id": "flying",
+      "name": "Flying",
+      "weak": [
+        "rock",
+        "electric",
+        "ice"
+      ],
+      "resist": [
+        "fighting",
+        "bug",
+        "grass"
+      ],
+      "immune": [
+        "ground"
+      ],
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "poison": {
+      "id": "poison",
+      "name": "Poison",
+      "weak": [
+        "ground",
+        "psychic"
+      ],
+      "resist": [
+        "fighting",
+        "poison",
+        "bug",
+        "grass"
+      ],
+      "immune": [],
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "ground": {
+      "id": "ground",
+      "name": "Ground",
+      "weak": [
+        "water",
+        "grass",
+        "ice"
+      ],
+      "resist": [
+        "poison",
+        "rock"
+      ],
+      "immune": [
+        "electric"
+      ],
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "rock": {
+      "id": "rock",
+      "name": "Rock",
+      "weak": [
+        "fighting",
+        "ground",
+        "steel",
+        "water",
+        "grass"
+      ],
+      "resist": [
+        "normal",
+        "flying",
+        "poison",
+        "fire"
+      ],
+      "immune": [],
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "bug": {
+      "id": "bug",
+      "name": "Bug",
+      "weak": [
+        "flying",
+        "rock",
+        "fire"
+      ],
+      "resist": [
+        "fighting",
+        "ground",
+        "grass"
+      ],
+      "immune": [],
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "ghost": {
+      "id": "ghost",
+      "name": "Ghost",
+      "weak": [
+        "ghost",
+        "dark"
+      ],
+      "resist": [
+        "poison",
+        "bug"
+      ],
+      "immune": [
+        "normal",
+        "fighting"
+      ],
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "steel": {
+      "id": "steel",
+      "name": "Steel",
+      "weak": [
+        "fighting",
+        "ground",
+        "fire"
+      ],
+      "resist": [
+        "normal",
+        "flying",
+        "rock",
+        "bug",
+        "ghost",
+        "steel",
+        "grass",
+        "psychic",
+        "ice",
+        "dragon",
+        "dark"
+      ],
+      "immune": [
+        "poison"
+      ],
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "mystery": {
+      "id": "mystery",
+      "name": "???",
+      "weak": [],
+      "resist": [],
+      "immune": [],
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "fire": {
+      "id": "fire",
+      "name": "Fire",
+      "weak": [
+        "ground",
+        "rock",
+        "water"
+      ],
+      "resist": [
+        "bug",
+        "steel",
+        "fire",
+        "grass",
+        "ice"
+      ],
+      "immune": [],
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "water": {
+      "id": "water",
+      "name": "Water",
+      "weak": [
+        "grass",
+        "electric"
+      ],
+      "resist": [
+        "steel",
+        "fire",
+        "water",
+        "ice"
+      ],
+      "immune": [],
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "grass": {
+      "id": "grass",
+      "name": "Grass",
+      "weak": [
+        "flying",
+        "poison",
+        "bug",
+        "fire",
+        "ice"
+      ],
+      "resist": [
+        "ground",
+        "water",
+        "grass",
+        "electric"
+      ],
+      "immune": [],
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "electric": {
+      "id": "electric",
+      "name": "Electric",
+      "weak": [
+        "ground"
+      ],
+      "resist": [
+        "flying",
+        "steel",
+        "electric"
+      ],
+      "immune": [],
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "psychic": {
+      "id": "psychic",
+      "name": "Psychic",
+      "weak": [
+        "bug",
+        "ghost",
+        "dark"
+      ],
+      "resist": [
+        "fighting",
+        "psychic"
+      ],
+      "immune": [],
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "ice": {
+      "id": "ice",
+      "name": "Ice",
+      "weak": [
+        "fighting",
+        "rock",
+        "steel",
+        "fire"
+      ],
+      "resist": [
+        "ice"
+      ],
+      "immune": [],
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "dragon": {
+      "id": "dragon",
+      "name": "Dragon",
+      "weak": [
+        "ice",
+        "dragon"
+      ],
+      "resist": [
+        "fire",
+        "water",
+        "grass",
+        "electric"
+      ],
+      "immune": [],
+      "sourceConfidence": "legacy-base-table-projection"
+    },
+    "dark": {
+      "id": "dark",
+      "name": "Dark",
+      "weak": [
+        "fighting",
+        "bug"
+      ],
+      "resist": [
+        "ghost",
+        "dark"
+      ],
+      "immune": [
+        "psychic"
+      ],
+      "sourceConfidence": "legacy-base-table-projection"
+    }
+  }
+}

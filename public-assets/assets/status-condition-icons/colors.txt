@@ -1,0 +1,21 @@
+/*
+ * Pokemon status-condition icon main colors from bulbapedia-status-condition-icons-2026-09-04.
+ * Per-channel median of pixels with alpha >= 128 after excluding near-white pixels (all RGB channels >= 240) and near-neutral dark lettering (maximum RGB < 48 and channel range < 10).
+ * Copy these CSS custom properties directly or override them in a narrower scope.
+ */
+:root {
+  --pokemon-status-bdsp-asleep: #7CB8FF;
+  --pokemon-status-bdsp-badly-poisoned: #AD13FF;
+  --pokemon-status-bdsp-burned: #FF7923;
+  --pokemon-status-bdsp-fainted: #D2D2D2;
+  --pokemon-status-bdsp-frozen: #00F6D9;
+  --pokemon-status-bdsp-paralysis: #FFC600;
+  --pokemon-status-bdsp-poisoned: #A358FF;
+  --pokemon-status-za-badly-poisoned: #5500AF;
+  --pokemon-status-za-burned: #E62829;
+  --pokemon-status-za-drowsy: #4AEDE9;
+  --pokemon-status-za-fainted: #B2B3B2;
+  --pokemon-status-za-frozen: #3FD8FF;
+  --pokemon-status-za-paralysis: #FAC000;
+  --pokemon-status-za-poisoned: #9141CB;
+}

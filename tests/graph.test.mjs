@@ -99,8 +99,8 @@ test("turn-tree lanes preserve branch rows when an earlier branch ends", () => {
   const entries = planTurnTreeOrder(lanePlan);
   const committedLanes = Object.fromEntries(entries.filter(entry => entry.kind === "committed").map(entry => [entry.outcomeStateNodeId, entry.lane]));
   const draftLanes = Object.fromEntries(entries.filter(entry => entry.kind === "draft").map(entry => [entry.decisionStateNodeId, entry.lane]));
-  assert.deepEqual(committedLanes, { t1: 0, "b1-t2": 0, "b2-t2": 1, "b3-t2": 2, "b1-t3": 0, "b3-t3": 2, "b1-late-t3": 3 });
-  assert.deepEqual(draftLanes, { "b2-t2": 1, "b1-t3": 0, "b3-t3": 2, "b1-late-t3": 3 });
+  assert.deepEqual(committedLanes, { t1: 0, "b1-t2": 0, "b2-t2": 2, "b3-t2": 3, "b1-t3": 0, "b1-late-t3": 1, "b3-t3": 3 });
+  assert.deepEqual(draftLanes, { "b1-t3": 0, "b1-late-t3": 1, "b2-t2": 2, "b3-t3": 3 });
   const newBranchDraft = planTurnTreeOrder(lanePlan, { additionalDraftStateNodeIds: ["t1"] })
     .find(entry => entry.kind === "draft" && entry.decisionStateNodeId === "t1");
   assert.equal(newBranchDraft.lane, 4);
@@ -132,4 +132,13 @@ test("turn-node visuals use action combatants and identify newly fainted Pokemon
     enemy: []
   });
   assert.deepEqual([...forced.switchedInCombatantKeys], []);
+
+  const simultaneous = turnNodeVisuals(plan, switchGroup.parentStateNodeId, { ...switchState, resolutionEventIds: [] }, {
+    player: [{ actionType: "replacement", switchToKey: "player:unique:lucario-fixture", switchKind: "forced" }],
+    enemy: [{ actionType: "replacement", switchToKey: "enemy:trainer:fixture-trainer:slot:1", switchKind: "forced" }]
+  });
+  assert.deepEqual(simultaneous.combatantKeys, [
+    "player:unique:lucario-fixture",
+    "enemy:trainer:fixture-trainer:slot:1"
+  ]);
 });

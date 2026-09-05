@@ -1,0 +1,314 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-unbound",
+  "displayName": "Pokémon Unbound",
+  "folderName": "Pokemon Unbound",
+  "filenamePrefix": "PU",
+  "datasetScope": "game",
+  "migrationStatus": "standardized-source-authoritative",
+  "completenessStatus": "partial",
+  "platform": "Game Boy Advance",
+  "generation": 3,
+  "baseGame": "Pokémon FireRed",
+  "supportedBuild": "Pokémon Unbound 2.1.1.1",
+  "supportedLanguage": "English",
+  "sourceProfile": "unbound-2.1.1.1-difficult",
+  "buildInputs": {
+    "Boss Trainers.xlsx": {
+      "sha256": "99305f8aee27bf62ce5c9bbe686c7d864f16e49738762d94158afd34fa4eecc1",
+      "role": "current linked Difficult boss workbook"
+    },
+    "Regular Trainers.xlsx": {
+      "sha256": "c05248f6d297048ff9845af502e284a38ae60ae971370d315858eb245a714801",
+      "role": "current linked regular-trainer workbook"
+    },
+    "PUSE/items.txt": {
+      "sha256": "63516ca2ff6bc166b2a942ec808f94537f0a6d1e068783b7f2ee8f1f5a0d52ed",
+      "role": "Unbound 2.1.1.1 item ID catalog"
+    },
+    "PUSE/item_table_from_rom.json": {
+      "sha256": "d3c5e9cdc88d102c26377d4c21fe895035e18e50881b8e3e96fabbbefe4bdddd",
+      "role": "ROM-derived item verification table"
+    },
+    "imports/upstream": {
+      "sha256": "8039aa6bc489222020eca29e4af7e4df965084705087f9d5a6107b4cf80af005",
+      "files": 294,
+      "role": "pinned CFRU and DPE source subset"
+    },
+    "imports/legacy-consumers/legacy_consumer_manifest.json": {
+      "sha256": "2b868a9b6bb17ac623fe5d9c726cd97dbe3910d79c363da68005faed9dfb563a",
+      "role": "immutable pre-cutover legacy consumer input manifest"
+    },
+    "imports/reference-docs/unbound_mechanics_authority.json": {
+      "sha256": "a9cb0c38c1fb13dcbb5b4978ffc2ed25f9bf42184e31f06bef0d0f7c47b062a2",
+      "role": "exact supported-ROM weights, Portal Power, and experience mechanics authority"
+    },
+    "imports/reference-docs/Unbound Changes From Official.txt": {
+      "sha256": "5f16c2115d748befad574d675532c913b01616360d48201ab0baf1f42c4bf191",
+      "role": "version/reference documentation"
+    },
+    "imports/reference-docs/Unbound documentation links.txt": {
+      "sha256": "b4a92665f8f60e74b77c5e2f2d9ccafba9e3718a1a681849300514da226e3782",
+      "role": "version/reference documentation"
+    },
+    "imports/reference-docs/Unbound Main_CHANGELOG.txt": {
+      "sha256": "f9a5d5e016261c65be19044b6d8dd8363e9129545ee32dd641928111d9b99194",
+      "role": "version/reference documentation"
+    },
+    "imports/reference-docs/Unbound Main_README.txt": {
+      "sha256": "9632a3c6789d4a244e91dbb4d640ffefd1057768179e0dc55a4d519a94fca5d2",
+      "role": "version/reference documentation"
+    }
+  },
+  "calculationReference": {
+    "engine": {
+      "id": "smogon-calc",
+      "version": "0.11.0"
+    },
+    "files": {
+      "Battle Mechanics/vendor/smogon-calc-0.11.0/data.production.min.js": {
+        "sha256": "364be40ea1aec31f413d0036445f717d826ece9c33ec25a02399c3a287c99529"
+      },
+      "Battle Mechanics/vendor/smogon-calc-0.11.0/engine.production.min.js": {
+        "sha256": "e77a129dccf6812dcd299fc79d1f5de8afa77e8eb6de89bca283f468c968e124"
+      }
+    }
+  },
+  "pinnedRepositories": {
+    "unboundPokedex": {
+      "repository": "https://github.com/ydarissep/Unbound-Pokedex",
+      "commit": "abc2ccc0985bb5b31dac2d60118d54c310a15821"
+    },
+    "cfru": {
+      "repository": "https://github.com/Skeli789/Complete-Fire-Red-Upgrade",
+      "commit": "b637a27898b14e25dd24d0f69a3e302f0069deb8"
+    },
+    "dpe": {
+      "repository": "https://github.com/Skeli789/Dynamic-Pokemon-Expansion",
+      "branch": "Unbound",
+      "commit": "fe058e0e3ac23cf968cf950de43332135bc1549d"
+    },
+    "puse": {
+      "repository": "https://github.com/Zannael/PUSE",
+      "commit": "3f7b5d73000986c7ae488b33e6273d00f1015904"
+    }
+  },
+  "patchReference": {
+    "logicalName": "Unbound.ups",
+    "size": 26489729,
+    "sha256": "9b321914cf4acc22f6ef842cfab837a42d5ca031b76b88cb6a9d05818c8c04fa",
+    "storage": "external-user-managed-archive"
+  },
+  "romVerification": {
+    "supportedRom": {
+      "size": 33554432,
+      "md5": "9cad8e771940e7f7094d13911552cef0",
+      "sha1": "b4776b82a4c7915d0fadeaa27e013523f99dfd94",
+      "sha256": "7aa25bbf568f7cfcf6ee1cf2e9e6ff637350b3d0705c2375cabb6baa7d9739f7",
+      "identityStatus": "exact-supported-final-rom",
+      "storage": "external-user-managed-rom",
+      "readOnlyVerificationDate": "2026-08-27"
+    },
+    "status": "exact-read-only-mechanics-verification-passed",
+    "verifiedFields": [
+      "shadowwarrior.weightKg",
+      "zygardecell.weightKg",
+      "zygardecore.weightKg",
+      "portalpower.operationOrder",
+      "experience.formulaAndDistribution"
+    ],
+    "authorityFile": "imports/reference-docs/unbound_mechanics_authority.json"
+  },
+  "sourceRequirements": {
+    "trainerAiMasks": {
+      "required": true,
+      "source": "trainer_ai_evidence.json",
+      "status": "passed",
+      "storedMaskBindings": 519,
+      "scriptedWildRuntimeBindings": 12,
+      "unresolvedProfiles": 0
+    }
+  },
+  "onlineReferences": {
+    "trainerIndex": {
+      "url": "https://docs.google.com/spreadsheets/d/1Ha06sD9mKw5yXXT2icVZjVQapcArU5C5gLEvA-hkq9o/edit",
+      "inspected": "2026-08-27"
+    },
+    "difficultBosses": {
+      "url": "https://docs.google.com/spreadsheets/d/1_HF-bxEfamTW8S3q7tLjHWWPjo9E1QLS5dtMIhJHoeY/edit",
+      "inspected": "2026-08-27"
+    },
+    "regularTrainers": {
+      "url": "https://docs.google.com/spreadsheets/d/1s7f-S_d9WNK6vUKUJcTr7xX_dsbJ8eSebvYFSNPo9FU/edit",
+      "inspected": "2026-08-27"
+    },
+    "walkthrough": {
+      "url": "https://unboundwiki.com/walkthrough/",
+      "inspected": "2026-08-27",
+      "role": "secondary location-window ordering reference"
+    },
+    "fieldGuideCrossCheck": {
+      "repository": "https://github.com/jimineybillybob1/pokemon-unbound-field-guide",
+      "commit": "d668b78bcd223ea177086de4e1141abbcc32b0a1",
+      "role": "secondary source-inventory and milestone cross-check only"
+    }
+  },
+  "standardizedSources": [
+    "species.json",
+    "moves.json",
+    "abilities.json",
+    "items.json",
+    "learnsets.json",
+    "evolutions.json",
+    "trainers.json",
+    "trainer_order.json",
+    "trainer_battle_groups.json",
+    "progression.json",
+    "locations.json",
+    "encounters.json",
+    "encounter_methods.json",
+    "types.json",
+    "natures.json",
+    "stats.json",
+    "categories.json",
+    "save_id_maps.json",
+    "aliases.json",
+    "source_audit.json",
+    "game_rules.json",
+    "battle_mechanics.json",
+    "experience_mechanics.json",
+    "trainer_ai.json"
+  ],
+  "extensions": [
+    "source_verification_report.json",
+    "consumer_projection.json",
+    "trainer_ai_evidence.json"
+  ],
+  "builders": {
+    "build": "node ..\\tools\\standardize_unbound.js",
+    "deterministicCheck": "node ..\\tools\\standardize_unbound.js --check",
+    "trainerAiEvidenceBuild": "python ..\\tools\\build_trainer_ai_evidence.py --game pokemon-unbound --pokemon-unbound-rom <approved-local-final-rom>",
+    "trainerAiEvidenceDeterministicCheck": "python ..\\tools\\build_trainer_ai_evidence.py --game pokemon-unbound --pokemon-unbound-rom <approved-local-final-rom> --check",
+    "trainerAiBuild": "node ..\\tools\\build_trainer_ai_profiles.js",
+    "trainerAiDeterministicCheck": "node ..\\tools\\build_trainer_ai_profiles.js --check",
+    "consumerBuild": "node ..\\tools\\build_standardized_consumers.js --game pokemon-unbound",
+    "consumerDeterministicCheck": "node ..\\tools\\build_standardized_consumers.js --game pokemon-unbound --check",
+    "validation": "node ..\\tools\\validate_standardized_dataset.js --game pokemon-unbound",
+    "mechanicsAuthorityValidation": "node .\\source-data\\verify_unbound_mechanics_authority.js --rom <approved-supported-rom> --cfru <pinned-cfru-checkout> --dpe <pinned-dpe-checkout>"
+  },
+  "categoryApplicability": {
+    "species": {
+      "status": "applicable"
+    },
+    "moves": {
+      "status": "applicable"
+    },
+    "abilities": {
+      "status": "applicable"
+    },
+    "items": {
+      "status": "applicable"
+    },
+    "learnsets": {
+      "status": "applicable"
+    },
+    "evolutions": {
+      "status": "applicable"
+    },
+    "trainers": {
+      "status": "applicable"
+    },
+    "trainer_order": {
+      "status": "applicable"
+    },
+    "trainer_battle_groups": {
+      "status": "applicable"
+    },
+    "progression": {
+      "status": "applicable"
+    },
+    "locations": {
+      "status": "applicable"
+    },
+    "encounters": {
+      "status": "applicable"
+    },
+    "encounter_methods": {
+      "status": "applicable"
+    },
+    "types": {
+      "status": "applicable"
+    },
+    "natures": {
+      "status": "applicable"
+    },
+    "stats": {
+      "status": "applicable"
+    },
+    "categories": {
+      "status": "applicable"
+    },
+    "save_id_maps": {
+      "status": "applicable"
+    },
+    "aliases": {
+      "status": "applicable"
+    },
+    "source_audit": {
+      "status": "applicable"
+    },
+    "game_rules": {
+      "status": "applicable"
+    },
+    "battle_mechanics": {
+      "status": "applicable"
+    },
+    "experience_mechanics": {
+      "status": "applicable"
+    },
+    "trainer_ai": {
+      "status": "applicable"
+    }
+  },
+  "calculationCompatibility": {
+    "battle": {
+      "source": "battle_mechanics.json",
+      "status": "passed",
+      "unresolved": 0
+    },
+    "experience": {
+      "source": "experience_mechanics.json",
+      "status": "passed",
+      "unresolved": 0,
+      "experienceGeneration": "custom",
+      "model": "unbound-2.1.1.1-cfru-scaled-gen5-gen7"
+    }
+  },
+  "saveCompatibility": {
+    "status": "partial",
+    "detail": "Species, move, ability-storage, and complete 0-724 item identities are present. Raw save form-bit encodings and location IDs remain pending representative supported-save verification."
+  },
+  "knownOmissions": [
+    {
+      "category": "trainer-order",
+      "reason": "Gym, Successor Maxima, and League boundaries are exact. Ordinary trainers are assigned to documented story windows, but source-row order within a location is not claimed as canonical."
+    },
+    {
+      "category": "trainer-fields",
+      "reason": "The regular-trainer workbook omits exact moves, abilities, natures, IVs, and EVs; deterministic compatibility defaults remain explicitly audited."
+    },
+    {
+      "category": "trainer-ai",
+      "reason": "All 519 trainer-table profiles have exact stored-mask bindings and 12 scripted wild records have an explicit runtime-resolution contract. Exact action probabilities remain disabled until a validated evaluator models runtime state, switching, items, randomness, and score ties."
+    },
+    {
+      "category": "trainer-pokemon",
+      "reason": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!K66: No exact species in PU_species.js"
+    }
+  ],
+  "activeConsumerProfile": {
+    "difficulty": "difficult",
+    "scope": "main-game-plus-documented-bosses"
+  },
+  "lastValidationDate": "2026-08-27"
+}

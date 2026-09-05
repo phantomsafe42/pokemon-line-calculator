@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "datasetId": "pokemon-assets",
+  "releaseVersion": "0.4.0-dev.1",
+  "generated": true,
+  "collections": [
+    {
+      "collectionId": "pokemon-sprite",
+      "kind": "pokemon-sprite",
+      "contract": "root-profile-indexes",
+      "rootProperty": "profiles",
+      "profiles": 3,
+      "assets": 19038,
+      "assetBytes": 166889950
+    },
+    {
+      "collectionId": "item-sprite",
+      "kind": "item-sprite",
+      "indexPath": "assets/item-sprites/index.json",
+      "indexSha256": "d45d0e8d6423f8bcabb6665bd8ed7d9442b83ad74c117498ef00a876eeedf69f",
+      "indexBytes": 385700,
+      "assets": 852,
+      "assetBytes": 511403,
+      "selectors": 877
+    },
+    {
+      "collectionId": "status-condition-icon",
+      "kind": "status-condition-icon",
+      "indexPath": "assets/status-condition-icons/index.json",
+      "indexSha256": "6863470e745c8476274a00acb6d76c6ffbec2d948a972cfb77a3ae2a46f6eb0a",
+      "indexBytes": 7548,
+      "metadataFiles": [
+        {
+          "id": "main-colors-css",
+          "path": "assets/status-condition-icons/colors.txt",
+          "sha256": "3bd21ff28345fe73e117a23faaa42d76e7dbbaa0cec163b3a6947b6ecd0329e8",
+          "bytes": 969,
+          "mediaType": "text/plain",
+          "format": "css-custom-properties"
+        }
+      ],
+      "assets": 14,
+      "assetBytes": 32552,
+      "selectors": 14
+    },
+    {
+      "collectionId": "type-icon",
+      "kind": "type-icon",
+      "indexPath": "assets/type-icons/index.json",
+      "indexSha256": "971cc9b32fb11d451e79ca8ded9f4efd901f39969d08cb4d1cd171f616e26b9b",
+      "indexBytes": 62045,
+      "assets": 111,
+      "assetBytes": 322492,
+      "selectors": 111
+    }
+  ]
+}

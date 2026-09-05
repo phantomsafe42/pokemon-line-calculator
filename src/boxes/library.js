@@ -57,6 +57,7 @@ export function normalizeBoxPokemon(record) {
     level: requireInteger(record.level, "Level", 1, 100),
     ...(record.experience === null || record.experience === undefined ? {} : { experience: requireInteger(record.experience, "Experience", 0, 10_000_000) }),
     gender: ["M", "F", "N", null].includes(record.gender ?? null) ? record.gender ?? null : null,
+    ...(Number.isInteger(record.friendship) && record.friendship >= 0 && record.friendship <= 255 ? { friendship: record.friendship } : {}),
     natureId: toId(record.natureId || record.nature),
     abilityId: toId(record.abilityId || record.ability),
     itemId: toId(record.itemId || record.item) || null,

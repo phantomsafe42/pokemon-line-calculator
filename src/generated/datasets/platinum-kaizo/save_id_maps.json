@@ -1,0 +1,5426 @@
+{
+  "schemaVersion": 1,
+  "gameId": "platinum-kaizo",
+  "kind": "save-id-maps",
+  "records": {
+    "species": {
+      "byNumericId": {
+        "1": "bulbasaur",
+        "2": "ivysaur",
+        "3": "venusaur",
+        "4": "charmander",
+        "5": "charmeleon",
+        "6": "charizard",
+        "7": "squirtle",
+        "8": "wartortle",
+        "9": "blastoise",
+        "10": "caterpie",
+        "11": "metapod",
+        "12": "butterfree",
+        "13": "weedle",
+        "14": "kakuna",
+        "15": "beedrill",
+        "16": "pidgey",
+        "17": "pidgeotto",
+        "18": "pidgeot",
+        "19": "rattata",
+        "20": "raticate",
+        "21": "spearow",
+        "22": "fearow",
+        "23": "ekans",
+        "24": "arbok",
+        "25": "pikachu",
+        "26": "raichu",
+        "27": "sandshrew",
+        "28": "sandslash",
+        "29": "nidoranf",
+        "30": "nidorina",
+        "31": "nidoqueen",
+        "32": "nidoranm",
+        "33": "nidorino",
+        "34": "nidoking",
+        "35": "clefairy",
+        "36": "clefable",
+        "37": "vulpix",
+        "38": "ninetales",
+        "39": "jigglypuff",
+        "40": "wigglytuff",
+        "41": "zubat",
+        "42": "golbat",
+        "43": "oddish",
+        "44": "gloom",
+        "45": "vileplume",
+        "46": "paras",
+        "47": "parasect",
+        "48": "venonat",
+        "49": "venomoth",
+        "50": "diglett",
+        "51": "dugtrio",
+        "52": "meowth",
+        "53": "persian",
+        "54": "psyduck",
+        "55": "golduck",
+        "56": "mankey",
+        "57": "primeape",
+        "58": "growlithe",
+        "59": "arcanine",
+        "60": "poliwag",
+        "61": "poliwhirl",
+        "62": "poliwrath",
+        "63": "abra",
+        "64": "kadabra",
+        "65": "alakazam",
+        "66": "machop",
+        "67": "machoke",
+        "68": "machamp",
+        "69": "bellsprout",
+        "70": "weepinbell",
+        "71": "victreebel",
+        "72": "tentacool",
+        "73": "tentacruel",
+        "74": "geodude",
+        "75": "graveler",
+        "76": "golem",
+        "77": "ponyta",
+        "78": "rapidash",
+        "79": "slowpoke",
+        "80": "slowbro",
+        "81": "magnemite",
+        "82": "magneton",
+        "83": "farfetchd",
+        "84": "doduo",
+        "85": "dodrio",
+        "86": "seel",
+        "87": "dewgong",
+        "88": "grimer",
+        "89": "muk",
+        "90": "shellder",
+        "91": "cloyster",
+        "92": "gastly",
+        "93": "haunter",
+        "94": "gengar",
+        "95": "onix",
+        "96": "drowzee",
+        "97": "hypno",
+        "98": "krabby",
+        "99": "kingler",
+        "100": "voltorb",
+        "101": "electrode",
+        "102": "exeggcute",
+        "103": "exeggutor",
+        "104": "cubone",
+        "105": "marowak",
+        "106": "hitmonlee",
+        "107": "hitmonchan",
+        "108": "lickitung",
+        "109": "koffing",
+        "110": "weezing",
+        "111": "rhyhorn",
+        "112": "rhydon",
+        "113": "chansey",
+        "114": "tangela",
+        "115": "kangaskhan",
+        "116": "horsea",
+        "117": "seadra",
+        "118": "goldeen",
+        "119": "seaking",
+        "120": "staryu",
+        "121": "starmie",
+        "122": "mrmime",
+        "123": "scyther",
+        "124": "jynx",
+        "125": "electabuzz",
+        "126": "magmar",
+        "127": "pinsir",
+        "128": "tauros",
+        "129": "magikarp",
+        "130": "gyarados",
+        "131": "lapras",
+        "132": "ditto",
+        "133": "eevee",
+        "134": "vaporeon",
+        "135": "jolteon",
+        "136": "flareon",
+        "137": "porygon",
+        "138": "omanyte",
+        "139": "omastar",
+        "140": "kabuto",
+        "141": "kabutops",
+        "142": "aerodactyl",
+        "143": "snorlax",
+        "144": "articuno",
+        "145": "zapdos",
+        "146": "moltres",
+        "147": "dratini",
+        "148": "dragonair",
+        "149": "dragonite",
+        "150": "mewtwo",
+        "151": "mew",
+        "152": "chikorita",
+        "153": "bayleef",
+        "154": "meganium",
+        "155": "cyndaquil",
+        "156": "quilava",
+        "157": "typhlosion",
+        "158": "totodile",
+        "159": "croconaw",
+        "160": "feraligatr",
+        "161": "sentret",
+        "162": "furret",
+        "163": "hoothoot",
+        "164": "noctowl",
+        "165": "ledyba",
+        "166": "ledian",
+        "167": "spinarak",
+        "168": "ariados",
+        "169": "crobat",
+        "170": "chinchou",
+        "171": "lanturn",
+        "172": "pichu",
+        "173": "cleffa",
+        "174": "igglybuff",
+        "175": "togepi",
+        "176": "togetic",
+        "177": "natu",
+        "178": "xatu",
+        "179": "mareep",
+        "180": "flaaffy",
+        "181": "ampharos",
+        "182": "bellossom",
+        "183": "marill",
+        "184": "azumarill",
+        "185": "sudowoodo",
+        "186": "politoed",
+        "187": "hoppip",
+        "188": "skiploom",
+        "189": "jumpluff",
+        "190": "aipom",
+        "191": "sunkern",
+        "192": "sunflora",
+        "193": "yanma",
+        "194": "wooper",
+        "195": "quagsire",
+        "196": "espeon",
+        "197": "umbreon",
+        "198": "murkrow",
+        "199": "slowking",
+        "200": "misdreavus",
+        "201": "unown",
+        "202": "wobbuffet",
+        "203": "girafarig",
+        "204": "pineco",
+        "205": "forretress",
+        "206": "dunsparce",
+        "207": "gligar",
+        "208": "steelix",
+        "209": "snubbull",
+        "210": "granbull",
+        "211": "qwilfish",
+        "212": "scizor",
+        "213": "shuckle",
+        "214": "heracross",
+        "215": "sneasel",
+        "216": "teddiursa",
+        "217": "ursaring",
+        "218": "slugma",
+        "219": "magcargo",
+        "220": "swinub",
+        "221": "piloswine",
+        "222": "corsola",
+        "223": "remoraid",
+        "224": "octillery",
+        "225": "delibird",
+        "226": "mantine",
+        "227": "skarmory",
+        "228": "houndour",
+        "229": "houndoom",
+        "230": "kingdra",
+        "231": "phanpy",
+        "232": "donphan",
+        "233": "porygon2",
+        "234": "stantler",
+        "235": "smeargle",
+        "236": "tyrogue",
+        "237": "hitmontop",
+        "238": "smoochum",
+        "239": "elekid",
+        "240": "magby",
+        "241": "miltank",
+        "242": "blissey",
+        "243": "raikou",
+        "244": "entei",
+        "245": "suicune",
+        "246": "larvitar",
+        "247": "pupitar",
+        "248": "tyranitar",
+        "249": "lugia",
+        "250": "hooh",
+        "251": "celebi",
+        "252": "treecko",
+        "253": "grovyle",
+        "254": "sceptile",
+        "255": "torchic",
+        "256": "combusken",
+        "257": "blaziken",
+        "258": "mudkip",
+        "259": "marshtomp",
+        "260": "swampert",
+        "261": "poochyena",
+        "262": "mightyena",
+        "263": "zigzagoon",
+        "264": "linoone",
+        "265": "wurmple",
+        "266": "silcoon",
+        "267": "beautifly",
+        "268": "cascoon",
+        "269": "dustox",
+        "270": "lotad",
+        "271": "lombre",
+        "272": "ludicolo",
+        "273": "seedot",
+        "274": "nuzleaf",
+        "275": "shiftry",
+        "276": "taillow",
+        "277": "swellow",
+        "278": "wingull",
+        "279": "pelipper",
+        "280": "ralts",
+        "281": "kirlia",
+        "282": "gardevoir",
+        "283": "surskit",
+        "284": "masquerain",
+        "285": "shroomish",
+        "286": "breloom",
+        "287": "slakoth",
+        "288": "vigoroth",
+        "289": "slaking",
+        "290": "nincada",
+        "291": "ninjask",
+        "292": "shedinja",
+        "293": "whismur",
+        "294": "loudred",
+        "295": "exploud",
+        "296": "makuhita",
+        "297": "hariyama",
+        "298": "azurill",
+        "299": "nosepass",
+        "300": "skitty",
+        "301": "delcatty",
+        "302": "sableye",
+        "303": "mawile",
+        "304": "aron",
+        "305": "lairon",
+        "306": "aggron",
+        "307": "meditite",
+        "308": "medicham",
+        "309": "electrike",
+        "310": "manectric",
+        "311": "plusle",
+        "312": "minun",
+        "313": "volbeat",
+        "314": "illumise",
+        "315": "roselia",
+        "316": "gulpin",
+        "317": "swalot",
+        "318": "carvanha",
+        "319": "sharpedo",
+        "320": "wailmer",
+        "321": "wailord",
+        "322": "numel",
+        "323": "camerupt",
+        "324": "torkoal",
+        "325": "spoink",
+        "326": "grumpig",
+        "327": "spinda",
+        "328": "trapinch",
+        "329": "vibrava",
+        "330": "flygon",
+        "331": "cacnea",
+        "332": "cacturne",
+        "333": "swablu",
+        "334": "altaria",
+        "335": "zangoose",
+        "336": "seviper",
+        "337": "lunatone",
+        "338": "solrock",
+        "339": "barboach",
+        "340": "whiscash",
+        "341": "corphish",
+        "342": "crawdaunt",
+        "343": "baltoy",
+        "344": "claydol",
+        "345": "lileep",
+        "346": "cradily",
+        "347": "anorith",
+        "348": "armaldo",
+        "349": "feebas",
+        "350": "milotic",
+        "351": "castform",
+        "352": "kecleon",
+        "353": "shuppet",
+        "354": "banette",
+        "355": "duskull",
+        "356": "dusclops",
+        "357": "tropius",
+        "358": "chimecho",
+        "359": "absol",
+        "360": "wynaut",
+        "361": "snorunt",
+        "362": "glalie",
+        "363": "spheal",
+        "364": "sealeo",
+        "365": "walrein",
+        "366": "clamperl",
+        "367": "huntail",
+        "368": "gorebyss",
+        "369": "relicanth",
+        "370": "luvdisc",
+        "371": "bagon",
+        "372": "shelgon",
+        "373": "salamence",
+        "374": "beldum",
+        "375": "metang",
+        "376": "metagross",
+        "377": "regirock",
+        "378": "regice",
+        "379": "registeel",
+        "380": "latias",
+        "381": "latios",
+        "382": "kyogre",
+        "383": "groudon",
+        "384": "rayquaza",
+        "385": "jirachi",
+        "386": "deoxys",
+        "387": "turtwig",
+        "388": "grotle",
+        "389": "torterra",
+        "390": "chimchar",
+        "391": "monferno",
+        "392": "infernape",
+        "393": "piplup",
+        "394": "prinplup",
+        "395": "empoleon",
+        "396": "starly",
+        "397": "staravia",
+        "398": "staraptor",
+        "399": "bidoof",
+        "400": "bibarel",
+        "401": "kricketot",
+        "402": "kricketune",
+        "403": "shinx",
+        "404": "luxio",
+        "405": "luxray",
+        "406": "budew",
+        "407": "roserade",
+        "408": "cranidos",
+        "409": "rampardos",
+        "410": "shieldon",
+        "411": "bastiodon",
+        "412": "burmy",
+        "413": "wormadam",
+        "414": "mothim",
+        "415": "combee",
+        "416": "vespiquen",
+        "417": "pachirisu",
+        "418": "buizel",
+        "419": "floatzel",
+        "420": "cherubi",
+        "421": "cherrim",
+        "422": "shellos",
+        "423": "gastrodon",
+        "424": "ambipom",
+        "425": "drifloon",
+        "426": "drifblim",
+        "427": "buneary",
+        "428": "lopunny",
+        "429": "mismagius",
+        "430": "honchkrow",
+        "431": "glameow",
+        "432": "purugly",
+        "433": "chingling",
+        "434": "stunky",
+        "435": "skuntank",
+        "436": "bronzor",
+        "437": "bronzong",
+        "438": "bonsly",
+        "439": "mimejr",
+        "440": "happiny",
+        "441": "chatot",
+        "442": "spiritomb",
+        "443": "gible",
+        "444": "gabite",
+        "445": "garchomp",
+        "446": "munchlax",
+        "447": "riolu",
+        "448": "lucario",
+        "449": "hippopotas",
+        "450": "hippowdon",
+        "451": "skorupi",
+        "452": "drapion",
+        "453": "croagunk",
+        "454": "toxicroak",
+        "455": "carnivine",
+        "456": "finneon",
+        "457": "lumineon",
+        "458": "mantyke",
+        "459": "snover",
+        "460": "abomasnow",
+        "461": "weavile",
+        "462": "magnezone",
+        "463": "lickilicky",
+        "464": "rhyperior",
+        "465": "tangrowth",
+        "466": "electivire",
+        "467": "magmortar",
+        "468": "togekiss",
+        "469": "yanmega",
+        "470": "leafeon",
+        "471": "glaceon",
+        "472": "gliscor",
+        "473": "mamoswine",
+        "474": "porygonz",
+        "475": "gallade",
+        "476": "probopass",
+        "477": "dusknoir",
+        "478": "froslass",
+        "479": "rotom",
+        "480": "uxie",
+        "481": "mesprit",
+        "482": "azelf",
+        "483": "dialga",
+        "484": "palkia",
+        "485": "heatran",
+        "486": "regigigas",
+        "487": "giratina",
+        "488": "cresselia",
+        "489": "phione",
+        "490": "manaphy",
+        "491": "darkrai",
+        "492": "shaymin",
+        "493": "arceus"
+      },
+      "byCompoundId": {
+        "386:1": "deoxysattack",
+        "386:2": "deoxysdefense",
+        "386:3": "deoxysspeed",
+        "413:1": "wormadamsandy",
+        "413:2": "wormadamtrash",
+        "487:1": "giratinaorigin",
+        "492:1": "shayminsky",
+        "479:1": "rotomheat",
+        "479:2": "rotomwash",
+        "479:3": "rotomfrost",
+        "479:4": "rotomfan",
+        "479:5": "rotommow"
+      },
+      "byCanonicalId": {
+        "bulbasaur": {
+          "speciesNum": 1,
+          "form": 0
+        },
+        "ivysaur": {
+          "speciesNum": 2,
+          "form": 0
+        },
+        "venusaur": {
+          "speciesNum": 3,
+          "form": 0
+        },
+        "charmander": {
+          "speciesNum": 4,
+          "form": 0
+        },
+        "charmeleon": {
+          "speciesNum": 5,
+          "form": 0
+        },
+        "charizard": {
+          "speciesNum": 6,
+          "form": 0
+        },
+        "squirtle": {
+          "speciesNum": 7,
+          "form": 0
+        },
+        "wartortle": {
+          "speciesNum": 8,
+          "form": 0
+        },
+        "blastoise": {
+          "speciesNum": 9,
+          "form": 0
+        },
+        "caterpie": {
+          "speciesNum": 10,
+          "form": 0
+        },
+        "metapod": {
+          "speciesNum": 11,
+          "form": 0
+        },
+        "butterfree": {
+          "speciesNum": 12,
+          "form": 0
+        },
+        "weedle": {
+          "speciesNum": 13,
+          "form": 0
+        },
+        "kakuna": {
+          "speciesNum": 14,
+          "form": 0
+        },
+        "beedrill": {
+          "speciesNum": 15,
+          "form": 0
+        },
+        "pidgey": {
+          "speciesNum": 16,
+          "form": 0
+        },
+        "pidgeotto": {
+          "speciesNum": 17,
+          "form": 0
+        },
+        "pidgeot": {
+          "speciesNum": 18,
+          "form": 0
+        },
+        "rattata": {
+          "speciesNum": 19,
+          "form": 0
+        },
+        "raticate": {
+          "speciesNum": 20,
+          "form": 0
+        },
+        "spearow": {
+          "speciesNum": 21,
+          "form": 0
+        },
+        "fearow": {
+          "speciesNum": 22,
+          "form": 0
+        },
+        "ekans": {
+          "speciesNum": 23,
+          "form": 0
+        },
+        "arbok": {
+          "speciesNum": 24,
+          "form": 0
+        },
+        "pikachu": {
+          "speciesNum": 25,
+          "form": 0
+        },
+        "raichu": {
+          "speciesNum": 26,
+          "form": 0
+        },
+        "sandshrew": {
+          "speciesNum": 27,
+          "form": 0
+        },
+        "sandslash": {
+          "speciesNum": 28,
+          "form": 0
+        },
+        "nidoranf": {
+          "speciesNum": 29,
+          "form": 0
+        },
+        "nidorina": {
+          "speciesNum": 30,
+          "form": 0
+        },
+        "nidoqueen": {
+          "speciesNum": 31,
+          "form": 0
+        },
+        "nidoranm": {
+          "speciesNum": 32,
+          "form": 0
+        },
+        "nidorino": {
+          "speciesNum": 33,
+          "form": 0
+        },
+        "nidoking": {
+          "speciesNum": 34,
+          "form": 0
+        },
+        "clefairy": {
+          "speciesNum": 35,
+          "form": 0
+        },
+        "clefable": {
+          "speciesNum": 36,
+          "form": 0
+        },
+        "vulpix": {
+          "speciesNum": 37,
+          "form": 0
+        },
+        "ninetales": {
+          "speciesNum": 38,
+          "form": 0
+        },
+        "jigglypuff": {
+          "speciesNum": 39,
+          "form": 0
+        },
+        "wigglytuff": {
+          "speciesNum": 40,
+          "form": 0
+        },
+        "zubat": {
+          "speciesNum": 41,
+          "form": 0
+        },
+        "golbat": {
+          "speciesNum": 42,
+          "form": 0
+        },
+        "oddish": {
+          "speciesNum": 43,
+          "form": 0
+        },
+        "gloom": {
+          "speciesNum": 44,
+          "form": 0
+        },
+        "vileplume": {
+          "speciesNum": 45,
+          "form": 0
+        },
+        "paras": {
+          "speciesNum": 46,
+          "form": 0
+        },
+        "parasect": {
+          "speciesNum": 47,
+          "form": 0
+        },
+        "venonat": {
+          "speciesNum": 48,
+          "form": 0
+        },
+        "venomoth": {
+          "speciesNum": 49,
+          "form": 0
+        },
+        "diglett": {
+          "speciesNum": 50,
+          "form": 0
+        },
+        "dugtrio": {
+          "speciesNum": 51,
+          "form": 0
+        },
+        "meowth": {
+          "speciesNum": 52,
+          "form": 0
+        },
+        "persian": {
+          "speciesNum": 53,
+          "form": 0
+        },
+        "psyduck": {
+          "speciesNum": 54,
+          "form": 0
+        },
+        "golduck": {
+          "speciesNum": 55,
+          "form": 0
+        },
+        "mankey": {
+          "speciesNum": 56,
+          "form": 0
+        },
+        "primeape": {
+          "speciesNum": 57,
+          "form": 0
+        },
+        "growlithe": {
+          "speciesNum": 58,
+          "form": 0
+        },
+        "arcanine": {
+          "speciesNum": 59,
+          "form": 0
+        },
+        "poliwag": {
+          "speciesNum": 60,
+          "form": 0
+        },
+        "poliwhirl": {
+          "speciesNum": 61,
+          "form": 0
+        },
+        "poliwrath": {
+          "speciesNum": 62,
+          "form": 0
+        },
+        "abra": {
+          "speciesNum": 63,
+          "form": 0
+        },
+        "kadabra": {
+          "speciesNum": 64,
+          "form": 0
+        },
+        "alakazam": {
+          "speciesNum": 65,
+          "form": 0
+        },
+        "machop": {
+          "speciesNum": 66,
+          "form": 0
+        },
+        "machoke": {
+          "speciesNum": 67,
+          "form": 0
+        },
+        "machamp": {
+          "speciesNum": 68,
+          "form": 0
+        },
+        "bellsprout": {
+          "speciesNum": 69,
+          "form": 0
+        },
+        "weepinbell": {
+          "speciesNum": 70,
+          "form": 0
+        },
+        "victreebel": {
+          "speciesNum": 71,
+          "form": 0
+        },
+        "tentacool": {
+          "speciesNum": 72,
+          "form": 0
+        },
+        "tentacruel": {
+          "speciesNum": 73,
+          "form": 0
+        },
+        "geodude": {
+          "speciesNum": 74,
+          "form": 0
+        },
+        "graveler": {
+          "speciesNum": 75,
+          "form": 0
+        },
+        "golem": {
+          "speciesNum": 76,
+          "form": 0
+        },
+        "ponyta": {
+          "speciesNum": 77,
+          "form": 0
+        },
+        "rapidash": {
+          "speciesNum": 78,
+          "form": 0
+        },
+        "slowpoke": {
+          "speciesNum": 79,
+          "form": 0
+        },
+        "slowbro": {
+          "speciesNum": 80,
+          "form": 0
+        },
+        "magnemite": {
+          "speciesNum": 81,
+          "form": 0
+        },
+        "magneton": {
+          "speciesNum": 82,
+          "form": 0
+        },
+        "farfetchd": {
+          "speciesNum": 83,
+          "form": 0
+        },
+        "doduo": {
+          "speciesNum": 84,
+          "form": 0
+        },
+        "dodrio": {
+          "speciesNum": 85,
+          "form": 0
+        },
+        "seel": {
+          "speciesNum": 86,
+          "form": 0
+        },
+        "dewgong": {
+          "speciesNum": 87,
+          "form": 0
+        },
+        "grimer": {
+          "speciesNum": 88,
+          "form": 0
+        },
+        "muk": {
+          "speciesNum": 89,
+          "form": 0
+        },
+        "shellder": {
+          "speciesNum": 90,
+          "form": 0
+        },
+        "cloyster": {
+          "speciesNum": 91,
+          "form": 0
+        },
+        "gastly": {
+          "speciesNum": 92,
+          "form": 0
+        },
+        "haunter": {
+          "speciesNum": 93,
+          "form": 0
+        },
+        "gengar": {
+          "speciesNum": 94,
+          "form": 0
+        },
+        "onix": {
+          "speciesNum": 95,
+          "form": 0
+        },
+        "drowzee": {
+          "speciesNum": 96,
+          "form": 0
+        },
+        "hypno": {
+          "speciesNum": 97,
+          "form": 0
+        },
+        "krabby": {
+          "speciesNum": 98,
+          "form": 0
+        },
+        "kingler": {
+          "speciesNum": 99,
+          "form": 0
+        },
+        "voltorb": {
+          "speciesNum": 100,
+          "form": 0
+        },
+        "electrode": {
+          "speciesNum": 101,
+          "form": 0
+        },
+        "exeggcute": {
+          "speciesNum": 102,
+          "form": 0
+        },
+        "exeggutor": {
+          "speciesNum": 103,
+          "form": 0
+        },
+        "cubone": {
+          "speciesNum": 104,
+          "form": 0
+        },
+        "marowak": {
+          "speciesNum": 105,
+          "form": 0
+        },
+        "hitmonlee": {
+          "speciesNum": 106,
+          "form": 0
+        },
+        "hitmonchan": {
+          "speciesNum": 107,
+          "form": 0
+        },
+        "lickitung": {
+          "speciesNum": 108,
+          "form": 0
+        },
+        "koffing": {
+          "speciesNum": 109,
+          "form": 0
+        },
+        "weezing": {
+          "speciesNum": 110,
+          "form": 0
+        },
+        "rhyhorn": {
+          "speciesNum": 111,
+          "form": 0
+        },
+        "rhydon": {
+          "speciesNum": 112,
+          "form": 0
+        },
+        "chansey": {
+          "speciesNum": 113,
+          "form": 0
+        },
+        "tangela": {
+          "speciesNum": 114,
+          "form": 0
+        },
+        "kangaskhan": {
+          "speciesNum": 115,
+          "form": 0
+        },
+        "horsea": {
+          "speciesNum": 116,
+          "form": 0
+        },
+        "seadra": {
+          "speciesNum": 117,
+          "form": 0
+        },
+        "goldeen": {
+          "speciesNum": 118,
+          "form": 0
+        },
+        "seaking": {
+          "speciesNum": 119,
+          "form": 0
+        },
+        "staryu": {
+          "speciesNum": 120,
+          "form": 0
+        },
+        "starmie": {
+          "speciesNum": 121,
+          "form": 0
+        },
+        "mrmime": {
+          "speciesNum": 122,
+          "form": 0
+        },
+        "scyther": {
+          "speciesNum": 123,
+          "form": 0
+        },
+        "jynx": {
+          "speciesNum": 124,
+          "form": 0
+        },
+        "electabuzz": {
+          "speciesNum": 125,
+          "form": 0
+        },
+        "magmar": {
+          "speciesNum": 126,
+          "form": 0
+        },
+        "pinsir": {
+          "speciesNum": 127,
+          "form": 0
+        },
+        "tauros": {
+          "speciesNum": 128,
+          "form": 0
+        },
+        "magikarp": {
+          "speciesNum": 129,
+          "form": 0
+        },
+        "gyarados": {
+          "speciesNum": 130,
+          "form": 0
+        },
+        "lapras": {
+          "speciesNum": 131,
+          "form": 0
+        },
+        "ditto": {
+          "speciesNum": 132,
+          "form": 0
+        },
+        "eevee": {
+          "speciesNum": 133,
+          "form": 0
+        },
+        "vaporeon": {
+          "speciesNum": 134,
+          "form": 0
+        },
+        "jolteon": {
+          "speciesNum": 135,
+          "form": 0
+        },
+        "flareon": {
+          "speciesNum": 136,
+          "form": 0
+        },
+        "porygon": {
+          "speciesNum": 137,
+          "form": 0
+        },
+        "omanyte": {
+          "speciesNum": 138,
+          "form": 0
+        },
+        "omastar": {
+          "speciesNum": 139,
+          "form": 0
+        },
+        "kabuto": {
+          "speciesNum": 140,
+          "form": 0
+        },
+        "kabutops": {
+          "speciesNum": 141,
+          "form": 0
+        },
+        "aerodactyl": {
+          "speciesNum": 142,
+          "form": 0
+        },
+        "snorlax": {
+          "speciesNum": 143,
+          "form": 0
+        },
+        "articuno": {
+          "speciesNum": 144,
+          "form": 0
+        },
+        "zapdos": {
+          "speciesNum": 145,
+          "form": 0
+        },
+        "moltres": {
+          "speciesNum": 146,
+          "form": 0
+        },
+        "dratini": {
+          "speciesNum": 147,
+          "form": 0
+        },
+        "dragonair": {
+          "speciesNum": 148,
+          "form": 0
+        },
+        "dragonite": {
+          "speciesNum": 149,
+          "form": 0
+        },
+        "mewtwo": {
+          "speciesNum": 150,
+          "form": 0
+        },
+        "mew": {
+          "speciesNum": 151,
+          "form": 0
+        },
+        "chikorita": {
+          "speciesNum": 152,
+          "form": 0
+        },
+        "bayleef": {
+          "speciesNum": 153,
+          "form": 0
+        },
+        "meganium": {
+          "speciesNum": 154,
+          "form": 0
+        },
+        "cyndaquil": {
+          "speciesNum": 155,
+          "form": 0
+        },
+        "quilava": {
+          "speciesNum": 156,
+          "form": 0
+        },
+        "typhlosion": {
+          "speciesNum": 157,
+          "form": 0
+        },
+        "totodile": {
+          "speciesNum": 158,
+          "form": 0
+        },
+        "croconaw": {
+          "speciesNum": 159,
+          "form": 0
+        },
+        "feraligatr": {
+          "speciesNum": 160,
+          "form": 0
+        },
+        "sentret": {
+          "speciesNum": 161,
+          "form": 0
+        },
+        "furret": {
+          "speciesNum": 162,
+          "form": 0
+        },
+        "hoothoot": {
+          "speciesNum": 163,
+          "form": 0
+        },
+        "noctowl": {
+          "speciesNum": 164,
+          "form": 0
+        },
+        "ledyba": {
+          "speciesNum": 165,
+          "form": 0
+        },
+        "ledian": {
+          "speciesNum": 166,
+          "form": 0
+        },
+        "spinarak": {
+          "speciesNum": 167,
+          "form": 0
+        },
+        "ariados": {
+          "speciesNum": 168,
+          "form": 0
+        },
+        "crobat": {
+          "speciesNum": 169,
+          "form": 0
+        },
+        "chinchou": {
+          "speciesNum": 170,
+          "form": 0
+        },
+        "lanturn": {
+          "speciesNum": 171,
+          "form": 0
+        },
+        "pichu": {
+          "speciesNum": 172,
+          "form": 0
+        },
+        "cleffa": {
+          "speciesNum": 173,
+          "form": 0
+        },
+        "igglybuff": {
+          "speciesNum": 174,
+          "form": 0
+        },
+        "togepi": {
+          "speciesNum": 175,
+          "form": 0
+        },
+        "togetic": {
+          "speciesNum": 176,
+          "form": 0
+        },
+        "natu": {
+          "speciesNum": 177,
+          "form": 0
+        },
+        "xatu": {
+          "speciesNum": 178,
+          "form": 0
+        },
+        "mareep": {
+          "speciesNum": 179,
+          "form": 0
+        },
+        "flaaffy": {
+          "speciesNum": 180,
+          "form": 0
+        },
+        "ampharos": {
+          "speciesNum": 181,
+          "form": 0
+        },
+        "bellossom": {
+          "speciesNum": 182,
+          "form": 0
+        },
+        "marill": {
+          "speciesNum": 183,
+          "form": 0
+        },
+        "azumarill": {
+          "speciesNum": 184,
+          "form": 0
+        },
+        "sudowoodo": {
+          "speciesNum": 185,
+          "form": 0
+        },
+        "politoed": {
+          "speciesNum": 186,
+          "form": 0
+        },
+        "hoppip": {
+          "speciesNum": 187,
+          "form": 0
+        },
+        "skiploom": {
+          "speciesNum": 188,
+          "form": 0
+        },
+        "jumpluff": {
+          "speciesNum": 189,
+          "form": 0
+        },
+        "aipom": {
+          "speciesNum": 190,
+          "form": 0
+        },
+        "sunkern": {
+          "speciesNum": 191,
+          "form": 0
+        },
+        "sunflora": {
+          "speciesNum": 192,
+          "form": 0
+        },
+        "yanma": {
+          "speciesNum": 193,
+          "form": 0
+        },
+        "wooper": {
+          "speciesNum": 194,
+          "form": 0
+        },
+        "quagsire": {
+          "speciesNum": 195,
+          "form": 0
+        },
+        "espeon": {
+          "speciesNum": 196,
+          "form": 0
+        },
+        "umbreon": {
+          "speciesNum": 197,
+          "form": 0
+        },
+        "murkrow": {
+          "speciesNum": 198,
+          "form": 0
+        },
+        "slowking": {
+          "speciesNum": 199,
+          "form": 0
+        },
+        "misdreavus": {
+          "speciesNum": 200,
+          "form": 0
+        },
+        "unown": {
+          "speciesNum": 201,
+          "form": 0
+        },
+        "wobbuffet": {
+          "speciesNum": 202,
+          "form": 0
+        },
+        "girafarig": {
+          "speciesNum": 203,
+          "form": 0
+        },
+        "pineco": {
+          "speciesNum": 204,
+          "form": 0
+        },
+        "forretress": {
+          "speciesNum": 205,
+          "form": 0
+        },
+        "dunsparce": {
+          "speciesNum": 206,
+          "form": 0
+        },
+        "gligar": {
+          "speciesNum": 207,
+          "form": 0
+        },
+        "steelix": {
+          "speciesNum": 208,
+          "form": 0
+        },
+        "snubbull": {
+          "speciesNum": 209,
+          "form": 0
+        },
+        "granbull": {
+          "speciesNum": 210,
+          "form": 0
+        },
+        "qwilfish": {
+          "speciesNum": 211,
+          "form": 0
+        },
+        "scizor": {
+          "speciesNum": 212,
+          "form": 0
+        },
+        "shuckle": {
+          "speciesNum": 213,
+          "form": 0
+        },
+        "heracross": {
+          "speciesNum": 214,
+          "form": 0
+        },
+        "sneasel": {
+          "speciesNum": 215,
+          "form": 0
+        },
+        "teddiursa": {
+          "speciesNum": 216,
+          "form": 0
+        },
+        "ursaring": {
+          "speciesNum": 217,
+          "form": 0
+        },
+        "slugma": {
+          "speciesNum": 218,
+          "form": 0
+        },
+        "magcargo": {
+          "speciesNum": 219,
+          "form": 0
+        },
+        "swinub": {
+          "speciesNum": 220,
+          "form": 0
+        },
+        "piloswine": {
+          "speciesNum": 221,
+          "form": 0
+        },
+        "corsola": {
+          "speciesNum": 222,
+          "form": 0
+        },
+        "remoraid": {
+          "speciesNum": 223,
+          "form": 0
+        },
+        "octillery": {
+          "speciesNum": 224,
+          "form": 0
+        },
+        "delibird": {
+          "speciesNum": 225,
+          "form": 0
+        },
+        "mantine": {
+          "speciesNum": 226,
+          "form": 0
+        },
+        "skarmory": {
+          "speciesNum": 227,
+          "form": 0
+        },
+        "houndour": {
+          "speciesNum": 228,
+          "form": 0
+        },
+        "houndoom": {
+          "speciesNum": 229,
+          "form": 0
+        },
+        "kingdra": {
+          "speciesNum": 230,
+          "form": 0
+        },
+        "phanpy": {
+          "speciesNum": 231,
+          "form": 0
+        },
+        "donphan": {
+          "speciesNum": 232,
+          "form": 0
+        },
+        "porygon2": {
+          "speciesNum": 233,
+          "form": 0
+        },
+        "stantler": {
+          "speciesNum": 234,
+          "form": 0
+        },
+        "smeargle": {
+          "speciesNum": 235,
+          "form": 0
+        },
+        "tyrogue": {
+          "speciesNum": 236,
+          "form": 0
+        },
+        "hitmontop": {
+          "speciesNum": 237,
+          "form": 0
+        },
+        "smoochum": {
+          "speciesNum": 238,
+          "form": 0
+        },
+        "elekid": {
+          "speciesNum": 239,
+          "form": 0
+        },
+        "magby": {
+          "speciesNum": 240,
+          "form": 0
+        },
+        "miltank": {
+          "speciesNum": 241,
+          "form": 0
+        },
+        "blissey": {
+          "speciesNum": 242,
+          "form": 0
+        },
+        "raikou": {
+          "speciesNum": 243,
+          "form": 0
+        },
+        "entei": {
+          "speciesNum": 244,
+          "form": 0
+        },
+        "suicune": {
+          "speciesNum": 245,
+          "form": 0
+        },
+        "larvitar": {
+          "speciesNum": 246,
+          "form": 0
+        },
+        "pupitar": {
+          "speciesNum": 247,
+          "form": 0
+        },
+        "tyranitar": {
+          "speciesNum": 248,
+          "form": 0
+        },
+        "lugia": {
+          "speciesNum": 249,
+          "form": 0
+        },
+        "hooh": {
+          "speciesNum": 250,
+          "form": 0
+        },
+        "celebi": {
+          "speciesNum": 251,
+          "form": 0
+        },
+        "treecko": {
+          "speciesNum": 252,
+          "form": 0
+        },
+        "grovyle": {
+          "speciesNum": 253,
+          "form": 0
+        },
+        "sceptile": {
+          "speciesNum": 254,
+          "form": 0
+        },
+        "torchic": {
+          "speciesNum": 255,
+          "form": 0
+        },
+        "combusken": {
+          "speciesNum": 256,
+          "form": 0
+        },
+        "blaziken": {
+          "speciesNum": 257,
+          "form": 0
+        },
+        "mudkip": {
+          "speciesNum": 258,
+          "form": 0
+        },
+        "marshtomp": {
+          "speciesNum": 259,
+          "form": 0
+        },
+        "swampert": {
+          "speciesNum": 260,
+          "form": 0
+        },
+        "poochyena": {
+          "speciesNum": 261,
+          "form": 0
+        },
+        "mightyena": {
+          "speciesNum": 262,
+          "form": 0
+        },
+        "zigzagoon": {
+          "speciesNum": 263,
+          "form": 0
+        },
+        "linoone": {
+          "speciesNum": 264,
+          "form": 0
+        },
+        "wurmple": {
+          "speciesNum": 265,
+          "form": 0
+        },
+        "silcoon": {
+          "speciesNum": 266,
+          "form": 0
+        },
+        "beautifly": {
+          "speciesNum": 267,
+          "form": 0
+        },
+        "cascoon": {
+          "speciesNum": 268,
+          "form": 0
+        },
+        "dustox": {
+          "speciesNum": 269,
+          "form": 0
+        },
+        "lotad": {
+          "speciesNum": 270,
+          "form": 0
+        },
+        "lombre": {
+          "speciesNum": 271,
+          "form": 0
+        },
+        "ludicolo": {
+          "speciesNum": 272,
+          "form": 0
+        },
+        "seedot": {
+          "speciesNum": 273,
+          "form": 0
+        },
+        "nuzleaf": {
+          "speciesNum": 274,
+          "form": 0
+        },
+        "shiftry": {
+          "speciesNum": 275,
+          "form": 0
+        },
+        "taillow": {
+          "speciesNum": 276,
+          "form": 0
+        },
+        "swellow": {
+          "speciesNum": 277,
+          "form": 0
+        },
+        "wingull": {
+          "speciesNum": 278,
+          "form": 0
+        },
+        "pelipper": {
+          "speciesNum": 279,
+          "form": 0
+        },
+        "ralts": {
+          "speciesNum": 280,
+          "form": 0
+        },
+        "kirlia": {
+          "speciesNum": 281,
+          "form": 0
+        },
+        "gardevoir": {
+          "speciesNum": 282,
+          "form": 0
+        },
+        "surskit": {
+          "speciesNum": 283,
+          "form": 0
+        },
+        "masquerain": {
+          "speciesNum": 284,
+          "form": 0
+        },
+        "shroomish": {
+          "speciesNum": 285,
+          "form": 0
+        },
+        "breloom": {
+          "speciesNum": 286,
+          "form": 0
+        },
+        "slakoth": {
+          "speciesNum": 287,
+          "form": 0
+        },
+        "vigoroth": {
+          "speciesNum": 288,
+          "form": 0
+        },
+        "slaking": {
+          "speciesNum": 289,
+          "form": 0
+        },
+        "nincada": {
+          "speciesNum": 290,
+          "form": 0
+        },
+        "ninjask": {
+          "speciesNum": 291,
+          "form": 0
+        },
+        "shedinja": {
+          "speciesNum": 292,
+          "form": 0
+        },
+        "whismur": {
+          "speciesNum": 293,
+          "form": 0
+        },
+        "loudred": {
+          "speciesNum": 294,
+          "form": 0
+        },
+        "exploud": {
+          "speciesNum": 295,
+          "form": 0
+        },
+        "makuhita": {
+          "speciesNum": 296,
+          "form": 0
+        },
+        "hariyama": {
+          "speciesNum": 297,
+          "form": 0
+        },
+        "azurill": {
+          "speciesNum": 298,
+          "form": 0
+        },
+        "nosepass": {
+          "speciesNum": 299,
+          "form": 0
+        },
+        "skitty": {
+          "speciesNum": 300,
+          "form": 0
+        },
+        "delcatty": {
+          "speciesNum": 301,
+          "form": 0
+        },
+        "sableye": {
+          "speciesNum": 302,
+          "form": 0
+        },
+        "mawile": {
+          "speciesNum": 303,
+          "form": 0
+        },
+        "aron": {
+          "speciesNum": 304,
+          "form": 0
+        },
+        "lairon": {
+          "speciesNum": 305,
+          "form": 0
+        },
+        "aggron": {
+          "speciesNum": 306,
+          "form": 0
+        },
+        "meditite": {
+          "speciesNum": 307,
+          "form": 0
+        },
+        "medicham": {
+          "speciesNum": 308,
+          "form": 0
+        },
+        "electrike": {
+          "speciesNum": 309,
+          "form": 0
+        },
+        "manectric": {
+          "speciesNum": 310,
+          "form": 0
+        },
+        "plusle": {
+          "speciesNum": 311,
+          "form": 0
+        },
+        "minun": {
+          "speciesNum": 312,
+          "form": 0
+        },
+        "volbeat": {
+          "speciesNum": 313,
+          "form": 0
+        },
+        "illumise": {
+          "speciesNum": 314,
+          "form": 0
+        },
+        "roselia": {
+          "speciesNum": 315,
+          "form": 0
+        },
+        "gulpin": {
+          "speciesNum": 316,
+          "form": 0
+        },
+        "swalot": {
+          "speciesNum": 317,
+          "form": 0
+        },
+        "carvanha": {
+          "speciesNum": 318,
+          "form": 0
+        },
+        "sharpedo": {
+          "speciesNum": 319,
+          "form": 0
+        },
+        "wailmer": {
+          "speciesNum": 320,
+          "form": 0
+        },
+        "wailord": {
+          "speciesNum": 321,
+          "form": 0
+        },
+        "numel": {
+          "speciesNum": 322,
+          "form": 0
+        },
+        "camerupt": {
+          "speciesNum": 323,
+          "form": 0
+        },
+        "torkoal": {
+          "speciesNum": 324,
+          "form": 0
+        },
+        "spoink": {
+          "speciesNum": 325,
+          "form": 0
+        },
+        "grumpig": {
+          "speciesNum": 326,
+          "form": 0
+        },
+        "spinda": {
+          "speciesNum": 327,
+          "form": 0
+        },
+        "trapinch": {
+          "speciesNum": 328,
+          "form": 0
+        },
+        "vibrava": {
+          "speciesNum": 329,
+          "form": 0
+        },
+        "flygon": {
+          "speciesNum": 330,
+          "form": 0
+        },
+        "cacnea": {
+          "speciesNum": 331,
+          "form": 0
+        },
+        "cacturne": {
+          "speciesNum": 332,
+          "form": 0
+        },
+        "swablu": {
+          "speciesNum": 333,
+          "form": 0
+        },
+        "altaria": {
+          "speciesNum": 334,
+          "form": 0
+        },
+        "zangoose": {
+          "speciesNum": 335,
+          "form": 0
+        },
+        "seviper": {
+          "speciesNum": 336,
+          "form": 0
+        },
+        "lunatone": {
+          "speciesNum": 337,
+          "form": 0
+        },
+        "solrock": {
+          "speciesNum": 338,
+          "form": 0
+        },
+        "barboach": {
+          "speciesNum": 339,
+          "form": 0
+        },
+        "whiscash": {
+          "speciesNum": 340,
+          "form": 0
+        },
+        "corphish": {
+          "speciesNum": 341,
+          "form": 0
+        },
+        "crawdaunt": {
+          "speciesNum": 342,
+          "form": 0
+        },
+        "baltoy": {
+          "speciesNum": 343,
+          "form": 0
+        },
+        "claydol": {
+          "speciesNum": 344,
+          "form": 0
+        },
+        "lileep": {
+          "speciesNum": 345,
+          "form": 0
+        },
+        "cradily": {
+          "speciesNum": 346,
+          "form": 0
+        },
+        "anorith": {
+          "speciesNum": 347,
+          "form": 0
+        },
+        "armaldo": {
+          "speciesNum": 348,
+          "form": 0
+        },
+        "feebas": {
+          "speciesNum": 349,
+          "form": 0
+        },
+        "milotic": {
+          "speciesNum": 350,
+          "form": 0
+        },
+        "castform": {
+          "speciesNum": 351,
+          "form": 0
+        },
+        "kecleon": {
+          "speciesNum": 352,
+          "form": 0
+        },
+        "shuppet": {
+          "speciesNum": 353,
+          "form": 0
+        },
+        "banette": {
+          "speciesNum": 354,
+          "form": 0
+        },
+        "duskull": {
+          "speciesNum": 355,
+          "form": 0
+        },
+        "dusclops": {
+          "speciesNum": 356,
+          "form": 0
+        },
+        "tropius": {
+          "speciesNum": 357,
+          "form": 0
+        },
+        "chimecho": {
+          "speciesNum": 358,
+          "form": 0
+        },
+        "absol": {
+          "speciesNum": 359,
+          "form": 0
+        },
+        "wynaut": {
+          "speciesNum": 360,
+          "form": 0
+        },
+        "snorunt": {
+          "speciesNum": 361,
+          "form": 0
+        },
+        "glalie": {
+          "speciesNum": 362,
+          "form": 0
+        },
+        "spheal": {
+          "speciesNum": 363,
+          "form": 0
+        },
+        "sealeo": {
+          "speciesNum": 364,
+          "form": 0
+        },
+        "walrein": {
+          "speciesNum": 365,
+          "form": 0
+        },
+        "clamperl": {
+          "speciesNum": 366,
+          "form": 0
+        },
+        "huntail": {
+          "speciesNum": 367,
+          "form": 0
+        },
+        "gorebyss": {
+          "speciesNum": 368,
+          "form": 0
+        },
+        "relicanth": {
+          "speciesNum": 369,
+          "form": 0
+        },
+        "luvdisc": {
+          "speciesNum": 370,
+          "form": 0
+        },
+        "bagon": {
+          "speciesNum": 371,
+          "form": 0
+        },
+        "shelgon": {
+          "speciesNum": 372,
+          "form": 0
+        },
+        "salamence": {
+          "speciesNum": 373,
+          "form": 0
+        },
+        "beldum": {
+          "speciesNum": 374,
+          "form": 0
+        },
+        "metang": {
+          "speciesNum": 375,
+          "form": 0
+        },
+        "metagross": {
+          "speciesNum": 376,
+          "form": 0
+        },
+        "regirock": {
+          "speciesNum": 377,
+          "form": 0
+        },
+        "regice": {
+          "speciesNum": 378,
+          "form": 0
+        },
+        "registeel": {
+          "speciesNum": 379,
+          "form": 0
+        },
+        "latias": {
+          "speciesNum": 380,
+          "form": 0
+        },
+        "latios": {
+          "speciesNum": 381,
+          "form": 0
+        },
+        "kyogre": {
+          "speciesNum": 382,
+          "form": 0
+        },
+        "groudon": {
+          "speciesNum": 383,
+          "form": 0
+        },
+        "rayquaza": {
+          "speciesNum": 384,
+          "form": 0
+        },
+        "jirachi": {
+          "speciesNum": 385,
+          "form": 0
+        },
+        "deoxys": {
+          "speciesNum": 386,
+          "form": 0
+        },
+        "turtwig": {
+          "speciesNum": 387,
+          "form": 0
+        },
+        "grotle": {
+          "speciesNum": 388,
+          "form": 0
+        },
+        "torterra": {
+          "speciesNum": 389,
+          "form": 0
+        },
+        "chimchar": {
+          "speciesNum": 390,
+          "form": 0
+        },
+        "monferno": {
+          "speciesNum": 391,
+          "form": 0
+        },
+        "infernape": {
+          "speciesNum": 392,
+          "form": 0
+        },
+        "piplup": {
+          "speciesNum": 393,
+          "form": 0
+        },
+        "prinplup": {
+          "speciesNum": 394,
+          "form": 0
+        },
+        "empoleon": {
+          "speciesNum": 395,
+          "form": 0
+        },
+        "starly": {
+          "speciesNum": 396,
+          "form": 0
+        },
+        "staravia": {
+          "speciesNum": 397,
+          "form": 0
+        },
+        "staraptor": {
+          "speciesNum": 398,
+          "form": 0
+        },
+        "bidoof": {
+          "speciesNum": 399,
+          "form": 0
+        },
+        "bibarel": {
+          "speciesNum": 400,
+          "form": 0
+        },
+        "kricketot": {
+          "speciesNum": 401,
+          "form": 0
+        },
+        "kricketune": {
+          "speciesNum": 402,
+          "form": 0
+        },
+        "shinx": {
+          "speciesNum": 403,
+          "form": 0
+        },
+        "luxio": {
+          "speciesNum": 404,
+          "form": 0
+        },
+        "luxray": {
+          "speciesNum": 405,
+          "form": 0
+        },
+        "budew": {
+          "speciesNum": 406,
+          "form": 0
+        },
+        "roserade": {
+          "speciesNum": 407,
+          "form": 0
+        },
+        "cranidos": {
+          "speciesNum": 408,
+          "form": 0
+        },
+        "rampardos": {
+          "speciesNum": 409,
+          "form": 0
+        },
+        "shieldon": {
+          "speciesNum": 410,
+          "form": 0
+        },
+        "bastiodon": {
+          "speciesNum": 411,
+          "form": 0
+        },
+        "burmy": {
+          "speciesNum": 412,
+          "form": 0
+        },
+        "wormadam": {
+          "speciesNum": 413,
+          "form": 0
+        },
+        "mothim": {
+          "speciesNum": 414,
+          "form": 0
+        },
+        "combee": {
+          "speciesNum": 415,
+          "form": 0
+        },
+        "vespiquen": {
+          "speciesNum": 416,
+          "form": 0
+        },
+        "pachirisu": {
+          "speciesNum": 417,
+          "form": 0
+        },
+        "buizel": {
+          "speciesNum": 418,
+          "form": 0
+        },
+        "floatzel": {
+          "speciesNum": 419,
+          "form": 0
+        },
+        "cherubi": {
+          "speciesNum": 420,
+          "form": 0
+        },
+        "cherrim": {
+          "speciesNum": 421,
+          "form": 0
+        },
+        "shellos": {
+          "speciesNum": 422,
+          "form": 0
+        },
+        "gastrodon": {
+          "speciesNum": 423,
+          "form": 0
+        },
+        "ambipom": {
+          "speciesNum": 424,
+          "form": 0
+        },
+        "drifloon": {
+          "speciesNum": 425,
+          "form": 0
+        },
+        "drifblim": {
+          "speciesNum": 426,
+          "form": 0
+        },
+        "buneary": {
+          "speciesNum": 427,
+          "form": 0
+        },
+        "lopunny": {
+          "speciesNum": 428,
+          "form": 0
+        },
+        "mismagius": {
+          "speciesNum": 429,
+          "form": 0
+        },
+        "honchkrow": {
+          "speciesNum": 430,
+          "form": 0
+        },
+        "glameow": {
+          "speciesNum": 431,
+          "form": 0
+        },
+        "purugly": {
+          "speciesNum": 432,
+          "form": 0
+        },
+        "chingling": {
+          "speciesNum": 433,
+          "form": 0
+        },
+        "stunky": {
+          "speciesNum": 434,
+          "form": 0
+        },
+        "skuntank": {
+          "speciesNum": 435,
+          "form": 0
+        },
+        "bronzor": {
+          "speciesNum": 436,
+          "form": 0
+        },
+        "bronzong": {
+          "speciesNum": 437,
+          "form": 0
+        },
+        "bonsly": {
+          "speciesNum": 438,
+          "form": 0
+        },
+        "mimejr": {
+          "speciesNum": 439,
+          "form": 0
+        },
+        "happiny": {
+          "speciesNum": 440,
+          "form": 0
+        },
+        "chatot": {
+          "speciesNum": 441,
+          "form": 0
+        },
+        "spiritomb": {
+          "speciesNum": 442,
+          "form": 0
+        },
+        "gible": {
+          "speciesNum": 443,
+          "form": 0
+        },
+        "gabite": {
+          "speciesNum": 444,
+          "form": 0
+        },
+        "garchomp": {
+          "speciesNum": 445,
+          "form": 0
+        },
+        "munchlax": {
+          "speciesNum": 446,
+          "form": 0
+        },
+        "riolu": {
+          "speciesNum": 447,
+          "form": 0
+        },
+        "lucario": {
+          "speciesNum": 448,
+          "form": 0
+        },
+        "hippopotas": {
+          "speciesNum": 449,
+          "form": 0
+        },
+        "hippowdon": {
+          "speciesNum": 450,
+          "form": 0
+        },
+        "skorupi": {
+          "speciesNum": 451,
+          "form": 0
+        },
+        "drapion": {
+          "speciesNum": 452,
+          "form": 0
+        },
+        "croagunk": {
+          "speciesNum": 453,
+          "form": 0
+        },
+        "toxicroak": {
+          "speciesNum": 454,
+          "form": 0
+        },
+        "carnivine": {
+          "speciesNum": 455,
+          "form": 0
+        },
+        "finneon": {
+          "speciesNum": 456,
+          "form": 0
+        },
+        "lumineon": {
+          "speciesNum": 457,
+          "form": 0
+        },
+        "mantyke": {
+          "speciesNum": 458,
+          "form": 0
+        },
+        "snover": {
+          "speciesNum": 459,
+          "form": 0
+        },
+        "abomasnow": {
+          "speciesNum": 460,
+          "form": 0
+        },
+        "weavile": {
+          "speciesNum": 461,
+          "form": 0
+        },
+        "magnezone": {
+          "speciesNum": 462,
+          "form": 0
+        },
+        "lickilicky": {
+          "speciesNum": 463,
+          "form": 0
+        },
+        "rhyperior": {
+          "speciesNum": 464,
+          "form": 0
+        },
+        "tangrowth": {
+          "speciesNum": 465,
+          "form": 0
+        },
+        "electivire": {
+          "speciesNum": 466,
+          "form": 0
+        },
+        "magmortar": {
+          "speciesNum": 467,
+          "form": 0
+        },
+        "togekiss": {
+          "speciesNum": 468,
+          "form": 0
+        },
+        "yanmega": {
+          "speciesNum": 469,
+          "form": 0
+        },
+        "leafeon": {
+          "speciesNum": 470,
+          "form": 0
+        },
+        "glaceon": {
+          "speciesNum": 471,
+          "form": 0
+        },
+        "gliscor": {
+          "speciesNum": 472,
+          "form": 0
+        },
+        "mamoswine": {
+          "speciesNum": 473,
+          "form": 0
+        },
+        "porygonz": {
+          "speciesNum": 474,
+          "form": 0
+        },
+        "gallade": {
+          "speciesNum": 475,
+          "form": 0
+        },
+        "probopass": {
+          "speciesNum": 476,
+          "form": 0
+        },
+        "dusknoir": {
+          "speciesNum": 477,
+          "form": 0
+        },
+        "froslass": {
+          "speciesNum": 478,
+          "form": 0
+        },
+        "rotom": {
+          "speciesNum": 479,
+          "form": 0
+        },
+        "uxie": {
+          "speciesNum": 480,
+          "form": 0
+        },
+        "mesprit": {
+          "speciesNum": 481,
+          "form": 0
+        },
+        "azelf": {
+          "speciesNum": 482,
+          "form": 0
+        },
+        "dialga": {
+          "speciesNum": 483,
+          "form": 0
+        },
+        "palkia": {
+          "speciesNum": 484,
+          "form": 0
+        },
+        "heatran": {
+          "speciesNum": 485,
+          "form": 0
+        },
+        "regigigas": {
+          "speciesNum": 486,
+          "form": 0
+        },
+        "giratina": {
+          "speciesNum": 487,
+          "form": 0
+        },
+        "cresselia": {
+          "speciesNum": 488,
+          "form": 0
+        },
+        "phione": {
+          "speciesNum": 489,
+          "form": 0
+        },
+        "manaphy": {
+          "speciesNum": 490,
+          "form": 0
+        },
+        "darkrai": {
+          "speciesNum": 491,
+          "form": 0
+        },
+        "shaymin": {
+          "speciesNum": 492,
+          "form": 0
+        },
+        "arceus": {
+          "speciesNum": 493,
+          "form": 0
+        },
+        "deoxysattack": {
+          "speciesNum": 386,
+          "form": 1
+        },
+        "deoxysdefense": {
+          "speciesNum": 386,
+          "form": 2
+        },
+        "deoxysspeed": {
+          "speciesNum": 386,
+          "form": 3
+        },
+        "wormadamsandy": {
+          "speciesNum": 413,
+          "form": 1
+        },
+        "wormadamtrash": {
+          "speciesNum": 413,
+          "form": 2
+        },
+        "giratinaorigin": {
+          "speciesNum": 487,
+          "form": 1
+        },
+        "shayminsky": {
+          "speciesNum": 492,
+          "form": 1
+        },
+        "rotomheat": {
+          "speciesNum": 479,
+          "form": 1
+        },
+        "rotomwash": {
+          "speciesNum": 479,
+          "form": 2
+        },
+        "rotomfrost": {
+          "speciesNum": 479,
+          "form": 3
+        },
+        "rotomfan": {
+          "speciesNum": 479,
+          "form": 4
+        },
+        "rotommow": {
+          "speciesNum": 479,
+          "form": 5
+        }
+      },
+      "sourceConfidence": "pinned-base-species-id-plus-explicit-form-identity"
+    },
+    "moves": {
+      "byNumericId": {
+        "1": "pound",
+        "2": "karatechop",
+        "3": "doubleslap",
+        "4": "weatherballwater",
+        "5": "megapunch",
+        "6": "payday",
+        "7": "firepunch",
+        "8": "icepunch",
+        "9": "thunderpunch",
+        "10": "scratch",
+        "11": "vicegrip",
+        "12": "guillotine",
+        "13": "razorwind",
+        "14": "swordsdance",
+        "15": "cut",
+        "16": "gust",
+        "17": "wingattack",
+        "18": "whirlwind",
+        "19": "fly",
+        "20": "mysticalfire",
+        "21": "slam",
+        "22": "vinewhip",
+        "23": "stomp",
+        "24": "doublekick",
+        "25": "megakick",
+        "26": "jumpkick",
+        "27": "rollingkick",
+        "28": "sandattack",
+        "29": "headbutt",
+        "30": "weatherballfire",
+        "31": "furyattack",
+        "32": "horndrill",
+        "33": "tackle",
+        "34": "bodyslam",
+        "35": "wrap",
+        "36": "takedown",
+        "37": "thrash",
+        "38": "doubleedge",
+        "39": "tailwhip",
+        "40": "poisonsting",
+        "41": "twineedle",
+        "42": "pinmissile",
+        "43": "leer",
+        "44": "bite",
+        "45": "growl",
+        "46": "roar",
+        "47": "sing",
+        "48": "supersonic",
+        "49": "sonicboom",
+        "50": "disable",
+        "51": "acid",
+        "52": "ember",
+        "53": "flamethrower",
+        "54": "mist",
+        "55": "watergun",
+        "56": "hydropump",
+        "57": "surf",
+        "58": "icebeam",
+        "59": "blizzard",
+        "60": "psybeam",
+        "61": "bubblebeam",
+        "62": "aurorabeam",
+        "63": "hyperbeam",
+        "64": "peck",
+        "65": "drillpeck",
+        "66": "submission",
+        "67": "lowkick",
+        "68": "counter",
+        "69": "seismictoss",
+        "70": "strength",
+        "71": "absorb",
+        "72": "megadrain",
+        "73": "leechseed",
+        "74": "growth",
+        "75": "razorleaf",
+        "76": "solarbeam",
+        "77": "poisonpowder",
+        "78": "stunspore",
+        "79": "sleeppowder",
+        "80": "petaldance",
+        "81": "stringshot",
+        "82": "dragonrage",
+        "83": "firespin",
+        "84": "thundershock",
+        "85": "thunderbolt",
+        "86": "thunderwave",
+        "87": "thunder",
+        "88": "rockthrow",
+        "89": "earthquake",
+        "90": "fissure",
+        "91": "dig",
+        "92": "toxic",
+        "93": "confusion",
+        "94": "psychic",
+        "95": "hypnosis",
+        "96": "meditate",
+        "97": "agility",
+        "98": "quickattack",
+        "99": "rage",
+        "100": "teleport",
+        "101": "nightshade",
+        "102": "mimic",
+        "103": "screech",
+        "104": "doubleteam",
+        "105": "recover",
+        "106": "harden",
+        "107": "minimize",
+        "108": "smokescreen",
+        "109": "confuseray",
+        "110": "withdraw",
+        "111": "weatherballrock",
+        "112": "barrier",
+        "113": "lightscreen",
+        "114": "haze",
+        "115": "reflect",
+        "116": "focusenergy",
+        "117": "bide",
+        "118": "metronome",
+        "119": "mirrormove",
+        "120": "selfdestruct",
+        "121": "eggbomb",
+        "122": "lick",
+        "123": "smog",
+        "124": "sludge",
+        "125": "boneclub",
+        "126": "fireblast",
+        "127": "waterfall",
+        "128": "clamp",
+        "129": "swift",
+        "130": "solar_beam",
+        "131": "weatherballice",
+        "132": "constrict",
+        "133": "amnesia",
+        "134": "kinesis",
+        "135": "softboiled",
+        "136": "hijumpkick",
+        "137": "glare",
+        "138": "dreameater",
+        "139": "poisongas",
+        "140": "hurricane",
+        "141": "leechlife",
+        "142": "lovelykiss",
+        "143": "skyattack",
+        "144": "transform",
+        "145": "bubble",
+        "146": "dizzypunch",
+        "147": "spore",
+        "148": "flash",
+        "149": "tripleaxel",
+        "150": "hiddenpowerwater",
+        "151": "acidarmor",
+        "152": "crabhammer",
+        "153": "explosion",
+        "154": "furyswipes",
+        "155": "bonemerang",
+        "156": "rest",
+        "157": "rockslide",
+        "158": "hyperfang",
+        "159": "sharpen",
+        "160": "hiddenpowerice",
+        "161": "triattack",
+        "162": "superfang",
+        "163": "slash",
+        "164": "substitute",
+        "165": "struggle",
+        "166": "sketch",
+        "167": "triplekick",
+        "168": "thief",
+        "169": "spiderweb",
+        "170": "mindreader",
+        "171": "hiddenpowerghost",
+        "172": "flamewheel",
+        "173": "snore",
+        "174": "curse",
+        "175": "flail",
+        "176": "conversion2",
+        "177": "aeroblast",
+        "178": "cottonspore",
+        "179": "reversal",
+        "180": "spite",
+        "181": "powdersnow",
+        "182": "protect",
+        "183": "machpunch",
+        "184": "scaryface",
+        "185": "faintattack",
+        "186": "sweetkiss",
+        "187": "bellydrum",
+        "188": "sludgebomb",
+        "189": "mudslap",
+        "190": "octazooka",
+        "191": "spikes",
+        "192": "zapcannon",
+        "193": "foresight",
+        "194": "destinybond",
+        "195": "perishsong",
+        "196": "icywind",
+        "197": "detect",
+        "198": "bonerush",
+        "199": "lockon",
+        "200": "outrage",
+        "201": "sandstorm",
+        "202": "gigadrain",
+        "203": "endure",
+        "204": "charm",
+        "205": "accelerock",
+        "206": "falseswipe",
+        "207": "swagger",
+        "208": "milkdrink",
+        "209": "wildcharge",
+        "210": "furycutter",
+        "211": "steelwing",
+        "212": "meanlook",
+        "213": "attract",
+        "214": "sleeptalk",
+        "215": "healbell",
+        "216": "return",
+        "217": "present",
+        "218": "frustration",
+        "219": "safeguard",
+        "220": "painsplit",
+        "221": "sacredfire",
+        "222": "bulldoze",
+        "223": "dynamicpunch",
+        "224": "megahorn",
+        "225": "dragonbreath",
+        "226": "batonpass",
+        "227": "encore",
+        "228": "pursuit",
+        "229": "hiddenpowerfire",
+        "230": "sweetscent",
+        "231": "irontail",
+        "232": "metalclaw",
+        "233": "vitalthrow",
+        "234": "morningsun",
+        "235": "synthesis",
+        "236": "moonlight",
+        "237": "hiddenpower",
+        "238": "crosschop",
+        "239": "twister",
+        "240": "raindance",
+        "241": "sunnyday",
+        "242": "crunch",
+        "243": "mirrorcoat",
+        "244": "psychup",
+        "245": "extremespeed",
+        "246": "ancientpower",
+        "247": "shadowball",
+        "248": "futuresight",
+        "249": "rocksmash",
+        "250": "whirlpool",
+        "251": "beatup",
+        "252": "fakeout",
+        "253": "uproar",
+        "254": "stockpile",
+        "255": "hiddenpowerrock",
+        "256": "swallow",
+        "257": "heatwave",
+        "258": "hail",
+        "259": "torment",
+        "260": "flatter",
+        "261": "willowisp",
+        "262": "memento",
+        "263": "facade",
+        "264": "focuspunch",
+        "265": "smellingsalt",
+        "266": "followme",
+        "267": "naturepower",
+        "268": "charge",
+        "269": "hiddenpowerdark",
+        "270": "helpinghand",
+        "271": "hiddenpowerpsychic",
+        "272": "roleplay",
+        "273": "wish",
+        "274": "assist",
+        "275": "ingrain",
+        "276": "superpower",
+        "277": "magiccoat",
+        "278": "recycle",
+        "279": "revenge",
+        "280": "brickbreak",
+        "281": "yawn",
+        "282": "knockoff",
+        "283": "endeavor",
+        "284": "eruption",
+        "285": "skillswap",
+        "286": "imprison",
+        "287": "refresh",
+        "288": "grudge",
+        "289": "drillrun",
+        "290": "secretpower",
+        "291": "dive",
+        "292": "hiddenpowerfighting",
+        "293": "camouflage",
+        "294": "tailglow",
+        "295": "lusterpurge",
+        "296": "mistball",
+        "297": "featherdance",
+        "298": "teeterdance",
+        "299": "blazekick",
+        "300": "hiddenpowerground",
+        "301": "iceball",
+        "302": "needlearm",
+        "303": "slackoff",
+        "304": "hypervoice",
+        "305": "poisonfang",
+        "306": "crushclaw",
+        "307": "blastburn",
+        "308": "hydrocannon",
+        "309": "meteormash",
+        "310": "astonish",
+        "311": "weatherball",
+        "312": "aromatherapy",
+        "313": "faketears",
+        "314": "aircutter",
+        "315": "overheat",
+        "316": "odorsleuth",
+        "317": "rocktomb",
+        "318": "silverwind",
+        "319": "metalsound",
+        "320": "grasswhistle",
+        "321": "tickle",
+        "322": "cosmicpower",
+        "323": "waterspout",
+        "324": "signalbeam",
+        "325": "shadowpunch",
+        "326": "extrasensory",
+        "327": "skyuppercut",
+        "328": "sandtomb",
+        "329": "sheercold",
+        "330": "muddywater",
+        "331": "bulletseed",
+        "332": "aerialace",
+        "333": "iciclespear",
+        "334": "irondefense",
+        "335": "block",
+        "336": "howl",
+        "337": "dragonclaw",
+        "338": "frenzyplant",
+        "339": "bulkup",
+        "340": "bounce",
+        "341": "mudshot",
+        "342": "poisontail",
+        "343": "hiddenpowergrass",
+        "344": "volttackle",
+        "345": "magicalleaf",
+        "346": "scald",
+        "347": "calmmind",
+        "348": "leafblade",
+        "349": "dragondance",
+        "350": "rockblast",
+        "351": "shockwave",
+        "352": "waterpulse",
+        "353": "doomdesire",
+        "354": "psychoboost",
+        "355": "roost",
+        "356": "gravity",
+        "357": "miracleeye",
+        "358": "wakeupslap",
+        "359": "hammerarm",
+        "360": "gyroball",
+        "361": "hiddenpowerelectric",
+        "362": "brine",
+        "363": "naturalgift",
+        "364": "feint",
+        "365": "pluck",
+        "366": "tailwind",
+        "367": "acupressure",
+        "368": "metalburst",
+        "369": "uturn",
+        "370": "closecombat",
+        "371": "payback",
+        "372": "assurance",
+        "373": "embargo",
+        "374": "fling",
+        "375": "psychoshift",
+        "376": "trumpcard",
+        "377": "aquacutter",
+        "378": "wringout",
+        "379": "powertrick",
+        "380": "gastroacid",
+        "381": "luckychant",
+        "382": "mefirst",
+        "383": "copycat",
+        "384": "powerswap",
+        "385": "guardswap",
+        "386": "punishment",
+        "387": "lastresort",
+        "388": "worryseed",
+        "389": "suckerpunch",
+        "390": "toxicspikes",
+        "391": "heartswap",
+        "392": "aquaring",
+        "393": "magnetrise",
+        "394": "flareblitz",
+        "395": "forcepalm",
+        "396": "aurasphere",
+        "397": "rockpolish",
+        "398": "poisonjab",
+        "399": "darkpulse",
+        "400": "nightslash",
+        "401": "aquatail",
+        "402": "seedbomb",
+        "403": "airslash",
+        "404": "xscissor",
+        "405": "bugbuzz",
+        "406": "dragonpulse",
+        "407": "dragonrush",
+        "408": "powergem",
+        "409": "drainpunch",
+        "410": "vacuumwave",
+        "411": "focusblast",
+        "412": "energyball",
+        "413": "bravebird",
+        "414": "earthpower",
+        "415": "hiddenpowerflying",
+        "416": "gigaimpact",
+        "417": "nastyplot",
+        "418": "bulletpunch",
+        "419": "avalanche",
+        "420": "iceshard",
+        "421": "shadowclaw",
+        "422": "thunderfang",
+        "423": "icefang",
+        "424": "firefang",
+        "425": "shadowsneak",
+        "426": "mudbomb",
+        "427": "psychocut",
+        "428": "zenheadbutt",
+        "429": "mirrorshot",
+        "430": "flashcannon",
+        "431": "rockclimb",
+        "432": "defog",
+        "433": "trickroom",
+        "434": "dracometeor",
+        "435": "discharge",
+        "436": "lavaplume",
+        "437": "leafstorm",
+        "438": "powerwhip",
+        "439": "rockwrecker",
+        "440": "crosspoison",
+        "441": "gunkshot",
+        "442": "ironhead",
+        "443": "magnetbomb",
+        "444": "stoneedge",
+        "445": "captivate",
+        "446": "stealthrock",
+        "447": "grassknot",
+        "448": "chatter",
+        "449": "judgment",
+        "450": "bugbite",
+        "451": "chargebeam",
+        "452": "woodhammer",
+        "453": "aquajet",
+        "454": "attackorder",
+        "455": "defendorder",
+        "456": "healorder",
+        "457": "headsmash",
+        "458": "doublehit",
+        "459": "roaroftime",
+        "460": "spacialrend",
+        "461": "lunardance",
+        "462": "crushgrip",
+        "463": "magmastorm",
+        "464": "darkvoid",
+        "465": "seedflare",
+        "466": "ominouswind",
+        "467": "shadowforce"
+      },
+      "byCanonicalId": {
+        "pound": 1,
+        "karatechop": 2,
+        "doubleslap": 3,
+        "weatherballwater": 4,
+        "megapunch": 5,
+        "payday": 6,
+        "firepunch": 7,
+        "icepunch": 8,
+        "thunderpunch": 9,
+        "scratch": 10,
+        "vicegrip": 11,
+        "guillotine": 12,
+        "razorwind": 13,
+        "swordsdance": 14,
+        "cut": 15,
+        "gust": 16,
+        "wingattack": 17,
+        "whirlwind": 18,
+        "fly": 19,
+        "mysticalfire": 20,
+        "slam": 21,
+        "vinewhip": 22,
+        "stomp": 23,
+        "doublekick": 24,
+        "megakick": 25,
+        "jumpkick": 26,
+        "rollingkick": 27,
+        "sandattack": 28,
+        "headbutt": 29,
+        "weatherballfire": 30,
+        "furyattack": 31,
+        "horndrill": 32,
+        "tackle": 33,
+        "bodyslam": 34,
+        "wrap": 35,
+        "takedown": 36,
+        "thrash": 37,
+        "doubleedge": 38,
+        "tailwhip": 39,
+        "poisonsting": 40,
+        "twineedle": 41,
+        "pinmissile": 42,
+        "leer": 43,
+        "bite": 44,
+        "growl": 45,
+        "roar": 46,
+        "sing": 47,
+        "supersonic": 48,
+        "sonicboom": 49,
+        "disable": 50,
+        "acid": 51,
+        "ember": 52,
+        "flamethrower": 53,
+        "mist": 54,
+        "watergun": 55,
+        "hydropump": 56,
+        "surf": 57,
+        "icebeam": 58,
+        "blizzard": 59,
+        "psybeam": 60,
+        "bubblebeam": 61,
+        "aurorabeam": 62,
+        "hyperbeam": 63,
+        "peck": 64,
+        "drillpeck": 65,
+        "submission": 66,
+        "lowkick": 67,
+        "counter": 68,
+        "seismictoss": 69,
+        "strength": 70,
+        "absorb": 71,
+        "megadrain": 72,
+        "leechseed": 73,
+        "growth": 74,
+        "razorleaf": 75,
+        "solarbeam": 76,
+        "poisonpowder": 77,
+        "stunspore": 78,
+        "sleeppowder": 79,
+        "petaldance": 80,
+        "stringshot": 81,
+        "dragonrage": 82,
+        "firespin": 83,
+        "thundershock": 84,
+        "thunderbolt": 85,
+        "thunderwave": 86,
+        "thunder": 87,
+        "rockthrow": 88,
+        "earthquake": 89,
+        "fissure": 90,
+        "dig": 91,
+        "toxic": 92,
+        "confusion": 93,
+        "psychic": 94,
+        "hypnosis": 95,
+        "meditate": 96,
+        "agility": 97,
+        "quickattack": 98,
+        "rage": 99,
+        "teleport": 100,
+        "nightshade": 101,
+        "mimic": 102,
+        "screech": 103,
+        "doubleteam": 104,
+        "recover": 105,
+        "harden": 106,
+        "minimize": 107,
+        "smokescreen": 108,
+        "confuseray": 109,
+        "withdraw": 110,
+        "weatherballrock": 111,
+        "barrier": 112,
+        "lightscreen": 113,
+        "haze": 114,
+        "reflect": 115,
+        "focusenergy": 116,
+        "bide": 117,
+        "metronome": 118,
+        "mirrormove": 119,
+        "selfdestruct": 120,
+        "eggbomb": 121,
+        "lick": 122,
+        "smog": 123,
+        "sludge": 124,
+        "boneclub": 125,
+        "fireblast": 126,
+        "waterfall": 127,
+        "clamp": 128,
+        "swift": 129,
+        "solar_beam": 130,
+        "weatherballice": 131,
+        "constrict": 132,
+        "amnesia": 133,
+        "kinesis": 134,
+        "softboiled": 135,
+        "hijumpkick": 136,
+        "glare": 137,
+        "dreameater": 138,
+        "poisongas": 139,
+        "hurricane": 140,
+        "leechlife": 141,
+        "lovelykiss": 142,
+        "skyattack": 143,
+        "transform": 144,
+        "bubble": 145,
+        "dizzypunch": 146,
+        "spore": 147,
+        "flash": 148,
+        "tripleaxel": 149,
+        "hiddenpowerwater": 150,
+        "acidarmor": 151,
+        "crabhammer": 152,
+        "explosion": 153,
+        "furyswipes": 154,
+        "bonemerang": 155,
+        "rest": 156,
+        "rockslide": 157,
+        "hyperfang": 158,
+        "sharpen": 159,
+        "hiddenpowerice": 160,
+        "triattack": 161,
+        "superfang": 162,
+        "slash": 163,
+        "substitute": 164,
+        "struggle": 165,
+        "sketch": 166,
+        "triplekick": 167,
+        "thief": 168,
+        "spiderweb": 169,
+        "mindreader": 170,
+        "hiddenpowerghost": 171,
+        "flamewheel": 172,
+        "snore": 173,
+        "curse": 174,
+        "flail": 175,
+        "conversion2": 176,
+        "aeroblast": 177,
+        "cottonspore": 178,
+        "reversal": 179,
+        "spite": 180,
+        "powdersnow": 181,
+        "protect": 182,
+        "machpunch": 183,
+        "scaryface": 184,
+        "faintattack": 185,
+        "sweetkiss": 186,
+        "bellydrum": 187,
+        "sludgebomb": 188,
+        "mudslap": 189,
+        "octazooka": 190,
+        "spikes": 191,
+        "zapcannon": 192,
+        "foresight": 193,
+        "destinybond": 194,
+        "perishsong": 195,
+        "icywind": 196,
+        "detect": 197,
+        "bonerush": 198,
+        "lockon": 199,
+        "outrage": 200,
+        "sandstorm": 201,
+        "gigadrain": 202,
+        "endure": 203,
+        "charm": 204,
+        "accelerock": 205,
+        "falseswipe": 206,
+        "swagger": 207,
+        "milkdrink": 208,
+        "wildcharge": 209,
+        "furycutter": 210,
+        "steelwing": 211,
+        "meanlook": 212,
+        "attract": 213,
+        "sleeptalk": 214,
+        "healbell": 215,
+        "return": 216,
+        "present": 217,
+        "frustration": 218,
+        "safeguard": 219,
+        "painsplit": 220,
+        "sacredfire": 221,
+        "bulldoze": 222,
+        "dynamicpunch": 223,
+        "megahorn": 224,
+        "dragonbreath": 225,
+        "batonpass": 226,
+        "encore": 227,
+        "pursuit": 228,
+        "hiddenpowerfire": 229,
+        "sweetscent": 230,
+        "irontail": 231,
+        "metalclaw": 232,
+        "vitalthrow": 233,
+        "morningsun": 234,
+        "synthesis": 235,
+        "moonlight": 236,
+        "hiddenpower": 237,
+        "crosschop": 238,
+        "twister": 239,
+        "raindance": 240,
+        "sunnyday": 241,
+        "crunch": 242,
+        "mirrorcoat": 243,
+        "psychup": 244,
+        "extremespeed": 245,
+        "ancientpower": 246,
+        "shadowball": 247,
+        "futuresight": 248,
+        "rocksmash": 249,
+        "whirlpool": 250,
+        "beatup": 251,
+        "fakeout": 252,
+        "uproar": 253,
+        "stockpile": 254,
+        "hiddenpowerrock": 255,
+        "swallow": 256,
+        "heatwave": 257,
+        "hail": 258,
+        "torment": 259,
+        "flatter": 260,
+        "willowisp": 261,
+        "memento": 262,
+        "facade": 263,
+        "focuspunch": 264,
+        "smellingsalt": 265,
+        "followme": 266,
+        "naturepower": 267,
+        "charge": 268,
+        "hiddenpowerdark": 269,
+        "helpinghand": 270,
+        "hiddenpowerpsychic": 271,
+        "roleplay": 272,
+        "wish": 273,
+        "assist": 274,
+        "ingrain": 275,
+        "superpower": 276,
+        "magiccoat": 277,
+        "recycle": 278,
+        "revenge": 279,
+        "brickbreak": 280,
+        "yawn": 281,
+        "knockoff": 282,
+        "endeavor": 283,
+        "eruption": 284,
+        "skillswap": 285,
+        "imprison": 286,
+        "refresh": 287,
+        "grudge": 288,
+        "drillrun": 289,
+        "secretpower": 290,
+        "dive": 291,
+        "hiddenpowerfighting": 292,
+        "camouflage": 293,
+        "tailglow": 294,
+        "lusterpurge": 295,
+        "mistball": 296,
+        "featherdance": 297,
+        "teeterdance": 298,
+        "blazekick": 299,
+        "hiddenpowerground": 300,
+        "iceball": 301,
+        "needlearm": 302,
+        "slackoff": 303,
+        "hypervoice": 304,
+        "poisonfang": 305,
+        "crushclaw": 306,
+        "blastburn": 307,
+        "hydrocannon": 308,
+        "meteormash": 309,
+        "astonish": 310,
+        "weatherball": 311,
+        "aromatherapy": 312,
+        "faketears": 313,
+        "aircutter": 314,
+        "overheat": 315,
+        "odorsleuth": 316,
+        "rocktomb": 317,
+        "silverwind": 318,
+        "metalsound": 319,
+        "grasswhistle": 320,
+        "tickle": 321,
+        "cosmicpower": 322,
+        "waterspout": 323,
+        "signalbeam": 324,
+        "shadowpunch": 325,
+        "extrasensory": 326,
+        "skyuppercut": 327,
+        "sandtomb": 328,
+        "sheercold": 329,
+        "muddywater": 330,
+        "bulletseed": 331,
+        "aerialace": 332,
+        "iciclespear": 333,
+        "irondefense": 334,
+        "block": 335,
+        "howl": 336,
+        "dragonclaw": 337,
+        "frenzyplant": 338,
+        "bulkup": 339,
+        "bounce": 340,
+        "mudshot": 341,
+        "poisontail": 342,
+        "hiddenpowergrass": 343,
+        "volttackle": 344,
+        "magicalleaf": 345,
+        "scald": 346,
+        "calmmind": 347,
+        "leafblade": 348,
+        "dragondance": 349,
+        "rockblast": 350,
+        "shockwave": 351,
+        "waterpulse": 352,
+        "doomdesire": 353,
+        "psychoboost": 354,
+        "roost": 355,
+        "gravity": 356,
+        "miracleeye": 357,
+        "wakeupslap": 358,
+        "hammerarm": 359,
+        "gyroball": 360,
+        "hiddenpowerelectric": 361,
+        "brine": 362,
+        "naturalgift": 363,
+        "feint": 364,
+        "pluck": 365,
+        "tailwind": 366,
+        "acupressure": 367,
+        "metalburst": 368,
+        "uturn": 369,
+        "closecombat": 370,
+        "payback": 371,
+        "assurance": 372,
+        "embargo": 373,
+        "fling": 374,
+        "psychoshift": 375,
+        "trumpcard": 376,
+        "aquacutter": 377,
+        "wringout": 378,
+        "powertrick": 379,
+        "gastroacid": 380,
+        "luckychant": 381,
+        "mefirst": 382,
+        "copycat": 383,
+        "powerswap": 384,
+        "guardswap": 385,
+        "punishment": 386,
+        "lastresort": 387,
+        "worryseed": 388,
+        "suckerpunch": 389,
+        "toxicspikes": 390,
+        "heartswap": 391,
+        "aquaring": 392,
+        "magnetrise": 393,
+        "flareblitz": 394,
+        "forcepalm": 395,
+        "aurasphere": 396,
+        "rockpolish": 397,
+        "poisonjab": 398,
+        "darkpulse": 399,
+        "nightslash": 400,
+        "aquatail": 401,
+        "seedbomb": 402,
+        "airslash": 403,
+        "xscissor": 404,
+        "bugbuzz": 405,
+        "dragonpulse": 406,
+        "dragonrush": 407,
+        "powergem": 408,
+        "drainpunch": 409,
+        "vacuumwave": 410,
+        "focusblast": 411,
+        "energyball": 412,
+        "bravebird": 413,
+        "earthpower": 414,
+        "hiddenpowerflying": 415,
+        "gigaimpact": 416,
+        "nastyplot": 417,
+        "bulletpunch": 418,
+        "avalanche": 419,
+        "iceshard": 420,
+        "shadowclaw": 421,
+        "thunderfang": 422,
+        "icefang": 423,
+        "firefang": 424,
+        "shadowsneak": 425,
+        "mudbomb": 426,
+        "psychocut": 427,
+        "zenheadbutt": 428,
+        "mirrorshot": 429,
+        "flashcannon": 430,
+        "rockclimb": 431,
+        "defog": 432,
+        "trickroom": 433,
+        "dracometeor": 434,
+        "discharge": 435,
+        "lavaplume": 436,
+        "leafstorm": 437,
+        "powerwhip": 438,
+        "rockwrecker": 439,
+        "crosspoison": 440,
+        "gunkshot": 441,
+        "ironhead": 442,
+        "magnetbomb": 443,
+        "stoneedge": 444,
+        "captivate": 445,
+        "stealthrock": 446,
+        "grassknot": 447,
+        "chatter": 448,
+        "judgment": 449,
+        "bugbite": 450,
+        "chargebeam": 451,
+        "woodhammer": 452,
+        "aquajet": 453,
+        "attackorder": 454,
+        "defendorder": 455,
+        "healorder": 456,
+        "headsmash": 457,
+        "doublehit": 458,
+        "roaroftime": 459,
+        "spacialrend": 460,
+        "lunardance": 461,
+        "crushgrip": 462,
+        "magmastorm": 463,
+        "darkvoid": 464,
+        "seedflare": 465,
+        "ominouswind": 466,
+        "shadowforce": 467
+      },
+      "sourceConfidence": "game-table-or-documentation-identity"
+    },
+    "abilities": {
+      "byNumericId": {
+        "1": "stench",
+        "2": "drizzle",
+        "3": "speedboost",
+        "4": "battlearmor",
+        "5": "sturdy",
+        "6": "damp",
+        "7": "limber",
+        "8": "sandveil",
+        "9": "static",
+        "10": "voltabsorb",
+        "11": "waterabsorb",
+        "12": "oblivious",
+        "13": "cloudnine",
+        "14": "compoundeyes",
+        "15": "insomnia",
+        "16": "colorchange",
+        "17": "immunity",
+        "18": "flashfire",
+        "19": "shielddust",
+        "20": "owntempo",
+        "21": "suctioncups",
+        "22": "intimidate",
+        "23": "shadowtag",
+        "24": "roughskin",
+        "25": "wonderguard",
+        "26": "levitate",
+        "27": "effectspore",
+        "28": "synchronize",
+        "29": "clearbody",
+        "30": "naturalcure",
+        "31": "lightningrod",
+        "32": "serenegrace",
+        "33": "swiftswim",
+        "34": "chlorophyll",
+        "35": "illuminate",
+        "36": "trace",
+        "37": "hugepower",
+        "38": "poisonpoint",
+        "39": "innerfocus",
+        "40": "magmaarmor",
+        "41": "waterveil",
+        "42": "magnetpull",
+        "43": "soundproof",
+        "44": "raindish",
+        "45": "sandstream",
+        "46": "pressure",
+        "47": "thickfat",
+        "48": "earlybird",
+        "49": "flamebody",
+        "50": "runaway",
+        "51": "keeneye",
+        "52": "hypercutter",
+        "53": "pickup",
+        "54": "truant",
+        "55": "hustle",
+        "56": "cutecharm",
+        "57": "plus",
+        "58": "minus",
+        "59": "forecast",
+        "60": "stickyhold",
+        "61": "shedskin",
+        "62": "guts",
+        "63": "marvelscale",
+        "64": "liquidooze",
+        "65": "overgrow",
+        "66": "blaze",
+        "67": "torrent",
+        "68": "swarm",
+        "69": "rockhead",
+        "70": "drought",
+        "71": "arenatrap",
+        "72": "vitalspirit",
+        "73": "whitesmoke",
+        "74": "purepower",
+        "75": "shellarmor",
+        "76": "airlock",
+        "77": "tangledfeet",
+        "78": "motordrive",
+        "79": "rivalry",
+        "80": "steadfast",
+        "81": "snowcloak",
+        "82": "gluttony",
+        "83": "angerpoint",
+        "84": "unburden",
+        "85": "heatproof",
+        "86": "simple",
+        "87": "dryskin",
+        "88": "download",
+        "89": "ironfist",
+        "90": "poisonheal",
+        "91": "adaptability",
+        "92": "skilllink",
+        "93": "hydration",
+        "94": "solarpower",
+        "95": "quickfeet",
+        "96": "normalize",
+        "97": "sniper",
+        "98": "magicguard",
+        "99": "noguard",
+        "100": "stall",
+        "101": "technician",
+        "102": "leafguard",
+        "103": "klutz",
+        "104": "moldbreaker",
+        "105": "superluck",
+        "106": "aftermath",
+        "107": "anticipation",
+        "108": "forewarn",
+        "109": "unaware",
+        "110": "tintedlens",
+        "111": "filter",
+        "112": "slowstart",
+        "113": "scrappy",
+        "114": "stormdrain",
+        "115": "icebody",
+        "116": "solidrock",
+        "117": "snowwarning",
+        "118": "honeygather",
+        "119": "frisk",
+        "120": "reckless",
+        "121": "multitype",
+        "122": "flowergift",
+        "123": "baddreams"
+      },
+      "aliasesByNumericId": {
+        "1": [
+          "stench"
+        ],
+        "2": [
+          "drizzle"
+        ],
+        "3": [
+          "speedboost"
+        ],
+        "4": [
+          "battlearmor"
+        ],
+        "5": [
+          "sturdy"
+        ],
+        "6": [
+          "damp"
+        ],
+        "7": [
+          "limber"
+        ],
+        "8": [
+          "sandveil"
+        ],
+        "9": [
+          "static"
+        ],
+        "10": [
+          "voltabsorb"
+        ],
+        "11": [
+          "waterabsorb"
+        ],
+        "12": [
+          "oblivious"
+        ],
+        "13": [
+          "cloudnine"
+        ],
+        "14": [
+          "compoundeyes"
+        ],
+        "15": [
+          "insomnia"
+        ],
+        "16": [
+          "colorchange"
+        ],
+        "17": [
+          "immunity"
+        ],
+        "18": [
+          "flashfire"
+        ],
+        "19": [
+          "shielddust"
+        ],
+        "20": [
+          "owntempo"
+        ],
+        "21": [
+          "suctioncups"
+        ],
+        "22": [
+          "intimidate"
+        ],
+        "23": [
+          "shadowtag"
+        ],
+        "24": [
+          "roughskin"
+        ],
+        "25": [
+          "wonderguard"
+        ],
+        "26": [
+          "levitate"
+        ],
+        "27": [
+          "effectspore"
+        ],
+        "28": [
+          "synchronize"
+        ],
+        "29": [
+          "clearbody"
+        ],
+        "30": [
+          "naturalcure"
+        ],
+        "31": [
+          "lightningrod"
+        ],
+        "32": [
+          "serenegrace"
+        ],
+        "33": [
+          "swiftswim"
+        ],
+        "34": [
+          "chlorophyll"
+        ],
+        "35": [
+          "illuminate"
+        ],
+        "36": [
+          "trace"
+        ],
+        "37": [
+          "hugepower"
+        ],
+        "38": [
+          "poisonpoint"
+        ],
+        "39": [
+          "innerfocus"
+        ],
+        "40": [
+          "magmaarmor"
+        ],
+        "41": [
+          "waterveil"
+        ],
+        "42": [
+          "magnetpull"
+        ],
+        "43": [
+          "soundproof"
+        ],
+        "44": [
+          "raindish"
+        ],
+        "45": [
+          "sandstream"
+        ],
+        "46": [
+          "pressure"
+        ],
+        "47": [
+          "thickfat"
+        ],
+        "48": [
+          "earlybird"
+        ],
+        "49": [
+          "flamebody"
+        ],
+        "50": [
+          "runaway"
+        ],
+        "51": [
+          "keeneye"
+        ],
+        "52": [
+          "hypercutter"
+        ],
+        "53": [
+          "pickup"
+        ],
+        "54": [
+          "truant"
+        ],
+        "55": [
+          "hustle"
+        ],
+        "56": [
+          "cutecharm"
+        ],
+        "57": [
+          "plus"
+        ],
+        "58": [
+          "minus"
+        ],
+        "59": [
+          "forecast"
+        ],
+        "60": [
+          "stickyhold"
+        ],
+        "61": [
+          "shedskin"
+        ],
+        "62": [
+          "guts"
+        ],
+        "63": [
+          "marvelscale"
+        ],
+        "64": [
+          "liquidooze"
+        ],
+        "65": [
+          "overgrow"
+        ],
+        "66": [
+          "blaze"
+        ],
+        "67": [
+          "torrent"
+        ],
+        "68": [
+          "swarm"
+        ],
+        "69": [
+          "rockhead"
+        ],
+        "70": [
+          "drought"
+        ],
+        "71": [
+          "arenatrap"
+        ],
+        "72": [
+          "vitalspirit"
+        ],
+        "73": [
+          "whitesmoke"
+        ],
+        "74": [
+          "purepower"
+        ],
+        "75": [
+          "shellarmor"
+        ],
+        "76": [
+          "airlock"
+        ],
+        "77": [
+          "tangledfeet"
+        ],
+        "78": [
+          "motordrive"
+        ],
+        "79": [
+          "rivalry"
+        ],
+        "80": [
+          "steadfast"
+        ],
+        "81": [
+          "snowcloak"
+        ],
+        "82": [
+          "gluttony"
+        ],
+        "83": [
+          "angerpoint"
+        ],
+        "84": [
+          "unburden"
+        ],
+        "85": [
+          "heatproof"
+        ],
+        "86": [
+          "simple"
+        ],
+        "87": [
+          "dryskin"
+        ],
+        "88": [
+          "download"
+        ],
+        "89": [
+          "ironfist"
+        ],
+        "90": [
+          "poisonheal"
+        ],
+        "91": [
+          "adaptability"
+        ],
+        "92": [
+          "skilllink"
+        ],
+        "93": [
+          "hydration"
+        ],
+        "94": [
+          "solarpower"
+        ],
+        "95": [
+          "quickfeet"
+        ],
+        "96": [
+          "normalize"
+        ],
+        "97": [
+          "sniper"
+        ],
+        "98": [
+          "magicguard"
+        ],
+        "99": [
+          "noguard"
+        ],
+        "100": [
+          "stall"
+        ],
+        "101": [
+          "technician"
+        ],
+        "102": [
+          "leafguard"
+        ],
+        "103": [
+          "klutz"
+        ],
+        "104": [
+          "moldbreaker"
+        ],
+        "105": [
+          "superluck"
+        ],
+        "106": [
+          "aftermath"
+        ],
+        "107": [
+          "anticipation"
+        ],
+        "108": [
+          "forewarn"
+        ],
+        "109": [
+          "unaware"
+        ],
+        "110": [
+          "tintedlens"
+        ],
+        "111": [
+          "filter"
+        ],
+        "112": [
+          "slowstart"
+        ],
+        "113": [
+          "scrappy"
+        ],
+        "114": [
+          "stormdrain"
+        ],
+        "115": [
+          "icebody"
+        ],
+        "116": [
+          "solidrock"
+        ],
+        "117": [
+          "snowwarning"
+        ],
+        "118": [
+          "honeygather"
+        ],
+        "119": [
+          "frisk"
+        ],
+        "120": [
+          "reckless"
+        ],
+        "121": [
+          "multitype"
+        ],
+        "122": [
+          "flowergift"
+        ],
+        "123": [
+          "baddreams"
+        ]
+      },
+      "byCanonicalId": {
+        "stench": 1,
+        "drizzle": 2,
+        "speedboost": 3,
+        "battlearmor": 4,
+        "sturdy": 5,
+        "damp": 6,
+        "limber": 7,
+        "sandveil": 8,
+        "static": 9,
+        "voltabsorb": 10,
+        "waterabsorb": 11,
+        "oblivious": 12,
+        "cloudnine": 13,
+        "compoundeyes": 14,
+        "insomnia": 15,
+        "colorchange": 16,
+        "immunity": 17,
+        "flashfire": 18,
+        "shielddust": 19,
+        "owntempo": 20,
+        "suctioncups": 21,
+        "intimidate": 22,
+        "shadowtag": 23,
+        "roughskin": 24,
+        "wonderguard": 25,
+        "levitate": 26,
+        "effectspore": 27,
+        "synchronize": 28,
+        "clearbody": 29,
+        "naturalcure": 30,
+        "lightningrod": 31,
+        "serenegrace": 32,
+        "swiftswim": 33,
+        "chlorophyll": 34,
+        "illuminate": 35,
+        "trace": 36,
+        "hugepower": 37,
+        "poisonpoint": 38,
+        "innerfocus": 39,
+        "magmaarmor": 40,
+        "waterveil": 41,
+        "magnetpull": 42,
+        "soundproof": 43,
+        "raindish": 44,
+        "sandstream": 45,
+        "pressure": 46,
+        "thickfat": 47,
+        "earlybird": 48,
+        "flamebody": 49,
+        "runaway": 50,
+        "keeneye": 51,
+        "hypercutter": 52,
+        "pickup": 53,
+        "truant": 54,
+        "hustle": 55,
+        "cutecharm": 56,
+        "plus": 57,
+        "minus": 58,
+        "forecast": 59,
+        "stickyhold": 60,
+        "shedskin": 61,
+        "guts": 62,
+        "marvelscale": 63,
+        "liquidooze": 64,
+        "overgrow": 65,
+        "blaze": 66,
+        "torrent": 67,
+        "swarm": 68,
+        "rockhead": 69,
+        "drought": 70,
+        "arenatrap": 71,
+        "vitalspirit": 72,
+        "whitesmoke": 73,
+        "purepower": 74,
+        "shellarmor": 75,
+        "airlock": 76,
+        "tangledfeet": 77,
+        "motordrive": 78,
+        "rivalry": 79,
+        "steadfast": 80,
+        "snowcloak": 81,
+        "gluttony": 82,
+        "angerpoint": 83,
+        "unburden": 84,
+        "heatproof": 85,
+        "simple": 86,
+        "dryskin": 87,
+        "download": 88,
+        "ironfist": 89,
+        "poisonheal": 90,
+        "adaptability": 91,
+        "skilllink": 92,
+        "hydration": 93,
+        "solarpower": 94,
+        "quickfeet": 95,
+        "normalize": 96,
+        "sniper": 97,
+        "magicguard": 98,
+        "noguard": 99,
+        "stall": 100,
+        "technician": 101,
+        "leafguard": 102,
+        "klutz": 103,
+        "moldbreaker": 104,
+        "superluck": 105,
+        "aftermath": 106,
+        "anticipation": 107,
+        "forewarn": 108,
+        "unaware": 109,
+        "tintedlens": 110,
+        "filter": 111,
+        "slowstart": 112,
+        "scrappy": 113,
+        "stormdrain": 114,
+        "icebody": 115,
+        "solidrock": 116,
+        "snowwarning": 117,
+        "honeygather": 118,
+        "frisk": 119,
+        "reckless": 120,
+        "multitype": 121,
+        "flowergift": 122,
+        "baddreams": 123
+      },
+      "rawIdsByCanonicalId": {
+        "stench": [
+          1
+        ],
+        "drizzle": [
+          2
+        ],
+        "speedboost": [
+          3
+        ],
+        "battlearmor": [
+          4
+        ],
+        "sturdy": [
+          5
+        ],
+        "damp": [
+          6
+        ],
+        "limber": [
+          7
+        ],
+        "sandveil": [
+          8
+        ],
+        "static": [
+          9
+        ],
+        "voltabsorb": [
+          10
+        ],
+        "waterabsorb": [
+          11
+        ],
+        "oblivious": [
+          12
+        ],
+        "cloudnine": [
+          13
+        ],
+        "compoundeyes": [
+          14
+        ],
+        "insomnia": [
+          15
+        ],
+        "colorchange": [
+          16
+        ],
+        "immunity": [
+          17
+        ],
+        "flashfire": [
+          18
+        ],
+        "shielddust": [
+          19
+        ],
+        "owntempo": [
+          20
+        ],
+        "suctioncups": [
+          21
+        ],
+        "intimidate": [
+          22
+        ],
+        "shadowtag": [
+          23
+        ],
+        "roughskin": [
+          24
+        ],
+        "wonderguard": [
+          25
+        ],
+        "levitate": [
+          26
+        ],
+        "effectspore": [
+          27
+        ],
+        "synchronize": [
+          28
+        ],
+        "clearbody": [
+          29
+        ],
+        "naturalcure": [
+          30
+        ],
+        "lightningrod": [
+          31
+        ],
+        "serenegrace": [
+          32
+        ],
+        "swiftswim": [
+          33
+        ],
+        "chlorophyll": [
+          34
+        ],
+        "illuminate": [
+          35
+        ],
+        "trace": [
+          36
+        ],
+        "hugepower": [
+          37
+        ],
+        "poisonpoint": [
+          38
+        ],
+        "innerfocus": [
+          39
+        ],
+        "magmaarmor": [
+          40
+        ],
+        "waterveil": [
+          41
+        ],
+        "magnetpull": [
+          42
+        ],
+        "soundproof": [
+          43
+        ],
+        "raindish": [
+          44
+        ],
+        "sandstream": [
+          45
+        ],
+        "pressure": [
+          46
+        ],
+        "thickfat": [
+          47
+        ],
+        "earlybird": [
+          48
+        ],
+        "flamebody": [
+          49
+        ],
+        "runaway": [
+          50
+        ],
+        "keeneye": [
+          51
+        ],
+        "hypercutter": [
+          52
+        ],
+        "pickup": [
+          53
+        ],
+        "truant": [
+          54
+        ],
+        "hustle": [
+          55
+        ],
+        "cutecharm": [
+          56
+        ],
+        "plus": [
+          57
+        ],
+        "minus": [
+          58
+        ],
+        "forecast": [
+          59
+        ],
+        "stickyhold": [
+          60
+        ],
+        "shedskin": [
+          61
+        ],
+        "guts": [
+          62
+        ],
+        "marvelscale": [
+          63
+        ],
+        "liquidooze": [
+          64
+        ],
+        "overgrow": [
+          65
+        ],
+        "blaze": [
+          66
+        ],
+        "torrent": [
+          67
+        ],
+        "swarm": [
+          68
+        ],
+        "rockhead": [
+          69
+        ],
+        "drought": [
+          70
+        ],
+        "arenatrap": [
+          71
+        ],
+        "vitalspirit": [
+          72
+        ],
+        "whitesmoke": [
+          73
+        ],
+        "purepower": [
+          74
+        ],
+        "shellarmor": [
+          75
+        ],
+        "airlock": [
+          76
+        ],
+        "tangledfeet": [
+          77
+        ],
+        "motordrive": [
+          78
+        ],
+        "rivalry": [
+          79
+        ],
+        "steadfast": [
+          80
+        ],
+        "snowcloak": [
+          81
+        ],
+        "gluttony": [
+          82
+        ],
+        "angerpoint": [
+          83
+        ],
+        "unburden": [
+          84
+        ],
+        "heatproof": [
+          85
+        ],
+        "simple": [
+          86
+        ],
+        "dryskin": [
+          87
+        ],
+        "download": [
+          88
+        ],
+        "ironfist": [
+          89
+        ],
+        "poisonheal": [
+          90
+        ],
+        "adaptability": [
+          91
+        ],
+        "skilllink": [
+          92
+        ],
+        "hydration": [
+          93
+        ],
+        "solarpower": [
+          94
+        ],
+        "quickfeet": [
+          95
+        ],
+        "normalize": [
+          96
+        ],
+        "sniper": [
+          97
+        ],
+        "magicguard": [
+          98
+        ],
+        "noguard": [
+          99
+        ],
+        "stall": [
+          100
+        ],
+        "technician": [
+          101
+        ],
+        "leafguard": [
+          102
+        ],
+        "klutz": [
+          103
+        ],
+        "moldbreaker": [
+          104
+        ],
+        "superluck": [
+          105
+        ],
+        "aftermath": [
+          106
+        ],
+        "anticipation": [
+          107
+        ],
+        "forewarn": [
+          108
+        ],
+        "unaware": [
+          109
+        ],
+        "tintedlens": [
+          110
+        ],
+        "filter": [
+          111
+        ],
+        "slowstart": [
+          112
+        ],
+        "scrappy": [
+          113
+        ],
+        "stormdrain": [
+          114
+        ],
+        "icebody": [
+          115
+        ],
+        "solidrock": [
+          116
+        ],
+        "snowwarning": [
+          117
+        ],
+        "honeygather": [
+          118
+        ],
+        "frisk": [
+          119
+        ],
+        "reckless": [
+          120
+        ],
+        "multitype": [
+          121
+        ],
+        "flowergift": [
+          122
+        ],
+        "baddreams": [
+          123
+        ]
+      },
+      "sourceConfidence": "legacy-numeric-identity-pending-independent-game-table-check"
+    },
+    "items": {
+      "byNumericId": {
+        "0": "none",
+        "1": "masterball",
+        "2": "ultraball",
+        "3": "greatball",
+        "4": "pokeball",
+        "5": "safariball",
+        "6": "netball",
+        "7": "diveball",
+        "8": "nestball",
+        "9": "repeatball",
+        "10": "timerball",
+        "11": "luxuryball",
+        "12": "premierball",
+        "13": "duskball",
+        "14": "healball",
+        "15": "quickball",
+        "16": "cherishball",
+        "17": "potion",
+        "18": "antidote",
+        "19": "burnheal",
+        "20": "iceheal",
+        "21": "awakening",
+        "22": "parlyzheal",
+        "23": "fullrestore",
+        "24": "maxpotion",
+        "25": "hyperpotion",
+        "26": "superpotion",
+        "27": "fullheal",
+        "28": "revive",
+        "29": "maxrevive",
+        "30": "freshwater",
+        "31": "sodapop",
+        "32": "lemonade",
+        "33": "moomoomilk",
+        "34": "energypowder",
+        "35": "energyroot",
+        "36": "healpowder",
+        "37": "revivalherb",
+        "38": "ether",
+        "39": "maxether",
+        "40": "elixir",
+        "41": "maxelixir",
+        "42": "lavacookie",
+        "43": "berryjuice",
+        "44": "sacredash",
+        "45": "hpup",
+        "46": "protein",
+        "47": "iron",
+        "48": "carbos",
+        "49": "calcium",
+        "50": "rarecandy",
+        "51": "ppup",
+        "52": "zinc",
+        "53": "ppmax",
+        "54": "oldgateau",
+        "55": "guardspec",
+        "56": "direhit",
+        "57": "xattack",
+        "58": "xdefend",
+        "59": "xspeed",
+        "60": "xaccuracy",
+        "61": "xspecial",
+        "62": "xspdef",
+        "63": "pokedoll",
+        "64": "fluffytail",
+        "65": "blueflute",
+        "66": "yellowflute",
+        "67": "redflute",
+        "68": "blackflute",
+        "69": "whiteflute",
+        "70": "berserkgene",
+        "71": "ragecandybar",
+        "72": "redshard",
+        "73": "blueshard",
+        "74": "yellowshard",
+        "75": "greenshard",
+        "76": "superrepel",
+        "77": "maxrepel",
+        "78": "escaperope",
+        "79": "repel",
+        "80": "sunstone",
+        "81": "moonstone",
+        "82": "firestone",
+        "83": "thunderstone",
+        "84": "waterstone",
+        "85": "leafstone",
+        "86": "tinymushroom",
+        "87": "bigmushroom",
+        "88": "pearl",
+        "89": "bigpearl",
+        "90": "stardust",
+        "91": "starpiece",
+        "92": "bignugget",
+        "93": "heartscale",
+        "94": "honey",
+        "95": "growthmulch",
+        "96": "dampmulch",
+        "97": "stablemulch",
+        "98": "gooeymulch",
+        "99": "rootfossil",
+        "100": "clawfossil",
+        "101": "helixfossil",
+        "102": "domefossil",
+        "103": "oldamber",
+        "104": "armorfossil",
+        "105": "skullfossil",
+        "106": "rarebone",
+        "107": "shinystone",
+        "108": "duskstone",
+        "109": "dawnstone",
+        "110": "ovalstone",
+        "111": "oddkeystone",
+        "112": "griseousorb",
+        "113": "unused113",
+        "114": "unused114",
+        "115": "unused115",
+        "116": "unused116",
+        "117": "unused117",
+        "118": "unused118",
+        "119": "unused119",
+        "120": "unused120",
+        "121": "unused121",
+        "122": "unused122",
+        "123": "unused123",
+        "124": "unused124",
+        "125": "unused125",
+        "126": "unused126",
+        "127": "unused127",
+        "128": "unused128",
+        "129": "unused129",
+        "130": "unused130",
+        "131": "unused131",
+        "132": "unused132",
+        "133": "unused133",
+        "134": "unused134",
+        "135": "adamantorb",
+        "136": "lustrousorb",
+        "137": "grassmail",
+        "138": "flamemail",
+        "139": "bubblemail",
+        "140": "bloommail",
+        "141": "tunnelmail",
+        "142": "steelmail",
+        "143": "heartmail",
+        "144": "snowmail",
+        "145": "spacemail",
+        "146": "airmail",
+        "147": "mosaicmail",
+        "148": "brickmail",
+        "149": "cheriberry",
+        "150": "chestoberry",
+        "151": "pechaberry",
+        "152": "rawstberry",
+        "153": "aspearberry",
+        "154": "leppaberry",
+        "155": "oranberry",
+        "156": "persimberry",
+        "157": "lumberry",
+        "158": "sitrusberry",
+        "159": "figyberry",
+        "160": "wikiberry",
+        "161": "magoberry",
+        "162": "aguavberry",
+        "163": "iapapaberry",
+        "164": "razzberry",
+        "165": "blukberry",
+        "166": "nanabberry",
+        "167": "wepearberry",
+        "168": "pinapberry",
+        "169": "pomegberry",
+        "170": "kelpsyberry",
+        "171": "qualotberry",
+        "172": "hondewberry",
+        "173": "grepaberry",
+        "174": "tamatoberry",
+        "175": "cornnberry",
+        "176": "magostberry",
+        "177": "rabutaberry",
+        "178": "nomelberry",
+        "179": "spelonberry",
+        "180": "pamtreberry",
+        "181": "watmelberry",
+        "182": "durinberry",
+        "183": "belueberry",
+        "184": "occaberry",
+        "185": "passhoberry",
+        "186": "wacanberry",
+        "187": "rindoberry",
+        "188": "yacheberry",
+        "189": "chopleberry",
+        "190": "kebiaberry",
+        "191": "shucaberry",
+        "192": "cobaberry",
+        "193": "payapaberry",
+        "194": "tangaberry",
+        "195": "chartiberry",
+        "196": "kasibberry",
+        "197": "habanberry",
+        "198": "colburberry",
+        "199": "babiriberry",
+        "200": "chilanberry",
+        "201": "liechiberry",
+        "202": "ganlonberry",
+        "203": "salacberry",
+        "204": "petayaberry",
+        "205": "apicotberry",
+        "206": "lansatberry",
+        "207": "starfberry",
+        "208": "enigmaberry",
+        "209": "micleberry",
+        "210": "custapberry",
+        "211": "jabocaberry",
+        "212": "rowapberry",
+        "213": "brightpowder",
+        "214": "whiteherb",
+        "215": "machobrace",
+        "216": "expshare",
+        "217": "quickclaw",
+        "218": "soothebell",
+        "219": "mentalherb",
+        "220": "choiceband",
+        "221": "kingsrock",
+        "222": "silverpowder",
+        "223": "amuletcoin",
+        "224": "cleansetag",
+        "225": "souldew",
+        "226": "deepseatooth",
+        "227": "deepseascale",
+        "228": "smokeball",
+        "229": "everstone",
+        "230": "focusband",
+        "231": "luckyegg",
+        "232": "scopelens",
+        "233": "metalcoat",
+        "234": "leftovers",
+        "235": "dragonscale",
+        "236": "lightball",
+        "237": "softsand",
+        "238": "hardstone",
+        "239": "miracleseed",
+        "240": "blackglasses",
+        "241": "blackbelt",
+        "242": "magnet",
+        "243": "mysticwater",
+        "244": "sharpbeak",
+        "245": "poisonbarb",
+        "246": "nevermeltice",
+        "247": "spelltag",
+        "248": "twistedspoon",
+        "249": "charcoal",
+        "250": "dragonfang",
+        "251": "silkscarf",
+        "252": "upgrade",
+        "253": "shellbell",
+        "254": "seaincense",
+        "255": "laxincense",
+        "256": "luckypunch",
+        "257": "metalpowder",
+        "258": "thickclub",
+        "259": "leek",
+        "260": "redscarf",
+        "261": "bluescarf",
+        "262": "pinkscarf",
+        "263": "greenscarf",
+        "264": "yellowscarf",
+        "265": "widelens",
+        "266": "muscleband",
+        "267": "wiseglasses",
+        "268": "expertbelt",
+        "269": "lightclay",
+        "270": "lifeorb",
+        "271": "powerherb",
+        "272": "toxicorb",
+        "273": "flameorb",
+        "274": "quickpowder",
+        "275": "focussash",
+        "276": "zoomlens",
+        "277": "metronome",
+        "278": "ironball",
+        "279": "laggingtail",
+        "280": "destinyknot",
+        "281": "blacksludge",
+        "282": "icyrock",
+        "283": "smoothrock",
+        "284": "heatrock",
+        "285": "damprock",
+        "286": "gripclaw",
+        "287": "choicescarf",
+        "288": "stickybarb",
+        "289": "powerbracer",
+        "290": "powerbelt",
+        "291": "powerlens",
+        "292": "powerband",
+        "293": "poweranklet",
+        "294": "powerweight",
+        "295": "shedshell",
+        "296": "bigroot",
+        "297": "choicespecs",
+        "298": "flameplate",
+        "299": "splashplate",
+        "300": "zapplate",
+        "301": "meadowplate",
+        "302": "icicleplate",
+        "303": "fistplate",
+        "304": "toxicplate",
+        "305": "earthplate",
+        "306": "skyplate",
+        "307": "mindplate",
+        "308": "insectplate",
+        "309": "stoneplate",
+        "310": "spookyplate",
+        "311": "dracoplate",
+        "312": "dreadplate",
+        "313": "ironplate",
+        "314": "oddincense",
+        "315": "rockincense",
+        "316": "fullincense",
+        "317": "waveincense",
+        "318": "roseincense",
+        "319": "luckincense",
+        "320": "pureincense",
+        "321": "protector",
+        "322": "electirizer",
+        "323": "magmarizer",
+        "324": "dubiousdisc",
+        "325": "reapercloth",
+        "326": "razorclaw",
+        "327": "razorfang",
+        "328": "tm01",
+        "329": "tm02",
+        "330": "tm03",
+        "331": "tm04",
+        "332": "tm05",
+        "333": "tm06",
+        "334": "tm07",
+        "335": "tm08",
+        "336": "tm09",
+        "337": "tm10",
+        "338": "tm11",
+        "339": "tm12",
+        "340": "tm13",
+        "341": "tm14",
+        "342": "tm15",
+        "343": "tm16",
+        "344": "tm17",
+        "345": "tm18",
+        "346": "tm19",
+        "347": "tm20",
+        "348": "tm21",
+        "349": "tm22",
+        "350": "tm23",
+        "351": "tm24",
+        "352": "tm25",
+        "353": "tm26",
+        "354": "tm27",
+        "355": "tm28",
+        "356": "tm29",
+        "357": "tm30",
+        "358": "tm31",
+        "359": "tm32",
+        "360": "tm33",
+        "361": "tm34",
+        "362": "tm35",
+        "363": "tm36",
+        "364": "tm37",
+        "365": "tm38",
+        "366": "tm39",
+        "367": "tm40",
+        "368": "tm41",
+        "369": "tm42",
+        "370": "tm43",
+        "371": "tm44",
+        "372": "tm45",
+        "373": "tm46",
+        "374": "tm47",
+        "375": "tm48",
+        "376": "tm49",
+        "377": "tm50",
+        "378": "tm51",
+        "379": "tm52",
+        "380": "tm53",
+        "381": "tm54",
+        "382": "tm55",
+        "383": "tm56",
+        "384": "tm57",
+        "385": "tm58",
+        "386": "tm59",
+        "387": "tm60",
+        "388": "tm61",
+        "389": "tm62",
+        "390": "tm63",
+        "391": "tm64",
+        "392": "tm65",
+        "393": "tm66",
+        "394": "tm67",
+        "395": "tm68",
+        "396": "tm69",
+        "397": "tm70",
+        "398": "tm71",
+        "399": "tm72",
+        "400": "tm73",
+        "401": "tm74",
+        "402": "tm75",
+        "403": "tm76",
+        "404": "tm77",
+        "405": "tm78",
+        "406": "tm79",
+        "407": "tm80",
+        "408": "tm81",
+        "409": "tm82",
+        "410": "tm83",
+        "411": "tm84",
+        "412": "tm85",
+        "413": "tm86",
+        "414": "tm87",
+        "415": "tm88",
+        "416": "tm89",
+        "417": "tm90",
+        "418": "tm91",
+        "419": "tm92",
+        "420": "hm01",
+        "421": "hm02",
+        "422": "hm03",
+        "423": "hm04",
+        "424": "hm05",
+        "425": "hm06",
+        "426": "hm07",
+        "427": "hm08",
+        "428": "explorerkit",
+        "429": "galacticcard",
+        "430": "rulebook",
+        "431": "pokeradar",
+        "432": "pointcard",
+        "433": "journal",
+        "434": "sealcase",
+        "435": "fashioncase",
+        "436": "sealbag",
+        "437": "palpad",
+        "438": "workskey",
+        "439": "oldcharm",
+        "440": "galactickey",
+        "441": "redchain",
+        "442": "townmap",
+        "443": "vsseeker",
+        "444": "coincase",
+        "445": "oldrod",
+        "446": "goodrod",
+        "447": "superrod",
+        "448": "sprayduck",
+        "449": "poffincase",
+        "450": "bicycle",
+        "451": "suitekey",
+        "452": "oaksletter",
+        "453": "lunarwing",
+        "454": "membercard",
+        "455": "azureflute",
+        "456": "ssticket",
+        "457": "contestpass",
+        "458": "magmastone",
+        "459": "parcel",
+        "460": "coupon1",
+        "461": "coupon2",
+        "462": "coupon3",
+        "463": "storagekey",
+        "464": "secretpotion",
+        "465": "vsrecorder",
+        "466": "gracidea",
+        "467": "secretkey",
+        "468": "maxitems"
+      },
+      "byCanonicalId": {
+        "none": 0,
+        "masterball": 1,
+        "ultraball": 2,
+        "greatball": 3,
+        "pokeball": 4,
+        "safariball": 5,
+        "netball": 6,
+        "diveball": 7,
+        "nestball": 8,
+        "repeatball": 9,
+        "timerball": 10,
+        "luxuryball": 11,
+        "premierball": 12,
+        "duskball": 13,
+        "healball": 14,
+        "quickball": 15,
+        "cherishball": 16,
+        "potion": 17,
+        "antidote": 18,
+        "burnheal": 19,
+        "iceheal": 20,
+        "awakening": 21,
+        "parlyzheal": 22,
+        "fullrestore": 23,
+        "maxpotion": 24,
+        "hyperpotion": 25,
+        "superpotion": 26,
+        "fullheal": 27,
+        "revive": 28,
+        "maxrevive": 29,
+        "freshwater": 30,
+        "sodapop": 31,
+        "lemonade": 32,
+        "moomoomilk": 33,
+        "energypowder": 34,
+        "energyroot": 35,
+        "healpowder": 36,
+        "revivalherb": 37,
+        "ether": 38,
+        "maxether": 39,
+        "elixir": 40,
+        "maxelixir": 41,
+        "lavacookie": 42,
+        "berryjuice": 43,
+        "sacredash": 44,
+        "hpup": 45,
+        "protein": 46,
+        "iron": 47,
+        "carbos": 48,
+        "calcium": 49,
+        "rarecandy": 50,
+        "ppup": 51,
+        "zinc": 52,
+        "ppmax": 53,
+        "oldgateau": 54,
+        "guardspec": 55,
+        "direhit": 56,
+        "xattack": 57,
+        "xspeed": 59,
+        "xaccuracy": 60,
+        "xspecial": 61,
+        "xspdef": 62,
+        "pokedoll": 63,
+        "fluffytail": 64,
+        "blueflute": 65,
+        "yellowflute": 66,
+        "redflute": 67,
+        "blackflute": 68,
+        "whiteflute": 69,
+        "redshard": 72,
+        "blueshard": 73,
+        "yellowshard": 74,
+        "greenshard": 75,
+        "superrepel": 76,
+        "maxrepel": 77,
+        "escaperope": 78,
+        "repel": 79,
+        "sunstone": 80,
+        "moonstone": 81,
+        "firestone": 82,
+        "thunderstone": 83,
+        "waterstone": 84,
+        "leafstone": 85,
+        "tinymushroom": 86,
+        "bigmushroom": 87,
+        "pearl": 88,
+        "bigpearl": 89,
+        "stardust": 90,
+        "starpiece": 91,
+        "heartscale": 93,
+        "honey": 94,
+        "growthmulch": 95,
+        "dampmulch": 96,
+        "stablemulch": 97,
+        "gooeymulch": 98,
+        "rootfossil": 99,
+        "clawfossil": 100,
+        "helixfossil": 101,
+        "domefossil": 102,
+        "oldamber": 103,
+        "armorfossil": 104,
+        "skullfossil": 105,
+        "rarebone": 106,
+        "shinystone": 107,
+        "duskstone": 108,
+        "dawnstone": 109,
+        "ovalstone": 110,
+        "oddkeystone": 111,
+        "griseousorb": 112,
+        "unused113": 113,
+        "unused114": 114,
+        "unused115": 115,
+        "unused116": 116,
+        "unused117": 117,
+        "unused118": 118,
+        "unused119": 119,
+        "unused120": 120,
+        "unused121": 121,
+        "unused122": 122,
+        "unused123": 123,
+        "unused124": 124,
+        "unused125": 125,
+        "unused126": 126,
+        "unused127": 127,
+        "unused128": 128,
+        "unused129": 129,
+        "unused130": 130,
+        "unused131": 131,
+        "unused132": 132,
+        "unused133": 133,
+        "unused134": 134,
+        "adamantorb": 135,
+        "lustrousorb": 136,
+        "grassmail": 137,
+        "flamemail": 138,
+        "bubblemail": 139,
+        "bloommail": 140,
+        "tunnelmail": 141,
+        "steelmail": 142,
+        "heartmail": 143,
+        "snowmail": 144,
+        "spacemail": 145,
+        "airmail": 146,
+        "mosaicmail": 147,
+        "brickmail": 148,
+        "cheriberry": 149,
+        "chestoberry": 150,
+        "pechaberry": 151,
+        "rawstberry": 152,
+        "aspearberry": 153,
+        "leppaberry": 154,
+        "oranberry": 155,
+        "persimberry": 156,
+        "lumberry": 157,
+        "sitrusberry": 158,
+        "figyberry": 159,
+        "wikiberry": 160,
+        "magoberry": 161,
+        "aguavberry": 162,
+        "iapapaberry": 163,
+        "razzberry": 164,
+        "blukberry": 165,
+        "nanabberry": 166,
+        "wepearberry": 167,
+        "pinapberry": 168,
+        "pomegberry": 169,
+        "kelpsyberry": 170,
+        "qualotberry": 171,
+        "hondewberry": 172,
+        "grepaberry": 173,
+        "tamatoberry": 174,
+        "cornnberry": 175,
+        "magostberry": 176,
+        "rabutaberry": 177,
+        "nomelberry": 178,
+        "spelonberry": 179,
+        "pamtreberry": 180,
+        "watmelberry": 181,
+        "durinberry": 182,
+        "belueberry": 183,
+        "occaberry": 184,
+        "passhoberry": 185,
+        "wacanberry": 186,
+        "rindoberry": 187,
+        "yacheberry": 188,
+        "chopleberry": 189,
+        "kebiaberry": 190,
+        "shucaberry": 191,
+        "cobaberry": 192,
+        "payapaberry": 193,
+        "tangaberry": 194,
+        "chartiberry": 195,
+        "kasibberry": 196,
+        "habanberry": 197,
+        "colburberry": 198,
+        "babiriberry": 199,
+        "chilanberry": 200,
+        "liechiberry": 201,
+        "ganlonberry": 202,
+        "salacberry": 203,
+        "petayaberry": 204,
+        "apicotberry": 205,
+        "lansatberry": 206,
+        "starfberry": 207,
+        "enigmaberry": 208,
+        "micleberry": 209,
+        "custapberry": 210,
+        "jabocaberry": 211,
+        "rowapberry": 212,
+        "brightpowder": 213,
+        "whiteherb": 214,
+        "machobrace": 215,
+        "expshare": 216,
+        "quickclaw": 217,
+        "soothebell": 218,
+        "mentalherb": 219,
+        "choiceband": 220,
+        "kingsrock": 221,
+        "silverpowder": 222,
+        "amuletcoin": 223,
+        "cleansetag": 224,
+        "souldew": 225,
+        "deepseatooth": 226,
+        "deepseascale": 227,
+        "smokeball": 228,
+        "everstone": 229,
+        "focusband": 230,
+        "luckyegg": 231,
+        "scopelens": 232,
+        "metalcoat": 233,
+        "leftovers": 234,
+        "dragonscale": 235,
+        "lightball": 236,
+        "softsand": 237,
+        "hardstone": 238,
+        "miracleseed": 239,
+        "blackglasses": 240,
+        "blackbelt": 241,
+        "magnet": 242,
+        "mysticwater": 243,
+        "sharpbeak": 244,
+        "poisonbarb": 245,
+        "nevermeltice": 246,
+        "spelltag": 247,
+        "twistedspoon": 248,
+        "charcoal": 249,
+        "dragonfang": 250,
+        "silkscarf": 251,
+        "upgrade": 252,
+        "shellbell": 253,
+        "seaincense": 254,
+        "laxincense": 255,
+        "luckypunch": 256,
+        "metalpowder": 257,
+        "thickclub": 258,
+        "redscarf": 260,
+        "bluescarf": 261,
+        "pinkscarf": 262,
+        "greenscarf": 263,
+        "yellowscarf": 264,
+        "widelens": 265,
+        "muscleband": 266,
+        "wiseglasses": 267,
+        "expertbelt": 268,
+        "lightclay": 269,
+        "lifeorb": 270,
+        "powerherb": 271,
+        "toxicorb": 272,
+        "flameorb": 273,
+        "quickpowder": 274,
+        "focussash": 275,
+        "zoomlens": 276,
+        "metronome": 277,
+        "ironball": 278,
+        "laggingtail": 279,
+        "destinyknot": 280,
+        "blacksludge": 281,
+        "icyrock": 282,
+        "smoothrock": 283,
+        "heatrock": 284,
+        "damprock": 285,
+        "gripclaw": 286,
+        "choicescarf": 287,
+        "stickybarb": 288,
+        "powerbracer": 289,
+        "powerbelt": 290,
+        "powerlens": 291,
+        "powerband": 292,
+        "poweranklet": 293,
+        "powerweight": 294,
+        "shedshell": 295,
+        "bigroot": 296,
+        "choicespecs": 297,
+        "flameplate": 298,
+        "splashplate": 299,
+        "zapplate": 300,
+        "meadowplate": 301,
+        "icicleplate": 302,
+        "fistplate": 303,
+        "toxicplate": 304,
+        "earthplate": 305,
+        "skyplate": 306,
+        "mindplate": 307,
+        "insectplate": 308,
+        "stoneplate": 309,
+        "spookyplate": 310,
+        "dracoplate": 311,
+        "dreadplate": 312,
+        "ironplate": 313,
+        "oddincense": 314,
+        "rockincense": 315,
+        "fullincense": 316,
+        "waveincense": 317,
+        "roseincense": 318,
+        "luckincense": 319,
+        "pureincense": 320,
+        "protector": 321,
+        "electirizer": 322,
+        "magmarizer": 323,
+        "dubiousdisc": 324,
+        "reapercloth": 325,
+        "razorclaw": 326,
+        "razorfang": 327,
+        "tm01": 328,
+        "tm02": 329,
+        "tm03": 330,
+        "tm04": 331,
+        "tm05": 332,
+        "tm06": 333,
+        "tm07": 334,
+        "tm08": 335,
+        "tm09": 336,
+        "tm10": 337,
+        "tm11": 338,
+        "tm12": 339,
+        "tm13": 340,
+        "tm14": 341,
+        "tm15": 342,
+        "tm16": 343,
+        "tm17": 344,
+        "tm18": 345,
+        "tm19": 346,
+        "tm20": 347,
+        "tm21": 348,
+        "tm22": 349,
+        "tm23": 350,
+        "tm24": 351,
+        "tm25": 352,
+        "tm26": 353,
+        "tm27": 354,
+        "tm28": 355,
+        "tm29": 356,
+        "tm30": 357,
+        "tm31": 358,
+        "tm32": 359,
+        "tm33": 360,
+        "tm34": 361,
+        "tm35": 362,
+        "tm36": 363,
+        "tm37": 364,
+        "tm38": 365,
+        "tm39": 366,
+        "tm40": 367,
+        "tm41": 368,
+        "tm42": 369,
+        "tm43": 370,
+        "tm44": 371,
+        "tm45": 372,
+        "tm46": 373,
+        "tm47": 374,
+        "tm48": 375,
+        "tm49": 376,
+        "tm50": 377,
+        "tm51": 378,
+        "tm52": 379,
+        "tm53": 380,
+        "tm54": 381,
+        "tm55": 382,
+        "tm56": 383,
+        "tm57": 384,
+        "tm58": 385,
+        "tm59": 386,
+        "tm60": 387,
+        "tm61": 388,
+        "tm62": 389,
+        "tm63": 390,
+        "tm64": 391,
+        "tm65": 392,
+        "tm66": 393,
+        "tm67": 394,
+        "tm68": 395,
+        "tm69": 396,
+        "tm70": 397,
+        "tm71": 398,
+        "tm72": 399,
+        "tm73": 400,
+        "tm74": 401,
+        "tm75": 402,
+        "tm76": 403,
+        "tm77": 404,
+        "tm78": 405,
+        "tm79": 406,
+        "tm80": 407,
+        "tm81": 408,
+        "tm82": 409,
+        "tm83": 410,
+        "tm84": 411,
+        "tm85": 412,
+        "tm86": 413,
+        "tm87": 414,
+        "tm88": 415,
+        "tm89": 416,
+        "tm90": 417,
+        "tm91": 418,
+        "tm92": 419,
+        "hm01": 420,
+        "hm02": 421,
+        "hm03": 422,
+        "hm04": 423,
+        "hm05": 424,
+        "hm06": 425,
+        "hm07": 426,
+        "hm08": 427,
+        "explorerkit": 428,
+        "rulebook": 430,
+        "pokeradar": 431,
+        "pointcard": 432,
+        "journal": 433,
+        "sealcase": 434,
+        "fashioncase": 435,
+        "sealbag": 436,
+        "palpad": 437,
+        "workskey": 438,
+        "oldcharm": 439,
+        "galactickey": 440,
+        "redchain": 441,
+        "townmap": 442,
+        "vsseeker": 443,
+        "coincase": 444,
+        "oldrod": 445,
+        "goodrod": 446,
+        "superrod": 447,
+        "sprayduck": 448,
+        "poffincase": 449,
+        "bicycle": 450,
+        "suitekey": 451,
+        "oaksletter": 452,
+        "lunarwing": 453,
+        "membercard": 454,
+        "azureflute": 455,
+        "ssticket": 456,
+        "contestpass": 457,
+        "magmastone": 458,
+        "parcel": 459,
+        "coupon1": 460,
+        "coupon2": 461,
+        "coupon3": 462,
+        "storagekey": 463,
+        "secretpotion": 464,
+        "vsrecorder": 465,
+        "gracidea": 466,
+        "secretkey": 467,
+        "maxitems": 468,
+        "xdefend": 58,
+        "berserkgene": 70,
+        "ragecandybar": 71,
+        "bignugget": 92,
+        "leek": 259,
+        "galacticcard": 429
+      },
+      "rawZero": {
+        "classification": "no-item",
+        "canonicalId": "none"
+      },
+      "sourceConfidence": "pinned-platinum-item-identity"
+    }
+  }
+}

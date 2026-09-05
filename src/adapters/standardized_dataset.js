@@ -19,9 +19,15 @@ export const SAVE_IDENTITY_SOURCES = Object.freeze([
   "save_id_maps.json"
 ]);
 
+export const EXPERIENCE_SOURCES = Object.freeze([
+  "experience_mechanics.json",
+  "evolutions.json"
+]);
+
 export const REQUIRED_DATASET_SOURCES = Object.freeze([
   ...BATTLE_DATASET_SOURCES,
   ...TRAINER_NAVIGATION_SOURCES,
+  ...EXPERIENCE_SOURCES,
   ...SAVE_IDENTITY_SOURCES
 ]);
 
@@ -62,15 +68,29 @@ function trainerNavigationGroups(trainerIndex, orderDocument, progressionDocumen
   const orderRecords = Array.isArray(orderDocument?.records)
     ? [...orderDocument.records].sort((a, b) => Number(a.order) - Number(b.order))
     : [];
-  const splits = Array.isArray(progressionDocument?.consumerProfile?.splits)
-    ? [...progressionDocument.consumerProfile.splits].sort((a, b) => Number(a.firstOrder) - Number(b.firstOrder))
-    : [];
-  if (!orderRecords.length || !splits.length) throw new DatasetReadinessError("Trainer order or progression splits are unavailable");
+  if (!orderRecords.length) throw new DatasetReadinessError("Trainer order is unavailable");
+  const declaredSplits = Array.isArray(progressionDocument?.consumerProfile?.splits)
+    ? progressionDocument.consumerProfile.splits
+    : Array.isArray(progressionDocument?.consumerProfile?.milestones)
+      ? progressionDocument.consumerProfile.milestones
+      : [];
+  const splits = declaredSplits.length
+    ? [...declaredSplits].sort((a, b) => Number(a.firstOrder ?? a.order) - Number(b.firstOrder ?? b.order))
+    : [...new Set(orderRecords.map(entry => String(entry.splitId || "full-game")))].map(splitId => {
+      const entries = orderRecords.filter(entry => String(entry.splitId || "full-game") === splitId);
+      return {
+        id: splitId,
+        label: splitId === "full-game" ? "Full Game" : splitId,
+        levelCap: null,
+        firstOrder: Number(entries[0]?.order),
+        lastOrder: Number(entries.at(-1)?.order)
+      };
+    });
 
   const seen = new Set();
   const groups = splits.map(split => {
     const trainers = orderRecords
-      .filter(entry => entry.splitId === split.id || (
+      .filter(entry => String(entry.splitId || "full-game") === String(split.id) || (
         !entry.splitId
         && Number(entry.order) >= Number(split.firstOrder)
         && Number(entry.order) <= Number(split.lastOrder)
@@ -80,8 +100,12 @@ function trainerNavigationGroups(trainerIndex, orderDocument, progressionDocumen
     for (const trainer of trainers) seen.add(String(trainer.id));
     return {
       id: String(split.id),
-      label: `${split.label || split.id} Split`,
-      levelCap: Number.isFinite(Number(split.levelCap)) ? Number(split.levelCap) : null,
+      label: split.id === "full-game" || String(split.label).toLowerCase() === "full game"
+        ? "Full Game"
+        : `${split.label || split.id} Split`,
+      levelCap: split.levelCap !== null && split.levelCap !== undefined && split.levelCap !== "" && Number.isFinite(Number(split.levelCap))
+        ? Number(split.levelCap)
+        : null,
       firstOrder: Number(split.firstOrder),
       lastOrder: Number(split.lastOrder),
       trainers
@@ -102,6 +126,7 @@ export function trainerBattleFormat(trainer, mechanics) {
   if (format === "single" || format === "singles") return "singles";
   if (format === "double" || format === "doubles") return "doubles";
   if (format === "triple" || format === "triples") return "triples";
+  if (format === "rotation" || format === "rotations") return "rotation";
   throw new DatasetReadinessError(`${trainer?.displayName || trainer?.id || "Trainer"} uses unsupported ${format || "unknown"} battle format`);
 }
 
@@ -125,6 +150,9 @@ export function createDatasetContext({ manifest, mechanics, documents }) {
   if (mechanics.validation?.status !== "passed" || Number(mechanics.validation?.unresolved) !== 0) {
     throw new DatasetReadinessError("The battle mechanics contract has not passed validation");
   }
+  if (mechanics.experienceMechanicsSource !== "experience_mechanics.json") {
+    throw new DatasetReadinessError("The battle mechanics contract does not link the independent experience mechanics contract");
+  }
   const missingCoverage = BATTLE_DATASET_SOURCES.filter(file =>
     !(mechanics.validation?.sourceFiles || []).includes(file)
   );
@@ -135,7 +163,18 @@ export function createDatasetContext({ manifest, mechanics, documents }) {
   const loaded = Object.fromEntries(BATTLE_DATASET_SOURCES.map(file => [file, requireDocument(documents, file, gameId)]));
   loaded["trainer_order.json"] = requireDocument(documents, "trainer_order.json", gameId);
   loaded["progression.json"] = requireDocument(documents, "progression.json", gameId, { records: false });
+  loaded["experience_mechanics.json"] = requireDocument(documents, "experience_mechanics.json", gameId, { records: false });
+  loaded["evolutions.json"] = requireDocument(documents, "evolutions.json", gameId);
   loaded["save_id_maps.json"] = requireDocument(documents, "save_id_maps.json", gameId);
+  const experienceMechanics = loaded["experience_mechanics.json"];
+  const experienceGeneration = experienceMechanics.experienceGeneration;
+  if (!(experienceGeneration === "custom" || (Number.isInteger(Number(experienceGeneration)) && Number(experienceGeneration) >= 1 && Number(experienceGeneration) <= 9))) {
+    throw new DatasetReadinessError("The experience mechanics contract has no supported formula generation");
+  }
+  if (experienceMechanics.validation?.status !== "passed" || Number(experienceMechanics.validation?.unresolved) !== 0
+    || experienceMechanics.consumerActivation?.experienceProjectionReady !== true) {
+    throw new DatasetReadinessError("The experience mechanics contract has not passed projection readiness");
+  }
   const indexes = {
     species: asMap(loaded["species.json"]),
     moves: asMap(loaded["moves.json"]),
@@ -145,12 +184,14 @@ export function createDatasetContext({ manifest, mechanics, documents }) {
     types: asMap(loaded["types.json"]),
     trainers: asMap(loaded["trainers.json"])
   };
+  indexes.evolutions = asMap(loaded["evolutions.json"]);
 
   const context = {
     gameId,
     displayName: manifest.displayName || gameId,
     manifest,
     mechanics,
+    experienceMechanics,
     documents: loaded,
     indexes,
     get(kind, id) {
@@ -188,8 +229,10 @@ export function createDatasetContext({ manifest, mechanics, documents }) {
       damageGeneration: Number(mechanics.damageGeneration),
       canonicalDataGeneration: Number(mechanics.canonicalDataGeneration),
       mechanicsProfile: mechanics.mechanicsProfile || "unknown",
+      experienceMechanicsProfile: experienceMechanics.mechanicsProfile || "unknown",
       datasetManifestHash: `plc-${shortHash(stableStringify(manifest))}`,
-      battleMechanicsHash: `plc-${shortHash(stableStringify(mechanics))}`
+      battleMechanicsHash: `plc-${shortHash(stableStringify(mechanics))}`,
+      experienceMechanicsHash: `plc-${shortHash(stableStringify(experienceMechanics))}`
     }
   };
   return context;
@@ -213,6 +256,7 @@ export async function loadStandardizedDataset({ baseUrl, fetchImpl = fetch }) {
 export function canonicalTrainerMember(member, fallbackEvs = 0) {
   return {
     ...member,
+    gender: ({ m: "M", male: "M", f: "F", female: "F", n: "N", genderless: "N" })[toId(member.gender)] ?? null,
     speciesId: toId(member.speciesId || member.species || member.displaySpecies),
     natureId: member.natureId ? toId(member.natureId) : null,
     abilityId: member.abilityId ? toId(member.abilityId) : null,

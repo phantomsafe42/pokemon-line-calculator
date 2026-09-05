@@ -10,7 +10,7 @@ Current proving game: Pokémon Volt White 2 Redux Egglocke (`volt-white-2r`)
 
 This document defines the game selection, Boxes storage, ingest, calculation, branching, caching, portable plan-file, local live-edit, node-tree, and Overlay projection contracts for the Pokemon Line Calculator (PLC), a shared Pokémon battle-planning Web Tool.
 
-The planner is a planning and education tool. The accepted product models proposed Singles, Doubles, and Generation 5 Triple battles turn by turn, previews all materially different outcomes before a turn is committed, retains alternate strategic and probabilistic branches, and lets the user explicitly choose which saved turn instances the Overlay should display on stream. Triple presentation in Overlay is not yet implemented or accepted.
+The planner is a planning and education tool. The accepted product models proposed Singles, Doubles, and Generation 5 Triple battles turn by turn. The current working extension adds Generation 5 Rotation planning, generated Trainer AI education, and a private read-only observed-turn comparison lane. PLC previews all materially different outcomes before a turn is committed, retains alternate strategic and probabilistic branches, and lets the user explicitly choose which saved turn instances the Overlay should display on stream. Triple and Rotation presentation in Overlay is not yet implemented or accepted.
 
 VW2R is the first proving game. The core planner must remain game-neutral. Other games opt in through standardized dataset, mechanics, trainer, and save-ingest contracts rather than game-specific UI forks.
 
@@ -22,7 +22,7 @@ The schema-v2 Singles/Doubles planner, game-first Boxes workflow, calculator red
 
 The following decisions are settled for the first implementation:
 
-- The accepted planner UI and core resolver support Singles, Doubles, and schema-v3 Generation 5 Triple battles. Overlay projection supports Singles and Doubles; Triple Overlay projection and every Rotation profile still fail closed.
+- The planner UI and core resolver support Singles, Doubles, schema-v3 Generation 5 Triple, and schema-v4 Generation 5 Rotation battles. Overlay projection supports Singles and Doubles; Triple and Rotation Overlay projection still fail closed.
 - Doubles requires one action per live active slot, explicit single-target selection, distinct switch/replacement destinations, spread targeting from canonical move data, and the shared calculator's Doubles format modifier.
 - The planner is a browser-compatible static application. Local Stream Tools use is served by the existing custom server; the published build runs without that server.
 - Core calculation and branching run in browser-compatible code. Expensive resolution work runs in a Web Worker.
@@ -31,7 +31,7 @@ The following decisions are settled for the first implementation:
 - The local build accepts a user-selected save as a read-only pre-battle snapshot when that game has an explicit save adapter. Showdown and portable Boxes JSON provide portable/manual input. No mode continuously rereads or writes a save during a planned battle.
 - Combatants begin at 100% HP, with no status, zero stat stages, full PP, their original ability active, and their original item held unless the user declares a pre-battle override.
 - Manual initial overrides are allowed for pre-existing damage, major status, map weather/terrain, and other unusual starting conditions. Normal mid-battle changes must come from resolved actions and events.
-- The VW2R effect library covers every standardized VW2R move ID in Singles and Doubles, and every move can enter the logic-only Triple resolver from a legal center position. Coverage includes priority and speed order, multi-active order control and redirection, direct and conditional damage, multi-hit and random-power distributions, stat changes, healing, recoil, major and volatile status, weather/terrain/room changes, delayed attacks/heals, switching and Baton Pass, Protect/Quick Guard/Wide Guard prevention, supported residual effects, item/ability changes required by moves, fainting, and action cancellation.
+- The VW2R effect library covers every standardized VW2R move ID in Singles and Doubles, and every move can enter the Triple or Rotation resolver from a legal participating position. Coverage includes priority and speed order, multi-active order control and redirection, direct and conditional damage, multi-hit and random-power distributions, stat changes, healing, recoil, major and volatile status, weather/terrain/room changes, delayed attacks/heals, switching and Baton Pass, Protect/Quick Guard/Wide Guard prevention, supported residual effects, item/ability changes required by moves, fainting, and action cancellation.
 - VW2R save snapshots retain total EXP. Raw move, ability, item, and nature identifiers resolve through the standardized save-ID contract rather than battle-data `num` coercion; an unmapped held-item value `0` means no held item. A raw species ID first resolves to the unique base standardized record sharing that number, because alternate forms reuse the species number and are encoded in a separate packed form field. Non-base save-form resolution remains disabled until Dataset publishes an explicit packed-form identity map. The standardized species contract supplies `baseExp`, which PLC normalizes to the portable plan's `baseExperienceYield` field. The VW2R-only EXP adapter projects Gen 5 trainer-battle payouts for player Pokémon, including per-enemy participation through switches, Exp. Share and Lucky Egg, level-up state, and one-time faint rewards. Missing yield data disables only EXP projection and is never repaired inside PLC.
 - Battle-item actions are represented by the shared schema but disabled for VW2R initially.
 - The resolver generates every materially different candidate outcome internally. The UI condenses those candidates into branch-event controls and commits only the crafted outcome the user selected.
@@ -1115,7 +1115,7 @@ The Boxes library is separate from the one-active-plan draft database. Its porta
 
 Canonical Box records contain editable nickname, species/form, level, gender, base stats, IVs, EVs, nature, ability, item, and up to four moves with move ID, displayed name, base power, PP, and type. Save-derived records may additionally contain total EXP. Actual stats and EXP-to-next-level are formula-derived. Dataset values remain authoritative defaults and displayed source truth; record-level base-stat and move BP/type values are plan-input calculation overrides and never mutate standardized data. Boxes JSON import/export is portable and game-scoped. Showdown import may create a Box or add records to an existing Box; Showdown export serializes selected records.
 
-A supported save import always creates a new Box and a default Party from the active party. It is a one-time read-only snapshot. After parsing and before any records or sprites are added to the Boxes interface, PLC presents a text/count-only PC Box selector. The active party is mandatory; the user may select any combination of the adapter's available PC Boxes, including none, and must explicitly save the import. Cancelling creates nothing. The VW2R adapter accepts the validated raw `.sav` and DeSmuME footer form only, exposes its seven validated 30-slot PC Box boundaries, resolves move/ability/item/nature identities through standardized `save_id_maps.json`, resolves the base species independently from the packed form field, extracts total EXP along with the mandatory party and confirmed PC Boxes, and fails closed for every other game, box number, or file shape. A held-item value absent from the save-ID map, including the Gen 5 empty sentinel `0`, imports as no held item. Non-base forms require an explicit Dataset-owned packed-form map rather than guessing from display-oriented form arrays.
+A supported save import always creates a new Box and a default Party from the active party. It is a one-time read-only snapshot. After parsing and before any records or sprites are added to the Boxes interface, PLC presents a text/count-only PC Box selector. The active party is mandatory; the user may select any combination of the adapter's available PC Boxes, including none, and must explicitly save the import. Cancelling creates nothing. Supported DS adapters normalize either an exact 524,288-byte raw `.sav` or a 524,410-byte DeSmuME `.dsv` with its validated 122-byte footer before game-specific parsing; `.srm` is not an advertised import format. The enabled VW2R adapter exposes its seven validated 30-slot PC Box boundaries, resolves move/ability/item/nature identities through standardized `save_id_maps.json`, resolves the base species independently from the packed form field, and extracts total EXP along with the mandatory party and confirmed PC Boxes. The Gen 5 held-item sentinel `0` imports as no held item; an unresolved nonzero held-item identity fails closed with its storage location instead of silently becoming `None`. Other registered save parsers remain unavailable in the interface until the selected game's standardized Dataset and battle-mechanics contracts pass. Non-base forms require an explicit Dataset-owned packed-form map rather than guessing from display-oriented form arrays.
 
 Beginning a plan copies the selected Box records into an immutable plan combatant snapshot. Later Box edits do not rewrite an active plan. Starting absolute HP and major status are plan-context declarations and are not written back to canonical Box records.
 
@@ -1384,9 +1384,9 @@ The following remain expansion decisions after the first game-first Boxes and ca
 - Whether move names accompany damage percentages in every Overlay cell.
 - Column ordering and manual column reordering.
 - Additional ability/item residual and switch-in interactions beyond the bounded structured registries.
-- Triple Overlay projection and Rotation battle logic/visuals.
+- Triple and Rotation Overlay projection.
 - Enabled battle-item UI.
-- Live battle-log ingestion and observed-branch matching.
+- Exact observed-state reconstruction from Battle Log data beyond the bounded decoded-move identity match.
 - Distribution, remote local-service integration, and other-device OBS setup.
 
 These deferred items must not require a rewrite of the plan document, action-group/outcome graph, display-selection, or projection contracts above.
@@ -1464,3 +1464,70 @@ Triple node rows always reserve six sprite positions in global Slot 1, 2, 3, 4, 
 - Flower Gift reacts to effective sun immediately. Cherrim uses an explicit Sunshine sprite state and each side exposes whether a living active Flower Gift Cherrim supplies the Gen 5 ally modifier. PLC passes this side flag to Battle Mechanics; that owner must allowlist `isFlowerGift` in its shared side-options contract before the pinned calculator applies the ally modifier.
 - Zen Mode checks at residual order 29. Exact HP distributions that straddle half HP branch into Standard and Zen states; current species, Fire/Psychic typing, calculated stats, and sprites follow the selected state and revert when the threshold or Ability no longer applies.
 - Current form identity is resolver state rather than a Dataset rewrite. It persists through node commits and plan files, drives damage requests and planner sprites, and resets through the ordinary switch/Transform rules.
+
+## 30. Gen 5 Rotation Battle extension
+
+Rotation Battles are enabled only by a game profile whose standardized trainer format is `rotation`. The VW2R profile uses Generation 5 mechanics. Rotation rules must not leak into Singles, Doubles, or Triple profiles.
+
+### 30.1 State and participation
+
+- Portable schema-v4 Rotation plans deploy three Pokémon per side and store `rotation.frontSlots.player` and `rotation.frontSlots.enemy` as zero-based displayed positions. Schema-v1 through schema-v3 plans retain their existing meaning.
+- The front Pokémon on each side is the sole ordinary active participant. Waiting Pokémon remain deployed and visible but are not ordinary move targets and do not participate in proximity-scoped entry Abilities, spread effects, residual damage or healing, or other effects limited to active participants.
+- Weather and other true field state remain global. Rotation never limits their existence to the front position.
+- A combatant's HP, PP, status, volatile state, stat stages, types, Ability state, item state, and participation history remain attached to combatant identity while it waits or rotates.
+
+### 30.2 Rotate-and-move declaration
+
+- Each side declares exactly one ordinary turn action. Selecting a move on a waiting Pokémon declares that Pokémon as the actor and rotates it to the front before it uses the selected move.
+- Rotation has priority `+6`, before ordinary move priority. After rotation, the selected move resolves at its own priority and effective Speed in the ordinary action-order system.
+- Rotation is not switching. It does not trigger entry hazards, entry or exit Abilities, switch healing, Pursuit, EXP participation, or switch/reset semantics.
+- The selected move targets the opposing front Pokémon after both sides' declared rotations have resolved. Preview damage and action controls follow the prospective front actors without changing the committed state.
+- A voluntary switch replaces only the current front combatant. Waiting deployed Pokémon are not legal switch destinations or switch-out actors.
+
+### 30.3 AI actor selection and presentation
+
+- Generation 5 Rotation AI chooses one living deployed Pokémon uniformly before that actor's move scoring: one third with three candidates, one half with two, and certainty with one. This actor probability is separate from the conditional probability of a move given that actor.
+- The local UI reuses the six-card Triple geometry and global Slot 1–6 node sprite order. Each side marks exactly one living **Front** card and the other deployed cards **Waiting**.
+- Triple-style six-sprite node rows preserve slot order and existing faint/switch borders. Rotation is not presented as a voluntary switch border.
+- Live Edit and Overlay projection fail closed for Rotation until the Overlay owner adds and validates a schema-v4 presentation contract.
+
+### 30.4 Acceptance gates
+
+Automated tests must cover format recognition, schema round trips, initial fronts, reserve move declaration, priority-6 rotation ordering, state preservation, front-only targeting/residual/Ability participation, global weather, switch limits, forced replacement, node sprite order, AI actor probability, and complete Singles/Doubles/Triple regression. Browser validation must prove six cards, fixed labels, Front/Waiting markers, one action per side, reserve selection, and responsive geometry.
+
+## 31. Dataset-backed Trainer AI education
+
+- Dataset owns each game binding, inherited generation AI profile, executable-semantics documentation, readiness blockers, command coverage, trainer AI masks, and trainer battle-profile association. PLC consumes digest-verified generated copies and never turns display prose or command names into guessed executable behavior.
+- The Notes panel renders a read-only **Enemy AI forecast** separately from the editable per-node user note. Generated text must never replace, mutate, or serialize into the user's note.
+- The player-facing vocabulary is **Very Unlikely**, **Unlikely**, **Possible**, **Likely**, **Very Likely**, and **Guaranteed**. Options with equal modeled weight are identified explicitly. Exact rational weights remain internal validation evidence and are not the primary educational presentation.
+- **Turn actions** are one forecast domain. PLC evaluates the ordered full action pipeline and lets forced continuations, trainer-item use, voluntary switches, Rotation actor selection, and move/target scoring preempt or combine exactly as the Dataset profile declares.
+- **Replacement after a faint** is a separate forecast domain. For each active enemy with a healthy reserve, PLC evaluates a hypothetical post-KO request from the current state and lists the possible switch-ins independently of current-turn moves, items, and voluntary switches.
+- Move explanations expose the incentive-point ledger. Each legal move-target candidate begins at the profile's declared initial score—100 for supported Generation 4 and 5 profiles. Every reached executable score adjustment shows the documented points added or removed and the educational reason. Final score outcomes and source-defined tie selection remain distinct. Trainer items, voluntary switches, and replacements use their real eligibility, gate, priority, or ranking systems; PLC must not invent a 100-point ledger for phases that do not use one.
+- The supported VW2R and Renegade Platinum builds run their Generation 5 and Generation 4 evaluators in the resolver Worker with exact numeric move/item bindings and state-backed command/action queries, including shared-calculator maximum-damage ranking. If the exact evaluator succeeds, the forecast derives directly from it. When a Renegade Platinum path is blocked only by the player's inability to observe the exact unsigned 32-bit `state.random.g4LcrngSeed`, the shared forecast layer runs a deterministic bounded ensemble of exact stateful seed executions and maps the result to a likelihood band. This is modeled player guidance, not an exact probability claim or recovered emulator state.
+- Missing commands, action semantics, required battle state, stale generated inputs, and unsupported multi-active selection state remain fail-closed and are presented as **Forecast error**. Hidden RNG alone is ordinary uncertainty and must not appear as “Probability unavailable.” Planner actions and user notes remain usable after an AI forecast error.
+
+## 32. Private observed-turn comparison
+
+### 32.1 Ownership and transport
+
+- The VW2R Battle Log owns emulator attachment, packet decoding, event persistence, and its loopback API. PLC is read-only and never writes to the log, emulator, ROM, or save.
+- The Stream Tools Launcher owns a bounded same-origin proxy at `/__stream-tools/vw2r-battle-log`. It exposes only capability, normalized state, and sanitized semantic events. Raw packet events, packet bytes, arbitrary paths, and non-loopback upstream hosts are excluded.
+- The private Tailscale test gateway may proxy these same read-only routes for an authenticated tailnet user. The feature remains private and is excluded from the public static build.
+
+### 32.2 Session and actual-node lane
+
+- Beginning Battle Tracker while a battle is active attaches to the most recent non-ended battle. Beginning while inactive baselines all existing history and waits for the next battle-start event, so a prior battle cannot be mistaken for current evidence.
+- Polling is incremental by monotonically increasing event ID. A new battle-start event clears the prior observed session before collecting the new one.
+- Semantic events are grouped by reported turn. A turn becomes complete when a later turn begins or the battle ends. An in-progress turn remains visible but cannot be used as a branch source.
+- Observed turns occupy a fixed **Actual** lane beside the plan graph. The lane does not rewrite plan nodes, outcome probabilities, selected moves, user notes, or Overlay projection.
+
+### 32.3 Comparison and branch creation
+
+- Current v1 matching decodes move numeric IDs through the selected game Dataset and compares the complete turn's sorted player/enemy move identities to action groups for the same turn number.
+- **Create Branch from Actual** is enabled only when those identities uniquely identify one planned state node. It selects that existing state as the branch point; subsequent planner actions create an ordinary user branch under existing graph rules.
+- In-progress, insufficient, ambiguous, and unmatched turns display an explicit explanation and keep branch creation disabled. PLC never guesses between multiple planned states or invents HP/status state that the log did not publish.
+- Exact actual-state reconstruction, damage-roll binding, switch/replacement identity, status attribution, and automatic plan mutation require a future versioned Battle Log event contract and are not implied by decoded move matching.
+
+### 32.4 Acceptance gates
+
+Unit tests must cover session baselining, current-battle attachment, battle reset, turn completion, semantic-event sanitization, unique matching, ambiguity, insufficient evidence, unmatched evidence, and branch eligibility. Launcher tests must prove upstream loopback restriction, route allowlisting, and raw-packet exclusion. A private browser smoke must verify capability detection, begin/wait/follow/stop controls, Actual-node presentation, and public-build exclusion. A live captured battle remains a separate manual integration gate.

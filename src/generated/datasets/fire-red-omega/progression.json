@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "gameId": "fire-red-omega",
+  "kind": "progression",
+  "consumerProfile": {
+    "id": "documented-main-game",
+    "splits": [
+      {
+        "id": "brock",
+        "label": "Brock",
+        "firstOrder": 1,
+        "lastOrder": 13,
+        "levelCap": 14,
+        "leaderTrainerId": "fire-red-omega-trainer-0354",
+        "sourceConfidence": "native-drayano-trainer-battles-split-tab"
+      },
+      {
+        "id": "misty",
+        "label": "Misty",
+        "firstOrder": 14,
+        "lastOrder": 57,
+        "levelCap": 23,
+        "leaderTrainerId": "fire-red-omega-trainer-0173",
+        "sourceConfidence": "native-drayano-trainer-battles-split-tab"
+      },
+      {
+        "id": "ltsurge",
+        "label": "Lt Surge",
+        "firstOrder": 58,
+        "lastOrder": 96,
+        "levelCap": 27,
+        "leaderTrainerId": "fire-red-omega-trainer-0095",
+        "sourceConfidence": "native-drayano-trainer-battles-split-tab"
+      },
+      {
+        "id": "erika",
+        "label": "Erika",
+        "firstOrder": 97,
+        "lastOrder": 160,
+        "levelCap": 35,
+        "leaderTrainerId": "fire-red-omega-trainer-0042",
+        "sourceConfidence": "native-drayano-trainer-battles-split-tab"
+      },
+      {
+        "id": "koga",
+        "label": "Koga",
+        "firstOrder": 161,
+        "lastOrder": 245,
+        "levelCap": 50,
+        "leaderTrainerId": "fire-red-omega-trainer-0082",
+        "sourceConfidence": "native-drayano-trainer-battles-split-tab"
+      },
+      {
+        "id": "sabrina",
+        "label": "Sabrina",
+        "firstOrder": 246,
+        "lastOrder": 291,
+        "levelCap": 53,
+        "leaderTrainerId": "fire-red-omega-trainer-0144",
+        "sourceConfidence": "native-drayano-trainer-battles-split-tab"
+      },
+      {
+        "id": "blaine",
+        "label": "Blaine",
+        "firstOrder": 292,
+        "lastOrder": 335,
+        "levelCap": 58,
+        "leaderTrainerId": "fire-red-omega-trainer-0069",
+        "sourceConfidence": "native-drayano-trainer-battles-split-tab"
+      },
+      {
+        "id": "giovanni",
+        "label": "Giovanni",
+        "firstOrder": 336,
+        "lastOrder": 344,
+        "levelCap": 63,
+        "leaderTrainerId": "fire-red-omega-trainer-0180",
+        "sourceConfidence": "native-drayano-trainer-battles-split-tab"
+      },
+      {
+        "id": "champion",
+        "label": "Champion",
+        "firstOrder": 345,
+        "lastOrder": 365,
+        "levelCap": 72,
+        "leaderTrainerId": "fire-red-omega-trainer-0031",
+        "sourceConfidence": "native-drayano-trainer-battles-split-tab"
+      }
+    ],
+    "compatibilityBoundary": "Native workbook split tabs define the main-game trainer sequence; mechanics-only reference records are excluded from canonical order."
+  },
+  "referenceProfiles": [],
+  "unresolved": [
+    "Story flags, mutually exclusive route choices, and branch prerequisites beyond workbook notes require script or ROM evidence."
+  ],
+  "source": {
+    "workbook": "FRO Trainer Battles.xlsx",
+    "sha256": "54d7731874715664bc894040113cbc8ef9e02eb0a9b57a487fc14d6d2debfbaa",
+    "spreadsheetId": "1n74fQzuzCT7R9CZX5vzWWJfJE4ybS9eLsnTjChjRKbo"
+  }
+}

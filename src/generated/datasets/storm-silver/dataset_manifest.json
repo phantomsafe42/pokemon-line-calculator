@@ -1,0 +1,257 @@
+{
+  "schemaVersion": 1,
+  "gameId": "storm-silver",
+  "displayName": "Pokémon Sacred Gold and Storm Silver",
+  "folderName": "Storm Silver",
+  "filenamePrefix": "SS",
+  "datasetScope": "game",
+  "migrationStatus": "standardized-source-authoritative",
+  "completenessStatus": "partial",
+  "platform": "Nintendo DS",
+  "generation": 4,
+  "baseGame": "Pokémon HeartGold and SoulSilver",
+  "sourceProfile": "heartgold-soulsilver",
+  "supportedLanguage": "English",
+  "buildInputs": {
+    "SS_Stats_Learnsets.xlsx": {
+      "sha256": "89b2cf911d2152b60442978a632dd9543cabf9c3559c4a7e95ce83302358fc34",
+      "role": "immutable game-specific reference"
+    },
+    "SS_Trainer_Battles.xlsx": {
+      "sha256": "77c06ffa350f1446f8765f2dbcb226cbd5b5b8de54e0c491595d846404783767",
+      "role": "immutable game-specific reference"
+    },
+    "SS_Encounters.xlsx": {
+      "sha256": "05b91f14ae5fb00698ed0d3a06c7ac060e979c6624fcc51245ee7ff499c1c5d5",
+      "role": "immutable game-specific reference"
+    },
+    "source-data/imports/reference-docs/SSSG ForumPostWithMoreInfo.txt": {
+      "sha256": "c54d117a2f09d2c11a1f3f7329225e2871ccbb4f6de3b77d0166282ab1be886e",
+      "role": "immutable game-specific reference"
+    },
+    "source-data/imports/reference-docs/SSSG README.txt": {
+      "sha256": "d719cfd93e9f1f311a20dd9ad45152a43ed95262bd448df60229111986d7905c",
+      "role": "immutable game-specific reference"
+    },
+    "source-data/imports/reference-docs/PChal_README.md": {
+      "sha256": "553ff99e72a4ec8310460c8394022c063bfe2cb463794ca93c8bad54c6821e8c",
+      "role": "immutable game-specific reference"
+    },
+    "imports/legacy-consumers/legacy_consumer_manifest.json": {
+      "sha256": "c761e8d595026b70c04d7d2ead33c46d239f9c4742b7187c1689b808149418ba",
+      "role": "immutable pre-cutover legacy consumer input manifest"
+    },
+    "source-data/trainer_documentation.json": {
+      "sha256": "33b3ec94aeb349805831eccb221da9e9bff4c6f96b52387a324720e031aa0ed0",
+      "role": "deterministic field-level projection of native trainer workbook order, locations, and mandatory fill classifications"
+    },
+    "source-data/species_ability_slots.json": {
+      "sha256": "a677ccf74aca761b49054e1cb0081beb0f2256a3fd483289218f2bf995e9d79a",
+      "role": "ordered two-slot species ability authority from the Complete documentation and hash-pinned supported PChal ROM"
+    }
+  },
+  "inheritedBaseTables": {
+    "path": "../Gen 4/source-data/base_engine_tables.json",
+    "profile": "heartgold-soulsilver",
+    "sha256": "f21e8a2b3f458b54728611d22e166fd27ef18c26f9c109bdfb70b02a5df4ee44"
+  },
+  "calculationReference": {
+    "engine": {
+      "id": "smogon-calc",
+      "version": "0.11.0"
+    },
+    "files": {
+      "Battle Mechanics/vendor/smogon-calc-0.11.0/data.production.min.js": {
+        "sha256": "364be40ea1aec31f413d0036445f717d826ece9c33ec25a02399c3a287c99529"
+      },
+      "Battle Mechanics/vendor/smogon-calc-0.11.0/engine.production.min.js": {
+        "sha256": "e77a129dccf6812dcd299fc79d1f5de8afa77e8eb6de89bca283f468c968e124"
+      }
+    }
+  },
+  "patchReference": {
+    "sha256": "e961880ed87ba371e579cef75f95f96baded54b749206a1058837935cf41f2a0",
+    "role": "external Sacred Gold and Storm Silver patch identity; patch bytes remain outside the workspace"
+  },
+  "romVerification": {
+    "sha256": "89650c71f416b9b4607eaf22508b1eab90fafb34a1579d0bf4db7461318b397d",
+    "role": "approved local patched-ROM evidence; bytes and machine-local path remain outside the workspace",
+    "inspectedArchives": [
+      "a/0/5/5",
+      "a/0/5/6"
+    ]
+  },
+  "sourceRequirements": {
+    "speciesAbilitySlots": {
+      "required": true,
+      "slotCount": 2,
+      "orderedBySaveSelector": true,
+      "source": "species_ability_slots.json",
+      "status": "passed",
+      "unresolved": 0
+    },
+    "trainerAiMasks": {
+      "required": true,
+      "source": "trainer_ai_evidence.json",
+      "status": "passed",
+      "storedMaskBindings": 737,
+      "scriptedWildRuntimeBindings": 0,
+      "unresolvedProfiles": 0
+    }
+  },
+  "standardizedSources": [
+    "species.json",
+    "moves.json",
+    "abilities.json",
+    "items.json",
+    "learnsets.json",
+    "evolutions.json",
+    "trainers.json",
+    "trainer_order.json",
+    "trainer_battle_groups.json",
+    "progression.json",
+    "locations.json",
+    "encounters.json",
+    "encounter_methods.json",
+    "types.json",
+    "natures.json",
+    "stats.json",
+    "categories.json",
+    "save_id_maps.json",
+    "aliases.json",
+    "source_audit.json",
+    "game_rules.json",
+    "battle_mechanics.json",
+    "experience_mechanics.json",
+    "trainer_ai.json"
+  ],
+  "extensions": [
+    "source_verification_report.json",
+    "consumer_projection.json",
+    "trainer_reconciliation_report.json",
+    "species_ability_slots.json",
+    "trainer_documentation.json",
+    "trainer_ai_evidence.json"
+  ],
+  "builders": {
+    "build": "node ..\\tools\\standardize_legacy_game.js storm-silver",
+    "deterministicCheck": "node ..\\tools\\standardize_legacy_game.js storm-silver --check",
+    "trainerDocumentationBuild": "python ..\\tools\\build_drayano_trainer_documentation.py storm-silver",
+    "trainerDocumentationDeterministicCheck": "python ..\\tools\\build_drayano_trainer_documentation.py storm-silver --check",
+    "speciesAbilityBuild": "python ..\\tools\\build_drayano_species_abilities.py --game storm-silver --rom <approved-local-final-rom>",
+    "speciesAbilityDeterministicCheck": "python ..\\tools\\build_drayano_species_abilities.py --game storm-silver --rom <approved-local-final-rom> --check",
+    "trainerAiEvidenceBuild": "python ..\\tools\\build_trainer_ai_evidence.py --game storm-silver --storm-silver-rom <approved-local-final-rom>",
+    "trainerAiEvidenceDeterministicCheck": "python ..\\tools\\build_trainer_ai_evidence.py --game storm-silver --storm-silver-rom <approved-local-final-rom> --check",
+    "trainerAiBuild": "node ..\\tools\\build_trainer_ai_profiles.js",
+    "trainerAiDeterministicCheck": "node ..\\tools\\build_trainer_ai_profiles.js --check",
+    "consumerBuild": "node ..\\tools\\build_standardized_consumers.js --game storm-silver",
+    "consumerDeterministicCheck": "node ..\\tools\\build_standardized_consumers.js --game storm-silver --check",
+    "validation": "node ..\\tools\\validate_standardized_dataset.js --game storm-silver"
+  },
+  "categoryApplicability": {
+    "species": {
+      "status": "applicable"
+    },
+    "moves": {
+      "status": "applicable"
+    },
+    "abilities": {
+      "status": "applicable"
+    },
+    "items": {
+      "status": "applicable"
+    },
+    "learnsets": {
+      "status": "applicable"
+    },
+    "evolutions": {
+      "status": "applicable"
+    },
+    "trainers": {
+      "status": "applicable"
+    },
+    "trainer_order": {
+      "status": "applicable"
+    },
+    "trainer_battle_groups": {
+      "status": "applicable"
+    },
+    "progression": {
+      "status": "applicable"
+    },
+    "locations": {
+      "status": "applicable"
+    },
+    "encounters": {
+      "status": "applicable"
+    },
+    "encounter_methods": {
+      "status": "applicable"
+    },
+    "types": {
+      "status": "applicable"
+    },
+    "natures": {
+      "status": "applicable"
+    },
+    "stats": {
+      "status": "applicable"
+    },
+    "categories": {
+      "status": "applicable"
+    },
+    "save_id_maps": {
+      "status": "applicable"
+    },
+    "aliases": {
+      "status": "applicable"
+    },
+    "source_audit": {
+      "status": "applicable"
+    },
+    "game_rules": {
+      "status": "applicable"
+    },
+    "battle_mechanics": {
+      "status": "applicable"
+    },
+    "experience_mechanics": {
+      "status": "applicable"
+    },
+    "trainer_ai": {
+      "status": "applicable"
+    }
+  },
+  "calculationCompatibility": {
+    "battle": {
+      "source": "battle_mechanics.json",
+      "status": "passed",
+      "unresolved": 0
+    },
+    "experience": {
+      "source": "experience_mechanics.json",
+      "status": "passed",
+      "unresolved": 0,
+      "experienceGeneration": 4,
+      "model": "generation-4-unscaled-trainer"
+    }
+  },
+  "saveCompatibility": {
+    "status": "partial",
+    "detail": "Ordered species ability selectors are final-ROM verified; species, move, and item numeric maps are present, while remaining location or numeric-identity gaps stay explicit."
+  },
+  "knownOmissions": [
+    {
+      "category": "progression",
+      "reason": "Native workbook split/order/location/red-blue classification is applied to 271 matched trainers; 0 unmatched complete cards are materialized source-only and branch prerequisites still need script evidence."
+    },
+    {
+      "category": "rom-verification",
+      "reason": "Final patched ROM verification covers every projected species personal-table ability slot plus the explicitly named trainer records; other categories remain documentation-led."
+    }
+  ],
+  "deterministicAssumptions": [
+    "Shared Sacred Gold/Storm Silver Complete mechanics are represented together; the supported PChal build is the top override layer and the live compatibility projection retains the Storm Silver ID and prefix."
+  ],
+  "lastValidationDate": "2026-08-28"
+}

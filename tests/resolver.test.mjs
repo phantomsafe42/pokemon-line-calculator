@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { commitForcedReplacement, commitPreview, previewForcedReplacement, previewTurn, refreshUnknownCommittedProbabilities } from "../src/core/planner.js";
-import { planTreeOrder } from "../src/core/graph.js";
+import { commitForcedReplacement, commitPreview, previewForcedReplacement, previewTurn, refreshUnknownCommittedProbabilities, replacementCommitLabel } from "../src/core/planner.js";
+import { planTurnTreeOrder } from "../src/core/graph.js";
 import { createPlanDocument } from "../src/core/plan.js";
 import { ResolutionError, resolveTurn } from "../src/core/resolver.js";
 import { damageAdapter, fixturePlan } from "./helpers.mjs";
@@ -64,6 +64,20 @@ test("priority move KOs first and the fainted opponent action is skipped", () =>
   assert.equal(outcomes[0].state.combatantStates[enemies[0].combatantKey].hp.max, 0);
   assert.ok(outcomes[0].events.some(entry => entry.eventType === "action-skipped" && entry.reason === "actor-fainted-before-moving"));
   assert.deepEqual(outcomes[0].state.pendingReplacementSides, ["enemy"]);
+});
+
+test('Gen 4 AI incoming-move history is cleared after acting, then retained for later attacks', () => {
+  const { dataset, players, enemies, plan } = fixturePlan();
+  dataset.mechanics.damageGeneration = 4;
+  const player = players[0].combatantKey, enemy = enemies[0].combatantKey;
+  const root = plan.stateNodes[plan.initialStateNodeId];
+  root.combatantStates[player].currentStats = { spe: 200 };
+  root.combatantStates[enemy].currentStats = { spe: 20 };
+  const [outcome] = resolveTurn({ plan, parentStateNodeId: 'state-root', actions: { player: move(player, 'tackle', enemy), enemy: move(enemy, 'tackle', player) }, dataset, damageAdapter: damageAdapter(() => [1]) });
+  assert.equal(outcome.state.combatantStates[player].lastHitMoveId, 'tackle');
+  assert.equal(outcome.state.combatantStates[player].lastHitSourceKey, enemy);
+  assert.equal(outcome.state.combatantStates[enemy].lastHitMoveId, null, 'the slower actor clears the earlier attack when it acts');
+  assert.equal(outcome.state.combatantStates[enemy].lastHitSourceKey, null);
 });
 
 test("the final opposing KO ended the battle before later queued actions resolved", () => {
@@ -893,7 +907,7 @@ test("Download activates once when switching in during a turn", () => {
   assert.equal(outcome.events.filter(event => event.actorKey === players[1].combatantKey && event.metadata?.cause === "download").length, 1);
 });
 
-test("forced replacement is folded into the following visible turn node", () => {
+test("forced replacement has its own probability-free graph step before the following turn", () => {
   const { plan, dataset, players, enemies } = fixturePlan();
   const adapter = damageAdapter(({ attacker }) => attacker.side === "player" ? [999] : [10]);
   const firstPreview = previewTurn({
@@ -907,6 +921,9 @@ test("forced replacement is folded into the following visible turn node", () => 
     damageAdapter: adapter
   });
   const turnOne = commitPreview(plan, firstPreview, dataset);
+  const replacementDraftNode = planTurnTreeOrder(turnOne.plan).find(entry => entry.kind === "draft" && entry.transitionKind === "replacement");
+  assert.equal(replacementDraftNode.turnNumber, 2);
+  assert.equal(replacementDraftNode.columnTitle, "");
   const replacementAction = {
     actionType: "replacement",
     side: "enemy",
@@ -926,6 +943,10 @@ test("forced replacement is folded into the following visible turn node", () => 
   assert.equal(state.transitionKind, "replacement");
   assert.deepEqual(state.pendingReplacementSides, []);
   assert.equal(state.active.enemyCombatantKey, enemies[1].combatantKey);
+  assert.equal(replacementCommitLabel(turnOne.plan, turnOne.cursorStateNodeId, { enemy: replacementAction }), "Next Turn");
+  assert.equal(replacementCommitLabel(replaced.plan, turnOne.cursorStateNodeId, { enemy: replacementAction }), "Open Branch");
+  const reopened = commitForcedReplacement(replaced.plan, replacementPreview, dataset);
+  assert.equal(reopened.cursorStateNodeId, replaced.cursorStateNodeId);
   const next = previewTurn({
     plan: replaced.plan,
     parentStateNodeId: replaced.cursorStateNodeId,
@@ -941,9 +962,15 @@ test("forced replacement is folded into the following visible turn node", () => 
   const turnTwo = commitPreview(replaced.plan, next, dataset, { commitSelectedOnly: true });
   const turnTwoState = turnTwo.plan.stateNodes[turnTwo.cursorStateNodeId];
   assert.equal(turnTwoState.transitionKind, undefined);
-  const visible = planTreeOrder(turnTwo.plan, { includeReplacementStates: false }).map(entry => entry.state.stateNodeId);
-  assert.equal(visible.includes(replaced.cursorStateNodeId), false);
-  assert.equal(visible.includes(turnTwo.cursorStateNodeId), true);
+  const visible = planTurnTreeOrder(turnTwo.plan).filter(entry => entry.kind === "committed");
+  const replacementNode = visible.find(entry => entry.outcomeStateNodeId === replaced.cursorStateNodeId);
+  const turnTwoNode = visible.find(entry => entry.outcomeStateNodeId === turnTwo.cursorStateNodeId);
+  assert.equal(replacementNode.transitionKind, "replacement");
+  assert.equal(replacementNode.columnTitle, "");
+  assert.equal(replacementNode.turnNumber, 2);
+  assert.equal(turnTwoNode.transitionKind, "action");
+  assert.equal(turnTwoNode.columnTitle, "Turn 2");
+  assert.ok(replacementNode.columnOrder < turnTwoNode.columnOrder);
   const events = turnTwoState.resolutionEventIds.map(id => turnTwo.plan.resolutionEvents[id]);
   const replacementEvent = events.find(event => event.eventType === "switch" && event.metadata?.phase === "start-of-turn-replacement");
   assert.ok(replacementEvent);

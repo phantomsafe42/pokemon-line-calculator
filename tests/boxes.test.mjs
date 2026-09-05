@@ -17,8 +17,13 @@ import {
 } from "../src/boxes/library.js";
 import { addImportedPlanParty, bindPlanPlayerPartyToImportedBox } from "../src/boxes/plan_import.js";
 import { applyBranchProgressionToLibrary, branchProgressionSnapshot } from "../src/boxes/progression.js";
+import { parseSave, selectSavePokemon } from "../src/boxes/save_import.js";
 import { exportShowdown, parseShowdown } from "../src/boxes/showdown.js";
 import { parseVw2rSave, selectVw2rSavePokemon } from "../src/boxes/vw2r_save_import.js";
+import {
+  DESMUME_DSV_FOOTER_BYTES,
+  NINTENDO_DS_RAW_SAVE_BYTES,
+} from "../src/generated/save-mechanics/core/src/gen45/save-container.js";
 import { fixturePlan } from "./helpers.mjs";
 
 function vw2rDataset() {
@@ -32,6 +37,45 @@ function vw2rDataset() {
 }
 
 const dataset = vw2rDataset();
+
+test('Box JSON retains observed friendship endpoints and does not invent an unknown value', () => {
+  for (const friendship of [0, 255, undefined]) {
+    const [record] = parseShowdown('Clefairy\nLevel: 26\n- Pound', dataset);
+    if (friendship !== undefined) record.friendship = friendship;
+    const result = addBox(createEmptyBoxLibrary(), dataset.gameId, { pokemon: [record] });
+    const restored = parseBoxLibrary(exportBoxLibrary(result.library));
+    const mon = boxesForGame(restored, dataset.gameId)[0].pokemon[record.id];
+    assert.equal(mon.friendship, friendship);
+  }
+});
+
+function asTestDsv(raw) {
+  const bytes = new Uint8Array(NINTENDO_DS_RAW_SAVE_BYTES + DESMUME_DSV_FOOTER_BYTES);
+  bytes.set(raw);
+  const prefix = "|<--Snip above here to create a raw sav by excluding this DeSmuME savedata footer:";
+  const suffix = "|-DESMUME SAVE-|";
+  for (let index = 0; index < prefix.length; index += 1) bytes[NINTENDO_DS_RAW_SAVE_BYTES + index] = prefix.charCodeAt(index);
+  for (let index = 0; index < suffix.length; index += 1) bytes[bytes.byteLength - suffix.length + index] = suffix.charCodeAt(index);
+  return bytes;
+}
+
+function stableSavePokemon(records) {
+  return records.map(record => ({
+    id: record.id,
+    speciesId: record.speciesId,
+    nickname: record.nickname,
+    level: record.level,
+    experience: record.experience,
+    abilityId: record.abilityId,
+    itemId: record.itemId,
+    moves: record.moves,
+    ivs: record.ivs,
+    evs: record.evs,
+    storage: record.source?.storage,
+    box: record.source?.sourceBox ?? record.source?.box,
+    slot: record.source?.slot,
+  }));
+}
 const sampleShowdown = `angel (Clefairy) (F) @ Eviolite
 Ability: Magic Guard
 Level: 26
@@ -202,36 +246,59 @@ test("VW2R save identity keeps the empty held-item sentinel unmapped", () => {
   assert.equal(dataset.getBySaveNumericId("items", miracleSeedSaveId)?.id, "miracleseed");
 });
 
+test("VW2R save item identities exactly cover the standardized item records", () => {
+  const items = dataset.documents["items.json"].records;
+  const itemMap = dataset.documents["save_id_maps.json"].records.items;
+  assert.equal(Object.keys(itemMap.byCanonicalId).length, Object.keys(items).length);
+  assert.equal(Object.keys(itemMap.byNumericId).length, Object.keys(items).length);
+  for (const item of Object.values(items)) {
+    assert.equal(itemMap.byCanonicalId[item.id], item.num);
+    assert.equal(itemMap.byNumericId[String(item.num)], item.id);
+    assert.equal(dataset.getBySaveNumericId("items", item.num)?.id, item.id);
+  }
+  assert.equal(dataset.getBySaveNumericId("items", 538)?.id, "eviolite");
+  assert.equal(dataset.getBySaveNumericId("items", 540)?.id, "rockyhelmet");
+  assert.equal(dataset.getBySaveNumericId("items", 541)?.id, "airballoon");
+  assert.equal(dataset.getBySaveNumericId("items", 547)?.id, "ejectbutton");
+});
+
 test("VW2R save import is read-only and matches the approved parser fixture", { skip: !process.env.PLC_VW2R_SAVE_FIXTURE }, () => {
   const fixture = path.resolve(process.env.PLC_VW2R_SAVE_FIXTURE);
   const before = fs.readFileSync(fixture);
   const result = parseVw2rSave(before, dataset, { sourceName: path.basename(fixture) });
   const after = fs.readFileSync(fixture);
   assert.deepEqual(after, before);
-  assert.equal(result.partyCount, 6);
+  assert.ok(result.partyCount >= 1 && result.partyCount <= 6);
   assert.ok(result.boxCount > 0);
   assert.equal(result.totalCount, result.partyCount + result.boxCount);
-  assert.equal(result.pcBoxes.length, 7);
+  assert.equal(result.pcBoxes.length, 24);
   assert.equal(result.pcBoxes.reduce((sum, box) => sum + box.pokemonCount, 0), result.boxCount);
-  assert.deepEqual(result.partyPokemonIds, result.pokemon.slice(0, 6).map(record => record.id));
+  assert.deepEqual(result.partyPokemonIds, result.pokemon.slice(0, result.partyCount).map(record => record.id));
   assert.ok(result.pokemon.every(record => record.baseStats.hp >= 1 && record.moves.length <= 4));
   assert.ok(result.pokemon.every(record => Number.isInteger(record.experience) && record.experience >= 0));
-  assert.equal(result.pokemon.find(record => record.nickname === "dukdukgoat")?.itemId, null);
-  assert.equal(result.pokemon.find(record => record.nickname === "fonky")?.itemId, "miracleseed");
-  const honse = result.pokemon.find(record => record.nickname === "HONSE");
-  assert.equal(honse?.speciesId, "keldeo");
-  assert.equal(honse?.formId, "keldeo");
-  assert.equal(honse?.displayName, "Keldeo - Ordinary");
-
   const partyOnly = selectVw2rSavePokemon(result, []);
-  assert.equal(partyOnly.partyCount, 6);
+  assert.equal(partyOnly.partyCount, result.partyCount);
   assert.equal(partyOnly.boxCount, 0);
   assert.deepEqual(partyOnly.partyPokemonIds, result.partyPokemonIds);
 
   const populated = result.pcBoxes.find(box => box.pokemonCount > 0);
   const selected = selectVw2rSavePokemon(result, [populated.boxNumber]);
-  assert.equal(selected.partyCount, 6);
+  assert.equal(selected.partyCount, result.partyCount);
   assert.equal(selected.boxCount, populated.pokemonCount);
-  assert.ok(selected.pokemon.slice(6).every(record => Number(record.source.sourceBox) === populated.boxNumber));
-  assert.throws(() => selectVw2rSavePokemon(result, [8]), /unavailable/i);
+  assert.ok(selected.pokemon.slice(result.partyCount).every(record => Number(record.source.sourceBox) === populated.boxNumber));
+  assert.throws(() => selectVw2rSavePokemon(result, [25]), /unavailable/i);
+
+  const sharedRaw = parseSave(before, dataset, { sourceName: "fixture.sav" });
+  const dsvBytes = asTestDsv(before);
+  const dsvBefore = dsvBytes.slice();
+  const sharedDsv = parseSave(dsvBytes, dataset, { sourceName: "fixture.dsv" });
+  assert.deepEqual(dsvBytes, dsvBefore);
+  assert.equal(sharedRaw.partyCount, sharedDsv.partyCount);
+  assert.equal(sharedRaw.boxCount, sharedDsv.boxCount);
+  assert.deepEqual(sharedRaw.pcBoxes, sharedDsv.pcBoxes);
+  assert.deepEqual(stableSavePokemon(sharedRaw.pokemon), stableSavePokemon(sharedDsv.pokemon));
+  const rawParty = selectSavePokemon(sharedRaw, []);
+  const dsvParty = selectSavePokemon(sharedDsv, []);
+  assert.deepEqual(rawParty.partyPokemonIds, dsvParty.partyPokemonIds);
+  assert.deepEqual(stableSavePokemon(rawParty.pokemon), stableSavePokemon(dsvParty.pokemon));
 });

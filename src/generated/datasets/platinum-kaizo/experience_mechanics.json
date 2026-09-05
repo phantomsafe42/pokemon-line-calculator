@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "gameId": "platinum-kaizo",
+  "kind": "experience-mechanics",
+  "experienceGeneration": 4,
+  "inheritedFromDamageGeneration": false,
+  "mechanicsProfile": "platinum-kaizo-trainer-experience-v1",
+  "source": {
+    "repository": "https://github.com/pret/pokeplatinum",
+    "commit": "7ebfc44ee950e0ecd0c68065bcfb8917df7e6917",
+    "file": "src/battle/battle_script.c",
+    "sha256": "9aa9146eecceefbbe1e312ad5a4e1a6584260ca0d74a6007271c10c74354cdf8"
+  },
+  "levelCurve": {
+    "growthRateField": "species.json#records.*.growthRate",
+    "status": "passed"
+  },
+  "baseYield": {
+    "field": "species.json#records.*.baseExp",
+    "status": "passed"
+  },
+  "trainerBattleFormula": {
+    "model": "generation-4-unscaled-trainer",
+    "basePool": "floor(baseExp * defeatedLevel / 7)",
+    "participantAndExpShareSplit": "half-pools when at least one Exp. Share holder exists; otherwise divide the full pool among participants",
+    "LuckyEggMultiplier": {
+      "numerator": 3,
+      "denominator": 2,
+      "rounding": "floor"
+    },
+    "trainerMultiplier": {
+      "numerator": 3,
+      "denominator": 2,
+      "rounding": "floor"
+    },
+    "operationOrder": [
+      "base-pool",
+      "participant-and-exp-share-split",
+      "Lucky-Egg",
+      "trainer-multiplier"
+    ]
+  },
+  "validation": {
+    "status": "passed",
+    "unresolved": 0,
+    "knownAnswers": [
+      {
+        "baseExp": 100,
+        "defeatedLevel": 21,
+        "participants": 1,
+        "trainer": true,
+        "resultBeforeOptionalBonuses": 450
+      }
+    ]
+  },
+  "consumerActivation": {
+    "experienceProjectionReady": true
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "plc-generated-trainer-ai/v1alpha1",
+  "consumer": "plc-trainer-ai",
+  "source": "Datasets",
+  "sourceTreeSha256": "CEF9C5260B7B0EF00B4DACB1EEE65BBF32015E9BABDB6C530F254A063AD81676",
+  "files": [
+    {
+      "path": "volt-white-2r/trainer_ai.json",
+      "sourcePath": "Volt White 2R/source-data/trainer_ai.json",
+      "bytes": 7386,
+      "sha256": "BEC0510C2729C7204C6BEDE561727D0CD00A98276270C903DABDC0EF0463DD20"
+    },
+    {
+      "path": "gen5/trainer_ai.json",
+      "sourcePath": "Gen 5/source-data/trainer_ai.json",
+      "bytes": 11531168,
+      "sha256": "C42EB9D5771B814E7BDED850F9BA9E9E1C8BC62FCA59E0E3F127514DBC8B7F37"
+    },
+    {
+      "path": "gen5/trainer_ai_engine_semantics.json",
+      "sourcePath": "Gen 5/source-data/trainer_ai_engine_semantics.json",
+      "bytes": 25402,
+      "sha256": "3BABCF71C4FBE0F9BF227A43F3A9FB56D978E11EB5F073F2C9C4A28C0786BD31"
+    },
+    {
+      "path": "fire-red-omega/trainer_ai.json",
+      "sourcePath": "Fire Red Omega/source-data/trainer_ai.json",
+      "bytes": 360479,
+      "sha256": "D97C1B3F5AE63C1115B267590C6C9A9B9034802ECAB7175C7082AFBBFB40E739"
+    },
+    {
+      "path": "pokemon-unbound/trainer_ai.json",
+      "sourcePath": "Pokemon Unbound/source-data/trainer_ai.json",
+      "bytes": 373844,
+      "sha256": "77B2BCA4BD6C7B2D311256E8B057ED7F1FBDF00CD095CA0522843A9E7CF63098"
+    },
+    {
+      "path": "storm-silver/trainer_ai.json",
+      "sourcePath": "Storm Silver/source-data/trainer_ai.json",
+      "bytes": 397118,
+      "sha256": "B93729FCDE936DAE6CC0F67523D704CB7B3E5EB70B9E38B7396D280829BBC90B"
+    },
+    {
+      "path": "renegade-platinum/trainer_ai.json",
+      "sourcePath": "Renegade Platinum/source-data/trainer_ai.json",
+      "bytes": 598935,
+      "sha256": "A1000FA8F38BF8C96221CAFA15612FAC9A80C5BD7353886518D4026EA287F24D"
+    },
+    {
+      "path": "platinum-kaizo/trainer_ai.json",
+      "sourcePath": "Platinum Kaizo/source-data/trainer_ai.json",
+      "bytes": 252429,
+      "sha256": "4FE0C705AC2BE0E74C9EB0B10D4584C3C2AFE6A99F07B610E2D319AE0875D70E"
+    },
+    {
+      "path": "gen3/trainer_ai.json",
+      "sourcePath": "Gen 3/source-data/trainer_ai.json",
+      "bytes": 185882,
+      "sha256": "2E71C048DD2AF680A682C57423787C40AC424799204CCD183D903CEFC506113A"
+    },
+    {
+      "path": "gen4/trainer_ai.json",
+      "sourcePath": "Gen 4/source-data/trainer_ai.json",
+      "bytes": 34927637,
+      "sha256": "21A5D9165787B3DF8E05EEF46CA6FA7C729EB7CE583867A1FF3C6147D6E73284"
+    }
+  ]
+}

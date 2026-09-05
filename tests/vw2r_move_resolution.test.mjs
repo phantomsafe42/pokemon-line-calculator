@@ -48,6 +48,49 @@ function vw2rFixture(moveId) {
   return { ...result, playerKey, enemyKey: result.enemies[0].combatantKey };
 }
 
+test('Platinum rampage counters force continuation, retain PP and expire into confusion', () => {
+  const { dataset, plan, playerKey, enemyKey } = vw2rFixture('outrage');
+  dataset.mechanics.damageGeneration = 4;
+  const root = plan.stateNodes[plan.initialStateNodeId];
+  root.combatantStates[playerKey].currentAbilityId = '';
+  root.combatantStates[enemyKey].currentAbilityId = '';
+  const run = id => resolveTurn({ plan, parentStateNodeId: id, actions: { player: action(playerKey, 'outrage', [enemyKey]), enemy: action(enemyKey, 'tackle', [playerKey]) }, dataset, damageAdapter: damageAdapter(() => [1]) });
+  const initialPp = root.combatantStates[playerKey].movePp.outrage;
+  const first = run(plan.initialStateNodeId);
+  assert.deepEqual([...new Set(first.map(row => row.state.combatantStates[playerKey].volatileConditions.thrashTurns))].sort(), [1, 2]);
+  for (const row of first) {
+    const mon = row.state.combatantStates[playerKey];
+    assert.equal(mon.volatileConditions.thrashMoveId, 'outrage');
+    assert.equal(mon.movePp.outrage, initialPp - 1);
+    row.state.stateNodeId = 'rampage-continuation';
+    plan.stateNodes[row.state.stateNodeId] = row.state;
+    assert.throws(() => resolveTurn({ plan, parentStateNodeId: row.state.stateNodeId, actions: { player: action(playerKey, 'tackle', [enemyKey]), enemy: action(enemyKey, 'tackle', [playerKey]) }, dataset, damageAdapter: damageAdapter(() => [1]) }), /locked move/);
+    for (const next of run(row.state.stateNodeId)) {
+      const updated = next.state.combatantStates[playerKey];
+      assert.equal(updated.movePp.outrage, initialPp - 1);
+      assert.equal(updated.volatileConditions.thrashTurns, mon.volatileConditions.thrashTurns - 1);
+      if (updated.volatileConditions.thrashTurns === 0) {
+        assert.equal(updated.volatileConditions.thrashMoveId, null);
+        assert.ok(updated.volatileConditions.confusionCounterDistribution?.length);
+      }
+    }
+  }
+});
+
+test('Platinum Uproar uses the pinned 3..6 turn counter and wakes non-Soundproof sleepers', () => {
+  for (const ability of ['', 'soundproof']) {
+    const { dataset, plan, playerKey, enemyKey } = vw2rFixture('uproar');
+    dataset.mechanics.damageGeneration = 4;
+    const root = plan.stateNodes[plan.initialStateNodeId];
+    root.combatantStates[enemyKey].currentAbilityId = ability;
+    root.combatantStates[enemyKey].majorStatus = 'slp';
+    root.combatantStates[enemyKey].volatileConditions.sleepCounterDistribution = [{ value: 3, probability: 1 }];
+    const outcomes = resolveTurn({ plan, parentStateNodeId: plan.initialStateNodeId, actions: { player: action(playerKey, 'uproar', [enemyKey]), enemy: action(enemyKey, 'tackle', [playerKey]) }, dataset, damageAdapter: damageAdapter(() => [1]) });
+    if (!ability) assert.deepEqual([...new Set(outcomes.map(row => row.state.combatantStates[playerKey].volatileConditions.uproarTurns))].sort(), [2, 3, 4, 5]);
+    for (const row of outcomes) assert.equal(row.state.combatantStates[enemyKey].majorStatus, ability ? 'slp' : null);
+  }
+});
+
 test("Doubles slot damage labels use two decimals and cap display at 999.99 percent", () => {
   assert.equal(boundedSlotDamageLabel(5, 7.456), "5.00–7.46%");
   assert.equal(boundedSlotDamageLabel(117.647, 141.176), "117.65–141.18%");

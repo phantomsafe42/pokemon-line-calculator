@@ -1,15 +1,31 @@
-import { asBytes } from "../../../core/src/binary/little-endian.js";
 import { decodeGen45Pokemon } from "../../../core/src/gen45/pokemon.js";
-import { locateGen45PokemonRecords } from "../../../core/src/gen45/save-layout.js";
+import { openNintendoDsSaveContainer } from "../../../core/src/gen45/save-container.js";
+import { GEN45_SAVE_LAYOUTS, locateGen45PokemonRecords } from "../../../core/src/gen45/save-layout.js";
 import { levelFromRunHistoryExperience } from "./experience.js";
 
 const VW2R_GAME_ID = "volt-white-2r";
-const PC_BOX_COUNT = 7;
+const PC_BOX_COUNT = GEN45_SAVE_LAYOUTS.bw2.boxSlotCount / 30;
 
 function baseSpeciesByNumericId(dataset, numericId) {
   const candidates = [...dataset.indexes.species.values()]
     .filter(record => Number(record.num) === Number(numericId));
   return candidates.find(record => !record.baseSpecies) || candidates[0] || null;
+}
+
+export function resolveVw2rHeldItem(dataset, numericId, {
+  storage = "unknown storage",
+  offset = "unknown offset",
+} = {}) {
+  const normalizedId = Number(numericId);
+  if (!Number.isInteger(normalizedId) || normalizedId < 0) {
+    throw new Error(`VW2R ${storage} Pokémon at offset ${offset} has an invalid held item ID ${numericId}`);
+  }
+  if (normalizedId === 0) return null;
+  const item = dataset.getBySaveNumericId("items", normalizedId);
+  if (!item) {
+    throw new Error(`VW2R ${storage} Pokémon at offset ${offset} has an unmapped held item ID ${normalizedId}`);
+  }
+  return item;
 }
 
 function parsePokemon(record, dataset, {
@@ -33,7 +49,7 @@ function parsePokemon(record, dataset, {
   }
   if (decoded.isEgg) return null;
 
-  const item = dataset.getBySaveNumericId("items", decoded.heldItemNumericId);
+  const item = resolveVw2rHeldItem(dataset, decoded.heldItemNumericId, record);
   const ability = dataset.getBySaveNumericId("abilities", decoded.abilityNumericId);
   const nature = dataset.getBySaveNumericId("natures", decoded.natureNumericId);
   const level = decoded.partyLevel
@@ -60,6 +76,7 @@ function parsePokemon(record, dataset, {
     level,
     experience: decoded.experience,
     gender: decoded.genderCode,
+    friendship: decoded.friendship,
     natureId: nature?.id || "serious",
     abilityId: ability?.id || species.abilities?.[0],
     itemId: item?.id || null,
@@ -88,10 +105,7 @@ export function parseVw2rPlcSave(value, dataset, {
     throw new Error("This save adapter is available only for Volt White 2 Redux");
   }
   if (typeof normalizePokemon !== "function") throw new TypeError("normalizePokemon must be a function");
-  const bytes = asBytes(value, { label: "VW2R save import" });
-  if (bytes.byteLength !== 0x80000 && bytes.byteLength !== 0x80000 + 122) {
-    throw new Error(`Expected a 524288-byte .sav or 524410-byte .dsv; received ${bytes.byteLength} bytes`);
-  }
+  const { bytes } = openNintendoDsSaveContainer(value, { label: "VW2R save import" });
   const located = locateGen45PokemonRecords(bytes, "bw2", { requireReadableParty: true });
   const options = { importedAt, normalizePokemon, rejectInvalidPokemonChecksums };
   const party = located.party.map(record => parsePokemon(record, dataset, options)).filter(Boolean);

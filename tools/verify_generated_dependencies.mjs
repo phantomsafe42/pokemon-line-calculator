@@ -5,10 +5,17 @@ import { fileURLToPath } from "node:url";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(here, "..");
+const datasetTargetsRoot = path.resolve(projectRoot, "src", "generated", "datasets");
+const datasetTargets = fs.existsSync(datasetTargetsRoot)
+  ? fs.readdirSync(datasetTargetsRoot, { withFileTypes: true })
+    .filter(entry => entry.isDirectory())
+    .map(entry => ({ root: `src/generated/datasets/${entry.name}`, manifest: "dataset.generated.json" }))
+  : [];
 const targets = [
-  { root: "src/generated/datasets/volt-white-2r", manifest: "dataset.generated.json" },
+  ...datasetTargets,
   { root: "src/generated/battle-mechanics", manifest: "battle-mechanics.generated.json" },
   { root: "src/generated/save-mechanics", manifest: "save-mechanics.generated.json" }
+  ,{ root: "src/generated/trainer-ai", manifest: "trainer-ai.generated.json" }
 ];
 
 function sha256(bytes) {

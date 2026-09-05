@@ -37,6 +37,7 @@ export function planPlayerPartyRecords(plan, dataset) {
       level: Number(initial.currentLevel ?? combatant.level),
       ...(Number.isInteger(initial.experience ?? combatant.experience) ? { experience: Number(initial.experience ?? combatant.experience) } : {}),
       gender: combatant.gender ?? null,
+      ...(Number.isInteger(initial.friendship ?? combatant.friendship) ? { friendship: initial.friendship ?? combatant.friendship } : {}),
       natureId: combatant.natureId || "",
       abilityId: combatant.originalAbilityId || "",
       itemId: combatant.originalItemId || null,

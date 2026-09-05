@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-unbound",
+  "kind": "natures",
+  "records": {
+    "hardy": {
+      "num": 0,
+      "id": "hardy",
+      "name": "Hardy",
+      "boostedStat": "atk",
+      "nerfedStat": "atk",
+      "sourceConfidence": "pinned-cfru-nature-constants"
+    },
+    "lonely": {
+      "num": 1,
+      "id": "lonely",
+      "name": "Lonely",
+      "boostedStat": "atk",
+      "nerfedStat": "def",
+      "sourceConfidence": "pinned-cfru-nature-constants"
+    },
+    "brave": {
+      "num": 2,
+      "id": "brave",
+      "name": "Brave",
+      "boostedStat": "atk",
+      "nerfedStat": "spe",
+      "sourceConfidence": "pinned-cfru-nature-constants"
+    },
+    "adamant": {
+      "num": 3,
+      "id": "adamant",
+      "name": "Adamant",
+      "boostedStat": "atk",
+      "nerfedStat": "spa",
+      "sourceConfidence": "pinned-cfru-nature-constants"
+    },
+    "naughty": {
+      "num": 4,
+      "id": "naughty",
+      "name": "Naughty",
+      "boostedStat": "atk",
+      "nerfedStat": "spd",
+      "sourceConfidence": "pinned-cfru-nature-constants"
+    },
+    "bold": {
+      "num": 5,
+      "id": "bold",
+      "name": "Bold",
+      "boostedStat": "def",
+      "nerfedStat": "atk",
+      "sourceConfidence": "pinned-cfru-nature-constants"
+    },
+    "docile": {
+      "num": 6,
+      "id": "docile",
+      "name": "Docile",
+      "boostedStat": "def",
+      "nerfedStat": "def",
+      "sourceConfidence": "pinned-cfru-nature-constants"
+    },
+    "relaxed": {
+      "num": 7,
+      "id": "relaxed",
+      "name": "Relaxed",
+      "boostedStat": "def",
+      "nerfedStat": "spe",
+      "sourceConfidence": "pinned-cfru-nature-constants"
+    },
+    "impish": {
+      "num": 8,
+      "id": "impish",
+      "name": "Impish",
+      "boostedStat": "def",
+      "nerfedStat": "spa",
+      "sourceConfidence": "pinned-cfru-nature-constants"
+    },
+    "lax": {
+      "num": 9,
+      "id": "lax",
+      "name": "Lax",
+      "boostedStat": "def",
+      "nerfedStat": "spd",
+      "sourceConfidence": "pinned-cfru-nature-constants"
+    },
+    "timid": {
+      "num": 10,
+      "id": "timid",
+      "name": "Timid",
+      "boostedStat": "spe",
+      "nerfedStat": "atk",
+      "sourceConfidence": "pinned-cfru-nature-constants"
+    },
+    "hasty": {
+      "num": 11,
+      "id": "hasty",
+      "name": "Hasty",
+      "boostedStat": "spe",
+      "nerfedStat": "def",
+      "sourceConfidence": "pinned-cfru-nature-constants"
+    },
+    "serious": {
+      "num": 12,
+      "id": "serious",
+      "name": "Serious",
+      "boostedStat": "spe",
+      "nerfedStat": "spe",
+      "sourceConfidence": "pinned-cfru-nature-constants"
+    },
+    "jolly": {
+      "num": 13,
+      "id": "jolly",
+      "name": "Jolly",
+      "boostedStat": "spe",
+      "nerfedStat": "spa",
+      "sourceConfidence": "pinned-cfru-nature-constants"
+    },
+    "naive": {
+      "num": 14,
+      "id": "naive",
+      "name": "Naive",
+      "boostedStat": "spe",
+      "nerfedStat": "spd",
+      "sourceConfidence": "pinned-cfru-nature-constants"
+    },
+    "modest": {
+      "num": 15,
+      "id": "modest",
+      "name": "Modest",
+      "boostedStat": "spa",
+      "nerfedStat": "atk",
+      "sourceConfidence": "pinned-cfru-nature-constants"
+    },
+    "mild": {
+      "num": 16,
+      "id": "mild",
+      "name": "Mild",
+      "boostedStat": "spa",
+      "nerfedStat": "def",
+      "sourceConfidence": "pinned-cfru-nature-constants"
+    },
+    "quiet": {
+      "num": 17,
+      "id": "quiet",
+      "name": "Quiet",
+      "boostedStat": "spa",
+      "nerfedStat": "spe",
+      "sourceConfidence": "pinned-cfru-nature-constants"
+    },
+    "bashful": {
+      "num": 18,
+      "id": "bashful",
+      "name": "Bashful",
+      "boostedStat": "spa",
+      "nerfedStat": "spa",
+      "sourceConfidence": "pinned-cfru-nature-constants"
+    },
+    "rash": {
+      "num": 19,
+      "id": "rash",
+      "name": "Rash",
+      "boostedStat": "spa",
+      "nerfedStat": "spd",
+      "sourceConfidence": "pinned-cfru-nature-constants"
+    },
+    "calm": {
+      "num": 20,
+      "id": "calm",
+      "name": "Calm",
+      "boostedStat": "spd",
+      "nerfedStat": "atk",
+      "sourceConfidence": "pinned-cfru-nature-constants"
+    },
+    "gentle": {
+      "num": 21,
+      "id": "gentle",
+      "name": "Gentle",
+      "boostedStat": "spd",
+      "nerfedStat": "def",
+      "sourceConfidence": "pinned-cfru-nature-constants"
+    },
+    "sassy": {
+      "num": 22,
+      "id": "sassy",
+      "name": "Sassy",
+      "boostedStat": "spd",
+      "nerfedStat": "spe",
+      "sourceConfidence": "pinned-cfru-nature-constants"
+    },
+    "careful": {
+      "num": 23,
+      "id": "careful",
+      "name": "Careful",
+      "boostedStat": "spd",
+      "nerfedStat": "spa",
+      "sourceConfidence": "pinned-cfru-nature-constants"
+    },
+    "quirky": {
+      "num": 24,
+      "id": "quirky",
+      "name": "Quirky",
+      "boostedStat": "spd",
+      "nerfedStat": "spd",
+      "sourceConfidence": "pinned-cfru-nature-constants"
+    }
+  }
+}

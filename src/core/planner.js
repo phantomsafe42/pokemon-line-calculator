@@ -423,14 +423,41 @@ export function repairStaleLeafBattleEnd(plan, stateNodeId) {
 export function previewForcedReplacement({ plan, parentStateNodeId, replacements, dataset }) {
   replacements = normalizeReplacementsForPlan(plan, replacements);
   const outcomes = resolveForcedReplacement({ plan, parentStateNodeId, replacements, dataset });
+  const signature = replacementTransitionSignature(parentStateNodeId, replacements);
+  const existing = plan.replacementTransitions?.[signature] || null;
+  const savedOutcomeStateNodeIdByPreviewOutcomeId = {};
+  if (existing) {
+    for (const outcome of outcomes) {
+      const savedStateId = (existing.outcomeStateNodeIds || []).find(stateId =>
+        plan.stateNodes?.[stateId]?.stateHash === outcome.state?.stateHash
+      );
+      if (savedStateId) savedOutcomeStateNodeIdByPreviewOutcomeId[outcome.previewOutcomeId] = savedStateId;
+    }
+  }
   return {
     baseStateNodeId: parentStateNodeId,
     replacements: clone(replacements),
+    replacementTransitionId: signature,
+    existingReplacementTransitionId: existing ? signature : null,
+    savedPreviewOutcomeIds: Object.keys(savedOutcomeStateNodeIdByPreviewOutcomeId),
+    savedOutcomeStateNodeIdByPreviewOutcomeId,
     previewRevision: Number(plan.documentRevision) + 1,
     previewStatus: "ready",
     outcomes,
     defaultPreviewOutcomeId: chooseDefault(outcomes).previewOutcomeId
   };
+}
+
+function replacementTransitionSignature(parentStateNodeId, replacements) {
+  return `replacement-${shortHash(stableStringify({ parentStateNodeId, replacements }))}`;
+}
+
+export function replacementCommitLabel(plan, parentStateNodeId, replacements) {
+  replacements = normalizeReplacementsForPlan(plan, replacements);
+  const signature = replacementTransitionSignature(parentStateNodeId, replacements);
+  const children = plan.stateNodes[parentStateNodeId]?.childReplacementTransitionIds || [];
+  if (children.includes(signature)) return "Open Branch";
+  return children.length ? "New Branch" : "Next Turn";
 }
 
 export function commitForcedReplacement(plan, preview, dataset) {
@@ -439,9 +466,9 @@ export function commitForcedReplacement(plan, preview, dataset) {
   next.replacementTransitions ||= {};
   const parent = next.stateNodes[preview.baseStateNodeId];
   parent.childReplacementTransitionIds ||= [];
-  const signature = `replacement-${shortHash(stableStringify({ parentStateNodeId: preview.baseStateNodeId, replacements: preview.replacements }))}`;
+  const signature = replacementTransitionSignature(preview.baseStateNodeId, preview.replacements);
   const existing = next.replacementTransitions[signature];
-  if (existing) return { plan, replacementTransitionId: signature, cursorStateNodeId: existing.outcomeStateNodeId, created: false };
+  if (existing) return { plan, replacementTransitionId: signature, cursorStateNodeId: existing.defaultOutcomeStateNodeId, created: false };
   let order = nextCreatedOrder(next);
   const transition = {
     replacementTransitionId: signature,

@@ -1,4 +1,5 @@
 import { toId } from "../core/primitives.js";
+import { isGrounded } from "./switch_rules.js";
 
 const DROP_BLOCKERS = Object.freeze({
   atk: new Set(["clearbody", "whitesmoke", "hypercutter", "fullmetalbody"]),
@@ -129,9 +130,7 @@ export function trappingAbilityBlocksSwitch({ sourceState, targetState, fieldSta
   if (ability === "shadowtag" && activeAbilityId(targetState) !== "shadowtag") return ability;
   if (ability === "magnetpull" && targetTypes.includes("steel")) return ability;
   if (ability === "arenatrap") {
-    const grounded = Number(fieldState?.global?.gravityTurns || 0) > 0
-      || (!targetTypes.includes("flying") && activeAbilityId(targetState) !== "levitate" && toId(targetState?.currentItemId) !== "airballoon");
-    if (grounded) return ability;
+    if (isGrounded(targetState, fieldState)) return ability;
   }
   return null;
 }

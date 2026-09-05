@@ -16,23 +16,36 @@
     "finalEgglockeRomSha256": "d568cb67b2bb86b078871da30c0d2a0564240a06cda79cd806858b7c9efcb4b7"
   },
   "buildInputHashes": {
+    "trainer_gender_evidence.json": "5d5fb37fc3c96e9bf8c4744f387b96b37678b05ba01242598787bafde8bf7ba3",
     "VW2R_Stats_Learnsets.xlsx": "2ed23037a8fbb9382a13134a7a3fc91ca961f92567931e0fdfb697397f169792",
     "VW2R_Trainer_Battles.xlsx": "ce91712d697b4122f66e33e2b2f49a6147f5ba9885c80c1e30ed8189651d139d",
     "VW2R_Encounters.xlsx": "d79b533cecf630d921aa9965e986e5acfb57f105e0b5e4f0fdd70e58da349f8a",
     "vw2redux1-4.js": "ae883034edfeec54f7a514756944c659a77f2ff6a06c4b539be56ab69482324f",
     "gen5_save_form_ids.json": "149a027ef2e5c3bd4469970957ebfbc3df5f04199bd968cb5fbf3274c85a43a2",
-    "../../Gen 5/source-data/trainer_ai.json": "aa7d2215fb31cb2cee1e8ba59999e23982c85857bfef0ba888441bbe6a1a518d",
-    "../../Gen 5/source-data/trainer_ai_verification_report.json": "e92e98e0b48e33feab7cd094e1a2e375e823ad391e1fe5f79aefa6f26fe9e7f5",
-    "../../Gen 5/source-data/trainer_ai_semantics_verification_report.json": "8baac9d68611f25039df83cea2a9fcbd97f95305018c1da1a58f7e5dfa17260b",
+    "../../Gen 5/source-data/item_identities.json": "84fd1978fa59bf27a9240f18478324b7961a93269c22919a6315f79e81d16055",
+    "../../Gen 5/source-data/trainer_ai.json": "a96a704d25a44a7c0b60e646b4e77a722e6c3704b2bdade6aa79d09d23a901e6",
+    "../../Gen 5/source-data/trainer_ai_verification_report.json": "d08db757756ae047e4f7b619df35433f33a683240e2aefec526e08eb0c103bff",
+    "../../Gen 5/source-data/trainer_ai_semantics_verification_report.json": "d0b3f72d67e45409aedfc1500ec6c014ad6b8a7ee7818a52ed60efff7e89abf2",
     "../../Gen 5/source-data/trainer_ai_online_research_verification_report.json": "6ab81bd812f8e6d279b5401396e8acb5ffd8818c94943889ec0a440e2d4e49d3",
     "../../Gen 5/source-data/trainer_ai_engine_bindings_verification_report.json": "c822473e978a5feb1dbd03d51583b39360a2169272cffa3cc8adf591c0aa0a8b",
-    "../../Gen 5/source-data/trainer_ai_engine_semantics_verification_report.json": "8c7ab7bfa9af56c15bc13a6ce18f42a90aee4b4ccaea79964235de36b124189e",
+    "../../Gen 5/source-data/trainer_ai_engine_semantics_verification_report.json": "8a25aae80e2510376671fe60ccb126312ec43ffe4891950f5ed0130410160830",
+    "../../Gen 5/source-data/trainer_ai_action_semantics.json": "7746d15d6acb8ffbc5fe6bfe290f514c844d9395614423276a12c2e36687d6e1",
+    "../../Gen 5/source-data/trainer_ai_action_semantics_verification_report.json": "cd6f59baba0c8acd6dca7cb4f06ccc241a302d4105eea47c61c925bf49f2912d",
+    "../../Gen 5/source-data/trainer_ai_item_battle_parameters.json": "4ac6d61d2b26a06b3f5592e7bb078429ff3c851082af37ad5db13de9a89aebca",
+    "../../Gen 5/source-data/trainer_ai_evaluator_verification_report.json": "fc361e053918e422fea9b948e43c45cb6c4d38805f359d50ca1204f52731f473",
     "../../Battle Mechanics/vendor/smogon-calc-0.11.0/data.production.min.js": "364be40ea1aec31f413d0036445f717d826ece9c33ec25a02399c3a287c99529",
     "pchalReadmeLogicalSource": "553ff99e72a4ec8310460c8394022c063bfe2cb463794ca93c8bad54c6821e8c",
     "abilityPersistenceReportLogicalSource": "5be6ea70c4b6340fd91d0f3eb569b83e1daa187114c5de5299b1dba25a119726",
     "noOpeningHealsReportLogicalSource": "112693cec418e6d55bba72b96566909e2194c2c6244e924559c33f827e8bbcf8"
   },
   "authorities": [
+    {
+      "id": "final-rom-trainer-gender",
+      "role": "resolved initial party genders, raw overrides and slot-to-slot PID carry",
+      "path": "trainer_gender_evidence.json",
+      "sha256": "5d5fb37fc3c96e9bf8c4744f387b96b37678b05ba01242598787bafde8bf7ba3",
+      "instructions": "TRAINER_GENDER.md"
+    },
     {
       "id": "current-consumers",
       "role": "migration seed and compatibility oracle",
@@ -50,7 +63,8 @@
         "calc-data/VW2R_species.js",
         "calc-data/VW2R_stats.js",
         "calc-data/VW2R_types.js"
-      ]
+      ],
+      "itemIdentitySeed": "source-data/calc-base/VW2R_items.js"
     },
     {
       "id": "clean-white-2-rom",
@@ -87,14 +101,15 @@
       "id": "gen5-b2w2-trainer-ai",
       "role": "shared optional Trainer AI execution profile and exact script/effect vocabulary",
       "path": "../../Gen 5/source-data/trainer_ai.json",
-      "sha256": "aa7d2215fb31cb2cee1e8ba59999e23982c85857bfef0ba888441bbe6a1a518d",
-      "profileId": "gen5-b2w2-trainer-ai-v1"
+      "sha256": "a96a704d25a44a7c0b60e646b4e77a722e6c3704b2bdade6aa79d09d23a901e6",
+      "profileId": "gen5-b2w2-trainer-ai-v1",
+      "evaluatorProfileId": "gen5-b2w2-trainer-ai-evaluator-v1alpha1"
     },
     {
       "id": "gen5-b2w2-trainer-ai-semantics-verification",
       "role": "independent PDF command/action semantics coverage and fail-closed readiness report",
       "path": "../../Gen 5/source-data/trainer_ai_semantics_verification_report.json",
-      "sha256": "8baac9d68611f25039df83cea2a9fcbd97f95305018c1da1a58f7e5dfa17260b"
+      "sha256": "d0b3f72d67e45409aedfc1500ec6c014ad6b8a7ee7818a52ed60efff7e89abf2"
     },
     {
       "id": "gen5-b2w2-trainer-ai-online-research-verification",
@@ -112,7 +127,31 @@
       "id": "gen5-b2w2-trainer-ai-engine-semantics-verification",
       "role": "exact clean White 2/VW2R handler semantics, VM behavior, call sequences, constants, and preserved conflicts",
       "path": "../../Gen 5/source-data/trainer_ai_engine_semantics_verification_report.json",
-      "sha256": "8c7ab7bfa9af56c15bc13a6ce18f42a90aee4b4ccaea79964235de36b124189e"
+      "sha256": "8a25aae80e2510376671fe60ccb126312ec43ffe4891950f5ed0130410160830"
+    },
+    {
+      "id": "gen5-b2w2-trainer-ai-action-semantics",
+      "role": "exact normalized trainer-item, switch, replacement, Rotation, and move-selection action semantics",
+      "path": "../../Gen 5/source-data/trainer_ai_action_semantics.json",
+      "sha256": "7746d15d6acb8ffbc5fe6bfe290f514c844d9395614423276a12c2e36687d6e1"
+    },
+    {
+      "id": "gen5-b2w2-trainer-ai-action-semantics-verification",
+      "role": "exact clean/final-ROM action-routine and reachable trainer-item verification",
+      "path": "../../Gen 5/source-data/trainer_ai_action_semantics_verification_report.json",
+      "sha256": "cd6f59baba0c8acd6dca7cb4f06ccc241a302d4105eea47c61c925bf49f2912d"
+    },
+    {
+      "id": "gen5-b2w2-trainer-ai-item-battle-parameters",
+      "role": "complete retail and supported VW2R item battle-parameter tables extracted from immutable ROMs",
+      "path": "../../Gen 5/source-data/trainer_ai_item_battle_parameters.json",
+      "sha256": "4ac6d61d2b26a06b3f5592e7bb078429ff3c851082af37ad5db13de9a89aebca"
+    },
+    {
+      "id": "gen5-b2w2-trainer-ai-evaluator-verification",
+      "role": "Dataset contract, source-invariant, readiness, and executable-request-shape verification for the inherited evaluator profile",
+      "path": "../../Gen 5/source-data/trainer_ai_evaluator_verification_report.json",
+      "sha256": "fc361e053918e422fea9b948e43c45cb6c4d38805f359d50ca1204f52731f473"
     },
     {
       "id": "pkhex-gen5-save-forms",
@@ -139,6 +178,14 @@
           "sha256": "5ce25ecc407528da9298e17147ccf0091bb00b2ddcdd35160e54692bbe9cfbb5"
         }
       ]
+    },
+    {
+      "id": "gen5-b2w2-item-identities",
+      "role": "shared exact Black 2/White 2 numeric item identity and released held-item domain",
+      "path": "../../Gen 5/source-data/item_identities.json",
+      "sha256": "84fd1978fa59bf27a9240f18478324b7961a93269c22919a6315f79e81d16055",
+      "repository": "https://github.com/kwsch/PKHeX",
+      "commit": "19c356c357d4b37b6215906a397024b6906b78e7"
     },
     {
       "id": "smogon-calc-canonical",
@@ -171,6 +218,7 @@
     "progression.json",
     "locations.json",
     "encounters.json",
+    "trainer_gender_evidence.json",
     "encounter_methods.json",
     "types.json",
     "natures.json",
@@ -181,6 +229,7 @@
     "source_audit.json",
     "game_rules.json",
     "battle_mechanics.json",
+    "experience_mechanics.json",
     "trainer_ai.json",
     "custom_combatants.json",
     "encounter_groups.json",
@@ -202,5 +251,25 @@
     "builder": "build_consumers.js",
     "defaultOutput": "../build/consumers",
     "immutableLegacyGoldens": "legacy_consumer_goldens.json"
+  },
+  "calculationCompatibility": {
+    "battle": {
+      "source": "battle_mechanics.json",
+      "status": "passed",
+      "unresolved": 0
+    },
+    "experience": {
+      "source": "experience_mechanics.json",
+      "status": "passed",
+      "unresolved": 0,
+      "experienceGeneration": 5,
+      "model": "generation-5-scaled-trainer"
+    }
+  },
+  "builders": {
+    "trainerGenderInstructions": "TRAINER_GENDER.md",
+    "trainerGenderValidation": "node ./source-data/validate_trainer_genders.js",
+    "trainerAiDependencySync": "node .\\source-data\\sync_trainer_ai_binding.js",
+    "trainerAiDependencyCheck": "node .\\source-data\\sync_trainer_ai_binding.js --check"
   }
 }

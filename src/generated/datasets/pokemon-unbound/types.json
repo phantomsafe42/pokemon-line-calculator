@@ -1,0 +1,313 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-unbound",
+  "kind": "types",
+  "records": {
+    "normal": {
+      "id": "normal",
+      "name": "Normal",
+      "weak": [
+        "fighting"
+      ],
+      "resist": [],
+      "immune": [
+        "ghost"
+      ],
+      "sourceConfidence": "pinned-unbound-pokedex-type-chart"
+    },
+    "fire": {
+      "id": "fire",
+      "name": "Fire",
+      "weak": [
+        "water",
+        "ground",
+        "rock"
+      ],
+      "resist": [
+        "fire",
+        "grass",
+        "ice",
+        "bug",
+        "steel",
+        "fairy"
+      ],
+      "immune": [],
+      "sourceConfidence": "pinned-unbound-pokedex-type-chart"
+    },
+    "water": {
+      "id": "water",
+      "name": "Water",
+      "weak": [
+        "electric",
+        "grass"
+      ],
+      "resist": [
+        "fire",
+        "water",
+        "ice",
+        "steel"
+      ],
+      "immune": [],
+      "sourceConfidence": "pinned-unbound-pokedex-type-chart"
+    },
+    "electric": {
+      "id": "electric",
+      "name": "Electric",
+      "weak": [
+        "ground"
+      ],
+      "resist": [
+        "electric",
+        "flying",
+        "steel"
+      ],
+      "immune": [],
+      "sourceConfidence": "pinned-unbound-pokedex-type-chart"
+    },
+    "grass": {
+      "id": "grass",
+      "name": "Grass",
+      "weak": [
+        "fire",
+        "ice",
+        "poison",
+        "flying",
+        "bug"
+      ],
+      "resist": [
+        "water",
+        "electric",
+        "grass",
+        "ground"
+      ],
+      "immune": [],
+      "sourceConfidence": "pinned-unbound-pokedex-type-chart"
+    },
+    "ice": {
+      "id": "ice",
+      "name": "Ice",
+      "weak": [
+        "fire",
+        "fighting",
+        "rock",
+        "steel"
+      ],
+      "resist": [
+        "ice"
+      ],
+      "immune": [],
+      "sourceConfidence": "pinned-unbound-pokedex-type-chart"
+    },
+    "fighting": {
+      "id": "fighting",
+      "name": "Fighting",
+      "weak": [
+        "flying",
+        "psychic",
+        "fairy"
+      ],
+      "resist": [
+        "bug",
+        "rock",
+        "dark"
+      ],
+      "immune": [],
+      "sourceConfidence": "pinned-unbound-pokedex-type-chart"
+    },
+    "poison": {
+      "id": "poison",
+      "name": "Poison",
+      "weak": [
+        "ground",
+        "psychic"
+      ],
+      "resist": [
+        "grass",
+        "fighting",
+        "poison",
+        "bug",
+        "fairy"
+      ],
+      "immune": [],
+      "sourceConfidence": "pinned-unbound-pokedex-type-chart"
+    },
+    "ground": {
+      "id": "ground",
+      "name": "Ground",
+      "weak": [
+        "water",
+        "grass",
+        "ice"
+      ],
+      "resist": [
+        "poison",
+        "rock"
+      ],
+      "immune": [
+        "electric"
+      ],
+      "sourceConfidence": "pinned-unbound-pokedex-type-chart"
+    },
+    "flying": {
+      "id": "flying",
+      "name": "Flying",
+      "weak": [
+        "electric",
+        "ice",
+        "rock"
+      ],
+      "resist": [
+        "grass",
+        "fighting",
+        "bug"
+      ],
+      "immune": [
+        "ground"
+      ],
+      "sourceConfidence": "pinned-unbound-pokedex-type-chart"
+    },
+    "psychic": {
+      "id": "psychic",
+      "name": "Psychic",
+      "weak": [
+        "bug",
+        "ghost",
+        "dark"
+      ],
+      "resist": [
+        "fighting",
+        "psychic"
+      ],
+      "immune": [],
+      "sourceConfidence": "pinned-unbound-pokedex-type-chart"
+    },
+    "bug": {
+      "id": "bug",
+      "name": "Bug",
+      "weak": [
+        "fire",
+        "flying",
+        "rock"
+      ],
+      "resist": [
+        "grass",
+        "fighting",
+        "ground"
+      ],
+      "immune": [],
+      "sourceConfidence": "pinned-unbound-pokedex-type-chart"
+    },
+    "rock": {
+      "id": "rock",
+      "name": "Rock",
+      "weak": [
+        "water",
+        "grass",
+        "fighting",
+        "ground",
+        "steel"
+      ],
+      "resist": [
+        "normal",
+        "fire",
+        "poison",
+        "flying"
+      ],
+      "immune": [],
+      "sourceConfidence": "pinned-unbound-pokedex-type-chart"
+    },
+    "ghost": {
+      "id": "ghost",
+      "name": "Ghost",
+      "weak": [
+        "ghost",
+        "dark"
+      ],
+      "resist": [
+        "poison",
+        "bug"
+      ],
+      "immune": [
+        "normal",
+        "fighting"
+      ],
+      "sourceConfidence": "pinned-unbound-pokedex-type-chart"
+    },
+    "dragon": {
+      "id": "dragon",
+      "name": "Dragon",
+      "weak": [
+        "ice",
+        "dragon",
+        "fairy"
+      ],
+      "resist": [
+        "fire",
+        "water",
+        "electric",
+        "grass"
+      ],
+      "immune": [],
+      "sourceConfidence": "pinned-unbound-pokedex-type-chart"
+    },
+    "dark": {
+      "id": "dark",
+      "name": "Dark",
+      "weak": [
+        "fighting",
+        "bug",
+        "fairy"
+      ],
+      "resist": [
+        "ghost",
+        "dark"
+      ],
+      "immune": [
+        "psychic"
+      ],
+      "sourceConfidence": "pinned-unbound-pokedex-type-chart"
+    },
+    "steel": {
+      "id": "steel",
+      "name": "Steel",
+      "weak": [
+        "fire",
+        "fighting",
+        "ground"
+      ],
+      "resist": [
+        "normal",
+        "grass",
+        "ice",
+        "flying",
+        "psychic",
+        "bug",
+        "rock",
+        "dragon",
+        "steel",
+        "fairy"
+      ],
+      "immune": [
+        "poison"
+      ],
+      "sourceConfidence": "pinned-unbound-pokedex-type-chart"
+    },
+    "fairy": {
+      "id": "fairy",
+      "name": "Fairy",
+      "weak": [
+        "poison",
+        "steel"
+      ],
+      "resist": [
+        "fighting",
+        "bug",
+        "dark"
+      ],
+      "immune": [
+        "dragon"
+      ],
+      "sourceConfidence": "pinned-unbound-pokedex-type-chart"
+    }
+  }
+}

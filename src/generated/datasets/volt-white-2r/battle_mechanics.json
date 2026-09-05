@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "gameId": "volt-white-2r",
   "kind": "battle-mechanics",
+  "experienceMechanicsSource": "experience_mechanics.json",
   "engine": {
     "id": "smogon-calc",
     "version": "0.11.0"
@@ -17,6 +18,13 @@
   "mechanicsProfile": "vw2r-complete-pchal-egglocke-challenge-v1",
   "trainerBattleProfile": "challenge",
   "runtimeDefaults": {},
+  "trainerGenderSource": {
+    "file": "trainer_gender_evidence.json",
+    "memberField": "gender",
+    "rawOverrideField": "genderOverrideCode",
+    "policy": "deterministic-party-constructor",
+    "variantSelectionRequired": true
+  },
   "features": {
     "challengeModeDisplayedLevelStatBug": {
       "enabled": true,

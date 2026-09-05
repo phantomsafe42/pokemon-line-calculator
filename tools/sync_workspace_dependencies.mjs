@@ -13,28 +13,49 @@ if (!mode || process.argv.filter(argument => argument === "--sync" || argument =
   throw new Error("Use exactly one mode: --sync or --check");
 }
 
+const datasetFiles = Object.freeze([
+  "dataset_manifest.json",
+  "battle_mechanics.json",
+  "experience_mechanics.json",
+  "species.json",
+  "moves.json",
+  "abilities.json",
+  "items.json",
+  "natures.json",
+  "types.json",
+  "trainers.json",
+  "trainer_order.json",
+  "progression.json",
+  "evolutions.json",
+  "save_id_maps.json"
+]);
+
+const datasetCandidates = Object.freeze([
+  { consumer: "plc-fro-dataset", gameId: "fire-red-omega", sourceName: "Fire Red Omega" },
+  { consumer: "plc-unbound-dataset", gameId: "pokemon-unbound", sourceName: "Pokemon Unbound" },
+  { consumer: "plc-pk-dataset", gameId: "platinum-kaizo", sourceName: "Platinum Kaizo" },
+  { consumer: "plc-rp-dataset", gameId: "renegade-platinum", sourceName: "Renegade Platinum" },
+  { consumer: "plc-ss-dataset", gameId: "storm-silver", sourceName: "Storm Silver" },
+  { consumer: "plc-vw2r-dataset", gameId: "volt-white-2r", sourceName: "Volt White 2R" }
+]);
+
+function datasetCandidateReady(candidate) {
+  const sourceRoot = path.resolve(workspaceRoot, "Datasets", candidate.sourceName, "source-data");
+  return datasetFiles.every(file => fs.existsSync(path.join(sourceRoot, file)));
+}
+
+const pendingDatasetCandidates = datasetCandidates.filter(candidate => !datasetCandidateReady(candidate));
+const datasetProfiles = datasetCandidates.filter(datasetCandidateReady).map(candidate => ({
+  consumer: candidate.consumer,
+  schemaVersion: "plc-generated-dataset/v1alpha1",
+  source: `Datasets/${candidate.sourceName}/source-data`,
+  target: `src/generated/datasets/${candidate.gameId}`,
+  manifest: "dataset.generated.json",
+  files: datasetFiles
+}));
+
 const profiles = [
-  {
-    consumer: "plc-vw2r-dataset",
-    schemaVersion: "plc-generated-dataset/v1alpha1",
-    source: "Datasets/Volt White 2R/source-data",
-    target: "src/generated/datasets/volt-white-2r",
-    manifest: "dataset.generated.json",
-    files: [
-      "dataset_manifest.json",
-      "battle_mechanics.json",
-      "species.json",
-      "moves.json",
-      "abilities.json",
-      "items.json",
-      "natures.json",
-      "types.json",
-      "trainers.json",
-      "trainer_order.json",
-      "progression.json",
-      "save_id_maps.json"
-    ]
-  },
+  ...datasetProfiles,
   {
     consumer: "plc-battle-mechanics",
     schemaVersion: "plc-generated-battle-mechanics/v1alpha1",
@@ -43,10 +64,30 @@ const profiles = [
     manifest: "battle-mechanics.generated.json",
     files: [
       "shared_damage_calculator.js",
+      "trainer_ai/trainer_ai_evaluator.js",
       "vendor/smogon-calc-0.11.0/data.production.min.js",
       "vendor/smogon-calc-0.11.0/engine.production.min.js",
       "vendor/smogon-calc-0.11.0/LICENSE",
       "vendor/smogon-calc-0.11.0/README.md"
+    ]
+  },
+  {
+    consumer: "plc-trainer-ai",
+    schemaVersion: "plc-generated-trainer-ai/v1alpha1",
+    source: "Datasets",
+    target: "src/generated/trainer-ai",
+    manifest: "trainer-ai.generated.json",
+    files: [
+      { source: "Volt White 2R/source-data/trainer_ai.json", path: "volt-white-2r/trainer_ai.json" },
+      { source: "Gen 5/source-data/trainer_ai.json", path: "gen5/trainer_ai.json" },
+      { source: "Gen 5/source-data/trainer_ai_engine_semantics.json", path: "gen5/trainer_ai_engine_semantics.json" },
+      { source: "Fire Red Omega/source-data/trainer_ai.json", path: "fire-red-omega/trainer_ai.json" },
+      { source: "Pokemon Unbound/source-data/trainer_ai.json", path: "pokemon-unbound/trainer_ai.json" },
+      { source: "Storm Silver/source-data/trainer_ai.json", path: "storm-silver/trainer_ai.json" },
+      { source: "Renegade Platinum/source-data/trainer_ai.json", path: "renegade-platinum/trainer_ai.json" },
+      { source: "Platinum Kaizo/source-data/trainer_ai.json", path: "platinum-kaizo/trainer_ai.json" },
+      { source: "Gen 3/source-data/trainer_ai.json", path: "gen3/trainer_ai.json" },
+      { source: "Gen 4/source-data/trainer_ai.json", path: "gen4/trainer_ai.json" }
     ]
   }
 ];
@@ -79,19 +120,31 @@ function expectedProfile(profile) {
   const sourceRoot = path.resolve(workspaceRoot, profile.source);
   const targetRoot = path.resolve(projectRoot, profile.target);
   if (!inside(sourceRoot, workspaceRoot) || !inside(targetRoot, projectRoot)) throw new Error(`Unsafe profile ${profile.consumer}`);
-  const files = profile.files.map(relativePath => {
-    const sourceFile = path.resolve(sourceRoot, relativePath);
-    if (!inside(sourceFile, sourceRoot) || !fs.existsSync(sourceFile)) throw new Error(`Missing authoritative file ${profile.source}/${relativePath}`);
+  const files = profile.files.map(entry => {
+    const sourcePath = typeof entry === "string" ? entry : entry.source;
+    const relativePath = typeof entry === "string" ? entry : entry.path;
+    const sourceFile = path.resolve(sourceRoot, sourcePath);
+    if (!inside(sourceFile, sourceRoot) || !fs.existsSync(sourceFile)) throw new Error(`Missing authoritative file ${profile.source}/${sourcePath}`);
     const bytes = fs.readFileSync(sourceFile);
-    return { path: relativePath, bytes, size: bytes.byteLength, sha256: sha256(bytes) };
+    return { path: relativePath, sourcePath, bytes, size: bytes.byteLength, sha256: sha256(bytes) };
   });
-  const sourceTreeSha256 = sha256(files.map(file => `${file.path}\0${file.sha256}\n`).join(""));
+  const sourceTreeSha256 = sha256(files.map(file => {
+    const identity = file.sourcePath === file.path
+      ? file.path
+      : `${file.sourcePath}\0${file.path}`;
+    return `${identity}\0${file.sha256}\n`;
+  }).join(""));
   const generatedManifest = {
     schemaVersion: profile.schemaVersion,
     consumer: profile.consumer,
     source: profile.source.replaceAll("\\", "/"),
     sourceTreeSha256,
-    files: files.map(({ path: filePath, size, sha256: digest }) => ({ path: filePath, bytes: size, sha256: digest }))
+    files: files.map(({ path: filePath, sourcePath, size, sha256: digest }) => ({
+      path: filePath,
+      ...(sourcePath !== filePath ? { sourcePath } : {}),
+      bytes: size,
+      sha256: digest
+    }))
   };
   const manifestBytes = Buffer.from(`${JSON.stringify(generatedManifest, null, 2)}\n`);
   return { ...profile, sourceRoot, targetRoot, files, generatedManifest, manifestBytes };
@@ -136,4 +189,8 @@ for (const profile of profiles) {
   results.push({ consumer: profile.consumer, files: profile.files.length, sourceTreeSha256: expected.generatedManifest.sourceTreeSha256 });
 }
 
-console.log(JSON.stringify({ status: mode === "sync" ? "generated" : "current", profiles: results }, null, 2));
+console.log(JSON.stringify({
+  status: mode === "sync" ? "generated" : "current",
+  profiles: results,
+  pendingDatasets: pendingDatasetCandidates.map(candidate => candidate.gameId)
+}, null, 2));

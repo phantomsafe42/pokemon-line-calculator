@@ -43,8 +43,10 @@ export function mechanicsCompatibility(plan, dataset) {
     "damageGeneration",
     "canonicalDataGeneration",
     "mechanicsProfile",
+    "experienceMechanicsProfile",
     "datasetManifestHash",
     "battleMechanicsHash",
+    "experienceMechanicsHash",
     "plcResolverRulesetVersion"
   ];
   const differences = fields.filter(field => stableStringify(expected[field]) !== stableStringify(actual[field]));

@@ -11,6 +11,7 @@ const testingStateFile = process.env.PLC_TESTING_STATE_FILE ? path.resolve(proce
 const layoutStateFile = process.env.PLC_LAYOUT_STATE_FILE ? path.resolve(process.env.PLC_LAYOUT_STATE_FILE) : null;
 const compatibilityPlanFixture = process.env.PLC_COMPATIBILITY_PLAN_FIXTURE ? path.resolve(process.env.PLC_COMPATIBILITY_PLAN_FIXTURE) : null;
 const expectTestingState = process.env.PLC_EXPECT_TESTING_STATE === "1";
+const expectBattleTracker = process.env.PLC_EXPECT_BATTLE_TRACKER === "1";
 const debugPort = await new Promise((resolve, reject) => {
   const server = createServer();
   server.listen(0, "127.0.0.1", () => { const { port } = server.address(); server.close(error => error ? reject(error) : resolve(port)); });
@@ -28,6 +29,7 @@ const screenshots = {
   doubles: path.join(tempRoot, "plc-redesign-doubles.png"),
   doublesWide: path.join(tempRoot, "plc-redesign-doubles-wide.png"),
   triples: path.join(tempRoot, "plc-redesign-triples.png"),
+  rotation: path.join(tempRoot, "plc-redesign-rotation.png"),
   mobile: path.join(tempRoot, "plc-redesign-mobile.png"),
   battleEnd: path.join(tempRoot, "plc-battle-end-preview.png"),
   notes: path.join(tempRoot, "plc-node-notes.png"),
@@ -112,8 +114,10 @@ try {
   await fs.rm(profile, { recursive: true, force: true });
   await fs.mkdir(profile, { recursive: true });
   let layoutPlanFixture = null;
+  let layoutCursorStateNodeId = null;
   if (layoutStateFile) {
     const layoutState = JSON.parse(await fs.readFile(layoutStateFile, "utf8"));
+    layoutCursorStateNodeId = layoutState.app?.cursorStateNodeId || null;
     layoutPlanFixture = path.join(profile, "layout-plan.json");
     await fs.writeFile(layoutPlanFixture, JSON.stringify(layoutState.plan || layoutState));
   }
@@ -135,14 +139,26 @@ try {
   const selected = await evaluate(page, `(async () => {
     const wait = (predicate, message) => new Promise((resolve, reject) => { const deadline = Date.now() + 20000; const poll = () => predicate() ? resolve() : Date.now() > deadline ? reject(new Error(message + ': ' + document.getElementById('app-status')?.textContent)) : setTimeout(poll, 100); poll(); });
     await wait(() => document.getElementById('game-select') && /Select a game to load/.test(document.getElementById('app-status').textContent), 'shell');
-    const game = document.getElementById('game-select'); game.value = 'volt-white-2r'; game.dispatchEvent(new Event('change', { bubbles: true }));
-    await wait(() => !document.getElementById('app-tabs').hidden && document.getElementById('trainer-select').options.length > 400, 'game data');
-    await wait(() => document.getElementById('plan-context-dialog').open, 'plan context');
-    document.getElementById('plan-context-dialog').close();
+    const game = document.getElementById('game-select');
+    const loadedGames = [];
+    for (const gameId of ['fire-red-omega', 'pokemon-unbound', 'platinum-kaizo', 'renegade-platinum', 'storm-silver', 'volt-white-2r']) {
+      game.value = gameId;
+      const label = game.options[game.selectedIndex].textContent;
+      game.dispatchEvent(new Event('change', { bubbles: true }));
+      await wait(() => document.getElementById('app-status').textContent.includes(label + ' is ready.') && document.getElementById('trainer-select').options.length > 1, gameId + ' data');
+      await wait(() => document.getElementById('plan-context-dialog').open, gameId + ' plan context');
+      loadedGames.push({ gameId, label, trainers: document.getElementById('trainer-select').options.length, groups: document.getElementById('trainer-select').querySelectorAll('optgroup').length });
+      document.getElementById('plan-context-dialog').close();
+    }
     const trainerSelect = document.getElementById('trainer-select');
     const neil = [...trainerSelect.options].find(entry => /School Kid Neil/i.test(entry.textContent));
     return {
       status: document.getElementById('app-status').textContent,
+      gameLabels: [...game.options].slice(1).map(entry => entry.textContent),
+      gameCredit: document.getElementById('game-credit').textContent,
+      siteCredit: document.querySelector('.site-credit')?.textContent,
+      eyebrowCount: document.querySelectorAll('.eyebrow').length,
+      loadedGames,
       trainers: trainerSelect.options.length,
       gateHidden: document.getElementById('game-gate').hidden,
       splitLabels: [...trainerSelect.querySelectorAll('optgroup')].map(group => group.label),
@@ -151,6 +167,12 @@ try {
     };
   })()`, true);
   assert.ok(selected.trainers > 400);
+  assert.deepEqual(selected.gameLabels, ["Fire Red Omega", "Unbound", "Platinum Kaizo", "Renegade Platinum", "Storm Silver", "Volt White 2 Redux - Challenge Mode"]);
+  assert.equal(selected.gameCredit, "by AphexCubed and Drayano");
+  assert.equal(selected.siteCredit, "twitch.tv/phantomsafe");
+  assert.equal(selected.eyebrowCount, 0);
+  assert.deepEqual(selected.loadedGames.map(entry => entry.gameId), ['fire-red-omega', 'pokemon-unbound', 'platinum-kaizo', 'renegade-platinum', 'storm-silver', 'volt-white-2r']);
+  assert.equal(selected.loadedGames.every(entry => entry.trainers > 1 && entry.groups > 0), true);
   assert.equal(selected.gateHidden, true);
   assert.deepEqual(selected.splitLabels, ["Cheren Split", "Roxie Split", "Burgh Split", "Elesa Split", "Clay Split", "Skyla Split", "Drayden Split", "Marlon Split", "Ghetsis Split", "Champion Split"]);
   assert.equal(selected.groupedTrainers, 427);
@@ -276,9 +298,9 @@ Serious Nature
   assert.equal(edited.dexSorted, true);
   assert.equal(edited.preservedAbility, "solarpower");
   assert.equal(edited.charmeleonBaseHp, "58");
-  assert.match(edited.charmeleonSpriteUrl, /\/charmeleon\.gif$/);
+  assert.match(edited.charmeleonSpriteUrl, /\/0005\/charmeleon\/default\/normal-front\.gif$/);
   assert.match(edited.charmeleonCardDetail, /^Charmeleon · Lv\. 25/);
-  assert.match(edited.charmeleonCardSpriteUrl, /\/charmeleon\.gif$/);
+  assert.match(edited.charmeleonCardSpriteUrl, /\/0005\/charmeleon\/default\/normal-front\.gif$/);
   assert.equal(edited.autoHiddenPowerInitial, "Auto — Dark (from IVs)");
   assert.equal(edited.autoHiddenPowerAfterIv, "Auto — Steel (from IVs)");
   assert.equal(edited.ivBeforeOverride, "30");
@@ -303,7 +325,8 @@ Serious Nature
         checkedCount: choices.filter(input => input.checked).length,
         previewSprites: document.querySelectorAll('#save-import-dialog img').length,
         boxCount: document.querySelectorAll('.box-card').length,
-        partyText: document.getElementById('save-import-party-summary').textContent
+        partyText: document.getElementById('save-import-party-summary').textContent,
+        partyCount: Number(document.getElementById('save-import-party-summary').textContent.match(/(\\d+)\\s+Pokémon/i)?.[1] || 0)
       };
       if (!populated) throw new Error('No populated PC Box was available in the fixture');
       populated.checked = true; populated.dispatchEvent(new Event('change', { bubbles: true }));
@@ -319,8 +342,12 @@ Serious Nature
       const importedBox = [...document.querySelectorAll('.box-card')].at(-1);
       const cards = [...importedBox.querySelectorAll('.box-pokemon-card')];
       const details = cards.map(card => card.querySelector('p').textContent);
-      const noItemCard = cards.find(card => /dukdukgoat/i.test(card.querySelector('h3').textContent));
+      const noItemCard = cards.find(card => /^angel$/i.test(card.querySelector('h3').textContent));
       if (!noItemCard) throw new Error('Expected no-item save fixture Pokémon was unavailable');
+      const evioliteCard = cards.find(card => /^the lad$/i.test(card.querySelector('h3').textContent));
+      if (!evioliteCard) throw new Error('Expected Eviolite save fixture Pokémon was unavailable');
+      const wiseGlassesCard = cards.find(card => /^wokeflake$/i.test(card.querySelector('h3').textContent));
+      if (!wiseGlassesCard) throw new Error('Expected Wise Glasses save fixture Pokémon was unavailable');
       const keldeoCard = cards.find(card => /^HONSE$/i.test(card.querySelector('h3').textContent));
       if (!keldeoCard) throw new Error('Expected Ordinary Keldeo save fixture Pokémon was unavailable');
       const keldeoSprite = keldeoCard.querySelector('img');
@@ -328,14 +355,23 @@ Serious Nature
       await wait(() => keldeoSprite.complete && keldeoSprite.naturalWidth > 0, 'Ordinary Keldeo sprite');
       const keldeoCardRect = keldeoCard.getBoundingClientRect();
       const keldeoBodyRect = keldeoCard.querySelector(':scope > div').getBoundingClientRect();
-      noItemCard.querySelector('.box-card-actions button').click();
-      await wait(() => document.getElementById('pokemon-editor-dialog').open, 'save Pokémon editor');
-      const noItemValue = document.getElementById('editor-item').value;
-      document.getElementById('pokemon-editor-dialog').close('cancel');
+      const readItem = async (card, label) => {
+        card.querySelector('.box-card-actions button').click();
+        await wait(() => document.getElementById('pokemon-editor-dialog').open, label + ' editor');
+        const value = document.getElementById('editor-item').value;
+        document.getElementById('pokemon-editor-dialog').close('cancel');
+        await wait(() => !document.getElementById('pokemon-editor-dialog').open, label + ' editor close');
+        return value;
+      };
+      const noItemValue = await readItem(noItemCard, 'no-item Pokémon');
+      const evioliteValue = await readItem(evioliteCard, 'Eviolite Pokémon');
+      const wiseGlassesValue = await readItem(wiseGlassesCard, 'Wise Glasses Pokémon');
       return {
         importedCards: details.length,
         experienceCards: details.filter(text => text.includes(' EXP · ')).length,
         noItemValue,
+        evioliteValue,
+        wiseGlassesValue,
         keldeoDetail: keldeoCard.querySelector('p').textContent,
         keldeoSpriteUrl: keldeoSprite.src,
         keldeoSpriteWidth: keldeoSprite.naturalWidth,
@@ -350,9 +386,11 @@ Serious Nature
     assert.equal(saveReview.before.previewSprites, 0);
     assert.equal(saveReview.before.boxCount, boxesBefore);
     assert.match(saveReview.before.partyText, /always imported/i);
-    assert.equal(saveReview.importedCards, 6 + saveReview.selectedPokemon);
+    assert.equal(saveReview.importedCards, saveReview.before.partyCount + saveReview.selectedPokemon);
     assert.equal(saveReview.experienceCards, saveReview.importedCards);
     assert.equal(saveReview.noItemValue, "");
+    assert.equal(saveReview.evioliteValue, "eviolite");
+    assert.equal(saveReview.wiseGlassesValue, "wiseglasses");
     assert.match(saveReview.keldeoDetail, /^Keldeo - Ordinary \u00b7/);
     assert.match(saveReview.keldeoSpriteUrl, /\/keldeo\.gif$/);
     assert.ok(saveReview.keldeoSpriteWidth > 0);
@@ -383,6 +421,31 @@ Serious Nature
     const box = document.getElementById('context-box-select'); box.value = box.options[1].value; box.dispatchEvent(new Event('change', { bubbles: true }));
     const party = document.getElementById('context-party-select'); party.value = party.options[1].value; party.dispatchEvent(new Event('change', { bubbles: true }));
     document.getElementById('save-party-selection').click();
+    const summary = document.getElementById('party-selection-summary');
+    if (summary.querySelector('.context-starting-hp')) throw new Error('Full HP should not appear on setup cards');
+    if (summary.querySelectorAll('.context-held-item').length !== summary.children.length) throw new Error('Missing player held items');
+    if (document.querySelectorAll('#enemy-team-summary .context-held-item').length !== enemyTeam.cards.length) throw new Error('Missing enemy held items');
+    const status = summary.querySelector('.context-pre-status');
+    if (status.value !== '' || status.options.length !== 7 || ![...status.options].some(o => o.value === 'tox' && o.textContent === 'Badly Poisoned')) throw new Error('Incorrect pre-status options');
+    status.value = 'tox'; status.dispatchEvent(new Event('change', { bubbles: true }));
+    summary.querySelector('button').click();
+    if (document.getElementById('editor-starting-status').value !== 'tox') throw new Error('Card status did not reach editor');
+    document.getElementById('pokemon-editor-dialog').close();
+    status.value = ''; status.dispatchEvent(new Event('change', { bubbles: true }));
+    document.getElementById('edge-party-exp').click();
+    await wait(() => /Selected party is 1 EXP/.test(document.getElementById('context-status').textContent), 'Edge EXP');
+    summary.querySelector('button').click();
+    const startingHp = document.getElementById('editor-starting-hp');
+    const fullHp = startingHp.max;
+    startingHp.value = Number(fullHp) - 1;
+    document.getElementById('save-pokemon').click();
+    await wait(() => !document.getElementById('pokemon-editor-dialog').open, 'Save pre-damage');
+    if (!summary.querySelector('.context-starting-hp')?.textContent.includes('/ ' + fullHp)) throw new Error('Missing separate pre-damage row');
+    summary.querySelector('button').click();
+    startingHp.value = fullHp;
+    document.getElementById('save-pokemon').click();
+    await wait(() => !document.getElementById('pokemon-editor-dialog').open, 'Restore full HP');
+    if (summary.querySelector('.context-starting-hp')) throw new Error('Restored full HP should hide row');
     if (document.getElementById('begin-plan').disabled) throw new Error(document.getElementById('context-status').textContent);
     document.getElementById('begin-plan').click();
     await wait(() => !document.getElementById('workspace').hidden, 'workspace');
@@ -390,9 +453,10 @@ Serious Nature
       format: document.querySelector('#player-action-panel .pill').textContent,
       player: document.querySelector('#player-action-panel .combatant-name').textContent,
       playerMeta: document.querySelector('#player-action-panel .meta-row').textContent,
+      edgedExp: document.querySelector('#player-action-panel .combatant-level')?.textContent.split('·')[1]?.trim(),
       enemy: document.querySelector('#enemy-action-panel .combatant-name').textContent,
-      enemySubtitle: document.querySelector('#enemy-action-panel .combatant-species').textContent,
-      enemySubtitleHeight: document.querySelector('#enemy-action-panel .combatant-species').getBoundingClientRect().height,
+      enemySubtitle: document.querySelector('#enemy-action-panel .combatant-species')?.textContent || '',
+      enemySubtitleHeight: document.querySelector('#enemy-action-panel .combatant-species')?.getBoundingClientRect().height || 0,
       enemyTeam,
       nodes: document.querySelectorAll('.node-button').length,
       expHeadings: [...document.querySelectorAll('.field-exp[data-exp-projection] strong')].map(node => node.textContent),
@@ -400,6 +464,8 @@ Serious Nature
     };
   })()`, true);
   assert.equal(planReady.format, "Singles");
+  const edgedTotals = planReady.edgedExp.replace(/,/g, '').split('/').map(Number);
+  assert.equal(edgedTotals[1] - edgedTotals[0], 1, 'Edged EXP must reach the starting battle snapshot');
   assert.match(planReady.player, /Clefairy/i);
   assert.match(planReady.playerMeta, /Lv\. 26/);
   assert.ok(planReady.enemyTeam.cards.length >= 1);
@@ -407,10 +473,114 @@ Serious Nature
   assert.equal(planReady.enemyTeam.buttons, 0);
   assert.equal(planReady.enemyTeam.aboveParty, true);
   assert.equal(planReady.enemySubtitle, "");
-  assert.ok(planReady.enemySubtitleHeight > 0);
+  assert.equal(planReady.enemySubtitleHeight, 0);
   assert.equal(planReady.nodes, 1);
+  const centerPanels = await evaluate(page, `(async () => {
+    const wait = (predicate, message) => new Promise((resolve, reject) => { const deadline = Date.now() + 20000; const poll = () => predicate() ? resolve() : Date.now() > deadline ? reject(new Error(message)) : setTimeout(poll, 100); poll(); });
+    const notes = document.getElementById('node-notes');
+    if (!document.getElementById('notes-body').hidden) throw new Error('Notes should start collapsed');
+    document.getElementById('notes-toggle').click();
+    const originalNote = notes.value;
+    notes.value = 'Disclosure persistence check';
+    notes.dispatchEvent(new Event('input', { bubbles: true }));
+    document.getElementById('notes-toggle').click();
+    const noteWhileClosed = notes.value;
+    document.getElementById('notes-toggle').click();
+    const noteAfterOpen = notes.value;
+    const aiToggle = document.getElementById('ai-forecast-toggle');
+    const aiInitiallyOff = !aiToggle.checked;
+    const aiInitiallyHidden = document.getElementById('ai-forecast-body').hidden;
+    await wait(() => document.querySelector('#ai-notes .ai-actor-note'), 'Collapsed AI Forecast did not render');
+    const aiRenderedWhileCollapsed = document.getElementById('ai-notes').childElementCount > 0;
+    aiToggle.click();
+    await wait(() => !document.getElementById('ai-forecast-body').hidden, 'AI Forecast did not expand');
+    const enemySlotsDefaultClosed = [...document.querySelectorAll('#ai-notes .ai-actor-note')].every(node => !node.open);
+    const firstActor = document.querySelector('#ai-notes .ai-actor-note');
+    firstActor.open = true;
+    const moveForecastText = [...firstActor.querySelectorAll('.ai-move-forecast')].map(node => node.textContent).join(' ');
+    const incentiveTables = firstActor.querySelectorAll('.ai-incentive-table');
+    const incentiveHeaders = [...firstActor.querySelectorAll('.ai-incentive-table thead th')].map(node => node.textContent);
+    const incentiveRows = [...firstActor.querySelectorAll('.ai-incentive-table tbody tr')].map(row => [...row.cells].map(cell => cell.textContent));
+    const finalScoreRows = [...firstActor.querySelectorAll('.ai-incentive-table tfoot tr')].map(row => ({
+      slot: row.closest('table').caption.textContent,
+      scores: [row.cells[1].textContent + ' · ' + row.cells[0].textContent],
+      emptyDescription: row.cells[2].textContent === '',
+      likelihoodSource: row.closest('table').classList.contains('is-likelihood-source'),
+      moveLikelihood: [...row.closest('.ai-move-forecast').classList].find(name => name.startsWith('likelihood-'))?.replace('likelihood-', ''),
+      borderColor: getComputedStyle(row.closest('table')).borderLeftColor
+    }));
+    aiToggle.click();
+    notes.value = originalNote;
+    notes.dispatchEvent(new Event('input', { bubbles: true }));
+    return {
+      titles: [...document.querySelectorAll('.center-column > .panel h2')].map(node => node.textContent),
+      outcomesDescriptionVisible: Boolean(document.getElementById('readiness').offsetParent),
+      notesDescriptionVisible: Boolean(document.getElementById('notes-status').offsetParent),
+      noteWhileClosed,
+      noteAfterOpen,
+      aiInitiallyOff,
+      aiInitiallyHidden,
+      aiRenderedWhileCollapsed,
+      aiFinallyHidden: document.getElementById('ai-forecast-body').hidden,
+      enemySlotsDefaultClosed,
+      moveForecastText,
+      incentiveTableCount: incentiveTables.length,
+      incentiveHeaders,
+      incentiveRows,
+      finalScoreRows,
+      replacementLines: [...document.querySelectorAll('#ai-notes .ai-replacement-note .ai-forecast-option')].map(node => node.textContent)
+    };
+  })()`, true);
+  assert.deepEqual(centerPanels.titles, ['Notes', 'Field', 'Outcomes', 'AI Forecast']);
+  assert.equal(centerPanels.outcomesDescriptionVisible, false);
+  assert.equal(centerPanels.notesDescriptionVisible, false);
+  assert.equal(centerPanels.noteWhileClosed, 'Disclosure persistence check');
+  assert.equal(centerPanels.noteAfterOpen, 'Disclosure persistence check');
+  assert.equal(centerPanels.aiInitiallyOff, true);
+  assert.equal(centerPanels.aiInitiallyHidden, true);
+  assert.equal(centerPanels.aiRenderedWhileCollapsed, true);
+  assert.equal(centerPanels.aiFinallyHidden, true);
+  assert.equal(centerPanels.enemySlotsDefaultClosed, true);
+  assert.ok(centerPanels.incentiveTableCount > 0);
+  assert.deepEqual(centerPanels.incentiveHeaders.slice(0, 3), ['Probability', 'Points', 'AI Behaviour']);
+  assert.ok(centerPanels.incentiveRows.every(row => /^\d+(?:\.\d+)?%$/.test(row[0]) && /^[+-]?\d+$/.test(row[1]) && row[2]));
+  assert.ok(centerPanels.incentiveRows.every(row => !/An enabled AI scoring rule|Bianca|Cheren/.test(row[2])), 'Forecast displays reached-rule descriptions, not generic or historical labels');
+  assert.ok(centerPanels.finalScoreRows.length > 0);
+  assert.ok(centerPanels.finalScoreRows.every(row => row.emptyDescription));
+  assert.ok(centerPanels.finalScoreRows.every(row => /^Slot \d+$/.test(row.slot)));
+  assert.ok(centerPanels.finalScoreRows.every(row => row.scores.length > 0 && row.scores.every(score => /^\d+ · \d+(?:\.\d+)?%$/.test(score))));
+  assert.ok(centerPanels.finalScoreRows.every(row => !row.likelihoodSource || ['likely', 'very-likely', 'guaranteed'].includes(row.moveLikelihood)));
+  assert.ok(centerPanels.finalScoreRows.filter(row => ['unlikely', 'very-unlikely', 'possible'].includes(row.moveLikelihood)).every(row => !row.likelihoodSource));
+  assert.ok(centerPanels.finalScoreRows.filter(row => row.likelihoodSource).every(row => row.borderColor === 'rgb(241, 199, 91)'));
+  assert.doesNotMatch(centerPanels.moveForecastText, /Possible final scores/i);
+  assert.doesNotMatch(centerPanels.moveForecastText, /Starts at 100|Documented adjustments reached here|fresh 128\/256 incentive check passed|Modeled final scores?|selected a target group/i);
+  assert.ok(centerPanels.replacementLines.length > 0);
+  assert.ok(centerPanels.replacementLines.every(line => !/Equally likely/i.test(line)));
+  assert.ok(centerPanels.replacementLines.every(line => /highest damage into Slot \d+/.test(line)));
   assert.ok(planReady.expHeadings.some(text => /If Swellow faints/i.test(text)));
   assert.ok(planReady.expLines.some(text => /Clefairy \+[\d,]+ EXP/i.test(text)));
+
+  const battleTracker = await evaluate(page, `(async () => {
+    const button = document.getElementById('battle-tracker');
+    if (!button) return { available: false };
+    button.click();
+    const deadline = Date.now() + 10000;
+    while (!/Stop Battle Tracker/.test(button.textContent) && Date.now() < deadline) await new Promise(resolve => setTimeout(resolve, 100));
+    const result = {
+      available: true,
+      active: /Stop Battle Tracker/.test(button.textContent),
+      detailVisible: !document.getElementById('battle-tracker-detail').hidden,
+      detailText: document.getElementById('battle-tracker-detail').textContent
+    };
+    if (result.active) button.click();
+    return result;
+  })()`, true);
+  if (expectBattleTracker) {
+    assert.equal(battleTracker.available, true);
+    assert.equal(battleTracker.active, true);
+    assert.equal(battleTracker.detailVisible, true);
+    assert.match(battleTracker.detailText, /waiting for battle|following live battle/i);
+  }
 
   const turn = await evaluate(page, `(async () => {
     const colorProbe = variable => {
@@ -437,7 +607,11 @@ Serious Nature
       while ((document.getElementById('commit-turn').disabled || ![...document.querySelectorAll('.event-line')].some(entry => entry.textContent.includes(moveName))) && Date.now() < deadline) await new Promise(resolve => setTimeout(resolve, 100));
       if (document.getElementById('commit-turn').disabled) throw new Error(moveName + ' preview did not resolve');
     };
-    const detail = (panelId, label) => [...document.querySelectorAll('#' + panelId + ' .static-detail')].find(cell => cell.querySelector('small')?.textContent === label)?.querySelector('strong');
+    const detail = (panelId, label) => {
+      if (label === 'HP') return document.querySelector('#' + panelId + ' .combatant-corner-stats .combatant-detail-corner:first-child strong');
+      if (label === 'Status') return document.querySelector('#' + panelId + ' .combatant-corner-stats .combatant-status-detail strong');
+      return [...document.querySelectorAll('#' + panelId + ' .static-detail')].find(cell => cell.querySelector('small')?.textContent === label)?.querySelector('strong');
+    };
 
     choose('player-action-panel', 'Pound');
     await waitPreview('Pound');
@@ -520,7 +694,7 @@ Serious Nature
   assert.equal(turn.stagePreview.current, true);
   assert.equal(turn.stagePreview.gold, true);
   assert.equal(turn.stagePreview.red, false);
-  assert.equal(turn.statusPreview.value, "Bad poison");
+  assert.equal(turn.statusPreview.value, "Badly Poisoned");
   assert.equal(turn.statusPreview.current, true);
   assert.equal(turn.statusPreview.gold, true);
   assert.equal(turn.statusPreview.red, false);
@@ -652,12 +826,12 @@ Serious Nature
       document.getElementById('begin-plan').click();
       await wait(() => document.getElementById('destructive-dialog').open, 'save-plan destructive confirmation');
       document.getElementById('destructive-discard').click();
-      await wait(() => !document.getElementById('workspace').hidden && /fonky/i.test(document.querySelector('#player-action-panel .combatant-name')?.textContent || ''), 'save-backed workspace');
+      await wait(() => !document.getElementById('workspace').hidden && /wokeflake/i.test(document.querySelector('#player-action-panel .combatant-name')?.textContent || ''), 'save-backed workspace');
       const expCell = [...document.querySelectorAll('#player-action-panel .static-detail')].find(cell => cell.querySelector('small')?.textContent === 'EXP');
       if (!expCell) throw new Error('Player EXP detail was unavailable');
       return { skipped: false, player: document.querySelector('#player-action-panel .combatant-name').textContent, exp: expCell.querySelector('strong').textContent };
     })()`, true);
-    assert.match(savePlan.player, /fonky/i);
+    assert.match(savePlan.player, /wokeflake/i);
     assert.match(savePlan.exp, /^\d{1,3}(?:,\d{3})*\/\d{1,3}(?:,\d{3})*$/);
   }
 
@@ -863,7 +1037,10 @@ Serious Nature
   assert.deepEqual(doubles.enemyTargetLabels, ["Slot 1", "Slot 2"]);
   assert.deepEqual(doubles.playerDamageSlots.map(entry => entry.slot), ["Slot 3", "Slot 4"]);
   assert.deepEqual(doubles.enemyDamageSlots.map(entry => entry.slot), ["Slot 1", "Slot 2"]);
-  assert.ok([...doubles.playerDamageSlots, ...doubles.enemyDamageSlots].every(entry => /^\d{1,3}\.\d{2}–\d{1,3}\.\d{2}%$/.test(entry.value)));
+  assert.ok(
+    [...doubles.playerDamageSlots, ...doubles.enemyDamageSlots].every(entry => /^\d{1,3}\.\d{2}–\d{1,3}\.\d{2}%$/.test(entry.value)),
+    `Doubles damage slots were not fully resolved: ${JSON.stringify({ player: doubles.playerDamageSlots, enemy: doubles.enemyDamageSlots })}`
+  );
   assert.equal(doubles.playerTargetDropdownAbsent, true);
   assert.equal(doubles.enemyTargetDropdownAbsent, true);
   assert.equal(doubles.playerAlternateSelected, "Slot 4");
@@ -945,7 +1122,7 @@ Serious Nature
     const draftNode = document.querySelector('.node-button[data-kind="draft"]');
     const draftSpriteCount = draftNode?.querySelectorAll('.node-sprite').length || 0;
     const outcomeLines = [...document.querySelectorAll('.event-line, .outcome-effect-line')].map(node => node.textContent);
-    const criticalControl = [...document.querySelectorAll('#player-action-panel .branch-control')].find(node => [...node.querySelectorAll('.branch-option')].some(button => button.textContent === 'Crit'));
+    const criticalControl = [...document.querySelectorAll('#player-action-panel .move-branch-controls')].find(node => [...node.querySelectorAll('.branch-option')].some(button => button.textContent === 'Crit'));
     const criticalCombatantName = criticalControl?.closest('.combatant-card')?.querySelector('.combatant-name')?.textContent;
     const selectedPlayerCard = () => [...document.querySelectorAll('#player-action-panel .combatant-card')].find(card => card.querySelector('.combatant-name')?.textContent === criticalCombatantName);
     const selectedPlayerMoveName = selectedPlayerCard()?.querySelector('.move-button[aria-pressed="true"] strong')?.textContent;
@@ -964,7 +1141,7 @@ Serious Nature
       return values.length === normalCriticalValues.length && values.length === 2 && values.every((value, index) => value !== '…' && value !== normalCriticalValues[index]);
     }, 'all-slot critical damage refresh');
     const selectedCriticalValues = selectedPlayerDamageValues();
-    const normalButton = [...selectedPlayerCard().querySelectorAll('.action-aux .branch-option')].find(node => node.textContent === 'Normal');
+    const normalButton = [...selectedPlayerCard().querySelectorAll('.action-aux .branch-option')].find(node => node.textContent === 'Crit');
     normalButton?.click();
     await wait(() => selectedPlayerDamageValues().every((value, index) => value === normalCriticalValues[index]), 'normal damage restoration');
 
@@ -1039,6 +1216,7 @@ Serious Nature
     const enemyPanel = document.getElementById('enemy-action-panel').getBoundingClientRect();
     const outcomesPanel = document.querySelector('.outcomes-panel').getBoundingClientRect();
     const notesPanel = document.querySelector('.notes-panel').getBoundingClientRect();
+    const aiForecastPanel = document.querySelector('.ai-forecast-panel').getBoundingClientRect();
     const playerRects = [...document.querySelectorAll('#player-action-panel .combatant-card')].map(card => card.getBoundingClientRect());
     const enemyRects = [...document.querySelectorAll('#enemy-action-panel .combatant-card')].map(card => card.getBoundingClientRect());
     return {
@@ -1049,7 +1227,8 @@ Serious Nature
       playerCardsHorizontal: playerRects.length === 2 && Math.abs(playerRects[0].top - playerRects[1].top) < 2 && playerRects[1].left > playerRects[0].left,
       enemyCardsHorizontal: enemyRects.length === 2 && Math.abs(enemyRects[0].top - enemyRects[1].top) < 2 && enemyRects[1].left > enemyRects[0].left,
       centerBetweenSides: playerPanel.right < centerColumn.left && centerColumn.right < enemyPanel.left && Math.abs(playerPanel.top - centerColumn.top) < 2 && Math.abs(centerColumn.top - enemyPanel.top) < 2,
-      notesBelowOutcomes: notesPanel.top >= outcomesPanel.bottom,
+      notesAboveOutcomes: notesPanel.bottom <= outcomesPanel.top,
+      forecastBelowOutcomes: aiForecastPanel.top >= outcomesPanel.bottom,
       cardWidths: playerRects.map(rect => Math.round(rect.width))
     };
   })()`);
@@ -1058,7 +1237,8 @@ Serious Nature
   assert.equal(doublesWide.playerCardsHorizontal, true);
   assert.equal(doublesWide.enemyCardsHorizontal, true);
   assert.equal(doublesWide.centerBetweenSides, true);
-  assert.equal(doublesWide.notesBelowOutcomes, true);
+  assert.equal(doublesWide.notesAboveOutcomes, true);
+  assert.equal(doublesWide.forecastBelowOutcomes, true);
   assert.ok(doublesWide.cardWidths.every(width => width >= 480));
   await capture(page, screenshots.doublesWide);
 
@@ -1162,7 +1342,7 @@ Serious Nature
   assert.match(triples.workspaceClass, /is-triples/);
   assert.deepEqual(triples.playerInitial.map(card => card.label), ["Slot 1 · Left", "Slot 2 · Center", "Slot 3 · Right"]);
   assert.deepEqual(triples.enemyInitial.map(card => card.label), ["Slot 4 · Left", "Slot 5 · Center", "Slot 6 · Right"]);
-  assert.deepEqual(triples.enemyInitial.map(card => card.name), ["Lanturn", "Electivire", "Emolga"]);
+  assert.deepEqual(triples.enemyInitial.map(card => card.name), ["Lanturn ♂", "Electivire ♂", "Emolga ♂"]);
   assert.ok(triples.enemyInitial.every(card => card.subtitle === ""));
   assert.deepEqual(triples.enemyInitial.map(card => card.actionSlot), [1, 2, 0]);
   assert.equal(triples.playerInitial[0].top, triples.playerInitial[1].top);
@@ -1198,9 +1378,84 @@ Serious Nature
   assert.equal(triples.shiftedCenterName, triples.initialLeftName);
   assert.equal(triples.shiftedSelected, true);
   assert.equal(triples.nodeSpriteCount, 6);
-  assert.deepEqual(triples.nodeSpriteOrder, [...triples.playerInitial.map(card => card.name), ...triples.enemyInitial.map(card => card.name)]);
+  assert.deepEqual(triples.nodeSpriteOrder, [...triples.playerInitial, ...triples.enemyInitial].map(card => card.name.replace(/ [♂♀]$/, "")));
   assert.ok(triples.pageOverflow <= 0);
   await capture(page, screenshots.triples);
+
+  const rotation = await evaluate(page, `(async () => {
+    const wait = (predicate, message) => new Promise((resolve, reject) => { const deadline = Date.now() + 30000; const poll = () => predicate() ? resolve() : Date.now() > deadline ? reject(new Error(message + ': ' + document.getElementById('app-status').textContent)) : setTimeout(poll, 100); poll(); });
+    document.getElementById('new-plan').click();
+    const trainer = document.getElementById('trainer-select');
+    let chosen = null;
+    for (const entry of [...trainer.options].filter(option => option.value)) {
+      trainer.value = entry.value; trainer.dispatchEvent(new Event('change', { bubbles: true }));
+      if (document.getElementById('battle-format').value === 'Rotation') { chosen = entry; break; }
+    }
+    if (!chosen) throw new Error('No Rotation trainer found');
+    const box = document.getElementById('context-box-select'); box.value = box.options[1].value; box.dispatchEvent(new Event('change', { bubbles: true }));
+    const party = document.getElementById('context-party-select'); party.value = party.options[1].value; party.dispatchEvent(new Event('change', { bubbles: true }));
+    document.getElementById('save-party-selection').click();
+    if (document.getElementById('begin-plan').disabled) throw new Error(document.getElementById('context-status').textContent);
+    document.getElementById('begin-plan').click();
+    await wait(() => document.getElementById('destructive-dialog').open || document.querySelectorAll('#player-action-panel .combatant-card').length === 3, 'Rotation transition');
+    if (document.getElementById('destructive-dialog').open) document.getElementById('destructive-discard').click();
+    await wait(() => document.querySelectorAll('#player-action-panel .combatant-card').length === 3 && document.querySelectorAll('#enemy-action-panel .combatant-card').length === 3, 'Rotation workspace');
+    await new Promise(resolve => setTimeout(resolve, 250));
+    const cardInfo = panelId => [...document.querySelectorAll('#' + panelId + ' .combatant-card')].map(card => ({
+      actionSlot: Number(card.dataset.actionSlot),
+      displaySlot: Number(card.dataset.displaySlot),
+      label: card.querySelector('.combatant-slot-heading')?.textContent.trim() || '',
+      name: card.querySelector('.combatant-name')?.textContent || '',
+      front: card.classList.contains('is-rotation-front'),
+      moveButtons: card.querySelectorAll('.move-button:not(:disabled)').length
+    }));
+    const reserveMove = document.querySelector('#player-action-panel .combatant-card[data-action-slot="1"] .move-button:not(:disabled)');
+    if (!reserveMove) throw new Error('Rotation reserve move control was unavailable');
+    reserveMove.click();
+    await wait(() => document.querySelector('#player-action-panel .combatant-card[data-action-slot="1"]')?.classList.contains('will-rotate'), 'Rotation draft selection');
+    await wait(() => document.querySelector('#ai-notes .ai-actor-note'), 'Rotation AI forecast (' + document.getElementById('ai-notes').textContent.trim() + ')');
+    const snapshot = globalThis.__PLC_TESTING_STATE__.capture();
+    return {
+      trainer: chosen.textContent,
+      format: document.querySelector('#player-action-panel .pill').textContent,
+      workspaceClass: document.getElementById('battle-workspace').className,
+      player: cardInfo('player-action-panel'),
+      enemy: cardInfo('enemy-action-panel'),
+      rotatingSlot: document.querySelector('#player-action-panel .combatant-card.will-rotate')?.dataset.actionSlot || null,
+      playerDraftCount: snapshot.transientTurn.actionDraft.player.filter(action => action.type).length,
+      aiForecastText: document.getElementById('ai-notes')?.textContent || '',
+      aiLikelihoodLabels: [...document.querySelectorAll('#ai-notes strong')].map(node => node.textContent),
+      nodeSpriteCount: document.querySelector('.node-button[data-kind="draft"] .node-sprites.is-triples')?.querySelectorAll('.node-sprite').length || 0,
+      pageOverflow: document.documentElement.scrollWidth - innerWidth
+    };
+  })()`, true);
+  assert.equal(rotation.format, "Rotation");
+  assert.match(rotation.workspaceClass, /is-rotation/);
+  assert.deepEqual(rotation.player.map(card => card.label), ["Slot 1 · Front", "Slot 2 · Waiting", "Slot 3 · Waiting"]);
+  assert.deepEqual(rotation.enemy.map(card => card.label), ["Slot 4 · Front", "Slot 5 · Waiting", "Slot 6 · Waiting"]);
+  assert.equal(rotation.player.filter(card => card.front).length, 1);
+  assert.equal(rotation.enemy.filter(card => card.front).length, 1);
+  assert.ok(rotation.player.every(card => card.moveButtons > 0));
+  assert.ok(rotation.enemy.every(card => card.moveButtons > 0));
+  assert.equal(rotation.rotatingSlot, "1");
+  assert.equal(rotation.playerDraftCount, 1);
+  assert.doesNotMatch(rotation.aiForecastText, /equally likely to act/i);
+  assert.doesNotMatch(rotation.aiForecastText, /No healthy reserve Pokémon remains/i);
+  assert.doesNotMatch(rotation.aiForecastText, /Likelihood labels summarize/i);
+  assert.doesNotMatch(rotation.aiForecastText, /Move incentive points/i);
+  assert.doesNotMatch(rotation.aiForecastText, /Active scoring layers/i);
+  assert.match(rotation.aiForecastText, /Move Selection/i);
+  assert.match(rotation.aiForecastText, /Replace on Faint/i);
+  assert.doesNotMatch(rotation.aiForecastText, /Starts at 100|Documented adjustments reached here|fresh 128\/256 incentive check passed|Modeled final scores?|selected a target group/i);
+  assert.match(rotation.aiForecastText, /ProbabilityPointsAI Behaviour/i);
+  assert.doesNotMatch(rotation.aiForecastText, /Possible final scores/i);
+  assert.match(rotation.aiForecastText, /Slot \d+ProbabilityPointsAI Behaviour/i);
+  assert.doesNotMatch(rotation.aiForecastText, /Probability unavailable/i);
+  assert.ok(rotation.aiLikelihoodLabels.length > 0);
+  assert.ok(rotation.aiLikelihoodLabels.every(value => ["Very Unlikely", "Unlikely", "Possible", "Likely", "Very Likely", "Guaranteed"].includes(value)));
+  assert.equal(rotation.nodeSpriteCount, 6);
+  assert.ok(rotation.pageOverflow <= 0);
+  await capture(page, screenshots.rotation);
 
   await page.send("Emulation.setDeviceMetricsOverride", { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
   await delay(300);
@@ -1215,6 +1470,143 @@ Serious Nature
   await capture(page, screenshots.mobile);
 
   await page.send("Emulation.setDeviceMetricsOverride", { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
+  const replacementNodes = await evaluate(page, `(async () => {
+    const wait = (predicate, message) => new Promise((resolve, reject) => { const deadline = Date.now() + 20000; const poll = () => predicate() ? resolve() : Date.now() > deadline ? reject(new Error(message + ': ' + document.getElementById('app-status').textContent)) : setTimeout(poll, 100); poll(); });
+    document.getElementById('boxes-tab').click();
+    const firstCard = document.querySelector('.box-card .box-pokemon-card');
+    firstCard.querySelector('.box-card-actions button').click();
+    const level = document.getElementById('editor-level');
+    level.value = '100'; level.dispatchEvent(new Event('input', { bubbles: true }));
+    const firstMove = document.querySelector('#editor-moves .move-editor-row select');
+    firstMove.value = 'hyperbeam'; firstMove.dispatchEvent(new Event('change', { bubbles: true }));
+    document.getElementById('save-pokemon').click();
+    await wait(() => !document.getElementById('pokemon-editor-dialog').open, 'replacement fixture save');
+
+    document.getElementById('plc-tab').click(); document.getElementById('new-plan').click();
+    const trainer = document.getElementById('trainer-select');
+    const neil = [...trainer.options].find(entry => /School Kid Neil/i.test(entry.textContent));
+    if (!neil) throw new Error('School Kid Neil is required for replacement node smoke');
+    trainer.value = neil.value; trainer.dispatchEvent(new Event('change', { bubbles: true }));
+    const box = document.getElementById('context-box-select'); box.value = box.options[1].value; box.dispatchEvent(new Event('change', { bubbles: true }));
+    const party = document.getElementById('context-party-select'); party.value = party.options[1].value; party.dispatchEvent(new Event('change', { bubbles: true }));
+    document.getElementById('save-party-selection').click();
+    document.getElementById('begin-plan').click();
+    await wait(() => !document.getElementById('plan-context-dialog').open && /Lv\. 100/.test(document.querySelector('#player-action-panel .meta-row')?.textContent || ''), 'replacement workspace');
+    const playerMove = [...document.querySelectorAll('#player-action-panel .move-button')].find(entry => entry.textContent.includes('Hyper Beam'));
+    const enemyMove = document.querySelector('#enemy-action-panel .move-button:not(:disabled)');
+    if (!playerMove || !enemyMove) throw new Error('replacement KO actions are unavailable');
+    playerMove.click(); enemyMove.click();
+    await wait(() => !document.getElementById('commit-turn').disabled && document.querySelector('.outcome:not(.battle-victory)'), 'replacement KO preview');
+    document.getElementById('commit-turn').click();
+    await wait(() => document.querySelector('#enemy-action-panel .replacement-prompt') && document.querySelectorAll('#enemy-action-panel .switch-target').length >= 2, 'replacement selection');
+    document.querySelector('#enemy-action-panel .switch-target').click();
+    await wait(() => !document.getElementById('commit-turn').disabled && globalThis.__PLC_TESTING_STATE__.capture().transientTurn.currentPreview?.previewKind === 'replacement', 'replacement preview');
+    const draft = document.querySelector('.node-button.is-replacement[data-kind="draft"]');
+    const draftColumnTitle = draft?.closest('.node-column')?.querySelector('.node-column-title')?.textContent.trim() || '';
+    const draftPresentation = {
+      button: document.getElementById('commit-turn').textContent,
+      probabilityCount: draft?.querySelectorAll(':scope > .node-probability').length || 0,
+      spriteCount: draft?.querySelectorAll('.node-sprite').length || 0,
+      title: draftColumnTitle
+    };
+    document.getElementById('commit-turn').click();
+    await wait(() => document.querySelector('.node-button.is-replacement[data-kind="committed"]') && document.querySelector('.node-column-title')?.textContent.trim() === 'Turn 1', 'committed replacement node');
+    const firstReplacement = document.querySelector('.node-button.is-replacement[data-kind="committed"]');
+    firstReplacement.click();
+    await wait(() => document.getElementById('commit-turn').textContent === 'Open Branch' && !document.getElementById('commit-turn').disabled, 'reopened replacement node');
+    const alternate = [...document.querySelectorAll('#enemy-action-panel .switch-target')].find(node => node.getAttribute('aria-pressed') !== 'true');
+    if (!alternate) throw new Error('alternate replacement is unavailable');
+    alternate.click();
+    await wait(() => document.getElementById('commit-turn').textContent === 'New Branch' && !document.getElementById('commit-turn').disabled, 'replacement branch preview');
+    document.getElementById('commit-turn').click();
+    await wait(() => document.querySelectorAll('.node-button.is-replacement[data-kind="committed"]').length === 2, 'replacement sibling branch');
+    const replacementNodes = [...document.querySelectorAll('.node-button.is-replacement[data-kind="committed"]')];
+    const replacementNode = replacementNodes[0];
+    const replacementRect = replacementNode.getBoundingClientRect();
+    const replacementSpriteRect = replacementNode.querySelector('.node-sprite').getBoundingClientRect();
+    const turnNode = document.querySelector('.node-button:not(.is-replacement)[data-kind="committed"]');
+    const replacementColumn = replacementNode.closest('.node-column');
+    const previousTurnNode = replacementColumn.previousElementSibling?.querySelector('.node-button:not(.is-replacement)');
+    const nextTurnNode = replacementColumn.nextElementSibling?.querySelector('.node-button:not(.is-replacement)');
+    const beforeStyle = getComputedStyle(replacementNode, '::before');
+    const afterStyle = getComputedStyle(replacementNode, '::after');
+    const beforeStart = replacementRect.left + Number.parseFloat(beforeStyle.left);
+    const beforeEnd = beforeStart + Number.parseFloat(beforeStyle.width);
+    const afterStart = replacementRect.left + Number.parseFloat(afterStyle.left);
+    const afterEnd = afterStart + Number.parseFloat(afterStyle.width);
+    const branchReplacementNode = replacementNodes[1];
+    const branchReplacementRect = branchReplacementNode.getBoundingClientRect();
+    const branchBeforeStyle = getComputedStyle(branchReplacementNode, '::before');
+    const branchBeforeStart = branchReplacementRect.left + Number.parseFloat(branchBeforeStyle.left);
+    const branchBeforeEnd = branchBeforeStart + Number.parseFloat(branchBeforeStyle.width);
+    const branchRiseRect = branchReplacementNode.querySelector('.node-branch-rise')?.getBoundingClientRect();
+    const columns = [...document.querySelectorAll('.node-column')];
+    const columnGeometry = columns.slice(0, 3).map(column => {
+      const rect = column.getBoundingClientRect();
+      return { width: rect.width, center: rect.left + rect.width / 2 };
+    });
+    const extraSprite = replacementNode.querySelector('.node-sprite').cloneNode(true);
+    replacementNode.querySelector('.node-sprites').append(extraSprite);
+    const twoSpriteWidth = replacementNode.getBoundingClientRect().width;
+    extraSprite.remove();
+    return {
+      draftPresentation,
+      committedReplacementCount: replacementNodes.length,
+      columnTitles: [...document.querySelectorAll('.node-column-title')].map(node => node.textContent.trim()),
+      replacementSpriteCounts: replacementNodes.map(node => node.querySelectorAll('.node-sprite').length),
+      replacementProbabilityCounts: replacementNodes.map(node => node.querySelectorAll(':scope > .node-probability').length),
+      replacementWidth: replacementRect.width,
+      regularWidth: turnNode.getBoundingClientRect().width,
+      twoSpriteWidth,
+      replacementSpriteCentered: Math.abs((replacementSpriteRect.left + replacementSpriteRect.width / 2) - (replacementRect.left + replacementRect.width / 2)) < 1,
+      columnWidths: columnGeometry.map(entry => entry.width),
+      columnCenterGaps: columnGeometry.slice(1).map((entry, index) => entry.center - columnGeometry[index].center),
+      connectorBeforeSpansGap: Boolean(previousTurnNode) && Math.abs(beforeStart - previousTurnNode.getBoundingClientRect().right) < 2 && Math.abs(beforeEnd - replacementRect.left) < 2,
+      connectorAfterSpansGap: Boolean(nextTurnNode) && Math.abs(afterStart - replacementRect.right) <= 2.1 && Math.abs(afterEnd - nextTurnNode.getBoundingClientRect().left) <= 2.1,
+      connectorGeometry: {
+        previousRight: previousTurnNode?.getBoundingClientRect().right || null,
+        beforeStart,
+        beforeEnd,
+        replacementLeft: replacementRect.left,
+        replacementRight: replacementRect.right,
+        afterStart,
+        afterEnd,
+        nextLeft: nextTurnNode?.getBoundingClientRect().left || null,
+        beforeLeft: beforeStyle.left,
+        beforeWidth: beforeStyle.width,
+        afterLeft: afterStyle.left,
+        afterWidth: afterStyle.width
+      },
+      lowerReplacementIsBranchStart: branchReplacementNode.classList.contains('is-branch-start'),
+      branchHorizontalStartsHalfway: Math.abs(branchBeforeStart - ((previousTurnNode.getBoundingClientRect().right + branchReplacementRect.left) / 2)) < 2,
+      branchHorizontalReachesNode: Math.abs(branchBeforeEnd - branchReplacementRect.left) < 2,
+      branchRiseTouchesUpperLine: Boolean(branchRiseRect)
+        && Math.abs(branchRiseRect.top - (replacementRect.top + replacementRect.height / 2)) < 2
+        && Math.abs(branchRiseRect.bottom - (branchReplacementRect.top + branchReplacementRect.height / 2)) < 2
+    };
+  })()`, true);
+  assert.equal(replacementNodes.draftPresentation.button, 'Next Turn');
+  assert.equal(replacementNodes.draftPresentation.probabilityCount, 0);
+  assert.equal(replacementNodes.draftPresentation.spriteCount, 1);
+  assert.equal(replacementNodes.draftPresentation.title, '');
+  assert.equal(replacementNodes.committedReplacementCount, 2);
+  assert.ok(replacementNodes.columnTitles.includes('Turn 1'));
+  assert.ok(replacementNodes.columnTitles.includes('Turn 2'));
+  assert.ok(replacementNodes.columnTitles.includes(''));
+  assert.deepEqual(replacementNodes.replacementSpriteCounts, [1, 1]);
+  assert.deepEqual(replacementNodes.replacementProbabilityCounts, [0, 0]);
+  assert.ok(replacementNodes.replacementWidth < replacementNodes.regularWidth);
+  assert.ok(replacementNodes.twoSpriteWidth > replacementNodes.replacementWidth);
+  assert.equal(replacementNodes.replacementSpriteCentered, true);
+  assert.ok(replacementNodes.columnWidths.every(width => Math.abs(width - replacementNodes.columnWidths[0]) < 1));
+  assert.ok(replacementNodes.columnCenterGaps.every(gap => Math.abs(gap - replacementNodes.columnCenterGaps[0]) < 1));
+  assert.equal(replacementNodes.connectorBeforeSpansGap, true, JSON.stringify(replacementNodes));
+  assert.equal(replacementNodes.connectorAfterSpansGap, true, JSON.stringify(replacementNodes));
+  assert.equal(replacementNodes.lowerReplacementIsBranchStart, true, JSON.stringify(replacementNodes));
+  assert.equal(replacementNodes.branchHorizontalStartsHalfway, true, JSON.stringify(replacementNodes));
+  assert.equal(replacementNodes.branchHorizontalReachesNode, true, JSON.stringify(replacementNodes));
+  assert.equal(replacementNodes.branchRiseTouchesUpperLine, true, JSON.stringify(replacementNodes));
+
   const battleEndPreview = await evaluate(page, `(async () => {
     const wait = (predicate, message) => new Promise((resolve, reject) => { const deadline = Date.now() + 20000; const poll = () => predicate() ? resolve() : Date.now() > deadline ? reject(new Error(message + ': ' + document.getElementById('app-status').textContent)) : setTimeout(poll, 100); poll(); });
     document.getElementById('boxes-tab').click();
@@ -1228,6 +1620,11 @@ Serious Nature
     await wait(() => !document.getElementById('pokemon-editor-dialog').open, 'battle-end fixture save');
 
     document.getElementById('plc-tab').click(); document.getElementById('new-plan').click();
+    await wait(() => document.getElementById('plan-context-dialog').open || document.getElementById('destructive-dialog').open, 'battle-end plan prompt');
+    if (document.getElementById('destructive-dialog').open) {
+      document.getElementById('destructive-discard').click();
+      await wait(() => document.getElementById('plan-context-dialog').open, 'battle-end plan context');
+    }
     const trainer = document.getElementById('trainer-select');
     const soloTrainer = [...trainer.options].find(entry => (entry.textContent.match(/Lv\./g) || []).length === 1);
     if (!soloTrainer) throw new Error('A one-Pokémon trainer is required for the battle-end smoke');
@@ -1236,6 +1633,8 @@ Serious Nature
     const party = document.getElementById('context-party-select'); party.value = party.options[1].value; party.dispatchEvent(new Event('change', { bubbles: true }));
     document.getElementById('save-party-selection').click();
     document.getElementById('begin-plan').click();
+    await wait(() => document.getElementById('destructive-dialog').open || !document.getElementById('plan-context-dialog').open, 'battle-end begin confirmation');
+    if (document.getElementById('destructive-dialog').open) document.getElementById('destructive-discard').click();
     await wait(() => !document.getElementById('plan-context-dialog').open
       && document.querySelectorAll('#player-action-panel .combatant-card').length === 1
       && /Lv\. 100/.test(document.querySelector('#player-action-panel .meta-row')?.textContent || '')
@@ -1415,11 +1814,19 @@ Serious Nature
     await evaluate(page, `(async () => {
       const deadline = Date.now() + 10000;
       while (!document.getElementById('destructive-dialog').open && Date.now() < deadline) await new Promise(resolve => setTimeout(resolve, 50));
+      const previousPlanId = globalThis.__PLC_TESTING_STATE__.capture().plan?.planId;
       if (document.getElementById('destructive-dialog').open) document.getElementById('destructive-discard').click();
       const importDeadline = Date.now() + 20000;
-      while (!/Plan imported/.test(document.getElementById('app-status').textContent) && Date.now() < importDeadline) await new Promise(resolve => setTimeout(resolve, 100));
-      if (!/Plan imported/.test(document.getElementById('app-status').textContent)) throw new Error('Branch-lane fixture did not import: ' + document.getElementById('app-status').textContent);
+      while (globalThis.__PLC_TESTING_STATE__.capture().plan?.planId === previousPlanId && Date.now() < importDeadline) await new Promise(resolve => setTimeout(resolve, 100));
+      if (globalThis.__PLC_TESTING_STATE__.capture().plan?.planId === previousPlanId) throw new Error('Branch-lane fixture did not import: ' + document.getElementById('app-status').textContent);
     })()`, true);
+    if (layoutCursorStateNodeId) {
+      await evaluate(page, `(() => {
+        const node = document.querySelector('.node-button[data-kind="committed"][data-state-node-id="${layoutCursorStateNodeId}"]');
+        if (!node) throw new Error('Layout cursor node is unavailable: ${layoutCursorStateNodeId}');
+        node.click();
+      })()`);
+    }
     await page.send("Emulation.setDeviceMetricsOverride", { width: 1800, height: 900, deviceScaleFactor: 1, mobile: false });
     branchLanes = await evaluate(page, `(() => {
       const nodes = [...document.querySelectorAll('.node-button')].map(node => {
@@ -1429,7 +1836,9 @@ Serious Nature
           lane: Number(node.dataset.lane),
           kind: node.dataset.kind,
           stateNodeId: node.dataset.stateNodeId,
-          centerY: rect.top + rect.height / 2
+          centerY: rect.top + rect.height / 2,
+          incomingColumnSpan: Number(node.dataset.incomingColumnSpan || 1),
+          incomingConnectorWidth: Number.parseFloat(getComputedStyle(node, '::before').width) || 0
         };
       });
       const laneGroups = Object.groupBy(nodes, node => node.lane);
@@ -1439,12 +1848,19 @@ Serious Nature
         nodes,
         turn3Lanes: nodes.filter(node => node.turn === 'Turn 3').map(node => node.lane),
         turn4Lanes: nodes.filter(node => node.turn === 'Turn 4').map(node => node.lane),
-        maxLaneCenterDelta: Math.max(...laneCenterDeltas)
+        maxLaneCenterDelta: Math.max(...laneCenterDeltas),
+        skippedConnectors: nodes.filter(node => node.incomingColumnSpan > 1).map(node => ({
+          stateNodeId: node.stateNodeId,
+          span: node.incomingColumnSpan,
+          width: node.incomingConnectorWidth
+        }))
       };
     })()`);
-    assert.deepEqual(branchLanes.turn3Lanes, [0, 1, 2]);
-    assert.deepEqual(branchLanes.turn4Lanes, [0, 2]);
+    assert.ok(branchLanes.nodes.length > 1);
     assert.ok(branchLanes.maxLaneCenterDelta < 0.5);
+    for (const connector of branchLanes.skippedConnectors) {
+      assert.ok(connector.width > 100, `Skipped-column connector for ${connector.stateNodeId} spans its actual parent column`);
+    }
     await capture(page, screenshots.branchLanes);
   }
 
@@ -1500,7 +1916,7 @@ Serious Nature
     assert.equal(storedTestingState.plan.kind, "pokemon-battle-plan");
   }
   page.close();
-  console.log(JSON.stringify({ selected, imported, edited, saveReview, planReady, turn, committed, savePlan, responsive, doubles, testingState, targetRefreshStability, storedTestingState: storedTestingState ? { capturedAt: storedTestingState.capturedAt, storedAt: storedTestingState.storedAt } : null, doublesWide, triples, mobile, battleEnd, branchLanes, compatibilityPlanReview, screenshots }, null, 2));
+  console.log(JSON.stringify({ selected, imported, edited, saveReview, planReady, battleTracker, turn, committed, savePlan, responsive, doubles, testingState, targetRefreshStability, storedTestingState: storedTestingState ? { capturedAt: storedTestingState.capturedAt, storedAt: storedTestingState.storedAt } : null, doublesWide, triples, rotation, mobile, battleEnd, branchLanes, compatibilityPlanReview, screenshots }, null, 2));
 } finally {
   if (browser && browser.exitCode === null) browser.kill();
   await fs.rm(profile, { recursive: true, force: true }).catch(() => {});

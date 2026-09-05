@@ -4,30 +4,31 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="plc-build-profile" content="local">
+  <meta name="pokemon-asset-release-base" content="/Datasets/Pokemon%20Assets/release">
   <title>Pokémon Line Calculator</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./styles.css?v=20260827-lock-progression">
+  <link rel="stylesheet" href="./styles.css?v=20260905-public-preview-forecast-v1">
 </head>
-<body>
+<body data-public-preview="true">
   <header class="app-header">
     <div class="header-title">
-      <p class="eyebrow">PLC · Battle planner</p>
       <h1>Pokémon Line Calculator</h1>
+      <p class="site-credit">twitch.tv/phantomsafe</p>
     </div>
-    <label class="game-control">Game
+    <div class="game-control">
+      <label for="game-select">Game</label>
       <select id="game-select">
         <option value="">Select game…</option>
-        <option value="volt-white-2r">Pokémon Volt White 2 Redux Egglocke</option>
       </select>
-    </label>
+      <p id="game-credit" class="game-credit" aria-live="polite"></p>
+    </div>
     <p id="app-status" class="status" role="status">Select a game to begin.</p>
   </header>
 
   <main class="app-shell">
     <section id="game-gate" class="panel game-gate">
-      <p class="eyebrow">First step</p>
       <h2>Select the game you are planning</h2>
-      <p>Boxes, trainers, mechanics, and active plans are scoped to the selected game. Volt White 2 Redux is the first planner-ready adapter.</p>
+      <p>Boxes, trainers, mechanics, save parsing, and active plans are scoped to the selected game. Games are enabled only after their standardized mechanics contracts pass validation.</p>
     </section>
 
     <nav id="app-tabs" class="tabs" aria-label="PLC sections" hidden>
@@ -38,13 +39,11 @@
     <section id="plc-panel" role="tabpanel" aria-labelledby="plc-tab" hidden>
       <div class="planner-toolbar" aria-label="Plan actions">
         <div>
-          <p class="eyebrow">Active plan</p>
           <p id="plan-toolbar-label" class="toolbar-label">No battle plan open</p>
         </div>
         <div class="toolbar-actions">
           <!-- PLC_LOCAL_ONLY_START --><span id="output-state-anchor"></span><!-- PLC_LOCAL_ONLY_END -->
-          <button id="commit-turn" type="button" disabled>Next Turn</button>
-          <button id="save-plan" type="button" class="secondary">Save Plan</button>
+          <!-- PLC_LOCAL_ONLY_START --><span id="battle-tracker-anchor"></span><!-- PLC_LOCAL_ONLY_END -->
           <label class="file-button secondary toolbar-file-button">Import Plan<input id="import-plan" type="file" accept=".json,.plc-plan.json,application/json"></label>
           <!-- PLC_LOCAL_ONLY_START --><span id="live-edit-anchor"></span><!-- PLC_LOCAL_ONLY_END -->
           <button id="new-plan" type="button" class="secondary">Begin Clean Plan</button>
@@ -55,36 +54,56 @@
         <section class="panel node-panel" aria-labelledby="tree-title">
           <div class="section-heading compact-heading">
             <div>
-              <p class="eyebrow">Navigation</p>
               <h2 id="tree-title">Plan nodes</h2>
             </div>
             <div class="heading-meta"><span id="turn-label" class="pill"></span><span id="revision-label" class="pill"></span></div>
           </div>
           <div id="node-tree" class="node-tree" role="tree" aria-label="Battle plan nodes"></div>
+          <!-- PLC_LOCAL_ONLY_START --><section id="battle-tracker-detail" class="battle-tracker-detail" hidden aria-live="polite"></section><!-- PLC_LOCAL_ONLY_END -->
         </section>
 
         <div id="battle-workspace" class="battle-workspace">
           <section id="player-action-panel" class="panel action-panel" aria-label="Player Action"></section>
 
           <div class="center-column">
+            <section class="panel notes-panel" aria-labelledby="notes-title">
+              <div class="node-action-toolbar">
+                <button id="commit-turn" type="button" disabled>Next Turn</button>
+                <button id="save-plan" type="button" class="secondary">Save Plan</button>
+              </div>
+              <div class="section-heading compact-heading panel-disclosure-heading">
+                <div><h2 id="notes-title">Notes</h2></div>
+                <button id="notes-toggle" class="panel-disclosure-button" type="button" aria-expanded="false" aria-controls="notes-body" aria-label="Expand Notes">▸</button>
+              </div>
+              <div id="notes-body" hidden>
+                <label class="sr-only" for="node-notes">Notes for the selected plan node</label>
+                <textarea id="node-notes" maxlength="4096" rows="8" placeholder="Add battle notes for this turn…"></textarea>
+                <p id="notes-status" class="fine-print" hidden aria-live="polite"></p>
+              </div>
+            </section>
             <section class="panel field-panel" aria-labelledby="field-title">
-              <div class="section-heading compact-heading"><div><p class="eyebrow">Battle state</p><h2 id="field-title">Field</h2></div></div>
+              <div class="section-heading compact-heading"><div><h2 id="field-title">Field</h2></div></div>
               <div id="field-state"></div>
             </section>
             <section class="panel outcomes-panel" aria-labelledby="preview-title">
               <div class="section-heading compact-heading">
-                <div><p class="eyebrow">Selected line</p><h2 id="preview-title">Possible outcomes</h2></div>
+                <div><h2 id="preview-title">Outcomes</h2></div>
               </div>
-              <p id="readiness" class="fine-print">Choose a move or switch on both sides.</p>
+              <p id="readiness" hidden>Choose a move or switch on both sides.</p>
               <div id="preview-outcomes" class="outcomes"><p class="empty">Choose a move or switch on both sides to calculate the turn.</p></div>
             </section>
-            <section class="panel notes-panel" aria-labelledby="notes-title">
-              <div class="section-heading compact-heading">
-                <div><p class="eyebrow">Node annotation</p><h2 id="notes-title">Notes</h2></div>
+            <section class="panel ai-forecast-panel" aria-labelledby="ai-forecast-title">
+              <div class="section-heading compact-heading panel-disclosure-heading">
+                <div><h2 id="ai-forecast-title">AI Forecast</h2></div>
+                <label class="panel-toggle-control">
+                  <span class="sr-only">Show AI Forecast</span>
+                  <input id="ai-forecast-toggle" type="checkbox" role="switch" aria-controls="ai-forecast-body" aria-expanded="false">
+                  <span class="panel-toggle-track" aria-hidden="true"></span>
+                </label>
               </div>
-              <label class="sr-only" for="node-notes">Notes for the selected plan node</label>
-              <textarea id="node-notes" maxlength="4096" rows="8" placeholder="Add battle notes for this turn…"></textarea>
-              <p id="notes-status" class="fine-print">Notes are saved with this node in the plan.</p>
+              <div id="ai-forecast-body" hidden>
+                <section id="ai-notes" class="ai-notes" aria-live="polite"></section>
+              </div>
             </section>
           </div>
 
@@ -101,12 +120,11 @@
     <section id="boxes-panel" role="tabpanel" aria-labelledby="boxes-tab" hidden>
       <div class="box-toolbar panel">
         <div>
-          <p class="eyebrow">Game-scoped library</p>
           <h2 id="boxes-heading">Boxes</h2>
           <p class="fine-print">A Pokémon is stored once per Box. Every Party in that Box references the same editable record.</p>
         </div>
         <div class="toolbar-actions">
-          <label class="file-button">Import .sav
+          <label class="file-button">Import .sav / .dsv
             <input id="save-import" type="file" accept=".sav,.dsv,application/octet-stream">
           </label>
           <button id="showdown-open" type="button" class="secondary">Showdown Import</button>
@@ -124,7 +142,7 @@
   <dialog id="save-import-dialog" class="wide-dialog" aria-labelledby="save-import-title">
     <form method="dialog" class="dialog-card">
       <div class="section-heading">
-        <div><p class="eyebrow">Read-only save snapshot</p><h2 id="save-import-title">Select PC Boxes</h2></div>
+        <div><h2 id="save-import-title">Select PC Boxes</h2></div>
         <button type="submit" value="cancel" class="icon-button secondary" aria-label="Close">×</button>
       </div>
       <div class="save-import-summary">
@@ -144,7 +162,7 @@
   <dialog id="plan-context-dialog" class="wide-dialog" aria-labelledby="plan-context-title">
     <form method="dialog" class="dialog-card" id="plan-context-form">
       <div class="section-heading">
-        <div><p class="eyebrow">Plan context</p><h2 id="plan-context-title">Begin a clean plan</h2></div>
+        <div><h2 id="plan-context-title">Begin a clean plan</h2></div>
         <button id="plan-context-close" type="submit" value="cancel" class="icon-button secondary" aria-label="Close">×</button>
       </div>
       <div class="context-grid">
@@ -174,15 +192,18 @@
 
       <section id="enemy-team-panel" class="party-selector-panel">
         <div class="section-heading compact-heading">
-          <div><p class="eyebrow">Opponent roster</p><h3>Enemy team</h3></div>
+          <div><h3>Enemy Team</h3></div>
         </div>
-        <div id="enemy-team-summary" class="party-selection-summary"><p class="empty">Select a trainer to view the enemy team.</p></div>
+        <div id="enemy-team-summary" class="party-selection-summary"></div>
       </section>
 
       <section class="party-selector-panel">
         <div class="section-heading compact-heading">
-          <div><p class="eyebrow">Player roster</p><h3>Party selector</h3></div>
-          <button id="edit-party-selection" type="button" class="secondary" hidden>Edit selection</button>
+          <div><h3>Party Selector</h3></div>
+          <div class="context-party-actions">
+            <button id="edge-party-exp" type="button" class="secondary" hidden>Edge Exp</button>
+            <button id="edit-party-selection" type="button" class="secondary" hidden>Edit selection</button>
+          </div>
         </div>
         <div id="party-selector-controls">
           <div class="context-grid party-source-controls">
@@ -196,7 +217,7 @@
               <select id="context-party-select"><option value="">Select Party…</option></select>
             </label>
           </div>
-          <div id="context-pokemon-grid" class="context-pokemon-grid"><p class="empty">Choose a Box. If you do not have one yet, open the Boxes tab and import a save or Showdown set.</p></div>
+          <div id="context-pokemon-grid" class="context-pokemon-grid"></div>
           <div class="dialog-actions"><button id="save-party-selection" type="button" disabled>Save Party Selection</button></div>
         </div>
         <div id="party-selection-summary" class="party-selection-summary" hidden></div>
@@ -214,7 +235,7 @@
       <div class="section-heading">
         <div class="editor-heading-identity">
           <div id="editor-sprite-preview" class="editor-sprite-preview" aria-label="Selected species sprite"></div>
-          <div><p class="eyebrow">Canonical Box record</p><h2 id="pokemon-editor-title">Edit Pokémon</h2></div>
+          <div><h2 id="pokemon-editor-title">Edit Pokémon</h2></div>
         </div>
         <button type="submit" value="cancel" class="icon-button secondary" aria-label="Close">×</button>
       </div>
@@ -242,7 +263,7 @@
 
   <dialog id="showdown-dialog" aria-labelledby="showdown-title">
     <form method="dialog" class="dialog-card">
-      <div class="section-heading"><div><p class="eyebrow">Import / export</p><h2 id="showdown-title">Showdown Tool</h2></div><button type="submit" value="cancel" class="icon-button secondary" aria-label="Close">×</button></div>
+      <div class="section-heading"><div><h2 id="showdown-title">Showdown Tool</h2></div><button type="submit" value="cancel" class="icon-button secondary" aria-label="Close">×</button></div>
       <textarea id="showdown-text" rows="14" placeholder="Paste one or more Showdown sets…"></textarea>
       <div class="context-grid"><label>Destination<select id="showdown-destination"><option value="new">Create a new Box</option></select></label></div>
       <p id="showdown-status" class="fine-print">Showdown imports can create a Box or add records to an existing Box.</p>
@@ -252,7 +273,7 @@
 
   <dialog id="output-dialog" class="wide-dialog" aria-labelledby="export-title">
     <form method="dialog" class="dialog-card">
-      <div class="section-heading"><div><p class="eyebrow">Portable file</p><h2 id="export-title">Output selection</h2></div><button type="submit" value="cancel" class="icon-button secondary" aria-label="Close">×</button></div>
+      <div class="section-heading"><div><h2 id="export-title">Output selection</h2></div><button type="submit" value="cancel" class="icon-button secondary" aria-label="Close">×</button></div>
       <div id="export-selection" class="export-selection"></div>
       <div class="file-actions"><button id="select-all-export" type="button" class="secondary">Select All</button><button id="output-plan" type="button" disabled>Output Plan File</button><button id="recalculate-plan" type="button" hidden>Recalculate Plan</button></div>
       <p id="file-status" class="fine-print">Import and output never publish anything to Overlay or OBS.</p>
@@ -265,7 +286,7 @@
 
   <dialog id="progression-dialog" aria-labelledby="progression-title">
     <form method="dialog" class="dialog-card">
-      <div class="section-heading"><div><p class="eyebrow">Locked branch</p><h2 id="progression-title">Save EXP and level changes?</h2></div></div>
+      <div class="section-heading"><div><h2 id="progression-title">Save EXP and level changes?</h2></div></div>
       <p>Update the party's Box records to the absolute EXP and levels at the end of this branch?</p>
       <div id="progression-summary" class="progression-summary"></div>
       <p class="fine-print">The current plan remains frozen to its original starting values. These updates take effect in battle state only when a new plan begins. Saving a different locked branch from this plan overwrites the Box records with that branch's totals.</p>
@@ -277,6 +298,8 @@
     <form method="dialog" class="dialog-card"><h2 id="destructive-title">Replace active planning context?</h2><p id="destructive-message"></p><div class="dialog-actions"><button id="destructive-cancel" value="cancel" type="submit" class="secondary">Cancel</button><button id="destructive-output" value="output" type="submit">Output Plan, Then Continue</button><button id="destructive-discard" value="discard" type="submit" class="danger">Discard and Continue</button></div></form>
   </dialog>
 
-  <script type="module" src="./src/app.js?v=20260827-lock-progression"></script>
+  <script src="./src/generated/pokemon_asset_resolver.global.js?v=20260828-central-sprites"></script>
+  <script src="./src/generated/battle-mechanics/trainer_ai/trainer_ai_evaluator.js?v=20260905-rule-titles"></script>
+  <script type="module" src="./src/app.js?v=20260905-move-selection-v1"></script>
 </body>
 </html>

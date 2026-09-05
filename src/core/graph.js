@@ -211,82 +211,112 @@ function orderedChildStateIds(plan, state) {
   });
 }
 
-function planStateLanes(plan) {
+function planStateLanes(plan, draftStateNodeIds = new Set()) {
   const childrenByStateId = new Map();
-  const branchStarts = [];
   for (const state of Object.values(plan.stateNodes || {})) {
     const children = orderedChildStateIds(plan, state);
     childrenByStateId.set(state.stateNodeId, children);
-    for (const childStateId of children.slice(1)) branchStarts.push(childStateId);
   }
-  branchStarts.sort((left, right) =>
-    Number(plan.stateNodes[left]?.createdOrder || 0) - Number(plan.stateNodes[right]?.createdOrder || 0)
-    || left.localeCompare(right)
-  );
-  const branchLaneByStateId = new Map(branchStarts.map((stateId, index) => [stateId, index + 1]));
   const laneByStateId = new Map();
+  const draftLaneByStateId = new Map();
   const visiting = new Set();
-  const walk = (stateId, lane) => {
+  let nextLane = 0;
+  const walk = stateId => {
     const state = plan.stateNodes?.[stateId];
-    if (!state || visiting.has(stateId)) return;
+    if (!state || visiting.has(stateId)) return null;
     visiting.add(stateId);
+    const children = childrenByStateId.get(stateId) || [];
+    let lane = null;
+    for (const childStateId of children) {
+      const childLane = walk(childStateId);
+      if (lane === null && Number.isFinite(childLane)) lane = childLane;
+    }
+    if (lane === null) lane = nextLane++;
     laneByStateId.set(stateId, lane);
-    (childrenByStateId.get(stateId) || []).forEach((childStateId, index) => {
-      walk(childStateId, index === 0 ? lane : branchLaneByStateId.get(childStateId));
-    });
+    if (draftStateNodeIds.has(stateId)) {
+      const draftLane = children.length ? nextLane++ : lane;
+      draftLaneByStateId.set(stateId, draftLane);
+    }
     visiting.delete(stateId);
+    return lane;
   };
-  walk(plan.initialStateNodeId, 0);
-  return laneByStateId;
+  walk(plan.initialStateNodeId);
+  return { laneByStateId, draftLaneByStateId };
 }
 
 export function planTurnTreeOrder(plan, { additionalDraftStateNodeIds = [] } = {}) {
-  const laneByStateId = planStateLanes(plan);
-  let nextDraftLane = Math.max(0, ...laneByStateId.values()) + 1;
+  const treeStates = planTreeOrder(plan, { includeReplacementStates: true });
+  const draftStateNodeIds = new Set(additionalDraftStateNodeIds || []);
+  for (const { state } of treeStates) {
+    const hasChildren = (state.childActionGroupIds || []).length || (state.childReplacementTransitionIds || []).length;
+    if (!hasChildren && !state.battleEnded) draftStateNodeIds.add(state.stateNodeId);
+  }
+  const { laneByStateId, draftLaneByStateId } = planStateLanes(plan, draftStateNodeIds);
   const entries = [];
-  for (const { state, depth } of planTreeOrder(plan, { includeReplacementStates: false })) {
-    if (!state.parentActionGroupId) continue;
-    const group = plan.actionGroups[state.parentActionGroupId];
-    if (!group) continue;
+  for (const { state, depth } of treeStates) {
+    const replacement = state.parentReplacementTransitionId ? plan.replacementTransitions?.[state.parentReplacementTransitionId] : null;
+    const group = state.parentActionGroupId ? plan.actionGroups[state.parentActionGroupId] : null;
+    if (!group && !replacement) continue;
+    const transitionKind = replacement ? "replacement" : "action";
+    const replacementPhase = replacement ? trailingReplacementDepth(plan, state.stateNodeId) : 0;
+    const turnNumber = replacement ? Number(state.turnNumber) + 1 : Number(state.turnNumber);
     entries.push({
       kind: "committed",
-      turnNumber: Number(state.turnNumber),
+      transitionKind,
+      turnNumber,
+      columnKey: replacement ? `replacement-${state.turnNumber}-${replacementPhase}` : `turn-${turnNumber}`,
+      columnOrder: replacement ? Number(state.turnNumber) * 100 + replacementPhase : turnNumber * 100,
+      columnTitle: replacement ? "" : `Turn ${turnNumber}`,
       outcomeStateNodeId: state.stateNodeId,
-      decisionStateNodeId: group.parentStateNodeId,
+      decisionStateNodeId: (replacement || group).parentStateNodeId,
+      transitionId: replacement?.replacementTransitionId || group?.actionGroupId,
       createdOrder: Number(state.createdOrder || 0),
       depth,
       lane: Number(laneByStateId.get(state.stateNodeId) || 0)
     });
   }
 
-  const draftStateNodeIds = new Set(additionalDraftStateNodeIds || []);
-  for (const { state } of planTreeOrder(plan, { includeReplacementStates: true })) {
-    const hasChildren = (state.childActionGroupIds || []).length || (state.childReplacementTransitionIds || []).length;
-    if (!hasChildren && !state.battleEnded) draftStateNodeIds.add(state.stateNodeId);
-  }
   for (const stateNodeId of draftStateNodeIds) {
     const state = plan.stateNodes[stateNodeId];
     if (!state || state.battleEnded) continue;
-    const hasChildren = (state.childActionGroupIds || []).length || (state.childReplacementTransitionIds || []).length;
-    const visibleDepth = stateLineage(plan, stateNodeId).filter(id => id !== plan.initialStateNodeId && !plan.stateNodes[id]?.parentReplacementTransitionId).length;
+    const replacement = (state.pendingReplacementSlots || state.pendingReplacementSides || []).length > 0;
+    const replacementPhase = replacement ? trailingReplacementDepth(plan, stateNodeId) + 1 : 0;
+    const turnNumber = Number(state.turnNumber) + 1;
+    const visibleDepth = stateLineage(plan, stateNodeId).filter(id => id !== plan.initialStateNodeId).length;
     entries.push({
       kind: "draft",
-      turnNumber: Number(state.turnNumber) + 1,
+      transitionKind: replacement ? "replacement" : "action",
+      turnNumber,
+      columnKey: replacement ? `replacement-${state.turnNumber}-${replacementPhase}` : `turn-${turnNumber}`,
+      columnOrder: replacement ? Number(state.turnNumber) * 100 + replacementPhase : turnNumber * 100,
+      columnTitle: replacement ? "" : `Turn ${turnNumber}`,
       decisionStateNodeId: stateNodeId,
       outcomeStateNodeId: null,
       createdOrder: Number(state.createdOrder || 0) + 0.5,
       depth: visibleDepth,
-      lane: hasChildren ? nextDraftLane++ : Number(laneByStateId.get(stateNodeId) || 0)
+      lane: Number(draftLaneByStateId.get(stateNodeId) ?? laneByStateId.get(stateNodeId) ?? 0)
     });
   }
 
   return entries.sort((left, right) =>
-    left.turnNumber - right.turnNumber
+    left.columnOrder - right.columnOrder
     || left.lane - right.lane
     || left.createdOrder - right.createdOrder
     || (left.kind === right.kind ? 0 : left.kind === "committed" ? -1 : 1)
     || String(left.outcomeStateNodeId || left.decisionStateNodeId).localeCompare(String(right.outcomeStateNodeId || right.decisionStateNodeId))
   );
+}
+
+function trailingReplacementDepth(plan, stateNodeId) {
+  let depth = 0;
+  let state = plan.stateNodes?.[stateNodeId];
+  while (state?.parentReplacementTransitionId) {
+    const transition = plan.replacementTransitions?.[state.parentReplacementTransitionId];
+    if (!transition) break;
+    depth += 1;
+    state = plan.stateNodes?.[transition.parentStateNodeId];
+  }
+  return depth;
 }
 
 export function turnNodeVisuals(plan, decisionStateNodeId, outcomeState, actions) {
@@ -318,7 +348,7 @@ export function turnNodeVisuals(plan, decisionStateNodeId, outcomeState, actions
     if (!combatantKeys.includes(combatantKey)) combatantKeys.push(combatantKey);
   }
   return {
-    combatantKeys: combatantKeys.slice(0, 4),
+    combatantKeys,
     faintedCombatantKeys,
     switchedInCombatantKeys,
     hasFaint: faintedCombatantKeys.size > 0

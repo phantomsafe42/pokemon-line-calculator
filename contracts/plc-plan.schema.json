@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://phantomsafe.local/schemas/plc-plan-v2.schema.json",
+  "$id": "https://phantomsafe.local/schemas/plc-plan-v4.schema.json",
   "title": "Pokemon Line Calculator Plan",
   "type": "object",
   "additionalProperties": false,
@@ -24,7 +24,7 @@
   ],
   "properties": {
     "kind": { "const": "pokemon-battle-plan" },
-    "schemaVersion": { "const": 2 },
+    "schemaVersion": { "enum": [2, 3, 4] },
     "planId": { "$ref": "#/$defs/id" },
     "name": { "$ref": "#/$defs/label" },
     "createdAt": { "type": "string", "format": "date-time" },
@@ -36,7 +36,7 @@
       "required": ["gameId", "battleFormat", "trainerId", "trainerVariantId"],
       "properties": {
         "gameId": { "$ref": "#/$defs/id" },
-        "battleFormat": { "enum": ["singles", "doubles"] },
+        "battleFormat": { "enum": ["singles", "doubles", "triples", "rotation"] },
         "trainerId": { "type": ["string", "integer"] },
         "trainerVariantId": { "type": ["string", "integer", "null"] }
       }
@@ -212,6 +212,22 @@
           }
         },
         "fieldState": { "type": "object" },
+        "rotation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["frontSlots"],
+          "properties": {
+            "frontSlots": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["player", "enemy"],
+              "properties": {
+                "player": { "type": "integer", "minimum": 0, "maximum": 2 },
+                "enemy": { "type": "integer", "minimum": 0, "maximum": 2 }
+              }
+            }
+          }
+        },
         "resolutionEventIds": { "$ref": "#/$defs/idArray" },
         "childActionGroupIds": { "$ref": "#/$defs/idArray" },
         "childReplacementTransitionIds": { "$ref": "#/$defs/idArray" },
@@ -286,8 +302,8 @@
           "type": "object",
           "minProperties": 1,
           "properties": {
-            "player": { "type": "array", "minItems": 1, "maxItems": 2, "items": { "$ref": "#/$defs/replacementAction" } },
-            "enemy": { "type": "array", "minItems": 1, "maxItems": 2, "items": { "$ref": "#/$defs/replacementAction" } }
+            "player": { "type": "array", "minItems": 1, "maxItems": 3, "items": { "$ref": "#/$defs/replacementAction" } },
+            "enemy": { "type": "array", "minItems": 1, "maxItems": 3, "items": { "$ref": "#/$defs/replacementAction" } }
           }
         },
         "outcomeStateNodeIds": { "$ref": "#/$defs/idArray" },
@@ -301,7 +317,7 @@
       "properties": {
         "actionType": { "const": "replacement" },
         "side": { "enum": ["player", "enemy"] },
-        "slot": { "type": "integer", "minimum": 0, "maximum": 1 },
+        "slot": { "type": "integer", "minimum": 0, "maximum": 2 },
         "switchToKey": { "$ref": "#/$defs/id" },
         "reason": { "$ref": "#/$defs/id" },
         "consumesTurn": { "const": false }
@@ -310,9 +326,13 @@
     "activeKeys": {
       "type": "array",
       "minItems": 1,
-      "maxItems": 2,
-      "uniqueItems": true,
-      "items": { "$ref": "#/$defs/id" }
+      "maxItems": 3,
+      "items": {
+        "anyOf": [
+          { "$ref": "#/$defs/id" },
+          { "type": "null" }
+        ]
+      }
     },
     "battleSlot": {
       "type": "object",
@@ -320,13 +340,13 @@
       "required": ["side", "slot"],
       "properties": {
         "side": { "enum": ["player", "enemy"] },
-        "slot": { "type": "integer", "minimum": 0, "maximum": 1 }
+        "slot": { "type": "integer", "minimum": 0, "maximum": 2 }
       }
     },
     "turnActions": {
       "type": "array",
       "minItems": 1,
-      "maxItems": 2,
+      "maxItems": 3,
       "items": { "type": "object" }
     },
     "event": {

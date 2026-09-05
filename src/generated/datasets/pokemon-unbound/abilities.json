@@ -1,0 +1,5576 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-unbound",
+  "kind": "abilities",
+  "records": {
+    "stench": {
+      "num": 1,
+      "id": "stench",
+      "name": "Stench",
+      "calcName": "Stench",
+      "desc": {
+        "battle": "Helps repel wild Pokémon.",
+        "overworld": ""
+      },
+      "storageAbilityId": "stench",
+      "storageAlias": false,
+      "romId": 1,
+      "aliases": [
+        "Stench"
+      ],
+      "mechanicsBase": "Stench",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "drizzle": {
+      "num": 2,
+      "id": "drizzle",
+      "name": "Drizzle",
+      "calcName": "Drizzle",
+      "desc": {
+        "battle": "Summons rain in battle.",
+        "overworld": ""
+      },
+      "storageAbilityId": "drizzle",
+      "storageAlias": false,
+      "romId": 2,
+      "aliases": [
+        "Drizzle"
+      ],
+      "mechanicsBase": "Drizzle",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "speedboost": {
+      "num": 3,
+      "id": "speedboost",
+      "name": "Speed Boost",
+      "calcName": "Speed Boost",
+      "desc": {
+        "battle": "Gradually boosts Speed.",
+        "overworld": ""
+      },
+      "storageAbilityId": "speedboost",
+      "storageAlias": false,
+      "romId": 3,
+      "aliases": [
+        "Speed Boost"
+      ],
+      "mechanicsBase": "Speed Boost",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "battlearmor": {
+      "num": 4,
+      "id": "battlearmor",
+      "name": "Battle Armor",
+      "calcName": "Battle Armor",
+      "desc": {
+        "battle": "Blocks critical hits.",
+        "overworld": ""
+      },
+      "storageAbilityId": "battlearmor",
+      "storageAlias": false,
+      "romId": 4,
+      "aliases": [
+        "Battle Armor"
+      ],
+      "mechanicsBase": "Battle Armor",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "sturdy": {
+      "num": 5,
+      "id": "sturdy",
+      "name": "Sturdy",
+      "calcName": "Sturdy",
+      "desc": {
+        "battle": "Negates 1-hit KO attacks.",
+        "overworld": ""
+      },
+      "storageAbilityId": "sturdy",
+      "storageAlias": false,
+      "romId": 5,
+      "aliases": [
+        "Sturdy"
+      ],
+      "mechanicsBase": "Sturdy",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "damp": {
+      "num": 6,
+      "id": "damp",
+      "name": "Damp",
+      "calcName": "Damp",
+      "desc": {
+        "battle": "Prevents self-destruction.",
+        "overworld": ""
+      },
+      "storageAbilityId": "damp",
+      "storageAlias": false,
+      "romId": 6,
+      "aliases": [
+        "Damp"
+      ],
+      "mechanicsBase": "Damp",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "limber": {
+      "num": 7,
+      "id": "limber",
+      "name": "Limber",
+      "calcName": "Limber",
+      "desc": {
+        "battle": "Prevents paralysis.",
+        "overworld": ""
+      },
+      "storageAbilityId": "limber",
+      "storageAlias": false,
+      "romId": 7,
+      "aliases": [
+        "Limber"
+      ],
+      "mechanicsBase": "Limber",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "sandveil": {
+      "num": 8,
+      "id": "sandveil",
+      "name": "Sand Veil",
+      "calcName": "Sand Veil",
+      "desc": {
+        "battle": "Ups evasion in a sandstorm.",
+        "overworld": ""
+      },
+      "storageAbilityId": "sandveil",
+      "storageAlias": false,
+      "romId": 8,
+      "aliases": [
+        "Sand Veil"
+      ],
+      "mechanicsBase": "Sand Veil",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "static": {
+      "num": 9,
+      "id": "static",
+      "name": "Static",
+      "calcName": "Static",
+      "desc": {
+        "battle": "Paralyzes on contact.",
+        "overworld": ""
+      },
+      "storageAbilityId": "static",
+      "storageAlias": false,
+      "romId": 9,
+      "aliases": [
+        "Static"
+      ],
+      "mechanicsBase": "Static",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "voltabsorb": {
+      "num": 10,
+      "id": "voltabsorb",
+      "name": "Volt Absorb",
+      "calcName": "Volt Absorb",
+      "desc": {
+        "battle": "Turns electricity into HP.",
+        "overworld": ""
+      },
+      "storageAbilityId": "voltabsorb",
+      "storageAlias": false,
+      "romId": 10,
+      "aliases": [
+        "Volt Absorb"
+      ],
+      "mechanicsBase": "Volt Absorb",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "waterabsorb": {
+      "num": 11,
+      "id": "waterabsorb",
+      "name": "Water Absorb",
+      "calcName": "Water Absorb",
+      "desc": {
+        "battle": "Changes water into HP.",
+        "overworld": ""
+      },
+      "storageAbilityId": "waterabsorb",
+      "storageAlias": false,
+      "romId": 11,
+      "aliases": [
+        "Water Absorb"
+      ],
+      "mechanicsBase": "Water Absorb",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "oblivious": {
+      "num": 12,
+      "id": "oblivious",
+      "name": "Oblivious",
+      "calcName": "Oblivious",
+      "desc": {
+        "battle": "Prevents attraction.",
+        "overworld": ""
+      },
+      "storageAbilityId": "oblivious",
+      "storageAlias": false,
+      "romId": 12,
+      "aliases": [
+        "Oblivious"
+      ],
+      "mechanicsBase": "Oblivious",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "cloudnine": {
+      "num": 13,
+      "id": "cloudnine",
+      "name": "Cloud Nine",
+      "calcName": "Cloud Nine",
+      "desc": {
+        "battle": "Negates weather effects.",
+        "overworld": ""
+      },
+      "storageAbilityId": "cloudnine",
+      "storageAlias": false,
+      "romId": 13,
+      "aliases": [
+        "Cloud Nine"
+      ],
+      "mechanicsBase": "Cloud Nine",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "compoundeyes": {
+      "num": 14,
+      "id": "compoundeyes",
+      "name": "Compound Eyes",
+      "calcName": "Compound Eyes",
+      "desc": {
+        "battle": "Raises accuracy.",
+        "overworld": ""
+      },
+      "storageAbilityId": "compoundeyes",
+      "storageAlias": false,
+      "romId": 14,
+      "aliases": [
+        "Compound Eyes"
+      ],
+      "mechanicsBase": "Compound Eyes",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "insomnia": {
+      "num": 15,
+      "id": "insomnia",
+      "name": "Insomnia",
+      "calcName": "Insomnia",
+      "desc": {
+        "battle": "Prevents sleep.",
+        "overworld": ""
+      },
+      "storageAbilityId": "insomnia",
+      "storageAlias": false,
+      "romId": 15,
+      "aliases": [
+        "Insomnia"
+      ],
+      "mechanicsBase": "Insomnia",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "colorchange": {
+      "num": 16,
+      "id": "colorchange",
+      "name": "Color Change",
+      "calcName": "Color Change",
+      "desc": {
+        "battle": "Changes type to foe's move.",
+        "overworld": ""
+      },
+      "storageAbilityId": "colorchange",
+      "storageAlias": false,
+      "romId": 16,
+      "aliases": [
+        "Color Change"
+      ],
+      "mechanicsBase": "Color Change",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "immunity": {
+      "num": 17,
+      "id": "immunity",
+      "name": "Immunity",
+      "calcName": "Immunity",
+      "desc": {
+        "battle": "Prevents poisoning.",
+        "overworld": ""
+      },
+      "storageAbilityId": "immunity",
+      "storageAlias": false,
+      "romId": 17,
+      "aliases": [
+        "Immunity"
+      ],
+      "mechanicsBase": "Immunity",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "flashfire": {
+      "num": 18,
+      "id": "flashfire",
+      "name": "Flash Fire",
+      "calcName": "Flash Fire",
+      "desc": {
+        "battle": "Powers up if hit by fire.",
+        "overworld": ""
+      },
+      "storageAbilityId": "flashfire",
+      "storageAlias": false,
+      "romId": 18,
+      "aliases": [
+        "Flash Fire"
+      ],
+      "mechanicsBase": "Flash Fire",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "shielddust": {
+      "num": 19,
+      "id": "shielddust",
+      "name": "Shield Dust",
+      "calcName": "Shield Dust",
+      "desc": {
+        "battle": "Prevents added effects.",
+        "overworld": ""
+      },
+      "storageAbilityId": "shielddust",
+      "storageAlias": false,
+      "romId": 19,
+      "aliases": [
+        "Shield Dust"
+      ],
+      "mechanicsBase": "Shield Dust",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "owntempo": {
+      "num": 20,
+      "id": "owntempo",
+      "name": "Own Tempo",
+      "calcName": "Own Tempo",
+      "desc": {
+        "battle": "Prevents confusion.",
+        "overworld": ""
+      },
+      "storageAbilityId": "owntempo",
+      "storageAlias": false,
+      "romId": 20,
+      "aliases": [
+        "Own Tempo"
+      ],
+      "mechanicsBase": "Own Tempo",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "suctioncups": {
+      "num": 21,
+      "id": "suctioncups",
+      "name": "Suction Cups",
+      "calcName": "Suction Cups",
+      "desc": {
+        "battle": "Firmly anchors the body.",
+        "overworld": ""
+      },
+      "storageAbilityId": "suctioncups",
+      "storageAlias": false,
+      "romId": 21,
+      "aliases": [
+        "Suction Cups"
+      ],
+      "mechanicsBase": "Suction Cups",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "intimidate": {
+      "num": 22,
+      "id": "intimidate",
+      "name": "Intimidate",
+      "calcName": "Intimidate",
+      "desc": {
+        "battle": "Lowers the foe's Attack.",
+        "overworld": ""
+      },
+      "storageAbilityId": "intimidate",
+      "storageAlias": false,
+      "romId": 22,
+      "aliases": [
+        "Intimidate"
+      ],
+      "mechanicsBase": "Intimidate",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "shadowtag": {
+      "num": 23,
+      "id": "shadowtag",
+      "name": "Shadow Tag",
+      "calcName": "Shadow Tag",
+      "desc": {
+        "battle": "Prevents the foe's escape.",
+        "overworld": ""
+      },
+      "storageAbilityId": "shadowtag",
+      "storageAlias": false,
+      "romId": 23,
+      "aliases": [
+        "Shadow Tag"
+      ],
+      "mechanicsBase": "Shadow Tag",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "roughskin": {
+      "num": 24,
+      "id": "roughskin",
+      "name": "Rough Skin",
+      "calcName": "Rough Skin",
+      "desc": {
+        "battle": "Hurts to touch.",
+        "overworld": ""
+      },
+      "storageAbilityId": "roughskin",
+      "storageAlias": false,
+      "romId": 24,
+      "aliases": [
+        "Rough Skin"
+      ],
+      "mechanicsBase": "Rough Skin",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "wonderguard": {
+      "num": 25,
+      "id": "wonderguard",
+      "name": "Wonder Guard",
+      "calcName": "Wonder Guard",
+      "desc": {
+        "battle": "“Super effective” hits.",
+        "overworld": ""
+      },
+      "storageAbilityId": "wonderguard",
+      "storageAlias": false,
+      "romId": 25,
+      "aliases": [
+        "Wonder Guard"
+      ],
+      "mechanicsBase": "Wonder Guard",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "levitate": {
+      "num": 26,
+      "id": "levitate",
+      "name": "Levitate",
+      "calcName": "Levitate",
+      "desc": {
+        "battle": "Not hit by Ground attacks.",
+        "overworld": ""
+      },
+      "storageAbilityId": "levitate",
+      "storageAlias": false,
+      "romId": 26,
+      "aliases": [
+        "Levitate"
+      ],
+      "mechanicsBase": "Levitate",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "effectspore": {
+      "num": 27,
+      "id": "effectspore",
+      "name": "Effect Spore",
+      "calcName": "Effect Spore",
+      "desc": {
+        "battle": "Leaves spores on contact.",
+        "overworld": ""
+      },
+      "storageAbilityId": "effectspore",
+      "storageAlias": false,
+      "romId": 27,
+      "aliases": [
+        "Effect Spore"
+      ],
+      "mechanicsBase": "Effect Spore",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "synchronize": {
+      "num": 28,
+      "id": "synchronize",
+      "name": "Synchronize",
+      "calcName": "Synchronize",
+      "desc": {
+        "battle": "Passes on status problems.",
+        "overworld": ""
+      },
+      "storageAbilityId": "synchronize",
+      "storageAlias": false,
+      "romId": 28,
+      "aliases": [
+        "Synchronize"
+      ],
+      "mechanicsBase": "Synchronize",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "clearbody": {
+      "num": 29,
+      "id": "clearbody",
+      "name": "Clear Body",
+      "calcName": "Clear Body",
+      "desc": {
+        "battle": "Prevents ability reduction.",
+        "overworld": ""
+      },
+      "storageAbilityId": "clearbody",
+      "storageAlias": false,
+      "romId": 29,
+      "aliases": [
+        "Clear Body"
+      ],
+      "mechanicsBase": "Clear Body",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "naturalcure": {
+      "num": 30,
+      "id": "naturalcure",
+      "name": "Natural Cure",
+      "calcName": "Natural Cure",
+      "desc": {
+        "battle": "Heals upon switching out.",
+        "overworld": ""
+      },
+      "storageAbilityId": "naturalcure",
+      "storageAlias": false,
+      "romId": 30,
+      "aliases": [
+        "Natural Cure"
+      ],
+      "mechanicsBase": "Natural Cure",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "lightningrod": {
+      "num": 31,
+      "id": "lightningrod",
+      "name": "Lightning Rod",
+      "calcName": "Lightning Rod",
+      "desc": {
+        "battle": "Draws electrical moves.",
+        "overworld": ""
+      },
+      "storageAbilityId": "lightningrod",
+      "storageAlias": false,
+      "romId": 31,
+      "aliases": [
+        "Lightning Rod"
+      ],
+      "mechanicsBase": "Lightning Rod",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "serenegrace": {
+      "num": 32,
+      "id": "serenegrace",
+      "name": "Serene Grace",
+      "calcName": "Serene Grace",
+      "desc": {
+        "battle": "Promotes added effects.",
+        "overworld": ""
+      },
+      "storageAbilityId": "serenegrace",
+      "storageAlias": false,
+      "romId": 32,
+      "aliases": [
+        "Serene Grace"
+      ],
+      "mechanicsBase": "Serene Grace",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "swiftswim": {
+      "num": 33,
+      "id": "swiftswim",
+      "name": "Swift Swim",
+      "calcName": "Swift Swim",
+      "desc": {
+        "battle": "Raises Speed in rain.",
+        "overworld": ""
+      },
+      "storageAbilityId": "swiftswim",
+      "storageAlias": false,
+      "romId": 33,
+      "aliases": [
+        "Swift Swim"
+      ],
+      "mechanicsBase": "Swift Swim",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "chlorophyll": {
+      "num": 34,
+      "id": "chlorophyll",
+      "name": "Chlorophyll",
+      "calcName": "Chlorophyll",
+      "desc": {
+        "battle": "Raises Speed in sunshine.",
+        "overworld": ""
+      },
+      "storageAbilityId": "chlorophyll",
+      "storageAlias": false,
+      "romId": 34,
+      "aliases": [
+        "Chlorophyll"
+      ],
+      "mechanicsBase": "Chlorophyll",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "illuminate": {
+      "num": 35,
+      "id": "illuminate",
+      "name": "Illuminate",
+      "calcName": "Illuminate",
+      "desc": {
+        "battle": "Encounter rate increases.",
+        "overworld": ""
+      },
+      "storageAbilityId": "illuminate",
+      "storageAlias": false,
+      "romId": 35,
+      "aliases": [
+        "Illuminate"
+      ],
+      "mechanicsBase": "Illuminate",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "trace": {
+      "num": 36,
+      "id": "trace",
+      "name": "Trace",
+      "calcName": "Trace",
+      "desc": {
+        "battle": "Copies special ability.",
+        "overworld": ""
+      },
+      "storageAbilityId": "trace",
+      "storageAlias": false,
+      "romId": 36,
+      "aliases": [
+        "Trace"
+      ],
+      "mechanicsBase": "Trace",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "hugepower": {
+      "num": 37,
+      "id": "hugepower",
+      "name": "Huge Power",
+      "calcName": "Huge Power",
+      "desc": {
+        "battle": "Raises Attack.",
+        "overworld": ""
+      },
+      "storageAbilityId": "hugepower",
+      "storageAlias": false,
+      "romId": 37,
+      "aliases": [
+        "Huge Power"
+      ],
+      "mechanicsBase": "Huge Power",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "poisonpoint": {
+      "num": 38,
+      "id": "poisonpoint",
+      "name": "Poison Point",
+      "calcName": "Poison Point",
+      "desc": {
+        "battle": "Poisons foe on contact.",
+        "overworld": ""
+      },
+      "storageAbilityId": "poisonpoint",
+      "storageAlias": false,
+      "romId": 38,
+      "aliases": [
+        "Poison Point"
+      ],
+      "mechanicsBase": "Poison Point",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "innerfocus": {
+      "num": 39,
+      "id": "innerfocus",
+      "name": "Inner Focus",
+      "calcName": "Inner Focus",
+      "desc": {
+        "battle": "Prevents flinching.",
+        "overworld": ""
+      },
+      "storageAbilityId": "innerfocus",
+      "storageAlias": false,
+      "romId": 39,
+      "aliases": [
+        "Inner Focus"
+      ],
+      "mechanicsBase": "Inner Focus",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "magmaarmor": {
+      "num": 40,
+      "id": "magmaarmor",
+      "name": "Magma Armor",
+      "calcName": "Magma Armor",
+      "desc": {
+        "battle": "Can't get frostbite.",
+        "overworld": ""
+      },
+      "storageAbilityId": "magmaarmor",
+      "storageAlias": false,
+      "romId": 40,
+      "aliases": [
+        "Magma Armor"
+      ],
+      "mechanicsBase": "Magma Armor",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "waterveil": {
+      "num": 41,
+      "id": "waterveil",
+      "name": "Water Veil",
+      "calcName": "Water Veil",
+      "desc": {
+        "battle": "Prevents burns.",
+        "overworld": ""
+      },
+      "storageAbilityId": "waterveil",
+      "storageAlias": false,
+      "romId": 41,
+      "aliases": [
+        "Water Veil"
+      ],
+      "mechanicsBase": "Water Veil",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "magnetpull": {
+      "num": 42,
+      "id": "magnetpull",
+      "name": "Magnet Pull",
+      "calcName": "Magnet Pull",
+      "desc": {
+        "battle": "Traps Steel-type Pokémon.",
+        "overworld": ""
+      },
+      "storageAbilityId": "magnetpull",
+      "storageAlias": false,
+      "romId": 42,
+      "aliases": [
+        "Magnet Pull"
+      ],
+      "mechanicsBase": "Magnet Pull",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "soundproof": {
+      "num": 43,
+      "id": "soundproof",
+      "name": "Soundproof",
+      "calcName": "Soundproof",
+      "desc": {
+        "battle": "Avoids sound-based moves.",
+        "overworld": ""
+      },
+      "storageAbilityId": "soundproof",
+      "storageAlias": false,
+      "romId": 43,
+      "aliases": [
+        "Soundproof"
+      ],
+      "mechanicsBase": "Soundproof",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "raindish": {
+      "num": 44,
+      "id": "raindish",
+      "name": "Rain Dish",
+      "calcName": "Rain Dish",
+      "desc": {
+        "battle": "Slight HP recovery in rain.",
+        "overworld": ""
+      },
+      "storageAbilityId": "raindish",
+      "storageAlias": false,
+      "romId": 44,
+      "aliases": [
+        "Rain Dish"
+      ],
+      "mechanicsBase": "Rain Dish",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "sandstream": {
+      "num": 45,
+      "id": "sandstream",
+      "name": "Sand Stream",
+      "calcName": "Sand Stream",
+      "desc": {
+        "battle": "Summons a sandstorm.",
+        "overworld": ""
+      },
+      "storageAbilityId": "sandstream",
+      "storageAlias": false,
+      "romId": 45,
+      "aliases": [
+        "Sand Stream"
+      ],
+      "mechanicsBase": "Sand Stream",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "pressure": {
+      "num": 46,
+      "id": "pressure",
+      "name": "Pressure",
+      "calcName": "Pressure",
+      "desc": {
+        "battle": "Raises foe's PP usage.",
+        "overworld": ""
+      },
+      "storageAbilityId": "pressure",
+      "storageAlias": false,
+      "romId": 46,
+      "aliases": [
+        "Pressure"
+      ],
+      "mechanicsBase": "Pressure",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "thickfat": {
+      "num": 47,
+      "id": "thickfat",
+      "name": "Thick Fat",
+      "calcName": "Thick Fat",
+      "desc": {
+        "battle": "Heat-and-cold protection.",
+        "overworld": ""
+      },
+      "storageAbilityId": "thickfat",
+      "storageAlias": false,
+      "romId": 47,
+      "aliases": [
+        "Thick Fat"
+      ],
+      "mechanicsBase": "Thick Fat",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "earlybird": {
+      "num": 48,
+      "id": "earlybird",
+      "name": "Early Bird",
+      "calcName": "Early Bird",
+      "desc": {
+        "battle": "Awakens quickly from sleep.",
+        "overworld": ""
+      },
+      "storageAbilityId": "earlybird",
+      "storageAlias": false,
+      "romId": 48,
+      "aliases": [
+        "Early Bird"
+      ],
+      "mechanicsBase": "Early Bird",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "flamebody": {
+      "num": 49,
+      "id": "flamebody",
+      "name": "Flame Body",
+      "calcName": "Flame Body",
+      "desc": {
+        "battle": "Burns the foe on contact.",
+        "overworld": ""
+      },
+      "storageAbilityId": "flamebody",
+      "storageAlias": false,
+      "romId": 49,
+      "aliases": [
+        "Flame Body"
+      ],
+      "mechanicsBase": "Flame Body",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "runaway": {
+      "num": 50,
+      "id": "runaway",
+      "name": "Run Away",
+      "calcName": "Run Away",
+      "desc": {
+        "battle": "Makes escaping easier.",
+        "overworld": ""
+      },
+      "storageAbilityId": "runaway",
+      "storageAlias": false,
+      "romId": 50,
+      "aliases": [
+        "Run Away"
+      ],
+      "mechanicsBase": "Run Away",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "keeneye": {
+      "num": 51,
+      "id": "keeneye",
+      "name": "Keen Eye",
+      "calcName": "Keen Eye",
+      "desc": {
+        "battle": "Prevents loss of accuracy.",
+        "overworld": ""
+      },
+      "storageAbilityId": "keeneye",
+      "storageAlias": false,
+      "romId": 51,
+      "aliases": [
+        "Keen Eye"
+      ],
+      "mechanicsBase": "Keen Eye",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "hypercutter": {
+      "num": 52,
+      "id": "hypercutter",
+      "name": "Hyper Cutter",
+      "calcName": "Hyper Cutter",
+      "desc": {
+        "battle": "Prevents Attack reduction.",
+        "overworld": ""
+      },
+      "storageAbilityId": "hypercutter",
+      "storageAlias": false,
+      "romId": 52,
+      "aliases": [
+        "Hyper Cutter"
+      ],
+      "mechanicsBase": "Hyper Cutter",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "pickup": {
+      "num": 53,
+      "id": "pickup",
+      "name": "Pickup",
+      "calcName": "Pickup",
+      "desc": {
+        "battle": "May pick up items.",
+        "overworld": ""
+      },
+      "storageAbilityId": "pickup",
+      "storageAlias": false,
+      "romId": 53,
+      "aliases": [
+        "Pickup"
+      ],
+      "mechanicsBase": "Pickup",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "truant": {
+      "num": 54,
+      "id": "truant",
+      "name": "Truant",
+      "calcName": "Truant",
+      "desc": {
+        "battle": "Moves only every two turns.",
+        "overworld": ""
+      },
+      "storageAbilityId": "truant",
+      "storageAlias": false,
+      "romId": 54,
+      "aliases": [
+        "Truant"
+      ],
+      "mechanicsBase": "Truant",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "hustle": {
+      "num": 55,
+      "id": "hustle",
+      "name": "Hustle",
+      "calcName": "Hustle",
+      "desc": {
+        "battle": "Trades accuracy for power.",
+        "overworld": ""
+      },
+      "storageAbilityId": "hustle",
+      "storageAlias": false,
+      "romId": 55,
+      "aliases": [
+        "Hustle"
+      ],
+      "mechanicsBase": "Hustle",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "cutecharm": {
+      "num": 56,
+      "id": "cutecharm",
+      "name": "Cute Charm",
+      "calcName": "Cute Charm",
+      "desc": {
+        "battle": "Infatuates on contact.",
+        "overworld": ""
+      },
+      "storageAbilityId": "cutecharm",
+      "storageAlias": false,
+      "romId": 56,
+      "aliases": [
+        "Cute Charm"
+      ],
+      "mechanicsBase": "Cute Charm",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "plus": {
+      "num": 57,
+      "id": "plus",
+      "name": "Plus",
+      "calcName": "Plus",
+      "desc": {
+        "battle": "Powers up with Minus.",
+        "overworld": ""
+      },
+      "storageAbilityId": "plus",
+      "storageAlias": false,
+      "romId": 57,
+      "aliases": [
+        "Plus"
+      ],
+      "mechanicsBase": "Plus",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "minus": {
+      "num": 58,
+      "id": "minus",
+      "name": "Minus",
+      "calcName": "Minus",
+      "desc": {
+        "battle": "Powers up with Plus.",
+        "overworld": ""
+      },
+      "storageAbilityId": "minus",
+      "storageAlias": false,
+      "romId": 58,
+      "aliases": [
+        "Minus"
+      ],
+      "mechanicsBase": "Minus",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "forecast": {
+      "num": 59,
+      "id": "forecast",
+      "name": "Forecast",
+      "calcName": "Forecast",
+      "desc": {
+        "battle": "Changes with the weather.",
+        "overworld": ""
+      },
+      "storageAbilityId": "forecast",
+      "storageAlias": false,
+      "romId": 59,
+      "aliases": [
+        "Forecast"
+      ],
+      "mechanicsBase": "Forecast",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "stickyhold": {
+      "num": 60,
+      "id": "stickyhold",
+      "name": "Sticky Hold",
+      "calcName": "Sticky Hold",
+      "desc": {
+        "battle": "Prevents item theft.",
+        "overworld": ""
+      },
+      "storageAbilityId": "stickyhold",
+      "storageAlias": false,
+      "romId": 60,
+      "aliases": [
+        "Sticky Hold"
+      ],
+      "mechanicsBase": "Sticky Hold",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "shedskin": {
+      "num": 61,
+      "id": "shedskin",
+      "name": "Shed Skin",
+      "calcName": "Shed Skin",
+      "desc": {
+        "battle": "Heals the body by shedding.",
+        "overworld": ""
+      },
+      "storageAbilityId": "shedskin",
+      "storageAlias": false,
+      "romId": 61,
+      "aliases": [
+        "Shed Skin"
+      ],
+      "mechanicsBase": "Shed Skin",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "guts": {
+      "num": 62,
+      "id": "guts",
+      "name": "Guts",
+      "calcName": "Guts",
+      "desc": {
+        "battle": "Ups Attack if suffering.",
+        "overworld": ""
+      },
+      "storageAbilityId": "guts",
+      "storageAlias": false,
+      "romId": 62,
+      "aliases": [
+        "Guts"
+      ],
+      "mechanicsBase": "Guts",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "marvelscale": {
+      "num": 63,
+      "id": "marvelscale",
+      "name": "Marvel Scale",
+      "calcName": "Marvel Scale",
+      "desc": {
+        "battle": "Ups Defense if suffering.",
+        "overworld": ""
+      },
+      "storageAbilityId": "marvelscale",
+      "storageAlias": false,
+      "romId": 63,
+      "aliases": [
+        "Marvel Scale"
+      ],
+      "mechanicsBase": "Marvel Scale",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "liquidooze": {
+      "num": 64,
+      "id": "liquidooze",
+      "name": "Liquid Ooze",
+      "calcName": "Liquid Ooze",
+      "desc": {
+        "battle": "Draining causes injury.",
+        "overworld": ""
+      },
+      "storageAbilityId": "liquidooze",
+      "storageAlias": false,
+      "romId": 64,
+      "aliases": [
+        "Liquid Ooze"
+      ],
+      "mechanicsBase": "Liquid Ooze",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "overgrow": {
+      "num": 65,
+      "id": "overgrow",
+      "name": "Overgrow",
+      "calcName": "Overgrow",
+      "desc": {
+        "battle": "Ups Grass moves in a pinch.",
+        "overworld": ""
+      },
+      "storageAbilityId": "overgrow",
+      "storageAlias": false,
+      "romId": 65,
+      "aliases": [
+        "Overgrow"
+      ],
+      "mechanicsBase": "Overgrow",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "blaze": {
+      "num": 66,
+      "id": "blaze",
+      "name": "Blaze",
+      "calcName": "Blaze",
+      "desc": {
+        "battle": "Ups Fire moves in a pinch.",
+        "overworld": ""
+      },
+      "storageAbilityId": "blaze",
+      "storageAlias": false,
+      "romId": 66,
+      "aliases": [
+        "Blaze"
+      ],
+      "mechanicsBase": "Blaze",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "torrent": {
+      "num": 67,
+      "id": "torrent",
+      "name": "Torrent",
+      "calcName": "Torrent",
+      "desc": {
+        "battle": "Ups Water moves in a pinch.",
+        "overworld": ""
+      },
+      "storageAbilityId": "torrent",
+      "storageAlias": false,
+      "romId": 67,
+      "aliases": [
+        "Torrent"
+      ],
+      "mechanicsBase": "Torrent",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "swarm": {
+      "num": 68,
+      "id": "swarm",
+      "name": "Swarm",
+      "calcName": "Swarm",
+      "desc": {
+        "battle": "Ups Bug moves in a pinch.",
+        "overworld": ""
+      },
+      "storageAbilityId": "swarm",
+      "storageAlias": false,
+      "romId": 68,
+      "aliases": [
+        "Swarm"
+      ],
+      "mechanicsBase": "Swarm",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "rockhead": {
+      "num": 69,
+      "id": "rockhead",
+      "name": "Rock Head",
+      "calcName": "Rock Head",
+      "desc": {
+        "battle": "Prevents recoil damage.",
+        "overworld": ""
+      },
+      "storageAbilityId": "rockhead",
+      "storageAlias": false,
+      "romId": 69,
+      "aliases": [
+        "Rock Head"
+      ],
+      "mechanicsBase": "Rock Head",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "drought": {
+      "num": 70,
+      "id": "drought",
+      "name": "Drought",
+      "calcName": "Drought",
+      "desc": {
+        "battle": "Summons sunlight in battle.",
+        "overworld": ""
+      },
+      "storageAbilityId": "drought",
+      "storageAlias": false,
+      "romId": 70,
+      "aliases": [
+        "Drought"
+      ],
+      "mechanicsBase": "Drought",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "arenatrap": {
+      "num": 71,
+      "id": "arenatrap",
+      "name": "Arena Trap",
+      "calcName": "Arena Trap",
+      "desc": {
+        "battle": "Prevents fleeing.",
+        "overworld": ""
+      },
+      "storageAbilityId": "arenatrap",
+      "storageAlias": false,
+      "romId": 71,
+      "aliases": [
+        "Arena Trap"
+      ],
+      "mechanicsBase": "Arena Trap",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "transistor": {
+      "num": 72,
+      "id": "transistor",
+      "name": "Transistor",
+      "calcName": "Transistor",
+      "desc": {
+        "battle": "Powers up Electric-type moves.",
+        "overworld": ""
+      },
+      "storageAbilityId": "transistor",
+      "storageAlias": false,
+      "romId": 72,
+      "aliases": [
+        "Transistor"
+      ],
+      "mechanicsBase": "Transistor",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "dragonsmaw": {
+      "num": 73,
+      "id": "dragonsmaw",
+      "name": "Dragon's Maw",
+      "calcName": "Dragon's Maw",
+      "desc": {
+        "battle": "Powers up Dragon-type moves.",
+        "overworld": ""
+      },
+      "storageAbilityId": "dragonsmaw",
+      "storageAlias": false,
+      "romId": 73,
+      "aliases": [
+        "Dragon's Maw"
+      ],
+      "mechanicsBase": "Dragon's Maw",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "neutralizinggas": {
+      "num": 74,
+      "id": "neutralizinggas",
+      "name": "Neutralizinggas",
+      "calcName": "Neutralizinggas",
+      "desc": {
+        "battle": "All Abilities are nullified.",
+        "overworld": ""
+      },
+      "storageAbilityId": "neutralizinggas",
+      "storageAlias": false,
+      "romId": 74,
+      "aliases": [
+        "Neutralizinggas"
+      ],
+      "mechanicsBase": "Neutralizing Gas",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "shellarmor": {
+      "num": 75,
+      "id": "shellarmor",
+      "name": "Shell Armor",
+      "calcName": "Shell Armor",
+      "desc": {
+        "battle": "Blocks critical hits.",
+        "overworld": ""
+      },
+      "storageAbilityId": "shellarmor",
+      "storageAlias": false,
+      "romId": 75,
+      "aliases": [
+        "Shell Armor"
+      ],
+      "mechanicsBase": "Shell Armor",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "hungerswitch": {
+      "num": 76,
+      "id": "hungerswitch",
+      "name": "Hunger Switch",
+      "calcName": "Hunger Switch",
+      "desc": {
+        "battle": "Changes form each turn.",
+        "overworld": ""
+      },
+      "storageAbilityId": "hungerswitch",
+      "storageAlias": false,
+      "romId": 76,
+      "aliases": [
+        "Hunger Switch"
+      ],
+      "mechanicsBase": "Hunger Switch",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "sweetveil": {
+      "num": 78,
+      "id": "sweetveil",
+      "name": "Sweet Veil",
+      "calcName": "Sweet Veil",
+      "desc": {
+        "battle": "Keeps user and allies awake.",
+        "overworld": ""
+      },
+      "storageAbilityId": "sweetveil",
+      "storageAlias": false,
+      "romId": 78,
+      "aliases": [
+        "Sweet Veil"
+      ],
+      "mechanicsBase": "Sweet Veil",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "skilllink": {
+      "num": 79,
+      "id": "skilllink",
+      "name": "Skill Link",
+      "calcName": "Skill Link",
+      "desc": {
+        "battle": "Multi-hit moves hit five times.",
+        "overworld": ""
+      },
+      "storageAbilityId": "skilllink",
+      "storageAlias": false,
+      "romId": 79,
+      "aliases": [
+        "Skill Link"
+      ],
+      "mechanicsBase": "Skill Link",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "motordrive": {
+      "num": 80,
+      "id": "motordrive",
+      "name": "Motor Drive",
+      "calcName": "Motor Drive",
+      "desc": {
+        "battle": "Turns electricity into Speed.",
+        "overworld": ""
+      },
+      "storageAbilityId": "motordrive",
+      "storageAlias": false,
+      "romId": 80,
+      "aliases": [
+        "Motor Drive"
+      ],
+      "mechanicsBase": "Motor Drive",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "multiscale": {
+      "num": 81,
+      "id": "multiscale",
+      "name": "Multiscale",
+      "calcName": "Multiscale",
+      "desc": {
+        "battle": "Reduces damage at full HP.",
+        "overworld": ""
+      },
+      "storageAbilityId": "multiscale",
+      "storageAlias": false,
+      "romId": 81,
+      "aliases": [
+        "Multiscale"
+      ],
+      "mechanicsBase": "Multiscale",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "technician": {
+      "num": 82,
+      "id": "technician",
+      "name": "Technician",
+      "calcName": "Technician",
+      "desc": {
+        "battle": "Boosts weaker moves.",
+        "overworld": ""
+      },
+      "storageAbilityId": "technician",
+      "storageAlias": false,
+      "romId": 82,
+      "aliases": [
+        "Technician"
+      ],
+      "mechanicsBase": "Technician",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "scrappy": {
+      "num": 83,
+      "id": "scrappy",
+      "name": "Scrappy",
+      "calcName": "Scrappy",
+      "desc": {
+        "battle": "Moves hit Ghost-type Pok\\emon.",
+        "overworld": ""
+      },
+      "storageAbilityId": "scrappy",
+      "storageAlias": false,
+      "romId": 83,
+      "aliases": [
+        "Scrappy"
+      ],
+      "mechanicsBase": "Scrappy",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "superluck": {
+      "num": 84,
+      "id": "superluck",
+      "name": "Super Luck",
+      "calcName": "Super Luck",
+      "desc": {
+        "battle": "Critical hits land more often.",
+        "overworld": ""
+      },
+      "storageAbilityId": "superluck",
+      "storageAlias": false,
+      "romId": 84,
+      "aliases": [
+        "Super Luck"
+      ],
+      "mechanicsBase": "Super Luck",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "sniper": {
+      "num": 85,
+      "id": "sniper",
+      "name": "Sniper",
+      "calcName": "Sniper",
+      "desc": {
+        "battle": "Boosts critical hits.",
+        "overworld": ""
+      },
+      "storageAbilityId": "sniper",
+      "storageAlias": false,
+      "romId": 85,
+      "aliases": [
+        "Sniper"
+      ],
+      "mechanicsBase": "Sniper",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "regenerator": {
+      "num": 86,
+      "id": "regenerator",
+      "name": "Regenerator",
+      "calcName": "Regenerator",
+      "desc": {
+        "battle": "Heals upon switching out.",
+        "overworld": ""
+      },
+      "storageAbilityId": "regenerator",
+      "storageAlias": false,
+      "romId": 86,
+      "aliases": [
+        "Regenerator"
+      ],
+      "mechanicsBase": "Regenerator",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "prankster": {
+      "num": 87,
+      "id": "prankster",
+      "name": "Prankster",
+      "calcName": "Prankster",
+      "desc": {
+        "battle": "Status moves hit first.",
+        "overworld": ""
+      },
+      "storageAbilityId": "prankster",
+      "storageAlias": false,
+      "romId": 87,
+      "aliases": [
+        "Prankster"
+      ],
+      "mechanicsBase": "Prankster",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "adaptability": {
+      "num": 88,
+      "id": "adaptability",
+      "name": "Adaptability",
+      "calcName": "Adaptability",
+      "desc": {
+        "battle": "Boosts same type attacks.",
+        "overworld": ""
+      },
+      "storageAbilityId": "adaptability",
+      "storageAlias": false,
+      "romId": 88,
+      "aliases": [
+        "Adaptability"
+      ],
+      "mechanicsBase": "Adaptability",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "bigpecks": {
+      "num": 89,
+      "id": "bigpecks",
+      "name": "Big Pecks",
+      "calcName": "Big Pecks",
+      "desc": {
+        "battle": "Prevents Defense reduction.",
+        "overworld": ""
+      },
+      "storageAbilityId": "bigpecks",
+      "storageAlias": false,
+      "romId": 89,
+      "aliases": [
+        "Big Pecks"
+      ],
+      "mechanicsBase": "Big Pecks",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "magicbounce": {
+      "num": 90,
+      "id": "magicbounce",
+      "name": "Magic Bounce",
+      "calcName": "Magic Bounce",
+      "desc": {
+        "battle": "Reflects status moves.",
+        "overworld": ""
+      },
+      "storageAbilityId": "magicbounce",
+      "storageAlias": false,
+      "romId": 90,
+      "aliases": [
+        "Magic Bounce"
+      ],
+      "mechanicsBase": "Magic Bounce",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "reckless": {
+      "num": 91,
+      "id": "reckless",
+      "name": "Reckless",
+      "calcName": "Reckless",
+      "desc": {
+        "battle": "Boosts moves with recoil.",
+        "overworld": ""
+      },
+      "storageAbilityId": "reckless",
+      "storageAlias": false,
+      "romId": 91,
+      "aliases": [
+        "Reckless"
+      ],
+      "mechanicsBase": "Reckless",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "sheerforce": {
+      "num": 92,
+      "id": "sheerforce",
+      "name": "Sheer Force",
+      "calcName": "Sheer Force",
+      "desc": {
+        "battle": "Trades added effects for power.",
+        "overworld": ""
+      },
+      "storageAbilityId": "sheerforce",
+      "storageAlias": false,
+      "romId": 92,
+      "aliases": [
+        "Sheer Force"
+      ],
+      "mechanicsBase": "Sheer Force",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "ironfist": {
+      "num": 93,
+      "id": "ironfist",
+      "name": "Iron Fist",
+      "calcName": "Iron Fist",
+      "desc": {
+        "battle": "Boosts punching moves.",
+        "overworld": ""
+      },
+      "storageAbilityId": "ironfist",
+      "storageAlias": false,
+      "romId": 93,
+      "aliases": [
+        "Iron Fist"
+      ],
+      "mechanicsBase": "Iron Fist",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "rivalry": {
+      "num": 94,
+      "id": "rivalry",
+      "name": "Rivalry",
+      "calcName": "Rivalry",
+      "desc": {
+        "battle": "Ups power against same gender.",
+        "overworld": ""
+      },
+      "storageAbilityId": "rivalry",
+      "storageAlias": false,
+      "romId": 94,
+      "aliases": [
+        "Rivalry"
+      ],
+      "mechanicsBase": "Rivalry",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "sandforce": {
+      "num": 95,
+      "id": "sandforce",
+      "name": "Sand Force",
+      "calcName": "Sand Force",
+      "desc": {
+        "battle": "Boosts moves in a sandstorm.",
+        "overworld": ""
+      },
+      "storageAbilityId": "sandforce",
+      "storageAlias": false,
+      "romId": 95,
+      "aliases": [
+        "Sand Force"
+      ],
+      "mechanicsBase": "Sand Force",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "solarpower": {
+      "num": 96,
+      "id": "solarpower",
+      "name": "Solar Power",
+      "calcName": "Solar Power",
+      "desc": {
+        "battle": "Trades HP for power in sunshine.",
+        "overworld": ""
+      },
+      "storageAbilityId": "solarpower",
+      "storageAlias": false,
+      "romId": 96,
+      "aliases": [
+        "Solar Power"
+      ],
+      "mechanicsBase": "Solar Power",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "heatproof": {
+      "num": 97,
+      "id": "heatproof",
+      "name": "Heatproof",
+      "calcName": "Heatproof",
+      "desc": {
+        "battle": "Heat protection.",
+        "overworld": ""
+      },
+      "storageAbilityId": "heatproof",
+      "storageAlias": false,
+      "romId": 97,
+      "aliases": [
+        "Heatproof"
+      ],
+      "mechanicsBase": "Heatproof",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "dryskin": {
+      "num": 98,
+      "id": "dryskin",
+      "name": "Dry Skin",
+      "calcName": "Dry Skin",
+      "desc": {
+        "battle": "Prefers the rain to heat.",
+        "overworld": ""
+      },
+      "storageAbilityId": "dryskin",
+      "storageAlias": false,
+      "romId": 98,
+      "aliases": [
+        "Dry Skin"
+      ],
+      "mechanicsBase": "Dry Skin",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "tintedlens": {
+      "num": 99,
+      "id": "tintedlens",
+      "name": "Tinted Lens",
+      "calcName": "Tinted Lens",
+      "desc": {
+        "battle": "Boosts \"not very effective\\\" moves.",
+        "overworld": ""
+      },
+      "storageAbilityId": "tintedlens",
+      "storageAlias": false,
+      "romId": 99,
+      "aliases": [
+        "Tinted Lens"
+      ],
+      "mechanicsBase": "Tinted Lens",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "unseenfist": {
+      "num": 100,
+      "id": "unseenfist",
+      "name": "Unseen Fist",
+      "calcName": "Unseen Fist",
+      "desc": {
+        "battle": "Contact moves bypass Protect.",
+        "overworld": ""
+      },
+      "storageAbilityId": "unseenfist",
+      "storageAlias": false,
+      "romId": 100,
+      "aliases": [
+        "Unseen Fist"
+      ],
+      "mechanicsBase": "Unseen Fist",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "filter": {
+      "num": 101,
+      "id": "filter",
+      "name": "Filter",
+      "calcName": "Filter",
+      "desc": {
+        "battle": "Weakens super effective moves.",
+        "overworld": ""
+      },
+      "storageAbilityId": "filter",
+      "storageAlias": false,
+      "romId": 101,
+      "aliases": [
+        "Filter"
+      ],
+      "mechanicsBase": "Filter",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "infiltrator": {
+      "num": 102,
+      "id": "infiltrator",
+      "name": "Infiltrator",
+      "calcName": "Infiltrator",
+      "desc": {
+        "battle": "Passes through barriers and Fog.",
+        "overworld": ""
+      },
+      "storageAbilityId": "infiltrator",
+      "storageAlias": false,
+      "romId": 102,
+      "aliases": [
+        "Infiltrator"
+      ],
+      "mechanicsBase": "Infiltrator",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "download": {
+      "num": 103,
+      "id": "download",
+      "name": "Download",
+      "calcName": "Download",
+      "desc": {
+        "battle": "Adjusts power from foe's stats.",
+        "overworld": ""
+      },
+      "storageAbilityId": "download",
+      "storageAlias": false,
+      "romId": 103,
+      "aliases": [
+        "Download"
+      ],
+      "mechanicsBase": "Download",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "poisonheal": {
+      "num": 104,
+      "id": "poisonheal",
+      "name": "Poison Heal",
+      "calcName": "Poison Heal",
+      "desc": {
+        "battle": "Restores HP if poisoned.",
+        "overworld": ""
+      },
+      "storageAbilityId": "poisonheal",
+      "storageAlias": false,
+      "romId": 104,
+      "aliases": [
+        "Poison Heal"
+      ],
+      "mechanicsBase": "Poison Heal",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "icebody": {
+      "num": 105,
+      "id": "icebody",
+      "name": "Ice Body",
+      "calcName": "Ice Body",
+      "desc": {
+        "battle": "Slight HP recovery in hail.",
+        "overworld": ""
+      },
+      "storageAbilityId": "icebody",
+      "storageAlias": false,
+      "romId": 105,
+      "aliases": [
+        "Ice Body"
+      ],
+      "mechanicsBase": "Ice Body",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "moody": {
+      "num": 106,
+      "id": "moody",
+      "name": "Moody",
+      "calcName": "Moody",
+      "desc": {
+        "battle": "Ups one stat and downs another.",
+        "overworld": ""
+      },
+      "storageAbilityId": "moody",
+      "storageAlias": false,
+      "romId": 106,
+      "aliases": [
+        "Moody"
+      ],
+      "mechanicsBase": "Moody",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "hydration": {
+      "num": 107,
+      "id": "hydration",
+      "name": "Hydration",
+      "calcName": "Hydration",
+      "desc": {
+        "battle": "Heals status problems in rain.",
+        "overworld": ""
+      },
+      "storageAbilityId": "hydration",
+      "storageAlias": false,
+      "romId": 107,
+      "aliases": [
+        "Hydration"
+      ],
+      "mechanicsBase": "Hydration",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "healer": {
+      "num": 108,
+      "id": "healer",
+      "name": "Healer",
+      "calcName": "Healer",
+      "desc": {
+        "battle": "May heal ally's status problems.",
+        "overworld": ""
+      },
+      "storageAbilityId": "healer",
+      "storageAlias": false,
+      "romId": 108,
+      "aliases": [
+        "Healer"
+      ],
+      "mechanicsBase": "Healer",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "snowcloak": {
+      "num": 109,
+      "id": "snowcloak",
+      "name": "Snow Cloak",
+      "calcName": "Snow Cloak",
+      "desc": {
+        "battle": "Ups evasion in hail.",
+        "overworld": ""
+      },
+      "storageAbilityId": "snowcloak",
+      "storageAlias": false,
+      "romId": 109,
+      "aliases": [
+        "Snow Cloak"
+      ],
+      "mechanicsBase": "Snow Cloak",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "tangledfeet": {
+      "num": 110,
+      "id": "tangledfeet",
+      "name": "Tangled Feet",
+      "calcName": "Tangled Feet",
+      "desc": {
+        "battle": "Ups evasion if confused.",
+        "overworld": ""
+      },
+      "storageAbilityId": "tangledfeet",
+      "storageAlias": false,
+      "romId": 110,
+      "aliases": [
+        "Tangled Feet"
+      ],
+      "mechanicsBase": "Tangled Feet",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "snowwarning": {
+      "num": 111,
+      "id": "snowwarning",
+      "name": "Snow Warning",
+      "calcName": "Snow Warning",
+      "desc": {
+        "battle": "Summons a hailstorm in battle.",
+        "overworld": ""
+      },
+      "storageAbilityId": "snowwarning",
+      "storageAlias": false,
+      "romId": 111,
+      "aliases": [
+        "Snow Warning"
+      ],
+      "mechanicsBase": "Snow Warning",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "quickfeet": {
+      "num": 112,
+      "id": "quickfeet",
+      "name": "Quick Feet",
+      "calcName": "Quick Feet",
+      "desc": {
+        "battle": "Ups Speed if suffering.",
+        "overworld": ""
+      },
+      "storageAbilityId": "quickfeet",
+      "storageAlias": false,
+      "romId": 112,
+      "aliases": [
+        "Quick Feet"
+      ],
+      "mechanicsBase": "Quick Feet",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "sapsipper": {
+      "num": 113,
+      "id": "sapsipper",
+      "name": "Sap Sipper",
+      "calcName": "Sap Sipper",
+      "desc": {
+        "battle": "Boosts Attack if hit by Grass.",
+        "overworld": ""
+      },
+      "storageAbilityId": "sapsipper",
+      "storageAlias": false,
+      "romId": 113,
+      "aliases": [
+        "Sap Sipper"
+      ],
+      "mechanicsBase": "Sap Sipper",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "overcoat": {
+      "num": 114,
+      "id": "overcoat",
+      "name": "Overcoat",
+      "calcName": "Overcoat",
+      "desc": {
+        "battle": "Immune to weather and powder.",
+        "overworld": ""
+      },
+      "storageAbilityId": "overcoat",
+      "storageAlias": false,
+      "romId": 114,
+      "aliases": [
+        "Overcoat"
+      ],
+      "mechanicsBase": "Overcoat",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "magicguard": {
+      "num": 115,
+      "id": "magicguard",
+      "name": "Magic Guard",
+      "calcName": "Magic Guard",
+      "desc": {
+        "battle": "Only damaged by attacks.",
+        "overworld": ""
+      },
+      "storageAbilityId": "magicguard",
+      "storageAlias": false,
+      "romId": 115,
+      "aliases": [
+        "Magic Guard"
+      ],
+      "mechanicsBase": "Magic Guard",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "bulletproof": {
+      "num": 116,
+      "id": "bulletproof",
+      "name": "Bulletproof",
+      "calcName": "Bulletproof",
+      "desc": {
+        "battle": "Avoids ball and bomb moves.",
+        "overworld": ""
+      },
+      "storageAbilityId": "bulletproof",
+      "storageAlias": false,
+      "romId": 116,
+      "aliases": [
+        "Bulletproof"
+      ],
+      "mechanicsBase": "Bulletproof",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "galewings": {
+      "num": 117,
+      "id": "galewings",
+      "name": "Gale Wings",
+      "calcName": "Gale Wings",
+      "desc": {
+        "battle": "Flying-type moves hit first.",
+        "overworld": ""
+      },
+      "storageAbilityId": "galewings",
+      "storageAlias": false,
+      "romId": 117,
+      "aliases": [
+        "Gale Wings"
+      ],
+      "mechanicsBase": "Gale Wings",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "moxie": {
+      "num": 118,
+      "id": "moxie",
+      "name": "Moxie",
+      "calcName": "Moxie",
+      "desc": {
+        "battle": "Knockouts boost Attack.",
+        "overworld": ""
+      },
+      "storageAbilityId": "moxie",
+      "storageAlias": false,
+      "romId": 118,
+      "aliases": [
+        "Moxie"
+      ],
+      "mechanicsBase": "Moxie",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "aftermath": {
+      "num": 119,
+      "id": "aftermath",
+      "name": "Aftermath",
+      "calcName": "Aftermath",
+      "desc": {
+        "battle": "Fainting damages the foe.",
+        "overworld": ""
+      },
+      "storageAbilityId": "aftermath",
+      "storageAlias": false,
+      "romId": 119,
+      "aliases": [
+        "Aftermath"
+      ],
+      "mechanicsBase": "Aftermath",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "cursedbody": {
+      "num": 120,
+      "id": "cursedbody",
+      "name": "Cursed Body",
+      "calcName": "Cursed Body",
+      "desc": {
+        "battle": "May disable a foe's move.",
+        "overworld": ""
+      },
+      "storageAbilityId": "cursedbody",
+      "storageAlias": false,
+      "romId": 120,
+      "aliases": [
+        "Cursed Body"
+      ],
+      "mechanicsBase": "Cursed Body",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "gooey": {
+      "num": 121,
+      "id": "gooey",
+      "name": "Gooey",
+      "calcName": "Gooey",
+      "desc": {
+        "battle": "Lowers the foe's Speed if hit.",
+        "overworld": ""
+      },
+      "storageAbilityId": "gooey",
+      "storageAlias": false,
+      "romId": 121,
+      "aliases": [
+        "Gooey"
+      ],
+      "mechanicsBase": "Gooey",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "mummy": {
+      "num": 122,
+      "id": "mummy",
+      "name": "Mummy",
+      "calcName": "Mummy",
+      "desc": {
+        "battle": "Spreads with contact.",
+        "overworld": ""
+      },
+      "storageAbilityId": "mummy",
+      "storageAlias": false,
+      "romId": 122,
+      "aliases": [
+        "Mummy"
+      ],
+      "mechanicsBase": "Mummy",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "grimneigh": {
+      "num": 123,
+      "id": "grimneigh",
+      "name": "Grim Neigh",
+      "calcName": "Grim Neigh",
+      "desc": {
+        "battle": "Knockouts boost Sp. Atk.",
+        "overworld": ""
+      },
+      "storageAbilityId": "grimneigh",
+      "storageAlias": false,
+      "romId": 123,
+      "aliases": [
+        "Grim Neigh"
+      ],
+      "mechanicsBase": "Grim Neigh",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "sandrush": {
+      "num": 124,
+      "id": "sandrush",
+      "name": "Sand Rush",
+      "calcName": "Sand Rush",
+      "desc": {
+        "battle": "Raises Speed in a sandstorm.",
+        "overworld": ""
+      },
+      "storageAbilityId": "sandrush",
+      "storageAlias": false,
+      "romId": 124,
+      "aliases": [
+        "Sand Rush"
+      ],
+      "mechanicsBase": "Sand Rush",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "analytic": {
+      "num": 125,
+      "id": "analytic",
+      "name": "Analytic",
+      "calcName": "Analytic",
+      "desc": {
+        "battle": "Moving last boosts power.",
+        "overworld": ""
+      },
+      "storageAbilityId": "analytic",
+      "storageAlias": false,
+      "romId": 125,
+      "aliases": [
+        "Analytic"
+      ],
+      "mechanicsBase": "Analytic",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "noguard": {
+      "num": 126,
+      "id": "noguard",
+      "name": "No Guard",
+      "calcName": "No Guard",
+      "desc": {
+        "battle": "Ensures that all moves land.",
+        "overworld": ""
+      },
+      "storageAbilityId": "noguard",
+      "storageAlias": false,
+      "romId": 126,
+      "aliases": [
+        "No Guard"
+      ],
+      "mechanicsBase": "No Guard",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "megalauncher": {
+      "num": 127,
+      "id": "megalauncher",
+      "name": "Mega Launcher",
+      "calcName": "Mega Launcher",
+      "desc": {
+        "battle": "Boosts aura and pulse moves.",
+        "overworld": ""
+      },
+      "storageAbilityId": "megalauncher",
+      "storageAlias": false,
+      "romId": 127,
+      "aliases": [
+        "Mega Launcher"
+      ],
+      "mechanicsBase": "Mega Launcher",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "toughclaws": {
+      "num": 128,
+      "id": "toughclaws",
+      "name": "Tough Claws",
+      "calcName": "Tough Claws",
+      "desc": {
+        "battle": "Boosts moves that make contact.",
+        "overworld": ""
+      },
+      "storageAbilityId": "toughclaws",
+      "storageAlias": false,
+      "romId": 128,
+      "aliases": [
+        "Tough Claws"
+      ],
+      "mechanicsBase": "Tough Claws",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "strongjaw": {
+      "num": 129,
+      "id": "strongjaw",
+      "name": "Strong Jaw",
+      "calcName": "Strong Jaw",
+      "desc": {
+        "battle": "Boosts biting moves.",
+        "overworld": ""
+      },
+      "storageAbilityId": "strongjaw",
+      "storageAlias": false,
+      "romId": 129,
+      "aliases": [
+        "Strong Jaw"
+      ],
+      "mechanicsBase": "Strong Jaw",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "victorystar": {
+      "num": 130,
+      "id": "victorystar",
+      "name": "Victory Star",
+      "calcName": "Victory Star",
+      "desc": {
+        "battle": "Raises own and ally's accuracy.",
+        "overworld": ""
+      },
+      "storageAbilityId": "victorystar",
+      "storageAlias": false,
+      "romId": 130,
+      "aliases": [
+        "Victory Star"
+      ],
+      "mechanicsBase": "Victory Star",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "stormdrain": {
+      "num": 131,
+      "id": "stormdrain",
+      "name": "Storm Drain",
+      "calcName": "Storm Drain",
+      "desc": {
+        "battle": "Draws in water to up Sp. Atk.",
+        "overworld": ""
+      },
+      "storageAbilityId": "stormdrain",
+      "storageAlias": false,
+      "romId": 131,
+      "aliases": [
+        "Storm Drain"
+      ],
+      "mechanicsBase": "Storm Drain",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "darkaura": {
+      "num": 132,
+      "id": "darkaura",
+      "name": "Dark Aura",
+      "calcName": "Dark Aura",
+      "desc": {
+        "battle": "Powers up Dark-type moves.",
+        "overworld": ""
+      },
+      "storageAbilityId": "darkaura",
+      "storageAlias": false,
+      "romId": 132,
+      "aliases": [
+        "Dark Aura"
+      ],
+      "mechanicsBase": "Dark Aura",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "fairyaura": {
+      "num": 133,
+      "id": "fairyaura",
+      "name": "Fairy Aura",
+      "calcName": "Fairy Aura",
+      "desc": {
+        "battle": "Powers up Fairy-type moves.",
+        "overworld": ""
+      },
+      "storageAbilityId": "fairyaura",
+      "storageAlias": false,
+      "romId": 133,
+      "aliases": [
+        "Fairy Aura"
+      ],
+      "mechanicsBase": "Fairy Aura",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "aurabreak": {
+      "num": 134,
+      "id": "aurabreak",
+      "name": "Aura Break",
+      "calcName": "Aura Break",
+      "desc": {
+        "battle": "Reverses Aura Abilities.",
+        "overworld": ""
+      },
+      "storageAbilityId": "aurabreak",
+      "storageAlias": false,
+      "romId": 134,
+      "aliases": [
+        "Aura Break"
+      ],
+      "mechanicsBase": "Aura Break",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "refrigerate": {
+      "num": 135,
+      "id": "refrigerate",
+      "name": "Refrigerate",
+      "calcName": "Refrigerate",
+      "desc": {
+        "battle": "Normal moves become Ice.",
+        "overworld": ""
+      },
+      "storageAbilityId": "refrigerate",
+      "storageAlias": false,
+      "romId": 135,
+      "aliases": [
+        "Refrigerate"
+      ],
+      "mechanicsBase": "Refrigerate",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "pixilate": {
+      "num": 136,
+      "id": "pixilate",
+      "name": "Pixilate",
+      "calcName": "Pixilate",
+      "desc": {
+        "battle": "Normal moves become Fairy.",
+        "overworld": ""
+      },
+      "storageAbilityId": "pixilate",
+      "storageAlias": false,
+      "romId": 136,
+      "aliases": [
+        "Pixilate"
+      ],
+      "mechanicsBase": "Pixilate",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "aerilate": {
+      "num": 137,
+      "id": "aerilate",
+      "name": "Aerilate",
+      "calcName": "Aerilate",
+      "desc": {
+        "battle": "Normal moves become Flying.",
+        "overworld": ""
+      },
+      "storageAbilityId": "aerilate",
+      "storageAlias": false,
+      "romId": 137,
+      "aliases": [
+        "Aerilate"
+      ],
+      "mechanicsBase": "Aerilate",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "normalize": {
+      "num": 138,
+      "id": "normalize",
+      "name": "Normalize",
+      "calcName": "Normalize",
+      "desc": {
+        "battle": "All moves become Normal-type.",
+        "overworld": ""
+      },
+      "storageAbilityId": "normalize",
+      "storageAlias": false,
+      "romId": 138,
+      "aliases": [
+        "Normalize"
+      ],
+      "mechanicsBase": "Normalize",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "unburden": {
+      "num": 139,
+      "id": "unburden",
+      "name": "Unburden",
+      "calcName": "Unburden",
+      "desc": {
+        "battle": "Doubles Speed if item is lost.",
+        "overworld": ""
+      },
+      "storageAbilityId": "unburden",
+      "storageAlias": false,
+      "romId": 139,
+      "aliases": [
+        "Unburden"
+      ],
+      "mechanicsBase": "Unburden",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "simple": {
+      "num": 140,
+      "id": "simple",
+      "name": "Simple",
+      "calcName": "Simple",
+      "desc": {
+        "battle": "Doubles stat changes.",
+        "overworld": ""
+      },
+      "storageAbilityId": "simple",
+      "storageAlias": false,
+      "romId": 140,
+      "aliases": [
+        "Simple"
+      ],
+      "mechanicsBase": "Simple",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "unaware": {
+      "num": 141,
+      "id": "unaware",
+      "name": "Unaware",
+      "calcName": "Unaware",
+      "desc": {
+        "battle": "Ignores foe's stat changes.",
+        "overworld": ""
+      },
+      "storageAbilityId": "unaware",
+      "storageAlias": false,
+      "romId": 141,
+      "aliases": [
+        "Unaware"
+      ],
+      "mechanicsBase": "Unaware",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "defiant": {
+      "num": 142,
+      "id": "defiant",
+      "name": "Defiant",
+      "calcName": "Defiant",
+      "desc": {
+        "battle": "Attack rises when stats fall.",
+        "overworld": ""
+      },
+      "storageAbilityId": "defiant",
+      "storageAlias": false,
+      "romId": 142,
+      "aliases": [
+        "Defiant"
+      ],
+      "mechanicsBase": "Defiant",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "competitive": {
+      "num": 143,
+      "id": "competitive",
+      "name": "Competitive",
+      "calcName": "Competitive",
+      "desc": {
+        "battle": "Sp. Atk rises when stats fall.",
+        "overworld": ""
+      },
+      "storageAbilityId": "competitive",
+      "storageAlias": false,
+      "romId": 143,
+      "aliases": [
+        "Competitive"
+      ],
+      "mechanicsBase": "Competitive",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "defeatist": {
+      "num": 144,
+      "id": "defeatist",
+      "name": "Defeatist",
+      "calcName": "Defeatist",
+      "desc": {
+        "battle": "Gives up at half HP.",
+        "overworld": ""
+      },
+      "storageAbilityId": "defeatist",
+      "storageAlias": false,
+      "romId": 144,
+      "aliases": [
+        "Defeatist"
+      ],
+      "mechanicsBase": "Defeatist",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "slowstart": {
+      "num": 145,
+      "id": "slowstart",
+      "name": "Slow Start",
+      "calcName": "Slow Start",
+      "desc": {
+        "battle": "Takes a while to get going.",
+        "overworld": ""
+      },
+      "storageAbilityId": "slowstart",
+      "storageAlias": false,
+      "romId": 145,
+      "aliases": [
+        "Slow Start"
+      ],
+      "mechanicsBase": "Slow Start",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "toxicboost": {
+      "num": 146,
+      "id": "toxicboost",
+      "name": "Toxic Boost",
+      "calcName": "Toxic Boost",
+      "desc": {
+        "battle": "Attack rises when poisoned.",
+        "overworld": ""
+      },
+      "storageAbilityId": "toxicboost",
+      "storageAlias": false,
+      "romId": 146,
+      "aliases": [
+        "Toxic Boost"
+      ],
+      "mechanicsBase": "Toxic Boost",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "flareboost": {
+      "num": 147,
+      "id": "flareboost",
+      "name": "Flare Boost",
+      "calcName": "Flare Boost",
+      "desc": {
+        "battle": "Sp. Atk rises when burned.",
+        "overworld": ""
+      },
+      "storageAbilityId": "flareboost",
+      "storageAlias": false,
+      "romId": 147,
+      "aliases": [
+        "Flare Boost"
+      ],
+      "mechanicsBase": "Flare Boost",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "furcoat": {
+      "num": 148,
+      "id": "furcoat",
+      "name": "Fur Coat",
+      "calcName": "Fur Coat",
+      "desc": {
+        "battle": "Halves physical damage.",
+        "overworld": ""
+      },
+      "storageAbilityId": "furcoat",
+      "storageAlias": false,
+      "romId": 148,
+      "aliases": [
+        "Fur Coat"
+      ],
+      "mechanicsBase": "Fur Coat",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "wonderskin": {
+      "num": 149,
+      "id": "wonderskin",
+      "name": "Wonder Skin",
+      "calcName": "Wonder Skin",
+      "desc": {
+        "battle": "Ups status move evasion.",
+        "overworld": ""
+      },
+      "storageAbilityId": "wonderskin",
+      "storageAlias": false,
+      "romId": 149,
+      "aliases": [
+        "Wonder Skin"
+      ],
+      "mechanicsBase": "Wonder Skin",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "protean": {
+      "num": 150,
+      "id": "protean",
+      "name": "Protean",
+      "calcName": "Protean",
+      "desc": {
+        "battle": "Changes type to match move.",
+        "overworld": ""
+      },
+      "storageAbilityId": "protean",
+      "storageAlias": false,
+      "romId": 150,
+      "aliases": [
+        "Protean"
+      ],
+      "mechanicsBase": "Protean",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "parentalbond": {
+      "num": 151,
+      "id": "parentalbond",
+      "name": "Parental Bond",
+      "calcName": "Parental Bond",
+      "desc": {
+        "battle": "Moves get a weaker second hit.",
+        "overworld": ""
+      },
+      "storageAbilityId": "parentalbond",
+      "storageAlias": false,
+      "romId": 151,
+      "aliases": [
+        "Parental Bond"
+      ],
+      "mechanicsBase": "Parental Bond",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "moldbreaker": {
+      "num": 152,
+      "id": "moldbreaker",
+      "name": "Mold Breaker",
+      "calcName": "Mold Breaker",
+      "desc": {
+        "battle": "Moves ignore Abilities.",
+        "overworld": ""
+      },
+      "storageAbilityId": "moldbreaker",
+      "storageAlias": false,
+      "romId": 152,
+      "aliases": [
+        "Mold Breaker"
+      ],
+      "mechanicsBase": "Mold Breaker",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "asonegrim": {
+      "num": 153,
+      "id": "asonegrim",
+      "name": "Asone Grim",
+      "calcName": "Asone Grim",
+      "desc": {
+        "battle": "Both Unnerve and Grim Neigh.",
+        "overworld": ""
+      },
+      "storageAbilityId": "asonegrim",
+      "storageAlias": false,
+      "romId": 153,
+      "aliases": [
+        "Asone Grim"
+      ],
+      "mechanicsBase": "As One (Spectrier)",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "asonechilling": {
+      "num": 154,
+      "id": "asonechilling",
+      "name": "Asone Chilling",
+      "calcName": "Asone Chilling",
+      "desc": {
+        "battle": "Both Unnerve and Chilling Neigh.",
+        "overworld": ""
+      },
+      "storageAbilityId": "asonechilling",
+      "storageAlias": false,
+      "romId": 154,
+      "aliases": [
+        "Asone Chilling"
+      ],
+      "mechanicsBase": "As One (Glastrier)",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "zenmode": {
+      "num": 155,
+      "id": "zenmode",
+      "name": "Zen Mode",
+      "calcName": "Zen Mode",
+      "desc": {
+        "battle": "Transforms below half HP.",
+        "overworld": ""
+      },
+      "storageAbilityId": "zenmode",
+      "storageAlias": false,
+      "romId": 155,
+      "aliases": [
+        "Zen Mode"
+      ],
+      "mechanicsBase": "Zen Mode",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "battlebond": {
+      "num": 156,
+      "id": "battlebond",
+      "name": "Battle Bond",
+      "calcName": "Battle Bond",
+      "desc": {
+        "battle": "Transforms after a KO.",
+        "overworld": ""
+      },
+      "storageAbilityId": "battlebond",
+      "storageAlias": false,
+      "romId": 156,
+      "aliases": [
+        "Battle Bond"
+      ],
+      "mechanicsBase": "Battle Bond",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "beastboost": {
+      "num": 157,
+      "id": "beastboost",
+      "name": "Beast Boost",
+      "calcName": "Beast Boost",
+      "desc": {
+        "battle": "KOing a foe ups highest stat.",
+        "overworld": ""
+      },
+      "storageAbilityId": "beastboost",
+      "storageAlias": false,
+      "romId": 157,
+      "aliases": [
+        "Beast Boost"
+      ],
+      "mechanicsBase": "Beast Boost",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "corrosion": {
+      "num": 158,
+      "id": "corrosion",
+      "name": "Corrosion",
+      "calcName": "Corrosion",
+      "desc": {
+        "battle": "May poison any type.",
+        "overworld": ""
+      },
+      "storageAbilityId": "corrosion",
+      "storageAlias": false,
+      "romId": 158,
+      "aliases": [
+        "Corrosion"
+      ],
+      "mechanicsBase": "Corrosion",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "disguise": {
+      "num": 159,
+      "id": "disguise",
+      "name": "Disguise",
+      "calcName": "Disguise",
+      "desc": {
+        "battle": "Takes one hit with no damage.",
+        "overworld": ""
+      },
+      "storageAbilityId": "disguise",
+      "storageAlias": false,
+      "romId": 159,
+      "aliases": [
+        "Disguise"
+      ],
+      "mechanicsBase": "Disguise",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "emergencyexit": {
+      "num": 160,
+      "id": "emergencyexit",
+      "name": "Emergency Exit",
+      "calcName": "Emergency Exit",
+      "desc": {
+        "battle": "Switches out below half HP.",
+        "overworld": ""
+      },
+      "storageAbilityId": "emergencyexit",
+      "storageAlias": false,
+      "romId": 160,
+      "aliases": [
+        "Emergency Exit"
+      ],
+      "mechanicsBase": "Emergency Exit",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "fluffy": {
+      "num": 161,
+      "id": "fluffy",
+      "name": "Fluffy",
+      "calcName": "Fluffy",
+      "desc": {
+        "battle": "Halves contact hits. Weak to Fire.",
+        "overworld": ""
+      },
+      "storageAbilityId": "fluffy",
+      "storageAlias": false,
+      "romId": 161,
+      "aliases": [
+        "Fluffy"
+      ],
+      "mechanicsBase": "Fluffy",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "steelyspirit": {
+      "num": 162,
+      "id": "steelyspirit",
+      "name": "Steely Spirit",
+      "calcName": "Steely Spirit",
+      "desc": {
+        "battle": "Boosts own and ally Steel moves.",
+        "overworld": ""
+      },
+      "storageAbilityId": "steelyspirit",
+      "storageAlias": false,
+      "romId": 162,
+      "aliases": [
+        "Steely Spirit"
+      ],
+      "mechanicsBase": "Steely Spirit",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "perishbody": {
+      "num": 163,
+      "id": "perishbody",
+      "name": "Perish Body",
+      "calcName": "Perish Body",
+      "desc": {
+        "battle": "Gives a perish count on contact.",
+        "overworld": ""
+      },
+      "storageAbilityId": "perishbody",
+      "storageAlias": false,
+      "romId": 163,
+      "aliases": [
+        "Perish Body"
+      ],
+      "mechanicsBase": "Perish Body",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "wanderingspirit": {
+      "num": 164,
+      "id": "wanderingspirit",
+      "name": "Wandering Soul",
+      "calcName": "Wandering Soul",
+      "desc": {
+        "battle": "Trades Abilities on contact.",
+        "overworld": ""
+      },
+      "storageAbilityId": "wanderingspirit",
+      "storageAlias": false,
+      "romId": 164,
+      "aliases": [
+        "Wandering Soul"
+      ],
+      "mechanicsBase": "Wandering Spirit",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "powerconstruct": {
+      "num": 165,
+      "id": "powerconstruct",
+      "name": "Power Construct",
+      "calcName": "Power Construct",
+      "desc": {
+        "battle": "Transforms below half HP.",
+        "overworld": ""
+      },
+      "storageAbilityId": "powerconstruct",
+      "storageAlias": false,
+      "romId": 165,
+      "aliases": [
+        "Power Construct"
+      ],
+      "mechanicsBase": "Power Construct",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "prismarmor": {
+      "num": 166,
+      "id": "prismarmor",
+      "name": "Prism Armor",
+      "calcName": "Prism Armor",
+      "desc": {
+        "battle": "Weakens super effective moves.",
+        "overworld": ""
+      },
+      "storageAbilityId": "prismarmor",
+      "storageAlias": false,
+      "romId": 166,
+      "aliases": [
+        "Prism Armor"
+      ],
+      "mechanicsBase": "Prism Armor",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "rkssystem": {
+      "num": 167,
+      "id": "rkssystem",
+      "name": "RKS System",
+      "calcName": "RKS System",
+      "desc": {
+        "battle": "Changes type to match Memory.",
+        "overworld": ""
+      },
+      "storageAbilityId": "rkssystem",
+      "storageAlias": false,
+      "romId": 167,
+      "aliases": [
+        "RKS System"
+      ],
+      "mechanicsBase": "RKS System",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "schooling": {
+      "num": 168,
+      "id": "schooling",
+      "name": "Schooling",
+      "calcName": "Schooling",
+      "desc": {
+        "battle": "Schools up with high HP.",
+        "overworld": ""
+      },
+      "storageAbilityId": "schooling",
+      "storageAlias": false,
+      "romId": 168,
+      "aliases": [
+        "Schooling"
+      ],
+      "mechanicsBase": "Schooling",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "shadowshield": {
+      "num": 169,
+      "id": "shadowshield",
+      "name": "Shadow Shield",
+      "calcName": "Shadow Shield",
+      "desc": {
+        "battle": "Reduces damage at full HP.",
+        "overworld": ""
+      },
+      "storageAbilityId": "shadowshield",
+      "storageAlias": false,
+      "romId": 169,
+      "aliases": [
+        "Shadow Shield"
+      ],
+      "mechanicsBase": "Shadow Shield",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "shieldsdown": {
+      "num": 170,
+      "id": "shieldsdown",
+      "name": "Shields Down",
+      "calcName": "Shields Down",
+      "desc": {
+        "battle": "Lowers shields below half HP.",
+        "overworld": ""
+      },
+      "storageAbilityId": "shieldsdown",
+      "storageAlias": false,
+      "romId": 170,
+      "aliases": [
+        "Shields Down"
+      ],
+      "mechanicsBase": "Shields Down",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "slushrush": {
+      "num": 171,
+      "id": "slushrush",
+      "name": "Slush Rush",
+      "calcName": "Slush Rush",
+      "desc": {
+        "battle": "Boosts speed in Hail.",
+        "overworld": ""
+      },
+      "storageAbilityId": "slushrush",
+      "storageAlias": false,
+      "romId": 171,
+      "aliases": [
+        "Slush Rush"
+      ],
+      "mechanicsBase": "Slush Rush",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "soulheart": {
+      "num": 172,
+      "id": "soulheart",
+      "name": "Soul-Heart",
+      "calcName": "Soul-Heart",
+      "desc": {
+        "battle": "Knockouts boost Sp. Atk.",
+        "overworld": ""
+      },
+      "storageAbilityId": "soulheart",
+      "storageAlias": false,
+      "romId": 172,
+      "aliases": [
+        "Soul-Heart"
+      ],
+      "mechanicsBase": "Soul-Heart",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "stamina": {
+      "num": 173,
+      "id": "stamina",
+      "name": "Stamina",
+      "calcName": "Stamina",
+      "desc": {
+        "battle": "Taking a hit raises Defense.",
+        "overworld": ""
+      },
+      "storageAbilityId": "stamina",
+      "storageAlias": false,
+      "romId": 173,
+      "aliases": [
+        "Stamina"
+      ],
+      "mechanicsBase": "Stamina",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "steelworker": {
+      "num": 174,
+      "id": "steelworker",
+      "name": "Steelworker",
+      "calcName": "Steelworker",
+      "desc": {
+        "battle": "Powers up Steel-type moves.",
+        "overworld": ""
+      },
+      "storageAbilityId": "steelworker",
+      "storageAlias": false,
+      "romId": 174,
+      "aliases": [
+        "Steelworker"
+      ],
+      "mechanicsBase": "Steelworker",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "fullmetalbody": {
+      "num": 175,
+      "id": "fullmetalbody",
+      "name": "Full Metal Body",
+      "calcName": "Full Metal Body",
+      "desc": {
+        "battle": "Prevents ability reduction.",
+        "overworld": ""
+      },
+      "storageAbilityId": "fullmetalbody",
+      "storageAlias": false,
+      "romId": 175,
+      "aliases": [
+        "Full Metal Body"
+      ],
+      "mechanicsBase": "Full Metal Body",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "triage": {
+      "num": 176,
+      "id": "triage",
+      "name": "Triage",
+      "calcName": "Triage",
+      "desc": {
+        "battle": "Gives priority to healing moves.",
+        "overworld": ""
+      },
+      "storageAbilityId": "triage",
+      "storageAlias": false,
+      "romId": 176,
+      "aliases": [
+        "Triage"
+      ],
+      "mechanicsBase": "Triage",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "waterbubble": {
+      "num": 177,
+      "id": "waterbubble",
+      "name": "Water Bubble",
+      "calcName": "Water Bubble",
+      "desc": {
+        "battle": "Ups Water attacks. Prevents burn.",
+        "overworld": ""
+      },
+      "storageAbilityId": "waterbubble",
+      "storageAlias": false,
+      "romId": 177,
+      "aliases": [
+        "Water Bubble"
+      ],
+      "mechanicsBase": "Water Bubble",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "watercompaction": {
+      "num": 178,
+      "id": "watercompaction",
+      "name": "Water Compact",
+      "calcName": "Water Compact",
+      "desc": {
+        "battle": "Water-type hits raise Defense.",
+        "overworld": ""
+      },
+      "storageAbilityId": "watercompaction",
+      "storageAlias": false,
+      "romId": 178,
+      "aliases": [
+        "Water Compact"
+      ],
+      "mechanicsBase": "Water Compaction",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "stall": {
+      "num": 179,
+      "id": "stall",
+      "name": "Stall",
+      "calcName": "Stall",
+      "desc": {
+        "battle": "Often attacks last.",
+        "overworld": ""
+      },
+      "storageAbilityId": "stall",
+      "storageAlias": false,
+      "romId": 179,
+      "aliases": [
+        "Stall"
+      ],
+      "mechanicsBase": "Stall",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "multitype": {
+      "num": 180,
+      "id": "multitype",
+      "name": "Multitype",
+      "calcName": "Multitype",
+      "desc": {
+        "battle": "Changes type to match held Plate.",
+        "overworld": ""
+      },
+      "storageAbilityId": "multitype",
+      "storageAlias": false,
+      "romId": 180,
+      "aliases": [
+        "Multitype"
+      ],
+      "mechanicsBase": "Multitype",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "electricsurge": {
+      "num": 181,
+      "id": "electricsurge",
+      "name": "Electric Surge",
+      "calcName": "Electric Surge",
+      "desc": {
+        "battle": "Creates an Electric Terrain.",
+        "overworld": ""
+      },
+      "storageAbilityId": "electricsurge",
+      "storageAlias": false,
+      "romId": 181,
+      "aliases": [
+        "Electric Surge"
+      ],
+      "mechanicsBase": "Electric Surge",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "grassysurge": {
+      "num": 182,
+      "id": "grassysurge",
+      "name": "Grassy Surge",
+      "calcName": "Grassy Surge",
+      "desc": {
+        "battle": "Creates a Grassy Terrain.",
+        "overworld": ""
+      },
+      "storageAbilityId": "grassysurge",
+      "storageAlias": false,
+      "romId": 182,
+      "aliases": [
+        "Grassy Surge"
+      ],
+      "mechanicsBase": "Grassy Surge",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "mistysurge": {
+      "num": 183,
+      "id": "mistysurge",
+      "name": "Misty Surge",
+      "calcName": "Misty Surge",
+      "desc": {
+        "battle": "Creates a Misty Terrain.",
+        "overworld": ""
+      },
+      "storageAbilityId": "mistysurge",
+      "storageAlias": false,
+      "romId": 183,
+      "aliases": [
+        "Misty Surge"
+      ],
+      "mechanicsBase": "Misty Surge",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "psychicsurge": {
+      "num": 184,
+      "id": "psychicsurge",
+      "name": "Psychic Surge",
+      "calcName": "Psychic Surge",
+      "desc": {
+        "battle": "Creates a Psychic Terrain.",
+        "overworld": ""
+      },
+      "storageAbilityId": "psychicsurge",
+      "storageAlias": false,
+      "romId": 184,
+      "aliases": [
+        "Psychic Surge"
+      ],
+      "mechanicsBase": "Psychic Surge",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "surgesurfer": {
+      "num": 185,
+      "id": "surgesurfer",
+      "name": "Surge Surfer",
+      "calcName": "Surge Surfer",
+      "desc": {
+        "battle": "Boosts Speed on Electric Terrain.",
+        "overworld": ""
+      },
+      "storageAbilityId": "surgesurfer",
+      "storageAlias": false,
+      "romId": 185,
+      "aliases": [
+        "Surge Surfer"
+      ],
+      "mechanicsBase": "Surge Surfer",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "grasspelt": {
+      "num": 186,
+      "id": "grasspelt",
+      "name": "Grass Pelt",
+      "calcName": "Grass Pelt",
+      "desc": {
+        "battle": "Ups Defense on Grassy Terrain.",
+        "overworld": ""
+      },
+      "storageAbilityId": "grasspelt",
+      "storageAlias": false,
+      "romId": 186,
+      "aliases": [
+        "Grass Pelt"
+      ],
+      "mechanicsBase": "Grass Pelt",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "angerpoint": {
+      "num": 187,
+      "id": "angerpoint",
+      "name": "Anger Point",
+      "calcName": "Anger Point",
+      "desc": {
+        "battle": "Maxes Attack after a critical hit.",
+        "overworld": ""
+      },
+      "storageAbilityId": "angerpoint",
+      "storageAlias": false,
+      "romId": 187,
+      "aliases": [
+        "Anger Point"
+      ],
+      "mechanicsBase": "Anger Point",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "anticipation": {
+      "num": 188,
+      "id": "anticipation",
+      "name": "Anticipation",
+      "calcName": "Anticipation",
+      "desc": {
+        "battle": "Senses super effective moves.",
+        "overworld": ""
+      },
+      "storageAbilityId": "anticipation",
+      "storageAlias": false,
+      "romId": 188,
+      "aliases": [
+        "Anticipation"
+      ],
+      "mechanicsBase": "Anticipation",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "forewarn": {
+      "num": 189,
+      "id": "forewarn",
+      "name": "Forewarn",
+      "calcName": "Forewarn",
+      "desc": {
+        "battle": "Warns of the foe's strongest move.",
+        "overworld": ""
+      },
+      "storageAbilityId": "forewarn",
+      "storageAlias": false,
+      "romId": 189,
+      "aliases": [
+        "Forewarn"
+      ],
+      "mechanicsBase": "Forewarn",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "frisk": {
+      "num": 190,
+      "id": "frisk",
+      "name": "Frisk",
+      "calcName": "Frisk",
+      "desc": {
+        "battle": "Reveals the foe's held item.",
+        "overworld": ""
+      },
+      "storageAbilityId": "frisk",
+      "storageAlias": false,
+      "romId": 190,
+      "aliases": [
+        "Frisk"
+      ],
+      "mechanicsBase": "Frisk",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "contrary": {
+      "num": 191,
+      "id": "contrary",
+      "name": "Contrary",
+      "calcName": "Contrary",
+      "desc": {
+        "battle": "Reverses stat changes.",
+        "overworld": ""
+      },
+      "storageAbilityId": "contrary",
+      "storageAlias": false,
+      "romId": 191,
+      "aliases": [
+        "Contrary"
+      ],
+      "mechanicsBase": "Contrary",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "unnerve": {
+      "num": 192,
+      "id": "unnerve",
+      "name": "Unnerve",
+      "calcName": "Unnerve",
+      "desc": {
+        "battle": "Stops the foe from eating Berries.",
+        "overworld": ""
+      },
+      "storageAbilityId": "unnerve",
+      "storageAlias": false,
+      "romId": 192,
+      "aliases": [
+        "Unnerve"
+      ],
+      "mechanicsBase": "Unnerve",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "weakarmor": {
+      "num": 193,
+      "id": "weakarmor",
+      "name": "Weak Armor",
+      "calcName": "Weak Armor",
+      "desc": {
+        "battle": "Hits up Speed but drop Defense.",
+        "overworld": ""
+      },
+      "storageAbilityId": "weakarmor",
+      "storageAlias": false,
+      "romId": 193,
+      "aliases": [
+        "Weak Armor"
+      ],
+      "mechanicsBase": "Weak Armor",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "heavymetal": {
+      "num": 194,
+      "id": "heavymetal",
+      "name": "Heavy Metal",
+      "calcName": "Heavy Metal",
+      "desc": {
+        "battle": "Doubles weight.",
+        "overworld": ""
+      },
+      "storageAbilityId": "heavymetal",
+      "storageAlias": false,
+      "romId": 194,
+      "aliases": [
+        "Heavy Metal"
+      ],
+      "mechanicsBase": "Heavy Metal",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "lightmetal": {
+      "num": 195,
+      "id": "lightmetal",
+      "name": "Light Metal",
+      "calcName": "Light Metal",
+      "desc": {
+        "battle": "Halves weight.",
+        "overworld": ""
+      },
+      "storageAbilityId": "lightmetal",
+      "storageAlias": false,
+      "romId": 195,
+      "aliases": [
+        "Light Metal"
+      ],
+      "mechanicsBase": "Light Metal",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "steadfast": {
+      "num": 196,
+      "id": "steadfast",
+      "name": "Steadfast",
+      "calcName": "Steadfast",
+      "desc": {
+        "battle": "Flinching raises Speed.",
+        "overworld": ""
+      },
+      "storageAbilityId": "steadfast",
+      "storageAlias": false,
+      "romId": 196,
+      "aliases": [
+        "Steadfast"
+      ],
+      "mechanicsBase": "Steadfast",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "imposter": {
+      "num": 197,
+      "id": "imposter",
+      "name": "Imposter",
+      "calcName": "Imposter",
+      "desc": {
+        "battle": "Transforms upon entering battle.",
+        "overworld": ""
+      },
+      "storageAbilityId": "imposter",
+      "storageAlias": false,
+      "romId": 197,
+      "aliases": [
+        "Imposter"
+      ],
+      "mechanicsBase": "Imposter",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "justified": {
+      "num": 198,
+      "id": "justified",
+      "name": "Justified",
+      "calcName": "Justified",
+      "desc": {
+        "battle": "Dark-type hits raise Attack.",
+        "overworld": ""
+      },
+      "storageAbilityId": "justified",
+      "storageAlias": false,
+      "romId": 198,
+      "aliases": [
+        "Justified"
+      ],
+      "mechanicsBase": "Justified",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "rattled": {
+      "num": 199,
+      "id": "rattled",
+      "name": "Rattled",
+      "calcName": "Rattled",
+      "desc": {
+        "battle": "Scary move types raise Speed.",
+        "overworld": ""
+      },
+      "storageAbilityId": "rattled",
+      "storageAlias": false,
+      "romId": 199,
+      "aliases": [
+        "Rattled"
+      ],
+      "mechanicsBase": "Rattled",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "merciless": {
+      "num": 200,
+      "id": "merciless",
+      "name": "Merciless",
+      "calcName": "Merciless",
+      "desc": {
+        "battle": "Critically hits poisoned foes.",
+        "overworld": ""
+      },
+      "storageAbilityId": "merciless",
+      "storageAlias": false,
+      "romId": 200,
+      "aliases": [
+        "Merciless"
+      ],
+      "mechanicsBase": "Merciless",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "aromaveil": {
+      "num": 201,
+      "id": "aromaveil",
+      "name": "Aroma Veil",
+      "calcName": "Aroma Veil",
+      "desc": {
+        "battle": "Protects against mental problems.",
+        "overworld": ""
+      },
+      "storageAbilityId": "aromaveil",
+      "storageAlias": false,
+      "romId": 201,
+      "aliases": [
+        "Aroma Veil"
+      ],
+      "mechanicsBase": "Aroma Veil",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "flowerveil": {
+      "num": 202,
+      "id": "flowerveil",
+      "name": "Flower Veil",
+      "calcName": "Flower Veil",
+      "desc": {
+        "battle": "Protects Grass-types from status.",
+        "overworld": ""
+      },
+      "storageAbilityId": "flowerveil",
+      "storageAlias": false,
+      "romId": 202,
+      "aliases": [
+        "Flower Veil"
+      ],
+      "mechanicsBase": "Flower Veil",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "leafguard": {
+      "num": 203,
+      "id": "leafguard",
+      "name": "Leaf Guard",
+      "calcName": "Leaf Guard",
+      "desc": {
+        "battle": "Protects from status when sunny.",
+        "overworld": ""
+      },
+      "storageAbilityId": "leafguard",
+      "storageAlias": false,
+      "romId": 203,
+      "aliases": [
+        "Leaf Guard"
+      ],
+      "mechanicsBase": "Leaf Guard",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "klutz": {
+      "num": 204,
+      "id": "klutz",
+      "name": "Klutz",
+      "calcName": "Klutz",
+      "desc": {
+        "battle": "Can't use items.",
+        "overworld": ""
+      },
+      "storageAbilityId": "klutz",
+      "storageAlias": false,
+      "romId": 204,
+      "aliases": [
+        "Klutz"
+      ],
+      "mechanicsBase": "Klutz",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "flowergift": {
+      "num": 205,
+      "id": "flowergift",
+      "name": "Flower Gift",
+      "calcName": "Flower Gift",
+      "desc": {
+        "battle": "Powers up team when sunny.",
+        "overworld": ""
+      },
+      "storageAbilityId": "flowergift",
+      "storageAlias": false,
+      "romId": 205,
+      "aliases": [
+        "Flower Gift"
+      ],
+      "mechanicsBase": "Flower Gift",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "baddreams": {
+      "num": 206,
+      "id": "baddreams",
+      "name": "Bad Dreams",
+      "calcName": "Bad Dreams",
+      "desc": {
+        "battle": "Hurts sleeping foes.",
+        "overworld": ""
+      },
+      "storageAbilityId": "baddreams",
+      "storageAlias": false,
+      "romId": 206,
+      "aliases": [
+        "Bad Dreams"
+      ],
+      "mechanicsBase": "Bad Dreams",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "pickpocket": {
+      "num": 207,
+      "id": "pickpocket",
+      "name": "Pickpocket",
+      "calcName": "Pickpocket",
+      "desc": {
+        "battle": "Steals foe's item when hit.",
+        "overworld": ""
+      },
+      "storageAbilityId": "pickpocket",
+      "storageAlias": false,
+      "romId": 207,
+      "aliases": [
+        "Pickpocket"
+      ],
+      "mechanicsBase": "Pickpocket",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "portalpower": {
+      "num": 208,
+      "id": "portalpower",
+      "name": "Portal Power",
+      "calcName": "Portal Power",
+      "desc": {
+        "battle": "Weakens non-contact moves.",
+        "overworld": ""
+      },
+      "storageAbilityId": "portalpower",
+      "storageAlias": false,
+      "romId": 208,
+      "aliases": [
+        "Portal Power"
+      ],
+      "customCalculationMechanics": {
+        "abilityNumericId": 208,
+        "validationStatus": "complete",
+        "effect": "defender-ability-attacker-offense-stat-multiplier",
+        "condition": {
+          "attackingMoveContact": false
+        },
+        "affectedStats": [
+          "attack",
+          "specialAttack"
+        ],
+        "multiplier": {
+          "numerator": 75,
+          "denominator": 100
+        },
+        "rounding": "floor-each-affected-stat-after-multiplication",
+        "operationOrder": {
+          "phase": "target-ability-checks",
+          "after": [
+            "attacker-ability-stat-modifiers",
+            "attacker-partner-ability-stat-modifiers"
+          ],
+          "before": [
+            "attacker-item-stat-modifiers",
+            "attacker-stat-stage-application",
+            "base-damage-formula"
+          ]
+        },
+        "sourceEvidence": [
+          {
+            "source": "pinned-cfru-source",
+            "file": "src/damage_calc.c",
+            "lines": "2787-2797"
+          },
+          {
+            "source": "exact-supported-final-rom-static-analysis",
+            "routineRomAddress": "0x089D1940",
+            "conditionBlockStart": "0x089D1FEA",
+            "statTransformStart": "0x089D200C",
+            "statTransformEnd": "0x089D2024"
+          }
+        ],
+        "knownAnswers": [
+          {
+            "label": "non-contact-odd-stats-floor-independently",
+            "contact": false,
+            "attackBefore": 101,
+            "specialAttackBefore": 103,
+            "attackAfter": 75,
+            "specialAttackAfter": 77
+          },
+          {
+            "label": "contact-move-is-unmodified",
+            "contact": true,
+            "attackBefore": 101,
+            "specialAttackBefore": 103,
+            "attackAfter": 101,
+            "specialAttackAfter": 103
+          }
+        ]
+      },
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "poisontouch": {
+      "num": 209,
+      "id": "poisontouch",
+      "name": "Poison Touch",
+      "calcName": "Poison Touch",
+      "desc": {
+        "battle": "Can poison foe on contact.",
+        "overworld": ""
+      },
+      "storageAbilityId": "poisontouch",
+      "storageAlias": false,
+      "romId": 209,
+      "aliases": [
+        "Poison Touch"
+      ],
+      "mechanicsBase": "Poison Touch",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "magician": {
+      "num": 210,
+      "id": "magician",
+      "name": "Magician",
+      "calcName": "Magician",
+      "desc": {
+        "battle": "Can steal foe's item after attack.",
+        "overworld": ""
+      },
+      "storageAbilityId": "magician",
+      "storageAlias": false,
+      "romId": 210,
+      "aliases": [
+        "Magician"
+      ],
+      "mechanicsBase": "Magician",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "stancechange": {
+      "num": 211,
+      "id": "stancechange",
+      "name": "Stance Change",
+      "calcName": "Stance Change",
+      "desc": {
+        "battle": "Switches form when attacking.",
+        "overworld": ""
+      },
+      "storageAbilityId": "stancechange",
+      "storageAlias": false,
+      "romId": 211,
+      "aliases": [
+        "Stance Change"
+      ],
+      "mechanicsBase": "Stance Change",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "primordialsea": {
+      "num": 212,
+      "id": "primordialsea",
+      "name": "Primordial Sea",
+      "calcName": "Primordial Sea",
+      "desc": {
+        "battle": "Summons a heavy rainstorm.",
+        "overworld": ""
+      },
+      "storageAbilityId": "primordialsea",
+      "storageAlias": false,
+      "romId": 212,
+      "aliases": [
+        "Primordial Sea"
+      ],
+      "mechanicsBase": "Primordial Sea",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "desolateland": {
+      "num": 213,
+      "id": "desolateland",
+      "name": "Desolate Land",
+      "calcName": "Desolate Land",
+      "desc": {
+        "battle": "Summons extremely harsh sunlight.",
+        "overworld": ""
+      },
+      "storageAbilityId": "desolateland",
+      "storageAlias": false,
+      "romId": 213,
+      "aliases": [
+        "Desolate Land"
+      ],
+      "mechanicsBase": "Desolate Land",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "deltastream": {
+      "num": 214,
+      "id": "deltastream",
+      "name": "Delta Stream",
+      "calcName": "Delta Stream",
+      "desc": {
+        "battle": "Summons a mysterious air current.",
+        "overworld": ""
+      },
+      "storageAbilityId": "deltastream",
+      "storageAlias": false,
+      "romId": 214,
+      "aliases": [
+        "Delta Stream"
+      ],
+      "mechanicsBase": "Delta Stream",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "gorillatactics": {
+      "num": 215,
+      "id": "gorillatactics",
+      "name": "Gorilla Tactics",
+      "calcName": "Gorilla Tactics",
+      "desc": {
+        "battle": "Ups Attack, but allows one move.",
+        "overworld": ""
+      },
+      "storageAbilityId": "gorillatactics",
+      "storageAlias": false,
+      "romId": 215,
+      "aliases": [
+        "Gorilla Tactics"
+      ],
+      "mechanicsBase": "Gorilla Tactics",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "berserk": {
+      "num": 216,
+      "id": "berserk",
+      "name": "Berserk",
+      "calcName": "Berserk",
+      "desc": {
+        "battle": "Ups Sp. Atk below half HP.",
+        "overworld": ""
+      },
+      "storageAbilityId": "berserk",
+      "storageAlias": false,
+      "romId": 216,
+      "aliases": [
+        "Berserk"
+      ],
+      "mechanicsBase": "Berserk",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "longreach": {
+      "num": 217,
+      "id": "longreach",
+      "name": "Long Reach",
+      "calcName": "Long Reach",
+      "desc": {
+        "battle": "Never makes contact.",
+        "overworld": ""
+      },
+      "storageAbilityId": "longreach",
+      "storageAlias": false,
+      "romId": 217,
+      "aliases": [
+        "Long Reach"
+      ],
+      "mechanicsBase": "Long Reach",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "liquidvoice": {
+      "num": 218,
+      "id": "liquidvoice",
+      "name": "Liquid Voice",
+      "calcName": "Liquid Voice",
+      "desc": {
+        "battle": "Sound moves become Water-type.",
+        "overworld": ""
+      },
+      "storageAbilityId": "liquidvoice",
+      "storageAlias": false,
+      "romId": 218,
+      "aliases": [
+        "Liquid Voice"
+      ],
+      "mechanicsBase": "Liquid Voice",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "quickdraw": {
+      "num": 219,
+      "id": "quickdraw",
+      "name": "Quick Draw",
+      "calcName": "Quick Draw",
+      "desc": {
+        "battle": "Sometimes moves quicker.",
+        "overworld": ""
+      },
+      "storageAbilityId": "quickdraw",
+      "storageAlias": false,
+      "romId": 219,
+      "aliases": [
+        "Quick Draw"
+      ],
+      "mechanicsBase": "Quick Draw",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "innardsout": {
+      "num": 220,
+      "id": "innardsout",
+      "name": "Innards Out",
+      "calcName": "Innards Out",
+      "desc": {
+        "battle": "Fainting damages the foe.",
+        "overworld": ""
+      },
+      "storageAbilityId": "innardsout",
+      "storageAlias": false,
+      "romId": 220,
+      "aliases": [
+        "Innards Out"
+      ],
+      "mechanicsBase": "Innards Out",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "dazzling": {
+      "num": 221,
+      "id": "dazzling",
+      "name": "Dazzling",
+      "calcName": "Dazzling",
+      "desc": {
+        "battle": "Blocks priority moves.",
+        "overworld": ""
+      },
+      "storageAbilityId": "dazzling",
+      "storageAlias": false,
+      "romId": 221,
+      "aliases": [
+        "Dazzling"
+      ],
+      "mechanicsBase": "Dazzling",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "gluttony": {
+      "num": 222,
+      "id": "gluttony",
+      "name": "Gluttony",
+      "calcName": "Gluttony",
+      "desc": {
+        "battle": "Eats Berries early.",
+        "overworld": ""
+      },
+      "storageAbilityId": "gluttony",
+      "storageAlias": false,
+      "romId": 222,
+      "aliases": [
+        "Gluttony"
+      ],
+      "mechanicsBase": "Gluttony",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "honeygather": {
+      "num": 223,
+      "id": "honeygather",
+      "name": "Honey Gather",
+      "calcName": "Honey Gather",
+      "desc": {
+        "battle": "Picks up Honey after battle.",
+        "overworld": ""
+      },
+      "storageAbilityId": "honeygather",
+      "storageAlias": false,
+      "romId": 223,
+      "aliases": [
+        "Honey Gather"
+      ],
+      "mechanicsBase": "Honey Gather",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "friendguard": {
+      "num": 224,
+      "id": "friendguard",
+      "name": "Friend Guard",
+      "calcName": "Friend Guard",
+      "desc": {
+        "battle": "Reduces damage done to allies.",
+        "overworld": ""
+      },
+      "storageAbilityId": "friendguard",
+      "storageAlias": false,
+      "romId": 224,
+      "aliases": [
+        "Friend Guard"
+      ],
+      "mechanicsBase": "Friend Guard",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "harvest": {
+      "num": 225,
+      "id": "harvest",
+      "name": "Harvest",
+      "calcName": "Harvest",
+      "desc": {
+        "battle": "Can regain consumed Berries.",
+        "overworld": ""
+      },
+      "storageAbilityId": "harvest",
+      "storageAlias": false,
+      "romId": 225,
+      "aliases": [
+        "Harvest"
+      ],
+      "mechanicsBase": "Harvest",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "telepathy": {
+      "num": 226,
+      "id": "telepathy",
+      "name": "Telepathy",
+      "calcName": "Telepathy",
+      "desc": {
+        "battle": "Protects from allies' moves.",
+        "overworld": ""
+      },
+      "storageAbilityId": "telepathy",
+      "storageAlias": false,
+      "romId": 226,
+      "aliases": [
+        "Telepathy"
+      ],
+      "mechanicsBase": "Telepathy",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "illusion": {
+      "num": 227,
+      "id": "illusion",
+      "name": "Illusion",
+      "calcName": "Illusion",
+      "desc": {
+        "battle": "Enters battle disguised.",
+        "overworld": ""
+      },
+      "storageAbilityId": "illusion",
+      "storageAlias": false,
+      "romId": 227,
+      "aliases": [
+        "Illusion"
+      ],
+      "mechanicsBase": "Illusion",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "cheekpouch": {
+      "num": 228,
+      "id": "cheekpouch",
+      "name": "Cheek Pouch",
+      "calcName": "Cheek Pouch",
+      "desc": {
+        "battle": "Eating Berries restores HP.",
+        "overworld": ""
+      },
+      "storageAbilityId": "cheekpouch",
+      "storageAlias": false,
+      "romId": 228,
+      "aliases": [
+        "Cheek Pouch"
+      ],
+      "mechanicsBase": "Cheek Pouch",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "symbiosis": {
+      "num": 229,
+      "id": "symbiosis",
+      "name": "Symbiosis",
+      "calcName": "Symbiosis",
+      "desc": {
+        "battle": "Gives item to ally after use.",
+        "overworld": ""
+      },
+      "storageAbilityId": "symbiosis",
+      "storageAlias": false,
+      "romId": 229,
+      "aliases": [
+        "Symbiosis"
+      ],
+      "mechanicsBase": "Symbiosis",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "stakeout": {
+      "num": 230,
+      "id": "stakeout",
+      "name": "Stakeout",
+      "calcName": "Stakeout",
+      "desc": {
+        "battle": "Doubles damage on replacements.",
+        "overworld": ""
+      },
+      "storageAbilityId": "stakeout",
+      "storageAlias": false,
+      "romId": 230,
+      "aliases": [
+        "Stakeout"
+      ],
+      "mechanicsBase": "Stakeout",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "comatose": {
+      "num": 231,
+      "id": "comatose",
+      "name": "Comatose",
+      "calcName": "Comatose",
+      "desc": {
+        "battle": "Acts as if asleep.",
+        "overworld": ""
+      },
+      "storageAbilityId": "comatose",
+      "storageAlias": false,
+      "romId": 231,
+      "aliases": [
+        "Comatose"
+      ],
+      "mechanicsBase": "Comatose",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "dancer": {
+      "num": 232,
+      "id": "dancer",
+      "name": "Dancer",
+      "calcName": "Dancer",
+      "desc": {
+        "battle": "Copies dance moves.",
+        "overworld": ""
+      },
+      "storageAbilityId": "dancer",
+      "storageAlias": false,
+      "romId": 232,
+      "aliases": [
+        "Dancer"
+      ],
+      "mechanicsBase": "Dancer",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "battery": {
+      "num": 233,
+      "id": "battery",
+      "name": "Battery",
+      "calcName": "Battery",
+      "desc": {
+        "battle": "Powers up allies.",
+        "overworld": ""
+      },
+      "storageAbilityId": "battery",
+      "storageAlias": false,
+      "romId": 233,
+      "aliases": [
+        "Battery"
+      ],
+      "mechanicsBase": "Battery",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "receiver": {
+      "num": 234,
+      "id": "receiver",
+      "name": "Receiver",
+      "calcName": "Receiver",
+      "desc": {
+        "battle": "Takes over a KOed ally's Ability.",
+        "overworld": ""
+      },
+      "storageAbilityId": "receiver",
+      "storageAlias": false,
+      "romId": 234,
+      "aliases": [
+        "Receiver"
+      ],
+      "mechanicsBase": "Receiver",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "curiousmedicine": {
+      "num": 235,
+      "id": "curiousmedicine",
+      "name": "Odd Medicine",
+      "calcName": "Odd Medicine",
+      "desc": {
+        "battle": "Resets ally's stat changes.",
+        "overworld": ""
+      },
+      "storageAbilityId": "curiousmedicine",
+      "storageAlias": false,
+      "romId": 235,
+      "aliases": [
+        "Odd Medicine"
+      ],
+      "mechanicsBase": "Curious Medicine",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "neuroforce": {
+      "num": 236,
+      "id": "neuroforce",
+      "name": "Neuroforce",
+      "calcName": "Neuroforce",
+      "desc": {
+        "battle": "Powers up super effective hits.",
+        "overworld": ""
+      },
+      "storageAbilityId": "neuroforce",
+      "storageAlias": false,
+      "romId": 236,
+      "aliases": [
+        "Neuroforce"
+      ],
+      "mechanicsBase": "Neuroforce",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "galvanize": {
+      "num": 237,
+      "id": "galvanize",
+      "name": "Galvanize",
+      "calcName": "Galvanize",
+      "desc": {
+        "battle": "Normal moves become Electric.",
+        "overworld": ""
+      },
+      "storageAbilityId": "galvanize",
+      "storageAlias": false,
+      "romId": 237,
+      "aliases": [
+        "Galvanize"
+      ],
+      "mechanicsBase": "Galvanize",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "intrepidsword": {
+      "num": 238,
+      "id": "intrepidsword",
+      "name": "Intrepid Sword",
+      "calcName": "Intrepid Sword",
+      "desc": {
+        "battle": "Ups Attack on entry.",
+        "overworld": ""
+      },
+      "storageAbilityId": "intrepidsword",
+      "storageAlias": false,
+      "romId": 238,
+      "aliases": [
+        "Intrepid Sword"
+      ],
+      "mechanicsBase": "Intrepid Sword",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "dauntlessshield": {
+      "num": 239,
+      "id": "dauntlessshield",
+      "name": "Valiant Shield",
+      "calcName": "Valiant Shield",
+      "desc": {
+        "battle": "Ups Defense on entry.",
+        "overworld": ""
+      },
+      "storageAbilityId": "dauntlessshield",
+      "storageAlias": false,
+      "romId": 239,
+      "aliases": [
+        "Valiant Shield"
+      ],
+      "mechanicsBase": "Dauntless Shield",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "ballfetch": {
+      "num": 240,
+      "id": "ballfetch",
+      "name": "Ball Fetch",
+      "calcName": "Ball Fetch",
+      "desc": {
+        "battle": "Fetches first failed Pok\\e Ball.",
+        "overworld": ""
+      },
+      "storageAbilityId": "ballfetch",
+      "storageAlias": false,
+      "romId": 240,
+      "aliases": [
+        "Ball Fetch"
+      ],
+      "mechanicsBase": "Ball Fetch",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "cottondown": {
+      "num": 241,
+      "id": "cottondown",
+      "name": "Cotton Down",
+      "calcName": "Cotton Down",
+      "desc": {
+        "battle": "Lowers everyone's Speed when hit.",
+        "overworld": ""
+      },
+      "storageAbilityId": "cottondown",
+      "storageAlias": false,
+      "romId": 241,
+      "aliases": [
+        "Cotton Down"
+      ],
+      "mechanicsBase": "Cotton Down",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "mirrorarmor": {
+      "num": 242,
+      "id": "mirrorarmor",
+      "name": "Mirror Armor",
+      "calcName": "Mirror Armor",
+      "desc": {
+        "battle": "Bounces back stat decreases.",
+        "overworld": ""
+      },
+      "storageAbilityId": "mirrorarmor",
+      "storageAlias": false,
+      "romId": 242,
+      "aliases": [
+        "Mirror Armor"
+      ],
+      "mechanicsBase": "Mirror Armor",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "gulpmissile": {
+      "num": 243,
+      "id": "gulpmissile",
+      "name": "Gulp Missile",
+      "calcName": "Gulp Missile",
+      "desc": {
+        "battle": "Spits prey if hit after a swim.",
+        "overworld": ""
+      },
+      "storageAbilityId": "gulpmissile",
+      "storageAlias": false,
+      "romId": 243,
+      "aliases": [
+        "Gulp Missile"
+      ],
+      "mechanicsBase": "Gulp Missile",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "stalwart": {
+      "num": 244,
+      "id": "stalwart",
+      "name": "Stalwart",
+      "calcName": "Stalwart",
+      "desc": {
+        "battle": "Moves ignore redirection.",
+        "overworld": ""
+      },
+      "storageAbilityId": "stalwart",
+      "storageAlias": false,
+      "romId": 244,
+      "aliases": [
+        "Stalwart"
+      ],
+      "mechanicsBase": "Stalwart",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "steamengine": {
+      "num": 245,
+      "id": "steamengine",
+      "name": "Steam Engine",
+      "calcName": "Steam Engine",
+      "desc": {
+        "battle": "Fire and Water hits boost Speed.",
+        "overworld": ""
+      },
+      "storageAbilityId": "steamengine",
+      "storageAlias": false,
+      "romId": 245,
+      "aliases": [
+        "Steam Engine"
+      ],
+      "mechanicsBase": "Steam Engine",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "punkrock": {
+      "num": 246,
+      "id": "punkrock",
+      "name": "Punk Rock",
+      "calcName": "Punk Rock",
+      "desc": {
+        "battle": "Ups and resists sound moves.",
+        "overworld": ""
+      },
+      "storageAbilityId": "punkrock",
+      "storageAlias": false,
+      "romId": 246,
+      "aliases": [
+        "Punk Rock"
+      ],
+      "mechanicsBase": "Punk Rock",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "sandspit": {
+      "num": 247,
+      "id": "sandspit",
+      "name": "Sand Spit",
+      "calcName": "Sand Spit",
+      "desc": {
+        "battle": "Creates a sandstorm when hit.",
+        "overworld": ""
+      },
+      "storageAbilityId": "sandspit",
+      "storageAlias": false,
+      "romId": 247,
+      "aliases": [
+        "Sand Spit"
+      ],
+      "mechanicsBase": "Sand Spit",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "icescales": {
+      "num": 248,
+      "id": "icescales",
+      "name": "Ice Scales",
+      "calcName": "Ice Scales",
+      "desc": {
+        "battle": "Halves special damage.",
+        "overworld": ""
+      },
+      "storageAbilityId": "icescales",
+      "storageAlias": false,
+      "romId": 248,
+      "aliases": [
+        "Ice Scales"
+      ],
+      "mechanicsBase": "Ice Scales",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "ripen": {
+      "num": 249,
+      "id": "ripen",
+      "name": "Ripen",
+      "calcName": "Ripen",
+      "desc": {
+        "battle": "Doubles Berry effects.",
+        "overworld": ""
+      },
+      "storageAbilityId": "ripen",
+      "storageAlias": false,
+      "romId": 249,
+      "aliases": [
+        "Ripen"
+      ],
+      "mechanicsBase": "Ripen",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "iceface": {
+      "num": 250,
+      "id": "iceface",
+      "name": "Ice Face",
+      "calcName": "Ice Face",
+      "desc": {
+        "battle": "Free physical hit. Hail renews.",
+        "overworld": ""
+      },
+      "storageAbilityId": "iceface",
+      "storageAlias": false,
+      "romId": 250,
+      "aliases": [
+        "Ice Face"
+      ],
+      "mechanicsBase": "Ice Face",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "powerspot": {
+      "num": 251,
+      "id": "powerspot",
+      "name": "Power Spot",
+      "calcName": "Power Spot",
+      "desc": {
+        "battle": "Powers up ally moves.",
+        "overworld": ""
+      },
+      "storageAbilityId": "powerspot",
+      "storageAlias": false,
+      "romId": 251,
+      "aliases": [
+        "Power Spot"
+      ],
+      "mechanicsBase": "Power Spot",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "mimicry": {
+      "num": 252,
+      "id": "mimicry",
+      "name": "Mimicry",
+      "calcName": "Mimicry",
+      "desc": {
+        "battle": "Changes type with terrain.",
+        "overworld": ""
+      },
+      "storageAbilityId": "mimicry",
+      "storageAlias": false,
+      "romId": 252,
+      "aliases": [
+        "Mimicry"
+      ],
+      "mechanicsBase": "Mimicry",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "screencleaner": {
+      "num": 253,
+      "id": "screencleaner",
+      "name": "Screen Cleaner",
+      "calcName": "Screen Cleaner",
+      "desc": {
+        "battle": "Screens are removed on entry.",
+        "overworld": ""
+      },
+      "storageAbilityId": "screencleaner",
+      "storageAlias": false,
+      "romId": 253,
+      "aliases": [
+        "Screen Cleaner"
+      ],
+      "mechanicsBase": "Screen Cleaner",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "pastelveil": {
+      "num": 254,
+      "id": "pastelveil",
+      "name": "Pastel Veil",
+      "calcName": "Pastel Veil",
+      "desc": {
+        "battle": "Protects team from poison.",
+        "overworld": ""
+      },
+      "storageAbilityId": "pastelveil",
+      "storageAlias": false,
+      "romId": 254,
+      "aliases": [
+        "Pastel Veil"
+      ],
+      "mechanicsBase": "Pastel Veil",
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "sourceConfidence": "pinned-cfru-ability-constant"
+    },
+    "evaporate": {
+      "num": 131,
+      "id": "evaporate",
+      "name": "Evaporate",
+      "calcName": "Evaporate",
+      "desc": {
+        "battle": "Nullifies all water to up Sp. Atk.",
+        "overworld": ""
+      },
+      "storageAbilityId": "stormdrain",
+      "storageAlias": true,
+      "romId": 131,
+      "aliases": [
+        "Evaporate"
+      ],
+      "mechanicsBase": "Storm Drain",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "drillbeak": {
+      "num": 200,
+      "id": "drillbeak",
+      "name": "Drill Beak",
+      "calcName": "Drill Beak",
+      "desc": {
+        "battle": "Drill moves land critical hits.",
+        "overworld": ""
+      },
+      "storageAbilityId": "merciless",
+      "storageAlias": true,
+      "romId": 200,
+      "aliases": [
+        "Drill Beak"
+      ],
+      "mechanicsBase": "Merciless",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "airlock": {
+      "num": 13,
+      "id": "airlock",
+      "name": "Air Lock",
+      "calcName": "Air Lock",
+      "desc": {
+        "battle": "Negates weather effects.",
+        "overworld": ""
+      },
+      "storageAbilityId": "cloudnine",
+      "storageAlias": true,
+      "romId": 13,
+      "aliases": [
+        "Air Lock"
+      ],
+      "mechanicsBase": "Cloud Nine",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "purepower": {
+      "num": 37,
+      "id": "purepower",
+      "name": "Pure Power",
+      "calcName": "Pure Power",
+      "desc": {
+        "battle": "Raises Attack.",
+        "overworld": ""
+      },
+      "storageAbilityId": "hugepower",
+      "storageAlias": true,
+      "romId": 37,
+      "aliases": [
+        "Pure Power"
+      ],
+      "mechanicsBase": "Huge Power",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "whitesmoke": {
+      "num": 29,
+      "id": "whitesmoke",
+      "name": "White Smoke",
+      "calcName": "White Smoke",
+      "desc": {
+        "battle": "Prevents ability reduction.",
+        "overworld": ""
+      },
+      "storageAbilityId": "clearbody",
+      "storageAlias": true,
+      "romId": 29,
+      "aliases": [
+        "White Smoke"
+      ],
+      "mechanicsBase": "Clear Body",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "vitalspirit": {
+      "num": 15,
+      "id": "vitalspirit",
+      "name": "Vital Spirit",
+      "calcName": "Vital Spirit",
+      "desc": {
+        "battle": "Prevents sleep.",
+        "overworld": ""
+      },
+      "storageAbilityId": "insomnia",
+      "storageAlias": true,
+      "romId": 15,
+      "aliases": [
+        "Vital Spirit"
+      ],
+      "mechanicsBase": "Insomnia",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "solidrock": {
+      "num": 5,
+      "id": "solidrock",
+      "name": "Solid Rock",
+      "calcName": "Solid Rock",
+      "desc": {
+        "battle": "Negates 1-hit KO attacks.",
+        "overworld": ""
+      },
+      "storageAbilityId": "sturdy",
+      "storageAlias": true,
+      "romId": 5,
+      "aliases": [
+        "Solid Rock"
+      ],
+      "mechanicsBase": "Sturdy",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "focusbelt": {
+      "num": 5,
+      "id": "focusbelt",
+      "name": "Focus Belt",
+      "calcName": "Focus Belt",
+      "desc": {
+        "battle": "Negates 1-hit KO attacks.",
+        "overworld": ""
+      },
+      "storageAbilityId": "sturdy",
+      "storageAlias": true,
+      "romId": 5,
+      "aliases": [
+        "Focus Belt"
+      ],
+      "mechanicsBase": "Sturdy",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "ninelives": {
+      "num": 5,
+      "id": "ninelives",
+      "name": "Nine Lives",
+      "calcName": "Nine Lives",
+      "desc": {
+        "battle": "Negates 1-hit KO attacks.",
+        "overworld": ""
+      },
+      "storageAbilityId": "sturdy",
+      "storageAlias": true,
+      "romId": 5,
+      "aliases": [
+        "Nine Lives"
+      ],
+      "mechanicsBase": "Sturdy",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "turboblaze": {
+      "num": 152,
+      "id": "turboblaze",
+      "name": "Turboblaze",
+      "calcName": "Turboblaze",
+      "desc": {
+        "battle": "Moves ignore Abilities.",
+        "overworld": ""
+      },
+      "storageAbilityId": "moldbreaker",
+      "storageAlias": true,
+      "romId": 152,
+      "aliases": [
+        "Turboblaze"
+      ],
+      "mechanicsBase": "Mold Breaker",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "teravolt": {
+      "num": 152,
+      "id": "teravolt",
+      "name": "Teravolt",
+      "calcName": "Teravolt",
+      "desc": {
+        "battle": "Moves ignore Abilities.",
+        "overworld": ""
+      },
+      "storageAbilityId": "moldbreaker",
+      "storageAlias": true,
+      "romId": 152,
+      "aliases": [
+        "Teravolt"
+      ],
+      "mechanicsBase": "Mold Breaker",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "chillingneigh": {
+      "num": 118,
+      "id": "chillingneigh",
+      "name": "Chilling Neigh",
+      "calcName": "Chilling Neigh",
+      "desc": {
+        "battle": "Knockouts boost Attack.",
+        "overworld": ""
+      },
+      "storageAbilityId": "moxie",
+      "storageAlias": true,
+      "romId": 118,
+      "aliases": [
+        "Chilling Neigh"
+      ],
+      "mechanicsBase": "Moxie",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "fieryneigh": {
+      "num": 118,
+      "id": "fieryneigh",
+      "name": "Fiery Neigh",
+      "calcName": "Fiery Neigh",
+      "desc": {
+        "battle": "Knockouts boost Attack.",
+        "overworld": ""
+      },
+      "storageAbilityId": "moxie",
+      "storageAlias": true,
+      "romId": 118,
+      "aliases": [
+        "Fiery Neigh"
+      ],
+      "mechanicsBase": "Moxie",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "shockingneigh": {
+      "num": 118,
+      "id": "shockingneigh",
+      "name": "Shocking Neigh",
+      "calcName": "Shocking Neigh",
+      "desc": {
+        "battle": "Knockouts boost Attack.",
+        "overworld": ""
+      },
+      "storageAbilityId": "moxie",
+      "storageAlias": true,
+      "romId": 118,
+      "aliases": [
+        "Shocking Neigh"
+      ],
+      "mechanicsBase": "Moxie",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "pride": {
+      "num": 118,
+      "id": "pride",
+      "name": "Pride",
+      "calcName": "Pride",
+      "desc": {
+        "battle": "Knockouts boost Attack.",
+        "overworld": ""
+      },
+      "storageAbilityId": "moxie",
+      "storageAlias": true,
+      "romId": 118,
+      "aliases": [
+        "Pride"
+      ],
+      "mechanicsBase": "Moxie",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "multieye": {
+      "num": 81,
+      "id": "multieye",
+      "name": "Multieye",
+      "calcName": "Multieye",
+      "desc": {
+        "battle": "Reduces damage at full HP.",
+        "overworld": ""
+      },
+      "storageAbilityId": "multiscale",
+      "storageAlias": true,
+      "romId": 81,
+      "aliases": [
+        "Multieye"
+      ],
+      "mechanicsBase": "Multiscale",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "libero": {
+      "num": 150,
+      "id": "libero",
+      "name": "Libero",
+      "calcName": "Libero",
+      "desc": {
+        "battle": "Changes type to match move.",
+        "overworld": ""
+      },
+      "storageAbilityId": "protean",
+      "storageAlias": true,
+      "romId": 150,
+      "aliases": [
+        "Libero"
+      ],
+      "mechanicsBase": "Protean",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "subterfuge": {
+      "num": 150,
+      "id": "subterfuge",
+      "name": "Subterfuge",
+      "calcName": "Subterfuge",
+      "desc": {
+        "battle": "Changes type to match move.",
+        "overworld": ""
+      },
+      "storageAbilityId": "protean",
+      "storageAlias": true,
+      "romId": 150,
+      "aliases": [
+        "Subterfuge"
+      ],
+      "mechanicsBase": "Protean",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "tanglinghair": {
+      "num": 121,
+      "id": "tanglinghair",
+      "name": "Tangling Hair",
+      "calcName": "Tangling Hair",
+      "desc": {
+        "battle": "Lowers the foe's Speed if hit.",
+        "overworld": ""
+      },
+      "storageAbilityId": "gooey",
+      "storageAlias": true,
+      "romId": 121,
+      "aliases": [
+        "Tangling Hair"
+      ],
+      "mechanicsBase": "Gooey",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "tanglingwool": {
+      "num": 241,
+      "id": "tanglingwool",
+      "name": "Tangling Wool",
+      "calcName": "Tangling Wool",
+      "desc": {
+        "battle": "Lowers everyone's Speed when hit.",
+        "overworld": ""
+      },
+      "storageAbilityId": "cottondown",
+      "storageAlias": true,
+      "romId": 241,
+      "aliases": [
+        "Tangling Wool"
+      ],
+      "mechanicsBase": "Cotton Down",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "cottoncloud": {
+      "num": 241,
+      "id": "cottoncloud",
+      "name": "Cotton Cloud",
+      "calcName": "Cotton Cloud",
+      "desc": {
+        "battle": "Lowers everyone's Speed when hit.",
+        "overworld": ""
+      },
+      "storageAbilityId": "cottondown",
+      "storageAlias": true,
+      "romId": 241,
+      "aliases": [
+        "Cotton Cloud"
+      ],
+      "mechanicsBase": "Cotton Down",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "brainbond": {
+      "num": 151,
+      "id": "brainbond",
+      "name": "Brain Bond",
+      "calcName": "Brain Bond",
+      "desc": {
+        "battle": "Moves get a weaker second hit.",
+        "overworld": ""
+      },
+      "storageAbilityId": "parentalbond",
+      "storageAlias": true,
+      "romId": 151,
+      "aliases": [
+        "Brain Bond"
+      ],
+      "mechanicsBase": "Parental Bond",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "grassdash": {
+      "num": 117,
+      "id": "grassdash",
+      "name": "Grass Dash",
+      "calcName": "Grass Dash",
+      "desc": {
+        "battle": "Grass-type moves hit first.",
+        "overworld": ""
+      },
+      "storageAbilityId": "galewings",
+      "storageAlias": true,
+      "romId": 117,
+      "aliases": [
+        "Grass Dash"
+      ],
+      "mechanicsBase": "Gale Wings",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "slipperytail": {
+      "num": 117,
+      "id": "slipperytail",
+      "name": "Slippery Tail",
+      "calcName": "Slippery Tail",
+      "desc": {
+        "battle": "Tail moves hit first.",
+        "overworld": ""
+      },
+      "storageAbilityId": "galewings",
+      "storageAlias": true,
+      "romId": 117,
+      "aliases": [
+        "Slippery Tail"
+      ],
+      "mechanicsBase": "Gale Wings",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "wimpout": {
+      "num": 160,
+      "id": "wimpout",
+      "name": "Wimp Out",
+      "calcName": "Wimp Out",
+      "desc": {
+        "battle": "Switches out below half HP.",
+        "overworld": ""
+      },
+      "storageAbilityId": "emergencyexit",
+      "storageAlias": true,
+      "romId": 160,
+      "aliases": [
+        "Wimp Out"
+      ],
+      "mechanicsBase": "Emergency Exit",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "queenlymajesty": {
+      "num": 221,
+      "id": "queenlymajesty",
+      "name": "Queenly Majesty",
+      "calcName": "Queenly Majesty",
+      "desc": {
+        "battle": "Blocks priority moves.",
+        "overworld": ""
+      },
+      "storageAbilityId": "dazzling",
+      "storageAlias": true,
+      "romId": 221,
+      "aliases": [
+        "Queenly Majesty"
+      ],
+      "mechanicsBase": "Dazzling",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "powerofalchemy": {
+      "num": 234,
+      "id": "powerofalchemy",
+      "name": "Power Of Alchemy",
+      "calcName": "Power Of Alchemy",
+      "desc": {
+        "battle": "Takes over a KOed ally's Ability.",
+        "overworld": ""
+      },
+      "storageAbilityId": "receiver",
+      "storageAlias": true,
+      "romId": 234,
+      "aliases": [
+        "Power Of Alchemy"
+      ],
+      "mechanicsBase": "Receiver",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "propellertail": {
+      "num": 244,
+      "id": "propellertail",
+      "name": "Propeller Tail",
+      "calcName": "Propeller Tail",
+      "desc": {
+        "battle": "Moves ignore redirection.",
+        "overworld": ""
+      },
+      "storageAbilityId": "stalwart",
+      "storageAlias": true,
+      "romId": 244,
+      "aliases": [
+        "Propeller Tail"
+      ],
+      "mechanicsBase": "Stalwart",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "below": {
+      "num": 246,
+      "id": "below",
+      "name": "Below",
+      "calcName": "Below",
+      "desc": {
+        "battle": "Ups and resists sound moves.",
+        "overworld": ""
+      },
+      "storageAbilityId": "punkrock",
+      "storageAlias": true,
+      "romId": 246,
+      "aliases": [
+        "Below"
+      ],
+      "mechanicsBase": "Punk Rock",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "soundwaves": {
+      "num": 246,
+      "id": "soundwaves",
+      "name": "Sound Waves",
+      "calcName": "Sound Waves",
+      "desc": {
+        "battle": "Ups and resists sound moves.",
+        "overworld": ""
+      },
+      "storageAbilityId": "punkrock",
+      "storageAlias": true,
+      "romId": 246,
+      "aliases": [
+        "Sound Waves"
+      ],
+      "mechanicsBase": "Punk Rock",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "icyskin": {
+      "num": 248,
+      "id": "icyskin",
+      "name": "Icy Skin",
+      "calcName": "Icy Skin",
+      "desc": {
+        "battle": "Halves special damage.",
+        "overworld": ""
+      },
+      "storageAbilityId": "icescales",
+      "storageAlias": true,
+      "romId": 248,
+      "aliases": [
+        "Icy Skin"
+      ],
+      "mechanicsBase": "Ice Scales",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "dustyscales": {
+      "num": 248,
+      "id": "dustyscales",
+      "name": "Dusty Scales",
+      "calcName": "Dusty Scales",
+      "desc": {
+        "battle": "Halves special damage.",
+        "overworld": ""
+      },
+      "storageAbilityId": "icescales",
+      "storageAlias": true,
+      "romId": 248,
+      "aliases": [
+        "Dusty Scales"
+      ],
+      "mechanicsBase": "Ice Scales",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "crabbytactics": {
+      "num": 215,
+      "id": "crabbytactics",
+      "name": "Crabby Tactics",
+      "calcName": "Crabby Tactics",
+      "desc": {
+        "battle": "Ups Attack, but allows one move.",
+        "overworld": ""
+      },
+      "storageAbilityId": "gorillatactics",
+      "storageAlias": true,
+      "romId": 215,
+      "aliases": [
+        "Crabby Tactics"
+      ],
+      "mechanicsBase": "Gorilla Tactics",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "faceshield": {
+      "num": 239,
+      "id": "faceshield",
+      "name": "Face Shield",
+      "calcName": "Face Shield",
+      "desc": {
+        "battle": "Ups Defense on entry.",
+        "overworld": ""
+      },
+      "storageAbilityId": "dauntlessshield",
+      "storageAlias": true,
+      "romId": 239,
+      "aliases": [
+        "Face Shield"
+      ],
+      "mechanicsBase": "Dauntless Shield",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "honeyarmor": {
+      "num": 239,
+      "id": "honeyarmor",
+      "name": "Honey Armor",
+      "calcName": "Honey Armor",
+      "desc": {
+        "battle": "Ups Defense on entry.",
+        "overworld": ""
+      },
+      "storageAbilityId": "dauntlessshield",
+      "storageAlias": true,
+      "romId": 239,
+      "aliases": [
+        "Honey Armor"
+      ],
+      "mechanicsBase": "Dauntless Shield",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "royalroar": {
+      "num": 123,
+      "id": "royalroar",
+      "name": "Royal Roar",
+      "calcName": "Royal Roar",
+      "desc": {
+        "battle": "Knockouts boost Sp. Atk.",
+        "overworld": ""
+      },
+      "storageAbilityId": "grimneigh",
+      "storageAlias": true,
+      "romId": 123,
+      "aliases": [
+        "Royal Roar"
+      ],
+      "mechanicsBase": "Grim Neigh",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    },
+    "ironbarbs": {
+      "num": 24,
+      "id": "ironbarbs",
+      "name": "Iron Barbs",
+      "calcName": "Iron Barbs",
+      "desc": {
+        "battle": "Hurts to touch.",
+        "overworld": ""
+      },
+      "storageAbilityId": "roughskin",
+      "storageAlias": true,
+      "romId": 24,
+      "aliases": [
+        "Iron Barbs"
+      ],
+      "mechanicsBase": "Rough Skin",
+      "mechanicsResolution": "pinned-cfru-shared-storage-mechanics-alias",
+      "sourceConfidence": "pinned-cfru-shared-storage-ability-alias"
+    }
+  }
+}

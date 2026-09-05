@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "gameId": "renegade-platinum",
+  "kind": "battle-mechanics",
+  "experienceMechanicsSource": "experience_mechanics.json",
+  "engine": {
+    "id": "smogon-calc",
+    "version": "0.11.0"
+  },
+  "damageGeneration": 4,
+  "canonicalDataGeneration": 9,
+  "canonicalDataSource": {
+    "engine": {
+      "id": "smogon-calc",
+      "version": "0.11.0"
+    },
+    "files": {
+      "Battle Mechanics/vendor/smogon-calc-0.11.0/data.production.min.js": {
+        "sha256": "364be40ea1aec31f413d0036445f717d826ece9c33ec25a02399c3a287c99529"
+      },
+      "Battle Mechanics/vendor/smogon-calc-0.11.0/engine.production.min.js": {
+        "sha256": "e77a129dccf6812dcd299fc79d1f5de8afa77e8eb6de89bca283f468c968e124"
+      }
+    },
+    "policy": "Generation 9 supplies declared canonical inheritance; standardized game records override game-specific core values."
+  },
+  "typeChartSource": "types.json",
+  "mechanicsProfile": "renegade-platinum-documented-v1",
+  "trainerBattleProfile": "default",
+  "runtimeDefaults": {},
+  "runtimeInputs": {
+    "trainerGender": {
+      "policy": "required-when-mechanically-relevant",
+      "staticSourceStatus": "not-fixed-by-trainer-source",
+      "affectedTrainerMembers": 0,
+      "affectedTrainerMemberIds": [],
+      "failClosedWhenRequiredAndUnavailable": true,
+      "note": "Observe or supply gender at calculation time when an active mechanic depends on it; do not invent a static trainer gender."
+    }
+  },
+  "features": {
+    "gameSpecificContract": true,
+    "genericEngineLineageAloneIsInsufficient": true
+  },
+  "validation": {
+    "status": "passed",
+    "unresolved": 0,
+    "sourceFiles": [
+      "species.json",
+      "moves.json",
+      "abilities.json",
+      "items.json",
+      "natures.json",
+      "types.json",
+      "trainers.json"
+    ],
+    "blockingIssues": {},
+    "unresolvedRecords": [],
+    "knownAnswerSuite": {
+      "file": "Datasets/tools/validate_battle_mechanics_known_answers.js",
+      "sha256": "dd6eea3ffb567f7d18ca9f1aa7167777cf811de03e0680383fb73149fc80e021",
+      "cases": [
+        "ordinary",
+        "spread",
+        "fixed",
+        "multi",
+        "drain",
+        "recoil",
+        "weight",
+        "item"
+      ]
+    },
+    "note": "Game-specific source audit and the pinned known-answer suite passed with no unresolved calculation fields."
+  },
+  "consumerActivation": {
+    "calculationReady": true
+  }
+}

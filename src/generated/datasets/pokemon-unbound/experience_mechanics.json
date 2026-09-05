@@ -1,0 +1,257 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-unbound",
+  "kind": "experience-mechanics",
+  "experienceGeneration": "custom",
+  "formulaGenerationBasis": [
+    5,
+    7
+  ],
+  "baseYieldGeneration": 7,
+  "inheritedFromDamageGeneration": false,
+  "mechanicsProfile": "unbound-2.1.1.1-difficult-experience-v1",
+  "source": {
+    "authorityFile": "imports/reference-docs/unbound_mechanics_authority.json",
+    "authorityKind": "pinned-source-plus-exact-supported-final-rom",
+    "evidence": [
+      {
+        "source": "pinned-cfru-source",
+        "file": "src/exp.c",
+        "calculationLines": "150-266,482-512",
+        "distributionLines": "103-169,430-478",
+        "affectionAndCapLines": "557-584"
+      },
+      {
+        "source": "pinned-cfru-source",
+        "file": "src/config.h",
+        "lines": "307-313"
+      },
+      {
+        "source": "exact-supported-final-rom-static-analysis",
+        "battleCommand": "0x23",
+        "battleCommandTableRomAddress": "0x0899FFFC",
+        "getExperienceRoutineRomAddress": "0x089E1C4C"
+      },
+      {
+        "source": "bundled-version-changelog",
+        "file": "imports/reference-docs/Unbound Main_CHANGELOG.txt",
+        "evidence": [
+          "optional hard level cap",
+          "Lucky Egg upgrades through 6x",
+          "level-cap behavior for Rare Candy and Day Care"
+        ]
+      }
+    ]
+  },
+  "levelCurve": {
+    "growthRateField": "species.json#records.*.growthRate",
+    "status": "passed"
+  },
+  "baseYield": {
+    "field": "species.json#records.*.baseExp",
+    "status": "passed",
+    "generation": 7
+  },
+  "recipientEligibility": {
+    "requiresPresentSpecies": true,
+    "requiresPositiveHp": true,
+    "excludesEggs": true,
+    "maxLevelGetsExperience": false,
+    "maxLevelStillGetsEvs": true
+  },
+  "distribution": {
+    "model": "modern-party-exp-share-without-old-participant-split",
+    "participantDivisor": 1,
+    "nonParticipantExpShareDivisor": 2,
+    "participantCountDoesNotDivideAward": true,
+    "faintedAndEggRecipientsExcluded": true
+  },
+  "trainerBattleFormula": {
+    "model": "unbound-2.1.1.1-cfru-scaled-gen5-gen7",
+    "status": "passed",
+    "variables": {
+      "a": "trainer factor in tenths: 10 normally; 15 in a trainer battle only after the game-clear flag",
+      "t": "trade factor in tenths: 10 normally; 15 for a traded recipient",
+      "b": "defeated species baseExp from the Generation 7 base-yield table",
+      "e": "Lucky Egg factor in tenths: 10 without the item; 15 at level 1; 15 + 5*(level-1) at levels 2-10",
+      "L": "defeated Pokémon level",
+      "Lp": "recipient Pokémon level",
+      "p": "Pass Power factor; fixed at 1 because this engine path does not implement it",
+      "f": "affection factor in tenths: 10 normally; 12 at friendship 220+ only after game clear",
+      "v": "evolution factor in tenths: 10 normally; 12 when the recipient could already have evolved by level-up",
+      "s": "distribution divisor: 1 for a participant; 2 for a nonparticipant receiving Exp. Share experience"
+    },
+    "integerSquareRoot": "floor(sqrt(value))",
+    "stages": [
+      {
+        "id": "scaled-base",
+        "expression": "q = floor(a * b * L / (10 * 5 * s))",
+        "rounding": "floor"
+      },
+      {
+        "id": "level-scaling-ratio",
+        "expression": "q = floor(q * (2*L+10)^2 / ((L+Lp+10)^2 * floor(sqrt(L+Lp+10))))",
+        "rounding": "floor"
+      },
+      {
+        "id": "level-scaling-root-and-minimum-increment",
+        "expression": "q = q * floor(sqrt(2*L+10)) + 1",
+        "rounding": "integer"
+      },
+      {
+        "id": "trade-lucky-egg-evolution",
+        "expression": "q = floor(q * t * e * v / 1000)",
+        "rounding": "floor"
+      },
+      {
+        "id": "pass-power-and-affection",
+        "expression": "q = floor(q * p * f / 10)",
+        "rounding": "floor"
+      },
+      {
+        "id": "raid",
+        "expression": "q = q * 2 when the battle is a raid",
+        "rounding": "integer"
+      },
+      {
+        "id": "bounds",
+        "expression": "q = max(1, min(1640000, q))",
+        "rounding": "integer"
+      }
+    ]
+  },
+  "knownFeatures": {
+    "trainerFactor": {
+      "ordinary": 10,
+      "trainerBeforeGameClear": 10,
+      "trainerAfterGameClear": 15,
+      "scale": 10
+    },
+    "luckyEgg": {
+      "withoutItem": 10,
+      "level1": 15,
+      "level2Through10Expression": "15 + 5*(level-1)",
+      "maximumLevel": 10,
+      "maximumFactor": 60,
+      "scale": 10
+    },
+    "hardLevelCap": {
+      "enabledByOption": true,
+      "condition": "recipientLevel >= currentLevelCap",
+      "awardedExperience": 1,
+      "checkedBeforeFormula": true,
+      "difficultyDefaults": {
+        "vanilla": false,
+        "difficult": false,
+        "expert": true,
+        "insane": true
+      }
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "unresolved": 0,
+    "knownAnswers": [
+      {
+        "label": "pregame-equal-level-participant",
+        "inputs": {
+          "a": 10,
+          "t": 10,
+          "b": 100,
+          "e": 10,
+          "L": 20,
+          "Lp": 20,
+          "p": 1,
+          "f": 10,
+          "v": 10,
+          "s": 1,
+          "raid": false,
+          "hardCap": false
+        },
+        "result": 400
+      },
+      {
+        "label": "pregame-equal-level-exp-share-nonparticipant",
+        "inputs": {
+          "a": 10,
+          "t": 10,
+          "b": 100,
+          "e": 10,
+          "L": 20,
+          "Lp": 20,
+          "p": 1,
+          "f": 10,
+          "v": 10,
+          "s": 2,
+          "raid": false,
+          "hardCap": false
+        },
+        "result": 197
+      },
+      {
+        "label": "postgame-trainer-bonus",
+        "inputs": {
+          "a": 15,
+          "t": 10,
+          "b": 100,
+          "e": 10,
+          "L": 20,
+          "Lp": 20,
+          "p": 1,
+          "f": 10,
+          "v": 10,
+          "s": 1,
+          "raid": false,
+          "hardCap": false
+        },
+        "result": 596
+      },
+      {
+        "label": "upgraded-lucky-egg-level-10",
+        "inputs": {
+          "a": 10,
+          "t": 10,
+          "b": 100,
+          "e": 60,
+          "L": 20,
+          "Lp": 20,
+          "p": 1,
+          "f": 10,
+          "v": 10,
+          "s": 1,
+          "raid": false,
+          "hardCap": false
+        },
+        "result": 2400
+      },
+      {
+        "label": "hard-level-cap",
+        "inputs": {
+          "a": 15,
+          "t": 15,
+          "b": 261,
+          "e": 60,
+          "L": 50,
+          "Lp": 50,
+          "p": 1,
+          "f": 12,
+          "v": 12,
+          "s": 1,
+          "raid": true,
+          "hardCap": true
+        },
+        "result": 1
+      }
+    ],
+    "authorityStatus": {
+      "status": "passed",
+      "unresolved": 0,
+      "method": "Pinned public source inspection plus exact supported final-ROM table reads and static disassembly",
+      "date": "2026-08-27"
+    },
+    "note": "The game-specific formula is exact for the supported Unbound 2.1.1.1 ROM and is independent of its Generation 3 damage formula."
+  },
+  "consumerActivation": {
+    "experienceProjectionReady": true
+  }
+}

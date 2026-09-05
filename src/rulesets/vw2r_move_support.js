@@ -1,5 +1,5 @@
 import { toId } from "../core/primitives.js";
-import { SHOWDOWN_MOVE_REFERENCE } from "./generated/showdown_move_reference.js";
+import { SHOWDOWN_MOVE_REFERENCE_BY_GAME, SHOWDOWN_MOVE_REFERENCE_BY_GENERATION, SHOWDOWN_REFERENCE_SOURCE } from "./generated/showdown_move_reference.js";
 
 const STATUS_RULES = Object.freeze({
   brn: { immuneTypes: ["fire"], immuneAbilities: ["waterveil", "waterbubble"] },
@@ -125,12 +125,40 @@ const SPECIAL_HANDLERS = Object.freeze({
   sleeptalk: "sleep-talk",
   bestow: "give-item",
   swallow: "swallow",
-  transform: "transform"
+  transform: "transform",
+  flowershield: "flower-shield",
+  rototiller: "rototiller",
+  topsyturvy: "invert-stat-stages",
+  floralhealing: "terrain-target-heal",
+  gearup: "plus-minus-offense",
+  purify: "purify",
+  shoreup: "terrain-self-heal",
+  speedswap: "swap-speed-stats",
+  strengthsap: "strength-sap",
+  magneticflux: "plus-minus-defense",
+  trickortreat: "add-ghost-type",
+  venomdrench: "venom-drench",
+  forestscurse: "add-grass-type",
+  instruct: "instruct",
+  happyhour: "no-op",
+  celebrate: "no-op",
+  holdhands: "no-op",
+  stuffcheeks: "stuff-cheeks",
+  magicpowder: "set-psychic-type",
+  teatime: "teatime",
+  courtchange: "court-change",
+  corrosivegas: "remove-item",
+  junglehealing: "party-quarter-heal-status",
+  lunarblessing: "party-quarter-heal-status",
+  takeheart: "take-heart"
 });
 
 const AUTOMATIC_TARGET_MODES = new Set(["all", "alladjacent", "alladjacentfoes", "scripted"]);
 const FIELD_TARGET_MODES = new Set(["allyside", "allyteam", "allies", "foeside"]);
-const FIELD_SPECIAL_HANDLERS = new Set(["clear-all-stat-stages", "clear-party-status", "perish-song"]);
+const FIELD_SPECIAL_HANDLERS = new Set([
+  "clear-all-stat-stages", "clear-party-status", "perish-song", "flower-shield", "rototiller",
+  "plus-minus-offense", "plus-minus-defense", "teatime", "court-change", "party-quarter-heal-status"
+]);
 
 function targetMode(reference, move = null) {
   if (move && String(move.category).toLowerCase() !== "status") return toId(move.target || reference.target || "normal");
@@ -200,15 +228,17 @@ function primaryOperations(move, reference) {
   return operations;
 }
 
-export function vw2rMoveSupport(move) {
+export function vw2rMoveSupport(move, dataset = null) {
   if (!move) return { supported: false, reason: "Move data is unavailable" };
   const moveId = toId(move.id || move.name);
-  const reference = SHOWDOWN_MOVE_REFERENCE[moveId];
+  const generation = Number(dataset?.mechanics?.damageGeneration || 5);
+  const reference = SHOWDOWN_MOVE_REFERENCE_BY_GAME[dataset?.gameId]?.[moveId]
+    || SHOWDOWN_MOVE_REFERENCE_BY_GENERATION[generation]?.[moveId];
   if (!reference) return { supported: false, reason: `${move.name || move.id} has no pinned Showdown move definition` };
   let operations = primaryOperations(move, reference);
   // VW2R repurposes Water Sport as a damaging move. Keep the displayed source
   // data intact and suppress only Showdown's legacy status-move callback here.
-  const specialHandlerId = moveId === "watersport" && String(move.category).toLowerCase() !== "status"
+  const specialHandlerId = dataset?.gameId === "volt-white-2r" && moveId === "watersport" && String(move.category).toLowerCase() !== "status"
     ? null
     : SPECIAL_HANDLERS[moveId] || null;
   if (["curse", "attract", "sky-drop"].includes(specialHandlerId)) {
@@ -247,6 +277,15 @@ export function vw2rMoveSupport(move) {
   };
 }
 
-export function vw2rReferenceMoveIds() {
-  return Object.keys(SHOWDOWN_MOVE_REFERENCE);
+export function vw2rReferenceMoveIds(dataset = null) {
+  const generation = Number(dataset?.mechanics?.damageGeneration || 5);
+  return Object.keys(SHOWDOWN_MOVE_REFERENCE_BY_GAME[dataset?.gameId] || SHOWDOWN_MOVE_REFERENCE_BY_GENERATION[generation] || {});
+}
+
+export function hasShowdownMoveReference(dataset = null) {
+  const generation = Number(dataset?.mechanics?.damageGeneration);
+  return Number.isInteger(generation)
+    && Array.isArray(SHOWDOWN_REFERENCE_SOURCE.games)
+    && SHOWDOWN_REFERENCE_SOURCE.games.includes(dataset?.gameId)
+    && Boolean(SHOWDOWN_MOVE_REFERENCE_BY_GAME[dataset?.gameId]);
 }

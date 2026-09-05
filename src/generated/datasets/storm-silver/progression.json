@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "gameId": "storm-silver",
+  "kind": "progression",
+  "consumerProfile": {
+    "id": "documented-main-game",
+    "splits": [
+      {
+        "id": "falkner",
+        "label": "Falkner",
+        "firstOrder": 1,
+        "lastOrder": 17,
+        "levelCap": 15,
+        "leaderTrainerId": "storm-silver-trainer-0020",
+        "sourceConfidence": "native-drayano-trainer-battles-split-tab"
+      },
+      {
+        "id": "bugsy",
+        "label": "Bugsy",
+        "firstOrder": 18,
+        "lastOrder": 43,
+        "levelCap": 21,
+        "leaderTrainerId": "storm-silver-trainer-0021",
+        "sourceConfidence": "native-drayano-trainer-battles-split-tab"
+      },
+      {
+        "id": "whitney",
+        "label": "Whitney",
+        "firstOrder": 44,
+        "lastOrder": 75,
+        "levelCap": 24,
+        "leaderTrainerId": "storm-silver-trainer-0030",
+        "sourceConfidence": "native-drayano-trainer-battles-split-tab"
+      },
+      {
+        "id": "morty",
+        "label": "Morty",
+        "firstOrder": 76,
+        "lastOrder": 90,
+        "levelCap": 29,
+        "leaderTrainerId": "storm-silver-trainer-0031",
+        "sourceConfidence": "native-drayano-trainer-battles-split-tab"
+      },
+      {
+        "id": "chuck",
+        "label": "Chuck",
+        "firstOrder": 91,
+        "lastOrder": 129,
+        "levelCap": 35,
+        "leaderTrainerId": "storm-silver-trainer-0034",
+        "sourceConfidence": "native-drayano-trainer-battles-split-tab"
+      },
+      {
+        "id": "jasmine",
+        "label": "Jasmine",
+        "firstOrder": 130,
+        "lastOrder": 154,
+        "levelCap": 40,
+        "leaderTrainerId": "storm-silver-trainer-0033",
+        "sourceConfidence": "native-drayano-trainer-battles-split-tab"
+      },
+      {
+        "id": "pryce",
+        "label": "Pryce",
+        "firstOrder": 155,
+        "lastOrder": 189,
+        "levelCap": 44,
+        "leaderTrainerId": "storm-silver-trainer-0032",
+        "sourceConfidence": "native-drayano-trainer-battles-split-tab"
+      },
+      {
+        "id": "clair",
+        "label": "Clair",
+        "firstOrder": 190,
+        "lastOrder": 241,
+        "levelCap": 50,
+        "leaderTrainerId": "storm-silver-trainer-0035",
+        "sourceConfidence": "native-drayano-trainer-battles-split-tab"
+      },
+      {
+        "id": "champion",
+        "label": "Champion",
+        "firstOrder": 242,
+        "lastOrder": 271,
+        "levelCap": 60,
+        "leaderTrainerId": "storm-silver-trainer-0247",
+        "sourceConfidence": "native-drayano-trainer-battles-split-tab"
+      }
+    ],
+    "compatibilityBoundary": "Native workbook split tabs define the main-game trainer sequence; mechanics-only reference records are excluded from canonical order."
+  },
+  "referenceProfiles": [],
+  "unresolved": [
+    "6 matched trainer rows use neither the documented red mandatory fill nor blue optional fill; mandatory remains null.",
+    "Story flags, mutually exclusive route choices, and branch prerequisites beyond workbook notes require script or ROM evidence."
+  ],
+  "source": {
+    "workbook": "SS_Trainer_Battles.xlsx",
+    "sha256": "77c06ffa350f1446f8765f2dbcb226cbd5b5b8de54e0c491595d846404783767",
+    "spreadsheetId": "12l-M92K4TEA3d7C89GB9RBT4pOs8QEsdHdmQ9pmqz-w"
+  }
+}

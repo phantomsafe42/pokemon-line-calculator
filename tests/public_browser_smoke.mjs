@@ -188,9 +188,17 @@ try {
     await wait(() => /is ready\./.test(document.getElementById('app-status')?.textContent || '')
       && document.getElementById('trainer-select').options.length > 400, 'public game data and worker');
     if (document.getElementById('plan-context-dialog').open) document.getElementById('plan-context-dialog').close();
+    const assetResolver = globalThis.PokemonAssets.createResolver();
+    const sprite = document.createElement('img');
+    const spriteResult = await assetResolver.setImage(sprite, { appearanceId: 'clefairy', spriteType: 'g5-animated', view: 'front' });
+    await sprite.decode();
     return {
       profile: document.querySelector('meta[name="plc-build-profile"]')?.content,
+      spriteLoaded: spriteResult.status === 'ok' && sprite.naturalWidth > 0,
       status: document.getElementById('app-status').textContent,
+      gameCredit: document.getElementById('game-credit').textContent,
+      siteCredit: document.querySelector('.site-credit')?.textContent,
+      eyebrowCount: document.querySelectorAll('.eyebrow').length,
       trainers: document.getElementById('trainer-select').options.length,
       tabsVisible: !document.getElementById('app-tabs').hidden,
       localGlobalType: typeof globalThis.__PLC_TESTING_STATE__,
@@ -203,7 +211,11 @@ try {
   })()`, true);
 
   assert.equal(state.profile, "public");
+  assert.equal(state.spriteLoaded, true);
   assert.match(state.status, /is ready\./);
+  assert.equal(state.gameCredit, "by AphexCubed and Drayano");
+  assert.equal(state.siteCredit, "twitch.tv/phantomsafe");
+  assert.equal(state.eyebrowCount, 0);
   assert.ok(state.trainers > 400);
   assert.equal(state.tabsVisible, true);
   assert.equal(state.localGlobalType, "undefined");

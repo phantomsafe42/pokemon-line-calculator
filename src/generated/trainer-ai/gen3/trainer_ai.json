@@ -1,0 +1,6068 @@
+{
+  "schemaVersion": 1,
+  "gameId": "generation-3",
+  "kind": "trainer-ai",
+  "status": "optional-reference",
+  "authorityPolicy": {
+    "primarySource": "Exact pinned decompilation or upgrade-framework source controls the profile it names.",
+    "inheritedHackProfile": "A hack may inherit a shared profile only with an explicit verification status; unverified build-level differences keep prediction disabled.",
+    "prediction": "Exact probabilities require an independently validated evaluator, not source presence alone."
+  },
+  "profiles": [
+    {
+      "profileId": "pokemon-firered-us-decomp",
+      "displayName": "Pokémon FireRed retail AI",
+      "engineFamily": "scored-script-vm",
+      "exactGameScope": [
+        "pokemon-firered-us"
+      ],
+      "source": {
+        "repository": "https://github.com/pret/pokefirered",
+        "commit": "c75f352304d529f6ba92d4f74b9cf8b5c3810788",
+        "authority": "Primary decompilation source pinned to an exact commit.",
+        "files": {
+          "data/battle_ai_scripts.s": "0971513157b28ba27ce272acaa2388afa7362a302711f737cad6c3598ca1b389",
+          "include/constants/battle_ai.h": "b9493a13b76892fea0c5beb43ae4c5da3a02ef0575bbffd02e17fa93f25f5ce5",
+          "src/battle_ai_script_commands.c": "0b297aa963de7a7810d3b635a95e9ab68a2594aaf4bec77d946a0e068d3a47c4",
+          "src/battle_ai_switch_items.c": "dad37604fd92c7540f82a360b14db083f5eb1a91878763e6992666ab2f6e947d"
+        }
+      },
+      "structure": {
+        "flags": [
+          {
+            "id": "AI_SCRIPT_CHECK_BAD_MOVE",
+            "expression": "(1 << 0)"
+          },
+          {
+            "id": "AI_SCRIPT_CHECK_VIABILITY",
+            "expression": "(1 << 1)"
+          },
+          {
+            "id": "AI_SCRIPT_DOUBLE_BATTLE",
+            "expression": "(1 << 7)"
+          },
+          {
+            "id": "AI_SCRIPT_FIRST_BATTLE",
+            "expression": "(1 << 31)"
+          },
+          {
+            "id": "AI_SCRIPT_HP_AWARE",
+            "expression": "(1 << 8)"
+          },
+          {
+            "id": "AI_SCRIPT_PREFER_BATON_PASS",
+            "expression": "(1 << 6)"
+          },
+          {
+            "id": "AI_SCRIPT_PREFER_STRONGEST_MOVE",
+            "expression": "(1 << 5)"
+          },
+          {
+            "id": "AI_SCRIPT_RISKY",
+            "expression": "(1 << 4)"
+          },
+          {
+            "id": "AI_SCRIPT_ROAMING",
+            "expression": "(1 << 29)"
+          },
+          {
+            "id": "AI_SCRIPT_SAFARI",
+            "expression": "(1 << 30)"
+          },
+          {
+            "id": "AI_SCRIPT_SETUP_FIRST_TURN",
+            "expression": "(1 << 3)"
+          },
+          {
+            "id": "AI_SCRIPT_TRY_TO_FAINT",
+            "expression": "(1 << 2)"
+          },
+          {
+            "id": "AI_SCRIPT_UNKNOWN",
+            "expression": "(1 << 9)"
+          }
+        ],
+        "scriptTable": [
+          {
+            "index": 0,
+            "entryPoint": "AI_CheckBadMove",
+            "flagId": null
+          },
+          {
+            "index": 1,
+            "entryPoint": "AI_CheckViability",
+            "flagId": null
+          },
+          {
+            "index": 2,
+            "entryPoint": "AI_TryToFaint",
+            "flagId": null
+          },
+          {
+            "index": 3,
+            "entryPoint": "AI_SetupFirstTurn",
+            "flagId": null
+          },
+          {
+            "index": 4,
+            "entryPoint": "AI_Risky",
+            "flagId": null
+          },
+          {
+            "index": 5,
+            "entryPoint": "AI_PreferStrongestMove",
+            "flagId": null
+          },
+          {
+            "index": 6,
+            "entryPoint": "AI_PreferBatonPass",
+            "flagId": null
+          },
+          {
+            "index": 7,
+            "entryPoint": "AI_DoubleBattle",
+            "flagId": null
+          },
+          {
+            "index": 8,
+            "entryPoint": "AI_HPAware",
+            "flagId": null
+          },
+          {
+            "index": 9,
+            "entryPoint": "AI_Unknown",
+            "flagId": null
+          },
+          {
+            "index": 10,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 11,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 12,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 13,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 14,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 15,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 16,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 17,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 18,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 19,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 20,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 21,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 22,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 23,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 24,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 25,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 26,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 27,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 28,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 29,
+            "entryPoint": "AI_Roaming",
+            "flagId": null
+          },
+          {
+            "index": 30,
+            "entryPoint": "AI_Safari",
+            "flagId": null
+          },
+          {
+            "index": 31,
+            "entryPoint": "AI_FirstBattle",
+            "flagId": null
+          }
+        ],
+        "scriptLabels": [
+          "gBattleAI_ScriptsTable",
+          "AI_CheckBadMove",
+          "AI_CBM_CheckIfNegatesType",
+          "CheckIfVoltAbsorbCancelsElectric",
+          "CheckIfWaterAbsorbCancelsWater",
+          "CheckIfFlashFireCancelsFire",
+          "CheckIfWonderGuardCancelsMove",
+          "CheckIfLevitateCancelsGroundMove",
+          "AI_CheckBadMove_CheckSoundproof",
+          "AI_CheckBadMove_CheckEffect",
+          "AI_CBM_Sleep",
+          "AI_CBM_Explosion",
+          "AI_CBM_Explosion_End",
+          "AI_CBM_Nightmare",
+          "AI_CBM_DreamEater",
+          "AI_CBM_BellyDrum",
+          "AI_CBM_AttackUp",
+          "AI_CBM_DefenseUp",
+          "AI_CBM_SpeedUp",
+          "AI_CBM_SpAtkUp",
+          "AI_CBM_SpDefUp",
+          "AI_CBM_AccUp",
+          "AI_CBM_EvasionUp",
+          "AI_CBM_AttackDown",
+          "AI_CBM_DefenseDown",
+          "AI_CBM_SpeedDown",
+          "AI_CBM_SpAtkDown",
+          "AI_CBM_SpDefDown",
+          "AI_CBM_AccDown",
+          "AI_CBM_EvasionDown",
+          "CheckIfAbilityBlocksStatChange",
+          "AI_CBM_Haze",
+          "AI_CBM_Haze_End",
+          "AI_CBM_Roar",
+          "AI_CBM_Poison",
+          "AI_CBM_LightScreen",
+          "AI_CBM_OneHitKO",
+          "AI_CBM_Magnitude",
+          "AI_CBM_HighRiskForDamage",
+          "AI_CBM_HighRiskForDamage_End",
+          "AI_CBM_Mist",
+          "AI_CBM_FocusEnergy",
+          "AI_CBM_Confuse",
+          "AI_CBM_Reflect",
+          "AI_CBM_Paralyze",
+          "AI_CBM_Substitute",
+          "AI_CBM_LeechSeed",
+          "AI_CBM_Disable",
+          "AI_CBM_Encore",
+          "AI_CBM_DamageDuringSleep",
+          "AI_CBM_CantEscape",
+          "AI_CBM_Curse",
+          "AI_CBM_Spikes",
+          "AI_CBM_Foresight",
+          "AI_CBM_PerishSong",
+          "AI_CBM_Sandstorm",
+          "AI_CBM_Attract",
+          "AI_CBM_Attract_CheckIfTargetIsFemale",
+          "AI_CBM_Attract_CheckIfTargetIsMale",
+          "AI_CBM_Attract_End",
+          "AI_CBM_Safeguard",
+          "AI_CBM_Memento",
+          "AI_CBM_BatonPass",
+          "AI_CBM_RainDance",
+          "AI_CBM_SunnyDay",
+          "AI_CBM_FutureSight",
+          "AI_CBM_FakeOut",
+          "AI_CBM_Stockpile",
+          "AI_CBM_SpitUpAndSwallow",
+          "AI_CBM_Hail",
+          "AI_CBM_Torment",
+          "AI_CBM_WillOWisp",
+          "AI_CBM_HelpingHand",
+          "AI_CBM_TrickAndKnockOff",
+          "AI_CBM_Ingrain",
+          "AI_CBM_Recycle",
+          "AI_CBM_Imprison",
+          "AI_CBM_Refresh",
+          "AI_CBM_MudSport",
+          "AI_CBM_Tickle",
+          "AI_CBM_CosmicPower",
+          "AI_CBM_BulkUp",
+          "AI_CBM_WaterSport",
+          "AI_CBM_CalmMind",
+          "AI_CBM_DragonDance",
+          "Score_Minus1",
+          "Score_Minus2",
+          "Score_Minus3",
+          "Score_Minus5",
+          "Score_Minus8",
+          "Score_Minus10",
+          "Score_Minus12",
+          "Score_Plus1",
+          "Score_Plus2",
+          "Score_Plus3",
+          "Score_Plus5",
+          "AI_CheckViability",
+          "AI_CV_Sleep",
+          "AI_CV_SleepEncourageSlpDamage",
+          "AI_CV_Sleep_End",
+          "AI_CV_Absorb",
+          "AI_CV_AbsorbEncourageMaybe",
+          "AI_CV_Absorb_End",
+          "AI_CV_SelfKO",
+          "AI_CV_SelfKO_Encourage1",
+          "AI_CV_SelfKO_Encourage2",
+          "AI_CV_SelfKO_Encourage3",
+          "AI_CV_SelfKO_Encourage4",
+          "AI_CV_SelfKO_End",
+          "AI_CV_DreamEater",
+          "AI_CV_DreamEater_ScoreDown1",
+          "AI_CV_DreamEater_End",
+          "AI_CV_MirrorMove",
+          "AI_CV_MirrorMove2",
+          "AI_CV_MirrorMove_End",
+          "AI_CV_MirrorMove_EncouragedMovesToMirror",
+          "AI_CV_AttackUp",
+          "AI_CV_AttackUp2",
+          "AI_CV_AttackUp3",
+          "AI_CV_AttackUp_ScoreDown2",
+          "AI_CV_AttackUp_End",
+          "AI_CV_DefenseUp",
+          "AI_CV_DefenseUp2",
+          "AI_CV_DefenseUp3",
+          "AI_CV_DefenseUp4",
+          "AI_CV_DefenseUp5",
+          "AI_CV_DefenseUp_ScoreDown2",
+          "AI_CV_DefenseUp_End",
+          "AI_CV_DefenseUp_PhysicalTypes",
+          "AI_CV_SpeedUp",
+          "AI_CV_SpeedUp2",
+          "AI_CV_SpeedUp_End",
+          "AI_CV_SpAtkUp",
+          "AI_CV_SpAtkUp2",
+          "AI_CV_SpAtkUp3",
+          "AI_CV_SpAtkUp_ScoreDown2",
+          "AI_CV_SpAtkUp_End",
+          "AI_CV_SpDefUp",
+          "AI_CV_SpDefUp2",
+          "AI_CV_SpDefUp3",
+          "AI_CV_SpDefUp4",
+          "AI_CV_SpDefUp5",
+          "AI_CV_SpDefUp_ScoreDown2",
+          "AI_CV_SpDefUp_End",
+          "AI_CV_SpDefUp_PhysicalTypes",
+          "AI_CV_AccuracyUp",
+          "AI_CV_AccuracyUp2",
+          "AI_CV_AccuracyUp_End",
+          "AI_CV_EvasionUp",
+          "AI_CV_EvasionUp2",
+          "AI_CV_EvasionUp3",
+          "AI_CV_EvasionUp4",
+          "AI_CV_EvasionUp5",
+          "AI_CV_EvasionUp6",
+          "AI_CV_EvasionUp7",
+          "AI_CV_EvasionUp8",
+          "AI_CV_EvasionUp_ScoreDown2",
+          "AI_CV_EvasionUp_End",
+          "AI_CV_AlwaysHit",
+          "AI_CV_AlwaysHit_ScoreUp1",
+          "AI_CV_AlwaysHit2",
+          "AI_CV_AlwaysHit_End",
+          "AI_CV_AttackDown",
+          "AI_CV_AttackDown2",
+          "AI_CV_AttackDown3",
+          "AI_CV_AttackDown4",
+          "AI_CV_AttackDown_End",
+          "AI_CV_AttackDown_PhysicalTypeList",
+          "AI_CV_DefenseDown",
+          "AI_CV_DefenseDown2",
+          "AI_CV_DefenseDown3",
+          "AI_CV_DefenseDown_End",
+          "AI_CV_SpeedDownFromChance",
+          "AI_CV_SpeedDown",
+          "AI_CV_SpeedDown2",
+          "AI_CV_SpeedDown_End",
+          "AI_CV_SpAtkDown",
+          "AI_CV_SpAtkDown2",
+          "AI_CV_SpAtkDown3",
+          "AI_CV_SpAtkDown4",
+          "AI_CV_SpAtkDown_End",
+          "AI_CV_SpAtkDown_SpecialTypeList",
+          "AI_CV_SpDefDown",
+          "AI_CV_SpDefDown2",
+          "AI_CV_SpDefDown3",
+          "AI_CV_SpDefDown_End",
+          "AI_CV_AccuracyDown",
+          "AI_CV_AccuracyDown2",
+          "AI_CV_AccuracyDown3",
+          "AI_CV_AccuracyDown4",
+          "AI_CV_AccuracyDown5",
+          "AI_CV_AccuracyDown6",
+          "AI_CV_AccuracyDown7",
+          "AI_CV_AccuracyDown8",
+          "AI_CV_AccuracyDown_ScoreDown2",
+          "AI_CV_AccuracyDown_End",
+          "AI_CV_EvasionDown",
+          "AI_CV_EvasionDown2",
+          "AI_CV_EvasionDown3",
+          "AI_CV_EvasionDown_End",
+          "AI_CV_Haze",
+          "AI_CV_Haze2",
+          "AI_CV_Haze3",
+          "AI_CV_Haze4",
+          "AI_CV_Haze_End",
+          "AI_CV_Bide",
+          "AI_CV_Bide_End",
+          "AI_CV_Roar",
+          "AI_CV_Roar2",
+          "AI_CV_Roar_End",
+          "AI_CV_Conversion",
+          "AI_CV_Conversion2",
+          "AI_CV_Conversion_End",
+          "AI_CV_HealWeather",
+          "AI_CV_HealWeather_ScoreDown2",
+          "AI_CV_Heal",
+          "AI_CV_Heal2",
+          "AI_CV_Heal3",
+          "AI_CV_Heal4",
+          "AI_CV_Heal5",
+          "AI_CV_Heal6",
+          "AI_CV_Heal_End",
+          "AI_CV_Toxic",
+          "AI_CV_Toxic2",
+          "AI_CV_Toxic3",
+          "AI_CV_Toxic4",
+          "AI_CV_Toxic_End",
+          "AI_CV_LightScreen",
+          "AI_CV_LightScreen_ScoreDown2",
+          "AI_CV_LightScreen_End",
+          "AI_CV_LightScreen_SpecialTypeList",
+          "AI_CV_Rest",
+          "AI_CV_Rest2",
+          "AI_CV_Rest3",
+          "AI_CV_Rest4",
+          "AI_CV_Rest5",
+          "AI_CV_Rest6",
+          "AI_CV_Rest7",
+          "AI_CV_Rest_End",
+          "AI_CV_OneHitKO",
+          "AI_CV_SuperFang",
+          "AI_CV_SuperFang_End",
+          "AI_CV_Trap",
+          "AI_CV_Trap2",
+          "AI_CV_Trap_End",
+          "AI_CV_HighCrit",
+          "AI_CV_HighCrit2",
+          "AI_CV_HighCrit_End",
+          "AI_CV_Flatter",
+          "AI_CV_Confuse",
+          "AI_CV_Confuse2",
+          "AI_CV_Confuse_End",
+          "AI_CV_Reflect",
+          "AI_CV_Reflect_ScoreDown2",
+          "AI_CV_Reflect_End",
+          "AI_CV_Reflect_PhysicalTypeList",
+          "AI_CV_Poison",
+          "AI_CV_Poison_ScoreDown1",
+          "AI_CV_Poison_End",
+          "AI_CV_Paralyze",
+          "AI_CV_Paralyze2",
+          "AI_CV_Paralyze_End",
+          "AI_CV_VitalThrow",
+          "AI_CV_VitalThrow2",
+          "AI_CV_VitalThrow_End",
+          "AI_CV_Substitute",
+          "AI_CV_Substitute2",
+          "AI_CV_Substitute3",
+          "AI_CV_Substitute4",
+          "AI_CV_Substitute5",
+          "AI_CV_Substitute6",
+          "AI_CV_Substitute7",
+          "AI_CV_Substitute8",
+          "AI_CV_Substitute_End",
+          "AI_CV_Recharge",
+          "AI_CV_Recharge2",
+          "AI_CV_Recharge_ScoreDown1",
+          "AI_CV_Recharge_End",
+          "AI_CV_Disable",
+          "AI_CV_Disable2",
+          "AI_CV_Disable_End",
+          "AI_CV_Counter",
+          "AI_CV_Counter2",
+          "AI_CV_Counter3",
+          "AI_CV_Counter4",
+          "AI_CV_Counter5",
+          "AI_CV_Counter6",
+          "AI_CV_Counter_ScoreDown1",
+          "AI_CV_Counter_End",
+          "AI_CV_Counter_PhysicalTypeList",
+          "AI_CV_Encore",
+          "AI_CV_Encore2",
+          "AI_CV_Encore_ScoreDown2",
+          "AI_CV_Encore_End",
+          "AI_CV_Encore_EncouragedMovesToEncore",
+          "AI_CV_PainSplit",
+          "AI_CV_PainSplit2",
+          "AI_CV_PainSplit_ScoreDown1",
+          "AI_CV_PainSplit_End",
+          "AI_CV_Snore",
+          "AI_CV_LockOn",
+          "AI_CV_LockOn_End",
+          "AI_CV_SleepTalk",
+          "AI_CV_DestinyBond",
+          "AI_CV_DestinyBond2",
+          "AI_CV_DestinyBond3",
+          "AI_CV_DestinyBond_End",
+          "AI_CV_Flail",
+          "AI_CV_Flail2",
+          "AI_CV_Flail_ScoreUp1",
+          "AI_CV_Flail3",
+          "AI_CV_Flail_ScoreDown1",
+          "AI_CV_Flail_End",
+          "AI_CV_HealBell",
+          "AI_CV_HealBell_End",
+          "AI_CV_Thief",
+          "AI_CV_Thief_ScoreDown2",
+          "AI_CV_Thief_End",
+          "AI_CV_Thief_EncourageItemsToSteal",
+          "AI_CV_Curse",
+          "AI_CV_Curse2",
+          "AI_CV_Curse3",
+          "AI_CV_Curse4",
+          "AI_CV_Curse_End",
+          "AI_CV_Protect",
+          "AI_CV_Protect_ScoreUp2",
+          "AI_CV_Protect2",
+          "AI_CV_Protect4",
+          "AI_CV_Protect3",
+          "AI_CV_Protect_ScoreDown2",
+          "AI_CV_Protect_End",
+          "AI_CV_Foresight",
+          "AI_CV_Foresight2",
+          "AI_CV_Foresight3",
+          "AI_CV_Foresight_End",
+          "AI_CV_Endure",
+          "AI_CV_Endure2",
+          "AI_CV_Endure3",
+          "AI_CV_Endure_End",
+          "AI_CV_BatonPass",
+          "AI_CV_BatonPass2",
+          "AI_CV_BatonPass3",
+          "AI_CV_BatonPass4",
+          "AI_CV_BatonPass5",
+          "AI_CV_BatonPass7",
+          "AI_CV_BatonPass8",
+          "AI_CV_BatonPass_ScoreDown2",
+          "AI_CV_BatonPass_End",
+          "AI_CV_Pursuit",
+          "AI_CV_Pursuit2",
+          "AI_CV_Pursuit_End",
+          "AI_CV_RainDance",
+          "AI_CV_RainDance2",
+          "AI_CV_RainDance3",
+          "AI_CV_RainDance_ScoreDown1",
+          "AI_CV_RainDance_End",
+          "AI_CV_SunnyDay",
+          "AI_CV_SunnyDay2",
+          "AI_CV_SunnyDay_ScoreDown1",
+          "AI_CV_SunnyDay_End",
+          "AI_CV_BellyDrum",
+          "AI_CV_BellyDrum_ScoreDown2",
+          "AI_CV_BellyDrum_End",
+          "AI_CV_PsychUp",
+          "AI_CV_PsychUp2",
+          "AI_CV_PsychUp_ScoreUp1",
+          "AI_CV_PsychUp3",
+          "AI_CV_PsychUp_ScoreDown2",
+          "AI_CV_PsychUp_End",
+          "AI_CV_MirrorCoat",
+          "AI_CV_MirrorCoat2",
+          "AI_CV_MirrorCoat3",
+          "AI_CV_MirrorCoat4",
+          "AI_CV_MirrorCoat5",
+          "AI_CV_MirrorCoat6",
+          "AI_CV_MirrorCoat_ScoreDown1",
+          "AI_CV_MirrorCoat_End",
+          "AI_CV_MirrorCoat_SpecialTypeList",
+          "AI_CV_ChargeUpMove",
+          "AI_CV_ChargeUpMove_ScoreDown2",
+          "AI_CV_ChargeUpMove_End",
+          "AI_CV_SemiInvulnerable",
+          "AI_CV_SemiInvulnerable2",
+          "AI_CV_SemiInvulnerable_CheckSandstormTypes",
+          "AI_CV_SemiInvulnerable_CheckIceType",
+          "AI_CV_SemiInvulnerable5",
+          "AI_CV_SemiInvulnerable_TryEncourage",
+          "AI_CV_SemiInvulnerable_End",
+          "AI_CV_SandstormResistantTypes",
+          "AI_CV_FakeOut",
+          "AI_CV_SpitUp",
+          "AI_CV_SpitUp_End",
+          "AI_CV_Hail",
+          "AI_CV_Hail2",
+          "AI_CV_Hail_ScoreDown1",
+          "AI_CV_Hail_End",
+          "AI_CV_Facade",
+          "AI_CV_Facade_End",
+          "AI_CV_FocusPunch",
+          "AI_CV_FocusPunch2",
+          "AI_CV_FocusPunch3",
+          "AI_CV_FocusPunch_ScoreUp1",
+          "AI_CV_FocusPunch_End",
+          "AI_CV_SmellingSalt",
+          "AI_CV_SmellingSalt_ScoreUp1",
+          "AI_CV_SmellingSalt_End",
+          "AI_CV_Trick",
+          "AI_CV_Trick2",
+          "AI_CV_Trick3",
+          "AI_CV_Trick4",
+          "AI_CV_Trick_End",
+          "AI_CV_Trick_EffectsToEncourage",
+          "AI_CV_Trick_ChoiceEffects",
+          "AI_CV_ChangeSelfAbility",
+          "AI_CV_ChangeSelfAbility2",
+          "AI_CV_ChangeSelfAbility3",
+          "AI_CV_ChangeSelfAbility_End",
+          "AI_CV_ChangeSelfAbility_AbilitiesToEncourage",
+          "AI_CV_Superpower",
+          "AI_CV_Superpower2",
+          "AI_CV_Superpower_ScoreDown1",
+          "AI_CV_Superpower_End",
+          "AI_CV_MagicCoat",
+          "AI_CV_MagicCoat2",
+          "AI_CV_MagicCoat3",
+          "AI_CV_MagicCoat4",
+          "AI_CV_MagicCoat_End",
+          "AI_CV_Recycle",
+          "AI_CV_Recycle_ScoreDown2",
+          "AI_CV_Recycle_End",
+          "AI_CV_Recycle_ItemsToEncourage",
+          "AI_CV_Revenge",
+          "AI_CV_Revenge_ScoreDown2",
+          "AI_CV_Revenge_End",
+          "AI_CV_BrickBreak",
+          "AI_CV_BrickBreak_ScoreUp1",
+          "AI_CV_BrickBreak_End",
+          "AI_CV_KnockOff",
+          "AI_CV_KnockOff_End",
+          "AI_CV_Endeavor",
+          "AI_CV_Endeavor2",
+          "AI_CV_Endeavor_ScoreDown1",
+          "AI_CV_Endeavor_End",
+          "AI_CV_Eruption",
+          "AI_CV_Eruption2",
+          "AI_CV_Eruption_ScoreDown1",
+          "AI_CV_Eruption_End",
+          "AI_CV_Imprison",
+          "AI_CV_Imprison_End",
+          "AI_CV_Refresh",
+          "AI_CV_Refresh_ScoreDown1",
+          "AI_CV_Refresh_End",
+          "AI_CV_Snatch",
+          "AI_CV_Snatch2",
+          "AI_CV_Snatch3",
+          "AI_CV_Snatch4",
+          "AI_CV_Snatch5",
+          "AI_CV_Snatch_End",
+          "AI_CV_MudSport",
+          "AI_CV_MudSport2",
+          "AI_CV_MudSport_ScoreDown1",
+          "AI_CV_MudSport_End",
+          "AI_CV_Overheat",
+          "AI_CV_Overheat2",
+          "AI_CV_Overheat_ScoreDown1",
+          "AI_CV_Overheat_End",
+          "AI_CV_WaterSport",
+          "AI_CV_WaterSport2",
+          "AI_CV_WaterSport_ScoreDown1",
+          "AI_CV_WaterSport_End",
+          "AI_CV_DragonDance",
+          "AI_CV_DragonDance2",
+          "AI_CV_DragonDance_End",
+          "AI_TryToFaint",
+          "AI_TryToFaint_TryToEncourageQuickAttack",
+          "AI_TryToFaint_ScoreUp4",
+          "AI_TryToFaint_End",
+          "AI_SetupFirstTurn",
+          "AI_SetupFirstTurn_End",
+          "AI_SetupFirstTurn_SetupEffectsToEncourage",
+          "AI_PreferStrongestMove",
+          "AI_PreferStrongestMove_End",
+          "AI_Risky",
+          "AI_Risky_End",
+          "AI_Risky_EffectsToEncourage",
+          "AI_PreferBatonPass",
+          "AI_PreferBatonPass_GoForBatonPass",
+          "AI_PreferBatonPass_End",
+          "AI_DoubleBattle",
+          "AI_HPAware",
+          "AI_HPAware_UserHasHighHP",
+          "AI_HPAware_UserHasMediumHP",
+          "AI_HPAware_TryToDiscourage",
+          "AI_HPAware_ConsiderTarget",
+          "AI_HPAware_TargetHasHighHP",
+          "AI_HPAware_TargetHasMediumHP",
+          "AI_HPAware_TargetTryToDiscourage",
+          "AI_HPAware_End",
+          "AI_HPAware_DiscouragedEffectsWhenHighHP",
+          "AI_HPAware_DiscouragedEffectsWhenMediumHP",
+          "AI_HPAware_DiscouragedEffectsWhenLowHP",
+          "AI_HPAware_DiscouragedEffectsWhenTargetHighHP",
+          "AI_HPAware_DiscouragedEffectsWhenTargetMediumHP",
+          "AI_HPAware_DiscouragedEffectsWhenTargetLowHP",
+          "AI_Unknown",
+          "AI_Unknown_End",
+          "AI_Roaming",
+          "AI_Roaming_Flee",
+          "AI_Roaming_End",
+          "AI_Safari",
+          "AI_Safari_Flee",
+          "AI_FirstBattle",
+          "AI_FirstBattle_Flee",
+          "AI_Ret"
+        ],
+        "cFunctions": [
+          {
+            "name": "AI_TrySwitchOrUseItem",
+            "file": "src/battle_ai_switch_items.c"
+          },
+          {
+            "name": "AIStackPop",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "AIStackPushVar",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "AIStackPushVar_cursor",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "AreStatsRaised",
+            "file": "src/battle_ai_switch_items.c"
+          },
+          {
+            "name": "BattleAI_ChooseMoveOrAction",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "BattleAI_DoAIProcessing",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "BattleAI_HandleItemUseBeforeAISetup",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "BattleAI_SetupAIData",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "ClearBattlerMoveHistory",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_end",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_flee",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_ability",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_considered_move",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_considered_move_effect",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_considered_move_power",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_gender",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_highest_type_effectiveness",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_hold_effect",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_how_powerful_move_is",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_last_used_battler_move",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_move_effect_from_result",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_move_power_from_result",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_move_type_from_result",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_protect_count",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_stockpile_count",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_turn_count",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_type",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_used_held_item",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_weather",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_goto",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_any_move_disabled_or_encored",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_can_faint",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_cant_faint",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_curr_move_disabled_or_encored",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_doesnt_have_move",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_doesnt_have_move_with_effect",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_effect",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_equal",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_equal_ptr",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_has_move",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_has_move_with_effect",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_hp_equal",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_hp_less_than",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_hp_more_than",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_hp_not_equal",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_in_bytes",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_in_hwords",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_less_than",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_less_than_ptr",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_level_compare",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_more_than",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_more_than_ptr",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_move",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_not_effect",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_not_equal",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_not_equal_ptr",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_not_in_bytes",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_not_in_hwords",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_not_move",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_not_side_affecting",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_not_status",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_not_status2",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_not_status3",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_random_equal",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_random_greater_than",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_random_less_than",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_random_not_equal",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_random_safari_flee",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_side_affecting",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_stat_level_equal",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_stat_level_less_than",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_stat_level_more_than",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_stat_level_not_equal",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_status",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_status_not_in_party",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_status2",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_status3",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_target_not_taunted",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_target_taunted",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_type_effectiveness",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_user_has_attacking_move",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_user_has_no_attacking_moves",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_would_go_first",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_would_not_go_first",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_is_double_battle",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_is_first_turn_for",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_nullsub_2A",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_nullsub_32",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_nullsub_52",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_score",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_watch",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "FindMonThatAbsorbsOpponentsMove",
+            "file": "src/battle_ai_switch_items.c"
+          },
+          {
+            "name": "FindMonWithFlagsAndSuperEffective",
+            "file": "src/battle_ai_switch_items.c"
+          },
+          {
+            "name": "GetMostSuitableMonToSwitchInto",
+            "file": "src/battle_ai_switch_items.c"
+          },
+          {
+            "name": "HasSuperEffectiveMoveAgainstOpponents",
+            "file": "src/battle_ai_switch_items.c"
+          },
+          {
+            "name": "ModulateByTypeEffectiveness",
+            "file": "src/battle_ai_switch_items.c"
+          },
+          {
+            "name": "RecordAbilityBattle",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "RecordItemEffectBattle",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "RecordLastUsedMoveByTarget",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "ShouldSwitch",
+            "file": "src/battle_ai_switch_items.c"
+          },
+          {
+            "name": "ShouldSwitchIfNaturalCure",
+            "file": "src/battle_ai_switch_items.c"
+          },
+          {
+            "name": "ShouldSwitchIfPerishSong",
+            "file": "src/battle_ai_switch_items.c"
+          },
+          {
+            "name": "ShouldSwitchIfWonderGuard",
+            "file": "src/battle_ai_switch_items.c"
+          },
+          {
+            "name": "ShouldUseItem",
+            "file": "src/battle_ai_switch_items.c"
+          }
+        ]
+      },
+      "notes": [],
+      "predictionReadiness": {
+        "exactActionProbabilities": false,
+        "blockers": [
+          "The source is preserved exactly, but a consumer-grade interpreter has not been implemented and independently validated.",
+          "All random branches, score ties, switching, trainer-item behavior, and game-state inputs must be modeled before probabilities are authoritative."
+        ]
+      }
+    },
+    {
+      "profileId": "pokemon-emerald-us-decomp",
+      "displayName": "Pokémon Emerald retail AI",
+      "engineFamily": "scored-script-vm",
+      "exactGameScope": [
+        "pokemon-emerald-us"
+      ],
+      "source": {
+        "repository": "https://github.com/pret/pokeemerald",
+        "commit": "c65e93f20a5275ab03b07d6f6411096a82a60ffd",
+        "authority": "Primary decompilation source pinned to an exact commit.",
+        "files": {
+          "asm/macros/battle_ai_script.inc": "786d39fa94cea8cfffb2c19d3f19d9ed843f697cb3747b4b39f4c6bdaa244379",
+          "data/battle_ai_scripts.s": "f6d545de4fdec89b1844aae93b8d844e691b8f14773c1e84ecea1c2e2ce4bf2c",
+          "include/constants/battle_ai.h": "d608e774e4fea95851adf2928f34717793c7aa0b333ec3d0b15ca74d2e05da44",
+          "src/battle_ai_script_commands.c": "c75ed7f1a1dc775eb4b4cee3ff05e74451a34e239cffb6a37be0d766f38f66e6",
+          "src/battle_ai_switch_items.c": "4dca4671aebc2eac82792279a49a0913613145b4f94cee852964665e5b70039f"
+        }
+      },
+      "structure": {
+        "flags": [
+          {
+            "id": "AI_SCRIPT_CHECK_BAD_MOVE",
+            "expression": "(1 << 0)"
+          },
+          {
+            "id": "AI_SCRIPT_CHECK_VIABILITY",
+            "expression": "(1 << 2)"
+          },
+          {
+            "id": "AI_SCRIPT_DOUBLE_BATTLE",
+            "expression": "(1 << 7)"
+          },
+          {
+            "id": "AI_SCRIPT_FIRST_BATTLE",
+            "expression": "(1 << 31)"
+          },
+          {
+            "id": "AI_SCRIPT_HP_AWARE",
+            "expression": "(1 << 8)"
+          },
+          {
+            "id": "AI_SCRIPT_PREFER_BATON_PASS",
+            "expression": "(1 << 6)"
+          },
+          {
+            "id": "AI_SCRIPT_PREFER_POWER_EXTREMES",
+            "expression": "(1 << 5)"
+          },
+          {
+            "id": "AI_SCRIPT_RISKY",
+            "expression": "(1 << 4)"
+          },
+          {
+            "id": "AI_SCRIPT_ROAMING",
+            "expression": "(1 << 29)"
+          },
+          {
+            "id": "AI_SCRIPT_SAFARI",
+            "expression": "(1 << 30)"
+          },
+          {
+            "id": "AI_SCRIPT_SETUP_FIRST_TURN",
+            "expression": "(1 << 3)"
+          },
+          {
+            "id": "AI_SCRIPT_TRY_SUNNY_DAY_START",
+            "expression": "(1 << 9)"
+          },
+          {
+            "id": "AI_SCRIPT_TRY_TO_FAINT",
+            "expression": "(1 << 1)"
+          }
+        ],
+        "scriptTable": [
+          {
+            "index": 0,
+            "entryPoint": "AI_CheckBadMove",
+            "flagId": "AI_SCRIPT_CHECK_BAD_MOVE"
+          },
+          {
+            "index": 1,
+            "entryPoint": "AI_TryToFaint",
+            "flagId": "AI_SCRIPT_TRY_TO_FAINT"
+          },
+          {
+            "index": 2,
+            "entryPoint": "AI_CheckViability",
+            "flagId": "AI_SCRIPT_CHECK_VIABILITY"
+          },
+          {
+            "index": 3,
+            "entryPoint": "AI_SetupFirstTurn",
+            "flagId": "AI_SCRIPT_SETUP_FIRST_TURN"
+          },
+          {
+            "index": 4,
+            "entryPoint": "AI_Risky",
+            "flagId": "AI_SCRIPT_RISKY"
+          },
+          {
+            "index": 5,
+            "entryPoint": "AI_PreferPowerExtremes",
+            "flagId": "AI_SCRIPT_PREFER_POWER_EXTREMES"
+          },
+          {
+            "index": 6,
+            "entryPoint": "AI_PreferBatonPass",
+            "flagId": "AI_SCRIPT_PREFER_BATON_PASS"
+          },
+          {
+            "index": 7,
+            "entryPoint": "AI_DoubleBattle",
+            "flagId": "AI_SCRIPT_DOUBLE_BATTLE"
+          },
+          {
+            "index": 8,
+            "entryPoint": "AI_HPAware",
+            "flagId": "AI_SCRIPT_HP_AWARE"
+          },
+          {
+            "index": 9,
+            "entryPoint": "AI_TrySunnyDayStart",
+            "flagId": "AI_SCRIPT_TRY_SUNNY_DAY_START"
+          },
+          {
+            "index": 10,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 11,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 12,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 13,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 14,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 15,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 16,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 17,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 18,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 19,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 20,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 21,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 22,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 23,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 24,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 25,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 26,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 27,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 28,
+            "entryPoint": "AI_Ret",
+            "flagId": null
+          },
+          {
+            "index": 29,
+            "entryPoint": "AI_Roaming",
+            "flagId": "AI_SCRIPT_ROAMING"
+          },
+          {
+            "index": 30,
+            "entryPoint": "AI_Safari",
+            "flagId": "AI_SCRIPT_SAFARI"
+          },
+          {
+            "index": 31,
+            "entryPoint": "AI_FirstBattle",
+            "flagId": "AI_SCRIPT_FIRST_BATTLE"
+          }
+        ],
+        "scriptLabels": [
+          "gBattleAI_ScriptsTable",
+          "AI_CheckBadMove",
+          "AI_CBM_CheckIfNegatesType",
+          "CheckIfVoltAbsorbCancelsElectric",
+          "CheckIfWaterAbsorbCancelsWater",
+          "CheckIfFlashFireCancelsFire",
+          "CheckIfWonderGuardCancelsMove",
+          "CheckIfLevitateCancelsGroundMove",
+          "AI_CheckBadMove_CheckSoundproof_",
+          "AI_CheckBadMove_CheckSoundproof",
+          "AI_CheckBadMove_CheckEffect",
+          "AI_CBM_Sleep",
+          "AI_CBM_Explosion",
+          "AI_CBM_Explosion_End",
+          "AI_CBM_Nightmare",
+          "AI_CBM_DreamEater",
+          "AI_CBM_BellyDrum",
+          "AI_CBM_AttackUp",
+          "AI_CBM_DefenseUp",
+          "AI_CBM_SpeedUp",
+          "AI_CBM_SpAtkUp",
+          "AI_CBM_SpDefUp",
+          "AI_CBM_AccUp",
+          "AI_CBM_EvasionUp",
+          "AI_CBM_AttackDown",
+          "AI_CBM_DefenseDown",
+          "AI_CBM_SpeedDown",
+          "AI_CBM_SpAtkDown",
+          "AI_CBM_SpDefDown",
+          "AI_CBM_AccDown",
+          "AI_CBM_EvasionDown",
+          "CheckIfAbilityBlocksStatChange",
+          "AI_CBM_Haze",
+          "AI_CBM_Haze_End",
+          "AI_CBM_Roar",
+          "AI_CBM_Toxic",
+          "AI_CBM_LightScreen",
+          "AI_CBM_OneHitKO",
+          "AI_CBM_Magnitude",
+          "AI_CBM_HighRiskForDamage",
+          "AI_CBM_HighRiskForDamage_End",
+          "AI_CBM_Mist",
+          "AI_CBM_FocusEnergy",
+          "AI_CBM_Confuse",
+          "AI_CBM_Reflect",
+          "AI_CBM_Paralyze",
+          "AI_CBM_Substitute",
+          "AI_CBM_LeechSeed",
+          "AI_CBM_Disable",
+          "AI_CBM_Encore",
+          "AI_CBM_DamageDuringSleep",
+          "AI_CBM_CantEscape",
+          "AI_CBM_Curse",
+          "AI_CBM_Spikes",
+          "AI_CBM_Foresight",
+          "AI_CBM_PerishSong",
+          "AI_CBM_Sandstorm",
+          "AI_CBM_Attract",
+          "AI_CBM_Attract_CheckIfTargetIsFemale",
+          "AI_CBM_Attract_CheckIfTargetIsMale",
+          "AI_CBM_Attract_End",
+          "AI_CBM_Safeguard",
+          "AI_CBM_Memento",
+          "AI_CBM_BatonPass",
+          "AI_CBM_RainDance",
+          "AI_CBM_SunnyDay",
+          "AI_CBM_FutureSight",
+          "AI_CBM_FakeOut",
+          "AI_CBM_Stockpile",
+          "AI_CBM_SpitUpAndSwallow",
+          "AI_CBM_Hail",
+          "AI_CBM_Torment",
+          "AI_CBM_WillOWisp",
+          "AI_CBM_HelpingHand",
+          "AI_CBM_TrickAndKnockOff",
+          "AI_CBM_Ingrain",
+          "AI_CBM_Recycle",
+          "AI_CBM_Imprison",
+          "AI_CBM_Refresh",
+          "AI_CBM_MudSport",
+          "AI_CBM_Tickle",
+          "AI_CBM_CosmicPower",
+          "AI_CBM_BulkUp",
+          "AI_CBM_WaterSport",
+          "AI_CBM_CalmMind",
+          "AI_CBM_DragonDance",
+          "Score_Minus1",
+          "Score_Minus2",
+          "Score_Minus3",
+          "Score_Minus5",
+          "Score_Minus8",
+          "Score_Minus10",
+          "Score_Minus12",
+          "Score_Minus30",
+          "Score_Plus1",
+          "Score_Plus2",
+          "Score_Plus3",
+          "Score_Plus5",
+          "Score_Plus10",
+          "AI_CheckViability",
+          "AI_CV_Sleep",
+          "AI_CV_SleepEncourageSlpDamage",
+          "AI_CV_Sleep_End",
+          "AI_CV_Absorb",
+          "AI_CV_AbsorbEncourageMaybe",
+          "AI_CV_Absorb_End",
+          "AI_CV_SelfKO",
+          "AI_CV_SelfKO_Encourage1",
+          "AI_CV_SelfKO_Encourage2",
+          "AI_CV_SelfKO_Encourage3",
+          "AI_CV_SelfKO_Encourage4",
+          "AI_CV_SelfKO_End",
+          "AI_CV_DreamEater",
+          "AI_CV_DreamEater_ScoreDown1",
+          "AI_CV_DreamEater_End",
+          "AI_CV_MirrorMove",
+          "AI_CV_MirrorMove2",
+          "AI_CV_MirrorMove_End",
+          "AI_CV_MirrorMove_EncouragedMovesToMirror",
+          "AI_CV_AttackUp",
+          "AI_CV_AttackUp2",
+          "AI_CV_AttackUp3",
+          "AI_CV_AttackUp_ScoreDown2",
+          "AI_CV_AttackUp_End",
+          "AI_CV_DefenseUp",
+          "AI_CV_DefenseUp2",
+          "AI_CV_DefenseUp3",
+          "AI_CV_DefenseUp4",
+          "AI_CV_DefenseUp5",
+          "AI_CV_DefenseUp_ScoreDown2",
+          "AI_CV_DefenseUp_End",
+          "AI_CV_DefenseUp_PhysicalTypes",
+          "AI_CV_SpeedUp",
+          "AI_CV_SpeedUp2",
+          "AI_CV_SpeedUp_End",
+          "AI_CV_SpAtkUp",
+          "AI_CV_SpAtkUp2",
+          "AI_CV_SpAtkUp3",
+          "AI_CV_SpAtkUp_ScoreDown2",
+          "AI_CV_SpAtkUp_End",
+          "AI_CV_SpDefUp",
+          "AI_CV_SpDefUp2",
+          "AI_CV_SpDefUp3",
+          "AI_CV_SpDefUp4",
+          "AI_CV_SpDefUp5",
+          "AI_CV_SpDefUp_ScoreDown2",
+          "AI_CV_SpDefUp_End",
+          "AI_CV_SpDefUp_PhysicalTypes",
+          "AI_CV_AccuracyUp",
+          "AI_CV_AccuracyUp2",
+          "AI_CV_AccuracyUp_End",
+          "AI_CV_EvasionUp",
+          "AI_CV_EvasionUp2",
+          "AI_CV_EvasionUp3",
+          "AI_CV_EvasionUp4",
+          "AI_CV_EvasionUp5",
+          "AI_CV_EvasionUp6",
+          "AI_CV_EvasionUp7",
+          "AI_CV_EvasionUp8",
+          "AI_CV_EvasionUp_ScoreDown2",
+          "AI_CV_EvasionUp_End",
+          "AI_CV_AlwaysHit",
+          "AI_CV_AlwaysHit_ScoreUp1",
+          "AI_CV_AlwaysHit2",
+          "AI_CV_AlwaysHit_End",
+          "AI_CV_AttackDown",
+          "AI_CV_AttackDown2",
+          "AI_CV_AttackDown3",
+          "AI_CV_AttackDown4",
+          "AI_CV_AttackDown_End",
+          "AI_CV_AttackDown_PhysicalTypeList",
+          "AI_CV_DefenseDown",
+          "AI_CV_DefenseDown2",
+          "AI_CV_DefenseDown3",
+          "AI_CV_DefenseDown_End",
+          "AI_CV_SpeedDownFromChance",
+          "AI_CV_SpeedDown",
+          "AI_CV_SpeedDown2",
+          "AI_CV_SpeedDown_End",
+          "AI_CV_SpAtkDown",
+          "AI_CV_SpAtkDown2",
+          "AI_CV_SpAtkDown3",
+          "AI_CV_SpAtkDown4",
+          "AI_CV_SpAtkDown_End",
+          "AI_CV_SpAtkDown_SpecialTypeList",
+          "AI_CV_SpDefDown",
+          "AI_CV_SpDefDown2",
+          "AI_CV_SpDefDown3",
+          "AI_CV_SpDefDown_End",
+          "AI_CV_AccuracyDown",
+          "AI_CV_AccuracyDown2",
+          "AI_CV_AccuracyDown3",
+          "AI_CV_AccuracyDown4",
+          "AI_CV_AccuracyDown5",
+          "AI_CV_AccuracyDown6",
+          "AI_CV_AccuracyDown7",
+          "AI_CV_AccuracyDown8",
+          "AI_CV_AccuracyDown_ScoreDown2",
+          "AI_CV_AccuracyDown_End",
+          "AI_CV_EvasionDown",
+          "AI_CV_EvasionDown2",
+          "AI_CV_EvasionDown3",
+          "AI_CV_EvasionDown_End",
+          "AI_CV_Haze",
+          "AI_CV_Haze2",
+          "AI_CV_Haze3",
+          "AI_CV_Haze4",
+          "AI_CV_Haze_End",
+          "AI_CV_Bide",
+          "AI_CV_Bide_End",
+          "AI_CV_Roar",
+          "AI_CV_Roar2",
+          "AI_CV_Roar_End",
+          "AI_CV_Conversion",
+          "AI_CV_Conversion2",
+          "AI_CV_Conversion_End",
+          "AI_CV_HealWeather",
+          "AI_CV_HealWeather_ScoreDown2",
+          "AI_CV_Heal",
+          "AI_CV_Heal2",
+          "AI_CV_Heal3",
+          "AI_CV_Heal4",
+          "AI_CV_Heal5",
+          "AI_CV_Heal6",
+          "AI_CV_Heal_End",
+          "AI_CV_Toxic",
+          "AI_CV_Toxic2",
+          "AI_CV_Toxic3",
+          "AI_CV_Toxic4",
+          "AI_CV_Toxic_End",
+          "AI_CV_LightScreen",
+          "AI_CV_LightScreen_ScoreDown2",
+          "AI_CV_LightScreen_End",
+          "AI_CV_LightScreen_SpecialTypeList",
+          "AI_CV_Rest",
+          "AI_CV_Rest2",
+          "AI_CV_Rest3",
+          "AI_CV_Rest4",
+          "AI_CV_Rest5",
+          "AI_CV_Rest6",
+          "AI_CV_Rest7",
+          "AI_CV_Rest_End",
+          "AI_CV_OneHitKO",
+          "AI_CV_SuperFang",
+          "AI_CV_SuperFang_End",
+          "AI_CV_Trap",
+          "AI_CV_Trap2",
+          "AI_CV_Trap_End",
+          "AI_CV_HighCrit",
+          "AI_CV_HighCrit2",
+          "AI_CV_HighCrit_End",
+          "AI_CV_Swagger",
+          "AI_CV_Flatter",
+          "AI_CV_Confuse",
+          "AI_CV_Confuse2",
+          "AI_CV_Confuse_End",
+          "AI_CV_SwaggerHasPsychUp",
+          "AI_CV_SwaggerHasPsychUp_Minus5",
+          "AI_CV_SwaggerHasPsychUp_End",
+          "AI_CV_Reflect",
+          "AI_CV_Reflect_ScoreDown2",
+          "AI_CV_Reflect_End",
+          "AI_CV_Reflect_PhysicalTypeList",
+          "AI_CV_Poison",
+          "AI_CV_Poison_ScoreDown1",
+          "AI_CV_Poison_End",
+          "AI_CV_Paralyze",
+          "AI_CV_Paralyze2",
+          "AI_CV_Paralyze_End",
+          "AI_CV_VitalThrow",
+          "AI_CV_VitalThrow2",
+          "AI_CV_VitalThrow_End",
+          "AI_CV_Substitute",
+          "AI_CV_Substitute2",
+          "AI_CV_Substitute3",
+          "AI_CV_Substitute4",
+          "AI_CV_Substitute5",
+          "AI_CV_Substitute6",
+          "AI_CV_Substitute7",
+          "AI_CV_Substitute8",
+          "AI_CV_Substitute_End",
+          "AI_CV_Recharge",
+          "AI_CV_Recharge2",
+          "AI_CV_Recharge_ScoreDown1",
+          "AI_CV_Recharge_End",
+          "AI_CV_Disable",
+          "AI_CV_Disable2",
+          "AI_CV_Disable_End",
+          "AI_CV_Counter",
+          "AI_CV_Counter2",
+          "AI_CV_Counter3",
+          "AI_CV_Counter4",
+          "AI_CV_Counter5",
+          "AI_CV_Counter6",
+          "AI_CV_Counter7",
+          "AI_CV_Counter8",
+          "AI_CV_Counter9",
+          "AI_CV_Counter_ScoreDown1",
+          "AI_CV_Counter_End",
+          "AI_CV_Counter_PhysicalTypeList",
+          "AI_CV_Encore",
+          "AI_CV_Encore2",
+          "AI_CV_Encore_ScoreDown2",
+          "AI_CV_Encore_End",
+          "AI_CV_Encore_EncouragedMovesToEncore",
+          "AI_CV_PainSplit",
+          "AI_CV_PainSplit2",
+          "AI_CV_PainSplit_ScoreDown1",
+          "AI_CV_PainSplit_End",
+          "AI_CV_Snore",
+          "AI_CV_LockOn",
+          "AI_CV_LockOn_End",
+          "AI_CV_SleepTalk",
+          "AI_CV_DestinyBond",
+          "AI_CV_DestinyBond2",
+          "AI_CV_DestinyBond3",
+          "AI_CV_DestinyBond_End",
+          "AI_CV_Flail",
+          "AI_CV_Flail2",
+          "AI_CV_Flail_ScoreUp1",
+          "AI_CV_Flail3",
+          "AI_CV_Flail_ScoreDown1",
+          "AI_CV_Flail_End",
+          "AI_CV_HealBell",
+          "AI_CV_HealBell_End",
+          "AI_CV_Thief",
+          "AI_CV_Thief_ScoreDown2",
+          "AI_CV_Thief_End",
+          "AI_CV_Thief_EncourageItemsToSteal",
+          "AI_CV_Curse",
+          "AI_CV_Curse2",
+          "AI_CV_Curse3",
+          "AI_CV_Curse4",
+          "AI_CV_Curse_End",
+          "AI_CV_Protect",
+          "AI_CV_Protect_ScoreUp2",
+          "AI_CV_Protect2",
+          "AI_CV_Protect4",
+          "AI_CV_Protect3",
+          "AI_CV_Protect_ScoreDown2",
+          "AI_CV_Protect_End",
+          "AI_CV_Foresight",
+          "AI_CV_Foresight2",
+          "AI_CV_Foresight3",
+          "AI_CV_Foresight_End",
+          "AI_CV_Endure",
+          "AI_CV_Endure2",
+          "AI_CV_Endure3",
+          "AI_CV_Endure_End",
+          "AI_CV_BatonPass",
+          "AI_CV_BatonPass2",
+          "AI_CV_BatonPass3",
+          "AI_CV_BatonPass4",
+          "AI_CV_BatonPass5",
+          "AI_CV_BatonPass7",
+          "AI_CV_BatonPass8",
+          "AI_CV_BatonPass_ScoreDown2",
+          "AI_CV_BatonPass_End",
+          "AI_CV_Pursuit",
+          "AI_CV_Pursuit2",
+          "AI_CV_Pursuit_End",
+          "AI_CV_RainDance",
+          "AI_CV_RainDance2",
+          "AI_CV_RainDance3",
+          "AI_CV_RainDance_ScoreDown1",
+          "AI_CV_RainDance_End",
+          "AI_CV_SunnyDay",
+          "AI_CV_SunnyDay2",
+          "AI_CV_SunnyDay_ScoreDown1",
+          "AI_CV_SunnyDay_End",
+          "AI_CV_BellyDrum",
+          "AI_CV_BellyDrum_ScoreDown2",
+          "AI_CV_BellyDrum_End",
+          "AI_CV_PsychUp",
+          "AI_CV_PsychUp2",
+          "AI_CV_PsychUp_ScoreUp1",
+          "AI_CV_PsychUp3",
+          "AI_CV_PsychUp_ScoreDown2",
+          "AI_CV_PsychUp_End",
+          "AI_CV_MirrorCoat",
+          "AI_CV_MirrorCoat2",
+          "AI_CV_MirrorCoat3",
+          "AI_CV_MirrorCoat4",
+          "AI_CV_MirrorCoat5",
+          "AI_CV_MirrorCoat6",
+          "AI_CV_MirrorCoat7",
+          "AI_CV_MirrorCoat_ScoreUp4",
+          "AI_CV_MirrorCoat_ScoreUp4_End",
+          "AI_CV_MirrorCoat_ScoreDown1",
+          "AI_CV_MirrorCoat_End",
+          "AI_CV_MirrorCoat_SpecialTypeList",
+          "AI_CV_ChargeUpMove",
+          "AI_CV_ChargeUpMove_ScoreDown2",
+          "AI_CV_ChargeUpMove_End",
+          "AI_CV_SemiInvulnerable",
+          "AI_CV_SemiInvulnerable2",
+          "AI_CV_SemiInvulnerable_CheckSandstormTypes",
+          "AI_CV_SemiInvulnerable_CheckIceType",
+          "AI_CV_SemiInvulnerable5",
+          "AI_CV_SemiInvulnerable_TryEncourage",
+          "AI_CV_SemiInvulnerable_End",
+          "AI_CV_SandstormResistantTypes",
+          "AI_CV_FakeOut",
+          "AI_CV_SpitUp",
+          "AI_CV_SpitUp_End",
+          "AI_CV_Hail",
+          "AI_CV_Hail2",
+          "AI_CV_Hail_ScoreDown1",
+          "AI_CV_Hail_End",
+          "AI_CV_Facade",
+          "AI_CV_Facade_End",
+          "AI_CV_FocusPunch",
+          "AI_CV_FocusPunch2",
+          "AI_CV_FocusPunch3",
+          "AI_CV_FocusPunch_ScoreUp1",
+          "AI_CV_FocusPunch_End",
+          "AI_CV_SmellingSalt",
+          "AI_CV_SmellingSalt_ScoreUp1",
+          "AI_CV_SmellingSalt_End",
+          "AI_CV_Trick",
+          "AI_CV_Trick2",
+          "AI_CV_Trick3",
+          "AI_CV_Trick4",
+          "AI_CV_Trick_End",
+          "AI_CV_Trick_EffectsToEncourage",
+          "AI_CV_Trick_EffectsToEncourage2",
+          "AI_CV_ChangeSelfAbility",
+          "AI_CV_ChangeSelfAbility2",
+          "AI_CV_ChangeSelfAbility3",
+          "AI_CV_ChangeSelfAbility_End",
+          "AI_CV_ChangeSelfAbility_AbilitiesToEncourage",
+          "AI_CV_Superpower",
+          "AI_CV_Superpower2",
+          "AI_CV_Superpower_ScoreDown1",
+          "AI_CV_Superpower_End",
+          "AI_CV_MagicCoat",
+          "AI_CV_MagicCoat2",
+          "AI_CV_MagicCoat3",
+          "AI_CV_MagicCoat4",
+          "AI_CV_MagicCoat_End",
+          "AI_CV_Recycle",
+          "AI_CV_Recycle_ScoreDown2",
+          "AI_CV_Recycle_End",
+          "AI_CV_Recycle_ItemsToEncourage",
+          "AI_CV_Revenge",
+          "AI_CV_Revenge_ScoreDown2",
+          "AI_CV_Revenge_End",
+          "AI_CV_BrickBreak",
+          "AI_CV_BrickBreak_ScoreUp1",
+          "AI_CV_BrickBreak_End",
+          "AI_CV_KnockOff",
+          "AI_CV_KnockOff_End",
+          "AI_CV_Endeavor",
+          "AI_CV_Endeavor2",
+          "AI_CV_Endeavor_ScoreDown1",
+          "AI_CV_Endeavor_End",
+          "AI_CV_Eruption",
+          "AI_CV_Eruption2",
+          "AI_CV_Eruption_ScoreDown1",
+          "AI_CV_Eruption_End",
+          "AI_CV_Imprison",
+          "AI_CV_Imprison_End",
+          "AI_CV_Refresh",
+          "AI_CV_Refresh_ScoreDown1",
+          "AI_CV_Refresh_End",
+          "AI_CV_Snatch",
+          "AI_CV_Snatch2",
+          "AI_CV_Snatch3",
+          "AI_CV_Snatch4",
+          "AI_CV_Snatch5",
+          "AI_CV_Snatch_End",
+          "AI_CV_MudSport",
+          "AI_CV_MudSport2",
+          "AI_CV_MudSport_ScoreDown1",
+          "AI_CV_MudSport_End",
+          "AI_CV_Overheat",
+          "AI_CV_Overheat2",
+          "AI_CV_Overheat_ScoreDown1",
+          "AI_CV_Overheat_End",
+          "AI_CV_WaterSport",
+          "AI_CV_WaterSport2",
+          "AI_CV_WaterSport_ScoreDown1",
+          "AI_CV_WaterSport_End",
+          "AI_CV_DragonDance",
+          "AI_CV_DragonDance2",
+          "AI_CV_DragonDance_End",
+          "AI_TryToFaint",
+          "AI_TryToFaint_DoubleSuperEffective",
+          "AI_TryToFaint_TryToEncourageQuickAttack",
+          "AI_TryToFaint_ScoreUp4",
+          "AI_TryToFaint_End",
+          "AI_SetupFirstTurn",
+          "AI_SetupFirstTurn_End",
+          "AI_SetupFirstTurn_SetupEffectsToEncourage",
+          "AI_PreferPowerExtremes",
+          "AI_PreferPowerExtremes_End",
+          "AI_Risky",
+          "AI_Risky_End",
+          "AI_Risky_EffectsToEncourage",
+          "AI_PreferBatonPass",
+          "AI_PreferBatonPass_GoForBatonPass",
+          "AI_PreferBatonPass2",
+          "AI_PreferBatonPass_End",
+          "sMovesTable_ProtectMoves",
+          "AI_PreferBatonPass_EncourageIfHighStats",
+          "AI_PreferBatonPassEnd",
+          "AI_DoubleBattle",
+          "AI_DoubleBattlePartnerHasHelpingHand",
+          "AI_DoubleBattleCheckUserStatus",
+          "AI_DoubleBattleCheckUserStatus2",
+          "AI_DoubleBattleAllHittingGroundMove",
+          "AI_DoubleBattleSkillSwap",
+          "AI_DoubleBattleElectricMove",
+          "AI_DoubleBattleElectricMoveEnd",
+          "AI_DoubleBattleFireMove",
+          "AI_DoubleBattleFireMove2",
+          "AI_TryOnAlly",
+          "AI_DiscourageOnAlly",
+          "AI_TryFireMoveOnAlly",
+          "AI_TryFireMoveOnAlly_FlashFire",
+          "AI_TryStatusMoveOnAlly",
+          "AI_TrySkillSwapOnAlly",
+          "AI_TrySkillSwapOnAlly2",
+          "AI_TrySkillSwapOnAllyPlus3",
+          "AI_TryStatusOnAlly",
+          "AI_TryHelpingHandOnAlly",
+          "AI_TrySwaggerOnAlly",
+          "AI_TrySwaggerOnAlly2",
+          "AI_TrySwaggerOnAlly_End",
+          "Score_Minus30_",
+          "AI_HPAware",
+          "AI_HPAware_UserHasHighHP",
+          "AI_HPAware_UserHasMediumHP",
+          "AI_HPAware_TryToDiscourage",
+          "AI_HPAware_ConsiderTarget",
+          "AI_HPAware_TargetHasHighHP",
+          "AI_HPAware_TargetHasMediumHP",
+          "AI_HPAware_TargetTryToDiscourage",
+          "AI_HPAware_End",
+          "AI_HPAware_DiscouragedEffectsWhenHighHP",
+          "AI_HPAware_DiscouragedEffectsWhenMediumHP",
+          "AI_HPAware_DiscouragedEffectsWhenLowHP",
+          "AI_HPAware_DiscouragedEffectsWhenTargetHighHP",
+          "AI_HPAware_DiscouragedEffectsWhenTargetMediumHP",
+          "AI_HPAware_DiscouragedEffectsWhenTargetLowHP",
+          "AI_TrySunnyDayStart",
+          "AI_TrySunnyDayStart_End",
+          "AI_Roaming",
+          "AI_Roaming_Flee",
+          "AI_Roaming_End",
+          "AI_Safari",
+          "AI_Safari_Flee",
+          "AI_FirstBattle",
+          "AI_FirstBattle_Flee",
+          "AI_Ret"
+        ],
+        "cFunctions": [
+          {
+            "name": "AI_TrySwitchOrUseItem",
+            "file": "src/battle_ai_switch_items.c"
+          },
+          {
+            "name": "AIStackPop",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "AIStackPushVar",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "AreStatsRaised",
+            "file": "src/battle_ai_switch_items.c"
+          },
+          {
+            "name": "BattleAI_ChooseMoveOrAction",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "BattleAI_DoAIProcessing",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "BattleAI_GetWantedBattler",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "BattleAI_HandleItemUseBeforeAISetup",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "BattleAI_SetupAIData",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "ChooseMoveOrAction_Doubles",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "ChooseMoveOrAction_Singles",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "ClearBattlerAbilityHistory",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "ClearBattlerItemEffectHistory",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "ClearBattlerMoveHistory",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_check_ability",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_end",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_flee",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_ability",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_considered_move",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_considered_move_effect",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_considered_move_power",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_gender",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_highest_type_effectiveness",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_hold_effect",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_how_powerful_move_is",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_last_used_battler_move",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_move_effect_from_result",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_move_power_from_result",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_move_type_from_result",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_protect_count",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_stockpile_count",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_turn_count",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_type",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_used_held_item",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_get_weather",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_goto",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_any_move_disabled_or_encored",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_can_faint",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_cant_faint",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_curr_move_disabled_or_encored",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_doesnt_have_move",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_doesnt_have_move_with_effect",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_effect",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_equal",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_equal_ptr",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_flash_fired",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_has_move",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_has_move_with_effect",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_holds_item",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_hp_equal",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_hp_less_than",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_hp_more_than",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_hp_not_equal",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_in_bytes",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_in_hwords",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_less_than",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_less_than_ptr",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_level_cond",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_more_than",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_more_than_ptr",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_move",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_not_effect",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_not_equal",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_not_equal_ptr",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_not_in_bytes",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_not_in_hwords",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_not_move",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_not_side_affecting",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_not_status",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_not_status2",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_not_status3",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_random_equal",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_random_greater_than",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_random_less_than",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_random_not_equal",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_random_safari_flee",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_side_affecting",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_stat_level_equal",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_stat_level_less_than",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_stat_level_more_than",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_stat_level_not_equal",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_status",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_status_not_in_party",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_status2",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_status3",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_target_is_ally",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_target_not_taunted",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_target_taunted",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_type_effectiveness",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_user_doesnt_go",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_user_goes",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_user_has_attacking_move",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_if_user_has_no_attacking_moves",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_is_double_battle",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_is_first_turn_for",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_is_of_type",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_nop_2A",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_nop_32",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_nop_52",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_score",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "Cmd_watch",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "FindMonThatAbsorbsOpponentsMove",
+            "file": "src/battle_ai_switch_items.c"
+          },
+          {
+            "name": "FindMonWithFlagsAndSuperEffective",
+            "file": "src/battle_ai_switch_items.c"
+          },
+          {
+            "name": "GetMostSuitableMonToSwitchInto",
+            "file": "src/battle_ai_switch_items.c"
+          },
+          {
+            "name": "HasSuperEffectiveMoveAgainstOpponents",
+            "file": "src/battle_ai_switch_items.c"
+          },
+          {
+            "name": "ModulateByTypeEffectiveness",
+            "file": "src/battle_ai_switch_items.c"
+          },
+          {
+            "name": "RecordAbilityBattle",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "RecordItemEffectBattle",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "RecordLastUsedMoveByTarget",
+            "file": "src/battle_ai_script_commands.c"
+          },
+          {
+            "name": "ShouldSwitch",
+            "file": "src/battle_ai_switch_items.c"
+          },
+          {
+            "name": "ShouldSwitchIfNaturalCure",
+            "file": "src/battle_ai_switch_items.c"
+          },
+          {
+            "name": "ShouldSwitchIfPerishSong",
+            "file": "src/battle_ai_switch_items.c"
+          },
+          {
+            "name": "ShouldSwitchIfWonderGuard",
+            "file": "src/battle_ai_switch_items.c"
+          },
+          {
+            "name": "ShouldUseItem",
+            "file": "src/battle_ai_switch_items.c"
+          }
+        ]
+      },
+      "notes": [],
+      "predictionReadiness": {
+        "exactActionProbabilities": false,
+        "blockers": [
+          "The source is preserved exactly, but a consumer-grade interpreter has not been implemented and independently validated.",
+          "All random branches, score ties, switching, trainer-item behavior, and game-state inputs must be modeled before probabilities are authoritative."
+        ]
+      }
+    },
+    {
+      "profileId": "pokeemerald-expansion-f90dfc5",
+      "displayName": "pokeemerald-expansion AI snapshot",
+      "engineFamily": "compiled-c-ai",
+      "exactGameScope": [
+        "pokeemerald-expansion-at-f90dfc5679d77bae074e72396506fa050cc3af52"
+      ],
+      "source": {
+        "repository": "https://github.com/rh-hideout/pokeemerald-expansion",
+        "commit": "f90dfc5679d77bae074e72396506fa050cc3af52",
+        "authority": "Primary C source pinned to an exact commit or exact clean working-tree files at that commit.",
+        "files": {
+          "include/constants/battle_ai.h": "2c4d6838df8d9a124e1d864a557d46fdd5d18db0de4fef5ff45835e251c9340b",
+          "src/battle_ai_field_statuses.c": "0019fd99648968a028faa6f358541fc5af010e7d1ac7984dfa0e4217130f5052",
+          "src/battle_ai_items.c": "c3cef1f721120e9146d657f7535ffdc9087e72c9ebc82d8db832b250d41d65fa",
+          "src/battle_ai_main.c": "3f58eb80e1fadcedae60d2c441406012e5d85d55cdc534997b2c78b301547cc5",
+          "src/battle_ai_switch.c": "3c091c87202e8288eff2f6190f0522a0c35271ec23e95c0cec2ec1b98ce584f2",
+          "src/battle_ai_util.c": "c024fc0144595c51d98421ec3ab7ed4740393f11f377edf9129d74d220043d23"
+        }
+      },
+      "structure": {
+        "flags": [
+          {
+            "id": "AI_FLAG_ACE_POKEMON",
+            "expression": "AI_FLAG(15)  // AI has an Ace Pokemon. The last Pokemon in the party will not be used until it's the last one remaining."
+          },
+          {
+            "id": "AI_FLAG_ASSUME_STAB",
+            "expression": "AI_FLAG(28)  // AI knows player's STAB moves, but nothing else. Restricted version of AI_FLAG_OMNISCIENT."
+          },
+          {
+            "id": "AI_FLAG_ASSUME_STATUS_MOVES",
+            "expression": "AI_FLAG(29)  // AI has a chance to know certain non-damaging moves, and also Fake Out and Super Fang. Restricted version of AI_FLAG_OMNISCIENT."
+          },
+          {
+            "id": "AI_FLAG_ASSUMPTIONS",
+            "expression": "(AI_FLAG_ASSUME_STAB | AI_FLAG_ASSUME_STATUS_MOVES | AI_FLAG_WEIGH_ABILITY_PREDICTION)"
+          },
+          {
+            "id": "AI_FLAG_ATTACKS_PARTNER",
+            "expression": "AI_FLAG(30)  // AI specific to double battles; AI can deliberately attack its 'partner.'"
+          },
+          {
+            "id": "AI_FLAG_BASIC_TRAINER",
+            "expression": "(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY)"
+          },
+          {
+            "id": "AI_FLAG_CHECK_BAD_MOVE",
+            "expression": "AI_FLAG(0)  // AI will avoid using moves that are likely to fail or be ineffective in the current situation."
+          },
+          {
+            "id": "AI_FLAG_CHECK_VIABILITY",
+            "expression": "AI_FLAG(2)  // AI damaging moves and move effects to determine the best available move in the current situation."
+          },
+          {
+            "id": "AI_FLAG_CONSERVATIVE",
+            "expression": "AI_FLAG(18)  // AI assumes all moves will low roll damage."
+          },
+          {
+            "id": "AI_FLAG_DOUBLE_ACE_POKEMON",
+            "expression": "AI_FLAG(20)  // AI has *two* Ace Pokémon. The last two Pokémons in the party won't be used unless they're the last ones remaining. Goes well in battles where the trainer ID equals to twins, couples, etc."
+          },
+          {
+            "id": "AI_FLAG_DOUBLE_BATTLE",
+            "expression": "AI_FLAG(7)  // Automatically set for double battles, handles AI behaviour with partner."
+          },
+          {
+            "id": "AI_FLAG_DYNAMIC_FUNC",
+            "expression": "AI_FLAG(60)  // Create custom AI functions for specific battles via \"setdynamicaifunc\" cmd"
+          },
+          {
+            "id": "AI_FLAG_FIRST_BATTLE",
+            "expression": "AI_FLAG(63)"
+          },
+          {
+            "id": "AI_FLAG_FORCE_SETUP_FIRST_TURN",
+            "expression": "AI_FLAG(3)  // AI will prioritize using setup moves on the first turn at the expensve of all else. AI_FLAG_CHECK_VIABILITY will instead do this when the AI determines it makes sense."
+          },
+          {
+            "id": "AI_FLAG_HP_AWARE",
+            "expression": "AI_FLAG(8)  // AI will favour certain move effects based on how much remaining HP it and the player's mon have."
+          },
+          {
+            "id": "AI_FLAG_KNOW_OPPONENT_PARTY",
+            "expression": "AI_FLAG(31)  // AI knows all the species in the player's party, but not moves/items/abilities unless they've been seen."
+          },
+          {
+            "id": "AI_FLAG_NEGATE_UNAWARE",
+            "expression": "AI_FLAG(10)  // AI is NOT aware of negating effects like wonder room, mold breaker, etc."
+          },
+          {
+            "id": "AI_FLAG_OMNISCIENT",
+            "expression": "AI_FLAG(16)  // AI has full knowledge of player moves, abilities, hold items."
+          },
+          {
+            "id": "AI_FLAG_POWERFUL_STATUS",
+            "expression": "AI_FLAG(9)  // AI prefers moves that set up field effects or side statuses, even if the user can faint the target."
+          },
+          {
+            "id": "AI_FLAG_PP_STALL_PREVENTION",
+            "expression": "AI_FLAG(25)  // AI keeps track of the player's switches where the incoming mon is immune to the chosen move"
+          },
+          {
+            "id": "AI_FLAG_PREDICT_INCOMING_MON",
+            "expression": "AI_FLAG(24)  // AI will score against the predicting incoming mon if it predicts the player to switch. Requires AI_FLAG_PREDICT_SWITCH"
+          },
+          {
+            "id": "AI_FLAG_PREDICT_MOVE",
+            "expression": "AI_FLAG(26)  // AI will predict the player's move based on what move it would use in the same situation. Recommend using AI_FLAG_OMNISCIENT"
+          },
+          {
+            "id": "AI_FLAG_PREDICT_SWITCH",
+            "expression": "AI_FLAG(23)  // AI will predict the player's switches and switchins based on how it would handle the situation. Recommend using AI_FLAG_OMNISCIENT"
+          },
+          {
+            "id": "AI_FLAG_PREDICTION",
+            "expression": "(AI_FLAG_PREDICT_SWITCH | AI_FLAG_PREDICT_INCOMING_MON | AI_FLAG_PREDICT_MOVE)"
+          },
+          {
+            "id": "AI_FLAG_PREFER_BATON_PASS",
+            "expression": "AI_FLAG(6)  // AI prefers raising its own stats and setting for / using Baton Pass."
+          },
+          {
+            "id": "AI_FLAG_PREFER_HIGHEST_DAMAGE_MOVE",
+            "expression": "AI_FLAG(22)  // AI adds score to highest damage move regardless of accuracy or secondary effect"
+          },
+          {
+            "id": "AI_FLAG_PREFER_STATUS_MOVES",
+            "expression": "AI_FLAG(12)  // AI gets a score bonus for status moves. Should be combined with AI_FLAG_CHECK_BAD_MOVE to prevent using only status moves."
+          },
+          {
+            "id": "AI_FLAG_RANDOMIZE_PARTY_INDICES",
+            "expression": "AI_FLAG(33)  // AI will randomize the order of the mons in its party, including the lead. Not an AI flag really, just a way to trigger TPP functionality"
+          },
+          {
+            "id": "AI_FLAG_RANDOMIZE_SWITCHIN",
+            "expression": "AI_FLAG(32)  // AI will randomly choose between eligible switchin candidates of a given category instead of picking the last one in the party."
+          },
+          {
+            "id": "AI_FLAG_RISKY",
+            "expression": "AI_FLAG(4)  // AI will generally behave more recklessly, prioritizing damage over accuracy, explosions, etc."
+          },
+          {
+            "id": "AI_FLAG_ROAMING",
+            "expression": "AI_FLAG(61)"
+          },
+          {
+            "id": "AI_FLAG_SAFARI",
+            "expression": "AI_FLAG(62)"
+          },
+          {
+            "id": "AI_FLAG_SEQUENCE_SWITCHING",
+            "expression": "AI_FLAG(19)  // AI switches in mons in exactly party order, and never switches mid-battle."
+          },
+          {
+            "id": "AI_FLAG_SMART_MON_CHOICES",
+            "expression": "AI_FLAG(17)  // AI will make smarter decisions when choosing which mon to send out mid-battle and after a KO, which are separate decisions. Automatically included by AI_FLAG_SMART_SWITCHING."
+          },
+          {
+            "id": "AI_FLAG_SMART_SWITCHING",
+            "expression": "AI_FLAG(14)  // AI includes a lot more switching checks. Automatically includes AI_FLAG_SMART_MON_CHOICES."
+          },
+          {
+            "id": "AI_FLAG_SMART_TERA",
+            "expression": "AI_FLAG(27)  // AI will make smarter decisions when choosing whether to terrastalize (default is to always tera whenever available)."
+          },
+          {
+            "id": "AI_FLAG_SMART_TRAINER",
+            "expression": "(AI_FLAG_BASIC_TRAINER | AI_FLAG_OMNISCIENT | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_PP_STALL_PREVENTION | AI_FLAG_SMART_TERA | AI_FLAG_RANDOMIZE_SWITCHIN)"
+          },
+          {
+            "id": "AI_FLAG_STALL",
+            "expression": "AI_FLAG(13)  // AI stalls battle and prefers secondary damage/trapping/etc. TODO not finished."
+          },
+          {
+            "id": "AI_FLAG_TRY_TO_2HKO",
+            "expression": "AI_FLAG(5)  // AI adds score bonus to any move the AI has that either OHKOs or 2HKOs the player."
+          },
+          {
+            "id": "AI_FLAG_TRY_TO_FAINT",
+            "expression": "AI_FLAG(1)  // AI will prioritize KOing the player's mon if able."
+          },
+          {
+            "id": "AI_FLAG_WEIGH_ABILITY_PREDICTION",
+            "expression": "AI_FLAG(21)  // AI will predict player's ability based on aiRating"
+          },
+          {
+            "id": "AI_FLAG_WILL_SUICIDE",
+            "expression": "AI_FLAG(11)  // AI will use explosion / self destruct / final gambit / etc."
+          }
+        ],
+        "functions": [
+          {
+            "name": "__attribute__",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AbilityChangeScore",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_ApplyModifiersAfterDmgRoll",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_AttacksPartner",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "AI_BattlerAtMaxHp",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_CalcAdditionalEffectScore",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "AI_CalcDamage",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_CalcDamageSaveBattlers",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_CalcHoldEffectMoveScore",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "AI_CalcMoveEffectScore",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "AI_CanAnyStatChange",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_CanBattlerEscape",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_CanBattlerHitBothFoesInTerrain",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_CanBeConfused",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_CanBeInfatuated",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_CanBurn",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_CanConfuse",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_CanContactBypassProtect",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_CanGiveFrostbite",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_CanMoveBeBlockedByTarget",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_CanParalyze",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_CanPoison",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_CanPutToSleep",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_CanStatChangeBePrevented",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_CanSwitchinAbilityTrapOpponent",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "AI_CheckBadMove",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "AI_CheckPpStall",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "AI_CheckViability",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "AI_CompareDamagingMoves",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "AI_DecideHoldEffectForTurn",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_DecideKnownAbilityForTurn",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_DoesChoiceEffectBlockMove",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "AI_DoubleBattle",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "AI_DynamicFunc",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "AI_FirstBattle",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "AI_Flee",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "AI_ForceSetupFirstTurn",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "AI_GetAdjustedStatStage",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_GetBattlerMoveTargetType",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_GetDamage",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_GetDefaultDamageRollForContext",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_GetMoldBreakerSanitizedAbility",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_GetMoveEffectiveness",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_GetSwitchinFieldStatus",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_GetSwitchinWeather",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_GetWeather",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_GetWhichBattlerFasterOrTies",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "AI_HPAware",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "Ai_InitPartyStruct",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "AI_IsAbilityOnSide",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_IsBattlerAsleepOrComatose",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_IsBattlerGrounded",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_IsDamagedByRecoil",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_IsDoubleSpreadMove",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_IsFaster",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_IsMoveEffectInMinus",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_IsMoveEffectInPlus",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "Ai_IsPriorityBlocked",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_IsSlower",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_MoveMakesContact",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_OpponentCanFaintAiWithMod",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_PowerfulStatus",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "AI_PredictSwitch",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "AI_PreferBatonPass",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "AI_RandLessThan",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_RestoreBattlerTypes",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_Risky",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "AI_Roaming",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "AI_Safari",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "AI_SelectRevivalBlessingMon",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "Ai_SetMoveAccuracy",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "AI_ShouldCopyStatChanges",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_ShouldHeal",
+            "file": "src/battle_ai_items.c"
+          },
+          {
+            "name": "AI_ShouldSetUpHazards",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_ShouldSpicyExtract",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_StoreBattlerTypes",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_TagBattlePreferFoe",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "AI_TrySwitchOrUseItem",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "AI_TryTo2HKO",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "AI_TryToClearStats",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_TryToFaint",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "Ai_UpdateFaintData",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "Ai_UpdateSwitchInData",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "AI_Watch",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "AI_WeatherHasEffect",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AI_WhoStrikesFirst",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AIDebugTimerEnd",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "AIDebugTimerStart",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "AiExpectsToFaintPlayer",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AnyPartyMemberStatused",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AnyStatIsRaised",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AnyUsefulStatIsRaised",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AreBattlersStatsMaxed",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AreMovesEquivalent",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "AreStatsRaised",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "BattleAI_ChooseMoveIndex",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "BattleAI_DoAIProcessing",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "BattleAI_DoAIProcessing_PredictedSwitchin",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "BattleAI_SetupAIData",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "BattleAI_SetupFlags",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "BattleAI_SetupItems",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "BattlerBenefitsFromAbilityScore",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "BattlerChooseNonMoveAction",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "BattlerHasMaxHPProtection",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "BattlerStatCanRise",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "BattlerWillFaintFromSecondaryDamage",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "BattlerWillFaintFromWeather",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "BenefitsFromElectricTerrain",
+            "file": "src/battle_ai_field_statuses.c"
+          },
+          {
+            "name": "BenefitsFromGrassyTerrain",
+            "file": "src/battle_ai_field_statuses.c"
+          },
+          {
+            "name": "BenefitsFromGravity",
+            "file": "src/battle_ai_field_statuses.c"
+          },
+          {
+            "name": "BenefitsFromHailOrSnow",
+            "file": "src/battle_ai_field_statuses.c"
+          },
+          {
+            "name": "BenefitsFromMistyTerrain",
+            "file": "src/battle_ai_field_statuses.c"
+          },
+          {
+            "name": "BenefitsFromPsychicTerrain",
+            "file": "src/battle_ai_field_statuses.c"
+          },
+          {
+            "name": "BenefitsFromRain",
+            "file": "src/battle_ai_field_statuses.c"
+          },
+          {
+            "name": "BenefitsFromSandstorm",
+            "file": "src/battle_ai_field_statuses.c"
+          },
+          {
+            "name": "BenefitsFromSun",
+            "file": "src/battle_ai_field_statuses.c"
+          },
+          {
+            "name": "BenefitsFromTrickRoom",
+            "file": "src/battle_ai_field_statuses.c"
+          },
+          {
+            "name": "BestDmgMoveHasEffect",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "CalcBattlerAiMovesData",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "CalcDynamicMoveDamage",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "CalcWeatherScore",
+            "file": "src/battle_ai_field_statuses.c"
+          },
+          {
+            "name": "CanAIFaintTarget",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "CanBattlerConsiderSwitch",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "CanBattlerKOTargetIgnoringSturdy",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "CanBattlerWin1v1",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "CanEffectChangeAbility",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "CanEndureHit",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "CanIndexMoveFaintTarget",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "CanIntimidateLowerOpponentAtk",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "CanKnockOffItem",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "CanLowerStat",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "CanMonSurviveHazardSwitchin",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "CanMoveAffectTarget",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "CanMoveBeBouncedBack",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "CanMoveIndexHitAnyOpponent",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "CanSwitchinWin1v1",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "CanTargetFaintAi",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "CanTargetFaintAiWithMod",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "CanTargetMoveFaintAi",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "CanUseSuperEffectiveMoveAgainstOpponent",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "CanUseSuperEffectiveMoveAgainstOpponents",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "ChooseMoveOrAction",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "ChooseMoveOrAction_Doubles",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "ChooseMoveOrAction_Singles",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "CompareGuaranteeFaintTarget",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "CompareMoveAccuracies",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "CompareMoveEffects",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "CompareMoveSelfSacrifice",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "CompareMoveSpeeds",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "CompareMoveTwoTurnEffect",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "CompareResistBerryEffects",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "ComputeAiBattlerDecisions",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "CopyBattlerDataToAIParty",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "CountNegativeStatStages",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "CountPositiveStatStages",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "CountUsablePartyMons",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "DecideTerastal",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "DoesAbilityBenefitFromFieldStatus",
+            "file": "src/battle_ai_field_statuses.c"
+          },
+          {
+            "name": "DoesAbilityBenefitFromSunOrRain",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "DoesAbilityBenefitFromWeather",
+            "file": "src/battle_ai_field_statuses.c"
+          },
+          {
+            "name": "DoesAbilityRaiseStatsWhenLowered",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "DoesBattlerBenefitFromAllVolatileStatus",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "DoesBattlerIgnoreAbilityChecks",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "DoesBattlerTakeHailDamage",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "DoesBattlerTakeSandstormDamage",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "DoesEffectReplaceTargetAbility",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "DoesIntimidateRaiseStats",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "DoesMostSuitableSwitchinBenefitFromWish",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "DoesPartnerHaveSameMoveEffect",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "DoesSideHaveDamagingHazards",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "FieldStatusChecker",
+            "file": "src/battle_ai_field_statuses.c"
+          },
+          {
+            "name": "FindMonThatAbsorbsOpponentsMove",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "FindMonWithMoveOfEffectiveness",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "FreeRestoreAiLogicData",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "FreeRestoreBattleMons",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetActiveBattlerIds",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetAIChosenMove",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetAIEffectGroup",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetAIEffectGroupFromMove",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetAIExplosionChanceFromHP",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetAiFlags",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "GetAILastPartyIndex",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetAllyChosenMove",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetAllyStatChangeScore",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetBattlerMoveIndexWithEffect",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetBattlerSecondaryDamage",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetBattlerTypeMatchup",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "GetBestDmgFromBattler",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetBestDmgMovesFromBattler",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetBestMonIntegrated",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "GetBestMonVanilla",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "GetBestNoOfHitsToKO",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetCurrDamageHpPercent",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetCurseDamage",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetDamageByRollType",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetFoeStatChangeScore",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetFriendlyFireKOThreshold",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetHealthPercentage",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetHitEscapeTransformState",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "GetHPHealAmount",
+            "file": "src/battle_ai_items.c"
+          },
+          {
+            "name": "GetIncomingHealInfo",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "GetIncomingMove",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetLeechSeedDamage",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetMaxDamagePlayerCouldDealToSwitchin",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "GetMaxPriorityDamagePlayerCouldDealToSwitchin",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "GetMostSuitableMonToSwitchInto",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "GetMoveIndex",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetNextMonInParty",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "GetNightmareDamage",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetNoOfHitsToKO",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetNoOfHitsToKOBattler",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetNoOfHitsToKOBattlerDmg",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetPartyMonAbility",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "GetPartyMonAbilityForSwitchCalc",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "GetPoisonDamage",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetPredictedMove",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetSelfStatChangeScore",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetShouldSwitchMoveData",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "GetShouldSwitchPartyMonEligibility",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "GetStatChangeScore",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetSwitchChance",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "GetSwitchinCandidate",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "GetSwitchinHazardsDamage",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "GetSwitchinHitsToKO",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "GetSwitchinRecurringDamage",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "GetSwitchinRecurringHealing",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "GetSwitchinSingleUseItemHealing",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "GetSwitchinStatusDamage",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "GetSwitchinWeatherImpact",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "GetTotalBaseStat",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetTrapDamage",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetTypeMatchupAgainstTypes",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "GetUsableMoveIndexWithEffect",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetValidSwitchinCandidate",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "GetWeatherDamage",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "GetWildAiFlags",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "GetWindAbilityScore",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "GetWishHealAmountForBattler",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "HandleKOThroughBerryReduction",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasAnyKnownMove",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasBattlerSideMoveWithAdditionalEffect",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasBattlerSideMoveWithAIEffect",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasBattlerSideMoveWithEffect",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasBattlerSideUsedMoveWithEffect",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasBattlerTerrainBoostMove",
+            "file": "src/battle_ai_field_statuses.c"
+          },
+          {
+            "name": "HasChoiceEffect",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasDamagingMove",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasDamagingMoveOfType",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasHealingEffect",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasHPForDamagingSetup",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasLightSensitiveMove",
+            "file": "src/battle_ai_field_statuses.c"
+          },
+          {
+            "name": "HasMove",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasMoveThatChangesKOThreshold",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasMoveThatLowersOwnStats",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasMoveThatRaisesOwnStats",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasMoveUsableWhileAsleep",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasMoveWithAdditionalEffect",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasMoveWithAIEffect",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasMoveWithCategory",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasMoveWithCriticalHitChance",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasMoveWithEffect",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasMoveWithFlag",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasMoveWithLowAccuracy",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasMoveWithMoveEffectExcept",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasMoveWithType",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasNonVolatileMoveEffect",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasOnlyMovesWithCategory",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasPartner",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasPartnerIgnoreFlags",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasPhysicalBestMove",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasSleepMoveWithLowAccuracy",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasThawingMove",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasTrappingMoveEffect",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HasTwoOpponents",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "HighestRollDmg",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IncreaseBurnScore",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IncreaseConfusionScore",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IncreaseFrostbiteScore",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IncreaseParalyzeScore",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IncreasePoisonScore",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IncreaseSleepScore",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IncreaseStatDownScore",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IncreaseStatUpScore",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IncreaseStatUpScoreContrary",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IncreaseStatUpScoreInternal",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IncreaseSubstituteMoveScore",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IncreaseTidyUpScore",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "InitializeSwitchinCandidate",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "IsAbilityOfRating",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsAceMon",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "IsAdditionalEffectBlocked",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsAiBattlerAssumingStab",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsAiBattlerAssumingStatusMoves",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsAiBattlerAware",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsAiBattlerPredictingAbility",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsAiFlagPresent",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsAllyProtectingFromMove",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsAromaVeilProtectedEffect",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsBattle1v1",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsBattlerDamagedByStatus",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsBattlerIncapacitated",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsBattlerItemEnabled",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsBattlerPredictedToSwitch",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsBattlerTrapped",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsBestDmgMove",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsChaseEffect",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsConfusionMoveEffect",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsConsideringZMove",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsDamageMoveUnusable",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsFlinchGuaranteed",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsFreeSwitch",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "IsHazardClearingMove",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsHazardMove",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsLightSensitiveMove",
+            "file": "src/battle_ai_field_statuses.c"
+          },
+          {
+            "name": "IsMoveBad",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "IsMoveRedirectionPrevented",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsMoveSleepClauseTrigger",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsMoxieTypeAbility",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsNonVolatileStatusMove",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsOpponentPhysicalAttacker",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "IsPartyFullyHealedExceptBattler",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsPartyMonOnFieldOrChosenToSwitch",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsPartyMonPlannedToBeSwitchedInByPartner",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsPinchBerryItemEffect",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "IsPowerBasedOnStatus",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsRecycleEncouragedItem",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsSelfSacrificeEffect",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsSmartBattle",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "IsStatBoostingBerry",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsStatLoweringMove",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsStatRaisingMove",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsSubstituteEffect",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsSwitchinTSpikesAffected",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "IsSwitchinValid",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "IsSwitchOutEffect",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsTargetingPartner",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsTrappingMove",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsTruantMonVulnerable",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsTwoTurnNotSemiInvulnerableMove",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsUngroundingEffect",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsWakeupTurn",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "IsWeatherActive",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ModifySwitchAfterMoveScoring",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "MovesWithCategoryUnusable",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "NoOfHitsForTargetToFaintBattler",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "NoOfHitsForTargetToFaintBattlerWithMod",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "PartnerMoveActivatesSleepClause",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "PartnerMoveEffectIs",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "PartnerMoveEffectIsStatusSameTarget",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "PartnerMoveIs",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "PartnerMoveIsSameAsAttacker",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "PartnerMoveIsSameNoTarget",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "PartyHasMoveCategory",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "PpStallReduction",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "ProtectChecks",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ReconsiderGimmick",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "RecordMovesBasedOnStab",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "RecordStatusMoves",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "RecoveryEnablesWinning1v1",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ResetDynamicAiFunctions",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "RestoreBattlerData",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "SaveBattlerData",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ScriptSetDynamicAiFunc",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "ScriptSetDynamicAiSwitchFunc",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "SetAiLogicDataForTurn",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "SetAIUsingGimmick",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "SetBattlerAiData",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "SetBattlerAiMovesData",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "SetBattlerData",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "SetBattlerHPChangeForSwitch",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "SetBattlerStatStagesForSwitchin",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "SetBattlerStatusForSwitchin",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "SetBattlerTurnOrder",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "SetBattlerVolatilesForSwitchin",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "SetSwitchinAndSwitch",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "SetupAIPredictionData",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "SetupRandomRollsForAIMoveSelection",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "ShouldAbsorb",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldBeatUpForJustified",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldBeatUpForRageFist",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldBurn",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldCalcCritDamage",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldClearFieldStatus",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldClearWeather",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldCompareMove",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "ShouldConsiderMoveForBattler",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "ShouldConsiderSelfSacrificeDamageEffect",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldCureStatus",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldCureStatusInternal",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldCureStatusWithItem",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldDrainHPToWithstandHit",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldFailForIllusion",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldFinalGambit",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldFreezeOrFrostbite",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldInstructPartner",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldParalyze",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldPivot",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldPoison",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldRaiseAnyStat",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldRecordStatusMove",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldRecover",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldRestoreHpBerry",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldSetFieldStatus",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldSetScreen",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldSetWeather",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldStayInToUseMove",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "ShouldSwitch",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "ShouldSwitchDynFuncExample",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "ShouldSwitchIfAbilityBenefit",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "ShouldSwitchIfAllMovesBad",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "ShouldSwitchIfAllScoresBad",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "ShouldSwitchIfAttackingStatsLowered",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "ShouldSwitchIfBadChoiceLock",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "ShouldSwitchIfBadlyStatused",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "ShouldSwitchIfEncored",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "ShouldSwitchIfHasBadOdds",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "ShouldSwitchIfIntimidateBenefit",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "ShouldSwitchIfLoses1v1",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "ShouldSwitchIfOpponentChargingOrInvulnerable",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "ShouldSwitchIfTrapperInParty",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "ShouldSwitchIfTruant",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "ShouldSwitchIfWishPassing",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "ShouldSwitchIfWonderGuard",
+            "file": "src/battle_ai_switch.c"
+          },
+          {
+            "name": "ShouldTeraFromCalcs",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldTrap",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldTriggerAbility",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldTriggerPartnerAbility",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "ShouldTryOHKO",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldTryToFlinch",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldUseItem",
+            "file": "src/battle_ai_items.c"
+          },
+          {
+            "name": "ShouldUseRecoilMove",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldUseSpreadDamageMove",
+            "file": "src/battle_ai_main.c"
+          },
+          {
+            "name": "ShouldUseWishAromatherapy",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "ShouldUseZMove",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "SideHasMoveCategory",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "SwitchinChangeBattleTerrain",
+            "file": "src/battle_ai_util.c"
+          },
+          {
+            "name": "WeatherChecker",
+            "file": "src/battle_ai_field_statuses.c"
+          }
+        ]
+      },
+      "notes": [
+        "Imported files were verified unmodified relative to the named local checkout commit before copying."
+      ],
+      "predictionReadiness": {
+        "exactActionProbabilities": false,
+        "blockers": [
+          "The source is preserved exactly, but it has not been compiled into a consumer-grade state evaluator and independently validated.",
+          "Compile-time configuration, random branches, score ties, switching, trainer items, and every required battle-state input remain consumer integration gates."
+        ]
+      }
+    },
+    {
+      "profileId": "cfru-b637a278",
+      "displayName": "Complete FireRed Upgrade AI",
+      "engineFamily": "compiled-c-ai",
+      "exactGameScope": [
+        "complete-fire-red-upgrade-at-b637a27898b14e25dd24d0f69a3e302f0069deb8"
+      ],
+      "source": {
+        "repository": "https://github.com/Skeli789/Complete-Fire-Red-Upgrade",
+        "commit": "b637a27898b14e25dd24d0f69a3e302f0069deb8",
+        "authority": "Primary C source pinned to an exact commit or exact clean working-tree files at that commit.",
+        "files": {
+          "include/constants/battle_ai.h": "8f023ed120cb7c4a052558ba68960fb5a99d92dece59455704b0b2306b179b15",
+          "include/new/ai_scripts.h": "1b0270ae57f9e7c7fbd759a4093bf23e5b30f894db8f754ef946c3d62a82dd6a",
+          "src/Battle_AI/ai_advanced.c": "d3be69022ba5f40e2832345a23f62178639b8ab3d2f6f98eb71c5bb0a3c1016f",
+          "src/Battle_AI/ai_master.c": "c97289db27a1a05ab423c6c48b6006e1acfa3c09fa3ae583d7026a558efb3432",
+          "src/Battle_AI/ai_negatives.c": "c8d9d770df3ad097d95ee1bdcc1bd081b41374216bee58d86fe085d767fa463a",
+          "src/Battle_AI/ai_partner.c": "78435bfff26d61a69a019da13cd96cb056c9e5b72b29bf6473c153a96cc1a683",
+          "src/Battle_AI/ai_positives.c": "a7cef7df8af123fbc7dd4c7aa81943faf83fe57358af50b00a05b7e3a04ccf9e",
+          "src/Battle_AI/ai_switching.c": "d49fae76f07b0dce9e52504ce06a759dba973bdc76ea64984e8770b3c9ae71ed",
+          "src/Battle_AI/ai_util.c": "e8aa5a63765879005b9317123aab0ac30020722cf89a1d4554c1d28fab4a74ac",
+          "src/Battle_AI/Doubles AI Strategy.txt": "58b4616985897e3a91bcd7a5e32df8cb654ed84e80b49a7bcac58fde6da4d192"
+        }
+      },
+      "structure": {
+        "flags": [
+          {
+            "id": "AI_SCRIPT_CHECK_BAD_MOVE",
+            "expression": "(1 << 0)"
+          },
+          {
+            "id": "AI_SCRIPT_CHECK_VIABILITY",
+            "expression": "(1 << 2)"
+          },
+          {
+            "id": "AI_SCRIPT_DOUBLE_BATTLE",
+            "expression": "(1 << 7)"
+          },
+          {
+            "id": "AI_SCRIPT_FIRST_BATTLE",
+            "expression": "(1 << 31)"
+          },
+          {
+            "id": "AI_SCRIPT_HP_AWARE",
+            "expression": "(1 << 8)"
+          },
+          {
+            "id": "AI_SCRIPT_PREFER_BATON_PASS",
+            "expression": "(1 << 6)"
+          },
+          {
+            "id": "AI_SCRIPT_PREFER_STRONGEST_MOVE",
+            "expression": "(1 << 5)"
+          },
+          {
+            "id": "AI_SCRIPT_RISKY",
+            "expression": "(1 << 4)"
+          },
+          {
+            "id": "AI_SCRIPT_ROAMING",
+            "expression": "(1 << 29)"
+          },
+          {
+            "id": "AI_SCRIPT_SAFARI",
+            "expression": "(1 << 30)"
+          },
+          {
+            "id": "AI_SCRIPT_SETUP_FIRST_TURN",
+            "expression": "(1 << 3)"
+          },
+          {
+            "id": "AI_SCRIPT_TRY_TO_FAINT",
+            "expression": "(1 << 1)"
+          },
+          {
+            "id": "AI_SCRIPT_UNKNOWN",
+            "expression": "(1 << 9)"
+          }
+        ],
+        "functions": [
+          {
+            "name": "AdjustFinalAIDamageForNumHits",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "AdjustMoveLimitationFlagsForAI",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "AI_Flee",
+            "file": "Battle_AI/ai_negatives.c"
+          },
+          {
+            "name": "AI_TrySwitchOrUseItem",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "AI_Watch",
+            "file": "Battle_AI/ai_negatives.c"
+          },
+          {
+            "name": "AIRandom",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "AIScript_FirstBattle",
+            "file": "Battle_AI/ai_negatives.c"
+          },
+          {
+            "name": "AIScript_Negatives",
+            "file": "Battle_AI/ai_negatives.c"
+          },
+          {
+            "name": "AIScript_Partner",
+            "file": "Battle_AI/ai_partner.c"
+          },
+          {
+            "name": "AIScript_Positives",
+            "file": "Battle_AI/ai_positives.c"
+          },
+          {
+            "name": "AIScript_Roaming",
+            "file": "Battle_AI/ai_negatives.c"
+          },
+          {
+            "name": "AIScript_Safari",
+            "file": "Battle_AI/ai_negatives.c"
+          },
+          {
+            "name": "AIScript_SemiSmart",
+            "file": "Battle_AI/ai_positives.c"
+          },
+          {
+            "name": "AllMovesInMovesetWithAccuracyLessThan",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "AnnoyingSecondaryDamageSwitchCheck",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "AnyStatIsRaised",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "AnyUsefulOffseniveStatIsRaised",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "AnyUsefulStatIsRaised",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "BadIdeaToBurn",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "BadIdeaToFreeze",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "BadIdeaToMakeContactWith",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "BadIdeaToParalyze",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "BadIdeaToPoison",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "BadIdeaToPutToSleep",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "BadIdeaToRaiseAccuracyAgainst",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "BadIdeaToRaiseAttackAgainst",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "BadIdeaToRaiseDefenseAgainst",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "BadIdeaToRaiseEvasionAgainst",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "BadIdeaToRaiseSpAttackAgainst",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "BadIdeaToRaiseSpDefenseAgainst",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "BadIdeaToRaiseSpeedAgainst",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "BadIdeaToRaiseStatAgainst",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "BankHasAbilityUsefulToProtectFor",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "BankHoldingUsefulItemToProtectFor",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "BankLikelyToUseMoveSplit",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "BattleAI_ChooseMoveOrAction",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "BattleAI_DoAIProcessing",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "BattleAI_HandleItemUseBeforeAISetup",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "BattleAI_SetupAIData",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "CalcAIAccuracy",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CalcAIDynamaxMon",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CalcFinalAIMoveDamage",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CalcFinalAIMoveDamageFromParty",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CalcMostSuitableMonSwitchIfNecessary",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "CalcMostSuitableMonToSwitchInto",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "CalcOnlyBadMovesLeftInMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CalcPredictedDamageForCounterMoves",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CalcSecondaryEffectChance",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CalcSecondaryEffectDamage",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CalcShouldAIDynamax",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CalcShouldAIUseZMove",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CalcStrongestMove",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CalcStrongestMoveGoesFirst",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CalcStrongestMoveIgnoringMove",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CalculateAIPredictions",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "CalculateMoveKnocksOutXHits",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CalculateMoveKnocksOutXHitsFresh",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "Can2HKO",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "Can2HKOWithChipDamage",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CanBeFlinched",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CanHealFirstToPreventKnockOut",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CanKillAFoe",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CanKnockOut",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CanKnockOutAfterHealing",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CanKnockOutFromParty",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CanKnockOutWithChipDamage",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CanKnockOutWithFasterMove",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CanKnockOutWithoutMove",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CanMovePredictionProtectAgainstMove",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CanStopLockedMove",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "CheckDeperateAttempt",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "ChooseMoveOrAction_Doubles",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "ChooseMoveOrAction_Singles",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "ChooseTarget_Doubles",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "ClearCachedAIData",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "ClearDamageByMove",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "ClearMonCachedDamageCalcs",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "ClearMovePredictionsOnBank",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "ClearShouldAIUseZMoveByMoveAndMovePos",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "ClearStrongestMoveAndCanKnockOut",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "ConfirmAISwitch",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "ContactMovesThatAffectTargetInMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CountBanksNegativeStatStages",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CountBanksPositiveStatStages",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CountUsefulBoosts",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CountUsefulBoostsOfBankForBank",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CountUsefulDebuffs",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CountUsefulDebuffsOfBankForBank",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "CountUsefulStatChanges",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "DamageMoveViabilityIncrease",
+            "file": "Battle_AI/ai_positives.c"
+          },
+          {
+            "name": "DamagingAllHitMoveTypeInMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "DamagingMoveInMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "DamagingMoveThaCanBreakThroughSubstituteInMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "DamagingMoveTypeInMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "DamagingMoveTypeInMovesetThatAffects",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "DamagingPriorityMoveInMovesetThatAffects",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "DamagingSpreadMoveInMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "DecreaseViability",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "DoubleDamageWithStatusMoveInMovesetThatAffects",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "EnduresAHitFromFullHealth",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "FasterThanEntireTeam",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "FastPivotingMoveInMovesetThatAffects",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "FindMonThatAbsorbsOpponentsMove",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "FlinchingMoveInMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "ForceCompleteDamageRecalculation",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "ForceSpecificDamageRecalculation",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GetAIAbility",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GetAIChosenMove",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GetAIFlags",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "GetAIMoveEffectForMaxMove",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GetAmountToRecoverBy",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "GetBankFightingStyle",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "GetBattleMonMove",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GetBestPartyNumberForSemiInvulnerableLockedMoveCalcs",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "GetCan2HKO",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GetContactDamage",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GetContactDamageByDefAbilityItemEffect",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GetContactDamageMonAtk",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GetContactDamageMonDef",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GetDoubleKillingScore",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GetFinalAIMoveDamage",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GetFinalAIMoveDamageFromParty",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GetHealthPercentage",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GetMaxByteIndexInList",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "GetMonAbilityAfterTrace",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GetMonPassiveRecovery",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GetMostSuitableMonToSwitchInto",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "GetMostSuitableMonToSwitchIntoByParty",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "GetMostSuitableMonToSwitchIntoFlags",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "GetMostSuitableMonToSwitchIntoScore",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "GetPokemonOnSideSpeedAverage",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GetPredictedAIAbility",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GetSecondaryEffectDamage",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GetSecondMostSuitableMonToSwitchInto",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "GetSecondMostSuitableMonToSwitchIntoByParty",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "GetSecondMostSuitableMonToSwitchIntoFlags",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "GetStrongestMove",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GetTargetsKnockedOut",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "GetTeamMaxSpeed",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GetTotalDamageForTargets",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "GoodIdeaToBurnSelf",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GoodIdeaToFrostbiteSelf",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GoodIdeaToLowerAccuracy",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GoodIdeaToLowerAttack",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GoodIdeaToLowerDefense",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GoodIdeaToLowerEvasion",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GoodIdeaToLowerSpAtk",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GoodIdeaToLowerSpDef",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GoodIdeaToLowerSpeed",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GoodIdeaToParalyzeSelf",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GoodIdeaToPoisonSelf",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GoodIdeaToRaiseAccuracyAgainst",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GoodIdeaToRaiseAttackAgainst",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GoodIdeaToRaiseDefenseAgainst",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GoodIdeaToRaiseEvasionAgainst",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GoodIdeaToRaiseSpAttackAgainst",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GoodIdeaToRaiseSpDefenseAgainst",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GoodIdeaToRaiseSpeedAgainst",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GoodIdeaToSwapStatStages",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "GoodIdeaToSwapTimers",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "GoodIdeaToSwapVanillaTimers",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "HasChosenToDamageTarget",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "HasContactProtectionMoveInMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "HasMoveThatGoesFirstAndKnocksOut",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "HasProtectionMoveInMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "HasSnatchableMove",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "HasUsedMove",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "HasUsedMoveWithEffect",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "HasUsedMoveWithEffectHigherThanChance",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "HasUsedPhazingMoveThatAffects",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "HazardClearingMoveInMovesetThatAffects",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "HazingMoveInMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "HealingMoveInMonMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "HealingMoveInMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "HighChanceOfBeingImmobilized",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "HittingTargetWithUselessStatusMove",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "IncreaseAllyProtectionViability",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IncreaseDoublesDamageViability",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IncreaseDoublesDamageViabilityToScore",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IncreaseEntryHazardsViability",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IncreaseFakeOutViability",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IncreaseFoeProtectionViability",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IncreaseFreezeViability",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IncreaseHealPartnerViability",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IncreaseHelpingHandViability",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IncreasePivotViability",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IncreasePsychUpViability",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IncreaseSleepViability",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IncreaseStatusViability",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IncreaseStatViability",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IncreaseSubstituteViability",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IncreaseTailwindViability",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IncreaseTeamProtectionViability",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IncreaseViability",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "IncreaseViabilityForSlowKOMove",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IncreaseViabilityForSpeedControl",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IsBankAsleep",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "IsBankIncapacitated",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "IsClassBatonPass",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IsClassCleric",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IsClassDamager",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IsClassDoublesAllOutAttacker",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IsClassDoublesAttacker",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IsClassDoublesPhazer",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IsClassDoublesSetupAttacker",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IsClassDoublesSpecific",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IsClassDoublesTeamSupport",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IsClassDoublesTotalTeamSupport",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IsClassDoublesTrickRoomer",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IsClassDoublesTrickRoomSetup",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IsClassDoublesUtility",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IsClassEntryHazards",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IsClassGoodToTaunt",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IsClassKillerSweeper",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IsClassPhazer",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IsClassScreener",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IsClassSetupSweeper",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IsClassStall",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IsClassStatusSweeper",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IsClassSupportScreener",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IsClassSweeper",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IsClassTeamSupport",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "IsCurrentWeatherPartnersWeather",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "IsDamagingMoveUnusable",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "IsDamagingMoveUnusableByMon",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "IsEffectivePursuit",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "IsGoodIdeaToDoShiftSwitch",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "IsMovePredictionHealingMove",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "IsMovePredictionHighAccSleepingMove",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "IsMovePredictionHPDrainingMove",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "IsMovePredictionPhazingMove",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "IsMovePredictionSemiInvulnerable",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "IsPlayerTryingToCheeseAI",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "IsPlayerTryingToCheeseChoiceLockFirstTurn",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "IsPlayerTryingToCheeseWithRepeatedSwitches",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "IsPredictedToSwitch",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "IsPredictedToUsePursuitableMove",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "IsStatRecoilMove",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "IsStrongestMove",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "IsStrongestMoveHPDrainingMove",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "IsSuckerPunchOkayToUseThisRound",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "IsTakingAnnoyingSecondaryDamage",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "IsTakingSecondaryDamage",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "IsTrapped",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "IsUsablePhazingMove",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "IsUsefulToFlinchTarget",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "IsValidMovePrediction",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "IsWeakestContactMoveWithBestAccuracy",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "IsWorthSettingHazards",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "LoadBattlersAndFoes",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "MagicCoatableMovesInMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "MonCanTriggerWeatherAbilityWithMaxMove",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "MonMoveWillHit",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "MoveAlwaysHitsTarget",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "MoveCantHitTarget",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "MoveEffectInMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "MoveHasUsefulSecondaryEffectToKOWith",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "MoveInMovesetAndUsable",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "MoveInMovesetWithAccuracyLessThan",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "MoveKnocksOutAfterDynamax",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "MoveKnocksOutFromParty",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "MoveKnocksOutPossiblyGoesFirstWithBestAccuracy",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "MoveKnocksOutXHits",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "MoveSplitInMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "MoveSplitOnTeam",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "MoveThatCanHelpAttacksHitInMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "MoveTypeInMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "MoveWillHit",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "MoveWouldHitBeforeOtherMove",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "MoveWouldHitFirst",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "MultiHitMoveWithSplitInMovesetThatAffects",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "NoUsableHazardsInMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "OffensiveSetupMoveInMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "OHKOMoveInMovesetThatAffects",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "OnlyBadMovesLeftInMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "PartnerMoveEffectIsStatusSameTarget",
+            "file": "Battle_AI/ai_negatives.c"
+          },
+          {
+            "name": "PartnerWillKOTargetBeforeItCanAttack",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "PartyMemberStatused",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "PassOnWish",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "PassOnWishSwitchingCheck",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "PhazingMoveInMovesetThatAffects",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "PhysicalMoveInMonMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "PhysicalMoveInMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "PickMoveHumanLikelyToChoose",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "PickNewAIMove",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "PickRaidBossRepeatedMove",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "PivotingMoveInMovesetThatAffects",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "PopulateAIScriptStructWithBaseAttackerData",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "PopulateAIScriptStructWithBaseDefenderData",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "PredictBankFightingStyle",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "PredictedMoveKOsSelfDueToContact",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "PredictedMoveWontDoTooMuchToMon",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "PredictedMoveWontKOMon",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "PredictFightingStyle",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "PredictMovesForBanks",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "PriorityMoveInMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "RangeMoveCanHurtPartner",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "RealPhysicalMoveInMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "RecalcStrongestMoveIgnoringMove",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "RechooseAIMoveAfterSwitchIfNecessary",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "RemoveBestMonToSwitchInto",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "RemoveBestMonToSwitchIntoData",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "RemoveDoublesKillingScore",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "ResetBestMonToSwitchInto",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "ResetBestMonToSwitchIntoData",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "ResistsAllMoves",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "ResistsAllMovesAtFullHealth",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "RunAllSemiInvulnerableLockedMoveCalcs",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "RunCalcShouldAIDynamax",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "SemiInvulnerableTroll",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "ShouldAIDelayMegaEvolution",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "ShouldAIDynamax",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "ShouldAIFreeChoiceLockWithDynamax",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "ShouldAIUseItem",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "ShouldAIUseZMove",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "ShouldAIUseZMoveByMoveAndMovePos",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "ShouldCourtChange",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "ShouldDoAIShiftSwitch",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "ShouldMaxStatBuffLimit",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "ShouldPhaze",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "ShouldPivot",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "ShouldPredictBankToMegaEvolve",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "ShouldPredictRandomPlayerSwitch",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "ShouldPrioritizeDangerousTarget",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "ShouldPrioritizeKOingFoesDoubles",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "ShouldPrioritizeMostDamageDoubles",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "ShouldProtect",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "ShouldRecover",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "ShouldSaveChoiceSweeper",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "ShouldSaveSweeperForLater",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "ShouldSaveSweeperForLaterHelper",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "ShouldSetUpScreens",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "ShouldSwitch",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "ShouldSwitchIfNaturalCureOrRegenerator",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "ShouldSwitchIfOnlyBadMovesLeft",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "ShouldSwitchIfWonderGuard",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "ShouldSwitchToAvoidDeath",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "ShouldSwitchToAvoidDeathHelper",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "ShouldSwitchWhenOffensiveStatsAreLow",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "ShouldSwitchWhenYawned",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "ShouldSwitchWhileAsleep",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "ShouldTrap",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "ShouldTryToSetUpStat",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "ShouldUseFakeOut",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "ShouldUseHumanLikelyMove",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "ShouldUseSubstitute",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "ShouldUseWishAromatherapy",
+            "file": "Battle_AI/ai_advanced.c"
+          },
+          {
+            "name": "SleepMoveInMovesetWithLowAccuracy",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "SoundMoveInMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "SpecialMoveInMonMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "SpecialMoveInMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "StatusMoveInMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "StoreMovePrediction",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "StoreSwitchPrediction",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "StrongestMoveGoesFirst",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "SwitchToBestResistMon",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "SwitchToBestResistMonHelper",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "TeamFullyHealedMinusBank",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "TheCalcForSemiInvulnerableTroll",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "TryChangeMoveTargetToCounterPlayerProtectCheese",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "TryRechooseAIMoveIfPlayerSwitchCheesed",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "TryRemovePartnerDoublesKillingScore",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "TryRemovePartnerDoublesKillingScoreComplete",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "TryReplaceMoveWithZMove",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "TryRevertTempMegaEvolveAllBanks",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "TryRevertTempMegaEvolveBank",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "TryTempMegaEvolveAllBanks",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "TryTempMegaEvolveBank",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "TypeAbosorbingSwitchAbilityCheck",
+            "file": "Battle_AI/ai_switching.c"
+          },
+          {
+            "name": "UnfreezingMoveInMoveset",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "UpdateBestDoubleKillingMoveScore",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "UpdateBestDoublesKillingMoves",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "UpdateCurrentTargetByMoveTarget",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "UpdateMegaPotential",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "UpdateStrongestMoves",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "WallsFoe",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "WildMonIsSmart",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "WillBeFasterAfterMoveSpeedBuff",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "WillBeFasterAfterSpeedDrop",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "WillFaintFromContactDamage",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "WillFaintFromSecondaryDamage",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "WillFaintFromWeatherSoon",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "WillTakeSignificantDamageFromEntryHazards",
+            "file": "Battle_AI/ai_util.c"
+          },
+          {
+            "name": "WipeOldDeperateAttemptRecord",
+            "file": "Battle_AI/ai_master.c"
+          },
+          {
+            "name": "WontHitTargetWithMove",
+            "file": "Battle_AI/ai_master.c"
+          }
+        ],
+        "runtimeFlagAliases": [
+          {
+            "bit": 0,
+            "id": "AI_SCRIPT_CHECK_BAD_MOVE",
+            "source": "pinned CFRU ai_master.c and final-ROM trainer table"
+          },
+          {
+            "bit": 1,
+            "id": "AI_SCRIPT_SEMI_SMART",
+            "source": "pinned CFRU ai_master.c and final-ROM trainer table"
+          },
+          {
+            "bit": 2,
+            "id": "AI_SCRIPT_CHECK_GOOD_MOVE",
+            "source": "pinned CFRU ai_master.c and final-ROM trainer table"
+          }
+        ],
+        "runtimeMaskTransforms": [
+          {
+            "id": "unbound-difficult-trainer-mask",
+            "formula": "stored mask is unchanged when CHECK_GOOD_MOVE (bit 2) is set; otherwise OR SEMI_SMART (bit 1)",
+            "source": "CFRU GetAIFlags hard-difficulty trainer branch"
+          }
+        ]
+      },
+      "notes": [
+        "This is the CFRU commit pinned by the Pokémon Unbound source inventory; exact Unbound build-level inheritance still requires a build diff or final-ROM verification.",
+        "The generic archived CFRU constants retain legacy script names for bits 1 and 2; Unbound runtime semantics use the explicit SEMI_SMART and CHECK_GOOD_MOVE aliases above."
+      ],
+      "predictionReadiness": {
+        "exactActionProbabilities": false,
+        "blockers": [
+          "The source is preserved exactly, but it has not been compiled into a consumer-grade state evaluator and independently validated.",
+          "Compile-time configuration, random branches, score ties, switching, trainer items, and every required battle-state input remain consumer integration gates."
+        ]
+      }
+    }
+  ]
+}

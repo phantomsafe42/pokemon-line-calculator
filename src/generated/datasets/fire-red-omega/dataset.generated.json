@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "plc-generated-dataset/v1alpha1",
+  "consumer": "plc-fro-dataset",
+  "source": "Datasets/Fire Red Omega/source-data",
+  "sourceTreeSha256": "ADE90785CD3D599B2934A68A6B3DD5419A7CA01BCC44C59B5117335211B6F8A3",
+  "files": [
+    {
+      "path": "dataset_manifest.json",
+      "bytes": 9369,
+      "sha256": "1FDA6CB1EC03BE6286BACFF9AE5F7CECC0BEB82AF8E2F4554BA32CAAF56A146F"
+    },
+    {
+      "path": "battle_mechanics.json",
+      "bytes": 77378,
+      "sha256": "E27F77F12852945BE0EFDFF8B0ED4146D964FDDF08FBCF716440693343B02C7F"
+    },
+    {
+      "path": "experience_mechanics.json",
+      "bytes": 1633,
+      "sha256": "DFE6AF7E139695C0459CEF8F5A1CB3B874E7CAC2662DD5707EF5FBFA56AE7573"
+    },
+    {
+      "path": "species.json",
+      "bytes": 1602050,
+      "sha256": "8C36F17E9BD25DDD24311BEFF8DD64F1C330171FA3AC80E79F881F2F640BD4DA"
+    },
+    {
+      "path": "moves.json",
+      "bytes": 331256,
+      "sha256": "56A435960C8F93BDBEB53AB97BE731F647F940933C6E00AD30697EDB750980E2"
+    },
+    {
+      "path": "abilities.json",
+      "bytes": 59721,
+      "sha256": "522AE12C038E27D49E42C315F68F112C99B5301A71E106A9D666E5BF66BD0035"
+    },
+    {
+      "path": "items.json",
+      "bytes": 285436,
+      "sha256": "AA52AA8030053C0A21A5751E3FEC6F81D2A991F5CF00D06DCFB48A62354B8D7E"
+    },
+    {
+      "path": "natures.json",
+      "bytes": 4996,
+      "sha256": "BEBB041D9BE828E2D33EB0DC73A3F7CEBA5F02288E6BEE17B122D0A237136699"
+    },
+    {
+      "path": "types.json",
+      "bytes": 5504,
+      "sha256": "A95EFE34F7044357F7E39056A184189A6B605A141EF054AFE62717A8E0409A8B"
+    },
+    {
+      "path": "trainers.json",
+      "bytes": 4838855,
+      "sha256": "B5C69D132708930BEE0EEBCD31779B0BBBF2347F4113354D12908E4F9272B182"
+    },
+    {
+      "path": "trainer_order.json",
+      "bytes": 278384,
+      "sha256": "2816BBC47578F6BD8B097E207DEF0EEAE124FBE68BCCA3291EB634EC4D227952"
+    },
+    {
+      "path": "progression.json",
+      "bytes": 3185,
+      "sha256": "B85E3DB6604E5DC763FC626E8CB9BAD9FA9344E82522041B739D4EE488AB8363"
+    },
+    {
+      "path": "evolutions.json",
+      "bytes": 43448,
+      "sha256": "ECB312045FB068CB4D0334FE75AD0584961170F49C284DED570368B3359D4A72"
+    },
+    {
+      "path": "save_id_maps.json",
+      "bytes": 99403,
+      "sha256": "5A409EB0E87682C0BC3C85C6D792C0537FAC5115CE635B57EA3E249D0BC9CD64"
+    }
+  ]
+}

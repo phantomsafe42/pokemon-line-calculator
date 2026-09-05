@@ -5,7 +5,7 @@ import { createPlanDocument } from "../src/core/plan.js";
 const stats = value => ({ hp: value, atk: value, def: value, spa: value, spd: value, spe: value });
 const source = (kind, records) => ({ schemaVersion: 1, gameId: "fixture", kind, records });
 
-export function fixtureDataset() {
+export function fixtureDataset({ flatProgression = false } = {}) {
   const documents = {
     "species.json": source("species", {
       fastmon: { id: "fastmon", name: "Fastmon", baseStats: { hp: 90, atk: 100, def: 90, spa: 80, spd: 90, spe: 120 }, types: ["water"] },
@@ -84,7 +84,11 @@ export function fixtureDataset() {
         ]
       }
     }),
-    "trainer_order.json": source("trainer-order", [
+    "trainer_order.json": source("trainer-order", flatProgression ? [
+      { order: 1, trainerId: "trainer", splitId: "full-game" },
+      { order: 2, trainerId: "combined", splitId: "full-game" },
+      { order: 3, trainerId: "doubles", splitId: "full-game" }
+    ] : [
       { order: 1, trainerId: "trainer", splitId: "first" },
       { order: 2, trainerId: "combined", splitId: "first" },
       { order: 3, trainerId: "doubles", splitId: "second" }
@@ -93,13 +97,27 @@ export function fixtureDataset() {
       schemaVersion: 1,
       gameId: "fixture",
       kind: "progression",
-      consumerProfile: {
+      consumerProfile: flatProgression ? {
+        id: "full-game",
+        milestones: []
+      } : {
         splits: [
           { id: "first", label: "First", firstOrder: 1, lastOrder: 2, levelCap: 50 },
           { id: "second", label: "Second", firstOrder: 3, lastOrder: 3, levelCap: 60 }
         ]
       }
     },
+    "experience_mechanics.json": {
+      schemaVersion: 1,
+      gameId: "fixture",
+      kind: "experience-mechanics",
+      experienceGeneration: 5,
+      mechanicsProfile: "fixture-experience-v1",
+      trainerBattleFormula: { model: "generation-5-scaled-trainer" },
+      validation: { status: "passed", unresolved: 0 },
+      consumerActivation: { experienceProjectionReady: true }
+    },
+    "evolutions.json": source("evolutions", {}),
     "save_id_maps.json": source("save-id-maps", {
       species: { byNumericId: {}, byCanonicalId: {} },
       moves: { byNumericId: {}, byCanonicalId: {} },
@@ -116,6 +134,7 @@ export function fixtureDataset() {
     damageGeneration: 5,
     canonicalDataGeneration: 9,
     mechanicsProfile: "fixture-v1",
+    experienceMechanicsSource: "experience_mechanics.json",
     trainerBattleProfile: "challenge",
     features: { playerEvGainDisabled: true },
     validation: { status: "passed", unresolved: 0, sourceFiles: Object.keys(documents) }
@@ -173,6 +192,30 @@ export function fixtureTriplePlan() {
     battleFormat: "triples",
     sourceSnapshot,
     now: "2026-08-26T00:00:00.000Z"
+  });
+  return { dataset, players, enemies, plan };
+}
+
+export function fixtureRotationPlan() {
+  const dataset = fixtureDataset();
+  const players = normalizePlayerCollection({
+    collection: [
+      { uniqueKey: "rotation-front", speciesId: "fastmon", species: "Fastmon", displayName: "Player Front", level: 50, nature: "Hardy", ability: "Pressure", item: null, ivs: stats(31), moves: ["aqua jet", "tackle", "earthquake", "protect"], storage: "party", slot: 1 },
+      { uniqueKey: "rotation-ccw", speciesId: "fastmon", species: "Fastmon", displayName: "Player Counterclockwise", level: 50, nature: "Hardy", ability: "Pressure", item: null, ivs: stats(31), moves: ["surf", "tackle", "iron defense", "protect"], storage: "party", slot: 2 },
+      { uniqueKey: "rotation-cw", speciesId: "benchmon", species: "Benchmon", displayName: "Player Clockwise", level: 50, nature: "Hardy", ability: "Pressure", item: null, ivs: stats(31), moves: ["tackle", "protect"], storage: "party", slot: 3 },
+      { uniqueKey: "rotation-bench", speciesId: "benchmon", species: "Benchmon", displayName: "Player Bench", level: 50, nature: "Hardy", ability: "Pressure", item: null, ivs: stats(31), moves: ["tackle"], storage: "party", slot: 4 }
+    ]
+  }, dataset);
+  const enemies = normalizeTrainerRoster("doubles", null, dataset);
+  const sourceSnapshot = snapshotFingerprint(players, enemies, "2026-08-27T00:00:00.000Z");
+  const plan = createPlanDocument({
+    dataset,
+    trainerId: "doubles",
+    playerCombatants: players,
+    enemyCombatants: enemies,
+    battleFormat: "rotation",
+    sourceSnapshot,
+    now: "2026-08-27T00:00:00.000Z"
   });
   return { dataset, players, enemies, plan };
 }

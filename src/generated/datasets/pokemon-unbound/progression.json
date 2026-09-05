@@ -1,0 +1,250 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-unbound",
+  "kind": "progression",
+  "consumerProfile": {
+    "id": "difficult",
+    "difficulty": "difficult",
+    "splits": [
+      {
+        "id": "mirskle",
+        "label": "Mirskle",
+        "firstOrder": 1,
+        "lastOrder": 43,
+        "levelCap": 20,
+        "leaderTrainerId": "pokemon-unbound-trainer-0419",
+        "levelCaps": {
+          "vanilla": 15,
+          "difficult": 20,
+          "expert": 20,
+          "insane": 20
+        },
+        "badge": {
+          "id": "leaf-badge",
+          "name": "Leaf Badge"
+        },
+        "sourceConfidence": "pokemon-unbound-2.1.1.1-trainer-index-and-current-difficult-boss-workbook"
+      },
+      {
+        "id": "vega",
+        "label": "Véga",
+        "firstOrder": 44,
+        "lastOrder": 93,
+        "levelCap": 26,
+        "leaderTrainerId": "pokemon-unbound-trainer-0420",
+        "levelCaps": {
+          "vanilla": 22,
+          "difficult": 26,
+          "expert": 26,
+          "insane": 26
+        },
+        "badge": {
+          "id": "vision-badge",
+          "name": "Vision Badge"
+        },
+        "sourceConfidence": "pokemon-unbound-2.1.1.1-trainer-index-and-current-difficult-boss-workbook"
+      },
+      {
+        "id": "alice",
+        "label": "Alice",
+        "firstOrder": 94,
+        "lastOrder": 122,
+        "levelCap": 32,
+        "leaderTrainerId": "pokemon-unbound-trainer-0421",
+        "levelCaps": {
+          "vanilla": 29,
+          "difficult": 32,
+          "expert": 32,
+          "insane": 32
+        },
+        "badge": {
+          "id": "wings-badge",
+          "name": "Wings Badge"
+        },
+        "sourceConfidence": "pokemon-unbound-2.1.1.1-trainer-index-and-current-difficult-boss-workbook"
+      },
+      {
+        "id": "mel",
+        "label": "Mel",
+        "firstOrder": 123,
+        "lastOrder": 202,
+        "levelCap": 36,
+        "leaderTrainerId": "pokemon-unbound-trainer-0422",
+        "levelCaps": {
+          "vanilla": 33,
+          "difficult": 36,
+          "expert": 36,
+          "insane": 36
+        },
+        "badge": {
+          "id": "fall-badge",
+          "name": "Fall Badge"
+        },
+        "sourceConfidence": "pokemon-unbound-2.1.1.1-trainer-index-and-current-difficult-boss-workbook"
+      },
+      {
+        "id": "maxima",
+        "label": "Successor Maxima",
+        "firstOrder": 203,
+        "lastOrder": 248,
+        "levelCap": 40,
+        "leaderTrainerId": "pokemon-unbound-trainer-0423",
+        "levelCaps": {
+          "vanilla": 37,
+          "difficult": 40,
+          "expert": 40,
+          "insane": 40
+        },
+        "badge": null,
+        "sourceConfidence": "pokemon-unbound-2.1.1.1-trainer-index-and-current-difficult-boss-workbook"
+      },
+      {
+        "id": "galavan",
+        "label": "Galavan",
+        "firstOrder": 249,
+        "lastOrder": 290,
+        "levelCap": 45,
+        "leaderTrainerId": "pokemon-unbound-trainer-0424",
+        "levelCaps": {
+          "vanilla": 43,
+          "difficult": 45,
+          "expert": 45,
+          "insane": 45
+        },
+        "badge": {
+          "id": "battery-badge",
+          "name": "Battery Badge"
+        },
+        "sourceConfidence": "pokemon-unbound-2.1.1.1-trainer-index-and-current-difficult-boss-workbook"
+      },
+      {
+        "id": "big-mo",
+        "label": "Big Mo",
+        "firstOrder": 291,
+        "lastOrder": 388,
+        "levelCap": 52,
+        "leaderTrainerId": "pokemon-unbound-trainer-0425",
+        "levelCaps": {
+          "vanilla": 51,
+          "difficult": 52,
+          "expert": 52,
+          "insane": 52
+        },
+        "badge": {
+          "id": "ring-badge",
+          "name": "Ring Badge"
+        },
+        "sourceConfidence": "pokemon-unbound-2.1.1.1-trainer-index-and-current-difficult-boss-workbook"
+      },
+      {
+        "id": "tessy",
+        "label": "Tessy",
+        "firstOrder": 389,
+        "lastOrder": 414,
+        "levelCap": 57,
+        "leaderTrainerId": "pokemon-unbound-trainer-0426",
+        "levelCaps": {
+          "vanilla": 55,
+          "difficult": 57,
+          "expert": 57,
+          "insane": 57
+        },
+        "badge": {
+          "id": "swamp-badge",
+          "name": "Swamp Badge"
+        },
+        "sourceConfidence": "pokemon-unbound-2.1.1.1-trainer-index-and-current-difficult-boss-workbook"
+      },
+      {
+        "id": "benjamin",
+        "label": "Benjamin",
+        "firstOrder": 415,
+        "lastOrder": 464,
+        "levelCap": 61,
+        "leaderTrainerId": "pokemon-unbound-trainer-0427",
+        "levelCaps": {
+          "vanilla": 60,
+          "difficult": 61,
+          "expert": 61,
+          "insane": 61
+        },
+        "badge": {
+          "id": "time-badge",
+          "name": "Time Badge"
+        },
+        "sourceConfidence": "pokemon-unbound-2.1.1.1-trainer-index-and-current-difficult-boss-workbook"
+      },
+      {
+        "id": "league",
+        "label": "Pokémon League",
+        "firstOrder": 465,
+        "lastOrder": 503,
+        "levelCap": 75,
+        "leaderTrainerId": "pokemon-unbound-trainer-0432",
+        "levelCaps": {
+          "vanilla": 66,
+          "difficult": 75,
+          "expert": 75,
+          "insane": 75
+        },
+        "badge": null,
+        "sourceConfidence": "pokemon-unbound-2.1.1.1-trainer-index-and-current-difficult-boss-workbook"
+      }
+    ],
+    "compatibilityBoundary": "The Difficult profile is the only profile projected into current generated trainer consumers."
+  },
+  "referenceProfiles": [
+    {
+      "id": "vanilla",
+      "difficulty": "vanilla",
+      "levelCaps": {
+        "mirskle": 15,
+        "vega": 22,
+        "alice": 29,
+        "mel": 33,
+        "maxima": 37,
+        "galavan": 43,
+        "big-mo": 51,
+        "tessy": 55,
+        "benjamin": 60,
+        "league": 66
+      }
+    },
+    {
+      "id": "expert",
+      "difficulty": "expert",
+      "levelCaps": {
+        "mirskle": 20,
+        "vega": 26,
+        "alice": 32,
+        "mel": 36,
+        "maxima": 40,
+        "galavan": 45,
+        "big-mo": 52,
+        "tessy": 57,
+        "benjamin": 61,
+        "league": 75
+      }
+    },
+    {
+      "id": "insane",
+      "difficulty": "insane",
+      "levelCaps": {
+        "mirskle": 20,
+        "vega": 26,
+        "alice": 32,
+        "mel": 36,
+        "maxima": 40,
+        "galavan": 45,
+        "big-mo": 52,
+        "tessy": 57,
+        "benjamin": 61,
+        "league": 75
+      }
+    }
+  ],
+  "splitPolicy": "Each main-game split ends at the named Gym Leader; Successor Maxima and the Pokémon League are additional documented level-cap boundaries.",
+  "unresolved": [
+    "Ordinary trainer row order within each location is not authoritative; use canonicalOrderStatus before presenting an exact route sequence."
+  ]
+}

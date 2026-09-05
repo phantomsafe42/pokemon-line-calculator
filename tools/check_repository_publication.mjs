@@ -21,7 +21,7 @@ const forbiddenTrackedPaths = [
 
 const forbiddenText = [
   { label: "Windows user path", pattern: /[A-Za-z]:[\\/]Users[\\/]/i },
-  { label: "credential-like assignment", pattern: /(?:token|password|secret|api[_-]?key)\s*[:=]\s*["'][^"']{8,}["']/i }
+  { label: "credential-like assignment", pattern: /(?:token|password|secret|api[_-]?key)\s*[:=]\s*["'](?!\$\{)[^"']{8,}["']/i }
 ];
 
 function candidateFiles() {
@@ -43,7 +43,7 @@ function candidateFiles() {
 let tracked;
 let status;
 if (fs.existsSync(gitRoot)) {
-  const result = spawnSync("git", ["ls-files", "-z"], { cwd: projectRoot, encoding: "buffer" });
+  const result = spawnSync("git", ["ls-files", "-z"], { cwd: projectRoot, encoding: "buffer", maxBuffer: 32 * 1024 * 1024 });
   if (result.status !== 0) throw new Error(`Unable to enumerate tracked files: ${String(result.stderr || result.stdout)}`);
   tracked = result.stdout.toString("utf8").split("\0").filter(Boolean).sort();
   status = "repository-publication-valid";

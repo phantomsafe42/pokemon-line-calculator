@@ -1,8 +1,8 @@
 import { isPlainObject, stableStringify } from "../core/primitives.js";
 
 export const PLAN_KIND = "pokemon-battle-plan";
-export const PLAN_SCHEMA_VERSION = 3;
-export const SUPPORTED_PLAN_SCHEMA_VERSIONS = Object.freeze([1, 2, 3]);
+export const PLAN_SCHEMA_VERSION = 4;
+export const SUPPORTED_PLAN_SCHEMA_VERSIONS = Object.freeze([1, 2, 3, 4]);
 export const MAX_PLAN_BYTES = 5_000_000;
 export const SAFE_ID_PATTERN = /^[A-Za-z0-9][A-Za-z0-9:._-]{0,159}$/;
 const STATE_STATUSES = new Set(["resolved", "preview", "stale", "invalid", "incomplete"]);
@@ -105,7 +105,7 @@ function validateCombatants(plan, issues) {
 
 function validateGraph(plan, issues) {
   const schemaVersion = Number(plan.schemaVersion);
-  const slotCount = plan.game?.battleFormat === "triples" ? 3 : plan.game?.battleFormat === "doubles" ? 2 : 1;
+  const slotCount = ["triples", "rotation"].includes(plan.game?.battleFormat) ? 3 : plan.game?.battleFormat === "doubles" ? 2 : 1;
   const states = isPlainObject(plan.stateNodes) ? plan.stateNodes : {};
   const groups = isPlainObject(plan.actionGroups) ? plan.actionGroups : {};
   const replacements = isPlainObject(plan.replacementTransitions) ? plan.replacementTransitions : {};
@@ -138,6 +138,12 @@ function validateGraph(plan, issues) {
       }
     }
     if (schemaVersion >= 2 && !Array.isArray(state.pendingReplacementSlots)) issue(issues, `${path}.pendingReplacementSlots`, "must be an array");
+    if (plan.game?.battleFormat === "rotation") {
+      for (const side of ["player", "enemy"]) {
+        const front = Number(state.rotation?.frontSlots?.[side]);
+        if (!Number.isInteger(front) || front < 0 || front >= slotCount) issue(issues, `${path}.rotation.frontSlots.${side}`, "must identify a valid front slot");
+      }
+    }
     for (const [index, entry] of (state.pendingReplacementSlots || []).entries()) {
       if (!SIDES.has(entry?.side) || !Number.isInteger(Number(entry?.slot)) || Number(entry.slot) < 0 || Number(entry.slot) >= slotCount) issue(issues, `${path}.pendingReplacementSlots[${index}]`, "must identify a valid active slot");
     }
@@ -335,9 +341,10 @@ export function validatePlanDocument(plan, options = {}) {
   if (!isPlainObject(plan.game)) issue(issues, "$.game", "must be an object");
   else {
     validateId(plan.game.gameId, "$.game.gameId", issues);
-    if (!["singles", "doubles", "triples"].includes(plan.game.battleFormat)) issue(issues, "$.game.battleFormat", "must be singles, doubles, or triples");
+    if (!["singles", "doubles", "triples", "rotation"].includes(plan.game.battleFormat)) issue(issues, "$.game.battleFormat", "must be singles, doubles, triples, or rotation");
     if (Number(plan.schemaVersion) === 1 && plan.game.battleFormat !== "singles") issue(issues, "$.game.battleFormat", "schema version 1 supports singles only");
     if (Number(plan.schemaVersion) < 3 && plan.game.battleFormat === "triples") issue(issues, "$.game.battleFormat", "Triple Battles require schema version 3");
+    if (Number(plan.schemaVersion) < 4 && plan.game.battleFormat === "rotation") issue(issues, "$.game.battleFormat", "Rotation Battles require schema version 4");
     if (!["string", "number"].includes(typeof plan.game.trainerId)) issue(issues, "$.game.trainerId", "must be a trainer ID");
   }
   if (!isPlainObject(plan.mechanicsFingerprint)) issue(issues, "$.mechanicsFingerprint", "must be an object");

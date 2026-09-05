@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "gameId": "renegade-platinum",
+  "kind": "progression",
+  "consumerProfile": {
+    "id": "integrated-main-campaign",
+    "splits": [
+      {
+        "id": "roark",
+        "label": "Roark",
+        "firstOrder": 1,
+        "lastOrder": 26,
+        "levelCap": 16,
+        "leaderTrainerId": "renegade-platinum-trainer-0246",
+        "sourceConfidence": "native-drayano-trainer-battles-split-tab"
+      },
+      {
+        "id": "gardenia",
+        "label": "Gardenia",
+        "firstOrder": 27,
+        "lastOrder": 84,
+        "levelCap": 26,
+        "leaderTrainerId": "renegade-platinum-trainer-0315",
+        "sourceConfidence": "native-drayano-trainer-battles-split-tab"
+      },
+      {
+        "id": "fantina",
+        "label": "Fantina",
+        "firstOrder": 85,
+        "lastOrder": 129,
+        "levelCap": 33,
+        "leaderTrainerId": "renegade-platinum-trainer-0318",
+        "sourceConfidence": "native-drayano-trainer-battles-split-tab"
+      },
+      {
+        "id": "maylene",
+        "label": "Maylene",
+        "firstOrder": 130,
+        "lastOrder": 191,
+        "levelCap": 39,
+        "leaderTrainerId": "renegade-platinum-trainer-0317",
+        "sourceConfidence": "native-drayano-trainer-battles-split-tab"
+      },
+      {
+        "id": "wake",
+        "label": "Wake",
+        "firstOrder": 192,
+        "lastOrder": 244,
+        "levelCap": 44,
+        "leaderTrainerId": "renegade-platinum-trainer-0316",
+        "sourceConfidence": "native-drayano-trainer-battles-split-tab"
+      },
+      {
+        "id": "byron",
+        "label": "Byron",
+        "firstOrder": 245,
+        "lastOrder": 320,
+        "levelCap": 53,
+        "leaderTrainerId": "renegade-platinum-trainer-0250",
+        "sourceConfidence": "native-drayano-trainer-battles-split-tab"
+      },
+      {
+        "id": "candice",
+        "label": "Candice",
+        "firstOrder": 321,
+        "lastOrder": 345,
+        "levelCap": 56,
+        "leaderTrainerId": "renegade-platinum-trainer-0319",
+        "sourceConfidence": "native-drayano-trainer-battles-split-tab"
+      },
+      {
+        "id": "volkner",
+        "label": "Volkner",
+        "firstOrder": 346,
+        "lastOrder": 394,
+        "levelCap": 62,
+        "leaderTrainerId": "renegade-platinum-trainer-0320",
+        "sourceConfidence": "native-drayano-trainer-battles-split-tab"
+      },
+      {
+        "id": "champion",
+        "label": "Champion",
+        "firstOrder": 395,
+        "lastOrder": 454,
+        "levelCap": 78,
+        "leaderTrainerId": "renegade-platinum-trainer-0267",
+        "sourceConfidence": "native-drayano-trainer-battles-split-tab"
+      }
+    ],
+    "compatibilityBoundary": "The native workbook anchors split order; exact wiki-only main-campaign rows are inserted between corroborated workbook anchors. Rematches, late-access conditionals, Master Trainers, and postgame rows remain separate reference profiles."
+  },
+  "referenceProfiles": [
+    {
+      "id": "rematch",
+      "description": "Route rematches in wiki area/row order; rematch stage retained when published.",
+      "occurrences": 137
+    },
+    {
+      "id": "master-trainer",
+      "description": "Optional Master Trainer battles in wiki navigation/area order.",
+      "occurrences": 16
+    },
+    {
+      "id": "conditional-late-access",
+      "description": "Late-access route battles separated because the wiki condition is not a main-run timing proof.",
+      "occurrences": 11
+    },
+    {
+      "id": "postgame-rematch",
+      "description": "Second Pokémon League round and other explicitly labeled postgame rematches.",
+      "occurrences": 5
+    },
+    {
+      "id": "postgame-special",
+      "description": "Special postgame battle whose route page does not provide an exact unlock flag.",
+      "occurrences": 1
+    },
+    {
+      "id": "postgame",
+      "description": "Postgame-area battles in wiki navigation/area order.",
+      "occurrences": 103
+    },
+    {
+      "id": "postgame-battleground",
+      "description": "Battleground postgame roster; rotation/timing remains conditional.",
+      "occurrences": 19
+    },
+    {
+      "id": "battle-marathon-only",
+      "description": "Battle Marathon-only roster, outside the ordinary campaign sequence.",
+      "occurrences": 4
+    }
+  ],
+  "unresolved": [
+    "19 matched trainer rows use neither the documented red mandatory fill nor blue optional fill; mandatory remains null.",
+    "Story flags, mutually exclusive route choices, and branch prerequisites beyond workbook notes require script or ROM evidence."
+  ],
+  "source": {
+    "workbook": "RP_Trainer_Battles.xlsx",
+    "sha256": "debf709ca9584f8176cd114b34d3e4a16f471abcc681412e3c307f41108967ea",
+    "spreadsheetId": "1uwR23b6kHRFYoav1Jzfx65qGfaxNQE8pI83Yr5mcVXQ"
+  }
+}

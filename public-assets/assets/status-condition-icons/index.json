@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "datasetId": "pokemon-assets",
+  "releaseVersion": "0.4.0-dev.1",
+  "collectionId": "status-condition-icon",
+  "kind": "status-condition-icon",
+  "generated": true,
+  "selectorFields": [
+    "style",
+    "condition"
+  ],
+  "metadataFiles": [
+    {
+      "id": "main-colors-css",
+      "path": "assets/status-condition-icons/colors.txt",
+      "sha256": "3bd21ff28345fe73e117a23faaa42d76e7dbbaa0cec163b3a6947b6ecd0329e8",
+      "bytes": 969,
+      "mediaType": "text/plain",
+      "format": "css-custom-properties"
+    }
+  ],
+  "fallbackPolicy": {
+    "implicitFallbackAllowed": false,
+    "missingAssetResult": "unavailable"
+  },
+  "statistics": {
+    "assets": 14,
+    "assetBytes": 32552,
+    "selectors": 14
+  },
+  "selectorIndex": {
+    "[\"bdsp\",\"asleep\"]": "status-condition-icon/bdsp/asleep",
+    "[\"bdsp\",\"badly-poisoned\"]": "status-condition-icon/bdsp/badly-poisoned",
+    "[\"bdsp\",\"burned\"]": "status-condition-icon/bdsp/burned",
+    "[\"bdsp\",\"fainted\"]": "status-condition-icon/bdsp/fainted",
+    "[\"bdsp\",\"frozen\"]": "status-condition-icon/bdsp/frozen",
+    "[\"bdsp\",\"paralysis\"]": "status-condition-icon/bdsp/paralysis",
+    "[\"bdsp\",\"poisoned\"]": "status-condition-icon/bdsp/poisoned",
+    "[\"za\",\"badly-poisoned\"]": "status-condition-icon/za/badly-poisoned",
+    "[\"za\",\"burned\"]": "status-condition-icon/za/burned",
+    "[\"za\",\"drowsy\"]": "status-condition-icon/za/drowsy",
+    "[\"za\",\"fainted\"]": "status-condition-icon/za/fainted",
+    "[\"za\",\"frozen\"]": "status-condition-icon/za/frozen",
+    "[\"za\",\"paralysis\"]": "status-condition-icon/za/paralysis",
+    "[\"za\",\"poisoned\"]": "status-condition-icon/za/poisoned"
+  },
+  "assets": {
+    "status-condition-icon/bdsp/asleep": {
+      "path": "assets/status-condition-icons/bdsp/asleep.png",
+      "sha256": "8f8785b6d1610a5ce0e3d862d45f27c25ba5d16c5455ec9408aa3d5daeda9983",
+      "mediaType": "image/png",
+      "width": 132,
+      "height": 32,
+      "motion": "static",
+      "selectors": {
+        "style": "bdsp",
+        "condition": "asleep"
+      },
+      "mainColorHex": "#7CB8FF"
+    },
+    "status-condition-icon/bdsp/badly-poisoned": {
+      "path": "assets/status-condition-icons/bdsp/badly-poisoned.png",
+      "sha256": "c5015aa85a88c35032934e8784ee215e6c6b49d8e633b6e3f6833aa9a761ede3",
+      "mediaType": "image/png",
+      "width": 132,
+      "height": 32,
+      "motion": "static",
+      "selectors": {
+        "style": "bdsp",
+        "condition": "badly-poisoned"
+      },
+      "mainColorHex": "#AD13FF"
+    },
+    "status-condition-icon/bdsp/burned": {
+      "path": "assets/status-condition-icons/bdsp/burned.png",
+      "sha256": "a08035f9b2d87ee5dc46ba4d38c32e067f907d32440b1b8e3d93963abcd92364",
+      "mediaType": "image/png",
+      "width": 132,
+      "height": 32,
+      "motion": "static",
+      "selectors": {
+        "style": "bdsp",
+        "condition": "burned"
+      },
+      "mainColorHex": "#FF7923"
+    },
+    "status-condition-icon/bdsp/fainted": {
+      "path": "assets/status-condition-icons/bdsp/fainted.png",
+      "sha256": "b2b7c1f130a41cb3d0e79e8f266793cc664c76ba393a6ab9eecb72e2246deebf",
+      "mediaType": "image/png",
+      "width": 132,
+      "height": 32,
+      "motion": "static",
+      "selectors": {
+        "style": "bdsp",
+        "condition": "fainted"
+      },
+      "mainColorHex": "#D2D2D2"
+    },
+    "status-condition-icon/bdsp/frozen": {
+      "path": "assets/status-condition-icons/bdsp/frozen.png",
+      "sha256": "8b818d218d25c4d12c37460cbe81302852388290de2a42524d494723e56eb3f9",
+      "mediaType": "image/png",
+      "width": 132,
+      "height": 32,
+      "motion": "static",
+      "selectors": {
+        "style": "bdsp",
+        "condition": "frozen"
+      },
+      "mainColorHex": "#00F6D9"
+    },
+    "status-condition-icon/bdsp/paralysis": {
+      "path": "assets/status-condition-icons/bdsp/paralysis.png",
+      "sha256": "1df353d4620f73e5cb929f48191208fe0848364b3636c9f680d646bf8c630570",
+      "mediaType": "image/png",
+      "width": 132,
+      "height": 32,
+      "motion": "static",
+      "selectors": {
+        "style": "bdsp",
+        "condition": "paralysis"
+      },
+      "mainColorHex": "#FFC600"
+    },
+    "status-condition-icon/bdsp/poisoned": {
+      "path": "assets/status-condition-icons/bdsp/poisoned.png",
+      "sha256": "b1d8ed2eef7ae5227b7b24d93e8a3d097e3ef1233bdb3d18bbd30539c3e451e7",
+      "mediaType": "image/png",
+      "width": 132,
+      "height": 32,
+      "motion": "static",
+      "selectors": {
+        "style": "bdsp",
+        "condition": "poisoned"
+      },
+      "mainColorHex": "#A358FF"
+    },
+    "status-condition-icon/za/badly-poisoned": {
+      "path": "assets/status-condition-icons/za/badly-poisoned.png",
+      "sha256": "cca2b0e5f5603592c75b195ec6bc78f1b16e70401f98b444cf97783bdc99c9df",
+      "mediaType": "image/png",
+      "width": 172,
+      "height": 36,
+      "motion": "static",
+      "selectors": {
+        "style": "za",
+        "condition": "badly-poisoned"
+      },
+      "mainColorHex": "#5500AF"
+    },
+    "status-condition-icon/za/burned": {
+      "path": "assets/status-condition-icons/za/burned.png",
+      "sha256": "7feb0944ce0953b98acf78549bf2ad769cd0dc60713f200672e8f14e8896382c",
+      "mediaType": "image/png",
+      "width": 172,
+      "height": 36,
+      "motion": "static",
+      "selectors": {
+        "style": "za",
+        "condition": "burned"
+      },
+      "mainColorHex": "#E62829"
+    },
+    "status-condition-icon/za/drowsy": {
+      "path": "assets/status-condition-icons/za/drowsy.png",
+      "sha256": "64f3508e194b1c112398674b067a5e34adb53030890c3af7035e179fe6d4c07b",
+      "mediaType": "image/png",
+      "width": 172,
+      "height": 36,
+      "motion": "static",
+      "selectors": {
+        "style": "za",
+        "condition": "drowsy"
+      },
+      "mainColorHex": "#4AEDE9"
+    },
+    "status-condition-icon/za/fainted": {
+      "path": "assets/status-condition-icons/za/fainted.png",
+      "sha256": "cff43e7ff9f720a38a91830dd21d3bc68818980f260015574ae2c6152c030378",
+      "mediaType": "image/png",
+      "width": 172,
+      "height": 36,
+      "motion": "static",
+      "selectors": {
+        "style": "za",
+        "condition": "fainted"
+      },
+      "mainColorHex": "#B2B3B2"
+    },
+    "status-condition-icon/za/frozen": {
+      "path": "assets/status-condition-icons/za/frozen.png",
+      "sha256": "af2b7284a327a23aa79259528c7275d9fe87503a32aaafafd745bc349231d57a",
+      "mediaType": "image/png",
+      "width": 172,
+      "height": 36,
+      "motion": "static",
+      "selectors": {
+        "style": "za",
+        "condition": "frozen"
+      },
+      "mainColorHex": "#3FD8FF"
+    },
+    "status-condition-icon/za/paralysis": {
+      "path": "assets/status-condition-icons/za/paralysis.png",
+      "sha256": "c193513029bdb35fb051023d7b288ce739d8d4617201d998fcd33095ae94068a",
+      "mediaType": "image/png",
+      "width": 172,
+      "height": 36,
+      "motion": "static",
+      "selectors": {
+        "style": "za",
+        "condition": "paralysis"
+      },
+      "mainColorHex": "#FAC000"
+    },
+    "status-condition-icon/za/poisoned": {
+      "path": "assets/status-condition-icons/za/poisoned.png",
+      "sha256": "b9cb6baf41a330bfcd04befeeb64d6dfcfade848f29e9289576c66cbf40bcdcf",
+      "mediaType": "image/png",
+      "width": 172,
+      "height": 36,
+      "motion": "static",
+      "selectors": {
+        "style": "za",
+        "condition": "poisoned"
+      },
+      "mainColorHex": "#9141CB"
+    }
+  }
+}

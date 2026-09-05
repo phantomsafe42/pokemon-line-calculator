@@ -1,7 +1,9 @@
 const BASE = "/__stream-tools/battle-plan-live";
 
-function loopbackHost() {
-  return ["127.0.0.1", "localhost", "::1", "[::1]"].includes(location.hostname);
+function trustedPrivateHost() {
+  const buildProfile = document.querySelector('meta[name="plc-build-profile"]')?.content;
+  return ["127.0.0.1", "localhost", "::1", "[::1]"].includes(location.hostname)
+    || buildProfile === "private-remote";
 }
 
 async function jsonRequest(url, options = {}) {
@@ -16,7 +18,7 @@ async function jsonRequest(url, options = {}) {
 }
 
 export async function detectLocalLiveEditCapability() {
-  if (!loopbackHost()) return null;
+  if (!trustedPrivateHost()) return null;
   try {
     const capability = await jsonRequest(`${BASE}/capability`);
     return capability.available === true ? capability : null;

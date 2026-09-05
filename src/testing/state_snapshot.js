@@ -26,7 +26,8 @@ export function createTestingStateSnapshot({
   controls = {},
   openDialogIds = [],
   focusedElement = null,
-  liveEditActive = false
+  liveEditActive = false,
+  battleTracker = null
 } = {}) {
   return {
     kind: TESTING_STATE_KIND,
@@ -44,7 +45,8 @@ export function createTestingStateSnapshot({
       contextSelection: clone(contextSelection),
       openDialogIds: stringArray(openDialogIds),
       focusedElement: clone(focusedElement),
-      liveEditActive: Boolean(liveEditActive)
+      liveEditActive: Boolean(liveEditActive),
+      battleTracker: clone(battleTracker)
     },
     transientTurn: {
       actionDraft: clone(actionDraft),

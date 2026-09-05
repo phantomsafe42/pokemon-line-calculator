@@ -42,6 +42,13 @@ export function effectiveCombatantMove(dataset, combatant, combatantState, moveI
   };
 }
 
+export function fieldAdjustedMove(move, fieldState) {
+  if (!move) return move;
+  return Number(fieldState?.global?.ionDelugeTurns || 0) > 0 && toId(move.type) === "normal"
+    ? { ...move, type: "electric" }
+    : move;
+}
+
 function currentSpreadTargetCount(plan, state, actorKey, side, move) {
   const mode = toId(move?.target);
   if (!["alladjacent", "alladjacentfoes"].includes(mode)) return null;
@@ -88,7 +95,7 @@ export function previewCombatantMove({ plan, stateNodeId, actorKey, positionActo
   const actorState = state?.combatantStates?.[actorKey];
   const targetState = state?.combatantStates?.[targetKey];
   if (!state || !actor || !target || !actorState || !targetState) throw new Error("Damage preview references unavailable battle state");
-  const move = effectiveCombatantMove(dataset, actor, actorState, moveId);
+  const move = fieldAdjustedMove(effectiveCombatantMove(dataset, actor, actorState, moveId), state.fieldState);
   if (!move) throw new Error(`Move ${moveId} is unavailable`);
   const immunity = damagingMoveImmunity({
     dataset,

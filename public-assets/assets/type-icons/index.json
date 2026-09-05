@@ -1,0 +1,1804 @@
+{
+  "schemaVersion": 1,
+  "datasetId": "pokemon-assets",
+  "releaseVersion": "0.4.0-dev.1",
+  "collectionId": "type-icon",
+  "kind": "type-icon",
+  "generated": true,
+  "selectorFields": [
+    "presentation",
+    "style",
+    "state",
+    "locale",
+    "type"
+  ],
+  "fallbackPolicy": {
+    "implicitFallbackAllowed": false,
+    "missingAssetResult": "unavailable"
+  },
+  "statistics": {
+    "assets": 111,
+    "assetBytes": 322492,
+    "selectors": 111
+  },
+  "selectorIndex": {
+    "[\"name\",\"bdsp\",\"standard\",\"en\",\"bug\"]": "type-icon/name/bdsp/standard/bug",
+    "[\"name\",\"bdsp\",\"standard\",\"en\",\"dark\"]": "type-icon/name/bdsp/standard/dark",
+    "[\"name\",\"bdsp\",\"standard\",\"en\",\"dragon\"]": "type-icon/name/bdsp/standard/dragon",
+    "[\"name\",\"bdsp\",\"standard\",\"en\",\"electric\"]": "type-icon/name/bdsp/standard/electric",
+    "[\"name\",\"bdsp\",\"standard\",\"en\",\"fairy\"]": "type-icon/name/bdsp/standard/fairy",
+    "[\"name\",\"bdsp\",\"standard\",\"en\",\"fighting\"]": "type-icon/name/bdsp/standard/fighting",
+    "[\"name\",\"bdsp\",\"standard\",\"en\",\"fire\"]": "type-icon/name/bdsp/standard/fire",
+    "[\"name\",\"bdsp\",\"standard\",\"en\",\"flying\"]": "type-icon/name/bdsp/standard/flying",
+    "[\"name\",\"bdsp\",\"standard\",\"en\",\"ghost\"]": "type-icon/name/bdsp/standard/ghost",
+    "[\"name\",\"bdsp\",\"standard\",\"en\",\"grass\"]": "type-icon/name/bdsp/standard/grass",
+    "[\"name\",\"bdsp\",\"standard\",\"en\",\"ground\"]": "type-icon/name/bdsp/standard/ground",
+    "[\"name\",\"bdsp\",\"standard\",\"en\",\"ice\"]": "type-icon/name/bdsp/standard/ice",
+    "[\"name\",\"bdsp\",\"standard\",\"en\",\"normal\"]": "type-icon/name/bdsp/standard/normal",
+    "[\"name\",\"bdsp\",\"standard\",\"en\",\"poison\"]": "type-icon/name/bdsp/standard/poison",
+    "[\"name\",\"bdsp\",\"standard\",\"en\",\"psychic\"]": "type-icon/name/bdsp/standard/psychic",
+    "[\"name\",\"bdsp\",\"standard\",\"en\",\"rock\"]": "type-icon/name/bdsp/standard/rock",
+    "[\"name\",\"bdsp\",\"standard\",\"en\",\"steel\"]": "type-icon/name/bdsp/standard/steel",
+    "[\"name\",\"bdsp\",\"standard\",\"en\",\"water\"]": "type-icon/name/bdsp/standard/water",
+    "[\"name\",\"home\",\"standard\",\"en\",\"bug\"]": "type-icon/name/home/standard/bug",
+    "[\"name\",\"home\",\"standard\",\"en\",\"dark\"]": "type-icon/name/home/standard/dark",
+    "[\"name\",\"home\",\"standard\",\"en\",\"dragon\"]": "type-icon/name/home/standard/dragon",
+    "[\"name\",\"home\",\"standard\",\"en\",\"electric\"]": "type-icon/name/home/standard/electric",
+    "[\"name\",\"home\",\"standard\",\"en\",\"fairy\"]": "type-icon/name/home/standard/fairy",
+    "[\"name\",\"home\",\"standard\",\"en\",\"fighting\"]": "type-icon/name/home/standard/fighting",
+    "[\"name\",\"home\",\"standard\",\"en\",\"fire\"]": "type-icon/name/home/standard/fire",
+    "[\"name\",\"home\",\"standard\",\"en\",\"flying\"]": "type-icon/name/home/standard/flying",
+    "[\"name\",\"home\",\"standard\",\"en\",\"ghost\"]": "type-icon/name/home/standard/ghost",
+    "[\"name\",\"home\",\"standard\",\"en\",\"grass\"]": "type-icon/name/home/standard/grass",
+    "[\"name\",\"home\",\"standard\",\"en\",\"ground\"]": "type-icon/name/home/standard/ground",
+    "[\"name\",\"home\",\"standard\",\"en\",\"ice\"]": "type-icon/name/home/standard/ice",
+    "[\"name\",\"home\",\"standard\",\"en\",\"normal\"]": "type-icon/name/home/standard/normal",
+    "[\"name\",\"home\",\"standard\",\"en\",\"poison\"]": "type-icon/name/home/standard/poison",
+    "[\"name\",\"home\",\"standard\",\"en\",\"psychic\"]": "type-icon/name/home/standard/psychic",
+    "[\"name\",\"home\",\"standard\",\"en\",\"rock\"]": "type-icon/name/home/standard/rock",
+    "[\"name\",\"home\",\"standard\",\"en\",\"steel\"]": "type-icon/name/home/standard/steel",
+    "[\"name\",\"home\",\"standard\",\"en\",\"water\"]": "type-icon/name/home/standard/water",
+    "[\"name\",\"sv\",\"standard\",\"en\",\"bug\"]": "type-icon/name/sv/standard/bug",
+    "[\"name\",\"sv\",\"standard\",\"en\",\"dark\"]": "type-icon/name/sv/standard/dark",
+    "[\"name\",\"sv\",\"standard\",\"en\",\"dragon\"]": "type-icon/name/sv/standard/dragon",
+    "[\"name\",\"sv\",\"standard\",\"en\",\"electric\"]": "type-icon/name/sv/standard/electric",
+    "[\"name\",\"sv\",\"standard\",\"en\",\"fairy\"]": "type-icon/name/sv/standard/fairy",
+    "[\"name\",\"sv\",\"standard\",\"en\",\"fighting\"]": "type-icon/name/sv/standard/fighting",
+    "[\"name\",\"sv\",\"standard\",\"en\",\"fire\"]": "type-icon/name/sv/standard/fire",
+    "[\"name\",\"sv\",\"standard\",\"en\",\"flying\"]": "type-icon/name/sv/standard/flying",
+    "[\"name\",\"sv\",\"standard\",\"en\",\"ghost\"]": "type-icon/name/sv/standard/ghost",
+    "[\"name\",\"sv\",\"standard\",\"en\",\"grass\"]": "type-icon/name/sv/standard/grass",
+    "[\"name\",\"sv\",\"standard\",\"en\",\"ground\"]": "type-icon/name/sv/standard/ground",
+    "[\"name\",\"sv\",\"standard\",\"en\",\"ice\"]": "type-icon/name/sv/standard/ice",
+    "[\"name\",\"sv\",\"standard\",\"en\",\"normal\"]": "type-icon/name/sv/standard/normal",
+    "[\"name\",\"sv\",\"standard\",\"en\",\"poison\"]": "type-icon/name/sv/standard/poison",
+    "[\"name\",\"sv\",\"standard\",\"en\",\"psychic\"]": "type-icon/name/sv/standard/psychic",
+    "[\"name\",\"sv\",\"standard\",\"en\",\"rock\"]": "type-icon/name/sv/standard/rock",
+    "[\"name\",\"sv\",\"standard\",\"en\",\"steel\"]": "type-icon/name/sv/standard/steel",
+    "[\"name\",\"sv\",\"standard\",\"en\",\"stellar\"]": "type-icon/name/sv/standard/stellar",
+    "[\"name\",\"sv\",\"standard\",\"en\",\"water\"]": "type-icon/name/sv/standard/water",
+    "[\"name\",\"sv\",\"tera\",\"en\",\"bug\"]": "type-icon/name/sv/tera/bug",
+    "[\"name\",\"sv\",\"tera\",\"en\",\"dark\"]": "type-icon/name/sv/tera/dark",
+    "[\"name\",\"sv\",\"tera\",\"en\",\"dragon\"]": "type-icon/name/sv/tera/dragon",
+    "[\"name\",\"sv\",\"tera\",\"en\",\"electric\"]": "type-icon/name/sv/tera/electric",
+    "[\"name\",\"sv\",\"tera\",\"en\",\"fairy\"]": "type-icon/name/sv/tera/fairy",
+    "[\"name\",\"sv\",\"tera\",\"en\",\"fighting\"]": "type-icon/name/sv/tera/fighting",
+    "[\"name\",\"sv\",\"tera\",\"en\",\"fire\"]": "type-icon/name/sv/tera/fire",
+    "[\"name\",\"sv\",\"tera\",\"en\",\"flying\"]": "type-icon/name/sv/tera/flying",
+    "[\"name\",\"sv\",\"tera\",\"en\",\"ghost\"]": "type-icon/name/sv/tera/ghost",
+    "[\"name\",\"sv\",\"tera\",\"en\",\"grass\"]": "type-icon/name/sv/tera/grass",
+    "[\"name\",\"sv\",\"tera\",\"en\",\"ground\"]": "type-icon/name/sv/tera/ground",
+    "[\"name\",\"sv\",\"tera\",\"en\",\"ice\"]": "type-icon/name/sv/tera/ice",
+    "[\"name\",\"sv\",\"tera\",\"en\",\"normal\"]": "type-icon/name/sv/tera/normal",
+    "[\"name\",\"sv\",\"tera\",\"en\",\"poison\"]": "type-icon/name/sv/tera/poison",
+    "[\"name\",\"sv\",\"tera\",\"en\",\"psychic\"]": "type-icon/name/sv/tera/psychic",
+    "[\"name\",\"sv\",\"tera\",\"en\",\"rock\"]": "type-icon/name/sv/tera/rock",
+    "[\"name\",\"sv\",\"tera\",\"en\",\"steel\"]": "type-icon/name/sv/tera/steel",
+    "[\"name\",\"sv\",\"tera\",\"en\",\"stellar\"]": "type-icon/name/sv/tera/stellar",
+    "[\"name\",\"sv\",\"tera\",\"en\",\"water\"]": "type-icon/name/sv/tera/water",
+    "[\"symbol\",\"bdsp-la\",\"standard\",\"und\",\"bug\"]": "type-icon/symbol/bdsp-la/standard/bug",
+    "[\"symbol\",\"bdsp-la\",\"standard\",\"und\",\"dark\"]": "type-icon/symbol/bdsp-la/standard/dark",
+    "[\"symbol\",\"bdsp-la\",\"standard\",\"und\",\"dragon\"]": "type-icon/symbol/bdsp-la/standard/dragon",
+    "[\"symbol\",\"bdsp-la\",\"standard\",\"und\",\"electric\"]": "type-icon/symbol/bdsp-la/standard/electric",
+    "[\"symbol\",\"bdsp-la\",\"standard\",\"und\",\"fairy\"]": "type-icon/symbol/bdsp-la/standard/fairy",
+    "[\"symbol\",\"bdsp-la\",\"standard\",\"und\",\"fighting\"]": "type-icon/symbol/bdsp-la/standard/fighting",
+    "[\"symbol\",\"bdsp-la\",\"standard\",\"und\",\"fire\"]": "type-icon/symbol/bdsp-la/standard/fire",
+    "[\"symbol\",\"bdsp-la\",\"standard\",\"und\",\"flying\"]": "type-icon/symbol/bdsp-la/standard/flying",
+    "[\"symbol\",\"bdsp-la\",\"standard\",\"und\",\"ghost\"]": "type-icon/symbol/bdsp-la/standard/ghost",
+    "[\"symbol\",\"bdsp-la\",\"standard\",\"und\",\"grass\"]": "type-icon/symbol/bdsp-la/standard/grass",
+    "[\"symbol\",\"bdsp-la\",\"standard\",\"und\",\"ground\"]": "type-icon/symbol/bdsp-la/standard/ground",
+    "[\"symbol\",\"bdsp-la\",\"standard\",\"und\",\"ice\"]": "type-icon/symbol/bdsp-la/standard/ice",
+    "[\"symbol\",\"bdsp-la\",\"standard\",\"und\",\"normal\"]": "type-icon/symbol/bdsp-la/standard/normal",
+    "[\"symbol\",\"bdsp-la\",\"standard\",\"und\",\"poison\"]": "type-icon/symbol/bdsp-la/standard/poison",
+    "[\"symbol\",\"bdsp-la\",\"standard\",\"und\",\"psychic\"]": "type-icon/symbol/bdsp-la/standard/psychic",
+    "[\"symbol\",\"bdsp-la\",\"standard\",\"und\",\"rock\"]": "type-icon/symbol/bdsp-la/standard/rock",
+    "[\"symbol\",\"bdsp-la\",\"standard\",\"und\",\"steel\"]": "type-icon/symbol/bdsp-la/standard/steel",
+    "[\"symbol\",\"bdsp-la\",\"standard\",\"und\",\"water\"]": "type-icon/symbol/bdsp-la/standard/water",
+    "[\"symbol\",\"sv\",\"standard\",\"und\",\"bug\"]": "type-icon/symbol/sv/standard/bug",
+    "[\"symbol\",\"sv\",\"standard\",\"und\",\"dark\"]": "type-icon/symbol/sv/standard/dark",
+    "[\"symbol\",\"sv\",\"standard\",\"und\",\"dragon\"]": "type-icon/symbol/sv/standard/dragon",
+    "[\"symbol\",\"sv\",\"standard\",\"und\",\"electric\"]": "type-icon/symbol/sv/standard/electric",
+    "[\"symbol\",\"sv\",\"standard\",\"und\",\"fairy\"]": "type-icon/symbol/sv/standard/fairy",
+    "[\"symbol\",\"sv\",\"standard\",\"und\",\"fighting\"]": "type-icon/symbol/sv/standard/fighting",
+    "[\"symbol\",\"sv\",\"standard\",\"und\",\"fire\"]": "type-icon/symbol/sv/standard/fire",
+    "[\"symbol\",\"sv\",\"standard\",\"und\",\"flying\"]": "type-icon/symbol/sv/standard/flying",
+    "[\"symbol\",\"sv\",\"standard\",\"und\",\"ghost\"]": "type-icon/symbol/sv/standard/ghost",
+    "[\"symbol\",\"sv\",\"standard\",\"und\",\"grass\"]": "type-icon/symbol/sv/standard/grass",
+    "[\"symbol\",\"sv\",\"standard\",\"und\",\"ground\"]": "type-icon/symbol/sv/standard/ground",
+    "[\"symbol\",\"sv\",\"standard\",\"und\",\"ice\"]": "type-icon/symbol/sv/standard/ice",
+    "[\"symbol\",\"sv\",\"standard\",\"und\",\"normal\"]": "type-icon/symbol/sv/standard/normal",
+    "[\"symbol\",\"sv\",\"standard\",\"und\",\"poison\"]": "type-icon/symbol/sv/standard/poison",
+    "[\"symbol\",\"sv\",\"standard\",\"und\",\"psychic\"]": "type-icon/symbol/sv/standard/psychic",
+    "[\"symbol\",\"sv\",\"standard\",\"und\",\"rock\"]": "type-icon/symbol/sv/standard/rock",
+    "[\"symbol\",\"sv\",\"standard\",\"und\",\"steel\"]": "type-icon/symbol/sv/standard/steel",
+    "[\"symbol\",\"sv\",\"standard\",\"und\",\"stellar\"]": "type-icon/symbol/sv/standard/stellar",
+    "[\"symbol\",\"sv\",\"standard\",\"und\",\"water\"]": "type-icon/symbol/sv/standard/water"
+  },
+  "assets": {
+    "type-icon/name/bdsp/standard/bug": {
+      "path": "assets/type-icons/name/bdsp/standard/bug.png",
+      "sha256": "2aa3d15f7d2fb497bb75d8506c75408edca11af0f1c9f4f12b22b8724f377bbc",
+      "mediaType": "image/png",
+      "width": 144,
+      "height": 32,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "bdsp",
+        "state": "standard",
+        "locale": "en",
+        "type": "bug"
+      }
+    },
+    "type-icon/name/bdsp/standard/dark": {
+      "path": "assets/type-icons/name/bdsp/standard/dark.png",
+      "sha256": "89c4164cb63bc368ec3b39ef74aff2d000055ff4b5a71c98920b27d60d85ac05",
+      "mediaType": "image/png",
+      "width": 144,
+      "height": 32,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "bdsp",
+        "state": "standard",
+        "locale": "en",
+        "type": "dark"
+      }
+    },
+    "type-icon/name/bdsp/standard/dragon": {
+      "path": "assets/type-icons/name/bdsp/standard/dragon.png",
+      "sha256": "a974a59a2f19e6fa670d3b8c4056552d17b075cb253507daf6ff9bcbccdfd2ff",
+      "mediaType": "image/png",
+      "width": 144,
+      "height": 32,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "bdsp",
+        "state": "standard",
+        "locale": "en",
+        "type": "dragon"
+      }
+    },
+    "type-icon/name/bdsp/standard/electric": {
+      "path": "assets/type-icons/name/bdsp/standard/electric.png",
+      "sha256": "fdca28b8b24a1657213f4d0c5d2ff5fb1e0469d0035ccb7c8392c61c75badcbf",
+      "mediaType": "image/png",
+      "width": 144,
+      "height": 32,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "bdsp",
+        "state": "standard",
+        "locale": "en",
+        "type": "electric"
+      }
+    },
+    "type-icon/name/bdsp/standard/fairy": {
+      "path": "assets/type-icons/name/bdsp/standard/fairy.png",
+      "sha256": "f7517376984df4fa761bd99d42b05d96648d37a1dca9ceb4229b5e5addb3de71",
+      "mediaType": "image/png",
+      "width": 144,
+      "height": 32,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "bdsp",
+        "state": "standard",
+        "locale": "en",
+        "type": "fairy"
+      }
+    },
+    "type-icon/name/bdsp/standard/fighting": {
+      "path": "assets/type-icons/name/bdsp/standard/fighting.png",
+      "sha256": "ca3741b4b8193db0e3584354e1b795436368347daa80adb4651ea87043afc6e3",
+      "mediaType": "image/png",
+      "width": 144,
+      "height": 32,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "bdsp",
+        "state": "standard",
+        "locale": "en",
+        "type": "fighting"
+      }
+    },
+    "type-icon/name/bdsp/standard/fire": {
+      "path": "assets/type-icons/name/bdsp/standard/fire.png",
+      "sha256": "c7b3842446b6d39ce450d46840eea74cebdf90186ce1ef42a6c478fe8c027109",
+      "mediaType": "image/png",
+      "width": 144,
+      "height": 32,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "bdsp",
+        "state": "standard",
+        "locale": "en",
+        "type": "fire"
+      }
+    },
+    "type-icon/name/bdsp/standard/flying": {
+      "path": "assets/type-icons/name/bdsp/standard/flying.png",
+      "sha256": "26432fc8a5653ce1acd7dcf65ada224f300893f5b451903d1d6f244f30eb5a5e",
+      "mediaType": "image/png",
+      "width": 144,
+      "height": 32,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "bdsp",
+        "state": "standard",
+        "locale": "en",
+        "type": "flying"
+      }
+    },
+    "type-icon/name/bdsp/standard/ghost": {
+      "path": "assets/type-icons/name/bdsp/standard/ghost.png",
+      "sha256": "2f8290a8ecf579065cb797e86ec4b659925446fd856680eb0f2b526cabe879f1",
+      "mediaType": "image/png",
+      "width": 144,
+      "height": 32,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "bdsp",
+        "state": "standard",
+        "locale": "en",
+        "type": "ghost"
+      }
+    },
+    "type-icon/name/bdsp/standard/grass": {
+      "path": "assets/type-icons/name/bdsp/standard/grass.png",
+      "sha256": "86fa7c5d0d4b3e26a05cc9561556eadd334bf5f46497d31e141b516ae3968491",
+      "mediaType": "image/png",
+      "width": 144,
+      "height": 32,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "bdsp",
+        "state": "standard",
+        "locale": "en",
+        "type": "grass"
+      }
+    },
+    "type-icon/name/bdsp/standard/ground": {
+      "path": "assets/type-icons/name/bdsp/standard/ground.png",
+      "sha256": "9c63280dcf671ff4efa141722112c09e9014f46fe1faafd91e9c3f18369ef85e",
+      "mediaType": "image/png",
+      "width": 144,
+      "height": 32,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "bdsp",
+        "state": "standard",
+        "locale": "en",
+        "type": "ground"
+      }
+    },
+    "type-icon/name/bdsp/standard/ice": {
+      "path": "assets/type-icons/name/bdsp/standard/ice.png",
+      "sha256": "b3aa59c2b143a92e7c349df24bae4e8b9766639be85c8ba8204f7561c8c41eef",
+      "mediaType": "image/png",
+      "width": 144,
+      "height": 32,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "bdsp",
+        "state": "standard",
+        "locale": "en",
+        "type": "ice"
+      }
+    },
+    "type-icon/name/bdsp/standard/normal": {
+      "path": "assets/type-icons/name/bdsp/standard/normal.png",
+      "sha256": "6051b8ba48b80419b22a8885c10928b88511cfb6ed0968b97e2916af1be2e9ba",
+      "mediaType": "image/png",
+      "width": 144,
+      "height": 32,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "bdsp",
+        "state": "standard",
+        "locale": "en",
+        "type": "normal"
+      }
+    },
+    "type-icon/name/bdsp/standard/poison": {
+      "path": "assets/type-icons/name/bdsp/standard/poison.png",
+      "sha256": "4bb0e706995976519b83e5cbe5d2b2eddb3dfb44aaf0536775dd38fb427d1d55",
+      "mediaType": "image/png",
+      "width": 144,
+      "height": 32,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "bdsp",
+        "state": "standard",
+        "locale": "en",
+        "type": "poison"
+      }
+    },
+    "type-icon/name/bdsp/standard/psychic": {
+      "path": "assets/type-icons/name/bdsp/standard/psychic.png",
+      "sha256": "26e4f1891ded4d140686b9810ebddb60e668a104d0cfb7d97d0965d29f53802f",
+      "mediaType": "image/png",
+      "width": 144,
+      "height": 32,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "bdsp",
+        "state": "standard",
+        "locale": "en",
+        "type": "psychic"
+      }
+    },
+    "type-icon/name/bdsp/standard/rock": {
+      "path": "assets/type-icons/name/bdsp/standard/rock.png",
+      "sha256": "c0ab9cbdf725f5b2cc3d452c62990758f03e1890cc7881663e20acac5c14d206",
+      "mediaType": "image/png",
+      "width": 144,
+      "height": 32,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "bdsp",
+        "state": "standard",
+        "locale": "en",
+        "type": "rock"
+      }
+    },
+    "type-icon/name/bdsp/standard/steel": {
+      "path": "assets/type-icons/name/bdsp/standard/steel.png",
+      "sha256": "58e4a1afbd583137e9e97220b1e8e8f63bcfaadaf84b6497478659af22bf884f",
+      "mediaType": "image/png",
+      "width": 144,
+      "height": 32,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "bdsp",
+        "state": "standard",
+        "locale": "en",
+        "type": "steel"
+      }
+    },
+    "type-icon/name/bdsp/standard/water": {
+      "path": "assets/type-icons/name/bdsp/standard/water.png",
+      "sha256": "c1e23396db74f0146a6cb3513052eac4fc521b48cce09de4883a0d9c434f8f2f",
+      "mediaType": "image/png",
+      "width": 144,
+      "height": 32,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "bdsp",
+        "state": "standard",
+        "locale": "en",
+        "type": "water"
+      }
+    },
+    "type-icon/name/home/standard/bug": {
+      "path": "assets/type-icons/name/home/standard/bug.png",
+      "sha256": "a4a2442bbc83433128ac9aef8266bfba7bbfe18c43a0f34973b0cf29e3595107",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 44,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "home",
+        "state": "standard",
+        "locale": "en",
+        "type": "bug"
+      }
+    },
+    "type-icon/name/home/standard/dark": {
+      "path": "assets/type-icons/name/home/standard/dark.png",
+      "sha256": "15238c6e0aa18bfecc2b377e20bbfb076aff129eb94ddce89fb3a9fb9d5f8385",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 44,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "home",
+        "state": "standard",
+        "locale": "en",
+        "type": "dark"
+      }
+    },
+    "type-icon/name/home/standard/dragon": {
+      "path": "assets/type-icons/name/home/standard/dragon.png",
+      "sha256": "22a31a85102ae033785372537288b015369214fcfaf3d522c84ce10c6e1d8564",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 44,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "home",
+        "state": "standard",
+        "locale": "en",
+        "type": "dragon"
+      }
+    },
+    "type-icon/name/home/standard/electric": {
+      "path": "assets/type-icons/name/home/standard/electric.png",
+      "sha256": "4d5bcf1dcebe188da465a931a3934012740b77ce646c218ca4d13bc195db5d85",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 44,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "home",
+        "state": "standard",
+        "locale": "en",
+        "type": "electric"
+      }
+    },
+    "type-icon/name/home/standard/fairy": {
+      "path": "assets/type-icons/name/home/standard/fairy.png",
+      "sha256": "24b5a1fc1e10535683250521ef1bd3f4e915e4e82af6e086a0b5a639e9400d44",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 44,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "home",
+        "state": "standard",
+        "locale": "en",
+        "type": "fairy"
+      }
+    },
+    "type-icon/name/home/standard/fighting": {
+      "path": "assets/type-icons/name/home/standard/fighting.png",
+      "sha256": "a10f58a635d2fa52fef9b60684222582432705eebf5006064330c3eb041ce7f4",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 44,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "home",
+        "state": "standard",
+        "locale": "en",
+        "type": "fighting"
+      }
+    },
+    "type-icon/name/home/standard/fire": {
+      "path": "assets/type-icons/name/home/standard/fire.png",
+      "sha256": "48b23944ef3f0490c4dcbdc45d121da72d31a4bc44ddcd740b80d86930dff73d",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 44,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "home",
+        "state": "standard",
+        "locale": "en",
+        "type": "fire"
+      }
+    },
+    "type-icon/name/home/standard/flying": {
+      "path": "assets/type-icons/name/home/standard/flying.png",
+      "sha256": "c266a6cb30a25d67e0a59c97790f57c4e83a08c4141c4806a7a76c99da58045f",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 44,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "home",
+        "state": "standard",
+        "locale": "en",
+        "type": "flying"
+      }
+    },
+    "type-icon/name/home/standard/ghost": {
+      "path": "assets/type-icons/name/home/standard/ghost.png",
+      "sha256": "60c237ebb9e2619a4f15aae1948c010458df4bc25bdd448f887cada946627431",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 44,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "home",
+        "state": "standard",
+        "locale": "en",
+        "type": "ghost"
+      }
+    },
+    "type-icon/name/home/standard/grass": {
+      "path": "assets/type-icons/name/home/standard/grass.png",
+      "sha256": "80f705e3d3eb471fdb420460b871d72eaf7f7218bba74e630cfa7865e26dd58a",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 44,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "home",
+        "state": "standard",
+        "locale": "en",
+        "type": "grass"
+      }
+    },
+    "type-icon/name/home/standard/ground": {
+      "path": "assets/type-icons/name/home/standard/ground.png",
+      "sha256": "8754b4dc7fb6ebecefcfadfb00dc29f32b459a190d851f0b1b837cb3a8e34253",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 44,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "home",
+        "state": "standard",
+        "locale": "en",
+        "type": "ground"
+      }
+    },
+    "type-icon/name/home/standard/ice": {
+      "path": "assets/type-icons/name/home/standard/ice.png",
+      "sha256": "7ac32d8f505e4c25cd9ad6b941336c89b87cb3998a1d3e0e960dcdae05a1f2d7",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 44,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "home",
+        "state": "standard",
+        "locale": "en",
+        "type": "ice"
+      }
+    },
+    "type-icon/name/home/standard/normal": {
+      "path": "assets/type-icons/name/home/standard/normal.png",
+      "sha256": "fce16275308b57a38054ea8d97d3e5c8cbe95124d640694846bbecc114e35d76",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 44,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "home",
+        "state": "standard",
+        "locale": "en",
+        "type": "normal"
+      }
+    },
+    "type-icon/name/home/standard/poison": {
+      "path": "assets/type-icons/name/home/standard/poison.png",
+      "sha256": "d67104d897f9e0551988bd32194fee54afd0d30cdce758cc1b192b799b3f86ce",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 44,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "home",
+        "state": "standard",
+        "locale": "en",
+        "type": "poison"
+      }
+    },
+    "type-icon/name/home/standard/psychic": {
+      "path": "assets/type-icons/name/home/standard/psychic.png",
+      "sha256": "b3e13d59ab0531739ea21238e8d9d1f0c5150f4c04d8af3e6e050a7d8dfb201f",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 44,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "home",
+        "state": "standard",
+        "locale": "en",
+        "type": "psychic"
+      }
+    },
+    "type-icon/name/home/standard/rock": {
+      "path": "assets/type-icons/name/home/standard/rock.png",
+      "sha256": "ce859562848de919dfbc964d197273744ac94969c661669fd3eda5e3a80c6650",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 44,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "home",
+        "state": "standard",
+        "locale": "en",
+        "type": "rock"
+      }
+    },
+    "type-icon/name/home/standard/steel": {
+      "path": "assets/type-icons/name/home/standard/steel.png",
+      "sha256": "561602bb47ef4937010c0c09d262739293fc200ea3bf480766bb0f5941ce2219",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 44,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "home",
+        "state": "standard",
+        "locale": "en",
+        "type": "steel"
+      }
+    },
+    "type-icon/name/home/standard/water": {
+      "path": "assets/type-icons/name/home/standard/water.png",
+      "sha256": "9580bd1cf319b24bc3ff89781cfe294f11cf1e8a4f1a0c3a8a25969b2840cf97",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 44,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "home",
+        "state": "standard",
+        "locale": "en",
+        "type": "water"
+      }
+    },
+    "type-icon/name/sv/standard/bug": {
+      "path": "assets/type-icons/name/sv/standard/bug.png",
+      "sha256": "5146a147b5340bac7a7d55ccc98de2ece3bdd92898d2eb4839a77d2630f566ac",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 40,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "standard",
+        "locale": "en",
+        "type": "bug"
+      }
+    },
+    "type-icon/name/sv/standard/dark": {
+      "path": "assets/type-icons/name/sv/standard/dark.png",
+      "sha256": "935cd23c89d502ab2f2cb8e1170fc148ad30975c8fa96ea38c2cb08e6d7e1a2e",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 40,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "standard",
+        "locale": "en",
+        "type": "dark"
+      }
+    },
+    "type-icon/name/sv/standard/dragon": {
+      "path": "assets/type-icons/name/sv/standard/dragon.png",
+      "sha256": "78a4df40885a7be7830c44acb228c82cdf2c85c2b3b6ceebf2778b03f9e3b43a",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 40,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "standard",
+        "locale": "en",
+        "type": "dragon"
+      }
+    },
+    "type-icon/name/sv/standard/electric": {
+      "path": "assets/type-icons/name/sv/standard/electric.png",
+      "sha256": "364b239727d285967026758ee348383d641bd24075df54fde242f6f676d373d2",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 40,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "standard",
+        "locale": "en",
+        "type": "electric"
+      }
+    },
+    "type-icon/name/sv/standard/fairy": {
+      "path": "assets/type-icons/name/sv/standard/fairy.png",
+      "sha256": "e5485e0d1f238eb061ba31bf89e4d3ebbe31939ac44e53fda898b0a024a8dc91",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 40,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "standard",
+        "locale": "en",
+        "type": "fairy"
+      }
+    },
+    "type-icon/name/sv/standard/fighting": {
+      "path": "assets/type-icons/name/sv/standard/fighting.png",
+      "sha256": "6b0ef56725869c8973aea4fd038530bd3af3a69753ef066c6b7581b721bb0e75",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 40,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "standard",
+        "locale": "en",
+        "type": "fighting"
+      }
+    },
+    "type-icon/name/sv/standard/fire": {
+      "path": "assets/type-icons/name/sv/standard/fire.png",
+      "sha256": "ec0b848b81aef0b0b1615582e6ef661f27e9324354ed0a7c3fd48cff6bf6b46b",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 40,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "standard",
+        "locale": "en",
+        "type": "fire"
+      }
+    },
+    "type-icon/name/sv/standard/flying": {
+      "path": "assets/type-icons/name/sv/standard/flying.png",
+      "sha256": "2b9a22be0954b6f8f6eb7c0dc6740b7d2da330343dc9ad79e83b07438e97ce25",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 40,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "standard",
+        "locale": "en",
+        "type": "flying"
+      }
+    },
+    "type-icon/name/sv/standard/ghost": {
+      "path": "assets/type-icons/name/sv/standard/ghost.png",
+      "sha256": "7a6940b7139493cefc0031a712c7874659ecee342fbc77641dcc4f65e1026934",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 40,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "standard",
+        "locale": "en",
+        "type": "ghost"
+      }
+    },
+    "type-icon/name/sv/standard/grass": {
+      "path": "assets/type-icons/name/sv/standard/grass.png",
+      "sha256": "62b392505515284df201535047be72bd0fcdb81945e1e4057ddc3a05ee61f050",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 40,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "standard",
+        "locale": "en",
+        "type": "grass"
+      }
+    },
+    "type-icon/name/sv/standard/ground": {
+      "path": "assets/type-icons/name/sv/standard/ground.png",
+      "sha256": "7c8f5bccb77c0873f0ea9d6559a4cec6510c1818a6cb560a3a90cf6cd973d94b",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 40,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "standard",
+        "locale": "en",
+        "type": "ground"
+      }
+    },
+    "type-icon/name/sv/standard/ice": {
+      "path": "assets/type-icons/name/sv/standard/ice.png",
+      "sha256": "b7c8518c5cb62712c50240ae18d92c8169aab928ad552d3fdea84b084b7cb621",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 40,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "standard",
+        "locale": "en",
+        "type": "ice"
+      }
+    },
+    "type-icon/name/sv/standard/normal": {
+      "path": "assets/type-icons/name/sv/standard/normal.png",
+      "sha256": "d7fafbe94438e5f021cdb3406e182ce4eb1b3b47c457c58145b76608ba875d8d",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 40,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "standard",
+        "locale": "en",
+        "type": "normal"
+      }
+    },
+    "type-icon/name/sv/standard/poison": {
+      "path": "assets/type-icons/name/sv/standard/poison.png",
+      "sha256": "a90129e41bb7d678a3c2b2689c3d60a61aaf86abb62c329a8d27e8a9b89174eb",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 40,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "standard",
+        "locale": "en",
+        "type": "poison"
+      }
+    },
+    "type-icon/name/sv/standard/psychic": {
+      "path": "assets/type-icons/name/sv/standard/psychic.png",
+      "sha256": "681b3cd9cf30b23bed2a7352cee16d499423e7684792ea5616e37ed40f72ac91",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 40,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "standard",
+        "locale": "en",
+        "type": "psychic"
+      }
+    },
+    "type-icon/name/sv/standard/rock": {
+      "path": "assets/type-icons/name/sv/standard/rock.png",
+      "sha256": "1c893f00a23c6733aa31bf9f1fd0c73147fdb387c3aa05e4acaf67db75915c74",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 40,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "standard",
+        "locale": "en",
+        "type": "rock"
+      }
+    },
+    "type-icon/name/sv/standard/steel": {
+      "path": "assets/type-icons/name/sv/standard/steel.png",
+      "sha256": "cb78c94d0b8378ad30c8ddd21b16213a4ec45b9edac85901cb3eb6372cdde3fa",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 40,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "standard",
+        "locale": "en",
+        "type": "steel"
+      }
+    },
+    "type-icon/name/sv/standard/stellar": {
+      "path": "assets/type-icons/name/sv/standard/stellar.png",
+      "sha256": "bdd159efba07433a3b0f1a9c08732904b5bdd4320bb782ab29f622ab9abfda48",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 40,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "standard",
+        "locale": "en",
+        "type": "stellar"
+      }
+    },
+    "type-icon/name/sv/standard/water": {
+      "path": "assets/type-icons/name/sv/standard/water.png",
+      "sha256": "95d2f5856aa89ecf0749fefb661a0f8ec4f3f02597e39a1551c661bc2bfc9197",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 40,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "standard",
+        "locale": "en",
+        "type": "water"
+      }
+    },
+    "type-icon/name/sv/tera/bug": {
+      "path": "assets/type-icons/name/sv/tera/bug.png",
+      "sha256": "0dcafd6e3295161e305a4b9c71e7bf7e423b5847037f8c59836e9bda2bd5e962",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 48,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "tera",
+        "locale": "en",
+        "type": "bug"
+      }
+    },
+    "type-icon/name/sv/tera/dark": {
+      "path": "assets/type-icons/name/sv/tera/dark.png",
+      "sha256": "6eab05c8f06da1241f86705c4445e9485fdcace6548c8e8a08fcb737546a47d9",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 48,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "tera",
+        "locale": "en",
+        "type": "dark"
+      }
+    },
+    "type-icon/name/sv/tera/dragon": {
+      "path": "assets/type-icons/name/sv/tera/dragon.png",
+      "sha256": "e86a152e6cdb35ab1b968cd3c9ee5ce3d1cffe94f21acd93af35a7286fd0d370",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 48,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "tera",
+        "locale": "en",
+        "type": "dragon"
+      }
+    },
+    "type-icon/name/sv/tera/electric": {
+      "path": "assets/type-icons/name/sv/tera/electric.png",
+      "sha256": "feb9d45853e755195696edfa62054822c2621fdf4c310237e829b24e1127e075",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 48,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "tera",
+        "locale": "en",
+        "type": "electric"
+      }
+    },
+    "type-icon/name/sv/tera/fairy": {
+      "path": "assets/type-icons/name/sv/tera/fairy.png",
+      "sha256": "d1b45424eda505c404a1cf5dc49c0a860b88f3ed9b841b8f80dade21560cb207",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 48,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "tera",
+        "locale": "en",
+        "type": "fairy"
+      }
+    },
+    "type-icon/name/sv/tera/fighting": {
+      "path": "assets/type-icons/name/sv/tera/fighting.png",
+      "sha256": "379ffa713dcdac14b6fe6adb75e49850a300a67b00a9f554e8acfc62e00762ce",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 48,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "tera",
+        "locale": "en",
+        "type": "fighting"
+      }
+    },
+    "type-icon/name/sv/tera/fire": {
+      "path": "assets/type-icons/name/sv/tera/fire.png",
+      "sha256": "7976ca5b5715e52554e5d062fd4caa1abf1758da0d9e54d523d4bdfcb9995f1f",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 48,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "tera",
+        "locale": "en",
+        "type": "fire"
+      }
+    },
+    "type-icon/name/sv/tera/flying": {
+      "path": "assets/type-icons/name/sv/tera/flying.png",
+      "sha256": "e229925b52d9ca86f317499a37ca450ca826a3e4eab26efd7b44046ac05fc205",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 48,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "tera",
+        "locale": "en",
+        "type": "flying"
+      }
+    },
+    "type-icon/name/sv/tera/ghost": {
+      "path": "assets/type-icons/name/sv/tera/ghost.png",
+      "sha256": "d345a67ca249b575587448deaec651cb598a98c16560ff59ffa2e53d133a1083",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 48,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "tera",
+        "locale": "en",
+        "type": "ghost"
+      }
+    },
+    "type-icon/name/sv/tera/grass": {
+      "path": "assets/type-icons/name/sv/tera/grass.png",
+      "sha256": "7a8aef67f3b392f8106dc068a5ade6ff3f73e2fb7d1f6d277bbbdf3a816a2c60",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 48,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "tera",
+        "locale": "en",
+        "type": "grass"
+      }
+    },
+    "type-icon/name/sv/tera/ground": {
+      "path": "assets/type-icons/name/sv/tera/ground.png",
+      "sha256": "29f1b4d3bb8037a127c6035d1ad01351946623290b808997cb0d5646339facf1",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 48,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "tera",
+        "locale": "en",
+        "type": "ground"
+      }
+    },
+    "type-icon/name/sv/tera/ice": {
+      "path": "assets/type-icons/name/sv/tera/ice.png",
+      "sha256": "61df6c41ae2b8cd13787ae29db454afb1d3f0b78c554cf3badc390c44cdcd795",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 48,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "tera",
+        "locale": "en",
+        "type": "ice"
+      }
+    },
+    "type-icon/name/sv/tera/normal": {
+      "path": "assets/type-icons/name/sv/tera/normal.png",
+      "sha256": "15443ea99bafc2f094f97e5a341ffe5ce968ff305ebbf74175661c4ccdae1204",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 48,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "tera",
+        "locale": "en",
+        "type": "normal"
+      }
+    },
+    "type-icon/name/sv/tera/poison": {
+      "path": "assets/type-icons/name/sv/tera/poison.png",
+      "sha256": "d9d3a80513c7c0446d01c173cd8112f677b0f1a2f6f058c46587121d1d963299",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 48,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "tera",
+        "locale": "en",
+        "type": "poison"
+      }
+    },
+    "type-icon/name/sv/tera/psychic": {
+      "path": "assets/type-icons/name/sv/tera/psychic.png",
+      "sha256": "8bec0d66e98d7aed4828f5c0189e7a5672703cf93a7161f8f6dcab918f07a160",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 48,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "tera",
+        "locale": "en",
+        "type": "psychic"
+      }
+    },
+    "type-icon/name/sv/tera/rock": {
+      "path": "assets/type-icons/name/sv/tera/rock.png",
+      "sha256": "04a70052a359fef2c274d0f5a904a0e00c35bfc28ce74dda83e86763d458f2e7",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 48,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "tera",
+        "locale": "en",
+        "type": "rock"
+      }
+    },
+    "type-icon/name/sv/tera/steel": {
+      "path": "assets/type-icons/name/sv/tera/steel.png",
+      "sha256": "3481fc8fe47b4fe6f8151c955362ee2782f00482d94cc061230ce9ec99fd9a16",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 48,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "tera",
+        "locale": "en",
+        "type": "steel"
+      }
+    },
+    "type-icon/name/sv/tera/stellar": {
+      "path": "assets/type-icons/name/sv/tera/stellar.png",
+      "sha256": "4b59029b737b035373e8cb56ab39d887d9642c99a38988e37b989bd40616eaec",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 48,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "tera",
+        "locale": "en",
+        "type": "stellar"
+      }
+    },
+    "type-icon/name/sv/tera/water": {
+      "path": "assets/type-icons/name/sv/tera/water.png",
+      "sha256": "933bfc5f6d8177aae9d6f6b0a66c933f0bc3ab9e7c34d79c172ceef9dadc9323",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 48,
+      "motion": "static",
+      "selectors": {
+        "presentation": "name",
+        "style": "sv",
+        "state": "tera",
+        "locale": "en",
+        "type": "water"
+      }
+    },
+    "type-icon/symbol/bdsp-la/standard/bug": {
+      "path": "assets/type-icons/symbol/bdsp-la/standard/bug.png",
+      "sha256": "d656f109771fd2885fffdd6ed14b013804a336909111ed559b31babd3f5f3d3c",
+      "mediaType": "image/png",
+      "width": 86,
+      "height": 86,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "bdsp-la",
+        "state": "standard",
+        "locale": "und",
+        "type": "bug"
+      }
+    },
+    "type-icon/symbol/bdsp-la/standard/dark": {
+      "path": "assets/type-icons/symbol/bdsp-la/standard/dark.png",
+      "sha256": "8c1c9fe6a3d11ac4498e11b18c6fd64ed8750bc80219c1dc4af0479739bab5ab",
+      "mediaType": "image/png",
+      "width": 86,
+      "height": 86,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "bdsp-la",
+        "state": "standard",
+        "locale": "und",
+        "type": "dark"
+      }
+    },
+    "type-icon/symbol/bdsp-la/standard/dragon": {
+      "path": "assets/type-icons/symbol/bdsp-la/standard/dragon.png",
+      "sha256": "ea977a3c9df404c8a1a483b12bbb7679c1592c988adfe615a8ce96df6a62b911",
+      "mediaType": "image/png",
+      "width": 86,
+      "height": 86,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "bdsp-la",
+        "state": "standard",
+        "locale": "und",
+        "type": "dragon"
+      }
+    },
+    "type-icon/symbol/bdsp-la/standard/electric": {
+      "path": "assets/type-icons/symbol/bdsp-la/standard/electric.png",
+      "sha256": "40f2da1272a4dab107ecfa830e5f8e835beec01c55c1dc4bb4bbc3ab15eca4ef",
+      "mediaType": "image/png",
+      "width": 86,
+      "height": 86,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "bdsp-la",
+        "state": "standard",
+        "locale": "und",
+        "type": "electric"
+      }
+    },
+    "type-icon/symbol/bdsp-la/standard/fairy": {
+      "path": "assets/type-icons/symbol/bdsp-la/standard/fairy.png",
+      "sha256": "06f0234c4a58bc529ff2e3e8f46fd7b270a30a4adb9b011f4bf393566188b888",
+      "mediaType": "image/png",
+      "width": 86,
+      "height": 86,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "bdsp-la",
+        "state": "standard",
+        "locale": "und",
+        "type": "fairy"
+      }
+    },
+    "type-icon/symbol/bdsp-la/standard/fighting": {
+      "path": "assets/type-icons/symbol/bdsp-la/standard/fighting.png",
+      "sha256": "ec758302cfebbffc0459bb41ff00cd8b1a87d1e8aa9b231be101924a71b44828",
+      "mediaType": "image/png",
+      "width": 86,
+      "height": 86,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "bdsp-la",
+        "state": "standard",
+        "locale": "und",
+        "type": "fighting"
+      }
+    },
+    "type-icon/symbol/bdsp-la/standard/fire": {
+      "path": "assets/type-icons/symbol/bdsp-la/standard/fire.png",
+      "sha256": "156bcf3c740b15b7e9435e54ef74ff9ad63f51cc5ab9e372ada18c414a724779",
+      "mediaType": "image/png",
+      "width": 86,
+      "height": 86,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "bdsp-la",
+        "state": "standard",
+        "locale": "und",
+        "type": "fire"
+      }
+    },
+    "type-icon/symbol/bdsp-la/standard/flying": {
+      "path": "assets/type-icons/symbol/bdsp-la/standard/flying.png",
+      "sha256": "f73c257cda27f0cd38f4d95b2d7ce19508ad0efbc035925ca5baf92f24089781",
+      "mediaType": "image/png",
+      "width": 86,
+      "height": 86,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "bdsp-la",
+        "state": "standard",
+        "locale": "und",
+        "type": "flying"
+      }
+    },
+    "type-icon/symbol/bdsp-la/standard/ghost": {
+      "path": "assets/type-icons/symbol/bdsp-la/standard/ghost.png",
+      "sha256": "f190fb6ed399bb523f3921da4803d6a924ed496c81b0db8a7a4be5b9a894f90d",
+      "mediaType": "image/png",
+      "width": 86,
+      "height": 86,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "bdsp-la",
+        "state": "standard",
+        "locale": "und",
+        "type": "ghost"
+      }
+    },
+    "type-icon/symbol/bdsp-la/standard/grass": {
+      "path": "assets/type-icons/symbol/bdsp-la/standard/grass.png",
+      "sha256": "baa7d60761c4b3247d626b974e17d067d6b374c85520139f8dcf045a0d409cf4",
+      "mediaType": "image/png",
+      "width": 86,
+      "height": 86,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "bdsp-la",
+        "state": "standard",
+        "locale": "und",
+        "type": "grass"
+      }
+    },
+    "type-icon/symbol/bdsp-la/standard/ground": {
+      "path": "assets/type-icons/symbol/bdsp-la/standard/ground.png",
+      "sha256": "846f7b38cad9c2bc743cf4af47c51cc3ecf259eca0a1a74e586ea6014f599ca1",
+      "mediaType": "image/png",
+      "width": 86,
+      "height": 86,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "bdsp-la",
+        "state": "standard",
+        "locale": "und",
+        "type": "ground"
+      }
+    },
+    "type-icon/symbol/bdsp-la/standard/ice": {
+      "path": "assets/type-icons/symbol/bdsp-la/standard/ice.png",
+      "sha256": "0838f1cb8e0ab09d10c68c607ba009b97d53d5540cc417bd258ac1700ceb0596",
+      "mediaType": "image/png",
+      "width": 86,
+      "height": 86,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "bdsp-la",
+        "state": "standard",
+        "locale": "und",
+        "type": "ice"
+      }
+    },
+    "type-icon/symbol/bdsp-la/standard/normal": {
+      "path": "assets/type-icons/symbol/bdsp-la/standard/normal.png",
+      "sha256": "e22466e5250b4d09e993396c5003a5bf262d58ec775cba2c468c4bab3b4aa0f8",
+      "mediaType": "image/png",
+      "width": 86,
+      "height": 86,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "bdsp-la",
+        "state": "standard",
+        "locale": "und",
+        "type": "normal"
+      }
+    },
+    "type-icon/symbol/bdsp-la/standard/poison": {
+      "path": "assets/type-icons/symbol/bdsp-la/standard/poison.png",
+      "sha256": "ca4a7c8b09ab2a767215ce251a38c461976f144344cba68a15361850d6a3d42b",
+      "mediaType": "image/png",
+      "width": 86,
+      "height": 86,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "bdsp-la",
+        "state": "standard",
+        "locale": "und",
+        "type": "poison"
+      }
+    },
+    "type-icon/symbol/bdsp-la/standard/psychic": {
+      "path": "assets/type-icons/symbol/bdsp-la/standard/psychic.png",
+      "sha256": "60a6fa612d448af9cc551585c1be5719fac9da1d107bb2c2661446668e76ab06",
+      "mediaType": "image/png",
+      "width": 86,
+      "height": 86,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "bdsp-la",
+        "state": "standard",
+        "locale": "und",
+        "type": "psychic"
+      }
+    },
+    "type-icon/symbol/bdsp-la/standard/rock": {
+      "path": "assets/type-icons/symbol/bdsp-la/standard/rock.png",
+      "sha256": "d98cf249facfe7cea86bc029db2c02cc62d1a3d9166e3c2598113d00b4ea6d5f",
+      "mediaType": "image/png",
+      "width": 86,
+      "height": 86,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "bdsp-la",
+        "state": "standard",
+        "locale": "und",
+        "type": "rock"
+      }
+    },
+    "type-icon/symbol/bdsp-la/standard/steel": {
+      "path": "assets/type-icons/symbol/bdsp-la/standard/steel.png",
+      "sha256": "9a6f8fb384e0571981a902fabbb5a6c644262202a78fc771508d42f91aea8061",
+      "mediaType": "image/png",
+      "width": 86,
+      "height": 86,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "bdsp-la",
+        "state": "standard",
+        "locale": "und",
+        "type": "steel"
+      }
+    },
+    "type-icon/symbol/bdsp-la/standard/water": {
+      "path": "assets/type-icons/symbol/bdsp-la/standard/water.png",
+      "sha256": "3a3bc0d37413747198a2220c3663a993a69f574b631ee9f17991276f7f99ba00",
+      "mediaType": "image/png",
+      "width": 86,
+      "height": 86,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "bdsp-la",
+        "state": "standard",
+        "locale": "und",
+        "type": "water"
+      }
+    },
+    "type-icon/symbol/sv/standard/bug": {
+      "path": "assets/type-icons/symbol/sv/standard/bug.png",
+      "sha256": "e9026e330630d5671310ac9a822c66015ddd324888febd214eb84652b4178443",
+      "mediaType": "image/png",
+      "width": 60,
+      "height": 60,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "sv",
+        "state": "standard",
+        "locale": "und",
+        "type": "bug"
+      }
+    },
+    "type-icon/symbol/sv/standard/dark": {
+      "path": "assets/type-icons/symbol/sv/standard/dark.png",
+      "sha256": "6596e8e0251c6c77f13138a93145e050427daf70b47c94a5d713c53499f450b5",
+      "mediaType": "image/png",
+      "width": 60,
+      "height": 60,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "sv",
+        "state": "standard",
+        "locale": "und",
+        "type": "dark"
+      }
+    },
+    "type-icon/symbol/sv/standard/dragon": {
+      "path": "assets/type-icons/symbol/sv/standard/dragon.png",
+      "sha256": "0ef97dd4ecab557d9050e8e149c4156b41ac97b7663d1c22a266156832091a45",
+      "mediaType": "image/png",
+      "width": 60,
+      "height": 60,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "sv",
+        "state": "standard",
+        "locale": "und",
+        "type": "dragon"
+      }
+    },
+    "type-icon/symbol/sv/standard/electric": {
+      "path": "assets/type-icons/symbol/sv/standard/electric.png",
+      "sha256": "67ed5e17a283be4075648defddeab26cb131729c3c6d9b59a470ea8a593194f8",
+      "mediaType": "image/png",
+      "width": 60,
+      "height": 60,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "sv",
+        "state": "standard",
+        "locale": "und",
+        "type": "electric"
+      }
+    },
+    "type-icon/symbol/sv/standard/fairy": {
+      "path": "assets/type-icons/symbol/sv/standard/fairy.png",
+      "sha256": "4e882ce35a51ad93b93f8917afd86abf73473163c4edae7353157e407eda2aaf",
+      "mediaType": "image/png",
+      "width": 60,
+      "height": 60,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "sv",
+        "state": "standard",
+        "locale": "und",
+        "type": "fairy"
+      }
+    },
+    "type-icon/symbol/sv/standard/fighting": {
+      "path": "assets/type-icons/symbol/sv/standard/fighting.png",
+      "sha256": "cd53d1727a97ee0d94ab5b12698749b68df3de22f8bf19b78d6a9eeba39ede2c",
+      "mediaType": "image/png",
+      "width": 60,
+      "height": 60,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "sv",
+        "state": "standard",
+        "locale": "und",
+        "type": "fighting"
+      }
+    },
+    "type-icon/symbol/sv/standard/fire": {
+      "path": "assets/type-icons/symbol/sv/standard/fire.png",
+      "sha256": "29d7aece36d96b9eef1475cd3ef08d97d8e9dd8763163aa77d08ad41378ca303",
+      "mediaType": "image/png",
+      "width": 60,
+      "height": 60,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "sv",
+        "state": "standard",
+        "locale": "und",
+        "type": "fire"
+      }
+    },
+    "type-icon/symbol/sv/standard/flying": {
+      "path": "assets/type-icons/symbol/sv/standard/flying.png",
+      "sha256": "53d1122d3aefc5376025a71f96def6eec03e255004f2ba72344a382a016f561b",
+      "mediaType": "image/png",
+      "width": 60,
+      "height": 60,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "sv",
+        "state": "standard",
+        "locale": "und",
+        "type": "flying"
+      }
+    },
+    "type-icon/symbol/sv/standard/ghost": {
+      "path": "assets/type-icons/symbol/sv/standard/ghost.png",
+      "sha256": "c26e5480b24094159d85b5a4a19729074b9a70fefcc62b9eabcdc161f9c3c46f",
+      "mediaType": "image/png",
+      "width": 60,
+      "height": 60,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "sv",
+        "state": "standard",
+        "locale": "und",
+        "type": "ghost"
+      }
+    },
+    "type-icon/symbol/sv/standard/grass": {
+      "path": "assets/type-icons/symbol/sv/standard/grass.png",
+      "sha256": "14fa771b64bf80f92f6e32d97213a461c797c6e207cfdd42d6b171d68a89176d",
+      "mediaType": "image/png",
+      "width": 60,
+      "height": 60,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "sv",
+        "state": "standard",
+        "locale": "und",
+        "type": "grass"
+      }
+    },
+    "type-icon/symbol/sv/standard/ground": {
+      "path": "assets/type-icons/symbol/sv/standard/ground.png",
+      "sha256": "5e41577b90d0b70bf41b51ec428002a0c837a40c9d59d3c7560c3e810ac1dcad",
+      "mediaType": "image/png",
+      "width": 60,
+      "height": 60,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "sv",
+        "state": "standard",
+        "locale": "und",
+        "type": "ground"
+      }
+    },
+    "type-icon/symbol/sv/standard/ice": {
+      "path": "assets/type-icons/symbol/sv/standard/ice.png",
+      "sha256": "4761d77fd6d25a11ed9cf82e7af0c7f3125eab5e99eb3dd4356c3f0b00ddded6",
+      "mediaType": "image/png",
+      "width": 60,
+      "height": 60,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "sv",
+        "state": "standard",
+        "locale": "und",
+        "type": "ice"
+      }
+    },
+    "type-icon/symbol/sv/standard/normal": {
+      "path": "assets/type-icons/symbol/sv/standard/normal.png",
+      "sha256": "01a4440706403e2ca839b3b548e92f1b67753a094e23644ee32f87ed97db3c43",
+      "mediaType": "image/png",
+      "width": 60,
+      "height": 60,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "sv",
+        "state": "standard",
+        "locale": "und",
+        "type": "normal"
+      }
+    },
+    "type-icon/symbol/sv/standard/poison": {
+      "path": "assets/type-icons/symbol/sv/standard/poison.png",
+      "sha256": "bfd6adac10bca45a0c52a700aae8c28cb43263df2071eae861504224f541bc3a",
+      "mediaType": "image/png",
+      "width": 60,
+      "height": 60,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "sv",
+        "state": "standard",
+        "locale": "und",
+        "type": "poison"
+      }
+    },
+    "type-icon/symbol/sv/standard/psychic": {
+      "path": "assets/type-icons/symbol/sv/standard/psychic.png",
+      "sha256": "f04d03d8aae50fcc7253cd9f12292f578087bdba6b9c11bf2c202941f8f3bcbd",
+      "mediaType": "image/png",
+      "width": 60,
+      "height": 60,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "sv",
+        "state": "standard",
+        "locale": "und",
+        "type": "psychic"
+      }
+    },
+    "type-icon/symbol/sv/standard/rock": {
+      "path": "assets/type-icons/symbol/sv/standard/rock.png",
+      "sha256": "22999ffe75a0ab78b062ab17fc983445c18b2e1fc84ede6fe2f2cfad45738d9f",
+      "mediaType": "image/png",
+      "width": 60,
+      "height": 60,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "sv",
+        "state": "standard",
+        "locale": "und",
+        "type": "rock"
+      }
+    },
+    "type-icon/symbol/sv/standard/steel": {
+      "path": "assets/type-icons/symbol/sv/standard/steel.png",
+      "sha256": "e0f5440b07c943a2b8d09e80ebdbbd7d6b79b7f5cb80a9b97e6889a12ae35991",
+      "mediaType": "image/png",
+      "width": 60,
+      "height": 60,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "sv",
+        "state": "standard",
+        "locale": "und",
+        "type": "steel"
+      }
+    },
+    "type-icon/symbol/sv/standard/stellar": {
+      "path": "assets/type-icons/symbol/sv/standard/stellar.png",
+      "sha256": "2c67819f236ede95108e73f04b637935653b8c7b3d4d6a2a796a261a4c9a49cd",
+      "mediaType": "image/png",
+      "width": 60,
+      "height": 60,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "sv",
+        "state": "standard",
+        "locale": "und",
+        "type": "stellar"
+      }
+    },
+    "type-icon/symbol/sv/standard/water": {
+      "path": "assets/type-icons/symbol/sv/standard/water.png",
+      "sha256": "3d773eb1d603430c9e63655ea3f296148d6b0679e92858f5d44dd0f1f889f8e6",
+      "mediaType": "image/png",
+      "width": 60,
+      "height": 60,
+      "motion": "static",
+      "selectors": {
+        "presentation": "symbol",
+        "style": "sv",
+        "state": "standard",
+        "locale": "und",
+        "type": "water"
+      }
+    }
+  }
+}

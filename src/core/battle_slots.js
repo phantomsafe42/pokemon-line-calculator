@@ -4,13 +4,14 @@ export function battleFormat(value) {
   const raw = typeof value === "string" ? value : value?.game?.battleFormat;
   const normalized = String(raw || "singles").toLowerCase();
   if (["triple", "triples"].includes(normalized)) return "triples";
+  if (["rotation", "rotations"].includes(normalized)) return "rotation";
   if (["double", "doubles"].includes(normalized)) return "doubles";
   return "singles";
 }
 
 export function slotsPerSide(value) {
   const format = battleFormat(value);
-  return format === "triples" ? 3 : format === "doubles" ? 2 : 1;
+  return ["triples", "rotation"].includes(format) ? 3 : format === "doubles" ? 2 : 1;
 }
 
 export function activeSlotKeys(state, side) {
