@@ -79,7 +79,7 @@ test("VW2R Dataset baseExp values normalize for every School Kid Neil combatant"
 test("VW2R trainer navigation matches the ten canonical progression splits", () => {
   const groups = loadVw2rDataset().trainerGroups();
   assert.equal(groups.length, 10);
-  assert.equal(groups.flatMap(group => group.trainers).length, 427);
+  assert.equal(groups.flatMap(group => group.trainers).length, 426);
   assert.deepEqual(groups.map(group => group.label), [
     "Cheren Split", "Roxie Split", "Burgh Split", "Elesa Split", "Clay Split",
     "Skyla Split", "Drayden Split", "Marlon Split", "Ghetsis Split", "Champion Split"
@@ -87,6 +87,15 @@ test("VW2R trainer navigation matches the ten canonical progression splits", () 
   const burgh = groups.find(group => group.id === "burgh");
   assert.equal(burgh.trainers.find(trainer => trainer.id === "vw2r-trainer-0050")?.displayName, "School Kid Neil");
   assert.deepEqual(burgh.trainers.slice(0, 3).map(trainer => trainer.id), ["vw2r-trainer-0039", "vw2r-trainer-0040", "vw2r-trainer-0041"]);
+});
+
+test("temporary Lenora and Hawes pairing preserves source records and leads", () => {
+  const dataset = loadVw2rDataset();
+  const id = "vw2r-lenora-hawes-double";
+  assert.equal(dataset.trainerBattleFormat(id), "doubles");
+  assert.deepEqual(normalizeTrainerRoster(id, null, dataset).map(mon => mon.speciesId), ["stoutland", "gigalith", "unfezant", "machamp"]);
+  assert.equal(dataset.documents["trainers.json"].records["vw2r-trainer-0095"].battleProfiles.challenge.format, "single");
+  assert.equal(dataset.trainerGroups().find(group => group.id === "elesa").trainers.filter(trainer => trainer.id === id).length, 1);
 });
 
 test("VW2R standardized sources drive a complete PLC move preview through the shared calculator", () => {

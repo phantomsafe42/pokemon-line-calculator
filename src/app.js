@@ -1,6 +1,6 @@
 import { calculateStats, normalizePlayerCollection, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js";
 import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260828-central-sprites";
-import { loadStandardizedDataset } from "./adapters/standardized_dataset.js";
+import { loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260905-lenora-hawes";
 import { loadTrainerAiDocumentation } from "./adapters/trainer_ai.js?v=20260905-rule-titles-slot-ledger";
 import { createDraftRecord, destructiveTransitionNotice, IndexedDbDraftStore, markExported, markLiveFlushed, setLocalLiveEdit, updateDraftRecord } from "./cache/active_draft.js";
 import { TrainerAiForecastCache } from "./cache/trainer_ai_forecast.js?v=20260904-static-node-forecast";
@@ -21,7 +21,7 @@ import { effectiveActionSpeed } from "./rulesets/action_order.js?v=20260827-trip
 import { areSlotsAdjacent, canSelectShift, shiftWithCenter, triplePositionForSlot, tripleSlotForPosition } from "./rulesets/triple_battle.js?v=20260827-triples-slot-display";
 import { rotationFrontKey, rotationFrontSlot } from "./rulesets/rotation_battle.js";
 import { experienceForLevel, experienceToNextLevel, projectExperience } from "./rulesets/vw2r_experience.js";
-import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260905-rule-titles-slot-ledger";
+import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260905-lenora-hawes";
 import { battleCompletionState } from "./core/battle_completion.js?v=20260826-turn-nodes";
 import {
   addBox, addParty, boxesForGame, createEmptyBoxLibrary, exportBoxLibrary, IndexedDbBoxLibraryStore,

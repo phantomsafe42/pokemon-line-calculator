@@ -24,7 +24,7 @@ let trainerAi = null;
 let analyzeTrainerAi = null;
 
 async function initialize(datasetBaseUrl, trainerAiBaseUrl, gameId) {
-  const datasetModule = await import("../adapters/standardized_dataset.js");
+  const datasetModule = await import("../adapters/standardized_dataset.js?v=20260905-lenora-hawes");
   const damageModule = await import("../adapters/shared_damage_adapter.js?v=20260827-ability-form-events");
   const trainerAiModule = await import("../adapters/trainer_ai.js?v=20260905-rule-titles-slot-ledger");
   const plannerModule = await import("../core/planner.js?v=20260827-ability-form-events");

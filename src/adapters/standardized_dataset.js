@@ -186,6 +186,31 @@ export function createDatasetContext({ manifest, mechanics, documents }) {
   };
   indexes.evolutions = asMap(loaded["evolutions.json"]);
 
+  // Temporary, user-requested VW2R pairing until Dataset battle groups cover this fight.
+  // Clone the existing records; never modify standardized source documents.
+  const temporaryPairId = "vw2r-lenora-hawes-double";
+  if (gameId === "volt-white-2r") {
+    const lenora = indexes.trainers.get("vw2r-trainer-0095");
+    const hawes = indexes.trainers.get("vw2r-trainer-0096");
+    if (lenora && hawes) {
+      const paired = structuredClone(lenora);
+      paired.id = temporaryPairId;
+      paired.displayName = "Lenora & Scientist Hawes (Doubles)";
+      paired.shortName = paired.displayName;
+      paired.consumerTrainerId = null;
+      paired.finalRomTrainerId = null;
+      paired.finalRomTrainerIds = [];
+      paired.team = [];
+      for (let index = 0; index < Math.max(lenora.team.length, hawes.team.length); index++) {
+        for (const trainer of [lenora, hawes]) {
+          if (trainer.team[index]) paired.team.push({ ...structuredClone(trainer.team[index]), slot: paired.team.length + 1 });
+        }
+      }
+      paired.battleProfiles[mechanics.trainerBattleProfile].format = "double";
+      indexes.trainers.set(temporaryPairId, paired);
+    }
+  }
+
   const context = {
     gameId,
     displayName: manifest.displayName || gameId,
@@ -221,7 +246,14 @@ export function createDatasetContext({ manifest, mechanics, documents }) {
       return trainerBattleFormat(trainer, mechanics);
     },
     trainerGroups() {
-      return trainerNavigationGroups(indexes.trainers, loaded["trainer_order.json"], loaded["progression.json"]);
+      const groups = trainerNavigationGroups(indexes.trainers, loaded["trainer_order.json"], loaded["progression.json"]);
+      const paired = indexes.trainers.get(temporaryPairId);
+      if (paired) {
+        for (const group of groups) group.trainers = group.trainers.flatMap(trainer =>
+          trainer.id === "vw2r-trainer-0095" ? [paired]
+            : ["vw2r-trainer-0096", temporaryPairId].includes(trainer.id) ? [] : [trainer]);
+      }
+      return groups.filter(group => group.trainers.length);
     },
     fingerprint: {
       engineId: mechanics.engine?.id || "unknown",

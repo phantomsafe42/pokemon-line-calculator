@@ -1,5 +1,5 @@
 export class ResolverWorkerClient {
-  constructor(url = new URL("./resolver_worker.js?v=20260905-rule-titles-slot-ledger", import.meta.url)) {
+  constructor(url = new URL("./resolver_worker.js?v=20260905-lenora-hawes", import.meta.url)) {
     this.url = url;
     this.worker = new Worker(url);
     this.trainerAiWorker = new Worker(url);
