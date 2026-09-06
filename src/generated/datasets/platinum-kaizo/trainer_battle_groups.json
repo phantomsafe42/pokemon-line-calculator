@@ -1,0 +1,1318 @@
+{
+  "schemaVersion": 1,
+  "gameId": "platinum-kaizo",
+  "kind": "trainer-battle-groups",
+  "records": {
+    "platinum-kaizo-occurrence-0029": {
+      "id": "platinum-kaizo-occurrence-0029",
+      "battleFormat": "multi-trainer",
+      "locationId": "jubilifecity",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0414",
+        "platinum-kaizo-trainer-0415"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Gardenia Split",
+        "row": 37,
+        "memberRows": [
+          37,
+          47
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0047": {
+      "id": "platinum-kaizo-occurrence-0047",
+      "battleFormat": "multi-trainer",
+      "locationId": "eternaforest",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0909",
+        "platinum-kaizo-trainer-0201"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Gardenia Split",
+        "row": 258,
+        "memberRows": [
+          258,
+          268
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0048": {
+      "id": "platinum-kaizo-occurrence-0048",
+      "battleFormat": "multi-trainer",
+      "locationId": "eternaforest",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0462",
+        "platinum-kaizo-trainer-0461"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Gardenia Split",
+        "row": 278,
+        "memberRows": [
+          278,
+          288
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0049": {
+      "id": "platinum-kaizo-occurrence-0049",
+      "battleFormat": "multi-trainer",
+      "locationId": "eternaforest",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0463",
+        "platinum-kaizo-trainer-0464"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Gardenia Split",
+        "row": 298,
+        "memberRows": [
+          298,
+          308
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0054": {
+      "id": "platinum-kaizo-occurrence-0054",
+      "battleFormat": "multi-trainer",
+      "locationId": "eternaforest",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0910",
+        "platinum-kaizo-trainer-0432"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Gardenia Split",
+        "row": 358,
+        "memberRows": [
+          358,
+          368
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0055": {
+      "id": "platinum-kaizo-occurrence-0055",
+      "battleFormat": "multi-trainer",
+      "locationId": "eternaforest",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0398",
+        "platinum-kaizo-trainer-0395"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Gardenia Split",
+        "row": 378,
+        "memberRows": [
+          378,
+          388
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0056": {
+      "id": "platinum-kaizo-occurrence-0056",
+      "battleFormat": "multi-trainer",
+      "locationId": "eternaforest",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0435",
+        "platinum-kaizo-trainer-0436"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Gardenia Split",
+        "row": 398,
+        "memberRows": [
+          398,
+          408
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0071": {
+      "id": "platinum-kaizo-occurrence-0071",
+      "battleFormat": "multi-trainer",
+      "locationId": "route206",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0025",
+        "platinum-kaizo-trainer-0027"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Fantina Split",
+        "row": 80,
+        "memberRows": [
+          80,
+          90
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0072": {
+      "id": "platinum-kaizo-occurrence-0072",
+      "battleFormat": "multi-trainer",
+      "locationId": "route206",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0029",
+        "platinum-kaizo-trainer-0030"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Fantina Split",
+        "row": 100,
+        "memberRows": [
+          100,
+          110
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0142": {
+      "id": "platinum-kaizo-occurrence-0142",
+      "battleFormat": "multi-trainer",
+      "locationId": "route214",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0120",
+        "platinum-kaizo-trainer-0119"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Wake Split",
+        "row": 7,
+        "memberRows": [
+          7,
+          17
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0150": {
+      "id": "platinum-kaizo-occurrence-0150",
+      "battleFormat": "multi-trainer",
+      "locationId": "valorlakefrontfestival",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0688",
+        "platinum-kaizo-trainer-0689"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Wake Split",
+        "row": 101,
+        "memberRows": [
+          101,
+          111
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0151": {
+      "id": "platinum-kaizo-occurrence-0151",
+      "battleFormat": "multi-trainer",
+      "locationId": "valorlakefrontfestival",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0690",
+        "platinum-kaizo-trainer-0691"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Wake Split",
+        "row": 121,
+        "memberRows": [
+          121,
+          131
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0152": {
+      "id": "platinum-kaizo-occurrence-0152",
+      "battleFormat": "multi-trainer",
+      "locationId": "valorlakefrontfestival",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0692",
+        "platinum-kaizo-trainer-0693"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Wake Split",
+        "row": 141,
+        "memberRows": [
+          141,
+          151
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0153": {
+      "id": "platinum-kaizo-occurrence-0153",
+      "battleFormat": "multi-trainer",
+      "locationId": "valorlakefrontfestival",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0694",
+        "platinum-kaizo-trainer-0695"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Wake Split",
+        "row": 161,
+        "memberRows": [
+          161,
+          171
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0218": {
+      "id": "platinum-kaizo-occurrence-0218",
+      "battleFormat": "multi-trainer",
+      "locationId": "ironisland",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0452",
+        "platinum-kaizo-trainer-0453"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Byron Split",
+        "row": 522,
+        "memberRows": [
+          522,
+          532
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0219": {
+      "id": "platinum-kaizo-occurrence-0219",
+      "battleFormat": "multi-trainer",
+      "locationId": "ironisland",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0504",
+        "platinum-kaizo-trainer-0505"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Byron Split",
+        "row": 542,
+        "memberRows": [
+          542,
+          552
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0220": {
+      "id": "platinum-kaizo-occurrence-0220",
+      "battleFormat": "multi-trainer",
+      "locationId": "ironisland",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0457",
+        "platinum-kaizo-trainer-0506"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Byron Split",
+        "row": 562,
+        "memberRows": [
+          562,
+          572
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0221": {
+      "id": "platinum-kaizo-occurrence-0221",
+      "battleFormat": "multi-trainer",
+      "locationId": "ironisland",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0305",
+        "platinum-kaizo-trainer-0289"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Byron Split",
+        "row": 582,
+        "memberRows": [
+          582,
+          592
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0222": {
+      "id": "platinum-kaizo-occurrence-0222",
+      "battleFormat": "multi-trainer",
+      "locationId": "ironisland",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0932",
+        "platinum-kaizo-trainer-0372"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Byron Split",
+        "row": 602,
+        "memberRows": [
+          602,
+          612
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0223": {
+      "id": "platinum-kaizo-occurrence-0223",
+      "battleFormat": "multi-trainer",
+      "locationId": "ironisland",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0379",
+        "platinum-kaizo-trainer-0378"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Byron Split",
+        "row": 622,
+        "memberRows": [
+          622,
+          632
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0224": {
+      "id": "platinum-kaizo-occurrence-0224",
+      "battleFormat": "multi-trainer",
+      "locationId": "ironisland",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0388",
+        "platinum-kaizo-trainer-0392"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Byron Split",
+        "row": 642,
+        "memberRows": [
+          642,
+          652
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0225": {
+      "id": "platinum-kaizo-occurrence-0225",
+      "battleFormat": "multi-trainer",
+      "locationId": "ironisland",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0835",
+        "platinum-kaizo-trainer-0836"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Byron Split",
+        "row": 662,
+        "memberRows": [
+          662,
+          672
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0231": {
+      "id": "platinum-kaizo-occurrence-0231",
+      "battleFormat": "multi-trainer",
+      "locationId": "lakevalorpermanentrain",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0399",
+        "platinum-kaizo-trainer-0425"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Candice Split",
+        "row": 17,
+        "memberRows": [
+          17,
+          27
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0232": {
+      "id": "platinum-kaizo-occurrence-0232",
+      "battleFormat": "multi-trainer",
+      "locationId": "lakevalorpermanentrain",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0500",
+        "platinum-kaizo-trainer-0447"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Candice Split",
+        "row": 37,
+        "memberRows": [
+          37,
+          47
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0233": {
+      "id": "platinum-kaizo-occurrence-0233",
+      "battleFormat": "multi-trainer",
+      "locationId": "lakevalorpermanentrain",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0933",
+        "platinum-kaizo-trainer-0397"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Candice Split",
+        "row": 57,
+        "memberRows": [
+          57,
+          67
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0234": {
+      "id": "platinum-kaizo-occurrence-0234",
+      "battleFormat": "multi-trainer",
+      "locationId": "lakevalorpermanentrain",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0386",
+        "platinum-kaizo-trainer-0373"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Candice Split",
+        "row": 77,
+        "memberRows": [
+          77,
+          87
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0235": {
+      "id": "platinum-kaizo-occurrence-0235",
+      "battleFormat": "multi-trainer",
+      "locationId": "lakevalorpermanentrain",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0394",
+        "platinum-kaizo-trainer-0390"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Candice Split",
+        "row": 97,
+        "memberRows": [
+          97,
+          107
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0236": {
+      "id": "platinum-kaizo-occurrence-0236",
+      "battleFormat": "multi-trainer",
+      "locationId": "lakevalorpermanentrain",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0499",
+        "platinum-kaizo-trainer-0288"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Candice Split",
+        "row": 117,
+        "memberRows": [
+          117,
+          127
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0237": {
+      "id": "platinum-kaizo-occurrence-0237",
+      "battleFormat": "multi-trainer",
+      "locationId": "lakevalorpermanentrain",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0417",
+        "platinum-kaizo-trainer-0418"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Candice Split",
+        "row": 137,
+        "memberRows": [
+          137,
+          147
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0238": {
+      "id": "platinum-kaizo-occurrence-0238",
+      "battleFormat": "multi-trainer",
+      "locationId": "lakevalorpermanentrain",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0408",
+        "platinum-kaizo-trainer-0433"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Candice Split",
+        "row": 157,
+        "memberRows": [
+          157,
+          167
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0241": {
+      "id": "platinum-kaizo-occurrence-0241",
+      "battleFormat": "multi-trainer",
+      "locationId": "lakeverity",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0419",
+        "platinum-kaizo-trainer-0426"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Candice Split",
+        "row": 192,
+        "memberRows": [
+          192,
+          202
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0242": {
+      "id": "platinum-kaizo-occurrence-0242",
+      "battleFormat": "multi-trainer",
+      "locationId": "lakeverity",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0286",
+        "platinum-kaizo-trainer-0282"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Candice Split",
+        "row": 212,
+        "memberRows": [
+          212,
+          222
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0243": {
+      "id": "platinum-kaizo-occurrence-0243",
+      "battleFormat": "multi-trainer",
+      "locationId": "lakeverity",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0420",
+        "platinum-kaizo-trainer-0427"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Candice Split",
+        "row": 232,
+        "memberRows": [
+          232,
+          242
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0244": {
+      "id": "platinum-kaizo-occurrence-0244",
+      "battleFormat": "multi-trainer",
+      "locationId": "lakeverity",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0405",
+        "platinum-kaizo-trainer-0934"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Candice Split",
+        "row": 252,
+        "memberRows": [
+          252,
+          262
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0269": {
+      "id": "platinum-kaizo-occurrence-0269",
+      "battleFormat": "multi-trainer",
+      "locationId": "route222permanentsun",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0175",
+        "platinum-kaizo-trainer-0492"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Volkner Split",
+        "row": 7,
+        "memberRows": [
+          7,
+          17
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0271": {
+      "id": "platinum-kaizo-occurrence-0271",
+      "battleFormat": "multi-trainer",
+      "locationId": "route222permanentsun",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0335",
+        "platinum-kaizo-trainer-0333"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Volkner Split",
+        "row": 37,
+        "memberRows": [
+          37,
+          47
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0275": {
+      "id": "platinum-kaizo-occurrence-0275",
+      "battleFormat": "multi-trainer",
+      "locationId": "route222permanentsun",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0337",
+        "platinum-kaizo-trainer-0359"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Volkner Split",
+        "row": 87,
+        "memberRows": [
+          87,
+          97
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0277": {
+      "id": "platinum-kaizo-occurrence-0277",
+      "battleFormat": "multi-trainer",
+      "locationId": "route222permanentsun",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0173",
+        "platinum-kaizo-trainer-0180"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Volkner Split",
+        "row": 117,
+        "memberRows": [
+          117,
+          127
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0279": {
+      "id": "platinum-kaizo-occurrence-0279",
+      "battleFormat": "multi-trainer",
+      "locationId": "sunyshoregym",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0344",
+        "platinum-kaizo-trainer-0349"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Volkner Split",
+        "row": 151,
+        "memberRows": [
+          151,
+          161
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0283": {
+      "id": "platinum-kaizo-occurrence-0283",
+      "battleFormat": "multi-trainer",
+      "locationId": "sunyshoregym",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0239",
+        "platinum-kaizo-trainer-0940"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Volkner Split",
+        "row": 201,
+        "memberRows": [
+          201,
+          211
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0296": {
+      "id": "platinum-kaizo-occurrence-0296",
+      "battleFormat": "multi-trainer",
+      "locationId": "waywardcaveoptionalgauntletwithmira",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0443",
+        "platinum-kaizo-trainer-0383"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Galactic Split",
+        "row": 117,
+        "memberRows": [
+          117,
+          127
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0297": {
+      "id": "platinum-kaizo-occurrence-0297",
+      "battleFormat": "multi-trainer",
+      "locationId": "waywardcaveoptionalgauntletwithmira",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0380",
+        "platinum-kaizo-trainer-0458"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Galactic Split",
+        "row": 137,
+        "memberRows": [
+          137,
+          147
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0298": {
+      "id": "platinum-kaizo-occurrence-0298",
+      "battleFormat": "multi-trainer",
+      "locationId": "waywardcaveoptionalgauntletwithmira",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0459",
+        "platinum-kaizo-trainer-0460"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Galactic Split",
+        "row": 157,
+        "memberRows": [
+          157,
+          167
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0299": {
+      "id": "platinum-kaizo-occurrence-0299",
+      "battleFormat": "multi-trainer",
+      "locationId": "waywardcaveoptionalgauntletwithmira",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0450",
+        "platinum-kaizo-trainer-0496"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Galactic Split",
+        "row": 177,
+        "memberRows": [
+          177,
+          187
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0300": {
+      "id": "platinum-kaizo-occurrence-0300",
+      "battleFormat": "multi-trainer",
+      "locationId": "waywardcaveoptionalgauntletwithmira",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0454",
+        "platinum-kaizo-trainer-0455"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Galactic Split",
+        "row": 197,
+        "memberRows": [
+          197,
+          207
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0301": {
+      "id": "platinum-kaizo-occurrence-0301",
+      "battleFormat": "multi-trainer",
+      "locationId": "waywardcaveoptionalgauntletwithmira",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0749",
+        "platinum-kaizo-trainer-0750"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Galactic Split",
+        "row": 217,
+        "memberRows": [
+          217,
+          227
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0303": {
+      "id": "platinum-kaizo-occurrence-0303",
+      "battleFormat": "multi-trainer",
+      "locationId": "veilstonewarehousepermanenttrickroom",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0539",
+        "platinum-kaizo-trainer-0540"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Galactic Split",
+        "row": 252,
+        "memberRows": [
+          252,
+          262
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0305": {
+      "id": "platinum-kaizo-occurrence-0305",
+      "battleFormat": "multi-trainer",
+      "locationId": "veilstonewarehousepermanenttrickroom",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0541",
+        "platinum-kaizo-trainer-0542"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Galactic Split",
+        "row": 282,
+        "memberRows": [
+          282,
+          292
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0306": {
+      "id": "platinum-kaizo-occurrence-0306",
+      "battleFormat": "multi-trainer",
+      "locationId": "veilstonewarehousepermanenttrickroom",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0943",
+        "platinum-kaizo-trainer-0557"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Galactic Split",
+        "row": 302,
+        "memberRows": [
+          302,
+          312
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0308": {
+      "id": "platinum-kaizo-occurrence-0308",
+      "battleFormat": "multi-trainer",
+      "locationId": "veilstonewarehousepermanenttrickroom",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0543",
+        "platinum-kaizo-trainer-0544"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Galactic Split",
+        "row": 332,
+        "memberRows": [
+          332,
+          342
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0310": {
+      "id": "platinum-kaizo-occurrence-0310",
+      "battleFormat": "multi-trainer",
+      "locationId": "veilstonewarehousepermanenttrickroom",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0551",
+        "platinum-kaizo-trainer-0945"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Galactic Split",
+        "row": 362,
+        "memberRows": [
+          362,
+          372
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0311": {
+      "id": "platinum-kaizo-occurrence-0311",
+      "battleFormat": "multi-trainer",
+      "locationId": "veilstonewarehousepermanenttrickroom",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0553",
+        "platinum-kaizo-trainer-0554"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Galactic Split",
+        "row": 382,
+        "memberRows": [
+          382,
+          392
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0319": {
+      "id": "platinum-kaizo-occurrence-0319",
+      "battleFormat": "multi-trainer",
+      "locationId": "veilstonewarehousepermanenttrickroom",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0558",
+        "platinum-kaizo-trainer-0559"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Galactic Split",
+        "row": 472,
+        "memberRows": [
+          472,
+          482
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0324": {
+      "id": "platinum-kaizo-occurrence-0324",
+      "battleFormat": "multi-trainer",
+      "locationId": "galactichqpermanenttrickroom",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0628",
+        "platinum-kaizo-trainer-0629"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Galactic Split",
+        "row": 537,
+        "memberRows": [
+          537,
+          547
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0325": {
+      "id": "platinum-kaizo-occurrence-0325",
+      "battleFormat": "multi-trainer",
+      "locationId": "galactichqpermanenttrickroom",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0638",
+        "platinum-kaizo-trainer-0632"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Galactic Split",
+        "row": 557,
+        "memberRows": [
+          557,
+          567
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0327": {
+      "id": "platinum-kaizo-occurrence-0327",
+      "battleFormat": "multi-trainer",
+      "locationId": "galactichqpermanenttrickroom",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0564",
+        "platinum-kaizo-trainer-0565"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Galactic Split",
+        "row": 587,
+        "memberRows": [
+          587,
+          597
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0328": {
+      "id": "platinum-kaizo-occurrence-0328",
+      "battleFormat": "multi-trainer",
+      "locationId": "galactichqpermanenttrickroom",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0566",
+        "platinum-kaizo-trainer-0567"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Galactic Split",
+        "row": 607,
+        "memberRows": [
+          607,
+          617
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0329": {
+      "id": "platinum-kaizo-occurrence-0329",
+      "battleFormat": "multi-trainer",
+      "locationId": "galactichqpermanenttrickroom",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0630",
+        "platinum-kaizo-trainer-0631"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Galactic Split",
+        "row": 627,
+        "memberRows": [
+          627,
+          637
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0331": {
+      "id": "platinum-kaizo-occurrence-0331",
+      "battleFormat": "multi-trainer",
+      "locationId": "galactichqpermanenttrickroom",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0642",
+        "platinum-kaizo-trainer-0643"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Galactic Split",
+        "row": 657,
+        "memberRows": [
+          657,
+          667
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0332": {
+      "id": "platinum-kaizo-occurrence-0332",
+      "battleFormat": "multi-trainer",
+      "locationId": "galactichqpermanenttrickroom",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0569",
+        "platinum-kaizo-trainer-0947"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Galactic Split",
+        "row": 677,
+        "memberRows": [
+          677,
+          687
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0339": {
+      "id": "platinum-kaizo-occurrence-0339",
+      "battleFormat": "multi-trainer",
+      "locationId": "mountcoronetroom1",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0949",
+        "platinum-kaizo-trainer-0950"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Galactic Split",
+        "row": 759,
+        "memberRows": [
+          759,
+          769
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0342": {
+      "id": "platinum-kaizo-occurrence-0342",
+      "battleFormat": "multi-trainer",
+      "locationId": "coronethighlandsoutside1hail",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0507",
+        "platinum-kaizo-trainer-0508"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Galactic Split",
+        "row": 801,
+        "memberRows": [
+          801,
+          811
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0347": {
+      "id": "platinum-kaizo-occurrence-0347",
+      "battleFormat": "multi-trainer",
+      "locationId": "coronethighlandsoutside1hail",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0513",
+        "platinum-kaizo-trainer-0511"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Galactic Split",
+        "row": 862,
+        "memberRows": [
+          862,
+          872
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0350": {
+      "id": "platinum-kaizo-occurrence-0350",
+      "battleFormat": "multi-trainer",
+      "locationId": "coronethighlandsoutside1hail",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0582",
+        "platinum-kaizo-trainer-0583"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Galactic Split",
+        "row": 912,
+        "memberRows": [
+          912,
+          922
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0354": {
+      "id": "platinum-kaizo-occurrence-0354",
+      "battleFormat": "multi-trainer",
+      "locationId": "coronethighlandsroom1fog",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0562",
+        "platinum-kaizo-trainer-0572"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Galactic Split",
+        "row": 975,
+        "memberRows": [
+          975,
+          985
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0363": {
+      "id": "platinum-kaizo-occurrence-0363",
+      "battleFormat": "multi-trainer",
+      "locationId": "coronethighlandsroom2",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0531",
+        "platinum-kaizo-trainer-0532"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Galactic Split",
+        "row": 1079,
+        "memberRows": [
+          1079,
+          1089
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0364": {
+      "id": "platinum-kaizo-occurrence-0364",
+      "battleFormat": "multi-trainer",
+      "locationId": "coronethighlandsroom3rain",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0581",
+        "platinum-kaizo-trainer-0955"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Galactic Split",
+        "row": 1111,
+        "memberRows": [
+          1111,
+          1121
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0365": {
+      "id": "platinum-kaizo-occurrence-0365",
+      "battleFormat": "multi-trainer",
+      "locationId": "spearpillar",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0521",
+        "platinum-kaizo-trainer-0527"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Galactic Split",
+        "row": 1143,
+        "memberRows": [
+          1143,
+          1153
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    },
+    "platinum-kaizo-occurrence-0366": {
+      "id": "platinum-kaizo-occurrence-0366",
+      "battleFormat": "multi-trainer",
+      "locationId": "spearpillar",
+      "enemyTrainerIds": [
+        "platinum-kaizo-trainer-0528",
+        "platinum-kaizo-trainer-0407"
+      ],
+      "source": {
+        "workbook": "PK_Trainer_Documentation.xlsx",
+        "sheet": "Galactic Split",
+        "row": 1195,
+        "memberRows": [
+          1195,
+          1205
+        ]
+      },
+      "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
+    }
+  }
+}

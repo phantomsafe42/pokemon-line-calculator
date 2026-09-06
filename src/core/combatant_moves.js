@@ -1,6 +1,6 @@
-import { damagingMoveImmunity } from "../rulesets/switch_rules.js?v=20260827-ability-state-events";
-import { adjacentActiveEntries } from "../rulesets/triple_battle.js?v=20260827-triples-slot-display";
-import { toId } from "./primitives.js";
+import { damagingMoveImmunity } from "../rulesets/switch_rules.js?v=20260905-drafts-freecalc-partners-v1";
+import { adjacentActiveEntries } from "../rulesets/triple_battle.js?v=20260905-drafts-freecalc-partners-v1";
+import { toId } from "./primitives.js?v=20260905-drafts-freecalc-partners-v1";
 
 export function boundedSlotDamageLabel(minPercent, maxPercent) {
   if (minPercent === null || minPercent === undefined || maxPercent === null || maxPercent === undefined) return null;

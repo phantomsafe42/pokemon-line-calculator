@@ -1,11 +1,12 @@
-import { assertValidPlanDocument } from "../contracts/plan_contract.js";
-import { actionList } from "./battle_slots.js";
-import { clone, nowIso } from "./primitives.js";
+import { assertValidPlanDocument } from "../contracts/plan_contract.js?v=20260905-drafts-freecalc-partners-v1";
+import { actionList } from "./battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
+import { clone, nowIso } from "./primitives.js?v=20260905-drafts-freecalc-partners-v1";
 
 export function parentStateId(plan, stateNodeId) {
   const state = plan.stateNodes?.[stateNodeId];
   if (state?.parentActionGroupId) return plan.actionGroups?.[state.parentActionGroupId]?.parentStateNodeId || null;
   if (state?.parentReplacementTransitionId) return plan.replacementTransitions?.[state.parentReplacementTransitionId]?.parentStateNodeId || null;
+  if (state?.parentManualTransitionId) return plan.manualTransitions?.[state.parentManualTransitionId]?.parentStateNodeId || null;
   return null;
 }
 
@@ -29,6 +30,7 @@ export function ancestorClosure(plan, selectedStateNodeIds) {
   const stateIds = new Set([plan.initialStateNodeId]);
   const actionGroupIds = new Set();
   const replacementTransitionIds = new Set();
+  const manualTransitionIds = new Set();
   for (const stateId of selected) {
     for (const lineageId of stateLineage(plan, stateId)) stateIds.add(lineageId);
   }
@@ -37,9 +39,11 @@ export function ancestorClosure(plan, selectedStateNodeIds) {
     if (parentGroupId) actionGroupIds.add(parentGroupId);
     const parentReplacementId = plan.stateNodes[stateId]?.parentReplacementTransitionId;
     if (parentReplacementId) replacementTransitionIds.add(parentReplacementId);
+    if (plan.stateNodes[stateId]?.parentManualTransitionId) manualTransitionIds.add(plan.stateNodes[stateId].parentManualTransitionId);
   }
   return {
     selectedStateNodeIds: selected,
+    includedManualTransitionIds: [...manualTransitionIds],
     includedStateNodeIds: [...stateIds].sort((a, b) => {
       const left = plan.stateNodes[a];
       const right = plan.stateNodes[b];
@@ -68,7 +72,7 @@ export function selectedLeafStateIds(plan, selectedStateNodeIds) {
 
 export function exportBranchGroups(plan) {
   const visibleEntries = planTreeOrder(plan, { includeReplacementStates: false })
-    .filter(({ state }) => Number(state.turnNumber) > 0);
+    .filter(({ state }) => Number(state.turnNumber) > 0 || state.freeCalc || Object.keys(plan.stateNodes).length === 1);
   const visibleIds = visibleEntries.map(({ state }) => state.stateNodeId);
   const visibleSet = new Set(visibleIds);
   const leafSet = new Set(selectedLeafStateIds(plan, visibleIds));
@@ -126,6 +130,7 @@ export function createPlanSubset(plan, selectedStateNodeIds, options = {}) {
   const includedStates = new Set(selection.includedStateNodeIds);
   const includedGroups = new Set(selection.includedActionGroupIds);
   const includedReplacements = new Set(selection.includedReplacementTransitionIds);
+  const includedManuals = new Set(selection.includedManualTransitionIds);
   const stateNodes = {};
   const actionGroups = {};
   const replacementTransitions = {};
@@ -135,6 +140,7 @@ export function createPlanSubset(plan, selectedStateNodeIds, options = {}) {
     const state = clone(plan.stateNodes[stateId]);
     state.childActionGroupIds = (state.childActionGroupIds || []).filter(id => includedGroups.has(id));
     state.childReplacementTransitionIds = (state.childReplacementTransitionIds || []).filter(id => includedReplacements.has(id));
+    state.childManualTransitionIds = (state.childManualTransitionIds || []).filter(id => includedManuals.has(id));
     state.resolutionEventIds = [...(state.resolutionEventIds || [])];
     delete state.draftNote;
     for (const eventId of state.resolutionEventIds) eventIds.add(eventId);
@@ -168,6 +174,7 @@ export function createPlanSubset(plan, selectedStateNodeIds, options = {}) {
     stateNodes,
     actionGroups,
     replacementTransitions,
+    manualTransitions: Object.fromEntries([...includedManuals].map(id => [id, clone(plan.manualTransitions[id])])),
     resolutionEvents,
     workingDraft: null
   };
@@ -184,10 +191,11 @@ export function planTreeOrder(plan, { includeReplacementStates = true } = {}) {
     if (visible) output.push({ state, depth });
     const children = [
       ...(state.childActionGroupIds || []).map(id => ({ kind: "action", id, order: Number(plan.actionGroups[id]?.createdOrder || 0) })),
-      ...(state.childReplacementTransitionIds || []).map(id => ({ kind: "replacement", id, order: Number(plan.replacementTransitions?.[id]?.createdOrder || 0) }))
+      ...(state.childReplacementTransitionIds || []).map(id => ({ kind: "replacement", id, order: Number(plan.replacementTransitions?.[id]?.createdOrder || 0) })),
+      ...(state.childManualTransitionIds || []).map(id => ({ kind: "manual", id, order: Number(plan.manualTransitions?.[id]?.createdOrder || 0) }))
     ].sort((left, right) => left.order - right.order || left.id.localeCompare(right.id));
     for (const child of children) {
-      const record = child.kind === "action" ? plan.actionGroups[child.id] : plan.replacementTransitions?.[child.id];
+      const record = child.kind === "action" ? plan.actionGroups[child.id] : child.kind === "manual" ? plan.manualTransitions?.[child.id] : plan.replacementTransitions?.[child.id];
       for (const outcomeId of [...(record?.outcomeStateNodeIds || [])].sort((a, b) => Number(plan.stateNodes[a]?.createdOrder || 0) - Number(plan.stateNodes[b]?.createdOrder || 0))) {
         walk(outcomeId, depth + (visible ? 1 : 0));
       }
@@ -200,10 +208,11 @@ export function planTreeOrder(plan, { includeReplacementStates = true } = {}) {
 function orderedChildStateIds(plan, state) {
   const transitions = [
     ...(state?.childActionGroupIds || []).map(id => ({ kind: "action", id, order: Number(plan.actionGroups[id]?.createdOrder || 0) })),
-    ...(state?.childReplacementTransitionIds || []).map(id => ({ kind: "replacement", id, order: Number(plan.replacementTransitions?.[id]?.createdOrder || 0) }))
+    ...(state?.childReplacementTransitionIds || []).map(id => ({ kind: "replacement", id, order: Number(plan.replacementTransitions?.[id]?.createdOrder || 0) })),
+    ...(state?.childManualTransitionIds || []).map(id => ({ kind: "manual", id, order: Number(plan.manualTransitions?.[id]?.createdOrder || 0) }))
   ].sort((left, right) => left.order - right.order || left.id.localeCompare(right.id));
   return transitions.flatMap(transition => {
-    const record = transition.kind === "action" ? plan.actionGroups[transition.id] : plan.replacementTransitions?.[transition.id];
+    const record = transition.kind === "action" ? plan.actionGroups[transition.id] : transition.kind === "manual" ? plan.manualTransitions?.[transition.id] : plan.replacementTransitions?.[transition.id];
     return [...(record?.outcomeStateNodeIds || [])].sort((left, right) =>
       Number(plan.stateNodes[left]?.createdOrder || 0) - Number(plan.stateNodes[right]?.createdOrder || 0)
       || left.localeCompare(right)

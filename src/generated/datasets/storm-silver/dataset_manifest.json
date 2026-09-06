@@ -53,7 +53,7 @@
   "inheritedBaseTables": {
     "path": "../Gen 4/source-data/base_engine_tables.json",
     "profile": "heartgold-soulsilver",
-    "sha256": "f21e8a2b3f458b54728611d22e166fd27ef18c26f9c109bdfb70b02a5df4ee44"
+    "sha256": "809b747dc7f150ebfb60742963a593c3fa919a083f894977235ff574c9387604"
   },
   "calculationReference": {
     "engine": {
@@ -82,6 +82,33 @@
     ]
   },
   "sourceRequirements": {
+    "trainerAiEvaluatorAuthority": {
+      "required": true,
+      "source": "imports/trainer-ai/sssg-pchal/hgss-ai-structure.json",
+      "status": "passed",
+      "finalRomSha256": "89650c71f416b9b4607eaf22508b1eab90fafb34a1579d0bf4db7461318b397d",
+      "retailHgssAiOverlayByteIdentical": true,
+      "platinumScoringScriptByteIdentical": true,
+      "moveRecords": 471,
+      "itemIdentities": 537,
+      "hgssItemPolicyCpuExecutions": 22,
+      "trainerBindings": "source-data/trainer_ai.json owns activation; unsupported releases do not inherit this profile."
+    },
+    "trainerInitialState": {
+      "required": true,
+      "sourceModule": "../../tools/gen4_priority_trainer_state.js",
+      "sourceModuleSha256": "3e7dc96a6820323b6fcb1f52976e4c948e16d1665a1ffb0911a3b43453d16593",
+      "source": "imports/trainer-ai/sssg-pchal/hgss-trainer-constructor.json",
+      "matchedTrainers": 737,
+      "fields": [
+        "gender",
+        "initialFriendship",
+        "natureId",
+        "abilityId"
+      ],
+      "inheritance": "CPU-verified constructor and exact numeric party-slot identity only; no player default",
+      "excludedReferenceTrainerIds": []
+    },
     "speciesAbilitySlots": {
       "required": true,
       "slotCount": 2,
@@ -131,7 +158,13 @@
     "trainer_reconciliation_report.json",
     "species_ability_slots.json",
     "trainer_documentation.json",
-    "trainer_ai_evidence.json"
+    "trainer_ai_evidence.json",
+    "imports/trainer-ai/sssg-pchal/hgss-initial-ability.json",
+    "imports/trainer-ai/sssg-pchal/hgss-ai-structure.json",
+    "imports/trainer-ai/sssg-pchal/hgss-item-parameters.json",
+    "imports/trainer-ai/sssg-pchal/hgss-trainer-item-known-answers.json",
+    "imports/trainer-ai/sssg-pchal/hgss-ai-external-abi.json",
+    "imports/trainer-ai/sssg-pchal/hgss-trainer-constructor.json"
   ],
   "builders": {
     "build": "node ..\\tools\\standardize_legacy_game.js storm-silver",
@@ -143,6 +176,7 @@
     "trainerAiEvidenceBuild": "python ..\\tools\\build_trainer_ai_evidence.py --game storm-silver --storm-silver-rom <approved-local-final-rom>",
     "trainerAiEvidenceDeterministicCheck": "python ..\\tools\\build_trainer_ai_evidence.py --game storm-silver --storm-silver-rom <approved-local-final-rom> --check",
     "trainerAiBuild": "node ..\\tools\\build_trainer_ai_profiles.js",
+    "trainerAiImmutableEvidenceCheck": "node ..\\tools\\import_sssg_ai_evidence.js --check",
     "trainerAiDeterministicCheck": "node ..\\tools\\build_trainer_ai_profiles.js --check",
     "consumerBuild": "node ..\\tools\\build_standardized_consumers.js --game storm-silver",
     "consumerDeterministicCheck": "node ..\\tools\\build_standardized_consumers.js --game storm-silver --check",

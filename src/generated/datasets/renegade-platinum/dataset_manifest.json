@@ -72,12 +72,16 @@
     "source-data/imports/trainer-ai/renegade-platinum-item-parameters.json": {
       "sha256": "f6b59f9de7e1d4a8dcb260bf7010ed33832dbcb9ad37856e21e12cd49c14d3b6",
       "role": "complete supported-ROM held-item parameters"
+    },
+    "source-data/imports/trainer-ai/renegade-platinum-mapped-item-parameters.json": {
+      "sha256": "823e21164e523ea133287c6dc397ccaaa80c840aeade93fef3f961842584763b",
+      "role": "CPU-verified item-ID to archive-member mapping; supersedes the member-indexed held-item projection"
     }
   },
   "inheritedBaseTables": {
     "path": "../Gen 4/source-data/base_engine_tables.json",
     "profile": "platinum",
-    "sha256": "f21e8a2b3f458b54728611d22e166fd27ef18c26f9c109bdfb70b02a5df4ee44"
+    "sha256": "809b747dc7f150ebfb60742963a593c3fa919a083f894977235ff574c9387604"
   },
   "calculationReference": {
     "engine": {

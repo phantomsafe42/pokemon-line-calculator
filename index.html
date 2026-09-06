@@ -7,7 +7,7 @@
   <meta name="pokemon-asset-release-base" content="/Datasets/Pokemon%20Assets/release">
   <title>Pokémon Line Calculator</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./styles.css?v=20260905-local-restored-v1">
+  <link rel="stylesheet" href="./styles.css?v=20260906-start-new-line-v1">
 </head>
 <body>
   <header class="app-header">
@@ -22,10 +22,11 @@
       </select>
       <p id="game-credit" class="game-credit" aria-live="polite"></p>
     </div>
-    <p id="app-status" class="status" role="status">Select a game to begin.</p>
+    <!-- PLC_LOCAL_ONLY_START --><button id="view-mode-toggle" class="view-mode-toggle secondary" type="button" role="switch" aria-checked="false">Local View</button><!-- PLC_LOCAL_ONLY_END -->
   </header>
 
   <main class="app-shell">
+    <p id="app-status" class="status" role="status">Select a game to begin.</p>
     <section id="game-gate" class="panel game-gate">
       <h2>Select the game you are planning</h2>
       <p>Boxes, trainers, mechanics, save parsing, and active plans are scoped to the selected game. Games are enabled only after their standardized mechanics contracts pass validation.</p>
@@ -34,6 +35,7 @@
     <nav id="app-tabs" class="tabs" aria-label="PLC sections" hidden>
       <button id="plc-tab" class="tab-button" type="button" role="tab" aria-selected="true" aria-controls="plc-panel">PLC</button>
       <button id="boxes-tab" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="boxes-panel">Boxes</button>
+      <button id="drafts-tab" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="drafts-panel">Drafts</button>
     </nav>
 
     <section id="plc-panel" role="tabpanel" aria-labelledby="plc-tab" hidden>
@@ -44,9 +46,10 @@
         <div class="toolbar-actions">
           <!-- PLC_LOCAL_ONLY_START --><span id="output-state-anchor"></span><!-- PLC_LOCAL_ONLY_END -->
           <!-- PLC_LOCAL_ONLY_START --><span id="battle-tracker-anchor"></span><!-- PLC_LOCAL_ONLY_END -->
-          <label class="file-button secondary toolbar-file-button">Import Plan<input id="import-plan" type="file" accept=".json,.plc-plan.json,application/json"></label>
+          <label class="file-button secondary toolbar-file-button">Import Line<input id="import-plan" type="file" accept=".json,.plc-plan.json,application/json"></label>
+          <button id="export-line" type="button" class="secondary">Export Line</button>
           <!-- PLC_LOCAL_ONLY_START --><span id="live-edit-anchor"></span><!-- PLC_LOCAL_ONLY_END -->
-          <button id="new-plan" type="button" class="secondary">Begin Clean Plan</button>
+          <button id="new-plan" type="button" class="secondary">Start New Line</button>
         </div>
       </div>
 
@@ -69,7 +72,11 @@
             <section class="panel notes-panel" aria-labelledby="notes-title">
               <div class="node-action-toolbar">
                 <button id="commit-turn" type="button" disabled>Next Turn</button>
-                <button id="save-plan" type="button" class="secondary">Save Plan</button>
+                <button id="free-calc" type="button" class="secondary">Free Calc</button>
+                <button id="save-plan" type="button" class="secondary">Save Draft</button>
+                <button id="free-calc-close" type="button" class="secondary" hidden>Close</button>
+                <button id="free-calc-add" type="button" hidden>Add</button>
+                <button id="free-calc-save" type="button" class="secondary" hidden>Save as Draft</button>
               </div>
               <div class="section-heading compact-heading panel-disclosure-heading">
                 <div><h2 id="notes-title">Notes</h2></div>
@@ -113,7 +120,7 @@
 
       <section id="empty-plan" class="panel empty-plan">
         <h2>No active plan</h2>
-        <p>Select or import Pokémon in Boxes, then use <strong>Begin Clean Plan</strong> to choose a party and trainer.</p>
+        <p>Select or import Pokémon in Boxes, then use <strong>Start New Line</strong> to choose a party and trainer.</p>
       </section>
     </section>
 
@@ -137,6 +144,7 @@
       </div>
       <div id="boxes-list" class="boxes-list"></div>
     </section>
+    <section id="drafts-panel" role="tabpanel" aria-labelledby="drafts-tab" hidden><div id="drafts-list"></div></section>
   </main>
 
   <dialog id="save-import-dialog" class="wide-dialog" aria-labelledby="save-import-title">
@@ -171,6 +179,7 @@
         </label>
         <label>Battle format
           <input id="battle-format" value="Select a trainer" readonly>
+          <select id="battle-format-choice" hidden aria-label="Fight as Singles or Doubles"></select>
         </label>
         <label id="variant-field" hidden>ROM trainer variant
           <select id="variant-select"></select>
@@ -295,11 +304,11 @@
   </dialog>
 
   <dialog id="destructive-dialog" aria-labelledby="destructive-title">
-    <form method="dialog" class="dialog-card"><h2 id="destructive-title">Replace active planning context?</h2><p id="destructive-message"></p><div class="dialog-actions"><button id="destructive-cancel" value="cancel" type="submit" class="secondary">Cancel</button><button id="destructive-output" value="output" type="submit">Output Plan, Then Continue</button><button id="destructive-discard" value="discard" type="submit" class="danger">Discard and Continue</button></div></form>
+    <form method="dialog" class="dialog-card"><h2 id="destructive-title">Replace Active Line?</h2><p id="destructive-message">You have a line already open. Please select how to proceed.</p><div class="dialog-actions"><button id="destructive-cancel" value="cancel" type="submit" class="secondary">Cancel</button><button value="draft" type="submit">Save Draft</button><button id="destructive-output" value="output" type="submit">Export</button><button id="destructive-discard" value="discard" type="submit" class="danger">Discard</button></div></form>
   </dialog>
 
-  <script src="./src/generated/pokemon_asset_resolver.global.js?v=20260828-central-sprites"></script>
-  <script src="./src/generated/battle-mechanics/trainer_ai/trainer_ai_evaluator.js?v=20260905-rule-titles"></script>
-  <script type="module" src="./src/app.js?v=20260905-lenora-hawes"></script>
+  <script src="./src/generated/pokemon_asset_resolver.global.js?v=20260905-drafts-freecalc-partners-v1"></script>
+  <script src="./src/generated/battle-mechanics/trainer_ai/trainer_ai_evaluator.js?v=20260905-drafts-freecalc-partners-v1"></script>
+  <script type="module" src="./src/app.js?v=20260906-start-new-line-v1"></script>
 </body>
 </html>

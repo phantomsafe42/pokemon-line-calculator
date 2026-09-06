@@ -23,7 +23,7 @@
     "vw2redux1-4.js": "ae883034edfeec54f7a514756944c659a77f2ff6a06c4b539be56ab69482324f",
     "gen5_save_form_ids.json": "149a027ef2e5c3bd4469970957ebfbc3df5f04199bd968cb5fbf3274c85a43a2",
     "../../Gen 5/source-data/item_identities.json": "84fd1978fa59bf27a9240f18478324b7961a93269c22919a6315f79e81d16055",
-    "../../Gen 5/source-data/trainer_ai.json": "a96a704d25a44a7c0b60e646b4e77a722e6c3704b2bdade6aa79d09d23a901e6",
+    "../../Gen 5/source-data/trainer_ai.json": "c42eb9d5771b814e7bded850f9ba9e9e1c8bc62fca59e0e3f127514dbc8b7f37",
     "../../Gen 5/source-data/trainer_ai_verification_report.json": "d08db757756ae047e4f7b619df35433f33a683240e2aefec526e08eb0c103bff",
     "../../Gen 5/source-data/trainer_ai_semantics_verification_report.json": "d0b3f72d67e45409aedfc1500ec6c014ad6b8a7ee7818a52ed60efff7e89abf2",
     "../../Gen 5/source-data/trainer_ai_online_research_verification_report.json": "6ab81bd812f8e6d279b5401396e8acb5ffd8818c94943889ec0a440e2d4e49d3",
@@ -32,7 +32,7 @@
     "../../Gen 5/source-data/trainer_ai_action_semantics.json": "7746d15d6acb8ffbc5fe6bfe290f514c844d9395614423276a12c2e36687d6e1",
     "../../Gen 5/source-data/trainer_ai_action_semantics_verification_report.json": "cd6f59baba0c8acd6dca7cb4f06ccc241a302d4105eea47c61c925bf49f2912d",
     "../../Gen 5/source-data/trainer_ai_item_battle_parameters.json": "4ac6d61d2b26a06b3f5592e7bb078429ff3c851082af37ad5db13de9a89aebca",
-    "../../Gen 5/source-data/trainer_ai_evaluator_verification_report.json": "fc361e053918e422fea9b948e43c45cb6c4d38805f359d50ca1204f52731f473",
+    "../../Gen 5/source-data/trainer_ai_evaluator_verification_report.json": "6a4f4d89741d85e6cb76383bc47e2b328e0fafda129dc1e586e23a8dc29eb350",
     "../../Battle Mechanics/vendor/smogon-calc-0.11.0/data.production.min.js": "364be40ea1aec31f413d0036445f717d826ece9c33ec25a02399c3a287c99529",
     "pchalReadmeLogicalSource": "553ff99e72a4ec8310460c8394022c063bfe2cb463794ca93c8bad54c6821e8c",
     "abilityPersistenceReportLogicalSource": "5be6ea70c4b6340fd91d0f3eb569b83e1daa187114c5de5299b1dba25a119726",
@@ -101,7 +101,7 @@
       "id": "gen5-b2w2-trainer-ai",
       "role": "shared optional Trainer AI execution profile and exact script/effect vocabulary",
       "path": "../../Gen 5/source-data/trainer_ai.json",
-      "sha256": "a96a704d25a44a7c0b60e646b4e77a722e6c3704b2bdade6aa79d09d23a901e6",
+      "sha256": "c42eb9d5771b814e7bded850f9ba9e9e1c8bc62fca59e0e3f127514dbc8b7f37",
       "profileId": "gen5-b2w2-trainer-ai-v1",
       "evaluatorProfileId": "gen5-b2w2-trainer-ai-evaluator-v1alpha1"
     },
@@ -151,7 +151,7 @@
       "id": "gen5-b2w2-trainer-ai-evaluator-verification",
       "role": "Dataset contract, source-invariant, readiness, and executable-request-shape verification for the inherited evaluator profile",
       "path": "../../Gen 5/source-data/trainer_ai_evaluator_verification_report.json",
-      "sha256": "fc361e053918e422fea9b948e43c45cb6c4d38805f359d50ca1204f52731f473"
+      "sha256": "6a4f4d89741d85e6cb76383bc47e2b328e0fafda129dc1e586e23a8dc29eb350"
     },
     {
       "id": "pkhex-gen5-save-forms",
@@ -215,6 +215,7 @@
     "trainers.json",
     "trainer_order.json",
     "trainer_battle_groups.json",
+    "trainer_battle_group_evidence.json",
     "progression.json",
     "locations.json",
     "encounters.json",

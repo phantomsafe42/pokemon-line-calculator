@@ -1,5 +1,5 @@
-import { calculatorFieldName } from "../rulesets/battle_rules.js?v=20260827-ability-state-events";
-import { isHiddenPowerType } from "../core/hidden_power.js";
+import { calculatorFieldName } from "../rulesets/battle_rules.js?v=20260905-drafts-freecalc-partners-v1";
+import { isHiddenPowerType } from "../core/hidden_power.js?v=20260905-drafts-freecalc-partners-v1";
 
 export function calculatorMoveName(move) {
   const type = String(move?.type || "").toLowerCase();

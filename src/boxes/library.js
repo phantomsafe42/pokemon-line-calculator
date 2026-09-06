@@ -1,5 +1,5 @@
-import { canonicalStats, clone, nowIso, toId } from "../core/primitives.js";
-import { isHiddenPowerType } from "../core/hidden_power.js";
+import { canonicalStats, clone, nowIso, toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
+import { isHiddenPowerType } from "../core/hidden_power.js?v=20260905-drafts-freecalc-partners-v1";
 
 export const BOX_LIBRARY_KIND = "pokemon-line-calculator-boxes";
 export const BOX_LIBRARY_SCHEMA_VERSION = 1;
@@ -61,6 +61,7 @@ export function normalizeBoxPokemon(record) {
     natureId: toId(record.natureId || record.nature),
     abilityId: toId(record.abilityId || record.ability),
     itemId: toId(record.itemId || record.item) || null,
+    majorStatus: ["brn", "par", "psn", "tox", "slp", "frz"].includes(record.majorStatus) ? record.majorStatus : null,
     ...(hiddenPowerTypeOverride ? { hiddenPowerTypeOverride } : {}),
     baseStats: normalizeStats(record.baseStats, "Base stat", 1, 255),
     ivs: normalizeStats(record.ivs, "IV", 0, 31),

@@ -1,8 +1,8 @@
-import { isPlainObject, stableStringify } from "../core/primitives.js";
+import { isPlainObject, stableStringify } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
 
 export const PLAN_KIND = "pokemon-battle-plan";
 export const PLAN_SCHEMA_VERSION = 4;
-export const SUPPORTED_PLAN_SCHEMA_VERSIONS = Object.freeze([1, 2, 3, 4]);
+export const SUPPORTED_PLAN_SCHEMA_VERSIONS = Object.freeze([1, 2, 3, 4, 5]);
 export const MAX_PLAN_BYTES = 5_000_000;
 export const SAFE_ID_PATTERN = /^[A-Za-z0-9][A-Za-z0-9:._-]{0,159}$/;
 const STATE_STATUSES = new Set(["resolved", "preview", "stale", "invalid", "incomplete"]);
@@ -109,6 +109,8 @@ function validateGraph(plan, issues) {
   const states = isPlainObject(plan.stateNodes) ? plan.stateNodes : {};
   const groups = isPlainObject(plan.actionGroups) ? plan.actionGroups : {};
   const replacements = isPlainObject(plan.replacementTransitions) ? plan.replacementTransitions : {};
+  const manuals = isPlainObject(plan.manualTransitions) ? plan.manualTransitions : {};
+  if (Object.keys(manuals).length && schemaVersion < 5) issue(issues, '$.schemaVersion', 'Free Calc branches require schema version 5');
   const events = isPlainObject(plan.resolutionEvents) ? plan.resolutionEvents : {};
 
   if (!Object.keys(states).length) issue(issues, "$.stateNodes", "must contain at least one state node");
@@ -190,13 +192,19 @@ function validateGraph(plan, issues) {
       else if (replacement.parentStateNodeId !== key) issue(issues, `${path}.childReplacementTransitionIds`, `${replacementId} belongs to another parent state`);
     }
     if (key === plan.initialStateNodeId) {
+      if (state.parentManualTransitionId) issue(issues, `${path}.parentManualTransitionId`, 'root state must have no manual parent');
       if (state.parentActionGroupId !== null) issue(issues, `${path}.parentActionGroupId`, "root state must have no parent action group");
       if (state.parentReplacementTransitionId !== null && state.parentReplacementTransitionId !== undefined) issue(issues, `${path}.parentReplacementTransitionId`, "root state must have no parent replacement transition");
       if (Number(state.turnNumber) !== 0) issue(issues, `${path}.turnNumber`, "root state must be turn 0");
     } else {
       const hasActionParent = Boolean(state.parentActionGroupId);
       const hasReplacementParent = Boolean(state.parentReplacementTransitionId);
-      if (hasActionParent === hasReplacementParent) issue(issues, path, "must have exactly one action-group or replacement-transition parent");
+      const hasManualParent = Boolean(state.parentManualTransitionId);
+      if (Number(hasActionParent) + Number(hasReplacementParent) + Number(hasManualParent) !== 1) issue(issues, path, "must have exactly one transition parent");
+      if (hasManualParent) {
+        const parent = manuals[state.parentManualTransitionId];
+        if (!parent || !parent.outcomeStateNodeIds?.includes(key) || Number(state.turnNumber) !== Number(parent.turnNumber)) issue(issues, `${path}.parentManualTransitionId`, 'must reference its same-turn Free Calc transition');
+      }
       if (hasActionParent) {
         const parent = groups[state.parentActionGroupId];
         if (!parent) issue(issues, `${path}.parentActionGroupId`, "must reference an existing action group");
@@ -214,6 +222,20 @@ function validateGraph(plan, issues) {
         }
       }
     }
+  }
+
+  for (const [key, manual] of Object.entries(manuals)) {
+    const path = `$.manualTransitions.${key}`;
+    validateId(key, path, issues);
+    const parent = states[manual?.parentStateNodeId];
+    if (manual?.manualTransitionId !== key || manual?.kind !== 'free-calc') issue(issues, path, 'must be a Free Calc transition with matching ID');
+    if (!parent || Number(manual.turnNumber) !== Number(parent.turnNumber) || !parent.childManualTransitionIds?.includes(key)) issue(issues, path, 'must be linked to its same-turn parent');
+    if (!Array.isArray(manual.outcomeStateNodeIds) || manual.outcomeStateNodeIds.length !== 1) issue(issues, path, 'must contain one manual state');
+    if (!manual.outcomeStateNodeIds?.includes(manual.defaultOutcomeStateNodeId)) issue(issues, path, 'default must identify its manual state');
+    for (const id of manual.outcomeStateNodeIds || []) if (states[id]?.parentManualTransitionId !== key || !states[id]?.freeCalc) issue(issues, path, 'must reference its Free Calc state');
+  }
+  for (const [id, state] of Object.entries(states)) for (const key of state.childManualTransitionIds || []) {
+    if (manuals[key]?.parentStateNodeId !== id) issue(issues, `$.stateNodes.${id}.childManualTransitionIds`, 'invalid Free Calc child');
   }
 
   for (const [key, replacement] of Object.entries(replacements)) {
@@ -311,6 +333,9 @@ function validateGraph(plan, issues) {
     for (const replacementId of states[stateId].childReplacementTransitionIds || []) {
       for (const outcomeId of replacements[replacementId]?.outcomeStateNodeIds || []) visit(outcomeId);
     }
+    for (const manualId of states[stateId].childManualTransitionIds || []) {
+      for (const outcomeId of manuals[manualId]?.outcomeStateNodeIds || []) visit(outcomeId);
+    }
     visiting.delete(stateId);
     visited.add(stateId);
   }
@@ -346,6 +371,13 @@ export function validatePlanDocument(plan, options = {}) {
     if (Number(plan.schemaVersion) < 3 && plan.game.battleFormat === "triples") issue(issues, "$.game.battleFormat", "Triple Battles require schema version 3");
     if (Number(plan.schemaVersion) < 4 && plan.game.battleFormat === "rotation") issue(issues, "$.game.battleFormat", "Rotation Battles require schema version 4");
     if (!["string", "number"].includes(typeof plan.game.trainerId)) issue(issues, "$.game.trainerId", "must be a trainer ID");
+    for (const [side, ownership] of Object.entries(plan.game.partyOwnership || {})) {
+      const ids = ownership?.slotOwnerIds;
+      if (!['player', 'enemy'].includes(side) || plan.game.battleFormat !== 'doubles' || ownership?.policy !== 'per-trainer'
+        || !Array.isArray(ids) || ids.length !== 2 || new Set(ids).size !== 2 || ids.some(id => typeof id !== 'string' || !id)) {
+        issue(issues, `$.game.partyOwnership.${side}`, 'must declare two distinct trainer owners for Doubles');
+      }
+    }
   }
   if (!isPlainObject(plan.mechanicsFingerprint)) issue(issues, "$.mechanicsFingerprint", "must be an object");
   if (!isPlainObject(plan.sourceSnapshot)) issue(issues, "$.sourceSnapshot", "must be an object");

@@ -1,8 +1,9 @@
-import { clone, normalizeRange, shortHash, stableStringify, toId } from "./primitives.js";
-import { effectiveCombatantMove, fieldAdjustedMove } from "./combatant_moves.js";
-import { createDefaultVolatiles, normalizeFieldCondition, resetTurnFlags, updateStateHash } from "./plan.js";
-import { actionEntries, actionList, activeEntries, activeKey, activeKeys, activeSlotEntries, actorSlot, battleFormat, pendingReplacementSlots, replacementList, setActiveKey, setPendingReplacementSlots, slotsPerSide } from "./battle_slots.js";
-import { moveSupport as defaultMoveSupport } from "../rulesets/core_move_support.js";
+import { clone, normalizeRange, shortHash, stableStringify, toId } from "./primitives.js?v=20260905-drafts-freecalc-partners-v1";
+import { effectiveCombatantMove, fieldAdjustedMove } from "./combatant_moves.js?v=20260905-drafts-freecalc-partners-v1";
+import { createDefaultVolatiles, normalizeFieldCondition, resetTurnFlags, updateStateHash } from "./plan.js?v=20260905-drafts-freecalc-partners-v1";
+import { actionEntries, actionList, activeEntries, activeKey, activeKeys, activeSlotEntries, actorSlot, battleFormat, pendingReplacementSlots, replacementList, setActiveKey, setPendingReplacementSlots, slotsPerSide } from "./battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
+import { belongsToSlotParty, eligibleReserves, partyOwnerForSlot } from "./party_ownership.js?v=20260905-drafts-freecalc-partners-v1";
+import { moveSupport as defaultMoveSupport } from "../rulesets/core_move_support.js?v=20260905-drafts-freecalc-partners-v1";
 import {
   criticalHitProbability,
   endOfTurnSupportIssue,
@@ -13,7 +14,7 @@ import {
   statusResidualRule,
   weatherIsSuppressed,
   weatherResidualRule
-} from "../rulesets/battle_rules.js?v=20260827-ability-state-events";
+} from "../rulesets/battle_rules.js?v=20260905-drafts-freecalc-partners-v1";
 import {
   applyExactHpChange,
   damagingMoveImmunity,
@@ -21,11 +22,11 @@ import {
   entryHazardEffects,
   isGrounded,
   outgoingSwitchEffects
-} from "../rulesets/switch_rules.js?v=20260827-ability-state-events";
-import { applyDefeatedEnemyExperience, registerSwitchExperienceParticipation } from "../rulesets/vw2r_experience.js";
-import { actionOrderAlternatives, applyActionOrderState, effectiveActionSpeed, effectiveMovePriority } from "../rulesets/action_order.js";
-import { adjacentActiveEntries, areSlotsAdjacent, canSelectShift, combatantsAreAdjacent, shiftWithCenter, triplePositionForSlot, tripleSlotForPosition, TRIPLE_POSITIONS } from "../rulesets/triple_battle.js?v=20260827-triples-slot-display";
-import { participatingActiveEntries, participatingActiveKeys, rotateToActor, rotationFrontKey, rotationFrontSlot } from "../rulesets/rotation_battle.js";
+} from "../rulesets/switch_rules.js?v=20260905-drafts-freecalc-partners-v1";
+import { applyDefeatedEnemyExperience, registerSwitchExperienceParticipation } from "../rulesets/vw2r_experience.js?v=20260905-drafts-freecalc-partners-v1";
+import { actionOrderAlternatives, applyActionOrderState, effectiveActionSpeed, effectiveMovePriority } from "../rulesets/action_order.js?v=20260905-drafts-freecalc-partners-v1";
+import { adjacentActiveEntries, areSlotsAdjacent, canSelectShift, combatantsAreAdjacent, shiftWithCenter, triplePositionForSlot, tripleSlotForPosition, TRIPLE_POSITIONS } from "../rulesets/triple_battle.js?v=20260905-drafts-freecalc-partners-v1";
+import { participatingActiveEntries, participatingActiveKeys, rotateToActor, rotationFrontKey, rotationFrontSlot } from "../rulesets/rotation_battle.js?v=20260905-drafts-freecalc-partners-v1";
 import {
   abilityActionRule,
   abilityAfterDamagingHit,
@@ -35,8 +36,8 @@ import {
   abilityStatusImmunity,
   activeAbilityId,
   trappingAbilityBlocksSwitch
-} from "../rulesets/ability_rules.js?v=20260827-ability-state-events";
-import { applyCombatantFormState, desiredWeatherAbilityForm, desiredZenModeForm, restoreCombatantIdentityState } from "../rulesets/form_rules.js";
+} from "../rulesets/ability_rules.js?v=20260905-drafts-freecalc-partners-v1";
+import { applyCombatantFormState, desiredWeatherAbilityForm, desiredZenModeForm, restoreCombatantIdentityState } from "../rulesets/form_rules.js?v=20260905-drafts-freecalc-partners-v1";
 
 const TRACE_BLOCKED_ABILITIES = new Set(["", "flowergift", "forecast", "illusion", "imposter", "multitype", "stancechange", "trace", "wonderguard", "zenmode"]);
 
@@ -205,7 +206,7 @@ function validateAction(side, slot, action, plan, state, dataset, moveSupport, l
     if (battleFormat(plan) === "rotation" && slot !== rotationFrontSlot(state, side)) throw new ResolutionError(`${side} can switch only its front Pokémon`);
     const target = plan.combatants[action.switchToKey];
     const targetState = state.combatantStates[action.switchToKey];
-    if (!target || target.side !== side) throw new ResolutionError(`${side} switch target is invalid`);
+    if (!belongsToSlotParty(plan, target, side, slot)) throw new ResolutionError(`${side} switch target is invalid for this trainer's slot`);
     if (activeKeys(state, side).includes(target.combatantKey)) throw new ResolutionError(`${side} switch target is already active`);
     if (!targetState || Number(targetState.hp?.max) <= 0) throw new ResolutionError(`${side} switch target has fainted`);
     const heldItem = actorState.itemState === "held" ? toId(actorState.currentItemId) : "";
@@ -263,7 +264,7 @@ function validateAction(side, slot, action, plan, state, dataset, moveSupport, l
   if (support.operations?.some(operation => operation.kind === "self-switch")) {
     const switchToKey = action.mechanicActivations?.find(entry => entry?.id === "after-move-switch")?.switchToKey;
     const replacement = plan.combatants[switchToKey];
-    if (!replacement || replacement.side !== side || activeKeys(state, side).includes(switchToKey) || Number(state.combatantStates[switchToKey]?.hp?.max) <= 0) {
+    if (!belongsToSlotParty(plan, replacement, side, slot) || activeKeys(state, side).includes(switchToKey) || Number(state.combatantStates[switchToKey]?.hp?.max) <= 0) {
       throw new ResolutionError(`${move.name} needs a legal after-move switch-in`);
     }
   }
@@ -1738,7 +1739,7 @@ function applyStructuredOperation(branch, context, operation) {
     const affectedSide = opposite(side);
     const slot = actorSlot(branch.state, affectedSide, targetKey);
     const active = activeKeys(branch.state, affectedSide);
-    const candidates = Object.values(plan.combatants).filter(combatant => combatant.side === affectedSide && !active.includes(combatant.combatantKey) && Number(branch.state.combatantStates[combatant.combatantKey]?.hp?.max) > 0);
+    const candidates = eligibleReserves(plan, branch.state, affectedSide, slot);
     if (slot < 0 || !candidates.length) return [branch];
     return candidates.flatMap(candidate => {
       const next = clone(branch);
@@ -3915,11 +3916,14 @@ function updateBattleBoundary(branch, plan) {
     const sideEnded = livingActive.length + available.length === 0;
     branch.state.fieldState.sides[side].retaliateReady = faintedSlots.length > 0;
     if (sideEnded) ended = true;
-    const replacementCount = Math.min(available.length, faintedSlots.length);
+    const ownedSlots = faintedSlots.filter(entry => partyOwnerForSlot(plan, side, entry.slot) !== null);
+    const replaceableSlots = ownedSlots.length ? faintedSlots.filter(entry => eligibleReserves(plan, branch.state, side, entry.slot).length) : faintedSlots;
+    const replacementCount = Math.min(available.length, replaceableSlots.length);
     const chooseReplacementSlot = battleFormat(plan) === "triples" && replacementCount > 0 && replacementCount < faintedSlots.length;
-    pending.push(...(chooseReplacementSlot ? faintedSlots : faintedSlots.slice(0, replacementCount)).map(entry => ({ side, slot: entry.slot })));
+    const requiredSlots = chooseReplacementSlot ? replaceableSlots : replaceableSlots.slice(0, replacementCount);
+    pending.push(...requiredSlots.map(entry => ({ side, slot: entry.slot })));
     const canLeaveSlotEmpty = slotsPerSide(plan) > 1 && !sideEnded;
-    for (const entry of canLeaveSlotEmpty && !chooseReplacementSlot ? faintedSlots.slice(replacementCount) : []) {
+    for (const entry of canLeaveSlotEmpty && !chooseReplacementSlot ? faintedSlots.filter(entry => !requiredSlots.includes(entry)) : []) {
       setActiveKey(branch.state, side, entry.slot, null);
       event(branch, {
         eventType: "slot-emptied",
@@ -4192,7 +4196,7 @@ export function resolveForcedReplacement({ plan, parentStateNodeId, replacements
     const currentActiveKey = activeKey(parentState, side, slot);
     const target = plan.combatants[action.switchToKey];
     const targetState = parentState.combatantStates[action.switchToKey];
-    if (!target || target.side !== side || activeKeys(parentState, side).includes(target.combatantKey) || selectedTargets.includes(target.combatantKey) || Number(targetState?.hp?.max) <= 0) {
+    if (!belongsToSlotParty(plan, target, side, slot) || activeKeys(parentState, side).includes(target.combatantKey) || selectedTargets.includes(target.combatantKey) || Number(targetState?.hp?.max) <= 0) {
       throw new ResolutionError(`${side} slot ${slot + 1} replacement target is invalid`);
     }
     selectedTargets.push(target.combatantKey);

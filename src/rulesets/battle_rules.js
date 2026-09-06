@@ -1,5 +1,5 @@
-import { toId } from "../core/primitives.js";
-import { abilityStatusImmunity } from "./ability_rules.js?v=20260827-ability-state-events";
+import { toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
+import { abilityStatusImmunity } from "./ability_rules.js?v=20260905-drafts-freecalc-partners-v1";
 
 const WEATHER_NAMES = Object.freeze({
   rain: "Rain",

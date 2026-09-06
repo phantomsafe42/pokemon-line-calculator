@@ -1,36 +1,40 @@
-import { calculateStats, normalizePlayerCollection, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js";
-import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260828-central-sprites";
-import { loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260905-lenora-hawes";
-import { loadTrainerAiDocumentation } from "./adapters/trainer_ai.js?v=20260905-rule-titles-slot-ledger";
-import { createDraftRecord, destructiveTransitionNotice, IndexedDbDraftStore, markExported, markLiveFlushed, setLocalLiveEdit, updateDraftRecord } from "./cache/active_draft.js";
-import { TrainerAiForecastCache } from "./cache/trainer_ai_forecast.js?v=20260904-static-node-forecast";
-import { downloadPlan, exportSelectedPlan, migratePlanDocument, parsePlan } from "./contracts/plan_file.js";
-import { assertValidPlanDocument } from "./contracts/plan_contract.js";
-import { mechanicsCompatibility, validatePlanReferences } from "./contracts/plan_compatibility.js?v=20260827-ability-form-events";
-import { actionList, activeKey, activeKeys, activeSlotEntries, actorSlot, pendingReplacementSlots, setActiveKey, slotsPerSide } from "./core/battle_slots.js";
-import { createBranchEventModel, selectBranchEventOutcome, selectedBranchChoices } from "./core/branch_events.js?v=20260826-order-notes-import";
-import { boundedSlotDamageLabel, highestDamageCandidateKeys, resolvedCombatantMovePreview } from "./core/combatant_moves.js?v=20260827-lock-progression";
-import { exportBranchGroups, planTreeOrder, planTurnTreeOrder, preferredImportedReviewStateId, stateLineage, turnNodeVisuals } from "./core/graph.js?v=20260826-order-notes-import";
-import { HIDDEN_POWER_TYPES, hiddenPowerTypeFromIvs, resolvedHiddenPowerType } from "./core/hidden_power.js";
-import { formatDamageRollCounts, healingEventDescription, isCriticalOhkoOutcome, isHighRollKoOutcome, outcomePanelEvents, readableMechanicName } from "./core/outcome_presentation.js?v=20260827-ability-state-events";
-import { createPlanDocument, planHasWork, setStateNodeNote, upgradeInitialEntryEffects } from "./core/plan.js?v=20260827-ability-form-events";
-import { commitForcedReplacement, commitLabel, commitPreview, previewForcedReplacement, refreshUnknownCommittedProbabilities, repairStaleLeafBattleEnd, replacementCommitLabel } from "./core/planner.js?v=20260904-replacement-nodes";
-import { recalculatePlanDocument } from "./core/recalculation.js?v=20260827-ability-form-events";
-import { moveSupport } from "./rulesets/core_move_support.js";
-import { effectiveActionSpeed } from "./rulesets/action_order.js?v=20260827-triples-slot-display";
-import { areSlotsAdjacent, canSelectShift, shiftWithCenter, triplePositionForSlot, tripleSlotForPosition } from "./rulesets/triple_battle.js?v=20260827-triples-slot-display";
-import { rotationFrontKey, rotationFrontSlot } from "./rulesets/rotation_battle.js";
-import { experienceForLevel, experienceToNextLevel, projectExperience } from "./rulesets/vw2r_experience.js";
-import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260905-lenora-hawes";
-import { battleCompletionState } from "./core/battle_completion.js?v=20260826-turn-nodes";
+import { calculateStats, normalizePlayerCollection, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js?v=20260905-drafts-freecalc-partners-v1";
+import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260905-drafts-freecalc-partners-v1";
+import { loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260905-drafts-freecalc-partners-v1";
+import { loadTrainerAiDocumentation } from "./adapters/trainer_ai.js?v=20260905-drafts-freecalc-partners-v1";
+import { createDraftRecord, destructiveTransitionNotice, IndexedDbDraftStore, markExported, markLiveFlushed, setLocalLiveEdit, updateDraftRecord } from "./cache/active_draft.js?v=20260905-drafts-freecalc-partners-v1";
+import { TrainerAiForecastCache } from "./cache/trainer_ai_forecast.js?v=20260905-drafts-freecalc-partners-v1";
+import { SavedDraftStore, savedDraftSnapshot } from "./cache/saved_drafts.js?v=20260905-drafts-freecalc-partners-v1";
+import { reorderCards } from "./ui/reorder_cards.js?v=20260905-card-drag-v3";
+import { addFreeCalcBranch, editFreeCalcCombatant, replaceFreeCalcSlot, freeCalcAsNewPlan } from './core/free_calc.js?v=20260905-drafts-freecalc-partners-v1';
+import { eligibleReserves } from './core/party_ownership.js?v=20260905-drafts-freecalc-partners-v1';
+import { downloadPlan, exportSelectedPlan, migratePlanDocument, parsePlan } from "./contracts/plan_file.js?v=20260905-drafts-freecalc-partners-v1";
+import { assertValidPlanDocument } from "./contracts/plan_contract.js?v=20260905-drafts-freecalc-partners-v1";
+import { mechanicsCompatibility, validatePlanReferences } from "./contracts/plan_compatibility.js?v=20260905-drafts-freecalc-partners-v1";
+import { actionList, activeKey, activeKeys, activeSlotEntries, actorSlot, pendingReplacementSlots, setActiveKey, slotsPerSide } from "./core/battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
+import { createBranchEventModel, selectBranchEventOutcome, selectedBranchChoices } from "./core/branch_events.js?v=20260905-drafts-freecalc-partners-v1";
+import { boundedSlotDamageLabel, highestDamageCandidateKeys, resolvedCombatantMovePreview } from "./core/combatant_moves.js?v=20260905-drafts-freecalc-partners-v1";
+import { exportBranchGroups, planTreeOrder, planTurnTreeOrder, preferredImportedReviewStateId, stateLineage, turnNodeVisuals } from "./core/graph.js?v=20260905-drafts-freecalc-partners-v1";
+import { HIDDEN_POWER_TYPES, hiddenPowerTypeFromIvs, resolvedHiddenPowerType } from "./core/hidden_power.js?v=20260905-drafts-freecalc-partners-v1";
+import { formatDamageRollCounts, healingEventDescription, isCriticalOhkoOutcome, isHighRollKoOutcome, outcomePanelEvents, readableMechanicName } from "./core/outcome_presentation.js?v=20260905-drafts-freecalc-partners-v1";
+import { createPlanDocument, planHasWork, setStateNodeNote, upgradeInitialEntryEffects } from "./core/plan.js?v=20260905-drafts-freecalc-partners-v1";
+import { commitForcedReplacement, commitLabel, commitPreview, previewForcedReplacement, refreshUnknownCommittedProbabilities, repairStaleLeafBattleEnd, replacementCommitLabel } from "./core/planner.js?v=20260905-drafts-freecalc-partners-v1";
+import { recalculatePlanDocument } from "./core/recalculation.js?v=20260905-drafts-freecalc-partners-v1";
+import { moveSupport } from "./rulesets/core_move_support.js?v=20260905-drafts-freecalc-partners-v1";
+import { effectiveActionSpeed } from "./rulesets/action_order.js?v=20260905-drafts-freecalc-partners-v1";
+import { areSlotsAdjacent, canSelectShift, shiftWithCenter, triplePositionForSlot, tripleSlotForPosition } from "./rulesets/triple_battle.js?v=20260905-drafts-freecalc-partners-v1";
+import { rotationFrontKey, rotationFrontSlot } from "./rulesets/rotation_battle.js?v=20260905-drafts-freecalc-partners-v1";
+import { experienceForLevel, experienceToNextLevel, projectExperience } from "./rulesets/vw2r_experience.js?v=20260905-drafts-freecalc-partners-v1";
+import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260905-drafts-freecalc-partners-v1";
+import { battleCompletionState } from "./core/battle_completion.js?v=20260905-drafts-freecalc-partners-v1";
 import {
   addBox, addParty, boxesForGame, createEmptyBoxLibrary, exportBoxLibrary, IndexedDbBoxLibraryStore,
   mergeBoxLibrary, parseBoxLibrary, removeBox, removeParty, removePokemon, renameBox, updateParty, upsertPokemon
-} from "./boxes/library.js?v=20260826-order-notes-import";
-import { addImportedPlanParty, bindPlanPlayerPartyToImportedBox } from "./boxes/plan_import.js?v=20260827-lock-progression";
-import { applyBranchProgressionToLibrary, branchProgressionSnapshot } from "./boxes/progression.js?v=20260827-lock-progression";
-import { exportShowdown, parseShowdown } from "./boxes/showdown.js?v=20260825-hidden-power-v2";
-import { parseSave, selectSavePokemon } from "./boxes/save_import.js";
+} from "./boxes/library.js?v=20260905-drafts-freecalc-partners-v1";
+import { addImportedPlanParty, bindPlanPlayerPartyToImportedBox } from "./boxes/plan_import.js?v=20260905-drafts-freecalc-partners-v1";
+import { applyBranchProgressionToLibrary, branchProgressionSnapshot } from "./boxes/progression.js?v=20260905-drafts-freecalc-partners-v1";
+import { exportShowdown, parseShowdown } from "./boxes/showdown.js?v=20260905-drafts-freecalc-partners-v1";
+import { parseSave, selectSavePokemon } from "./boxes/save_import.js?v=20260905-drafts-freecalc-partners-v1";
 
 const GAME_REGISTRY = Object.freeze({
   "fire-red-omega": {
@@ -96,18 +100,19 @@ const PRIVATE_INTEGRATIONS_ALLOWED = !PUBLIC_BUILD && (
   LOOPBACK_HOSTS.has(location.hostname) || BUILD_PROFILE === "private-remote"
 );
 const SELECTED_GAME_KEY = "plc-selected-game-v1";
+const VIEW_MODE_KEY = "plc-view-mode-v1";
 const STAT_KEYS = Object.freeze(["hp", "atk", "def", "spa", "spd", "spe"]);
 const STAT_LABELS = Object.freeze({ hp: "HP", atk: "Atk", def: "Def", spa: "SpA", spd: "SpD", spe: "Spe" });
 const STATUS_LABELS = Object.freeze({ brn: "Burn", par: "Paralysis", psn: "Poison", tox: "Badly Poisoned", slp: "Sleep", frz: "Freeze" });
 const byId = id => document.getElementById(id);
 const ui = Object.fromEntries([
-  "game-select", "game-credit", "app-status", "game-gate", "app-tabs", "plc-tab", "boxes-tab", "plc-panel", "boxes-panel",
+  "game-select", "game-credit", "view-mode-toggle", "app-status", "game-gate", "app-tabs", "plc-tab", "boxes-tab", "plc-panel", "boxes-panel",
   "plan-toolbar-label", "output-state-anchor", "battle-tracker-anchor", "battle-tracker-detail", "commit-turn", "save-plan", "new-plan", "live-edit-anchor", "workspace", "empty-plan",
   "node-tree", "turn-label", "revision-label", "battle-workspace", "player-action-panel", "enemy-action-panel", "field-state",
   "readiness", "preview-outcomes", "ai-forecast-toggle", "ai-forecast-body", "ai-notes", "notes-toggle", "notes-body", "node-notes", "notes-status", "boxes-list", "save-import", "save-import-dialog", "save-import-filename",
   "save-import-party-summary", "save-import-pc-boxes", "save-import-status", "select-all-save-boxes", "clear-save-boxes",
   "confirm-save-import", "showdown-open", "new-box", "export-boxes", "import-boxes",
-  "plan-context-dialog", "trainer-select", "battle-format", "variant-field", "variant-select", "plan-name",
+  "plan-context-dialog", "trainer-select", "battle-format", "battle-format-choice", "variant-field", "variant-select", "plan-name",
   "initial-weather", "initial-terrain", "context-box-select", "party-source-mode", "saved-party-field",
   "context-party-select", "context-pokemon-grid", "save-party-selection", "party-selector-controls",
   "enemy-team-summary", "party-selection-summary", "edit-party-selection", "edge-party-exp", "context-status", "begin-plan", "pokemon-editor-dialog",
@@ -121,6 +126,7 @@ const ui = Object.fromEntries([
 ].map(id => [id, byId(id)]));
 
 const draftStore = new IndexedDbDraftStore();
+const savedDraftStore = new SavedDraftStore();
 const boxStore = new IndexedDbBoxLibraryStore();
 let selectedGameId = null;
 let dataset = null;
@@ -128,6 +134,8 @@ let trainerAi = null;
 let worker = null;
 let boxLibrary = createEmptyBoxLibrary();
 let plan = null;
+let freeCalcSession = null;
+let draftTreeObservers = [];
 let draftRecord = null;
 let cursorStateNodeId = null;
 let currentPreview = null;
@@ -171,6 +179,32 @@ function emptyContextSelection() {
 function setStatus(message, error = false) {
   ui["app-status"].textContent = message;
   ui["app-status"].classList.toggle("error", error);
+}
+
+function setViewMode(mode, { persist = true } = {}) {
+  if (PUBLIC_BUILD) {
+    document.body.dataset.publicPreview = "true";
+    return;
+  }
+  const publicView = mode === "public";
+  document.body.dataset.publicPreview = String(publicView);
+  if (ui["view-mode-toggle"]) {
+    ui["view-mode-toggle"].textContent = publicView ? "Public View" : "Local View";
+    ui["view-mode-toggle"].setAttribute("aria-checked", String(publicView));
+    ui["view-mode-toggle"].title = publicView
+      ? "Show all features available in the local PLC"
+      : "Preview the PLC with local-only features hidden";
+  }
+  if (persist) {
+    try { localStorage.setItem(VIEW_MODE_KEY, publicView ? "public" : "local"); } catch {}
+  }
+  if (plan && ui["node-tree"]) renderTree();
+}
+
+function restoreViewMode() {
+  let savedMode = "local";
+  try { savedMode = localStorage.getItem(VIEW_MODE_KEY) === "public" ? "public" : "local"; } catch {}
+  setViewMode(savedMode, { persist: false });
 }
 
 function renderGameCredit(gameId) {
@@ -404,8 +438,8 @@ async function outputTestingState() {
 async function installTestingStateOutput() {
   if (!PRIVATE_INTEGRATIONS_ALLOWED || !ui["output-state-anchor"]) return;
   const [testingApi, snapshotApi] = await Promise.all([
-    import("./integrations/local_testing_state.js"),
-    import("./testing/state_snapshot.js")
+    import("./integrations/local_testing_state.js?v=20260905-drafts-freecalc-partners-v1"),
+    import("./testing/state_snapshot.js?v=20260905-drafts-freecalc-partners-v1")
   ]);
   const capability = await testingApi.detectLocalTestingStateCapability();
   if (!capability) return;
@@ -424,11 +458,207 @@ async function installTestingStateOutput() {
 }
 
 function setTab(name) {
-  activeTab = name === "boxes" ? "boxes" : "plc";
+  if (freeCalcSession && name !== 'plc') { setStatus('Finish Free Calc with Close, Add, or Save as Draft first.', true); return; }
+  activeTab = ["boxes", "drafts"].includes(name) ? name : "plc";
   ui["plc-tab"].setAttribute("aria-selected", String(activeTab === "plc"));
   ui["boxes-tab"].setAttribute("aria-selected", String(activeTab === "boxes"));
   ui["plc-panel"].hidden = activeTab !== "plc";
   ui["boxes-panel"].hidden = activeTab !== "boxes";
+  byId("drafts-tab").setAttribute("aria-selected", String(activeTab === "drafts"));
+  byId("drafts-panel").hidden = activeTab !== "drafts";
+  if (activeTab === "drafts") renderSavedDrafts().catch(error => setStatus(error.message, true));
+}
+
+async function saveNamedDraft() {
+  if (!plan) return false;
+  const editor = { cursorStateNodeId, reviewOutcomeStateNodeId, actionDraft, selectedPreviewOutcomeId, needsRecalculation };
+  await savedDraftStore.save(savedDraftSnapshot(plan, editor));
+  setStatus('Line saved to Drafts.');
+  return true;
+}
+
+function startFreeCalc() {
+  if (!plan || freeCalcSession) return;
+  if (liveWriter?.active) { setStatus('Stop Live Edit before opening Free Calc; no temporary edits are sent to Overlay.', true); return; }
+  freeCalcSession = { plan, cursorStateNodeId, reviewOutcomeStateNodeId, actionDraft: structuredClone(actionDraft), currentPreview, branchEventModel, selectedPreviewOutcomeId, needsRecalculation };
+  const result = addFreeCalcBranch(plan, cursorStateNodeId);
+  plan = result.plan; cursorStateNodeId = result.stateId; reviewOutcomeStateNodeId = null;
+  actionDraft = emptyActionDraft(); currentPreview = null; branchEventModel = null; selectedPreviewOutcomeId = null;
+  previewGeneration++; renderWorkspace();
+}
+
+function closeFreeCalc() {
+  if (!freeCalcSession) return;
+  const session = freeCalcSession; freeCalcSession = null;
+  ({ plan, cursorStateNodeId, reviewOutcomeStateNodeId, actionDraft, currentPreview, branchEventModel, selectedPreviewOutcomeId, needsRecalculation } = session);
+  previewGeneration++; renderWorkspace();
+  persistDraft().catch(error => setStatus(`Restored line could not be cached: ${error.message}`, true));
+}
+
+async function addFreeCalc() {
+  if (!freeCalcSession) return;
+  assertValidPlanDocument(plan);
+  await draftStore.save(createDraftRecord(plan, cursorStateNodeId));
+  freeCalcSession = null;
+  await persistDraft(); renderWorkspace();
+  setStatus('Free Calc added as a manual branch. Original nodes and Box records were preserved.');
+}
+
+async function saveFreeCalcDraft() {
+  if (!freeCalcSession) return;
+  const name = prompt('Line name', `${plan.name} · Free Calc`);
+  if (!name?.trim()) return;
+  if (name.trim().length > 240) throw new Error('Line names must be at most 240 characters');
+  const savedPlan = freeCalcAsNewPlan(plan, cursorStateNodeId, name);
+  const imported = addImportedPlanParty(boxLibrary, savedPlan, dataset);
+  imported.library = renameBox(imported.library, selectedGameId, imported.boxId, name.trim());
+  bindPlanPlayerPartyToImportedBox(savedPlan, imported);
+  // Save the new Box before the draft so a saved draft never points at an absent Box.
+  await boxStore.save(imported.library); boxLibrary = imported.library;
+  await savedDraftStore.save(savedDraftSnapshot(savedPlan, { cursorStateNodeId: savedPlan.initialStateNodeId, actionDraft: structuredClone(actionDraft) }));
+  closeFreeCalc(); renderBoxes(); setStatus('Free Calc saved as a new Turn 1 draft with its own Box and Party.');
+}
+
+function renderFreeCalcEditor(side, slot, actorKey) {
+  const panel = document.createElement('fieldset'); panel.className = 'free-calc-editor';
+  const legend = document.createElement('legend'); legend.textContent = 'Free Calc'; panel.append(legend);
+  const state = selectedState(); const mon = plan.combatants[actorKey]; const current = state.combatantStates[actorKey];
+  const apply = changes => {
+    try { editFreeCalcCombatant(plan, cursorStateNodeId, actorKey, changes, dataset); currentPreview = null; branchEventModel = null; selectedPreviewOutcomeId = null; previewGeneration++; renderWorkspace(); }
+    catch (error) { setStatus(error.message, true); renderWorkspace(); }
+  };
+  const field = (label, control) => { const row = document.createElement('label'); row.textContent = label; row.append(control); panel.append(row); return control; };
+  const select = field('Pokémon', document.createElement('select')); select.setAttribute('aria-label', `Free Calc ${side} slot ${slot + 1} Pokémon`);
+  const candidates = Object.values(plan.combatants).filter(entry => entry.side === side && !state.freeCalcRemovedKeys?.includes(entry.combatantKey));
+  const byKey = new Map(candidates.map(entry => [entry.combatantKey, entry]));
+  if (side === 'player') {
+    const boxIds = new Set(Object.values(plan.combatants).filter(entry => entry.side === 'player').map(entry => entry.source?.boxId).filter(Boolean));
+    for (const boxId of boxIds) {
+      const box = selectedBox(boxId); if (!box) continue;
+      for (const id of box.pokemonOrder) {
+        if (candidates.some(entry => entry.source?.boxId === boxId && entry.source?.uniqueKey === id)) continue;
+        const [entry] = normalizePlayerCollection({ party: [boxRecordToSnapshot(box.pokemon[id], boxId)] }, dataset);
+        if (byKey.has(entry.combatantKey)) continue;
+        byKey.set(entry.combatantKey, entry);
+      }
+    }
+  }
+  for (const entry of byKey.values()) {
+    const opt = option(entry.combatantKey, recordName(entry));
+    opt.disabled = activeKeys(state, side).includes(entry.combatantKey) && entry.combatantKey !== actorKey;
+    select.append(opt);
+  }
+  select.value = actorKey;
+  select.addEventListener('change', () => {
+    try { replaceFreeCalcSlot(plan, cursorStateNodeId, side, slot, byKey.get(select.value)); actionDraft[side][slot] = {}; currentPreview = null; previewGeneration++; renderWorkspace(); }
+    catch (error) { setStatus(error.message, true); }
+  });
+  if (!current || !mon) return panel;
+  for (const [label, key, value, min, max] of [['HP', 'hp', current.hp.max, 0, current.hp.maxHp], ['Level', 'level', current.currentLevel ?? mon.level, 1, 100], ['Total EXP', 'experience', current.experience ?? mon.experience ?? '', 0, 10000000]]) {
+    const input = field(label, document.createElement('input')); input.type = 'number'; input.min = min; input.max = max; input.step = '1'; input.value = value;
+    input.setAttribute('aria-label', `Free Calc ${side} slot ${slot + 1} ${label}`);
+    if (value === '') input.placeholder = 'Unknown';
+    input.addEventListener('change', () => apply({ [key]: input.value }));
+  }
+  for (const [label, key, kind, value] of [['Ability', 'abilityId', 'abilities', current.currentAbilityId], ['Item', 'itemId', 'items', current.currentItemId]]) {
+    const control = field(label, document.createElement('select')); fillSelect(control, sortedRecords(kind), key === 'itemId' ? { blank: 'None' } : {}); control.value = value || '';
+    control.addEventListener('change', () => apply({ [key]: control.value || null }));
+  }
+  const status = field('Status', document.createElement('select'));
+  for (const [id, label] of [['', 'Healthy'], ['brn', 'Burned'], ['par', 'Paralyzed'], ['psn', 'Poisoned'], ['tox', 'Badly Poisoned'], ['slp', 'Asleep'], ['frz', 'Frozen']]) status.append(option(id, label));
+  status.value = current.majorStatus || ''; status.addEventListener('change', () => apply({ status: status.value }));
+  const stages = document.createElement('div'); stages.className = 'free-calc-stages';
+  for (const key of ['atk', 'def', 'spa', 'spd', 'spe', 'accuracy', 'evasion']) {
+    const row = document.createElement('div'); const down = button('−', 'secondary'); const up = button('+', 'secondary');
+    const value = Number(current.statStages[key] || 0); const text = document.createElement('span'); text.textContent = `${({atk:'Atk',def:'Def',spa:'SpA',spd:'SpD',spe:'Spe',accuracy:'Acc',evasion:'Eva'})[key]} ${value > 0 ? '+' : ''}${value}`;
+    for (const [control, delta] of [[down, -1], [up, 1]]) { control.disabled = value + delta < -6 || value + delta > 6; control.setAttribute('aria-label', `${key} ${delta > 0 ? 'up' : 'down'}`); control.addEventListener('click', () => apply({ statStages: { [key]: value + delta } })); }
+    row.append(down, text, up); stages.append(row);
+  }
+  panel.append(stages);
+  const moves = (current.moveSetOverride || mon.moves).map(entry => entry.moveId);
+  for (let index = 0; index < 4; index++) {
+    const control = field(`Move ${index + 1}`, document.createElement('select')); fillSelect(control, sortedRecords('moves'), { blank: 'None' }); control.value = moves[index] || '';
+    control.addEventListener('change', () => { const next = Array.from({ length: 4 }, (_, i) => moves[i] || ''); next[index] = control.value; actionDraft[side][slot] = {}; apply({ moves: next.filter(Boolean) }); });
+  }
+  return panel;
+}
+
+async function openSavedDraft(record) {
+  if (!(await confirmDestructive('Opening a draft'))) return;
+  if (record.gameId !== selectedGameId) throw new Error('Select this draft’s game first.');
+  assertValidPlanDocument(record.document);
+  validatePlanReferences(record.document, dataset);
+  const restored = structuredClone(record.document);
+  const editor = structuredClone(record.editor || {});
+  plan = restored;
+  cursorStateNodeId = plan.stateNodes[editor.cursorStateNodeId] ? editor.cursorStateNodeId : plan.initialStateNodeId;
+  reviewOutcomeStateNodeId = editor.reviewOutcomeStateNodeId || null;
+  actionDraft = editor.actionDraft || emptyActionDraft();
+  selectedPreviewOutcomeId = editor.selectedPreviewOutcomeId || null;
+  currentPreview = null; branchEventModel = null;
+  needsRecalculation = mechanicsCompatibility(plan, dataset).needsRecalculation || Boolean(editor.needsRecalculation);
+  draftRecord = createDraftRecord(plan, cursorStateNodeId);
+  await persistDraft();
+  setTab('plc'); renderWorkspace();
+}
+
+async function renderSavedDrafts() {
+  const container = byId('drafts-list');
+  const gameId = selectedGameId;
+  const records = await savedDraftStore.list(gameId);
+  if (gameId !== selectedGameId) return;
+  draftTreeObservers.forEach(observer => observer.disconnect()); draftTreeObservers = [];
+  container.replaceChildren();
+  for (const record of records) {
+    const card = document.createElement('section'); card.className = 'panel saved-line';
+    const heading = document.createElement('h2'); heading.textContent = record.name;
+    const actions = document.createElement('div'); actions.className = 'toolbar-actions';
+    const open = button('Open in PLC');
+    open.addEventListener('click', () => openSavedDraft(record).catch(error => setStatus(error.message, true)));
+    const erase = button('Delete', 'danger');
+    erase.addEventListener('click', async () => {
+      if (!confirm(`Delete draft “${record.name}”? The open line and Boxes are unchanged.`)) return;
+      try { await savedDraftStore.delete(record.id); await renderSavedDrafts(); } catch (error) { setStatus(error.message, true); }
+    });
+    actions.append(open, erase);
+    const tree = document.createElement('div'); tree.className = 'saved-line-tree';
+    const links = [];
+    const entries = planTurnTreeOrder(record.document);
+    const columns = [...new Set(entries.map(entry => entry.columnKey))];
+    for (const entry of entries) {
+      const state = record.document.stateNodes[entry.outcomeStateNodeId || entry.decisionStateNodeId];
+      const node = document.createElement('div'); node.className = 'saved-line-node';
+      node.style.gridColumn = String(columns.indexOf(entry.columnKey) + 1); node.style.gridRow = String(entry.lane + 1);
+      const label = document.createElement('div'); label.textContent = entry.transitionKind === 'replacement' ? 'Replace' : `${state.freeCalc ? 'Free Calc · ' : ''}Turn ${entry.turnNumber}`;
+      node.append(label);
+      if (entry.kind === 'committed' && entry.transitionKind !== 'replacement') {
+        const probability = document.createElement('small'); probability.textContent = state.outcome?.probability == null ? '—' : `${(state.outcome.probability * 100).toFixed(1)}%`; node.append(probability);
+      }
+      for (const key of activeKeys(state, 'player').concat(activeKeys(state, 'enemy'))) {
+        const mon = record.document.combatants[key]; if (mon) node.append(sprite(mon));
+      }
+      tree.append(node);
+      links.push({ entry, node });
+    }
+    card.append(heading, actions, tree); container.append(card);
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); svg.classList.add('saved-line-links'); svg.setAttribute('aria-hidden', 'true'); tree.append(svg);
+    const draw = () => {
+      const bounds = tree.getBoundingClientRect(); svg.setAttribute('width', tree.scrollWidth); svg.setAttribute('height', tree.clientHeight); svg.replaceChildren();
+      for (const child of links) {
+        let parentId = child.entry.decisionStateNodeId;
+        const manual = record.document.stateNodes[parentId]?.parentManualTransitionId;
+        if (manual) parentId = record.document.manualTransitions[manual].parentStateNodeId;
+        const parent = links.find(row => row !== child && row.entry.outcomeStateNodeId === parentId);
+        if (!parent) continue;
+        const from = parent.node.getBoundingClientRect(), to = child.node.getBoundingClientRect();
+        const x1 = from.right - bounds.left + tree.scrollLeft, x2 = to.left - bounds.left + tree.scrollLeft;
+        const y1 = from.top + from.height/2 - bounds.top, y2 = to.top + to.height/2 - bounds.top;
+        const path = document.createElementNS(svg.namespaceURI, 'path'); path.setAttribute('d', `M ${x1} ${y1} H ${(x1+x2)/2} V ${y2} H ${x2}`); svg.append(path);
+      }
+    };
+    const observer = new ResizeObserver(draw); observer.observe(tree); draftTreeObservers.push(observer); requestAnimationFrame(draw);
+  }
+  if (!records.length) container.textContent = 'No saved drafts for this game.';
 }
 
 function partyMemberCell(record) {
@@ -457,42 +687,31 @@ function renderParty(box, party) {
     } catch (error) { setStatus(error.message, true); renderBoxes(); }
   });
   const members = document.createElement("div");
-  members.className = "party-members";
-  for (let index = 0; index < 6; index += 1) members.append(partyMemberCell(box.pokemon[party.pokemonIds[index]]));
-  const edit = button("Edit Party", "secondary");
-  const editor = document.createElement("div");
-  editor.className = "party-membership";
-  editor.hidden = true;
-  const renderMembership = () => {
-    editor.replaceChildren();
-    for (const pokemonId of box.pokemonOrder) {
-      const record = box.pokemon[pokemonId];
-      const label = document.createElement("label");
-      const input = document.createElement("input");
-      input.type = "checkbox";
-      input.checked = party.pokemonIds.includes(pokemonId);
-      input.addEventListener("change", async () => {
-        const current = selectedBox(box.id)?.parties?.[party.id];
-        let ids = [...(current?.pokemonIds || [])];
-        if (input.checked && !ids.includes(pokemonId)) ids.push(pokemonId);
-        if (!input.checked) ids = ids.filter(id => id !== pokemonId);
-        if (ids.length > 6) { input.checked = false; setStatus("A Party can contain no more than six Pokémon.", true); return; }
-        boxLibrary = updateParty(boxLibrary, selectedGameId, box.id, party.id, { pokemonIds: ids });
-        await saveLibrary("Party membership updated.");
-      });
-      label.append(input, document.createTextNode(recordName(record)));
-      editor.append(label);
-    }
-    const remove = button("Delete Party", "danger");
-    remove.addEventListener("click", async () => {
-      if (!confirm(`Delete ${party.name}? The Pokémon records will remain in ${box.name}.`)) return;
-      boxLibrary = removeParty(boxLibrary, selectedGameId, box.id, party.id);
-      await saveLibrary("Party deleted; its Pokémon remain in the Box.");
+  members.className = "party-card-grid";
+  for (const pokemonId of party.pokemonIds) {
+    const record = box.pokemon[pokemonId];
+    if (!record) continue;
+    const member = contextPokemonCard(box, record, true, false, { forContext: false });
+    member.dataset.pokemonId = record.id;
+    const actions = document.createElement('div'); actions.className = 'context-pokemon-actions';
+    const removeMember = button('Remove', 'secondary');
+    removeMember.addEventListener('click', async () => {
+      boxLibrary = updateParty(boxLibrary, selectedGameId, box.id, party.id, { pokemonIds: selectedBox(box.id).parties[party.id].pokemonIds.filter(id => id !== record.id) });
+      await saveLibrary('Party member removed.');
     });
-    editor.append(remove);
-  };
-  edit.addEventListener("click", () => { editor.hidden = !editor.hidden; edit.textContent = editor.hidden ? "Edit Party" : "Done"; if (!editor.hidden) renderMembership(); });
-  card.append(name, members, edit, editor);
+    actions.append(removeMember);
+    member.append(actions); members.append(member);
+  }
+  reorderCards(members, async pokemonIds => {
+    boxLibrary = updateParty(boxLibrary, selectedGameId, box.id, party.id, { pokemonIds });
+    await boxStore.save(boxLibrary);
+  });
+  const deleteParty = button('Delete Party', 'danger');
+  deleteParty.addEventListener('click', async () => {
+    if (!confirm(`Delete ${party.name}? Pokémon stay in the Box.`)) return;
+    boxLibrary = removeParty(boxLibrary, selectedGameId, box.id, party.id); await saveLibrary('Party deleted.');
+  });
+  card.append(name, members, deleteParty);
   return card;
 }
 
@@ -840,13 +1059,14 @@ async function savePokemonEditor() {
           : experienceForLevel(draft.level, species?.growthRate);
       }
     }
+    if (ui["editor-context"].value === "plan") draft.majorStatus = ui["editor-starting-status"].value || null;
     const result = upsertPokemon(boxLibrary, selectedGameId, boxId, draft);
     boxLibrary = result.library;
     if (ui["editor-context"].value === "plan") {
       const record = selectedBox(boxId).pokemon[result.pokemonId];
       const maxHp = calculateStats(record, dataset).hp;
       const hp = Math.max(0, Math.min(maxHp, Number(ui["editor-starting-hp"].value)));
-      contextSelection.initialConditions[result.pokemonId] = { ...contextSelection.initialConditions[result.pokemonId], currentHp: hp, majorStatus: ui["editor-starting-status"].value || null };
+      contextSelection.initialConditions[result.pokemonId] = { ...contextSelection.initialConditions[result.pokemonId], currentHp: hp, majorStatus: ui["editor-starting-status"].value || null, itemId: record.itemId || null };
       if (existingId && !contextSelection.pokemonIds.includes(existingId)) contextSelection.pokemonIds.push(existingId);
     }
     await saveLibrary("Pokémon saved. Every Party in this Box now uses the updated record.");
@@ -971,8 +1191,19 @@ function fillTrainerSelect() {
   }
 }
 
+function contextTrainerId() { return ui["battle-format-choice"]?.value || ui["trainer-select"].value; }
+
 function updateVariantSelect() {
-  const trainer = dataset?.trainer(ui["trainer-select"].value);
+  const choices = dataset?.trainerBattleChoices(ui["trainer-select"].value) || [];
+  const choice = ui["battle-format-choice"];
+  choice.replaceChildren(...choices.map(row => option(row.trainerId, row.label)));
+  choice.hidden = choices.length < 2;
+  ui["battle-format"].hidden = choices.length > 1;
+  updateContextTrainer();
+}
+
+function updateContextTrainer() {
+  const trainer = dataset?.trainer(contextTrainerId());
   const variants = trainer?.mechanicsVariants || [];
   ui["variant-field"].hidden = !variants.length;
   ui["variant-select"].replaceChildren();
@@ -1003,7 +1234,7 @@ function enemyTeamPreviewRecord(member) {
 }
 
 function renderEnemyTeamSummary() {
-  const trainer = dataset?.trainer(ui["trainer-select"].value);
+  const trainer = dataset?.trainer(contextTrainerId());
   if (!trainer) {
     ui["enemy-team-summary"].replaceChildren();
     return;
@@ -1041,12 +1272,13 @@ function refreshContextPartySelect() {
 
 function ensureContextInitial(record) {
   if (contextSelection.initialConditions[record.id]) return;
-  contextSelection.initialConditions[record.id] = { currentHp: calculateStats(record, dataset).hp, majorStatus: null };
+  contextSelection.initialConditions[record.id] = { currentHp: calculateStats(record, dataset).hp, majorStatus: record.majorStatus || null };
 }
 
-function contextPokemonCard(box, record, selected, manual, { editable = true } = {}) {
+function contextPokemonCard(box, record, selected, manual, { editable = true, forContext = true } = {}) {
   const card = document.createElement("article");
   card.className = `context-pokemon${selected ? " is-selected" : ""}`;
+  card.dataset.pokemonId = record.id || '';
   card.append(sprite(record));
   const body = document.createElement("div");
   const name = document.createElement("strong"); name.textContent = recordName(record);
@@ -1054,11 +1286,11 @@ function contextPokemonCard(box, record, selected, manual, { editable = true } =
   body.append(name, detail); card.append(body);
   const item = document.createElement("small");
   item.className = "context-held-item";
-  const startingItem = editable && Object.hasOwn(contextSelection.initialConditions[record.id] || {}, "itemId")
+  const startingItem = editable && forContext && Object.hasOwn(contextSelection.initialConditions[record.id] || {}, "itemId")
     ? contextSelection.initialConditions[record.id].itemId : record.itemId;
   item.textContent = startingItem ? dataset.get("items", startingItem)?.name || startingItem : "None";
   body.append(item);
-  if (editable) {
+  if (editable && forContext) {
     ensureContextInitial(record);
     const initial = contextSelection.initialConditions[record.id];
     const maxHp = calculateStats(record, dataset).hp;
@@ -1083,28 +1315,43 @@ function contextPokemonCard(box, record, selected, manual, { editable = true } =
   }
   if (editable) {
     const edit = button("Edit", "secondary");
-    edit.addEventListener("click", () => { ensureContextInitial(record); openPokemonEditor(box.id, record.id, true); });
+    edit.addEventListener("click", () => { if (forContext) ensureContextInitial(record); openPokemonEditor(box.id, record.id, forContext); });
     actions.append(edit);
     const status = document.createElement("select");
     status.className = "context-pre-status";
     status.setAttribute("aria-label", `Pre-status for ${recordName(record)}`);
     for (const [value, label] of [["", "No Status"], ["brn", "Burned"], ["par", "Paralyzed"], ["psn", "Poisoned"], ["tox", "Badly Poisoned"], ["slp", "Asleep"], ["frz", "Frozen"]]) status.append(option(value, label));
-    status.value = contextSelection.initialConditions[record.id].majorStatus || "";
-    status.addEventListener("change", () => { contextSelection.initialConditions[record.id].majorStatus = status.value || null; });
+    status.value = (forContext ? contextSelection.initialConditions[record.id].majorStatus : record.majorStatus) || "";
+    status.addEventListener("change", async () => {
+      try {
+        await persistPartyRecordFields(box.id, record.id, { majorStatus: status.value || null });
+      } catch (error) { setStatus(error.message, true); }
+    });
     const heldItem = document.createElement("select");
     heldItem.className = "context-pre-item";
     heldItem.setAttribute("aria-label", `Item for ${recordName(record)}`);
-    heldItem.append(...[...ui["editor-item"].options].map(entry => option(entry.value, entry.value ? entry.textContent : "None")));
-    const initial = contextSelection.initialConditions[record.id];
+    fillSelect(heldItem, sortedRecords("items"), { blank: "None" });
+    const initial = forContext ? contextSelection.initialConditions[record.id] : record;
     heldItem.value = Object.hasOwn(initial, "itemId") ? initial.itemId || "" : record.itemId || "";
-    heldItem.addEventListener("change", () => {
-      initial.itemId = heldItem.value || null;
+    heldItem.addEventListener("change", async () => {
       item.textContent = heldItem.selectedOptions[0]?.textContent || "None";
+      try {
+        await persistPartyRecordFields(box.id, record.id, { itemId: heldItem.value || null });
+      } catch (error) { setStatus(error.message, true); }
     });
     actions.append(heldItem, status);
   }
   if (actions.childElementCount) card.append(actions);
   return card;
+}
+
+async function persistPartyRecordFields(boxId, pokemonId, fields) {
+  boxLibrary = upsertPokemon(boxLibrary, selectedGameId, boxId, { ...selectedBox(boxId).pokemon[pokemonId], ...fields }).library;
+  if (contextSelection.boxId === boxId && contextSelection.initialConditions[pokemonId]) {
+    Object.assign(contextSelection.initialConditions[pokemonId], fields);
+  }
+  await boxStore.save(boxLibrary);
+  renderBoxes();
 }
 
 function selectedContextRecords() {
@@ -1129,6 +1376,7 @@ function renderContextPokemonGrid() {
   const records = manual ? box.pokemonOrder.map(id => box.pokemon[id]) : contextSelection.pokemonIds.map(id => box.pokemon[id]).filter(Boolean);
   if (!records.length) ui["context-pokemon-grid"].replaceChildren();
   else ui["context-pokemon-grid"].replaceChildren(...records.map(record => contextPokemonCard(box, record, contextSelection.pokemonIds.includes(record.id), manual)));
+  if (!manual) reorderCards(ui["context-pokemon-grid"], saveContextOrder);
   ui["save-party-selection"].disabled = contextSelection.pokemonIds.length < 1 || contextSelection.pokemonIds.length > 6;
   updateBeginAvailability();
 }
@@ -1140,10 +1388,19 @@ function renderPartySummary() {
     const card = contextPokemonCard(selectedBox(contextSelection.boxId), record, true, false);
     return card;
   }));
+  reorderCards(ui["party-selection-summary"], saveContextOrder);
   ui["party-selector-controls"].hidden = true;
   ui["party-selection-summary"].hidden = false;
   ui["edit-party-selection"].hidden = false;
   ui["edge-party-exp"].hidden = false;
+}
+
+async function saveContextOrder(pokemonIds) {
+  contextSelection.pokemonIds = pokemonIds;
+  if (contextSelection.partyId) {
+    boxLibrary = updateParty(boxLibrary, selectedGameId, contextSelection.boxId, contextSelection.partyId, { pokemonIds });
+    await boxStore.save(boxLibrary); renderBoxes();
+  }
 }
 
 async function edgePartyExperience() {
@@ -1174,7 +1431,7 @@ function savePartySelection() {
 }
 
 function updateBeginAvailability() {
-  const trainer = dataset?.trainer(ui["trainer-select"].value);
+  const trainer = dataset?.trainer(contextTrainerId());
   let required = 1;
   let format = "singles";
   if (trainer) {
@@ -1254,9 +1511,9 @@ function initialConditionsForPlan(players) {
 
 async function beginPlanFromContext() {
   if (ui["begin-plan"].disabled) return;
-  if ((liveWriter?.active || planHasWork(plan)) && !(await confirmDestructive("Beginning a clean plan"))) return;
+  if ((liveWriter?.active || plan) && !(await confirmDestructive("Beginning a clean plan"))) return;
   try {
-    const trainer = dataset.trainer(ui["trainer-select"].value);
+    const trainer = dataset.trainer(contextTrainerId());
     const variantId = trainer.mechanicsVariants?.length ? ui["variant-select"].value : null;
     const records = selectedContextRecords();
     const players = normalizePlayerCollection({ party: records.map(record => {
@@ -1399,7 +1656,7 @@ function appendAiMoveLedger(container, move) {
   for (const outcome of [...(distribution.scores || [])].sort((left, right) => adjustmentProbability(right) - adjustmentProbability(left))) {
     const row = document.createElement("tr");
     const probability = document.createElement("td");
-    probability.textContent = aiProbabilityLabel(outcome.modeledWeight);
+    probability.textContent = aiProbabilityLabel(outcome.probability);
     const score = document.createElement("td");
     score.textContent = String(outcome.score);
     score.setAttribute("aria-label", `Final score ${outcome.score}`);
@@ -1431,7 +1688,7 @@ function renderNotes() {
 function renderTrainerAiNotes(state) {
   const container = ui["ai-notes"];
   if (!container) return;
-  const forecastSupported = ["volt-white-2r", "renegade-platinum"].includes(selectedGameId);
+  const forecastSupported = trainerAi?.binding?.consumerActivation?.enabled === true && !selectedState()?.freeCalc;
   container.closest(".ai-forecast-panel").hidden = !forecastSupported;
   if (!forecastSupported) return;
   if (!plan || !state || !dataset || !trainerAi || !worker) {
@@ -1717,7 +1974,8 @@ function pendingSwitchTargetKey(state, targetKey) {
   return targetKey;
 }
 
-function possibleSwitches(state, side) {
+function possibleSwitches(state, side, slot = null) {
+  if (slot !== null) return eligibleReserves(plan, state, side, slot);
   const active = new Set(activeKeys(state, side));
   return Object.values(plan.combatants).filter(mon => mon.side === side && !active.has(mon.combatantKey) && Number(state.combatantStates[mon.combatantKey]?.hp?.max) > 0);
 }
@@ -1758,7 +2016,7 @@ function formatHpRemaining(hp) {
 }
 
 function rootCombatantState(key) {
-  return plan.stateNodes[plan.initialStateNodeId].combatantStates[key];
+  return plan.stateNodes[plan.initialStateNodeId].combatantStates[key] || selectedState().combatantStates[key];
 }
 
 function initialStageBaseline(key, stat) {
@@ -1926,7 +2184,7 @@ function renderActionAux(container, side, slot, actorKey, move, support, draft) 
     const select = document.createElement("select");
     select.append(option("", "Select…"));
     if (selfSwitch) {
-      for (const mon of possibleSwitches(state, side)) select.append(option(mon.combatantKey, recordName(mon)));
+      for (const mon of possibleSwitches(state, side, slot)) select.append(option(mon.combatantKey, recordName(mon)));
     } else if (needsConversion) {
       for (const type of sortedRecords("types")) select.append(option(type.id, type.name));
     } else {
@@ -2097,7 +2355,7 @@ function renderSwitchStrip(container, side, slot, actorKey, draft, { replacement
   const strip = document.createElement("div"); strip.className = "switch-strip";
   const current = plan.combatants[actorKey];
   const currentCanStay = current && Number(state.combatantStates[actorKey]?.hp?.max) > 0;
-  const candidates = [...(currentCanStay ? [current] : []), ...possibleSwitches(state, side)];
+  const candidates = [...(currentCanStay ? [current] : []), ...possibleSwitches(state, side, slot)];
   const previewKey = draft.switchToKey || draft.previewSwitchToKey || (currentCanStay ? actorKey : null);
   for (const mon of candidates) {
     const target = button("", "switch-target");
@@ -2350,6 +2608,7 @@ function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
     if (draft.type === "switch") renderSwitchStrip(moveActions, side, slot, actorKey, draft);
   }
   card.append(moveActions);
+  if (freeCalcSession) card.append(renderFreeCalcEditor(side, slot, actorKey));
   if (side === "enemy") updateEnemyThreatHighlights(card);
   return card;
 }
@@ -2375,6 +2634,7 @@ function renderEmptyCombatantSlot(side, slot, { displaySlot = triplePositionForS
   empty.className = "empty-slot-label";
   empty.textContent = "Empty slot";
   card.append(slotHeading, empty);
+  if (freeCalcSession) card.append(renderFreeCalcEditor(side, slot, activeKey(selectedState(), side, slot)));
   return card;
 }
 
@@ -2789,6 +3049,7 @@ async function refreshPreview() {
     await persistDraft();
   }
   const generation = ++previewGeneration;
+  const priorOutcomeId = selectedPreviewOutcomeId;
   const actions = actionsFromDraft();
   const replacement = pendingReplacementSlots(selectedState()).length > 0;
   if (!actions) {
@@ -2805,7 +3066,7 @@ async function refreshPreview() {
     if (generation !== previewGeneration) return;
     currentPreview = preview;
     branchEventModel = createBranchEventModel({ outcomes: preview.outcomes || [], actions: preview.actions || actions, defaultOutcomeId: preview.defaultPreviewOutcomeId });
-    selectedPreviewOutcomeId = branchEventModel.selectedOutcomeId;
+    selectedPreviewOutcomeId = branchEventModel.outcomeIds.includes(priorOutcomeId) ? priorOutcomeId : branchEventModel.selectedOutcomeId;
     if (reviewOutcomeStateNodeId && preview.savedOutcomeStateNodeIdByPreviewOutcomeId) {
       const reviewed = Object.entries(preview.savedOutcomeStateNodeIdByPreviewOutcomeId).find(([, stateId]) => stateId === reviewOutcomeStateNodeId)?.[0];
       if (reviewed) selectedPreviewOutcomeId = reviewed;
@@ -3011,6 +3272,10 @@ function trackerStatusLabel(turn) {
 function renderBattleTrackerDetail() {
   const container = ui["battle-tracker-detail"];
   if (!container) return;
+  if (document.body.dataset.publicPreview === "true") {
+    container.hidden = true;
+    return;
+  }
   if (!battleTrackerSnapshot || (!battleTrackerSnapshot.active && !battleTrackerSnapshot.battleId)) {
     container.hidden = true;
     container.replaceChildren();
@@ -3075,7 +3340,7 @@ function renderTree() {
     });
     groups.get(entry.columnKey).entries.push(entry);
   }
-  const trackerTurns = currentTrackerTurns();
+  const trackerTurns = document.body.dataset.publicPreview === "true" ? [] : currentTrackerTurns();
   for (const trackerTurn of trackerTurns) {
     const turnNumber = Number(trackerTurn.turnNumber);
     const key = `turn-${turnNumber}`;
@@ -3104,6 +3369,8 @@ function renderTree() {
       const replacementNode = entry.transitionKind === "replacement";
       const outcome = replacementNode ? null : entry.kind === "committed" ? state.outcome : draftPreview?.outcome || null;
       const node = button("", "node-button");
+      node.disabled = Boolean(freeCalcSession) && state.stateNodeId !== cursorStateNodeId;
+      if (state.freeCalc) node.title = 'Free Calc · manual battle state';
       node.dataset.column = columnIndex; node.dataset.row = rowIndex; node.dataset.lane = entry.lane; node.style.gridColumn = "1"; node.style.gridRow = String(Number(entry.lane) + 2); node.setAttribute("role", "treeitem");
       node.dataset.kind = entry.kind;
       node.dataset.stateNodeId = entry.outcomeStateNodeId || entry.decisionStateNodeId;
@@ -3267,7 +3534,7 @@ function renderExportSelection() {
     ui["output-plan"].disabled = true;
     return;
   }
-  const visibleEntries = planTreeOrder(plan, { includeReplacementStates: false }).filter(entry => entry.state.turnNumber > 0);
+  const visibleEntries = planTreeOrder(plan, { includeReplacementStates: false }).filter(entry => entry.state.turnNumber > 0 || entry.state.freeCalc || Object.keys(plan.stateNodes).length === 1);
   const visibleIds = new Set(visibleEntries.map(entry => entry.state.stateNodeId));
   for (const stateId of exportSelection) if (!visibleIds.has(stateId)) exportSelection.delete(stateId);
   const byId = new Map(visibleEntries.map(({ state }) => [state.stateNodeId, state]));
@@ -3296,7 +3563,7 @@ function renderExportSelection() {
       const label = document.createElement("label");
       const checkbox = document.createElement("input"); checkbox.type = "checkbox"; checkbox.checked = exportSelection.has(stateId);
       checkbox.addEventListener("change", () => { checkbox.checked ? exportSelection.add(stateId) : exportSelection.delete(stateId); renderExportSelection(); });
-      const text = document.createElement("span"); text.textContent = `Turn ${state.turnNumber} · ${state.outcome.label} · ${nodeActionSummary(state)}`;
+      const text = document.createElement("span"); text.textContent = `Turn ${state.parentActionGroupId ? state.turnNumber : state.turnNumber + 1} · ${state.outcome.label} · ${nodeActionSummary(state)}`;
       label.append(checkbox, text); turns.append(label);
     }
     section.append(header, turns);
@@ -3309,6 +3576,10 @@ function renderExportSelection() {
 }
 
 function renderWorkspace() {
+  for (const id of ['commit-turn', 'free-calc', 'save-plan']) byId(id).hidden = Boolean(freeCalcSession);
+  for (const id of ['free-calc-close', 'free-calc-add', 'free-calc-save']) byId(id).hidden = !freeCalcSession;
+  byId('free-calc').disabled = !plan || needsRecalculation;
+  for (const id of ['new-plan', 'export-line', 'import-plan', 'game-select']) if (byId(id)) byId(id).disabled = Boolean(freeCalcSession);
   const hasPlan = Boolean(plan);
   ui.workspace.hidden = !hasPlan;
   ui["empty-plan"].hidden = hasPlan;
@@ -3318,7 +3589,7 @@ function renderWorkspace() {
   ui["plan-toolbar-label"].textContent = hasPlan ? `${plan.name} · ${currentTrainerName()} · ${battleFormatLabel()}` : "No battle plan open";
   ui["commit-turn"].disabled = true;
   if (liveButton) {
-    const overlayCompatible = !hasPlan || !["triples", "rotation"].includes(plan.game.battleFormat);
+    const overlayCompatible = !hasPlan || (!freeCalcSession && plan.schemaVersion < 5 && !["triples", "rotation"].includes(plan.game.battleFormat));
     liveButton.disabled = !hasPlan || needsRecalculation || !overlayCompatible;
     liveButton.textContent = liveWriter?.active ? "Stop Live Edit" : "Begin Live Edit";
     liveButton.title = overlayCompatible ? "" : `${battleFormatLabel()} plans stay local until Overlay gains this projection format`;
@@ -3340,13 +3611,13 @@ function renderWorkspace() {
 }
 
 async function persistDraft() {
-  if (!plan) return;
+  if (!plan || freeCalcSession) return;
   draftRecord = draftRecord ? updateDraftRecord(draftRecord, plan, cursorStateNodeId) : createDraftRecord(plan, cursorStateNodeId);
   await draftStore.save(draftRecord);
 }
 
 async function flushLiveEdit() {
-  if (!liveWriter?.active || !plan) return;
+  if (!liveWriter?.active || !plan || freeCalcSession) return;
   await liveWriter.flush(plan);
   draftRecord = markLiveFlushed(draftRecord, { ...liveWriter.session, documentRevision: plan.documentRevision });
   await draftStore.save(draftRecord);
@@ -3391,7 +3662,7 @@ async function outputPlan() {
     const selected = [...exportSelection];
     const { plan: output } = exportSelectedPlan(plan, selected);
     downloadPlan(output);
-    const all = planTreeOrder(plan, { includeReplacementStates: false }).filter(({ state }) => state.turnNumber > 0).map(({ state }) => state.stateNodeId);
+    const all = exportBranchGroups(plan).flatMap(group => group.stateNodeIds);
     const complete = all.every(id => exportSelection.has(id));
     draftRecord = markExported(draftRecord, { complete, selectedStateNodeIds: selected });
     await draftStore.save(draftRecord);
@@ -3401,7 +3672,7 @@ async function outputPlan() {
 
 async function importPlanFile(file) {
   if (!file || !dataset) return;
-  if ((liveWriter?.active || planHasWork(plan)) && !(await confirmDestructive("Importing another plan"))) return;
+  if ((liveWriter?.active || plan) && !(await confirmDestructive("Importing another plan"))) return;
   try {
     let imported = parsePlan(await file.text());
     assertValidPlanDocument(imported);
@@ -3486,7 +3757,7 @@ async function installLocalLiveEdit() {
   const enabledForGame = GAME_REGISTRY[selectedGameId]?.capabilities?.liveEdit === true;
   ui["live-edit-anchor"].hidden = !enabledForGame;
   if (!enabledForGame) return;
-  const { detectLocalLiveEditCapability, LocalLiveEditWriter } = await import("./integrations/local_live_edit.js");
+  const { detectLocalLiveEditCapability, LocalLiveEditWriter } = await import("./integrations/local_live_edit.js?v=20260905-drafts-freecalc-partners-v1");
   const capability = await detectLocalLiveEditCapability();
   if (!capability || liveButton) return;
   liveWriter = new LocalLiveEditWriter({ onError: error => setStatus(`Live Edit heartbeat failed: ${error.message}`, true) });
@@ -3554,7 +3825,7 @@ async function installLocalBattleTracker() {
     updateBattleTrackerButton();
     return;
   }
-  const trackerApi = await import("./integrations/local_battle_tracker.js");
+  const trackerApi = await import("./integrations/local_battle_tracker.js?v=20260905-drafts-freecalc-partners-v1");
   const capability = await trackerApi.detectLocalBattleTrackerCapability();
   if (!capability) return;
   compareTrackerTurnsFn = trackerApi.compareTrackerTurns;
@@ -3575,16 +3846,16 @@ async function installLocalBattleTracker() {
 }
 
 async function confirmDestructive(actionLabel) {
+  if (freeCalcSession) { setStatus('Close, Add, or Save as Draft to finish Free Calc first.', true); return false; }
   if (liveWriter?.active) {
     await stopLiveEdit();
     setStatus(`${actionLabel} paused because Live Edit had to stop first. Choose the stop flow, then request the change again.`);
     return false;
   }
-  const notice = destructiveTransitionNotice(draftRecord, actionLabel);
-  if (!notice) return true;
-  ui["destructive-message"].textContent = notice.message;
-  ui["destructive-output"].hidden = notice.currentExportExists;
-  ui["destructive-discard"].textContent = notice.currentExportExists ? "Clear and Continue" : "Discard and Continue";
+  if (!plan) return true;
+  ui["destructive-message"].textContent = "You have a line already open. Please select how to proceed.";
+  ui["destructive-output"].hidden = false;
+  ui["destructive-discard"].textContent = "Discard";
   return new Promise(resolve => {
     destructiveResolver = resolve;
     ui["destructive-dialog"].showModal();
@@ -3594,9 +3865,11 @@ async function confirmDestructive(actionLabel) {
 async function resolveDestructive(choice) {
   if (!destructiveResolver) return;
   const resolve = destructiveResolver; destructiveResolver = null;
-  if (choice === "output") {
+  if (choice === "draft") {
+    try { resolve(await saveNamedDraft()); } catch (error) { setStatus(`Draft could not be saved: ${error.message}`, true); resolve(false); }
+  } else if (choice === "output") {
     try {
-      const all = Object.values(plan.stateNodes).filter(state => state.turnNumber > 0).map(state => state.stateNodeId);
+      const all = Object.keys(plan.stateNodes);
       const { plan: output } = exportSelectedPlan(plan, all);
       downloadPlan(output);
       draftRecord = markExported(draftRecord, { complete: true, selectedStateNodeIds: all });
@@ -3678,7 +3951,7 @@ async function restoreDraft() {
 
 async function selectGame(gameId) {
   if (!gameId) { renderGameCredit(""); return; }
-  if (selectedGameId && selectedGameId !== gameId && (liveWriter?.active || planHasWork(plan)) && !(await confirmDestructive("Changing games"))) {
+  if (selectedGameId && selectedGameId !== gameId && (liveWriter?.active || plan) && !(await confirmDestructive("Changing games"))) {
     ui["game-select"].value = selectedGameId;
     renderGameCredit(selectedGameId);
     return;
@@ -3719,6 +3992,9 @@ async function selectGame(gameId) {
 }
 
 function wireEvents() {
+  ui["view-mode-toggle"]?.addEventListener("click", () => {
+    setViewMode(document.body.dataset.publicPreview === "true" ? "local" : "public");
+  });
   ui["game-select"].addEventListener("change", () => {
     renderGameCredit(ui["game-select"].value);
     selectGame(ui["game-select"].value);
@@ -3751,6 +4027,7 @@ function wireEvents() {
     finally { ui["import-boxes"].value = ""; }
   });
   ui["trainer-select"].addEventListener("change", updateVariantSelect);
+  ui["battle-format-choice"].addEventListener("change", updateContextTrainer);
   ui["variant-select"].addEventListener("change", () => { renderEnemyTeamSummary(); updateBeginAvailability(); });
   ui["context-box-select"].addEventListener("change", () => { contextSelection = { ...emptyContextSelection(), boxId: ui["context-box-select"].value || null }; refreshContextPartySelect(); renderContextPokemonGrid(); });
   ui["party-source-mode"].addEventListener("change", () => { contextSelection.pokemonIds = []; contextSelection.partyId = null; contextSelection.saved = false; refreshContextPartySelect(); renderContextPokemonGrid(); });
@@ -3762,10 +4039,16 @@ function wireEvents() {
   ui["save-pokemon"].addEventListener("click", savePokemonEditor);
   ui["new-plan"].addEventListener("click", () => openPlanContext());
   ui["commit-turn"].addEventListener("click", commitCurrentPreview);
-  ui["save-plan"].addEventListener("click", () => { renderExportSelection(); ui["output-dialog"].showModal(); });
+  ui["save-plan"].addEventListener("click", () => saveNamedDraft().catch(error => setStatus(error.message, true)));
+  byId('free-calc').addEventListener('click', startFreeCalc);
+  byId('free-calc-close').addEventListener('click', closeFreeCalc);
+  byId('free-calc-add').addEventListener('click', () => addFreeCalc().catch(error => setStatus(error.message, true)));
+  byId('free-calc-save').addEventListener('click', () => saveFreeCalcDraft().catch(error => setStatus(error.message, true)));
+  byId("export-line").addEventListener("click", () => { renderExportSelection(); ui["output-dialog"].showModal(); });
+  byId("drafts-tab").addEventListener("click", () => setTab('drafts'));
   ui["select-all-export"].addEventListener("click", () => {
     if (!plan) return;
-    for (const { state } of planTreeOrder(plan, { includeReplacementStates: false })) if (Number(state.turnNumber) > 0) exportSelection.add(state.stateNodeId);
+    for (const group of exportBranchGroups(plan)) for (const id of group.stateNodeIds) exportSelection.add(id);
     renderExportSelection();
   });
   ui["output-plan"].addEventListener("click", outputPlan);
@@ -3788,7 +4071,9 @@ function wireEvents() {
 }
 
 async function start() {
+  restoreViewMode();
   wireEvents();
+  document.addEventListener('reordererror', event => setStatus(`Party order could not be saved: ${event.detail?.message || event.detail}`, true));
   setAiForecastExpanded(false);
   await installTestingStateOutput();
   try {

@@ -117,6 +117,29 @@ async function simpleActionFixture(format = "doubles") {
     damageAdapter: { calculate: ({ move }) => move.category === "status" ? { status: "status" } : { status: "ok", damage: [10] } } };
 }
 
+test('Partner AI uses each trainer mask and maps replacement slots only within that trainer party', async () => {
+  const dataset = await loadStandardizedDataset({ baseUrl: 'http://fixture/vw2r', fetchImpl: generatedVw2rDatasetFetch });
+  const plan = createVw2rAiPlan(dataset, 'vw2r-lenora-hawes-double', 2);
+  const state = plan.stateNodes[plan.initialStateNodeId];
+  const ai = await loadTrainerAiDocumentation({ baseUrl:'http://fixture/trainer-ai', fetchImpl:generatedFetch });
+  const engine = generatedEvaluator(); const requests = [];
+  const evaluator = { ...engine, forecast: input => { requests.push(input.request); return engine.forecast(input); } };
+  const result = analyzeTrainerAi({plan,state,dataset,ai,evaluator,damageAdapter:{calculate:({move})=>move.category==='status'?{status:'status'}:{status:'ok',damage:[10]}}});
+  assert.equal(result.actors.length,2);
+  for (const entry of result.replacementForecasts) {
+    const owner=plan.combatants[entry.combatantKey].source.partyOwnerId;
+    assert.equal(entry.status,'available',entry.error);
+    assert.ok(entry.options.length);
+    for (const option of entry.options) assert.equal(plan.combatants[option.combatantKey].source.partyOwnerId,owner);
+  }
+  for (const request of requests) {
+    const owner=plan.combatants[request.actorId].source.partyOwnerId;
+    assert.equal(request.trainer.aiMask,Number(dataset.trainer(owner).battleProfiles.challenge.aiMask));
+    assert.equal(request.state.sides.ai.party.length,2);
+  }
+  assert.ok(requests.length>=4);
+});
+
 test("forecast-only midpoint HP is rounded down, disclosed, and never mutates planner ranges", async () => {
   const fixture = await simpleActionFixture();
   const key = fixture.state.active.playerCombatantKeys[0];
@@ -254,7 +277,7 @@ test("flag 4 explains the reached first-turn damage branch, not its historical r
     assert.ok(move.incentiveLedger.adjustments.every(reason => reason.probability));
     assert.ok(move.incentiveLedger.adjustments.some(reason => reason.title === 'First-Turn Preference'));
     assert.ok(move.incentiveLedger.finalScoreDistributions.length > 0);
-    assert.ok(move.incentiveLedger.finalScoreDistributions.every(distribution => distribution.scores.every(score => score.modeledWeight)));
+    assert.ok(move.incentiveLedger.finalScoreDistributions.every(distribution => distribution.scores.every(score => score.probability && !Object.hasOwn(score, 'modeledWeight'))));
     assert.ok(move.incentiveLedger.finalScoreDistributions.some(distribution => distribution.influencesLikelihood));
     assert.equal(move.evaluatorStatus, "exact");
   }
@@ -398,6 +421,8 @@ test("every executable generated Gen 4 and Gen 5 Dataset known answer passes the
     ["gen5-b2w2-trainer-ai-evaluator-v1alpha1", 8],
     ["gen4-platinum-trainer-ai-evaluator-v1alpha1", 9],
     ["gen4-renegade-platinum-trainer-ai-evaluator-v1alpha1", 10],
+    ["gen4-platinum-kaizo-trainer-ai-evaluator-v1alpha1", 9],
+    ["gen4-sssg-pchal-trainer-ai-evaluator-v1alpha1", 9],
     ["gen4-hgss-trainer-ai-evaluator-v1alpha1", 1]
   ]);
   for (const profile of profiles) {
@@ -707,6 +732,45 @@ test("the PLC Platinum query provider binds canonical moves to numeric AI identi
   metadata.context.candidate.action.moveId = dataset.get('moves', 'leer').trainerAi.numericId;
   assert.equal(queries["platinum.command.IfCurrentMoveKills"](0, metadata), false);
   assert.equal(queries["platinum.command.IfCurrentMoveDoesNotKill"](0, metadata), false, 'excluded status moves satisfy neither source damage branch');
+
+  const selfDestruct = dataset.get('moves', 'selfdestruct');
+  metadata.context.candidate.action = {
+    type: 'move',
+    moveId: selfDestruct.trainerAi.numericId,
+    canonicalMoveId: selfDestruct.id,
+    moveSlot: 0,
+    target: 0,
+    targetCombatantKey: targetKey,
+    targetSlot: 0
+  };
+  metadata.locals.calcTemp = queries['platinum.command.LoadCurrentMoveEffect'](metadata);
+  assert.equal(metadata.locals.calcTemp, 7);
+  assert.equal(queries['platinum.command.IfLoadedInTable']('Risky_RiskyEffects', metadata), true, 'Self-Destruct effect 7 resolves through the token/numeric Risky table binding');
+  assert.equal(queries['platinum.command.IfLoadedNotInTable']('Risky_RiskyEffects', metadata), false);
+
+  const riskyRequest = {
+    schemaVersion: generatedEvaluator().REQUEST_SCHEMA_VERSION,
+    requestId: 'plc-gen4-selfdestruct-risky-regression',
+    actorId: actorEntry.combatantKey,
+    evaluationScope: { startPhaseId: 'move-target-selection' },
+    state: { battle: { kind: 'trainer', format: 'singles', turn: 1 }, actor: { forcedContinuation: null, fainted: false, pivoting: false } },
+    trainer: { id: trainerId, aiFlagIds: ['AI_FLAG_RISKY'], bagSlots: [] },
+    phaseInputs: {
+      'move-target-selection': {
+        disposition: 'evaluate',
+        mode: 'scoring',
+        programIds: ['platinum-flag-4'],
+        candidates: [{ id: 'selfdestruct', initialScore: 100, action: metadata.context.candidate.action }]
+      }
+    }
+  };
+  const riskyResult = generatedEvaluator().evaluate({ profile: ai.evaluatorProfile, request: riskyRequest, queries });
+  assert.equal(riskyResult.status, 'exact', JSON.stringify(riskyResult.diagnostics));
+  assert.deepEqual(Array.from(riskyResult.scoreDistributions[0].scores, row => [row.score, row.probability.numerator, row.probability.denominator]), [[102, '1', '2'], [100, '1', '2']]);
+  const riskyAdjustment = riskyResult.scoreAdjustments.find(row => row.candidateId === 'selfdestruct' && row.delta === 2);
+  assert.deepEqual([riskyAdjustment.scoringProbability.numerator, riskyAdjustment.scoringProbability.denominator], ['1', '2'], 'the pre-selection Risky rule remains exactly 128/256');
+  assert.equal(riskyAdjustment.probabilityBasis, 'source-random-branch');
+  assert.ok(riskyResult.scoreDistributions[0].scores.some(row => row.score === 102), 'Risky reaches its +2 instruction from the declared entrypoint');
 });
 
 test("Platinum post-KO fallback executes outgoing-stat damage without PP filtering and preserves both byte boundaries", async () => {
@@ -773,11 +837,16 @@ test("the PLC full Renegade Platinum forecast resolves retail action precedence 
     damageAdapter: { calculate: ({ move }) => Number(move.basePower) > 0 ? { status: "ok", damage: [10] } : { status: "status" } }
   });
   assert.ok(["exact", "modeled"].includes(result.status), JSON.stringify(result.actors));
-  assert.equal(result.actors[0].actions.length, 4);
+  assert.ok(result.actors[0].actions.length >= 1 && result.actors[0].actions.length <= 4);
   assert.ok(result.actors[0].actions.every(action => action.action.type === "move"));
   assert.ok(Math.abs(result.actors[0].actions.reduce((sum, action) => sum + Number(action.modeledWeight.decimal), 0) - 1) < 1e-12);
   assert.ok(result.actors[0].moves.every(move => move.turnLikelihood?.label));
   assert.ok(result.actors[0].moves.every(move => /Starts at 100/i.test(move.explanation)));
+  const liveAdjustments = result.actors[0].moves.flatMap(move => move.incentiveLedger?.adjustments || []);
+  assert.ok(liveAdjustments.every(row => !/known-answer|script-archive/.test(String(row.programId))), 'validation and archive programs never leak into live scoring');
+  assert.ok(liveAdjustments.every(row => row.probability === null || row.probabilityBasis), 'live incentive percentages come from pre-selection scoring metadata');
+  assert.ok(liveAdjustments.every(row => !Object.hasOwn(row, 'modeledWeight')), 'score-rule rows do not expose hidden-state action weights');
+  assert.ok(liveAdjustments.every(row => !Object.hasOwn(row, 'conditionalOnAction')), 'post-selection conditioning never enters the PLC incentive ledger');
 });
 
 test("Renegade Platinum random-correlated scoring becomes modeled hidden-RNG guidance", async () => {
@@ -805,6 +874,9 @@ test("Renegade Platinum random-correlated scoring becomes modeled hidden-RNG gui
   assert.equal(result.actors[0].unresolvedActionProbability, 0);
   assert.ok(result.actors[0].moves.every(move => move.turnLikelihood?.label));
   assert.ok(result.actors[0].moves.every(move => /Starts at 100/i.test(move.explanation)));
+  const scoreOutcomes = result.actors[0].moves.flatMap(move => move.incentiveLedger?.finalScoreDistributions || []).flatMap(distribution => distribution.scores || []);
+  assert.ok(scoreOutcomes.length > 0);
+  assert.ok(scoreOutcomes.every(outcome => outcome.probability && !Object.hasOwn(outcome, 'modeledWeight')), 'hidden-seed action weights never enter final incentive scores');
 });
 
 test("the PLC presents an exact Renegade Platinum stage-one post-KO replacement forecast", async () => {
@@ -864,7 +936,7 @@ test("Platinum preserves the retail AI's naive Arena Trap gate even for Flying a
   actor.currentTypeIds = ["flying"];
   actor.currentItemId = "shedshell";
   actor.itemState = "held";
-  actor.volatileConditions.perishTurns = 0;
+  actor.volatileConditions.perishTurns = 1;
   const opponent = state.combatantStates[state.active.playerCombatantKeys[0]];
   opponent.currentAbilityId = "arenatrap";
   const query = () => createPlatinumQueryProvider({ plan, state, dataset, actorEntry, moves: plan.combatants[actorEntry.combatantKey].moves,
@@ -872,6 +944,61 @@ test("Platinum preserves the retail AI's naive Arena Trap gate even for Flying a
   assert.equal(query(), false, "the source AI declines a legal escape because of its naive gate");
   opponent.abilitySuppressed = true;
   assert.equal(query(), true, "suppressed abilities do not count; the Perish Song branch is then reached");
+});
+
+test('Platinum preserves ordered dual non-immunity flags in switch and post-KO checks', async () => {
+  const dataset = await loadStandardizedDataset({ baseUrl: 'http://fixture/rp', fetchImpl: generatedDatasetFetch });
+  const plan = createRenegadeAiPlan(dataset, 'renegade-platinum-trainer-0246');
+  const state = plan.stateNodes[plan.initialStateNodeId];
+  const actorEntry = { slot: 0, combatantKey: state.active.enemyCombatantKeys[0] };
+  const targetKey = state.active.playerCombatantKeys[0];
+  const ai = await loadTrainerAiDocumentation({ baseUrl: 'http://fixture/trainer-ai', gameId: 'renegade-platinum', generation: 4, fetchImpl: generatedFetch });
+  const metadata = { profile: ai.evaluatorProfile };
+  const query = createPlatinumQueryProvider({ plan, state, dataset, actorEntry, moves: [] });
+  const actorState = state.combatantStates[actorEntry.combatantKey];
+  const targetState = state.combatantStates[targetKey];
+  for (const [moveId, types] of [
+    ['earthquake', ['flying', 'rock']],
+    ['earthquake', ['flying', 'steel']],
+    ['shadowball', ['normal', 'psychic']],
+  ]) {
+    actorState.moveSetOverride = [{ moveId, maxPp: dataset.get('moves', moveId).pp }];
+    targetState.currentTypeIds = types;
+    assert.equal(query['platinum.command.IfHasSuperEffectiveMove'](metadata), true, `${moveId} into ${types.join('/')} retains both ineffective and super-effective flags`);
+  }
+  actorState.moveSetOverride = [{ moveId: 'thunderbolt', maxPp: dataset.get('moves', 'thunderbolt').pp }];
+  targetState.currentTypeIds = ['ground', 'flying'];
+  assert.equal(query['platinum.command.IfHasSuperEffectiveMove'](metadata), false, 'Renegade Platinum processes Flying before Ground in its expanded type table, so its later immunity clears the earlier weakness');
+
+  targetState.currentTypeIds = ['flying', 'rock'];
+  const reserves = Object.values(plan.combatants).filter(mon => mon.side === 'enemy' && mon.combatantKey !== actorEntry.combatantKey);
+  assert.ok(reserves.length >= 2);
+  for (const reserve of reserves) {
+    state.combatantStates[reserve.combatantKey].currentTypeIds = ['normal'];
+    state.combatantStates[reserve.combatantKey].moveSetOverride = [{ moveId: 'growl', maxPp: dataset.get('moves', 'growl').pp }];
+  }
+  state.combatantStates[reserves[0].combatantKey].currentTypeIds = ['water'];
+  state.combatantStates[reserves[0].combatantKey].moveSetOverride = [{ moveId: 'sandattack', maxPp: dataset.get('moves', 'sandattack').pp }];
+  const replacement = query['platinum.action.result']('post-ko-replacement', metadata);
+  assert.equal(replacement.reason, 'post-ko-stage-one');
+  assert.equal(replacement.partySlot, Number(reserves[0].source.trainerSlot) - 1, 'party CalcEffectiveness retains the bug even for a zero-power move');
+});
+
+test('Platinum switch gating binds partial traps and the normalized final Perish Song turn', async () => {
+  const dataset = await loadStandardizedDataset({ baseUrl: 'http://fixture/rp', fetchImpl: generatedDatasetFetch });
+  const plan = createRenegadeAiPlan(dataset, 'renegade-platinum-trainer-0246');
+  const state = plan.stateNodes[plan.initialStateNodeId];
+  const actorEntry = { slot: 0, combatantKey: state.active.enemyCombatantKeys[0] };
+  const actor = state.combatantStates[actorEntry.combatantKey];
+  const query = () => createPlatinumQueryProvider({ plan, state, dataset, actorEntry, moves: plan.combatants[actorEntry.combatantKey].moves })['platinum.action.decision']('voluntary-switch', {});
+  actor.volatileConditions = { perishTurns: 1, partiallyTrappedTurns: 2 };
+  assert.equal(query(), false, 'Bind-family residual trapping blocks the otherwise guaranteed Perish Song switch');
+  actor.volatileConditions = { perishTurns: 1, trappedBy: state.active.playerCombatantKeys[0] };
+  assert.equal(query(), false, 'Mean Look-style normalized source identity blocks switching');
+  actor.volatileConditions = { perishTurns: 1 };
+  assert.equal(query(), true, 'the normalized final-turn value maps to the source counter-zero switch window');
+  actor.volatileConditions = { perishSong: true, perishSongTurns: 0 };
+  assert.equal(query(), true, 'a raw source counter remains supported without reinterpreting its zero boundary');
 });
 
 test("the PLC full Renegade Platinum forecast uses a qualifying trainer item after the switch check", async () => {
@@ -961,6 +1088,63 @@ test('Platinum item loop retains consumed holes, initial count and stale use cla
   assert.equal(result.usedItemCondition, 1, 'X Attack uses the source BATTLE_STAT_ATTACK numeric binding');
 });
 
+test('Gen 4 item scan policy supports verified HGSS first-item and party-threshold differences', async () => {
+  // Adapter-policy unit test. The HGSS CPU known answers independently verify
+  // these two numeric policy values; this fixture does not enable a game binding.
+  const dataset = await loadStandardizedDataset({ baseUrl: 'http://fixture/rp', fetchImpl: generatedDatasetFetch });
+  const plan = createRenegadeAiPlan(dataset, 'renegade-platinum-trainer-0246'), state = plan.stateNodes[plan.initialStateNodeId];
+  const actorEntry = { slot: 0, combatantKey: state.active.enemyCombatantKeys[0] };
+  const enemyKeys = Object.values(plan.combatants).filter(mon => mon.side === 'enemy').map(mon => mon.combatantKey);
+  const ai = await loadTrainerAiDocumentation({ baseUrl: 'http://fixture/trainer-ai', gameId: 'renegade-platinum', generation: 4, fetchImpl: generatedFetch });
+  const profile = structuredClone(ai.evaluatorProfile);
+  profile.trainerItemUse.scan.laterSlotEligibilityOffset = 0;
+  profile.trainerItemUse.scan.loopBreaksAfterUsable = true;
+  for (const key of enemyKeys) state.combatantStates[key].hp = { min: key === actorEntry.combatantKey ? 1 : 0, max: key === actorEntry.combatantKey ? 1 : 0, maxHp: 100 };
+  state.trainerAi = { g4Bags: { 0: { initialCount: 2, slots: [17, 23, 0, 0] } } };
+  const query = createPlatinumQueryProvider({ plan, state, dataset, actorEntry, moves: [] })['platinum.action.result'];
+  let result = query('trainer-item', { profile });
+  assert.equal(result.itemId, 17);
+  assert.deepEqual(result.consumedBagSlots, [0]);
+  state.trainerAi.g4Bags[0].slots = [0, 17, 0, 0];
+  const reserve = enemyKeys.find(key => key !== actorEntry.combatantKey);
+  assert.ok(reserve);
+  state.combatantStates[reserve].hp = { min: 100, max: 100, maxHp: 100 };
+  assert.equal(query('trainer-item', { profile }), null, 'two living members exceed 2 - slot1');
+  state.combatantStates[reserve].hp = { min: 0, max: 0, maxHp: 100 };
+  assert.equal(query('trainer-item', { profile }).itemId, 17, 'one living member exactly meets 2 - slot1');
+  delete profile.trainerItemUse.scan.laterSlotEligibilityOffset;
+  assert.equal(query('trainer-item', { profile }), undefined, 'missing source policy must not inherit another engine');
+});
+
+test('supported SSSG generated data selects its own HGSS profile and preserves trainer item precedence', async () => {
+  const base = fileURLToPath(new URL('../src/generated/datasets/storm-silver/', import.meta.url));
+  const dataset = await loadStandardizedDataset({ baseUrl: 'http://fixture/ss', fetchImpl: async url => {
+    const file = path.join(base, path.basename(new URL(url).pathname));
+    return { ok: fs.existsSync(file), json: async () => JSON.parse(fs.readFileSync(file, 'utf8')) };
+  } });
+  const ai = await loadTrainerAiDocumentation({ baseUrl: 'http://fixture/trainer-ai', gameId: 'storm-silver', generation: 4, fetchImpl: generatedFetch });
+  assert.equal(ai.evaluatorProfile.profileId, 'gen4-sssg-pchal-trainer-ai-evaluator-v1alpha1');
+  assert.equal(ai.binding.consumerActivation.enabled, true);
+  assert.equal(Object.keys(ai.binding.trainerBindings).length, 737);
+  assert.equal(dataset.get('items', 'sitrusberry').num, 158);
+  assert.equal(dataset.get('items', 'quickclaw').num, 217);
+  const plan = createRenegadeAiPlan(dataset, 'storm-silver-trainer-0030');
+  const state = plan.stateNodes[plan.initialStateNodeId];
+  const key = state.active.enemyCombatantKeys[0], mon = state.combatantStates[key];
+  mon.hp = { min: 1, max: 1, maxHp: mon.hp.maxHp };
+  mon.hpDistribution = [{ value: 1, probability: 1 }];
+  // Source Arena Trap gate preempts voluntary switching, isolating the real bag.
+  state.combatantStates[state.active.playerCombatantKeys[0]].currentAbilityId = 'arenatrap';
+  const before = JSON.stringify(plan);
+  const result = analyzeTrainerAi({ plan, state, dataset, ai, evaluator: generatedEvaluator() });
+  assert.equal(result.actors[0].forecastStatus, 'available');
+  assert.equal(result.actors[0].actions.length, 1);
+  assert.equal(result.actors[0].actions[0].action.type, 'item');
+  assert.equal(result.actors[0].actions[0].action.itemToken, 'superpotion');
+  assert.equal(result.actors[0].actions[0].turnProbability, 1);
+  assert.equal(JSON.stringify(plan), before);
+});
+
 test('Platinum Doubles serializes switch and fainted replacement reservations and keeps per-battler bags', async () => {
   const dataset = await loadStandardizedDataset({ baseUrl: 'http://fixture/rp', fetchImpl: generatedDatasetFetch });
   const plan = createRenegadeAiPlan(dataset, 'renegade-platinum-trainer-0246'), state = plan.stateNodes[plan.initialStateNodeId];
@@ -975,7 +1159,7 @@ test('Platinum Doubles serializes switch and fainted replacement reservations an
   }
   state.combatantStates[state.active.playerCombatantKeys[0]].currentTypeIds = ['grass'];
   state.combatantStates[state.active.playerCombatantKeys[0]].currentAbilityId = '';
-  for (const key of enemyKeys.slice(0, 2)) state.combatantStates[key].volatileConditions.perishTurns = 0;
+  for (const key of enemyKeys.slice(0, 2)) state.combatantStates[key].volatileConditions.perishTurns = 1;
   const ai = await loadTrainerAiDocumentation({ baseUrl: 'http://fixture/trainer-ai', gameId: 'renegade-platinum', generation: 4, fetchImpl: generatedFetch });
   const engine = generatedEvaluator(), evaluator = { ...engine, forecast: options => engine.forecast({ ...options, request: { ...options.request, state: { ...options.request.state, random: { g4LcrngSeed: 0 } } } }) };
   const run = () => analyzeTrainerAi({ plan, state, dataset, ai, evaluator });

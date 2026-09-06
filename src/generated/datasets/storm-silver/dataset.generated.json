@@ -2,17 +2,17 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-ss-dataset",
   "source": "Datasets/Storm Silver/source-data",
-  "sourceTreeSha256": "D7DF723C22CA657E8B7740A127465D06FE22B779504990FB6098729494ED83B0",
+  "sourceTreeSha256": "FF1ED0CDCB3D134C741B04779E795F157AF67DEFA3940192105A9883BE582BEC",
   "files": [
     {
       "path": "dataset_manifest.json",
-      "bytes": 9157,
-      "sha256": "0B6EAC0AEF428EDB20FE94DA59DC6993E8EC807B2AA794AD09F380960A5E3A1D"
+      "bytes": 10812,
+      "sha256": "17D39F02021EBCCF3F27F78B000B0387C1D2D64EA9EFDB8A99763F64821243A2"
     },
     {
       "path": "battle_mechanics.json",
-      "bytes": 7953,
-      "sha256": "B96AAD127BE9AD844F9D1851DBC6398065BCFD8B4BF6802B75070AE4EBF25E01"
+      "bytes": 2401,
+      "sha256": "20B791BF83B9B1FD30D40014B34ECA76E2B82EC0A453642A694A34E2E64471A3"
     },
     {
       "path": "experience_mechanics.json",
@@ -26,8 +26,8 @@
     },
     {
       "path": "moves.json",
-      "bytes": 441789,
-      "sha256": "E576CF880CF58FD86C8FC1ACBBD8A2A825E535DCC03B035BDA97F743D83BB15D"
+      "bytes": 753817,
+      "sha256": "5354CE103A45445803C28D816960B0BA712FC9F47C732E81C98FABF27F3D6EF5"
     },
     {
       "path": "abilities.json",
@@ -36,8 +36,8 @@
     },
     {
       "path": "items.json",
-      "bytes": 379639,
-      "sha256": "F5B5D415F419F0762A64DDE6ED3544F4A5F3B15227E5B71E8F22266BCC6A8E7C"
+      "bytes": 1305232,
+      "sha256": "07665E3417BA1AE549EA76F3F138FE8EC567AD2911B85D4A48DED0018EED8A64"
     },
     {
       "path": "natures.json",
@@ -51,13 +51,18 @@
     },
     {
       "path": "trainers.json",
-      "bytes": 5838123,
-      "sha256": "77137C2C3381B87568840DE40D232CEC25C27B770389B01906C84C1CD383DB95"
+      "bytes": 7096874,
+      "sha256": "A91F0BCE167B9231903D4282372CB04930D323DF743B2711820E08EF408B7965"
     },
     {
       "path": "trainer_order.json",
       "bytes": 295918,
       "sha256": "D9F9777C39833F23A3A44C0AFB333B5844EDA5C7B79E58131CEF5FED8A3B0CC0"
+    },
+    {
+      "path": "trainer_battle_groups.json",
+      "bytes": 105,
+      "sha256": "3742C7B52AF2B94A23917AD021C8FBBD29EB153C5423F0D6016FC2637F247FEC"
     },
     {
       "path": "progression.json",
@@ -71,8 +76,8 @@
     },
     {
       "path": "save_id_maps.json",
-      "bytes": 124930,
-      "sha256": "13EFDE153FFB422B71591B3B6A6B1E12824AAA36717C48FF73BACCBB45FEECC9"
+      "bytes": 126176,
+      "sha256": "7B6BB1208BD3293103B73DAD219D0A9065722F2194BF4CDBEF2985023F9D83AD"
     }
   ]
 }

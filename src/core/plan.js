@@ -1,14 +1,14 @@
-import { assertValidPlanDocument, PLAN_SCHEMA_VERSION } from "../contracts/plan_contract.js";
-import { clone, exactRange, makeStableId, nowIso, shortHash, stableStringify, toId } from "./primitives.js";
-import { activeKeys, battleFormat as normalizeBattleFormat, slotsPerSide } from "./battle_slots.js";
-import { participatingActiveEntries, participatingActiveKeys } from "../rulesets/rotation_battle.js";
-import { createInitialExperienceState } from "../rulesets/vw2r_experience.js";
-import { entryAbilityEffects } from "../rulesets/switch_rules.js?v=20260827-ability-state-events";
-import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260827-ability-form-events";
-import { combatantsAreAdjacent } from "../rulesets/triple_battle.js?v=20260827-triples-slot-display";
-import { abilityStatStageRule, activeAbilityId } from "../rulesets/ability_rules.js?v=20260827-ability-state-events";
-import { weatherIsSuppressed } from "../rulesets/battle_rules.js?v=20260827-ability-state-events";
-import { ABILITY_FORM_STATE_VERSION, applyCombatantFormState, desiredWeatherAbilityForm } from "../rulesets/form_rules.js";
+import { assertValidPlanDocument, PLAN_SCHEMA_VERSION } from "../contracts/plan_contract.js?v=20260905-drafts-freecalc-partners-v1";
+import { clone, exactRange, makeStableId, nowIso, shortHash, stableStringify, toId } from "./primitives.js?v=20260905-drafts-freecalc-partners-v1";
+import { activeKeys, battleFormat as normalizeBattleFormat, slotsPerSide } from "./battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
+import { participatingActiveEntries, participatingActiveKeys } from "../rulesets/rotation_battle.js?v=20260905-drafts-freecalc-partners-v1";
+import { createInitialExperienceState } from "../rulesets/vw2r_experience.js?v=20260905-drafts-freecalc-partners-v1";
+import { entryAbilityEffects } from "../rulesets/switch_rules.js?v=20260905-drafts-freecalc-partners-v1";
+import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260905-drafts-freecalc-partners-v1";
+import { combatantsAreAdjacent } from "../rulesets/triple_battle.js?v=20260905-drafts-freecalc-partners-v1";
+import { abilityStatStageRule, activeAbilityId } from "../rulesets/ability_rules.js?v=20260905-drafts-freecalc-partners-v1";
+import { weatherIsSuppressed } from "../rulesets/battle_rules.js?v=20260905-drafts-freecalc-partners-v1";
+import { ABILITY_FORM_STATE_VERSION, applyCombatantFormState, desiredWeatherAbilityForm } from "../rulesets/form_rules.js?v=20260905-drafts-freecalc-partners-v1";
 
 export const INITIAL_ENTRY_EFFECTS_VERSION = 2;
 
@@ -416,7 +416,8 @@ export function createPlanDocument({
     createdAt: now,
     updatedAt: now,
     documentRevision: 0,
-    game: { gameId: dataset.gameId, battleFormat: format, trainerId, trainerVariantId },
+    game: { gameId: dataset.gameId, battleFormat: format, trainerId, trainerVariantId,
+      ...(dataset.trainer(trainerId)?.encounter ? { partyOwnership: { enemy: { policy: 'per-trainer', slotOwnerIds: [...(dataset.trainer(trainerId).encounter.enemySlotTrainerIds || dataset.trainer(trainerId).encounter.enemyTrainerIds)] } } } : {}) },
     mechanicsFingerprint: currentMechanicsFingerprint(dataset),
     sourceSnapshot: clone(sourceSnapshot || {}),
     combatants,

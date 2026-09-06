@@ -1,6 +1,6 @@
-import { assertValidPlanDocument, MAX_PLAN_BYTES, validatePlanDocument } from "./plan_contract.js";
-import { createPlanSubset } from "../core/graph.js";
-import { stableStringify } from "../core/primitives.js";
+import { assertValidPlanDocument, MAX_PLAN_BYTES, validatePlanDocument } from "./plan_contract.js?v=20260905-drafts-freecalc-partners-v1";
+import { createPlanSubset } from "../core/graph.js?v=20260905-drafts-freecalc-partners-v1";
+import { stableStringify } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
 
 export function migratePlanDocument(plan) {
   if (Number(plan?.schemaVersion) !== 1) return plan;

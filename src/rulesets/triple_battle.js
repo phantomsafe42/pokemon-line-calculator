@@ -1,4 +1,4 @@
-import { activeKey, activeSlotEntries, actorSlot, battleFormat } from "../core/battle_slots.js";
+import { activeKey, activeSlotEntries, actorSlot, battleFormat } from "../core/battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
 
 export const TRIPLE_POSITIONS = Object.freeze({ left: 0, center: 1, right: 2 });
 const PLAYER_SLOT_BY_POSITION = Object.freeze([0, 1, 2]);

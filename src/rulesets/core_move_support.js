@@ -1,5 +1,5 @@
-import { toId } from "../core/primitives.js";
-import { hasShowdownMoveReference, vw2rMoveSupport, vw2rReferenceMoveIds } from "./vw2r_move_support.js";
+import { toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
+import { hasShowdownMoveReference, vw2rMoveSupport, vw2rReferenceMoveIds } from "./vw2r_move_support.js?v=20260905-drafts-freecalc-partners-v1";
 
 // The core registry intentionally enables only canonical moves whose complete turn effect
 // is represented here. A move is never treated as simple damage just because its

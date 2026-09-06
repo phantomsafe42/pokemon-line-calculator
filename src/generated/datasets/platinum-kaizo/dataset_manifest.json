@@ -56,12 +56,16 @@
     "source-data/trainer_table.json": {
       "sha256": "cfe81fb3d008f8db3306a6d9177355e09338fac7a4fb360ae89c3396c529e506",
       "role": "deterministic numeric trainer-table projection of battle format, bag items, and AI flag booleans"
+    },
+    "source-data/trainer_ai_authority_resolution.json": {
+      "sha256": "9a620e5c111d209558354f9cb6020d5a42225c77bd28ce79a25f6745b7a3a456",
+      "role": "user-approved authority decision for exactly eight Nightmare Final trainer masks and four Mercury natures; superseded workbook values retained"
     }
   },
   "inheritedBaseTables": {
     "path": "../Gen 4/source-data/base_engine_tables.json",
     "profile": "platinum",
-    "sha256": "f21e8a2b3f458b54728611d22e166fd27ef18c26f9c109bdfb70b02a5df4ee44"
+    "sha256": "809b747dc7f150ebfb60742963a593c3fa919a083f894977235ff574c9387604"
   },
   "calculationReference": {
     "engine": {
@@ -82,6 +86,45 @@
     "role": "external Platinum Kaizo patch identity; patch bytes remain outside the workspace"
   },
   "sourceRequirements": {
+    "trainerAiEvaluatorAuthority": {
+      "required": true,
+      "source": "imports/trainer-ai/nightmare-final/pk-nightmare-final-reproduction.json",
+      "status": "passed",
+      "authorityResolution": {
+        "source": "trainer_ai_authority_resolution.json",
+        "sha256": "9a620e5c111d209558354f9cb6020d5a42225c77bd28ce79a25f6745b7a3a456",
+        "decisionId": "pk-nightmare-final-trainer-authority-2026-09-05",
+        "resolvedFieldDecisions": 12
+      },
+      "finalRomSha256": "8afefe06be640aa17ffcd2debc1434ea0e2e338a38db198cf634c573bca189df",
+      "exactPatchReproduction": true,
+      "moveRecords": 471,
+      "itemIdentities": 468,
+      "inheritedReachableFunctions": 171,
+      "trainerBindings": "Not promoted by numeric move/item projection; source-data/trainer_ai.json owns activation.",
+      "pendingTrainerMaskAuthorityIds": [],
+      "pendingTrainerNatureAuthority": []
+    },
+    "trainerInitialState": {
+      "required": true,
+      "sourceModule": "../../tools/gen4_priority_trainer_state.js",
+      "sourceModuleSha256": "3e7dc96a6820323b6fcb1f52976e4c948e16d1665a1ffb0911a3b43453d16593",
+      "source": "imports/trainer-ai/nightmare-final/pk-nightmare-final-trainer-constructor.json",
+      "matchedTrainers": 484,
+      "fields": [
+        "gender",
+        "initialFriendship",
+        "natureId"
+      ],
+      "inheritance": "CPU-verified constructor and exact numeric party-slot identity only; no player default",
+      "excludedReferenceTrainerIds": [
+        "platinum-kaizo-workbook-trainer-0007",
+        "platinum-kaizo-workbook-trainer-0008",
+        "platinum-kaizo-workbook-trainer-0040",
+        "platinum-kaizo-workbook-trainer-0238",
+        "platinum-kaizo-workbook-trainer-0343"
+      ]
+    },
     "officialPkcalcSpeciesReference": {
       "required": true,
       "source": "pkcalc_reference_audit.json",
@@ -122,7 +165,15 @@
     "consumer_projection.json",
     "trainer_reconciliation_report.json",
     "pkcalc_reference_audit.json",
-    "trainer_documentation.json"
+    "trainer_ai_authority_resolution.json",
+    "trainer_documentation.json",
+    "imports/trainer-ai/nightmare-final/pk-nightmare-final-initial-ability.json",
+    "imports/trainer-ai/nightmare-final/pk-nightmare-final-structure.json",
+    "imports/trainer-ai/nightmare-final/pk-nightmare-final-relocations.json",
+    "imports/trainer-ai/nightmare-final/pk-nightmare-final-trainer-constructor.json",
+    "imports/trainer-ai/nightmare-final/pk-nightmare-final-item-parameters.json",
+    "imports/trainer-ai/nightmare-final/pk-nightmare-final-reproduction.json",
+    "imports/trainer-ai/nightmare-final/pk-nightmare-final-external-abi.json"
   ],
   "builders": {
     "build": "node ..\\tools\\standardize_legacy_game.js platinum-kaizo",
@@ -134,6 +185,7 @@
     "officialPkcalcVerification": "node ..\\tools\\verify_platinum_kaizo_pkcalc_reference.js",
     "officialPkcalcInputVerification": "node ..\\tools\\verify_platinum_kaizo_pkcalc_reference.js --inputs-only",
     "trainerAiBuild": "node ..\\tools\\build_trainer_ai_profiles.js",
+    "trainerAiImmutableEvidenceCheck": "node ..\\tools\\import_platinum_kaizo_ai_evidence.js --check",
     "trainerAiDeterministicCheck": "node ..\\tools\\build_trainer_ai_profiles.js --check",
     "consumerBuild": "node ..\\tools\\build_standardized_consumers.js --game platinum-kaizo",
     "consumerDeterministicCheck": "node ..\\tools\\build_standardized_consumers.js --game platinum-kaizo --check",
@@ -238,11 +290,11 @@
     },
     {
       "category": "trainer-ai",
-      "reason": "418 trainer masks/formats/items are corroborated by numeric ID and party cardinality; 66 custom or divergent trainer records remain fail-closed with null AI masks."
+      "reason": "Nightmare Final constructor/header evidence binds 484 trainer parties; five workbook-only reference records remain outside exact AI bindings. The scoped authority decision resolves eight masks and four natures while retaining their workbook provenance."
     },
     {
       "category": "rom-verification",
-      "reason": "No final patched ROM was read during this documentation-led migration."
+      "reason": "Hash-pinned Nightmare Final evidence covers the declared AI code/script, numeric tables and 484 constructor/header bindings; this does not certify unrelated Dataset categories or the older installed PK ROM."
     }
   ],
   "deterministicAssumptions": [

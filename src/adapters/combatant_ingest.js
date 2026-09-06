@@ -1,5 +1,5 @@
-import { canonicalStats, shortHash, stableStringify, toId } from "../core/primitives.js";
-import { canonicalTrainerMember, DatasetReadinessError } from "./standardized_dataset.js";
+import { canonicalStats, shortHash, stableStringify, toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
+import { canonicalTrainerMember, DatasetReadinessError } from "./standardized_dataset.js?v=20260905-drafts-freecalc-partners-v1";
 
 const NATURE_MULTIPLIER = 1.1;
 
@@ -148,10 +148,13 @@ export function normalizeTrainerRoster(trainerId, trainerVariantId, dataset, run
         kind: "standardized-trainer",
         pid: null,
         uniqueKey: null,
-        trainerId: trainer.id,
-        consumerTrainerId: trainer.consumerTrainerId ?? null,
+        trainerId: raw.ownerTrainerId || trainer.id,
+        partyOwnerId: raw.ownerTrainerId || null,
+        ownerPartySlot: raw.ownerPartySlot ?? null,
+        consumerTrainerId: raw.ownerConsumerTrainerId ?? trainer.consumerTrainerId ?? null,
         trainerVariantId: trainerVariantId ?? null,
-        trainerSlot: slot
+        trainerSlot: raw.ownerPartySlot ?? slot,
+        encounterSlot: slot
       },
       speciesId: member.speciesId,
       formId: raw.form ? String(raw.form) : null,

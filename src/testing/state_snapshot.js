@@ -1,4 +1,4 @@
-import { clone, stableStringify } from "../core/primitives.js";
+import { clone, stableStringify } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
 
 export const TESTING_STATE_KIND = "pokemon-line-calculator-testing-state";
 export const TESTING_STATE_SCHEMA_VERSION = 1;

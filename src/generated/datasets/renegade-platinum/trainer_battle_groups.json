@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "gameId": "renegade-platinum",
+  "kind": "trainer-battle-groups",
+  "records": {
+    "renegade-platinum-occurrence-0291": {
+      "id": "renegade-platinum-occurrence-0291",
+      "battleFormat": "multi-trainer",
+      "locationId": "ironislandb2fleftside",
+      "enemyTrainerIds": [
+        "renegade-platinum-trainer-0835",
+        "renegade-platinum-trainer-0836"
+      ],
+      "source": {
+        "workbook": "RP_Trainer_Battles.xlsx",
+        "sheet": "Byron Split",
+        "row": 714,
+        "memberRows": [
+          714,
+          725
+        ]
+      },
+      "sourceConfidence": "native-drayano-trainer-battles-tab-row-and-classification"
+    },
+    "renegade-platinum-occurrence-0304": {
+      "id": "renegade-platinum-occurrence-0304",
+      "battleFormat": "multi-trainer",
+      "locationId": "lakeverity",
+      "enemyTrainerIds": [
+        "renegade-platinum-trainer-0419",
+        "renegade-platinum-trainer-0426"
+      ],
+      "source": {
+        "workbook": "RP_Trainer_Battles.xlsx",
+        "sheet": "Candice Split",
+        "row": 62,
+        "memberRows": [
+          62,
+          73
+        ]
+      },
+      "sourceConfidence": "native-drayano-trainer-battles-tab-row-and-classification"
+    },
+    "renegade-platinum-occurrence-0305": {
+      "id": "renegade-platinum-occurrence-0305",
+      "battleFormat": "multi-trainer",
+      "locationId": "lakeverity",
+      "enemyTrainerIds": [
+        "renegade-platinum-trainer-0420",
+        "renegade-platinum-trainer-0427"
+      ],
+      "source": {
+        "workbook": "RP_Trainer_Battles.xlsx",
+        "sheet": "Candice Split",
+        "row": 84,
+        "memberRows": [
+          84,
+          95
+        ]
+      },
+      "sourceConfidence": "native-drayano-trainer-battles-tab-row-and-classification"
+    },
+    "renegade-platinum-occurrence-0332": {
+      "id": "renegade-platinum-occurrence-0332",
+      "battleFormat": "multi-trainer",
+      "locationId": "galactichq2fenteringfrombottommoststaircaseon1f",
+      "enemyTrainerIds": [
+        "renegade-platinum-trainer-0513",
+        "renegade-platinum-trainer-0430"
+      ],
+      "source": {
+        "workbook": "RP_Trainer_Battles.xlsx",
+        "sheet": "Volkner Split",
+        "row": 105,
+        "memberRows": [
+          105,
+          116
+        ]
+      },
+      "sourceConfidence": "native-drayano-trainer-battles-tab-row-and-classification"
+    },
+    "renegade-platinum-occurrence-0334": {
+      "id": "renegade-platinum-occurrence-0334",
+      "battleFormat": "multi-trainer",
+      "locationId": "galactichq3fenteringfrombottomleftmoststaircaseon2f",
+      "enemyTrainerIds": [
+        "renegade-platinum-trainer-0522",
+        "renegade-platinum-trainer-0514"
+      ],
+      "source": {
+        "workbook": "RP_Trainer_Battles.xlsx",
+        "sheet": "Volkner Split",
+        "row": 140,
+        "memberRows": [
+          140,
+          151
+        ]
+      },
+      "sourceConfidence": "native-drayano-trainer-battles-tab-row-and-classification"
+    },
+    "renegade-platinum-occurrence-0347": {
+      "id": "renegade-platinum-occurrence-0347",
+      "battleFormat": "multi-trainer",
+      "locationId": "spearpillar",
+      "enemyTrainerIds": [
+        "renegade-platinum-trainer-0527",
+        "renegade-platinum-trainer-0521"
+      ],
+      "source": {
+        "workbook": "RP_Trainer_Battles.xlsx",
+        "sheet": "Volkner Split",
+        "row": 309,
+        "memberRows": [
+          309,
+          320
+        ]
+      },
+      "sourceConfidence": "native-drayano-trainer-battles-tab-row-and-classification"
+    }
+  }
+}

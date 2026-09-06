@@ -2,7 +2,7 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-unbound-dataset",
   "source": "Datasets/Pokemon Unbound/source-data",
-  "sourceTreeSha256": "6AF2E3F45B5D69ED650D0350865435E338F3EFCE94601EC0C57796E42AD8BC30",
+  "sourceTreeSha256": "90598D73F43BC00A675AC66B6AE08D6D6CFA9438E8241C0FFECD12C9863B2603",
   "files": [
     {
       "path": "dataset_manifest.json",
@@ -58,6 +58,11 @@
       "path": "trainer_order.json",
       "bytes": 242105,
       "sha256": "3C9F0FE5383CB3FBBC23D830CD1082924D52842ABD0EF9141D84565E8EA63782"
+    },
+    {
+      "path": "trainer_battle_groups.json",
+      "bytes": 108,
+      "sha256": "C6FB6FEAB4571CC3816DE6B0DBD4E422D5240C01E1EDE930A77E2891716CAACD"
     },
     {
       "path": "progression.json",

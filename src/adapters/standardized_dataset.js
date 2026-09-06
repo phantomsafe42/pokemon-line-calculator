@@ -1,4 +1,5 @@
-import { canonicalStats, shortHash, stableStringify, toId } from "../core/primitives.js";
+import { canonicalStats, shortHash, stableStringify, toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
+import { installTrainerEncounters, encounterNavigation } from './trainer_encounters.js?v=20260905-drafts-freecalc-partners-v1';
 
 export const BATTLE_DATASET_SOURCES = Object.freeze([
   "species.json",
@@ -12,6 +13,7 @@ export const BATTLE_DATASET_SOURCES = Object.freeze([
 
 export const TRAINER_NAVIGATION_SOURCES = Object.freeze([
   "trainer_order.json",
+  "trainer_battle_groups.json",
   "progression.json"
 ]);
 
@@ -162,6 +164,7 @@ export function createDatasetContext({ manifest, mechanics, documents }) {
 
   const loaded = Object.fromEntries(BATTLE_DATASET_SOURCES.map(file => [file, requireDocument(documents, file, gameId)]));
   loaded["trainer_order.json"] = requireDocument(documents, "trainer_order.json", gameId);
+  loaded['trainer_battle_groups.json'] = documents['trainer_battle_groups.json'] || { schemaVersion: 1, gameId, records: {} };
   loaded["progression.json"] = requireDocument(documents, "progression.json", gameId, { records: false });
   loaded["experience_mechanics.json"] = requireDocument(documents, "experience_mechanics.json", gameId, { records: false });
   loaded["evolutions.json"] = requireDocument(documents, "evolutions.json", gameId);
@@ -186,30 +189,7 @@ export function createDatasetContext({ manifest, mechanics, documents }) {
   };
   indexes.evolutions = asMap(loaded["evolutions.json"]);
 
-  // Temporary, user-requested VW2R pairing until Dataset battle groups cover this fight.
-  // Clone the existing records; never modify standardized source documents.
-  const temporaryPairId = "vw2r-lenora-hawes-double";
-  if (gameId === "volt-white-2r") {
-    const lenora = indexes.trainers.get("vw2r-trainer-0095");
-    const hawes = indexes.trainers.get("vw2r-trainer-0096");
-    if (lenora && hawes) {
-      const paired = structuredClone(lenora);
-      paired.id = temporaryPairId;
-      paired.displayName = "Lenora & Scientist Hawes (Doubles)";
-      paired.shortName = paired.displayName;
-      paired.consumerTrainerId = null;
-      paired.finalRomTrainerId = null;
-      paired.finalRomTrainerIds = [];
-      paired.team = [];
-      for (let index = 0; index < Math.max(lenora.team.length, hawes.team.length); index++) {
-        for (const trainer of [lenora, hawes]) {
-          if (trainer.team[index]) paired.team.push({ ...structuredClone(trainer.team[index]), slot: paired.team.length + 1 });
-        }
-      }
-      paired.battleProfiles[mechanics.trainerBattleProfile].format = "double";
-      indexes.trainers.set(temporaryPairId, paired);
-    }
-  }
+  const encounters = installTrainerEncounters(indexes.trainers, loaded['trainer_battle_groups.json'], mechanics.trainerBattleProfile);
 
   const context = {
     gameId,
@@ -245,15 +225,19 @@ export function createDatasetContext({ manifest, mechanics, documents }) {
       if (!trainer) throw new DatasetReadinessError(`Trainer ${trainerId} is unavailable`);
       return trainerBattleFormat(trainer, mechanics);
     },
+    trainerBattleChoices(trainerId) {
+      const trainer = this.trainer(trainerId);
+      if (!trainer) return [];
+      const paired = encounters.byMember.get(trainer.id);
+      if (paired?.encounter.formatChoice === 'single-or-double') return [
+        { trainerId: trainer.id, format: 'singles', label: 'Singles' },
+        { trainerId: paired.id, format: 'doubles', label: `Doubles · ${paired.displayName}` }
+      ];
+      return [{ trainerId: trainer.id, format: this.trainerBattleFormat(trainer.id) }];
+    },
     trainerGroups() {
       const groups = trainerNavigationGroups(indexes.trainers, loaded["trainer_order.json"], loaded["progression.json"]);
-      const paired = indexes.trainers.get(temporaryPairId);
-      if (paired) {
-        for (const group of groups) group.trainers = group.trainers.flatMap(trainer =>
-          trainer.id === "vw2r-trainer-0095" ? [paired]
-            : ["vw2r-trainer-0096", temporaryPairId].includes(trainer.id) ? [] : [trainer]);
-      }
-      return groups.filter(group => group.trainers.length);
+      return encounterNavigation(groups, encounters);
     },
     fingerprint: {
       engineId: mechanics.engine?.id || "unknown",

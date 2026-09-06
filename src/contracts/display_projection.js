@@ -1,5 +1,5 @@
-import { deriveDisplayColumns } from "../core/graph.js";
-import { clone, nowIso } from "../core/primitives.js";
+import { deriveDisplayColumns } from "../core/graph.js?v=20260905-drafts-freecalc-partners-v1";
+import { clone, nowIso } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
 
 export const DISPLAY_KIND = "battle-plan-display";
 export const DISPLAY_SCHEMA_VERSION = 2;

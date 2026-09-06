@@ -488,6 +488,7 @@
                     drawRandom: { value: sourceId => {
                         const source = environment.randomSources.get(sourceId);
                         if (!source) throw new EvaluationIssue("missing-random-source", `Query ${queryId} requested undeclared source ${sourceId}`);
+                        if (environment.educationalScoreMarginals === true) return sourceRepresentativeValue(source);
                         const draw = drawFromExactG4State(environment.executionState.world, source);
                         if (!draw) throw new EvaluationIssue("conditional-readiness-unsatisfied", "This source query needs the shared random trajectory", {
                             requirements: [{ requestPath: "state.random.g4LcrngSeed", valueType: "uint32" }]
@@ -524,7 +525,7 @@
         return { named, list: raw };
     }
 
-    function sourceRange(source, limits) {
+    function sourceRange(source, limits, enforceSupportLimit = true) {
         const distribution = source.distribution || source;
         if (distribution.kind && !["uniform-int", "uniform-integer"].includes(distribution.kind)) {
             throw new EvaluationIssue("unsupported-random-source", `Random source ${source.id} is not a uniform integer source`);
@@ -535,8 +536,25 @@
             throw new EvaluationIssue("invalid-random-source", `Random source ${source.id} has an invalid range`);
         }
         const size = maximum - minimum + 1;
-        if (size > limits.maxRandomSupport) throw new EvaluationIssue("random-support-limit", `Random source ${source.id} has ${size} values`);
+        if (enforceSupportLimit && size > limits.maxRandomSupport) throw new EvaluationIssue("random-support-limit", `Random source ${source.id} has ${size} values`);
         return { minimum, maximum, size };
+    }
+
+    function sourceRepresentativeValue(source) {
+        const inputDomain = source.distribution?.inputDomain;
+        if (Array.isArray(inputDomain) && inputDomain.length === 2
+            && Number.isInteger(Number(inputDomain[0])) && Number.isInteger(Number(inputDomain[1]))
+            && Number(inputDomain[1]) >= Number(inputDomain[0])) {
+            return Math.floor((Number(inputDomain[0]) + Number(inputDomain[1])) / 2);
+        }
+        const range = sourceRange(source, { maxRandomSupport: Number.MAX_SAFE_INTEGER }, false);
+        return Math.floor((range.minimum + range.maximum) / 2);
+    }
+
+    function requirementsOnlyNeedG4Seed(requirements) {
+        return Array.isArray(requirements)
+            && requirements.length > 0
+            && requirements.every(requirement => requirement.requestPath === "state.random.g4LcrngSeed" && requirement.valueType === "uint32");
     }
 
     function randomScopeKey(source, context) {
@@ -585,10 +603,34 @@
         if (threshold === undefined) throw new EvaluationIssue("missing-state", `Random branch threshold for ${source.id} is unresolved`);
         const target = resolveJumpTarget(evaluateExpression(operation.target, environment), labels, instructions);
         const scopeKey = randomScopeKey(source, environment.context);
-        const nextState = (world, value) => ({ ...state, pc: comparison(operation.comparison, value, threshold) ? target : state.pc + 1, lastBranch: { pc: instructions[state.pc].pc, taken: comparison(operation.comparison, value, threshold) }, world });
         const exactDraw = drawFromExactG4State(state.world, source);
+        const range = sourceRange(source, limits, !exactDraw);
+        let passing = 0;
+        let passingExample;
+        let failingExample;
+        for (let value = range.minimum; value <= range.maximum; value += 1) {
+            if (comparison(operation.comparison, value, threshold)) {
+                passing += 1;
+                if (passingExample === undefined) passingExample = value;
+            } else if (failingExample === undefined) failingExample = value;
+        }
+        const outcomeProbability = taken => new Rational(BigInt(taken ? passing : range.size - passing), BigInt(range.size)).toJSON();
+        const nextState = (world, value) => {
+            const taken = comparison(operation.comparison, value, threshold);
+            return {
+                ...state,
+                pc: taken ? target : state.pc + 1,
+                lastBranch: {
+                    pc: instructions[state.pc].pc,
+                    taken,
+                    kind: "random",
+                    sourceId: source.id,
+                    outcomeProbability: outcomeProbability(taken)
+                },
+                world
+            };
+        };
         if (exactDraw) return [nextState(exactDraw.world, exactDraw.value)];
-        const range = sourceRange(source, limits);
         if (scopeKey && Object.prototype.hasOwnProperty.call(state.world.randomValues, scopeKey)) {
             return [nextState(state.world, state.world.randomValues[scopeKey])];
         }
@@ -601,11 +643,9 @@
             }
             return states;
         }
-        let passing = 0;
-        for (let value = range.minimum; value <= range.maximum; value += 1) if (comparison(operation.comparison, value, threshold)) passing += 1;
         const states = [];
-        if (passing > 0) states.push({ ...state, pc: target, lastBranch: { pc: instructions[state.pc].pc, taken: true }, world: scaleWorld(state.world, new Rational(BigInt(passing), BigInt(range.size))) });
-        if (passing < range.size) states.push({ ...state, pc: state.pc + 1, lastBranch: { pc: instructions[state.pc].pc, taken: false }, world: scaleWorld(state.world, new Rational(BigInt(range.size - passing), BigInt(range.size))) });
+        if (passing > 0) states.push(nextState(scaleWorld(state.world, new Rational(BigInt(passing), BigInt(range.size))), passingExample));
+        if (passing < range.size) states.push(nextState(scaleWorld(state.world, new Rational(BigInt(range.size - passing), BigInt(range.size))), failingExample));
         return states;
     }
 
@@ -686,7 +726,13 @@
                 source: metadata.source,
                 delta: value,
                 previousScore,
-                resultingScore: adjustedScore
+                resultingScore: adjustedScore,
+                scoringProbability: state.lastBranch?.kind === "random"
+                    ? cloneValue(state.lastBranch.outcomeProbability)
+                    : ONE.toJSON(),
+                probabilityBasis: state.lastBranch?.kind === "random"
+                    ? "source-random-branch"
+                    : "deterministic-state"
             });
             return { next: [{ ...state, pc: state.pc + 1, world }] };
         }
@@ -782,7 +828,9 @@
         }
         const conditional = program.readiness?.conditionalExactRequirements;
         const unsatisfiedRequirements = conditional?.all?.filter(requirement => !conditionalRequirementSatisfied(request, requirement)) || [];
-        if (conditional?.failClosedWhenUnsatisfied === true && unsatisfiedRequirements.length > 0) {
+        const educationalSeedBypass = executionContext.educationalScoreMarginals === true
+            && requirementsOnlyNeedG4Seed(unsatisfiedRequirements);
+        if (conditional?.failClosedWhenUnsatisfied === true && unsatisfiedRequirements.length > 0 && !educationalSeedBypass) {
             const mass = worlds.reduce((sum, world) => sum.add(world.probability), ZERO);
             return {
                 worlds: [],
@@ -873,7 +921,8 @@
                         instruction,
                         instructionIndex: state.pc,
                         executionState: state,
-                        randomSources
+                        randomSources,
+                        educationalScoreMarginals: executionContext.educationalScoreMarginals === true
                     };
                     const result = executeOperation(state, operation, environment, metadata, labels, instructions, randomSources, limits);
                     if (result.next) nextStates.push(...result.next);
@@ -908,13 +957,26 @@
         return entry;
     }
 
-    function activePrograms(profile, phase, input, candidate) {
+    function activePrograms(profile, phase, input, candidate, allowValidationOnlyPrograms = false) {
         const programs = profile.programs;
         const explicit = candidate?.programIds || input.programIds || phase.programIds;
-        if (Array.isArray(explicit)) return explicit;
+        if (Array.isArray(explicit)) {
+            for (const programId of explicit) {
+                const program = programs.find(entry => entry.id === programId);
+                if (program?.activation?.executableEntry === false) {
+                    throw new EvaluationIssue("program-not-live-executable", `Program ${programId} has no live executable entry`);
+                }
+                if (program?.activation?.validationOnly === true && !allowValidationOnlyPrograms) {
+                    throw new EvaluationIssue("validation-only-program", `Program ${programId} may run only as a profile validation case`);
+                }
+            }
+            return explicit;
+        }
         const activeFlags = new Set((input.activeFlagIds || input.flagIds || []).map(String));
         return programs.filter(program => {
             const activation = program.activation || {};
+            if (activation.executableEntry === false) return false;
+            if (activation.validationOnly === true && !allowValidationOnlyPrograms) return false;
             const activationPhase = activation.phaseId || activation.phase;
             const activationFlag = activation.flagId ?? activation.flag;
             if (activationPhase && activationPhase !== phase.id) return false;
@@ -990,7 +1052,8 @@
                 diagnostics: [diagnosticRecord(new EvaluationIssue("no-legal-candidates", `Phase ${phase.id} has no legal candidates`), {
                     phaseId: phase.id, programId: null, candidate: null
                 }, null, mass)],
-                scoreDistributions: []
+                scoreDistributions: [],
+                scoreAdjustments: []
             };
         }
         let active = worlds.map(world => {
@@ -1012,10 +1075,14 @@
                 for (let i = 0; i < descriptor.count; i++) {
                     const source = context.randomSources.get(descriptor.source);
                     if (!source) throw new EvaluationIssue('missing-random-source', `Unknown setup source ${descriptor.source}`);
-                    const draw = drawFromExactG4State(next, source);
-                    if (!draw) throw new EvaluationIssue('conditional-readiness-unsatisfied', 'Source-order setup requires a shared random trajectory', { requirements: [{ requestPath: 'state.random.g4LcrngSeed', valueType: 'uint32' }] });
-                    next = draw.world;
-                    values.push(draw.value);
+                    if (context.educationalScoreMarginals === true) {
+                        values.push(sourceRepresentativeValue(source));
+                    } else {
+                        const draw = drawFromExactG4State(next, source);
+                        if (!draw) throw new EvaluationIssue('conditional-readiness-unsatisfied', 'Source-order setup requires a shared random trajectory', { requirements: [{ requestPath: 'state.random.g4LcrngSeed', valueType: 'uint32' }] });
+                        next = draw.world;
+                        values.push(draw.value);
+                    }
                 }
                 if (descriptor.storeAs) memory[descriptor.storeAs] = values;
             }
@@ -1041,8 +1108,8 @@
                 });
             }
             const pairs = schedule
-                ? activePrograms(context.profile, phase, input, null).flatMap(programId => group.map(candidate => ({ candidate, programIds: [programId] })))
-                : group.map(candidate => ({ candidate, programIds: activePrograms(context.profile, phase, input, candidate) }));
+                ? activePrograms(context.profile, phase, input, null, context.allowValidationOnlyPrograms).flatMap(programId => group.map(candidate => ({ candidate, programIds: [programId] })))
+                : group.map(candidate => ({ candidate, programIds: activePrograms(context.profile, phase, input, candidate, context.allowValidationOnlyPrograms) }));
             for (const { candidate, programIds } of pairs) {
             if (candidate.skipScoring === true) continue;
             const result = runPrograms(active, programIds, { ...context, phaseInput: input, candidate, sharedVariableKey: schedule ? `scoring-locals:${phase.id}` : null }, context.programs);
@@ -1059,7 +1126,7 @@
             }
             if (active.length === 0) break;
             }
-            if (schedule?.selectWithinGroupAfterScoring) active = active.map(world => {
+            if (schedule?.selectWithinGroupAfterScoring && context.educationalScoreMarginals !== true) active = active.map(world => {
                 const winners = maximumCandidates(world, group);
                 const draw = exactG4Selection(world, winners.length);
                 if (!draw) throw new EvaluationIssue('missing-random-state', 'Scheduled group selection requires the same random trajectory');
@@ -1078,11 +1145,32 @@
                 map.set(score, (map.get(score) || ZERO).add(world.probability));
             }
         }
+        const scoreAdjustments = new Map();
+        for (const world of active) {
+            for (const trace of world.traces.values()) {
+                const event = trace.event;
+                if (event.phaseId !== phase.id || !event.candidateId || !Number.isInteger(event.delta)) continue;
+                const key = stableStringify({
+                    phaseId: event.phaseId,
+                    programId: event.programId,
+                    candidateId: event.candidateId,
+                    instructionPc: event.instructionPc,
+                    reasonCode: event.reasonCode,
+                    title: event.title,
+                    summary: event.summary,
+                    delta: event.delta,
+                    scoringProbability: event.scoringProbability,
+                    probabilityBasis: event.probabilityBasis
+                });
+                if (!scoreAdjustments.has(key)) scoreAdjustments.set(key, cloneValue(event));
+            }
+        }
         return {
             worlds: active,
             unresolvedMass,
             diagnostics,
             candidates,
+            scoreAdjustments: [...scoreAdjustments.values()],
             scoreDistributions: candidates.map(candidate => ({
                 candidateId: candidate.id,
                 scores: [...scoreMaps.get(candidate.id).entries()].sort((a, b) => Number(b[0]) - Number(a[0])).map(([score, probability]) => ({ score: Number(score), probability: probability.toJSON() }))
@@ -1109,8 +1197,7 @@
             candidateIds: [...record.candidateIds].sort(),
             reasons: [...record.traces.values()].sort((left, right) => right.mass.compare(left.mass)).map(trace => ({
                 ...trace.event,
-                probability: trace.mass.toJSON(),
-                conditionalOnAction: record.mass.isZero() ? null : trace.mass.divide(record.mass).toJSON()
+                probability: trace.mass.toJSON()
             }))
         }));
     }
@@ -1497,7 +1584,7 @@
         const commands = commandMap(profile);
         const programs = programMap(profile);
         const randomSources = randomSourceMap(profile);
-        const context = { profile, request, queries, limits, commands, programs, randomSources };
+        const context = { profile, request, queries, limits, commands, programs, randomSources, allowValidationOnlyPrograms: options?._validationRun === true };
         const actionMap = new Map();
         const continuationStates = [];
         const recordAction = (world, factor = ONE, candidateId = null) => {
@@ -1507,6 +1594,7 @@
         const diagnostics = [];
         const phaseCoverage = [];
         const scoreDistributions = [];
+        const scoreAdjustments = [];
         let unresolvedMass = ZERO;
         let active = [newWorld(ONE, request)];
         const pipeline = profile.actionPipeline.map(rawPhase => phaseDescriptor(rawPhase, profile));
@@ -1560,11 +1648,12 @@
                 try { result = scoringPhase(active, phase, input, context); }
                 catch (error) {
                     const issue = error instanceof EvaluationIssue ? error : new EvaluationIssue('evaluation-error', error.message || String(error));
-                    result = { worlds: [], candidates: [], unresolvedMass: startingMass, diagnostics: [diagnosticRecord(issue, { phaseId: phase.id, programId: null, candidate: null }, null, startingMass)], scoreDistributions: [] };
+                    result = { worlds: [], candidates: [], unresolvedMass: startingMass, diagnostics: [diagnosticRecord(issue, { phaseId: phase.id, programId: null, candidate: null }, null, startingMass)], scoreDistributions: [], scoreAdjustments: [] };
                 }
                 unresolvedMass = unresolvedMass.add(result.unresolvedMass);
                 diagnostics.push(...result.diagnostics);
                 scoreDistributions.push(...result.scoreDistributions.map(entry => ({ phaseId: phase.id, ...entry })));
+                scoreAdjustments.push(...result.scoreAdjustments);
                 const selectionModel = candidateSelectionModel(profile, request);
                 for (const world of result.worlds) {
                     for (const selection of selectionWeights(world, result.candidates, selectionModel)) {
@@ -1590,7 +1679,7 @@
                 active = [];
                 break;
             }
-            const programIds = activePrograms(profile, phase, input, null);
+            const programIds = activePrograms(profile, phase, input, null, context.allowValidationOnlyPrograms);
             const readinessStatus = phase.status || profile.readiness?.phases?.[phase.id]?.status || "unavailable";
             if (programIds.length === 0 && readinessStatus !== "exact") {
                 unresolvedMass = unresolvedMass.add(startingMass);
@@ -1657,6 +1746,7 @@
             unresolvedProbability: unresolvedMass.toJSON(),
             actions: actionRecords(actionMap, knownMass),
             scoreDistributions,
+            scoreAdjustments,
             phaseCoverage,
             ...(request.captureContinuationState === true ? { continuationStates } : {}),
             diagnostics: aggregateDiagnostics(diagnostics)
@@ -1712,14 +1802,86 @@
         return candidates;
     }
 
-    function combineForecastEvaluations({ profile, request, evaluations, basis }) {
+    function preSelectionScoreMarginals(options, profile, request) {
+        if (Number(profile.generation) !== 4) return null;
+        const marginalRequest = cloneValue(request);
+        if (marginalRequest.state?.random) {
+            delete marginalRequest.state.random.g4LcrngSeed;
+            if (Object.keys(marginalRequest.state.random).length === 0) delete marginalRequest.state.random;
+        }
+        const queries = { ...builtInQueries(profile, marginalRequest), ...(options?.queries || {}) };
+        const limits = {
+            maxWorlds: Number(options?.limits?.maxWorlds || 100000),
+            maxInstructionSteps: Number(options?.limits?.maxInstructionSteps || 10000),
+            maxRandomSupport: Number(options?.limits?.maxRandomSupport || 4096)
+        };
+        const context = {
+            profile,
+            request: marginalRequest,
+            queries,
+            limits,
+            commands: commandMap(profile),
+            programs: programMap(profile),
+            randomSources: randomSourceMap(profile),
+            allowValidationOnlyPrograms: options?._validationRun === true,
+            educationalScoreMarginals: true
+        };
+        const scoreDistributions = [];
+        const scoreAdjustments = new Map();
+        for (const rawPhase of profile.actionPipeline) {
+            const phase = phaseDescriptor(rawPhase, profile);
+            const supplied = marginalRequest.phaseInputs[phase.id];
+            if (!supplied || supplied.disposition === "not-applicable" || supplied.disposition === "unavailable") continue;
+            if ((supplied.mode || phase.mode) !== "scoring") continue;
+            const candidates = (supplied.candidates || []).filter(candidate => candidate && candidate.enabled !== false && candidate.legal !== false);
+            for (const candidate of candidates) {
+                const input = { id: phase.id, ...supplied, candidates: [candidate] };
+                const result = scoringPhase([newWorld(ONE, marginalRequest)], phase, input, context);
+                if (!result.unresolvedMass.isZero() || result.diagnostics.length > 0 || result.scoreDistributions.length !== 1) {
+                    const detail = result.diagnostics.map(row => row.message).filter(Boolean).join(" ");
+                    throw new EvaluationIssue("pre-selection-score-model-unavailable", detail || `Candidate ${candidate.id} did not produce one complete pre-selection score distribution`);
+                }
+                const distribution = result.scoreDistributions[0];
+                const total = distribution.scores.reduce((sum, row) => sum.add(Rational.from(row.probability)), ZERO);
+                if (total.compare(ONE) !== 0) throw new EvaluationIssue("pre-selection-score-model-incomplete", `Candidate ${candidate.id} score probabilities do not sum to one`);
+                scoreDistributions.push({
+                    phaseId: phase.id,
+                    candidateId: candidate.id,
+                    probabilityBasis: "pre-selection-source-marginals",
+                    representativeInputs: "midpoint-for-non-gate-random-values",
+                    scores: cloneValue(distribution.scores)
+                });
+                for (const adjustment of result.scoreAdjustments) {
+                    const key = stableStringify(adjustment);
+                    if (!scoreAdjustments.has(key)) scoreAdjustments.set(key, cloneValue(adjustment));
+                }
+            }
+        }
+        return {
+            scoreDistributions,
+            scoreAdjustments: [...scoreAdjustments.values()],
+            basis: {
+                kind: "pre-selection-source-marginals",
+                randomGates: "exact-declared-source-fractions",
+                nonGateRandomValues: "integer-domain-midpoint-rounded-down",
+                hiddenSeedWeightsUsed: false
+            }
+        };
+    }
+
+    function combineForecastEvaluations({ profile, request, evaluations, basis, preSelectionScoring = null }) {
         const evaluationFactor = new Rational(1n, BigInt(evaluations.length));
         const actions = new Map();
         const scores = new Map();
+        const scoreAdjustments = new Map();
         const passOutcomes = new Map();
         const candidateDetails = forecastCandidateMap(request, profile);
 
         for (const evaluation of evaluations) {
+            for (const adjustment of preSelectionScoring ? [] : evaluation.scoreAdjustments || []) {
+                const key = stableStringify(adjustment);
+                if (!scoreAdjustments.has(key)) scoreAdjustments.set(key, cloneValue(adjustment));
+            }
             for (const row of evaluation.selectionPassOutcomes || []) {
                 const key = stableStringify(row.actions), existing = passOutcomes.get(key);
                 passOutcomes.set(key, { actions: cloneValue(row.actions), mass: (existing?.mass || ZERO).add(Rational.from(row.probability).multiply(evaluationFactor)) });
@@ -1735,14 +1897,16 @@
                 record.mass = record.mass.add(mass);
                 for (const candidateId of entry.candidateIds || []) record.candidateIds.add(candidateId);
                 for (const reason of entry.reasons || []) {
-                    const reasonEvent = { ...reason, probability: undefined, conditionalOnAction: undefined };
+                    const reasonEvent = { ...reason };
+                    delete reasonEvent.probability;
+                    delete reasonEvent.conditionalOnAction;
                     const reasonKey = stableStringify(reasonEvent);
                     const reasonMass = Rational.from(reason.probability || entry.probability).multiply(evaluationFactor);
                     const current = record.reasons.get(reasonKey);
                     record.reasons.set(reasonKey, { event: reasonEvent, mass: (current?.mass || ZERO).add(reasonMass) });
                 }
             }
-            for (const distribution of evaluation.scoreDistributions || []) {
+            for (const distribution of preSelectionScoring ? [] : evaluation.scoreDistributions || []) {
                 const key = stableStringify({ phaseId: distribution.phaseId, candidateId: distribution.candidateId });
                 let record = scores.get(key);
                 if (!record) {
@@ -1757,13 +1921,28 @@
             }
         }
 
+        if (preSelectionScoring) {
+            for (const adjustment of preSelectionScoring.scoreAdjustments || []) {
+                const key = stableStringify(adjustment);
+                if (!scoreAdjustments.has(key)) scoreAdjustments.set(key, cloneValue(adjustment));
+            }
+            for (const distribution of preSelectionScoring.scoreDistributions || []) {
+                const key = stableStringify({ phaseId: distribution.phaseId, candidateId: distribution.candidateId });
+                const record = { phaseId: distribution.phaseId, candidateId: distribution.candidateId, probabilityBasis: distribution.probabilityBasis, representativeInputs: distribution.representativeInputs, values: new Map() };
+                for (const outcome of distribution.scores || []) record.values.set(Number(outcome.score), Rational.from(outcome.probability));
+                scores.set(key, record);
+            }
+        }
+
         const scoreDistributions = [...scores.values()].map(record => ({
             phaseId: record.phaseId,
             candidateId: record.candidateId,
             candidate: cloneValue(candidateDetails.get(record.candidateId) || null),
+            probabilityBasis: record.probabilityBasis || "exact-evaluation",
+            ...(record.representativeInputs ? { representativeInputs: record.representativeInputs } : {}),
             scores: [...record.values.entries()].sort((left, right) => right[0] - left[0]).map(([score, weight]) => ({
                 score,
-                modeledWeight: weight.toJSON()
+                probability: weight.toJSON()
             }))
         }));
         const scoreByCandidate = new Map(scoreDistributions.map(distribution => [distribution.candidateId, distribution]));
@@ -1772,23 +1951,22 @@
             const equallyLikely = records.filter(other => other.mass.compare(record.mass) === 0);
             const reasons = [...record.reasons.values()].sort((left, right) => right.mass.compare(left.mass)).map(reason => ({
                 ...reason.event,
-                modeledWeight: reason.mass.toJSON(),
-                conditionalOnAction: record.mass.isZero() ? null : reason.mass.divide(record.mass).toJSON()
+                modeledWeight: reason.mass.toJSON()
             }));
             const incentiveCandidates = [...record.candidateIds].map(candidateId => {
                 const detail = candidateDetails.get(candidateId) || { candidateId, initialScore: Number(profile.numericModel.initialScore), action: null };
                 return {
                     ...cloneValue(detail),
                     finalScores: cloneValue(scoreByCandidate.get(candidateId)?.scores || []),
-                    adjustments: reasons.filter(reason => reason.candidateId === candidateId && Number.isInteger(reason.delta)).map(reason => ({
+                    adjustments: [...scoreAdjustments.values()].filter(reason => reason.candidateId === candidateId).map(reason => ({
                         reasonCode: reason.reasonCode,
                         title: reason.title,
                         summary: reason.summary,
                         delta: reason.delta,
                         previousScore: reason.previousScore,
                         resultingScore: reason.resultingScore,
-                        modeledWeight: reason.modeledWeight,
-                        conditionalOnAction: reason.conditionalOnAction
+                        scoringProbability: reason.scoringProbability,
+                        probabilityBasis: reason.probabilityBasis
                     }))
                 };
             });
@@ -1829,10 +2007,12 @@
             incentiveModel: {
                 appliesTo: ["move-target-selection"],
                 initialScore: Number(profile.numericModel.initialScore),
+                scoreDistributionBasis: preSelectionScoring?.basis || { kind: "exact-evaluation", hiddenSeedWeightsUsed: false },
                 summary: `Each legal move-target candidate starts at ${Number(profile.numericModel.initialScore)}; executable AI commands then add or subtract documented incentive points before selection.`
             },
             actions: outputActions,
             scoreDistributions,
+            scoreAdjustments: [...scoreAdjustments.values()],
             diagnostics: []
         };
     }
@@ -1935,11 +2115,25 @@
     function forecastValidated(options, profile, request, depth, budget = { remaining: 1024 }) {
         const initial = evaluateActorPass(options, profile, request);
         if (initial.status === "exact") {
+            let preSelectionScoring = null;
+            if (Number(profile.generation) === 4 && (initial.scoreDistributions || []).length > 0) {
+                try {
+                    preSelectionScoring = preSelectionScoreMarginals(options, profile, request);
+                } catch (error) {
+                    const issue = error instanceof EvaluationIssue ? error : new EvaluationIssue("pre-selection-score-model-unavailable", error.message || String(error));
+                    return forecastError(profile, request, { diagnostics: aggregateDiagnostics([diagnosticRecord(issue, { phaseId: null, programId: null, candidate: null }, null, ONE)]) }, issue.message, {
+                        kind: "exact-evaluation",
+                        sampleSize: 1,
+                        hiddenRngModeled: false
+                    });
+                }
+            }
             return combineForecastEvaluations({
                 profile,
                 request,
                 evaluations: [initial],
-                basis: { kind: "exact-evaluation", sampleSize: 1, hiddenRngModeled: false }
+                basis: { kind: "exact-evaluation", sampleSize: 1, hiddenRngModeled: false },
+                preSelectionScoring
             });
         }
         if (Number(profile.generation) !== 4 || !seedOnlyReadinessFailure(initial)) {
@@ -1970,10 +2164,24 @@
             }
             evaluations.push(evaluation);
         }
+        let preSelectionScoring = null;
+        if (evaluations.some(evaluation => (evaluation.scoreDistributions || []).length > 0)) {
+            try {
+                preSelectionScoring = preSelectionScoreMarginals(options, profile, request);
+            } catch (error) {
+                const issue = error instanceof EvaluationIssue ? error : new EvaluationIssue("pre-selection-score-model-unavailable", error.message || String(error));
+                return forecastError(profile, request, { diagnostics: aggregateDiagnostics([diagnosticRecord(issue, { phaseId: null, programId: null, candidate: null }, null, ONE)]) }, issue.message, {
+                    kind: "deterministic-g4-seed-ensemble",
+                    sampleSize,
+                    hiddenRngModeled: true
+                });
+            }
+        }
         return combineForecastEvaluations({
             profile,
             request,
             evaluations,
+            preSelectionScoring,
             basis: {
                 kind: "deterministic-g4-seed-ensemble",
                 sampleSize,
@@ -1998,7 +2206,8 @@
                     profile,
                     request,
                     queries: options?.queriesByCase?.[validationCase.id] || {},
-                    limits: options?.limits
+                    limits: options?.limits,
+                    _validationRun: true
                 });
                 const passed = expectedSubset(response, validationCase.expected);
                 return { id: validationCase.id, passed, ...(passed ? {} : { expected: validationCase.expected, actual: response }) };

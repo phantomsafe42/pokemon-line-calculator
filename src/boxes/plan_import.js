@@ -1,10 +1,13 @@
-import { addBox, normalizeBoxLibrary } from "./library.js";
-import { toId } from "../core/primitives.js";
+import { addBox, normalizeBoxLibrary } from "./library.js?v=20260905-drafts-freecalc-partners-v1";
+import { toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
 
 function playerCombatants(plan) {
+  const root = plan.stateNodes?.[plan.initialStateNodeId];
+  const active = root?.active?.playerCombatantKeys || [];
   return Object.values(plan?.combatants || {})
-    .filter(combatant => combatant.side === "player")
-    .sort((left, right) => Number(left.source?.slot ?? Number.MAX_SAFE_INTEGER) - Number(right.source?.slot ?? Number.MAX_SAFE_INTEGER)
+    .filter(combatant => combatant.side === "player" && !root?.freeCalcRemovedKeys?.includes(combatant.combatantKey))
+    .sort((left, right) => (root?.freeCalc ? Number(!active.includes(left.combatantKey)) - Number(!active.includes(right.combatantKey)) : 0)
+      || Number(left.source?.slot ?? Number.MAX_SAFE_INTEGER) - Number(right.source?.slot ?? Number.MAX_SAFE_INTEGER)
       || left.combatantKey.localeCompare(right.combatantKey))
     .slice(0, 6);
 }
@@ -26,7 +29,8 @@ export function planPlayerPartyRecords(plan, dataset) {
   return playerCombatants(plan).map((combatant, index) => {
     const initial = initialState?.combatantStates?.[combatant.combatantKey] || {};
     const species = dataset.get("species", combatant.speciesId);
-    const moves = (combatant.moves || []).map(move => boxMove(move, dataset));
+    const effective = Boolean(initialState?.freeCalc);
+    const moves = (effective ? initial.moveSetOverride || combatant.moves : combatant.moves || []).map(move => boxMove(move, dataset));
     const hiddenPower = (combatant.moves || []).find(move => toId(move.moveId) === "hiddenpower" && move.typeOverride);
     return {
       id: `plan-${plan.planId}-${index + 1}`,
@@ -39,8 +43,9 @@ export function planPlayerPartyRecords(plan, dataset) {
       gender: combatant.gender ?? null,
       ...(Number.isInteger(initial.friendship ?? combatant.friendship) ? { friendship: initial.friendship ?? combatant.friendship } : {}),
       natureId: combatant.natureId || "",
-      abilityId: combatant.originalAbilityId || "",
-      itemId: combatant.originalItemId || null,
+      abilityId: (effective ? initial.currentAbilityId : combatant.originalAbilityId) || "",
+      itemId: (effective ? initial.currentItemId : combatant.originalItemId) || null,
+      majorStatus: initial.majorStatus || null,
       ...(hiddenPower ? { hiddenPowerTypeOverride: toId(hiddenPower.typeOverride) } : {}),
       baseStats: combatant.baseStats || species?.baseStats,
       ivs: combatant.ivs,

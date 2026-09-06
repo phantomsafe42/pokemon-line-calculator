@@ -2,12 +2,12 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-rp-dataset",
   "source": "Datasets/Renegade Platinum/source-data",
-  "sourceTreeSha256": "664063E5144E226EA386F73AB559A5A89D7F9D9CFA1909DA191CE5D65A99D29B",
+  "sourceTreeSha256": "F5C98975749160FC20E5FB372CBB882940C0173C1B2DDF16F81058769EB2F390",
   "files": [
     {
       "path": "dataset_manifest.json",
-      "bytes": 13256,
-      "sha256": "43A2B792096300FC9905B8474B749E6172C35A5F97461C86BAD1BBEB56259748"
+      "bytes": 13548,
+      "sha256": "8A75F0E6E359CBC8FB25FF04CDD21AEC1650A07AA554C6713A5563CDE6F6C1AC"
     },
     {
       "path": "battle_mechanics.json",
@@ -51,13 +51,18 @@
     },
     {
       "path": "trainers.json",
-      "bytes": 9091168,
-      "sha256": "ABEDDB60BF452E0627F8F06D3461578CCD0813AD0CC36A29A16B3338DA9D84D7"
+      "bytes": 9093346,
+      "sha256": "43479B420CA11C2BA67CDDA5D684B18C8703481B75635FDCFD979745E0A8DF2F"
     },
     {
       "path": "trainer_order.json",
       "bytes": 641335,
       "sha256": "C2175C13F91F09BF689DABA29D46404D028909D194C3BF56D14187380341863B"
+    },
+    {
+      "path": "trainer_battle_groups.json",
+      "bytes": 3602,
+      "sha256": "74DE2BEC34CB7EBDECE03FBA8B69B716E3A08F88AF414839ECDE3CE8CEC10756"
     },
     {
       "path": "progression.json",

@@ -1,4 +1,4 @@
-import { formatTestingStateSnapshot, TESTING_STATE_KIND, TESTING_STATE_SCHEMA_VERSION } from "../testing/state_snapshot.js";
+import { formatTestingStateSnapshot, TESTING_STATE_KIND, TESTING_STATE_SCHEMA_VERSION } from "../testing/state_snapshot.js?v=20260905-drafts-freecalc-partners-v1";
 
 const CAPABILITY_URL = "/__stream-tools/plc-testing-state/capability";
 const OUTPUT_URL = "/__stream-tools/plc-testing-state";

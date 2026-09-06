@@ -1,8 +1,8 @@
-import { assertValidPlanDocument } from "../contracts/plan_contract.js";
-import { actionSignature, nextCreatedOrder, touchPlan, updateStateHash } from "./plan.js?v=20260827-ability-form-events";
-import { clone, shortHash, stableStringify } from "./primitives.js";
-import { resolveForcedReplacement, resolveTurn } from "./resolver.js?v=20260827-ability-form-events";
-import { actionList, activeKey, activeSlotEntries, normalizeActionsForPlan, normalizeReplacementsForPlan, pendingReplacementSlots, replacementList } from "./battle_slots.js";
+import { assertValidPlanDocument } from "../contracts/plan_contract.js?v=20260905-drafts-freecalc-partners-v1";
+import { actionSignature, nextCreatedOrder, touchPlan, updateStateHash } from "./plan.js?v=20260905-drafts-freecalc-partners-v1";
+import { clone, shortHash, stableStringify } from "./primitives.js?v=20260905-drafts-freecalc-partners-v1";
+import { resolveForcedReplacement, resolveTurn } from "./resolver.js?v=20260905-drafts-freecalc-partners-v1";
+import { actionList, activeKey, activeSlotEntries, normalizeActionsForPlan, normalizeReplacementsForPlan, pendingReplacementSlots, replacementList } from "./battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
 
 function displayAction(action, events, plan, dataset) {
   if (!action) return null;
@@ -301,12 +301,14 @@ function appendCommittedOutcome(next, group, preview, outcome, outcomeIndex, ord
   state.stateNodeId = stateId;
   state.parentActionGroupId = groupId;
   state.parentReplacementTransitionId = null;
+  state.parentManualTransitionId = null;
   state.turnNumber = preview.proposedTurnNumber;
   state.createdOrder = order;
   state.outcome = clone(outcome.outcome);
   state.resolutionEventIds = eventIds;
   state.childActionGroupIds = [];
   state.childReplacementTransitionIds = [];
+  state.childManualTransitionIds = [];
   state.status = "resolved";
   delete state.transitionKind;
   state.displaySnapshot = {
@@ -495,12 +497,14 @@ export function commitForcedReplacement(plan, preview, dataset) {
     state.stateNodeId = stateId;
     state.parentActionGroupId = null;
     state.parentReplacementTransitionId = signature;
+    state.parentManualTransitionId = null;
     state.turnNumber = Number(parent.turnNumber);
     state.createdOrder = order++;
     state.outcome = clone(outcome.outcome);
     state.resolutionEventIds = eventIds;
     state.childActionGroupIds = [];
     state.childReplacementTransitionIds = [];
+    state.childManualTransitionIds = [];
     state.status = pendingReplacementSlots(state).length ? "incomplete" : "resolved";
     state.transitionKind = "replacement";
     state.displaySnapshot = {

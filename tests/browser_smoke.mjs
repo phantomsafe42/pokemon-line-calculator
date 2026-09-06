@@ -4,6 +4,7 @@ import fs from "node:fs/promises";
 import { createServer } from "node:net";
 import path from "node:path";
 import process from "node:process";
+import { runDraftsFreeCalcSmoke } from './drafts_free_calc_browser.mjs';
 
 const appUrl = process.env.PLC_APP_URL || "http://127.0.0.1:8000/Web%20Tools/Pokemon%20Line%20Calculator/";
 const saveFixture = process.env.PLC_VW2R_SAVE_FIXTURE ? path.resolve(process.env.PLC_VW2R_SAVE_FIXTURE) : null;
@@ -136,6 +137,22 @@ try {
   await page.send("Page.enable");
   await page.send("DOM.enable");
 
+  const viewMode = await evaluate(page, `(async () => {
+    const wait = predicate => new Promise((resolve, reject) => { const deadline = Date.now() + 10000; const poll = () => predicate() ? resolve() : Date.now() > deadline ? reject(new Error('view mode shell did not load')) : setTimeout(poll, 50); poll(); });
+    await wait(() => document.getElementById('view-mode-toggle') && document.getElementById('output-state-anchor') && document.body.dataset.publicPreview === 'false');
+    const toggle = document.getElementById('view-mode-toggle');
+    const hidden = id => getComputedStyle(document.getElementById(id)).display === 'none';
+    const initial = { label: toggle.textContent, checked: toggle.getAttribute('aria-checked'), profile: document.body.dataset.publicPreview, outputHidden: hidden('output-state-anchor'), statusHidden: hidden('app-status') };
+    toggle.click();
+    const publicView = { label: toggle.textContent, checked: toggle.getAttribute('aria-checked'), profile: document.body.dataset.publicPreview, outputHidden: hidden('output-state-anchor'), trackerHidden: hidden('battle-tracker-anchor'), liveHidden: hidden('live-edit-anchor'), statusHidden: hidden('app-status'), stored: localStorage.getItem('plc-view-mode-v1') };
+    toggle.click();
+    const localView = { label: toggle.textContent, checked: toggle.getAttribute('aria-checked'), profile: document.body.dataset.publicPreview, outputHidden: hidden('output-state-anchor'), statusHidden: hidden('app-status'), stored: localStorage.getItem('plc-view-mode-v1') };
+    return { initial, publicView, localView };
+  })()`, true);
+  assert.deepEqual(viewMode.initial, { label: 'Local View', checked: 'false', profile: 'false', outputHidden: false, statusHidden: false });
+  assert.deepEqual(viewMode.publicView, { label: 'Public View', checked: 'true', profile: 'true', outputHidden: true, trackerHidden: true, liveHidden: true, statusHidden: true, stored: 'public' });
+  assert.deepEqual(viewMode.localView, { label: 'Local View', checked: 'false', profile: 'false', outputHidden: false, statusHidden: false, stored: 'local' });
+
   const selected = await evaluate(page, `(async () => {
     const wait = (predicate, message) => new Promise((resolve, reject) => { const deadline = Date.now() + 20000; const poll = () => predicate() ? resolve() : Date.now() > deadline ? reject(new Error(message + ': ' + document.getElementById('app-status')?.textContent)) : setTimeout(poll, 100); poll(); });
     await wait(() => document.getElementById('game-select') && /Select a game to load/.test(document.getElementById('app-status').textContent), 'shell');
@@ -175,7 +192,7 @@ try {
   assert.equal(selected.loadedGames.every(entry => entry.trainers > 1 && entry.groups > 0), true);
   assert.equal(selected.gateHidden, true);
   assert.deepEqual(selected.splitLabels, ["Cheren Split", "Roxie Split", "Burgh Split", "Elesa Split", "Clay Split", "Skyla Split", "Drayden Split", "Marlon Split", "Ghetsis Split", "Champion Split"]);
-  assert.equal(selected.groupedTrainers, 427);
+  assert.equal(selected.groupedTrainers, 417);
   assert.equal(selected.neilSplit, "Burgh Split");
 
   const imported = await evaluate(page, `(async () => {
@@ -219,6 +236,47 @@ Serious Nature
   assert.equal(imported.boxes, 1, imported.status);
   assert.equal(imported.pokemon, 4, imported.status);
   assert.equal(imported.parties, 1, imported.status);
+  const pointerDragSetup = await evaluate(page, `(() => {
+    const grid = document.querySelector('.box-card .party-card-grid');
+    const cards = [...grid.children];
+    cards[0].scrollIntoView({ block: 'center' });
+    const first = cards[0].getBoundingClientRect();
+    const destination = cards[3].getBoundingClientRect();
+    return {
+      before: cards.map(card => card.dataset.pokemonId),
+      start: { x: first.right - 8, y: first.top + 8 },
+      end: { x: destination.right - 8, y: destination.top + 8 }
+    };
+  })()`);
+  await page.send('Input.dispatchMouseEvent', { type: 'mouseMoved', ...pointerDragSetup.start });
+  await page.send('Input.dispatchMouseEvent', { type: 'mousePressed', ...pointerDragSetup.start, button: 'left', buttons: 1, clickCount: 1 });
+  for (let step = 1; step <= 8; step += 1) {
+    const amount = step / 8;
+    await page.send('Input.dispatchMouseEvent', {
+      type: 'mouseMoved',
+      x: pointerDragSetup.start.x + (pointerDragSetup.end.x - pointerDragSetup.start.x) * amount,
+      y: pointerDragSetup.start.y + (pointerDragSetup.end.y - pointerDragSetup.start.y) * amount,
+      button: 'left', buttons: 1
+    });
+  }
+  await page.send('Input.dispatchMouseEvent', { type: 'mouseReleased', ...pointerDragSetup.end, button: 'left', buttons: 0, clickCount: 1 });
+  const pointerDrag = await evaluate(page, `(async () => {
+    const grid = document.querySelector('.box-card .party-card-grid');
+    const deadline = Date.now() + 5000;
+    while (grid.children[3].dataset.pokemonId !== ${JSON.stringify(pointerDragSetup.before[0])} && Date.now() < deadline) await new Promise(resolve => setTimeout(resolve, 40));
+    return { order: [...grid.children].map(card => card.dataset.pokemonId), dragging: Boolean(grid.querySelector('.is-dragging') || grid.classList.contains('is-card-dragging')) };
+  })()`, true);
+  assert.deepEqual(pointerDrag.order, [...pointerDragSetup.before.slice(1), pointerDragSetup.before[0]], 'One held-left-button drag did not cross several party slots');
+  assert.equal(pointerDrag.dragging, false, 'Releasing the left mouse button did not clear the drag state');
+  await evaluate(page, `(async () => {
+    const grid = document.querySelector('.box-card .party-card-grid');
+    const original = [...grid.children].find(card => card.dataset.pokemonId === ${JSON.stringify(pointerDragSetup.before[0])});
+    original.focus();
+    for (let step = 0; step < 3; step += 1) {
+      original.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true }));
+      await new Promise(resolve => setTimeout(resolve, 75));
+    }
+  })()`);
   const edited = await evaluate(page, `(async () => {
     document.querySelector('.box-pokemon-card .box-card-actions button').click();
     const wait = (predicate, message) => new Promise((resolve, reject) => { const deadline = Date.now() + 10000; const poll = () => predicate() ? resolve() : Date.now() > deadline ? reject(new Error(message)) : setTimeout(poll, 50); poll(); });
@@ -428,20 +486,20 @@ Serious Nature
     const status = summary.querySelector('.context-pre-status');
     if (status.value !== '' || status.options.length !== 7 || ![...status.options].some(o => o.value === 'tox' && o.textContent === 'Badly Poisoned')) throw new Error('Incorrect pre-status options');
     status.value = 'tox'; status.dispatchEvent(new Event('change', { bubbles: true }));
-    summary.querySelector('button').click();
+    [...summary.querySelectorAll('button')].find(button => button.textContent === 'Edit').click();
     if (document.getElementById('editor-starting-status').value !== 'tox') throw new Error('Card status did not reach editor');
     document.getElementById('pokemon-editor-dialog').close();
     status.value = ''; status.dispatchEvent(new Event('change', { bubbles: true }));
     document.getElementById('edge-party-exp').click();
     await wait(() => /Selected party is 1 EXP/.test(document.getElementById('context-status').textContent), 'Edge EXP');
-    summary.querySelector('button').click();
+    [...summary.querySelectorAll('button')].find(button => button.textContent === 'Edit').click();
     const startingHp = document.getElementById('editor-starting-hp');
     const fullHp = startingHp.max;
     startingHp.value = Number(fullHp) - 1;
     document.getElementById('save-pokemon').click();
     await wait(() => !document.getElementById('pokemon-editor-dialog').open, 'Save pre-damage');
     if (!summary.querySelector('.context-starting-hp')?.textContent.includes('/ ' + fullHp)) throw new Error('Missing separate pre-damage row');
-    summary.querySelector('button').click();
+    [...summary.querySelectorAll('button')].find(button => button.textContent === 'Edit').click();
     startingHp.value = fullHp;
     document.getElementById('save-pokemon').click();
     await wait(() => !document.getElementById('pokemon-editor-dialog').open, 'Restore full HP');
@@ -777,7 +835,7 @@ Serious Nature
   await capture(page, screenshots.desktop);
 
   const exportControls = await evaluate(page, `(async () => {
-    document.getElementById('save-plan').click();
+    document.getElementById('export-line').click();
     await new Promise(resolve => setTimeout(resolve, 50));
     const dialog = document.getElementById('output-dialog');
     const branchHeaders = [...dialog.querySelectorAll('.export-branch-header strong')].map(node => node.textContent.trim());
@@ -1486,12 +1544,14 @@ Serious Nature
     const trainer = document.getElementById('trainer-select');
     const neil = [...trainer.options].find(entry => /School Kid Neil/i.test(entry.textContent));
     if (!neil) throw new Error('School Kid Neil is required for replacement node smoke');
+    const discardOpenLine = setInterval(() => { if (document.getElementById('destructive-dialog').open) document.querySelector('#destructive-dialog button[value="discard"]').click(); }, 50);
     trainer.value = neil.value; trainer.dispatchEvent(new Event('change', { bubbles: true }));
     const box = document.getElementById('context-box-select'); box.value = box.options[1].value; box.dispatchEvent(new Event('change', { bubbles: true }));
     const party = document.getElementById('context-party-select'); party.value = party.options[1].value; party.dispatchEvent(new Event('change', { bubbles: true }));
     document.getElementById('save-party-selection').click();
     document.getElementById('begin-plan').click();
     await wait(() => !document.getElementById('plan-context-dialog').open && /Lv\. 100/.test(document.querySelector('#player-action-panel .meta-row')?.textContent || ''), 'replacement workspace');
+    clearInterval(discardOpenLine);
     const playerMove = [...document.querySelectorAll('#player-action-panel .move-button')].find(entry => entry.textContent.includes('Hyper Beam'));
     const enemyMove = document.querySelector('#enemy-action-panel .move-button:not(:disabled)');
     if (!playerMove || !enemyMove) throw new Error('replacement KO actions are unavailable');
@@ -1761,7 +1821,7 @@ Serious Nature
   assert.equal(battleEndLocked.boxLevel, battleEndLocked.lockedLevel);
   await capture(page, screenshots.battleEndLocked);
   const terminalPlanText = await evaluate(page, `(async () => {
-    document.getElementById('save-plan').click();
+    document.getElementById('export-line').click();
     document.getElementById('select-all-export').click();
     const snapshot = globalThis.__PLC_TESTING_STATE__.capture();
     const { exportSelectedPlan } = await import('./src/contracts/plan_file.js');
@@ -1905,6 +1965,66 @@ Serious Nature
     assert.ok(compatibilityPlanReview.reviews.every(review => review.previewStatus === "existing-expanded" && review.reviewedStateId === review.stateId));
   }
 
+  // Real generated data -> normal plan import -> AI Worker -> rendered forecast.
+  // Uses only this disposable browser profile; never sends an Overlay projection.
+  const priorityAi = await evaluate(page, `(async () => {
+    const wait = async (predicate, label) => {
+      const deadline = Date.now() + 50000;
+      while (!predicate()) {
+        if (document.getElementById('destructive-dialog').open) document.getElementById('destructive-discard').click();
+        if (Date.now() > deadline) throw new Error(label + ': ' + document.getElementById('app-status').textContent + ' / ' + document.getElementById('ai-notes').textContent);
+        await new Promise(resolve => setTimeout(resolve, 100));
+      }
+    };
+    const { loadStandardizedDataset } = await import('./src/adapters/standardized_dataset.js');
+    const { normalizePlayerCollection, normalizeTrainerRoster, snapshotFingerprint } = await import('./src/adapters/combatant_ingest.js');
+    const { createPlanDocument } = await import('./src/core/plan.js');
+    const results = [];
+    for (const gameId of ['storm-silver', 'platinum-kaizo']) {
+      const binding = await (await fetch('./src/generated/trainer-ai/' + gameId + '/trainer_ai.json')).json();
+      if (!binding.consumerActivation.enabled) { results.push({ gameId, status: 'disabled-authority-gate' }); continue; }
+      const select = document.getElementById('game-select');
+      select.value = gameId; const label = select.options[select.selectedIndex].textContent;
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+      await wait(() => document.getElementById('app-status').textContent.includes(label + ' is ready.'), gameId + ' ready');
+      document.getElementById('plan-context-dialog').close();
+      const baseUrl = new URL('./src/generated/datasets/' + gameId + '/', location.href).href;
+      const dataset = await loadStandardizedDataset({ baseUrl });
+      const trainers = Object.values((await (await fetch(baseUrl + 'trainers.json')).json()).records);
+      for (const format of ['single', 'double']) {
+        const trainer = trainers.find(row => row.team.length >= 3 && row.battleProfiles.default.format === format && binding.trainerBindings[row.id]);
+        if (!trainer) throw new Error('Missing bound ' + format + ' trainer');
+        const level = Math.max(...trainer.team.map(mon => mon.level));
+        const players = normalizePlayerCollection({ collection: [1, 2].map(slot => ({
+          uniqueKey: 'priority-browser-' + slot, speciesId: 'gyarados', species: 'Gyarados', level,
+          gender: 'M', friendship: 255, nature: 'Hardy', ability: 'Intimidate', item: null,
+          ivs: { hp:31, at:31, df:31, sa:31, sd:31, sp:31 }, evs: { hp:0, at:0, df:0, sa:0, sd:0, sp:0 },
+          moves: ['waterfall','bite','dragondance','protect'], storage: 'party', slot
+        })) }, dataset);
+        const enemies = normalizeTrainerRoster(trainer.id, null, dataset);
+        const plan = createPlanDocument({ dataset, trainerId: trainer.id, playerCombatants: players, enemyCombatants: enemies,
+          sourceSnapshot: snapshotFingerprint(players, enemies, '2026-09-05T00:00:00.000Z'), now: '2026-09-05T00:00:00.000Z' });
+        const transfer = new DataTransfer();
+        transfer.items.add(new File([JSON.stringify(plan)], 'priority-plan.json', { type: 'application/json' }));
+        const input = document.getElementById('import-plan'); input.files = transfer.files;
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+        await wait(() => globalThis.__PLC_TESTING_STATE__?.capture().plan?.planId === plan.planId && /Plan imported/.test(document.getElementById('app-status').textContent), trainer.id + ' import');
+        await wait(() => document.querySelectorAll('#ai-notes .ai-actor-note').length === (format === 'single' ? 1 : 2), trainer.id + ' forecast');
+        const text = document.getElementById('ai-notes').textContent;
+        if (/Forecast error|evaluation failed|Probability unavailable/i.test(text)) throw new Error(trainer.id + ': ' + text);
+        if (document.querySelector('.ai-forecast-panel').hidden) throw new Error('Activated forecast is hidden');
+        const tables = document.querySelectorAll('#ai-notes .ai-incentive-table').length;
+        if (!tables) throw new Error('Missing incentive explanations for ' + trainer.id);
+        results.push({ gameId, trainerId: trainer.id, format, status: 'passed', actors: format === 'single' ? 1 : 2, incentiveTables: tables,
+          replacementSections: document.querySelectorAll('#ai-notes .ai-replacement-note').length });
+      }
+    }
+    return results;
+  })()`, true);
+  assert.equal(priorityAi.filter(row => row.gameId === 'storm-silver' && row.status === 'passed').length, 2);
+  assert.equal(priorityAi.filter(row => row.gameId === 'platinum-kaizo' && row.status === 'passed').length, 2);
+  const draftsFreeCalc = await runDraftsFreeCalcSmoke({page,evaluate,capture,screenshotRoot:tempRoot});
+  console.log('Drafts/Free Calc/partner setup:',JSON.stringify(draftsFreeCalc));
   const browserErrors = page.events.filter(event => event.method === "Runtime.exceptionThrown").map(event => event.params.exceptionDetails.exception?.description || event.params.exceptionDetails.text);
   assert.deepEqual(browserErrors, []);
   let storedTestingState = null;
@@ -1916,7 +2036,7 @@ Serious Nature
     assert.equal(storedTestingState.plan.kind, "pokemon-battle-plan");
   }
   page.close();
-  console.log(JSON.stringify({ selected, imported, edited, saveReview, planReady, battleTracker, turn, committed, savePlan, responsive, doubles, testingState, targetRefreshStability, storedTestingState: storedTestingState ? { capturedAt: storedTestingState.capturedAt, storedAt: storedTestingState.storedAt } : null, doublesWide, triples, rotation, mobile, battleEnd, branchLanes, compatibilityPlanReview, screenshots }, null, 2));
+  console.log(JSON.stringify({ selected, imported, edited, saveReview, planReady, battleTracker, turn, committed, savePlan, responsive, doubles, testingState, targetRefreshStability, storedTestingState: storedTestingState ? { capturedAt: storedTestingState.capturedAt, storedAt: storedTestingState.storedAt } : null, doublesWide, triples, rotation, mobile, battleEnd, branchLanes, compatibilityPlanReview, priorityAi, screenshots }, null, 2));
 } finally {
   if (browser && browser.exitCode === null) browser.kill();
   await fs.rm(profile, { recursive: true, force: true }).catch(() => {});

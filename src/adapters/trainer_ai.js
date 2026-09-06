@@ -1,8 +1,9 @@
-import { activeSlotEntries } from "../core/battle_slots.js";
-import { rotationFrontSlot } from "../rulesets/rotation_battle.js";
-import { areSlotsAdjacent, triplePositionForSlot } from "../rulesets/triple_battle.js";
-import { trappingAbilityBlocksSwitch } from "../rulesets/ability_rules.js";
-import { effectiveActionSpeed } from "../rulesets/action_order.js";
+import { activeSlotEntries } from "../core/battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
+import { belongsToSlotParty } from '../core/party_ownership.js?v=20260905-drafts-freecalc-partners-v1';
+import { rotationFrontSlot } from "../rulesets/rotation_battle.js?v=20260905-drafts-freecalc-partners-v1";
+import { areSlotsAdjacent, triplePositionForSlot } from "../rulesets/triple_battle.js?v=20260905-drafts-freecalc-partners-v1";
+import { trappingAbilityBlocksSwitch } from "../rulesets/ability_rules.js?v=20260905-drafts-freecalc-partners-v1";
+import { effectiveActionSpeed } from "../rulesets/action_order.js?v=20260905-drafts-freecalc-partners-v1";
 
 export class TrainerAiReadinessError extends Error {
   constructor(message) {
@@ -133,8 +134,14 @@ function mergeExactForecastBranches(engine, profile, requestId, branches) {
   const zero = new Rational(0n);
   const actions = new Map();
   const scores = new Map();
+  const scoreAdjustments = new Map();
+  let scoreConflict = null;
   for (const branch of branches) {
     const branchWeight = Rational.from(branch.weight);
+    for (const adjustment of branch.result.scoreAdjustments || []) {
+      const key = stableForecastKey(adjustment);
+      if (!scoreAdjustments.has(key)) scoreAdjustments.set(key, structuredClone(adjustment));
+    }
     for (const entry of branch.result.actions || []) {
       const actionKey = stableForecastKey(entry.action);
       const mass = branchWeight.multiply(Rational.from(entry.modeledWeight || entry.probability));
@@ -158,18 +165,33 @@ function mergeExactForecastBranches(engine, profile, requestId, branches) {
     }
     for (const distribution of branch.result.scoreDistributions || []) {
       const key = `${distribution.phaseId || ""}:${distribution.candidateId}`;
-      let record = scores.get(key);
-      if (!record) {
-        record = { phaseId: distribution.phaseId, candidateId: distribution.candidateId, candidate: distribution.candidate || null, values: new Map() };
-        scores.set(key, record);
-      }
-      for (const outcome of distribution.scores || []) {
-        const score = Number(outcome.score);
-        const weight = Rational.from(outcome.modeledWeight || outcome.probability);
-        record.values.set(score, (record.values.get(score) || zero).add(branchWeight.multiply(weight)));
+      const normalized = {
+        ...structuredClone(distribution),
+        scores: (distribution.scores || []).map(outcome => ({ score: Number(outcome.score), probability: outcome.probability }))
+      };
+      const signature = stableForecastKey(normalized);
+      const existing = scores.get(key);
+      if (!existing) scores.set(key, { distribution: normalized, signature });
+      else if (existing.signature !== signature) {
+        scoreConflict = `Pre-selection score outcomes for ${distribution.candidateId} changed across actor-pass worlds; hidden action-world weights cannot be used as incentive probabilities.`;
       }
     }
   }
+  if (scoreConflict) return {
+    schemaVersion: engine.FORECAST_RESPONSE_SCHEMA_VERSION || "trainer-ai-forecast-response/v1alpha1",
+    requestId,
+    profileId: profile.profileId,
+    generation: Number(profile.generation),
+    engineFamily: profile.engineFamily,
+    status: "error",
+    basis: { kind: "unavailable" },
+    likelihoodBands: engine.LIKELIHOOD_BANDS || [],
+    incentiveModel: branches[0].result.incentiveModel,
+    actions: [],
+    scoreDistributions: [],
+    error: { code: "pre-selection-score-world-conflict", message: scoreConflict },
+    diagnostics: [{ code: "pre-selection-score-world-conflict", message: scoreConflict }]
+  };
   const allActionRecords = [...actions.values()];
   const actionRecords = allActionRecords.sort((left, right) => right.mass.compare(left.mass)).map(record => {
     const equallyLikely = allActionRecords.filter(other => other.mass.compare(record.mass) === 0);
@@ -182,8 +204,7 @@ function mergeExactForecastBranches(engine, profile, requestId, branches) {
       candidateIds: [...record.candidateIds].sort(),
       reasons: [...record.reasons.values()].sort((left, right) => right.mass.compare(left.mass)).map(reason => ({
         ...reason.event,
-        modeledWeight: reason.mass.toJSON(),
-        conditionalOnAction: record.mass.isZero() ? null : reason.mass.divide(record.mass).toJSON()
+        modeledWeight: reason.mass.toJSON()
       })),
       incentiveLedger: null
     };
@@ -205,12 +226,8 @@ function mergeExactForecastBranches(engine, profile, requestId, branches) {
     likelihoodBands: engine.LIKELIHOOD_BANDS || [],
     incentiveModel: branches[0].result.incentiveModel,
     actions: actionRecords,
-    scoreDistributions: [...scores.values()].map(record => ({
-      phaseId: record.phaseId,
-      candidateId: record.candidateId,
-      candidate: record.candidate,
-      scores: [...record.values.entries()].sort((left, right) => right[0] - left[0]).map(([score, weight]) => ({ score, modeledWeight: weight.toJSON() }))
-    })),
+    scoreAdjustments: [...scoreAdjustments.values()],
+    scoreDistributions: [...scores.values()].map(record => record.distribution),
     diagnostics: []
   };
 }
@@ -279,10 +296,18 @@ function combatantName(combatant) {
   return combatant?.nickname || combatant?.displayName || combatant?.speciesId || "Pokémon";
 }
 
-function trainerProfile(plan, dataset) {
-  const trainer = dataset.trainer(plan.game.trainerId);
+function trainerProfile(plan, dataset, entry = null) {
+  const ownerId = plan.combatants[entry?.combatantKey]?.source?.partyOwnerId;
+  const trainer = dataset.trainer(ownerId || plan.game.trainerId);
   const profileId = dataset.mechanics?.trainerBattleProfile;
   return { trainer, battleProfile: profileId ? trainer?.battleProfiles?.[profileId] : null };
+}
+
+function actorParty(plan, entry, side = 'enemy') {
+  const key = entry?.combatantKey;
+  const owner = plan.combatants[key]?.source?.partyOwnerId;
+  return Object.values(plan.combatants).filter(mon => mon.side === side
+    && (owner ? mon.source?.partyOwnerId === owner : belongsToSlotParty(plan, mon, side, entry?.slot ?? 0)));
 }
 
 function activeEnemyEntries(plan, state) {
@@ -560,7 +585,7 @@ export function createPlatinumQueryProvider({ plan, state, dataset, actorEntry, 
     const side = plan.combatants[entry.combatantKey].side;
     const active = new Set(activeSlotEntries(state, side).map(row => row.combatantKey));
     const reservations = new Set([...alreadySelected, ...(metadata?.context?.request?.state?.aiSwitchedPartySlots || [])]);
-    return !Object.values(plan.combatants).filter(mon => mon.side === side).some((mon, index) => !active.has(mon.combatantKey) && !reservations.has(trainerPartyOrder(mon, index)) && knownHp(state.combatantStates[mon.combatantKey]) > 0);
+    return !actorParty(plan, entry, side).some((mon, index) => !active.has(mon.combatantKey) && !reservations.has(trainerPartyOrder(mon, index)) && knownHp(state.combatantStates[mon.combatantKey]) > 0);
   };
   const battlerCombatant = (selector, metadata) => {
     const entry = selectedBattlerEntry(state, actorEntry, metadata, selector);
@@ -570,7 +595,7 @@ export function createPlatinumQueryProvider({ plan, state, dataset, actorEntry, 
   const selectedEntry = (selector, metadata) => selectedBattlerEntry(state, actorEntry, metadata, selector);
   const party = (selector, metadata) => {
     const side = battlerCombatant(selector, metadata)?.side;
-    return Object.values(plan.combatants).filter(mon => mon.side === side);
+    return actorParty(plan, selectedEntry(selector, metadata), side);
   };
   const sideState = (selector, metadata) => state.fieldState?.sides?.[battlerCombatant(selector, metadata)?.side] || {};
   const maskOf = (record, mapping, metadata) => Object.entries(mapping).reduce((mask, [token, keys]) => keys.some(key => Boolean(record?.[key])) ? mask | Number(metadata.profile.constants.numericByToken[token]) : mask, 0);
@@ -696,7 +721,7 @@ export function createPlatinumQueryProvider({ plan, state, dataset, actorEntry, 
     },
     "platinum.command.IfPartyMemberDealsMoreDamage": (vary, metadata) => {
       const maximum = Math.max(0, ...allDamage(metadata, vary));
-      return Object.values(plan.combatants).filter(mon => mon.side === 'enemy' && mon.combatantKey !== actorEntry.combatantKey && knownHp(state.combatantStates[mon.combatantKey]) > 0)
+      return actorParty(plan, actorEntry).filter(mon => mon.combatantKey !== actorEntry.combatantKey && knownHp(state.combatantStates[mon.combatantKey]) > 0)
         .some(mon => Math.max(0, ...allDamage(metadata, vary, actorEntry, { combatantKey: mon.combatantKey })) > maximum);
     },
     "platinum.command.IfBattlerDealsMoreDamage": (selector, vary, metadata) => {
@@ -772,7 +797,7 @@ export function createPlatinumQueryProvider({ plan, state, dataset, actorEntry, 
       if (!entry) return undefined;
       const side = plan.combatants[entry.combatantKey]?.side;
       const active = new Set(activeSlotEntries(state, side).map(row => row.combatantKey));
-      return Object.values(plan.combatants).filter(combatant => combatant.side === side && !active.has(combatant.combatantKey) && combatant.speciesId && combatant.speciesId !== 'egg' && knownHp(state.combatantStates[combatant.combatantKey]) > 0).length;
+      return actorParty(plan, entry, side).filter(combatant => !active.has(combatant.combatantKey) && combatant.speciesId && combatant.speciesId !== 'egg' && knownHp(state.combatantStates[combatant.combatantKey]) > 0).length;
     },
     "platinum.command.IfBattlerFainted": battlerUnavailable,
     "platinum.command.IfBattlerNotFainted": (selector, metadata) => !battlerUnavailable(selector, metadata),
@@ -1115,7 +1140,7 @@ export function createGen5QueryProvider({ plan, state, dataset, actorEntry, move
     "gen5.command.0x27": (pokemon, metadata) => {
       const entry = entryFor(pokemon, metadata); const side = gen5SideForEntry(plan, entry); if (!side) return undefined;
       const active = new Set(activeSlotEntries(state, side).map(row => row.combatantKey));
-      return Object.values(plan.combatants).filter(mon => mon.side === side && !active.has(mon.combatantKey) && Number(state.combatantStates[mon.combatantKey]?.hp?.max ?? 0) > 0).length;
+      return actorParty(plan, entry, side).filter(mon => !active.has(mon.combatantKey) && Number(state.combatantStates[mon.combatantKey]?.hp?.max ?? 0) > 0).length;
     },
     "gen5.command.0x28": metadata => gen5SourceToken("move", candidateMove(metadata, dataset)?.id, metadata),
     "gen5.command.0x29": metadata => candidateMove(metadata, dataset)?.aiEffect,
@@ -1126,7 +1151,7 @@ export function createGen5QueryProvider({ plan, state, dataset, actorEntry, move
     },
     "gen5.command.0x2d": (statusToken, metadata) => {
       const status = toId(String(statusToken).replace(/^status\./i, ""));
-      return Object.values(plan.combatants).filter(mon => mon.side === "enemy").some(mon => Number(state.combatantStates[mon.combatantKey]?.hp?.max ?? 0) > 0 && (status === "poison" ? ["poison", "toxic"].includes(gen5StatusId(state.combatantStates[mon.combatantKey])) : gen5StatusId(state.combatantStates[mon.combatantKey]) === status));
+      return actorParty(plan, actorEntry).some(mon => Number(state.combatantStates[mon.combatantKey]?.hp?.max ?? 0) > 0 && (status === "poison" ? ["poison", "toxic"].includes(gen5StatusId(state.combatantStates[mon.combatantKey])) : gen5StatusId(state.combatantStates[mon.combatantKey]) === status));
     },
     "gen5.command.0x2f": metadata => gen5SourceToken("weather", state.fieldState?.global?.weather?.id, metadata, "weather.none"),
     "gen5.command.0x30": (effect, metadata) => equality(candidateMove(metadata, dataset)?.aiEffect, effect),
@@ -1166,15 +1191,15 @@ export function createGen5QueryProvider({ plan, state, dataset, actorEntry, move
       return undefined;
     },
     "gen5.command.0x57": (pokemon, condition, metadata) => gen5SideConditionValue(plan, state, actorEntry, metadata, pokemon, condition),
-    "gen5.command.0x58": (pokemon, metadata) => { const entry = entryFor(pokemon, metadata); const side = gen5SideForEntry(plan, entry); return side ? Object.values(plan.combatants).filter(mon => mon.side === side).some(mon => { const hp = state.combatantStates[mon.combatantKey]?.hp; return Number(hp?.max ?? 0) > 0 && Number(hp.max) < Number(hp.maxHp); }) : undefined; },
-    "gen5.command.0x59": (pokemon, metadata) => { const entry = entryFor(pokemon, metadata); const side = gen5SideForEntry(plan, entry); return side ? Object.values(plan.combatants).filter(mon => mon.side === side).some(mon => (mon.moves || []).some(move => Number(state.combatantStates[mon.combatantKey]?.movePp?.[move.moveId] ?? move.maxPp) < Number(move.maxPp))) : undefined; },
+    "gen5.command.0x58": (pokemon, metadata) => { const entry = entryFor(pokemon, metadata); const side = gen5SideForEntry(plan, entry); return side ? actorParty(plan, entry, side).some(mon => { const hp = state.combatantStates[mon.combatantKey]?.hp; return Number(hp?.max ?? 0) > 0 && Number(hp.max) < Number(hp.maxHp); }) : undefined; },
+    "gen5.command.0x59": (pokemon, metadata) => { const entry = entryFor(pokemon, metadata); const side = gen5SideForEntry(plan, entry); return side ? actorParty(plan, entry, side).some(mon => (mon.moves || []).some(move => Number(state.combatantStates[mon.combatantKey]?.movePp?.[move.moveId] ?? move.maxPp) < Number(move.maxPp))) : undefined; },
     "gen5.command.0x5a": (pokemon, metadata) => { const mon = stateFor(pokemon, metadata); if (!mon) return undefined; if (mon.itemState !== "held" || Number(mon.volatileConditions?.embargoTurns || 0) > 0 || Number(state.fieldState?.global?.magicRoomTurns || 0) > 0 || toId(mon.currentAbilityId) === "klutz") return 0; return itemParameters(mon.currentItemId, metadata)?.flingPowerParameter10; },
     "gen5.command.0x5b": metadata => { const move = candidateMove(metadata, dataset); return move ? Number(state.combatantStates[actorEntry.combatantKey]?.movePp?.[move.id] ?? move.pp) : undefined; },
     "gen5.command.0x5c": (pokemon, metadata) => { const entry = entryFor(pokemon, metadata); const ids = gen5MoveIdsForEntry(plan, state, entry); const used = stateFor(pokemon, metadata)?.usedMoveIds; return ids && Array.isArray(used) ? ids.filter(id => toId(id) !== "lastresort").every(id => used.some(value => toId(value) === toId(id))) : undefined; },
     "gen5.command.0x5e": metadata => { const id = state.combatantStates[actorEntry.combatantKey]?.lastMoveId; return id ? dataset.get("moves", id)?.category : 0; },
     "gen5.command.0x5f": (pokemon, metadata) => stateFor(pokemon, metadata)?.turnOrderPosition,
     "gen5.command.0x60": (pokemon, metadata) => { const mon = stateFor(pokemon, metadata); return mon ? Math.max(0, Number(state.turnNumber || 0) - Number(mon.enteredTurnNumber || 0)) : undefined; },
-    "gen5.command.0x61": (pokemon, metadata) => { const target = entryFor(pokemon, metadata); const active = new Set(activeSlotEntries(state, "enemy").map(entry => entry.combatantKey)); const actorBest = strongestDamage(actorEntry, target); if (actorBest === undefined) return undefined; const reserveValues = Object.values(plan.combatants).filter(mon => mon.side === "enemy" && !active.has(mon.combatantKey) && Number(state.combatantStates[mon.combatantKey]?.hp?.max ?? 0) > 0).map(mon => strongestDamage({ combatantKey: mon.combatantKey }, target)); return reserveValues.some(value => value === undefined) ? undefined : reserveValues.some(value => value > actorBest); },
+    "gen5.command.0x61": (pokemon, metadata) => { const target = entryFor(pokemon, metadata); const active = new Set(activeSlotEntries(state, "enemy").map(entry => entry.combatantKey)); const actorBest = strongestDamage(actorEntry, target); if (actorBest === undefined) return undefined; const reserveValues = actorParty(plan, actorEntry).filter(mon => !active.has(mon.combatantKey) && Number(state.combatantStates[mon.combatantKey]?.hp?.max ?? 0) > 0).map(mon => strongestDamage({ combatantKey: mon.combatantKey }, target)); return reserveValues.some(value => value === undefined) ? undefined : reserveValues.some(value => value > actorBest); },
     "gen5.command.0x62": metadata => {
       const values = actorAllMoves().map(move => gen5TypeMultiplier(plan, state, dataset, metadata, move));
       return values.some(value => value === undefined) ? undefined : values.some(value => value > 1);
@@ -1274,7 +1299,7 @@ function moveEffectivenessAgainst(plan, state, dataset, move, targetEntry) {
 
 function platinumReserves(plan, state, actorEntry, alreadySelected = []) {
   const active = new Set(activeSlotEntries(state, "enemy").map(entry => entry.combatantKey));
-  return Object.values(plan.combatants).filter(combatant => combatant.side === "enemy")
+  return actorParty(plan, actorEntry)
     .map((combatant, index) => ({ combatant, partySlot: trainerPartyOrder(combatant, index) }))
     .filter(({ combatant, partySlot }) => !alreadySelected.includes(partySlot) && !active.has(combatant.combatantKey) && Number(state.combatantStates[combatant.combatantKey]?.hp?.max ?? 0) > 0)
     .sort((left, right) => left.partySlot - right.partySlot);
@@ -1361,13 +1386,30 @@ function platinumTypeFacts({ plan, state, dataset, attacker, defender, move, met
   if (order) factorRows.sort((x, y) => order.indexOf(x.id) - order.indexOf(y.id));
   const factors = factorRows.map(row => row.factor);
   let multiplier = move.id === "struggle" ? 1 : factors.reduce((value, factor) => value * factor, 1);
-  let immune = multiplier === 0;
-  let ineffective = immune;
-  if (move.id !== "struggle" && aa !== "moldbreaker" && da === "levitate" && type === "ground" && item !== "ironball" && !gravity) { immune = true; multiplier = 0; ineffective = party; }
-  if (!party && type === "ground" && volatile.magnetRiseTurns && !volatile.ingrain && item !== "ironball") { immune = true; multiplier = 0; ineffective = false; }
   const sourcePower = Number(move.sourcePower ?? move.trainerAi?.basePower);
-  const superEffective = multiplier > 1 && (party || sourcePower > 0);
-  const resisted = multiplier > 0 && multiplier < 1 && (party || sourcePower > 0);
+  let ineffective = false, superEffective = false, resisted = false;
+  const levitated = move.id !== "struggle" && aa !== "moldbreaker" && da === "levitate" && type === "ground" && item !== "ironball" && !gravity;
+  const magnetRise = !party && move.id !== "struggle" && type === "ground" && volatile.magnetRiseTurns && !volatile.ingrain && item !== "ironball";
+  // Both source helpers update flags one type-table row at a time. Immunity
+  // clears the basic flags, but a later weakness/resistance can set one again
+  // without clearing INEFFECTIVE (the retail dual non-immunity bug).
+  if (move.id !== "struggle" && !levitated && !magnetRise) for (const factor of factors) {
+    if (factor === 0) {
+      ineffective = true;
+      resisted = false;
+      superEffective = false;
+    } else if (party || sourcePower > 0) {
+      if (factor === 0.5) {
+        if (superEffective) superEffective = false;
+        else resisted = true;
+      } else if (factor === 2) {
+        if (resisted) resisted = false;
+        else superEffective = true;
+      }
+    }
+  }
+  let immune = ineffective;
+  if (levitated || magnetRise) { immune = true; multiplier = 0; ineffective = party && levitated; superEffective = false; resisted = false; }
   const charging = ["BATTLE_EFFECT_BIDE", "BATTLE_EFFECT_CHARGE_TURN_HIGH_CRIT", "BATTLE_EFFECT_CHARGE_TURN_HIGH_CRIT_FLINCH", "BATTLE_EFFECT_CHARGE_TURN_DEF_UP", "BATTLE_EFFECT_SKIP_CHARGE_TURN_IN_SUN", "BATTLE_EFFECT_FLY", "BATTLE_EFFECT_DIVE", "BATTLE_EFFECT_DIG", "BATTLE_EFFECT_BOUNCE", "BATTLE_EFFECT_FLINCH_BURN_HIT"].includes(move.trainerAi?.effectToken);
   if (move.id !== "struggle" && aa !== "moldbreaker" && da === "wonderguard" && !charging && !superEffective && (party || sourcePower > 0)) { immune = true; if (party) ineffective = true; }
   return { type, factors, multiplier, immune, ineffective, superEffective, resisted, neutral: !immune && !superEffective && !resisted };
@@ -1656,14 +1698,18 @@ function platinumVoluntarySwitchAction({ plan, state, dataset, actorEntry, metad
   };
   const opponents = activeSlotEntries(state, "player");
   const others = [...opponents, ...activeSlotEntries(state, "enemy")].filter(entry => entry.combatantKey !== actorEntry.combatantKey);
-  if (volatile.trapped || volatile.ingrain
+  if (volatile.trapped || volatile.trappedBy || volatile.meanlook || volatile.blocked
+    || volatile.partiallytrapped || Number(volatile.partiallyTrappedTurns || 0) > 0 || volatile.ingrain
     || opponents.some(entry => ["shadowtag", "arenatrap"].includes(ability(entry)))
     || others.some(entry => ability(entry) === "magnetpull") && combatantTypes(plan, state, actorEntry).some(type => toId(type) === "steel")) {
     return { status: "exact", action: null };
   }
   const reserves = platinumReserves(plan, state, actorEntry, alreadySelected);
   if (!reserves.length) return { status: "exact", action: null };
-  if ((volatile.perishSong || volatile.perishTurns !== undefined) && Number(volatile.perishSongTurns ?? volatile.perishTurns) === 0) {
+  const finalPerishTurn = volatile.perishSongTurns !== undefined
+    ? Number(volatile.perishSongTurns) === 0
+    : volatile.perishTurns !== undefined && Number(volatile.perishTurns) === 1;
+  if ((volatile.perishSong || volatile.perishSongTurns !== undefined || volatile.perishTurns !== undefined) && finalPerishTurn) {
     return platinumPostKoAction({ plan, state, dataset, actorEntry, metadata, alreadySelected });
   }
   const draw = () => metadata.drawRandom("g4-switch-draw");
@@ -1781,15 +1827,18 @@ function platinumForcedAction({ plan, state, dataset, actorEntry, metadata, phas
 function platinumTrainerItemAction({ plan, state, dataset, actorEntry, profile }) {
   const actorState = state.combatantStates[actorEntry.combatantKey];
   if (!actorState || !profile?.trainerItemUse?.byNumericId) return { status: "unavailable", action: undefined };
+  const scan = profile.trainerItemUse.scan;
+  if (!scan || ![0, 1].includes(scan.laterSlotEligibilityOffset)
+    || typeof scan.loopBreaksAfterUsable !== 'boolean' || scan.slots !== 4
+    || scan.slot0AlwaysExamined !== true) return { status: "unavailable", action: undefined };
   if (actorState.volatileConditions?.embargo || Number(actorState.volatileConditions?.embargoTurns || 0) > 0) return { status: "exact", action: null };
-  const battleProfile = trainerProfile(plan, dataset).battleProfile;
+  const battleProfile = trainerProfile(plan, dataset, actorEntry).battleProfile;
   const storedBag = state.trainerAi?.g4Bags?.[actorEntry.slot];
   const bag = storedBag?.slots || (battleProfile?.bagItemIds || []).filter(Boolean);
   const numericBag = bag.map(itemId => Number.isInteger(itemId) ? itemId : numericRecordId(dataset, "items", itemId));
   const initialCount = storedBag?.initialCount ?? numericBag.length;
   if (numericBag.some(value => !Number.isInteger(value))) return { status: "unavailable", action: undefined };
-  const alive = Object.values(plan.combatants).filter(combatant => combatant.side === "enemy"
-    && Number(state.combatantStates[combatant.combatantKey]?.hp?.max ?? 0) > 0).length;
+  const alive = actorParty(plan, actorEntry).filter(combatant => Number(state.combatantStates[combatant.combatantKey]?.hp?.max ?? 0) > 0).length;
   const currentHp = knownHp(actorState);
   const maximumHp = Number(actorState.hp?.maxHp ?? actorState.hp?.max);
   if (currentHp === null || !Number.isFinite(maximumHp)) return { status: "unavailable", action: undefined };
@@ -1802,7 +1851,7 @@ function platinumTrainerItemAction({ plan, state, dataset, actorEntry, profile }
   let usedItemType = null, usedItemCondition = 0;
   const consumedBagSlots = [];
   for (let index = 0; index < Math.min(4, numericBag.length); index += 1) {
-    if (index !== 0 && alive > initialCount - index + 1) continue;
+    if (index !== 0 && alive > initialCount - index + scan.laterSlotEligibilityOffset) continue;
     const numericId = numericBag[index];
     if (numericId === 0) continue;
     const item = profile.trainerItemUse.byNumericId[String(numericId)];
@@ -1827,10 +1876,14 @@ function platinumTrainerItemAction({ plan, state, dataset, actorEntry, profile }
         if (!Number.isInteger(usedItemCondition)) throw new Error('Missing source trainer item stat constant');
       }
     } else if (!firstTurn && !['full-restore', 'fixed-hp-restore', 'status-cure'].includes(item.classification)) usedItemType = 'unrecognized';
-    if (result) { selected = { numericId, item, bagSlot: index }; consumedBagSlots.push(index); }
+    if (result) {
+      selected = { numericId, item, bagSlot: index };
+      consumedBagSlots.push(index);
+      if (scan.loopBreaksAfterUsable) break;
+    }
   }
   return result && selected
-    ? { status: "exact", action: { type: "item", itemId: selected.numericId, itemToken: selected.item.itemId, bagSlot: selected.bagSlot, target: actorEntry.combatantKey, bagOwner: actorEntry.slot, consumedBagSlots, initialBagCount: initialCount, usedItemType, usedItemCondition } }
+    ? { status: "exact", action: { type: "item", itemId: selected.numericId, itemToken: dataset.getBySaveNumericId("items", selected.numericId)?.id || selected.item.itemId, bagSlot: selected.bagSlot, target: actorEntry.combatantKey, bagOwner: actorEntry.slot, consumedBagSlots, initialBagCount: initialCount, usedItemType, usedItemCondition } }
     : { status: "exact", action: null };
 }
 
@@ -1845,7 +1898,7 @@ function combatantMoveDescriptors(plan, state, dataset, combatantKey) {
 function gen5ReplacementCandidates({ plan, state, dataset, actorEntry, targetEntry, alreadySelected = [] }) {
   const active = new Set(activeSlotEntries(state, "enemy").map(entry => entry.combatantKey));
   const excluded = new Set(alreadySelected);
-  return Object.values(plan.combatants).filter(combatant => combatant.side === "enemy")
+  return actorParty(plan, actorEntry)
     .map((combatant, index) => ({ combatant, partySlot: trainerPartyOrder(combatant, index) }))
     .filter(({ combatant, partySlot }) => !active.has(combatant.combatantKey) && !excluded.has(partySlot)
       && Number(state.combatantStates[combatant.combatantKey]?.hp?.max ?? 0) > 0)
@@ -2020,11 +2073,11 @@ function gen5FullActionEvaluation({ plan, state, dataset, ai, actorEntry, moveAc
       targetSlot: target.slot
     }
   })));
-  const aiParty = Object.values(plan.combatants).filter(combatant => combatant.side === "enemy")
+  const aiParty = actorParty(plan, actorEntry)
     .map((combatant, index) => normalizedPartyMember(plan, state, combatant, index));
   const opponentParty = Object.values(plan.combatants).filter(combatant => combatant.side === "player")
     .map((combatant, index) => normalizedPartyMember(plan, state, combatant, index));
-  const activePokemon = activeSlotEntries(state, "enemy").map(entry => ({
+  const activePokemon = activeSlotEntries(state, "enemy").filter(entry => !plan.game.partyOwnership?.enemy || actorParty(plan, actorEntry).some(mon => mon.combatantKey === entry.combatantKey)).map(entry => ({
     ...normalizedActor(plan, state, entry),
     positionIndex: entry.slot,
     positionOrder: entry.slot
@@ -2225,7 +2278,7 @@ function platinumFullActionEvaluation({ plan, state, dataset, ai, actorEntry, mo
       actor,
       field: state.fieldState || {},
       sides: {
-        ai: { party: Object.values(plan.combatants).filter(combatant => combatant.side === "enemy").map((combatant, index) => normalizedPartyMember(plan, state, combatant, index)) },
+        ai: { party: actorParty(plan, actorEntry).map((combatant, index) => normalizedPartyMember(plan, state, combatant, index)) },
         opponent: { party: Object.values(plan.combatants).filter(combatant => combatant.side === "player").map((combatant, index) => normalizedPartyMember(plan, state, combatant, index)) }
       }
     },
@@ -2282,7 +2335,7 @@ function replacementEvaluation({ plan, state, dataset, ai, actorEntry, battlePro
     pivoting: false,
     forcedContinuation: "replacement"
   };
-  const aiParty = Object.values(plan.combatants).filter(combatant => combatant.side === "enemy")
+  const aiParty = actorParty(plan, actorEntry)
     .map((combatant, index) => normalizedPartyMember(plan, state, combatant, index));
   const opponentParty = Object.values(plan.combatants).filter(combatant => combatant.side === "player")
     .map((combatant, index) => normalizedPartyMember(plan, state, combatant, index));
@@ -2419,7 +2472,7 @@ function conditionalMoveEvaluation({ plan, state, dataset, ai, actorEntry, moves
       actor,
       field: state.fieldState || {},
       sides: {
-        ai: { party: Object.values(plan.combatants).filter(combatant => combatant.side === "enemy") },
+        ai: { party: actorParty(plan, actorEntry) },
         opponent: { party: Object.values(plan.combatants).filter(combatant => combatant.side === "player") }
       }
     },
@@ -2484,8 +2537,8 @@ function evaluatedMoveSummary(result, moveId) {
       incentiveLedger: null
     };
   }
-  const allReasons = result.actions.flatMap(entry => entry.reasons || [])
-    .filter(reason => !reason.candidateId || candidateIds.has(reason.candidateId));
+  const allReasons = (result.scoreAdjustments || [])
+    .filter(reason => reason.candidateId && candidateIds.has(reason.candidateId));
   const adjustments = [...new Map(allReasons.filter(reason => Number.isInteger(reason.delta)).map(reason => [
     `${reason.candidateId || ""}:${reason.reasonCode}:${reason.delta}:${reason.summary}`,
     {
@@ -2496,8 +2549,8 @@ function evaluatedMoveSummary(result, moveId) {
       summary: reason.summary,
       previousScore: reason.previousScore,
       resultingScore: reason.resultingScore,
-      modeledWeight: reason.modeledWeight || reason.probability || null,
-      probability: reason.conditionalOnAction || reason.modeledWeight || reason.probability || null
+      probability: reason.scoringProbability || null,
+      probabilityBasis: reason.probabilityBasis || null
     }
   ])).values()];
   const finalScores = [...new Set((result.scoreDistributions || [])
@@ -2514,15 +2567,16 @@ function evaluatedMoveSummary(result, moveId) {
         : null,
       scores: (distribution.scores || []).map(outcome => ({
         score: Number(outcome.score),
-        modeledWeight: outcome.modeledWeight || outcome.probability || null
+        probability: outcome.probability || null,
+        probabilityBasis: distribution.probabilityBasis || null
       }))
     }));
   const initialScore = Number(result.incentiveModel?.initialScore ?? 100);
   const adjustmentText = adjustments.length
     ? ` Documented adjustments reached here: ${adjustments.map(adjustment => `${adjustment.delta >= 0 ? "+" : ""}${adjustment.delta} — ${adjustment.summary}`).join(" ")}`
-    : ` No active scoring rule changes this move from ${initialScore} in the modeled paths.`;
+    : ` No active scoring rule changes this move from ${initialScore} in this state.`;
   const scoreText = finalScores.length
-    ? ` Modeled final ${finalScores.length === 1 ? "score" : "scores"}: ${finalScores.join(", ")}.`
+    ? ` Pre-selection final ${finalScores.length === 1 ? "score" : "scores"}: ${finalScores.join(", ")}.`
     : "";
   const selectionReasons = [...new Set(actions.flatMap(entry => entry.reasons || []).filter(reason => reason.summary && !Number.isInteger(reason.delta)).map(reason => reason.summary))];
   return {
@@ -2572,7 +2626,7 @@ export function analyzeTrainerAi({ plan, state, dataset, ai, evaluator = null, d
 }
 
 function analyzeTrainerAiState({ plan, state, dataset, ai, evaluator = null, damageAdapter = null }) {
-  if (!plan || !state || !dataset || !ai) return null;
+  if (!plan || !state || !dataset || !ai || state.freeCalc) return null;
   const { trainer, battleProfile } = trainerProfile(plan, dataset);
   if (!trainer || !battleProfile) return null;
   const flagIds = battleProfile.aiFlagIds || [];
@@ -2592,12 +2646,17 @@ function analyzeTrainerAiState({ plan, state, dataset, ai, evaluator = null, dam
   const engine = evaluator || globalThis.TrainerAiEvaluator;
   const enemyByPartySlot = new Map(Object.values(plan.combatants).filter(combatant => combatant.side === "enemy")
     .map((combatant, index) => [trainerPartyOrder(combatant, index), combatant]));
-  const gen5ActorPass = Number(ai.generation) === 5 && plan.game.battleFormat !== "rotation" && enemies.length > 1
+  const ownedParties = plan.game.partyOwnership?.enemy?.policy === 'per-trainer';
+  const gen5ActorPass = !ownedParties && Number(ai.generation) === 5 && plan.game.battleFormat !== "rotation" && enemies.length > 1
     ? gen5ActorPassEvaluations({ plan, state, dataset, ai, enemies, flagIds, battleProfile, evaluator: engine, damageAdapter })
     : null;
-  const platinumActorPass = Number(ai.generation) === 4 && enemies.length > 1
+  const platinumActorPass = !ownedParties && Number(ai.generation) === 4 && enemies.length > 1
     ? platinumActorPassEvaluations({ plan, state, dataset, ai, flagIds, battleProfile, evaluator: engine, damageAdapter }, enemies) : null;
   const actors = enemies.map(entry => {
+    const { battleProfile } = trainerProfile(plan, dataset, entry);
+    const flagIds = battleProfile?.aiFlagIds || [];
+    const aiMask = Number(battleProfile?.aiMask ?? battleProfile?.ai ?? 0);
+    const enemyByPartySlot = new Map(actorParty(plan, entry).map((mon, index) => [trainerPartyOrder(mon, index), mon]));
     const moves = usableMoves(plan, state, entry.combatantKey);
     const uniformWithoutScripts = Boolean(ai.semantics) && aiMask === 0 && ["singles", "rotation"].includes(plan.game.battleFormat);
     const fullEvaluation = Number(ai.generation) === 5
@@ -2700,11 +2759,13 @@ function analyzeTrainerAiState({ plan, state, dataset, ai, evaluator = null, dam
     };
   });
   const faintedEntries = activeSlotEntries(state, "enemy").filter(entry => Number(state.combatantStates[entry.combatantKey]?.hp?.max ?? 0) <= 0);
-  const replacementPass = Number(ai.generation) === 5 && engine?.Rational && ai.evaluatorProfile && faintedEntries.length > 1
+  const replacementPass = !ownedParties && Number(ai.generation) === 5 && engine?.Rational && ai.evaluatorProfile && faintedEntries.length > 1
     ? gen5FaintedReplacementPass({ plan, state, dataset, ai, battleProfile, evaluator, damageAdapter }, faintedEntries)
-    : Number(ai.generation) === 4 && faintedEntries.length > 1
+    : !ownedParties && Number(ai.generation) === 4 && faintedEntries.length > 1
       ? platinumActorPassEvaluations({ plan, state, dataset, ai, battleProfile, evaluator: engine, damageAdapter }, faintedEntries, true) : null;
   const replacementForecasts = [...enemies, ...faintedEntries].map(entry => {
+    const { battleProfile } = trainerProfile(plan, dataset, entry);
+    const enemyByPartySlot = new Map(actorParty(plan, entry).map((mon, index) => [trainerPartyOrder(mon, index), mon]));
     const reserves = platinumReserves(plan, state, entry);
     if (!reserves.length) {
       return {

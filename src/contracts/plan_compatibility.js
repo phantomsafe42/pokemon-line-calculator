@@ -1,5 +1,5 @@
-import { stableStringify, toId } from "../core/primitives.js";
-import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260827-ability-form-events";
+import { stableStringify, toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
+import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260905-drafts-freecalc-partners-v1";
 
 export class PlanCompatibilityError extends Error {
   constructor(issues) {

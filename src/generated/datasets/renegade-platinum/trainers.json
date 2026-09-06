@@ -2097,7 +2097,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "potion",
             null,
             null,
             null
@@ -2359,7 +2359,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "potion",
             null,
             null,
             null
@@ -3982,7 +3982,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "potion",
             null,
             null,
             null
@@ -4342,7 +4342,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "potion",
             null,
             null,
             null
@@ -4702,7 +4702,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "potion",
             null,
             null,
             null
@@ -9256,8 +9256,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "superpotion",
+            "potion",
             null,
             null
           ],
@@ -10054,7 +10054,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "potion",
             null,
             null,
             null
@@ -10320,7 +10320,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "potion",
             null,
             null,
             null
@@ -10586,7 +10586,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "potion",
             null,
             null,
             null
@@ -10852,7 +10852,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "potion",
             null,
             null,
             null
@@ -11118,7 +11118,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "potion",
             null,
             null,
             null
@@ -11384,7 +11384,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "potion",
             null,
             null,
             null
@@ -17534,7 +17534,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "superpotion",
             null,
             null,
             null
@@ -17900,7 +17900,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "hyperpotion",
             null,
             null,
             null
@@ -28602,8 +28602,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "superpotion",
+            "superpotion",
             null,
             null
           ],
@@ -31862,7 +31862,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "hyperpotion",
             null,
             null,
             null
@@ -32228,7 +32228,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "hyperpotion",
             null,
             null,
             null
@@ -37345,7 +37345,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "hyperpotion",
             null,
             null,
             null
@@ -37811,7 +37811,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "hyperpotion",
             null,
             null,
             null
@@ -38277,7 +38277,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "hyperpotion",
             null,
             null,
             null
@@ -38743,7 +38743,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "hyperpotion",
             null,
             null,
             null
@@ -39209,7 +39209,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "hyperpotion",
             null,
             null,
             null
@@ -39675,7 +39675,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "hyperpotion",
             null,
             null,
             null
@@ -41728,7 +41728,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "fullrestore",
             null,
             null,
             null
@@ -44390,8 +44390,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "hyperpotion",
+            "hyperpotion",
             null,
             null
           ],
@@ -48770,7 +48770,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "potion",
             null,
             null,
             null
@@ -49502,10 +49502,10 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
-            null,
-            null
+            "fullrestore",
+            "fullrestore",
+            "fullrestore",
+            "fullrestore"
           ],
           "aiSource": "trainer_ai_evidence.json",
           "aiSourceTrainerIds": [
@@ -49768,7 +49768,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "fullrestore",
             null,
             null,
             null
@@ -50034,7 +50034,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "fullrestore",
             null,
             null,
             null
@@ -50366,7 +50366,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "fullrestore",
             null,
             null,
             null
@@ -50532,7 +50532,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "fullrestore",
             null,
             null,
             null
@@ -54750,8 +54750,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullheal",
+            "superpotion",
             null,
             null
           ],
@@ -55216,8 +55216,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullheal",
+            "superpotion",
             null,
             null
           ],
@@ -63224,8 +63224,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "hyperpotion",
+            "hyperpotion",
             null,
             null
           ],
@@ -69216,7 +69216,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "fullrestore",
             null,
             null,
             null
@@ -69382,7 +69382,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "fullrestore",
             null,
             null,
             null
@@ -69548,7 +69548,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "fullrestore",
             null,
             null,
             null
@@ -69714,7 +69714,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "fullrestore",
             null,
             null,
             null
@@ -69880,7 +69880,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "xspdef",
             null,
             null,
             null
@@ -70544,7 +70544,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "xspecial",
             null,
             null,
             null
@@ -72672,7 +72672,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "xspecial",
             null,
             null,
             null
@@ -74834,7 +74834,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "xdefense",
             null,
             null,
             null
@@ -80414,8 +80414,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "hyperpotion",
+            "hyperpotion",
             null,
             null
           ],
@@ -85696,8 +85696,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "hyperpotion",
+            "hyperpotion",
             null,
             null
           ],
@@ -86362,8 +86362,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "hyperpotion",
+            "hyperpotion",
             null,
             null
           ],
@@ -87028,8 +87028,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "hyperpotion",
+            "hyperpotion",
             null,
             null
           ],
@@ -87694,8 +87694,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "hyperpotion",
+            "hyperpotion",
             null,
             null
           ],
@@ -88360,8 +88360,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "hyperpotion",
+            "hyperpotion",
             null,
             null
           ],
@@ -89026,8 +89026,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "hyperpotion",
+            "hyperpotion",
             null,
             null
           ],
@@ -95112,8 +95112,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -99926,7 +99926,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "fullrestore",
             null,
             null,
             null
@@ -107434,8 +107434,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -118763,7 +118763,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "xdefense",
             null,
             null,
             null
@@ -119661,7 +119661,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "xspecial",
             null,
             null,
             null
@@ -130233,7 +130233,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "fullrestore",
             null,
             null,
             null
@@ -133825,7 +133825,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "hyperpotion",
             null,
             null,
             null
@@ -134191,7 +134191,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "xspeed",
             null,
             null,
             null
@@ -136953,8 +136953,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "hyperpotion",
+            "fullrestore",
             null,
             null
           ],
@@ -137619,8 +137619,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -149101,8 +149101,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -158981,8 +158981,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -159647,8 +159647,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -160313,8 +160313,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -160979,10 +160979,10 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
-            null,
-            null
+            "fullrestore",
+            "fullrestore",
+            "fullrestore",
+            "fullrestore"
           ],
           "aiSource": "trainer_ai_evidence.json",
           "aiSourceTrainerIds": [
@@ -161645,10 +161645,10 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
-            null,
-            null
+            "fullrestore",
+            "fullrestore",
+            "fullrestore",
+            "fullrestore"
           ],
           "aiSource": "trainer_ai_evidence.json",
           "aiSourceTrainerIds": [
@@ -162311,10 +162311,10 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
-            null,
-            null
+            "fullrestore",
+            "fullrestore",
+            "fullrestore",
+            "fullrestore"
           ],
           "aiSource": "trainer_ai_evidence.json",
           "aiSourceTrainerIds": [
@@ -162977,8 +162977,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -164301,8 +164301,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -164963,8 +164963,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -165629,8 +165629,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -166295,8 +166295,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -166961,8 +166961,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -167627,8 +167627,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -168293,8 +168293,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -168959,8 +168959,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -169625,8 +169625,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -170291,8 +170291,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -170957,8 +170957,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -171623,8 +171623,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -172289,8 +172289,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -172955,8 +172955,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -173621,8 +173621,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -174287,8 +174287,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -174953,8 +174953,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -175619,10 +175619,10 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
-            null,
-            null
+            "fullrestore",
+            "fullrestore",
+            "fullrestore",
+            "fullrestore"
           ],
           "aiSource": "trainer_ai_evidence.json",
           "aiSourceTrainerIds": [
@@ -176285,10 +176285,10 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
-            null,
-            null
+            "fullrestore",
+            "fullrestore",
+            "fullrestore",
+            "fullrestore"
           ],
           "aiSource": "trainer_ai_evidence.json",
           "aiSourceTrainerIds": [
@@ -176951,10 +176951,10 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
-            null,
-            null
+            "fullrestore",
+            "fullrestore",
+            "fullrestore",
+            "fullrestore"
           ],
           "aiSource": "trainer_ai_evidence.json",
           "aiSourceTrainerIds": [
@@ -177617,10 +177617,10 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
-            null,
-            null
+            "fullrestore",
+            "fullrestore",
+            "fullrestore",
+            "fullrestore"
           ],
           "aiSource": "trainer_ai_evidence.json",
           "aiSourceTrainerIds": [
@@ -180316,7 +180316,7 @@
             "AI_FLAG_BASIC"
           ],
           "bagItemIds": [
-            null,
+            "fullrestore",
             null,
             null,
             null
@@ -191394,8 +191394,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -253501,7 +253501,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "fullrestore",
             null,
             null,
             null
@@ -253660,7 +253660,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "fullrestore",
             null,
             null,
             null
@@ -253819,7 +253819,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "fullrestore",
             null,
             null,
             null
@@ -255371,7 +255371,7 @@
             "AI_FLAG_BASIC"
           ],
           "bagItemIds": [
-            null,
+            "fullrestore",
             null,
             null,
             null
@@ -255528,7 +255528,7 @@
             "AI_FLAG_BASIC"
           ],
           "bagItemIds": [
-            null,
+            "fullrestore",
             null,
             null,
             null
@@ -262393,7 +262393,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "fullrestore",
             null,
             null,
             null
@@ -262752,7 +262752,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "fullrestore",
             null,
             null,
             null
@@ -263111,7 +263111,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "fullrestore",
             null,
             null,
             null
@@ -263470,7 +263470,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "fullrestore",
             null,
             null,
             null
@@ -263829,7 +263829,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "fullrestore",
             null,
             null,
             null
@@ -266701,7 +266701,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "xattack",
             null,
             null,
             null
@@ -267060,7 +267060,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "xattack",
             null,
             null,
             null
@@ -267419,7 +267419,7 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
+            "xattack",
             null,
             null,
             null
@@ -286929,8 +286929,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -287588,8 +287588,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -288247,8 +288247,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -288906,8 +288906,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -289565,8 +289565,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -290224,8 +290224,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -290883,8 +290883,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -291542,8 +291542,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -292201,8 +292201,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -292860,8 +292860,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -293519,8 +293519,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -294178,8 +294178,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -294837,8 +294837,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -295496,10 +295496,10 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
-            null,
-            null
+            "fullrestore",
+            "fullrestore",
+            "fullrestore",
+            "fullrestore"
           ],
           "aiSource": "trainer_ai_evidence.json",
           "aiSourceTrainerIds": [
@@ -296155,10 +296155,10 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
-            null,
-            null
+            "fullrestore",
+            "fullrestore",
+            "fullrestore",
+            "fullrestore"
           ],
           "aiSource": "trainer_ai_evidence.json",
           "aiSourceTrainerIds": [
@@ -296814,10 +296814,10 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
-            null,
-            null
+            "fullrestore",
+            "fullrestore",
+            "fullrestore",
+            "fullrestore"
           ],
           "aiSource": "trainer_ai_evidence.json",
           "aiSourceTrainerIds": [
@@ -297474,8 +297474,8 @@
             "AI_FLAG_SETUP_FIRST_TURN"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -298133,10 +298133,10 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
-            null,
-            null
+            "fullrestore",
+            "fullrestore",
+            "fullrestore",
+            "fullrestore"
           ],
           "aiSource": "trainer_ai_evidence.json",
           "aiSourceTrainerIds": [
@@ -298792,10 +298792,10 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
-            null,
-            null
+            "fullrestore",
+            "fullrestore",
+            "fullrestore",
+            "fullrestore"
           ],
           "aiSource": "trainer_ai_evidence.json",
           "aiSourceTrainerIds": [
@@ -299447,10 +299447,10 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
-            null,
-            null
+            "fullrestore",
+            "fullrestore",
+            "fullrestore",
+            "fullrestore"
           ],
           "aiSource": "trainer_ai_evidence.json",
           "aiSourceTrainerIds": [
@@ -300102,10 +300102,10 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
-            null,
-            null
+            "fullrestore",
+            "fullrestore",
+            "fullrestore",
+            "fullrestore"
           ],
           "aiSource": "trainer_ai_evidence.json",
           "aiSourceTrainerIds": [
@@ -304081,7 +304081,7 @@
             "AI_FLAG_BASIC"
           ],
           "bagItemIds": [
-            null,
+            "fullrestore",
             null,
             null,
             null
@@ -309382,8 +309382,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -309741,8 +309741,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -313683,8 +313683,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -315251,8 +315251,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -329875,8 +329875,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -330534,8 +330534,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -331193,8 +331193,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -331852,8 +331852,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -332511,8 +332511,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -333170,8 +333170,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -338262,8 +338262,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -339580,8 +339580,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -340239,8 +340239,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -340898,8 +340898,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],
@@ -341557,8 +341557,8 @@
             "AI_FLAG_EXPERT"
           ],
           "bagItemIds": [
-            null,
-            null,
+            "fullrestore",
+            "fullrestore",
             null,
             null
           ],

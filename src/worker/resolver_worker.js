@@ -11,7 +11,7 @@ importScripts(
   new URL("vendor/smogon-calc-0.11.0/data.production.min.js", battleMechanicsBase).href,
   new URL("vendor/smogon-calc-0.11.0/engine.production.min.js", battleMechanicsBase).href,
   new URL("shared_damage_calculator.js", battleMechanicsBase).href,
-  new URL("trainer_ai/trainer_ai_evaluator.js?v=20260905-rule-titles", battleMechanicsBase).href
+  new URL("trainer_ai/trainer_ai_evaluator.js?v=20260906-preselection-scores", battleMechanicsBase).href
 );
 if (previousRequire) self.require = previousRequire;
 else delete self.require;
@@ -24,11 +24,11 @@ let trainerAi = null;
 let analyzeTrainerAi = null;
 
 async function initialize(datasetBaseUrl, trainerAiBaseUrl, gameId) {
-  const datasetModule = await import("../adapters/standardized_dataset.js?v=20260905-lenora-hawes");
-  const damageModule = await import("../adapters/shared_damage_adapter.js?v=20260827-ability-form-events");
-  const trainerAiModule = await import("../adapters/trainer_ai.js?v=20260905-rule-titles-slot-ledger");
-  const plannerModule = await import("../core/planner.js?v=20260827-ability-form-events");
-  const combatantMovesModule = await import("../core/combatant_moves.js?v=20260827-lock-progression");
+  const datasetModule = await import("../adapters/standardized_dataset.js?v=20260905-drafts-freecalc-partners-v1");
+  const damageModule = await import("../adapters/shared_damage_adapter.js?v=20260905-drafts-freecalc-partners-v1");
+  const trainerAiModule = await import("../adapters/trainer_ai.js?v=20260905-drafts-freecalc-partners-v1");
+  const plannerModule = await import("../core/planner.js?v=20260905-drafts-freecalc-partners-v1");
+  const combatantMovesModule = await import("../core/combatant_moves.js?v=20260905-drafts-freecalc-partners-v1");
   dataset = await datasetModule.loadStandardizedDataset({ baseUrl: datasetBaseUrl });
   const runtime = self.SharedDamageCalculator.createFromDocuments(
     { gameId: dataset.gameId },

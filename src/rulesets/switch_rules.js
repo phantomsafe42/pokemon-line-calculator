@@ -1,4 +1,4 @@
-import { normalizeRange, toId } from "../core/primitives.js";
+import { normalizeRange, toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
 
 function abilityId(state) {
   return state?.abilitySuppressed ? "" : toId(state?.currentAbilityId);

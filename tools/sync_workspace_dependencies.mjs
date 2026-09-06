@@ -25,6 +25,7 @@ const datasetFiles = Object.freeze([
   "types.json",
   "trainers.json",
   "trainer_order.json",
+  "trainer_battle_groups.json",
   "progression.json",
   "evolutions.json",
   "save_id_maps.json"

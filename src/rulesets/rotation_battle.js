@@ -1,4 +1,4 @@
-import { activeEntries, activeKey, activeSlotEntries, actorSlot, battleFormat } from "../core/battle_slots.js";
+import { activeEntries, activeKey, activeSlotEntries, actorSlot, battleFormat } from "../core/battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
 
 export function isRotationBattle(value) {
   return battleFormat(value) === "rotation";

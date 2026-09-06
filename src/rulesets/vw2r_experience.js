@@ -1,6 +1,6 @@
-import { calculateStats } from "../adapters/combatant_ingest.js";
-import { clone } from "../core/primitives.js";
-import { activeKeys } from "../core/battle_slots.js";
+import { calculateStats } from "../adapters/combatant_ingest.js?v=20260905-drafts-freecalc-partners-v1";
+import { clone } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
+import { activeKeys } from "../core/battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
 
 const EXP_SHARE_ITEM_ID = "expshare";
 const LUCKY_EGG_ITEM_ID = "luckyegg";

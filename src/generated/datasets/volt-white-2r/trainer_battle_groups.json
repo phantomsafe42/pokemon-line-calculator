@@ -1,0 +1,402 @@
+{
+  "schemaVersion": 1,
+  "gameId": "volt-white-2r",
+  "kind": "trainer-battle-groups",
+  "records": {
+    "castelia-sewers-plasma-tag": {
+      "id": "castelia-sewers-plasma-tag",
+      "battleFormat": "tag",
+      "locationId": "casteliasewers",
+      "enemyTrainerIds": [
+        "vw2r-trainer-0060",
+        "vw2r-trainer-0061"
+      ],
+      "enemySlotTrainerIds": [
+        "vw2r-trainer-0060",
+        "vw2r-trainer-0061"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true,
+        "overlay": true
+      },
+      "source": {
+        "authority": "redux-wiki",
+        "commit": "bbbc76b84806629bce625579dd182d7baea63e9e",
+        "file": "docs/trainers/casteliasewers.md",
+        "section": "Plasma Grunts #342, #356"
+      }
+    },
+    "vw2r-lenora-hawes-double": {
+      "id": "vw2r-lenora-hawes-double",
+      "battleFormat": "double",
+      "locationId": "nimbasacity",
+      "enemyTrainerIds": [
+        "vw2r-trainer-0095",
+        "vw2r-trainer-0096"
+      ],
+      "enemySlotTrainerIds": [
+        "vw2r-trainer-0095",
+        "vw2r-trainer-0096"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true,
+        "overlay": false
+      },
+      "source": {
+        "authority": "redux-wiki",
+        "commit": "bbbc76b84806629bce625579dd182d7baea63e9e",
+        "file": "docs/trainers/nimbasacity.md",
+        "section": "LENORA AND HAWES"
+      }
+    },
+    "nimbasa-subway-bosses-tag": {
+      "id": "nimbasa-subway-bosses-tag",
+      "battleFormat": "tag",
+      "locationId": "nimbasacity",
+      "enemyTrainerIds": [
+        "vw2r-trainer-0097",
+        "vw2r-trainer-0098"
+      ],
+      "enemySlotTrainerIds": [
+        "vw2r-trainer-0097",
+        "vw2r-trainer-0098"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true,
+        "overlay": false
+      },
+      "source": {
+        "authority": "redux-wiki",
+        "commit": "bbbc76b84806629bce625579dd182d7baea63e9e",
+        "file": "docs/trainers/nimbasacity.md",
+        "section": "SUBWAY BOSSES INGO AND EMMET"
+      }
+    },
+    "frigate-first-375-374": {
+      "id": "frigate-first-375-374",
+      "battleFormat": "tag",
+      "locationId": "plasmafrigate",
+      "enemyTrainerIds": [
+        "vw2r-trainer-0156",
+        "vw2r-trainer-0157"
+      ],
+      "enemySlotTrainerIds": [
+        "vw2r-trainer-0156",
+        "vw2r-trainer-0157"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true,
+        "overlay": false
+      },
+      "source": {
+        "authority": "redux-wiki",
+        "commit": "bbbc76b84806629bce625579dd182d7baea63e9e",
+        "file": "docs/trainers/plasmafrigatefirstvisit.md",
+        "section": "Plasma Grunts #375 and #374"
+      }
+    },
+    "frigate-first-377-376": {
+      "id": "frigate-first-377-376",
+      "battleFormat": "tag",
+      "locationId": "plasmafrigate",
+      "enemyTrainerIds": [
+        "vw2r-trainer-0159",
+        "vw2r-trainer-0160"
+      ],
+      "enemySlotTrainerIds": [
+        "vw2r-trainer-0159",
+        "vw2r-trainer-0160"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true,
+        "overlay": false
+      },
+      "source": {
+        "authority": "redux-wiki",
+        "commit": "bbbc76b84806629bce625579dd182d7baea63e9e",
+        "file": "docs/trainers/plasmafrigatefirstvisit.md",
+        "section": "Plasma Grunts #377 and #376"
+      }
+    },
+    "reversal-kiyo-markus": {
+      "id": "reversal-kiyo-markus",
+      "battleFormat": "double",
+      "locationId": "reversalmountainmainarea",
+      "enemyTrainerIds": [
+        "vw2r-trainer-0226",
+        "vw2r-trainer-0227"
+      ],
+      "enemySlotTrainerIds": [
+        "vw2r-trainer-0226",
+        "vw2r-trainer-0227"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "single-or-double",
+      "consumerActivation": {
+        "plc": true,
+        "overlay": false
+      },
+      "source": {
+        "authority": "redux-wiki",
+        "commit": "bbbc76b84806629bce625579dd182d7baea63e9e",
+        "file": "docs/trainers/reversalmountain.md",
+        "section": "Backpacker Kiyo and Hiker Markus"
+      },
+      "formatChoiceEvidence": {
+        "url": "https://www.thonky.com/pokemon-black-2-white-2/reversal-mountain",
+        "qualification": "Field-pair choices follow documented retail simultaneous-sight versus individual-talk triggers, cross-referenced to the same paired trainers in Redux. These are not assertions from a final-ROM script disassembly. Encounter mandatory flags are unrelated and are not used to decide format choice."
+      }
+    },
+    "reversal-jared-kumiko": {
+      "id": "reversal-jared-kumiko",
+      "battleFormat": "double",
+      "locationId": "reversalmountainmainarea",
+      "enemyTrainerIds": [
+        "vw2r-trainer-0230",
+        "vw2r-trainer-0231"
+      ],
+      "enemySlotTrainerIds": [
+        "vw2r-trainer-0230",
+        "vw2r-trainer-0231"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "single-or-double",
+      "consumerActivation": {
+        "plc": true,
+        "overlay": false
+      },
+      "source": {
+        "authority": "redux-wiki",
+        "commit": "bbbc76b84806629bce625579dd182d7baea63e9e",
+        "file": "docs/trainers/reversalmountain.md",
+        "section": "Kumiko :two:"
+      },
+      "formatChoiceEvidence": {
+        "url": "https://www.thonky.com/pokemon-black-2-white-2/reversal-mountain",
+        "qualification": "Field-pair choices follow documented retail simultaneous-sight versus individual-talk triggers, cross-referenced to the same paired trainers in Redux. These are not assertions from a final-ROM script disassembly. Encounter mandatory flags are unrelated and are not used to decide format choice."
+      }
+    },
+    "reversal-ray-cora": {
+      "id": "reversal-ray-cora",
+      "battleFormat": "double",
+      "locationId": "reversalmountainmainarea",
+      "enemyTrainerIds": [
+        "vw2r-trainer-0233",
+        "vw2r-trainer-0234"
+      ],
+      "enemySlotTrainerIds": [
+        "vw2r-trainer-0233",
+        "vw2r-trainer-0234"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "single-or-double",
+      "consumerActivation": {
+        "plc": true,
+        "overlay": false
+      },
+      "source": {
+        "authority": "redux-wiki",
+        "commit": "bbbc76b84806629bce625579dd182d7baea63e9e",
+        "file": "docs/trainers/reversalmountain.md",
+        "section": "Ace Trainer Ray and Ace Trainer Cora"
+      },
+      "formatChoiceEvidence": {
+        "url": "https://www.thonky.com/pokemon-black-2-white-2/reversal-mountain",
+        "qualification": "Field-pair choices follow documented retail simultaneous-sight versus individual-talk triggers, cross-referenced to the same paired trainers in Redux. These are not assertions from a final-ROM script disassembly. Encounter mandatory flags are unrelated and are not used to decide format choice."
+      }
+    },
+    "lacunosa-zinzolin-grunt": {
+      "id": "lacunosa-zinzolin-grunt",
+      "battleFormat": "tag",
+      "locationId": "lacunosatown",
+      "enemyTrainerIds": [
+        "vw2r-trainer-0270",
+        "vw2r-trainer-0271"
+      ],
+      "enemySlotTrainerIds": [
+        "vw2r-trainer-0270",
+        "vw2r-trainer-0271"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true,
+        "overlay": false
+      },
+      "source": {
+        "authority": "redux-wiki",
+        "commit": "bbbc76b84806629bce625579dd182d7baea63e9e",
+        "file": "docs/trainers/lacunosatown.md",
+        "section": "ZINZOLIN and Plasma Grunt #705"
+      }
+    },
+    "humilau-tate-liza": {
+      "id": "humilau-tate-liza",
+      "battleFormat": "double",
+      "locationId": "humilaucity",
+      "enemyTrainerIds": [
+        "vw2r-trainer-0330",
+        "vw2r-trainer-0331"
+      ],
+      "enemySlotTrainerIds": [
+        "vw2r-trainer-0330",
+        "vw2r-trainer-0331"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true,
+        "overlay": false
+      },
+      "source": {
+        "authority": "redux-wiki",
+        "commit": "bbbc76b84806629bce625579dd182d7baea63e9e",
+        "file": "docs/trainers/humilaucityandmarlonsgym.md",
+        "section": "TATE AND LIZA"
+      }
+    },
+    "frigate-second-798-799": {
+      "id": "frigate-second-798-799",
+      "battleFormat": "tag",
+      "locationId": "plasmafrigatedeck",
+      "enemyTrainerIds": [
+        "vw2r-trainer-0340",
+        "vw2r-trainer-0341"
+      ],
+      "enemySlotTrainerIds": [
+        "vw2r-trainer-0340",
+        "vw2r-trainer-0341"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true,
+        "overlay": false
+      },
+      "source": {
+        "authority": "redux-wiki",
+        "commit": "bbbc76b84806629bce625579dd182d7baea63e9e",
+        "file": "docs/trainers/plasmafrigatesecondvisit.md",
+        "section": "Plasma Grunts #798 and #799"
+      }
+    },
+    "frigate-zinzolin-grunt": {
+      "id": "frigate-zinzolin-grunt",
+      "battleFormat": "tag",
+      "locationId": "plasmafrigatekyuremscontainmentroom",
+      "enemyTrainerIds": [
+        "vw2r-trainer-0354",
+        "vw2r-trainer-0355"
+      ],
+      "enemySlotTrainerIds": [
+        "vw2r-trainer-0354",
+        "vw2r-trainer-0355"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true,
+        "overlay": false
+      },
+      "source": {
+        "authority": "redux-wiki",
+        "commit": "bbbc76b84806629bce625579dd182d7baea63e9e",
+        "file": "docs/trainers/plasmafrigatesecondvisit.md",
+        "section": "Plasma Frigate 1st Match"
+      }
+    },
+    "giant-chasm-807-809": {
+      "id": "giant-chasm-807-809",
+      "battleFormat": "tag",
+      "locationId": "plasmafrigategiantchasm",
+      "enemyTrainerIds": [
+        "vw2r-trainer-0360",
+        "vw2r-trainer-0361"
+      ],
+      "enemySlotTrainerIds": [
+        "vw2r-trainer-0360",
+        "vw2r-trainer-0361"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true,
+        "overlay": false
+      },
+      "source": {
+        "authority": "redux-wiki",
+        "commit": "bbbc76b84806629bce625579dd182d7baea63e9e",
+        "file": "docs/trainers/giantchasmandplasmafrigatethirdvisit.md",
+        "section": "Plasma Grunts #807 and #809"
+      }
+    },
+    "victory-claude-cecile": {
+      "id": "victory-claude-cecile",
+      "battleFormat": "double",
+      "locationId": "victoryroadruinedareacave1f",
+      "enemyTrainerIds": [
+        "vw2r-trainer-0395",
+        "vw2r-trainer-0396"
+      ],
+      "enemySlotTrainerIds": [
+        "vw2r-trainer-0395",
+        "vw2r-trainer-0396"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "single-or-double",
+      "consumerActivation": {
+        "plc": true,
+        "overlay": false
+      },
+      "source": {
+        "authority": "redux-wiki",
+        "commit": "bbbc76b84806629bce625579dd182d7baea63e9e",
+        "file": "docs/trainers/victoryroad.md",
+        "section": "Veteran Claude and Cecile"
+      },
+      "formatChoiceEvidence": {
+        "url": "https://www.thonky.com/pokemon-black-2-white-2/victory-road-black-2",
+        "qualification": "Field-pair choices follow documented retail simultaneous-sight versus individual-talk triggers, cross-referenced to the same paired trainers in Redux. These are not assertions from a final-ROM script disassembly. Encounter mandatory flags are unrelated and are not used to decide format choice."
+      }
+    },
+    "victory-shanta-webster": {
+      "id": "victory-shanta-webster",
+      "battleFormat": "double",
+      "locationId": "victoryroadconnectingcaves1cave2f",
+      "enemyTrainerIds": [
+        "vw2r-trainer-0408",
+        "vw2r-trainer-0409"
+      ],
+      "enemySlotTrainerIds": [
+        "vw2r-trainer-0408",
+        "vw2r-trainer-0409"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "single-or-double",
+      "consumerActivation": {
+        "plc": true,
+        "overlay": false
+      },
+      "source": {
+        "authority": "redux-wiki",
+        "commit": "bbbc76b84806629bce625579dd182d7baea63e9e",
+        "file": "docs/trainers/victoryroad.md",
+        "section": "Ace Trainer Shanta and Webster"
+      },
+      "formatChoiceEvidence": {
+        "url": "https://www.thonky.com/pokemon-black-2-white-2/victory-road-black-2",
+        "qualification": "Field-pair choices follow documented retail simultaneous-sight versus individual-talk triggers, cross-referenced to the same paired trainers in Redux. These are not assertions from a final-ROM script disassembly. Encounter mandatory flags are unrelated and are not used to decide format choice."
+      }
+    }
+  }
+}

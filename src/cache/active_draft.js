@@ -1,4 +1,4 @@
-import { clone, nowIso, stableStringify } from "../core/primitives.js";
+import { clone, nowIso, stableStringify } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
 
 export const CACHE_SCHEMA_VERSION = 1;
 

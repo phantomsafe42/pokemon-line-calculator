@@ -1,5 +1,5 @@
-import { toId } from "../core/primitives.js";
-import { SHOWDOWN_MOVE_REFERENCE_BY_GAME, SHOWDOWN_MOVE_REFERENCE_BY_GENERATION, SHOWDOWN_REFERENCE_SOURCE } from "./generated/showdown_move_reference.js";
+import { toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
+import { SHOWDOWN_MOVE_REFERENCE_BY_GAME, SHOWDOWN_MOVE_REFERENCE_BY_GENERATION, SHOWDOWN_REFERENCE_SOURCE } from "./generated/showdown_move_reference.js?v=20260905-drafts-freecalc-partners-v1";
 
 const STATUS_RULES = Object.freeze({
   brn: { immuneTypes: ["fire"], immuneAbilities: ["waterveil", "waterbubble"] },

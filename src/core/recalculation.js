@@ -1,8 +1,9 @@
-import { assertValidPlanDocument } from "../contracts/plan_contract.js";
-import { clone, nowIso, stableStringify } from "./primitives.js";
-import { commitForcedReplacement, commitPreview, previewForcedReplacement } from "./planner.js?v=20260827-ability-form-events";
-import { updateStateHash } from "./plan.js?v=20260827-ability-form-events";
-import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260827-ability-form-events";
+import { assertValidPlanDocument } from "../contracts/plan_contract.js?v=20260905-drafts-freecalc-partners-v1";
+import { clone, nowIso, stableStringify } from "./primitives.js?v=20260905-drafts-freecalc-partners-v1";
+import { commitForcedReplacement, commitPreview, previewForcedReplacement } from "./planner.js?v=20260905-drafts-freecalc-partners-v1";
+import { updateStateHash } from "./plan.js?v=20260905-drafts-freecalc-partners-v1";
+import { addFreeCalcBranch } from './free_calc.js?v=20260905-drafts-freecalc-partners-v1';
+import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260905-drafts-freecalc-partners-v1";
 
 function branchSignatureFromEvents(state, events) {
   const normalizedEvents = events.map(entry => ({
@@ -125,8 +126,10 @@ export async function recalculatePlanDocument(original, { dataset, previewTurnFn
   const root = clone(original.stateNodes[original.initialStateNodeId]);
   root.parentActionGroupId = null;
   root.parentReplacementTransitionId = null;
+  root.parentManualTransitionId = null;
   root.childActionGroupIds = [];
   root.childReplacementTransitionIds = [];
+  root.childManualTransitionIds = [];
   root.status = "resolved";
   updateStateHash(root);
   const rootEvents = Object.fromEntries((root.resolutionEventIds || []).map(eventId => [eventId, clone(original.resolutionEvents[eventId])]).filter(([, event]) => event));
@@ -138,6 +141,7 @@ export async function recalculatePlanDocument(original, { dataset, previewTurnFn
     stateNodes: { [root.stateNodeId]: root },
     actionGroups: {},
     replacementTransitions: {},
+    manualTransitions: {},
     resolutionEvents: rootEvents,
     workingDraft: null
   };
@@ -146,7 +150,8 @@ export async function recalculatePlanDocument(original, { dataset, previewTurnFn
     const oldState = original.stateNodes[oldStateId];
     const children = [
       ...(oldState.childActionGroupIds || []).map(id => ({ kind: "action", id, order: Number(original.actionGroups[id]?.createdOrder || 0) })),
-      ...(oldState.childReplacementTransitionIds || []).map(id => ({ kind: "replacement", id, order: Number(original.replacementTransitions?.[id]?.createdOrder || 0) }))
+      ...(oldState.childReplacementTransitionIds || []).map(id => ({ kind: "replacement", id, order: Number(original.replacementTransitions?.[id]?.createdOrder || 0) })),
+      ...(oldState.childManualTransitionIds || []).map(id => ({ kind: "manual", id, order: Number(original.manualTransitions?.[id]?.createdOrder || 0) }))
     ].sort((left, right) => left.order - right.order || left.id.localeCompare(right.id));
     for (const child of children) {
       const currentParent = rebuilt.stateNodes[newStateId];
@@ -176,6 +181,21 @@ export async function recalculatePlanDocument(original, { dataset, previewTurnFn
         for (const oldOutcomeId of oldGroup.outcomeStateNodeIds) {
           await replayState(oldOutcomeId, mapping.get(oldOutcomeId));
         }
+      } else if (child.kind === 'manual') {
+        const oldId = original.manualTransitions[child.id].outcomeStateNodeIds[0];
+        const added = addFreeCalcBranch(rebuilt, newStateId);
+        rebuilt = added.plan;
+        const structural = rebuilt.stateNodes[added.stateId];
+        // A manual branch is an explicit state snapshot, not a simulated switch.
+        const copied = clone(original.stateNodes[oldId]);
+        Object.assign(copied, { stateNodeId: added.stateId, createdOrder: structural.createdOrder,
+          parentActionGroupId: null, parentReplacementTransitionId: null,
+          parentManualTransitionId: structural.parentManualTransitionId,
+          childActionGroupIds: [], childReplacementTransitionIds: [], childManualTransitionIds: [], resolutionEventIds: [] });
+        rebuilt.stateNodes[added.stateId] = copied;
+        updateStateHash(copied);
+        rebuilt.stateNodes[newStateId].draftNote = parentDraftNote;
+        await replayState(oldId, added.stateId);
       } else {
         const oldTransition = original.replacementTransitions[child.id];
         const replacements = clone(oldTransition.actions);

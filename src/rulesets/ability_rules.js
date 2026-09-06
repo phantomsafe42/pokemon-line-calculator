@@ -1,5 +1,5 @@
-import { toId } from "../core/primitives.js";
-import { isGrounded } from "./switch_rules.js";
+import { toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
+import { isGrounded } from "./switch_rules.js?v=20260905-drafts-freecalc-partners-v1";
 
 const DROP_BLOCKERS = Object.freeze({
   atk: new Set(["clearbody", "whitesmoke", "hypercutter", "fullmetalbody"]),

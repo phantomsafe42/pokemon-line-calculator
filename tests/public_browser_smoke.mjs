@@ -202,6 +202,7 @@ try {
       trainers: document.getElementById('trainer-select').options.length,
       tabsVisible: !document.getElementById('app-tabs').hidden,
       localGlobalType: typeof globalThis.__PLC_TESTING_STATE__,
+      viewToggle: Boolean(document.getElementById('view-mode-toggle')),
       outputState: Boolean(document.getElementById('output-state') || document.getElementById('output-state-anchor')),
       liveEdit: Boolean(document.getElementById('live-edit-anchor') || document.getElementById('live-stop-dialog')),
       localLabels: [...document.querySelectorAll('button')].some(button => /Output State|Live Edit/i.test(button.textContent)),
@@ -219,6 +220,7 @@ try {
   assert.ok(state.trainers > 400);
   assert.equal(state.tabsVisible, true);
   assert.equal(state.localGlobalType, "undefined");
+  assert.equal(state.viewToggle, false);
   assert.equal(state.outputState, false);
   assert.equal(state.liveEdit, false);
   assert.equal(state.localLabels, false);

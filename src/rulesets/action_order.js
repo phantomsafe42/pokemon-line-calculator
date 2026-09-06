@@ -1,4 +1,4 @@
-import { clone, normalizeRange, toId } from "../core/primitives.js";
+import { clone, normalizeRange, toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
 
 const POWER_ITEMS = new Set(["poweranklet", "powerband", "powerbelt", "powerbracer", "powerlens", "powerweight"]);
 const SLOW_ITEMS = new Set(["ironball", "machobrace", ...POWER_ITEMS]);

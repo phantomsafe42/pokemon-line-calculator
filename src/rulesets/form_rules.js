@@ -1,5 +1,5 @@
-import { calculateStats } from "../adapters/combatant_ingest.js";
-import { clone, toId } from "../core/primitives.js";
+import { calculateStats } from "../adapters/combatant_ingest.js?v=20260905-drafts-freecalc-partners-v1";
+import { clone, toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
 
 export const ABILITY_FORM_STATE_VERSION = 1;
 

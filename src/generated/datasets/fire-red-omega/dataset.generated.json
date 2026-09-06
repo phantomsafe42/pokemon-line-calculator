@@ -2,7 +2,7 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-fro-dataset",
   "source": "Datasets/Fire Red Omega/source-data",
-  "sourceTreeSha256": "ADE90785CD3D599B2934A68A6B3DD5419A7CA01BCC44C59B5117335211B6F8A3",
+  "sourceTreeSha256": "12305DBF2C6C1D633A7DD54CB71E9343FA748A6A8283BF4214CE5C92062A3BC1",
   "files": [
     {
       "path": "dataset_manifest.json",
@@ -58,6 +58,11 @@
       "path": "trainer_order.json",
       "bytes": 278384,
       "sha256": "2816BBC47578F6BD8B097E207DEF0EEAE124FBE68BCCA3291EB634EC4D227952"
+    },
+    {
+      "path": "trainer_battle_groups.json",
+      "bytes": 107,
+      "sha256": "0C12ED41DDE63B8E7082E18F6986D78F5971DA0A24E822562CCB488E5CBF5A4E"
     },
     {
       "path": "progression.json",

@@ -1,4 +1,4 @@
-import { boxesForGame, normalizeBoxLibrary, upsertPokemon } from "./library.js";
+import { boxesForGame, normalizeBoxLibrary, upsertPokemon } from "./library.js?v=20260905-drafts-freecalc-partners-v1";
 
 function integerOrNull(value) {
   if (value === null || value === undefined || value === "") return null;
