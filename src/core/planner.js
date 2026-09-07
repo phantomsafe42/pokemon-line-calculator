@@ -1,7 +1,7 @@
 import { assertValidPlanDocument } from "../contracts/plan_contract.js?v=20260905-drafts-freecalc-partners-v1";
-import { actionSignature, nextCreatedOrder, touchPlan, updateStateHash } from "./plan.js?v=20260905-drafts-freecalc-partners-v1";
+import { actionSignature, nextCreatedOrder, touchPlan, updateStateHash } from "./plan.js?v=20260907-form-sprites-v1";
 import { clone, shortHash, stableStringify } from "./primitives.js?v=20260905-drafts-freecalc-partners-v1";
-import { resolveForcedReplacement, resolveTurn } from "./resolver.js?v=20260905-drafts-freecalc-partners-v1";
+import { resolveForcedReplacement, resolveTurn } from "./resolver.js?v=20260907-form-sprites-v1";
 import { actionList, activeKey, activeSlotEntries, normalizeActionsForPlan, normalizeReplacementsForPlan, pendingReplacementSlots, replacementList } from "./battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
 
 function displayAction(action, events, plan, dataset) {
@@ -61,7 +61,7 @@ function displaySide(side, slot, state, actions, events, plan, dataset) {
     combatantKey: key,
     speciesId: monState?.currentSpeciesId || mon.speciesId,
     displayName: mon.nickname || mon.displayName,
-    spriteId: monState?.currentSpriteId || mon.formId || mon.speciesId,
+    spriteId: monState?.currentSpriteId || mon.speciesId,
     slot,
     action: displayAction(action, events, plan, dataset)
   };
@@ -76,7 +76,7 @@ function replacementDisplaySide(side, slot, state, replacements, plan) {
     combatantKey: key,
     speciesId: monState?.currentSpeciesId || mon.speciesId,
     displayName: mon.nickname || mon.displayName,
-    spriteId: monState?.currentSpriteId || mon.formId || mon.speciesId,
+    spriteId: monState?.currentSpriteId || mon.speciesId,
     slot,
     action: action ? {
       actionType: "replacement",

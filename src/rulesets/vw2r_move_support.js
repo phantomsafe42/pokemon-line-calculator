@@ -1,5 +1,5 @@
 import { toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
-import { SHOWDOWN_MOVE_REFERENCE_BY_GAME, SHOWDOWN_MOVE_REFERENCE_BY_GENERATION, SHOWDOWN_REFERENCE_SOURCE } from "./generated/showdown_move_reference.js?v=20260905-drafts-freecalc-partners-v1";
+import { SHOWDOWN_MOVE_REFERENCE_BY_GAME, SHOWDOWN_MOVE_REFERENCE_BY_GENERATION, SHOWDOWN_REFERENCE_SOURCE } from "./generated/showdown_move_reference.js?v=20260907-two-turn-immunity-v1";
 
 const STATUS_RULES = Object.freeze({
   brn: { immuneTypes: ["fire"], immuneAbilities: ["waterveil", "waterbubble"] },
@@ -65,6 +65,8 @@ const SPECIAL_HANDLERS = Object.freeze({
   skullbash: "two-turn-charge",
   skyattack: "two-turn-charge",
   shadowforce: "two-turn-charge",
+  phantomforce: "two-turn-charge",
+  razorwind: "two-turn-charge",
   solarbeam: "two-turn-charge",
   mudsport: "sport-field",
   watersport: "sport-field",
@@ -272,6 +274,7 @@ export function vw2rMoveSupport(move, dataset = null) {
       ? { willCrit: reference.willCrit === true || move.willCrit === true }
       : {}),
     flags: { ...(reference.flags || {}) },
+    ...(reference.ignoreImmunity !== undefined ? { ignoreImmunity: reference.ignoreImmunity } : {}),
     breaksProtect: reference.breaksProtect === true,
     callbackPaths: reference.callbacks || []
   };

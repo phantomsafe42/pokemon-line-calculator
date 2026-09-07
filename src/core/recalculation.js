@@ -1,9 +1,9 @@
 import { assertValidPlanDocument } from "../contracts/plan_contract.js?v=20260905-drafts-freecalc-partners-v1";
 import { clone, nowIso, stableStringify } from "./primitives.js?v=20260905-drafts-freecalc-partners-v1";
-import { commitForcedReplacement, commitPreview, previewForcedReplacement } from "./planner.js?v=20260905-drafts-freecalc-partners-v1";
+import { commitForcedReplacement, commitPreview, previewForcedReplacement } from "./planner.js?v=20260907-two-turn-immunity-v1";
 import { updateStateHash } from "./plan.js?v=20260905-drafts-freecalc-partners-v1";
 import { addFreeCalcBranch } from './free_calc.js?v=20260905-drafts-freecalc-partners-v1';
-import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260905-drafts-freecalc-partners-v1";
+import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260907-two-turn-immunity-v1";
 
 function branchSignatureFromEvents(state, events) {
   const normalizedEvents = events.map(entry => ({

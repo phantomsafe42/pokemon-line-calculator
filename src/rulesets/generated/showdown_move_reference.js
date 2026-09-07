@@ -314,6 +314,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GAME = Object.freeze({
       "canonicalMoveNumber": 117,
       "mechanicsGeneration": 3,
       "volatileStatus": "bide",
+      "ignoreImmunity": true,
       "flags": {
         "contact": 1,
         "protect": 1,
@@ -1761,6 +1762,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GAME = Object.freeze({
     "futuresight": {
       "canonicalMoveNumber": 248,
       "mechanicsGeneration": 3,
+      "ignoreImmunity": true,
       "flags": {
         "allyanim": 1,
         "metronome": 1,
@@ -1790,6 +1792,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GAME = Object.freeze({
       "canonicalMoveNumber": 137,
       "mechanicsGeneration": 3,
       "status": "par",
+      "ignoreImmunity": false,
       "flags": {
         "protect": 1,
         "reflectable": 1,
@@ -4933,6 +4936,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GAME = Object.freeze({
       "canonicalMoveNumber": 86,
       "mechanicsGeneration": 3,
       "status": "par",
+      "ignoreImmunity": false,
       "flags": {
         "protect": 1,
         "reflectable": 1,
@@ -5818,6 +5822,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GAME = Object.freeze({
       "canonicalMoveNumber": 117,
       "mechanicsGeneration": 4,
       "volatileStatus": "bide",
+      "ignoreImmunity": true,
       "flags": {
         "contact": 1,
         "protect": 1,
@@ -7741,6 +7746,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GAME = Object.freeze({
     "futuresight": {
       "canonicalMoveNumber": 248,
       "mechanicsGeneration": 4,
+      "ignoreImmunity": true,
       "flags": {
         "allyanim": 1,
         "metronome": 1,
@@ -11745,6 +11751,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GAME = Object.freeze({
       "canonicalMoveNumber": 86,
       "mechanicsGeneration": 4,
       "status": "par",
+      "ignoreImmunity": false,
       "flags": {
         "protect": 1,
         "reflectable": 1,
@@ -13188,6 +13195,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GAME = Object.freeze({
       "canonicalMoveNumber": 117,
       "mechanicsGeneration": 3,
       "volatileStatus": "bide",
+      "ignoreImmunity": true,
       "flags": {
         "contact": 1,
         "protect": 1,
@@ -16463,6 +16471,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GAME = Object.freeze({
     "futuresight": {
       "canonicalMoveNumber": 248,
       "mechanicsGeneration": 3,
+      "ignoreImmunity": true,
       "flags": {
         "allyanim": 1,
         "metronome": 1,
@@ -16617,6 +16626,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GAME = Object.freeze({
       "canonicalMoveNumber": 137,
       "mechanicsGeneration": 3,
       "status": "par",
+      "ignoreImmunity": false,
       "flags": {
         "protect": 1,
         "reflectable": 1,
@@ -24216,6 +24226,9 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GAME = Object.freeze({
       "canonicalMoveNumber": 614,
       "mechanicsGeneration": 6,
       "volatileStatus": "smackdown",
+      "ignoreImmunity": {
+        "Ground": true
+      },
       "flags": {
         "protect": 1,
         "mirror": 1,
@@ -24394,6 +24407,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GAME = Object.freeze({
       "canonicalMoveNumber": 86,
       "mechanicsGeneration": 3,
       "status": "par",
+      "ignoreImmunity": false,
       "flags": {
         "protect": 1,
         "reflectable": 1,
@@ -25785,6 +25799,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GAME = Object.freeze({
       "canonicalMoveNumber": 117,
       "mechanicsGeneration": 4,
       "volatileStatus": "bide",
+      "ignoreImmunity": true,
       "flags": {
         "contact": 1,
         "protect": 1,
@@ -27791,6 +27806,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GAME = Object.freeze({
     "futuresight": {
       "canonicalMoveNumber": 248,
       "mechanicsGeneration": 4,
+      "ignoreImmunity": true,
       "flags": {
         "allyanim": 1,
         "metronome": 1,
@@ -31915,6 +31931,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GAME = Object.freeze({
       "canonicalMoveNumber": 86,
       "mechanicsGeneration": 4,
       "status": "par",
+      "ignoreImmunity": false,
       "flags": {
         "protect": 1,
         "reflectable": 1,
@@ -32956,6 +32973,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GAME = Object.freeze({
       "canonicalMoveNumber": 117,
       "mechanicsGeneration": 4,
       "volatileStatus": "bide",
+      "ignoreImmunity": true,
       "flags": {
         "contact": 1,
         "protect": 1,
@@ -34925,6 +34943,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GAME = Object.freeze({
     "futuresight": {
       "canonicalMoveNumber": 248,
       "mechanicsGeneration": 4,
+      "ignoreImmunity": true,
       "flags": {
         "allyanim": 1,
         "metronome": 1,
@@ -39061,6 +39080,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GAME = Object.freeze({
       "canonicalMoveNumber": 86,
       "mechanicsGeneration": 4,
       "status": "par",
+      "ignoreImmunity": false,
       "flags": {
         "protect": 1,
         "reflectable": 1,
@@ -40208,6 +40228,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GAME = Object.freeze({
       "canonicalMoveNumber": 117,
       "mechanicsGeneration": 5,
       "volatileStatus": "bide",
+      "ignoreImmunity": true,
       "flags": {
         "contact": 1,
         "protect": 1,
@@ -42608,6 +42629,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GAME = Object.freeze({
     "futuresight": {
       "canonicalMoveNumber": 248,
       "mechanicsGeneration": 5,
+      "ignoreImmunity": true,
       "flags": {
         "allyanim": 1,
         "metronome": 1,
@@ -47520,6 +47542,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GAME = Object.freeze({
       "canonicalMoveNumber": 86,
       "mechanicsGeneration": 5,
       "status": "par",
+      "ignoreImmunity": false,
       "flags": {
         "protect": 1,
         "reflectable": 1,
@@ -48607,6 +48630,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GENERATION = Object.freeze({
       "canonicalMoveNumber": 117,
       "mechanicsGeneration": 3,
       "volatileStatus": "bide",
+      "ignoreImmunity": true,
       "flags": {
         "contact": 1,
         "protect": 1,
@@ -50054,6 +50078,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GENERATION = Object.freeze({
     "futuresight": {
       "canonicalMoveNumber": 248,
       "mechanicsGeneration": 3,
+      "ignoreImmunity": true,
       "flags": {
         "allyanim": 1,
         "metronome": 1,
@@ -50083,6 +50108,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GENERATION = Object.freeze({
       "canonicalMoveNumber": 137,
       "mechanicsGeneration": 3,
       "status": "par",
+      "ignoreImmunity": false,
       "flags": {
         "protect": 1,
         "reflectable": 1,
@@ -53226,6 +53252,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GENERATION = Object.freeze({
       "canonicalMoveNumber": 86,
       "mechanicsGeneration": 3,
       "status": "par",
+      "ignoreImmunity": false,
       "flags": {
         "protect": 1,
         "reflectable": 1,
@@ -60625,6 +60652,9 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GENERATION = Object.freeze({
       "canonicalMoveNumber": 614,
       "mechanicsGeneration": 6,
       "volatileStatus": "smackdown",
+      "ignoreImmunity": {
+        "Ground": true
+      },
       "flags": {
         "protect": 1,
         "mirror": 1,
@@ -61668,6 +61698,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GENERATION = Object.freeze({
       "canonicalMoveNumber": 117,
       "mechanicsGeneration": 4,
       "volatileStatus": "bide",
+      "ignoreImmunity": true,
       "flags": {
         "contact": 1,
         "protect": 1,
@@ -63591,6 +63622,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GENERATION = Object.freeze({
     "futuresight": {
       "canonicalMoveNumber": 248,
       "mechanicsGeneration": 4,
+      "ignoreImmunity": true,
       "flags": {
         "allyanim": 1,
         "metronome": 1,
@@ -67595,6 +67627,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GENERATION = Object.freeze({
       "canonicalMoveNumber": 86,
       "mechanicsGeneration": 4,
       "status": "par",
+      "ignoreImmunity": false,
       "flags": {
         "protect": 1,
         "reflectable": 1,
@@ -69382,6 +69415,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GENERATION = Object.freeze({
       "canonicalMoveNumber": 117,
       "mechanicsGeneration": 5,
       "volatileStatus": "bide",
+      "ignoreImmunity": true,
       "flags": {
         "contact": 1,
         "protect": 1,
@@ -71782,6 +71816,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GENERATION = Object.freeze({
     "futuresight": {
       "canonicalMoveNumber": 248,
       "mechanicsGeneration": 5,
+      "ignoreImmunity": true,
       "flags": {
         "allyanim": 1,
         "metronome": 1,
@@ -76694,6 +76729,7 @@ export const SHOWDOWN_MOVE_REFERENCE_BY_GENERATION = Object.freeze({
       "canonicalMoveNumber": 86,
       "mechanicsGeneration": 5,
       "status": "par",
+      "ignoreImmunity": false,
       "flags": {
         "protect": 1,
         "reflectable": 1,

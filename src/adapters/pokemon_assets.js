@@ -20,6 +20,11 @@ function normalizeAppearanceId(value) {
     .replace(/[^a-z0-9-]/g, "");
 }
 
+function usableAppearanceIdentity(value) {
+  const normalized = normalizeAppearanceId(value);
+  return normalized && !/^\d+$/.test(normalized) ? value : null;
+}
+
 export function pokemonAssetAppearanceId(record, dataset = null) {
   const declaredSpeciesId = record?.speciesId || record?.id;
   const declaredSpecies = dataset?.get?.("species", declaredSpeciesId) || null;
@@ -37,11 +42,11 @@ export function pokemonAssetAppearanceId(record, dataset = null) {
     : record?.formId || declaredSpeciesId;
   const species = dataset?.get?.("species", speciesId) || null;
   const spriteSpecies = record?.spriteId ? dataset?.get?.("species", record.spriteId) || null : null;
-  const canonicalName = spriteSpecies?.spriteId
+  const canonicalName = usableAppearanceIdentity(spriteSpecies?.spriteId)
     || spriteSpecies?.showdownSpriteId
     || spriteSpecies?.mechanicsBase
-    || record?.spriteId
-    || species?.spriteId
+    || usableAppearanceIdentity(record?.spriteId)
+    || usableAppearanceIdentity(species?.spriteId)
     || species?.showdownSpriteId
     || species?.mechanicsBase
     || species?.id

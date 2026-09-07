@@ -1,28 +1,30 @@
 import { clone, normalizeRange, shortHash, stableStringify, toId } from "./primitives.js?v=20260905-drafts-freecalc-partners-v1";
-import { effectiveCombatantMove, fieldAdjustedMove } from "./combatant_moves.js?v=20260905-drafts-freecalc-partners-v1";
+import { effectiveCombatantMove, fieldAdjustedMove } from "./combatant_moves.js?v=20260907-two-turn-immunity-v1";
+import { forcedTurnAction, forcedTurnActionAllows } from "./forced_actions.js?v=20260907-two-turn-immunity-v1";
 import { createDefaultVolatiles, normalizeFieldCondition, resetTurnFlags, updateStateHash } from "./plan.js?v=20260905-drafts-freecalc-partners-v1";
 import { actionEntries, actionList, activeEntries, activeKey, activeKeys, activeSlotEntries, actorSlot, battleFormat, pendingReplacementSlots, replacementList, setActiveKey, setPendingReplacementSlots, slotsPerSide } from "./battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
 import { belongsToSlotParty, eligibleReserves, partyOwnerForSlot } from "./party_ownership.js?v=20260905-drafts-freecalc-partners-v1";
-import { moveSupport as defaultMoveSupport } from "../rulesets/core_move_support.js?v=20260905-drafts-freecalc-partners-v1";
+import { moveSupport as defaultMoveSupport } from "../rulesets/core_move_support.js?v=20260907-two-turn-immunity-v1";
 import {
   criticalHitProbability,
   endOfTurnSupportIssue,
   effectiveAccuracy,
   itemResidualRule,
   protectSuccessProbability,
+  semiInvulnerabilityResult,
   statusApplicationResult,
   statusResidualRule,
   weatherIsSuppressed,
   weatherResidualRule
-} from "../rulesets/battle_rules.js?v=20260905-drafts-freecalc-partners-v1";
+} from "../rulesets/battle_rules.js?v=20260907-two-turn-immunity-v1";
 import {
   applyExactHpChange,
-  damagingMoveImmunity,
   entryAbilityEffects,
   entryHazardEffects,
   isGrounded,
+  moveImmunity,
   outgoingSwitchEffects
-} from "../rulesets/switch_rules.js?v=20260905-drafts-freecalc-partners-v1";
+} from "../rulesets/switch_rules.js?v=20260907-two-turn-immunity-v1";
 import { applyDefeatedEnemyExperience, registerSwitchExperienceParticipation } from "../rulesets/vw2r_experience.js?v=20260905-drafts-freecalc-partners-v1";
 import { actionOrderAlternatives, applyActionOrderState, effectiveActionSpeed, effectiveMovePriority } from "../rulesets/action_order.js?v=20260905-drafts-freecalc-partners-v1";
 import { adjacentActiveEntries, areSlotsAdjacent, canSelectShift, combatantsAreAdjacent, shiftWithCenter, triplePositionForSlot, tripleSlotForPosition, TRIPLE_POSITIONS } from "../rulesets/triple_battle.js?v=20260905-drafts-freecalc-partners-v1";
@@ -201,6 +203,13 @@ function validateAction(side, slot, action, plan, state, dataset, moveSupport, l
   const actor = plan.combatants[actorActiveKey];
   const actorState = state.combatantStates[actorActiveKey];
   if (!actor || !actorState || Number(actorState.hp?.max) <= 0) throw new ResolutionError(`${side} active Pokémon has fainted`);
+  const forcedAction = forcedTurnAction(actorState);
+  if (forcedAction && !forcedTurnActionAllows(action, forcedAction)) {
+    throw new ResolutionError(forcedAction.kind === "recharge"
+      ? `${actor.displayName} must recharge`
+      : `${actor.displayName} must continue ${forcedAction.moveId}`);
+  }
+  if (forcedAction?.kind === "recharge") return;
   if (action.actionType === "switch") {
     if (Number(state.fieldState?.global?.fairyLockTurns || 0) > 0) throw new ResolutionError("Fairy Lock prevents switching this turn");
     if (battleFormat(plan) === "rotation" && slot !== rotationFrontSlot(state, side)) throw new ResolutionError(`${side} can switch only its front Pokémon`);
@@ -235,7 +244,8 @@ function validateAction(side, slot, action, plan, state, dataset, moveSupport, l
   if (Number(actorState.volatileConditions?.uproarTurns || 0) > 0 && action.moveId !== "uproar") throw new ResolutionError(`${actor.displayName} must continue Uproar`);
   if (actorState.volatileConditions?.thrashMoveId && action.moveId !== actorState.volatileConditions.thrashMoveId) throw new ResolutionError(`${actor.displayName} must continue its locked move`);
   const continuingMove = action.moveId === "bide" && Number(actorState.volatileConditions?.bideTurns || 0) > 0
-    || Number(dataset.mechanics?.damageGeneration) === 4 && (actorState.volatileConditions?.thrashMoveId === action.moveId || action.moveId === 'uproar' && actorState.volatileConditions?.uproarTurns > 0 || actorState.volatileConditions?.chargingMoveId === action.moveId);
+    || actorState.volatileConditions?.chargingMoveId === action.moveId
+    || Number(dataset.mechanics?.damageGeneration) === 4 && (actorState.volatileConditions?.thrashMoveId === action.moveId || action.moveId === 'uproar' && actorState.volatileConditions?.uproarTurns > 0);
   if (!continuingMove && Number(actorState.movePp?.[action.moveId] || 0) <= 0) throw new ResolutionError(`${move.name} has no PP`);
   const support = moveSupport(move, dataset);
   if (!support.supported) throw new ResolutionError(support.reason);
@@ -499,7 +509,7 @@ function transformCombatantState(branch, actorKey, targetKey, plan, { cause = "t
   if (!actorState || !targetState) return false;
   actorState.currentAbilityId = targetState.currentAbilityId;
   actorState.currentSpeciesId = targetState.currentSpeciesId || plan.combatants[targetKey].speciesId;
-  actorState.currentSpriteId = targetState.currentSpriteId || plan.combatants[targetKey].formId || plan.combatants[targetKey].speciesId;
+  actorState.currentSpriteId = targetState.currentSpriteId || plan.combatants[targetKey].speciesId;
   actorState.currentTypeIds = [...targetState.currentTypeIds];
   actorState.statStages = { ...targetState.statStages };
   actorState.transformedIntoKey = targetKey;
@@ -2895,7 +2905,7 @@ const POST_DAMAGE_HANDLERS = new Set([
   "flame-burst"
 ]);
 
-function applyMoveEffect(branch, { side, actorKey, targetKey, actor, target, actorState, targetState, move, descriptor, damageAdapter, dataset, isLastAction, battleFormat, spreadTargetCount, plan, action, previousLastMoveId, pendingActions }) {
+function applyMoveEffect(branch, { side, actorKey, targetKey, actor, target, actorState, targetState, move, descriptor, damageAdapter, dataset, isLastAction, battleFormat, spreadTargetCount, plan, action, previousLastMoveId, pendingActions, specialHandlerAlreadyApplied = false }) {
   if (descriptor.effectId === "self-stat-stages") return applySelfStatStages(branch, actorKey, move, descriptor);
   if (descriptor.effectId === "self-heal") return applySelfHeal(branch, actorKey, move, descriptor);
   if (descriptor.effectId === "protect") return applyProtect(branch, actorKey, move, descriptor, dataset, isLastAction);
@@ -2905,7 +2915,7 @@ function applyMoveEffect(branch, { side, actorKey, targetKey, actor, target, act
     const damageOperation = descriptor.operations.find(operation => operation.kind === "damage");
     const otherOperations = descriptor.operations.filter(operation => operation !== damageOperation);
     const postDamageHandler = POST_DAMAGE_HANDLERS.has(descriptor.specialHandlerId) ? descriptor.specialHandlerId : null;
-    let branches = descriptor.specialHandlerId && !postDamageHandler
+    let branches = descriptor.specialHandlerId && !postDamageHandler && !specialHandlerAlreadyApplied
       ? applySpecialHandler(branch, { side, actorKey, targetKey, move, dataset, plan, action, previousLastMoveId, damageAdapter, isLastAction, pendingActions }, descriptor.specialHandlerId)
       : [branch];
     if (damageOperation) {
@@ -3107,7 +3117,7 @@ function recordMoveRedirects(branch, actorKey, moveId, redirects) {
   }
 }
 
-function applyMoveToTarget(branch, { side, action, actorKey, actor, move, descriptor, targetKey, targetCount, plan, dataset, damageAdapter, isLastAction, previousLastMoveId, pendingActions }) {
+function applyMoveToTarget(branch, { side, action, actorKey, actor, move, descriptor, targetKey, targetCount, plan, dataset, damageAdapter, isLastAction, previousLastMoveId, pendingActions, specialHandlerAlreadyApplied = false }) {
   const actorState = branch.state.combatantStates[actorKey];
   const target = targetKey ? plan.combatants[targetKey] : null;
   const targetState = targetKey ? branch.state.combatantStates[targetKey] : actorState;
@@ -3141,11 +3151,30 @@ function applyMoveToTarget(branch, { side, action, actorKey, actor, move, descri
     event(branch, { eventType: "move-failed", actorKey, targetKey, moveId: move.id, metadata: { reason: "gravity", resultLabel: `${move.name} failed under Gravity` } });
     return applyCrashDamage(branch, actorKey, move, "gravity");
   }
+  const semiInvulnerability = descriptor.target === "field" || descriptor.target === "self"
+    ? null
+    : semiInvulnerabilityResult({ move, attackerState: actorState, defenderState: targetState, targetKey });
+  if (semiInvulnerability) {
+    event(branch, {
+      eventType: "move-immune",
+      actorKey,
+      targetKey,
+      moveId: move.id,
+      metadata: {
+        reason: semiInvulnerability.reason,
+        moveType: semiInvulnerability.moveType,
+        semiInvulnerableState: semiInvulnerability.stateId,
+        resultLabel: "Immune"
+      }
+    });
+    return [branch];
+  }
   const immunity = descriptor.target === "field" || descriptor.target === "self"
     ? null
-    : damagingMoveImmunity({
+    : moveImmunity({
       dataset,
       move,
+      ignoreImmunity: descriptor.ignoreImmunity,
       attackerState: actorState,
       defenderState: targetState,
       fieldState: branch.state.fieldState,
@@ -3206,7 +3235,8 @@ function applyMoveToTarget(branch, { side, action, actorKey, actor, move, descri
     plan,
     action,
     previousLastMoveId,
-    pendingActions
+    pendingActions,
+    specialHandlerAlreadyApplied
   }));
   return branches;
 }
@@ -3226,7 +3256,8 @@ function applyMove(branch, side, slot, action, plan, dataset, damageAdapter, mov
     : 1;
   if (action.moveId !== "destinybond") actorState.volatileConditions.destinybond = false;
   const continuingMove = action.moveId === "bide" && Number(actorState.volatileConditions.bideTurns || 0) > 0
-    || Number(dataset.mechanics?.damageGeneration) === 4 && (actorState.volatileConditions.thrashMoveId === action.moveId || action.moveId === 'uproar' && actorState.volatileConditions.uproarTurns > 0 || actorState.volatileConditions.chargingMoveId === action.moveId);
+    || actorState.volatileConditions.chargingMoveId === action.moveId
+    || Number(dataset.mechanics?.damageGeneration) === 4 && (actorState.volatileConditions.thrashMoveId === action.moveId || action.moveId === 'uproar' && actorState.volatileConditions.uproarTurns > 0);
   markMoved(branch, actorKey, action.moveId, !continuingMove);
   if (descriptor.effectId !== "protect" && descriptor.specialHandlerId !== "protect") actorState.volatileConditions.protectStreak = 0;
   if (descriptor.specialHandlerId === "self-destruct") {
@@ -3247,8 +3278,22 @@ function applyMove(branch, side, slot, action, plan, dataset, damageAdapter, mov
     actorState.movePp[action.moveId] = Math.max(0, previousPp - pressureCost);
   }
   let branches = [branch];
+  let specialHandlerAlreadyApplied = false;
+  if (descriptor.specialHandlerId === "two-turn-charge") {
+    branches = applySpecialHandler(branch, {
+      side, actorKey, targetKey: targets[0] || null, move, dataset, plan, action, previousLastMoveId, damageAdapter, isLastAction, pendingActions
+    }, descriptor.specialHandlerId);
+    specialHandlerAlreadyApplied = true;
+    if (branches.some(current => current.skipCurrentMoveDamage)) {
+      for (const current of branches) delete current.skipCurrentMoveDamage;
+      return branches;
+    }
+  }
   for (const targetKey of targets) {
-    branches = branches.flatMap(current => applyMoveToTarget(current, { side, action, actorKey, actor, move, descriptor, targetKey, targetCount: targets.length, plan, dataset, damageAdapter, isLastAction, previousLastMoveId, pendingActions }));
+    branches = branches.flatMap(current => applyMoveToTarget(current, {
+      side, action, actorKey, actor, move, descriptor, targetKey, targetCount: targets.length, plan, dataset, damageAdapter,
+      isLastAction, previousLastMoveId, pendingActions, specialHandlerAlreadyApplied
+    }));
   }
   for (const current of branches) delete current.state.combatantStates[actorKey].volatileConditions.helpinghand;
   if (String(move.type || "").toLowerCase() === "electric" && String(move.category || "").toLowerCase() !== "status") {

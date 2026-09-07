@@ -1,5 +1,5 @@
-import { calculateStats, normalizePlayerCollection, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js?v=20260905-drafts-freecalc-partners-v1";
-import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260905-drafts-freecalc-partners-v1";
+import { calculateStats, normalizePlayerCollection, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js?v=20260906-nature-rounding-v1";
+import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260907-form-sprites-v2";
 import { loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260905-drafts-freecalc-partners-v1";
 import { loadTrainerAiDocumentation } from "./adapters/trainer_ai.js?v=20260905-drafts-freecalc-partners-v1";
 import { createDraftRecord, destructiveTransitionNotice, IndexedDbDraftStore, markExported, markLiveFlushed, setLocalLiveEdit, updateDraftRecord } from "./cache/active_draft.js?v=20260905-drafts-freecalc-partners-v1";
@@ -13,19 +13,20 @@ import { assertValidPlanDocument } from "./contracts/plan_contract.js?v=20260905
 import { mechanicsCompatibility, validatePlanReferences } from "./contracts/plan_compatibility.js?v=20260905-drafts-freecalc-partners-v1";
 import { actionList, activeKey, activeKeys, activeSlotEntries, actorSlot, pendingReplacementSlots, setActiveKey, slotsPerSide } from "./core/battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
 import { createBranchEventModel, selectBranchEventOutcome, selectedBranchChoices } from "./core/branch_events.js?v=20260905-drafts-freecalc-partners-v1";
-import { boundedSlotDamageLabel, highestDamageCandidateKeys, resolvedCombatantMovePreview } from "./core/combatant_moves.js?v=20260905-drafts-freecalc-partners-v1";
+import { boundedSlotDamageLabel, highestDamageCandidateKeys, resolvedCombatantMovePreview } from "./core/combatant_moves.js?v=20260907-two-turn-immunity-v1";
 import { exportBranchGroups, planTreeOrder, planTurnTreeOrder, preferredImportedReviewStateId, stateLineage, turnNodeVisuals } from "./core/graph.js?v=20260905-drafts-freecalc-partners-v1";
 import { HIDDEN_POWER_TYPES, hiddenPowerTypeFromIvs, resolvedHiddenPowerType } from "./core/hidden_power.js?v=20260905-drafts-freecalc-partners-v1";
+import { forcedTurnAction } from "./core/forced_actions.js?v=20260907-two-turn-immunity-v1";
 import { formatDamageRollCounts, healingEventDescription, isCriticalOhkoOutcome, isHighRollKoOutcome, outcomePanelEvents, readableMechanicName } from "./core/outcome_presentation.js?v=20260905-drafts-freecalc-partners-v1";
-import { createPlanDocument, planHasWork, setStateNodeNote, upgradeInitialEntryEffects } from "./core/plan.js?v=20260905-drafts-freecalc-partners-v1";
-import { commitForcedReplacement, commitLabel, commitPreview, previewForcedReplacement, refreshUnknownCommittedProbabilities, repairStaleLeafBattleEnd, replacementCommitLabel } from "./core/planner.js?v=20260905-drafts-freecalc-partners-v1";
-import { recalculatePlanDocument } from "./core/recalculation.js?v=20260905-drafts-freecalc-partners-v1";
-import { moveSupport } from "./rulesets/core_move_support.js?v=20260905-drafts-freecalc-partners-v1";
+import { createPlanDocument, planHasWork, setStateNodeNote, upgradeInitialEntryEffects } from "./core/plan.js?v=20260907-form-sprites-v1";
+import { commitForcedReplacement, commitLabel, commitPreview, previewForcedReplacement, refreshUnknownCommittedProbabilities, repairStaleLeafBattleEnd, replacementCommitLabel } from "./core/planner.js?v=20260907-form-sprites-v1";
+import { recalculatePlanDocument } from "./core/recalculation.js?v=20260907-two-turn-immunity-v1";
+import { moveSupport } from "./rulesets/core_move_support.js?v=20260907-two-turn-immunity-v1";
 import { effectiveActionSpeed } from "./rulesets/action_order.js?v=20260905-drafts-freecalc-partners-v1";
 import { areSlotsAdjacent, canSelectShift, shiftWithCenter, triplePositionForSlot, tripleSlotForPosition } from "./rulesets/triple_battle.js?v=20260905-drafts-freecalc-partners-v1";
 import { rotationFrontKey, rotationFrontSlot } from "./rulesets/rotation_battle.js?v=20260905-drafts-freecalc-partners-v1";
 import { experienceForLevel, experienceToNextLevel, projectExperience } from "./rulesets/vw2r_experience.js?v=20260905-drafts-freecalc-partners-v1";
-import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260905-drafts-freecalc-partners-v1";
+import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260907-two-turn-immunity-v1";
 import { battleCompletionState } from "./core/battle_completion.js?v=20260905-drafts-freecalc-partners-v1";
 import {
   addBox, addParty, boxesForGame, createEmptyBoxLibrary, exportBoxLibrary, IndexedDbBoxLibraryStore,
@@ -293,7 +294,7 @@ function currentSpriteRecord(record, state) {
     ...record,
     speciesId: state.currentSpeciesId || record.speciesId,
     formId: null,
-    spriteId: state.currentSpriteId || record.formId || record.speciesId
+    spriteId: state.currentSpriteId || record.speciesId
   };
 }
 
@@ -2406,6 +2407,11 @@ function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
   const original = plan.combatants[actorKey];
   const pending = pendingReplacementSlots(committedState).some(entry => entry.side === side && entry.slot === slot);
   let draft = actionForSlot(side, slot);
+  const forcedAction = pending ? null : forcedTurnAction(committedState.combatantStates[actorKey]);
+  if (forcedAction && draft.type && (draft.type !== "move" || draft.moveId !== forcedAction.moveId)) {
+    actionDraft[side][slot] = {};
+    draft = actionDraft[side][slot];
+  }
   if (draft.type === "shift" && !canSelectShift(plan, committedState, side, actorKey)) {
     actionDraft[side][slot] = {};
     draft = actionDraft[side][slot];
@@ -2536,9 +2542,15 @@ function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
       const moveButton = button("", "move-button");
       moveButton.dataset.moveType = String(entry.typeOverride || move?.type || "unknown").toLowerCase();
       const positionSelected = draft.type === "switch" || draft.type === "shift";
-      moveButton.disabled = positionSelected || !support.supported || Number(committedMonState.movePp?.[entry.moveId] ?? entry.maxPp) <= 0;
-      moveButton.title = draft.type === "switch" ? "Switch is selected for this slot" : draft.type === "shift" ? "Shift is selected for this slot" : support.supported ? "" : support.reason;
-      moveButton.setAttribute("aria-pressed", String(draft.type === "move" && draft.moveId === entry.moveId));
+      const isForcedMove = Boolean(forcedAction?.moveId && forcedAction.moveId === entry.moveId);
+      const forcedDisabled = Boolean(forcedAction && (forcedAction.kind === "recharge" || !isForcedMove));
+      moveButton.disabled = positionSelected || forcedDisabled || !support.supported || Number(committedMonState.movePp?.[entry.moveId] ?? entry.maxPp) <= 0;
+      moveButton.title = forcedAction?.kind === "recharge"
+        ? "This Pokémon must recharge"
+        : forcedAction && !isForcedMove
+          ? `This Pokémon must continue ${dataset.get("moves", forcedAction.moveId)?.name || forcedAction.moveId}`
+          : draft.type === "switch" ? "Switch is selected for this slot" : draft.type === "shift" ? "Shift is selected for this slot" : support.supported ? "" : support.reason;
+      moveButton.setAttribute("aria-pressed", String((draft.type === "move" && draft.moveId === entry.moveId) || (forcedAction?.kind === "recharge" && isForcedMove)));
       const copy = document.createElement("span"); copy.className = "move-copy";
       const moveName = document.createElement("strong"); moveName.textContent = move?.name || entry.moveId;
       const currentPp = monState.movePp?.[entry.moveId] ?? entry.maxPp;
@@ -2555,7 +2567,10 @@ function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
       copy.append(moveName, moveMeta);
       moveButton.append(copy);
       moveButton.addEventListener("click", () => configureMoveDraft(side, slot, actorKey, move, support));
-      if (support.supported) {
+      if (forcedAction?.kind === "recharge" && isForcedMove) {
+        const damage = document.createElement("span"); damage.className = "damage-label"; damage.textContent = "Recharge"; moveButton.append(damage);
+        moveActions.append(moveButton);
+      } else if (support.supported) {
         const targetMode = support.targetMode || canonicalTarget(move);
         const candidates = legalTargets(committedState, side, actorKey, targetMode, support);
         const targetKey = support.target === "self" ? actorKey : support.target === "field" ? null : draft.moveId === move.id && draft.targetKey ? draft.targetKey : candidates[0];
@@ -2580,7 +2595,7 @@ function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
       }
     if (draft.type === "move" && draft.moveId === entry.moveId) renderActionAux(moveActions, side, slot, actorKey, move, support, draft);
   }
-  if (!pending && canSelectShift(plan, committedState, side, actorKey)) {
+  if (!pending && !forcedAction && canSelectShift(plan, committedState, side, actorKey)) {
     const shiftButton = button(`Shift with Slot ${battleSlotNumberForPosition(side, 1)}`, "shift-button");
     shiftButton.setAttribute("aria-pressed", String(draft.type === "shift"));
     shiftButton.addEventListener("click", () => draft.type === "shift"
@@ -2598,8 +2613,10 @@ function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
   } else {
     const switchButton = button("Switch", "switch-button");
     switchButton.setAttribute("aria-pressed", String(draft.type === "switch"));
-    switchButton.disabled = rotation && !rotationFront;
-    if (switchButton.disabled) switchButton.title = "Rotate this Pokémon to the front before switching it out";
+    switchButton.disabled = Boolean(forcedAction) || (rotation && !rotationFront);
+    if (forcedAction?.kind === "recharge") switchButton.title = "This Pokémon must recharge";
+    else if (forcedAction) switchButton.title = `This Pokémon must continue ${dataset.get("moves", forcedAction.moveId)?.name || forcedAction.moveId}`;
+    else if (switchButton.disabled) switchButton.title = "Rotate this Pokémon to the front before switching it out";
     switchButton.addEventListener("click", () => {
       if (draft.type === "switch") setDraft(side, slot, {});
       else setDraft(side, slot, { type: "switch", actorKey });
@@ -2679,6 +2696,12 @@ function actionFromDraft(side, slot) {
   const draft = actionForSlot(side, slot);
   const pending = pendingReplacementSlots(state).some(entry => entry.side === side && entry.slot === slot);
   if (pending) return draft.switchToKey ? { actionType: "replacement", side, slot, switchToKey: draft.switchToKey, reason: "previous-active-fainted", consumesTurn: false } : null;
+  const forcedAction = forcedTurnAction(state.combatantStates[actorKey]);
+  if (forcedAction?.kind === "recharge") {
+    return forcedAction.moveId
+      ? { actionType: "move", actorKey, moveId: forcedAction.moveId, targetKeys: [], mechanicActivations: [], declaredAtStateHash: state.stateHash }
+      : null;
+  }
   if (draft.type === "switch") return draft.switchToKey ? { actionType: "switch", actorKey, switchToKey: draft.switchToKey, switchKind: "voluntary", declaredAtStateHash: state.stateHash } : null;
   if (draft.type === "shift") return { actionType: "shift", actorKey, declaredAtStateHash: state.stateHash };
   if (draft.type !== "move" || !draft.moveId) return null;

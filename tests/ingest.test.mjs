@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { normalizePlayerCollection, normalizeTrainerRoster } from "../src/adapters/combatant_ingest.js";
+import { calculateStats, normalizePlayerCollection, normalizeTrainerRoster } from "../src/adapters/combatant_ingest.js";
 import { canonicalTrainerMember, DatasetReadinessError } from "../src/adapters/standardized_dataset.js";
 import { effectiveCombatantMove } from "../src/core/combatant_moves.js";
 import { fixtureDataset } from "./helpers.mjs";
@@ -30,6 +30,26 @@ test("Save Tracker stat aliases normalize and explicit speciesId wins over displ
   assert.equal(keldeo.level, 50);
   assert.equal(keldeo.experience, 125123);
   assert.ok(keldeo.calculatedStats.hp > 0);
+});
+
+test("hindering natures apply the exact 0.9 stat modifier", () => {
+  const dataset = fixtureDataset();
+  const statBlock = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31 };
+  const calculated = calculateStats({
+    speciesId: "fastmon",
+    displayName: "Fastmon",
+    level: 50,
+    natureId: "timid",
+    baseStats: { hp: 51, atk: 51, def: 51, spa: 51, spd: 51, spe: 51 },
+    ivs: statBlock,
+    evs: { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0 }
+  }, dataset);
+
+  // The pre-nature non-HP stat is 71. Timid must floor 71 * 0.9 to
+  // 63 for Attack, rather than floor 71 / 1.1 to the incorrect 64.
+  assert.equal(calculated.atk, 63);
+  assert.equal(calculated.spe, 78);
+  assert.equal(calculated.def, 71);
 });
 
 test("standardized baseExp normalizes to the portable EXP-yield field without changing Dataset facts", () => {

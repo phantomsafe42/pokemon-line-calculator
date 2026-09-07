@@ -48,6 +48,12 @@ function vw2rFixture(moveId) {
   return { ...result, playerKey, enemyKey: result.enemies[0].combatantKey };
 }
 
+function teachEnemyMove({ dataset, plan, enemyKey }, moveId) {
+  dataset.indexes.moves.set(moveId, vw2rMoves[moveId]);
+  plan.combatants[enemyKey].moves = [{ moveId, maxPp: vw2rMoves[moveId].pp }];
+  plan.stateNodes[plan.initialStateNodeId].combatantStates[enemyKey].movePp = { [moveId]: vw2rMoves[moveId].pp };
+}
+
 test('Platinum rampage counters force continuation, retain PP and expire into confusion', () => {
   const { dataset, plan, playerKey, enemyKey } = vw2rFixture('outrage');
   dataset.mechanics.damageGeneration = 4;
@@ -288,6 +294,185 @@ test("VW2R type immunity suppresses damage rolls and Psybeam confusion after a s
   assert.equal(outcomes[0].events.some(entry => entry.eventType === "damage" && entry.moveId === "psybeam"), false);
   assert.equal(outcomes[0].events.some(entry => entry.eventType === "secondary-effect-missed" && entry.moveId === "psybeam"), false);
   assert.equal(outcomes[0].state.combatantStates[benchKey].volatileConditions.confusionTurns, null);
+});
+
+test("VW2R Thunder Wave respects Ground immunity before accuracy and status branching", () => {
+  const fixture = vw2rFixture("thunderwave");
+  const { dataset, plan, playerKey, enemyKey } = fixture;
+  dataset.indexes.types.set("ground", vw2rTypes.ground);
+  dataset.indexes.types.set("electric", vw2rTypes.electric);
+  const root = plan.stateNodes[plan.initialStateNodeId];
+  plan.combatants[enemyKey].originalTypeIds = ["ground"];
+  root.combatantStates[enemyKey].currentTypeIds = ["ground"];
+
+  const outcomes = resolveTurn({
+    plan,
+    parentStateNodeId: plan.initialStateNodeId,
+    actions: { player: action(playerKey, "thunderwave", [enemyKey]), enemy: action(enemyKey, "tackle", [playerKey]) },
+    dataset,
+    damageAdapter: damageAdapter(() => [0])
+  });
+
+  assert.equal(outcomes.length, 1);
+  assert.equal(outcomes[0].events.some(entry => entry.eventType === "move-immune" && entry.moveId === "thunderwave"), true);
+  assert.equal(outcomes[0].events.some(entry => entry.eventType === "miss" && entry.moveId === "thunderwave"), false);
+  assert.equal(outcomes[0].events.some(entry => entry.eventType === "major-status" && entry.moveId === "thunderwave"), false);
+  assert.equal(outcomes[0].state.combatantStates[enemyKey].majorStatus, null);
+});
+
+test("VW2R Dig is semi-invulnerable, forces its release turn, and spends PP once", () => {
+  const fixture = vw2rFixture("dig");
+  const { dataset, plan, playerKey, enemyKey } = fixture;
+  teachEnemyMove(fixture, "powergem");
+  const root = plan.stateNodes[plan.initialStateNodeId];
+  const initialHp = root.combatantStates[playerKey].hp.max;
+  const initialPp = root.combatantStates[playerKey].movePp.dig;
+  const first = resolveTurn({
+    plan,
+    parentStateNodeId: plan.initialStateNodeId,
+    actions: { player: action(playerKey, "dig", [enemyKey]), enemy: action(enemyKey, "powergem", [playerKey]) },
+    dataset,
+    damageAdapter: damageAdapter(() => [10])
+  });
+
+  assert.equal(first.length, 1);
+  const charged = first[0];
+  assert.equal(charged.state.combatantStates[playerKey].volatileConditions.chargingMoveId, "dig");
+  assert.equal(charged.state.combatantStates[playerKey].movePp.dig, initialPp - 2, "the initial use spends one PP plus Pressure's extra PP");
+  assert.equal(charged.state.combatantStates[playerKey].hp.max, initialHp);
+  assert.equal(charged.events.some(entry => entry.eventType === "move-immune" && entry.moveId === "powergem" && entry.metadata?.reason === "semi-invulnerable-dig"), true);
+  assert.equal(charged.events.some(entry => entry.eventType === "miss" && entry.moveId === "powergem"), false);
+
+  charged.state.stateNodeId = "dig-charge";
+  plan.stateNodes[charged.state.stateNodeId] = charged.state;
+  const benchKey = Object.values(plan.combatants).find(entry => entry.side === "player" && entry.combatantKey !== playerKey).combatantKey;
+  assert.throws(() => resolveTurn({
+    plan,
+    parentStateNodeId: charged.state.stateNodeId,
+    actions: { player: { actionType: "switch", actorKey: playerKey, switchToKey: benchKey }, enemy: action(enemyKey, "powergem", [playerKey]) },
+    dataset,
+    damageAdapter: damageAdapter(() => [10])
+  }), /must continue dig/);
+  assert.throws(() => resolveTurn({
+    plan,
+    parentStateNodeId: charged.state.stateNodeId,
+    actions: { player: action(playerKey, "tackle", [enemyKey]), enemy: action(enemyKey, "powergem", [playerKey]) },
+    dataset,
+    damageAdapter: damageAdapter(() => [10])
+  }), /must continue dig/);
+
+  const released = resolveTurn({
+    plan,
+    parentStateNodeId: charged.state.stateNodeId,
+    actions: { player: action(playerKey, "dig", [enemyKey]), enemy: action(enemyKey, "powergem", [playerKey]) },
+    dataset,
+    damageAdapter: damageAdapter(() => [10])
+  });
+  assert.equal(released.length, 1);
+  assert.equal(released[0].state.combatantStates[playerKey].volatileConditions.chargingMoveId, null);
+  assert.equal(released[0].state.combatantStates[playerKey].movePp.dig, initialPp - 2, "the forced release spends no additional PP");
+  assert.ok(released[0].state.combatantStates[playerKey].hp.max < initialHp);
+});
+
+test("VW2R Earthquake remains an exception that hits a Dig user underground", () => {
+  const fixture = vw2rFixture("dig");
+  const { dataset, plan, playerKey, enemyKey } = fixture;
+  teachEnemyMove(fixture, "earthquake");
+  let earthquakeBasePower = null;
+  const outcomes = resolveTurn({
+    plan,
+    parentStateNodeId: plan.initialStateNodeId,
+    actions: { player: action(playerKey, "dig", [enemyKey]), enemy: action(enemyKey, "earthquake", [playerKey]) },
+    dataset,
+    damageAdapter: damageAdapter(input => {
+      if (input.move.id === "earthquake") earthquakeBasePower = input.moveOverrides?.basePower ?? input.move.basePower;
+      return [10];
+    })
+  });
+  assert.equal(outcomes.length, 1);
+  assert.equal(outcomes[0].events.some(entry => entry.eventType === "damage" && entry.moveId === "earthquake"), true);
+  assert.equal(outcomes[0].events.some(entry => entry.eventType === "move-immune" && entry.moveId === "earthquake"), false);
+  assert.equal(earthquakeBasePower, 200);
+});
+
+test("spread charge moves charge once before resolving any target", () => {
+  const { dataset, plan, players, enemies } = fixtureDoublesPlan();
+  dataset.gameId = "fire-red-omega";
+  const razorWind = { id: "razorwind", name: "Razor Wind", type: "normal", category: "special", basePower: 80, accuracy: 100, pp: 10, target: "allAdjacentFoes" };
+  dataset.indexes.moves.set("razorwind", razorWind);
+  const root = plan.stateNodes[plan.initialStateNodeId];
+  const userKey = players[0].combatantKey;
+  plan.combatants[userKey].moves = [{ moveId: "razorwind", maxPp: razorWind.pp }];
+  root.combatantStates[userKey].movePp = { razorwind: razorWind.pp };
+  let razorWindDamageCalls = 0;
+  const razorWindTargets = new Set();
+  const adapter = damageAdapter(input => {
+    if (input.move.id === "razorwind") {
+      razorWindDamageCalls += 1;
+      razorWindTargets.add(input.defender.combatantKey);
+    }
+    return [1];
+  });
+  const actions = {
+    player: [action(userKey, "razorwind"), action(players[1].combatantKey, "protect", [players[1].combatantKey])],
+    enemy: [
+      action(enemies[0].combatantKey, "tackle", [userKey]),
+      action(enemies[1].combatantKey, "tackle", [players[1].combatantKey])
+    ]
+  };
+  const first = resolveTurn({ plan, parentStateNodeId: plan.initialStateNodeId, actions, dataset, damageAdapter: adapter });
+  assert.equal(razorWindDamageCalls, 0);
+  assert.ok(first.every(outcome => outcome.state.combatantStates[userKey].volatileConditions.chargingMoveId === "razorwind"));
+  const charged = first[0].state;
+  charged.stateNodeId = "razor-wind-charge";
+  plan.stateNodes[charged.stateNodeId] = charged;
+  const chargedPp = charged.combatantStates[userKey].movePp.razorwind;
+  const released = resolveTurn({ plan, parentStateNodeId: charged.stateNodeId, actions, dataset, damageAdapter: adapter });
+  assert.ok(released.length > 0);
+  assert.ok(razorWindDamageCalls >= 2);
+  assert.deepEqual(razorWindTargets, new Set(root.active.enemyCombatantKeys));
+  assert.ok(released.every(outcome => outcome.state.combatantStates[userKey].volatileConditions.chargingMoveId === null));
+  assert.ok(released.every(outcome => outcome.state.combatantStates[userKey].movePp.razorwind === chargedPp));
+});
+
+test("VW2R recharge turns block alternate actions and consume no additional PP", () => {
+  const fixture = vw2rFixture("roaroftime");
+  const { dataset, plan, playerKey, enemyKey } = fixture;
+  const root = plan.stateNodes[plan.initialStateNodeId];
+  const initialPp = root.combatantStates[playerKey].movePp.roaroftime;
+  const first = resolveTurn({
+    plan,
+    parentStateNodeId: plan.initialStateNodeId,
+    actions: { player: action(playerKey, "roaroftime", [enemyKey]), enemy: action(enemyKey, "tackle", [playerKey]) },
+    dataset,
+    damageAdapter: damageAdapter(() => [1])
+  }).find(outcome => outcome.events.some(entry => entry.eventType === "damage" && entry.moveId === "roaroftime"));
+  assert.ok(first);
+  assert.equal(first.state.combatantStates[playerKey].volatileConditions.rechargeRequired, true);
+  const chargedPp = first.state.combatantStates[playerKey].movePp.roaroftime;
+  assert.equal(chargedPp, initialPp - 2, "the attack spends one PP plus Pressure's extra PP");
+  first.state.stateNodeId = "recharge-required";
+  plan.stateNodes[first.state.stateNodeId] = first.state;
+  const benchKey = Object.values(plan.combatants).find(entry => entry.side === "player" && entry.combatantKey !== playerKey).combatantKey;
+  assert.throws(() => resolveTurn({
+    plan,
+    parentStateNodeId: first.state.stateNodeId,
+    actions: { player: { actionType: "switch", actorKey: playerKey, switchToKey: benchKey }, enemy: action(enemyKey, "tackle", [playerKey]) },
+    dataset,
+    damageAdapter: damageAdapter(() => [1])
+  }), /must recharge/);
+
+  const recharged = resolveTurn({
+    plan,
+    parentStateNodeId: first.state.stateNodeId,
+    actions: { player: action(playerKey, "roaroftime"), enemy: action(enemyKey, "tackle", [playerKey]) },
+    dataset,
+    damageAdapter: damageAdapter(() => [1])
+  });
+  assert.ok(recharged.length > 0);
+  assert.ok(recharged.every(outcome => outcome.state.combatantStates[playerKey].volatileConditions.rechargeRequired === false));
+  assert.ok(recharged.every(outcome => outcome.state.combatantStates[playerKey].movePp.roaroftime === chargedPp));
+  assert.ok(recharged.every(outcome => outcome.events.some(entry => entry.eventType === "action-skipped" && entry.reason === "recharge")));
 });
 
 test("VW2R Soundproof classifies Boomburst as immune before damage resolution", () => {

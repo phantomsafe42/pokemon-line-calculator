@@ -105,6 +105,35 @@ export function effectiveAccuracy({ move, attackerState, defenderState, fieldSta
   return Math.max(0, Math.min(100, accuracy));
 }
 
+const SEMI_INVULNERABLE_HIT_EXCEPTIONS = Object.freeze({
+  bounce: new Set(["gust", "twister", "skyuppercut", "thunder", "hurricane", "smackdown", "thousandarrows"]),
+  dig: new Set(["earthquake", "magnitude"]),
+  dive: new Set(["surf", "whirlpool"]),
+  fly: new Set(["gust", "twister", "skyuppercut", "thunder", "hurricane", "smackdown", "thousandarrows"]),
+  phantomforce: new Set(),
+  shadowforce: new Set(),
+  skydrop: new Set(["gust", "twister", "skyuppercut", "thunder", "hurricane", "smackdown", "thousandarrows"])
+});
+
+export function semiInvulnerabilityResult({ move, attackerState, defenderState, targetKey = null }) {
+  const volatile = defenderState?.volatileConditions || {};
+  const chargingMoveId = toId(volatile.chargingMoveId);
+  const stateId = SEMI_INVULNERABLE_HIT_EXCEPTIONS[chargingMoveId]
+    ? chargingMoveId
+    : volatile.skyDropSourceKey ? "skydrop" : null;
+  if (!stateId) return null;
+  if ([abilityId(attackerState), abilityId(defenderState)].includes("noguard")) return null;
+  if (targetKey && attackerState?.volatileConditions?.sureHitTargetKey === targetKey) return null;
+  const moveId = toId(move?.id || move?.name);
+  if (SEMI_INVULNERABLE_HIT_EXCEPTIONS[stateId].has(moveId)) return null;
+  return {
+    immune: true,
+    reason: `semi-invulnerable-${stateId}`,
+    moveType: toId(move?.type),
+    stateId
+  };
+}
+
 export function statusApplicationResult({ descriptor, attackerState, targetState, fieldState, generation }) {
   if (targetState.majorStatus) return { applies: false, reason: "target-already-has-major-status" };
   if (Number(targetState.volatileConditions?.substituteHp || 0) > 0) return { applies: false, reason: "blocked-by-substitute" };

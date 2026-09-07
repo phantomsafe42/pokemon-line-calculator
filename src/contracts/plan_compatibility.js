@@ -1,5 +1,5 @@
 import { stableStringify, toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
-import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260905-drafts-freecalc-partners-v1";
+import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260907-two-turn-immunity-v1";
 
 export class PlanCompatibilityError extends Error {
   constructor(issues) {

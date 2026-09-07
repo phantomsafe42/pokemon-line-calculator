@@ -3,11 +3,11 @@ import { clone, exactRange, makeStableId, nowIso, shortHash, stableStringify, to
 import { activeKeys, battleFormat as normalizeBattleFormat, slotsPerSide } from "./battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
 import { participatingActiveEntries, participatingActiveKeys } from "../rulesets/rotation_battle.js?v=20260905-drafts-freecalc-partners-v1";
 import { createInitialExperienceState } from "../rulesets/vw2r_experience.js?v=20260905-drafts-freecalc-partners-v1";
-import { entryAbilityEffects } from "../rulesets/switch_rules.js?v=20260905-drafts-freecalc-partners-v1";
-import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260905-drafts-freecalc-partners-v1";
+import { entryAbilityEffects } from "../rulesets/switch_rules.js?v=20260907-two-turn-immunity-v1";
+import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260907-two-turn-immunity-v1";
 import { combatantsAreAdjacent } from "../rulesets/triple_battle.js?v=20260905-drafts-freecalc-partners-v1";
 import { abilityStatStageRule, activeAbilityId } from "../rulesets/ability_rules.js?v=20260905-drafts-freecalc-partners-v1";
-import { weatherIsSuppressed } from "../rulesets/battle_rules.js?v=20260905-drafts-freecalc-partners-v1";
+import { weatherIsSuppressed } from "../rulesets/battle_rules.js?v=20260907-two-turn-immunity-v1";
 import { ABILITY_FORM_STATE_VERSION, applyCombatantFormState, desiredWeatherAbilityForm } from "../rulesets/form_rules.js?v=20260905-drafts-freecalc-partners-v1";
 
 export const INITIAL_ENTRY_EFFECTS_VERSION = 2;
@@ -105,7 +105,7 @@ export function createCombatantState(combatant, override = {}) {
     itemState: combatant.originalItemId ? "held" : "none",
     currentTypeIds: [...combatant.originalTypeIds],
     currentSpeciesId: combatant.speciesId,
-    currentSpriteId: combatant.formId || combatant.speciesId,
+    currentSpriteId: combatant.speciesId,
     lastMoveId: null,
     lastHitMoveId: null,
     lastHitSourceKey: null,
@@ -326,7 +326,9 @@ export function upgradeInitialEntryEffects(plan, dataset) {
   for (const [combatantKey, state] of Object.entries(root.combatantStates)) {
     const combatant = next.combatants[combatantKey];
     state.currentSpeciesId ||= combatant.speciesId;
-    state.currentSpriteId ||= combatant.formId || combatant.speciesId;
+    if (!state.currentSpriteId || /^\d+$/.test(String(state.currentSpriteId))) {
+      state.currentSpriteId = state.currentSpeciesId || combatant.speciesId;
+    }
   }
   const activeStates = participatingActiveEntries(root).map(entry => root.combatantStates[entry.combatantKey]).filter(Boolean);
   const weatherSuppressed = weatherIsSuppressed(activeStates);
@@ -370,7 +372,7 @@ function sideSnapshot(side, key, combatants) {
     combatantKey: key,
     speciesId: mon.speciesId,
     displayName: mon.nickname || mon.displayName,
-    spriteId: mon.formId || mon.speciesId,
+    spriteId: mon.speciesId,
     action: null
   };
 }

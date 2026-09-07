@@ -81,6 +81,7 @@ const retainedFields = Object.freeze([
   "heal",
   "willCrit",
   "critRatio",
+  "ignoreImmunity",
   "breaksProtect",
   "flags",
   "target",

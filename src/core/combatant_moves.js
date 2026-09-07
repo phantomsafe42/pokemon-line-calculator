@@ -1,4 +1,5 @@
-import { damagingMoveImmunity } from "../rulesets/switch_rules.js?v=20260905-drafts-freecalc-partners-v1";
+import { damagingMoveImmunity } from "../rulesets/switch_rules.js?v=20260907-two-turn-immunity-v1";
+import { semiInvulnerabilityResult } from "../rulesets/battle_rules.js?v=20260907-two-turn-immunity-v1";
 import { adjacentActiveEntries } from "../rulesets/triple_battle.js?v=20260905-drafts-freecalc-partners-v1";
 import { toId } from "./primitives.js?v=20260905-drafts-freecalc-partners-v1";
 
@@ -97,6 +98,17 @@ export function previewCombatantMove({ plan, stateNodeId, actorKey, positionActo
   if (!state || !actor || !target || !actorState || !targetState) throw new Error("Damage preview references unavailable battle state");
   const move = fieldAdjustedMove(effectiveCombatantMove(dataset, actor, actorState, moveId), state.fieldState);
   if (!move) throw new Error(`Move ${moveId} is unavailable`);
+  const semiInvulnerability = semiInvulnerabilityResult({
+    move,
+    attackerState: actorState,
+    defenderState: targetState,
+    targetKey
+  });
+  if (semiInvulnerability?.immune) return {
+    status: "immune",
+    label: "Immune",
+    reason: semiInvulnerability.reason
+  };
   const immunity = damagingMoveImmunity({
     dataset,
     move,

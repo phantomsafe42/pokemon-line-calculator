@@ -27,7 +27,7 @@ async function initialize(datasetBaseUrl, trainerAiBaseUrl, gameId) {
   const datasetModule = await import("../adapters/standardized_dataset.js?v=20260905-drafts-freecalc-partners-v1");
   const damageModule = await import("../adapters/shared_damage_adapter.js?v=20260905-drafts-freecalc-partners-v1");
   const trainerAiModule = await import("../adapters/trainer_ai.js?v=20260905-drafts-freecalc-partners-v1");
-  const plannerModule = await import("../core/planner.js?v=20260905-drafts-freecalc-partners-v1");
+  const plannerModule = await import("../core/planner.js?v=20260907-form-sprites-v1");
   const combatantMovesModule = await import("../core/combatant_moves.js?v=20260905-drafts-freecalc-partners-v1");
   dataset = await datasetModule.loadStandardizedDataset({ baseUrl: datasetBaseUrl });
   const runtime = self.SharedDamageCalculator.createFromDocuments(

@@ -1,5 +1,5 @@
 import { toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
-import { hasShowdownMoveReference, vw2rMoveSupport, vw2rReferenceMoveIds } from "./vw2r_move_support.js?v=20260905-drafts-freecalc-partners-v1";
+import { hasShowdownMoveReference, vw2rMoveSupport, vw2rReferenceMoveIds } from "./vw2r_move_support.js?v=20260907-two-turn-immunity-v1";
 
 // The core registry intentionally enables only canonical moves whose complete turn effect
 // is represented here. A move is never treated as simple damage just because its
@@ -42,7 +42,7 @@ const EFFECTS = Object.freeze({
   willowisp: { effectId: "major-status", statusId: "brn", immuneTypes: ["fire"], immuneAbilities: ["waterveil", "waterbubble"] },
   toxic: { effectId: "major-status", statusId: "tox", immuneTypes: ["poison", "steel"], immuneAbilities: ["immunity", "pastelveil"] },
   poisonpowder: { effectId: "major-status", statusId: "psn", immuneTypes: ["poison", "steel"], immuneAbilities: ["immunity", "pastelveil"] },
-  thunderwave: { effectId: "major-status", statusId: "par", moveImmuneTypes: ["ground"], immuneAbilities: ["limber"] },
+  thunderwave: { effectId: "major-status", statusId: "par", ignoreImmunity: false, moveImmuneTypes: ["ground"], immuneAbilities: ["limber"] },
   stunspore: { effectId: "major-status", statusId: "par", immuneAbilities: ["limber"] },
   glare: { effectId: "major-status", statusId: "par", immuneAbilities: ["limber"] },
   raindance: { effectId: "set-field", target: "field", fieldKind: "weather", fieldId: "rain", durationTurns: 5 },

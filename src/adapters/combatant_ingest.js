@@ -1,7 +1,9 @@
 import { canonicalStats, shortHash, stableStringify, toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
 import { canonicalTrainerMember, DatasetReadinessError } from "./standardized_dataset.js?v=20260905-drafts-freecalc-partners-v1";
 
-const NATURE_MULTIPLIER = 1.1;
+const NATURE_MULTIPLIER_DENOMINATOR = 10;
+const NATURE_BOOST_NUMERATOR = 11;
+const NATURE_NERF_NUMERATOR = 9;
 
 function finiteLevel(value) {
   const level = Number(value);
@@ -34,10 +36,10 @@ export function calculateStats(combatant, dataset) {
       output.hp = base === 1 ? 1 : scaled + level + 10;
       continue;
     }
-    let multiplier = 1;
-    if (nature.boostedStat === stat && nature.nerfedStat !== stat) multiplier *= NATURE_MULTIPLIER;
-    if (nature.nerfedStat === stat && nature.boostedStat !== stat) multiplier /= NATURE_MULTIPLIER;
-    output[stat] = Math.floor((scaled + 5) * multiplier);
+    let natureNumerator = NATURE_MULTIPLIER_DENOMINATOR;
+    if (nature.boostedStat === stat && nature.nerfedStat !== stat) natureNumerator = NATURE_BOOST_NUMERATOR;
+    if (nature.nerfedStat === stat && nature.boostedStat !== stat) natureNumerator = NATURE_NERF_NUMERATOR;
+    output[stat] = Math.floor((scaled + 5) * natureNumerator / NATURE_MULTIPLIER_DENOMINATOR);
   }
   return output;
 }

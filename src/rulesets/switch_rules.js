@@ -38,8 +38,14 @@ export function typeEffectiveness(dataset, attackingTypeId, defendingTypeIds) {
   return multiplier;
 }
 
-export function damagingMoveTypeImmunity({ dataset, move, attackerState, defenderState }) {
-  if (!move || String(move.category || "").toLowerCase() === "status" || Number(move.basePower || 0) <= 0) return null;
+function moveUsesTypeImmunity(move, ignoreImmunity) {
+  if (!move) return false;
+  if (String(move.category || "").toLowerCase() === "status" || Number(move.basePower || 0) <= 0) return ignoreImmunity === false;
+  return true;
+}
+
+export function moveTypeImmunity({ dataset, move, attackerState, defenderState, ignoreImmunity }) {
+  if (!moveUsesTypeImmunity(move, ignoreImmunity)) return null;
   if (itemId(defenderState) === "ringtarget") return null;
   const moveType = toId(move.type);
   const defenderTypes = (defenderState?.currentTypeIds || []).map(toId);
@@ -55,8 +61,8 @@ export function damagingMoveTypeImmunity({ dataset, move, attackerState, defende
   return { immune: true, reason: "type-immunity", moveType };
 }
 
-export function damagingMoveAbilityImmunity({ dataset, move, attackerState, defenderState, fieldState, attackerSide = null, defenderSide = null }) {
-  if (!move || String(move.category || "").toLowerCase() === "status" || Number(move.basePower || 0) <= 0) return null;
+export function moveAbilityImmunity({ dataset, move, attackerState, defenderState, fieldState, attackerSide = null, defenderSide = null, ignoreImmunity }) {
+  if (!moveUsesTypeImmunity(move, ignoreImmunity)) return null;
   const attackerAbility = abilityId(attackerState);
   if (["moldbreaker", "teravolt", "turboblaze"].includes(attackerAbility)) return null;
   const defenderAbility = abilityId(defenderState);
@@ -105,6 +111,20 @@ export function damagingMoveAbilityImmunity({ dataset, move, attackerState, defe
     return { immune: true, reason: "ability-immunity", abilityId: defenderAbility, moveType, effect };
   }
   return null;
+}
+
+export function moveImmunity(context) {
+  return moveTypeImmunity(context) || moveAbilityImmunity(context);
+}
+
+export function damagingMoveTypeImmunity(context) {
+  if (String(context?.move?.category || "").toLowerCase() === "status" || Number(context?.move?.basePower || 0) <= 0) return null;
+  return moveTypeImmunity(context);
+}
+
+export function damagingMoveAbilityImmunity(context) {
+  if (String(context?.move?.category || "").toLowerCase() === "status" || Number(context?.move?.basePower || 0) <= 0) return null;
+  return moveAbilityImmunity(context);
 }
 
 export function damagingMoveImmunity(context) {

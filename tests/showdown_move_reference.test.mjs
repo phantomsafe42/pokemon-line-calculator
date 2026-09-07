@@ -49,6 +49,7 @@ test("representative move mechanics remain structured instead of inferred from p
   assert.equal(SHOWDOWN_MOVE_REFERENCE.fakeout.secondary.volatileStatus, "flinch");
   assert.equal(SHOWDOWN_MOVE_REFERENCE.toxicspikes.sideCondition, "toxicspikes");
   assert.equal(SHOWDOWN_MOVE_REFERENCE.helpinghand.volatileStatus, "helpinghand");
+  assert.equal(SHOWDOWN_MOVE_REFERENCE.thunderwave.ignoreImmunity, false);
 });
 
 test("callback-dependent mechanics remain explicitly inventoried", () => {
