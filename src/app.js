@@ -21,6 +21,7 @@ import { formatDamageRollCounts, healingEventDescription, isCriticalOhkoOutcome,
 import { createPlanDocument, planHasWork, setStateNodeNote, upgradeInitialEntryEffects } from "./core/plan.js?v=20260907-form-sprites-v1";
 import { commitForcedReplacement, commitLabel, commitPreview, previewForcedReplacement, refreshUnknownCommittedProbabilities, repairStaleLeafBattleEnd, replacementCommitLabel } from "./core/planner.js?v=20260907-form-sprites-v1";
 import { recalculatePlanDocument } from "./core/recalculation.js?v=20260907-two-turn-immunity-v1";
+import { upgradeImportedPlanForEditing } from "./core/import_upgrade.js?v=20260907-import-upgrade-v1";
 import { moveSupport } from "./rulesets/core_move_support.js?v=20260907-two-turn-immunity-v1";
 import { effectiveActionSpeed } from "./rulesets/action_order.js?v=20260905-drafts-freecalc-partners-v1";
 import { areSlotsAdjacent, canSelectShift, shiftWithCenter, triplePositionForSlot, tripleSlotForPosition } from "./rulesets/triple_battle.js?v=20260905-drafts-freecalc-partners-v1";
@@ -3700,12 +3701,14 @@ async function importPlanFile(file) {
     let imported = parsePlan(await file.text());
     assertValidPlanDocument(imported);
     if (imported.game.gameId !== selectedGameId) throw new Error(`This plan belongs to ${imported.game.gameId}; select that game first`);
-    validatePlanReferences(imported, dataset);
-    const initialUpgrade = upgradeInitialEntryEffects(imported, dataset);
-    imported = initialUpgrade.plan;
-    const hasResolvedBranches = Object.keys(imported.actionGroups || {}).length > 0 || Object.keys(imported.replacementTransitions || {}).length > 0;
-    needsRecalculation = mechanicsCompatibility(imported, dataset).needsRecalculation || (initialUpgrade.changed && hasResolvedBranches);
-    const probabilityRepair = needsRecalculation ? { plan: imported, refreshedStateNodeIds: [] } : await repairUnknownGraphProbabilities(imported);
+    setStatus("Updating the imported line for the current PLC mechanics…");
+    const importUpgrade = await upgradeImportedPlanForEditing(imported, {
+      dataset,
+      previewTurnFn: request => worker.preview(request)
+    });
+    imported = importUpgrade.plan;
+    needsRecalculation = false;
+    const probabilityRepair = await repairUnknownGraphProbabilities(imported);
     plan = probabilityRepair.plan;
     const importedParty = addImportedPlanParty(boxLibrary, plan, dataset);
     bindPlanPlayerPartyToImportedBox(plan, importedParty);
@@ -3726,9 +3729,7 @@ async function importPlanFile(file) {
     refreshContextBoxSelect();
     renderWorkspace();
     if (ui["output-dialog"].open) ui["output-dialog"].close();
-    setStatus(needsRecalculation
-      ? `Plan imported read-only; mechanics fingerprints differ and recalculation is required. Player party added to Boxes as Import ${importedParty.importNumber}.`
-      : `Plan imported into the local draft. Player party added to Boxes as Import ${importedParty.importNumber}.${probabilityRepair.refreshedStateNodeIds.length ? ` Repaired ${probabilityRepair.refreshedStateNodeIds.length} stale graph ${probabilityRepair.refreshedStateNodeIds.length === 1 ? "probability" : "probabilities"}.` : ""} Nothing has been sent to Overlay.`, needsRecalculation);
+    setStatus(`Plan imported into the local draft${importUpgrade.replayed ? " and updated to the current PLC mechanics" : ""}. Player party added to Boxes as Import ${importedParty.importNumber}.${probabilityRepair.refreshedStateNodeIds.length ? ` Repaired ${probabilityRepair.refreshedStateNodeIds.length} stale graph ${probabilityRepair.refreshedStateNodeIds.length === 1 ? "probability" : "probabilities"}.` : ""} Nothing has been sent to Overlay.`);
   } catch (error) { setStatus(error.message, true); }
   finally { ui["import-plan"].value = ""; }
 }

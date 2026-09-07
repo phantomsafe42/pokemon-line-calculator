@@ -41,6 +41,7 @@ The following decisions are settled for the first implementation:
 - The calculator caches only one active working draft. The cache is recoverable working state, not a saved-file authority.
 - Changing game, trainer, exact trainer variant, source roster, or imported plan is destructive to the active draft and requires confirmation when planning work exists.
 - A plan file can be re-ingested by PLC and independently ingested by Overlay. Neither import publishes anything to the stream.
+- PLC re-ingest automatically migrates supported older schemas and replays branches whose mechanics fingerprint is stale before installing the imported line. A successful import must match the current fingerprint and be editable; an ambiguous or failed replay preserves the prior active line and reports the failure instead of installing a read-only plan.
 - PLC selects which plan nodes and required ancestry are exported. Overlay separately selects which imported turn instances are displayed.
 - The Overlay displays no battle plan by default. Importing a file or detecting a live revision only updates its selectable node tree; Select Displayed followed by Send Turns remains required.
 - The Overlay receives a compact rendering-ready projection, not the editable plan document or raw branch graph.

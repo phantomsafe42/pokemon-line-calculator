@@ -4,6 +4,7 @@ import { mechanicsCompatibility, validatePlanReferences } from "../src/contracts
 import { parsePlan } from "../src/contracts/plan_file.js";
 import { commitPreview, previewTurn } from "../src/core/planner.js";
 import { recalculatePlanDocument } from "../src/core/recalculation.js";
+import { upgradeImportedPlanForEditing } from "../src/core/import_upgrade.js";
 import { currentMechanicsFingerprint } from "../src/rulesets/resolver_profile.js";
 import { damageAdapter, fixturePlan } from "./helpers.mjs";
 
@@ -79,6 +80,36 @@ test("resolver-version recalculation preserves a selected crafted outcome", asyn
   assert.ok(events.some(event => event.eventType === "miss" && event.actorKey === players[0].combatantKey));
   assert.ok(!events.some(event => event.eventType === "major-status" && event.actorKey === players[0].combatantKey));
   assert.equal(mechanicsCompatibility(rebuilt, dataset).editable, true);
+});
+
+test("Import Line automatically upgrades an older mechanics fingerprint into an editable plan", async () => {
+  const { dataset, players, enemies, plan: initial } = fixturePlan();
+  const state = initial.stateNodes[initial.initialStateNodeId];
+  const actions = {
+    player: declaredMove(state, players[0].combatantKey, "tackle", enemies[0].combatantKey),
+    enemy: declaredMove(state, enemies[0].combatantKey, "tackle", players[0].combatantKey)
+  };
+  const adapter = damageAdapter(({ attacker }) => attacker.side === "player" ? [12, 14] : [9, 11]);
+  const older = commitPreview(initial, previewTurn({
+    plan: initial,
+    parentStateNodeId: initial.initialStateNodeId,
+    actions,
+    dataset,
+    damageAdapter: adapter
+  }), dataset).plan;
+  older.mechanicsFingerprint = { ...older.mechanicsFingerprint, battleMechanicsHash: "older-export" };
+
+  const upgraded = await upgradeImportedPlanForEditing(older, {
+    dataset,
+    now: "2026-09-07T22:00:00.000Z",
+    previewTurnFn: request => previewTurn({ ...request, dataset, damageAdapter: adapter })
+  });
+
+  assert.equal(upgraded.replayed, true);
+  assert.deepEqual(upgraded.previousFingerprintDifferences, ["battleMechanicsHash"]);
+  assert.equal(mechanicsCompatibility(upgraded.plan, dataset).editable, true);
+  assert.equal(Object.keys(upgraded.plan.actionGroups).length, 1);
+  assert.equal(Object.keys(upgraded.plan.stateNodes).length, Object.keys(older.stateNodes).length);
 });
 
 test("reference validation rejects missing standardized records", () => {
