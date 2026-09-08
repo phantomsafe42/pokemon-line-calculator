@@ -1400,7 +1400,7 @@ Serious Nature
   assert.match(triples.workspaceClass, /is-triples/);
   assert.deepEqual(triples.playerInitial.map(card => card.label), ["Slot 1 · Left", "Slot 2 · Center", "Slot 3 · Right"]);
   assert.deepEqual(triples.enemyInitial.map(card => card.label), ["Slot 4 · Left", "Slot 5 · Center", "Slot 6 · Right"]);
-  assert.deepEqual(triples.enemyInitial.map(card => card.name), ["Lanturn ♂", "Electivire ♂", "Emolga ♂"]);
+  assert.deepEqual(triples.enemyInitial.map(card => card.name), ["Electivire ♂", "Lanturn ♂", "Emolga ♂"]);
   assert.ok(triples.enemyInitial.every(card => card.subtitle === ""));
   assert.deepEqual(triples.enemyInitial.map(card => card.actionSlot), [1, 2, 0]);
   assert.equal(triples.playerInitial[0].top, triples.playerInitial[1].top);

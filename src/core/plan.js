@@ -396,7 +396,12 @@ export function createPlanDocument({
   const format = normalizeBattleFormat(battleFormat || dataset.trainerBattleFormat?.(trainerId) || "singles");
   const required = slotsPerSide(format);
   const selectedPlayerKeys = (playerActiveKeys || [playerActiveKey, ...playerCombatants.slice(1).map(mon => mon.combatantKey)]).slice(0, required);
-  const selectedEnemyKeys = (enemyActiveKeys || [enemyActiveKey, ...enemyCombatants.slice(1).map(mon => mon.combatantKey)]).slice(0, required);
+  const defaultEnemyKeys = [enemyActiveKey, ...enemyCombatants.slice(1).map(mon => mon.combatantKey)].slice(0, required);
+  const selectedEnemyKeys = enemyActiveKeys
+    ? enemyActiveKeys.slice(0, required)
+    : format === "triples" && defaultEnemyKeys.length === 3
+      ? [defaultEnemyKeys[0], defaultEnemyKeys[2], defaultEnemyKeys[1]]
+      : defaultEnemyKeys;
   if (selectedPlayerKeys.length !== required || selectedEnemyKeys.length !== required || selectedPlayerKeys.some(key => !key) || selectedEnemyKeys.some(key => !key)) {
     throw new Error(`${format} requires ${required} active Pokémon per side`);
   }

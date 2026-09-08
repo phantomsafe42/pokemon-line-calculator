@@ -18,7 +18,7 @@ import { exportBranchGroups, planTreeOrder, planTurnTreeOrder, preferredImported
 import { HIDDEN_POWER_TYPES, hiddenPowerTypeFromIvs, resolvedHiddenPowerType } from "./core/hidden_power.js?v=20260905-drafts-freecalc-partners-v1";
 import { forcedTurnAction } from "./core/forced_actions.js?v=20260907-two-turn-immunity-v1";
 import { formatDamageRollCounts, healingEventDescription, isCriticalOhkoOutcome, isHighRollKoOutcome, outcomePanelEvents, readableMechanicName } from "./core/outcome_presentation.js?v=20260905-drafts-freecalc-partners-v1";
-import { createPlanDocument, planHasWork, setStateNodeNote, upgradeInitialEntryEffects } from "./core/plan.js?v=20260907-form-sprites-v1";
+import { createPlanDocument, planHasWork, setStateNodeNote, upgradeInitialEntryEffects } from "./core/plan.js?v=20260907-triple-enemy-deployment-v1";
 import { commitForcedReplacement, commitLabel, commitPreview, previewForcedReplacement, refreshUnknownCommittedProbabilities, repairStaleLeafBattleEnd, replacementCommitLabel } from "./core/planner.js?v=20260907-form-sprites-v1";
 import { recalculatePlanDocument } from "./core/recalculation.js?v=20260907-two-turn-immunity-v1";
 import { upgradeImportedPlanForEditing } from "./core/import_upgrade.js?v=20260907-import-upgrade-v1";

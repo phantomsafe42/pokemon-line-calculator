@@ -72,14 +72,16 @@ function ordinaryActions(players, enemies) {
   };
 }
 
-test("Triple plans use schema v3, three active slots, and player-view top-down adjacency", () => {
-  const { plan } = fixtureTriplePlan();
+test("Triple plans use schema v3, party-order deployment, three active slots, and player-view top-down adjacency", () => {
+  const { players, enemies, plan } = fixtureTriplePlan();
   assert.equal(trainerBattleFormat({ battleProfiles: { challenge: { format: "triple" } } }, { trainerBattleProfile: "challenge" }), "triples");
   assert.equal(plan.schemaVersion, 3);
   assert.equal(plan.game.battleFormat, "triples");
   const root = plan.stateNodes[plan.initialStateNodeId];
   assert.equal(root.active.playerCombatantKeys.length, 3);
   assert.equal(root.active.enemyCombatantKeys.length, 3);
+  assert.deepEqual(root.active.playerCombatantKeys, players.slice(0, 3).map(mon => mon.combatantKey));
+  assert.deepEqual(root.active.enemyCombatantKeys, [enemies[0], enemies[2], enemies[1]].map(mon => mon.combatantKey));
   assert.equal(validatePlanDocument(plan).valid, true);
   const schemaTwoTriple = structuredClone(plan);
   schemaTwoTriple.schemaVersion = 2;
@@ -228,13 +230,13 @@ test("both edge Pokemon may Shift sequentially in the same turn", () => {
 test("enemy Shift controls use player-view left, center, and right positions", () => {
   const { enemies, plan } = fixtureTriplePlan();
   const root = plan.stateNodes[plan.initialStateNodeId];
-  assert.equal(canSelectShift(plan, root, "enemy", enemies[1].combatantKey), true);
-  assert.equal(canSelectShift(plan, root, "enemy", enemies[2].combatantKey), false);
+  assert.equal(canSelectShift(plan, root, "enemy", enemies[2].combatantKey), true);
+  assert.equal(canSelectShift(plan, root, "enemy", enemies[1].combatantKey), false);
   assert.equal(canSelectShift(plan, root, "enemy", enemies[0].combatantKey), true);
-  assert.deepEqual(shiftWithCenter(root, "enemy", enemies[1].combatantKey), {
+  assert.deepEqual(shiftWithCenter(root, "enemy", enemies[2].combatantKey), {
     fromSlot: 1,
     centerSlot: 2,
-    centerKey: enemies[2].combatantKey
+    centerKey: enemies[1].combatantKey
   });
 });
 
