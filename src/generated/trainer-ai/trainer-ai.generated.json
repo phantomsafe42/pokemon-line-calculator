@@ -2,7 +2,7 @@
   "schemaVersion": "plc-generated-trainer-ai/v1alpha1",
   "consumer": "plc-trainer-ai",
   "source": "Datasets",
-  "sourceTreeSha256": "4F291D09851B88AFE6A478DF6BD55175281C9297B650D22301F551AB4BD0C8B8",
+  "sourceTreeSha256": "36B48E0C84F0CD24BA242727F760AD3B9E55353C25F352AB9F776A1178E83C65",
   "files": [
     {
       "path": "volt-white-2r/trainer_ai.json",
@@ -55,8 +55,13 @@
     {
       "path": "gen3/trainer_ai.json",
       "sourcePath": "Gen 3/source-data/trainer_ai.json",
-      "bytes": 578832,
-      "sha256": "CF8BB227DAB1FBF6A0A1D7DC24235DB22E88FFED24BD706BB9B9CCD0C7784FD9"
+      "sourceSha256": "CF8BB227DAB1FBF6A0A1D7DC24235DB22E88FFED24BD706BB9B9CCD0C7784FD9",
+      "transform": {
+        "kind": "exclude-trainer-ai-profiles",
+        "exclusionSetSha256": "4CDE262E8AA7A389A2D8494C563D103E704AB7C2C071116CDFDF69CE49D3B8D0"
+      },
+      "bytes": 185882,
+      "sha256": "2E71C048DD2AF680A682C57423787C40AC424799204CCD183D903CEFC506113A"
     },
     {
       "path": "gen4/trainer_ai.json",

@@ -1,42 +1,42 @@
-import { calculateStats, normalizePlayerCollection, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js?v=20260906-nature-rounding-v1";
-import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260907-form-sprites-v2";
-import { loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260905-drafts-freecalc-partners-v1";
-import { loadTrainerAiDocumentation } from "./adapters/trainer_ai.js?v=20260905-drafts-freecalc-partners-v1";
-import { createDraftRecord, destructiveTransitionNotice, IndexedDbDraftStore, markExported, markLiveFlushed, setLocalLiveEdit, updateDraftRecord } from "./cache/active_draft.js?v=20260905-drafts-freecalc-partners-v1";
-import { TrainerAiForecastCache } from "./cache/trainer_ai_forecast.js?v=20260905-drafts-freecalc-partners-v1";
-import { SavedDraftStore, savedDraftSnapshot } from "./cache/saved_drafts.js?v=20260905-drafts-freecalc-partners-v1";
-import { reorderCards } from "./ui/reorder_cards.js?v=20260905-card-drag-v3";
-import { addFreeCalcBranch, editFreeCalcCombatant, replaceFreeCalcSlot, freeCalcAsNewPlan } from './core/free_calc.js?v=20260905-drafts-freecalc-partners-v1';
-import { eligibleReserves } from './core/party_ownership.js?v=20260905-drafts-freecalc-partners-v1';
-import { downloadPlan, exportSelectedPlan, migratePlanDocument, parsePlan } from "./contracts/plan_file.js?v=20260905-drafts-freecalc-partners-v1";
-import { assertValidPlanDocument } from "./contracts/plan_contract.js?v=20260905-drafts-freecalc-partners-v1";
-import { mechanicsCompatibility, validatePlanReferences } from "./contracts/plan_compatibility.js?v=20260905-drafts-freecalc-partners-v1";
-import { actionList, activeKey, activeKeys, activeSlotEntries, actorSlot, pendingReplacementSlots, setActiveKey, slotsPerSide } from "./core/battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
-import { createBranchEventModel, selectBranchEventOutcome, selectedBranchChoices } from "./core/branch_events.js?v=20260905-drafts-freecalc-partners-v1";
-import { boundedSlotDamageLabel, highestDamageCandidateKeys, resolvedCombatantMovePreview } from "./core/combatant_moves.js?v=20260907-two-turn-immunity-v1";
-import { exportBranchGroups, planTreeOrder, planTurnTreeOrder, preferredImportedReviewStateId, stateLineage, turnNodeVisuals } from "./core/graph.js?v=20260905-drafts-freecalc-partners-v1";
-import { HIDDEN_POWER_TYPES, hiddenPowerTypeFromIvs, resolvedHiddenPowerType } from "./core/hidden_power.js?v=20260905-drafts-freecalc-partners-v1";
-import { forcedTurnAction } from "./core/forced_actions.js?v=20260907-two-turn-immunity-v1";
-import { formatDamageRollCounts, healingEventDescription, isCriticalOhkoOutcome, isHighRollKoOutcome, outcomePanelEvents, readableMechanicName } from "./core/outcome_presentation.js?v=20260905-drafts-freecalc-partners-v1";
-import { createPlanDocument, planHasWork, setStateNodeNote, upgradeInitialEntryEffects } from "./core/plan.js?v=20260907-triple-enemy-deployment-v1";
-import { commitForcedReplacement, commitLabel, commitPreview, previewForcedReplacement, refreshUnknownCommittedProbabilities, repairStaleLeafBattleEnd, replacementCommitLabel } from "./core/planner.js?v=20260907-form-sprites-v1";
-import { recalculatePlanDocument } from "./core/recalculation.js?v=20260907-two-turn-immunity-v1";
-import { upgradeImportedPlanForEditing } from "./core/import_upgrade.js?v=20260907-import-upgrade-v1";
-import { moveSupport } from "./rulesets/core_move_support.js?v=20260907-two-turn-immunity-v1";
-import { effectiveActionSpeed } from "./rulesets/action_order.js?v=20260905-drafts-freecalc-partners-v1";
-import { areSlotsAdjacent, canSelectShift, shiftWithCenter, triplePositionForSlot, tripleSlotForPosition } from "./rulesets/triple_battle.js?v=20260905-drafts-freecalc-partners-v1";
-import { rotationFrontKey, rotationFrontSlot } from "./rulesets/rotation_battle.js?v=20260905-drafts-freecalc-partners-v1";
-import { experienceForLevel, experienceToNextLevel, projectExperience } from "./rulesets/vw2r_experience.js?v=20260905-drafts-freecalc-partners-v1";
-import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260907-two-turn-immunity-v1";
-import { battleCompletionState } from "./core/battle_completion.js?v=20260905-drafts-freecalc-partners-v1";
+import { calculateStats, normalizePlayerCollection, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js?v=20260909-public-release-v2";
+import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260909-public-release-v2";
+import { loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260909-public-release-v2";
+import { loadTrainerAiDocumentation } from "./adapters/trainer_ai.js?v=20260909-public-release-v2";
+import { createDraftRecord, destructiveTransitionNotice, IndexedDbDraftStore, markExported, markLiveFlushed, setLocalLiveEdit, updateDraftRecord } from "./cache/active_draft.js?v=20260909-public-release-v2";
+import { TrainerAiForecastCache } from "./cache/trainer_ai_forecast.js?v=20260909-public-release-v2";
+import { SavedDraftStore, savedDraftSnapshot } from "./cache/saved_drafts.js?v=20260909-public-release-v2";
+import { reorderCards } from "./ui/reorder_cards.js?v=20260909-public-release-v2";
+import { addFreeCalcBranch, editFreeCalcCombatant, replaceFreeCalcSlot, freeCalcAsNewPlan } from './core/free_calc.js?v=20260909-public-release-v2';
+import { eligibleReserves } from './core/party_ownership.js?v=20260909-public-release-v2';
+import { downloadPlan, exportSelectedPlan, migratePlanDocument, parsePlan } from "./contracts/plan_file.js?v=20260909-public-release-v2";
+import { assertValidPlanDocument } from "./contracts/plan_contract.js?v=20260909-public-release-v2";
+import { mechanicsCompatibility, validatePlanReferences } from "./contracts/plan_compatibility.js?v=20260909-public-release-v2";
+import { actionList, activeKey, activeKeys, activeSlotEntries, actorSlot, pendingReplacementSlots, setActiveKey, slotsPerSide } from "./core/battle_slots.js?v=20260909-public-release-v2";
+import { createBranchEventModel, selectBranchEventOutcome, selectedBranchChoices } from "./core/branch_events.js?v=20260909-public-release-v2";
+import { boundedSlotDamageLabel, highestDamageCandidateKeys, resolvedCombatantMovePreview } from "./core/combatant_moves.js?v=20260909-public-release-v2";
+import { exportBranchGroups, planTreeOrder, planTurnTreeOrder, preferredImportedReviewStateId, stateLineage, turnNodeVisuals } from "./core/graph.js?v=20260909-public-release-v2";
+import { HIDDEN_POWER_TYPES, hiddenPowerTypeFromIvs, resolvedHiddenPowerType } from "./core/hidden_power.js?v=20260909-public-release-v2";
+import { forcedTurnAction } from "./core/forced_actions.js?v=20260909-public-release-v2";
+import { formatDamageRollCounts, healingEventDescription, isCriticalOhkoOutcome, isHighRollKoOutcome, outcomePanelEvents, readableMechanicName } from "./core/outcome_presentation.js?v=20260909-public-release-v2";
+import { createPlanDocument, planHasWork, setStateNodeNote, upgradeInitialEntryEffects } from "./core/plan.js?v=20260909-public-release-v2";
+import { commitForcedReplacement, commitLabel, commitPreview, previewForcedReplacement, refreshUnknownCommittedProbabilities, repairStaleLeafBattleEnd, replacementCommitLabel } from "./core/planner.js?v=20260909-public-release-v2";
+import { recalculatePlanDocument } from "./core/recalculation.js?v=20260909-public-release-v2";
+import { upgradeImportedPlanForEditing } from "./core/import_upgrade.js?v=20260909-public-release-v2";
+import { moveSupport } from "./rulesets/core_move_support.js?v=20260909-public-release-v2";
+import { effectiveActionSpeed } from "./rulesets/action_order.js?v=20260909-public-release-v2";
+import { areSlotsAdjacent, canSelectShift, shiftWithCenter, triplePositionForSlot, tripleSlotForPosition } from "./rulesets/triple_battle.js?v=20260909-public-release-v2";
+import { rotationFrontKey, rotationFrontSlot } from "./rulesets/rotation_battle.js?v=20260909-public-release-v2";
+import { experienceForLevel, experienceToNextLevel, projectExperience } from "./rulesets/vw2r_experience.js?v=20260909-public-release-v2";
+import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260909-public-release-v2";
+import { battleCompletionState } from "./core/battle_completion.js?v=20260909-public-release-v2";
 import {
   addBox, addParty, boxesForGame, createEmptyBoxLibrary, exportBoxLibrary, IndexedDbBoxLibraryStore,
   mergeBoxLibrary, parseBoxLibrary, removeBox, removeParty, removePokemon, renameBox, updateParty, upsertPokemon
-} from "./boxes/library.js?v=20260905-drafts-freecalc-partners-v1";
-import { addImportedPlanParty, bindPlanPlayerPartyToImportedBox } from "./boxes/plan_import.js?v=20260905-drafts-freecalc-partners-v1";
-import { applyBranchProgressionToLibrary, branchProgressionSnapshot } from "./boxes/progression.js?v=20260905-drafts-freecalc-partners-v1";
-import { exportShowdown, parseShowdown } from "./boxes/showdown.js?v=20260905-drafts-freecalc-partners-v1";
-import { parseSave, selectSavePokemon } from "./boxes/save_import.js?v=20260905-drafts-freecalc-partners-v1";
+} from "./boxes/library.js?v=20260909-public-release-v2";
+import { addImportedPlanParty, bindPlanPlayerPartyToImportedBox } from "./boxes/plan_import.js?v=20260909-public-release-v2";
+import { applyBranchProgressionToLibrary, branchProgressionSnapshot } from "./boxes/progression.js?v=20260909-public-release-v2";
+import { exportShowdown, parseShowdown } from "./boxes/showdown.js?v=20260909-public-release-v2";
+import { parseSave, selectSavePokemon } from "./boxes/save_import.js?v=20260909-public-release-v2";
 
 const GAME_REGISTRY = Object.freeze({
   "fire-red-omega": {
@@ -440,8 +440,8 @@ async function outputTestingState() {
 async function installTestingStateOutput() {
   if (!PRIVATE_INTEGRATIONS_ALLOWED || !ui["output-state-anchor"]) return;
   const [testingApi, snapshotApi] = await Promise.all([
-    import("./integrations/local_testing_state.js?v=20260905-drafts-freecalc-partners-v1"),
-    import("./testing/state_snapshot.js?v=20260905-drafts-freecalc-partners-v1")
+    import("./integrations/local_testing_state.js?v=20260909-public-release-v2"),
+    import("./testing/state_snapshot.js?v=20260909-public-release-v2")
   ]);
   const capability = await testingApi.detectLocalTestingStateCapability();
   if (!capability) return;
@@ -3781,7 +3781,7 @@ async function installLocalLiveEdit() {
   const enabledForGame = GAME_REGISTRY[selectedGameId]?.capabilities?.liveEdit === true;
   ui["live-edit-anchor"].hidden = !enabledForGame;
   if (!enabledForGame) return;
-  const { detectLocalLiveEditCapability, LocalLiveEditWriter } = await import("./integrations/local_live_edit.js?v=20260905-drafts-freecalc-partners-v1");
+  const { detectLocalLiveEditCapability, LocalLiveEditWriter } = await import("./integrations/local_live_edit.js?v=20260909-public-release-v2");
   const capability = await detectLocalLiveEditCapability();
   if (!capability || liveButton) return;
   liveWriter = new LocalLiveEditWriter({ onError: error => setStatus(`Live Edit heartbeat failed: ${error.message}`, true) });
@@ -3849,7 +3849,7 @@ async function installLocalBattleTracker() {
     updateBattleTrackerButton();
     return;
   }
-  const trackerApi = await import("./integrations/local_battle_tracker.js?v=20260905-drafts-freecalc-partners-v1");
+  const trackerApi = await import("./integrations/local_battle_tracker.js?v=20260909-public-release-v2");
   const capability = await trackerApi.detectLocalBattleTrackerCapability();
   if (!capability) return;
   compareTrackerTurnsFn = trackerApi.compareTrackerTurns;

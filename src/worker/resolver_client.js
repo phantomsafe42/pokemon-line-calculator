@@ -1,5 +1,5 @@
 export class ResolverWorkerClient {
-  constructor(url = new URL("./resolver_worker.js?v=20260907-form-sprites-v1", import.meta.url)) {
+  constructor(url = new URL("./resolver_worker.js?v=20260909-public-release-v2", import.meta.url)) {
     this.url = url;
     this.worker = new Worker(url);
     this.trainerAiWorker = new Worker(url);

@@ -1,13 +1,18 @@
 {
   "schemaVersion": "plc-generated-battle-mechanics/v1alpha1",
-  "consumer": "plc-battle-mechanics",
+  "consumer": "plc-public-battle-mechanics",
   "source": "Battle Mechanics",
-  "sourceTreeSha256": "F2FF6DFD51C9E766C0A629A8A5CA85AADD7D516A3CE1E1C907741750C1D81B2A",
+  "sourceTreeSha256": "CFF244478A5F5A12954C9EC9AC5B2A1A178C794DBDCD4EAFE7A3A5F733759541",
   "files": [
     {
       "path": "shared_damage_calculator.js",
-      "bytes": 41090,
-      "sha256": "56A22FB049830F371127E89F2AD0CBCD3F0F61D3CCE678EFB468C82F8A447ED2"
+      "sourceSha256": "56A22FB049830F371127E89F2AD0CBCD3F0F61D3CCE678EFB468C82F8A447ED2",
+      "transform": {
+        "kind": "exclude-calculator-engines",
+        "exclusionSetSha256": "D9F67B42D536B723466A68FB663D3EE005D11949AE0495129422709C7C2575E9"
+      },
+      "bytes": 40193,
+      "sha256": "A13D593BA8275F89A2671C1BAE0E54FD1873164DE8D8E605BD491CF6D77CE649"
     },
     {
       "path": "trainer_ai/trainer_ai_evaluator.js",

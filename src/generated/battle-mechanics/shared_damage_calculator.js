@@ -18,22 +18,6 @@
                 "vendor/smogon-calc-0.11.0/data.production.min.js",
                 "vendor/smogon-calc-0.11.0/engine.production.min.js"
             ])
-        }),
-        "radical-red-damage-calc@4.1-43fe5ec": Object.freeze({
-            id: "radical-red-damage-calc",
-            version: "4.1-43fe5ec",
-            bootstrap: "shared-commonjs-browser-exports",
-            scripts: Object.freeze([
-                "vendor/radical-red-calc-4.1-43fe5ec/util.js",
-                "vendor/radical-red-calc-4.1-43fe5ec/data/species.js",
-                "vendor/radical-red-calc-4.1-43fe5ec/data/types.js",
-                "vendor/radical-red-calc-4.1-43fe5ec/data/natures.js",
-                "vendor/radical-red-calc-4.1-43fe5ec/data/abilities.js",
-                "vendor/radical-red-calc-4.1-43fe5ec/data/moves.js",
-                "vendor/radical-red-calc-4.1-43fe5ec/data/items.js",
-                "vendor/radical-red-calc-4.1-43fe5ec/data/index.js",
-                "vendor/radical-red-calc-4.1-43fe5ec/engine.production.min.js"
-            ])
         })
     });
     const REQUIRED_SOURCES = [
