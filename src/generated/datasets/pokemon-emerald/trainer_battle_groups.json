@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 2,
+  "gameId": "pokemon-emerald",
+  "kind": "trainer-battle-groups",
+  "records": {
+    "pokemon-emerald-mossdeep-space-center-maxie-tabitha": {
+      "id": "pokemon-emerald-mossdeep-space-center-maxie-tabitha",
+      "battleFormat": "tag",
+      "locationId": "field-mapmossdeepcityspacecenter2f",
+      "enemyTrainerIds": [
+        "pokemon-emerald-trainer-0734",
+        "pokemon-emerald-trainer-0514"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-emerald-trainer-0734",
+        "pokemon-emerald-trainer-0514"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partnerRequirements": [
+        {
+          "trainerToken": "TRAINER_STEVEN_PARTNER",
+          "trainerNum": 3075,
+          "role": "player-partner",
+          "identityDomain": "special-partner-trainer; not ordinary gTrainers index"
+        }
+      ],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "commit-pinned pret field-script/runtime source",
+        "contextArtifact": "tools/imports/vanilla/gen3-trainer-context/pokemon-emerald.json",
+        "evidence": [
+          {
+            "path": "data/maps/MossdeepCity_SpaceCenter_2F/scripts.inc",
+            "line": 315,
+            "text": "trainerbattle TRAINER_BATTLE_SET_TRAINER_A, TRAINER_MAXIE_MOSSDEEP, LOCALID_NONE, MossdeepCity_SpaceCenter_2F_Text_JustWantToExpandLand, MossdeepCity_SpaceCenter_2F_Text_JustWantToExpandLand",
+            "buildConditions": [],
+            "scriptLabel": "MossdeepCity_SpaceCenter_2F_EventScript_MaxieTrainer"
+          },
+          {
+            "path": "data/maps/MossdeepCity_SpaceCenter_2F/scripts.inc",
+            "line": 319,
+            "text": "trainerbattle TRAINER_BATTLE_SET_TRAINER_B, TRAINER_TABITHA_MOSSDEEP, LOCALID_NONE, MossdeepCity_SpaceCenter_Text_TabithaDefeat, MossdeepCity_SpaceCenter_Text_TabithaDefeat",
+            "buildConditions": [],
+            "scriptLabel": "MossdeepCity_SpaceCenter_2F_EventScript_TabithaTrainer"
+          },
+          {
+            "path": "data/maps/MossdeepCity_SpaceCenter_2F/scripts.inc",
+            "line": 234,
+            "text": "special ReducePlayerPartyToSelectedMons",
+            "buildConditions": []
+          },
+          {
+            "path": "data/maps/MossdeepCity_SpaceCenter_2F/scripts.inc",
+            "line": 236,
+            "text": "setvar VAR_0x8004, SPECIAL_BATTLE_STEVEN",
+            "buildConditions": []
+          },
+          {
+            "path": "data/maps/MossdeepCity_SpaceCenter_2F/scripts.inc",
+            "line": 237,
+            "text": "setvar VAR_0x8005, 0",
+            "buildConditions": []
+          },
+          {
+            "path": "data/maps/MossdeepCity_SpaceCenter_2F/scripts.inc",
+            "line": 238,
+            "text": "special DoSpecialTrainerBattle",
+            "buildConditions": []
+          },
+          {
+            "path": "data/maps/MossdeepCity_SpaceCenter_2F/scripts.inc",
+            "line": 240,
+            "text": "special LoadPlayerParty",
+            "buildConditions": []
+          },
+          {
+            "path": "data/maps/MossdeepCity_SpaceCenter_2F/scripts.inc",
+            "line": 244,
+            "text": "special SetCB2WhiteOut",
+            "buildConditions": []
+          },
+          {
+            "path": "src/battle_tower.c",
+            "line": 2122,
+            "endLine": 2133,
+            "text": "case SPECIAL_BATTLE_STEVEN:\n        gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;\n        FillPartnerParty(TRAINER_STEVEN_PARTNER);\n        gApproachingTrainerId = 0;\n        BattleSetup_ConfigureTrainerBattle(MossdeepCity_SpaceCenter_2F_EventScript_MaxieTrainer + 1);\n        gApproachingTrainerId = 1;\n        BattleSetup_ConfigureTrainerBattle(MossdeepCity_SpaceCenter_2F_EventScript_TabithaTrainer + 1);\n        gPartnerTrainerId = TRAINER_STEVEN_PARTNER;\n        CreateTask(Task_StartBattleAfterTransition, 1);\n        PlayMapChosenOrBattleBGM(0);\n        BattleTransition_StartOnField(B_TRANSITION_MAGMA);\n        break;"
+          }
+        ]
+      }
+    }
+  },
+  "validation": {
+    "status": "partial-source-coverage",
+    "fixedGroupStatus": "passed",
+    "unresolved": 0,
+    "unresolvedFixedGroups": 0,
+    "dynamicOperandDiagnostics": 0,
+    "dynamicOperandsAreRuntimeSelectorsNotFixedGroupFailures": true,
+    "sourceArtifact": "tools/imports/vanilla/gen3-trainer-context/pokemon-emerald.json",
+    "emptyRecordsAreValidWhenExactScriptAuditFoundNoSeparateRosterGroups": true
+  }
+}

@@ -1,4 +1,5 @@
 import crypto from "node:crypto";
+import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
@@ -7,10 +8,66 @@ import { fileURLToPath } from "node:url";
 const here = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(here, "..");
 const workspaceRoot = path.resolve(projectRoot, "..", "..");
+const datasetRoot = path.resolve(workspaceRoot, "Datasets");
+const datasetLockPath = path.resolve(projectRoot, "dataset-lock.json");
 const mode = process.argv.includes("--sync") ? "sync" : process.argv.includes("--check") ? "check" : null;
+const workspaceDataset = process.argv.includes("--workspace-dataset");
 
 if (!mode || process.argv.filter(argument => argument === "--sync" || argument === "--check").length !== 1) {
   throw new Error("Use exactly one mode: --sync or --check");
+}
+
+function readJson(file) {
+  return JSON.parse(fs.readFileSync(file, "utf8"));
+}
+
+function gitRevision(revision) {
+  return execFileSync("git", ["-C", datasetRoot, "rev-parse", revision], {
+    encoding: "utf8",
+    windowsHide: true
+  }).trim();
+}
+
+function gitStatus(paths) {
+  return execFileSync("git", ["-C", datasetRoot, "status", "--porcelain=v1", "--", ...paths], {
+    encoding: "utf8",
+    windowsHide: true
+  }).trim();
+}
+
+function datasetExportInputs(profileId) {
+  const config = readJson(path.join(datasetRoot, "consumer_exports.json"));
+  const profile = config.profiles?.[profileId];
+  if (!profile || !Array.isArray(profile.bundles) || !profile.bundles.length) {
+    throw new Error(`Dataset export profile ${profileId} is unavailable`);
+  }
+  return ["consumer_exports.json", ...profile.bundles.flatMap(bundle => bundle.files.map(entry => {
+    const sourcePath = typeof entry === "string" ? entry : entry.source;
+    return path.posix.join(String(bundle.source).replaceAll("\\", "/"), sourcePath).replace(/^\.\//u, "");
+  }))];
+}
+
+function verifyDatasetSource() {
+  if (!fs.existsSync(datasetLockPath)) throw new Error("Missing dataset-lock.json");
+  if (!fs.existsSync(path.join(datasetRoot, ".git"))) throw new Error("Datasets must be an independent Git checkout");
+  const lock = readJson(datasetLockPath);
+  if (lock.schemaVersion !== "plc-dataset-lock/v1") throw new Error("Unsupported Dataset lock schema");
+  if (lock.repository !== "phantomsafe42/pokemon-datasets" || lock.profile !== "plc") throw new Error("Unexpected Dataset release lock");
+  const release = readJson(path.join(datasetRoot, "dataset_release.json"));
+  if (release.version !== lock.releaseVersion) throw new Error("Dataset release version differs from dataset-lock.json");
+  const commit = gitRevision("HEAD");
+  if (!workspaceDataset && commit !== lock.commit) throw new Error(`Dataset checkout is ${commit}; PLC is pinned to ${lock.commit}`);
+  if (!workspaceDataset && gitRevision(`${lock.tag}^{commit}`) !== lock.commit) throw new Error(`Dataset tag ${lock.tag} does not resolve to its locked commit`);
+  const modifiedExportInputs = gitStatus(datasetExportInputs(lock.profile));
+  if (!workspaceDataset && modifiedExportInputs) {
+    throw new Error("Allowlisted Dataset export inputs differ from the pinned release. Use --workspace-dataset only for an explicit local authority cutover.");
+  }
+  return {
+    lock,
+    sourceMode: workspaceDataset ? "local-workspace" : "immutable-release",
+    baseCommit: commit,
+    modifiedExportInputs: modifiedExportInputs ? modifiedExportInputs.split(/\r?\n/u) : []
+  };
 }
 
 const datasetFiles = Object.freeze([
@@ -37,7 +94,21 @@ const datasetCandidates = Object.freeze([
   { consumer: "plc-pk-dataset", gameId: "platinum-kaizo", sourceName: "Platinum Kaizo" },
   { consumer: "plc-rp-dataset", gameId: "renegade-platinum", sourceName: "Renegade Platinum" },
   { consumer: "plc-ss-dataset", gameId: "storm-silver", sourceName: "Storm Silver" },
-  { consumer: "plc-vw2r-dataset", gameId: "volt-white-2r", sourceName: "Volt White 2R" }
+  { consumer: "plc-vw2r-dataset", gameId: "volt-white-2r", sourceName: "Volt White 2R" },
+  { consumer: "plc-ruby-dataset", gameId: "pokemon-ruby", sourceName: "Pokemon Ruby" },
+  { consumer: "plc-sapphire-dataset", gameId: "pokemon-sapphire", sourceName: "Pokemon Sapphire" },
+  { consumer: "plc-emerald-dataset", gameId: "pokemon-emerald", sourceName: "Pokemon Emerald" },
+  { consumer: "plc-firered-dataset", gameId: "pokemon-firered", sourceName: "Pokemon FireRed" },
+  { consumer: "plc-leafgreen-dataset", gameId: "pokemon-leafgreen", sourceName: "Pokemon LeafGreen" },
+  { consumer: "plc-diamond-dataset", gameId: "pokemon-diamond", sourceName: "Pokemon Diamond" },
+  { consumer: "plc-pearl-dataset", gameId: "pokemon-pearl", sourceName: "Pokemon Pearl" },
+  { consumer: "plc-platinum-dataset", gameId: "pokemon-platinum", sourceName: "Pokemon Platinum" },
+  { consumer: "plc-heartgold-dataset", gameId: "pokemon-heartgold", sourceName: "Pokemon HeartGold" },
+  { consumer: "plc-soulsilver-dataset", gameId: "pokemon-soulsilver", sourceName: "Pokemon SoulSilver" },
+  { consumer: "plc-black-dataset", gameId: "pokemon-black", sourceName: "Pokemon Black" },
+  { consumer: "plc-white-dataset", gameId: "pokemon-white", sourceName: "Pokemon White" },
+  { consumer: "plc-black-2-dataset", gameId: "pokemon-black-2", sourceName: "Pokemon Black 2" },
+  { consumer: "plc-white-2-dataset", gameId: "pokemon-white-2", sourceName: "Pokemon White 2" }
 ]);
 
 function datasetCandidateReady(candidate) {
@@ -54,6 +125,7 @@ const datasetProfiles = datasetCandidates.filter(datasetCandidateReady).map(cand
   manifest: "dataset.generated.json",
   files: datasetFiles
 }));
+const datasetSource = verifyDatasetSource();
 
 const profiles = [
   ...datasetProfiles,
@@ -192,6 +264,17 @@ for (const profile of profiles) {
 
 console.log(JSON.stringify({
   status: mode === "sync" ? "generated" : "current",
+  datasetRelease: {
+    sourceMode: datasetSource.sourceMode,
+    repository: datasetSource.lock.repository,
+    tag: datasetSource.lock.tag,
+    commit: datasetSource.baseCommit,
+    releaseVersion: datasetSource.lock.releaseVersion,
+    profile: datasetSource.lock.profile,
+    synchronizedBundles: datasetProfiles.length + 1,
+    intentionallyExcludedBundles: ["datasets/radical-red"],
+    modifiedExportInputs: datasetSource.modifiedExportInputs
+  },
   profiles: results,
   pendingDatasets: pendingDatasetCandidates.map(candidate => candidate.gameId)
 }, null, 2));

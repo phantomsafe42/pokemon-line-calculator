@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-leafgreen",
+  "kind": "progression",
+  "profile": "retail-first-credits-plus-documented-postgame",
+  "strictDependencyGraph": false,
+  "arcs": [
+    {
+      "id": "first-credits",
+      "orderModel": "source-display-order",
+      "strictDependencyGraph": false
+    },
+    {
+      "id": "postgame",
+      "orderModel": "source-display-order",
+      "strictDependencyGraph": false
+    },
+    {
+      "id": "facilities",
+      "orderModel": "repeatable-not-campaign-order",
+      "strictDependencyGraph": false
+    }
+  ],
+  "orderingCaveats": [],
+  "records": [
+    {
+      "id": "brock",
+      "order": 1,
+      "name": "Brock Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-leafgreen-campaign-occurrence-0013"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 110,
+        "pageOrder": 3
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "misty",
+      "order": 2,
+      "name": "Misty Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-leafgreen-campaign-occurrence-0036"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 128,
+        "pageOrder": 5
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "surge",
+      "order": 3,
+      "name": "Lt. Surge Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-leafgreen-campaign-occurrence-0085"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 484,
+        "pageOrder": 6
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "erika",
+      "order": 4,
+      "name": "Erika Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-leafgreen-campaign-occurrence-0146"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 165,
+        "pageOrder": 9
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "koga",
+      "order": 5,
+      "name": "Koga Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-leafgreen-campaign-occurrence-0224"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 375,
+        "pageOrder": 10
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "sabrina",
+      "order": 6,
+      "name": "Sabrina Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-leafgreen-campaign-occurrence-0291"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 738,
+        "pageOrder": 11
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "blaine",
+      "order": 7,
+      "name": "Blaine Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-leafgreen-campaign-occurrence-0327"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 287,
+        "pageOrder": 13
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "giovanni",
+      "order": 8,
+      "name": "Giovanni Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-leafgreen-campaign-occurrence-0372"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 233,
+        "pageOrder": 15
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "league",
+      "order": 9,
+      "name": "League Split",
+      "type": "campaign-phase",
+      "anchorOccurrenceIds": [],
+      "boundarySourceDisplayOrder": null,
+      "orderModel": "source-display-order-after-eighth-gym",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "postgame",
+      "order": 10,
+      "name": "Postgame",
+      "type": "campaign-phase",
+      "anchorOccurrenceIds": [],
+      "boundarySourceDisplayOrder": null,
+      "orderModel": "source-display-order-with-explicit-rematches-retained",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "facilities",
+      "order": 11,
+      "name": "Battle Facilities",
+      "type": "campaign-phase",
+      "anchorOccurrenceIds": [],
+      "boundarySourceDisplayOrder": null,
+      "orderModel": "repeatable-or-source-explicit-rematch; not a fixed campaign sequence",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    }
+  ]
+}

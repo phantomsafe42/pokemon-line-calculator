@@ -52,6 +52,44 @@ test("hindering natures apply the exact 0.9 stat modifier", () => {
   assert.equal(calculated.def, 71);
 });
 
+test("Dataset-declared displayed-level stat adjustments change trainer stats without changing the displayed level", () => {
+  const dataset = fixtureDataset();
+  dataset.mechanics.features.challengeModeDisplayedLevelStatBug = {
+    enabled: true,
+    statLevelDeltaMemberField: "damageFormulaLevelDelta",
+    suppressionMemberField: "suppressDamageFormulaLevelAdjustment",
+    displayedLevelField: "level"
+  };
+  for (const member of dataset.trainer("trainer").team) {
+    member.damageFormulaLevelDelta = -5;
+    member.suppressDamageFormulaLevelAdjustment = false;
+  }
+  const [adjusted] = normalizeTrainerRoster("trainer", null, dataset);
+  const expected = calculateStats({ ...adjusted, level: 45, statCalculationLevelDelta: 0 }, dataset);
+  const unadjusted = calculateStats({ ...adjusted, side: "player", level: 50, statCalculationLevelDelta: 0 }, dataset);
+  assert.equal(adjusted.level, 50);
+  assert.equal(adjusted.statCalculationLevelDelta, -5);
+  assert.deepEqual(adjusted.calculatedStats, expected);
+  assert.notDeepEqual(adjusted.calculatedStats, unadjusted);
+});
+
+test("displayed-level stat adjustments reject malformed values, allow non-trainer omissions, and stay disabled for ordinary Dataset profiles", () => {
+  const dataset = fixtureDataset();
+  dataset.trainer("trainer").team[0].damageFormulaLevelDelta = -5;
+  const [ordinary] = normalizeTrainerRoster("trainer", null, dataset);
+  assert.equal(ordinary.statCalculationLevelDelta, undefined);
+  assert.equal(ordinary.calculatedStats.spe, calculateStats({ ...ordinary, side: "player" }, dataset).spe);
+
+  dataset.mechanics.features.challengeModeDisplayedLevelStatBug = {
+    enabled: true,
+    statLevelDeltaMemberField: "missingAdjustmentField",
+    displayedLevelField: "level"
+  };
+  assert.equal(normalizeTrainerRoster("trainer", null, dataset)[0].statCalculationLevelDelta, undefined);
+  dataset.trainer("trainer").team[0].missingAdjustmentField = "not-an-integer";
+  assert.throws(() => normalizeTrainerRoster("trainer", null, dataset), /invalid missingAdjustmentField/i);
+});
+
 test("standardized baseExp normalizes to the portable EXP-yield field without changing Dataset facts", () => {
   const dataset = fixtureDataset();
   const species = dataset.get("species", "slowmon");

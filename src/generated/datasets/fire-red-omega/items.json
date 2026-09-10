@@ -852,7 +852,14 @@
         "pocket": "POCKET_ITEMS"
       },
       "mechanicsBase": "Berry Juice",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "sacredash": {
       "num": 45,
@@ -2447,7 +2454,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Cheri Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "chestoberry": {
       "num": 134,
@@ -2466,7 +2480,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Chesto Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "pechaberry": {
       "num": 135,
@@ -2485,7 +2506,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Pecha Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "rawstberry": {
       "num": 136,
@@ -2504,7 +2532,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Rawst Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "aspearberry": {
       "num": 137,
@@ -2523,7 +2558,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Aspear Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "leppaberry": {
       "num": 138,
@@ -2542,7 +2584,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Leppa Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "oranberry": {
       "num": 139,
@@ -2561,7 +2610,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Oran Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "persimberry": {
       "num": 140,
@@ -2580,7 +2636,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Persim Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "lumberry": {
       "num": 141,
@@ -2599,7 +2662,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Lum Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "sitrusberry": {
       "num": 142,
@@ -2618,7 +2688,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Sitrus Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "figyberry": {
       "num": 143,
@@ -2637,7 +2714,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Figy Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "wikiberry": {
       "num": 144,
@@ -2656,7 +2740,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Wiki Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "magoberry": {
       "num": 145,
@@ -2675,7 +2766,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Mago Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "aguavberry": {
       "num": 146,
@@ -2694,7 +2792,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Aguav Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "iapapaberry": {
       "num": 147,
@@ -2713,7 +2818,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Iapapa Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "razzberry": {
       "num": 148,
@@ -2732,7 +2844,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Razz Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "blukberry": {
       "num": 149,
@@ -2751,7 +2870,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Bluk Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "nanabberry": {
       "num": 150,
@@ -2770,7 +2896,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Nanab Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "wepearberry": {
       "num": 151,
@@ -2789,7 +2922,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Wepear Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "pinapberry": {
       "num": 152,
@@ -2808,7 +2948,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Pinap Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "pomegberry": {
       "num": 153,
@@ -2827,7 +2974,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Pomeg Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "kelpsyberry": {
       "num": 154,
@@ -2846,7 +3000,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Kelpsy Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "qualotberry": {
       "num": 155,
@@ -2865,7 +3026,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Qualot Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "hondewberry": {
       "num": 156,
@@ -2884,7 +3052,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Hondew Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "grepaberry": {
       "num": 157,
@@ -2903,7 +3078,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Grepa Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "tamatoberry": {
       "num": 158,
@@ -2922,7 +3104,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Tamato Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "cornnberry": {
       "num": 159,
@@ -2941,7 +3130,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Cornn Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "magostberry": {
       "num": 160,
@@ -2960,7 +3156,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Magost Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "rabutaberry": {
       "num": 161,
@@ -2979,7 +3182,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Rabuta Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "nomelberry": {
       "num": 162,
@@ -2998,7 +3208,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Nomel Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "spelonberry": {
       "num": 163,
@@ -3017,7 +3234,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Spelon Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "pamtreberry": {
       "num": 164,
@@ -3036,7 +3260,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Pamtre Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "watmelberry": {
       "num": 165,
@@ -3055,7 +3286,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Watmel Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "durinberry": {
       "num": 166,
@@ -3074,7 +3312,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Durin Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "belueberry": {
       "num": 167,
@@ -3093,7 +3338,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Belue Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "liechiberry": {
       "num": 168,
@@ -3112,7 +3364,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Liechi Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "ganlonberry": {
       "num": 169,
@@ -3131,7 +3390,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Ganlon Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "salacberry": {
       "num": 170,
@@ -3150,7 +3416,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Salac Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "petayaberry": {
       "num": 171,
@@ -3169,7 +3442,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Petaya Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "apicotberry": {
       "num": 172,
@@ -3188,7 +3468,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Apicot Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "lansatberry": {
       "num": 173,
@@ -3207,7 +3494,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Lansat Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "starfberry": {
       "num": 174,
@@ -3226,7 +3520,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Starf Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "enigmaberry": {
       "num": 175,
@@ -3245,7 +3546,14 @@
         "pocket": "POCKET_BERRY_POUCH"
       },
       "mechanicsBase": "Enigma Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "reserveditemslot176": {
       "num": 176,
@@ -3334,7 +3642,14 @@
         "pocket": "POCKET_ITEMS"
       },
       "mechanicsBase": "White Herb",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "machobrace": {
       "num": 181,
@@ -3425,7 +3740,14 @@
         "pocket": "POCKET_ITEMS"
       },
       "mechanicsBase": "Mental Herb",
-      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "choiceband": {
       "num": 186,

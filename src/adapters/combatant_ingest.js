@@ -1,14 +1,34 @@
 import { canonicalStats, shortHash, stableStringify, toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
-import { canonicalTrainerMember, DatasetReadinessError } from "./standardized_dataset.js?v=20260905-drafts-freecalc-partners-v1";
+import { canonicalTrainerMember, DatasetReadinessError } from "./standardized_dataset.js?v=20260909-consumer-readiness-v2";
 
 const NATURE_MULTIPLIER_DENOMINATOR = 10;
 const NATURE_BOOST_NUMERATOR = 11;
 const NATURE_NERF_NUMERATOR = 9;
 
-function finiteLevel(value) {
+function finiteLevel(value, maximum = 100) {
   const level = Number(value);
-  if (!Number.isInteger(level) || level < 1 || level > 100) throw new DatasetReadinessError(`Invalid level ${value}`);
+  if (!Number.isInteger(level) || level < 1 || level > maximum) throw new DatasetReadinessError(`Invalid level ${value}`);
   return level;
+}
+
+function displayedLevelStatBug(dataset) {
+  const feature = dataset?.mechanics?.features?.challengeModeDisplayedLevelStatBug;
+  return feature?.enabled === true ? feature : null;
+}
+
+function trainerStatCalculationLevelDelta(member, dataset, displayedLevel, maximum) {
+  const feature = displayedLevelStatBug(dataset);
+  if (!feature) return 0;
+  const memberField = String(feature.statLevelDeltaMemberField || "").trim();
+  if (!memberField) throw new DatasetReadinessError("The displayed-level stat adjustment is missing its trainer-member field contract");
+  const rawDelta = member?.[memberField];
+  // Static/wild scripted encounters do not pass through the trainer-party level
+  // loader, so the trainer-only field is intentionally absent for those records.
+  if (rawDelta === null || rawDelta === undefined || rawDelta === "") return 0;
+  const delta = Number(rawDelta);
+  if (!Number.isInteger(delta)) throw new DatasetReadinessError(`${member.displaySpecies || member.speciesId} has an invalid ${memberField}`);
+  finiteLevel(displayedLevel + delta, maximum);
+  return delta;
 }
 
 function requireCompleteStats(stats, label, { min = 0, max = 255 } = {}) {
@@ -25,7 +45,12 @@ export function calculateStats(combatant, dataset) {
   if (!species?.baseStats) throw new DatasetReadinessError(`Species ${combatant.speciesId} has no base stats`);
   const nature = combatant.natureId ? dataset.get("natures", combatant.natureId) : null;
   if (!nature) throw new DatasetReadinessError(`${combatant.displayName} requires a nature`);
-  const level = combatant.level;
+  const displayedLevel = finiteLevel(combatant.level, Number(dataset.mechanics?.levelRules?.maximumBattleLevel ?? 100));
+  const delta = displayedLevelStatBug(dataset) && combatant.side === "enemy"
+    ? Number(combatant.statCalculationLevelDelta ?? 0)
+    : 0;
+  if (!Number.isInteger(delta)) throw new DatasetReadinessError(`${combatant.displayName} has an invalid stat-calculation level adjustment`);
+  const level = finiteLevel(displayedLevel + delta, Number(dataset.mechanics?.levelRules?.maximumBattleLevel ?? 100));
   const output = {};
   for (const stat of ["hp", "atk", "def", "spa", "spd", "spe"]) {
     const base = Number(combatant.baseStats?.[stat] ?? species.baseStats[stat]);
@@ -130,6 +155,7 @@ export function normalizeTrainerRoster(trainerId, trainerVariantId, dataset, run
   const trainer = dataset.trainer(trainerId);
   if (!trainer) throw new DatasetReadinessError(`Trainer ${trainerId} is unavailable`);
   const members = dataset.trainerTeam(trainerId, trainerVariantId);
+  const maximumBattleLevel = Number(dataset.mechanics?.levelRules?.maximumBattleLevel ?? 100);
   return members.map((raw, index) => {
     const member = canonicalTrainerMember(raw);
     const observed = runtimeInputs[String(member.slot ?? index + 1)] || {};
@@ -143,6 +169,8 @@ export function normalizeTrainerRoster(trainerId, trainerVariantId, dataset, run
     }
     const species = dataset.get("species", member.speciesId);
     const slot = Number(member.slot ?? index + 1);
+    const level = finiteLevel(member.level, maximumBattleLevel);
+    const statCalculationLevelDelta = trainerStatCalculationLevelDelta(member, dataset, level, maximumBattleLevel);
     return finalizeCombatant({
       combatantKey: `enemy:trainer:${toId(trainer.id)}:variant:${toId(trainerVariantId || "base")}:slot:${slot}`,
       side: "enemy",
@@ -162,7 +190,8 @@ export function normalizeTrainerRoster(trainerId, trainerVariantId, dataset, run
       formId: raw.form ? String(raw.form) : null,
       displayName: raw.displaySpecies || species?.name || member.speciesId,
       nickname: "",
-      level: finiteLevel(member.level),
+      level,
+      ...(statCalculationLevelDelta ? { statCalculationLevelDelta } : {}),
       growthRate: species?.growthRate || null,
       baseExperienceYield: normalizeBaseExperienceYield(species),
       gender: member.gender ?? null,

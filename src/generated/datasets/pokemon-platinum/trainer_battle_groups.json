@@ -1,0 +1,999 @@
+{
+  "schemaVersion": 2,
+  "gameId": "pokemon-platinum",
+  "kind": "trainer-battle-groups",
+  "records": {
+    "platinum-script-pair-0414-0415": {
+      "id": "platinum-script-pair-0414-0415",
+      "battleFormat": "double",
+      "locationId": "field-map-header-0003",
+      "enemyTrainerIds": [
+        "pokemon-platinum-trainer-0414",
+        "pokemon-platinum-trainer-0415"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-platinum-trainer-0414",
+        "pokemon-platinum-trainer-0415"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partnerRequirements": [
+        {
+          "candidateAssignments": [
+            {
+              "evidence": {
+                "label": "JubilifeCity_SetDawnPartnerTeam",
+                "line": 909,
+                "path": "res/field/scripts/scripts_jubilife_city.s",
+                "sha256": "9973c157ce261e15447d4828135a07a4902712723e9bc11b83fffb0a9632ca33"
+              },
+              "rawTrainerId": 616,
+              "trainerToken": "TRAINER_DAWN_JUBILIFE_CITY_CHIMCHAR"
+            },
+            {
+              "evidence": {
+                "label": "JubilifeCity_SetDawnPartnerTeam",
+                "line": 911,
+                "path": "res/field/scripts/scripts_jubilife_city.s",
+                "sha256": "9973c157ce261e15447d4828135a07a4902712723e9bc11b83fffb0a9632ca33"
+              },
+              "rawTrainerId": 617,
+              "trainerToken": "TRAINER_DAWN_JUBILIFE_CITY_PIPLUP"
+            },
+            {
+              "evidence": {
+                "label": "JubilifeCity_SetDawnPartnerTeam",
+                "line": 913,
+                "path": "res/field/scripts/scripts_jubilife_city.s",
+                "sha256": "9973c157ce261e15447d4828135a07a4902712723e9bc11b83fffb0a9632ca33"
+              },
+              "rawTrainerId": 618,
+              "trainerToken": "TRAINER_DAWN_JUBILIFE_CITY_TURTWIG"
+            },
+            {
+              "evidence": {
+                "label": "JubilifeCity_SetLucasPartnerTeam",
+                "line": 918,
+                "path": "res/field/scripts/scripts_jubilife_city.s",
+                "sha256": "9973c157ce261e15447d4828135a07a4902712723e9bc11b83fffb0a9632ca33"
+              },
+              "rawTrainerId": 613,
+              "trainerToken": "TRAINER_LUCAS_JUBILIFE_CITY_CHIMCHAR"
+            },
+            {
+              "evidence": {
+                "label": "JubilifeCity_SetLucasPartnerTeam",
+                "line": 920,
+                "path": "res/field/scripts/scripts_jubilife_city.s",
+                "sha256": "9973c157ce261e15447d4828135a07a4902712723e9bc11b83fffb0a9632ca33"
+              },
+              "rawTrainerId": 614,
+              "trainerToken": "TRAINER_LUCAS_JUBILIFE_CITY_PIPLUP"
+            },
+            {
+              "evidence": {
+                "label": "JubilifeCity_SetLucasPartnerTeam",
+                "line": 922,
+                "path": "res/field/scripts/scripts_jubilife_city.s",
+                "sha256": "9973c157ce261e15447d4828135a07a4902712723e9bc11b83fffb0a9632ca33"
+              },
+              "rawTrainerId": 615,
+              "trainerToken": "TRAINER_LUCAS_JUBILIFE_CITY_TURTWIG"
+            }
+          ],
+          "candidateAssignmentsAreExhaustive": false,
+          "evidence": [
+            {
+              "arguments": [
+                "VAR_0x8004",
+                "TRAINER_GALACTIC_GRUNT_JUBILIFE_CITY_1",
+                "TRAINER_GALACTIC_GRUNT_JUBILIFE_CITY_2"
+              ],
+              "command": "StartTagBattle",
+              "label": "JubilifeCity_TeamGalacticBattle",
+              "line": 876,
+              "path": "res/field/scripts/scripts_jubilife_city.s",
+              "sha256": "9973c157ce261e15447d4828135a07a4902712723e9bc11b83fffb0a9632ca33"
+            }
+          ],
+          "operand": "VAR_0x8004",
+          "rawTrainerId": null,
+          "required": true,
+          "resolution": "runtime-script-variable-required",
+          "source": "battle-command-partner-operand",
+          "trainerToken": null
+        }
+      ],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "commit-pinned pret field-script/runtime source",
+        "contextArtifact": "tools/imports/vanilla/gen4-trainer-context/platinum.json",
+        "evidence": [
+          {
+            "path": "res/field/scripts/scripts_jubilife_city.s",
+            "sha256": "9973c157ce261e15447d4828135a07a4902712723e9bc11b83fffb0a9632ca33",
+            "line": 876,
+            "label": "JubilifeCity_TeamGalacticBattle",
+            "command": "StartTagBattle",
+            "arguments": [
+              "VAR_0x8004",
+              "TRAINER_GALACTIC_GRUNT_JUBILIFE_CITY_1",
+              "TRAINER_GALACTIC_GRUNT_JUBILIFE_CITY_2"
+            ]
+          }
+        ]
+      }
+    },
+    "platinum-script-pair-0521-0527": {
+      "id": "platinum-script-pair-0521-0527",
+      "battleFormat": "double",
+      "locationId": "field-map-header-0220",
+      "enemyTrainerIds": [
+        "pokemon-platinum-trainer-0521",
+        "pokemon-platinum-trainer-0527"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-platinum-trainer-0521",
+        "pokemon-platinum-trainer-0527"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partnerRequirements": [],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "commit-pinned pret field-script/runtime source",
+        "contextArtifact": "tools/imports/vanilla/gen4-trainer-context/platinum.json",
+        "evidence": [
+          {
+            "path": "res/field/scripts/scripts_spear_pillar.s",
+            "sha256": "be3ac2fe74148c2684033eaeef853f9b46e027f52a1e84ba9cf70c0b3bd14dae",
+            "line": 115,
+            "label": "SpearPillar_StartBattleGrunts",
+            "command": "StartTrainerBattle",
+            "arguments": [
+              "TRAINER_GALACTIC_GRUNT_SPEAR_PILLAR_1",
+              "TRAINER_GALACTIC_GRUNT_SPEAR_PILLAR_2"
+            ]
+          }
+        ]
+      }
+    },
+    "platinum-script-pair-0528-0407": {
+      "id": "platinum-script-pair-0528-0407",
+      "battleFormat": "double",
+      "locationId": "field-map-header-0220",
+      "enemyTrainerIds": [
+        "pokemon-platinum-trainer-0528",
+        "pokemon-platinum-trainer-0407"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-platinum-trainer-0528",
+        "pokemon-platinum-trainer-0407"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partnerRequirements": [
+        {
+          "candidateAssignments": [
+            {
+              "evidence": {
+                "label": "SpearPillar_SetRivalPartnerTeam",
+                "line": 297,
+                "path": "res/field/scripts/scripts_spear_pillar.s",
+                "sha256": "be3ac2fe74148c2684033eaeef853f9b46e027f52a1e84ba9cf70c0b3bd14dae"
+              },
+              "rawTrainerId": 620,
+              "trainerToken": "TRAINER_RIVAL_SPEAR_PILLAR_CHIMCHAR"
+            },
+            {
+              "evidence": {
+                "label": "SpearPillar_SetRivalPartnerTeam",
+                "line": 299,
+                "path": "res/field/scripts/scripts_spear_pillar.s",
+                "sha256": "be3ac2fe74148c2684033eaeef853f9b46e027f52a1e84ba9cf70c0b3bd14dae"
+              },
+              "rawTrainerId": 619,
+              "trainerToken": "TRAINER_RIVAL_SPEAR_PILLAR_TURTWIG"
+            },
+            {
+              "evidence": {
+                "label": "SpearPillar_SetRivalPartnerTeam",
+                "line": 301,
+                "path": "res/field/scripts/scripts_spear_pillar.s",
+                "sha256": "be3ac2fe74148c2684033eaeef853f9b46e027f52a1e84ba9cf70c0b3bd14dae"
+              },
+              "rawTrainerId": 607,
+              "trainerToken": "TRAINER_RIVAL_SPEAR_PILLAR_PIPLUP"
+            }
+          ],
+          "candidateAssignmentsAreExhaustive": false,
+          "evidence": [
+            {
+              "arguments": [
+                "VAR_0x8004",
+                "TRAINER_COMMANDER_MARS_SPEAR_PILLAR",
+                "TRAINER_COMMANDER_JUPITER_SPEAR_PILLAR"
+              ],
+              "command": "StartTagBattle",
+              "label": "SpearPillar_CoordEvent_MarsJupiter",
+              "line": 176,
+              "path": "res/field/scripts/scripts_spear_pillar.s",
+              "sha256": "be3ac2fe74148c2684033eaeef853f9b46e027f52a1e84ba9cf70c0b3bd14dae"
+            }
+          ],
+          "operand": "VAR_0x8004",
+          "rawTrainerId": null,
+          "required": true,
+          "resolution": "runtime-script-variable-required",
+          "source": "battle-command-partner-operand",
+          "trainerToken": null
+        }
+      ],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "commit-pinned pret field-script/runtime source",
+        "contextArtifact": "tools/imports/vanilla/gen4-trainer-context/platinum.json",
+        "evidence": [
+          {
+            "path": "res/field/scripts/scripts_spear_pillar.s",
+            "sha256": "be3ac2fe74148c2684033eaeef853f9b46e027f52a1e84ba9cf70c0b3bd14dae",
+            "line": 176,
+            "label": "SpearPillar_CoordEvent_MarsJupiter",
+            "command": "StartTagBattle",
+            "arguments": [
+              "VAR_0x8004",
+              "TRAINER_COMMANDER_MARS_SPEAR_PILLAR",
+              "TRAINER_COMMANDER_JUPITER_SPEAR_PILLAR"
+            ]
+          }
+        ]
+      }
+    },
+    "platinum-script-pair-0536-0551": {
+      "id": "platinum-script-pair-0536-0551",
+      "battleFormat": "double",
+      "locationId": "field-map-header-0337",
+      "enemyTrainerIds": [
+        "pokemon-platinum-trainer-0536",
+        "pokemon-platinum-trainer-0551"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-platinum-trainer-0536",
+        "pokemon-platinum-trainer-0551"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partnerRequirements": [],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "commit-pinned pret field-script/runtime source",
+        "contextArtifact": "tools/imports/vanilla/gen4-trainer-context/platinum.json",
+        "evidence": [
+          {
+            "path": "res/field/scripts/scripts_restaurant.s",
+            "sha256": "ac17568957d1f37f37d77df97104b8c570625c3e45e6eb1ff698e54cc1fe9c9b",
+            "line": 226,
+            "label": "Restaurant_IsmaelBattle",
+            "command": "StartTrainerBattle",
+            "arguments": [
+              "TRAINER_ARTIST_ISMAEL",
+              "TRAINER_BEAUTY_HARLEY"
+            ]
+          },
+          {
+            "path": "res/field/scripts/scripts_restaurant.s",
+            "sha256": "ac17568957d1f37f37d77df97104b8c570625c3e45e6eb1ff698e54cc1fe9c9b",
+            "line": 348,
+            "label": "Restaurant_HarleyBattle",
+            "command": "StartTrainerBattle",
+            "arguments": [
+              "TRAINER_ARTIST_ISMAEL",
+              "TRAINER_BEAUTY_HARLEY"
+            ]
+          }
+        ]
+      }
+    },
+    "platinum-script-pair-0538-0547": {
+      "id": "platinum-script-pair-0538-0547",
+      "battleFormat": "double",
+      "locationId": "field-map-header-0337",
+      "enemyTrainerIds": [
+        "pokemon-platinum-trainer-0538",
+        "pokemon-platinum-trainer-0547"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-platinum-trainer-0538",
+        "pokemon-platinum-trainer-0547"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partnerRequirements": [],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "commit-pinned pret field-script/runtime source",
+        "contextArtifact": "tools/imports/vanilla/gen4-trainer-context/platinum.json",
+        "evidence": [
+          {
+            "path": "res/field/scripts/scripts_restaurant.s",
+            "sha256": "ac17568957d1f37f37d77df97104b8c570625c3e45e6eb1ff698e54cc1fe9c9b",
+            "line": 1690,
+            "label": "Restaurant_DarrylBattle",
+            "command": "StartTrainerBattle",
+            "arguments": [
+              "TRAINER_CAMERAMAN_DARRYL",
+              "TRAINER_REPORTER_VALERIE"
+            ]
+          },
+          {
+            "path": "res/field/scripts/scripts_restaurant.s",
+            "sha256": "ac17568957d1f37f37d77df97104b8c570625c3e45e6eb1ff698e54cc1fe9c9b",
+            "line": 1812,
+            "label": "Restaurant_ValerieBattle",
+            "command": "StartTrainerBattle",
+            "arguments": [
+              "TRAINER_CAMERAMAN_DARRYL",
+              "TRAINER_REPORTER_VALERIE"
+            ]
+          }
+        ]
+      }
+    },
+    "platinum-script-pair-0539-0535": {
+      "id": "platinum-script-pair-0539-0535",
+      "battleFormat": "double",
+      "locationId": "field-map-header-0337",
+      "enemyTrainerIds": [
+        "pokemon-platinum-trainer-0539",
+        "pokemon-platinum-trainer-0535"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-platinum-trainer-0539",
+        "pokemon-platinum-trainer-0535"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partnerRequirements": [],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "commit-pinned pret field-script/runtime source",
+        "contextArtifact": "tools/imports/vanilla/gen4-trainer-context/platinum.json",
+        "evidence": [
+          {
+            "path": "res/field/scripts/scripts_restaurant.s",
+            "sha256": "ac17568957d1f37f37d77df97104b8c570625c3e45e6eb1ff698e54cc1fe9c9b",
+            "line": 958,
+            "label": "Restaurant_EugeneBattle",
+            "command": "StartTrainerBattle",
+            "arguments": [
+              "TRAINER_COLLECTOR_EUGENE",
+              "TRAINER_AROMA_LADY_ALISON"
+            ]
+          },
+          {
+            "path": "res/field/scripts/scripts_restaurant.s",
+            "sha256": "ac17568957d1f37f37d77df97104b8c570625c3e45e6eb1ff698e54cc1fe9c9b",
+            "line": 1080,
+            "label": "Restaurant_AlisonBattle",
+            "command": "StartTrainerBattle",
+            "arguments": [
+              "TRAINER_COLLECTOR_EUGENE",
+              "TRAINER_AROMA_LADY_ALISON"
+            ]
+          }
+        ]
+      }
+    },
+    "platinum-script-pair-0541-0550": {
+      "id": "platinum-script-pair-0541-0550",
+      "battleFormat": "double",
+      "locationId": "field-map-header-0337",
+      "enemyTrainerIds": [
+        "pokemon-platinum-trainer-0541",
+        "pokemon-platinum-trainer-0550"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-platinum-trainer-0541",
+        "pokemon-platinum-trainer-0550"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partnerRequirements": [],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "commit-pinned pret field-script/runtime source",
+        "contextArtifact": "tools/imports/vanilla/gen4-trainer-context/platinum.json",
+        "evidence": [
+          {
+            "path": "res/field/scripts/scripts_restaurant.s",
+            "sha256": "ac17568957d1f37f37d77df97104b8c570625c3e45e6eb1ff698e54cc1fe9c9b",
+            "line": 1934,
+            "label": "Restaurant_KendrickBattle",
+            "command": "StartTrainerBattle",
+            "arguments": [
+              "TRAINER_PI_KENDRICK",
+              "TRAINER_BEAUTY_GABRIELLA"
+            ]
+          },
+          {
+            "path": "res/field/scripts/scripts_restaurant.s",
+            "sha256": "ac17568957d1f37f37d77df97104b8c570625c3e45e6eb1ff698e54cc1fe9c9b",
+            "line": 2056,
+            "label": "Restaurant_GabriellaBattle",
+            "command": "StartTrainerBattle",
+            "arguments": [
+              "TRAINER_PI_KENDRICK",
+              "TRAINER_BEAUTY_GABRIELLA"
+            ]
+          }
+        ]
+      }
+    },
+    "platinum-script-pair-0542-0543": {
+      "id": "platinum-script-pair-0542-0543",
+      "battleFormat": "double",
+      "locationId": "field-map-header-0337",
+      "enemyTrainerIds": [
+        "pokemon-platinum-trainer-0542",
+        "pokemon-platinum-trainer-0543"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-platinum-trainer-0542",
+        "pokemon-platinum-trainer-0543"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partnerRequirements": [],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "commit-pinned pret field-script/runtime source",
+        "contextArtifact": "tools/imports/vanilla/gen4-trainer-context/platinum.json",
+        "evidence": [
+          {
+            "path": "res/field/scripts/scripts_restaurant.s",
+            "sha256": "ac17568957d1f37f37d77df97104b8c570625c3e45e6eb1ff698e54cc1fe9c9b",
+            "line": 714,
+            "label": "Restaurant_LeonardoBattle",
+            "command": "StartTrainerBattle",
+            "arguments": [
+              "TRAINER_GENTLEMAN_LEONARDO",
+              "TRAINER_SOCIALITE_REBECCA"
+            ]
+          },
+          {
+            "path": "res/field/scripts/scripts_restaurant.s",
+            "sha256": "ac17568957d1f37f37d77df97104b8c570625c3e45e6eb1ff698e54cc1fe9c9b",
+            "line": 836,
+            "label": "Restaurant_RebeccaBattle",
+            "command": "StartTrainerBattle",
+            "arguments": [
+              "TRAINER_GENTLEMAN_LEONARDO",
+              "TRAINER_SOCIALITE_REBECCA"
+            ]
+          }
+        ]
+      }
+    },
+    "platinum-script-pair-0545-0546": {
+      "id": "platinum-script-pair-0545-0546",
+      "battleFormat": "double",
+      "locationId": "field-map-header-0337",
+      "enemyTrainerIds": [
+        "pokemon-platinum-trainer-0545",
+        "pokemon-platinum-trainer-0546"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-platinum-trainer-0545",
+        "pokemon-platinum-trainer-0546"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partnerRequirements": [],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "commit-pinned pret field-script/runtime source",
+        "contextArtifact": "tools/imports/vanilla/gen4-trainer-context/platinum.json",
+        "evidence": [
+          {
+            "path": "res/field/scripts/scripts_restaurant.s",
+            "sha256": "ac17568957d1f37f37d77df97104b8c570625c3e45e6eb1ff698e54cc1fe9c9b",
+            "line": 470,
+            "label": "Restaurant_RomanBattle",
+            "command": "StartTrainerBattle",
+            "arguments": [
+              "TRAINER_RICH_BOY_ROMAN",
+              "TRAINER_LADY_KYLIE"
+            ]
+          },
+          {
+            "path": "res/field/scripts/scripts_restaurant.s",
+            "sha256": "ac17568957d1f37f37d77df97104b8c570625c3e45e6eb1ff698e54cc1fe9c9b",
+            "line": 592,
+            "label": "Restaurant_KylieBattle",
+            "command": "StartTrainerBattle",
+            "arguments": [
+              "TRAINER_RICH_BOY_ROMAN",
+              "TRAINER_LADY_KYLIE"
+            ]
+          }
+        ]
+      }
+    },
+    "platinum-script-pair-0548-0540": {
+      "id": "platinum-script-pair-0548-0540",
+      "battleFormat": "double",
+      "locationId": "field-map-header-0337",
+      "enemyTrainerIds": [
+        "pokemon-platinum-trainer-0548",
+        "pokemon-platinum-trainer-0540"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-platinum-trainer-0548",
+        "pokemon-platinum-trainer-0540"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partnerRequirements": [],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "commit-pinned pret field-script/runtime source",
+        "contextArtifact": "tools/imports/vanilla/gen4-trainer-context/platinum.json",
+        "evidence": [
+          {
+            "path": "res/field/scripts/scripts_restaurant.s",
+            "sha256": "ac17568957d1f37f37d77df97104b8c570625c3e45e6eb1ff698e54cc1fe9c9b",
+            "line": 1202,
+            "label": "Restaurant_EstebanBattle",
+            "command": "StartTrainerBattle",
+            "arguments": [
+              "TRAINER_SCHOOL_KID_ESTEBAN",
+              "TRAINER_POKEFAN_MEREDITH"
+            ]
+          },
+          {
+            "path": "res/field/scripts/scripts_restaurant.s",
+            "sha256": "ac17568957d1f37f37d77df97104b8c570625c3e45e6eb1ff698e54cc1fe9c9b",
+            "line": 1324,
+            "label": "Restaurant_MeredithBattle",
+            "command": "StartTrainerBattle",
+            "arguments": [
+              "TRAINER_SCHOOL_KID_ESTEBAN",
+              "TRAINER_POKEFAN_MEREDITH"
+            ]
+          }
+        ]
+      }
+    },
+    "platinum-script-pair-0549-0537": {
+      "id": "platinum-script-pair-0549-0537",
+      "battleFormat": "double",
+      "locationId": "field-map-header-0337",
+      "enemyTrainerIds": [
+        "pokemon-platinum-trainer-0549",
+        "pokemon-platinum-trainer-0537"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-platinum-trainer-0549",
+        "pokemon-platinum-trainer-0537"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partnerRequirements": [],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "commit-pinned pret field-script/runtime source",
+        "contextArtifact": "tools/imports/vanilla/gen4-trainer-context/platinum.json",
+        "evidence": [
+          {
+            "path": "res/field/scripts/scripts_restaurant.s",
+            "sha256": "ac17568957d1f37f37d77df97104b8c570625c3e45e6eb1ff698e54cc1fe9c9b",
+            "line": 2178,
+            "label": "Restaurant_EmilioBattle",
+            "command": "StartTrainerBattle",
+            "arguments": [
+              "TRAINER_SCIENTIST_EMILIO",
+              "TRAINER_BREEDER_KAYLEE"
+            ]
+          },
+          {
+            "path": "res/field/scripts/scripts_restaurant.s",
+            "sha256": "ac17568957d1f37f37d77df97104b8c570625c3e45e6eb1ff698e54cc1fe9c9b",
+            "line": 2300,
+            "label": "Restaurant_KayleeBattle",
+            "command": "StartTrainerBattle",
+            "arguments": [
+              "TRAINER_SCIENTIST_EMILIO",
+              "TRAINER_BREEDER_KAYLEE"
+            ]
+          }
+        ]
+      }
+    },
+    "platinum-script-pair-0552-0544": {
+      "id": "platinum-script-pair-0552-0544",
+      "battleFormat": "double",
+      "locationId": "field-map-header-0337",
+      "enemyTrainerIds": [
+        "pokemon-platinum-trainer-0552",
+        "pokemon-platinum-trainer-0544"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-platinum-trainer-0552",
+        "pokemon-platinum-trainer-0544"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partnerRequirements": [],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "commit-pinned pret field-script/runtime source",
+        "contextArtifact": "tools/imports/vanilla/gen4-trainer-context/platinum.json",
+        "evidence": [
+          {
+            "path": "res/field/scripts/scripts_restaurant.s",
+            "sha256": "ac17568957d1f37f37d77df97104b8c570625c3e45e6eb1ff698e54cc1fe9c9b",
+            "line": 1446,
+            "label": "Restaurant_EmanuelBattle",
+            "command": "StartTrainerBattle",
+            "arguments": [
+              "TRAINER_VETERAN_EMANUEL",
+              "TRAINER_LASS_BLYTHE"
+            ]
+          },
+          {
+            "path": "res/field/scripts/scripts_restaurant.s",
+            "sha256": "ac17568957d1f37f37d77df97104b8c570625c3e45e6eb1ff698e54cc1fe9c9b",
+            "line": 1568,
+            "label": "Restaurant_BlytheBattle",
+            "command": "StartTrainerBattle",
+            "arguments": [
+              "TRAINER_VETERAN_EMANUEL",
+              "TRAINER_LASS_BLYTHE"
+            ]
+          }
+        ]
+      }
+    },
+    "platinum-script-pair-0835-0836": {
+      "id": "platinum-script-pair-0835-0836",
+      "battleFormat": "double",
+      "locationId": "field-map-header-0293",
+      "enemyTrainerIds": [
+        "pokemon-platinum-trainer-0835",
+        "pokemon-platinum-trainer-0836"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-platinum-trainer-0835",
+        "pokemon-platinum-trainer-0836"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partnerRequirements": [
+        {
+          "candidateAssignments": [
+            {
+              "evidence": {
+                "label": "IronIslandB2FLeftRoom_CoordEvent_RileyStartFollowing",
+                "line": 56,
+                "path": "res/field/scripts/scripts_iron_island_b2f_left_room.s",
+                "sha256": "377c1a91a7acd0d465931a1cecd755cfa6dbcd34239fa218ea700dc09a4828f1"
+              },
+              "rawTrainerId": 609,
+              "trainerToken": "TRAINER_RILEY_IRON_ISLAND"
+            }
+          ],
+          "candidateAssignmentsAreExhaustive": false,
+          "evidence": [
+            {
+              "line": 171,
+              "path": "res/field/scripts/scripts_iron_island_b2f_left_room.s",
+              "sha256": "377c1a91a7acd0d465931a1cecd755cfa6dbcd34239fa218ea700dc09a4828f1",
+              "source": "SetHasPartner"
+            },
+            {
+              "arguments": [
+                "TRAINER_GALACTIC_GRUNT_IRON_ISLAND_1",
+                "TRAINER_GALACTIC_GRUNT_IRON_ISLAND_2"
+              ],
+              "command": "StartTrainerBattle",
+              "label": "IronIslandB2FLeftRoom_CoordEvent_Grunts",
+              "line": 172,
+              "path": "res/field/scripts/scripts_iron_island_b2f_left_room.s",
+              "sha256": "377c1a91a7acd0d465931a1cecd755cfa6dbcd34239fa218ea700dc09a4828f1"
+            }
+          ],
+          "operand": "VAR_PARTNER_TRAINER_ID",
+          "rawTrainerId": null,
+          "required": true,
+          "resolution": "runtime-partner-variable-required",
+          "source": "explicit-partner-state-before-battle"
+        }
+      ],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "commit-pinned pret field-script/runtime source",
+        "contextArtifact": "tools/imports/vanilla/gen4-trainer-context/platinum.json",
+        "evidence": [
+          {
+            "path": "res/field/scripts/scripts_iron_island_b2f_left_room.s",
+            "sha256": "377c1a91a7acd0d465931a1cecd755cfa6dbcd34239fa218ea700dc09a4828f1",
+            "line": 172,
+            "label": "IronIslandB2FLeftRoom_CoordEvent_Grunts",
+            "command": "StartTrainerBattle",
+            "arguments": [
+              "TRAINER_GALACTIC_GRUNT_IRON_ISLAND_1",
+              "TRAINER_GALACTIC_GRUNT_IRON_ISLAND_2"
+            ]
+          }
+        ]
+      }
+    },
+    "platinum-script-pair-0848-0849": {
+      "id": "platinum-script-pair-0848-0849",
+      "battleFormat": "double",
+      "locationId": "field-map-header-0132",
+      "enemyTrainerIds": [
+        "pokemon-platinum-trainer-0848",
+        "pokemon-platinum-trainer-0849"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-platinum-trainer-0848",
+        "pokemon-platinum-trainer-0849"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partnerRequirements": [
+        {
+          "candidateAssignments": [
+            {
+              "evidence": {
+                "label": "VeilstoneCity_SetDawnPartnerTeam",
+                "line": 630,
+                "path": "res/field/scripts/scripts_veilstone_city.s",
+                "sha256": "7bb042cdc7bf81ac19601a0f672ee49cecd276e2cbc97707d5a38132008a862f"
+              },
+              "rawTrainerId": 625,
+              "trainerToken": "TRAINER_DAWN_VEILSTONE_CITY_CHIMCHAR"
+            },
+            {
+              "evidence": {
+                "label": "VeilstoneCity_SetDawnPartnerTeam",
+                "line": 632,
+                "path": "res/field/scripts/scripts_veilstone_city.s",
+                "sha256": "7bb042cdc7bf81ac19601a0f672ee49cecd276e2cbc97707d5a38132008a862f"
+              },
+              "rawTrainerId": 626,
+              "trainerToken": "TRAINER_DAWN_VEILSTONE_CITY_PIPLUP"
+            },
+            {
+              "evidence": {
+                "label": "VeilstoneCity_SetDawnPartnerTeam",
+                "line": 634,
+                "path": "res/field/scripts/scripts_veilstone_city.s",
+                "sha256": "7bb042cdc7bf81ac19601a0f672ee49cecd276e2cbc97707d5a38132008a862f"
+              },
+              "rawTrainerId": 624,
+              "trainerToken": "TRAINER_DAWN_VEILSTONE_CITY_TURTWIG"
+            },
+            {
+              "evidence": {
+                "label": "VeilstoneCity_SetLucasPartnerTeam",
+                "line": 639,
+                "path": "res/field/scripts/scripts_veilstone_city.s",
+                "sha256": "7bb042cdc7bf81ac19601a0f672ee49cecd276e2cbc97707d5a38132008a862f"
+              },
+              "rawTrainerId": 622,
+              "trainerToken": "TRAINER_LUCAS_VEILSTONE_CITY_CHIMCHAR"
+            },
+            {
+              "evidence": {
+                "label": "VeilstoneCity_SetLucasPartnerTeam",
+                "line": 641,
+                "path": "res/field/scripts/scripts_veilstone_city.s",
+                "sha256": "7bb042cdc7bf81ac19601a0f672ee49cecd276e2cbc97707d5a38132008a862f"
+              },
+              "rawTrainerId": 623,
+              "trainerToken": "TRAINER_LUCAS_VEILSTONE_CITY_PIPLUP"
+            },
+            {
+              "evidence": {
+                "label": "VeilstoneCity_SetLucasPartnerTeam",
+                "line": 643,
+                "path": "res/field/scripts/scripts_veilstone_city.s",
+                "sha256": "7bb042cdc7bf81ac19601a0f672ee49cecd276e2cbc97707d5a38132008a862f"
+              },
+              "rawTrainerId": 621,
+              "trainerToken": "TRAINER_LUCAS_VEILSTONE_CITY_TURTWIG"
+            }
+          ],
+          "candidateAssignmentsAreExhaustive": false,
+          "evidence": [
+            {
+              "arguments": [
+                "VAR_0x8004",
+                "TRAINER_GALACTIC_GRUNT_VEILSTONE_CITY_1",
+                "TRAINER_GALACTIC_GRUNT_VEILSTONE_CITY_2"
+              ],
+              "command": "StartTagBattle",
+              "label": "VeilstoneCity_WarehouseScene",
+              "line": 503,
+              "path": "res/field/scripts/scripts_veilstone_city.s",
+              "sha256": "7bb042cdc7bf81ac19601a0f672ee49cecd276e2cbc97707d5a38132008a862f"
+            }
+          ],
+          "operand": "VAR_0x8004",
+          "rawTrainerId": null,
+          "required": true,
+          "resolution": "runtime-script-variable-required",
+          "source": "battle-command-partner-operand",
+          "trainerToken": null
+        }
+      ],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "commit-pinned pret field-script/runtime source",
+        "contextArtifact": "tools/imports/vanilla/gen4-trainer-context/platinum.json",
+        "evidence": [
+          {
+            "path": "res/field/scripts/scripts_veilstone_city.s",
+            "sha256": "7bb042cdc7bf81ac19601a0f672ee49cecd276e2cbc97707d5a38132008a862f",
+            "line": 503,
+            "label": "VeilstoneCity_WarehouseScene",
+            "command": "StartTagBattle",
+            "arguments": [
+              "VAR_0x8004",
+              "TRAINER_GALACTIC_GRUNT_VEILSTONE_CITY_1",
+              "TRAINER_GALACTIC_GRUNT_VEILSTONE_CITY_2"
+            ]
+          }
+        ]
+      }
+    },
+    "platinum-script-pair-0921-0922": {
+      "id": "platinum-script-pair-0921-0922",
+      "battleFormat": "double",
+      "locationId": "field-map-header-0188",
+      "enemyTrainerIds": [
+        "pokemon-platinum-trainer-0921",
+        "pokemon-platinum-trainer-0922"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-platinum-trainer-0921",
+        "pokemon-platinum-trainer-0922"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partnerRequirements": [
+        {
+          "candidateAssignments": [
+            {
+              "evidence": {
+                "label": "FightArea_SetRivalPartnerTeam",
+                "line": 206,
+                "path": "res/field/scripts/scripts_fight_area.s",
+                "sha256": "7353aeb0649d2e68e5d776ed34715d4d9f79290770d80b4fff74d6de6cd94beb"
+              },
+              "rawTrainerId": 925,
+              "trainerToken": "TRAINER_RIVAL_FIGHT_AREA_CHIMCHAR"
+            },
+            {
+              "evidence": {
+                "label": "FightArea_SetRivalPartnerTeam",
+                "line": 208,
+                "path": "res/field/scripts/scripts_fight_area.s",
+                "sha256": "7353aeb0649d2e68e5d776ed34715d4d9f79290770d80b4fff74d6de6cd94beb"
+              },
+              "rawTrainerId": 924,
+              "trainerToken": "TRAINER_RIVAL_FIGHT_AREA_TURTWIG"
+            },
+            {
+              "evidence": {
+                "label": "FightArea_SetRivalPartnerTeam",
+                "line": 210,
+                "path": "res/field/scripts/scripts_fight_area.s",
+                "sha256": "7353aeb0649d2e68e5d776ed34715d4d9f79290770d80b4fff74d6de6cd94beb"
+              },
+              "rawTrainerId": 923,
+              "trainerToken": "TRAINER_RIVAL_FIGHT_AREA_PIPLUP"
+            }
+          ],
+          "candidateAssignmentsAreExhaustive": false,
+          "evidence": [
+            {
+              "arguments": [
+                "VAR_0x8004",
+                "TRAINER_LEADER_VOLKNER_FIGHT_AREA",
+                "TRAINER_ELITE_FOUR_FLINT_FIGHT_AREA"
+              ],
+              "command": "StartTagBattle",
+              "label": "FightArea_BattleVolknerFlint",
+              "line": 103,
+              "path": "res/field/scripts/scripts_fight_area.s",
+              "sha256": "7353aeb0649d2e68e5d776ed34715d4d9f79290770d80b4fff74d6de6cd94beb"
+            }
+          ],
+          "operand": "VAR_0x8004",
+          "rawTrainerId": null,
+          "required": true,
+          "resolution": "runtime-script-variable-required",
+          "source": "battle-command-partner-operand",
+          "trainerToken": null
+        }
+      ],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "commit-pinned pret field-script/runtime source",
+        "contextArtifact": "tools/imports/vanilla/gen4-trainer-context/platinum.json",
+        "evidence": [
+          {
+            "path": "res/field/scripts/scripts_fight_area.s",
+            "sha256": "7353aeb0649d2e68e5d776ed34715d4d9f79290770d80b4fff74d6de6cd94beb",
+            "line": 103,
+            "label": "FightArea_BattleVolknerFlint",
+            "command": "StartTagBattle",
+            "arguments": [
+              "VAR_0x8004",
+              "TRAINER_LEADER_VOLKNER_FIGHT_AREA",
+              "TRAINER_ELITE_FOUR_FLINT_FIGHT_AREA"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "validation": {
+    "status": "partial-source-coverage",
+    "fixedGroupStatus": "passed",
+    "unresolved": 0,
+    "unresolvedFixedGroups": 0,
+    "dynamicOperandDiagnostics": 9,
+    "dynamicOperandsAreRuntimeSelectorsNotFixedGroupFailures": true,
+    "sourceArtifact": "tools/imports/vanilla/gen4-trainer-context/platinum.json",
+    "emptyRecordsAreValidWhenExactScriptAuditFoundNoSeparateRosterGroups": true
+  }
+}

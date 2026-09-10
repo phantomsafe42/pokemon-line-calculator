@@ -1,0 +1,5386 @@
+{
+  "schemaVersion": 2,
+  "gameId": "pokemon-leafgreen",
+  "kind": "evolutions",
+  "methodProfile": "pkhex-evolution-type@e0e63bc87837ad2d9c8f8fda4efdbf5f2933db08",
+  "source": {
+    "path": "PKHeX.Core/Resources/byte/evolve/evos_g3.pkl",
+    "sha256": "60ac2e1ce7e7a4226b59b180214d384eaa3d919febb37965dd21edbcdacc558f"
+  },
+  "records": [
+    {
+      "id": "bulbasaur-to-ivysaur-1",
+      "fromSpeciesId": "bulbasaur",
+      "toSpeciesId": "ivysaur",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 16,
+      "level": 16,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 16
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "ivysaur-to-venusaur-2",
+      "fromSpeciesId": "ivysaur",
+      "toSpeciesId": "venusaur",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 32,
+      "level": 32,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 32
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "charmander-to-charmeleon-3",
+      "fromSpeciesId": "charmander",
+      "toSpeciesId": "charmeleon",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 16,
+      "level": 16,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 16
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "charmeleon-to-charizard-4",
+      "fromSpeciesId": "charmeleon",
+      "toSpeciesId": "charizard",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 36,
+      "level": 36,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 36
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "squirtle-to-wartortle-5",
+      "fromSpeciesId": "squirtle",
+      "toSpeciesId": "wartortle",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 16,
+      "level": 16,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 16
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "wartortle-to-blastoise-6",
+      "fromSpeciesId": "wartortle",
+      "toSpeciesId": "blastoise",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 36,
+      "level": 36,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 36
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "caterpie-to-metapod-7",
+      "fromSpeciesId": "caterpie",
+      "toSpeciesId": "metapod",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 7,
+      "level": 7,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 7
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "metapod-to-butterfree-8",
+      "fromSpeciesId": "metapod",
+      "toSpeciesId": "butterfree",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 10,
+      "level": 10,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 10
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "weedle-to-kakuna-9",
+      "fromSpeciesId": "weedle",
+      "toSpeciesId": "kakuna",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 7,
+      "level": 7,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 7
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "kakuna-to-beedrill-10",
+      "fromSpeciesId": "kakuna",
+      "toSpeciesId": "beedrill",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 10,
+      "level": 10,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 10
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "pidgey-to-pidgeotto-11",
+      "fromSpeciesId": "pidgey",
+      "toSpeciesId": "pidgeotto",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 18,
+      "level": 18,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 18
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "pidgeotto-to-pidgeot-12",
+      "fromSpeciesId": "pidgeotto",
+      "toSpeciesId": "pidgeot",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 36,
+      "level": 36,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 36
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "rattata-to-raticate-13",
+      "fromSpeciesId": "rattata",
+      "toSpeciesId": "raticate",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 20,
+      "level": 20,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 20
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "spearow-to-fearow-14",
+      "fromSpeciesId": "spearow",
+      "toSpeciesId": "fearow",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 20,
+      "level": 20,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 20
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "ekans-to-arbok-15",
+      "fromSpeciesId": "ekans",
+      "toSpeciesId": "arbok",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 22,
+      "level": 22,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 22
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "pikachu-to-raichu-16",
+      "fromSpeciesId": "pikachu",
+      "toSpeciesId": "raichu",
+      "method": "UseItem",
+      "rawMethodId": 8,
+      "argument": 96,
+      "level": null,
+      "trigger": {
+        "type": "use-item",
+        "itemId": "thunderstone"
+      },
+      "conditions": {},
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "sandshrew-to-sandslash-17",
+      "fromSpeciesId": "sandshrew",
+      "toSpeciesId": "sandslash",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 22,
+      "level": 22,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 22
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "nidoranf-to-nidorina-18",
+      "fromSpeciesId": "nidoranf",
+      "toSpeciesId": "nidorina",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 16,
+      "level": 16,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 16
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "nidorina-to-nidoqueen-19",
+      "fromSpeciesId": "nidorina",
+      "toSpeciesId": "nidoqueen",
+      "method": "UseItem",
+      "rawMethodId": 8,
+      "argument": 94,
+      "level": null,
+      "trigger": {
+        "type": "use-item",
+        "itemId": "moonstone"
+      },
+      "conditions": {},
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "nidoranm-to-nidorino-20",
+      "fromSpeciesId": "nidoranm",
+      "toSpeciesId": "nidorino",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 16,
+      "level": 16,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 16
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "nidorino-to-nidoking-21",
+      "fromSpeciesId": "nidorino",
+      "toSpeciesId": "nidoking",
+      "method": "UseItem",
+      "rawMethodId": 8,
+      "argument": 94,
+      "level": null,
+      "trigger": {
+        "type": "use-item",
+        "itemId": "moonstone"
+      },
+      "conditions": {},
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "clefairy-to-clefable-22",
+      "fromSpeciesId": "clefairy",
+      "toSpeciesId": "clefable",
+      "method": "UseItem",
+      "rawMethodId": 8,
+      "argument": 94,
+      "level": null,
+      "trigger": {
+        "type": "use-item",
+        "itemId": "moonstone"
+      },
+      "conditions": {},
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "vulpix-to-ninetales-23",
+      "fromSpeciesId": "vulpix",
+      "toSpeciesId": "ninetales",
+      "method": "UseItem",
+      "rawMethodId": 8,
+      "argument": 95,
+      "level": null,
+      "trigger": {
+        "type": "use-item",
+        "itemId": "firestone"
+      },
+      "conditions": {},
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "jigglypuff-to-wigglytuff-24",
+      "fromSpeciesId": "jigglypuff",
+      "toSpeciesId": "wigglytuff",
+      "method": "UseItem",
+      "rawMethodId": 8,
+      "argument": 94,
+      "level": null,
+      "trigger": {
+        "type": "use-item",
+        "itemId": "moonstone"
+      },
+      "conditions": {},
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "zubat-to-golbat-25",
+      "fromSpeciesId": "zubat",
+      "toSpeciesId": "golbat",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 22,
+      "level": 22,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 22
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "golbat-to-crobat-26",
+      "fromSpeciesId": "golbat",
+      "toSpeciesId": "crobat",
+      "method": "LevelUpFriendship",
+      "rawMethodId": 1,
+      "argument": null,
+      "level": null,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "friendship": {
+          "minimum": 220
+        }
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "oddish-to-gloom-27",
+      "fromSpeciesId": "oddish",
+      "toSpeciesId": "gloom",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 21,
+      "level": 21,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 21
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "gloom-to-vileplume-28",
+      "fromSpeciesId": "gloom",
+      "toSpeciesId": "vileplume",
+      "method": "UseItem",
+      "rawMethodId": 8,
+      "argument": 98,
+      "level": null,
+      "trigger": {
+        "type": "use-item",
+        "itemId": "leafstone"
+      },
+      "conditions": {},
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "gloom-to-bellossom-29",
+      "fromSpeciesId": "gloom",
+      "toSpeciesId": "bellossom",
+      "method": "UseItem",
+      "rawMethodId": 8,
+      "argument": 93,
+      "level": null,
+      "trigger": {
+        "type": "use-item",
+        "itemId": "sunstone"
+      },
+      "conditions": {},
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "paras-to-parasect-30",
+      "fromSpeciesId": "paras",
+      "toSpeciesId": "parasect",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 24,
+      "level": 24,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 24
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "venonat-to-venomoth-31",
+      "fromSpeciesId": "venonat",
+      "toSpeciesId": "venomoth",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 31,
+      "level": 31,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 31
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "diglett-to-dugtrio-32",
+      "fromSpeciesId": "diglett",
+      "toSpeciesId": "dugtrio",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 26,
+      "level": 26,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 26
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "meowth-to-persian-33",
+      "fromSpeciesId": "meowth",
+      "toSpeciesId": "persian",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 28,
+      "level": 28,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 28
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "psyduck-to-golduck-34",
+      "fromSpeciesId": "psyduck",
+      "toSpeciesId": "golduck",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 33,
+      "level": 33,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 33
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "mankey-to-primeape-35",
+      "fromSpeciesId": "mankey",
+      "toSpeciesId": "primeape",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 28,
+      "level": 28,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 28
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "growlithe-to-arcanine-36",
+      "fromSpeciesId": "growlithe",
+      "toSpeciesId": "arcanine",
+      "method": "UseItem",
+      "rawMethodId": 8,
+      "argument": 95,
+      "level": null,
+      "trigger": {
+        "type": "use-item",
+        "itemId": "firestone"
+      },
+      "conditions": {},
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "poliwag-to-poliwhirl-37",
+      "fromSpeciesId": "poliwag",
+      "toSpeciesId": "poliwhirl",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 25,
+      "level": 25,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 25
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "poliwhirl-to-poliwrath-38",
+      "fromSpeciesId": "poliwhirl",
+      "toSpeciesId": "poliwrath",
+      "method": "UseItem",
+      "rawMethodId": 8,
+      "argument": 97,
+      "level": null,
+      "trigger": {
+        "type": "use-item",
+        "itemId": "waterstone"
+      },
+      "conditions": {},
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "poliwhirl-to-politoed-39",
+      "fromSpeciesId": "poliwhirl",
+      "toSpeciesId": "politoed",
+      "method": "TradeHeldItem",
+      "rawMethodId": 6,
+      "argument": 187,
+      "level": null,
+      "trigger": {
+        "type": "trade"
+      },
+      "conditions": {
+        "heldItem": {
+          "itemId": "kingsrock",
+          "consumed": true
+        }
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "abra-to-kadabra-40",
+      "fromSpeciesId": "abra",
+      "toSpeciesId": "kadabra",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 16,
+      "level": 16,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 16
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "kadabra-to-alakazam-41",
+      "fromSpeciesId": "kadabra",
+      "toSpeciesId": "alakazam",
+      "method": "Trade",
+      "rawMethodId": 5,
+      "argument": null,
+      "level": null,
+      "trigger": {
+        "type": "trade"
+      },
+      "conditions": {},
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "machop-to-machoke-42",
+      "fromSpeciesId": "machop",
+      "toSpeciesId": "machoke",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 28,
+      "level": 28,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 28
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "machoke-to-machamp-43",
+      "fromSpeciesId": "machoke",
+      "toSpeciesId": "machamp",
+      "method": "Trade",
+      "rawMethodId": 5,
+      "argument": null,
+      "level": null,
+      "trigger": {
+        "type": "trade"
+      },
+      "conditions": {},
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "bellsprout-to-weepinbell-44",
+      "fromSpeciesId": "bellsprout",
+      "toSpeciesId": "weepinbell",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 21,
+      "level": 21,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 21
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "weepinbell-to-victreebel-45",
+      "fromSpeciesId": "weepinbell",
+      "toSpeciesId": "victreebel",
+      "method": "UseItem",
+      "rawMethodId": 8,
+      "argument": 98,
+      "level": null,
+      "trigger": {
+        "type": "use-item",
+        "itemId": "leafstone"
+      },
+      "conditions": {},
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "tentacool-to-tentacruel-46",
+      "fromSpeciesId": "tentacool",
+      "toSpeciesId": "tentacruel",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 30,
+      "level": 30,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 30
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "geodude-to-graveler-47",
+      "fromSpeciesId": "geodude",
+      "toSpeciesId": "graveler",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 25,
+      "level": 25,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 25
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "graveler-to-golem-48",
+      "fromSpeciesId": "graveler",
+      "toSpeciesId": "golem",
+      "method": "Trade",
+      "rawMethodId": 5,
+      "argument": null,
+      "level": null,
+      "trigger": {
+        "type": "trade"
+      },
+      "conditions": {},
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "ponyta-to-rapidash-49",
+      "fromSpeciesId": "ponyta",
+      "toSpeciesId": "rapidash",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 40,
+      "level": 40,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 40
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "slowpoke-to-slowbro-50",
+      "fromSpeciesId": "slowpoke",
+      "toSpeciesId": "slowbro",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 37,
+      "level": 37,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 37
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "slowpoke-to-slowking-51",
+      "fromSpeciesId": "slowpoke",
+      "toSpeciesId": "slowking",
+      "method": "TradeHeldItem",
+      "rawMethodId": 6,
+      "argument": 187,
+      "level": null,
+      "trigger": {
+        "type": "trade"
+      },
+      "conditions": {
+        "heldItem": {
+          "itemId": "kingsrock",
+          "consumed": true
+        }
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "magnemite-to-magneton-52",
+      "fromSpeciesId": "magnemite",
+      "toSpeciesId": "magneton",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 30,
+      "level": 30,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 30
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "doduo-to-dodrio-53",
+      "fromSpeciesId": "doduo",
+      "toSpeciesId": "dodrio",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 31,
+      "level": 31,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 31
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "seel-to-dewgong-54",
+      "fromSpeciesId": "seel",
+      "toSpeciesId": "dewgong",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 34,
+      "level": 34,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 34
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "grimer-to-muk-55",
+      "fromSpeciesId": "grimer",
+      "toSpeciesId": "muk",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 38,
+      "level": 38,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 38
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "shellder-to-cloyster-56",
+      "fromSpeciesId": "shellder",
+      "toSpeciesId": "cloyster",
+      "method": "UseItem",
+      "rawMethodId": 8,
+      "argument": 97,
+      "level": null,
+      "trigger": {
+        "type": "use-item",
+        "itemId": "waterstone"
+      },
+      "conditions": {},
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "gastly-to-haunter-57",
+      "fromSpeciesId": "gastly",
+      "toSpeciesId": "haunter",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 25,
+      "level": 25,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 25
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "haunter-to-gengar-58",
+      "fromSpeciesId": "haunter",
+      "toSpeciesId": "gengar",
+      "method": "Trade",
+      "rawMethodId": 5,
+      "argument": null,
+      "level": null,
+      "trigger": {
+        "type": "trade"
+      },
+      "conditions": {},
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "onix-to-steelix-59",
+      "fromSpeciesId": "onix",
+      "toSpeciesId": "steelix",
+      "method": "TradeHeldItem",
+      "rawMethodId": 6,
+      "argument": 199,
+      "level": null,
+      "trigger": {
+        "type": "trade"
+      },
+      "conditions": {
+        "heldItem": {
+          "itemId": "metalcoat",
+          "consumed": true
+        }
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "drowzee-to-hypno-60",
+      "fromSpeciesId": "drowzee",
+      "toSpeciesId": "hypno",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 26,
+      "level": 26,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 26
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "krabby-to-kingler-61",
+      "fromSpeciesId": "krabby",
+      "toSpeciesId": "kingler",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 28,
+      "level": 28,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 28
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "voltorb-to-electrode-62",
+      "fromSpeciesId": "voltorb",
+      "toSpeciesId": "electrode",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 30,
+      "level": 30,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 30
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "exeggcute-to-exeggutor-63",
+      "fromSpeciesId": "exeggcute",
+      "toSpeciesId": "exeggutor",
+      "method": "UseItem",
+      "rawMethodId": 8,
+      "argument": 98,
+      "level": null,
+      "trigger": {
+        "type": "use-item",
+        "itemId": "leafstone"
+      },
+      "conditions": {},
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "cubone-to-marowak-64",
+      "fromSpeciesId": "cubone",
+      "toSpeciesId": "marowak",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 28,
+      "level": 28,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 28
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "koffing-to-weezing-65",
+      "fromSpeciesId": "koffing",
+      "toSpeciesId": "weezing",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 35,
+      "level": 35,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 35
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "rhyhorn-to-rhydon-66",
+      "fromSpeciesId": "rhyhorn",
+      "toSpeciesId": "rhydon",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 42,
+      "level": 42,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 42
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "chansey-to-blissey-67",
+      "fromSpeciesId": "chansey",
+      "toSpeciesId": "blissey",
+      "method": "LevelUpFriendship",
+      "rawMethodId": 1,
+      "argument": null,
+      "level": null,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "friendship": {
+          "minimum": 220
+        }
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "horsea-to-seadra-68",
+      "fromSpeciesId": "horsea",
+      "toSpeciesId": "seadra",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 32,
+      "level": 32,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 32
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "seadra-to-kingdra-69",
+      "fromSpeciesId": "seadra",
+      "toSpeciesId": "kingdra",
+      "method": "TradeHeldItem",
+      "rawMethodId": 6,
+      "argument": 201,
+      "level": null,
+      "trigger": {
+        "type": "trade"
+      },
+      "conditions": {
+        "heldItem": {
+          "itemId": "dragonscale",
+          "consumed": true
+        }
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "goldeen-to-seaking-70",
+      "fromSpeciesId": "goldeen",
+      "toSpeciesId": "seaking",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 33,
+      "level": 33,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 33
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "staryu-to-starmie-71",
+      "fromSpeciesId": "staryu",
+      "toSpeciesId": "starmie",
+      "method": "UseItem",
+      "rawMethodId": 8,
+      "argument": 97,
+      "level": null,
+      "trigger": {
+        "type": "use-item",
+        "itemId": "waterstone"
+      },
+      "conditions": {},
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "scyther-to-scizor-72",
+      "fromSpeciesId": "scyther",
+      "toSpeciesId": "scizor",
+      "method": "TradeHeldItem",
+      "rawMethodId": 6,
+      "argument": 199,
+      "level": null,
+      "trigger": {
+        "type": "trade"
+      },
+      "conditions": {
+        "heldItem": {
+          "itemId": "metalcoat",
+          "consumed": true
+        }
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "magikarp-to-gyarados-73",
+      "fromSpeciesId": "magikarp",
+      "toSpeciesId": "gyarados",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 20,
+      "level": 20,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 20
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "eevee-to-jolteon-74",
+      "fromSpeciesId": "eevee",
+      "toSpeciesId": "jolteon",
+      "method": "UseItem",
+      "rawMethodId": 8,
+      "argument": 96,
+      "level": null,
+      "trigger": {
+        "type": "use-item",
+        "itemId": "thunderstone"
+      },
+      "conditions": {},
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "eevee-to-vaporeon-75",
+      "fromSpeciesId": "eevee",
+      "toSpeciesId": "vaporeon",
+      "method": "UseItem",
+      "rawMethodId": 8,
+      "argument": 97,
+      "level": null,
+      "trigger": {
+        "type": "use-item",
+        "itemId": "waterstone"
+      },
+      "conditions": {},
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "eevee-to-flareon-76",
+      "fromSpeciesId": "eevee",
+      "toSpeciesId": "flareon",
+      "method": "UseItem",
+      "rawMethodId": 8,
+      "argument": 95,
+      "level": null,
+      "trigger": {
+        "type": "use-item",
+        "itemId": "firestone"
+      },
+      "conditions": {},
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "eevee-to-espeon-77",
+      "fromSpeciesId": "eevee",
+      "toSpeciesId": "espeon",
+      "method": "LevelUpFriendshipMorning",
+      "rawMethodId": 2,
+      "argument": null,
+      "level": null,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "friendship": {
+          "minimum": 220
+        },
+        "timeOfDay": "day"
+      },
+      "availability": {
+        "localTriggerAvailable": false,
+        "satisfiability": "unavailable-local-trigger",
+        "reason": "FRLG does not provide the real-time clock state required by this trigger."
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "eevee-to-umbreon-78",
+      "fromSpeciesId": "eevee",
+      "toSpeciesId": "umbreon",
+      "method": "LevelUpFriendshipNight",
+      "rawMethodId": 3,
+      "argument": null,
+      "level": null,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "friendship": {
+          "minimum": 220
+        },
+        "timeOfDay": "night"
+      },
+      "availability": {
+        "localTriggerAvailable": false,
+        "satisfiability": "unavailable-local-trigger",
+        "reason": "FRLG does not provide the real-time clock state required by this trigger."
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "porygon-to-porygon2-79",
+      "fromSpeciesId": "porygon",
+      "toSpeciesId": "porygon2",
+      "method": "TradeHeldItem",
+      "rawMethodId": 6,
+      "argument": 218,
+      "level": null,
+      "trigger": {
+        "type": "trade"
+      },
+      "conditions": {
+        "heldItem": {
+          "itemId": "upgrade",
+          "consumed": true
+        }
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "omanyte-to-omastar-80",
+      "fromSpeciesId": "omanyte",
+      "toSpeciesId": "omastar",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 40,
+      "level": 40,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 40
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "kabuto-to-kabutops-81",
+      "fromSpeciesId": "kabuto",
+      "toSpeciesId": "kabutops",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 40,
+      "level": 40,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 40
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "dratini-to-dragonair-82",
+      "fromSpeciesId": "dratini",
+      "toSpeciesId": "dragonair",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 30,
+      "level": 30,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 30
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "dragonair-to-dragonite-83",
+      "fromSpeciesId": "dragonair",
+      "toSpeciesId": "dragonite",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 55,
+      "level": 55,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 55
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "chikorita-to-bayleef-84",
+      "fromSpeciesId": "chikorita",
+      "toSpeciesId": "bayleef",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 16,
+      "level": 16,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 16
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "bayleef-to-meganium-85",
+      "fromSpeciesId": "bayleef",
+      "toSpeciesId": "meganium",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 32,
+      "level": 32,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 32
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "cyndaquil-to-quilava-86",
+      "fromSpeciesId": "cyndaquil",
+      "toSpeciesId": "quilava",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 14,
+      "level": 14,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 14
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "quilava-to-typhlosion-87",
+      "fromSpeciesId": "quilava",
+      "toSpeciesId": "typhlosion",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 36,
+      "level": 36,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 36
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "totodile-to-croconaw-88",
+      "fromSpeciesId": "totodile",
+      "toSpeciesId": "croconaw",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 18,
+      "level": 18,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 18
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "croconaw-to-feraligatr-89",
+      "fromSpeciesId": "croconaw",
+      "toSpeciesId": "feraligatr",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 30,
+      "level": 30,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 30
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "sentret-to-furret-90",
+      "fromSpeciesId": "sentret",
+      "toSpeciesId": "furret",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 15,
+      "level": 15,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 15
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "hoothoot-to-noctowl-91",
+      "fromSpeciesId": "hoothoot",
+      "toSpeciesId": "noctowl",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 20,
+      "level": 20,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 20
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "ledyba-to-ledian-92",
+      "fromSpeciesId": "ledyba",
+      "toSpeciesId": "ledian",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 18,
+      "level": 18,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 18
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "spinarak-to-ariados-93",
+      "fromSpeciesId": "spinarak",
+      "toSpeciesId": "ariados",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 22,
+      "level": 22,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 22
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "chinchou-to-lanturn-94",
+      "fromSpeciesId": "chinchou",
+      "toSpeciesId": "lanturn",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 27,
+      "level": 27,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 27
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "pichu-to-pikachu-95",
+      "fromSpeciesId": "pichu",
+      "toSpeciesId": "pikachu",
+      "method": "LevelUpFriendship",
+      "rawMethodId": 1,
+      "argument": null,
+      "level": null,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "friendship": {
+          "minimum": 220
+        }
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "cleffa-to-clefairy-96",
+      "fromSpeciesId": "cleffa",
+      "toSpeciesId": "clefairy",
+      "method": "LevelUpFriendship",
+      "rawMethodId": 1,
+      "argument": null,
+      "level": null,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "friendship": {
+          "minimum": 220
+        }
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "igglybuff-to-jigglypuff-97",
+      "fromSpeciesId": "igglybuff",
+      "toSpeciesId": "jigglypuff",
+      "method": "LevelUpFriendship",
+      "rawMethodId": 1,
+      "argument": null,
+      "level": null,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "friendship": {
+          "minimum": 220
+        }
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "togepi-to-togetic-98",
+      "fromSpeciesId": "togepi",
+      "toSpeciesId": "togetic",
+      "method": "LevelUpFriendship",
+      "rawMethodId": 1,
+      "argument": null,
+      "level": null,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "friendship": {
+          "minimum": 220
+        }
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "natu-to-xatu-99",
+      "fromSpeciesId": "natu",
+      "toSpeciesId": "xatu",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 25,
+      "level": 25,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 25
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "mareep-to-flaaffy-100",
+      "fromSpeciesId": "mareep",
+      "toSpeciesId": "flaaffy",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 15,
+      "level": 15,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 15
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "flaaffy-to-ampharos-101",
+      "fromSpeciesId": "flaaffy",
+      "toSpeciesId": "ampharos",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 30,
+      "level": 30,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 30
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "marill-to-azumarill-102",
+      "fromSpeciesId": "marill",
+      "toSpeciesId": "azumarill",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 18,
+      "level": 18,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 18
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "hoppip-to-skiploom-103",
+      "fromSpeciesId": "hoppip",
+      "toSpeciesId": "skiploom",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 18,
+      "level": 18,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 18
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "skiploom-to-jumpluff-104",
+      "fromSpeciesId": "skiploom",
+      "toSpeciesId": "jumpluff",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 27,
+      "level": 27,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 27
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "sunkern-to-sunflora-105",
+      "fromSpeciesId": "sunkern",
+      "toSpeciesId": "sunflora",
+      "method": "UseItem",
+      "rawMethodId": 8,
+      "argument": 93,
+      "level": null,
+      "trigger": {
+        "type": "use-item",
+        "itemId": "sunstone"
+      },
+      "conditions": {},
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "wooper-to-quagsire-106",
+      "fromSpeciesId": "wooper",
+      "toSpeciesId": "quagsire",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 20,
+      "level": 20,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 20
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "pineco-to-forretress-107",
+      "fromSpeciesId": "pineco",
+      "toSpeciesId": "forretress",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 31,
+      "level": 31,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 31
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "snubbull-to-granbull-108",
+      "fromSpeciesId": "snubbull",
+      "toSpeciesId": "granbull",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 23,
+      "level": 23,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 23
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "teddiursa-to-ursaring-109",
+      "fromSpeciesId": "teddiursa",
+      "toSpeciesId": "ursaring",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 30,
+      "level": 30,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 30
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "slugma-to-magcargo-110",
+      "fromSpeciesId": "slugma",
+      "toSpeciesId": "magcargo",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 38,
+      "level": 38,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 38
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "swinub-to-piloswine-111",
+      "fromSpeciesId": "swinub",
+      "toSpeciesId": "piloswine",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 33,
+      "level": 33,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 33
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "remoraid-to-octillery-112",
+      "fromSpeciesId": "remoraid",
+      "toSpeciesId": "octillery",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 25,
+      "level": 25,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 25
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "houndour-to-houndoom-113",
+      "fromSpeciesId": "houndour",
+      "toSpeciesId": "houndoom",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 24,
+      "level": 24,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 24
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "phanpy-to-donphan-114",
+      "fromSpeciesId": "phanpy",
+      "toSpeciesId": "donphan",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 25,
+      "level": 25,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 25
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "tyrogue-to-hitmonchan-115",
+      "fromSpeciesId": "tyrogue",
+      "toSpeciesId": "hitmonchan",
+      "method": "LevelUpDEF",
+      "rawMethodId": 11,
+      "argument": 20,
+      "level": 20,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 20,
+        "attackDefenseRelation": "defense-greater"
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "tyrogue-to-hitmonlee-116",
+      "fromSpeciesId": "tyrogue",
+      "toSpeciesId": "hitmonlee",
+      "method": "LevelUpATK",
+      "rawMethodId": 9,
+      "argument": 20,
+      "level": 20,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 20,
+        "attackDefenseRelation": "attack-greater"
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "tyrogue-to-hitmontop-117",
+      "fromSpeciesId": "tyrogue",
+      "toSpeciesId": "hitmontop",
+      "method": "LevelUpAeqD",
+      "rawMethodId": 10,
+      "argument": 20,
+      "level": 20,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 20,
+        "attackDefenseRelation": "equal"
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "smoochum-to-jynx-118",
+      "fromSpeciesId": "smoochum",
+      "toSpeciesId": "jynx",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 30,
+      "level": 30,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 30
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "elekid-to-electabuzz-119",
+      "fromSpeciesId": "elekid",
+      "toSpeciesId": "electabuzz",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 30,
+      "level": 30,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 30
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "magby-to-magmar-120",
+      "fromSpeciesId": "magby",
+      "toSpeciesId": "magmar",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 30,
+      "level": 30,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 30
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "larvitar-to-pupitar-121",
+      "fromSpeciesId": "larvitar",
+      "toSpeciesId": "pupitar",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 30,
+      "level": 30,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 30
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "pupitar-to-tyranitar-122",
+      "fromSpeciesId": "pupitar",
+      "toSpeciesId": "tyranitar",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 55,
+      "level": 55,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 55
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "treecko-to-grovyle-123",
+      "fromSpeciesId": "treecko",
+      "toSpeciesId": "grovyle",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 16,
+      "level": 16,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 16
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "grovyle-to-sceptile-124",
+      "fromSpeciesId": "grovyle",
+      "toSpeciesId": "sceptile",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 36,
+      "level": 36,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 36
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "torchic-to-combusken-125",
+      "fromSpeciesId": "torchic",
+      "toSpeciesId": "combusken",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 16,
+      "level": 16,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 16
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "combusken-to-blaziken-126",
+      "fromSpeciesId": "combusken",
+      "toSpeciesId": "blaziken",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 36,
+      "level": 36,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 36
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "mudkip-to-marshtomp-127",
+      "fromSpeciesId": "mudkip",
+      "toSpeciesId": "marshtomp",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 16,
+      "level": 16,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 16
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "marshtomp-to-swampert-128",
+      "fromSpeciesId": "marshtomp",
+      "toSpeciesId": "swampert",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 36,
+      "level": 36,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 36
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "poochyena-to-mightyena-129",
+      "fromSpeciesId": "poochyena",
+      "toSpeciesId": "mightyena",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 18,
+      "level": 18,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 18
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "zigzagoon-to-linoone-130",
+      "fromSpeciesId": "zigzagoon",
+      "toSpeciesId": "linoone",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 20,
+      "level": 20,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 20
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "wurmple-to-silcoon-131",
+      "fromSpeciesId": "wurmple",
+      "toSpeciesId": "silcoon",
+      "method": "LevelUpECl5",
+      "rawMethodId": 12,
+      "argument": 7,
+      "level": 7,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 7,
+        "personalityUpper16Modulo10": {
+          "operator": "less-than",
+          "value": 5
+        }
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "wurmple-to-cascoon-132",
+      "fromSpeciesId": "wurmple",
+      "toSpeciesId": "cascoon",
+      "method": "LevelUpECgeq5",
+      "rawMethodId": 13,
+      "argument": 7,
+      "level": 7,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 7,
+        "personalityUpper16Modulo10": {
+          "operator": "greater-than-or-equal",
+          "value": 5
+        }
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "silcoon-to-beautifly-133",
+      "fromSpeciesId": "silcoon",
+      "toSpeciesId": "beautifly",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 10,
+      "level": 10,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 10
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "cascoon-to-dustox-134",
+      "fromSpeciesId": "cascoon",
+      "toSpeciesId": "dustox",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 10,
+      "level": 10,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 10
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "lotad-to-lombre-135",
+      "fromSpeciesId": "lotad",
+      "toSpeciesId": "lombre",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 14,
+      "level": 14,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 14
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "lombre-to-ludicolo-136",
+      "fromSpeciesId": "lombre",
+      "toSpeciesId": "ludicolo",
+      "method": "UseItem",
+      "rawMethodId": 8,
+      "argument": 97,
+      "level": null,
+      "trigger": {
+        "type": "use-item",
+        "itemId": "waterstone"
+      },
+      "conditions": {},
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "seedot-to-nuzleaf-137",
+      "fromSpeciesId": "seedot",
+      "toSpeciesId": "nuzleaf",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 14,
+      "level": 14,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 14
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "nuzleaf-to-shiftry-138",
+      "fromSpeciesId": "nuzleaf",
+      "toSpeciesId": "shiftry",
+      "method": "UseItem",
+      "rawMethodId": 8,
+      "argument": 98,
+      "level": null,
+      "trigger": {
+        "type": "use-item",
+        "itemId": "leafstone"
+      },
+      "conditions": {},
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "taillow-to-swellow-139",
+      "fromSpeciesId": "taillow",
+      "toSpeciesId": "swellow",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 22,
+      "level": 22,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 22
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "wingull-to-pelipper-140",
+      "fromSpeciesId": "wingull",
+      "toSpeciesId": "pelipper",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 25,
+      "level": 25,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 25
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "ralts-to-kirlia-141",
+      "fromSpeciesId": "ralts",
+      "toSpeciesId": "kirlia",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 20,
+      "level": 20,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 20
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "kirlia-to-gardevoir-142",
+      "fromSpeciesId": "kirlia",
+      "toSpeciesId": "gardevoir",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 30,
+      "level": 30,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 30
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "surskit-to-masquerain-143",
+      "fromSpeciesId": "surskit",
+      "toSpeciesId": "masquerain",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 22,
+      "level": 22,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 22
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "shroomish-to-breloom-144",
+      "fromSpeciesId": "shroomish",
+      "toSpeciesId": "breloom",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 23,
+      "level": 23,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 23
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "slakoth-to-vigoroth-145",
+      "fromSpeciesId": "slakoth",
+      "toSpeciesId": "vigoroth",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 18,
+      "level": 18,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 18
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "vigoroth-to-slaking-146",
+      "fromSpeciesId": "vigoroth",
+      "toSpeciesId": "slaking",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 36,
+      "level": 36,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 36
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "nincada-to-ninjask-147",
+      "fromSpeciesId": "nincada",
+      "toSpeciesId": "ninjask",
+      "method": "LevelUpNinjask",
+      "rawMethodId": 14,
+      "argument": 20,
+      "level": 20,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 20
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "nincada-to-shedinja-148",
+      "fromSpeciesId": "nincada",
+      "toSpeciesId": "shedinja",
+      "method": "LevelUpShedinja",
+      "rawMethodId": 15,
+      "argument": 20,
+      "level": 20,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 20,
+        "partySpace": {
+          "minimumEmptySlots": 1
+        },
+        "ballInventory": {
+          "required": false,
+          "consumed": false
+        }
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "additional-party-member",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "whismur-to-loudred-149",
+      "fromSpeciesId": "whismur",
+      "toSpeciesId": "loudred",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 20,
+      "level": 20,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 20
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "loudred-to-exploud-150",
+      "fromSpeciesId": "loudred",
+      "toSpeciesId": "exploud",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 40,
+      "level": 40,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 40
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "makuhita-to-hariyama-151",
+      "fromSpeciesId": "makuhita",
+      "toSpeciesId": "hariyama",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 24,
+      "level": 24,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 24
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "azurill-to-marill-152",
+      "fromSpeciesId": "azurill",
+      "toSpeciesId": "marill",
+      "method": "LevelUpFriendship",
+      "rawMethodId": 1,
+      "argument": null,
+      "level": null,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "friendship": {
+          "minimum": 220
+        }
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "skitty-to-delcatty-153",
+      "fromSpeciesId": "skitty",
+      "toSpeciesId": "delcatty",
+      "method": "UseItem",
+      "rawMethodId": 8,
+      "argument": 94,
+      "level": null,
+      "trigger": {
+        "type": "use-item",
+        "itemId": "moonstone"
+      },
+      "conditions": {},
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "aron-to-lairon-154",
+      "fromSpeciesId": "aron",
+      "toSpeciesId": "lairon",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 32,
+      "level": 32,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 32
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "lairon-to-aggron-155",
+      "fromSpeciesId": "lairon",
+      "toSpeciesId": "aggron",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 42,
+      "level": 42,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 42
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "meditite-to-medicham-156",
+      "fromSpeciesId": "meditite",
+      "toSpeciesId": "medicham",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 37,
+      "level": 37,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 37
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "electrike-to-manectric-157",
+      "fromSpeciesId": "electrike",
+      "toSpeciesId": "manectric",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 26,
+      "level": 26,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 26
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "gulpin-to-swalot-158",
+      "fromSpeciesId": "gulpin",
+      "toSpeciesId": "swalot",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 26,
+      "level": 26,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 26
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "carvanha-to-sharpedo-159",
+      "fromSpeciesId": "carvanha",
+      "toSpeciesId": "sharpedo",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 30,
+      "level": 30,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 30
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "wailmer-to-wailord-160",
+      "fromSpeciesId": "wailmer",
+      "toSpeciesId": "wailord",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 40,
+      "level": 40,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 40
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "numel-to-camerupt-161",
+      "fromSpeciesId": "numel",
+      "toSpeciesId": "camerupt",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 33,
+      "level": 33,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 33
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "spoink-to-grumpig-162",
+      "fromSpeciesId": "spoink",
+      "toSpeciesId": "grumpig",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 32,
+      "level": 32,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 32
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "trapinch-to-vibrava-163",
+      "fromSpeciesId": "trapinch",
+      "toSpeciesId": "vibrava",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 35,
+      "level": 35,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 35
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "vibrava-to-flygon-164",
+      "fromSpeciesId": "vibrava",
+      "toSpeciesId": "flygon",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 45,
+      "level": 45,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 45
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "cacnea-to-cacturne-165",
+      "fromSpeciesId": "cacnea",
+      "toSpeciesId": "cacturne",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 32,
+      "level": 32,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 32
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "swablu-to-altaria-166",
+      "fromSpeciesId": "swablu",
+      "toSpeciesId": "altaria",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 35,
+      "level": 35,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 35
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "barboach-to-whiscash-167",
+      "fromSpeciesId": "barboach",
+      "toSpeciesId": "whiscash",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 30,
+      "level": 30,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 30
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "corphish-to-crawdaunt-168",
+      "fromSpeciesId": "corphish",
+      "toSpeciesId": "crawdaunt",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 30,
+      "level": 30,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 30
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "baltoy-to-claydol-169",
+      "fromSpeciesId": "baltoy",
+      "toSpeciesId": "claydol",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 36,
+      "level": 36,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 36
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "lileep-to-cradily-170",
+      "fromSpeciesId": "lileep",
+      "toSpeciesId": "cradily",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 40,
+      "level": 40,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 40
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "anorith-to-armaldo-171",
+      "fromSpeciesId": "anorith",
+      "toSpeciesId": "armaldo",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 40,
+      "level": 40,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 40
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "feebas-to-milotic-172",
+      "fromSpeciesId": "feebas",
+      "toSpeciesId": "milotic",
+      "method": "LevelUpBeauty",
+      "rawMethodId": 16,
+      "argument": 170,
+      "level": null,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "beauty": {
+          "minimum": 170
+        }
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "preconditioned-transfer-only",
+        "reason": "The evolution check exists, but Beauty cannot be raised locally in this version."
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "shuppet-to-banette-173",
+      "fromSpeciesId": "shuppet",
+      "toSpeciesId": "banette",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 37,
+      "level": 37,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 37
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "duskull-to-dusclops-174",
+      "fromSpeciesId": "duskull",
+      "toSpeciesId": "dusclops",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 37,
+      "level": 37,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 37
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "wynaut-to-wobbuffet-175",
+      "fromSpeciesId": "wynaut",
+      "toSpeciesId": "wobbuffet",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 15,
+      "level": 15,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 15
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "snorunt-to-glalie-176",
+      "fromSpeciesId": "snorunt",
+      "toSpeciesId": "glalie",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 42,
+      "level": 42,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 42
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "spheal-to-sealeo-177",
+      "fromSpeciesId": "spheal",
+      "toSpeciesId": "sealeo",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 32,
+      "level": 32,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 32
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "sealeo-to-walrein-178",
+      "fromSpeciesId": "sealeo",
+      "toSpeciesId": "walrein",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 44,
+      "level": 44,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 44
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "clamperl-to-huntail-179",
+      "fromSpeciesId": "clamperl",
+      "toSpeciesId": "huntail",
+      "method": "TradeHeldItem",
+      "rawMethodId": 6,
+      "argument": 192,
+      "level": null,
+      "trigger": {
+        "type": "trade"
+      },
+      "conditions": {
+        "heldItem": {
+          "itemId": "deepseatooth",
+          "consumed": true
+        }
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "clamperl-to-gorebyss-180",
+      "fromSpeciesId": "clamperl",
+      "toSpeciesId": "gorebyss",
+      "method": "TradeHeldItem",
+      "rawMethodId": 6,
+      "argument": 193,
+      "level": null,
+      "trigger": {
+        "type": "trade"
+      },
+      "conditions": {
+        "heldItem": {
+          "itemId": "deepseascale",
+          "consumed": true
+        }
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "bagon-to-shelgon-181",
+      "fromSpeciesId": "bagon",
+      "toSpeciesId": "shelgon",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 30,
+      "level": 30,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 30
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "shelgon-to-salamence-182",
+      "fromSpeciesId": "shelgon",
+      "toSpeciesId": "salamence",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 50,
+      "level": 50,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 50
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "beldum-to-metang-183",
+      "fromSpeciesId": "beldum",
+      "toSpeciesId": "metang",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 20,
+      "level": 20,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 20
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    },
+    {
+      "id": "metang-to-metagross-184",
+      "fromSpeciesId": "metang",
+      "toSpeciesId": "metagross",
+      "method": "LevelUp",
+      "rawMethodId": 4,
+      "argument": 45,
+      "level": 45,
+      "trigger": {
+        "type": "level-up"
+      },
+      "conditions": {
+        "minimumLevel": 45
+      },
+      "availability": {
+        "localTriggerAvailable": true,
+        "satisfiability": "available-in-game"
+      },
+      "resultMode": "replace-species",
+      "targetForm": 0,
+      "rawTargetForm": 255,
+      "formPolicy": "preserve-source-form",
+      "authority": {
+        "edgeIdentity": "exact PKHeX generation evolution binary",
+        "conditionSemantics": "PKHeX EvolutionType contract projected for retail Generations 3-5",
+        "gameAvailability": "explicit per-version local-trigger projection"
+      },
+      "sourceConfidence": "exact edge identity, typed condition semantics, and explicit per-version trigger availability"
+    }
+  ]
+}

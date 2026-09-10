@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "plc-generated-dataset/v1alpha1",
+  "consumer": "plc-soulsilver-dataset",
+  "source": "Datasets/Pokemon SoulSilver/source-data",
+  "sourceTreeSha256": "85E541EA20C7096D304F2F4E0F62334CF0E1809891F1DA9A81956CDE53080EFB",
+  "files": [
+    {
+      "path": "dataset_manifest.json",
+      "bytes": 34390,
+      "sha256": "80DB2373EDD82F94BE5060BFDAE8A04C5C185E14B4019E785EEA10B73CB5FE79"
+    },
+    {
+      "path": "battle_mechanics.json",
+      "bytes": 11331,
+      "sha256": "AEE4249D96048FF451E03FE90BE7DB8657E7040F54B5F1B0D323D43B7D4A05EF"
+    },
+    {
+      "path": "experience_mechanics.json",
+      "bytes": 2479,
+      "sha256": "E06A5F1726A72B4A2CC61E306FA07889DFC2E24ACFAD37359E6FB22B0B8FA557"
+    },
+    {
+      "path": "species.json",
+      "bytes": 702759,
+      "sha256": "3E1CB605EEF4622C975364FAB6595E420EADEF93A906B84CF56DF579B1F87D10"
+    },
+    {
+      "path": "moves.json",
+      "bytes": 755646,
+      "sha256": "D972965C3A9D6D1BF14347979A0FDA5C62B5890FAC8FB25684240F28AC30E2F0"
+    },
+    {
+      "path": "abilities.json",
+      "bytes": 26992,
+      "sha256": "AB1E78F16FE7308B3CAD228671510B4B61B5B72C289894976CF42025F4BF2AEB"
+    },
+    {
+      "path": "items.json",
+      "bytes": 367854,
+      "sha256": "F712952F5B16B6213D35FC2585B3D627D357C7DA20CC0A7A1E9D88AF604FE64E"
+    },
+    {
+      "path": "natures.json",
+      "bytes": 4900,
+      "sha256": "7DEE6F37FB2114C033E5C3466C51C5AEC18CFF3B57A09CB6B2D3B6C2BCC417AE"
+    },
+    {
+      "path": "types.json",
+      "bytes": 5969,
+      "sha256": "FF46F1EA69FE15A49A11B11F32D7A41ED6F4A92D770DAF82F11A137073739B4F"
+    },
+    {
+      "path": "trainers.json",
+      "bytes": 8634461,
+      "sha256": "D064AA72DC97E94FD9238F01EC685B17170CB28A72F0B6FECF21528FA60D90FC"
+    },
+    {
+      "path": "trainer_order.json",
+      "bytes": 1182987,
+      "sha256": "ECBAD8E984112FD1570E187FE6B18020CF22E076189CFBB28C040BFD79BFED06"
+    },
+    {
+      "path": "trainer_battle_groups.json",
+      "bytes": 8772,
+      "sha256": "2849D24FAFDAF06D0D90B2DAA0D0E57155CA34A232FFE73068851D6AA73CCF49"
+    },
+    {
+      "path": "progression.json",
+      "bytes": 5983,
+      "sha256": "E51F3A47956721C311D0F6CDE0600BAFB052E21DB5A150BA0A3DA4461293CE35"
+    },
+    {
+      "path": "evolutions.json",
+      "bytes": 245374,
+      "sha256": "9396B599F241641A84A48A3F0863F6A40D41E1B23DD6742FBD86CB415CD044AC"
+    },
+    {
+      "path": "save_id_maps.json",
+      "bytes": 162979,
+      "sha256": "4319517BEBC90E407E1A0AACEB5B1C1F2EAB60C4E223535E93BFF21A7C3CADFC"
+    }
+  ]
+}

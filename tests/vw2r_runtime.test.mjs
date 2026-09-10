@@ -10,6 +10,7 @@ import { pokemonAssetAppearanceId, pokemonAssetQuery } from "../src/adapters/pok
 import { createDatasetContext, REQUIRED_DATASET_SOURCES } from "../src/adapters/standardized_dataset.js";
 import { createPlanDocument } from "../src/core/plan.js";
 import { previewTurn } from "../src/core/planner.js";
+import { effectiveActionSpeed } from "../src/rulesets/action_order.js";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const sourceDir = path.join(here, "..", "src", "generated", "datasets", "volt-white-2r");
@@ -74,6 +75,33 @@ test("VW2R Dataset baseExp values normalize for every School Kid Neil combatant"
     ["mrmime", 25, 161]
   ]);
   assert.ok(enemies.every(mon => mon.baseExperienceYield === dataset.get("species", mon.speciesId).baseExp));
+  const swellow = enemies[0];
+  assert.equal(swellow.statCalculationLevelDelta, -2);
+  assert.deepEqual(swellow.calculatedStats, { hp: 63, atk: 46, def: 38, spa: 41, spd: 30, spe: 65 });
+  const plan = createPlanDocument({
+    dataset,
+    trainerId: "vw2r-trainer-0050",
+    playerCombatants: normalizePlayerCollection({ party: [{
+      uniqueKey: "level-drift-player",
+      speciesId: "swellow",
+      displayName: "Player Swellow",
+      level: 25,
+      nature: "Hardy",
+      ability: "Guts",
+      item: null,
+      ivs: { hp: 12, atk: 12, def: 12, spa: 12, spd: 12, spe: 12 },
+      evs: { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0 },
+      moves: ["Tackle"]
+    }] }, dataset),
+    enemyCombatants: enemies,
+    sourceSnapshot: snapshotFingerprint([], enemies, "level-drift-fixture")
+  });
+  const root = plan.stateNodes[plan.initialStateNodeId];
+  const enemyState = root.combatantStates[swellow.combatantKey];
+  assert.equal(enemyState.currentLevel, 25, "the card and damage-formula level stay at the displayed level");
+  assert.equal(enemyState.hp.maxHp, 63, "battle-state HP uses the adjusted in-game stat level");
+  assert.equal(effectiveActionSpeed({ combatant: swellow, combatantState: enemyState, battleState: root, side: "enemy", generation: 5 }), 65,
+    "Outcomes action order uses the adjusted in-game Speed");
 });
 
 test("VW2R trainer navigation matches the ten canonical progression splits", () => {

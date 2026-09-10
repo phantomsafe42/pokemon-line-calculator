@@ -823,7 +823,14 @@
       "baseEngineToken": "ITEM_BERRY_JUICE",
       "baseEngineMetadata": {},
       "mechanicsBase": "Berry Juice",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "sacredash": {
       "num": 44,
@@ -2332,7 +2339,14 @@
       "baseEngineToken": "ITEM_CHERI_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Cheri Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "chestoberry": {
       "num": 150,
@@ -2346,7 +2360,14 @@
       "baseEngineToken": "ITEM_CHESTO_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Chesto Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "pechaberry": {
       "num": 151,
@@ -2360,7 +2381,14 @@
       "baseEngineToken": "ITEM_PECHA_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Pecha Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "rawstberry": {
       "num": 152,
@@ -2374,7 +2402,14 @@
       "baseEngineToken": "ITEM_RAWST_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Rawst Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "aspearberry": {
       "num": 153,
@@ -2388,7 +2423,14 @@
       "baseEngineToken": "ITEM_ASPEAR_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Aspear Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "leppaberry": {
       "num": 154,
@@ -2402,7 +2444,14 @@
       "baseEngineToken": "ITEM_LEPPA_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Leppa Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "oranberry": {
       "num": 155,
@@ -2416,7 +2465,14 @@
       "baseEngineToken": "ITEM_ORAN_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Oran Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "persimberry": {
       "num": 156,
@@ -2430,7 +2486,14 @@
       "baseEngineToken": "ITEM_PERSIM_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Persim Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "lumberry": {
       "num": 157,
@@ -2444,7 +2507,14 @@
       "baseEngineToken": "ITEM_LUM_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Lum Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "sitrusberry": {
       "num": 158,
@@ -2458,7 +2528,14 @@
       "baseEngineToken": "ITEM_SITRUS_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Sitrus Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "figyberry": {
       "num": 159,
@@ -2472,7 +2549,14 @@
       "baseEngineToken": "ITEM_FIGY_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Figy Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "wikiberry": {
       "num": 160,
@@ -2486,7 +2570,14 @@
       "baseEngineToken": "ITEM_WIKI_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Wiki Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "magoberry": {
       "num": 161,
@@ -2500,7 +2591,14 @@
       "baseEngineToken": "ITEM_MAGO_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Mago Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "aguavberry": {
       "num": 162,
@@ -2514,7 +2612,14 @@
       "baseEngineToken": "ITEM_AGUAV_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Aguav Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "iapapaberry": {
       "num": 163,
@@ -2528,7 +2633,14 @@
       "baseEngineToken": "ITEM_IAPAPA_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Iapapa Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "razzberry": {
       "num": 164,
@@ -2542,7 +2654,14 @@
       "baseEngineToken": "ITEM_RAZZ_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Razz Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "blukberry": {
       "num": 165,
@@ -2556,7 +2675,14 @@
       "baseEngineToken": "ITEM_BLUK_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Bluk Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "nanabberry": {
       "num": 166,
@@ -2570,7 +2696,14 @@
       "baseEngineToken": "ITEM_NANAB_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Nanab Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "wepearberry": {
       "num": 167,
@@ -2584,7 +2717,14 @@
       "baseEngineToken": "ITEM_WEPEAR_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Wepear Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "pinapberry": {
       "num": 168,
@@ -2598,7 +2738,14 @@
       "baseEngineToken": "ITEM_PINAP_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Pinap Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "pomegberry": {
       "num": 169,
@@ -2612,7 +2759,14 @@
       "baseEngineToken": "ITEM_POMEG_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Pomeg Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "kelpsyberry": {
       "num": 170,
@@ -2626,7 +2780,14 @@
       "baseEngineToken": "ITEM_KELPSY_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Kelpsy Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "qualotberry": {
       "num": 171,
@@ -2640,7 +2801,14 @@
       "baseEngineToken": "ITEM_QUALOT_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Qualot Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "hondewberry": {
       "num": 172,
@@ -2654,7 +2822,14 @@
       "baseEngineToken": "ITEM_HONDEW_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Hondew Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "grepaberry": {
       "num": 173,
@@ -2668,7 +2843,14 @@
       "baseEngineToken": "ITEM_GREPA_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Grepa Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "tamatoberry": {
       "num": 174,
@@ -2682,7 +2864,14 @@
       "baseEngineToken": "ITEM_TAMATO_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Tamato Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "cornnberry": {
       "num": 175,
@@ -2696,7 +2885,14 @@
       "baseEngineToken": "ITEM_CORNN_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Cornn Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "magostberry": {
       "num": 176,
@@ -2710,7 +2906,14 @@
       "baseEngineToken": "ITEM_MAGOST_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Magost Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "rabutaberry": {
       "num": 177,
@@ -2724,7 +2927,14 @@
       "baseEngineToken": "ITEM_RABUTA_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Rabuta Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "nomelberry": {
       "num": 178,
@@ -2738,7 +2948,14 @@
       "baseEngineToken": "ITEM_NOMEL_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Nomel Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "spelonberry": {
       "num": 179,
@@ -2752,7 +2969,14 @@
       "baseEngineToken": "ITEM_SPELON_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Spelon Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "pamtreberry": {
       "num": 180,
@@ -2766,7 +2990,14 @@
       "baseEngineToken": "ITEM_PAMTRE_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Pamtre Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "watmelberry": {
       "num": 181,
@@ -2780,7 +3011,14 @@
       "baseEngineToken": "ITEM_WATMEL_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Watmel Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "durinberry": {
       "num": 182,
@@ -2794,7 +3032,14 @@
       "baseEngineToken": "ITEM_DURIN_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Durin Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "belueberry": {
       "num": 183,
@@ -2808,7 +3053,14 @@
       "baseEngineToken": "ITEM_BELUE_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Belue Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "occaberry": {
       "num": 184,
@@ -2822,7 +3074,39 @@
       "baseEngineToken": "ITEM_OCCA_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Occa Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-fire-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "fire",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "passhoberry": {
       "num": 185,
@@ -2836,7 +3120,39 @@
       "baseEngineToken": "ITEM_PASSHO_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Passho Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-water-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "water",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "wacanberry": {
       "num": 186,
@@ -2850,7 +3166,39 @@
       "baseEngineToken": "ITEM_WACAN_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Wacan Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-electric-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "electric",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "rindoberry": {
       "num": 187,
@@ -2864,7 +3212,39 @@
       "baseEngineToken": "ITEM_RINDO_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Rindo Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-grass-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "grass",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "yacheberry": {
       "num": 188,
@@ -2878,7 +3258,39 @@
       "baseEngineToken": "ITEM_YACHE_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Yache Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-ice-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "ice",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "chopleberry": {
       "num": 189,
@@ -2892,7 +3304,39 @@
       "baseEngineToken": "ITEM_CHOPLE_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Chople Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-fighting-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "fighting",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "kebiaberry": {
       "num": 190,
@@ -2906,7 +3350,39 @@
       "baseEngineToken": "ITEM_KEBIA_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Kebia Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-poison-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "poison",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "shucaberry": {
       "num": 191,
@@ -2920,7 +3396,39 @@
       "baseEngineToken": "ITEM_SHUCA_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Shuca Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-ground-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "ground",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "cobaberry": {
       "num": 192,
@@ -2934,7 +3442,39 @@
       "baseEngineToken": "ITEM_COBA_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Coba Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-flying-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "flying",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "payapaberry": {
       "num": 193,
@@ -2948,7 +3488,39 @@
       "baseEngineToken": "ITEM_PAYAPA_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Payapa Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-psychic-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "psychic",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "tangaberry": {
       "num": 194,
@@ -2962,7 +3534,39 @@
       "baseEngineToken": "ITEM_TANGA_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Tanga Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-bug-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "bug",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "chartiberry": {
       "num": 195,
@@ -2976,7 +3580,39 @@
       "baseEngineToken": "ITEM_CHARTI_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Charti Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-rock-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "rock",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "kasibberry": {
       "num": 196,
@@ -2990,7 +3626,39 @@
       "baseEngineToken": "ITEM_KASIB_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Kasib Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-ghost-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "ghost",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "habanberry": {
       "num": 197,
@@ -3004,7 +3672,39 @@
       "baseEngineToken": "ITEM_HABAN_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Haban Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-dragon-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "dragon",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "colburberry": {
       "num": 198,
@@ -3018,7 +3718,39 @@
       "baseEngineToken": "ITEM_COLBUR_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Colbur Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-dark-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "dark",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "babiriberry": {
       "num": 199,
@@ -3032,7 +3764,39 @@
       "baseEngineToken": "ITEM_BABIRI_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Babiri Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-steel-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "steel",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "chilanberry": {
       "num": 200,
@@ -3046,7 +3810,39 @@
       "baseEngineToken": "ITEM_CHILAN_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Chilan Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-normal-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "normal",
+              "requiresSuperEffective": false,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "liechiberry": {
       "num": 201,
@@ -3060,7 +3856,14 @@
       "baseEngineToken": "ITEM_LIECHI_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Liechi Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "ganlonberry": {
       "num": 202,
@@ -3074,7 +3877,14 @@
       "baseEngineToken": "ITEM_GANLON_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Ganlon Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "salacberry": {
       "num": 203,
@@ -3088,7 +3898,14 @@
       "baseEngineToken": "ITEM_SALAC_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Salac Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "petayaberry": {
       "num": 204,
@@ -3102,7 +3919,14 @@
       "baseEngineToken": "ITEM_PETAYA_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Petaya Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "apicotberry": {
       "num": 205,
@@ -3116,7 +3940,14 @@
       "baseEngineToken": "ITEM_APICOT_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Apicot Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "lansatberry": {
       "num": 206,
@@ -3130,7 +3961,14 @@
       "baseEngineToken": "ITEM_LANSAT_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Lansat Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "starfberry": {
       "num": 207,
@@ -3144,7 +3982,14 @@
       "baseEngineToken": "ITEM_STARF_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Starf Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "enigmaberry": {
       "num": 208,
@@ -3158,7 +4003,14 @@
       "baseEngineToken": "ITEM_ENIGMA_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Enigma Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "micleberry": {
       "num": 209,
@@ -3172,7 +4024,14 @@
       "baseEngineToken": "ITEM_MICLE_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Micle Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "custapberry": {
       "num": 210,
@@ -3186,7 +4045,41 @@
       "baseEngineToken": "ITEM_CUSTAP_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Custap Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "act-first-in-priority-bracket-at-low-hp",
+            "trigger": "before-action-order",
+            "timing": "before-action-order",
+            "conditions": {
+              "maximumHpFraction": {
+                "numerator": 1,
+                "denominator": 4
+              },
+              "gluttonyMaximumHpFraction": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "fractional-priority",
+                "value": 0.1
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "jabocaberry": {
       "num": 211,
@@ -3200,7 +4093,14 @@
       "baseEngineToken": "ITEM_JABOCA_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Jaboca Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "rowapberry": {
       "num": 212,
@@ -3214,7 +4114,14 @@
       "baseEngineToken": "ITEM_ROWAP_BERRY",
       "baseEngineMetadata": {},
       "mechanicsBase": "Rowap Berry",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "brightpowder": {
       "num": 213,
@@ -3242,7 +4149,14 @@
       "baseEngineToken": "ITEM_WHITE_HERB",
       "baseEngineMetadata": {},
       "mechanicsBase": "White Herb",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "machobrace": {
       "num": 215,
@@ -3308,7 +4222,14 @@
       "baseEngineToken": "ITEM_MENTAL_HERB",
       "baseEngineMetadata": {},
       "mechanicsBase": "Mental Herb",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "choiceband": {
       "num": 220,
@@ -4020,7 +4941,30 @@
       "baseEngineToken": "ITEM_POWER_HERB",
       "baseEngineMetadata": {},
       "mechanicsBase": "Power Herb",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "skip-charge-turn",
+            "trigger": "before-charge-turn",
+            "timing": "before-action-resolution",
+            "conditions": {
+              "moveRequiresChargeTurn": true
+            },
+            "effects": [
+              {
+                "kind": "skip-charge-turn"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "toxicorb": {
       "num": 272,
@@ -4076,7 +5020,33 @@
       "baseEngineToken": "ITEM_FOCUS_SASH",
       "baseEngineMetadata": {},
       "mechanicsBase": "Focus Sash",
-      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance"
+      "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "survive-lethal-damage-at-full-hp",
+            "trigger": "incoming-damaging-move",
+            "timing": "after-damage-roll-before-hp-loss",
+            "conditions": {
+              "holderAtFullHp": true,
+              "damageWouldKnockOut": true,
+              "appliesToFirstHitOnly": true
+            },
+            "effects": [
+              {
+                "kind": "survive-at-hp",
+                "hp": 1
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "zoomlens": {
       "num": 276,

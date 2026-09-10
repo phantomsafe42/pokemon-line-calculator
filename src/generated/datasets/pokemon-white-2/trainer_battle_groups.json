@@ -1,0 +1,2418 @@
+{
+  "schemaVersion": 3,
+  "gameId": "pokemon-white-2",
+  "kind": "trainer-battle-groups",
+  "records": {
+    "pokemon-white-2-castelia-sewers-plasma-pair": {
+      "id": "pokemon-white-2-castelia-sewers-plasma-pair",
+      "battleFormat": "double",
+      "trainerParticipationMode": "multi-trainer",
+      "locationId": "campaign-location-castelia-sewers",
+      "enemyTrainerIds": [
+        "pokemon-white-2-trainer-0356",
+        "pokemon-white-2-trainer-0342"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-white-2-trainer-0356",
+        "pokemon-white-2-trainer-0342"
+      ],
+      "enemyOccurrenceIds": [
+        "pokemon-white-2-campaign-occurrence-0062",
+        "pokemon-white-2-campaign-occurrence-0063"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partner": {
+        "kind": "documented-party-variants",
+        "participants": [
+          {
+            "occurrenceId": "pokemon-white-2-campaign-occurrence-0071",
+            "trainerId": "pokemon-white-2-trainer-0588",
+            "documentedIdentity": {
+              "class": "Pokémon Trainer",
+              "conditionMarkup": "{{PlayerChoice|0495|Snivy}}",
+              "location": "Castelia Sewers",
+              "name": "Hugh",
+              "trainerVariants": [
+                {
+                  "class": "Pokémon Trainer",
+                  "name": "Hugh"
+                }
+              ]
+            },
+            "mechanicsBinding": {
+              "resolutionStatus": "resolved-unique-party-signature",
+              "selectedTrainerId": "pokemon-white-2-trainer-0588",
+              "defaultDifficultyMode": null,
+              "modeBindingIdentities": {},
+              "iterationBindingIdentities": [],
+              "specialBinding": null
+            },
+            "source": {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Castelia City",
+                  "text": "Castelia City"
+                },
+                {
+                  "level": 3,
+                  "raw": "Castelia Sewers",
+                  "text": "Castelia Sewers"
+                }
+              ],
+              "line": 384,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_4&oldid=4589387",
+              "pageId": 169279,
+              "revisionId": 4589387,
+              "templateOrdinal": 27,
+              "templateSha256": "47d4a42d3f77f1863a529ee25e5cc8e38948f4c72e58f6a8f7fc3e2c4d16c8dd",
+              "title": "Walkthrough:Pokémon Black 2 and White 2/Part 4"
+            }
+          },
+          {
+            "occurrenceId": "pokemon-white-2-campaign-occurrence-0072",
+            "trainerId": "pokemon-white-2-trainer-0589",
+            "documentedIdentity": {
+              "class": "Pokémon Trainer",
+              "conditionMarkup": "{{PlayerChoice|0498|Tepig}}",
+              "location": "Castelia Sewers",
+              "name": "Hugh",
+              "trainerVariants": [
+                {
+                  "class": "Pokémon Trainer",
+                  "name": "Hugh"
+                }
+              ]
+            },
+            "mechanicsBinding": {
+              "resolutionStatus": "resolved-unique-party-signature",
+              "selectedTrainerId": "pokemon-white-2-trainer-0589",
+              "defaultDifficultyMode": null,
+              "modeBindingIdentities": {},
+              "iterationBindingIdentities": [],
+              "specialBinding": null
+            },
+            "source": {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Castelia City",
+                  "text": "Castelia City"
+                },
+                {
+                  "level": 3,
+                  "raw": "Castelia Sewers",
+                  "text": "Castelia Sewers"
+                }
+              ],
+              "line": 432,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_4&oldid=4589387",
+              "pageId": 169279,
+              "revisionId": 4589387,
+              "templateOrdinal": 28,
+              "templateSha256": "7522c98f791b97be811bede937f3ca6395444c9243a13fc150e91806329238ea",
+              "title": "Walkthrough:Pokémon Black 2 and White 2/Part 4"
+            }
+          },
+          {
+            "occurrenceId": "pokemon-white-2-campaign-occurrence-0073",
+            "trainerId": "pokemon-white-2-trainer-0590",
+            "documentedIdentity": {
+              "class": "Pokémon Trainer",
+              "conditionMarkup": "{{PlayerChoice|0501|Oshawott}}",
+              "location": "Castelia Sewers",
+              "name": "Hugh",
+              "trainerVariants": [
+                {
+                  "class": "Pokémon Trainer",
+                  "name": "Hugh"
+                }
+              ]
+            },
+            "mechanicsBinding": {
+              "resolutionStatus": "resolved-unique-party-signature",
+              "selectedTrainerId": "pokemon-white-2-trainer-0590",
+              "defaultDifficultyMode": null,
+              "modeBindingIdentities": {},
+              "iterationBindingIdentities": [],
+              "specialBinding": null
+            },
+            "source": {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Castelia City",
+                  "text": "Castelia City"
+                },
+                {
+                  "level": 3,
+                  "raw": "Castelia Sewers",
+                  "text": "Castelia Sewers"
+                }
+              ],
+              "line": 479,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_4&oldid=4589387",
+              "pageId": 169279,
+              "revisionId": 4589387,
+              "templateOrdinal": 29,
+              "templateSha256": "623a5aec2041fe1c2be555bc1955b93a3e682103f5f39dd5fd7977e0e7be844e",
+              "title": "Walkthrough:Pokémon Black 2 and White 2/Part 4"
+            }
+          }
+        ],
+        "selectionConditions": [
+          "{{PlayerChoice|0495|Snivy}}",
+          "{{PlayerChoice|0498|Tepig}}",
+          "{{PlayerChoice|0501|Oshawott}}"
+        ]
+      },
+      "choiceConditions": [],
+      "participantCandidates": [],
+      "choiceVariants": [],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "reviewed revision-pinned Bulbapedia campaign context",
+        "contextArtifact": "tools/imports/vanilla/gen5-documented-campaign-context/pokemon-white-2.json",
+        "evidence": [
+          {
+            "pageId": 169279,
+            "revisionId": 4589387,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_4&oldid=4589387",
+            "lineStart": 529,
+            "lineEnd": 529,
+            "excerptSha256": "299cd29216c9a9f63151926f9baaadf394f4c0a2100d6ed3a27c709577b888ad",
+            "evidenceKind": "documented-battle-narrative"
+          },
+          {
+            "pageId": 169279,
+            "revisionId": 4589387,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_4&oldid=4589387",
+            "lineStart": 323,
+            "lineEnd": 323,
+            "excerptSha256": "779ba25e029dac0d07d67b713883f0f6024c99e4c3a6d22781b937c8025c6c37",
+            "templateSha256": "779ba25e029dac0d07d67b713883f0f6024c99e4c3a6d22781b937c8025c6c37",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 169279,
+            "revisionId": 4589387,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_4&oldid=4589387",
+            "lineStart": 324,
+            "lineEnd": 324,
+            "excerptSha256": "94a1ca111a71feeeca41babde93869fb89d3ac31c7648b060c30b63bf1762f76",
+            "templateSha256": "94a1ca111a71feeeca41babde93869fb89d3ac31c7648b060c30b63bf1762f76",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 169279,
+            "revisionId": 4589387,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_4&oldid=4589387",
+            "lineStart": 384,
+            "lineEnd": 384,
+            "excerptSha256": "d6f37d169dbb71bab67a0bdf443fc38003b1003e15d83eb19f6b771189c666fe",
+            "templateSha256": "47d4a42d3f77f1863a529ee25e5cc8e38948f4c72e58f6a8f7fc3e2c4d16c8dd",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 169279,
+            "revisionId": 4589387,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_4&oldid=4589387",
+            "lineStart": 432,
+            "lineEnd": 432,
+            "excerptSha256": "d6f37d169dbb71bab67a0bdf443fc38003b1003e15d83eb19f6b771189c666fe",
+            "templateSha256": "7522c98f791b97be811bede937f3ca6395444c9243a13fc150e91806329238ea",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 169279,
+            "revisionId": 4589387,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_4&oldid=4589387",
+            "lineStart": 479,
+            "lineEnd": 479,
+            "excerptSha256": "d6f37d169dbb71bab67a0bdf443fc38003b1003e15d83eb19f6b771189c666fe",
+            "templateSha256": "623a5aec2041fe1c2be555bc1955b93a3e682103f5f39dd5fd7977e0e7be844e",
+            "evidenceKind": "documented-trainer-or-party-template"
+          }
+        ]
+      }
+    },
+    "pokemon-white-2-giant-chasm-plasma-pair": {
+      "id": "pokemon-white-2-giant-chasm-plasma-pair",
+      "battleFormat": "double",
+      "trainerParticipationMode": "multi-trainer",
+      "locationId": "campaign-location-plasma-frigate",
+      "enemyTrainerIds": [
+        "pokemon-white-2-trainer-0809",
+        "pokemon-white-2-trainer-0807"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-white-2-trainer-0809",
+        "pokemon-white-2-trainer-0807"
+      ],
+      "enemyOccurrenceIds": [
+        "pokemon-white-2-campaign-occurrence-0343",
+        "pokemon-white-2-campaign-occurrence-0344"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partner": {
+        "kind": "documented-identity",
+        "identity": "Hugh",
+        "conditions": [
+          "partner species depends on player starter"
+        ]
+      },
+      "choiceConditions": [],
+      "participantCandidates": [],
+      "choiceVariants": [],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "reviewed revision-pinned Bulbapedia campaign context",
+        "contextArtifact": "tools/imports/vanilla/gen5-documented-campaign-context/pokemon-white-2.json",
+        "evidence": [
+          {
+            "pageId": 172631,
+            "revisionId": 4614056,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_14&oldid=4614056",
+            "lineStart": 646,
+            "lineEnd": 646,
+            "excerptSha256": "3634c6840e4071131aaa1a228632b0766b703ad7de6d39c2941e9a38935310a3",
+            "evidenceKind": "documented-battle-narrative"
+          },
+          {
+            "pageId": 172631,
+            "revisionId": 4614056,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_14&oldid=4614056",
+            "lineStart": 662,
+            "lineEnd": 662,
+            "excerptSha256": "b38de04e25c8e27fa17b8c03efd362dd360997407fd3567587d5d64708e31ff8",
+            "templateSha256": "b38de04e25c8e27fa17b8c03efd362dd360997407fd3567587d5d64708e31ff8",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 172631,
+            "revisionId": 4614056,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_14&oldid=4614056",
+            "lineStart": 663,
+            "lineEnd": 663,
+            "excerptSha256": "fd856da1137457c48f24265375cd4ed33e992c266f6f8f1b53caa8631fe09f8d",
+            "templateSha256": "fd856da1137457c48f24265375cd4ed33e992c266f6f8f1b53caa8631fe09f8d",
+            "evidenceKind": "documented-trainer-or-party-template"
+          }
+        ]
+      }
+    },
+    "pokemon-white-2-lacunosa-zinzolin-grunt": {
+      "id": "pokemon-white-2-lacunosa-zinzolin-grunt",
+      "battleFormat": "double",
+      "trainerParticipationMode": "multi-trainer",
+      "locationId": "campaign-location-lacunosa-town",
+      "enemyTrainerIds": [
+        "pokemon-white-2-trainer-0704",
+        "pokemon-white-2-trainer-0705"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-white-2-trainer-0704",
+        "pokemon-white-2-trainer-0705"
+      ],
+      "enemyOccurrenceIds": [
+        "pokemon-white-2-campaign-occurrence-0265",
+        "pokemon-white-2-campaign-occurrence-0266"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partner": {
+        "kind": "documented-party-variants",
+        "participants": [
+          {
+            "occurrenceId": "pokemon-white-2-campaign-occurrence-0262",
+            "trainerId": "pokemon-white-2-trainer-0701",
+            "documentedIdentity": {
+              "class": "Pokémon Trainer",
+              "conditionMarkup": "{{PlayerChoice|0495|Snivy}}",
+              "location": "Lacunosa Town",
+              "name": "Hugh",
+              "trainerVariants": [
+                {
+                  "class": "Pokémon Trainer",
+                  "name": "Hugh"
+                }
+              ]
+            },
+            "mechanicsBinding": {
+              "resolutionStatus": "resolved-unique-party-signature",
+              "selectedTrainerId": "pokemon-white-2-trainer-0701",
+              "defaultDifficultyMode": null,
+              "modeBindingIdentities": {},
+              "iterationBindingIdentities": [],
+              "specialBinding": null
+            },
+            "source": {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Lacunosa Town",
+                  "text": "Lacunosa Town"
+                },
+                {
+                  "level": 3,
+                  "raw": "Zinzolin",
+                  "text": "Zinzolin"
+                }
+              ],
+              "line": 158,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_12&oldid=4445178",
+              "pageId": 170325,
+              "revisionId": 4445178,
+              "templateOrdinal": 12,
+              "templateSha256": "8642f77ac0dbb753a37f9b42f9b2d74e050f46391c37fb850cd889d68839f831",
+              "title": "Walkthrough:Pokémon Black 2 and White 2/Part 12"
+            }
+          },
+          {
+            "occurrenceId": "pokemon-white-2-campaign-occurrence-0263",
+            "trainerId": "pokemon-white-2-trainer-0702",
+            "documentedIdentity": {
+              "class": "Pokémon Trainer",
+              "conditionMarkup": "{{PlayerChoice|0498|Tepig}}",
+              "location": "Lacunosa Town",
+              "name": "Hugh",
+              "trainerVariants": [
+                {
+                  "class": "Pokémon Trainer",
+                  "name": "Hugh"
+                }
+              ]
+            },
+            "mechanicsBinding": {
+              "resolutionStatus": "resolved-unique-party-signature",
+              "selectedTrainerId": "pokemon-white-2-trainer-0702",
+              "defaultDifficultyMode": null,
+              "modeBindingIdentities": {},
+              "iterationBindingIdentities": [],
+              "specialBinding": null
+            },
+            "source": {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Lacunosa Town",
+                  "text": "Lacunosa Town"
+                },
+                {
+                  "level": 3,
+                  "raw": "Zinzolin",
+                  "text": "Zinzolin"
+                }
+              ],
+              "line": 223,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_12&oldid=4445178",
+              "pageId": 170325,
+              "revisionId": 4445178,
+              "templateOrdinal": 13,
+              "templateSha256": "93080c00fa346fa424e8e9c14b945ebb85bb32e05d1fa5096a1834eec616e6f9",
+              "title": "Walkthrough:Pokémon Black 2 and White 2/Part 12"
+            }
+          },
+          {
+            "occurrenceId": "pokemon-white-2-campaign-occurrence-0264",
+            "trainerId": "pokemon-white-2-trainer-0703",
+            "documentedIdentity": {
+              "class": "Pokémon Trainer",
+              "conditionMarkup": "{{PlayerChoice|0501|Oshawott}}",
+              "location": "Lacunosa Town",
+              "name": "Hugh",
+              "trainerVariants": [
+                {
+                  "class": "Pokémon Trainer",
+                  "name": "Hugh"
+                }
+              ]
+            },
+            "mechanicsBinding": {
+              "resolutionStatus": "resolved-unique-party-signature",
+              "selectedTrainerId": "pokemon-white-2-trainer-0703",
+              "defaultDifficultyMode": null,
+              "modeBindingIdentities": {},
+              "iterationBindingIdentities": [],
+              "specialBinding": null
+            },
+            "source": {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Lacunosa Town",
+                  "text": "Lacunosa Town"
+                },
+                {
+                  "level": 3,
+                  "raw": "Zinzolin",
+                  "text": "Zinzolin"
+                }
+              ],
+              "line": 287,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_12&oldid=4445178",
+              "pageId": 170325,
+              "revisionId": 4445178,
+              "templateOrdinal": 14,
+              "templateSha256": "09aa9cba26bcb582b1ea4f57f9069f8d530bacca6a1d905eaafc822f335e4275",
+              "title": "Walkthrough:Pokémon Black 2 and White 2/Part 12"
+            }
+          }
+        ],
+        "selectionConditions": [
+          "{{PlayerChoice|0495|Snivy}}",
+          "{{PlayerChoice|0498|Tepig}}",
+          "{{PlayerChoice|0501|Oshawott}}"
+        ]
+      },
+      "choiceConditions": [],
+      "participantCandidates": [],
+      "choiceVariants": [],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "reviewed revision-pinned Bulbapedia campaign context",
+        "contextArtifact": "tools/imports/vanilla/gen5-documented-campaign-context/pokemon-white-2.json",
+        "evidence": [
+          {
+            "pageId": 170325,
+            "revisionId": 4445178,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_12&oldid=4445178",
+            "lineStart": 156,
+            "lineEnd": 156,
+            "excerptSha256": "7baa97b9d43fad94353b77e0b848e5ad102c088cc07e8c308a3ffc2a62da76dc",
+            "evidenceKind": "documented-battle-narrative"
+          },
+          {
+            "pageId": 170325,
+            "revisionId": 4445178,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_12&oldid=4445178",
+            "lineStart": 352,
+            "lineEnd": 352,
+            "excerptSha256": "eea4dd28173068b62dae3c4d8198dda14d6e2b307b5cf284aa96678a594b11f8",
+            "templateSha256": "e0ad8b078968770044787af6cee2f8970ffc8647a6e78fc5208d2fa012da5a5e",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 170325,
+            "revisionId": 4445178,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_12&oldid=4445178",
+            "lineStart": 352,
+            "lineEnd": 352,
+            "excerptSha256": "eea4dd28173068b62dae3c4d8198dda14d6e2b307b5cf284aa96678a594b11f8",
+            "templateSha256": "e0ad8b078968770044787af6cee2f8970ffc8647a6e78fc5208d2fa012da5a5e",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 170325,
+            "revisionId": 4445178,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_12&oldid=4445178",
+            "lineStart": 158,
+            "lineEnd": 158,
+            "excerptSha256": "d6f37d169dbb71bab67a0bdf443fc38003b1003e15d83eb19f6b771189c666fe",
+            "templateSha256": "8642f77ac0dbb753a37f9b42f9b2d74e050f46391c37fb850cd889d68839f831",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 170325,
+            "revisionId": 4445178,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_12&oldid=4445178",
+            "lineStart": 223,
+            "lineEnd": 223,
+            "excerptSha256": "d6f37d169dbb71bab67a0bdf443fc38003b1003e15d83eb19f6b771189c666fe",
+            "templateSha256": "93080c00fa346fa424e8e9c14b945ebb85bb32e05d1fa5096a1834eec616e6f9",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 170325,
+            "revisionId": 4445178,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_12&oldid=4445178",
+            "lineStart": 287,
+            "lineEnd": 287,
+            "excerptSha256": "d6f37d169dbb71bab67a0bdf443fc38003b1003e15d83eb19f6b771189c666fe",
+            "templateSha256": "09aa9cba26bcb582b1ea4f57f9069f8d530bacca6a1d905eaafc822f335e4275",
+            "evidenceKind": "documented-trainer-or-party-template"
+          }
+        ]
+      }
+    },
+    "pokemon-white-2-nimbasa-subway-bosses": {
+      "id": "pokemon-white-2-nimbasa-subway-bosses",
+      "battleFormat": "double",
+      "trainerParticipationMode": "multi-trainer",
+      "locationId": "campaign-location-nimbasa-city",
+      "enemyTrainerIds": [
+        "pokemon-white-2-trainer-0733",
+        "pokemon-white-2-trainer-0732"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-white-2-trainer-0733",
+        "pokemon-white-2-trainer-0732"
+      ],
+      "enemyOccurrenceIds": [
+        "pokemon-white-2-campaign-occurrence-0104",
+        "pokemon-white-2-campaign-occurrence-0105"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partner": {
+        "kind": "documented-identity",
+        "identity": "Rosa or Nate",
+        "conditions": [
+          "male player: Rosa",
+          "female player: Nate",
+          "partner species depends on player starter"
+        ]
+      },
+      "choiceConditions": [],
+      "participantCandidates": [],
+      "choiceVariants": [],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "reviewed revision-pinned Bulbapedia campaign context",
+        "contextArtifact": "tools/imports/vanilla/gen5-documented-campaign-context/pokemon-white-2.json",
+        "evidence": [
+          {
+            "pageId": 169425,
+            "revisionId": 4590693,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_6&oldid=4590693",
+            "lineStart": 33,
+            "lineEnd": 33,
+            "excerptSha256": "fd4cb982bb3fa762c6baa287b8d6f09a6c260c0edf505a748a64fd72ba0149f2",
+            "evidenceKind": "documented-battle-narrative"
+          },
+          {
+            "pageId": 169425,
+            "revisionId": 4590693,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_6&oldid=4590693",
+            "lineStart": 35,
+            "lineEnd": 35,
+            "excerptSha256": "eea4dd28173068b62dae3c4d8198dda14d6e2b307b5cf284aa96678a594b11f8",
+            "templateSha256": "fc0199fdefbd96b92728ac618fccf706e933f050c47e3a2a095030ec7f9bacc6",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 169425,
+            "revisionId": 4590693,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_6&oldid=4590693",
+            "lineStart": 35,
+            "lineEnd": 35,
+            "excerptSha256": "eea4dd28173068b62dae3c4d8198dda14d6e2b307b5cf284aa96678a594b11f8",
+            "templateSha256": "fc0199fdefbd96b92728ac618fccf706e933f050c47e3a2a095030ec7f9bacc6",
+            "evidenceKind": "documented-trainer-or-party-template"
+          }
+        ]
+      }
+    },
+    "pokemon-white-2-pinwheel-forest-helia-henley": {
+      "id": "pokemon-white-2-pinwheel-forest-helia-henley",
+      "battleFormat": "double",
+      "trainerParticipationMode": "two-enemy-trainers",
+      "locationId": "campaign-location-pinwheel-forest",
+      "enemyTrainerIds": [
+        "pokemon-white-2-trainer-0793",
+        "pokemon-white-2-trainer-0792"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-white-2-trainer-0793",
+        "pokemon-white-2-trainer-0792"
+      ],
+      "enemyOccurrenceIds": [
+        "pokemon-white-2-campaign-occurrence-0505",
+        "pokemon-white-2-campaign-occurrence-0506"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partner": null,
+      "choiceConditions": [],
+      "participantCandidates": [],
+      "choiceVariants": [],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "reviewed revision-pinned Bulbapedia campaign context",
+        "contextArtifact": "tools/imports/vanilla/gen5-documented-campaign-context/pokemon-white-2.json",
+        "evidence": [
+          {
+            "pageId": 174967,
+            "revisionId": 4561493,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_20&oldid=4561493",
+            "lineStart": 63,
+            "lineEnd": 63,
+            "excerptSha256": "9d026756e05b3a050d0863db2c7eb7b7162e2b6c67c8b7092d2fd275101f19cd",
+            "templateSha256": "9d026756e05b3a050d0863db2c7eb7b7162e2b6c67c8b7092d2fd275101f19cd",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 174967,
+            "revisionId": 4561493,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_20&oldid=4561493",
+            "lineStart": 64,
+            "lineEnd": 64,
+            "excerptSha256": "e7e181d50bc49d106e0405520c1283a08e3bb703bc552c7c69fa6b9ed2e766ef",
+            "templateSha256": "e7e181d50bc49d106e0405520c1283a08e3bb703bc552c7c69fa6b9ed2e766ef",
+            "evidenceKind": "documented-trainer-or-party-template"
+          }
+        ]
+      }
+    },
+    "pokemon-white-2-pinwheel-forest-rosaline-sinan": {
+      "id": "pokemon-white-2-pinwheel-forest-rosaline-sinan",
+      "battleFormat": "double",
+      "trainerParticipationMode": "two-enemy-trainers",
+      "locationId": "campaign-location-pinwheel-forest",
+      "enemyTrainerIds": [
+        "pokemon-white-2-trainer-0644",
+        "pokemon-white-2-trainer-0643"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-white-2-trainer-0644",
+        "pokemon-white-2-trainer-0643"
+      ],
+      "enemyOccurrenceIds": [
+        "pokemon-white-2-campaign-occurrence-0503",
+        "pokemon-white-2-campaign-occurrence-0504"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partner": null,
+      "choiceConditions": [],
+      "participantCandidates": [],
+      "choiceVariants": [],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "reviewed revision-pinned Bulbapedia campaign context",
+        "contextArtifact": "tools/imports/vanilla/gen5-documented-campaign-context/pokemon-white-2.json",
+        "evidence": [
+          {
+            "pageId": 174967,
+            "revisionId": 4561493,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_20&oldid=4561493",
+            "lineStart": 60,
+            "lineEnd": 60,
+            "excerptSha256": "00fd1a1de64eeacb845d82d17a1f44843ffc3492f56721736472da56656bdc6f",
+            "templateSha256": "00fd1a1de64eeacb845d82d17a1f44843ffc3492f56721736472da56656bdc6f",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 174967,
+            "revisionId": 4561493,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_20&oldid=4561493",
+            "lineStart": 61,
+            "lineEnd": 61,
+            "excerptSha256": "46a10fc83b3261f5cbc0230c5495bcecc4cb40e3231659e905505a90ae935d27",
+            "templateSha256": "46a10fc83b3261f5cbc0230c5495bcecc4cb40e3231659e905505a90ae935d27",
+            "evidenceKind": "documented-trainer-or-party-template"
+          }
+        ]
+      }
+    },
+    "pokemon-white-2-pinwheel-forest-rosalyn-ike": {
+      "id": "pokemon-white-2-pinwheel-forest-rosalyn-ike",
+      "battleFormat": "double",
+      "trainerParticipationMode": "two-enemy-trainers",
+      "locationId": "campaign-location-pinwheel-forest",
+      "enemyTrainerIds": [
+        "pokemon-white-2-trainer-0790",
+        "pokemon-white-2-trainer-0791"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-white-2-trainer-0790",
+        "pokemon-white-2-trainer-0791"
+      ],
+      "enemyOccurrenceIds": [
+        "pokemon-white-2-campaign-occurrence-0497",
+        "pokemon-white-2-campaign-occurrence-0498"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partner": null,
+      "choiceConditions": [],
+      "participantCandidates": [],
+      "choiceVariants": [],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "reviewed revision-pinned Bulbapedia campaign context",
+        "contextArtifact": "tools/imports/vanilla/gen5-documented-campaign-context/pokemon-white-2.json",
+        "evidence": [
+          {
+            "pageId": 174967,
+            "revisionId": 4561493,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_20&oldid=4561493",
+            "lineStart": 49,
+            "lineEnd": 49,
+            "excerptSha256": "f37678d45b32e9f6ca73a3c3d7ef53aeaf440a510c1ecde049419162a31cf131",
+            "templateSha256": "f37678d45b32e9f6ca73a3c3d7ef53aeaf440a510c1ecde049419162a31cf131",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 174967,
+            "revisionId": 4561493,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_20&oldid=4561493",
+            "lineStart": 50,
+            "lineEnd": 50,
+            "excerptSha256": "d04f82379db5042efdde9b69076464fe53bf8d315fbc67e2d377f9c2c1d38176",
+            "templateSha256": "d04f82379db5042efdde9b69076464fe53bf8d315fbc67e2d377f9c2c1d38176",
+            "evidenceKind": "documented-trainer-or-party-template"
+          }
+        ]
+      }
+    },
+    "pokemon-white-2-plasma-frigate-cheren-pair": {
+      "id": "pokemon-white-2-plasma-frigate-cheren-pair",
+      "battleFormat": "double",
+      "trainerParticipationMode": "multi-trainer",
+      "locationId": "campaign-location-plasma-frigate",
+      "enemyTrainerIds": [
+        "pokemon-white-2-trainer-0375",
+        "pokemon-white-2-trainer-0374"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-white-2-trainer-0375",
+        "pokemon-white-2-trainer-0374"
+      ],
+      "enemyOccurrenceIds": [
+        "pokemon-white-2-campaign-occurrence-0162",
+        "pokemon-white-2-campaign-occurrence-0163"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partner": {
+        "kind": "documented-party-variants",
+        "participants": [
+          {
+            "occurrenceId": "pokemon-white-2-campaign-occurrence-0156",
+            "trainerId": "pokemon-white-2-trainer-0371",
+            "documentedIdentity": {
+              "class": "Leader",
+              "conditionMarkup": null,
+              "location": "Plasma Frigate",
+              "name": "Cheren",
+              "trainerVariants": [
+                {
+                  "class": "Leader",
+                  "name": "Cheren"
+                }
+              ]
+            },
+            "mechanicsBinding": {
+              "resolutionStatus": "resolved-unique-party-signature",
+              "selectedTrainerId": "pokemon-white-2-trainer-0371",
+              "defaultDifficultyMode": null,
+              "modeBindingIdentities": {},
+              "iterationBindingIdentities": [],
+              "specialBinding": null
+            },
+            "source": {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Plasma Frigate",
+                  "text": "Plasma Frigate"
+                }
+              ],
+              "line": 371,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_8&oldid=4593264",
+              "pageId": 169892,
+              "revisionId": 4593264,
+              "templateOrdinal": 6,
+              "templateSha256": "56a91d725c31536ecb750a1484203af504604d9c18cc2908f6eb106b7ec5c580",
+              "title": "Walkthrough:Pokémon Black 2 and White 2/Part 8"
+            }
+          }
+        ],
+        "selectionConditions": [
+          null
+        ]
+      },
+      "choiceConditions": [],
+      "participantCandidates": [],
+      "choiceVariants": [],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "reviewed revision-pinned Bulbapedia campaign context",
+        "contextArtifact": "tools/imports/vanilla/gen5-documented-campaign-context/pokemon-white-2.json",
+        "evidence": [
+          {
+            "pageId": 169892,
+            "revisionId": 4593264,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_8&oldid=4593264",
+            "lineStart": 369,
+            "lineEnd": 369,
+            "excerptSha256": "63c674610bd2c0fdd95d241415e568223b38332aa8413dac16339aa0cd71b0e5",
+            "evidenceKind": "documented-battle-narrative"
+          },
+          {
+            "pageId": 169892,
+            "revisionId": 4593264,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_8&oldid=4593264",
+            "lineStart": 622,
+            "lineEnd": 622,
+            "excerptSha256": "e0271f65acf39dda9b4111a8d03b58aef7aa5e865f98ea0408fc67e1fd9618b4",
+            "templateSha256": "e0271f65acf39dda9b4111a8d03b58aef7aa5e865f98ea0408fc67e1fd9618b4",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 169892,
+            "revisionId": 4593264,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_8&oldid=4593264",
+            "lineStart": 623,
+            "lineEnd": 623,
+            "excerptSha256": "d6fd32910d75a39637095bd2254b3c1b8c2aea5fdbeff5c3028e46846fd7e966",
+            "templateSha256": "d6fd32910d75a39637095bd2254b3c1b8c2aea5fdbeff5c3028e46846fd7e966",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 169892,
+            "revisionId": 4593264,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_8&oldid=4593264",
+            "lineStart": 371,
+            "lineEnd": 371,
+            "excerptSha256": "d6f37d169dbb71bab67a0bdf443fc38003b1003e15d83eb19f6b771189c666fe",
+            "templateSha256": "56a91d725c31536ecb750a1484203af504604d9c18cc2908f6eb106b7ec5c580",
+            "evidenceKind": "documented-trainer-or-party-template"
+          }
+        ]
+      }
+    },
+    "pokemon-white-2-plasma-frigate-command-center": {
+      "id": "pokemon-white-2-plasma-frigate-command-center",
+      "battleFormat": "double",
+      "trainerParticipationMode": "multi-trainer",
+      "locationId": "campaign-location-plasma-frigate",
+      "enemyTrainerIds": [
+        "pokemon-white-2-trainer-0347",
+        "pokemon-white-2-trainer-0797"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-white-2-trainer-0347",
+        "pokemon-white-2-trainer-0797"
+      ],
+      "enemyOccurrenceIds": [
+        "pokemon-white-2-campaign-occurrence-0340",
+        "pokemon-white-2-campaign-occurrence-0341"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partner": {
+        "kind": "documented-identity",
+        "identity": "Hugh",
+        "conditions": [
+          "partner species depends on player starter"
+        ]
+      },
+      "choiceConditions": [],
+      "participantCandidates": [],
+      "choiceVariants": [],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "reviewed revision-pinned Bulbapedia campaign context",
+        "contextArtifact": "tools/imports/vanilla/gen5-documented-campaign-context/pokemon-white-2.json",
+        "evidence": [
+          {
+            "pageId": 172631,
+            "revisionId": 4614056,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_14&oldid=4614056",
+            "lineStart": 345,
+            "lineEnd": 345,
+            "excerptSha256": "dbcbfce4812cf39e2750f62a2b6dc33562687d1ba0b2797bf96aa763b683f7fd",
+            "evidenceKind": "documented-battle-narrative"
+          },
+          {
+            "pageId": 172631,
+            "revisionId": 4614056,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_14&oldid=4614056",
+            "lineStart": 347,
+            "lineEnd": 347,
+            "excerptSha256": "eea4dd28173068b62dae3c4d8198dda14d6e2b307b5cf284aa96678a594b11f8",
+            "templateSha256": "9573137686becc4acb72b82f04a84bf4e7055b3b25a536271680cdec1e303e02",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 172631,
+            "revisionId": 4614056,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_14&oldid=4614056",
+            "lineStart": 347,
+            "lineEnd": 347,
+            "excerptSha256": "eea4dd28173068b62dae3c4d8198dda14d6e2b307b5cf284aa96678a594b11f8",
+            "templateSha256": "9573137686becc4acb72b82f04a84bf4e7055b3b25a536271680cdec1e303e02",
+            "evidenceKind": "documented-trainer-or-party-template"
+          }
+        ]
+      }
+    },
+    "pokemon-white-2-plasma-frigate-hugh-pair": {
+      "id": "pokemon-white-2-plasma-frigate-hugh-pair",
+      "battleFormat": "double",
+      "trainerParticipationMode": "multi-trainer",
+      "locationId": "campaign-location-plasma-frigate",
+      "enemyTrainerIds": [
+        "pokemon-white-2-trainer-0377",
+        "pokemon-white-2-trainer-0376"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-white-2-trainer-0377",
+        "pokemon-white-2-trainer-0376"
+      ],
+      "enemyOccurrenceIds": [
+        "pokemon-white-2-campaign-occurrence-0164",
+        "pokemon-white-2-campaign-occurrence-0165"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partner": {
+        "kind": "documented-party-variants",
+        "participants": [
+          {
+            "occurrenceId": "pokemon-white-2-campaign-occurrence-0157",
+            "trainerId": "pokemon-white-2-trainer-0368",
+            "documentedIdentity": {
+              "class": "Pokémon Trainer",
+              "conditionMarkup": "{{PlayerChoice|0495|Snivy}}",
+              "location": "Plasma Frigate",
+              "name": "Hugh",
+              "trainerVariants": [
+                {
+                  "class": "Pokémon Trainer",
+                  "name": "Hugh"
+                }
+              ]
+            },
+            "mechanicsBinding": {
+              "resolutionStatus": "resolved-unique-party-signature",
+              "selectedTrainerId": "pokemon-white-2-trainer-0368",
+              "defaultDifficultyMode": null,
+              "modeBindingIdentities": {},
+              "iterationBindingIdentities": [],
+              "specialBinding": null
+            },
+            "source": {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Plasma Frigate",
+                  "text": "Plasma Frigate"
+                }
+              ],
+              "line": 430,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_8&oldid=4593264",
+              "pageId": 169892,
+              "revisionId": 4593264,
+              "templateOrdinal": 7,
+              "templateSha256": "b5589a25113342b12589c09a33a4ff79eed80c2311ea1521c78f274dd4b5ab8e",
+              "title": "Walkthrough:Pokémon Black 2 and White 2/Part 8"
+            }
+          },
+          {
+            "occurrenceId": "pokemon-white-2-campaign-occurrence-0158",
+            "trainerId": "pokemon-white-2-trainer-0369",
+            "documentedIdentity": {
+              "class": "Pokémon Trainer",
+              "conditionMarkup": "{{PlayerChoice|0498|Tepig}}",
+              "location": "Plasma Frigate",
+              "name": "Hugh",
+              "trainerVariants": [
+                {
+                  "class": "Pokémon Trainer",
+                  "name": "Hugh"
+                }
+              ]
+            },
+            "mechanicsBinding": {
+              "resolutionStatus": "resolved-unique-party-signature",
+              "selectedTrainerId": "pokemon-white-2-trainer-0369",
+              "defaultDifficultyMode": null,
+              "modeBindingIdentities": {},
+              "iterationBindingIdentities": [],
+              "specialBinding": null
+            },
+            "source": {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Plasma Frigate",
+                  "text": "Plasma Frigate"
+                }
+              ],
+              "line": 491,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_8&oldid=4593264",
+              "pageId": 169892,
+              "revisionId": 4593264,
+              "templateOrdinal": 8,
+              "templateSha256": "b911e57fc9f6e511607f0dbe214b3df72e4576c1c11a1c9e5f13dbfa67490a84",
+              "title": "Walkthrough:Pokémon Black 2 and White 2/Part 8"
+            }
+          },
+          {
+            "occurrenceId": "pokemon-white-2-campaign-occurrence-0159",
+            "trainerId": "pokemon-white-2-trainer-0370",
+            "documentedIdentity": {
+              "class": "Pokémon Trainer",
+              "conditionMarkup": "{{PlayerChoice|0501|Oshawott}}",
+              "location": "Plasma Frigate",
+              "name": "Hugh",
+              "trainerVariants": [
+                {
+                  "class": "Pokémon Trainer",
+                  "name": "Hugh"
+                }
+              ]
+            },
+            "mechanicsBinding": {
+              "resolutionStatus": "resolved-unique-party-signature",
+              "selectedTrainerId": "pokemon-white-2-trainer-0370",
+              "defaultDifficultyMode": null,
+              "modeBindingIdentities": {},
+              "iterationBindingIdentities": [],
+              "specialBinding": null
+            },
+            "source": {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Plasma Frigate",
+                  "text": "Plasma Frigate"
+                }
+              ],
+              "line": 551,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_8&oldid=4593264",
+              "pageId": 169892,
+              "revisionId": 4593264,
+              "templateOrdinal": 9,
+              "templateSha256": "527d6078effc5cdfc200da6a5bb2521f1463a29b27eacaa77146a2511636ee5c",
+              "title": "Walkthrough:Pokémon Black 2 and White 2/Part 8"
+            }
+          }
+        ],
+        "selectionConditions": [
+          "{{PlayerChoice|0495|Snivy}}",
+          "{{PlayerChoice|0498|Tepig}}",
+          "{{PlayerChoice|0501|Oshawott}}"
+        ]
+      },
+      "choiceConditions": [],
+      "participantCandidates": [],
+      "choiceVariants": [],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "reviewed revision-pinned Bulbapedia campaign context",
+        "contextArtifact": "tools/imports/vanilla/gen5-documented-campaign-context/pokemon-white-2.json",
+        "evidence": [
+          {
+            "pageId": 169892,
+            "revisionId": 4593264,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_8&oldid=4593264",
+            "lineStart": 369,
+            "lineEnd": 369,
+            "excerptSha256": "63c674610bd2c0fdd95d241415e568223b38332aa8413dac16339aa0cd71b0e5",
+            "evidenceKind": "documented-battle-narrative"
+          },
+          {
+            "pageId": 169892,
+            "revisionId": 4593264,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_8&oldid=4593264",
+            "lineStart": 625,
+            "lineEnd": 625,
+            "excerptSha256": "2a1e5469cba9e21a7fb98291d7fe9a9beab7258d323c6334c4157f2b7a6ed1a4",
+            "templateSha256": "2a1e5469cba9e21a7fb98291d7fe9a9beab7258d323c6334c4157f2b7a6ed1a4",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 169892,
+            "revisionId": 4593264,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_8&oldid=4593264",
+            "lineStart": 626,
+            "lineEnd": 626,
+            "excerptSha256": "156eae0d133ced23a78bfda6ea5b91fd1e0be79ec717535fba96589153110f74",
+            "templateSha256": "156eae0d133ced23a78bfda6ea5b91fd1e0be79ec717535fba96589153110f74",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 169892,
+            "revisionId": 4593264,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_8&oldid=4593264",
+            "lineStart": 430,
+            "lineEnd": 430,
+            "excerptSha256": "d6f37d169dbb71bab67a0bdf443fc38003b1003e15d83eb19f6b771189c666fe",
+            "templateSha256": "b5589a25113342b12589c09a33a4ff79eed80c2311ea1521c78f274dd4b5ab8e",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 169892,
+            "revisionId": 4593264,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_8&oldid=4593264",
+            "lineStart": 491,
+            "lineEnd": 491,
+            "excerptSha256": "d6f37d169dbb71bab67a0bdf443fc38003b1003e15d83eb19f6b771189c666fe",
+            "templateSha256": "b911e57fc9f6e511607f0dbe214b3df72e4576c1c11a1c9e5f13dbfa67490a84",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 169892,
+            "revisionId": 4593264,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_8&oldid=4593264",
+            "lineStart": 551,
+            "lineEnd": 551,
+            "excerptSha256": "d6f37d169dbb71bab67a0bdf443fc38003b1003e15d83eb19f6b771189c666fe",
+            "templateSha256": "527d6078effc5cdfc200da6a5bb2521f1463a29b27eacaa77146a2511636ee5c",
+            "evidenceKind": "documented-trainer-or-party-template"
+          }
+        ]
+      }
+    },
+    "pokemon-white-2-plasma-frigate-north-entrance": {
+      "id": "pokemon-white-2-plasma-frigate-north-entrance",
+      "battleFormat": "double",
+      "trainerParticipationMode": "multi-trainer",
+      "locationId": "campaign-location-plasma-frigate",
+      "enemyTrainerIds": [
+        "pokemon-white-2-trainer-0798",
+        "pokemon-white-2-trainer-0799"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-white-2-trainer-0798",
+        "pokemon-white-2-trainer-0799"
+      ],
+      "enemyOccurrenceIds": [
+        "pokemon-white-2-campaign-occurrence-0330",
+        "pokemon-white-2-campaign-occurrence-0331"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partner": {
+        "kind": "documented-identity",
+        "identity": "Hugh",
+        "conditions": [
+          "partner species depends on player starter"
+        ]
+      },
+      "choiceConditions": [],
+      "participantCandidates": [],
+      "choiceVariants": [],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "reviewed revision-pinned Bulbapedia campaign context",
+        "contextArtifact": "tools/imports/vanilla/gen5-documented-campaign-context/pokemon-white-2.json",
+        "evidence": [
+          {
+            "pageId": 172631,
+            "revisionId": 4614056,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_14&oldid=4614056",
+            "lineStart": 212,
+            "lineEnd": 212,
+            "excerptSha256": "9ffb556d0f1af2c976b1f13fef4e0fa265377553d60287998982b37b887c5cf5",
+            "evidenceKind": "documented-battle-narrative"
+          },
+          {
+            "pageId": 172631,
+            "revisionId": 4614056,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_14&oldid=4614056",
+            "lineStart": 186,
+            "lineEnd": 186,
+            "excerptSha256": "871340105d69bb9d4cb7ef07ca976515cb95b6b26c4bf07e970c77e558b06918",
+            "templateSha256": "871340105d69bb9d4cb7ef07ca976515cb95b6b26c4bf07e970c77e558b06918",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 172631,
+            "revisionId": 4614056,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_14&oldid=4614056",
+            "lineStart": 187,
+            "lineEnd": 187,
+            "excerptSha256": "3529270e940fb1a9c6e03c3e8224b6ead624691d580ece83a0840c27d0bc40bf",
+            "templateSha256": "3529270e940fb1a9c6e03c3e8224b6ead624691d580ece83a0840c27d0bc40bf",
+            "evidenceKind": "documented-trainer-or-party-template"
+          }
+        ]
+      }
+    },
+    "pokemon-white-2-reversal-mountain-kumiko-jared": {
+      "id": "pokemon-white-2-reversal-mountain-kumiko-jared",
+      "battleFormat": "double",
+      "trainerParticipationMode": "multi-trainer",
+      "locationId": "campaign-location-reversal-mountainw2",
+      "enemyTrainerIds": [
+        "pokemon-white-2-trainer-0514",
+        "pokemon-white-2-trainer-0521"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-white-2-trainer-0514",
+        "pokemon-white-2-trainer-0521"
+      ],
+      "enemyOccurrenceIds": [
+        "pokemon-white-2-campaign-occurrence-0236",
+        "pokemon-white-2-campaign-occurrence-0237"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partner": {
+        "kind": "documented-identity",
+        "identity": "Bianca",
+        "conditions": []
+      },
+      "choiceConditions": [],
+      "participantCandidates": [],
+      "choiceVariants": [],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "reviewed revision-pinned Bulbapedia campaign context",
+        "contextArtifact": "tools/imports/vanilla/gen5-documented-campaign-context/pokemon-white-2.json",
+        "evidence": [
+          {
+            "pageId": 170252,
+            "revisionId": 4544207,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_11&oldid=4544207",
+            "lineStart": 532,
+            "lineEnd": 532,
+            "excerptSha256": "0a3a4588af0d761fd63f4b9cf43954ec8cc5789b6863e7c8583d3bfee74aeade",
+            "evidenceKind": "documented-battle-narrative"
+          },
+          {
+            "pageId": 170252,
+            "revisionId": 4544207,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_11&oldid=4544207",
+            "lineStart": 413,
+            "lineEnd": 413,
+            "excerptSha256": "c266998b69920f00ada46c6cf17cf6e4335d72ad0e2fe1e51a73e5f419988365",
+            "templateSha256": "c266998b69920f00ada46c6cf17cf6e4335d72ad0e2fe1e51a73e5f419988365",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 170252,
+            "revisionId": 4544207,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_11&oldid=4544207",
+            "lineStart": 415,
+            "lineEnd": 415,
+            "excerptSha256": "21735051bc6dd1ac7b8c18ca740fcbfe567b2db0e169ed113dcce984f8ba01ee",
+            "templateSha256": "21735051bc6dd1ac7b8c18ca740fcbfe567b2db0e169ed113dcce984f8ba01ee",
+            "evidenceKind": "documented-trainer-or-party-template"
+          }
+        ]
+      }
+    },
+    "pokemon-white-2-reversal-mountain-markus-kiyo": {
+      "id": "pokemon-white-2-reversal-mountain-markus-kiyo",
+      "battleFormat": "double",
+      "trainerParticipationMode": "multi-trainer",
+      "locationId": "campaign-location-reversal-mountainw2",
+      "enemyTrainerIds": [
+        "pokemon-white-2-trainer-0522",
+        "pokemon-white-2-trainer-0788"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-white-2-trainer-0522",
+        "pokemon-white-2-trainer-0788"
+      ],
+      "enemyOccurrenceIds": [
+        "pokemon-white-2-campaign-occurrence-0232",
+        "pokemon-white-2-campaign-occurrence-0233"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partner": {
+        "kind": "documented-identity",
+        "identity": "Bianca",
+        "conditions": []
+      },
+      "choiceConditions": [],
+      "participantCandidates": [],
+      "choiceVariants": [],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "reviewed revision-pinned Bulbapedia campaign context",
+        "contextArtifact": "tools/imports/vanilla/gen5-documented-campaign-context/pokemon-white-2.json",
+        "evidence": [
+          {
+            "pageId": 170252,
+            "revisionId": 4544207,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_11&oldid=4544207",
+            "lineStart": 532,
+            "lineEnd": 532,
+            "excerptSha256": "0a3a4588af0d761fd63f4b9cf43954ec8cc5789b6863e7c8583d3bfee74aeade",
+            "evidenceKind": "documented-battle-narrative"
+          },
+          {
+            "pageId": 170252,
+            "revisionId": 4544207,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_11&oldid=4544207",
+            "lineStart": 406,
+            "lineEnd": 406,
+            "excerptSha256": "dcd5d729447e0fa4f5dc84d25e94c0ef9cc9b69d48cb3edcbf2b9b9218951944",
+            "templateSha256": "dcd5d729447e0fa4f5dc84d25e94c0ef9cc9b69d48cb3edcbf2b9b9218951944",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 170252,
+            "revisionId": 4544207,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_11&oldid=4544207",
+            "lineStart": 407,
+            "lineEnd": 407,
+            "excerptSha256": "835d7104ddcdeb7a7fd7edb62310b95bc21a9d35d2c259eb1e8bb5b790ff5bf8",
+            "templateSha256": "835d7104ddcdeb7a7fd7edb62310b95bc21a9d35d2c259eb1e8bb5b790ff5bf8",
+            "evidenceKind": "documented-trainer-or-party-template"
+          }
+        ]
+      }
+    },
+    "pokemon-white-2-reversal-mountain-ray-cora": {
+      "id": "pokemon-white-2-reversal-mountain-ray-cora",
+      "battleFormat": "double",
+      "trainerParticipationMode": "multi-trainer",
+      "locationId": "campaign-location-reversal-mountainw2",
+      "enemyTrainerIds": [
+        "pokemon-white-2-trainer-0519",
+        "pokemon-white-2-trainer-0787"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-white-2-trainer-0519",
+        "pokemon-white-2-trainer-0787"
+      ],
+      "enemyOccurrenceIds": [
+        "pokemon-white-2-campaign-occurrence-0239",
+        "pokemon-white-2-campaign-occurrence-0240"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partner": {
+        "kind": "documented-identity",
+        "identity": "Bianca",
+        "conditions": []
+      },
+      "choiceConditions": [],
+      "participantCandidates": [],
+      "choiceVariants": [],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "reviewed revision-pinned Bulbapedia campaign context",
+        "contextArtifact": "tools/imports/vanilla/gen5-documented-campaign-context/pokemon-white-2.json",
+        "evidence": [
+          {
+            "pageId": 170252,
+            "revisionId": 4544207,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_11&oldid=4544207",
+            "lineStart": 532,
+            "lineEnd": 532,
+            "excerptSha256": "0a3a4588af0d761fd63f4b9cf43954ec8cc5789b6863e7c8583d3bfee74aeade",
+            "evidenceKind": "documented-battle-narrative"
+          },
+          {
+            "pageId": 170252,
+            "revisionId": 4544207,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_11&oldid=4544207",
+            "lineStart": 419,
+            "lineEnd": 419,
+            "excerptSha256": "95986190f0c27f7823d13f58ea6ad8f380683ce13a5a5dbd5d1d5cf8acbba53b",
+            "templateSha256": "95986190f0c27f7823d13f58ea6ad8f380683ce13a5a5dbd5d1d5cf8acbba53b",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 170252,
+            "revisionId": 4544207,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_11&oldid=4544207",
+            "lineStart": 420,
+            "lineEnd": 420,
+            "excerptSha256": "3f28cec746e7ad38210e0ef11261698caa54946cb24e74485a367caf2ce23788",
+            "templateSha256": "3f28cec746e7ad38210e0ef11261698caa54946cb24e74485a367caf2ce23788",
+            "evidenceKind": "documented-trainer-or-party-template"
+          }
+        ]
+      }
+    },
+    "pokemon-white-2-striaton-restaurant-brothers": {
+      "id": "pokemon-white-2-striaton-restaurant-brothers",
+      "battleFormat": "double",
+      "trainerParticipationMode": "multi-trainer",
+      "locationId": "campaign-location-striaton-city",
+      "enemyTrainerIds": [],
+      "enemySlotTrainerIds": [],
+      "enemyOccurrenceIds": [],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partner": null,
+      "choiceConditions": {
+        "kind": "select-one-partner",
+        "candidates": [
+          "Cilan",
+          "Chili",
+          "Cress"
+        ]
+      },
+      "participantCandidates": [
+        {
+          "occurrenceId": "pokemon-white-2-campaign-occurrence-0532",
+          "trainerId": "pokemon-white-2-trainer-0496",
+          "documentedIdentity": {
+            "class": "Pokémon Trainer",
+            "conditionMarkup": null,
+            "location": "Striaton City",
+            "name": "Cilan",
+            "trainerVariants": [
+              {
+                "class": "Pokémon Trainer",
+                "name": "Cilan"
+              }
+            ]
+          },
+          "mechanicsBinding": {
+            "resolutionStatus": "resolved-unique-party-signature",
+            "selectedTrainerId": "pokemon-white-2-trainer-0496",
+            "defaultDifficultyMode": "normal",
+            "modeBindingIdentities": {
+              "challenge": {
+                "status": "resolved-unique-party-signature",
+                "selectedTrainerId": "pokemon-white-2-trainer-0496",
+                "selectedRawTrainerId": 496
+              },
+              "easy": {
+                "status": "resolved-unique-party-signature",
+                "selectedTrainerId": "pokemon-white-2-trainer-0496",
+                "selectedRawTrainerId": 496
+              },
+              "normal": {
+                "status": "resolved-unique-party-signature",
+                "selectedTrainerId": "pokemon-white-2-trainer-0496",
+                "selectedRawTrainerId": 496
+              }
+            },
+            "iterationBindingIdentities": [],
+            "specialBinding": null
+          },
+          "source": {
+            "headingPath": [
+              {
+                "level": 2,
+                "raw": "Striaton City",
+                "text": "Striaton City"
+              },
+              {
+                "level": 3,
+                "raw": "Striaton Restaurant",
+                "text": "Striaton Restaurant"
+              },
+              {
+                "level": 4,
+                "raw": "Battle with the Brothers",
+                "text": "Battle with the Brothers"
+              }
+            ],
+            "line": 620,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_20&oldid=4561493",
+            "pageId": 174967,
+            "revisionId": 4561493,
+            "templateOrdinal": 41,
+            "templateSha256": "e454db0a10fd17298b8f957b7e8850621c2698633bbca57468ec0b17d2d68ff8",
+            "title": "Walkthrough:Pokémon Black 2 and White 2/Part 20"
+          }
+        },
+        {
+          "occurrenceId": "pokemon-white-2-campaign-occurrence-0533",
+          "trainerId": "pokemon-white-2-trainer-0494",
+          "documentedIdentity": {
+            "class": "Pokémon Trainer",
+            "conditionMarkup": null,
+            "location": "Striaton City",
+            "name": "Chili",
+            "trainerVariants": [
+              {
+                "class": "Pokémon Trainer",
+                "name": "Chili"
+              }
+            ]
+          },
+          "mechanicsBinding": {
+            "resolutionStatus": "resolved-unique-party-signature",
+            "selectedTrainerId": "pokemon-white-2-trainer-0494",
+            "defaultDifficultyMode": "normal",
+            "modeBindingIdentities": {
+              "challenge": {
+                "status": "resolved-unique-party-signature",
+                "selectedTrainerId": "pokemon-white-2-trainer-0494",
+                "selectedRawTrainerId": 494
+              },
+              "easy": {
+                "status": "resolved-unique-party-signature",
+                "selectedTrainerId": "pokemon-white-2-trainer-0494",
+                "selectedRawTrainerId": 494
+              },
+              "normal": {
+                "status": "resolved-unique-party-signature",
+                "selectedTrainerId": "pokemon-white-2-trainer-0494",
+                "selectedRawTrainerId": 494
+              }
+            },
+            "iterationBindingIdentities": [],
+            "specialBinding": null
+          },
+          "source": {
+            "headingPath": [
+              {
+                "level": 2,
+                "raw": "Striaton City",
+                "text": "Striaton City"
+              },
+              {
+                "level": 3,
+                "raw": "Striaton Restaurant",
+                "text": "Striaton Restaurant"
+              },
+              {
+                "level": 4,
+                "raw": "Battle with the Brothers",
+                "text": "Battle with the Brothers"
+              }
+            ],
+            "line": 682,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_20&oldid=4561493",
+            "pageId": 174967,
+            "revisionId": 4561493,
+            "templateOrdinal": 42,
+            "templateSha256": "2a3a760e3af5e50e912be01bc0f39cf077d06137b01d6710ac156dca1f5398ac",
+            "title": "Walkthrough:Pokémon Black 2 and White 2/Part 20"
+          }
+        },
+        {
+          "occurrenceId": "pokemon-white-2-campaign-occurrence-0534",
+          "trainerId": "pokemon-white-2-trainer-0495",
+          "documentedIdentity": {
+            "class": "Pokémon Trainer",
+            "conditionMarkup": null,
+            "location": "Striaton City",
+            "name": "Cress",
+            "trainerVariants": [
+              {
+                "class": "Pokémon Trainer",
+                "name": "Cress"
+              }
+            ]
+          },
+          "mechanicsBinding": {
+            "resolutionStatus": "resolved-unique-party-signature",
+            "selectedTrainerId": "pokemon-white-2-trainer-0495",
+            "defaultDifficultyMode": "normal",
+            "modeBindingIdentities": {
+              "challenge": {
+                "status": "resolved-unique-party-signature",
+                "selectedTrainerId": "pokemon-white-2-trainer-0495",
+                "selectedRawTrainerId": 495
+              },
+              "easy": {
+                "status": "resolved-unique-party-signature",
+                "selectedTrainerId": "pokemon-white-2-trainer-0495",
+                "selectedRawTrainerId": 495
+              },
+              "normal": {
+                "status": "resolved-unique-party-signature",
+                "selectedTrainerId": "pokemon-white-2-trainer-0495",
+                "selectedRawTrainerId": 495
+              }
+            },
+            "iterationBindingIdentities": [],
+            "specialBinding": null
+          },
+          "source": {
+            "headingPath": [
+              {
+                "level": 2,
+                "raw": "Striaton City",
+                "text": "Striaton City"
+              },
+              {
+                "level": 3,
+                "raw": "Striaton Restaurant",
+                "text": "Striaton Restaurant"
+              },
+              {
+                "level": 4,
+                "raw": "Battle with the Brothers",
+                "text": "Battle with the Brothers"
+              }
+            ],
+            "line": 743,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_20&oldid=4561493",
+            "pageId": 174967,
+            "revisionId": 4561493,
+            "templateOrdinal": 43,
+            "templateSha256": "33dd273c74df84a0ee9b6929106256318447a7be5f59c45995c4df378bedcbd0",
+            "title": "Walkthrough:Pokémon Black 2 and White 2/Part 20"
+          }
+        }
+      ],
+      "choiceVariants": [
+        {
+          "condition": "selected partner is Cilan",
+          "partner": {
+            "occurrenceId": "pokemon-white-2-campaign-occurrence-0532",
+            "trainerId": "pokemon-white-2-trainer-0496",
+            "documentedIdentity": {
+              "class": "Pokémon Trainer",
+              "conditionMarkup": null,
+              "location": "Striaton City",
+              "name": "Cilan",
+              "trainerVariants": [
+                {
+                  "class": "Pokémon Trainer",
+                  "name": "Cilan"
+                }
+              ]
+            },
+            "mechanicsBinding": {
+              "resolutionStatus": "resolved-unique-party-signature",
+              "selectedTrainerId": "pokemon-white-2-trainer-0496",
+              "defaultDifficultyMode": "normal",
+              "modeBindingIdentities": {
+                "challenge": {
+                  "status": "resolved-unique-party-signature",
+                  "selectedTrainerId": "pokemon-white-2-trainer-0496",
+                  "selectedRawTrainerId": 496
+                },
+                "easy": {
+                  "status": "resolved-unique-party-signature",
+                  "selectedTrainerId": "pokemon-white-2-trainer-0496",
+                  "selectedRawTrainerId": 496
+                },
+                "normal": {
+                  "status": "resolved-unique-party-signature",
+                  "selectedTrainerId": "pokemon-white-2-trainer-0496",
+                  "selectedRawTrainerId": 496
+                }
+              },
+              "iterationBindingIdentities": [],
+              "specialBinding": null
+            },
+            "source": {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Striaton City",
+                  "text": "Striaton City"
+                },
+                {
+                  "level": 3,
+                  "raw": "Striaton Restaurant",
+                  "text": "Striaton Restaurant"
+                },
+                {
+                  "level": 4,
+                  "raw": "Battle with the Brothers",
+                  "text": "Battle with the Brothers"
+                }
+              ],
+              "line": 620,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_20&oldid=4561493",
+              "pageId": 174967,
+              "revisionId": 4561493,
+              "templateOrdinal": 41,
+              "templateSha256": "e454db0a10fd17298b8f957b7e8850621c2698633bbca57468ec0b17d2d68ff8",
+              "title": "Walkthrough:Pokémon Black 2 and White 2/Part 20"
+            }
+          },
+          "enemyParticipants": [
+            {
+              "occurrenceId": "pokemon-white-2-campaign-occurrence-0533",
+              "trainerId": "pokemon-white-2-trainer-0494",
+              "documentedIdentity": {
+                "class": "Pokémon Trainer",
+                "conditionMarkup": null,
+                "location": "Striaton City",
+                "name": "Chili",
+                "trainerVariants": [
+                  {
+                    "class": "Pokémon Trainer",
+                    "name": "Chili"
+                  }
+                ]
+              },
+              "mechanicsBinding": {
+                "resolutionStatus": "resolved-unique-party-signature",
+                "selectedTrainerId": "pokemon-white-2-trainer-0494",
+                "defaultDifficultyMode": "normal",
+                "modeBindingIdentities": {
+                  "challenge": {
+                    "status": "resolved-unique-party-signature",
+                    "selectedTrainerId": "pokemon-white-2-trainer-0494",
+                    "selectedRawTrainerId": 494
+                  },
+                  "easy": {
+                    "status": "resolved-unique-party-signature",
+                    "selectedTrainerId": "pokemon-white-2-trainer-0494",
+                    "selectedRawTrainerId": 494
+                  },
+                  "normal": {
+                    "status": "resolved-unique-party-signature",
+                    "selectedTrainerId": "pokemon-white-2-trainer-0494",
+                    "selectedRawTrainerId": 494
+                  }
+                },
+                "iterationBindingIdentities": [],
+                "specialBinding": null
+              },
+              "source": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Striaton City",
+                    "text": "Striaton City"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "Striaton Restaurant",
+                    "text": "Striaton Restaurant"
+                  },
+                  {
+                    "level": 4,
+                    "raw": "Battle with the Brothers",
+                    "text": "Battle with the Brothers"
+                  }
+                ],
+                "line": 682,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_20&oldid=4561493",
+                "pageId": 174967,
+                "revisionId": 4561493,
+                "templateOrdinal": 42,
+                "templateSha256": "2a3a760e3af5e50e912be01bc0f39cf077d06137b01d6710ac156dca1f5398ac",
+                "title": "Walkthrough:Pokémon Black 2 and White 2/Part 20"
+              }
+            },
+            {
+              "occurrenceId": "pokemon-white-2-campaign-occurrence-0534",
+              "trainerId": "pokemon-white-2-trainer-0495",
+              "documentedIdentity": {
+                "class": "Pokémon Trainer",
+                "conditionMarkup": null,
+                "location": "Striaton City",
+                "name": "Cress",
+                "trainerVariants": [
+                  {
+                    "class": "Pokémon Trainer",
+                    "name": "Cress"
+                  }
+                ]
+              },
+              "mechanicsBinding": {
+                "resolutionStatus": "resolved-unique-party-signature",
+                "selectedTrainerId": "pokemon-white-2-trainer-0495",
+                "defaultDifficultyMode": "normal",
+                "modeBindingIdentities": {
+                  "challenge": {
+                    "status": "resolved-unique-party-signature",
+                    "selectedTrainerId": "pokemon-white-2-trainer-0495",
+                    "selectedRawTrainerId": 495
+                  },
+                  "easy": {
+                    "status": "resolved-unique-party-signature",
+                    "selectedTrainerId": "pokemon-white-2-trainer-0495",
+                    "selectedRawTrainerId": 495
+                  },
+                  "normal": {
+                    "status": "resolved-unique-party-signature",
+                    "selectedTrainerId": "pokemon-white-2-trainer-0495",
+                    "selectedRawTrainerId": 495
+                  }
+                },
+                "iterationBindingIdentities": [],
+                "specialBinding": null
+              },
+              "source": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Striaton City",
+                    "text": "Striaton City"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "Striaton Restaurant",
+                    "text": "Striaton Restaurant"
+                  },
+                  {
+                    "level": 4,
+                    "raw": "Battle with the Brothers",
+                    "text": "Battle with the Brothers"
+                  }
+                ],
+                "line": 743,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_20&oldid=4561493",
+                "pageId": 174967,
+                "revisionId": 4561493,
+                "templateOrdinal": 43,
+                "templateSha256": "33dd273c74df84a0ee9b6929106256318447a7be5f59c45995c4df378bedcbd0",
+                "title": "Walkthrough:Pokémon Black 2 and White 2/Part 20"
+              }
+            }
+          ]
+        },
+        {
+          "condition": "selected partner is Chili",
+          "partner": {
+            "occurrenceId": "pokemon-white-2-campaign-occurrence-0533",
+            "trainerId": "pokemon-white-2-trainer-0494",
+            "documentedIdentity": {
+              "class": "Pokémon Trainer",
+              "conditionMarkup": null,
+              "location": "Striaton City",
+              "name": "Chili",
+              "trainerVariants": [
+                {
+                  "class": "Pokémon Trainer",
+                  "name": "Chili"
+                }
+              ]
+            },
+            "mechanicsBinding": {
+              "resolutionStatus": "resolved-unique-party-signature",
+              "selectedTrainerId": "pokemon-white-2-trainer-0494",
+              "defaultDifficultyMode": "normal",
+              "modeBindingIdentities": {
+                "challenge": {
+                  "status": "resolved-unique-party-signature",
+                  "selectedTrainerId": "pokemon-white-2-trainer-0494",
+                  "selectedRawTrainerId": 494
+                },
+                "easy": {
+                  "status": "resolved-unique-party-signature",
+                  "selectedTrainerId": "pokemon-white-2-trainer-0494",
+                  "selectedRawTrainerId": 494
+                },
+                "normal": {
+                  "status": "resolved-unique-party-signature",
+                  "selectedTrainerId": "pokemon-white-2-trainer-0494",
+                  "selectedRawTrainerId": 494
+                }
+              },
+              "iterationBindingIdentities": [],
+              "specialBinding": null
+            },
+            "source": {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Striaton City",
+                  "text": "Striaton City"
+                },
+                {
+                  "level": 3,
+                  "raw": "Striaton Restaurant",
+                  "text": "Striaton Restaurant"
+                },
+                {
+                  "level": 4,
+                  "raw": "Battle with the Brothers",
+                  "text": "Battle with the Brothers"
+                }
+              ],
+              "line": 682,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_20&oldid=4561493",
+              "pageId": 174967,
+              "revisionId": 4561493,
+              "templateOrdinal": 42,
+              "templateSha256": "2a3a760e3af5e50e912be01bc0f39cf077d06137b01d6710ac156dca1f5398ac",
+              "title": "Walkthrough:Pokémon Black 2 and White 2/Part 20"
+            }
+          },
+          "enemyParticipants": [
+            {
+              "occurrenceId": "pokemon-white-2-campaign-occurrence-0532",
+              "trainerId": "pokemon-white-2-trainer-0496",
+              "documentedIdentity": {
+                "class": "Pokémon Trainer",
+                "conditionMarkup": null,
+                "location": "Striaton City",
+                "name": "Cilan",
+                "trainerVariants": [
+                  {
+                    "class": "Pokémon Trainer",
+                    "name": "Cilan"
+                  }
+                ]
+              },
+              "mechanicsBinding": {
+                "resolutionStatus": "resolved-unique-party-signature",
+                "selectedTrainerId": "pokemon-white-2-trainer-0496",
+                "defaultDifficultyMode": "normal",
+                "modeBindingIdentities": {
+                  "challenge": {
+                    "status": "resolved-unique-party-signature",
+                    "selectedTrainerId": "pokemon-white-2-trainer-0496",
+                    "selectedRawTrainerId": 496
+                  },
+                  "easy": {
+                    "status": "resolved-unique-party-signature",
+                    "selectedTrainerId": "pokemon-white-2-trainer-0496",
+                    "selectedRawTrainerId": 496
+                  },
+                  "normal": {
+                    "status": "resolved-unique-party-signature",
+                    "selectedTrainerId": "pokemon-white-2-trainer-0496",
+                    "selectedRawTrainerId": 496
+                  }
+                },
+                "iterationBindingIdentities": [],
+                "specialBinding": null
+              },
+              "source": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Striaton City",
+                    "text": "Striaton City"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "Striaton Restaurant",
+                    "text": "Striaton Restaurant"
+                  },
+                  {
+                    "level": 4,
+                    "raw": "Battle with the Brothers",
+                    "text": "Battle with the Brothers"
+                  }
+                ],
+                "line": 620,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_20&oldid=4561493",
+                "pageId": 174967,
+                "revisionId": 4561493,
+                "templateOrdinal": 41,
+                "templateSha256": "e454db0a10fd17298b8f957b7e8850621c2698633bbca57468ec0b17d2d68ff8",
+                "title": "Walkthrough:Pokémon Black 2 and White 2/Part 20"
+              }
+            },
+            {
+              "occurrenceId": "pokemon-white-2-campaign-occurrence-0534",
+              "trainerId": "pokemon-white-2-trainer-0495",
+              "documentedIdentity": {
+                "class": "Pokémon Trainer",
+                "conditionMarkup": null,
+                "location": "Striaton City",
+                "name": "Cress",
+                "trainerVariants": [
+                  {
+                    "class": "Pokémon Trainer",
+                    "name": "Cress"
+                  }
+                ]
+              },
+              "mechanicsBinding": {
+                "resolutionStatus": "resolved-unique-party-signature",
+                "selectedTrainerId": "pokemon-white-2-trainer-0495",
+                "defaultDifficultyMode": "normal",
+                "modeBindingIdentities": {
+                  "challenge": {
+                    "status": "resolved-unique-party-signature",
+                    "selectedTrainerId": "pokemon-white-2-trainer-0495",
+                    "selectedRawTrainerId": 495
+                  },
+                  "easy": {
+                    "status": "resolved-unique-party-signature",
+                    "selectedTrainerId": "pokemon-white-2-trainer-0495",
+                    "selectedRawTrainerId": 495
+                  },
+                  "normal": {
+                    "status": "resolved-unique-party-signature",
+                    "selectedTrainerId": "pokemon-white-2-trainer-0495",
+                    "selectedRawTrainerId": 495
+                  }
+                },
+                "iterationBindingIdentities": [],
+                "specialBinding": null
+              },
+              "source": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Striaton City",
+                    "text": "Striaton City"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "Striaton Restaurant",
+                    "text": "Striaton Restaurant"
+                  },
+                  {
+                    "level": 4,
+                    "raw": "Battle with the Brothers",
+                    "text": "Battle with the Brothers"
+                  }
+                ],
+                "line": 743,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_20&oldid=4561493",
+                "pageId": 174967,
+                "revisionId": 4561493,
+                "templateOrdinal": 43,
+                "templateSha256": "33dd273c74df84a0ee9b6929106256318447a7be5f59c45995c4df378bedcbd0",
+                "title": "Walkthrough:Pokémon Black 2 and White 2/Part 20"
+              }
+            }
+          ]
+        },
+        {
+          "condition": "selected partner is Cress",
+          "partner": {
+            "occurrenceId": "pokemon-white-2-campaign-occurrence-0534",
+            "trainerId": "pokemon-white-2-trainer-0495",
+            "documentedIdentity": {
+              "class": "Pokémon Trainer",
+              "conditionMarkup": null,
+              "location": "Striaton City",
+              "name": "Cress",
+              "trainerVariants": [
+                {
+                  "class": "Pokémon Trainer",
+                  "name": "Cress"
+                }
+              ]
+            },
+            "mechanicsBinding": {
+              "resolutionStatus": "resolved-unique-party-signature",
+              "selectedTrainerId": "pokemon-white-2-trainer-0495",
+              "defaultDifficultyMode": "normal",
+              "modeBindingIdentities": {
+                "challenge": {
+                  "status": "resolved-unique-party-signature",
+                  "selectedTrainerId": "pokemon-white-2-trainer-0495",
+                  "selectedRawTrainerId": 495
+                },
+                "easy": {
+                  "status": "resolved-unique-party-signature",
+                  "selectedTrainerId": "pokemon-white-2-trainer-0495",
+                  "selectedRawTrainerId": 495
+                },
+                "normal": {
+                  "status": "resolved-unique-party-signature",
+                  "selectedTrainerId": "pokemon-white-2-trainer-0495",
+                  "selectedRawTrainerId": 495
+                }
+              },
+              "iterationBindingIdentities": [],
+              "specialBinding": null
+            },
+            "source": {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Striaton City",
+                  "text": "Striaton City"
+                },
+                {
+                  "level": 3,
+                  "raw": "Striaton Restaurant",
+                  "text": "Striaton Restaurant"
+                },
+                {
+                  "level": 4,
+                  "raw": "Battle with the Brothers",
+                  "text": "Battle with the Brothers"
+                }
+              ],
+              "line": 743,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_20&oldid=4561493",
+              "pageId": 174967,
+              "revisionId": 4561493,
+              "templateOrdinal": 43,
+              "templateSha256": "33dd273c74df84a0ee9b6929106256318447a7be5f59c45995c4df378bedcbd0",
+              "title": "Walkthrough:Pokémon Black 2 and White 2/Part 20"
+            }
+          },
+          "enemyParticipants": [
+            {
+              "occurrenceId": "pokemon-white-2-campaign-occurrence-0532",
+              "trainerId": "pokemon-white-2-trainer-0496",
+              "documentedIdentity": {
+                "class": "Pokémon Trainer",
+                "conditionMarkup": null,
+                "location": "Striaton City",
+                "name": "Cilan",
+                "trainerVariants": [
+                  {
+                    "class": "Pokémon Trainer",
+                    "name": "Cilan"
+                  }
+                ]
+              },
+              "mechanicsBinding": {
+                "resolutionStatus": "resolved-unique-party-signature",
+                "selectedTrainerId": "pokemon-white-2-trainer-0496",
+                "defaultDifficultyMode": "normal",
+                "modeBindingIdentities": {
+                  "challenge": {
+                    "status": "resolved-unique-party-signature",
+                    "selectedTrainerId": "pokemon-white-2-trainer-0496",
+                    "selectedRawTrainerId": 496
+                  },
+                  "easy": {
+                    "status": "resolved-unique-party-signature",
+                    "selectedTrainerId": "pokemon-white-2-trainer-0496",
+                    "selectedRawTrainerId": 496
+                  },
+                  "normal": {
+                    "status": "resolved-unique-party-signature",
+                    "selectedTrainerId": "pokemon-white-2-trainer-0496",
+                    "selectedRawTrainerId": 496
+                  }
+                },
+                "iterationBindingIdentities": [],
+                "specialBinding": null
+              },
+              "source": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Striaton City",
+                    "text": "Striaton City"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "Striaton Restaurant",
+                    "text": "Striaton Restaurant"
+                  },
+                  {
+                    "level": 4,
+                    "raw": "Battle with the Brothers",
+                    "text": "Battle with the Brothers"
+                  }
+                ],
+                "line": 620,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_20&oldid=4561493",
+                "pageId": 174967,
+                "revisionId": 4561493,
+                "templateOrdinal": 41,
+                "templateSha256": "e454db0a10fd17298b8f957b7e8850621c2698633bbca57468ec0b17d2d68ff8",
+                "title": "Walkthrough:Pokémon Black 2 and White 2/Part 20"
+              }
+            },
+            {
+              "occurrenceId": "pokemon-white-2-campaign-occurrence-0533",
+              "trainerId": "pokemon-white-2-trainer-0494",
+              "documentedIdentity": {
+                "class": "Pokémon Trainer",
+                "conditionMarkup": null,
+                "location": "Striaton City",
+                "name": "Chili",
+                "trainerVariants": [
+                  {
+                    "class": "Pokémon Trainer",
+                    "name": "Chili"
+                  }
+                ]
+              },
+              "mechanicsBinding": {
+                "resolutionStatus": "resolved-unique-party-signature",
+                "selectedTrainerId": "pokemon-white-2-trainer-0494",
+                "defaultDifficultyMode": "normal",
+                "modeBindingIdentities": {
+                  "challenge": {
+                    "status": "resolved-unique-party-signature",
+                    "selectedTrainerId": "pokemon-white-2-trainer-0494",
+                    "selectedRawTrainerId": 494
+                  },
+                  "easy": {
+                    "status": "resolved-unique-party-signature",
+                    "selectedTrainerId": "pokemon-white-2-trainer-0494",
+                    "selectedRawTrainerId": 494
+                  },
+                  "normal": {
+                    "status": "resolved-unique-party-signature",
+                    "selectedTrainerId": "pokemon-white-2-trainer-0494",
+                    "selectedRawTrainerId": 494
+                  }
+                },
+                "iterationBindingIdentities": [],
+                "specialBinding": null
+              },
+              "source": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Striaton City",
+                    "text": "Striaton City"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "Striaton Restaurant",
+                    "text": "Striaton Restaurant"
+                  },
+                  {
+                    "level": 4,
+                    "raw": "Battle with the Brothers",
+                    "text": "Battle with the Brothers"
+                  }
+                ],
+                "line": 682,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_20&oldid=4561493",
+                "pageId": 174967,
+                "revisionId": 4561493,
+                "templateOrdinal": 42,
+                "templateSha256": "2a3a760e3af5e50e912be01bc0f39cf077d06137b01d6710ac156dca1f5398ac",
+                "title": "Walkthrough:Pokémon Black 2 and White 2/Part 20"
+              }
+            }
+          ]
+        }
+      ],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "reviewed revision-pinned Bulbapedia campaign context",
+        "contextArtifact": "tools/imports/vanilla/gen5-documented-campaign-context/pokemon-white-2.json",
+        "evidence": [
+          {
+            "pageId": 174967,
+            "revisionId": 4561493,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_20&oldid=4561493",
+            "lineStart": 618,
+            "lineEnd": 618,
+            "excerptSha256": "da34f3dbf4a736934603ed8e1af9f86e2aab91b93ba059a21044b6f25352a29a",
+            "evidenceKind": "documented-battle-narrative"
+          },
+          {
+            "pageId": 174967,
+            "revisionId": 4561493,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_20&oldid=4561493",
+            "lineStart": 620,
+            "lineEnd": 620,
+            "excerptSha256": "d6f37d169dbb71bab67a0bdf443fc38003b1003e15d83eb19f6b771189c666fe",
+            "templateSha256": "e454db0a10fd17298b8f957b7e8850621c2698633bbca57468ec0b17d2d68ff8",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 174967,
+            "revisionId": 4561493,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_20&oldid=4561493",
+            "lineStart": 682,
+            "lineEnd": 682,
+            "excerptSha256": "d6f37d169dbb71bab67a0bdf443fc38003b1003e15d83eb19f6b771189c666fe",
+            "templateSha256": "2a3a760e3af5e50e912be01bc0f39cf077d06137b01d6710ac156dca1f5398ac",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 174967,
+            "revisionId": 4561493,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_20&oldid=4561493",
+            "lineStart": 743,
+            "lineEnd": 743,
+            "excerptSha256": "d6f37d169dbb71bab67a0bdf443fc38003b1003e15d83eb19f6b771189c666fe",
+            "templateSha256": "33dd273c74df84a0ee9b6929106256318447a7be5f59c45995c4df378bedcbd0",
+            "evidenceKind": "documented-trainer-or-party-template"
+          }
+        ]
+      }
+    },
+    "pokemon-white-2-victory-road-cecile-claude": {
+      "id": "pokemon-white-2-victory-road-cecile-claude",
+      "battleFormat": "double",
+      "trainerParticipationMode": "two-enemy-trainers",
+      "locationId": "campaign-location-victory-road",
+      "enemyTrainerIds": [
+        "pokemon-white-2-trainer-0614",
+        "pokemon-white-2-trainer-0615"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-white-2-trainer-0614",
+        "pokemon-white-2-trainer-0615"
+      ],
+      "enemyOccurrenceIds": [
+        "pokemon-white-2-campaign-occurrence-0379",
+        "pokemon-white-2-campaign-occurrence-0380"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partner": null,
+      "choiceConditions": [],
+      "participantCandidates": [],
+      "choiceVariants": [],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "reviewed revision-pinned Bulbapedia campaign context",
+        "contextArtifact": "tools/imports/vanilla/gen5-documented-campaign-context/pokemon-white-2.json",
+        "evidence": [
+          {
+            "pageId": 172892,
+            "revisionId": 4522250,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_15&oldid=4522250",
+            "lineStart": 587,
+            "lineEnd": 587,
+            "excerptSha256": "4b359159a3d7a8ab41484e5bd0dbc0b631fd2ae7c62619c8e3ce3607ab4b0bd0",
+            "evidenceKind": "documented-battle-narrative"
+          },
+          {
+            "pageId": 172892,
+            "revisionId": 4522250,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_15&oldid=4522250",
+            "lineStart": 175,
+            "lineEnd": 175,
+            "excerptSha256": "972ab8a2a57205f266b8cd8ae93d883444f118a8a511bd24bb2057ee2a2c8f48",
+            "templateSha256": "972ab8a2a57205f266b8cd8ae93d883444f118a8a511bd24bb2057ee2a2c8f48",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 172892,
+            "revisionId": 4522250,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_15&oldid=4522250",
+            "lineStart": 176,
+            "lineEnd": 176,
+            "excerptSha256": "0890cb764d068b14c4e5632d086a48959e47005f4a54c4fd307124127f35cfae",
+            "templateSha256": "0890cb764d068b14c4e5632d086a48959e47005f4a54c4fd307124127f35cfae",
+            "evidenceKind": "documented-trainer-or-party-template"
+          }
+        ]
+      }
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "fixedGroupStatus": "passed",
+    "unresolved": 0,
+    "unresolvedFixedGroups": 0,
+    "dynamicOperandDiagnostics": 0,
+    "dynamicOperandsAreRuntimeSelectorsNotFixedGroupFailures": true,
+    "sourceArtifact": "tools/imports/vanilla/gen5-documented-campaign-context/pokemon-white-2.json",
+    "occurrenceContextStatus": "passed",
+    "rawFieldMapCoordinatesRequired": false
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 2,
+  "gameId": "pokemon-pearl",
+  "kind": "trainer-battle-groups",
+  "records": {},
+  "validation": {
+    "status": "blocked-no-exact-context-source",
+    "fixedGroupStatus": "blocked-no-context-source",
+    "unresolved": 0,
+    "unresolvedFixedGroups": 0,
+    "dynamicOperandDiagnostics": 0,
+    "dynamicOperandsAreRuntimeSelectorsNotFixedGroupFailures": true,
+    "sourceArtifact": "tools/imports/vanilla/gen4-trainer-context/diamond-pearl.json",
+    "emptyRecordsAreValidWhenExactScriptAuditFoundNoSeparateRosterGroups": true
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-platinum",
+  "kind": "natures",
+  "records": {
+    "hardy": {
+      "id": "hardy",
+      "name": "Hardy",
+      "num": 0,
+      "boostedStat": "atk",
+      "nerfedStat": "atk",
+      "sourceConfidence": "pinned-PokeAPI-reference"
+    },
+    "bold": {
+      "id": "bold",
+      "name": "Bold",
+      "num": 5,
+      "boostedStat": "def",
+      "nerfedStat": "atk",
+      "sourceConfidence": "pinned-PokeAPI-reference"
+    },
+    "modest": {
+      "id": "modest",
+      "name": "Modest",
+      "num": 15,
+      "boostedStat": "spa",
+      "nerfedStat": "atk",
+      "sourceConfidence": "pinned-PokeAPI-reference"
+    },
+    "calm": {
+      "id": "calm",
+      "name": "Calm",
+      "num": 20,
+      "boostedStat": "spd",
+      "nerfedStat": "atk",
+      "sourceConfidence": "pinned-PokeAPI-reference"
+    },
+    "timid": {
+      "id": "timid",
+      "name": "Timid",
+      "num": 10,
+      "boostedStat": "spe",
+      "nerfedStat": "atk",
+      "sourceConfidence": "pinned-PokeAPI-reference"
+    },
+    "lonely": {
+      "id": "lonely",
+      "name": "Lonely",
+      "num": 1,
+      "boostedStat": "atk",
+      "nerfedStat": "def",
+      "sourceConfidence": "pinned-PokeAPI-reference"
+    },
+    "docile": {
+      "id": "docile",
+      "name": "Docile",
+      "num": 6,
+      "boostedStat": "def",
+      "nerfedStat": "def",
+      "sourceConfidence": "pinned-PokeAPI-reference"
+    },
+    "mild": {
+      "id": "mild",
+      "name": "Mild",
+      "num": 16,
+      "boostedStat": "spa",
+      "nerfedStat": "def",
+      "sourceConfidence": "pinned-PokeAPI-reference"
+    },
+    "gentle": {
+      "id": "gentle",
+      "name": "Gentle",
+      "num": 21,
+      "boostedStat": "spd",
+      "nerfedStat": "def",
+      "sourceConfidence": "pinned-PokeAPI-reference"
+    },
+    "hasty": {
+      "id": "hasty",
+      "name": "Hasty",
+      "num": 11,
+      "boostedStat": "spe",
+      "nerfedStat": "def",
+      "sourceConfidence": "pinned-PokeAPI-reference"
+    },
+    "adamant": {
+      "id": "adamant",
+      "name": "Adamant",
+      "num": 3,
+      "boostedStat": "atk",
+      "nerfedStat": "spa",
+      "sourceConfidence": "pinned-PokeAPI-reference"
+    },
+    "impish": {
+      "id": "impish",
+      "name": "Impish",
+      "num": 8,
+      "boostedStat": "def",
+      "nerfedStat": "spa",
+      "sourceConfidence": "pinned-PokeAPI-reference"
+    },
+    "bashful": {
+      "id": "bashful",
+      "name": "Bashful",
+      "num": 18,
+      "boostedStat": "spa",
+      "nerfedStat": "spa",
+      "sourceConfidence": "pinned-PokeAPI-reference"
+    },
+    "careful": {
+      "id": "careful",
+      "name": "Careful",
+      "num": 23,
+      "boostedStat": "spd",
+      "nerfedStat": "spa",
+      "sourceConfidence": "pinned-PokeAPI-reference"
+    },
+    "rash": {
+      "id": "rash",
+      "name": "Rash",
+      "num": 19,
+      "boostedStat": "spa",
+      "nerfedStat": "spd",
+      "sourceConfidence": "pinned-PokeAPI-reference"
+    },
+    "jolly": {
+      "id": "jolly",
+      "name": "Jolly",
+      "num": 13,
+      "boostedStat": "spe",
+      "nerfedStat": "spa",
+      "sourceConfidence": "pinned-PokeAPI-reference"
+    },
+    "naughty": {
+      "id": "naughty",
+      "name": "Naughty",
+      "num": 4,
+      "boostedStat": "atk",
+      "nerfedStat": "spd",
+      "sourceConfidence": "pinned-PokeAPI-reference"
+    },
+    "lax": {
+      "id": "lax",
+      "name": "Lax",
+      "num": 9,
+      "boostedStat": "def",
+      "nerfedStat": "spd",
+      "sourceConfidence": "pinned-PokeAPI-reference"
+    },
+    "quirky": {
+      "id": "quirky",
+      "name": "Quirky",
+      "num": 24,
+      "boostedStat": "spd",
+      "nerfedStat": "spd",
+      "sourceConfidence": "pinned-PokeAPI-reference"
+    },
+    "naive": {
+      "id": "naive",
+      "name": "Naive",
+      "num": 14,
+      "boostedStat": "spe",
+      "nerfedStat": "spd",
+      "sourceConfidence": "pinned-PokeAPI-reference"
+    },
+    "brave": {
+      "id": "brave",
+      "name": "Brave",
+      "num": 2,
+      "boostedStat": "atk",
+      "nerfedStat": "spe",
+      "sourceConfidence": "pinned-PokeAPI-reference"
+    },
+    "relaxed": {
+      "id": "relaxed",
+      "name": "Relaxed",
+      "num": 7,
+      "boostedStat": "def",
+      "nerfedStat": "spe",
+      "sourceConfidence": "pinned-PokeAPI-reference"
+    },
+    "quiet": {
+      "id": "quiet",
+      "name": "Quiet",
+      "num": 17,
+      "boostedStat": "spa",
+      "nerfedStat": "spe",
+      "sourceConfidence": "pinned-PokeAPI-reference"
+    },
+    "sassy": {
+      "id": "sassy",
+      "name": "Sassy",
+      "num": 22,
+      "boostedStat": "spd",
+      "nerfedStat": "spe",
+      "sourceConfidence": "pinned-PokeAPI-reference"
+    },
+    "serious": {
+      "id": "serious",
+      "name": "Serious",
+      "num": 12,
+      "boostedStat": "spe",
+      "nerfedStat": "spe",
+      "sourceConfidence": "pinned-PokeAPI-reference"
+    }
+  }
+}

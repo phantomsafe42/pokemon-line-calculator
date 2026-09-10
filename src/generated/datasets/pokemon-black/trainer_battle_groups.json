@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 3,
+  "gameId": "pokemon-black",
+  "kind": "trainer-battle-groups",
+  "records": {
+    "pokemon-black-wellspring-cave-plasma-pair": {
+      "id": "pokemon-black-wellspring-cave-plasma-pair",
+      "battleFormat": "double",
+      "trainerParticipationMode": "multi-trainer",
+      "locationId": "campaign-location-wellspring-cave",
+      "enemyTrainerIds": [
+        "pokemon-black-documentation-trainer-0040",
+        "pokemon-black-documentation-trainer-0041"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-black-documentation-trainer-0040",
+        "pokemon-black-documentation-trainer-0041"
+      ],
+      "enemyOccurrenceIds": [
+        "pokemon-black-campaign-occurrence-0040",
+        "pokemon-black-campaign-occurrence-0041"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partner": {
+        "kind": "documented-party-variants",
+        "participants": [
+          {
+            "occurrenceId": "pokemon-black-campaign-occurrence-0042",
+            "trainerId": "pokemon-black-trainer-0056",
+            "documentedIdentity": {
+              "class": "Pokémon Trainer",
+              "conditionMarkup": "{{PlayerChoice|0495|Snivy}}",
+              "location": "Wellspring Cave",
+              "name": "Cheren",
+              "trainerVariants": [
+                {
+                  "class": "Pokémon Trainer",
+                  "name": "Cheren"
+                }
+              ]
+            },
+            "mechanicsBinding": {
+              "resolutionStatus": "resolved-unique-party-signature",
+              "selectedTrainerId": "pokemon-black-trainer-0056",
+              "defaultDifficultyMode": null,
+              "modeBindingIdentities": {},
+              "iterationBindingIdentities": [],
+              "specialBinding": null
+            },
+            "source": {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Route 3",
+                  "text": "Route 3"
+                },
+                {
+                  "level": 3,
+                  "raw": "Wellspring Cave",
+                  "text": "Wellspring Cave"
+                }
+              ],
+              "line": 263,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_and_White/Part_3&oldid=4554226",
+              "pageId": 136373,
+              "revisionId": 4554226,
+              "templateOrdinal": 17,
+              "templateSha256": "1067ebd1d185f1add8878460244ad9f8aed2c7957d118be824ce2e6dccbfba97",
+              "title": "Walkthrough:Pokémon Black and White/Part 3"
+            }
+          },
+          {
+            "occurrenceId": "pokemon-black-campaign-occurrence-0043",
+            "trainerId": "pokemon-black-trainer-0057",
+            "documentedIdentity": {
+              "class": "Pokémon Trainer",
+              "conditionMarkup": "{{PlayerChoice|0498|Tepig}}",
+              "location": "Wellspring Cave",
+              "name": "Cheren",
+              "trainerVariants": [
+                {
+                  "class": "Pokémon Trainer",
+                  "name": "Cheren"
+                }
+              ]
+            },
+            "mechanicsBinding": {
+              "resolutionStatus": "resolved-unique-party-signature",
+              "selectedTrainerId": "pokemon-black-trainer-0057",
+              "defaultDifficultyMode": null,
+              "modeBindingIdentities": {},
+              "iterationBindingIdentities": [],
+              "specialBinding": null
+            },
+            "source": {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Route 3",
+                  "text": "Route 3"
+                },
+                {
+                  "level": 3,
+                  "raw": "Wellspring Cave",
+                  "text": "Wellspring Cave"
+                }
+              ],
+              "line": 309,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_and_White/Part_3&oldid=4554226",
+              "pageId": 136373,
+              "revisionId": 4554226,
+              "templateOrdinal": 18,
+              "templateSha256": "693322a52cc36a7630eb6f4c3a2af23962d0dd98d0a55a62d1deb4a5ac7635e6",
+              "title": "Walkthrough:Pokémon Black and White/Part 3"
+            }
+          },
+          {
+            "occurrenceId": "pokemon-black-campaign-occurrence-0044",
+            "trainerId": "pokemon-black-trainer-0058",
+            "documentedIdentity": {
+              "class": "Pokémon Trainer",
+              "conditionMarkup": "{{PlayerChoice|0501|Oshawott}}",
+              "location": "Wellspring Cave",
+              "name": "Cheren",
+              "trainerVariants": [
+                {
+                  "class": "Pokémon Trainer",
+                  "name": "Cheren"
+                }
+              ]
+            },
+            "mechanicsBinding": {
+              "resolutionStatus": "resolved-unique-party-signature",
+              "selectedTrainerId": "pokemon-black-trainer-0058",
+              "defaultDifficultyMode": null,
+              "modeBindingIdentities": {},
+              "iterationBindingIdentities": [],
+              "specialBinding": null
+            },
+            "source": {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Route 3",
+                  "text": "Route 3"
+                },
+                {
+                  "level": 3,
+                  "raw": "Wellspring Cave",
+                  "text": "Wellspring Cave"
+                }
+              ],
+              "line": 355,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_and_White/Part_3&oldid=4554226",
+              "pageId": 136373,
+              "revisionId": 4554226,
+              "templateOrdinal": 19,
+              "templateSha256": "d08586bd0ef2ba6ad0c165c6301e00b7a572249005868d13d5d6ab695a018dfd",
+              "title": "Walkthrough:Pokémon Black and White/Part 3"
+            }
+          }
+        ],
+        "selectionConditions": [
+          "{{PlayerChoice|0495|Snivy}}",
+          "{{PlayerChoice|0498|Tepig}}",
+          "{{PlayerChoice|0501|Oshawott}}"
+        ]
+      },
+      "choiceConditions": [],
+      "participantCandidates": [],
+      "choiceVariants": [],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "reviewed revision-pinned Bulbapedia campaign context",
+        "contextArtifact": "tools/imports/vanilla/gen5-documented-campaign-context/pokemon-black.json",
+        "evidence": [
+          {
+            "pageId": 136373,
+            "revisionId": 4554226,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_and_White/Part_3&oldid=4554226",
+            "lineStart": 226,
+            "lineEnd": 226,
+            "excerptSha256": "93cab34682972cb20e5deb3190103b3a3afb66af866ee6b4d702184a2bca3bbe",
+            "evidenceKind": "documented-battle-narrative"
+          },
+          {
+            "pageId": 136373,
+            "revisionId": 4554226,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_and_White/Part_3&oldid=4554226",
+            "lineStart": 236,
+            "lineEnd": 236,
+            "excerptSha256": "7d6c43c0873cbd089a892a4cdb2b26fada56fa249b3371e1b5837b7953d49e36",
+            "templateSha256": "7d6c43c0873cbd089a892a4cdb2b26fada56fa249b3371e1b5837b7953d49e36",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 136373,
+            "revisionId": 4554226,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_and_White/Part_3&oldid=4554226",
+            "lineStart": 237,
+            "lineEnd": 237,
+            "excerptSha256": "7d6c43c0873cbd089a892a4cdb2b26fada56fa249b3371e1b5837b7953d49e36",
+            "templateSha256": "7d6c43c0873cbd089a892a4cdb2b26fada56fa249b3371e1b5837b7953d49e36",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 136373,
+            "revisionId": 4554226,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_and_White/Part_3&oldid=4554226",
+            "lineStart": 263,
+            "lineEnd": 263,
+            "excerptSha256": "d6f37d169dbb71bab67a0bdf443fc38003b1003e15d83eb19f6b771189c666fe",
+            "templateSha256": "1067ebd1d185f1add8878460244ad9f8aed2c7957d118be824ce2e6dccbfba97",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 136373,
+            "revisionId": 4554226,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_and_White/Part_3&oldid=4554226",
+            "lineStart": 309,
+            "lineEnd": 309,
+            "excerptSha256": "d6f37d169dbb71bab67a0bdf443fc38003b1003e15d83eb19f6b771189c666fe",
+            "templateSha256": "693322a52cc36a7630eb6f4c3a2af23962d0dd98d0a55a62d1deb4a5ac7635e6",
+            "evidenceKind": "documented-trainer-or-party-template"
+          },
+          {
+            "pageId": 136373,
+            "revisionId": 4554226,
+            "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_and_White/Part_3&oldid=4554226",
+            "lineStart": 355,
+            "lineEnd": 355,
+            "excerptSha256": "d6f37d169dbb71bab67a0bdf443fc38003b1003e15d83eb19f6b771189c666fe",
+            "templateSha256": "d08586bd0ef2ba6ad0c165c6301e00b7a572249005868d13d5d6ab695a018dfd",
+            "evidenceKind": "documented-trainer-or-party-template"
+          }
+        ]
+      }
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "fixedGroupStatus": "passed",
+    "unresolved": 0,
+    "unresolvedFixedGroups": 0,
+    "dynamicOperandDiagnostics": 0,
+    "dynamicOperandsAreRuntimeSelectorsNotFixedGroupFailures": true,
+    "sourceArtifact": "tools/imports/vanilla/gen5-documented-campaign-context/pokemon-black.json",
+    "occurrenceContextStatus": "passed",
+    "rawFieldMapCoordinatesRequired": false
+  }
+}

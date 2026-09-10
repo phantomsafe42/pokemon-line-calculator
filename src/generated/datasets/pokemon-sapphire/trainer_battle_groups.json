@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 2,
+  "gameId": "pokemon-sapphire",
+  "kind": "trainer-battle-groups",
+  "records": {},
+  "validation": {
+    "status": "partial-source-coverage",
+    "fixedGroupStatus": "passed",
+    "unresolved": 0,
+    "unresolvedFixedGroups": 0,
+    "dynamicOperandDiagnostics": 0,
+    "dynamicOperandsAreRuntimeSelectorsNotFixedGroupFailures": true,
+    "sourceArtifact": "tools/imports/vanilla/gen3-trainer-context/pokemon-sapphire.json",
+    "emptyRecordsAreValidWhenExactScriptAuditFoundNoSeparateRosterGroups": true
+  }
+}

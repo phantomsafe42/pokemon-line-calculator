@@ -1,0 +1,345 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-soulsilver",
+  "kind": "battle-mechanics",
+  "mechanicsProfile": "pokemon-soulsilver-battle-mechanics-v1",
+  "engine": {
+    "id": "smogon-calc",
+    "version": "0.11.0"
+  },
+  "damageGeneration": 4,
+  "canonicalDataGeneration": 4,
+  "canonicalDataSource": {
+    "kind": "pinned-engine-generation-inheritance",
+    "sourceLock": "source-lock.json",
+    "generation": 4,
+    "policy": "Exact selected-game source fields override this declared canonical baseline."
+  },
+  "typeChartSource": "types.json",
+  "trainerBattleProfile": "default",
+  "experienceMechanicsSource": "experience_mechanics.json",
+  "experienceGeneration": 4,
+  "experienceFormula": {
+    "source": "Datasets/Pokemon SoulSilver/source-data/experience_mechanics.json",
+    "sha256": "e06a5f1726a72b4a2cc61e306fa07889dfc2e24acfad37359e6fb22b0b8fa557",
+    "mechanicsProfile": "pokemon-soulsilver-trainer-experience-v1",
+    "model": "generation-4-unscaled-trainer",
+    "selectedVersionRule": null,
+    "inheritedFromDamageGeneration": false,
+    "validationStatus": "passed"
+  },
+  "generationReference": {
+    "source": "Datasets/Gen 4/source-data/battle_mechanics.json",
+    "sha256": "cd79541352f266c99d5e08ac14254139292b34a67ec691865821f822dce4c2e9",
+    "status": "partial-reference-not-a-game-readiness-proof"
+  },
+  "sourceBindings": {
+    "directory": "Datasets/Pokemon SoulSilver/source-data",
+    "moveMechanics": {
+      "source": "Datasets/tools/imports/vanilla/move-mechanics/moves.json",
+      "sha256": "b5f8e5b6b15866de5798e026299cd9b6949a148c35c42cac16a9ca63c537d7a5",
+      "selector": "games.pokemon-soulsilver",
+      "validatedSnapshot": true
+    },
+    "targetPolicies": {
+      "source": "Datasets/tools/imports/vanilla/move-mechanics/target-policies.json",
+      "sha256": "e24e2c2deec67c7eb4663e16c936dae37f2f6ef92ee7a1d939ef4a2137430627",
+      "selector": "games.pokemon-soulsilver",
+      "consumerImplementationIncluded": true,
+      "implementation": "Web Tools/Pokemon Line Calculator/src/core/resolver.js",
+      "validation": "Web Tools/Pokemon Line Calculator/tests/doubles.test.mjs"
+    }
+  },
+  "sourceReadiness": {
+    "status": "passed-conditional-source-slice",
+    "unresolved": 0,
+    "scope": "selected static move fields, trainer inputs and declared game-specific formula policies; not global Dataset completeness"
+  },
+  "gateOwnership": {
+    "dataset": {
+      "unresolved": 0,
+      "records": []
+    },
+    "consumer": {
+      "unresolved": 0,
+      "records": [],
+      "sourceOmission": false
+    },
+    "knownRequiredRuntimeInputsAreNotUnknownSourceFacts": true
+  },
+  "additionalNonDamageActionSourceGates": {
+    "scope": "outside scalar-damage validation; remains required for complete move/action Dataset semantics",
+    "unresolved": 0,
+    "records": []
+  },
+  "formats": {
+    "sourceFormats": [
+      "double",
+      "single"
+    ],
+    "sourceFormatCounts": {
+      "single": 713,
+      "double": 25
+    },
+    "authority": "trainers.json#records.*.battleProfiles.default; exact retail headers or separately sourced special battle profiles",
+    "validatedScalarFormats": [
+      "single",
+      "double"
+    ],
+    "unsupportedUnvalidatedFormats": [],
+    "selectionMustBeExplicit": true
+  },
+  "difficultyAuthority": {
+    "source": "trainer_order.json#records.*.mechanicsBinding.modeBindings",
+    "observedModeBindingCounts": {},
+    "establishedFields": [
+      "selected raw trainer identity"
+    ],
+    "explicitSelectionRequired": true,
+    "statAndDamageFormulaTransform": "no-additional-difficulty-transform-claimed",
+    "consumerMayInferTransformFromDisplayedDelta": false,
+    "formula": null,
+    "evidence": null
+  },
+  "runtimeDefaults": {},
+  "runtimeInputs": {
+    "implicitDefaultsAllowed": false,
+    "missingRuntimePolicy": "unavailable",
+    "combatants": [
+      "species/form",
+      "level",
+      "nature",
+      "ability",
+      "item-or-explicit-none",
+      "ivs",
+      "evs"
+    ],
+    "conditional": [
+      "currentHP",
+      "status",
+      "stages",
+      "gender",
+      "weather",
+      "screens",
+      "move-hit-count",
+      "move-specific-state"
+    ],
+    "trainerRequirements": [
+      {
+        "trainerId": "pokemon-soulsilver-documentation-trainer-0399",
+        "field": "special-battle-context",
+        "policy": {
+          "battleFormat": "single",
+          "battlePartySize": 3,
+          "battleRole": "enemy",
+          "bindingKind": "trainer-house-default",
+          "consumerActivation": false,
+          "gameId": "pokemon-soulsilver",
+          "levelPolicy": {
+            "kind": "cap",
+            "lowerLevelsUnchanged": true,
+            "maximum": 50,
+            "scope": "both-parties"
+          },
+          "opponentSelection": {
+            "calReplacedByGuests": false,
+            "defaultSelectionRequired": true,
+            "defaultTrainerNum": 10,
+            "guestPolicy": "unavailable-without-selected-saved-guest-record",
+            "guestRuntimeFields": [
+              "species",
+              "form",
+              "item",
+              "moves",
+              "otId",
+              "pid",
+              "ivs",
+              "evs",
+              "ability",
+              "friendship",
+              "level"
+            ],
+            "guestTrainerNums": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ]
+          },
+          "partyOrderPolicy": "fixed-source-order",
+          "resolutionGate": {
+            "contextRequirements": [
+              "selectedTrainerHouseTrainerNum=10"
+            ],
+            "genderMayBeDeferredOnlyIf": "active-calculation-proves-gender-irrelevant",
+            "implicitDefaultsAllowed": false,
+            "memberRequirements": [],
+            "missingRequiredContext": "unavailable",
+            "missingRequiredMemberField": "unavailable"
+          },
+          "sourceIds": [
+            "hgss-cal",
+            "hgss-guests"
+          ],
+          "supportedContext": {
+            "difficulty": "normal-or-default",
+            "otherDifficultyPolicy": "unavailable-do-not-inherit",
+            "romModificationPolicy": "unavailable"
+          },
+          "trainerId": "pokemon-soulsilver-documentation-trainer-0399"
+        },
+        "missingRuntimePolicy": "unavailable",
+        "implicitDefaultsAllowed": false
+      }
+    ],
+    "selection": [
+      "trainer occurrence binding",
+      "party slot",
+      "variant/difficulty/rematch when declared",
+      "facility level and selected roster when declared"
+    ],
+    "moves": {
+      "hiddenpower": {
+        "status": "resolved-conditional-input-contract",
+        "required": [
+          "attacker.ivs"
+        ],
+        "derivedByConsumer": [
+          "moveOverrides.type",
+          "moveOverrides.basePower"
+        ],
+        "generationRange": [
+          3,
+          5
+        ],
+        "formulaEvidence": {
+          "source": "Datasets/tools/imports/vanilla/move-mechanics/evidence/platinum-battle-script.c",
+          "handler": "BtlCmd_CalcHiddenPowerParams",
+          "scope": "pinned-Platinum-formula-corroboration; selected-generation-explicit-inputs-tested; no-fresh-selected-game-handler-audit",
+          "sha256": "9aa9146eecceefbbe1e312ad5a4e1a6584260ca0d74a6007271c10c74354cdf8"
+        },
+        "missingOrMismatchedInput": "unavailable",
+        "implicitDefault": false,
+        "statBitOrder": [
+          "hp",
+          "atk",
+          "def",
+          "spe",
+          "spa",
+          "spd"
+        ],
+        "typeFormula": "floor(15 * sum((IV_i & 1) * 2^i) / 63)",
+        "powerFormula": "30 + floor(40 * sum(((IV_i >> 1) & 1) * 2^i) / 63)",
+        "typeOrder": [
+          "Fighting",
+          "Flying",
+          "Poison",
+          "Ground",
+          "Rock",
+          "Bug",
+          "Ghost",
+          "Steel",
+          "Fire",
+          "Water",
+          "Grass",
+          "Electric",
+          "Psychic",
+          "Ice",
+          "Dragon",
+          "Dark"
+        ],
+        "noLegacy70PowerFallback": true
+      },
+      "counter": {
+        "status": "resolved-state-dependent-consumer-contract",
+        "targetPolicyRef": "pokemon-soulsilver/68",
+        "retaliationPolicy": {
+          "kind": "retaliation",
+          "generation": 4,
+          "damageClass": "physical",
+          "damageMultiplierNumerator": 2,
+          "damageMultiplierDenominator": 1,
+          "damageRounding": "integer-truncation",
+          "selection": "generation-specific-last-damage-source",
+          "sourceMustStillHaveHP": true,
+          "fallback": "random-opponent-then-no-target-script",
+          "followMe": "live-follow-me-before-remembered-source",
+          "failureConditions": [
+            "no-qualifying-opposing-damage-record"
+          ]
+        }
+      },
+      "mirrorcoat": {
+        "status": "resolved-state-dependent-consumer-contract",
+        "targetPolicyRef": "pokemon-soulsilver/243",
+        "retaliationPolicy": {
+          "kind": "retaliation",
+          "generation": 4,
+          "damageClass": "special",
+          "damageMultiplierNumerator": 2,
+          "damageMultiplierDenominator": 1,
+          "damageRounding": "integer-truncation",
+          "selection": "generation-specific-last-damage-source",
+          "sourceMustStillHaveHP": true,
+          "fallback": "random-opponent-then-no-target-script",
+          "followMe": "live-follow-me-before-remembered-source",
+          "failureConditions": [
+            "no-qualifying-opposing-damage-record"
+          ]
+        }
+      },
+      "metalburst": {
+        "status": "resolved-state-dependent-consumer-contract",
+        "targetPolicyRef": "pokemon-soulsilver/368",
+        "retaliationPolicy": {
+          "kind": "retaliation",
+          "generation": 4,
+          "damageClass": "any",
+          "damageMultiplierNumerator": 3,
+          "damageMultiplierDenominator": 2,
+          "damageRounding": "integer-truncation",
+          "selection": "generation-specific-last-damage-source",
+          "sourceMustStillHaveHP": true,
+          "fallback": "random-opponent-then-no-target-script",
+          "followMe": "live-follow-me-before-remembered-source",
+          "failureConditions": [
+            "no-qualifying-opposing-damage-record"
+          ]
+        }
+      }
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "unresolved": 0,
+    "sourceFiles": [
+      "species.json",
+      "moves.json",
+      "abilities.json",
+      "items.json",
+      "natures.json",
+      "types.json",
+      "trainers.json"
+    ],
+    "unresolvedRecords": [],
+    "knownAnswerSuite": {
+      "source": "known-answers.json",
+      "selector": "games.pokemon-soulsilver",
+      "runner": "Datasets/tools/validate_vanilla_battle_mechanics_authority.js",
+      "status": "requires-execution",
+      "scope": "restricted-integer-arithmetic-and-selected-source-runtime-paths"
+    }
+  },
+  "consumerActivation": {
+    "calculationReady": true,
+    "readinessModel": "granular-per-path",
+    "stateDependentDamageMoves": "integrating-battle-state-resolver",
+    "reason": "Shared scalar damage, strict Hidden Power derivation, Gen 5 format projection, and PLC retaliation execution are validated."
+  }
+}

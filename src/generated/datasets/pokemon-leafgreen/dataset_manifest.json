@@ -1,0 +1,1143 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-leafgreen",
+  "displayName": "Pokémon LeafGreen",
+  "folderName": "Pokemon LeafGreen",
+  "filenamePrefix": "LEAFGREEN",
+  "datasetScope": "game",
+  "migrationStatus": "standardized-source-authoritative",
+  "completenessStatus": "complete",
+  "platform": "Game Boy Advance",
+  "generation": 3,
+  "baseGame": "Pokémon LeafGreen",
+  "supportedLanguage": "English",
+  "sourceProfile": "retail-pokemon-leafgreen-multi-source-pinned",
+  "buildInputs": {
+    "../../tools/imports/vanilla/source_manifest.json": {
+      "sha256": "91dbeddeeb537c495d68e6351e76ae6b72e1573620f62b3b50308855c4331612",
+      "role": "immutable upstream source lock"
+    },
+    "../../tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-leafgreen.json": {
+      "sha256": "b1d95a1a633877d3425e8e38b35d14f3ff4066d3bdddca0b4c389caf05fcc3b3",
+      "role": "deterministic documented campaign order and occurrence identity projection"
+    },
+    "../../tools/imports/vanilla/pkhex-wild-encounters/pokemon-leafgreen.json": {
+      "sha256": "6a498586298fc663dc198de4eecb434b87eaadd72d5cc001a8fe2d1dd783d6bd",
+      "role": "exact version-scoped wild encounter tables and met-location/species/form evidence"
+    },
+    "../../tools/imports/vanilla/pkhex-wild-encounters/manifest.json": {
+      "sha256": "a1d51f2334a935553491411f6705784315ead2eb98656fc286b61645d3e58b1f",
+      "role": "deterministic wild encounter importer artifact manifest"
+    },
+    "../../tools/imports/vanilla/pkhex-wild-encounters/reconciliation/pokemon-leafgreen.json": {
+      "sha256": "40c236b9a0a5efc06fb73e1a10a1dee4bd7aeb3a8513706952dcadb1e682bb5e",
+      "role": "reciprocal exact PKHeX-to-PokeAPI wild metadata reconciliation audit"
+    },
+    "../../tools/imports/vanilla/pkhex-wild-encounters/reconciliation/manifest.json": {
+      "sha256": "528f65514cd4e95bc3df78fc2955b9010ff9fcc59990077257f916e8b29e8f01",
+      "role": "deterministic wild metadata reconciliation manifest and nonpromotion sentinels"
+    },
+    "../../tools/imports/vanilla/wild-encounter-records/pokemon-leafgreen.json": {
+      "sha256": "4bb799b1f1cfa730da4d525a05990ac157c20ac3de347adcd0384a97a9840079",
+      "role": "pinned flat wild encounter authority, unresolved ledger, or independent build/validator"
+    },
+    "../../tools/imports/vanilla/wild-encounter-records/manifest.json": {
+      "sha256": "77b8acd0273af4517ab4051158a88fdb2fcd64801cf50d2d307a2e46433ce301",
+      "role": "pinned flat wild encounter authority, unresolved ledger, or independent build/validator"
+    },
+    "../../tools/imports/vanilla/wild-encounter-records/source_lock.json": {
+      "sha256": "631d903eb5ed9430bd4cb39452e089c1795edc14ffb73d4cebb82626c6026472",
+      "role": "pinned flat wild encounter authority, unresolved ledger, or independent build/validator"
+    },
+    "../../tools/imports/vanilla/wild-encounter-records/unresolved_cases.json": {
+      "sha256": "62561f47bc952cb9bbbe89900da1d3fef31a9930f6d17c19631902b3c3f2ede3",
+      "role": "pinned flat wild encounter authority, unresolved ledger, or independent build/validator"
+    },
+    "../../tools/imports/vanilla/wild-encounter-records/README.md": {
+      "sha256": "76f602b1dfc2d548fa1f5eddf29315c947bec31f71c95d49653927204486be39",
+      "role": "pinned flat wild encounter authority, unresolved ledger, or independent build/validator"
+    },
+    "../../tools/build_vanilla_wild_encounter_records.py": {
+      "sha256": "e0f7b5e771c230e176ad5ff43fcbb116f2545a3fe26dc0e492705fa153787dcc",
+      "role": "pinned flat wild encounter authority, unresolved ledger, or independent build/validator"
+    },
+    "../../tools/validate_vanilla_wild_encounter_records.py": {
+      "sha256": "eb038df1d15fc7a0ba67f2658f1b1f3eba5ecf9a5faf945c303046aabd9ae9a1",
+      "role": "pinned flat wild encounter authority, unresolved ledger, or independent build/validator"
+    },
+    "../../schemas/encounter-mechanics.schema.json": {
+      "sha256": "03668b1a5a98e5c8612ee245d19f44946eaf682a60806535af15ad83b6f3fdaf",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/acquire_vanilla_exact_sources.py": {
+      "sha256": "9a14613b0fce9be13289b8737e48da6d35375cefcc90ab221f2931833e4857a3",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/encounter_mechanics_resolver.js": {
+      "sha256": "b8142a9cf26fb6de9150192b23bc3c1eb99f093689ad0114e8c69eb93d3ceeb1",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/test_encounter_mechanics_resolver.js": {
+      "sha256": "0e0dbfc3337fec157b326b862cc760cd833b9f935eae6f798e134acbd9a3fe75",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/vanilla_encounter_mechanics.py": {
+      "sha256": "f4b6de0f5f971aef48467ce37fbd1491d7d9ebf79e5909b7a1f17780bd5d51c0",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/src/data/wild_encounters.json": {
+      "sha256": "a6399199987e1bdf8502e9bfdcfc9d8ad57d74df206d22ba20f020492bd3bf7c",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/src/wild_encounter.c": {
+      "sha256": "96cad2edead3dbb06a4e154c95248f40e99912aa648d8c5af9bf566ddc2a3616",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/src/data/region_map/region_map_sections.json": {
+      "sha256": "82e456cbe86a57ebc4bd0d88d6e000e83e28340895ac038079c38d415bc6de5f",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/CeladonCity/map.json": {
+      "sha256": "5d1891d99fdb71875373dbfaec5f3fce8840acb7e8c93beab93bd6baed0fe71c",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/CeruleanCave_1F/map.json": {
+      "sha256": "42a7d49479544125aa08209126948e3f57ff6040a2f6c1b5289e498de39d4e5c",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/CeruleanCave_2F/map.json": {
+      "sha256": "2c6e7f32daefb68be4a39c7219682c3bb7b8c8ddb079db21226de4afa556f6ae",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/CeruleanCave_B1F/map.json": {
+      "sha256": "771c69cd177d040c0048fc9a4729525141d1844e18460448d48e1a1af405986a",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/CeruleanCity/map.json": {
+      "sha256": "0aac1538194aad4cbe4fd605ef025529557d6c2e6b2305b0c21784eedec31c9b",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/CinnabarIsland/map.json": {
+      "sha256": "8afe411bd471c797da763d606cd7d7fd68191201c0c00924f32b8dd258e07b73",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/DiglettsCave_B1F/map.json": {
+      "sha256": "329777a717cccb8a139dd74e7a6b4eb2b508dd0f181e09471a8f9557e7d4c5b5",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/FiveIsland/map.json": {
+      "sha256": "8106f7385487610f1fc217fd8f495dc0c21d1faef6457c7bbbf9cc7fe4792a25",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/FiveIsland_LostCave_Room1/map.json": {
+      "sha256": "edd03d2eea81d146d82b81a4d7afbe7de6a9864cfe82d810801aaba0b2e2c22d",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/FiveIsland_LostCave_Room10/map.json": {
+      "sha256": "518d49d72eba9bbc134d197e39dab073c1b8228bf7bb86cb535b76598b2d0c5e",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/FiveIsland_LostCave_Room11/map.json": {
+      "sha256": "19400a4a8142ccc1354526c44a9a0a9fa9139bafcc7df3188f26081939a87938",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/FiveIsland_LostCave_Room12/map.json": {
+      "sha256": "c161986b8dbe24848fe075c9ad4264a3c2c5907358a1201277632e5375ca72c6",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/FiveIsland_LostCave_Room13/map.json": {
+      "sha256": "f5085393cc0a889fd47cabb990dc7f09614d037c62285717fc0047cab221bf5f",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/FiveIsland_LostCave_Room14/map.json": {
+      "sha256": "21dde60606160f79a77e6abc7c450d6387c2c9a7db04332c1e661e36842e2782",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/FiveIsland_LostCave_Room2/map.json": {
+      "sha256": "b7c45b12e2ef86f9c094aba47e533f5cb9648d83c700ff98ee788a53c339e432",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/FiveIsland_LostCave_Room3/map.json": {
+      "sha256": "a8aa0af080a0c6171d31cfed9370a54cb5effeaa6b42cf7ca7abe1fd69c471ce",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/FiveIsland_LostCave_Room4/map.json": {
+      "sha256": "838287c268f4d77d4397f3ee5a765e92b8d901972f7a20bf0659d51ced004bb7",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/FiveIsland_LostCave_Room5/map.json": {
+      "sha256": "5b9bab73e51c279a6731768583e6f52857432ca48e4224d7b15b4ff49c55e153",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/FiveIsland_LostCave_Room6/map.json": {
+      "sha256": "385b09d0dbd7138ae1926bd254a99e73ec4977ad839530b664167f47a00624f5",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/FiveIsland_LostCave_Room7/map.json": {
+      "sha256": "8f6645c9c3ce9773b0a05261bc1f12011cf52eabddb51f7d1e28ec58b0ca01e0",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/FiveIsland_LostCave_Room8/map.json": {
+      "sha256": "a998d7efc6eb3734a92de4097d6d1d090e2d8aa6fc8f1797fd66aaa315a43bc0",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/FiveIsland_LostCave_Room9/map.json": {
+      "sha256": "b033cbcf9d82ed5c7805e366eb07b9298767a45702ea91fc1c17a17f1811e271",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/FiveIsland_Meadow/map.json": {
+      "sha256": "d7481b444b2c3b73044297b7052a6b985cc2ba08a5b69642d39aa99d6c1edbef",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/FiveIsland_MemorialPillar/map.json": {
+      "sha256": "2efeb66afbe3b691e1c569f8e5edf345079c9241a3078c521467c21ea6123b56",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/FiveIsland_ResortGorgeous/map.json": {
+      "sha256": "797f1dd5492923aa3219d1bc88b247f4c4d24fe22e00e3d340b0e808032f9cad",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/FiveIsland_WaterLabyrinth/map.json": {
+      "sha256": "20ae67f079fa62a7ffc171b81605d85b2a92be4ffe2b006c01536dbff019e29e",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/FourIsland/map.json": {
+      "sha256": "236e8409df865ad947ada59080cd187e490993d53658b059dc8849d1af66231c",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/FourIsland_IcefallCave_1F/map.json": {
+      "sha256": "6c9cdcdb338f317e623cad8e45b6a6e2a26fb51168d927bc6a2103e01ca14229",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/FourIsland_IcefallCave_B1F/map.json": {
+      "sha256": "31871f15ba5459dca8894203fd67499f9d4f9afa5d27b40f3f8353ea2848894a",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/FourIsland_IcefallCave_Back/map.json": {
+      "sha256": "a61cd5b3426dcabec56b6a2d344e7c8657a8791d7f78422e85183039e80e0b65",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/FourIsland_IcefallCave_Entrance/map.json": {
+      "sha256": "5b3658a89b320938e4d7a0da8d37550d92e2461ce3134fa617edfd99f022157f",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/FuchsiaCity/map.json": {
+      "sha256": "a13226ab375e13f781c4cf08dff498cce0e43c2c47fd6e6406bfc97ccc1b01a3",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/MtEmber_Exterior/map.json": {
+      "sha256": "cb4a7e698ecf72390f25ba902d2a23028abed3071f51bf15070451eb63b07f6b",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/MtEmber_RubyPath_1F/map.json": {
+      "sha256": "5263ec6486246ff0b3d01ccbf73bb8e93c7aac3c2f4ed58285a5066ce13f3901",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/MtEmber_RubyPath_B1F/map.json": {
+      "sha256": "72172498573e2db9fd099a56f6d2459bc66d4fb8496af247d334ee3b1d18662c",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/MtEmber_RubyPath_B1F_Stairs/map.json": {
+      "sha256": "55267f4ad39f98c9193716e2b3d40b3fbcb91f2ce75d704cb91598257ac54520",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/MtEmber_RubyPath_B2F/map.json": {
+      "sha256": "aaac153121a30ca95d16130d9e00f8127b4327510331a92610b759a26fb01342",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/MtEmber_RubyPath_B2F_Stairs/map.json": {
+      "sha256": "ea4c54f50558700d45d73588994536e7a4c6c4403b7b47847bfb86e37eaa31dd",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/MtEmber_RubyPath_B3F/map.json": {
+      "sha256": "1e782bfcc8ef32db5db635f6163be68609969e56254927643a523e3bca0aa90f",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/MtEmber_SummitPath_1F/map.json": {
+      "sha256": "130f2cce595bd0829be8a1e397f8618f3190cfc63fb1bc9182cd5f25362f56e6",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/MtEmber_SummitPath_2F/map.json": {
+      "sha256": "c33f150677d445b5be9129f3054697b73b165bb3af76fe536e9efe1f50e3d91a",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/MtEmber_SummitPath_3F/map.json": {
+      "sha256": "a13f7604f8ad3b795a07b0110f8816d2e1dc8f168578d3e7d5eedd914f31b8d1",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/MtMoon_1F/map.json": {
+      "sha256": "312b2de23d9942d3326da9fe9597b25ef7c3537bcedfcafa7922d5c8b8e8d8fc",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/MtMoon_B1F/map.json": {
+      "sha256": "f654d2cbc3983a0e0d161f7d4505d855aa7f06f7f614cdcc116ba029e275d36d",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/MtMoon_B2F/map.json": {
+      "sha256": "451a05df92c5df570c121affa75c846996d3561c12e7e5d67d91814482a37ff3",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/OneIsland/map.json": {
+      "sha256": "8ff9c70f1ba28578f506945a1dbbedc783837f54cbd141b23dd19e2abbd50d3e",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/OneIsland_KindleRoad/map.json": {
+      "sha256": "c9f58a1ee4ee4d12c53dd4f88a9579309a284adb9dbdf0dd782ec4dd9187aaef",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/OneIsland_TreasureBeach/map.json": {
+      "sha256": "7d504de2807aa569e7d103a119b1ffa04e89a2cf1f98c801fdb4146bac90dfcb",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/PalletTown/map.json": {
+      "sha256": "2816338934241bac34f52dae8b101ac3add59e0ebdde3e3fb6575f3b525b01c3",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/PokemonMansion_1F/map.json": {
+      "sha256": "96788cd5e8758bbd19423cd153a2034e1b89b2f66b5463acb4a28e90d3cde019",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/PokemonMansion_2F/map.json": {
+      "sha256": "5dd26a290a4a605e280049c57c41d72d4043063234fea346c143fcdd9b3f48ce",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/PokemonMansion_3F/map.json": {
+      "sha256": "fcea30babbe644b0e71b3cda5ce34a4359719c15564a4350a5df40de9dec0ff4",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/PokemonMansion_B1F/map.json": {
+      "sha256": "4c4c7322e422d1a1fcf39d0bd86e10c0ee01eb6ea1e02f32c3c7824860fab1e2",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/PokemonTower_3F/map.json": {
+      "sha256": "1f00493afb6cd414d753bd05a49357cd2acb08dc3f78e579d57e3ab884284835",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/PokemonTower_4F/map.json": {
+      "sha256": "db07e0e9f3498875dd82e4d7a2258fe25704c7e079b4c0bc4843bf111cd5f051",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/PokemonTower_5F/map.json": {
+      "sha256": "6a7c648e7afbac0ec863e42622588871b5705fc93750841a15e922984f30ce52",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/PokemonTower_6F/map.json": {
+      "sha256": "ed2db6909d066de716c74286527e59a17c0c9487eb689044f9f918b84f46a34e",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/PokemonTower_7F/map.json": {
+      "sha256": "f58f5339a3acf0cafe66162f500093fed33c6a8e395260e3f4580a77f2340a55",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/PowerPlant/map.json": {
+      "sha256": "2a33bb77406ca5fefc99b9adc48ef640f4143d990e9b02c4ba2e96f17be0a8cb",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/RockTunnel_1F/map.json": {
+      "sha256": "bf89c9e78f7373691783428c0143b6ecaa52be67edf508859ec175c79701a468",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/RockTunnel_B1F/map.json": {
+      "sha256": "668c7ede675ec83008984303faafef1d0b4d6ec5f11bcfb852e73a6280ad3cb8",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/Route1/map.json": {
+      "sha256": "11b1ad78ae12d7a61c35756281fd5127929f5f5155dc20022fbae147424c4869",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/Route10/map.json": {
+      "sha256": "2a150cbfeb76e832d6b3d7f0c5f2023efb3e6df5084f445863dc7bf6e679e7ee",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/Route11/map.json": {
+      "sha256": "9626c6641d153831486cec66e04e91e846f66982aab569fed1e23269475cf826",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/Route12/map.json": {
+      "sha256": "86372c00db4ef7616d129e41b2ee512764a8b5b4ced4cef19e60453e8813f3a7",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/Route13/map.json": {
+      "sha256": "c03c1ca9a198b9abbd9bb92477e148350c3521d1311de0c46fa447b2f3033d7a",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/Route14/map.json": {
+      "sha256": "b95b47919b7a39ad82acf47c7a2d633d47cd960e093c291ae1188f77ac2f8199",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/Route15/map.json": {
+      "sha256": "3bf1bf214171aac3e9caf32c521f1405323aceabec2be117a46fb43f13c37207",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/Route16/map.json": {
+      "sha256": "40b6d9e1ce68a55b44dfd91e2915e3a12d2a2582b141556cfb90c71214b014d3",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/Route17/map.json": {
+      "sha256": "e55dfcfe88655df1a1e13ce89faea218f868889d788dc4c3314f8992cab467cd",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/Route18/map.json": {
+      "sha256": "77a644ccd811a90ef1b122db3461df7c4a6012a5381292bf94e42918ad8af057",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/Route19/map.json": {
+      "sha256": "993d8e5b7b1d39f5492347743092fe23d2e35a95421eeabd8ddfebe757151159",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/Route2/map.json": {
+      "sha256": "2562e3736b600c95b8c0a4c2a1bb3fb062f5c50208bebc43cd4303328ccda7ea",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/Route20/map.json": {
+      "sha256": "65a43cfd83957c1521b6cdff9abe1146396be119552a68bfc572c85cde57e27f",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/Route21_North/map.json": {
+      "sha256": "0b5c53b1ba5849fc9a6a836f99064ac0043d2c6e2eb1af2fdd5523658793e54b",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/Route21_South/map.json": {
+      "sha256": "74ea53367d3420d9b5d8560e8d1b945f27383c6f8c6c3212e07df619f80e2d88",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/Route22/map.json": {
+      "sha256": "3d77705fd405402183c292d15d47d698f96cd9cdf2e4e7534c2833032b6e7951",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/Route23/map.json": {
+      "sha256": "cdcca456f3bbf7c5b591815b21611fddde631e55829ae588883f55627ed9cfe4",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/Route24/map.json": {
+      "sha256": "f844a16ec16a9aa725bcabf8862ec7b08be16b511f10664ef6e15f2448dd90a8",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/Route25/map.json": {
+      "sha256": "a4b412784121ae753cb88e5a1be6db1b5575e77946ba3c6b87aca8087b1dfcb6",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/Route3/map.json": {
+      "sha256": "7a5ca63e9f21f0a3beaab0e5970f84ebaa70f55fe9928b0105207886eb3c3815",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/Route4/map.json": {
+      "sha256": "5b0b84cb73ecc6597470d01d5933ca36d5e4410cdda53dddb72922689e5653ac",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/Route5/map.json": {
+      "sha256": "741445d5c51691b6bce421326f5fe21d01b1cf88e3a92340ca3a865dac94b70a",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/Route6/map.json": {
+      "sha256": "7c16394fc3ed6474aa7d11340f4b5bff96b6c596937401949ee08932887d42cc",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/Route7/map.json": {
+      "sha256": "d0d7fd8960fa4c16527a07a490370329af5c53ef0f86b320f70d68bf5e63d1da",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/Route8/map.json": {
+      "sha256": "414c45024763d0eecdd4f1e4d25c2ee093f312dc30b40e1260e6e15ea4df6c4c",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/Route9/map.json": {
+      "sha256": "0a8b7cfd3028e15d59903f3f5dfc503f98712e5592d8d6a99a26cddc430d5270",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/SafariZone_Center/map.json": {
+      "sha256": "03ca14271cb2f59a14dafaa82d198398fe6567754e83a9a6730b92417c2ec41b",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/SafariZone_East/map.json": {
+      "sha256": "36ac6653707e5452c5eda9921f3577d0bb3d89164a0cb2a7d79bfc87bc475873",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/SafariZone_North/map.json": {
+      "sha256": "2bbf67fc842382dbe2fe88467f0824be955c99c3b4315a356173ce2384b3849c",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/SafariZone_West/map.json": {
+      "sha256": "6d386dbe03990c3fa57c1f67149841dd629f5258567408f8d3d456f4168cf328",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/SeafoamIslands_1F/map.json": {
+      "sha256": "76786fb01119319edbff73be801d687106b0a73e31815b51e9eb12a56552d7f4",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/SeafoamIslands_B1F/map.json": {
+      "sha256": "222fb2c418959a1a7c7530ec2d32eb1d3765f18eb5b095521b9f66346b9b5946",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/SeafoamIslands_B2F/map.json": {
+      "sha256": "155cbdbd34193d1d8cd9cbc6a0aeb2e117e12159a5c6a86991a971c0a3ed2b52",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/SeafoamIslands_B3F/map.json": {
+      "sha256": "804c345bc4567176ebfc14f5bbaba324b955989316388f08f32865406695bd0b",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/SeafoamIslands_B4F/map.json": {
+      "sha256": "34d63e32310a54b52f0e188f0c06a05e5a57f6e57a46598e24137d16af30df71",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/SevenIsland_SevaultCanyon/map.json": {
+      "sha256": "005c881729aae7796aed49e6f6ccdbb9dbd11c82e7aaf13c5a66c618de33b5c7",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/SevenIsland_SevaultCanyon_Entrance/map.json": {
+      "sha256": "af0fe182fc688fa760a4232e79447c89b917a48d18bb8f135bdeff3fcb6bfa4a",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/SevenIsland_TanobyRuins/map.json": {
+      "sha256": "bb06dcdb276dac53d3c2c75b3fbc47f25352f393af98ae09d597f3af0a786a8e",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/SevenIsland_TanobyRuins_DilfordChamber/map.json": {
+      "sha256": "89b4b806bd5d0096c9174a19825fc85a0c4006f7147f69fdf2483af5c156a3a7",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/SevenIsland_TanobyRuins_LiptooChamber/map.json": {
+      "sha256": "93a6d0e98585210a61b64b611fea006dc535ad09cb78734167c5765b0aa23498",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/SevenIsland_TanobyRuins_MoneanChamber/map.json": {
+      "sha256": "e0da1a6943fc712059177e350189fe279bd35cd97604069d0812cf7d6449b319",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/SevenIsland_TanobyRuins_RixyChamber/map.json": {
+      "sha256": "e7546e975e711ac67fc7c6c1471bf4b9577379d87e060c6f3cd82c0c25981f42",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/SevenIsland_TanobyRuins_ScufibChamber/map.json": {
+      "sha256": "4ec1ddf6a5f6b94348ddd6ab9b15b2b80a82572eb36addae91f2a36e1648194d",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/SevenIsland_TanobyRuins_ViapoisChamber/map.json": {
+      "sha256": "2fbe60365cc4546dbfe182519d399c48f45abd34aa1fed19acfcd8668366a800",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/SevenIsland_TanobyRuins_WeepthChamber/map.json": {
+      "sha256": "e93ef3ee795980b774bd55fe3bfeffad63f83208bcfa5b2d67f71ba146c0c0bc",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/SevenIsland_TrainerTower/map.json": {
+      "sha256": "52ee27d359d6cecbbae3d132c2237d0c32edda84cb02526e59035adfd91785cf",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/SixIsland_AlteringCave/map.json": {
+      "sha256": "95caf7108769faed563f2f11cadae6967855319bbf71801ce3c75e1db4b57543",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/SixIsland_GreenPath/map.json": {
+      "sha256": "74c54e0d7e6dac3e5609b357c0e0556e3e78ea4ca8326bd87d6edda481c3ea5e",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/SixIsland_OutcastIsland/map.json": {
+      "sha256": "041c6fdcdc081977e6c4f56cd40aacedd2a97a6e88a4e081b26bc2b93a5e67f6",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/SixIsland_PatternBush/map.json": {
+      "sha256": "83cc057bf82baec1de948473105c5eb2bf6c7fe2bc93ff106b3bc72a4ad5cbf1",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/SixIsland_RuinValley/map.json": {
+      "sha256": "1b4a304ccd319f42af6e4695dffbdf668039d458da718759beff9aff6b53f3fe",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/SixIsland_WaterPath/map.json": {
+      "sha256": "62895d6be54c388631bdc3baa95953e096db5883009ac9c8b858653a053348ec",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/SSAnne_Exterior/map.json": {
+      "sha256": "b61c2239d951708715a265802796df7c18adaeff8a277e90db1fe341d7c1c543",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/ThreeIsland_BerryForest/map.json": {
+      "sha256": "82bcf506a75b06f5662e6619877cd322c4001e06e71d779c8546130f90bee813",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/ThreeIsland_BondBridge/map.json": {
+      "sha256": "2435cc95506b51bef21e4bce5c333289248f357cd811177dbc167548d0733077",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/ThreeIsland_Port/map.json": {
+      "sha256": "359792aac362e68915f6d1723e93d9c0716d19a4af2eb93ce4f133e20840a7bc",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/TwoIsland_CapeBrink/map.json": {
+      "sha256": "142bb4d30a7c6ef74b3dc1c8c8b5e9ae4f85fb06da806864f5e0afdc13bc6d9b",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/VermilionCity/map.json": {
+      "sha256": "b109631c9791cd330d4073ab183a283380ec25e9145c5e6e591b8111a38f1f4c",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/VictoryRoad_1F/map.json": {
+      "sha256": "3885d2cac79afe4ce663b776dca2b4b758a680a49c8c23dbb69bfcf9d9951d2e",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/VictoryRoad_2F/map.json": {
+      "sha256": "4fc48795f3cf7a945e46bb0358dba23c50a6ede35c2875210f75b2195cc450d2",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/VictoryRoad_3F/map.json": {
+      "sha256": "99d3c7bbcdd381ff3ce756cb0c6012ecde1d407ad436d1255f2348b83d95d03a",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/ViridianCity/map.json": {
+      "sha256": "5ce922b65f76335556ace9a047feeb1968854b604c8469c39cbbd60985f61bc1",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/ViridianForest/map.json": {
+      "sha256": "6d6f082604d3c220eeb2c72cb6a606403330df44c58d9ed2523cd81c53fdaba2",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pkhex-nonwild-encounters/pokemon-leafgreen.json": {
+      "sha256": "c2d94e4452085b0e4cc22d156a3b6b9780e1e55dc544007727284c559e49b3f0",
+      "role": "exact version-scoped local non-wild acquisition templates and source semantics"
+    },
+    "../../tools/imports/vanilla/pkhex-nonwild-encounters/manifest.json": {
+      "sha256": "b9f8485f1a56de36bfbd6fb329626e5631903a629b9fcc77f120944748143ce3",
+      "role": "deterministic non-wild acquisition importer artifact manifest"
+    },
+    "../../tools/extract_pkhex_vanilla_nonwild_encounters.py": {
+      "sha256": "2cebc908b822bf3e6ca5783db2ab9abea1e29f04205a9da239260d1fe0c5ba99",
+      "role": "hash-pinned deterministic non-wild source decoder"
+    },
+    "../../tools/imports/vanilla/nonwild-acquisition-policies/policies.json": {
+      "sha256": "3718eea5cbd3cc5234a4530fc5d56dda2451b746023ce6ffd5defb26273ac92e",
+      "role": "pinned non-wild acquisition policy, provenance, unresolved ledger, or independent verification"
+    },
+    "../../tools/imports/vanilla/nonwild-acquisition-policies/documentary_joins.json": {
+      "sha256": "432f7aab4f5d92544200eab9e4ffc68feef65220e8f5c715143efea79f5cf0a1",
+      "role": "pinned non-wild acquisition policy, provenance, unresolved ledger, or independent verification"
+    },
+    "../../tools/imports/vanilla/nonwild-acquisition-policies/manifest.json": {
+      "sha256": "026e03f544a31009eb863998cf3beb5e7a2d002bf02d3720a19362a01a258f9a",
+      "role": "pinned non-wild acquisition policy, provenance, unresolved ledger, or independent verification"
+    },
+    "../../tools/imports/vanilla/nonwild-acquisition-policies/source_lock.json": {
+      "sha256": "2bf5cc671f67326a1407e8fab06db7b28873d2a4fc819e9178459ae0561069b0",
+      "role": "pinned non-wild acquisition policy, provenance, unresolved ledger, or independent verification"
+    },
+    "../../tools/imports/vanilla/nonwild-acquisition-policies/provenance.json": {
+      "sha256": "aa4d7fe8604d3630e9dde22376aeec8b49205256ba2a2371b0f2c16dbd64b236",
+      "role": "pinned non-wild acquisition policy, provenance, unresolved ledger, or independent verification"
+    },
+    "../../tools/imports/vanilla/nonwild-acquisition-policies/verification_report.json": {
+      "sha256": "2325ae032b535b3c6390f16c7a62389b0f21870012a2bb6435cdbf355525ed87",
+      "role": "pinned non-wild acquisition policy, provenance, unresolved ledger, or independent verification"
+    },
+    "../../tools/imports/vanilla/nonwild-acquisition-policies/unresolved_fields.json": {
+      "sha256": "4aa1a98fd95504ee9844088ae60bc7994705d5753c286ff00b2a5b3adb175257",
+      "role": "pinned non-wild acquisition policy, provenance, unresolved ledger, or independent verification"
+    },
+    "../../tools/imports/vanilla/nonwild-acquisition-policies/README.md": {
+      "sha256": "76f602b1dfc2d548fa1f5eddf29315c947bec31f71c95d49653927204486be39",
+      "role": "pinned non-wild acquisition policy, provenance, unresolved ledger, or independent verification"
+    },
+    "../../tools/import_nonwild_acquisition_policies.py": {
+      "sha256": "14115dc191c716635a06620447eb395090fb504900418d80d4c09564cf15fd9c",
+      "role": "pinned non-wild acquisition policy, provenance, unresolved ledger, or independent verification"
+    },
+    "../../tools/test_nonwild_acquisition_policies.py": {
+      "sha256": "70d1e7da43033df04b391cbc0c1e06b649ee192b20a93840c3757c6ee37d1015",
+      "role": "pinned non-wild acquisition policy, provenance, unresolved ledger, or independent verification"
+    },
+    "../../Gen 3/source-data/species.json": {
+      "sha256": "72afe824feb84dd9b463d733a9735ea8e885d18cbd2aac507fbf33aaf109ac0d",
+      "role": "pinned local generation-reference inheritance input"
+    },
+    "../../Gen 3/source-data/types.json": {
+      "sha256": "e8d69519dd3309b4791f4bb6cbc09ce24b5bc343b26f8b21a42ea167d05968c1",
+      "role": "pinned local generation-reference inheritance input"
+    },
+    "../../Gen 3/source-data/natures.json": {
+      "sha256": "54df88444402b275ad91cfdb181cbffe0d5886f8d800e41871ea1ee79f054cba",
+      "role": "pinned local generation-reference inheritance input"
+    },
+    "../../Gen 3/source-data/stats.json": {
+      "sha256": "2a00ec3135fbb6f1b6c842e00e749e988e9fe1772cbb97c60d7fcfa7a4c5edd0",
+      "role": "pinned local generation-reference inheritance input"
+    },
+    "../../Gen 3/source-data/categories.json": {
+      "sha256": "8ae9370679b005b26a8b9d276f49eac98fc2137ecfb986758b1e7ecb3194b6b1",
+      "role": "pinned local generation-reference inheritance input"
+    },
+    "../../Gen 3/source-data/game_rules.json": {
+      "sha256": "74c1f76d1069331417a84b7f767f10e556636d88b72d20cdfb7f7bc42d6d5e0a",
+      "role": "pinned local generation-reference inheritance input"
+    },
+    "../../Gen 3/source-data/battle_mechanics.json": {
+      "sha256": "9b46bb8cd035e137ef7896b48c04a997aaaf22ca39084eddf6a6017ea72b8690",
+      "role": "pinned local generation-reference inheritance input"
+    },
+    "../../Gen 3/source-data/experience_mechanics.json": {
+      "sha256": "90bf7e3e8b66bc4349144ad567e19b392068f9a738ec064bb302b5769ff218ad",
+      "role": "pinned local generation-reference inheritance input"
+    },
+    "../../Gen 3/source-data/trainer_ai.json": {
+      "sha256": "cf8bb227dab1fbf6a0a1d7dc24235db22e88ffed24bd706bb9b9ccd0c7784fd9",
+      "role": "pinned local generation-reference inheritance input"
+    },
+    "../../tools/imports/vanilla/special-trainer-mechanics/mechanics.json": {
+      "sha256": "ac84ad812b26d6b739c7d6a2d3b9e9c0fb56346bd988042566cc9a11b27752e2",
+      "role": "pinned special trainer authority/decoder/independent verification"
+    },
+    "../../tools/imports/vanilla/special-trainer-mechanics/provenance.json": {
+      "sha256": "af32257d809e289750d777841ac56a7744c774472e89735b483108d6f86e5060",
+      "role": "pinned special trainer authority/decoder/independent verification"
+    },
+    "../../tools/imports/vanilla/special-trainer-mechanics/verification_report.json": {
+      "sha256": "048c849cfec3e45dd0d80a3b42ab908d55b33d4a34b1918dab6a0bd096c46c71",
+      "role": "pinned special trainer authority/decoder/independent verification"
+    },
+    "../../tools/import_special_trainer_mechanics.py": {
+      "sha256": "3d57b33176cc3287248bec746eacf93880e142e0c2a8280e45fd10499c88761b",
+      "role": "pinned special trainer authority/decoder/independent verification"
+    },
+    "../../tools/test_special_trainer_mechanics.py": {
+      "sha256": "65736c5e21212725269362adcae79171d01fd18599e931d1a03b4733b426f2d4",
+      "role": "pinned special trainer authority/decoder/independent verification"
+    },
+    "../../tools/imports/vanilla/move-mechanics/moves.json": {
+      "sha256": "b5f8e5b6b15866de5798e026299cd9b6949a148c35c42cac16a9ca63c537d7a5",
+      "role": "pinned exact historical move mechanics and independent verification"
+    },
+    "../../tools/imports/vanilla/move-mechanics/target-policies.json": {
+      "sha256": "e24e2c2deec67c7eb4663e16c936dae37f2f6ef92ee7a1d939ef4a2137430627",
+      "role": "pinned exact historical move mechanics and independent verification"
+    },
+    "../../tools/imports/vanilla/move-mechanics/source-lock.json": {
+      "sha256": "e834961445c0eab0b0b5991e7db2634ad00781532ef6666cfa1de510d9cbfecb",
+      "role": "pinned exact historical move mechanics and independent verification"
+    },
+    "../../tools/imports/vanilla/move-mechanics/validation-report.json": {
+      "sha256": "078d18977be08cba990615feebc1d06abef5daed883f15c67f57f4dc4d903808",
+      "role": "pinned exact historical move mechanics and independent verification"
+    },
+    "../../tools/imports/vanilla/move-mechanics/target-validation-report.json": {
+      "sha256": "86aad391ab4cef2fe7fffeabd0bd766d048b184de492f3e36051f44bac80f084",
+      "role": "pinned exact historical move mechanics and independent verification"
+    },
+    "../../tools/imports/vanilla/move-mechanics/retail-gen5-inputs.json": {
+      "sha256": "fe3c8061966f6ad2e9d166ee83a33f29823ebef19774cc9660eb90e094402cfb",
+      "role": "pinned exact historical move mechanics and independent verification"
+    },
+    "../../tools/imports/vanilla/move-mechanics/retail-target-inputs.json": {
+      "sha256": "7cb5bc30e464eaa7bcff8b58e2d705f8c2a30874cd75de3ffecee3a777909da1",
+      "role": "pinned exact historical move mechanics and independent verification"
+    },
+    "../../tools/imports/vanilla/move-mechanics/diamond-target-script-inputs.json": {
+      "sha256": "504d9c1fe049e2712ad76d1f151599a9fef3de30f6b2961f69620a2f91e87d93",
+      "role": "pinned exact historical move mechanics and independent verification"
+    },
+    "../../tools/imports/vanilla/move-mechanics/build.py": {
+      "sha256": "80396aaa3e48f49b27ecb595603b71be3d348e5c4dd54cc47cc655bce6607a46",
+      "role": "pinned exact historical move mechanics and independent verification"
+    },
+    "../../tools/imports/vanilla/move-mechanics/validate.py": {
+      "sha256": "f9bea3b4fe0b2fa16828a9c07c985517135acecc6c3fd41760048771e8e41297",
+      "role": "pinned exact historical move mechanics and independent verification"
+    },
+    "../../tools/imports/vanilla/move-mechanics/target_policies.py": {
+      "sha256": "e30074c0a4b2325b7ebbe1c63810da31da693efef5ccdc7a6f4c96386cd3c2a4",
+      "role": "pinned exact historical move mechanics and independent verification"
+    },
+    "../../tools/imports/vanilla/move-mechanics/validate_targets.py": {
+      "sha256": "901a51446cd105cc4e1b4818fb0518d4f45dec129fe184def86b7aaf91f4cefa",
+      "role": "pinned exact historical move mechanics and independent verification"
+    },
+    "../../tools/imports/vanilla/move-mechanics/retail_target_inputs.py": {
+      "sha256": "0940c30cf992d31822318424596b5f0d54ff5a26c2a15830e5ef1ae19267c016",
+      "role": "pinned exact historical move mechanics and independent verification"
+    },
+    "../../tools/imports/vanilla/move-mechanics/README.md": {
+      "sha256": "76f602b1dfc2d548fa1f5eddf29315c947bec31f71c95d49653927204486be39",
+      "role": "pinned exact historical move mechanics and independent verification"
+    },
+    "../../tools/imports/vanilla/battle-mechanics/pokemon-leafgreen.json": {
+      "sha256": "532089415ab3b018dae3227308cbbccbb75020fa1976856dcc374ad061a48719",
+      "role": "pinned game-specific battle contract, independent known answers, or validation authority"
+    },
+    "../../tools/imports/vanilla/battle-mechanics/source-lock.json": {
+      "sha256": "3a4043532334644e949a5f43e089cc239a2766e2fbc074d6480b6891bc2b7647",
+      "role": "pinned game-specific battle contract, independent known answers, or validation authority"
+    },
+    "../../tools/imports/vanilla/battle-mechanics/validation-report.json": {
+      "sha256": "37da9caa3dfecd13d8e1623a638e3c659509adb7ea64d31d29eddfb55091bff0",
+      "role": "pinned game-specific battle contract, independent known answers, or validation authority"
+    },
+    "../../tools/imports/vanilla/battle-mechanics/known-answers.json": {
+      "sha256": "e708c73e1d2056b65fa062cfc9e50c5f67b0205c34272f73264fa1c93b569ef5",
+      "role": "pinned game-specific battle contract, independent known answers, or validation authority"
+    },
+    "../../tools/imports/vanilla/battle-mechanics/known_answer_definitions.js": {
+      "sha256": "e50ce35ebd7c0979fcb327ec299bf837e07ce5b789c0fda66bc1f9aa84792c3b",
+      "role": "pinned game-specific battle contract, independent known answers, or validation authority"
+    },
+    "../../tools/imports/vanilla/battle-mechanics/README.md": {
+      "sha256": "76f602b1dfc2d548fa1f5eddf29315c947bec31f71c95d49653927204486be39",
+      "role": "pinned game-specific battle contract, independent known answers, or validation authority"
+    },
+    "../../tools/build_vanilla_battle_mechanics_authority.js": {
+      "sha256": "b97bb27cbe25d1d7227cab7844c48bcd1f0d58b07739cba9e9a3eb78d8e27571",
+      "role": "pinned game-specific battle contract, independent known answers, or validation authority"
+    },
+    "../../tools/validate_vanilla_battle_mechanics_authority.js": {
+      "sha256": "1b65faa514fac4790f41c11fcb404d9959f6e8fbf18c9a26b0843425814a0aed",
+      "role": "pinned game-specific battle contract, independent known answers, or validation authority"
+    },
+    "../../tools/calculation_reference.js": {
+      "sha256": "488b13d0834bcae87f5548b7dd1235b5dbcca1f65df770c11cc069bbadb60dd1",
+      "role": "pinned game-specific battle contract, independent known answers, or validation authority"
+    }
+  },
+  "standardizedSources": [
+    "species.json",
+    "moves.json",
+    "abilities.json",
+    "items.json",
+    "learnsets.json",
+    "evolutions.json",
+    "trainers.json",
+    "trainer_order.json",
+    "trainer_battle_groups.json",
+    "progression.json",
+    "locations.json",
+    "encounters.json",
+    "encounter_methods.json",
+    "types.json",
+    "natures.json",
+    "stats.json",
+    "categories.json",
+    "save_id_maps.json",
+    "aliases.json",
+    "source_audit.json",
+    "game_rules.json",
+    "battle_mechanics.json",
+    "experience_mechanics.json",
+    "trainer_ai.json",
+    "encounter_mechanics.json"
+  ],
+  "extensions": [
+    "source_verification_report.json"
+  ],
+  "sourceRequirements": {
+    "specialTrainerMechanics": {
+      "required": true,
+      "status": "passed-source-semantics-runtime-gated",
+      "trainerRecords": 0,
+      "trainerPokemon": 0,
+      "sourceProvenRuntimeFields": {
+        "abilityId": 0,
+        "natureId": 0,
+        "gender": 0
+      },
+      "consumerActivation": false,
+      "unsupportedContextPolicy": "unavailable-do-not-inherit"
+    },
+    "speciesSaveIdentity": {
+      "required": true,
+      "status": "passed-exact-version-raw-species-and-form-projection"
+    },
+    "speciesAbilitySlots": {
+      "required": true,
+      "slotCount": 2,
+      "orderedBySaveSelector": true,
+      "status": "passed"
+    },
+    "itemNumericIdentityAndLegality": {
+      "required": true,
+      "status": "passed-exact-version-storage-and-held-item-domain",
+      "recognizedRawIds": 284,
+      "legalInventoryRawIds": 282,
+      "heldItemDomainRawIds": 244,
+      "legalHeldItemRawIds": 242,
+      "unreleasedRawIds": 2,
+      "reservedRawIds": 90
+    },
+    "evolutionMechanics": {
+      "required": true,
+      "status": "passed-typed-pkhex-methods-and-game-local-trigger-availability",
+      "methodProfile": "pkhex-evolution-type@e0e63bc87837ad2d9c8f8fda4efdbf5f2933db08",
+      "structuredEdges": 184
+    },
+    "movepoolMembership": {
+      "required": true,
+      "status": "passed-native-in-game-movepool-membership",
+      "definition": "all moves a Pokémon can learn through methods available inside this game",
+      "methods": [
+        "egg",
+        "level",
+        "machine",
+        "pre-evolution",
+        "tutor"
+      ]
+    },
+    "moveMechanics": {
+      "required": true,
+      "status": "passed-static-fields-with-explicit-dynamic-target-policies",
+      "records": 354,
+      "projectionSha256": "b5f8e5b6b15866de5798e026299cd9b6949a148c35c42cac16a9ca63c537d7a5",
+      "independentAssertions": 200119,
+      "independentKnownAnswers": 331,
+      "rejectedCorruptions": 22,
+      "targetPolicies": 134,
+      "targetKnownAnswers": 126,
+      "targetRejectedCorruptions": 12,
+      "sourceUnresolvedTargetRows": 0,
+      "sourceUnresolvedDamagingTargetRows": 0,
+      "unimplementedTargetPolicies": 134,
+      "unresolvedTargetSemantics": {
+        "actionSelectionBlockingMoveIds": [],
+        "calculationBlockingMoveIds": [],
+        "field": "target",
+        "nonDamageMoveIds": [],
+        "rows": 0,
+        "unimplementedTargetPolicyMoveIds": [
+          "counter",
+          "metronome",
+          "mirrormove",
+          "curse",
+          "sleeptalk",
+          "mirrorcoat",
+          "naturepower",
+          "assist",
+          "magiccoat",
+          "snatch"
+        ],
+        "unresolvedFlags": 0
+      },
+      "fieldLevelConflictsResolved": 409
+    },
+    "battleMechanics": {
+      "required": true,
+      "status": "passed-conditional-source-slice",
+      "sourceReadiness": {
+        "status": "passed-conditional-source-slice",
+        "unresolved": 0,
+        "scope": "selected static move fields, trainer inputs and declared game-specific formula policies; not global Dataset completeness"
+      },
+      "knownAnswers": 18,
+      "rejectedCorruptions": 72,
+      "productionStatus": "passed",
+      "unresolvedCalculationFields": 0,
+      "consumerActivation": true
+    },
+    "wildEncounterTables": {
+      "required": true,
+      "status": "passed-exact-per-version-pkhex-binary-decode",
+      "areas": 279,
+      "slots": 1829,
+      "activeSlots": 1829,
+      "emptyPlaceholderSlots": 0,
+      "fixedNonzeroFormSlots": 73,
+      "runtimeFormPolicySlots": 0
+    },
+    "wildEncounterRecords": {
+      "required": false,
+      "role": "legacy-flat-compatibility-projection",
+      "status": "passed-exact-flat-slot-projection-with-explicit-selection-ledger",
+      "areas": 279,
+      "records": 1829,
+      "activeRecords": 1829,
+      "emptyPlaceholderRecords": 0,
+      "resolvedSlotWeights": 1829,
+      "resolvedConditionalSelectionRecords": 0,
+      "partiallyResolvedSelectionRecords": 0,
+      "unresolvedSelectionRecords": 0,
+      "runtimeFormPolicyRecords": 0,
+      "uniquePhysicalGrottoMappings": 0,
+      "ambiguousPhysicalGrottoMappings": 0,
+      "unmappedHiddenGrottoRecords": 0,
+      "physicalGrottoMembershipsMapped": 0,
+      "physicalHoneyTreeLocations": 0,
+      "physicalHoneyTreeMembershipsMapped": 0,
+      "effectiveProbabilityStatusCounts": {
+        "resolved-for-matched-condition-profile": 1446,
+        "slot-weight-known-area-activation-or-conditions-unresolved": 383
+      },
+      "unresolvedReasonCounts": {
+        "area-conditions": 383
+      }
+    },
+    "encounterMechanics": {
+      "required": true,
+      "status": "passed-source-ready-not-consumer-tested",
+      "profiles": 1,
+      "profileIds": [
+        "gen3-standard-wild-table"
+      ],
+      "requiredRuntimeInputs": [
+        "encounterAreaId"
+      ],
+      "physicalHoneyTrees": 0,
+      "physicalHeadbuttTrees": 0,
+      "physicalSafariAreas": 0,
+      "safariCompatibilityRecords": 0,
+      "bugContestCompatibilityRecords": 0,
+      "standardWildProfileAreas": 279,
+      "standardWildCompatibilityRecords": 1829,
+      "consumerActivation": false
+    },
+    "nonWildAcquisitions": {
+      "required": true,
+      "status": "passed-required-acquisition-identities-and-mechanics",
+      "records": 40,
+      "recordsByAcquisitionKind": {
+        "event-local-scripted": 3,
+        "fossil-revival": 3,
+        "gift": 10,
+        "gift-egg": 1,
+        "in-game-trade": 9,
+        "roaming": 3,
+        "starter": 3,
+        "stationary-scripted": 8
+      },
+      "mappedSpeciesAndForms": 40,
+      "mappedMetLocations": 40,
+      "mappedEggLocations": 0,
+      "mappedHeldItems": 0,
+      "mappedFixedMoveSets": 31,
+      "mappedDerivedMoveSets": 30,
+      "mappedDocumentedAcquisitionHeldItems": 0,
+      "mappedFixedNatures": 9,
+      "externalDistributions": 0,
+      "unresolvedAvailabilityChoiceRepeatabilityRecords": 37,
+      "runtimeMovePolicyRecords": 9,
+      "dailyTradeCycleResetPoliciesStillUnresolved": 0,
+      "supplementalLimitations": [
+        "Full campaign availability windows, mutually exclusive choice state, repeatability, and daily-cycle reset state remain in the pinned supplemental policy ledger; no universal behavior is inferred."
+      ]
+    },
+    "wildEncounterMetadataReconciliation": {
+      "required": false,
+      "role": "cross-source-compatibility-audit",
+      "status": "passed-exact-reciprocal-subset-only",
+      "completePromotionReady": false,
+      "matchedAreas": 227,
+      "ambiguousAreas": 24,
+      "unmatchedAreas": 28,
+      "matchedSlots": 1446,
+      "matchedSlotsWithPokeapiFormGap": 73
+    },
+    "trainerCatalogue": {
+      "required": true,
+      "status": "passed",
+      "authority": "pret exact raw table",
+      "rawTrainerRecords": 639,
+      "rawTrainerPokemon": 1650
+    },
+    "trainerConstructedFields": {
+      "required": true,
+      "status": "passed",
+      "unresolvedRawTrainerPokemonFields": {
+        "trainerAbilities": 0,
+        "trainerNatures": 0,
+        "trainerGenders": 0,
+        "trainerMoves": 0,
+        "partialTrainerIvs": 0,
+        "partialTrainerEvs": 0
+      }
+    },
+    "trainerCampaignMemberMechanics": {
+      "required": true,
+      "status": "passed",
+      "effectiveTrainerRecords": 473,
+      "effectiveTrainerPokemon": 1233,
+      "unresolvedCampaignTrainerPokemonFields": {
+        "trainerAbilities": 0,
+        "trainerNatures": 0,
+        "trainerGenders": 0,
+        "trainerMoves": 0,
+        "partialTrainerIvs": 0,
+        "partialTrainerEvs": 0
+      }
+    },
+    "trainerBattleProfiles": {
+      "required": true,
+      "status": "passed",
+      "records": 639,
+      "unresolvedFormats": 0,
+      "bagItemSlotWidth": 4
+    },
+    "trainerFieldLocations": {
+      "required": false,
+      "status": "partial",
+      "scope": "optional raw-catalogue field-script provenance; campaign occurrence locations are validated separately",
+      "locatedRawTrainerRecords": 604,
+      "rawTrainerRecordsAudited": 639
+    },
+    "trainerBattleGroups": {
+      "required": true,
+      "status": "partial-source-coverage",
+      "records": 0,
+      "unresolved": 0
+    },
+    "documentedCampaignContext": {
+      "required": false,
+      "documentedCampaignContextOccurrences": 0,
+      "documentedGranularLocationRefinements": 0,
+      "documentedAllyOnlyOccurrences": 0,
+      "documentedConditionalParticipants": 0,
+      "documentedBattleGroups": 0,
+      "documentedCampaignContextUnresolved": 0,
+      "status": "not-applicable"
+    },
+    "trainerDocumentation": {
+      "required": true,
+      "status": "passed-import-and-diagnostic-join",
+      "source": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/join-audit/pokemon-leafgreen.json",
+      "documentedPartyGroups": 474,
+      "resolvedPercentOfScalar": 100.0,
+      "promotionStatus": "active-standardized-campaign-order"
+    },
+    "trainerCampaignOrder": {
+      "required": true,
+      "status": "passed-documented-display-order-with-explicit-ambiguities",
+      "occurrences": 474,
+      "strictDependencyGraph": false,
+      "mechanicsBindingsResolved": 474,
+      "mechanicsBindingsBlocked": 0,
+      "source": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-leafgreen.json"
+    },
+    "saveNumericIdentity": {
+      "required": true,
+      "status": "passed",
+      "locationStatus": "passed-exact-save-format-identity"
+    }
+  },
+  "sourceCompleteness": {
+    "status": "passed",
+    "unresolvedRequiredFields": 0,
+    "consumerActivation": false
+  },
+  "calculationCompatibility": {
+    "battle": {
+      "source": "battle_mechanics.json",
+      "status": "passed",
+      "sourceReadiness": "passed-conditional-source-slice",
+      "knownAnswers": 18,
+      "unresolvedCalculationFields": 0
+    },
+    "experience": {
+      "source": "experience_mechanics.json",
+      "status": "consumer-ready",
+      "experienceGeneration": 3,
+      "formulaModel": "generation-3-unscaled-trainer",
+      "validationStatus": "passed-inherited-generation-reference",
+      "unresolved": 0
+    }
+  },
+  "builders": {
+    "build": "python ..\\tools\\build_vanilla_game_datasets.py --game pokemon-leafgreen",
+    "deterministicCheck": "python ..\\tools\\build_vanilla_game_datasets.py --game pokemon-leafgreen --check"
+  },
+  "consumerProjection": {
+    "status": "release-export-consumer-ready",
+    "consumerActivation": true,
+    "reason": "authoritative sources and the PLC battle/experience projections have passed their owned validation gates"
+  }
+}

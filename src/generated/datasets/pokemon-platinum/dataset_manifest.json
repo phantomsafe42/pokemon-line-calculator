@@ -1,0 +1,1326 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-platinum",
+  "displayName": "Pokémon Platinum",
+  "folderName": "Pokemon Platinum",
+  "filenamePrefix": "PLATINUM",
+  "datasetScope": "game",
+  "migrationStatus": "standardized-source-authoritative",
+  "completenessStatus": "complete",
+  "platform": "Nintendo DS",
+  "generation": 4,
+  "baseGame": "Pokémon Platinum",
+  "supportedLanguage": "English",
+  "sourceProfile": "retail-pokemon-platinum-multi-source-pinned",
+  "buildInputs": {
+    "../../tools/imports/vanilla/source_manifest.json": {
+      "sha256": "91dbeddeeb537c495d68e6351e76ae6b72e1573620f62b3b50308855c4331612",
+      "role": "immutable upstream source lock"
+    },
+    "../../tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json": {
+      "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+      "role": "deterministic documented campaign order and occurrence identity projection"
+    },
+    "../../tools/imports/vanilla/pkhex-wild-encounters/pokemon-platinum.json": {
+      "sha256": "4a796b1c1ba73e864ac5dc1232eb5b781c2bbb4bd2b1c06dba242425f7bcd066",
+      "role": "exact version-scoped wild encounter tables and met-location/species/form evidence"
+    },
+    "../../tools/imports/vanilla/pkhex-wild-encounters/manifest.json": {
+      "sha256": "a1d51f2334a935553491411f6705784315ead2eb98656fc286b61645d3e58b1f",
+      "role": "deterministic wild encounter importer artifact manifest"
+    },
+    "../../tools/imports/vanilla/pkhex-wild-encounters/reconciliation/pokemon-platinum.json": {
+      "sha256": "2d0b7e4ecf3a4dc2de72af11a79d7ee58b8bf18ced45b1acd7e771f2f160af60",
+      "role": "reciprocal exact PKHeX-to-PokeAPI wild metadata reconciliation audit"
+    },
+    "../../tools/imports/vanilla/pkhex-wild-encounters/reconciliation/manifest.json": {
+      "sha256": "528f65514cd4e95bc3df78fc2955b9010ff9fcc59990077257f916e8b29e8f01",
+      "role": "deterministic wild metadata reconciliation manifest and nonpromotion sentinels"
+    },
+    "../../tools/imports/vanilla/wild-encounter-records/pokemon-platinum.json": {
+      "sha256": "85df262b7bba1bcb8a5349e54e83fbc485a9c60a0ca9f394cef49ff5c1138f59",
+      "role": "pinned flat wild encounter authority, unresolved ledger, or independent build/validator"
+    },
+    "../../tools/imports/vanilla/wild-encounter-records/manifest.json": {
+      "sha256": "77b8acd0273af4517ab4051158a88fdb2fcd64801cf50d2d307a2e46433ce301",
+      "role": "pinned flat wild encounter authority, unresolved ledger, or independent build/validator"
+    },
+    "../../tools/imports/vanilla/wild-encounter-records/source_lock.json": {
+      "sha256": "631d903eb5ed9430bd4cb39452e089c1795edc14ffb73d4cebb82626c6026472",
+      "role": "pinned flat wild encounter authority, unresolved ledger, or independent build/validator"
+    },
+    "../../tools/imports/vanilla/wild-encounter-records/unresolved_cases.json": {
+      "sha256": "62561f47bc952cb9bbbe89900da1d3fef31a9930f6d17c19631902b3c3f2ede3",
+      "role": "pinned flat wild encounter authority, unresolved ledger, or independent build/validator"
+    },
+    "../../tools/imports/vanilla/wild-encounter-records/README.md": {
+      "sha256": "76f602b1dfc2d548fa1f5eddf29315c947bec31f71c95d49653927204486be39",
+      "role": "pinned flat wild encounter authority, unresolved ledger, or independent build/validator"
+    },
+    "../../tools/build_vanilla_wild_encounter_records.py": {
+      "sha256": "e0f7b5e771c230e176ad5ff43fcbb116f2545a3fe26dc0e492705fa153787dcc",
+      "role": "pinned flat wild encounter authority, unresolved ledger, or independent build/validator"
+    },
+    "../../tools/validate_vanilla_wild_encounter_records.py": {
+      "sha256": "eb038df1d15fc7a0ba67f2658f1b1f3eba5ecf9a5faf945c303046aabd9ae9a1",
+      "role": "pinned flat wild encounter authority, unresolved ledger, or independent build/validator"
+    },
+    "../../schemas/encounter-mechanics.schema.json": {
+      "sha256": "03668b1a5a98e5c8612ee245d19f44946eaf682a60806535af15ad83b6f3fdaf",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/acquire_vanilla_exact_sources.py": {
+      "sha256": "9a14613b0fce9be13289b8737e48da6d35375cefcc90ab221f2931833e4857a3",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/encounter_mechanics_resolver.js": {
+      "sha256": "b8142a9cf26fb6de9150192b23bc3c1eb99f093689ad0114e8c69eb93d3ceeb1",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/test_encounter_mechanics_resolver.js": {
+      "sha256": "0e0dbfc3337fec157b326b862cc760cd833b9f935eae6f798e134acbd9a3fe75",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/vanilla_encounter_mechanics.py": {
+      "sha256": "f4b6de0f5f971aef48467ce37fbd1491d7d9ebf79e5909b7a1f17780bd5d51c0",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/wild-encounter-records/public-sources/bulbapedia-honey-tree-4571069.json": {
+      "sha256": "63a1193c10baba82126c99ee4e8f08913066a58384c7ec0ddd9ca4821b9a82b6",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/src/overlay006/wild_encounters.c": {
+      "sha256": "75ff0b3b0fdb329075293e3fc203b2c27f6b071a678f941212ff1c85b779fbc2",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/include/overlay006/wild_encounters.h": {
+      "sha256": "fa56a278cd144a15cd2f306b7184eda280eed92f71d7499e22758c1f903166f0",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/src/overlay006/dual_slot_encounters.c": {
+      "sha256": "9fb5351f2483abd038f48df46d709c7cb22f9d1b20e5465ed0ecad58452c8028",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/src/overlay006/great_marsh_daily_encounters.c": {
+      "sha256": "f2fd760ae73e48975ed8b68dddcb744987b93a1fb97a4afeb7c062545fa9221a",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/src/overlay006/trophy_garden_daily_encounters.c": {
+      "sha256": "a726e11cb4c77fdc9f292645b4604d313496ebfae0fa7ed5638386d43cf1f1fb",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/src/overlay006/swarm.c": {
+      "sha256": "2b775d220f3a7a7a7aa9e265198647b6250aa92146e448c690136ef151c9f762",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/src/overlay006/feebas_fishing.c": {
+      "sha256": "590f3c574c15374713e1dff0406dc942e876c29655587450b5182bb0419dd351",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/src/special_encounter.c": {
+      "sha256": "7cfa3451b7c6f45598962c0c5bcd7fa2f64726d00615faaa2c3b1a8c46138f26",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/include/data/map_headers.h": {
+      "sha256": "91d4e10c86ff75dae580aecb171a472c6a5487aff67a08f314f67a01edc0ee18",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/generated/map_headers.txt": {
+      "sha256": "ad28bba6ecedfdd7d0f2de4a01a04e664eeaed38dfb7dee4825584f843c7cd47",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/text/location_names.json": {
+      "sha256": "3d3d6d7c294f5e3e585f4caac1d91ef7714741e6d79406006cd09520a0332af3",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/generated/species.txt": {
+      "sha256": "616d4ce5d2a12ef3c1807e6163926490ad89a18ed91b19bfa8b6cacfba834539",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/include/constants/forms.h": {
+      "sha256": "fc8d424662e13a6056042d4ceef5c1be15251a6181a0e3c152f4c105ae3e1c23",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_trophy_garden.json": {
+      "sha256": "551bb1329725eefac59983e5edd6e49d76127e8518bb3958677ccdc187b647ae",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_great_marsh_lookout.json": {
+      "sha256": "66bac40168cc1e3274c51106615682f9e0ddd8004d995275cea075670cee27da",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_mt_coronet_b1f.json": {
+      "sha256": "616851cd1aa487f5119b15f9f36ec81448eb6686c2a89d632b81e2cf1f054036",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_canalave_city.json": {
+      "sha256": "d2d401aaeb1d076319e3c020b6c6b2090a32668b146a4a3b2e3e967f0f4071cf",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_eterna_city.json": {
+      "sha256": "89cbdb22588cb214a5ec75353c6d98522d938bffe699846e59a06fb827be5fea",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_pastoria_city.json": {
+      "sha256": "8875091b9c641193074b0c96046d081be970cf77321670f8ac02aa24103e842c",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_sunyshore_city.json": {
+      "sha256": "40a4c135f09991d0add9d6e6b3f1464fd601dd41d940a990502583e5f811a039",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_pokemon_league.json": {
+      "sha256": "f3b3b7c186a0bcdbe32f80ae17b906b1cdb516992e197ab1a64e2486b37c3695",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_oreburgh_mine_b1f.json": {
+      "sha256": "9419ba964caefdbd2f21cbe28b4463369eb2b6683e87d274edba202c65af51f3",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_oreburgh_mine_b2f.json": {
+      "sha256": "0ba00ab517f0c9d7fde66febd39a4c73b7cd3a618b05ed90f7782360e1a99eaa",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_valley_windworks_outside.json": {
+      "sha256": "df6157b727df897bb63b867d3bf7e5a0436da82bcdcf921971221cc566f75d96",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_eterna_forest.json": {
+      "sha256": "66847a5f1ca60980b1def23f66325a296d2df73625e63cc7aa3a6e60d9f6b6c5",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_fuego_ironworks_outside.json": {
+      "sha256": "2fc099ff255572b57196fe87ec380529235ae0b388edabb263660a8200e78aad",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_mt_coronet_1f_south.json": {
+      "sha256": "47eb8d564bed20e20ce672f040db40263106bc99bb5177d4e1362ec89ad9202a",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_mt_coronet_2f.json": {
+      "sha256": "019581e0597e6fa367a46a4e8532b513ba4eb9f03ab0156f382e714ba77a2d26",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_mt_coronet_3f.json": {
+      "sha256": "4308cf348c47a45179b237e50749f2fc7d9f57f2027d8c841500f211c2ddc889",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_mt_coronet_outside_north.json": {
+      "sha256": "eef654ff46ec4898337b636e44cf733fd3814e48da6862707db87eb21cd445e2",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_mt_coronet_outside_south.json": {
+      "sha256": "eef654ff46ec4898337b636e44cf733fd3814e48da6862707db87eb21cd445e2",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_mt_coronet_4f_rooms_1_and_2.json": {
+      "sha256": "f2f7621ce391871d21c91ffb9f3a7ce75819eda1a35cb31c18de5f4bdb50394a",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_mt_coronet_4f_room_3.json": {
+      "sha256": "d5a1cac5ccd19ff89b93503cbd70f435eae2c4569934b7e998f148d9f09476be",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_mt_coronet_5f.json": {
+      "sha256": "74229b5c2759f11a9df21018024e53af439021c52d05e0087e15e21947358d84",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_mt_coronet_6f.json": {
+      "sha256": "80f9d7893297bf787923c70c4ec3b3388d685860b4fa92e54e9d24ae9ea5a62a",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_mt_coronet_1f_tunnel_room.json": {
+      "sha256": "91414ed32ab15ce8fde38c3677bc07bfc4363cc791a2bb83141a40939ad6925e",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_mt_coronet_1f_north_room_2.json": {
+      "sha256": "af8ce8a546c0d40cd04f82d604cb4e05db0e93e727b254258443e0884df68cae",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_mt_coronet_1f_north_room_1.json": {
+      "sha256": "df0def453e91c3e8b3912f4eab417d5ef9a006d0d797e43c3dde4cb77f294377",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_solaceon_ruins_maniac_tunnel_room.json": {
+      "sha256": "072b7d343661f6da257cd82d541c97f51386c15f433b871e1adbc0854a4d5886",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_solaceon_ruins_room_2_northeast_dead_end.json": {
+      "sha256": "41ba7b1ceaa2e547734beefc475f265007573fd7578e9d4deda7c8cd7af6e7cc",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_solaceon_ruins_room_1_northwest_dead_end.json": {
+      "sha256": "41ba7b1ceaa2e547734beefc475f265007573fd7578e9d4deda7c8cd7af6e7cc",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_solaceon_ruins_room_2.json": {
+      "sha256": "beb5c83b74b96269baaf40e3736376ca7bcf7988404f958658557b6bb9f62b83",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_solaceon_ruins_room_1_southeast_dead_end.json": {
+      "sha256": "41ba7b1ceaa2e547734beefc475f265007573fd7578e9d4deda7c8cd7af6e7cc",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_solaceon_ruins_room_3.json": {
+      "sha256": "5587a26ee06bb11571136b56737309576963ba195d3c585ad7beeecc1ea440e7",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_solaceon_ruins_room_2_southeast_dead_end.json": {
+      "sha256": "41ba7b1ceaa2e547734beefc475f265007573fd7578e9d4deda7c8cd7af6e7cc",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_solaceon_ruins_room_6_southeast_dead_end.json": {
+      "sha256": "41ba7b1ceaa2e547734beefc475f265007573fd7578e9d4deda7c8cd7af6e7cc",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_solaceon_ruins_room_5_southwest_dead_end.json": {
+      "sha256": "41ba7b1ceaa2e547734beefc475f265007573fd7578e9d4deda7c8cd7af6e7cc",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_solaceon_ruins_room_3_northwest_dead_end.json": {
+      "sha256": "41ba7b1ceaa2e547734beefc475f265007573fd7578e9d4deda7c8cd7af6e7cc",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_solaceon_ruins_room_3_southwest_dead_end.json": {
+      "sha256": "41ba7b1ceaa2e547734beefc475f265007573fd7578e9d4deda7c8cd7af6e7cc",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_solaceon_ruins_room_4.json": {
+      "sha256": "3da53dd7d00b5fb2deebc35f3626739592f416c4dc500fc39ac7b8d7d98c5bc4",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_solaceon_ruins_room_6.json": {
+      "sha256": "f85ebebbec360a202432556d9e066628fdf7499ac847ebdff9d44e2c05b9bea1",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_solaceon_ruins_room_5.json": {
+      "sha256": "06435d22b631c6748429f0def0581beacfa2622b6eece9c129f1d7fb838bbf19",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_solaceon_ruins_room_7.json": {
+      "sha256": "9c1bee38cd77f715ef72b43edac49c32aa6da7b378027e84dacb8a8f82a6e62a",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_solaceon_ruins_room_4_southeast_dead_end.json": {
+      "sha256": "41ba7b1ceaa2e547734beefc475f265007573fd7578e9d4deda7c8cd7af6e7cc",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_solaceon_ruins_room_6_northwest_dead_end.json": {
+      "sha256": "41ba7b1ceaa2e547734beefc475f265007573fd7578e9d4deda7c8cd7af6e7cc",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_victory_road_1f.json": {
+      "sha256": "16edbe8fed7f25c97d1429092eb7317174ee103af1a0186228f59ff772bf8f1d",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_victory_road_2f.json": {
+      "sha256": "a265aedb1be4e56d9ecff12a98c2b7548159b23802bdfad86413d21b45d04946",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_victory_road_b1f.json": {
+      "sha256": "92dca721b4d8a64870b9d141ae5b68fb8953a0a9e682026c85b8bdaeda30006d",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_victory_road_1f_room_2.json": {
+      "sha256": "0908330147ee35068339c58b5504af798b56d29239862c8efae95153b5b7327f",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_victory_road_1f_room_1.json": {
+      "sha256": "31b94140f8510d59ad9915caee1da30be11fcafd869bbd464d1d97cb029d1822",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_victory_road_1f_room_3.json": {
+      "sha256": "41652eca98c728372c5bfadf5a26d95d6ead49ca6fc4d5794185e4a40ec0e41d",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_ravaged_path.json": {
+      "sha256": "7635a475f468ada0b091e5fe03b3bd0e76d3bf5e6a07488de2c5d0140d39e31a",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_oreburgh_gate_1f.json": {
+      "sha256": "3f0a648f7dbc5b4fb025514974105fa9bd8219a3d42e86b1211525d7009bcbbe",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_oreburgh_gate_b1f.json": {
+      "sha256": "e0977819da14f3542718cda1d7d79ca198ca921af8bb3bc14291e1fb96e49d71",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_stark_mountain_outside.json": {
+      "sha256": "f8b427b8d9707482d62d08a2d93765ad0e4e54a1e74cfb0c8cb7099560dd8122",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_stark_mountain_room_1.json": {
+      "sha256": "fc7e11d399dd33e6c19a017fade7f1fe3ea9249bf8c3b3144c0bc7f507207420",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_stark_mountain_room_2.json": {
+      "sha256": "1762be39d8003cac760532b9106b1c107c003263a1e0608318868c3502939d2b",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_sendoff_spring.json": {
+      "sha256": "85a081825d91f2ec0a281408bed63ee1e2cdf5279f082c255cf7ca91ab841083",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_turnback_cave_pillar_1_room_1.json": {
+      "sha256": "9f4851ee385ac3eed716bde9e6dc15baf7aa8df008ee5ecf5a39849ea9bc911a",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_turnback_cave_pillar_1_room_2.json": {
+      "sha256": "9f4851ee385ac3eed716bde9e6dc15baf7aa8df008ee5ecf5a39849ea9bc911a",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_turnback_cave_pillar_1_room_3.json": {
+      "sha256": "9f4851ee385ac3eed716bde9e6dc15baf7aa8df008ee5ecf5a39849ea9bc911a",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_snowpoint_temple_1f.json": {
+      "sha256": "3217ca02eb5b4e2a9b67afe615ea997ea8746cf6516644e9bc01b0b0fb7be8bd",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_snowpoint_temple_b1f.json": {
+      "sha256": "d97efe5d9879c87665cabe31afdd475150954a11df98ad5370dc05d09b0d61dd",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_snowpoint_temple_b2f.json": {
+      "sha256": "9cf0cfc81391b2350244bc38d373de4426cc8597f85c70244a237bd23e3f8ffc",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_snowpoint_temple_b3f.json": {
+      "sha256": "9cf0cfc81391b2350244bc38d373de4426cc8597f85c70244a237bd23e3f8ffc",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_snowpoint_temple_b4f.json": {
+      "sha256": "d0e3f6514f540abe479e1f3a4b363012ed68be41fc969655f49ee9929f255f7a",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_snowpoint_temple_b5f.json": {
+      "sha256": "d0e3f6514f540abe479e1f3a4b363012ed68be41fc969655f49ee9929f255f7a",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_wayward_cave_1f.json": {
+      "sha256": "5946e7abd8a5b44f45a9bcf5b7602f6dbdc3a5628ac200d354813bff2c8c7e14",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_wayward_cave_b1f.json": {
+      "sha256": "be5b7e4724b1871b473247b1a4a7e15cf00c2a60b386bc663f753837ef949a95",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_ruin_maniac_cave_short.json": {
+      "sha256": "2d79e2d5f200b6bfd68b6af3c0d2b5eb4900bb98a15448b8a92999a2be7e0510",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_iron_island.json": {
+      "sha256": "777236e42f05a96985bde20b99af336ca687e155829bcaeb006f8a0dbfa5422b",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_iron_island_1f.json": {
+      "sha256": "c64f15040f0109588fe58572aab257e61b4fe850f7954d3ac4f6b73e5c2cfb2a",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_iron_island_b1f_left_room.json": {
+      "sha256": "eca1da922e8be088aaa3d50593a7ec99c652535bf1a95b083d0971518c73729c",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_iron_island_b1f_right_room.json": {
+      "sha256": "eca1da922e8be088aaa3d50593a7ec99c652535bf1a95b083d0971518c73729c",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_iron_island_b2f_right_room.json": {
+      "sha256": "a71f55dac6e9731a66893eb5cd55bc7b2c3e7f827d5331463526208e71ef4727",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_iron_island_b2f_left_room.json": {
+      "sha256": "a71f55dac6e9731a66893eb5cd55bc7b2c3e7f827d5331463526208e71ef4727",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_iron_island_b3f.json": {
+      "sha256": "4e1caf8009a0b81a7d69adc356499ee4449c53e4894d8e74401ceb47662071dd",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_old_chateau.json": {
+      "sha256": "292be4c22929dd8c32f951859c1c3360845b25a56aee0e30ca646195b245be20",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_old_chateau_dining_area.json": {
+      "sha256": "292be4c22929dd8c32f951859c1c3360845b25a56aee0e30ca646195b245be20",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_old_chateau_side_rooms.json": {
+      "sha256": "292be4c22929dd8c32f951859c1c3360845b25a56aee0e30ca646195b245be20",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_old_chateau_corridor.json": {
+      "sha256": "292be4c22929dd8c32f951859c1c3360845b25a56aee0e30ca646195b245be20",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_old_chateau_back_west_room.json": {
+      "sha256": "292be4c22929dd8c32f951859c1c3360845b25a56aee0e30ca646195b245be20",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_old_chateau_back_middle_west_room.json": {
+      "sha256": "292be4c22929dd8c32f951859c1c3360845b25a56aee0e30ca646195b245be20",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_old_chateau_back_middle_room.json": {
+      "sha256": "292be4c22929dd8c32f951859c1c3360845b25a56aee0e30ca646195b245be20",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_old_chateau_back_middle_east_room.json": {
+      "sha256": "986a7ed11c5eaa0aff1f997e5206a7f953f75fd516c8ec25820acbe3717b37aa",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_old_chateau_back_east_room.json": {
+      "sha256": "292be4c22929dd8c32f951859c1c3360845b25a56aee0e30ca646195b245be20",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_lake_verity_low_water.json": {
+      "sha256": "f2be03c63b423b04dcd5cde5eff36abfdd64f2ef20de2180467fabbeddbb3056",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_lake_verity.json": {
+      "sha256": "a539bcc1fb9b49132124d603a01eb7cd5e7fe95db8f42b2b809c2ba98f5e9b8b",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_lake_valor.json": {
+      "sha256": "5281ab971c8ab1a613a259f2f820ad630f68a7e540e25b92ae4d08666a3d2421",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_lake_acuity.json": {
+      "sha256": "563ec01ed845f9e9aafe414b9047c1a37e359befc7d02933848e8d8976257624",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_valor_lakefront.json": {
+      "sha256": "27430277e97fc90ef0a1796a41d3b025cd2c8a1d562f1e63990a8837ed689d08",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_acuity_lakefront.json": {
+      "sha256": "45285c22be1fa9a25ed9ec38dd1f82b0ce414d8ec468084df7fbbed2ff33cc85",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_201.json": {
+      "sha256": "63631d89bdf7f789440ab5051a26852b59db28926ced0f90d8e2cf189d9642a1",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_202.json": {
+      "sha256": "f1ac1b08c195754ebc6478b3e28bbb1880597743ab72a90d838b180694ec5d45",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_203.json": {
+      "sha256": "b618fd4adf80306cc6f7a59cbe6421941822ac2cfa38bfd9bbf622f23b02be79",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_204_south.json": {
+      "sha256": "39de9b39eada95a9fe31f86f5e0a9aa41ec11b4ef38d963b40161982c80d51df",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_204_north.json": {
+      "sha256": "b7136368280b53c5e5f049966e035050deaa12df6ab45cc125e4d1dd82939493",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_205_south.json": {
+      "sha256": "29ed1ab4db45057d6e402b81fc676fa0f9491d841e05862ec5feefabf31577cb",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_205_north.json": {
+      "sha256": "018e6695c9b71d1ae0cdc5bdd7d7e92636eabdc64de0e8be6836a13a6a3ac6ea",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_206.json": {
+      "sha256": "e69c66e83750a799c7afce16deb823aaf0f0d025baab5fd18beedfc86a503fb5",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_207.json": {
+      "sha256": "5d6db2ed4c7d95cda0f816a591a4d8ff02e532fca9966a590f9ae5ac95044d67",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_208.json": {
+      "sha256": "cc6c53195efe278261b29affe1a92c5df20f88ca48e942e2ac3af20a29352b63",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_209.json": {
+      "sha256": "33d8c365e7ae327718668b58e283c9da163428f884dcc6b65e2f71d4512cb104",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_209_lost_tower_1f.json": {
+      "sha256": "1618ea9bb1fea4ef0931b2aa025578acebac6a8ea80b55456e3d840e5113902d",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_209_lost_tower_2f.json": {
+      "sha256": "1618ea9bb1fea4ef0931b2aa025578acebac6a8ea80b55456e3d840e5113902d",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_209_lost_tower_3f.json": {
+      "sha256": "f43bbd7a61b7fac09eb652c8f64d849e5a502a80b0750d567f86d578b5c5217d",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_209_lost_tower_4f.json": {
+      "sha256": "9485d99b1458548916f7635d22ebe74ca3baa77a9250f24906c61ecf1a6cc4e4",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_209_lost_tower_5f.json": {
+      "sha256": "c256d5f7699ccb3a6fcc98f7ee21ce69a0a3ecb3a1771a49e9c332c4564208cc",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_210_south.json": {
+      "sha256": "cdec2418a84e99d7b6aeea63b96f4be3533c174f7fd2bf51e040606cef15bcef",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_210_north.json": {
+      "sha256": "df84b47ae34ea8a5c656508ef7b7f675de9627bd37549d8ae6f6fce8ae2eadab",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_211_west.json": {
+      "sha256": "376519e6d438b0d54a2fbbc56a0e42688948825a2547eb2de31b404197212db9",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_211_east.json": {
+      "sha256": "4dbdfef606c479c6b3f89e6832797fd2e5aa1b7f8ab35ceae21fbb8d8b4b79e0",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_212_north.json": {
+      "sha256": "1875cd0fae47ceb716dfe22670c6ccd75de0fb93641a6a64651c9f1127e6b530",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_212_south.json": {
+      "sha256": "96abf449f9581ebffb995defd5e05794cd6df243ce34344b211c976e860bc70e",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_213.json": {
+      "sha256": "0ea9e099a49e9e2592355facbf0239e4de187ad776646369a49977bfa1b6a4f5",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_214.json": {
+      "sha256": "5f6611d85127f666f6c1c1a4451e076b7f9a89a2e0ab6c5c2e1376858ed05656",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_215.json": {
+      "sha256": "ad8aff70cced0438d1f049d6d89f39ab64d120125e9dc262c83c67dcced0d65b",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_216.json": {
+      "sha256": "931e06b042c9eb3147e2510d7cc7773f77f30f51f8615b584bf413a9f8c52cbe",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_217.json": {
+      "sha256": "7bf394bd35d7f9a843fbbfbba61047729e9712e8e281615fbfc2f5e2ea306420",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_218.json": {
+      "sha256": "b9d70453619d38dda3817ae70bcbde78ca6e136596f480b19d3a4e5a21019d66",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_219.json": {
+      "sha256": "a667091a1439eb1dbff56af23cec39b740f8e84399db8c75894beef085043afb",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_221.json": {
+      "sha256": "0fff4c7054028036ef532e7b2e2fe247dcd8c8bd46471d8fb3e4a8497af379a6",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_222.json": {
+      "sha256": "86a56a858c8fc35590eb14ada3e308a98b167030971524ca1f424c047bb7af86",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_224.json": {
+      "sha256": "01363bdd152aa00f143f14fd68b9b650b4a105d1b151ce64ced0991ab698945e",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_225.json": {
+      "sha256": "5cdba93d4b976f3101e5fd125cc86c614b6ccd9c667917df3594151149a9f5df",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_227.json": {
+      "sha256": "c1b46bc1a27176a0117ff52eb6d2680eb6a7cc340c6a1767bfbcf30ba743c9b4",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_228.json": {
+      "sha256": "4a5f49d89a249346168669d2452061f3d12bded4e044c19ca98e72bb6938f1ca",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_229.json": {
+      "sha256": "4d2c64b833fa4dcc43b809c9df861508afcad831e8c27d8dcbd240e57aa947ab",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_twinleaf_town.json": {
+      "sha256": "e49bc6ae0bfe8fe5ce7845a4bf82f432fde92f1ab0bdb7131fc124698c630e06",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_celestic_town.json": {
+      "sha256": "d24b805c6bca5f390ba82bf5e1edae2ea267de267d062d0940b377a4a3b71265",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_resort_area.json": {
+      "sha256": "c511fb2afb738142a766248e94154e0433f44b9def4a1a8d0ef8172d0fd867b1",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_220.json": {
+      "sha256": "66e1c2dad19fc33011ffdf40183bddd36c7a0181b1b89767185810a3b8e47cc4",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_223.json": {
+      "sha256": "d99a803e6df9b63f4c2a03b6906ec1bfaf4737d37f19cb68d8a999acd66304f9",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_226.json": {
+      "sha256": "d0f84c6fbb10b0d470755c0d040b3501ac709f5cc2c12d7cd41e4e602130a6bd",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_route_230.json": {
+      "sha256": "26264f74545cb23930151d2871c9f61ca16edbc4b6579ca90722de87ed4d086c",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_great_marsh_1.json": {
+      "sha256": "b584b35d463f9be3d896d6b94dc6286e1682d84577ec8c63797fb34974de61cc",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_great_marsh_2.json": {
+      "sha256": "b584b35d463f9be3d896d6b94dc6286e1682d84577ec8c63797fb34974de61cc",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_great_marsh_3.json": {
+      "sha256": "a2df1dddbc5f6b288619262399e8cf02f361e05815b457ef97e8eb71831cb15e",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_great_marsh_4.json": {
+      "sha256": "a2df1dddbc5f6b288619262399e8cf02f361e05815b457ef97e8eb71831cb15e",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_great_marsh_5.json": {
+      "sha256": "7c0e421ceb8ecb0a8bb934ae07b6635a39c59c9111f1325e0543fe9837ae8778",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_great_marsh_6.json": {
+      "sha256": "7c0e421ceb8ecb0a8bb934ae07b6635a39c59c9111f1325e0543fe9837ae8778",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_ruin_maniac_cave_long.json": {
+      "sha256": "6456cc6ea65e438ae028e4cc954ca6bac2a54584c59680c8334b680686197031",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_maniac_tunnel.json": {
+      "sha256": "2b44343c91e67faaefc689475fc684322c63aa78ef053a67ff3fef83e1863954",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_solaceon_ruins_room_5_southeast_deadend.json": {
+      "sha256": "41ba7b1ceaa2e547734beefc475f265007573fd7578e9d4deda7c8cd7af6e7cc",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_turnback_cave_pillar_1_room_4.json": {
+      "sha256": "9f4851ee385ac3eed716bde9e6dc15baf7aa8df008ee5ecf5a39849ea9bc911a",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_turnback_cave_pillar_1_room_5.json": {
+      "sha256": "9f4851ee385ac3eed716bde9e6dc15baf7aa8df008ee5ecf5a39849ea9bc911a",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_turnback_cave_pillar_1_room_6.json": {
+      "sha256": "9f4851ee385ac3eed716bde9e6dc15baf7aa8df008ee5ecf5a39849ea9bc911a",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_turnback_cave_pillar_2_room_1.json": {
+      "sha256": "7d609ae6cd5513187e295923b0de65e09cdce24240cb6c2986859e6146aba3bb",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_turnback_cave_pillar_2_room_2.json": {
+      "sha256": "121a4cd1e1d99127629eb6dcfba6841e7c8040a920e058e0b7923f8127a7261f",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_turnback_cave_pillar_2_room_3.json": {
+      "sha256": "121a4cd1e1d99127629eb6dcfba6841e7c8040a920e058e0b7923f8127a7261f",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_turnback_cave_pillar_2_room_4.json": {
+      "sha256": "121a4cd1e1d99127629eb6dcfba6841e7c8040a920e058e0b7923f8127a7261f",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_turnback_cave_pillar_2_room_5.json": {
+      "sha256": "121a4cd1e1d99127629eb6dcfba6841e7c8040a920e058e0b7923f8127a7261f",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_turnback_cave_pillar_2_room_6.json": {
+      "sha256": "121a4cd1e1d99127629eb6dcfba6841e7c8040a920e058e0b7923f8127a7261f",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_turnback_cave_pillar_3_room_1.json": {
+      "sha256": "7dfa4575d92dfd3617a62fa50480abfd513abe4d9acc4094dd2a7bdc8f6d4878",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_turnback_cave_pillar_3_room_2.json": {
+      "sha256": "7dfa4575d92dfd3617a62fa50480abfd513abe4d9acc4094dd2a7bdc8f6d4878",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_turnback_cave_pillar_3_room_3.json": {
+      "sha256": "7dfa4575d92dfd3617a62fa50480abfd513abe4d9acc4094dd2a7bdc8f6d4878",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_turnback_cave_pillar_3_room_4.json": {
+      "sha256": "7dfa4575d92dfd3617a62fa50480abfd513abe4d9acc4094dd2a7bdc8f6d4878",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/field/encounters/encounters_turnback_cave_pillar_3_room_5.json": {
+      "sha256": "7dfa4575d92dfd3617a62fa50480abfd513abe4d9acc4094dd2a7bdc8f6d4878",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/encounter-mechanics/public-sources/bulbapedia-fossil-4619329.json": {
+      "sha256": "534ec858b5325618b4e855fef03a23184c7c47563801b94db5aecbc0fb1d16f2",
+      "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
+    },
+    "../../tools/imports/vanilla/pkhex-nonwild-encounters/pokemon-platinum.json": {
+      "sha256": "9a42dcb110451a0bafa7fa5b52d787ba9b9729f2573f63bacda7e695fde02645",
+      "role": "exact version-scoped local non-wild acquisition templates and source semantics"
+    },
+    "../../tools/imports/vanilla/pkhex-nonwild-encounters/manifest.json": {
+      "sha256": "b9f8485f1a56de36bfbd6fb329626e5631903a629b9fcc77f120944748143ce3",
+      "role": "deterministic non-wild acquisition importer artifact manifest"
+    },
+    "../../tools/extract_pkhex_vanilla_nonwild_encounters.py": {
+      "sha256": "2cebc908b822bf3e6ca5783db2ab9abea1e29f04205a9da239260d1fe0c5ba99",
+      "role": "hash-pinned deterministic non-wild source decoder"
+    },
+    "../../tools/imports/vanilla/nonwild-acquisition-policies/policies.json": {
+      "sha256": "3718eea5cbd3cc5234a4530fc5d56dda2451b746023ce6ffd5defb26273ac92e",
+      "role": "pinned non-wild acquisition policy, provenance, unresolved ledger, or independent verification"
+    },
+    "../../tools/imports/vanilla/nonwild-acquisition-policies/documentary_joins.json": {
+      "sha256": "432f7aab4f5d92544200eab9e4ffc68feef65220e8f5c715143efea79f5cf0a1",
+      "role": "pinned non-wild acquisition policy, provenance, unresolved ledger, or independent verification"
+    },
+    "../../tools/imports/vanilla/nonwild-acquisition-policies/manifest.json": {
+      "sha256": "026e03f544a31009eb863998cf3beb5e7a2d002bf02d3720a19362a01a258f9a",
+      "role": "pinned non-wild acquisition policy, provenance, unresolved ledger, or independent verification"
+    },
+    "../../tools/imports/vanilla/nonwild-acquisition-policies/source_lock.json": {
+      "sha256": "2bf5cc671f67326a1407e8fab06db7b28873d2a4fc819e9178459ae0561069b0",
+      "role": "pinned non-wild acquisition policy, provenance, unresolved ledger, or independent verification"
+    },
+    "../../tools/imports/vanilla/nonwild-acquisition-policies/provenance.json": {
+      "sha256": "aa4d7fe8604d3630e9dde22376aeec8b49205256ba2a2371b0f2c16dbd64b236",
+      "role": "pinned non-wild acquisition policy, provenance, unresolved ledger, or independent verification"
+    },
+    "../../tools/imports/vanilla/nonwild-acquisition-policies/verification_report.json": {
+      "sha256": "2325ae032b535b3c6390f16c7a62389b0f21870012a2bb6435cdbf355525ed87",
+      "role": "pinned non-wild acquisition policy, provenance, unresolved ledger, or independent verification"
+    },
+    "../../tools/imports/vanilla/nonwild-acquisition-policies/unresolved_fields.json": {
+      "sha256": "4aa1a98fd95504ee9844088ae60bc7994705d5753c286ff00b2a5b3adb175257",
+      "role": "pinned non-wild acquisition policy, provenance, unresolved ledger, or independent verification"
+    },
+    "../../tools/imports/vanilla/nonwild-acquisition-policies/README.md": {
+      "sha256": "76f602b1dfc2d548fa1f5eddf29315c947bec31f71c95d49653927204486be39",
+      "role": "pinned non-wild acquisition policy, provenance, unresolved ledger, or independent verification"
+    },
+    "../../tools/import_nonwild_acquisition_policies.py": {
+      "sha256": "14115dc191c716635a06620447eb395090fb504900418d80d4c09564cf15fd9c",
+      "role": "pinned non-wild acquisition policy, provenance, unresolved ledger, or independent verification"
+    },
+    "../../tools/test_nonwild_acquisition_policies.py": {
+      "sha256": "70d1e7da43033df04b391cbc0c1e06b649ee192b20a93840c3757c6ee37d1015",
+      "role": "pinned non-wild acquisition policy, provenance, unresolved ledger, or independent verification"
+    },
+    "../../Gen 4/source-data/species.json": {
+      "sha256": "a5fb802bba3cb6e996bd5645dc6c30e7104cd59953cf96e0789646ddd652c8ed",
+      "role": "pinned local generation-reference inheritance input"
+    },
+    "../../Gen 4/source-data/types.json": {
+      "sha256": "98b579726d016580e08d7ec9645ae4d319593f4b0fb2e15978674024a27056ef",
+      "role": "pinned local generation-reference inheritance input"
+    },
+    "../../Gen 4/source-data/natures.json": {
+      "sha256": "c6f8686a7d2986808d3705efc9be511b97e93baab49ac10a898c61c96e385d59",
+      "role": "pinned local generation-reference inheritance input"
+    },
+    "../../Gen 4/source-data/stats.json": {
+      "sha256": "a9e5a8ef85c7687463fee097dd4a1534810ba6f237d9b60176dda434f4651c1d",
+      "role": "pinned local generation-reference inheritance input"
+    },
+    "../../Gen 4/source-data/categories.json": {
+      "sha256": "41d4f4232888ec6d358488670793e62b54d658e46754c8ea12cae8386f070337",
+      "role": "pinned local generation-reference inheritance input"
+    },
+    "../../Gen 4/source-data/game_rules.json": {
+      "sha256": "1a455758532a2e65b627b937f22ad27b284c29f87cbb144ef045e55ddd366294",
+      "role": "pinned local generation-reference inheritance input"
+    },
+    "../../Gen 4/source-data/battle_mechanics.json": {
+      "sha256": "cd79541352f266c99d5e08ac14254139292b34a67ec691865821f822dce4c2e9",
+      "role": "pinned local generation-reference inheritance input"
+    },
+    "../../Gen 4/source-data/experience_mechanics.json": {
+      "sha256": "b2bb292080fdbf605ea8134bbdf96aeebb7af021adfc44339c833160c54cff7d",
+      "role": "pinned local generation-reference inheritance input"
+    },
+    "../../Gen 4/source-data/trainer_ai.json": {
+      "sha256": "5e1a6b564b55dc73374c6864bfdd4fe9c879c6f45f49c37aa841ea7bc56412bf",
+      "role": "pinned local generation-reference inheritance input"
+    },
+    "../../tools/imports/vanilla/special-trainer-mechanics/mechanics.json": {
+      "sha256": "ac84ad812b26d6b739c7d6a2d3b9e9c0fb56346bd988042566cc9a11b27752e2",
+      "role": "pinned special trainer authority/decoder/independent verification"
+    },
+    "../../tools/imports/vanilla/special-trainer-mechanics/provenance.json": {
+      "sha256": "af32257d809e289750d777841ac56a7744c774472e89735b483108d6f86e5060",
+      "role": "pinned special trainer authority/decoder/independent verification"
+    },
+    "../../tools/imports/vanilla/special-trainer-mechanics/verification_report.json": {
+      "sha256": "048c849cfec3e45dd0d80a3b42ab908d55b33d4a34b1918dab6a0bd096c46c71",
+      "role": "pinned special trainer authority/decoder/independent verification"
+    },
+    "../../tools/import_special_trainer_mechanics.py": {
+      "sha256": "3d57b33176cc3287248bec746eacf93880e142e0c2a8280e45fd10499c88761b",
+      "role": "pinned special trainer authority/decoder/independent verification"
+    },
+    "../../tools/test_special_trainer_mechanics.py": {
+      "sha256": "65736c5e21212725269362adcae79171d01fd18599e931d1a03b4733b426f2d4",
+      "role": "pinned special trainer authority/decoder/independent verification"
+    },
+    "../../tools/imports/vanilla/move-mechanics/moves.json": {
+      "sha256": "b5f8e5b6b15866de5798e026299cd9b6949a148c35c42cac16a9ca63c537d7a5",
+      "role": "pinned exact historical move mechanics and independent verification"
+    },
+    "../../tools/imports/vanilla/move-mechanics/target-policies.json": {
+      "sha256": "e24e2c2deec67c7eb4663e16c936dae37f2f6ef92ee7a1d939ef4a2137430627",
+      "role": "pinned exact historical move mechanics and independent verification"
+    },
+    "../../tools/imports/vanilla/move-mechanics/source-lock.json": {
+      "sha256": "e834961445c0eab0b0b5991e7db2634ad00781532ef6666cfa1de510d9cbfecb",
+      "role": "pinned exact historical move mechanics and independent verification"
+    },
+    "../../tools/imports/vanilla/move-mechanics/validation-report.json": {
+      "sha256": "078d18977be08cba990615feebc1d06abef5daed883f15c67f57f4dc4d903808",
+      "role": "pinned exact historical move mechanics and independent verification"
+    },
+    "../../tools/imports/vanilla/move-mechanics/target-validation-report.json": {
+      "sha256": "86aad391ab4cef2fe7fffeabd0bd766d048b184de492f3e36051f44bac80f084",
+      "role": "pinned exact historical move mechanics and independent verification"
+    },
+    "../../tools/imports/vanilla/move-mechanics/retail-gen5-inputs.json": {
+      "sha256": "fe3c8061966f6ad2e9d166ee83a33f29823ebef19774cc9660eb90e094402cfb",
+      "role": "pinned exact historical move mechanics and independent verification"
+    },
+    "../../tools/imports/vanilla/move-mechanics/retail-target-inputs.json": {
+      "sha256": "7cb5bc30e464eaa7bcff8b58e2d705f8c2a30874cd75de3ffecee3a777909da1",
+      "role": "pinned exact historical move mechanics and independent verification"
+    },
+    "../../tools/imports/vanilla/move-mechanics/diamond-target-script-inputs.json": {
+      "sha256": "504d9c1fe049e2712ad76d1f151599a9fef3de30f6b2961f69620a2f91e87d93",
+      "role": "pinned exact historical move mechanics and independent verification"
+    },
+    "../../tools/imports/vanilla/move-mechanics/build.py": {
+      "sha256": "80396aaa3e48f49b27ecb595603b71be3d348e5c4dd54cc47cc655bce6607a46",
+      "role": "pinned exact historical move mechanics and independent verification"
+    },
+    "../../tools/imports/vanilla/move-mechanics/validate.py": {
+      "sha256": "f9bea3b4fe0b2fa16828a9c07c985517135acecc6c3fd41760048771e8e41297",
+      "role": "pinned exact historical move mechanics and independent verification"
+    },
+    "../../tools/imports/vanilla/move-mechanics/target_policies.py": {
+      "sha256": "e30074c0a4b2325b7ebbe1c63810da31da693efef5ccdc7a6f4c96386cd3c2a4",
+      "role": "pinned exact historical move mechanics and independent verification"
+    },
+    "../../tools/imports/vanilla/move-mechanics/validate_targets.py": {
+      "sha256": "901a51446cd105cc4e1b4818fb0518d4f45dec129fe184def86b7aaf91f4cefa",
+      "role": "pinned exact historical move mechanics and independent verification"
+    },
+    "../../tools/imports/vanilla/move-mechanics/retail_target_inputs.py": {
+      "sha256": "0940c30cf992d31822318424596b5f0d54ff5a26c2a15830e5ef1ae19267c016",
+      "role": "pinned exact historical move mechanics and independent verification"
+    },
+    "../../tools/imports/vanilla/move-mechanics/README.md": {
+      "sha256": "76f602b1dfc2d548fa1f5eddf29315c947bec31f71c95d49653927204486be39",
+      "role": "pinned exact historical move mechanics and independent verification"
+    },
+    "../../tools/imports/vanilla/battle-mechanics/pokemon-platinum.json": {
+      "sha256": "30b786aac90f1ed3805c29025d7c3fcc5c1b3f00a5068fa93d236c1aea8dacb8",
+      "role": "pinned game-specific battle contract, independent known answers, or validation authority"
+    },
+    "../../tools/imports/vanilla/battle-mechanics/source-lock.json": {
+      "sha256": "3a4043532334644e949a5f43e089cc239a2766e2fbc074d6480b6891bc2b7647",
+      "role": "pinned game-specific battle contract, independent known answers, or validation authority"
+    },
+    "../../tools/imports/vanilla/battle-mechanics/validation-report.json": {
+      "sha256": "37da9caa3dfecd13d8e1623a638e3c659509adb7ea64d31d29eddfb55091bff0",
+      "role": "pinned game-specific battle contract, independent known answers, or validation authority"
+    },
+    "../../tools/imports/vanilla/battle-mechanics/known-answers.json": {
+      "sha256": "e708c73e1d2056b65fa062cfc9e50c5f67b0205c34272f73264fa1c93b569ef5",
+      "role": "pinned game-specific battle contract, independent known answers, or validation authority"
+    },
+    "../../tools/imports/vanilla/battle-mechanics/known_answer_definitions.js": {
+      "sha256": "e50ce35ebd7c0979fcb327ec299bf837e07ce5b789c0fda66bc1f9aa84792c3b",
+      "role": "pinned game-specific battle contract, independent known answers, or validation authority"
+    },
+    "../../tools/imports/vanilla/battle-mechanics/README.md": {
+      "sha256": "76f602b1dfc2d548fa1f5eddf29315c947bec31f71c95d49653927204486be39",
+      "role": "pinned game-specific battle contract, independent known answers, or validation authority"
+    },
+    "../../tools/build_vanilla_battle_mechanics_authority.js": {
+      "sha256": "b97bb27cbe25d1d7227cab7844c48bcd1f0d58b07739cba9e9a3eb78d8e27571",
+      "role": "pinned game-specific battle contract, independent known answers, or validation authority"
+    },
+    "../../tools/validate_vanilla_battle_mechanics_authority.js": {
+      "sha256": "1b65faa514fac4790f41c11fcb404d9959f6e8fbf18c9a26b0843425814a0aed",
+      "role": "pinned game-specific battle contract, independent known answers, or validation authority"
+    },
+    "../../tools/calculation_reference.js": {
+      "sha256": "488b13d0834bcae87f5548b7dd1235b5dbcca1f65df770c11cc069bbadb60dd1",
+      "role": "pinned game-specific battle contract, independent known answers, or validation authority"
+    }
+  },
+  "standardizedSources": [
+    "species.json",
+    "moves.json",
+    "abilities.json",
+    "items.json",
+    "learnsets.json",
+    "evolutions.json",
+    "trainers.json",
+    "trainer_order.json",
+    "trainer_battle_groups.json",
+    "progression.json",
+    "locations.json",
+    "encounters.json",
+    "encounter_methods.json",
+    "types.json",
+    "natures.json",
+    "stats.json",
+    "categories.json",
+    "save_id_maps.json",
+    "aliases.json",
+    "source_audit.json",
+    "game_rules.json",
+    "battle_mechanics.json",
+    "experience_mechanics.json",
+    "trainer_ai.json",
+    "encounter_mechanics.json"
+  ],
+  "extensions": [
+    "source_verification_report.json"
+  ],
+  "sourceRequirements": {
+    "specialTrainerMechanics": {
+      "required": true,
+      "status": "passed-source-semantics-runtime-gated",
+      "trainerRecords": 0,
+      "trainerPokemon": 0,
+      "sourceProvenRuntimeFields": {
+        "abilityId": 0,
+        "natureId": 0,
+        "gender": 0
+      },
+      "consumerActivation": false,
+      "unsupportedContextPolicy": "unavailable-do-not-inherit"
+    },
+    "speciesSaveIdentity": {
+      "required": true,
+      "status": "passed-exact-version-raw-species-and-form-projection"
+    },
+    "speciesAbilitySlots": {
+      "required": true,
+      "slotCount": 2,
+      "orderedBySaveSelector": true,
+      "status": "passed"
+    },
+    "itemNumericIdentityAndLegality": {
+      "required": true,
+      "status": "passed-exact-version-storage-and-held-item-domain",
+      "recognizedRawIds": 444,
+      "legalInventoryRawIds": 442,
+      "heldItemDomainRawIds": 396,
+      "legalHeldItemRawIds": 394,
+      "unreleasedRawIds": 3,
+      "reservedRawIds": 23
+    },
+    "evolutionMechanics": {
+      "required": true,
+      "status": "passed-typed-pkhex-methods-and-game-local-trigger-availability",
+      "methodProfile": "pkhex-evolution-type@e0e63bc87837ad2d9c8f8fda4efdbf5f2933db08",
+      "structuredEdges": 249
+    },
+    "movepoolMembership": {
+      "required": true,
+      "status": "passed-native-in-game-movepool-membership",
+      "definition": "all moves a Pokémon can learn through methods available inside this game",
+      "methods": [
+        "egg",
+        "form-change",
+        "level",
+        "light-ball-egg",
+        "machine",
+        "pre-evolution",
+        "tutor"
+      ]
+    },
+    "moveMechanics": {
+      "required": true,
+      "status": "passed-static-fields-with-explicit-dynamic-target-policies",
+      "records": 467,
+      "projectionSha256": "b5f8e5b6b15866de5798e026299cd9b6949a148c35c42cac16a9ca63c537d7a5",
+      "independentAssertions": 200119,
+      "independentKnownAnswers": 331,
+      "rejectedCorruptions": 22,
+      "targetPolicies": 134,
+      "targetKnownAnswers": 126,
+      "targetRejectedCorruptions": 12,
+      "sourceUnresolvedTargetRows": 0,
+      "sourceUnresolvedDamagingTargetRows": 0,
+      "unimplementedTargetPolicies": 134,
+      "unresolvedTargetSemantics": {
+        "actionSelectionBlockingMoveIds": [],
+        "calculationBlockingMoveIds": [],
+        "field": "target",
+        "nonDamageMoveIds": [],
+        "rows": 0,
+        "unimplementedTargetPolicyMoveIds": [
+          "counter",
+          "metronome",
+          "mirrormove",
+          "curse",
+          "sleeptalk",
+          "mirrorcoat",
+          "naturepower",
+          "assist",
+          "magiccoat",
+          "snatch",
+          "metalburst",
+          "copycat"
+        ],
+        "unresolvedFlags": 0
+      },
+      "fieldLevelConflictsResolved": 491
+    },
+    "battleMechanics": {
+      "required": true,
+      "status": "passed-conditional-source-slice",
+      "sourceReadiness": {
+        "status": "passed-conditional-source-slice",
+        "unresolved": 0,
+        "scope": "selected static move fields, trainer inputs and declared game-specific formula policies; not global Dataset completeness"
+      },
+      "knownAnswers": 18,
+      "rejectedCorruptions": 72,
+      "productionStatus": "passed",
+      "unresolvedCalculationFields": 0,
+      "consumerActivation": true
+    },
+    "wildEncounterTables": {
+      "required": true,
+      "status": "passed-exact-per-version-pkhex-binary-decode",
+      "areas": 294,
+      "slots": 2953,
+      "activeSlots": 2953,
+      "emptyPlaceholderSlots": 0,
+      "fixedNonzeroFormSlots": 21,
+      "runtimeFormPolicySlots": 12
+    },
+    "wildEncounterRecords": {
+      "required": false,
+      "role": "legacy-flat-compatibility-projection",
+      "status": "passed-exact-flat-slot-projection-with-explicit-selection-ledger",
+      "areas": 294,
+      "records": 2953,
+      "activeRecords": 2953,
+      "emptyPlaceholderRecords": 0,
+      "resolvedSlotWeights": 2827,
+      "resolvedConditionalSelectionRecords": 0,
+      "partiallyResolvedSelectionRecords": 126,
+      "unresolvedSelectionRecords": 126,
+      "runtimeFormPolicyRecords": 12,
+      "uniquePhysicalGrottoMappings": 0,
+      "ambiguousPhysicalGrottoMappings": 0,
+      "unmappedHiddenGrottoRecords": 0,
+      "physicalGrottoMembershipsMapped": 0,
+      "physicalHoneyTreeLocations": 21,
+      "physicalHoneyTreeMembershipsMapped": 147,
+      "effectiveProbabilityStatusCounts": {
+        "conditional-slot-weight-known-alternative-condition-unresolved": 1246,
+        "partially-resolved-conditional-selection-model": 126,
+        "resolved-for-matched-condition-profile": 842,
+        "slot-weight-known-area-activation-or-conditions-unresolved": 739
+      },
+      "unresolvedReasonCounts": {
+        "area-conditions": 739,
+        "condition-alternatives": 1246,
+        "honey-tree": 126
+      }
+    },
+    "encounterMechanics": {
+      "required": true,
+      "status": "passed-source-ready-not-consumer-tested",
+      "profiles": 3,
+      "profileIds": [
+        "platinum-standard-wild-table",
+        "platinum-underground-fossil-parity",
+        "sinnoh-honey-tree"
+      ],
+      "requiredRuntimeInputs": [
+        "encounterAreaId",
+        "physicalTreeId",
+        "player.secretId",
+        "player.trainerId"
+      ],
+      "physicalHoneyTrees": 21,
+      "physicalHeadbuttTrees": 0,
+      "physicalSafariAreas": 0,
+      "safariCompatibilityRecords": 0,
+      "bugContestCompatibilityRecords": 0,
+      "standardWildProfileAreas": 273,
+      "standardWildCompatibilityRecords": 2827,
+      "consumerActivation": false
+    },
+    "nonWildAcquisitions": {
+      "required": true,
+      "status": "passed-required-acquisition-identities-and-mechanics",
+      "records": 39,
+      "recordsByAcquisitionKind": {
+        "event-local-scripted": 1,
+        "gift": 12,
+        "gift-egg": 2,
+        "in-game-trade": 4,
+        "roaming": 5,
+        "stationary-scripted": 15
+      },
+      "mappedSpeciesAndForms": 39,
+      "mappedMetLocations": 39,
+      "mappedEggLocations": 2,
+      "mappedHeldItems": 1,
+      "mappedFixedMoveSets": 35,
+      "mappedDerivedMoveSets": 35,
+      "mappedDocumentedAcquisitionHeldItems": 0,
+      "mappedFixedNatures": 4,
+      "externalDistributions": 0,
+      "unresolvedAvailabilityChoiceRepeatabilityRecords": 36,
+      "runtimeMovePolicyRecords": 4,
+      "dailyTradeCycleResetPoliciesStillUnresolved": 0,
+      "supplementalLimitations": [
+        "Full campaign availability windows, mutually exclusive choice state, repeatability, and daily-cycle reset state remain in the pinned supplemental policy ledger; no universal behavior is inferred."
+      ]
+    },
+    "wildEncounterMetadataReconciliation": {
+      "required": false,
+      "role": "cross-source-compatibility-audit",
+      "status": "passed-exact-reciprocal-subset-only",
+      "completePromotionReady": false,
+      "matchedAreas": 153,
+      "ambiguousAreas": 25,
+      "unmatchedAreas": 116,
+      "matchedSlots": 842,
+      "matchedSlotsWithPokeapiFormGap": 10
+    },
+    "trainerCatalogue": {
+      "required": true,
+      "status": "passed",
+      "authority": "pret exact raw table",
+      "rawTrainerRecords": 927,
+      "rawTrainerPokemon": 1878
+    },
+    "trainerConstructedFields": {
+      "required": true,
+      "status": "passed",
+      "unresolvedRawTrainerPokemonFields": {
+        "trainerAbilities": 0,
+        "trainerNatures": 0,
+        "trainerGenders": 0,
+        "trainerMoves": 0,
+        "partialTrainerIvs": 0,
+        "partialTrainerEvs": 0
+      }
+    },
+    "trainerCampaignMemberMechanics": {
+      "required": true,
+      "status": "passed",
+      "effectiveTrainerRecords": 533,
+      "effectiveTrainerPokemon": 1205,
+      "unresolvedCampaignTrainerPokemonFields": {
+        "trainerAbilities": 0,
+        "trainerNatures": 0,
+        "trainerGenders": 0,
+        "trainerMoves": 0,
+        "partialTrainerIvs": 0,
+        "partialTrainerEvs": 0
+      }
+    },
+    "trainerBattleProfiles": {
+      "required": true,
+      "status": "passed",
+      "records": 927,
+      "unresolvedFormats": 0,
+      "bagItemSlotWidth": 4
+    },
+    "trainerFieldLocations": {
+      "required": false,
+      "status": "partial",
+      "scope": "optional raw-catalogue field-script provenance; campaign occurrence locations are validated separately",
+      "locatedRawTrainerRecords": 646,
+      "rawTrainerRecordsAudited": 927
+    },
+    "trainerBattleGroups": {
+      "required": true,
+      "status": "partial-source-coverage",
+      "records": 15,
+      "unresolved": 0
+    },
+    "documentedCampaignContext": {
+      "required": false,
+      "documentedCampaignContextOccurrences": 0,
+      "documentedGranularLocationRefinements": 0,
+      "documentedAllyOnlyOccurrences": 0,
+      "documentedConditionalParticipants": 0,
+      "documentedBattleGroups": 0,
+      "documentedCampaignContextUnresolved": 0,
+      "status": "not-applicable"
+    },
+    "trainerDocumentation": {
+      "required": true,
+      "status": "passed-import-and-diagnostic-join",
+      "source": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/join-audit/pokemon-platinum.json",
+      "documentedPartyGroups": 540,
+      "resolvedPercentOfScalar": 100.0,
+      "promotionStatus": "active-standardized-campaign-order"
+    },
+    "trainerCampaignOrder": {
+      "required": true,
+      "status": "passed-documented-display-order-with-explicit-ambiguities",
+      "occurrences": 540,
+      "strictDependencyGraph": false,
+      "mechanicsBindingsResolved": 540,
+      "mechanicsBindingsBlocked": 0,
+      "source": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json"
+    },
+    "saveNumericIdentity": {
+      "required": true,
+      "status": "passed",
+      "locationStatus": "passed-exact-save-format-identity"
+    }
+  },
+  "sourceCompleteness": {
+    "status": "passed",
+    "unresolvedRequiredFields": 0,
+    "consumerActivation": false
+  },
+  "calculationCompatibility": {
+    "battle": {
+      "source": "battle_mechanics.json",
+      "status": "passed",
+      "sourceReadiness": "passed-conditional-source-slice",
+      "knownAnswers": 18,
+      "unresolvedCalculationFields": 0
+    },
+    "experience": {
+      "source": "experience_mechanics.json",
+      "status": "consumer-ready",
+      "experienceGeneration": 4,
+      "formulaModel": "generation-4-unscaled-trainer",
+      "validationStatus": "passed-inherited-generation-reference",
+      "unresolved": 0
+    }
+  },
+  "builders": {
+    "build": "python ..\\tools\\build_vanilla_game_datasets.py --game pokemon-platinum",
+    "deterministicCheck": "python ..\\tools\\build_vanilla_game_datasets.py --game pokemon-platinum --check"
+  },
+  "consumerProjection": {
+    "status": "release-export-consumer-ready",
+    "consumerActivation": true,
+    "reason": "authoritative sources and the PLC battle/experience projections have passed their owned validation gates"
+  }
+}

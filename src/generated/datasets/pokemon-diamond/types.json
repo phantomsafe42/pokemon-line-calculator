@@ -1,0 +1,318 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-diamond",
+  "kind": "types",
+  "records": {
+    "mystery": {
+      "id": "mystery",
+      "name": "???",
+      "weak": [],
+      "resist": [],
+      "immune": [],
+      "num": null,
+      "sourceConfidence": "generation-specific-PKCalc-type-chart"
+    },
+    "normal": {
+      "id": "normal",
+      "name": "Normal",
+      "weak": [
+        "fighting"
+      ],
+      "resist": [],
+      "immune": [
+        "ghost"
+      ],
+      "num": 1,
+      "sourceConfidence": "generation-specific-PKCalc-type-chart"
+    },
+    "grass": {
+      "id": "grass",
+      "name": "Grass",
+      "weak": [
+        "fire",
+        "ice",
+        "flying",
+        "bug",
+        "poison"
+      ],
+      "resist": [
+        "grass",
+        "water",
+        "electric",
+        "ground"
+      ],
+      "immune": [],
+      "num": 12,
+      "sourceConfidence": "generation-specific-PKCalc-type-chart"
+    },
+    "fire": {
+      "id": "fire",
+      "name": "Fire",
+      "weak": [
+        "water",
+        "ground",
+        "rock"
+      ],
+      "resist": [
+        "grass",
+        "fire",
+        "ice",
+        "bug",
+        "steel"
+      ],
+      "immune": [],
+      "num": 10,
+      "sourceConfidence": "generation-specific-PKCalc-type-chart"
+    },
+    "water": {
+      "id": "water",
+      "name": "Water",
+      "weak": [
+        "grass",
+        "electric"
+      ],
+      "resist": [
+        "fire",
+        "water",
+        "ice",
+        "steel"
+      ],
+      "immune": [],
+      "num": 11,
+      "sourceConfidence": "generation-specific-PKCalc-type-chart"
+    },
+    "electric": {
+      "id": "electric",
+      "name": "Electric",
+      "weak": [
+        "ground"
+      ],
+      "resist": [
+        "electric",
+        "flying",
+        "steel"
+      ],
+      "immune": [],
+      "num": 13,
+      "sourceConfidence": "generation-specific-PKCalc-type-chart"
+    },
+    "ice": {
+      "id": "ice",
+      "name": "Ice",
+      "weak": [
+        "fire",
+        "rock",
+        "fighting",
+        "steel"
+      ],
+      "resist": [
+        "ice"
+      ],
+      "immune": [],
+      "num": 15,
+      "sourceConfidence": "generation-specific-PKCalc-type-chart"
+    },
+    "flying": {
+      "id": "flying",
+      "name": "Flying",
+      "weak": [
+        "electric",
+        "ice",
+        "rock"
+      ],
+      "resist": [
+        "grass",
+        "bug",
+        "fighting"
+      ],
+      "immune": [
+        "ground"
+      ],
+      "num": 3,
+      "sourceConfidence": "generation-specific-PKCalc-type-chart"
+    },
+    "bug": {
+      "id": "bug",
+      "name": "Bug",
+      "weak": [
+        "fire",
+        "flying",
+        "rock"
+      ],
+      "resist": [
+        "grass",
+        "ground",
+        "fighting"
+      ],
+      "immune": [],
+      "num": 7,
+      "sourceConfidence": "generation-specific-PKCalc-type-chart"
+    },
+    "poison": {
+      "id": "poison",
+      "name": "Poison",
+      "weak": [
+        "ground",
+        "psychic"
+      ],
+      "resist": [
+        "grass",
+        "bug",
+        "poison",
+        "fighting"
+      ],
+      "immune": [],
+      "num": 4,
+      "sourceConfidence": "generation-specific-PKCalc-type-chart"
+    },
+    "ground": {
+      "id": "ground",
+      "name": "Ground",
+      "weak": [
+        "grass",
+        "water",
+        "ice"
+      ],
+      "resist": [
+        "poison",
+        "rock"
+      ],
+      "immune": [
+        "electric"
+      ],
+      "num": 5,
+      "sourceConfidence": "generation-specific-PKCalc-type-chart"
+    },
+    "rock": {
+      "id": "rock",
+      "name": "Rock",
+      "weak": [
+        "grass",
+        "water",
+        "ground",
+        "fighting",
+        "steel"
+      ],
+      "resist": [
+        "normal",
+        "fire",
+        "flying",
+        "poison"
+      ],
+      "immune": [],
+      "num": 6,
+      "sourceConfidence": "generation-specific-PKCalc-type-chart"
+    },
+    "fighting": {
+      "id": "fighting",
+      "name": "Fighting",
+      "weak": [
+        "flying",
+        "psychic"
+      ],
+      "resist": [
+        "bug",
+        "rock",
+        "dark"
+      ],
+      "immune": [],
+      "num": 2,
+      "sourceConfidence": "generation-specific-PKCalc-type-chart"
+    },
+    "psychic": {
+      "id": "psychic",
+      "name": "Psychic",
+      "weak": [
+        "bug",
+        "ghost",
+        "dark"
+      ],
+      "resist": [
+        "fighting",
+        "psychic"
+      ],
+      "immune": [],
+      "num": 14,
+      "sourceConfidence": "generation-specific-PKCalc-type-chart"
+    },
+    "ghost": {
+      "id": "ghost",
+      "name": "Ghost",
+      "weak": [
+        "ghost",
+        "dark"
+      ],
+      "resist": [
+        "bug",
+        "poison"
+      ],
+      "immune": [
+        "normal",
+        "fighting"
+      ],
+      "num": 8,
+      "sourceConfidence": "generation-specific-PKCalc-type-chart"
+    },
+    "dragon": {
+      "id": "dragon",
+      "name": "Dragon",
+      "weak": [
+        "ice",
+        "dragon"
+      ],
+      "resist": [
+        "grass",
+        "fire",
+        "water",
+        "electric"
+      ],
+      "immune": [],
+      "num": 16,
+      "sourceConfidence": "generation-specific-PKCalc-type-chart"
+    },
+    "dark": {
+      "id": "dark",
+      "name": "Dark",
+      "weak": [
+        "bug",
+        "fighting"
+      ],
+      "resist": [
+        "ghost",
+        "dark"
+      ],
+      "immune": [
+        "psychic"
+      ],
+      "num": 17,
+      "sourceConfidence": "generation-specific-PKCalc-type-chart"
+    },
+    "steel": {
+      "id": "steel",
+      "name": "Steel",
+      "weak": [
+        "fire",
+        "ground",
+        "fighting"
+      ],
+      "resist": [
+        "normal",
+        "grass",
+        "ice",
+        "flying",
+        "bug",
+        "rock",
+        "psychic",
+        "ghost",
+        "dragon",
+        "dark",
+        "steel"
+      ],
+      "immune": [
+        "poison"
+      ],
+      "num": 9,
+      "sourceConfidence": "generation-specific-PKCalc-type-chart"
+    }
+  }
+}

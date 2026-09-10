@@ -1,5 +1,5 @@
 import { canonicalStats, nowIso, toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
-import { isHiddenPowerType, resolvedHiddenPowerType } from "../core/hidden_power.js?v=20260905-drafts-freecalc-partners-v1";
+import { isHiddenPowerType, resolvedHiddenPowerType } from "../core/hidden_power.js?v=20260909-consumer-readiness-v2";
 import { normalizeBoxPokemon } from "./library.js?v=20260905-drafts-freecalc-partners-v1";
 
 const STAT_ALIASES = Object.freeze({

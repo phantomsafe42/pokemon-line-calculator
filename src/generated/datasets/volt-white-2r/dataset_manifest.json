@@ -32,7 +32,7 @@
     "../../Gen 5/source-data/trainer_ai_action_semantics.json": "7746d15d6acb8ffbc5fe6bfe290f514c844d9395614423276a12c2e36687d6e1",
     "../../Gen 5/source-data/trainer_ai_action_semantics_verification_report.json": "cd6f59baba0c8acd6dca7cb4f06ccc241a302d4105eea47c61c925bf49f2912d",
     "../../Gen 5/source-data/trainer_ai_item_battle_parameters.json": "4ac6d61d2b26a06b3f5592e7bb078429ff3c851082af37ad5db13de9a89aebca",
-    "../../Gen 5/source-data/trainer_ai_evaluator_verification_report.json": "6a4f4d89741d85e6cb76383bc47e2b328e0fafda129dc1e586e23a8dc29eb350",
+    "../../Gen 5/source-data/trainer_ai_evaluator_verification_report.json": "27d39aafa3a22069deee3496b9325a6fb842b7a6d6d24b8a71171ada0749a06f",
     "../../Battle Mechanics/vendor/smogon-calc-0.11.0/data.production.min.js": "364be40ea1aec31f413d0036445f717d826ece9c33ec25a02399c3a287c99529",
     "pchalReadmeLogicalSource": "553ff99e72a4ec8310460c8394022c063bfe2cb463794ca93c8bad54c6821e8c",
     "abilityPersistenceReportLogicalSource": "5be6ea70c4b6340fd91d0f3eb569b83e1daa187114c5de5299b1dba25a119726",
@@ -151,7 +151,7 @@
       "id": "gen5-b2w2-trainer-ai-evaluator-verification",
       "role": "Dataset contract, source-invariant, readiness, and executable-request-shape verification for the inherited evaluator profile",
       "path": "../../Gen 5/source-data/trainer_ai_evaluator_verification_report.json",
-      "sha256": "6a4f4d89741d85e6cb76383bc47e2b328e0fafda129dc1e586e23a8dc29eb350"
+      "sha256": "27d39aafa3a22069deee3496b9325a6fb842b7a6d6d24b8a71171ada0749a06f"
     },
     {
       "id": "pkhex-gen5-save-forms",

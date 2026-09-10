@@ -358,7 +358,7 @@
     function mergeExecutionStates(states) {
         const merged = new Map();
         for (const state of states) {
-            const key = stableStringify({ pc: state.pc, locals: state.locals, lastBranch: state.lastBranch, world: worldStateKey(state.world), done: state.done });
+            const key = stableStringify({ pc: state.pc, locals: state.locals, lastBranch: state.lastBranch, enumeratedChoice: state.enumeratedChoice, world: worldStateKey(state.world), done: state.done });
             const current = merged.get(key);
             if (!current) {
                 merged.set(key, { ...state, locals: cloneValue(state.locals), world: cloneWorld(state.world) });
@@ -540,7 +540,35 @@
         return { minimum, maximum, size };
     }
 
+    function moduloSourceSupport(source, limits) {
+        if (source.distribution?.kind !== 'uniform-int-modulo') return null;
+        const { inputDomain, modulus } = source.distribution;
+        if (source.endpointsInclusive !== true || !Array.isArray(inputDomain) || inputDomain.length !== 2
+            || inputDomain.some(value => !Number.isSafeInteger(value) || value < 0)
+            || inputDomain[1] < inputDomain[0] || !Number.isSafeInteger(modulus) || modulus <= 0) {
+            throw new EvaluationIssue('invalid-random-source', `Random source ${source.id} has an invalid inclusive modulo domain`);
+        }
+        // Enumerate residues, not the potentially much larger parent domain.
+        const minimum = BigInt(inputDomain[0]);
+        const maximum = BigInt(inputDomain[1]);
+        const divisor = BigInt(modulus);
+        const total = maximum - minimum + 1n;
+        const supportSize = total < divisor ? total : divisor;
+        if (supportSize > BigInt(limits.maxRandomSupport)) throw new EvaluationIssue('random-support-limit', `Random source ${source.id} has ${supportSize} residues`);
+        const rows = [];
+        for (let offset = 0n; offset < supportSize; offset += 1n) {
+            const first = minimum + offset;
+            rows.push({ value: Number(first % divisor), weight: (maximum - first) / divisor + 1n });
+        }
+        return { rows: rows.sort((left, right) => left.value - right.value), total };
+    }
+
     function sourceRepresentativeValue(source) {
+        if (source.distribution?.kind === 'uniform-int-modulo') {
+            moduloSourceSupport(source, { maxRandomSupport: 4096 });
+            const [minimum, maximum] = source.distribution.inputDomain.map(BigInt);
+            return Number(((minimum + maximum) / 2n) % BigInt(source.distribution.modulus));
+        }
         const inputDomain = source.distribution?.inputDomain;
         if (Array.isArray(inputDomain) && inputDomain.length === 2
             && Number.isInteger(Number(inputDomain[0])) && Number.isInteger(Number(inputDomain[1]))
@@ -603,6 +631,36 @@
         if (threshold === undefined) throw new EvaluationIssue("missing-state", `Random branch threshold for ${source.id} is unresolved`);
         const target = resolveJumpTarget(evaluateExpression(operation.target, environment), labels, instructions);
         const scopeKey = randomScopeKey(source, environment.context);
+        const moduloSupport = moduloSourceSupport(source, limits);
+        if (moduloSupport) {
+            const passing = moduloSupport.rows.filter(row => comparison(operation.comparison, row.value, threshold)).reduce((total, row) => total + row.weight, 0n);
+            const next = (world, value) => {
+                const taken = comparison(operation.comparison, value, threshold);
+                return { ...state, pc: taken ? target : state.pc + 1, world, lastBranch: {
+                    pc: instructions[state.pc].pc, taken, kind: 'random', sourceId: source.id,
+                    outcomeProbability: new Rational(taken ? passing : moduloSupport.total - passing, moduloSupport.total).toJSON()
+                } };
+            };
+            if (scopeKey && Object.prototype.hasOwnProperty.call(state.world.randomValues, scopeKey)) return [next(state.world, state.world.randomValues[scopeKey])];
+            const seeded = drawFromExactG4State(state.world, source);
+            if (seeded) {
+                if (source.distribution.inputDomain[0] !== 0 || source.distribution.inputDomain[1] !== 65535) throw new EvaluationIssue('invalid-random-source', 'A Gen 4 seeded modulo source must declare the full unsigned 16-bit parent output');
+                const value = seeded.output % source.distribution.modulus;
+                if (scopeKey) seeded.world.randomValues[scopeKey] = value;
+                return [next(seeded.world, value)];
+            }
+            if (scopeKey) return moduloSupport.rows.map(row => {
+                const world = scaleWorld(state.world, new Rational(row.weight, moduloSupport.total));
+                world.randomValues[scopeKey] = row.value;
+                return next(world, row.value);
+            });
+            return [true, false].flatMap(taken => {
+                const weight = taken ? passing : moduloSupport.total - passing;
+                if (weight === 0n) return [];
+                const example = moduloSupport.rows.find(row => comparison(operation.comparison, row.value, threshold) === taken).value;
+                return [next(scaleWorld(state.world, new Rational(weight, moduloSupport.total)), example)];
+            });
+        }
         const exactDraw = drawFromExactG4State(state.world, source);
         const range = sourceRange(source, limits, !exactDraw);
         let passing = 0;
@@ -655,6 +713,24 @@
         const options = evaluateExpression(operation.options, environment);
         if (!Array.isArray(options) || options.length === 0) throw new EvaluationIssue("invalid-random-choice", "Random choice requires at least one option");
         const scopeKey = randomScopeKey(source, environment.context);
+        const moduloSupport = moduloSourceSupport(source, limits);
+        if (moduloSupport) {
+            if (options.length > limits.maxRandomSupport) throw new EvaluationIssue('random-support-limit', `Random choice has ${options.length} options`);
+            const next = (world, value) => ({ ...state, pc: state.pc + 1, world, locals: { ...state.locals, [operation.name]: cloneValue(options[value % options.length]) } });
+            if (scopeKey && Object.prototype.hasOwnProperty.call(state.world.randomValues, scopeKey)) return [next(state.world, state.world.randomValues[scopeKey])];
+            const seeded = drawFromExactG4State(state.world, source);
+            if (seeded) {
+                if (source.distribution.inputDomain[0] !== 0 || source.distribution.inputDomain[1] !== 65535) throw new EvaluationIssue('invalid-random-source', 'A Gen 4 seeded modulo source must declare the full unsigned 16-bit parent output');
+                const value = seeded.output % source.distribution.modulus;
+                if (scopeKey) seeded.world.randomValues[scopeKey] = value;
+                return [next(seeded.world, value)];
+            }
+            return moduloSupport.rows.map(row => {
+                const world = scaleWorld(state.world, new Rational(row.weight, moduloSupport.total));
+                if (scopeKey) world.randomValues[scopeKey] = row.value;
+                return next(world, row.value);
+            });
+        }
         const exactDraw = drawFromExactG4State(state.world, source);
         if (exactDraw) {
             const next = { ...state, pc: state.pc + 1, world: exactDraw.world, locals: { ...state.locals } };
@@ -670,7 +746,8 @@
         return options.map((option, index) => {
             const world = scaleWorld(state.world, new Rational(1n, BigInt(options.length)));
             if (scopeKey) world.randomValues[scopeKey] = index;
-            const next = { ...state, pc: state.pc + 1, world, locals: { ...state.locals } };
+            const next = { ...state, pc: state.pc + 1, world, locals: { ...state.locals },
+                enumeratedChoice: state.enumeratedChoice || new Set(options.map(stableStringify)).size > 1 };
             next.locals[operation.name] = cloneValue(option);
             return next;
         });
@@ -730,9 +807,8 @@
                 scoringProbability: state.lastBranch?.kind === "random"
                     ? cloneValue(state.lastBranch.outcomeProbability)
                     : ONE.toJSON(),
-                probabilityBasis: state.lastBranch?.kind === "random"
-                    ? "source-random-branch"
-                    : "deterministic-state"
+                probabilityBasis: state.enumeratedChoice ? "pre-selection-random-choice"
+                    : state.lastBranch?.kind === "random" ? "source-random-branch" : "deterministic-state"
             });
             return { next: [{ ...state, pc: state.pc + 1, world }] };
         }
@@ -1042,8 +1118,55 @@
         }
     }
 
+    function verifyScoringCoverage(phase, input, candidates, context) {
+        const model = context.profile.selectionModels?.scoringCoverage;
+        if (!model) return; // Existing profiles retain their declared source schedules.
+        if (model.kind !== 'required-flag-programs') throw new EvaluationIssue('unsupported-scoring-coverage', 'Unknown scoring coverage model');
+        if (context.allowValidationOnlyPrograms && input.validationScope === 'isolated-source-slice') return;
+        const flags = getPath(context.request, model.flagIdsRequestPath);
+        if (!Array.isArray(flags) || flags.some(flag => !['string', 'number'].includes(typeof flag)) || new Set(flags.map(String)).size !== flags.length) {
+            throw new EvaluationIssue('missing-scoring-flags', 'Complete effective scoring flags are required');
+        }
+        if (model.flagMaskRequestPath !== undefined || model.bitByFlag !== undefined) {
+            const mask = typeof model.flagMaskRequestPath === 'string' ? getPath(context.request, model.flagMaskRequestPath) : undefined;
+            const entries = Object.entries(model.bitByFlag || {});
+            if (typeof model.flagMaskRequestPath !== 'string' || !Number.isInteger(mask) || mask < 0 || mask > 0xFFFFFFFF
+                || entries.length === 0 || entries.some(([, bit]) => !Number.isInteger(bit) || bit < 0 || bit > 31)
+                || new Set(entries.map(([, bit]) => bit)).size !== entries.length) {
+                throw new EvaluationIssue('invalid-scoring-mask', 'The effective scoring mask and its numeric bit bindings are required');
+            }
+            const knownMask = entries.reduce((value, [, bit]) => value | (1n << BigInt(bit)), 0n);
+            const numericMask = BigInt(mask);
+            if ((numericMask & ~knownMask) !== 0n) throw new EvaluationIssue('scoring-coverage-unavailable', 'The effective mask reaches an unbound scoring or special-action bit');
+            const decoded = entries.filter(([, bit]) => (numericMask & (1n << BigInt(bit))) !== 0n).map(([flag]) => flag).sort();
+            if (stableStringify(decoded) !== stableStringify([...flags.map(String)].sort())) {
+                throw new EvaluationIssue('scoring-flag-mismatch', 'Decoded scoring flags do not match the effective numeric mask');
+            }
+        }
+        const suppliedFlags = input.activeFlagIds ?? input.flagIds;
+        if (suppliedFlags && (!Array.isArray(suppliedFlags) || stableStringify([...suppliedFlags.map(String)].sort()) !== stableStringify([...flags.map(String)].sort()))) {
+            throw new EvaluationIssue('scoring-flag-mismatch', 'Phase flags do not match the effective trainer flags');
+        }
+        const order = model.flagOrder;
+        if (!Array.isArray(order) || new Set(order.map(String)).size !== order.length || flags.some(flag => !order.map(String).includes(String(flag)))) throw new EvaluationIssue('scoring-coverage-unavailable', 'Effective flag is absent from the source scoring order');
+        const orderedFlags = order.filter(flag => flags.map(String).includes(String(flag)));
+        const required = [];
+        for (const flag of orderedFlags) {
+            const binding = model.requiredProgramsByFlag?.[String(flag)];
+            if (!binding || binding.coverage !== 'complete' || !Array.isArray(binding.programIds) || binding.programIds.length === 0) {
+                throw new EvaluationIssue('scoring-coverage-unavailable', `Scoring flag ${flag} does not have a complete program binding`, { flagId: flag });
+            }
+            required.push(...binding.programIds);
+        }
+        for (const candidate of candidates) {
+            const selected = activePrograms(context.profile, phase, input, candidate, context.allowValidationOnlyPrograms);
+            if (stableStringify(selected) !== stableStringify(required)) throw new EvaluationIssue('incomplete-scoring-programs', 'Candidate programs omit, replace, duplicate or reorder a required scoring program', { candidateId: candidate.id, required, selected });
+        }
+    }
+
     function scoringPhase(worlds, phase, input, context) {
         const candidates = (input.candidates || []).filter(candidate => candidate && candidate.enabled !== false && candidate.legal !== false);
+        verifyScoringCoverage(phase, input, candidates, context);
         if (candidates.length === 0) {
             const mass = worlds.reduce((sum, world) => sum.add(world.probability), ZERO);
             return {
@@ -1146,6 +1269,8 @@
             }
         }
         const scoreAdjustments = new Map();
+        const choiceAdjustmentMass = new Map();
+        const phaseStartingMass = worlds.reduce((sum, world) => sum.add(world.probability), ZERO);
         for (const world of active) {
             for (const trace of world.traces.values()) {
                 const event = trace.event;
@@ -1163,7 +1288,13 @@
                     probabilityBasis: event.probabilityBasis
                 });
                 if (!scoreAdjustments.has(key)) scoreAdjustments.set(key, cloneValue(event));
+                if (event.probabilityBasis === "pre-selection-random-choice") {
+                    choiceAdjustmentMass.set(key, (choiceAdjustmentMass.get(key) || ZERO).add(trace.mass));
+                }
             }
+        }
+        for (const [key, mass] of choiceAdjustmentMass) {
+            scoreAdjustments.get(key).scoringProbability = mass.divide(phaseStartingMass).toJSON();
         }
         return {
             worlds: active,

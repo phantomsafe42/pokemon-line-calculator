@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-black",
+  "kind": "progression",
+  "profile": "retail-first-credits-plus-documented-postgame",
+  "strictDependencyGraph": false,
+  "arcs": [
+    {
+      "id": "first-credits",
+      "orderModel": "source-display-order",
+      "strictDependencyGraph": false
+    },
+    {
+      "id": "postgame",
+      "orderModel": "source-display-order",
+      "strictDependencyGraph": false
+    },
+    {
+      "id": "facilities",
+      "orderModel": "repeatable-not-campaign-order",
+      "strictDependencyGraph": false
+    }
+  ],
+  "orderingCaveats": [
+    {
+      "bucketId": "elite-four-first-credits",
+      "orderModel": "unordered-bucket",
+      "reason": "The player may choose their Elite Four battle order; source display order is presentation only.",
+      "scope": "the four Elite Four battles at the Pokémon League"
+    }
+  ],
+  "records": [
+    {
+      "id": "cilan",
+      "order": 1,
+      "name": "Chili / Cilan / Cress Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-black-campaign-occurrence-0021",
+        "pokemon-black-campaign-occurrence-0022",
+        "pokemon-black-campaign-occurrence-0023"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 491,
+        "pageOrder": 2
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "lenora",
+      "order": 2,
+      "name": "Lenora Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-black-campaign-occurrence-0049"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 574,
+        "pageOrder": 3
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "burgh",
+      "order": 3,
+      "name": "Burgh Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-black-campaign-occurrence-0085"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 326,
+        "pageOrder": 4
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "elesa",
+      "order": 4,
+      "name": "Elesa Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-black-campaign-occurrence-0122"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 617,
+        "pageOrder": 5
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "clay",
+      "order": 5,
+      "name": "Clay Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-black-campaign-occurrence-0153"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 553,
+        "pageOrder": 6
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "skyla",
+      "order": 6,
+      "name": "Skyla Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-black-campaign-occurrence-0206"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 541,
+        "pageOrder": 7
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "brycen",
+      "order": 7,
+      "name": "Brycen Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-black-campaign-occurrence-0249"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 344,
+        "pageOrder": 9
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "drayden",
+      "order": 8,
+      "name": "Drayden Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-black-campaign-occurrence-0303"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 101,
+        "pageOrder": 11
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "league",
+      "order": 9,
+      "name": "League Split",
+      "type": "campaign-phase",
+      "anchorOccurrenceIds": [],
+      "boundarySourceDisplayOrder": null,
+      "orderModel": "source-display-order-after-eighth-gym",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "postgame",
+      "order": 10,
+      "name": "Postgame",
+      "type": "campaign-phase",
+      "anchorOccurrenceIds": [],
+      "boundarySourceDisplayOrder": null,
+      "orderModel": "source-display-order-with-explicit-rematches-retained",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "facilities",
+      "order": 11,
+      "name": "Battle Facilities",
+      "type": "campaign-phase",
+      "anchorOccurrenceIds": [],
+      "boundarySourceDisplayOrder": null,
+      "orderModel": "repeatable-or-source-explicit-rematch; not a fixed campaign sequence",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    }
+  ]
+}

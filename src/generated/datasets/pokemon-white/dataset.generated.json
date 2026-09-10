@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "plc-generated-dataset/v1alpha1",
+  "consumer": "plc-white-dataset",
+  "source": "Datasets/Pokemon White/source-data",
+  "sourceTreeSha256": "6B8001FF8FCC9A9C20DC25DEEA75F8E33155059F309244739C95B398B1917B2F",
+  "files": [
+    {
+      "path": "dataset_manifest.json",
+      "bytes": 33829,
+      "sha256": "098A95E78BE1ADE2E6FA761D45BF8F4B00D0FED5D25805746EBE0270635F7B56"
+    },
+    {
+      "path": "battle_mechanics.json",
+      "bytes": 12182,
+      "sha256": "58541C1D019B872B385443A4C5D95C26FA983251BE4C88598F9637046DB362A7"
+    },
+    {
+      "path": "experience_mechanics.json",
+      "bytes": 5191,
+      "sha256": "BC105DA14355D12EC34B48FC690B2FC8329642C27080C38BC5BDB32CD987E612"
+    },
+    {
+      "path": "species.json",
+      "bytes": 969666,
+      "sha256": "6155BBB422322351201DBCBD4E6A3E9FFEE040DEA4C93A411C8857D230BDD248"
+    },
+    {
+      "path": "moves.json",
+      "bytes": 959163,
+      "sha256": "3EBC0D61A853E1E73667F537549FCCDD8B40BAE5255578AF03132508139BF189"
+    },
+    {
+      "path": "abilities.json",
+      "bytes": 36007,
+      "sha256": "352C3FA7BC5B4A785C6EF032CC367EAA268DCB0116074EFF59FF3FADB929DCD5"
+    },
+    {
+      "path": "items.json",
+      "bytes": 432356,
+      "sha256": "1ECE02C5549D3F87DFDA172E1A67F6A401DEB20B80E687FD91DCDED5192006F7"
+    },
+    {
+      "path": "natures.json",
+      "bytes": 4895,
+      "sha256": "36550E3A9F09D03319D32235231B575C8ECDB91AD6D6EB6BA07F39CED2E3060A"
+    },
+    {
+      "path": "types.json",
+      "bytes": 5964,
+      "sha256": "4B81D2641A3E4F61382A83EC924EBBE3AC236407DDFA914CA56E1BB493F77F6A"
+    },
+    {
+      "path": "trainers.json",
+      "bytes": 5502697,
+      "sha256": "F1C4719CE86DA7A0BF85304834BC388FE210BCB25051E1D6DA0F9261B0991307"
+    },
+    {
+      "path": "trainer_order.json",
+      "bytes": 1464172,
+      "sha256": "5B2E04EED64EA5CEA43BF3BDEDE41547050DEADE7FED67399245661923C7892F"
+    },
+    {
+      "path": "trainer_battle_groups.json",
+      "bytes": 10440,
+      "sha256": "AAC914C1D50BF9A1376C6265D47904B8296E67B2B8EF48EF3E872BA66F74CE14"
+    },
+    {
+      "path": "progression.json",
+      "bytes": 5911,
+      "sha256": "DDB204BFE71D8936982A2A3B959B5CD7B297A9A950FB82B09C3C5F836A4CD2DA"
+    },
+    {
+      "path": "evolutions.json",
+      "bytes": 321488,
+      "sha256": "CBA1766AE3D341B9C72E0A7B959F0D0E218EEF5A6BE9B3787D7CA419D61BD4D0"
+    },
+    {
+      "path": "save_id_maps.json",
+      "bytes": 194503,
+      "sha256": "F83688D781CD215B67FE05CEC9619AEC50F64F295B3BA1F63DBF618A517BC48A"
+    }
+  ]
+}

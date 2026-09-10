@@ -49,6 +49,32 @@ test("recalculation replays the saved graph under the current mechanics fingerpr
   assert.equal(validatePlanReferences(rebuilt, dataset).valid, true);
 });
 
+test("recalculation refreshes Dataset-derived trainer stat levels and root HP without changing displayed level", async () => {
+  const { dataset, plan } = fixturePlan();
+  const enemy = Object.values(plan.combatants).find(combatant => combatant.side === "enemy");
+  const root = plan.stateNodes[plan.initialStateNodeId];
+  const oldMaximum = root.combatantStates[enemy.combatantKey].hp.maxHp;
+  dataset.mechanics.features.challengeModeDisplayedLevelStatBug = {
+    enabled: true,
+    statLevelDeltaMemberField: "damageFormulaLevelDelta",
+    displayedLevelField: "level"
+  };
+  for (const member of dataset.trainer("trainer").team) member.damageFormulaLevelDelta = -5;
+
+  const rebuilt = await recalculatePlanDocument(plan, {
+    dataset,
+    previewTurnFn: () => { throw new Error("a root-only line should not replay actions"); }
+  });
+  const refreshed = rebuilt.combatants[enemy.combatantKey];
+  const refreshedState = rebuilt.stateNodes[rebuilt.initialStateNodeId].combatantStates[enemy.combatantKey];
+  assert.equal(refreshed.level, 50);
+  assert.equal(refreshed.statCalculationLevelDelta, -5);
+  assert.ok(refreshed.calculatedStats.hp < oldMaximum);
+  assert.equal(refreshedState.currentLevel, 50);
+  assert.equal(refreshedState.hp.max, refreshed.calculatedStats.hp);
+  assert.equal(refreshedState.hp.maxHp, refreshed.calculatedStats.hp);
+});
+
 test("resolver-version recalculation preserves a selected crafted outcome", async () => {
   const { dataset, players, enemies, plan: initial } = fixturePlan();
   const state = initial.stateNodes[initial.initialStateNodeId];

@@ -1,0 +1,253 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-firered",
+  "kind": "battle-mechanics",
+  "mechanicsProfile": "pokemon-firered-battle-mechanics-v1",
+  "engine": {
+    "id": "smogon-calc",
+    "version": "0.11.0"
+  },
+  "damageGeneration": 3,
+  "canonicalDataGeneration": 3,
+  "canonicalDataSource": {
+    "kind": "pinned-engine-generation-inheritance",
+    "sourceLock": "source-lock.json",
+    "generation": 3,
+    "policy": "Exact selected-game source fields override this declared canonical baseline."
+  },
+  "typeChartSource": "types.json",
+  "trainerBattleProfile": "default",
+  "experienceMechanicsSource": "experience_mechanics.json",
+  "experienceGeneration": 3,
+  "experienceFormula": {
+    "source": "Datasets/Pokemon FireRed/source-data/experience_mechanics.json",
+    "sha256": "35da92cf2c87ac5cbaafa46b1d64d8ebc50722509186fac8213b11cc458404da",
+    "mechanicsProfile": "pokemon-firered-trainer-experience-v1",
+    "model": "generation-3-unscaled-trainer",
+    "selectedVersionRule": null,
+    "inheritedFromDamageGeneration": false,
+    "validationStatus": "passed"
+  },
+  "generationReference": {
+    "source": "Datasets/Gen 3/source-data/battle_mechanics.json",
+    "sha256": "9b46bb8cd035e137ef7896b48c04a997aaaf22ca39084eddf6a6017ea72b8690",
+    "status": "partial-reference-not-a-game-readiness-proof"
+  },
+  "sourceBindings": {
+    "directory": "Datasets/Pokemon FireRed/source-data",
+    "moveMechanics": {
+      "source": "Datasets/tools/imports/vanilla/move-mechanics/moves.json",
+      "sha256": "b5f8e5b6b15866de5798e026299cd9b6949a148c35c42cac16a9ca63c537d7a5",
+      "selector": "games.pokemon-firered",
+      "validatedSnapshot": true
+    },
+    "targetPolicies": {
+      "source": "Datasets/tools/imports/vanilla/move-mechanics/target-policies.json",
+      "sha256": "e24e2c2deec67c7eb4663e16c936dae37f2f6ef92ee7a1d939ef4a2137430627",
+      "selector": "games.pokemon-firered",
+      "consumerImplementationIncluded": true,
+      "implementation": "Web Tools/Pokemon Line Calculator/src/core/resolver.js",
+      "validation": "Web Tools/Pokemon Line Calculator/tests/doubles.test.mjs"
+    }
+  },
+  "sourceReadiness": {
+    "status": "passed-conditional-source-slice",
+    "unresolved": 0,
+    "scope": "selected static move fields, trainer inputs and declared game-specific formula policies; not global Dataset completeness"
+  },
+  "gateOwnership": {
+    "dataset": {
+      "unresolved": 0,
+      "records": []
+    },
+    "consumer": {
+      "unresolved": 0,
+      "records": [],
+      "sourceOmission": false
+    },
+    "knownRequiredRuntimeInputsAreNotUnknownSourceFacts": true
+  },
+  "additionalNonDamageActionSourceGates": {
+    "scope": "outside scalar-damage validation; remains required for complete move/action Dataset semantics",
+    "unresolved": 0,
+    "records": []
+  },
+  "formats": {
+    "sourceFormats": [
+      "double",
+      "single"
+    ],
+    "sourceFormatCounts": {
+      "single": 613,
+      "double": 26
+    },
+    "authority": "trainers.json#records.*.battleProfiles.default; exact retail headers or separately sourced special battle profiles",
+    "validatedScalarFormats": [
+      "single",
+      "double"
+    ],
+    "unsupportedUnvalidatedFormats": [],
+    "selectionMustBeExplicit": true
+  },
+  "difficultyAuthority": {
+    "source": "trainer_order.json#records.*.mechanicsBinding.modeBindings",
+    "observedModeBindingCounts": {},
+    "establishedFields": [
+      "selected raw trainer identity"
+    ],
+    "explicitSelectionRequired": true,
+    "statAndDamageFormulaTransform": "no-additional-difficulty-transform-claimed",
+    "consumerMayInferTransformFromDisplayedDelta": false,
+    "formula": null,
+    "evidence": null
+  },
+  "runtimeDefaults": {},
+  "runtimeInputs": {
+    "implicitDefaultsAllowed": false,
+    "missingRuntimePolicy": "unavailable",
+    "combatants": [
+      "species/form",
+      "level",
+      "nature",
+      "ability",
+      "item-or-explicit-none",
+      "ivs",
+      "evs"
+    ],
+    "conditional": [
+      "currentHP",
+      "status",
+      "stages",
+      "gender",
+      "weather",
+      "screens",
+      "move-hit-count",
+      "move-specific-state"
+    ],
+    "trainerRequirements": [],
+    "selection": [
+      "trainer occurrence binding",
+      "party slot",
+      "variant/difficulty/rematch when declared",
+      "facility level and selected roster when declared"
+    ],
+    "moves": {
+      "hiddenpower": {
+        "status": "resolved-conditional-input-contract",
+        "required": [
+          "attacker.ivs"
+        ],
+        "derivedByConsumer": [
+          "moveOverrides.type",
+          "moveOverrides.basePower"
+        ],
+        "generationRange": [
+          3,
+          5
+        ],
+        "formulaEvidence": {
+          "source": "Datasets/tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/src/battle_script_commands.c",
+          "handler": "Cmd_hiddenpowercalc",
+          "scope": "exact-selected-game-or-explicit-paired-version-pret-handler",
+          "sha256": "443e97eac2beb0f2e6af2179f052ba9842f114407afdcaa850debf41c07aaa77"
+        },
+        "missingOrMismatchedInput": "unavailable",
+        "implicitDefault": false,
+        "statBitOrder": [
+          "hp",
+          "atk",
+          "def",
+          "spe",
+          "spa",
+          "spd"
+        ],
+        "typeFormula": "floor(15 * sum((IV_i & 1) * 2^i) / 63)",
+        "powerFormula": "30 + floor(40 * sum(((IV_i >> 1) & 1) * 2^i) / 63)",
+        "typeOrder": [
+          "Fighting",
+          "Flying",
+          "Poison",
+          "Ground",
+          "Rock",
+          "Bug",
+          "Ghost",
+          "Steel",
+          "Fire",
+          "Water",
+          "Grass",
+          "Electric",
+          "Psychic",
+          "Ice",
+          "Dragon",
+          "Dark"
+        ],
+        "noLegacy70PowerFallback": true
+      },
+      "counter": {
+        "status": "resolved-state-dependent-consumer-contract",
+        "targetPolicyRef": "pokemon-firered/68",
+        "retaliationPolicy": {
+          "kind": "retaliation",
+          "generation": 3,
+          "damageClass": "physical",
+          "damageMultiplierNumerator": 2,
+          "damageMultiplierDenominator": 1,
+          "damageRounding": "integer-truncation",
+          "selection": "generation-specific-last-damage-source",
+          "sourceMustStillHaveHP": true,
+          "fallback": "none",
+          "followMe": "live-follow-me-before-remembered-source",
+          "failureConditions": [
+            "no-qualifying-opposing-damage-record"
+          ]
+        }
+      },
+      "mirrorcoat": {
+        "status": "resolved-state-dependent-consumer-contract",
+        "targetPolicyRef": "pokemon-firered/243",
+        "retaliationPolicy": {
+          "kind": "retaliation",
+          "generation": 3,
+          "damageClass": "special",
+          "damageMultiplierNumerator": 2,
+          "damageMultiplierDenominator": 1,
+          "damageRounding": "integer-truncation",
+          "selection": "generation-specific-last-damage-source",
+          "sourceMustStillHaveHP": true,
+          "fallback": "none",
+          "followMe": "live-follow-me-before-remembered-source",
+          "failureConditions": [
+            "no-qualifying-opposing-damage-record"
+          ]
+        }
+      }
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "unresolved": 0,
+    "sourceFiles": [
+      "species.json",
+      "moves.json",
+      "abilities.json",
+      "items.json",
+      "natures.json",
+      "types.json",
+      "trainers.json"
+    ],
+    "unresolvedRecords": [],
+    "knownAnswerSuite": {
+      "source": "known-answers.json",
+      "selector": "games.pokemon-firered",
+      "runner": "Datasets/tools/validate_vanilla_battle_mechanics_authority.js",
+      "status": "requires-execution",
+      "scope": "restricted-integer-arithmetic-and-selected-source-runtime-paths"
+    }
+  },
+  "consumerActivation": {
+    "calculationReady": true,
+    "readinessModel": "granular-per-path",
+    "stateDependentDamageMoves": "integrating-battle-state-resolver",
+    "reason": "Shared scalar damage, strict Hidden Power derivation, Gen 5 format projection, and PLC retaliation execution are validated."
+  }
+}

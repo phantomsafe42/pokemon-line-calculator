@@ -2,17 +2,17 @@
   "schemaVersion": "plc-generated-battle-mechanics/v1alpha1",
   "consumer": "plc-battle-mechanics",
   "source": "Battle Mechanics",
-  "sourceTreeSha256": "D8DE81B4D8BB56E82DA89C3FA1AEB97712067D4760401E90AAC5DDA917B634DD",
+  "sourceTreeSha256": "F2FF6DFD51C9E766C0A629A8A5CA85AADD7D516A3CE1E1C907741750C1D81B2A",
   "files": [
     {
       "path": "shared_damage_calculator.js",
-      "bytes": 35665,
-      "sha256": "7857E977BAFF7BA0CCFA7CBF93F8136B3FA60BBF8DE890D204EBA196239EAB08"
+      "bytes": 41090,
+      "sha256": "56A22FB049830F371127E89F2AD0CBCD3F0F61D3CCE678EFB468C82F8A447ED2"
     },
     {
       "path": "trainer_ai/trainer_ai_evaluator.js",
-      "bytes": 133999,
-      "sha256": "F69EDC38EA9AFFF3E4D7C410EDE8C80391EBB1E7AC5E88FCA7E8C90A51059994"
+      "bytes": 144262,
+      "sha256": "C85E21DAF0CAC21A8F267EC90FDAB09CA561DE53760EA91115AD008A852CF075"
     },
     {
       "path": "vendor/smogon-calc-0.11.0/data.production.min.js",

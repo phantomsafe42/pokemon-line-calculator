@@ -5,6 +5,7 @@ import { assertValidPlanDocument } from "../src/contracts/plan_contract.js";
 import { parsePlan, serializePlan } from "../src/contracts/plan_file.js";
 import { commitPreview, previewForcedReplacement, previewTurn, repairStaleLeafBattleEnd } from "../src/core/planner.js";
 import { resolveForcedReplacement, resolveTurn } from "../src/core/resolver.js";
+import { vw2rMoveSupport } from "../src/rulesets/vw2r_move_support.js";
 import { damageAdapter, fixtureDoublesPlan } from "./helpers.mjs";
 
 function move(actorKey, moveId, targetKeys = []) {
@@ -30,6 +31,41 @@ function setDistinctSpeeds(plan, players, enemies) {
   plan.combatants[players[1].combatantKey].calculatedStats.spe = 120;
   plan.combatants[enemies[0].combatantKey].calculatedStats.spe = 80;
   plan.combatants[enemies[1].combatantKey].calculatedStats.spe = 60;
+}
+
+function teachRetaliationMove(dataset, plan, combatant, moveId) {
+  const definitions = {
+    counter: { id: "counter", name: "Counter", type: "fighting", category: "physical", basePower: 0, accuracy: 100, pp: 20, priority: -5, target: "scripted" },
+    mirrorcoat: { id: "mirrorcoat", name: "Mirror Coat", type: "psychic", category: "special", basePower: 0, accuracy: 100, pp: 20, priority: -5, target: "scripted" },
+    metalburst: { id: "metalburst", name: "Metal Burst", type: "steel", category: "physical", basePower: 0, accuracy: 100, pp: 10, priority: 0, target: "scripted" }
+  };
+  const definition = definitions[moveId];
+  dataset.indexes.moves.set(moveId, definition);
+  plan.combatants[combatant.combatantKey].moves[0] = { moveId, maxPp: definition.pp };
+  plan.stateNodes[plan.initialStateNodeId].combatantStates[combatant.combatantKey].movePp[moveId] = definition.pp;
+}
+
+function retaliationTurn({ generation, moveId }) {
+  const { dataset, plan, players, enemies } = fixtureDoublesPlan();
+  dataset.mechanics.damageGeneration = generation;
+  teachRetaliationMove(dataset, plan, players[0], moveId);
+  plan.combatants[players[0].combatantKey].calculatedStats.spe = 20;
+  plan.combatants[enemies[1].combatantKey].moves[0] = { moveId: "surf", maxPp: dataset.get("moves", "surf").pp };
+  plan.stateNodes[plan.initialStateNodeId].combatantStates[enemies[1].combatantKey].movePp.surf = dataset.get("moves", "surf").pp;
+  plan.combatants[enemies[0].combatantKey].calculatedStats.spe = 100;
+  plan.combatants[enemies[1].combatantKey].calculatedStats.spe = 80;
+  const outcomes = resolveTurn({
+    plan,
+    parentStateNodeId: plan.initialStateNodeId,
+    actions: {
+      player: [move(players[0].combatantKey, moveId), move(players[1].combatantKey, "protect", [players[1].combatantKey])],
+      enemy: [move(enemies[0].combatantKey, "tackle", [players[0].combatantKey]), move(enemies[1].combatantKey, "surf")]
+    },
+    dataset,
+    damageAdapter: damageAdapter(({ move: usedMove }) => usedMove.id === "tackle" ? [10, 12] : usedMove.id === "surf" ? [7] : [1]),
+    moveSupport: vw2rMoveSupport
+  });
+  return { outcomes, players, enemies };
 }
 
 test("Doubles format is dataset-derived and schema-v2 plans round-trip", () => {
@@ -88,6 +124,68 @@ test("Revenge keeps negative priority and doubles only against the opponent that
     const earlierEnemyDamage = outcome.events.findIndex(event => event.eventType === "damage" && event.actorKey === enemies[0].combatantKey);
     return earlierEnemyDamage >= 0 && revengeIndex > earlierEnemyDamage;
   }));
+});
+
+test("Gen 5 Counter scans current-turn damage history for the newest matching opposing physical hit", () => {
+  const { outcomes, players, enemies } = retaliationTurn({ generation: 5, moveId: "counter" });
+  for (const outcome of outcomes) {
+    const damage = outcome.events.find(event => event.moveId === "counter" && event.eventType === "damage");
+    assert.deepEqual(damage?.damageHp, { min: 20, max: 24 });
+    assert.equal(damage?.targetKey, enemies[0].combatantKey);
+    const history = outcome.state.combatantStates[players[0].combatantKey].turnFlags.damageHistory;
+    assert.deepEqual(history.map(entry => entry.category), ["physical", "special"]);
+  }
+});
+
+test("Gen 4 Counter uses the last damage source/category and therefore fails after a later special hit", () => {
+  const { outcomes, players } = retaliationTurn({ generation: 4, moveId: "counter" });
+  assert.ok(outcomes.every(outcome => !outcome.events.some(event => event.moveId === "counter" && event.eventType === "damage")));
+  assert.ok(outcomes.every(outcome => outcome.events.some(event => event.actorKey === players[0].combatantKey && event.reason === "no-legal-target")));
+});
+
+test("Mirror Coat and Metal Burst use exact recorded damage with generation-correct multipliers", () => {
+  const mirror = retaliationTurn({ generation: 5, moveId: "mirrorcoat" });
+  assert.ok(mirror.outcomes.every(outcome => {
+    const damage = outcome.events.find(event => event.moveId === "mirrorcoat" && event.eventType === "damage");
+    return damage?.targetKey === mirror.enemies[1].combatantKey && damage.damageHp.min === 14 && damage.damageHp.max === 14;
+  }));
+  const metal = retaliationTurn({ generation: 5, moveId: "metalburst" });
+  assert.ok(metal.outcomes.every(outcome => {
+    const damage = outcome.events.find(event => event.moveId === "metalburst" && event.eventType === "damage");
+    return damage?.targetKey === metal.enemies[1].combatantKey && damage.damageHp.min === 10 && damage.damageHp.max === 10;
+  }));
+});
+
+test("retaliation targeting follows the retail generation when the remembered attacker faints first", () => {
+  for (const generation of [3, 4, 5]) {
+    const { dataset, plan, players, enemies } = fixtureDoublesPlan();
+    dataset.mechanics.damageGeneration = generation;
+    teachRetaliationMove(dataset, plan, players[0], "counter");
+    plan.combatants[enemies[0].combatantKey].calculatedStats.spe = 100;
+    plan.combatants[players[1].combatantKey].calculatedStats.spe = 80;
+    plan.combatants[enemies[1].combatantKey].calculatedStats.spe = 60;
+    plan.combatants[players[0].combatantKey].calculatedStats.spe = 20;
+    const outcomes = resolveTurn({
+      plan,
+      parentStateNodeId: plan.initialStateNodeId,
+      actions: {
+        player: [move(players[0].combatantKey, "counter"), move(players[1].combatantKey, "tackle", [enemies[0].combatantKey])],
+        enemy: [move(enemies[0].combatantKey, "tackle", [players[0].combatantKey]), move(enemies[1].combatantKey, "tackle", [players[1].combatantKey])]
+      },
+      dataset,
+      damageAdapter: damageAdapter(({ attacker }) => attacker.combatantKey === players[1].combatantKey ? [999]
+        : attacker.combatantKey === enemies[0].combatantKey ? [5]
+          : [1]),
+      moveSupport: vw2rMoveSupport
+    });
+    const retaliation = outcomes.flatMap(outcome => outcome.events).find(event => event.moveId === "counter" && event.eventType === "damage");
+    if (generation === 3) {
+      assert.equal(retaliation, undefined, "Gen 3 has no fallback after the remembered source faints");
+    } else {
+      assert.equal(retaliation?.targetKey, enemies[1].combatantKey, `Gen ${generation} uses its documented fallback target`);
+      assert.deepEqual(retaliation?.damageHp, { min: 10, max: 10 });
+    }
+  }
 });
 
 test("a single-target move was redirected when its opposing slot target fainted earlier in the turn", () => {

@@ -40,9 +40,27 @@ export class DatasetReadinessError extends Error {
   }
 }
 
-function requireDocument(documents, file, gameId, { records = true } = {}) {
+export function battleMechanicsSourceReady(mechanics, gameId = null) {
+  if (!mechanics || mechanics.schemaVersion !== 1 || mechanics.kind !== "battle-mechanics") return false;
+  if (gameId && mechanics.gameId !== gameId) return false;
+  if (mechanics.validation?.status === "passed" && Number(mechanics.validation?.unresolved || 0) === 0) return true;
+  return String(mechanics.sourceReadiness?.status || "").startsWith("passed")
+    && Number(mechanics.sourceReadiness?.unresolved || 0) === 0
+    && Number(mechanics.gateOwnership?.dataset?.unresolved || 0) === 0
+    && mechanics.gateOwnership?.consumer?.sourceOmission !== true;
+}
+
+export function experienceProjectionReady(experienceMechanics, gameId = null) {
+  if (!experienceMechanics || ![1, 2].includes(Number(experienceMechanics.schemaVersion))) return false;
+  if (gameId && experienceMechanics.gameId !== gameId) return false;
+  return experienceMechanics.validation?.status === "passed"
+    && Number(experienceMechanics.validation?.unresolved || 0) === 0
+    && experienceMechanics.consumerActivation?.experienceProjectionReady === true;
+}
+
+function requireDocument(documents, file, gameId, { records = true, schemaVersions = [1] } = {}) {
   const document = documents[file];
-  if (!document || document.schemaVersion !== 1 || document.gameId !== gameId || (records && !document.records)) {
+  if (!document || !schemaVersions.includes(Number(document.schemaVersion)) || document.gameId !== gameId || (records && !document.records)) {
     throw new DatasetReadinessError(`${file} is missing or does not match ${gameId}`);
   }
   return document;
@@ -149,8 +167,8 @@ export function createDatasetContext({ manifest, mechanics, documents }) {
   if (!mechanics || mechanics.schemaVersion !== 1 || mechanics.gameId !== gameId) {
     throw new DatasetReadinessError("The battle mechanics contract does not match the manifest");
   }
-  if (mechanics.validation?.status !== "passed" || Number(mechanics.validation?.unresolved) !== 0) {
-    throw new DatasetReadinessError("The battle mechanics contract has not passed validation");
+  if (!battleMechanicsSourceReady(mechanics, gameId)) {
+    throw new DatasetReadinessError("The battle mechanics source contract has not passed validation");
   }
   if (mechanics.experienceMechanicsSource !== "experience_mechanics.json") {
     throw new DatasetReadinessError("The battle mechanics contract does not link the independent experience mechanics contract");
@@ -166,17 +184,16 @@ export function createDatasetContext({ manifest, mechanics, documents }) {
   loaded["trainer_order.json"] = requireDocument(documents, "trainer_order.json", gameId);
   loaded['trainer_battle_groups.json'] = documents['trainer_battle_groups.json'] || { schemaVersion: 1, gameId, records: {} };
   loaded["progression.json"] = requireDocument(documents, "progression.json", gameId, { records: false });
-  loaded["experience_mechanics.json"] = requireDocument(documents, "experience_mechanics.json", gameId, { records: false });
-  loaded["evolutions.json"] = requireDocument(documents, "evolutions.json", gameId);
+  loaded["experience_mechanics.json"] = requireDocument(documents, "experience_mechanics.json", gameId, { records: false, schemaVersions: [1, 2] });
+  loaded["evolutions.json"] = requireDocument(documents, "evolutions.json", gameId, { schemaVersions: [1, 2] });
   loaded["save_id_maps.json"] = requireDocument(documents, "save_id_maps.json", gameId);
   const experienceMechanics = loaded["experience_mechanics.json"];
   const experienceGeneration = experienceMechanics.experienceGeneration;
   if (!(experienceGeneration === "custom" || (Number.isInteger(Number(experienceGeneration)) && Number(experienceGeneration) >= 1 && Number(experienceGeneration) <= 9))) {
     throw new DatasetReadinessError("The experience mechanics contract has no supported formula generation");
   }
-  if (experienceMechanics.validation?.status !== "passed" || Number(experienceMechanics.validation?.unresolved) !== 0
-    || experienceMechanics.consumerActivation?.experienceProjectionReady !== true) {
-    throw new DatasetReadinessError("The experience mechanics contract has not passed projection readiness");
+  if (experienceMechanics.validation?.status !== "passed" || Number(experienceMechanics.validation?.unresolved) !== 0) {
+    throw new DatasetReadinessError("The experience mechanics source contract has not passed validation");
   }
   const indexes = {
     species: asMap(loaded["species.json"]),
@@ -197,6 +214,12 @@ export function createDatasetContext({ manifest, mechanics, documents }) {
     manifest,
     mechanics,
     experienceMechanics,
+    capabilities: Object.freeze({
+      battleSourceReady: true,
+      calculationReady: mechanics.consumerActivation?.calculationReady === true,
+      consumerGates: Object.freeze([...(mechanics.gateOwnership?.consumer?.records || [])]),
+      experienceProjectionReady: experienceProjectionReady(experienceMechanics, gameId)
+    }),
     documents: loaded,
     indexes,
     get(kind, id) {

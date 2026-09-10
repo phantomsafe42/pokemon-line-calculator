@@ -1,4 +1,4 @@
-import { calculateStats } from "../adapters/combatant_ingest.js?v=20260905-drafts-freecalc-partners-v1";
+import { calculateStats } from "../adapters/combatant_ingest.js?v=20260909-level-drift-v1";
 import { clone } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
 import { activeKeys } from "../core/battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
 

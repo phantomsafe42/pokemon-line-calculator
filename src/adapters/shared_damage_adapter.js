@@ -1,5 +1,17 @@
 import { calculatorFieldName } from "../rulesets/battle_rules.js?v=20260905-drafts-freecalc-partners-v1";
-import { isHiddenPowerType } from "../core/hidden_power.js?v=20260905-drafts-freecalc-partners-v1";
+import { isHiddenPowerType } from "../core/hidden_power.js?v=20260909-consumer-readiness-v2";
+
+function canonicalId(value) {
+  return String(value || "").toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g, "");
+}
+
+function appliedItemIds(result, field) {
+  const descriptions = [
+    result?.result?.rawDesc,
+    ...(result?.hitResults || []).map(entry => entry?.result?.rawDesc)
+  ];
+  return [...new Set(descriptions.map(description => canonicalId(description?.[field])).filter(Boolean))];
+}
 
 export function calculatorMoveName(move) {
   const type = String(move?.type || "").toLowerCase();
@@ -61,7 +73,7 @@ export function createSharedDamageAdapter(runtime) {
       const attackerSource = sideSource(attacker);
       const defenderSource = sideSource(defender);
       const effectiveMoveName = calculatorMoveName(move);
-      return runtime.calculate({
+      const result = runtime.calculate({
         attacker: displayCombatant(attacker, attackerState),
         defender: displayCombatant(defender, defenderState),
         moveName: effectiveMoveName,
@@ -88,6 +100,11 @@ export function createSharedDamageAdapter(runtime) {
         weather,
         terrain
       });
+      return {
+        ...result,
+        appliedAttackerItemIds: appliedItemIds(result, "attackerItem"),
+        appliedDefenderItemIds: appliedItemIds(result, "defenderItem")
+      };
     }
   };
 }

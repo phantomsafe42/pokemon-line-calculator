@@ -1,7 +1,7 @@
 import { assertValidPlanDocument } from "../contracts/plan_contract.js?v=20260905-drafts-freecalc-partners-v1";
-import { actionSignature, nextCreatedOrder, touchPlan, updateStateHash } from "./plan.js?v=20260907-form-sprites-v1";
+import { actionSignature, nextCreatedOrder, touchPlan, updateStateHash } from "./plan.js?v=20260909-consumer-readiness-v2";
 import { clone, shortHash, stableStringify } from "./primitives.js?v=20260905-drafts-freecalc-partners-v1";
-import { resolveForcedReplacement, resolveTurn } from "./resolver.js?v=20260907-form-sprites-v1";
+import { resolveForcedReplacement, resolveTurn } from "./resolver.js?v=20260909-consumer-readiness-v2";
 import { actionList, activeKey, activeSlotEntries, normalizeActionsForPlan, normalizeReplacementsForPlan, pendingReplacementSlots, replacementList } from "./battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
 
 function displayAction(action, events, plan, dataset) {

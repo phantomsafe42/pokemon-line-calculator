@@ -10853,6 +10853,11 @@
           "role": "pinned-documentation-or-syntax"
         },
         {
+          "file": "trainer_ai_ability_knowledge.json",
+          "sha256": "5050b0bc517ce1efc40ef14a392fd1abd85993405026884f720128163350c62b",
+          "role": "verified-semantic-evidence"
+        },
+        {
           "file": "trainer_ai_action_semantics_verification_report.json",
           "sha256": "cd6f59baba0c8acd6dca7cb4f06ccc241a302d4105eea47c61c925bf49f2912d",
           "role": "verified-semantic-evidence"
@@ -12703,6 +12708,243 @@
         "strict-greater-than": "gt",
         "equal": "eq",
         "not-equal": "ne"
+      },
+      "abilityKnowledge": {
+        "schemaVersion": 1,
+        "modelId": "gen5-field-position-ability-memory-v1",
+        "generation": 5,
+        "storage": {
+          "key": "side-and-field-slot",
+          "initialValue": null,
+          "onReveal": "overwrite-current-slot",
+          "onFaint": "clear-current-slot",
+          "onSwitch": "retain",
+          "onShift": "retain",
+          "onAllySwitch": "retain",
+          "onRotation": "retain"
+        },
+        "guess": {
+          "precedence": [
+            "suppressed-none",
+            "own-or-ally-actual",
+            "stored-slot-ability",
+            "actual-trapping-ability",
+            "species-ability-slots"
+          ],
+          "trappingAbilityIds": [
+            "shadowtag",
+            "arenatrap",
+            "magnetpull"
+          ],
+          "includeHiddenSlot": true,
+          "preserveDuplicateSlots": true,
+          "excludeEmptySlots": true,
+          "scope": "instruction",
+          "guessesWriteStorage": false,
+          "allowActualAbilityOutsideSpeciesSlotsWhenUnrevealed": false
+        },
+        "revelation": {
+          "source": "resolved-ability-activation-or-announcement",
+          "merePresenceReveals": false,
+          "entryAnnouncementAbilityIds": [
+            "moldbreaker",
+            "teravolt",
+            "turboblaze",
+            "pressure",
+            "unnerve"
+          ],
+          "causeEventTypes": [
+            "ability-activated",
+            "ability-announced",
+            "ability-blocked",
+            "ability-change",
+            "stat-stage-change",
+            "field-change",
+            "form-change",
+            "status-cleared",
+            "status-cured",
+            "status-reflected",
+            "major-status",
+            "heal",
+            "residual-heal",
+            "residual-damage",
+            "volatile-status",
+            "volatile-status-cleared"
+          ],
+          "immunityEventType": "move-immune",
+          "immunityAbilityPath": "metadata.abilityId",
+          "noEffectEventsReveal": false
+        },
+        "damageSimulation": {
+          "omittedEventId": 45,
+          "omittedEventHex": "0x2d",
+          "abilityGuessesApplyTo": "explicit-ability-guess-commands; not a replacement for every damage-formula ability",
+          "ignoreDefenderImmunityAbilityIds": [
+            "sapsipper",
+            "waterabsorb",
+            "voltabsorb",
+            "motordrive",
+            "lightningrod",
+            "stormdrain",
+            "flashfire",
+            "soundproof",
+            "wonderguard"
+          ],
+          "conditionalIgnoreDefenderAbilities": [
+            {
+              "abilityId": "dryskin",
+              "moveType": "water"
+            }
+          ],
+          "preserveOtherDamageFormulaAbilities": true,
+          "levitateUsesSeparateGroundingEvent": 18,
+          "damageRoll": "minimum",
+          "evidence": {
+            "overlayId": 167,
+            "aiDamageEntry": {
+              "address": "0x021ab994",
+              "byteLength": 176,
+              "sha256": "caecd9da0ae4ccca9edf64a54299c6c02ce4c5667a3d93a60631170d9aa7f273"
+            },
+            "damageFormula": {
+              "address": "0x021a5958",
+              "byteLength": 480,
+              "retailSha256": "415472b3a3f23e0dc6675648dbdda3730fba731701f134f4f98a085d276d12d9",
+              "vw2rSha256": "e9fa8ca055c45cf2a3adc7c0db2f9e729f35ab0f58c73526397c39ca88fded0f",
+              "difference": "Only the STAB type-range guard at 0x021a5a92 and 0x021a5a95 differs; the event calls are unchanged.",
+              "directEventIds": [
+                70,
+                71,
+                72
+              ]
+            },
+            "sapSipperHandler": {
+              "address": "0x021c22d0",
+              "byteLength": 48,
+              "sha256": "4548eddc541045f0bb6fba5af605f6270dbd737aac01b49c2684a0523b19d9ca"
+            },
+            "immunityEventTables": [
+              {
+                "abilityId": "sapsipper",
+                "address": "0x021d768c",
+                "byteLength": 8,
+                "sha256": "151397354b75ed283e233f64b11b33ae64ca86c593154ad331133178c66141f3"
+              },
+              {
+                "abilityId": "dryskin",
+                "address": "0x021d7bf4",
+                "byteLength": 24,
+                "sha256": "96b759cf6d84176b8425ea7ca4aa37e9d5e707c884c6cb1dae6d1de706838988"
+              },
+              {
+                "abilityId": "waterabsorb",
+                "address": "0x021d77f4",
+                "byteLength": 8,
+                "sha256": "b8e9aec998145b9a0510c59e8547053fc0d347f58ccbdd7c44781cd15010db9a"
+              },
+              {
+                "abilityId": "voltabsorb",
+                "address": "0x021d7864",
+                "byteLength": 8,
+                "sha256": "76b4cedca45e977422f37dedf2e43b1c7ed98dffaaba8f9c030613a474b6870f"
+              },
+              {
+                "abilityId": "motordrive",
+                "address": "0x021d785c",
+                "byteLength": 8,
+                "sha256": "16edefade4f3e1921827610343a0ead9c1e88378e0a155703a9258f0dc4dbda0"
+              },
+              {
+                "abilityId": "soundproof",
+                "address": "0x021d784c",
+                "byteLength": 8,
+                "sha256": "750198aafb6bdba55f40f943f67455852f1d54c8c03089e02683093f3f555dc0"
+              },
+              {
+                "abilityId": "wonderguard",
+                "address": "0x021d7724",
+                "byteLength": 8,
+                "sha256": "9975720ebae09e0db79e21416596e17ce0119fd380747a46a6b06ba56082f8c8"
+              },
+              {
+                "abilityId": "flashfire",
+                "address": "0x021d7aec",
+                "byteLength": 24,
+                "sha256": "a54c0a9449339b05d2982c5ea16844ec912a204626e5d554727797c129f8e467"
+              },
+              {
+                "abilityId": "stormdrain",
+                "address": "0x021d7b1c",
+                "byteLength": 24,
+                "sha256": "ac6e25a709e9090e227bc70e23e9b94d4ccc44d053784fbf5b40c7df9d4d885d"
+              },
+              {
+                "abilityId": "lightningrod",
+                "address": "0x021d7b34",
+                "byteLength": 24,
+                "sha256": "8332d91a602f6c2488e36e3144108415311874cb69a50c706dcd199cdfd804ff"
+              }
+            ]
+          }
+        },
+        "script0Bugs": {
+          "stormDrain": {
+            "checkedAbilityId": "levitate",
+            "intendedAbilityId": "stormdrain",
+            "moveType": "water",
+            "sourceLabel": "Label_0x011C"
+          },
+          "soundproof": {
+            "omittedMoveId": "hypervoice",
+            "sourceLabel": "Label_0x0148"
+          }
+        },
+        "evidence": {
+          "documentation": {
+            "file": "imports/trainer-ai/gen5-ai-docs.pdf",
+            "sha256": "f92994da676806c3cf79745321abe1f6b5b975972d97a77a3c3085eb674ba2bb",
+            "pages": [
+              20,
+              57,
+              58
+            ]
+          },
+          "script": {
+            "file": "imports/trainer-ai/flag0.ais",
+            "sha256": "ac4f437c0d93970b0f4fb81114a0ca646c1f48d555f2afbb9d77445f9c956681"
+          },
+          "shiftVerification": {
+            "method": "static-call-path-and-byte-comparison; not an emulator reproduction",
+            "romSha256": [
+              "3e50aec3db401332175a5d2b5fe2a68ac1a05ec63995dba9d1506b1b51837446",
+              "e79c34ad710cc8c8da0394a4ef76704cd5fbec9d4b1fa75d934725c010162f2e",
+              "d568cb67b2bb86b078871da30c0d2a0564240a06cda79cd806858b7c9efcb4b7"
+            ],
+            "overlayId": 167,
+            "routines": [
+              {
+                "role": "edge-to-center-shift",
+                "address": "0x021a0ed0",
+                "byteLength": 84,
+                "sha256": "82bc38cf21286e46c014e2866916c7aaaa97d9eecc7e4f393629b57208d87a37",
+                "sharedCall": "0x021a0f24"
+              },
+              {
+                "role": "position-swap-core",
+                "address": "0x021a0f24",
+                "byteLength": 152,
+                "sha256": "99f2ad95157047295e78fed0eee4cfe70b7b3e5c97511895ea28f703aa42c11e"
+              },
+              {
+                "role": "ally-switch-handler",
+                "address": "0x021adf50",
+                "byteLength": 172,
+                "sha256": "5ef0b05bef37b5b1572f787b1e7c1d3a61fad9455b36494b0f5687c7449e81d2",
+                "sharedCall": "0x021a0f24"
+              }
+            ]
+          }
+        }
       }
     },
     "operations": {
@@ -303699,12 +303941,1068 @@
             "authority": "generated-reachability-ledger"
           }
         ]
+      },
+      {
+        "id": "g5-ability-unrevealed-off-species-sap-sipper",
+        "kind": "source-script-known-answer",
+        "validatorKind": "gen5-source-ability-script",
+        "coverageKind": "behavioral-source-slice",
+        "profileId": "gen5-b2w2-trainer-ai-evaluator-v1alpha1",
+        "executable": false,
+        "request": {
+          "schemaVersion": "trainer-ai-evaluation-request/v1alpha1",
+          "state": {
+            "battle": {
+              "format": "singles",
+              "kind": "wild",
+              "turn": 1
+            },
+            "actor": {
+              "fainted": false,
+              "forcedContinuation": null,
+              "pivoting": false
+            }
+          },
+          "trainer": {
+            "id": "known-answer-trainer",
+            "aiFlagIds": [
+              "flag0"
+            ],
+            "bagSlots": []
+          },
+          "phaseInputs": {
+            "forced-continuation": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "state.actor.forcedContinuation",
+                  "operator": "eq",
+                  "value": null
+                }
+              ]
+            },
+            "trainer-item-selection": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "trainer.bagSlots",
+                  "operator": "empty",
+                  "value": null
+                }
+              ]
+            },
+            "switch-out": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "state.battle.kind",
+                  "operator": "eq",
+                  "value": "wild"
+                }
+              ]
+            },
+            "switch-in-or-replacement": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "state.actor.fainted",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "statePath": "state.actor.pivoting",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            "rotation": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "state.battle.format",
+                  "operator": "ne",
+                  "value": "rotation"
+                }
+              ]
+            },
+            "move-target-selection": {
+              "disposition": "evaluate",
+              "mode": "scoring",
+              "programIds": [
+                "flag0"
+              ],
+              "candidates": [
+                {
+                  "id": "ability-probe",
+                  "aiEffectId": 0,
+                  "action": {
+                    "type": "move",
+                    "moveId": "ability-probe",
+                    "target": "opponent-center"
+                  },
+                  "initialScore": 100
+                }
+              ]
+            }
+          },
+          "queryResults": {
+            "gen5.command.0x51": false,
+            "gen5.command.0x19": {
+              "default": false
+            },
+            "gen5.command.0x22": "is_strongest",
+            "gen5.command.0x2c": false,
+            "gen5.command.0x2a.ability-options": {
+              "[\"user\"]": [
+                "ability.pressure"
+              ],
+              "default": [
+                "ability.sticky_hold",
+                "ability.storm_drain",
+                "ability.sand_force"
+              ]
+            },
+            "gen5.command.0x20": "type.grass",
+            "gen5.command.0x73": "Label_0x0756"
+          }
+        },
+        "expected": {
+          "status": "exact",
+          "scoreDistributions": [
+            {
+              "candidateId": "ability-probe",
+              "scores": [
+                {
+                  "score": 100,
+                  "probability": {
+                    "numerator": "1",
+                    "denominator": "1",
+                    "decimal": 1
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "evidence": [
+          {
+            "file": "imports/trainer-ai/flag0.ais",
+            "locator": "Label_0x002A through Label_0x01FE; Label_0x235E and Label_0x2366",
+            "authority": "pinned-executable-script"
+          }
+        ]
+      },
+      {
+        "id": "g5-ability-revealed-sap-sipper",
+        "kind": "source-script-known-answer",
+        "validatorKind": "gen5-source-ability-script",
+        "coverageKind": "behavioral-source-slice",
+        "profileId": "gen5-b2w2-trainer-ai-evaluator-v1alpha1",
+        "executable": false,
+        "request": {
+          "schemaVersion": "trainer-ai-evaluation-request/v1alpha1",
+          "state": {
+            "battle": {
+              "format": "singles",
+              "kind": "wild",
+              "turn": 1
+            },
+            "actor": {
+              "fainted": false,
+              "forcedContinuation": null,
+              "pivoting": false
+            }
+          },
+          "trainer": {
+            "id": "known-answer-trainer",
+            "aiFlagIds": [
+              "flag0"
+            ],
+            "bagSlots": []
+          },
+          "phaseInputs": {
+            "forced-continuation": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "state.actor.forcedContinuation",
+                  "operator": "eq",
+                  "value": null
+                }
+              ]
+            },
+            "trainer-item-selection": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "trainer.bagSlots",
+                  "operator": "empty",
+                  "value": null
+                }
+              ]
+            },
+            "switch-out": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "state.battle.kind",
+                  "operator": "eq",
+                  "value": "wild"
+                }
+              ]
+            },
+            "switch-in-or-replacement": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "state.actor.fainted",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "statePath": "state.actor.pivoting",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            "rotation": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "state.battle.format",
+                  "operator": "ne",
+                  "value": "rotation"
+                }
+              ]
+            },
+            "move-target-selection": {
+              "disposition": "evaluate",
+              "mode": "scoring",
+              "programIds": [
+                "flag0"
+              ],
+              "candidates": [
+                {
+                  "id": "ability-probe",
+                  "aiEffectId": 0,
+                  "action": {
+                    "type": "move",
+                    "moveId": "ability-probe",
+                    "target": "opponent-center"
+                  },
+                  "initialScore": 100
+                }
+              ]
+            }
+          },
+          "queryResults": {
+            "gen5.command.0x51": false,
+            "gen5.command.0x19": {
+              "default": false
+            },
+            "gen5.command.0x22": "is_strongest",
+            "gen5.command.0x2c": false,
+            "gen5.command.0x2a.ability-options": {
+              "[\"user\"]": [
+                "ability.pressure"
+              ],
+              "default": [
+                "ability.sap_sipper"
+              ]
+            },
+            "gen5.command.0x20": "type.grass",
+            "gen5.command.0x73": "Label_0x0756"
+          }
+        },
+        "expected": {
+          "status": "exact",
+          "scoreDistributions": [
+            {
+              "candidateId": "ability-probe",
+              "scores": [
+                {
+                  "score": 88,
+                  "probability": {
+                    "numerator": "1",
+                    "denominator": "1",
+                    "decimal": 1
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "evidence": [
+          {
+            "file": "imports/trainer-ai/flag0.ais",
+            "locator": "Label_0x002A through Label_0x01FE; Label_0x235E and Label_0x2366",
+            "authority": "pinned-executable-script"
+          }
+        ]
+      },
+      {
+        "id": "g5-ability-one-of-three-sap-sipper",
+        "kind": "source-script-known-answer",
+        "validatorKind": "gen5-source-ability-script",
+        "coverageKind": "behavioral-source-slice",
+        "profileId": "gen5-b2w2-trainer-ai-evaluator-v1alpha1",
+        "executable": false,
+        "request": {
+          "schemaVersion": "trainer-ai-evaluation-request/v1alpha1",
+          "state": {
+            "battle": {
+              "format": "singles",
+              "kind": "wild",
+              "turn": 1
+            },
+            "actor": {
+              "fainted": false,
+              "forcedContinuation": null,
+              "pivoting": false
+            }
+          },
+          "trainer": {
+            "id": "known-answer-trainer",
+            "aiFlagIds": [
+              "flag0"
+            ],
+            "bagSlots": []
+          },
+          "phaseInputs": {
+            "forced-continuation": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "state.actor.forcedContinuation",
+                  "operator": "eq",
+                  "value": null
+                }
+              ]
+            },
+            "trainer-item-selection": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "trainer.bagSlots",
+                  "operator": "empty",
+                  "value": null
+                }
+              ]
+            },
+            "switch-out": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "state.battle.kind",
+                  "operator": "eq",
+                  "value": "wild"
+                }
+              ]
+            },
+            "switch-in-or-replacement": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "state.actor.fainted",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "statePath": "state.actor.pivoting",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            "rotation": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "state.battle.format",
+                  "operator": "ne",
+                  "value": "rotation"
+                }
+              ]
+            },
+            "move-target-selection": {
+              "disposition": "evaluate",
+              "mode": "scoring",
+              "programIds": [
+                "flag0"
+              ],
+              "candidates": [
+                {
+                  "id": "ability-probe",
+                  "aiEffectId": 0,
+                  "action": {
+                    "type": "move",
+                    "moveId": "ability-probe",
+                    "target": "opponent-center"
+                  },
+                  "initialScore": 100
+                }
+              ]
+            }
+          },
+          "queryResults": {
+            "gen5.command.0x51": false,
+            "gen5.command.0x19": {
+              "default": false
+            },
+            "gen5.command.0x22": "is_strongest",
+            "gen5.command.0x2c": false,
+            "gen5.command.0x2a.ability-options": {
+              "[\"user\"]": [
+                "ability.pressure"
+              ],
+              "default": [
+                "ability.sap_sipper",
+                "ability.pressure",
+                "ability.inner_focus"
+              ]
+            },
+            "gen5.command.0x20": "type.grass",
+            "gen5.command.0x73": "Label_0x0756"
+          }
+        },
+        "expected": {
+          "status": "exact",
+          "scoreDistributions": [
+            {
+              "candidateId": "ability-probe",
+              "scores": [
+                {
+                  "score": 100,
+                  "probability": {
+                    "numerator": "2",
+                    "denominator": "3",
+                    "decimal": 0.6666666666666666
+                  }
+                },
+                {
+                  "score": 88,
+                  "probability": {
+                    "numerator": "1",
+                    "denominator": "3",
+                    "decimal": 0.3333333333333333
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "evidence": [
+          {
+            "file": "imports/trainer-ai/flag0.ais",
+            "locator": "Label_0x002A through Label_0x01FE; Label_0x235E and Label_0x2366",
+            "authority": "pinned-executable-script"
+          }
+        ]
+      },
+      {
+        "id": "g5-ability-storm-drain-script-typo",
+        "kind": "source-script-known-answer",
+        "validatorKind": "gen5-source-ability-script",
+        "coverageKind": "behavioral-source-slice",
+        "profileId": "gen5-b2w2-trainer-ai-evaluator-v1alpha1",
+        "executable": false,
+        "request": {
+          "schemaVersion": "trainer-ai-evaluation-request/v1alpha1",
+          "state": {
+            "battle": {
+              "format": "singles",
+              "kind": "wild",
+              "turn": 1
+            },
+            "actor": {
+              "fainted": false,
+              "forcedContinuation": null,
+              "pivoting": false
+            }
+          },
+          "trainer": {
+            "id": "known-answer-trainer",
+            "aiFlagIds": [
+              "flag0"
+            ],
+            "bagSlots": []
+          },
+          "phaseInputs": {
+            "forced-continuation": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "state.actor.forcedContinuation",
+                  "operator": "eq",
+                  "value": null
+                }
+              ]
+            },
+            "trainer-item-selection": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "trainer.bagSlots",
+                  "operator": "empty",
+                  "value": null
+                }
+              ]
+            },
+            "switch-out": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "state.battle.kind",
+                  "operator": "eq",
+                  "value": "wild"
+                }
+              ]
+            },
+            "switch-in-or-replacement": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "state.actor.fainted",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "statePath": "state.actor.pivoting",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            "rotation": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "state.battle.format",
+                  "operator": "ne",
+                  "value": "rotation"
+                }
+              ]
+            },
+            "move-target-selection": {
+              "disposition": "evaluate",
+              "mode": "scoring",
+              "programIds": [
+                "flag0"
+              ],
+              "candidates": [
+                {
+                  "id": "ability-probe",
+                  "aiEffectId": 0,
+                  "action": {
+                    "type": "move",
+                    "moveId": "ability-probe",
+                    "target": "opponent-center"
+                  },
+                  "initialScore": 100
+                }
+              ]
+            }
+          },
+          "queryResults": {
+            "gen5.command.0x51": false,
+            "gen5.command.0x19": {
+              "default": false
+            },
+            "gen5.command.0x22": "is_strongest",
+            "gen5.command.0x2c": false,
+            "gen5.command.0x2a.ability-options": {
+              "[\"user\"]": [
+                "ability.pressure"
+              ],
+              "default": [
+                "ability.storm_drain"
+              ]
+            },
+            "gen5.command.0x20": "type.water",
+            "gen5.command.0x73": "Label_0x0756"
+          }
+        },
+        "expected": {
+          "status": "exact",
+          "scoreDistributions": [
+            {
+              "candidateId": "ability-probe",
+              "scores": [
+                {
+                  "score": 100,
+                  "probability": {
+                    "numerator": "1",
+                    "denominator": "1",
+                    "decimal": 1
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "evidence": [
+          {
+            "file": "imports/trainer-ai/flag0.ais",
+            "locator": "Label_0x002A through Label_0x01FE; Label_0x235E and Label_0x2366",
+            "authority": "pinned-executable-script"
+          }
+        ]
+      },
+      {
+        "id": "g5-ability-levitate-water-duplicate-branch-unreachable",
+        "kind": "source-script-known-answer",
+        "validatorKind": "gen5-source-ability-script",
+        "coverageKind": "behavioral-source-slice",
+        "profileId": "gen5-b2w2-trainer-ai-evaluator-v1alpha1",
+        "executable": false,
+        "request": {
+          "schemaVersion": "trainer-ai-evaluation-request/v1alpha1",
+          "state": {
+            "battle": {
+              "format": "singles",
+              "kind": "wild",
+              "turn": 1
+            },
+            "actor": {
+              "fainted": false,
+              "forcedContinuation": null,
+              "pivoting": false
+            }
+          },
+          "trainer": {
+            "id": "known-answer-trainer",
+            "aiFlagIds": [
+              "flag0"
+            ],
+            "bagSlots": []
+          },
+          "phaseInputs": {
+            "forced-continuation": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "state.actor.forcedContinuation",
+                  "operator": "eq",
+                  "value": null
+                }
+              ]
+            },
+            "trainer-item-selection": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "trainer.bagSlots",
+                  "operator": "empty",
+                  "value": null
+                }
+              ]
+            },
+            "switch-out": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "state.battle.kind",
+                  "operator": "eq",
+                  "value": "wild"
+                }
+              ]
+            },
+            "switch-in-or-replacement": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "state.actor.fainted",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "statePath": "state.actor.pivoting",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            "rotation": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "state.battle.format",
+                  "operator": "ne",
+                  "value": "rotation"
+                }
+              ]
+            },
+            "move-target-selection": {
+              "disposition": "evaluate",
+              "mode": "scoring",
+              "programIds": [
+                "flag0"
+              ],
+              "candidates": [
+                {
+                  "id": "ability-probe",
+                  "aiEffectId": 0,
+                  "action": {
+                    "type": "move",
+                    "moveId": "ability-probe",
+                    "target": "opponent-center"
+                  },
+                  "initialScore": 100
+                }
+              ]
+            }
+          },
+          "queryResults": {
+            "gen5.command.0x51": false,
+            "gen5.command.0x19": {
+              "default": false
+            },
+            "gen5.command.0x22": "is_strongest",
+            "gen5.command.0x2c": false,
+            "gen5.command.0x2a.ability-options": {
+              "[\"user\"]": [
+                "ability.pressure"
+              ],
+              "default": [
+                "ability.levitate"
+              ]
+            },
+            "gen5.command.0x20": "type.water",
+            "gen5.command.0x73": "Label_0x0756"
+          }
+        },
+        "expected": {
+          "status": "exact",
+          "scoreDistributions": [
+            {
+              "candidateId": "ability-probe",
+              "scores": [
+                {
+                  "score": 100,
+                  "probability": {
+                    "numerator": "1",
+                    "denominator": "1",
+                    "decimal": 1
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "evidence": [
+          {
+            "file": "imports/trainer-ai/flag0.ais",
+            "locator": "Label_0x002A through Label_0x01FE; Label_0x235E and Label_0x2366",
+            "authority": "pinned-executable-script"
+          }
+        ]
+      },
+      {
+        "id": "g5-ability-soundproof-hyper-voice-omission",
+        "kind": "source-script-known-answer",
+        "validatorKind": "gen5-source-ability-script",
+        "coverageKind": "behavioral-source-slice",
+        "profileId": "gen5-b2w2-trainer-ai-evaluator-v1alpha1",
+        "executable": false,
+        "request": {
+          "schemaVersion": "trainer-ai-evaluation-request/v1alpha1",
+          "state": {
+            "battle": {
+              "format": "singles",
+              "kind": "wild",
+              "turn": 1
+            },
+            "actor": {
+              "fainted": false,
+              "forcedContinuation": null,
+              "pivoting": false
+            }
+          },
+          "trainer": {
+            "id": "known-answer-trainer",
+            "aiFlagIds": [
+              "flag0"
+            ],
+            "bagSlots": []
+          },
+          "phaseInputs": {
+            "forced-continuation": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "state.actor.forcedContinuation",
+                  "operator": "eq",
+                  "value": null
+                }
+              ]
+            },
+            "trainer-item-selection": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "trainer.bagSlots",
+                  "operator": "empty",
+                  "value": null
+                }
+              ]
+            },
+            "switch-out": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "state.battle.kind",
+                  "operator": "eq",
+                  "value": "wild"
+                }
+              ]
+            },
+            "switch-in-or-replacement": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "state.actor.fainted",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "statePath": "state.actor.pivoting",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            "rotation": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "state.battle.format",
+                  "operator": "ne",
+                  "value": "rotation"
+                }
+              ]
+            },
+            "move-target-selection": {
+              "disposition": "evaluate",
+              "mode": "scoring",
+              "programIds": [
+                "flag0"
+              ],
+              "candidates": [
+                {
+                  "id": "ability-probe",
+                  "aiEffectId": 0,
+                  "action": {
+                    "type": "move",
+                    "moveId": "ability-probe",
+                    "target": "opponent-center"
+                  },
+                  "initialScore": 100
+                }
+              ]
+            }
+          },
+          "queryResults": {
+            "gen5.command.0x51": false,
+            "gen5.command.0x19": {
+              "default": false
+            },
+            "gen5.command.0x22": "is_strongest",
+            "gen5.command.0x2c": false,
+            "gen5.command.0x2a.ability-options": {
+              "[\"user\"]": [
+                "ability.pressure"
+              ],
+              "default": [
+                "ability.soundproof"
+              ]
+            },
+            "gen5.command.0x20": "type.normal",
+            "gen5.command.0x73": "Label_0x0756"
+          }
+        },
+        "expected": {
+          "status": "exact",
+          "scoreDistributions": [
+            {
+              "candidateId": "ability-probe",
+              "scores": [
+                {
+                  "score": 100,
+                  "probability": {
+                    "numerator": "1",
+                    "denominator": "1",
+                    "decimal": 1
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "evidence": [
+          {
+            "file": "imports/trainer-ai/flag0.ais",
+            "locator": "Label_0x002A through Label_0x01FE; Label_0x235E and Label_0x2366",
+            "authority": "pinned-executable-script"
+          }
+        ]
+      },
+      {
+        "id": "g5-ability-soundproof-bug-buzz",
+        "kind": "source-script-known-answer",
+        "validatorKind": "gen5-source-ability-script",
+        "coverageKind": "behavioral-source-slice",
+        "profileId": "gen5-b2w2-trainer-ai-evaluator-v1alpha1",
+        "executable": false,
+        "request": {
+          "schemaVersion": "trainer-ai-evaluation-request/v1alpha1",
+          "state": {
+            "battle": {
+              "format": "singles",
+              "kind": "wild",
+              "turn": 1
+            },
+            "actor": {
+              "fainted": false,
+              "forcedContinuation": null,
+              "pivoting": false
+            }
+          },
+          "trainer": {
+            "id": "known-answer-trainer",
+            "aiFlagIds": [
+              "flag0"
+            ],
+            "bagSlots": []
+          },
+          "phaseInputs": {
+            "forced-continuation": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "state.actor.forcedContinuation",
+                  "operator": "eq",
+                  "value": null
+                }
+              ]
+            },
+            "trainer-item-selection": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "trainer.bagSlots",
+                  "operator": "empty",
+                  "value": null
+                }
+              ]
+            },
+            "switch-out": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "state.battle.kind",
+                  "operator": "eq",
+                  "value": "wild"
+                }
+              ]
+            },
+            "switch-in-or-replacement": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "state.actor.fainted",
+                  "operator": "eq",
+                  "value": false
+                },
+                {
+                  "statePath": "state.actor.pivoting",
+                  "operator": "eq",
+                  "value": false
+                }
+              ]
+            },
+            "rotation": {
+              "disposition": "not-applicable",
+              "notApplicableEvidence": [
+                {
+                  "statePath": "state.battle.format",
+                  "operator": "ne",
+                  "value": "rotation"
+                }
+              ]
+            },
+            "move-target-selection": {
+              "disposition": "evaluate",
+              "mode": "scoring",
+              "programIds": [
+                "flag0"
+              ],
+              "candidates": [
+                {
+                  "id": "ability-probe",
+                  "aiEffectId": 0,
+                  "action": {
+                    "type": "move",
+                    "moveId": "move.bug_buzz",
+                    "target": "opponent-center"
+                  },
+                  "initialScore": 100
+                }
+              ]
+            }
+          },
+          "queryResults": {
+            "gen5.command.0x51": false,
+            "gen5.command.0x19": {
+              "default": false,
+              "[\"move.bug_buzz\"]": true
+            },
+            "gen5.command.0x22": "is_strongest",
+            "gen5.command.0x2c": false,
+            "gen5.command.0x2a.ability-options": {
+              "[\"user\"]": [
+                "ability.pressure"
+              ],
+              "default": [
+                "ability.soundproof"
+              ]
+            },
+            "gen5.command.0x20": "type.bug",
+            "gen5.command.0x73": "Label_0x0756"
+          }
+        },
+        "expected": {
+          "status": "exact",
+          "scoreDistributions": [
+            {
+              "candidateId": "ability-probe",
+              "scores": [
+                {
+                  "score": 90,
+                  "probability": {
+                    "numerator": "1",
+                    "denominator": "1",
+                    "decimal": 1
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "evidence": [
+          {
+            "file": "imports/trainer-ai/flag0.ais",
+            "locator": "Label_0x002A through Label_0x01FE; Label_0x235E and Label_0x2366",
+            "authority": "pinned-executable-script"
+          }
+        ]
       }
     ],
     "digest": {
       "algorithm": "sha256",
       "canonicalPayload": "JSON.stringify(evaluator without digest)",
-      "value": "902ac1d25f221515c6d24b9701fc777d6724cf36528c809058a7328de39e5f0f"
+      "value": "5c8d5065a0f360ae47e5b1e4439c232bdaaffdb4c679e3c2f030840285607bf6"
     },
     "scoreTitleCoverage": {
       "scoreInstructions": 526,

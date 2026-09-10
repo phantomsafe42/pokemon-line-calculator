@@ -9,6 +9,33 @@
 
     const ENGINE_ID = "smogon-calc";
     const ENGINE_VERSION = "0.11.0";
+    const ENGINE_PROFILES = Object.freeze({
+        "smogon-calc@0.11.0": Object.freeze({
+            id: "smogon-calc",
+            version: "0.11.0",
+            bootstrap: "standalone-browser-bundles",
+            scripts: Object.freeze([
+                "vendor/smogon-calc-0.11.0/data.production.min.js",
+                "vendor/smogon-calc-0.11.0/engine.production.min.js"
+            ])
+        }),
+        "radical-red-damage-calc@4.1-43fe5ec": Object.freeze({
+            id: "radical-red-damage-calc",
+            version: "4.1-43fe5ec",
+            bootstrap: "shared-commonjs-browser-exports",
+            scripts: Object.freeze([
+                "vendor/radical-red-calc-4.1-43fe5ec/util.js",
+                "vendor/radical-red-calc-4.1-43fe5ec/data/species.js",
+                "vendor/radical-red-calc-4.1-43fe5ec/data/types.js",
+                "vendor/radical-red-calc-4.1-43fe5ec/data/natures.js",
+                "vendor/radical-red-calc-4.1-43fe5ec/data/abilities.js",
+                "vendor/radical-red-calc-4.1-43fe5ec/data/moves.js",
+                "vendor/radical-red-calc-4.1-43fe5ec/data/items.js",
+                "vendor/radical-red-calc-4.1-43fe5ec/data/index.js",
+                "vendor/radical-red-calc-4.1-43fe5ec/engine.production.min.js"
+            ])
+        })
+    });
     const REQUIRED_SOURCES = [
         "species.json",
         "moves.json",
@@ -20,6 +47,7 @@
     ];
     const STATS = ["hp", "atk", "def", "spa", "spd", "spe"];
     const STATUS_NAMES = new Set(["slp", "psn", "brn", "frz", "par", "tox"]);
+    const HIDDEN_POWER_STATS = ["hp", "atk", "def", "spe", "spa", "spd"];
 
     function toId(value) {
         return String(value || "")
@@ -232,19 +260,31 @@
         });
     }
 
+    function engineProfile(mechanics) {
+        const id = String(mechanics?.engine?.id || "");
+        const version = String(mechanics?.engine?.version || "");
+        const profile = ENGINE_PROFILES[`${id}@${version}`];
+        if (!profile) throw new Error(`Unsupported calculator engine ${id || "(missing)"} ${version || "(missing)"}`);
+        return profile;
+    }
+
     function validateMechanics(mechanics, context) {
         if (!mechanics || Number(mechanics.schemaVersion) !== 1 || mechanics.kind !== "battle-mechanics") throw new Error("battle_mechanics.json is missing or has the wrong schema/kind");
         if (mechanics.gameId !== context.gameId) throw new Error("battle_mechanics.json belongs to another game");
-        if (mechanics.engine?.id !== ENGINE_ID || mechanics.engine?.version !== ENGINE_VERSION) {
-            throw new Error(`Calculator contract must target ${ENGINE_ID} ${ENGINE_VERSION}`);
-        }
+        engineProfile(mechanics);
         if (!Number.isInteger(Number(mechanics.damageGeneration)) || !Number.isInteger(Number(mechanics.canonicalDataGeneration))) {
             throw new Error("Calculator generations are not declared");
         }
         if (!mechanics.mechanicsProfile || mechanics.typeChartSource !== "types.json") {
             throw new Error("Calculator mechanics profile or type chart source is not declared");
         }
-        if (mechanics.validation?.status !== "passed" || Number(mechanics.validation?.unresolved || 0) !== 0) {
+        const fullyValidated = mechanics.validation?.status === "passed"
+            && Number(mechanics.validation?.unresolved || 0) === 0;
+        const sourceValidatedWithConsumerGates = String(mechanics.sourceReadiness?.status || "").startsWith("passed")
+            && Number(mechanics.sourceReadiness?.unresolved || 0) === 0
+            && Number(mechanics.gateOwnership?.dataset?.unresolved || 0) === 0
+            && mechanics.gateOwnership?.consumer?.sourceOmission !== true;
+        if (!fullyValidated && !sourceValidatedWithConsumerGates) {
             throw new Error("Calculator source validation has not passed");
         }
         const validated = new Set(mechanics.validation?.sourceFiles || []);
@@ -289,7 +329,7 @@
         const natureRequired = source.naturePolicy === "runtime-observed-required";
         const ivsRequired = source.ivPolicy === "runtime-observed-required";
         const species = hasSource
-            ? source.displaySpecies || source.species || source.speciesId || display.species || display.name
+            ? source.speciesId || source.species || source.displaySpecies || display.species || display.name
             : display.species || display.name;
         const sourceMoves = source.moveIds || source.moves || [];
         const moves = hasSource && Array.isArray(sourceMoves) && sourceMoves.length
@@ -495,7 +535,7 @@
         }
     }
 
-    function moveOptions(request) {
+    function moveOptions(request, generation) {
         const overrides = request.moveOverrides;
         const hits = request.moveHits === undefined || request.moveHits === null ? undefined : Number(request.moveHits);
         const criticalHit = request.criticalHit;
@@ -509,16 +549,23 @@
             throw new Error("Move overrides must be an object");
         }
         const keys = Object.keys(overrides || {});
-        if (keys.some(key => key !== "basePower")) {
-            throw new Error("Only a basePower move override is supported");
+        if (keys.some(key => !["basePower", "type"].includes(key))) {
+            throw new Error("Only basePower and type move overrides are supported");
         }
         const moveOverrides = {};
         if (keys.length) {
-            const basePower = Number(overrides.basePower);
-            if (!Number.isInteger(basePower) || basePower < 0 || basePower > 1000) {
-                throw new Error("Move basePower override must be an integer from 0 to 1000");
+            if (overrides.basePower !== undefined) {
+                const basePower = Number(overrides.basePower);
+                if (!Number.isInteger(basePower) || basePower < 0 || basePower > 1000) {
+                    throw new Error("Move basePower override must be an integer from 0 to 1000");
+                }
+                moveOverrides.basePower = basePower;
             }
-            moveOverrides.basePower = basePower;
+            if (overrides.type !== undefined) {
+                const type = generation.types.get(toId(overrides.type));
+                if (!type) throw new Error(`Move type override ${overrides.type} is unavailable`);
+                moveOverrides.type = type.name;
+            }
         }
         // The pinned engine treats a move-level willCrit flag as authoritative. A
         // forced normal calculation must override it so consumers can model
@@ -530,6 +577,29 @@
             ...(criticalHit === true ? { isCrit: true } : {})
         };
         return Object.keys(options).length ? options : undefined;
+    }
+
+    function hiddenPowerOverrides(mechanics, attacker, moveData, suppliedOverrides) {
+        const moveId = toId(moveData?.id || moveData?.name);
+        if (!moveId.startsWith("hiddenpower")) return null;
+        const policy = mechanics.runtimeInputs?.moves?.hiddenpower;
+        if (!policy || policy.status !== "resolved-conditional-input-contract") return null;
+        const ivs = HIDDEN_POWER_STATS.map(stat => Number(attacker.ivs?.[stat]));
+        if (!ivs.every(value => Number.isInteger(value) && value >= 0 && value <= 31)) {
+            throw new Error("Hidden Power requires all six exact IVs");
+        }
+        const typeBits = ivs.reduce((sum, value, index) => sum + (value & 1) * 2 ** index, 0);
+        const powerBits = ivs.reduce((sum, value, index) => sum + ((value >> 1) & 1) * 2 ** index, 0);
+        const type = policy.typeOrder?.[Math.floor(15 * typeBits / 63)];
+        const basePower = 30 + Math.floor(40 * powerBits / 63);
+        if (!type || !Number.isInteger(basePower)) throw new Error("Hidden Power derivation policy is incomplete");
+        if (suppliedOverrides?.type !== undefined && toId(suppliedOverrides.type) !== toId(type)) {
+            throw new Error(`Hidden Power type override must match the exact IV-derived ${type} type`);
+        }
+        if (suppliedOverrides?.basePower !== undefined && Number(suppliedOverrides.basePower) !== basePower) {
+            throw new Error(`Hidden Power base power override must match the exact IV-derived value ${basePower}`);
+        }
+        return { type, basePower };
     }
 
     function damageDistribution(value) {
@@ -583,6 +653,14 @@
             const moveData = moveCandidates.map(value => runtime.generation.moves.get(toId(value))).find(Boolean);
             if (!moveData) throw new Error(`Move ${request.moveName} is unavailable`);
             if (String(moveData.category).toLowerCase() === "status") return { status: "status", label: "Status" };
+            const stateDependentRetaliation = runtime.mechanics.runtimeInputs?.moves?.[toId(moveData.id || moveData.name)]?.retaliationPolicy;
+            const blockedMove = (runtime.mechanics.gateOwnership?.consumer?.records || []).find(issue =>
+                toId(issue.recordId) === toId(moveData.id || moveData.name)
+                && (issue.fields || []).includes("target-policy-execution")
+            );
+            if (blockedMove || stateDependentRetaliation?.kind === "retaliation") {
+                throw new Error(`${moveData.name} requires the integrating battle-state resolver`);
+            }
 
             const attackerPokemon = new runtime.calc.Pokemon(runtime.generation, attacker.species, pokemonOptions(attacker));
             const defenderPokemon = new runtime.calc.Pokemon(runtime.generation, defender.species, pokemonOptions(defender));
@@ -594,7 +672,21 @@
             const field = new runtime.calc.Field(fieldOptions(source.trainer || defenderSource.trainer, request, runtime.mechanics));
             const hitOptions = hitCountOptions(moveData, request.moveHits, attacker);
             const hitResults = hitOptions.map(hitOption => {
-                const move = new runtime.calc.Move(runtime.generation, moveData.name, moveOptions({ ...request, moveHits: hitOption.hits }));
+                const sourceMoveVariant = (source.mon?.moveVariants || []).find(variant =>
+                    toId(variant.moveId) === toId(moveData.id || moveData.name)
+                );
+                const automaticOverrides = sourceMoveVariant?.typeId
+                    ? { type: sourceMoveVariant.typeId }
+                    : {};
+                const exactHiddenPower = hiddenPowerOverrides(runtime.mechanics, attacker, moveData, {
+                    ...automaticOverrides,
+                    ...(request.moveOverrides || {})
+                });
+                const move = new runtime.calc.Move(runtime.generation, moveData.name, moveOptions({
+                    ...request,
+                    moveHits: hitOption.hits,
+                    moveOverrides: { ...automaticOverrides, ...(exactHiddenPower || {}), ...(request.moveOverrides || {}) }
+                }, runtime.generation));
                 const result = runtime.calc.calculate(runtime.generation, attackerPokemon, defenderPokemon, move, field);
                 return { ...hitOption, result, distribution: damageDistribution(result.damage) };
             });
@@ -674,8 +766,10 @@
     return Object.freeze({
         ENGINE_ID,
         ENGINE_VERSION,
+        ENGINE_PROFILES,
         REQUIRED_SOURCES: Object.freeze([...REQUIRED_SOURCES]),
         createFromDocuments,
+        engineProfile,
         load,
         toId
     });

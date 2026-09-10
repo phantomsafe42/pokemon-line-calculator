@@ -1,9 +1,75 @@
 import { assertValidPlanDocument } from "../contracts/plan_contract.js?v=20260905-drafts-freecalc-partners-v1";
 import { clone, nowIso, stableStringify } from "./primitives.js?v=20260905-drafts-freecalc-partners-v1";
-import { commitForcedReplacement, commitPreview, previewForcedReplacement } from "./planner.js?v=20260907-two-turn-immunity-v1";
-import { updateStateHash } from "./plan.js?v=20260905-drafts-freecalc-partners-v1";
+import { commitForcedReplacement, commitPreview, previewForcedReplacement } from "./planner.js?v=20260909-item-consumption-v1";
+import { updateStateHash, upgradeInitialEntryEffects } from "./plan.js?v=20260909-level-drift-v1";
 import { addFreeCalcBranch } from './free_calc.js?v=20260905-drafts-freecalc-partners-v1';
-import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260907-two-turn-immunity-v1";
+import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260909-level-drift-v1";
+import { calculateStats, normalizeTrainerRoster } from "../adapters/combatant_ingest.js?v=20260909-level-drift-v1";
+
+function runtimeTrainerInputs(plan) {
+  const inputs = {
+    highestPlayerPartyLevel: Math.max(1, ...Object.values(plan.combatants || {})
+      .filter(combatant => combatant.side === "player")
+      .map(combatant => Number(combatant.level) || 1))
+  };
+  for (const combatant of Object.values(plan.combatants || {}).filter(entry => entry.side === "enemy")) {
+    const slot = Number(combatant.source?.encounterSlot ?? combatant.source?.trainerSlot);
+    if (!Number.isInteger(slot) || slot < 1) continue;
+    inputs[String(slot)] = {
+      nature: combatant.natureId,
+      ability: combatant.originalAbilityId,
+      ivs: clone(combatant.ivs)
+    };
+  }
+  return inputs;
+}
+
+function refreshRootHp(state, previousMaximum, nextMaximum) {
+  if (!state?.hp || !Number.isFinite(nextMaximum) || nextMaximum < 1) return;
+  const wasFull = Number(state.hp.min) === previousMaximum && Number(state.hp.max) === previousMaximum;
+  const clamp = value => Math.max(0, Math.min(nextMaximum, Number(value) || 0));
+  state.hp = wasFull
+    ? { min: nextMaximum, max: nextMaximum, maxHp: nextMaximum }
+    : { min: clamp(state.hp.min), max: clamp(state.hp.max), maxHp: nextMaximum };
+  if (Array.isArray(state.hpDistribution)) {
+    state.hpDistribution = state.hpDistribution.map(entry => ({ ...entry, value: wasFull ? nextMaximum : clamp(entry.value) }));
+  }
+}
+
+function refreshDatasetDerivedStats(original, dataset) {
+  const normalized = normalizeTrainerRoster(
+    original.game.trainerId,
+    original.game.trainerVariantId,
+    dataset,
+    runtimeTrainerInputs(original)
+  );
+  const next = clone(original);
+  const root = next.stateNodes[next.initialStateNodeId];
+  for (const fresh of normalized) {
+    const combatant = next.combatants[fresh.combatantKey];
+    if (!combatant) continue;
+    const previousMaximum = Number(combatant.calculatedStats?.hp);
+    if (fresh.statCalculationLevelDelta) combatant.statCalculationLevelDelta = fresh.statCalculationLevelDelta;
+    else delete combatant.statCalculationLevelDelta;
+    combatant.calculatedStats = clone(fresh.calculatedStats);
+    const state = root?.combatantStates?.[fresh.combatantKey];
+    if (!state) continue;
+    const currentSpeciesId = state.currentSpeciesId || combatant.speciesId;
+    const species = dataset.get("species", currentSpeciesId);
+    const currentStats = calculateStats({
+      ...combatant,
+      speciesId: currentSpeciesId,
+      level: Number(state.currentLevel ?? combatant.level),
+      baseStats: currentSpeciesId === combatant.speciesId ? combatant.baseStats : species?.baseStats
+    }, dataset);
+    const nextMaximum = Number(currentStats.hp);
+    refreshRootHp(state, Number(state.hp?.maxHp ?? previousMaximum), nextMaximum);
+    if (state.currentStats !== undefined) state.currentStats = clone(currentStats);
+    if (state.calculatedStatOverrides !== undefined) state.calculatedStatOverrides = clone(currentStats);
+  }
+  if (root) updateStateHash(root);
+  return next;
+}
 
 function branchSignatureFromEvents(state, events) {
   const normalizedEvents = events.map(entry => ({
@@ -122,6 +188,8 @@ function copyNodeAnnotations(oldPlan, oldStateId, newPlan, newStateId) {
 
 export async function recalculatePlanDocument(original, { dataset, previewTurnFn, now = nowIso() }) {
   assertValidPlanDocument(original);
+  original = refreshDatasetDerivedStats(original, dataset);
+  original = upgradeInitialEntryEffects(original, dataset).plan;
   if (typeof previewTurnFn !== "function") throw new Error("A resolver preview function is required for recalculation");
   const root = clone(original.stateNodes[original.initialStateNodeId]);
   root.parentActionGroupId = null;

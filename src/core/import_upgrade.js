@@ -1,7 +1,7 @@
 import { assertValidPlanDocument } from "../contracts/plan_contract.js?v=20260905-drafts-freecalc-partners-v1";
-import { mechanicsCompatibility, validatePlanReferences } from "../contracts/plan_compatibility.js?v=20260907-import-upgrade-v1";
-import { upgradeInitialEntryEffects } from "./plan.js?v=20260907-form-sprites-v1";
-import { recalculatePlanDocument } from "./recalculation.js?v=20260907-two-turn-immunity-v1";
+import { mechanicsCompatibility, validatePlanReferences } from "../contracts/plan_compatibility.js?v=20260909-level-drift-v1";
+import { upgradeInitialEntryEffects } from "./plan.js?v=20260909-level-drift-v1";
+import { recalculatePlanDocument } from "./recalculation.js?v=20260909-level-drift-v1";
 
 function hasResolvedBranches(plan) {
   return Object.keys(plan.actionGroups || {}).length > 0

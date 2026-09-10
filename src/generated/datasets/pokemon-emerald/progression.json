@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-emerald",
+  "kind": "progression",
+  "profile": "retail-first-credits-plus-documented-postgame",
+  "strictDependencyGraph": false,
+  "arcs": [
+    {
+      "id": "first-credits",
+      "orderModel": "source-display-order",
+      "strictDependencyGraph": false
+    },
+    {
+      "id": "postgame",
+      "orderModel": "source-display-order",
+      "strictDependencyGraph": false
+    },
+    {
+      "id": "facilities",
+      "orderModel": "repeatable-not-campaign-order",
+      "strictDependencyGraph": false
+    }
+  ],
+  "orderingCaveats": [],
+  "records": [
+    {
+      "id": "roxanne",
+      "order": 1,
+      "name": "Roxanne Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-emerald-campaign-occurrence-0036"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 264,
+        "pageOrder": 2
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "brawly",
+      "order": 2,
+      "name": "Brawly Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-emerald-campaign-occurrence-0068"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 386,
+        "pageOrder": 3
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "wattson",
+      "order": 3,
+      "name": "Wattson Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-emerald-campaign-occurrence-0119"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 129,
+        "pageOrder": 5
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "flannery",
+      "order": 4,
+      "name": "Flannery Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-emerald-campaign-occurrence-0262"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 418,
+        "pageOrder": 7
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "norman",
+      "order": 5,
+      "name": "Norman Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-emerald-campaign-occurrence-0289"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 168,
+        "pageOrder": 8
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "winona",
+      "order": 6,
+      "name": "Winona Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-emerald-campaign-occurrence-0413"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 195,
+        "pageOrder": 11
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "tate",
+      "order": 7,
+      "name": "Tate & Liza Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-emerald-campaign-occurrence-0531"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 196,
+        "pageOrder": 14
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "juan",
+      "order": 8,
+      "name": "Juan Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-emerald-campaign-occurrence-0644"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 358,
+        "pageOrder": 17
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "league",
+      "order": 9,
+      "name": "League Split",
+      "type": "campaign-phase",
+      "anchorOccurrenceIds": [],
+      "boundarySourceDisplayOrder": null,
+      "orderModel": "source-display-order-after-eighth-gym",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "postgame",
+      "order": 10,
+      "name": "Postgame",
+      "type": "campaign-phase",
+      "anchorOccurrenceIds": [],
+      "boundarySourceDisplayOrder": null,
+      "orderModel": "source-display-order-with-explicit-rematches-retained",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "facilities",
+      "order": 11,
+      "name": "Battle Facilities",
+      "type": "campaign-phase",
+      "anchorOccurrenceIds": [],
+      "boundarySourceDisplayOrder": null,
+      "orderModel": "repeatable-or-source-explicit-rematch; not a fixed campaign sequence",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    }
+  ]
+}

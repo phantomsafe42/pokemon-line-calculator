@@ -21,6 +21,18 @@ export function hiddenPowerTypeFromIvs(ivs, { generation = 5 } = {}) {
   return HIDDEN_POWER_TYPES[Math.floor(parityValue * 15 / 63)];
 }
 
+export function hiddenPowerPowerFromIvs(ivs, { generation = 5 } = {}) {
+  if (!Number.isInteger(Number(generation)) || Number(generation) < 3 || Number(generation) > 5) {
+    throw new Error(`Automatic Hidden Power power is unavailable for generation ${generation}`);
+  }
+  const powerValue = STAT_ORDER.reduce((sum, stat, index) => {
+    const iv = Number(ivs?.[stat]);
+    if (!Number.isInteger(iv) || iv < 0 || iv > 31) throw new Error(`Hidden Power requires a valid ${stat} IV`);
+    return sum + ((iv >> 1) & 1) * (2 ** index);
+  }, 0);
+  return 30 + Math.floor(powerValue * 40 / 63);
+}
+
 export function resolvedHiddenPowerType(ivs, override = null, options = {}) {
   const normalizedOverride = String(override || "").toLowerCase();
   if (normalizedOverride) {

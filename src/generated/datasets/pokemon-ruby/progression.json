@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-ruby",
+  "kind": "progression",
+  "profile": "retail-first-credits-plus-documented-postgame",
+  "strictDependencyGraph": false,
+  "arcs": [
+    {
+      "id": "first-credits",
+      "orderModel": "source-display-order",
+      "strictDependencyGraph": false
+    },
+    {
+      "id": "postgame",
+      "orderModel": "source-display-order",
+      "strictDependencyGraph": false
+    },
+    {
+      "id": "facilities",
+      "orderModel": "repeatable-not-campaign-order",
+      "strictDependencyGraph": false
+    }
+  ],
+  "orderingCaveats": [],
+  "records": [
+    {
+      "id": "roxanne",
+      "order": 1,
+      "name": "Roxanne Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-ruby-campaign-occurrence-0022"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 118,
+        "pageOrder": 3
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "brawly",
+      "order": 2,
+      "name": "Brawly Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-ruby-campaign-occurrence-0032"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 81,
+        "pageOrder": 4
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "wattson",
+      "order": 3,
+      "name": "Wattson Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-ruby-campaign-occurrence-0099"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 133,
+        "pageOrder": 6
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "flannery",
+      "order": 4,
+      "name": "Flannery Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-ruby-campaign-occurrence-0156"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 442,
+        "pageOrder": 9
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "norman",
+      "order": 5,
+      "name": "Norman Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-ruby-campaign-occurrence-0169"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 164,
+        "pageOrder": 10
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "winona",
+      "order": 6,
+      "name": "Winona Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-ruby-campaign-occurrence-0206"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 579,
+        "pageOrder": 11
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "tate",
+      "order": 7,
+      "name": "Tate & Liza Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-ruby-campaign-occurrence-0266"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 106,
+        "pageOrder": 15
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "wallace",
+      "order": 8,
+      "name": "Wallace Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-ruby-campaign-occurrence-0302"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 283,
+        "pageOrder": 17
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "league",
+      "order": 9,
+      "name": "League Split",
+      "type": "campaign-phase",
+      "anchorOccurrenceIds": [],
+      "boundarySourceDisplayOrder": null,
+      "orderModel": "source-display-order-after-eighth-gym",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "postgame",
+      "order": 10,
+      "name": "Postgame",
+      "type": "campaign-phase",
+      "anchorOccurrenceIds": [],
+      "boundarySourceDisplayOrder": null,
+      "orderModel": "source-display-order-with-explicit-rematches-retained",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "facilities",
+      "order": 11,
+      "name": "Battle Facilities",
+      "type": "campaign-phase",
+      "anchorOccurrenceIds": [],
+      "boundarySourceDisplayOrder": null,
+      "orderModel": "repeatable-or-source-explicit-rematch; not a fixed campaign sequence",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    }
+  ]
+}

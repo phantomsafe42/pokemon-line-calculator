@@ -2,7 +2,7 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-rp-dataset",
   "source": "Datasets/Renegade Platinum/source-data",
-  "sourceTreeSha256": "F5C98975749160FC20E5FB372CBB882940C0173C1B2DDF16F81058769EB2F390",
+  "sourceTreeSha256": "436108A24279D7CE358CD0A6F111732CE92125DE88256BCE55B297E7EFC69E06",
   "files": [
     {
       "path": "dataset_manifest.json",
@@ -36,8 +36,8 @@
     },
     {
       "path": "items.json",
-      "bytes": 267083,
-      "sha256": "FCAA4194549AF8C0DDB9D88557E86C20D10F76AE8F65A9DAB0EE19356E5E357E"
+      "bytes": 300057,
+      "sha256": "808A2DA231535B725581D86BB3B7C6E9B7A36767CFF158CE147638EE1E6FB6C8"
     },
     {
       "path": "natures.json",

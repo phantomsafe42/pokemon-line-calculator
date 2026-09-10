@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-platinum",
+  "kind": "progression",
+  "profile": "retail-first-credits-plus-documented-postgame",
+  "strictDependencyGraph": false,
+  "arcs": [
+    {
+      "id": "first-credits",
+      "orderModel": "source-display-order",
+      "strictDependencyGraph": false
+    },
+    {
+      "id": "postgame",
+      "orderModel": "source-display-order",
+      "strictDependencyGraph": false
+    },
+    {
+      "id": "facilities",
+      "orderModel": "repeatable-not-campaign-order",
+      "strictDependencyGraph": false
+    }
+  ],
+  "orderingCaveats": [],
+  "records": [
+    {
+      "id": "roark",
+      "order": 1,
+      "name": "Roark Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-platinum-campaign-occurrence-0029"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 20,
+        "pageOrder": 3
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "gardenia",
+      "order": 2,
+      "name": "Gardenia Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-platinum-campaign-occurrence-0073"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 372,
+        "pageOrder": 4
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "fantina",
+      "order": 3,
+      "name": "Fantina Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-platinum-campaign-occurrence-0118"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 173,
+        "pageOrder": 6
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "maylene",
+      "order": 4,
+      "name": "Maylene Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-platinum-campaign-occurrence-0158"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 168,
+        "pageOrder": 8
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "wake",
+      "order": 5,
+      "name": "Wake Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-platinum-campaign-occurrence-0207"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 256,
+        "pageOrder": 10
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "byron",
+      "order": 6,
+      "name": "Byron Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-platinum-campaign-occurrence-0304"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 290,
+        "pageOrder": 13
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "candice",
+      "order": 7,
+      "name": "Candice Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-platinum-campaign-occurrence-0341"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 89,
+        "pageOrder": 15
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "volkner",
+      "order": 8,
+      "name": "Volkner Split",
+      "type": "gym-split",
+      "anchorOccurrenceIds": [
+        "pokemon-platinum-campaign-occurrence-0401"
+      ],
+      "boundarySourceDisplayOrder": {
+        "groupIndex": 1,
+        "identityBranchIndex": 1,
+        "line": 40,
+        "pageOrder": 19
+      },
+      "orderModel": "source-display-window-ending-at-gym-leader",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "league",
+      "order": 9,
+      "name": "League Split",
+      "type": "campaign-phase",
+      "anchorOccurrenceIds": [],
+      "boundarySourceDisplayOrder": null,
+      "orderModel": "source-display-order-after-eighth-gym",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "postgame",
+      "order": 10,
+      "name": "Postgame",
+      "type": "campaign-phase",
+      "anchorOccurrenceIds": [],
+      "boundarySourceDisplayOrder": null,
+      "orderModel": "source-display-order-with-explicit-rematches-retained",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    },
+    {
+      "id": "facilities",
+      "order": 11,
+      "name": "Battle Facilities",
+      "type": "campaign-phase",
+      "anchorOccurrenceIds": [],
+      "boundarySourceDisplayOrder": null,
+      "orderModel": "repeatable-or-source-explicit-rematch; not a fixed campaign sequence",
+      "sourceConfidence": "revision-pinned Bulbapedia campaign profile"
+    }
+  ]
+}

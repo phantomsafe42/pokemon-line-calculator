@@ -1,0 +1,1155 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-black",
+  "kind": "abilities",
+  "records": {
+    "stench": {
+      "num": 1,
+      "id": "stench",
+      "name": "Stench",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "drizzle": {
+      "num": 2,
+      "id": "drizzle",
+      "name": "Drizzle",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "speedboost": {
+      "num": 3,
+      "id": "speedboost",
+      "name": "Speed Boost",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "battlearmor": {
+      "num": 4,
+      "id": "battlearmor",
+      "name": "Battle Armor",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "sturdy": {
+      "num": 5,
+      "id": "sturdy",
+      "name": "Sturdy",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "damp": {
+      "num": 6,
+      "id": "damp",
+      "name": "Damp",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "limber": {
+      "num": 7,
+      "id": "limber",
+      "name": "Limber",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "sandveil": {
+      "num": 8,
+      "id": "sandveil",
+      "name": "Sand Veil",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "static": {
+      "num": 9,
+      "id": "static",
+      "name": "Static",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "voltabsorb": {
+      "num": 10,
+      "id": "voltabsorb",
+      "name": "Volt Absorb",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "waterabsorb": {
+      "num": 11,
+      "id": "waterabsorb",
+      "name": "Water Absorb",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "oblivious": {
+      "num": 12,
+      "id": "oblivious",
+      "name": "Oblivious",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "cloudnine": {
+      "num": 13,
+      "id": "cloudnine",
+      "name": "Cloud Nine",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "compoundeyes": {
+      "num": 14,
+      "id": "compoundeyes",
+      "name": "Compound Eyes",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "insomnia": {
+      "num": 15,
+      "id": "insomnia",
+      "name": "Insomnia",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "colorchange": {
+      "num": 16,
+      "id": "colorchange",
+      "name": "Color Change",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "immunity": {
+      "num": 17,
+      "id": "immunity",
+      "name": "Immunity",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "flashfire": {
+      "num": 18,
+      "id": "flashfire",
+      "name": "Flash Fire",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "shielddust": {
+      "num": 19,
+      "id": "shielddust",
+      "name": "Shield Dust",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "owntempo": {
+      "num": 20,
+      "id": "owntempo",
+      "name": "Own Tempo",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "suctioncups": {
+      "num": 21,
+      "id": "suctioncups",
+      "name": "Suction Cups",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "intimidate": {
+      "num": 22,
+      "id": "intimidate",
+      "name": "Intimidate",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "shadowtag": {
+      "num": 23,
+      "id": "shadowtag",
+      "name": "Shadow Tag",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "roughskin": {
+      "num": 24,
+      "id": "roughskin",
+      "name": "Rough Skin",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "wonderguard": {
+      "num": 25,
+      "id": "wonderguard",
+      "name": "Wonder Guard",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "levitate": {
+      "num": 26,
+      "id": "levitate",
+      "name": "Levitate",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "effectspore": {
+      "num": 27,
+      "id": "effectspore",
+      "name": "Effect Spore",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "synchronize": {
+      "num": 28,
+      "id": "synchronize",
+      "name": "Synchronize",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "clearbody": {
+      "num": 29,
+      "id": "clearbody",
+      "name": "Clear Body",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "naturalcure": {
+      "num": 30,
+      "id": "naturalcure",
+      "name": "Natural Cure",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "lightningrod": {
+      "num": 31,
+      "id": "lightningrod",
+      "name": "Lightning Rod",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "serenegrace": {
+      "num": 32,
+      "id": "serenegrace",
+      "name": "Serene Grace",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "swiftswim": {
+      "num": 33,
+      "id": "swiftswim",
+      "name": "Swift Swim",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "chlorophyll": {
+      "num": 34,
+      "id": "chlorophyll",
+      "name": "Chlorophyll",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "illuminate": {
+      "num": 35,
+      "id": "illuminate",
+      "name": "Illuminate",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "trace": {
+      "num": 36,
+      "id": "trace",
+      "name": "Trace",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "hugepower": {
+      "num": 37,
+      "id": "hugepower",
+      "name": "Huge Power",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "poisonpoint": {
+      "num": 38,
+      "id": "poisonpoint",
+      "name": "Poison Point",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "innerfocus": {
+      "num": 39,
+      "id": "innerfocus",
+      "name": "Inner Focus",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "magmaarmor": {
+      "num": 40,
+      "id": "magmaarmor",
+      "name": "Magma Armor",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "waterveil": {
+      "num": 41,
+      "id": "waterveil",
+      "name": "Water Veil",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "magnetpull": {
+      "num": 42,
+      "id": "magnetpull",
+      "name": "Magnet Pull",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "soundproof": {
+      "num": 43,
+      "id": "soundproof",
+      "name": "Soundproof",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "raindish": {
+      "num": 44,
+      "id": "raindish",
+      "name": "Rain Dish",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "sandstream": {
+      "num": 45,
+      "id": "sandstream",
+      "name": "Sand Stream",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "pressure": {
+      "num": 46,
+      "id": "pressure",
+      "name": "Pressure",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "thickfat": {
+      "num": 47,
+      "id": "thickfat",
+      "name": "Thick Fat",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "earlybird": {
+      "num": 48,
+      "id": "earlybird",
+      "name": "Early Bird",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "flamebody": {
+      "num": 49,
+      "id": "flamebody",
+      "name": "Flame Body",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "runaway": {
+      "num": 50,
+      "id": "runaway",
+      "name": "Run Away",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "keeneye": {
+      "num": 51,
+      "id": "keeneye",
+      "name": "Keen Eye",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "hypercutter": {
+      "num": 52,
+      "id": "hypercutter",
+      "name": "Hyper Cutter",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "pickup": {
+      "num": 53,
+      "id": "pickup",
+      "name": "Pickup",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "truant": {
+      "num": 54,
+      "id": "truant",
+      "name": "Truant",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "hustle": {
+      "num": 55,
+      "id": "hustle",
+      "name": "Hustle",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "cutecharm": {
+      "num": 56,
+      "id": "cutecharm",
+      "name": "Cute Charm",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "plus": {
+      "num": 57,
+      "id": "plus",
+      "name": "Plus",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "minus": {
+      "num": 58,
+      "id": "minus",
+      "name": "Minus",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "forecast": {
+      "num": 59,
+      "id": "forecast",
+      "name": "Forecast",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "stickyhold": {
+      "num": 60,
+      "id": "stickyhold",
+      "name": "Sticky Hold",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "shedskin": {
+      "num": 61,
+      "id": "shedskin",
+      "name": "Shed Skin",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "guts": {
+      "num": 62,
+      "id": "guts",
+      "name": "Guts",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "marvelscale": {
+      "num": 63,
+      "id": "marvelscale",
+      "name": "Marvel Scale",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "liquidooze": {
+      "num": 64,
+      "id": "liquidooze",
+      "name": "Liquid Ooze",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "overgrow": {
+      "num": 65,
+      "id": "overgrow",
+      "name": "Overgrow",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "blaze": {
+      "num": 66,
+      "id": "blaze",
+      "name": "Blaze",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "torrent": {
+      "num": 67,
+      "id": "torrent",
+      "name": "Torrent",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "swarm": {
+      "num": 68,
+      "id": "swarm",
+      "name": "Swarm",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "rockhead": {
+      "num": 69,
+      "id": "rockhead",
+      "name": "Rock Head",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "drought": {
+      "num": 70,
+      "id": "drought",
+      "name": "Drought",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "arenatrap": {
+      "num": 71,
+      "id": "arenatrap",
+      "name": "Arena Trap",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "vitalspirit": {
+      "num": 72,
+      "id": "vitalspirit",
+      "name": "Vital Spirit",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "whitesmoke": {
+      "num": 73,
+      "id": "whitesmoke",
+      "name": "White Smoke",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "purepower": {
+      "num": 74,
+      "id": "purepower",
+      "name": "Pure Power",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "shellarmor": {
+      "num": 75,
+      "id": "shellarmor",
+      "name": "Shell Armor",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "airlock": {
+      "num": 76,
+      "id": "airlock",
+      "name": "Air Lock",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "tangledfeet": {
+      "num": 77,
+      "id": "tangledfeet",
+      "name": "Tangled Feet",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "motordrive": {
+      "num": 78,
+      "id": "motordrive",
+      "name": "Motor Drive",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "rivalry": {
+      "num": 79,
+      "id": "rivalry",
+      "name": "Rivalry",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "steadfast": {
+      "num": 80,
+      "id": "steadfast",
+      "name": "Steadfast",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "snowcloak": {
+      "num": 81,
+      "id": "snowcloak",
+      "name": "Snow Cloak",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "gluttony": {
+      "num": 82,
+      "id": "gluttony",
+      "name": "Gluttony",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "angerpoint": {
+      "num": 83,
+      "id": "angerpoint",
+      "name": "Anger Point",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "unburden": {
+      "num": 84,
+      "id": "unburden",
+      "name": "Unburden",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "heatproof": {
+      "num": 85,
+      "id": "heatproof",
+      "name": "Heatproof",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "simple": {
+      "num": 86,
+      "id": "simple",
+      "name": "Simple",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "dryskin": {
+      "num": 87,
+      "id": "dryskin",
+      "name": "Dry Skin",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "download": {
+      "num": 88,
+      "id": "download",
+      "name": "Download",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "ironfist": {
+      "num": 89,
+      "id": "ironfist",
+      "name": "Iron Fist",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "poisonheal": {
+      "num": 90,
+      "id": "poisonheal",
+      "name": "Poison Heal",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "adaptability": {
+      "num": 91,
+      "id": "adaptability",
+      "name": "Adaptability",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "skilllink": {
+      "num": 92,
+      "id": "skilllink",
+      "name": "Skill Link",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "hydration": {
+      "num": 93,
+      "id": "hydration",
+      "name": "Hydration",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "solarpower": {
+      "num": 94,
+      "id": "solarpower",
+      "name": "Solar Power",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "quickfeet": {
+      "num": 95,
+      "id": "quickfeet",
+      "name": "Quick Feet",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "normalize": {
+      "num": 96,
+      "id": "normalize",
+      "name": "Normalize",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "sniper": {
+      "num": 97,
+      "id": "sniper",
+      "name": "Sniper",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "magicguard": {
+      "num": 98,
+      "id": "magicguard",
+      "name": "Magic Guard",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "noguard": {
+      "num": 99,
+      "id": "noguard",
+      "name": "No Guard",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "stall": {
+      "num": 100,
+      "id": "stall",
+      "name": "Stall",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "technician": {
+      "num": 101,
+      "id": "technician",
+      "name": "Technician",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "leafguard": {
+      "num": 102,
+      "id": "leafguard",
+      "name": "Leaf Guard",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "klutz": {
+      "num": 103,
+      "id": "klutz",
+      "name": "Klutz",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "moldbreaker": {
+      "num": 104,
+      "id": "moldbreaker",
+      "name": "Mold Breaker",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "superluck": {
+      "num": 105,
+      "id": "superluck",
+      "name": "Super Luck",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "aftermath": {
+      "num": 106,
+      "id": "aftermath",
+      "name": "Aftermath",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "anticipation": {
+      "num": 107,
+      "id": "anticipation",
+      "name": "Anticipation",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "forewarn": {
+      "num": 108,
+      "id": "forewarn",
+      "name": "Forewarn",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "unaware": {
+      "num": 109,
+      "id": "unaware",
+      "name": "Unaware",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "tintedlens": {
+      "num": 110,
+      "id": "tintedlens",
+      "name": "Tinted Lens",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "filter": {
+      "num": 111,
+      "id": "filter",
+      "name": "Filter",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "slowstart": {
+      "num": 112,
+      "id": "slowstart",
+      "name": "Slow Start",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "scrappy": {
+      "num": 113,
+      "id": "scrappy",
+      "name": "Scrappy",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "stormdrain": {
+      "num": 114,
+      "id": "stormdrain",
+      "name": "Storm Drain",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "icebody": {
+      "num": 115,
+      "id": "icebody",
+      "name": "Ice Body",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "solidrock": {
+      "num": 116,
+      "id": "solidrock",
+      "name": "Solid Rock",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "snowwarning": {
+      "num": 117,
+      "id": "snowwarning",
+      "name": "Snow Warning",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "honeygather": {
+      "num": 118,
+      "id": "honeygather",
+      "name": "Honey Gather",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "frisk": {
+      "num": 119,
+      "id": "frisk",
+      "name": "Frisk",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "reckless": {
+      "num": 120,
+      "id": "reckless",
+      "name": "Reckless",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "multitype": {
+      "num": 121,
+      "id": "multitype",
+      "name": "Multitype",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "flowergift": {
+      "num": 122,
+      "id": "flowergift",
+      "name": "Flower Gift",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "baddreams": {
+      "num": 123,
+      "id": "baddreams",
+      "name": "Bad Dreams",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "pickpocket": {
+      "num": 124,
+      "id": "pickpocket",
+      "name": "Pickpocket",
+      "available": false,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "sheerforce": {
+      "num": 125,
+      "id": "sheerforce",
+      "name": "Sheer Force",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "contrary": {
+      "num": 126,
+      "id": "contrary",
+      "name": "Contrary",
+      "available": false,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "unnerve": {
+      "num": 127,
+      "id": "unnerve",
+      "name": "Unnerve",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "defiant": {
+      "num": 128,
+      "id": "defiant",
+      "name": "Defiant",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "defeatist": {
+      "num": 129,
+      "id": "defeatist",
+      "name": "Defeatist",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "cursedbody": {
+      "num": 130,
+      "id": "cursedbody",
+      "name": "Cursed Body",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "healer": {
+      "num": 131,
+      "id": "healer",
+      "name": "Healer",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "friendguard": {
+      "num": 132,
+      "id": "friendguard",
+      "name": "Friend Guard",
+      "available": false,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "weakarmor": {
+      "num": 133,
+      "id": "weakarmor",
+      "name": "Weak Armor",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "heavymetal": {
+      "num": 134,
+      "id": "heavymetal",
+      "name": "Heavy Metal",
+      "available": false,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "lightmetal": {
+      "num": 135,
+      "id": "lightmetal",
+      "name": "Light Metal",
+      "available": false,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "multiscale": {
+      "num": 136,
+      "id": "multiscale",
+      "name": "Multiscale",
+      "available": false,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "toxicboost": {
+      "num": 137,
+      "id": "toxicboost",
+      "name": "Toxic Boost",
+      "available": false,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "flareboost": {
+      "num": 138,
+      "id": "flareboost",
+      "name": "Flare Boost",
+      "available": false,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "harvest": {
+      "num": 139,
+      "id": "harvest",
+      "name": "Harvest",
+      "available": false,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "telepathy": {
+      "num": 140,
+      "id": "telepathy",
+      "name": "Telepathy",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "moody": {
+      "num": 141,
+      "id": "moody",
+      "name": "Moody",
+      "available": false,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "overcoat": {
+      "num": 142,
+      "id": "overcoat",
+      "name": "Overcoat",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "poisontouch": {
+      "num": 143,
+      "id": "poisontouch",
+      "name": "Poison Touch",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "regenerator": {
+      "num": 144,
+      "id": "regenerator",
+      "name": "Regenerator",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "bigpecks": {
+      "num": 145,
+      "id": "bigpecks",
+      "name": "Big Pecks",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "sandrush": {
+      "num": 146,
+      "id": "sandrush",
+      "name": "Sand Rush",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "wonderskin": {
+      "num": 147,
+      "id": "wonderskin",
+      "name": "Wonder Skin",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "analytic": {
+      "num": 148,
+      "id": "analytic",
+      "name": "Analytic",
+      "available": false,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "illusion": {
+      "num": 149,
+      "id": "illusion",
+      "name": "Illusion",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "imposter": {
+      "num": 150,
+      "id": "imposter",
+      "name": "Imposter",
+      "available": false,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "infiltrator": {
+      "num": 151,
+      "id": "infiltrator",
+      "name": "Infiltrator",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "mummy": {
+      "num": 152,
+      "id": "mummy",
+      "name": "Mummy",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "moxie": {
+      "num": 153,
+      "id": "moxie",
+      "name": "Moxie",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "justified": {
+      "num": 154,
+      "id": "justified",
+      "name": "Justified",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "rattled": {
+      "num": 155,
+      "id": "rattled",
+      "name": "Rattled",
+      "available": false,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "magicbounce": {
+      "num": 156,
+      "id": "magicbounce",
+      "name": "Magic Bounce",
+      "available": false,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "sapsipper": {
+      "num": 157,
+      "id": "sapsipper",
+      "name": "Sap Sipper",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "prankster": {
+      "num": 158,
+      "id": "prankster",
+      "name": "Prankster",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "sandforce": {
+      "num": 159,
+      "id": "sandforce",
+      "name": "Sand Force",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "ironbarbs": {
+      "num": 160,
+      "id": "ironbarbs",
+      "name": "Iron Barbs",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "zenmode": {
+      "num": 161,
+      "id": "zenmode",
+      "name": "Zen Mode",
+      "available": false,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "victorystar": {
+      "num": 162,
+      "id": "victorystar",
+      "name": "Victory Star",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "turboblaze": {
+      "num": 163,
+      "id": "turboblaze",
+      "name": "Turboblaze",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    },
+    "teravolt": {
+      "num": 164,
+      "id": "teravolt",
+      "name": "Teravolt",
+      "available": true,
+      "sourceConfidence": "raw generation identity; Gen 3 Cacophony/Air Lock translation explicit"
+    }
+  }
+}

@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 2,
+  "gameId": "pokemon-heartgold",
+  "kind": "trainer-battle-groups",
+  "records": {
+    "heartgold-soulsilver-script-pair-0417-0120": {
+      "id": "heartgold-soulsilver-script-pair-0417-0120",
+      "battleFormat": "double",
+      "locationId": "field-map-header-0038",
+      "enemyTrainerIds": [
+        "pokemon-heartgold-trainer-0417",
+        "pokemon-heartgold-trainer-0120"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-heartgold-trainer-0417",
+        "pokemon-heartgold-trainer-0120"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partnerRequirements": [],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "commit-pinned pret field-script/runtime source",
+        "contextArtifact": "tools/imports/vanilla/gen4-trainer-context/heartgold-soulsilver.json",
+        "evidence": [
+          {
+            "path": "files/fielddata/script/scr_seq/scr_seq_0237_R34.s",
+            "sha256": "942490f36186041abad494d481126b418171f10b2536d628954d383501234fc0",
+            "line": 674,
+            "label": "_087D",
+            "command": "TrainerBattle",
+            "arguments": [
+              "TRAINER_ACE_TRAINER_F_JENN",
+              "120",
+              "0",
+              "0"
+            ]
+          }
+        ]
+      }
+    },
+    "heartgold-soulsilver-script-pair-0479-0499": {
+      "id": "heartgold-soulsilver-script-pair-0479-0499",
+      "battleFormat": "double",
+      "locationId": "field-map-header-0248",
+      "enemyTrainerIds": [
+        "pokemon-heartgold-trainer-0479",
+        "pokemon-heartgold-trainer-0499"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-heartgold-trainer-0479",
+        "pokemon-heartgold-trainer-0499"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partnerRequirements": [
+        {
+          "evidence": [
+            {
+              "arguments": [
+                "TRAINER_PKMN_TRAINER_LANCE_LANCE",
+                "TRAINER_EXECUTIVE_ARIANA_ARIANA_2",
+                "TRAINER_TEAM_ROCKET_GRUNT_25",
+                "1"
+              ],
+              "command": "MultiBattle",
+              "label": "_0436",
+              "line": 370,
+              "path": "files/fielddata/script/scr_seq/scr_seq_0090_D35R0103.s",
+              "sha256": "762edb5a7381e735433f887cc87a5fae69ff3f3e5b2fc6039fdf1a0fef0fbd39"
+            }
+          ],
+          "operand": "TRAINER_PKMN_TRAINER_LANCE_LANCE",
+          "rawTrainerId": 675,
+          "required": true,
+          "resolution": "literal-trainer-id",
+          "source": "battle-command-partner-operand",
+          "trainerToken": "TRAINER_PKMN_TRAINER_LANCE_LANCE"
+        }
+      ],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "commit-pinned pret field-script/runtime source",
+        "contextArtifact": "tools/imports/vanilla/gen4-trainer-context/heartgold-soulsilver.json",
+        "evidence": [
+          {
+            "path": "files/fielddata/script/scr_seq/scr_seq_0090_D35R0103.s",
+            "sha256": "762edb5a7381e735433f887cc87a5fae69ff3f3e5b2fc6039fdf1a0fef0fbd39",
+            "line": 370,
+            "label": "_0436",
+            "command": "MultiBattle",
+            "arguments": [
+              "TRAINER_PKMN_TRAINER_LANCE_LANCE",
+              "TRAINER_EXECUTIVE_ARIANA_ARIANA_2",
+              "TRAINER_TEAM_ROCKET_GRUNT_25",
+              "1"
+            ]
+          }
+        ]
+      }
+    },
+    "heartgold-soulsilver-script-pair-0733-0734": {
+      "id": "heartgold-soulsilver-script-pair-0733-0734",
+      "battleFormat": "double",
+      "locationId": "field-map-header-0253",
+      "enemyTrainerIds": [
+        "pokemon-heartgold-trainer-0733",
+        "pokemon-heartgold-trainer-0734"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-heartgold-trainer-0733",
+        "pokemon-heartgold-trainer-0734"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "partnerRequirements": [
+        {
+          "evidence": [
+            {
+              "arguments": [
+                "TRAINER_PARTNER_RIVAL_1",
+                "TRAINER_CHAMPION_LANCE_3",
+                "TRAINER_LEADER_CLAIR_CLAIR_3",
+                "1"
+              ],
+              "command": "MultiBattle",
+              "label": "_05C8",
+              "line": 433,
+              "path": "files/fielddata/script/scr_seq/scr_seq_0111_D44R0102.s",
+              "sha256": "cf26f530801b00cace2982f2b50e9d5f45931dd5163eff899693f34602f9d160"
+            }
+          ],
+          "operand": "TRAINER_PARTNER_RIVAL_1",
+          "rawTrainerId": 735,
+          "required": true,
+          "resolution": "literal-trainer-id",
+          "source": "battle-command-partner-operand",
+          "trainerToken": "TRAINER_PARTNER_RIVAL_1"
+        },
+        {
+          "evidence": [
+            {
+              "arguments": [
+                "TRAINER_PARTNER_RIVAL_2",
+                "TRAINER_CHAMPION_LANCE_3",
+                "TRAINER_LEADER_CLAIR_CLAIR_3",
+                "1"
+              ],
+              "command": "MultiBattle",
+              "label": "_04B2",
+              "line": 423,
+              "path": "files/fielddata/script/scr_seq/scr_seq_0111_D44R0102.s",
+              "sha256": "cf26f530801b00cace2982f2b50e9d5f45931dd5163eff899693f34602f9d160"
+            }
+          ],
+          "operand": "TRAINER_PARTNER_RIVAL_2",
+          "rawTrainerId": 736,
+          "required": true,
+          "resolution": "literal-trainer-id",
+          "source": "battle-command-partner-operand",
+          "trainerToken": "TRAINER_PARTNER_RIVAL_2"
+        },
+        {
+          "evidence": [
+            {
+              "arguments": [
+                "TRAINER_PARTNER_RIVAL_3",
+                "TRAINER_CHAMPION_LANCE_3",
+                "TRAINER_LEADER_CLAIR_CLAIR_3",
+                "1"
+              ],
+              "command": "MultiBattle",
+              "label": "_05AC",
+              "line": 429,
+              "path": "files/fielddata/script/scr_seq/scr_seq_0111_D44R0102.s",
+              "sha256": "cf26f530801b00cace2982f2b50e9d5f45931dd5163eff899693f34602f9d160"
+            }
+          ],
+          "operand": "TRAINER_PARTNER_RIVAL_3",
+          "rawTrainerId": 737,
+          "required": true,
+          "resolution": "literal-trainer-id",
+          "source": "battle-command-partner-operand",
+          "trainerToken": "TRAINER_PARTNER_RIVAL_3"
+        }
+      ],
+      "consumerActivation": {
+        "plc": false,
+        "overlay": false
+      },
+      "source": {
+        "authority": "commit-pinned pret field-script/runtime source",
+        "contextArtifact": "tools/imports/vanilla/gen4-trainer-context/heartgold-soulsilver.json",
+        "evidence": [
+          {
+            "path": "files/fielddata/script/scr_seq/scr_seq_0111_D44R0102.s",
+            "sha256": "cf26f530801b00cace2982f2b50e9d5f45931dd5163eff899693f34602f9d160",
+            "line": 423,
+            "label": "_04B2",
+            "command": "MultiBattle",
+            "arguments": [
+              "TRAINER_PARTNER_RIVAL_2",
+              "TRAINER_CHAMPION_LANCE_3",
+              "TRAINER_LEADER_CLAIR_CLAIR_3",
+              "1"
+            ]
+          },
+          {
+            "path": "files/fielddata/script/scr_seq/scr_seq_0111_D44R0102.s",
+            "sha256": "cf26f530801b00cace2982f2b50e9d5f45931dd5163eff899693f34602f9d160",
+            "line": 429,
+            "label": "_05AC",
+            "command": "MultiBattle",
+            "arguments": [
+              "TRAINER_PARTNER_RIVAL_3",
+              "TRAINER_CHAMPION_LANCE_3",
+              "TRAINER_LEADER_CLAIR_CLAIR_3",
+              "1"
+            ]
+          },
+          {
+            "path": "files/fielddata/script/scr_seq/scr_seq_0111_D44R0102.s",
+            "sha256": "cf26f530801b00cace2982f2b50e9d5f45931dd5163eff899693f34602f9d160",
+            "line": 433,
+            "label": "_05C8",
+            "command": "MultiBattle",
+            "arguments": [
+              "TRAINER_PARTNER_RIVAL_1",
+              "TRAINER_CHAMPION_LANCE_3",
+              "TRAINER_LEADER_CLAIR_CLAIR_3",
+              "1"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "validation": {
+    "status": "partial-source-coverage",
+    "fixedGroupStatus": "passed",
+    "unresolved": 0,
+    "unresolvedFixedGroups": 0,
+    "dynamicOperandDiagnostics": 6,
+    "dynamicOperandsAreRuntimeSelectorsNotFixedGroupFailures": true,
+    "sourceArtifact": "tools/imports/vanilla/gen4-trainer-context/heartgold-soulsilver.json",
+    "emptyRecordsAreValidWhenExactScriptAuditFoundNoSeparateRosterGroups": true
+  }
+}

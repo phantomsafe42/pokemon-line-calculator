@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 2,
+  "gameId": "pokemon-white",
+  "kind": "experience-mechanics",
+  "experienceGeneration": 5,
+  "inheritedFromDamageGeneration": false,
+  "mechanicsProfile": "pokemon-white-trainer-experience-v1",
+  "source": {
+    "authority": "Bulbapedia Generation V experience formula and version-specific cap documentation",
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Experience",
+    "pageId": 1192,
+    "revisionId": 4619908,
+    "parentRevisionId": 4594412,
+    "revisionTimestamp": "2026-08-28T17:30:25Z",
+    "revisionSha1": "74276ab5fb1a486db8107e45ce1f55ccc8f0b5d8",
+    "retrievedAt": "2026-09-07",
+    "note": "The formula is independently declared here and is not inferred from damageGeneration. The cited revision states that Generation V uses the scaled formula and that the 100,000 cap applies only to Black 2 and White 2."
+  },
+  "applicableGames": [
+    "pokemon-black",
+    "pokemon-white",
+    "pokemon-black-2",
+    "pokemon-white-2"
+  ],
+  "levelCurve": {
+    "growthRateField": "species.json#records.*.growthRate",
+    "status": "passed"
+  },
+  "baseYield": {
+    "field": "species.json#records.*.baseExp",
+    "status": "passed"
+  },
+  "trainerBattleFormula": {
+    "model": "generation-5-scaled-trainer",
+    "basePool": "floor(baseExp * defeatedLevel / 5)",
+    "trainerMultiplier": {
+      "numerator": 3,
+      "denominator": 2,
+      "rounding": "floor"
+    },
+    "participantAndExpShareSplit": "Use divisor s: eligible participants when no Exp. Share holder exists; twice the eligible participants for the participant pool, or twice the Exp. Share holders for the holder pool, when at least one Exp. Share holder exists.",
+    "levelScaling": {
+      "expression": "((2*defeatedLevel+10)/(defeatedLevel+recipientLevel+10))^2.5",
+      "squareRootPrecision": "nearest multiple of 1/4096",
+      "squareRootTieRule": "round-up-at-0.5",
+      "constantAfterScaling": 1
+    },
+    "optionalMultipliers": {
+      "originalTrainer": {
+        "sameTrainer": [
+          1,
+          1
+        ],
+        "outsiderSameLanguage": [
+          3,
+          2
+        ],
+        "outsiderDifferentLanguage": [
+          6963,
+          4096
+        ]
+      },
+      "luckyEgg": [
+        3,
+        2
+      ],
+      "passPower": {
+        "down3": [
+          1,
+          2
+        ],
+        "down2": [
+          66,
+          100
+        ],
+        "down1": [
+          4,
+          5
+        ],
+        "up1": [
+          6,
+          5
+        ],
+        "up2": [
+          3,
+          2
+        ],
+        "up3": [
+          2,
+          1
+        ],
+        "s": [
+          2,
+          1
+        ],
+        "max": [
+          2,
+          1
+        ]
+      }
+    },
+    "rounding": {
+      "integerDivisions": "floor",
+      "multipliers": "nearest-integer-round-down-at-0.5",
+      "note": "Apply rounding after each multiplier; the integer base divisions remain floor operations."
+    },
+    "operationOrder": [
+      "base-pool",
+      "trainer-multiplier",
+      "participant-and-exp-share-split",
+      "level-scaling",
+      "add-one",
+      "original-trainer-or-outsider",
+      "Lucky-Egg",
+      "pass-power",
+      "version-specific-cap"
+    ]
+  },
+  "versionRules": {
+    "pokemon-black": {
+      "singleAwardCap": null
+    },
+    "pokemon-white": {
+      "singleAwardCap": null
+    },
+    "pokemon-black-2": {
+      "singleAwardCap": 100000
+    },
+    "pokemon-white-2": {
+      "singleAwardCap": 100000
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "unresolved": 0,
+    "knownAnswers": [
+      {
+        "label": "equal-level-trainer-no-optional-bonuses",
+        "baseExp": 100,
+        "defeatedLevel": 20,
+        "recipientLevel": 20,
+        "participants": 1,
+        "trainer": true,
+        "resultBeforeOptionalBonuses": 601
+      },
+      {
+        "label": "documented-generation-v-zekrom-outsider-example",
+        "baseExp": 306,
+        "defeatedLevel": 62,
+        "recipientLevel": 55,
+        "participants": 1,
+        "trainer": false,
+        "outsiderDifferentLanguage": true,
+        "result": 7376,
+        "source": "Bulbapedia revision 4619908 Generation V example"
+      }
+    ],
+    "gameProjectionStatus": "passed-pinned-generation-reference-and-version-rule"
+  },
+  "consumerActivation": {
+    "experienceProjectionReady": true,
+    "consumer": "Pokemon Line Calculator",
+    "implementation": "Web Tools/Pokemon Line Calculator/src/rulesets/vw2r_experience.js",
+    "validation": "Web Tools/Pokemon Line Calculator/tests/experience.test.mjs",
+    "reason": "Generation-specific trainer EXP, participant splitting, Exp. Share, Lucky Egg, level thresholds, and level-up state transitions are consumer-validated."
+  },
+  "inheritedGenerationReference": {
+    "gameId": "generation-5",
+    "mechanicsProfile": "generation-5-scaled-trainer-experience-v2",
+    "path": "../../Gen 5/source-data/experience_mechanics.json",
+    "sha256": "b0d31cd9928193b394bda88b3a729b8eedaeb24f86ca36df6ca4d4ed646be192",
+    "applicability": "shared generation formula with an explicit selected per-game version rule"
+  },
+  "selectedVersionRule": {
+    "gameId": "pokemon-white",
+    "singleAwardCap": null
+  }
+}

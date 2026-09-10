@@ -1,5 +1,5 @@
 import { canonicalStats, clone, nowIso, toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
-import { isHiddenPowerType } from "../core/hidden_power.js?v=20260905-drafts-freecalc-partners-v1";
+import { isHiddenPowerType } from "../core/hidden_power.js?v=20260909-consumer-readiness-v2";
 
 export const BOX_LIBRARY_KIND = "pokemon-line-calculator-boxes";
 export const BOX_LIBRARY_SCHEMA_VERSION = 1;

@@ -18,7 +18,8 @@ const vw2rMoves = JSON.parse(fs.readFileSync(
 
 test("the pinned Showdown reference covers every standardized VW2R move", () => {
   assert.equal(SHOWDOWN_REFERENCE_SOURCE.package, "pokemon-showdown@0.11.11");
-  assert.equal(SHOWDOWN_REFERENCE_SOURCE.moveCount, 559);
+  assert.equal(SHOWDOWN_REFERENCE_SOURCE.moveCountsByGame["volt-white-2r"], 559);
+  assert.equal(SHOWDOWN_REFERENCE_SOURCE.moveCount, SHOWDOWN_REFERENCE_SOURCE.moveCountsByGeneration[5]);
   assert.deepEqual(Object.keys(SHOWDOWN_MOVE_REFERENCE).sort(), Object.keys(vw2rMoves).sort());
 });
 
@@ -27,7 +28,7 @@ test("every calculation-applicable standardized game move has a game-scoped refe
   for (const gameId of fs.readdirSync(datasetsRoot).sort()) {
     const moves = JSON.parse(fs.readFileSync(path.join(datasetsRoot, gameId, "moves.json"), "utf8")).records;
     const expected = Object.values(moves)
-      .filter(move => move.calculationApplicability !== "inapplicable-unused-engine-slot")
+      .filter(move => !String(move.calculationApplicability || "").startsWith("inapplicable"))
       .map(move => move.id)
       .sort();
     assert.deepEqual(Object.keys(SHOWDOWN_MOVE_REFERENCE_BY_GAME[gameId] || {}).sort(), expected, gameId);

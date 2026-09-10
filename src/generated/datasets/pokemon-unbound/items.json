@@ -656,7 +656,14 @@
       ],
       "mechanicsBase": "Berry Juice",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "sacredash": {
       "num": 45,
@@ -1753,7 +1760,14 @@
       ],
       "mechanicsBase": "Enigma Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "megacuff": {
       "num": 119,
@@ -1965,7 +1979,14 @@
       ],
       "mechanicsBase": "Cheri Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "chestoberry": {
       "num": 134,
@@ -1981,7 +2002,14 @@
       ],
       "mechanicsBase": "Chesto Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "pechaberry": {
       "num": 135,
@@ -1997,7 +2025,14 @@
       ],
       "mechanicsBase": "Pecha Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "rawstberry": {
       "num": 136,
@@ -2013,7 +2048,14 @@
       ],
       "mechanicsBase": "Rawst Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "aspearberry": {
       "num": 137,
@@ -2029,7 +2071,14 @@
       ],
       "mechanicsBase": "Aspear Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "leppaberry": {
       "num": 138,
@@ -2045,7 +2094,14 @@
       ],
       "mechanicsBase": "Leppa Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "oranberry": {
       "num": 139,
@@ -2061,7 +2117,14 @@
       ],
       "mechanicsBase": "Oran Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "persimberry": {
       "num": 140,
@@ -2077,7 +2140,14 @@
       ],
       "mechanicsBase": "Persim Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "lumberry": {
       "num": 141,
@@ -2093,7 +2163,14 @@
       ],
       "mechanicsBase": "Lum Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "sitrusberry": {
       "num": 142,
@@ -2109,7 +2186,14 @@
       ],
       "mechanicsBase": "Sitrus Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "figyberry": {
       "num": 143,
@@ -2125,7 +2209,14 @@
       ],
       "mechanicsBase": "Figy Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "wikiberry": {
       "num": 144,
@@ -2141,7 +2232,14 @@
       ],
       "mechanicsBase": "Wiki Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "magoberry": {
       "num": 145,
@@ -2157,7 +2255,14 @@
       ],
       "mechanicsBase": "Mago Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "aguavberry": {
       "num": 146,
@@ -2173,7 +2278,14 @@
       ],
       "mechanicsBase": "Aguav Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "iapapaberry": {
       "num": 147,
@@ -2189,7 +2301,14 @@
       ],
       "mechanicsBase": "Iapapa Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "razzberry": {
       "num": 148,
@@ -2205,7 +2324,14 @@
       ],
       "mechanicsBase": "Razz Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "blukberry": {
       "num": 149,
@@ -2221,7 +2347,14 @@
       ],
       "mechanicsBase": "Bluk Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "nanabberry": {
       "num": 150,
@@ -2237,7 +2370,14 @@
       ],
       "mechanicsBase": "Nanab Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "wepearberry": {
       "num": 151,
@@ -2253,7 +2393,14 @@
       ],
       "mechanicsBase": "Wepear Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "pinapberry": {
       "num": 152,
@@ -2269,7 +2416,14 @@
       ],
       "mechanicsBase": "Pinap Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "pomegberry": {
       "num": 153,
@@ -2285,7 +2439,14 @@
       ],
       "mechanicsBase": "Pomeg Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "kelpsyberry": {
       "num": 154,
@@ -2301,7 +2462,14 @@
       ],
       "mechanicsBase": "Kelpsy Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "qualotberry": {
       "num": 155,
@@ -2317,7 +2485,14 @@
       ],
       "mechanicsBase": "Qualot Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "hondewberry": {
       "num": 156,
@@ -2333,7 +2508,14 @@
       ],
       "mechanicsBase": "Hondew Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "grepaberry": {
       "num": 157,
@@ -2349,7 +2531,14 @@
       ],
       "mechanicsBase": "Grepa Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "tamatoberry": {
       "num": 158,
@@ -2365,7 +2554,14 @@
       ],
       "mechanicsBase": "Tamato Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "cornnberry": {
       "num": 159,
@@ -2381,7 +2577,14 @@
       ],
       "mechanicsBase": "Cornn Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "magostberry": {
       "num": 160,
@@ -2397,7 +2600,14 @@
       ],
       "mechanicsBase": "Magost Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "rabutaberry": {
       "num": 161,
@@ -2413,7 +2623,14 @@
       ],
       "mechanicsBase": "Rabuta Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "nomelberry": {
       "num": 162,
@@ -2429,7 +2646,14 @@
       ],
       "mechanicsBase": "Nomel Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "spelonberry": {
       "num": 163,
@@ -2445,7 +2669,14 @@
       ],
       "mechanicsBase": "Spelon Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "pamtreberry": {
       "num": 164,
@@ -2461,7 +2692,14 @@
       ],
       "mechanicsBase": "Pamtre Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "watmelberry": {
       "num": 165,
@@ -2477,7 +2715,14 @@
       ],
       "mechanicsBase": "Watmel Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "durinberry": {
       "num": 166,
@@ -2493,7 +2738,14 @@
       ],
       "mechanicsBase": "Durin Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "belueberry": {
       "num": 167,
@@ -2509,7 +2761,14 @@
       ],
       "mechanicsBase": "Belue Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "liechiberry": {
       "num": 168,
@@ -2525,7 +2784,14 @@
       ],
       "mechanicsBase": "Liechi Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "ganlonberry": {
       "num": 169,
@@ -2541,7 +2807,14 @@
       ],
       "mechanicsBase": "Ganlon Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "salacberry": {
       "num": 170,
@@ -2557,7 +2830,14 @@
       ],
       "mechanicsBase": "Salac Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "petayaberry": {
       "num": 171,
@@ -2573,7 +2853,14 @@
       ],
       "mechanicsBase": "Petaya Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "apicotberry": {
       "num": 172,
@@ -2589,7 +2876,14 @@
       ],
       "mechanicsBase": "Apicot Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "lansatberry": {
       "num": 173,
@@ -2605,7 +2899,14 @@
       ],
       "mechanicsBase": "Lansat Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "lansatberry174": {
       "num": 174,
@@ -2637,7 +2938,14 @@
       ],
       "mechanicsBase": "Starf Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "choiceband": {
       "num": 176,
@@ -2717,7 +3025,14 @@
       ],
       "mechanicsBase": "White Herb",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "machobrace": {
       "num": 181,
@@ -2793,7 +3108,14 @@
       ],
       "mechanicsBase": "Mental Herb",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "choiceband186": {
       "num": 186,
@@ -3456,7 +3778,14 @@
       ],
       "mechanicsBase": "Weakness Policy",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "pearlstring": {
       "num": 228,
@@ -3599,7 +3928,30 @@
       ],
       "mechanicsBase": "Power Herb",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "skip-charge-turn",
+            "trigger": "before-charge-turn",
+            "timing": "before-action-resolution",
+            "conditions": {
+              "moveRequiresChargeTurn": true
+            },
+            "effects": [
+              {
+                "kind": "skip-charge-turn"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "widelens": {
       "num": 237,
@@ -8055,7 +8407,39 @@
       ],
       "mechanicsBase": "Occa Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-fire-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "fire",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "passhoberry": {
       "num": 540,
@@ -8071,7 +8455,39 @@
       ],
       "mechanicsBase": "Passho Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-water-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "water",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "wacanberry": {
       "num": 541,
@@ -8087,7 +8503,39 @@
       ],
       "mechanicsBase": "Wacan Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-electric-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "electric",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "rindoberry": {
       "num": 542,
@@ -8103,7 +8551,39 @@
       ],
       "mechanicsBase": "Rindo Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-grass-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "grass",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "yacheberry": {
       "num": 543,
@@ -8119,7 +8599,39 @@
       ],
       "mechanicsBase": "Yache Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-ice-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "ice",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "chopleberry": {
       "num": 544,
@@ -8135,7 +8647,39 @@
       ],
       "mechanicsBase": "Chople Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-fighting-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "fighting",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "kebiaberry": {
       "num": 545,
@@ -8151,7 +8695,39 @@
       ],
       "mechanicsBase": "Kebia Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-poison-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "poison",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "shucaberry": {
       "num": 546,
@@ -8167,7 +8743,39 @@
       ],
       "mechanicsBase": "Shuca Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-ground-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "ground",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "cobaberry": {
       "num": 547,
@@ -8183,7 +8791,39 @@
       ],
       "mechanicsBase": "Coba Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-flying-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "flying",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "payapaberry": {
       "num": 548,
@@ -8199,7 +8839,39 @@
       ],
       "mechanicsBase": "Payapa Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-psychic-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "psychic",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "tangaberry": {
       "num": 549,
@@ -8215,7 +8887,39 @@
       ],
       "mechanicsBase": "Tanga Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-bug-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "bug",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "chartiberry": {
       "num": 550,
@@ -8231,7 +8935,39 @@
       ],
       "mechanicsBase": "Charti Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-rock-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "rock",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "kasibberry": {
       "num": 551,
@@ -8247,7 +8983,39 @@
       ],
       "mechanicsBase": "Kasib Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-ghost-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "ghost",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "habanberry": {
       "num": 552,
@@ -8263,7 +9031,39 @@
       ],
       "mechanicsBase": "Haban Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-dragon-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "dragon",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "colburberry": {
       "num": 553,
@@ -8279,7 +9079,39 @@
       ],
       "mechanicsBase": "Colbur Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-dark-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "dark",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "babiriberry": {
       "num": 554,
@@ -8295,7 +9127,39 @@
       ],
       "mechanicsBase": "Babiri Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-steel-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "steel",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "chilanberry": {
       "num": 555,
@@ -8311,7 +9175,39 @@
       ],
       "mechanicsBase": "Chilan Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-normal-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "normal",
+              "requiresSuperEffective": false,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "micleberry": {
       "num": 556,
@@ -8327,7 +9223,14 @@
       ],
       "mechanicsBase": "Micle Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "custapberry": {
       "num": 557,
@@ -8343,7 +9246,41 @@
       ],
       "mechanicsBase": "Custap Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "act-first-in-priority-bracket-at-low-hp",
+            "trigger": "before-action-order",
+            "timing": "before-action-order",
+            "conditions": {
+              "maximumHpFraction": {
+                "numerator": 1,
+                "denominator": 4
+              },
+              "gluttonyMaximumHpFraction": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "fractional-priority",
+                "value": 0.1
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "jabocaberry": {
       "num": 558,
@@ -8359,7 +9296,14 @@
       ],
       "mechanicsBase": "Jaboca Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "rowapberry": {
       "num": 559,
@@ -8375,7 +9319,14 @@
       ],
       "mechanicsBase": "Rowap Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "roseliberry": {
       "num": 560,
@@ -8391,7 +9342,39 @@
       ],
       "mechanicsBase": "Roseli Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "reduce-super-effective-fairy-damage",
+            "trigger": "incoming-damaging-move",
+            "timing": "before-damage",
+            "conditions": {
+              "moveTypeId": "fairy",
+              "requiresSuperEffective": true,
+              "requiresHpDamage": true,
+              "appliesToFirstHitOnly": true,
+              "blockedBySubstitute": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-multiplier",
+                "numerator": 1,
+                "denominator": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "keeberry": {
       "num": 561,
@@ -8407,7 +9390,14 @@
       ],
       "mechanicsBase": "Kee Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "marangaberry": {
       "num": 562,
@@ -8424,7 +9414,14 @@
       ],
       "mechanicsBase": "Maranga Berry",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "eat",
+        "activationStatus": "unmodeled"
+      }
     },
     "absorbbulb": {
       "num": 563,
@@ -8440,7 +9437,14 @@
       ],
       "mechanicsBase": "Absorb Bulb",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "airballoon": {
       "num": 564,
@@ -8456,7 +9460,32 @@
       ],
       "mechanicsBase": "Air Balloon",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "breakable",
+        "consumptionMethod": "burst",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "burst-after-damaging-move",
+            "trigger": "after-damaging-move",
+            "timing": "after-damage",
+            "conditions": {
+              "requiresMoveDamage": true,
+              "blockedBySubstitute": false,
+              "triggersOnSubstituteDamage": true
+            },
+            "effects": [
+              {
+                "kind": "remove-held-item"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "adrenalineorb": {
       "num": 565,
@@ -8473,7 +9502,14 @@
       ],
       "mechanicsBase": "Adrenaline Orb",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "bindingband": {
       "num": 566,
@@ -8505,7 +9541,14 @@
       ],
       "mechanicsBase": "Cell Battery",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "ejectbutton": {
       "num": 568,
@@ -8521,7 +9564,14 @@
       ],
       "mechanicsBase": "Eject Button",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "floatstone": {
       "num": 569,
@@ -8553,7 +9603,33 @@
       ],
       "mechanicsBase": "Focus Sash",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "survive-lethal-damage-at-full-hp",
+            "trigger": "incoming-damaging-move",
+            "timing": "after-damage-roll-before-hp-loss",
+            "conditions": {
+              "holderAtFullHp": true,
+              "damageWouldKnockOut": true,
+              "appliesToFirstHitOnly": true
+            },
+            "effects": [
+              {
+                "kind": "survive-at-hp",
+                "hp": 1
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
+      }
     },
     "gripclaw": {
       "num": 571,
@@ -8617,7 +9693,14 @@
       ],
       "mechanicsBase": "Luminous Moss",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "quickpowder": {
       "num": 575,
@@ -8698,7 +9781,14 @@
       ],
       "mechanicsBase": "Red Card",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "ringtarget": {
       "num": 580,
@@ -8746,7 +9836,14 @@
       ],
       "mechanicsBase": "Snowball",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "stickybarb": {
       "num": 583,
@@ -8811,7 +9908,14 @@
       ],
       "mechanicsBase": "Electric Seed",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "grassyseed": {
       "num": 587,
@@ -8827,7 +9931,14 @@
       ],
       "mechanicsBase": "Grassy Seed",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "mistyseed": {
       "num": 588,
@@ -8843,7 +9954,14 @@
       ],
       "mechanicsBase": "Misty Seed",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "psychicseed": {
       "num": 589,
@@ -8859,7 +9977,14 @@
       ],
       "mechanicsBase": "Psychic Seed",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "normalgem": {
       "num": 590,
@@ -8875,7 +10000,14 @@
       ],
       "mechanicsBase": "Normal Gem",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "fightinggem": {
       "num": 591,
@@ -8892,7 +10024,14 @@
       ],
       "mechanicsBase": "Fighting Gem",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "flyinggem": {
       "num": 592,
@@ -8908,7 +10047,14 @@
       ],
       "mechanicsBase": "Flying Gem",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "poisongem": {
       "num": 593,
@@ -8924,7 +10070,14 @@
       ],
       "mechanicsBase": "Poison Gem",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "groundgem": {
       "num": 594,
@@ -8940,7 +10093,14 @@
       ],
       "mechanicsBase": "Ground Gem",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "rockgem": {
       "num": 595,
@@ -8956,7 +10116,14 @@
       ],
       "mechanicsBase": "Rock Gem",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "buggem": {
       "num": 596,
@@ -8972,7 +10139,14 @@
       ],
       "mechanicsBase": "Bug Gem",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "ghostgem": {
       "num": 597,
@@ -8988,7 +10162,14 @@
       ],
       "mechanicsBase": "Ghost Gem",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "steelgem": {
       "num": 598,
@@ -9004,7 +10185,14 @@
       ],
       "mechanicsBase": "Steel Gem",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "firegem": {
       "num": 599,
@@ -9020,7 +10208,14 @@
       ],
       "mechanicsBase": "Fire Gem",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "watergem": {
       "num": 600,
@@ -9036,7 +10231,14 @@
       ],
       "mechanicsBase": "Water Gem",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "grassgem": {
       "num": 601,
@@ -9052,7 +10254,14 @@
       ],
       "mechanicsBase": "Grass Gem",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "electricgem": {
       "num": 602,
@@ -9068,7 +10277,14 @@
       ],
       "mechanicsBase": "Electric Gem",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "psychicgem": {
       "num": 603,
@@ -9084,7 +10300,14 @@
       ],
       "mechanicsBase": "Psychic Gem",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "icegem": {
       "num": 604,
@@ -9100,7 +10323,14 @@
       ],
       "mechanicsBase": "Ice Gem",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "dragongem": {
       "num": 605,
@@ -9116,7 +10346,14 @@
       ],
       "mechanicsBase": "Dragon Gem",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "darkgem": {
       "num": 606,
@@ -9132,7 +10369,14 @@
       ],
       "mechanicsBase": "Dark Gem",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "fairygem": {
       "num": 607,
@@ -9148,7 +10392,14 @@
       ],
       "mechanicsBase": "Fairy Gem",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "abilitycapsule": {
       "num": 608,
@@ -10630,7 +11881,14 @@
       ],
       "mechanicsBase": "Eject Pack",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "roomservice": {
       "num": 705,
@@ -10646,7 +11904,14 @@
       ],
       "mechanicsBase": "Room Service",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "blunderpolicy": {
       "num": 706,
@@ -10662,7 +11927,14 @@
       ],
       "mechanicsBase": "Blunder Policy",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "heavydutyboots": {
       "num": 707,
@@ -10712,7 +11984,14 @@
       ],
       "mechanicsBase": "Throat Spray",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "consumable",
+        "consumptionMethod": "use",
+        "activationStatus": "unmodeled"
+      }
     },
     "rustedsword": {
       "num": 710,
