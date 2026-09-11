@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "generated": true,
-  "sourceRelease": "0.4.0-dev.1",
-  "sourceIndexSha256": "18b057a95185e257146486df2845694c5700ae91c73e6805e092e238ab8fcbc9",
-  "sourceManifestSha256": "b013b2e0f71a6581a82e8eb2771f911b776c564509bfc6561df3e8cac0d95ea1",
+  "sourceRelease": "0.5.0-dev.1",
+  "sourceIndexSha256": "8ea932f01af335da8e6f5b105c94cd874defb216ac6582dc865b8afb8c622884",
+  "sourceManifestSha256": "015470236952e2a9a95d0e68c365e789843cefbe3915c3d770a589e1465ec78c",
   "excludedProfiles": [
     "3d",
     "seaglass"
@@ -11,12 +11,247 @@
   "files": [
     {
       "path": "asset-index.json",
-      "sha256": "e4f2ba67022287a2688e3a180d681a7a49e6938b399d9e2fd64e065ef60aa562",
-      "bytes": 1697
+      "sha256": "044092e5cd524103db46562b6e8e7da0bd3fc181b37377919c88d367de95576e",
+      "bytes": 2012
+    },
+    {
+      "path": "assets/badge-icons/b2w2-unova/basic.png",
+      "sha256": "124efbf2c799abbf7156f1df4278a0e807618718d0232e23ad620df54df72661",
+      "bytes": 1957
+    },
+    {
+      "path": "assets/badge-icons/b2w2-unova/bolt.png",
+      "sha256": "53c122e6db19bdb3b87dd0763e981314cc8d238c8529770a855285ca68d54ef8",
+      "bytes": 3559
+    },
+    {
+      "path": "assets/badge-icons/b2w2-unova/insect.png",
+      "sha256": "63fdd0bbe998dc9ff6889d05dfb9883a5b5a8ba517f6824246550e3aebfb27f6",
+      "bytes": 3372
+    },
+    {
+      "path": "assets/badge-icons/b2w2-unova/jet.png",
+      "sha256": "3c5414760c8338c4257c2d05094a91c504fa34713ce512ac022e42e1aa27da66",
+      "bytes": 3026
+    },
+    {
+      "path": "assets/badge-icons/b2w2-unova/legend.png",
+      "sha256": "a51d3f8a29ce147990e102f1de555f115152c8d9bc3b720f95cba09e53a32c79",
+      "bytes": 4196
+    },
+    {
+      "path": "assets/badge-icons/b2w2-unova/plasma-logo.png",
+      "sha256": "4889b94b15efb752a758b1b2889511f874f087490f9033e7c42616bf1c4bff90",
+      "bytes": 202647
+    },
+    {
+      "path": "assets/badge-icons/b2w2-unova/pokemon-league-logo.png",
+      "sha256": "4f9280b1ce2c2751f389834520db6ec337db9f86160fdc19c041c840ca3bc757",
+      "bytes": 25530
+    },
+    {
+      "path": "assets/badge-icons/b2w2-unova/quake.png",
+      "sha256": "3091910c0ebb793747466072d125e9a61f750c292049aeadc8dedc8dbd40245a",
+      "bytes": 3233
+    },
+    {
+      "path": "assets/badge-icons/b2w2-unova/toxic.png",
+      "sha256": "53b42666db0b2994faae18116829c670c6a64dd5662d33946d427d0527a25569",
+      "bytes": 5139
+    },
+    {
+      "path": "assets/badge-icons/b2w2-unova/wave.png",
+      "sha256": "a67866126b197c3b9e97871ba5b93ebc4753bf6c1af86311e092452a62e786a8",
+      "bytes": 3581
+    },
+    {
+      "path": "assets/badge-icons/dp-sinnoh/beacon.png",
+      "sha256": "4f97d823a9681610a007a00b2841b2161b9bfea5b15ad475fec0a0e831339263",
+      "bytes": 24472
+    },
+    {
+      "path": "assets/badge-icons/dp-sinnoh/champion-ribbon.png",
+      "sha256": "8bcf387eefecfb4a1cf913c76c8718894ebe18c7cbe85449d0f8f0afe3c6dc45",
+      "bytes": 21256
+    },
+    {
+      "path": "assets/badge-icons/dp-sinnoh/coal.png",
+      "sha256": "01f17a61dadd980d911589b0462fb31ff377f74c1d52252f39d4de42412958fd",
+      "bytes": 22403
+    },
+    {
+      "path": "assets/badge-icons/dp-sinnoh/cobble.png",
+      "sha256": "4014cce30ca3e27b61fd46bae363f6e9c44324a883e286e3e7ddbaf0cfb701c0",
+      "bytes": 20160
+    },
+    {
+      "path": "assets/badge-icons/dp-sinnoh/fen.png",
+      "sha256": "41d519e7b051e0e6b30ef4a812428e531cd3b213c35b57c0f967223671dc6dce",
+      "bytes": 22742
+    },
+    {
+      "path": "assets/badge-icons/dp-sinnoh/forest.png",
+      "sha256": "89badaa12395b9730f114b01a23347183bef6da9e5de36633a0553bdff7ece96",
+      "bytes": 19864
+    },
+    {
+      "path": "assets/badge-icons/dp-sinnoh/galactic-logo.png",
+      "sha256": "6dad7fe2c47968c5854f96f3e818735383d5013aee497a79ab422304dbaede4b",
+      "bytes": 123209
+    },
+    {
+      "path": "assets/badge-icons/dp-sinnoh/icicle.png",
+      "sha256": "456e30b9235abb7c03afbdd021a6c504d5be35e3beb7510f866c7447b3e08a39",
+      "bytes": 22699
+    },
+    {
+      "path": "assets/badge-icons/dp-sinnoh/mine.png",
+      "sha256": "f3fb6219cbc8d19ab53e3a350b57c815dd31d1087c83a4468ea022ab7cf21972",
+      "bytes": 25953
+    },
+    {
+      "path": "assets/badge-icons/dp-sinnoh/relic.png",
+      "sha256": "442810d0f18fd763d7ad8eecb535928c85aecfe11b9c03a66c87dac3ed737dd7",
+      "bytes": 20592
+    },
+    {
+      "path": "assets/badge-icons/hgss-johto/fog.png",
+      "sha256": "424c3e0003ef1e198439f798c3a795af03e3e9cb1cd5388febe4cbc4d36842cd",
+      "bytes": 836
+    },
+    {
+      "path": "assets/badge-icons/hgss-johto/glacier.png",
+      "sha256": "9a79fba528403d9efcabce224434000657f49978624d001811832a517206eac2",
+      "bytes": 885
+    },
+    {
+      "path": "assets/badge-icons/hgss-johto/hive.png",
+      "sha256": "25fa933747a11a963c895285e1b445c54e3a2a33b38a7ca223140b4876c0f701",
+      "bytes": 850
+    },
+    {
+      "path": "assets/badge-icons/hgss-johto/league-emblem.png",
+      "sha256": "3ad5f5226097a5263950226a3f83e75e56b4faedf45a4d7fbc3cbe2ded343802",
+      "bytes": 1353
+    },
+    {
+      "path": "assets/badge-icons/hgss-johto/mineral.png",
+      "sha256": "6828289471dcf3102e77f3b30d247906d24752a543a0f85b49ae37a749e463a1",
+      "bytes": 835
+    },
+    {
+      "path": "assets/badge-icons/hgss-johto/plain.png",
+      "sha256": "ad98efe294a9e13563ad074f427cd141a22b0acbcfcff3f24b6cf2f6a5fc4aaa",
+      "bytes": 827
+    },
+    {
+      "path": "assets/badge-icons/hgss-johto/rising.png",
+      "sha256": "1a6d0a194a5dd0ec35e3e5da97947273dc394cf1912829b9712672ee649342cf",
+      "bytes": 826
+    },
+    {
+      "path": "assets/badge-icons/hgss-johto/storm.png",
+      "sha256": "bd8cbf1c504ea5f45e4d17e0c40ef47daeeed274bf09f1b107dc7fa0c9621948",
+      "bytes": 826
+    },
+    {
+      "path": "assets/badge-icons/hgss-johto/zephyr.png",
+      "sha256": "8015747472ab2aaa0cb47617e198e22cbc9ff22421c50883e24879ac2efcc6d8",
+      "bytes": 850
+    },
+    {
+      "path": "assets/badge-icons/index.json",
+      "sha256": "ebe3e501e8a7defa0d12076008d9af8cbaed06e82b3fdbb95dfe1298b75bedf3",
+      "bytes": 21061
+    },
+    {
+      "path": "assets/badge-icons/lgpe-kanto/boulder.png",
+      "sha256": "e29134d483230105be6817bf9098af40a901329dcbe643e14431e55930947a51",
+      "bytes": 1808
+    },
+    {
+      "path": "assets/badge-icons/lgpe-kanto/cascade.png",
+      "sha256": "924ec0e83bb1aaed9e039e471818ba299b5168b9a77aadb971ff7e17fd4ebf96",
+      "bytes": 1810
+    },
+    {
+      "path": "assets/badge-icons/lgpe-kanto/earth.png",
+      "sha256": "1de002ad699d9358ca022852fba6ea37c0ab4a7b15e25f6ed6bc0377131bd8a0",
+      "bytes": 1675
+    },
+    {
+      "path": "assets/badge-icons/lgpe-kanto/marsh.png",
+      "sha256": "4d80b1abc4fd3dc238a6e2717eee3066c3fc7e3162046a6c29be651888ae84b7",
+      "bytes": 2331
+    },
+    {
+      "path": "assets/badge-icons/lgpe-kanto/rainbow.png",
+      "sha256": "435c309c7471baead3e23700a7c7027b211697efdc73e58a97d9dedd4d2fd883",
+      "bytes": 2980
+    },
+    {
+      "path": "assets/badge-icons/lgpe-kanto/soul.png",
+      "sha256": "529b8fa70d6c0988c7ec1c074b753be938f02a0878017f0f481c93c4a28dc239",
+      "bytes": 2226
+    },
+    {
+      "path": "assets/badge-icons/lgpe-kanto/thunder.png",
+      "sha256": "4f4752238a2bfeb54e1369fbb19f324a9f453f22ae17d24664810beefe263450",
+      "bytes": 2027
+    },
+    {
+      "path": "assets/badge-icons/lgpe-kanto/volcano.png",
+      "sha256": "160d53519973e013948f0fd818a18f968c59fdabd9a67facc22e9333288741d8",
+      "bytes": 2355
+    },
+    {
+      "path": "assets/badge-icons/pgl-hoenn/balance.png",
+      "sha256": "f89b88d35c397971ce7053676000fc9a17834db51053d91678ab30d3a63a2ad3",
+      "bytes": 24247
+    },
+    {
+      "path": "assets/badge-icons/pgl-hoenn/champion-ribbon.png",
+      "sha256": "5859e2cacab34e9dd63f97f63f359f41d29c93a627b7c0b65560519c2330616c",
+      "bytes": 17437
+    },
+    {
+      "path": "assets/badge-icons/pgl-hoenn/dynamo.png",
+      "sha256": "6a308c2d560a155948ac9cbf80e75ed9abbe2ee647086af97c9202895a7147fa",
+      "bytes": 26549
+    },
+    {
+      "path": "assets/badge-icons/pgl-hoenn/feather.png",
+      "sha256": "ca439cab2bcfae59d93e254da43746690ec81622552049d427df8472b265b345",
+      "bytes": 21905
+    },
+    {
+      "path": "assets/badge-icons/pgl-hoenn/heat.png",
+      "sha256": "29feac367d0229a68ef44bd9ae865638c7ef5f6f706cbcfaf33ef92746d33bbc",
+      "bytes": 26032
+    },
+    {
+      "path": "assets/badge-icons/pgl-hoenn/knuckle.png",
+      "sha256": "a973498f419103f899d1cdac23325cf1ae222c4fa7060442793345902ec3edbd",
+      "bytes": 18963
+    },
+    {
+      "path": "assets/badge-icons/pgl-hoenn/mind.png",
+      "sha256": "66cde82c46942d193eebacb8c966bdbd2a46b5304dfc20b1c56b62c8dcf9ee35",
+      "bytes": 25453
+    },
+    {
+      "path": "assets/badge-icons/pgl-hoenn/rain.png",
+      "sha256": "4faf5c504854cf1c4361319f6ba9cd6a62e6c990321a8ef6d0aeb5200e180c3b",
+      "bytes": 25597
+    },
+    {
+      "path": "assets/badge-icons/pgl-hoenn/stone.png",
+      "sha256": "7b2fbe4e14b4cd3acac6832c3892de734b1470d19b79512e37d1022d5ced09fa",
+      "bytes": 24238
     },
     {
       "path": "assets/item-sprites/index.json",
-      "sha256": "d45d0e8d6423f8bcabb6665bd8ed7d9442b83ad74c117498ef00a876eeedf69f",
+      "sha256": "98a5800fcee5660b0d319090300652dacb8a6e172fa82031e23df2a381efe23b",
       "bytes": 385700
     },
     {
@@ -4321,7 +4556,7 @@
     },
     {
       "path": "assets/status-condition-icons/index.json",
-      "sha256": "6863470e745c8476274a00acb6d76c6ffbec2d948a972cfb77a3ae2a46f6eb0a",
+      "sha256": "5a4bddae3b13f0688d6f3dfb7fb44bf02095f7a35c02a7c404b570512a43b18b",
       "bytes": 7548
     },
     {
@@ -4361,7 +4596,7 @@
     },
     {
       "path": "assets/type-icons/index.json",
-      "sha256": "971cc9b32fb11d451e79ca8ded9f4efd901f39969d08cb4d1cd171f616e26b9b",
+      "sha256": "9cab723cee7abe45d4d4f8027c4ac541e75ac8c4d9cc19b4b84f312b28ff7fd1",
       "bytes": 62045
     },
     {
@@ -4921,12 +5156,12 @@
     },
     {
       "path": "index.json",
-      "sha256": "93a7de32d3b10ffca997f4826a75178f9777c6ad1a4bd7a7c65208bd50634ab4",
+      "sha256": "efd77f783b63c372e4f2ee417e1902b003f63dade7449387d548492f064f45c2",
       "bytes": 1308
     },
     {
       "path": "profiles/gen5-animated/index.json",
-      "sha256": "b5eb2103fb238ab2e39134164c726fdbe299335f75c05799a27c50394c911172",
+      "sha256": "74370a2152f00bed8988b5c5a3cfb29f13ba021f4b4cfba0bb76fb3098e6b0a7",
       "bytes": 1303911
     },
     {
@@ -21471,7 +21706,7 @@
     },
     {
       "path": "profiles/gen5-static/index.json",
-      "sha256": "161288461ab028e5a26eb878296d8ffd5a2971fb6ac0be09b4a64a5993785d1e",
+      "sha256": "f317c1de54508920b08a2389167ceafb5e8c48947eb02d6a6964b55ca9725ee4",
       "bytes": 2378988
     },
     {
@@ -51596,7 +51831,7 @@
     },
     {
       "path": "profiles/pixel/index.json",
-      "sha256": "1a3f0b54b3678f7250ed232274050e42297236714e20911eb37fad4584b598e2",
+      "sha256": "9c988a76670ef7c749537e2a57229372ec99b3acacbb2cd95c8f334949bdb07a",
       "bytes": 3736391
     },
     {

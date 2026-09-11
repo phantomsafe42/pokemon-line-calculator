@@ -1,0 +1,637 @@
+{
+  "schemaVersion": 1,
+  "datasetId": "pokemon-assets",
+  "releaseVersion": "0.5.0-dev.1",
+  "collectionId": "badge-icon",
+  "kind": "badge-icon",
+  "generated": true,
+  "selectorFields": [
+    "style",
+    "badge"
+  ],
+  "fallbackPolicy": {
+    "implicitFallbackAllowed": false,
+    "missingAssetResult": "unavailable"
+  },
+  "statistics": {
+    "assets": 46,
+    "assetBytes": 815311,
+    "selectors": 48
+  },
+  "selectorIndex": {
+    "[\"b2w2-unova\",\"basic\"]": "badge-icon/b2w2-unova/basic",
+    "[\"b2w2-unova\",\"bolt\"]": "badge-icon/b2w2-unova/bolt",
+    "[\"b2w2-unova\",\"insect\"]": "badge-icon/b2w2-unova/insect",
+    "[\"b2w2-unova\",\"jet\"]": "badge-icon/b2w2-unova/jet",
+    "[\"b2w2-unova\",\"legend\"]": "badge-icon/b2w2-unova/legend",
+    "[\"b2w2-unova\",\"plasma-logo\"]": "badge-icon/b2w2-unova/plasma-logo",
+    "[\"b2w2-unova\",\"pokemon-league-logo\"]": "badge-icon/b2w2-unova/pokemon-league-logo",
+    "[\"b2w2-unova\",\"quake\"]": "badge-icon/b2w2-unova/quake",
+    "[\"b2w2-unova\",\"toxic\"]": "badge-icon/b2w2-unova/toxic",
+    "[\"b2w2-unova\",\"wave\"]": "badge-icon/b2w2-unova/wave",
+    "[\"dp-sinnoh\",\"beacon\"]": "badge-icon/dp-sinnoh/beacon",
+    "[\"dp-sinnoh\",\"champion-ribbon\"]": "badge-icon/dp-sinnoh/champion-ribbon",
+    "[\"lgpe-kanto\",\"champion-ribbon\"]": "badge-icon/dp-sinnoh/champion-ribbon",
+    "[\"dp-sinnoh\",\"coal\"]": "badge-icon/dp-sinnoh/coal",
+    "[\"dp-sinnoh\",\"cobble\"]": "badge-icon/dp-sinnoh/cobble",
+    "[\"dp-sinnoh\",\"fen\"]": "badge-icon/dp-sinnoh/fen",
+    "[\"dp-sinnoh\",\"forest\"]": "badge-icon/dp-sinnoh/forest",
+    "[\"dp-sinnoh\",\"galactic-logo\"]": "badge-icon/dp-sinnoh/galactic-logo",
+    "[\"dp-sinnoh\",\"icicle\"]": "badge-icon/dp-sinnoh/icicle",
+    "[\"dp-sinnoh\",\"mine\"]": "badge-icon/dp-sinnoh/mine",
+    "[\"dp-sinnoh\",\"relic\"]": "badge-icon/dp-sinnoh/relic",
+    "[\"hgss-johto\",\"fog\"]": "badge-icon/hgss-johto/fog",
+    "[\"hgss-johto\",\"glacier\"]": "badge-icon/hgss-johto/glacier",
+    "[\"hgss-johto\",\"hive\"]": "badge-icon/hgss-johto/hive",
+    "[\"hgss-johto\",\"league-emblem\"]": "badge-icon/hgss-johto/league-emblem",
+    "[\"hgss-johto\",\"postgame-emblem\"]": "badge-icon/hgss-johto/league-emblem",
+    "[\"hgss-johto\",\"mineral\"]": "badge-icon/hgss-johto/mineral",
+    "[\"hgss-johto\",\"plain\"]": "badge-icon/hgss-johto/plain",
+    "[\"hgss-johto\",\"rising\"]": "badge-icon/hgss-johto/rising",
+    "[\"hgss-johto\",\"storm\"]": "badge-icon/hgss-johto/storm",
+    "[\"hgss-johto\",\"zephyr\"]": "badge-icon/hgss-johto/zephyr",
+    "[\"lgpe-kanto\",\"boulder\"]": "badge-icon/lgpe-kanto/boulder",
+    "[\"lgpe-kanto\",\"cascade\"]": "badge-icon/lgpe-kanto/cascade",
+    "[\"lgpe-kanto\",\"earth\"]": "badge-icon/lgpe-kanto/earth",
+    "[\"lgpe-kanto\",\"marsh\"]": "badge-icon/lgpe-kanto/marsh",
+    "[\"lgpe-kanto\",\"rainbow\"]": "badge-icon/lgpe-kanto/rainbow",
+    "[\"lgpe-kanto\",\"soul\"]": "badge-icon/lgpe-kanto/soul",
+    "[\"lgpe-kanto\",\"thunder\"]": "badge-icon/lgpe-kanto/thunder",
+    "[\"lgpe-kanto\",\"volcano\"]": "badge-icon/lgpe-kanto/volcano",
+    "[\"pgl-hoenn\",\"balance\"]": "badge-icon/pgl-hoenn/balance",
+    "[\"pgl-hoenn\",\"champion-ribbon\"]": "badge-icon/pgl-hoenn/champion-ribbon",
+    "[\"pgl-hoenn\",\"dynamo\"]": "badge-icon/pgl-hoenn/dynamo",
+    "[\"pgl-hoenn\",\"feather\"]": "badge-icon/pgl-hoenn/feather",
+    "[\"pgl-hoenn\",\"heat\"]": "badge-icon/pgl-hoenn/heat",
+    "[\"pgl-hoenn\",\"knuckle\"]": "badge-icon/pgl-hoenn/knuckle",
+    "[\"pgl-hoenn\",\"mind\"]": "badge-icon/pgl-hoenn/mind",
+    "[\"pgl-hoenn\",\"rain\"]": "badge-icon/pgl-hoenn/rain",
+    "[\"pgl-hoenn\",\"stone\"]": "badge-icon/pgl-hoenn/stone"
+  },
+  "assets": {
+    "badge-icon/b2w2-unova/basic": {
+      "path": "assets/badge-icons/b2w2-unova/basic.png",
+      "sha256": "124efbf2c799abbf7156f1df4278a0e807618718d0232e23ad620df54df72661",
+      "mediaType": "image/png",
+      "width": 139,
+      "height": 139,
+      "motion": "static",
+      "selectors": {
+        "style": "b2w2-unova",
+        "badge": "basic"
+      }
+    },
+    "badge-icon/b2w2-unova/bolt": {
+      "path": "assets/badge-icons/b2w2-unova/bolt.png",
+      "sha256": "53c122e6db19bdb3b87dd0763e981314cc8d238c8529770a855285ca68d54ef8",
+      "mediaType": "image/png",
+      "width": 158,
+      "height": 158,
+      "motion": "static",
+      "selectors": {
+        "style": "b2w2-unova",
+        "badge": "bolt"
+      }
+    },
+    "badge-icon/b2w2-unova/insect": {
+      "path": "assets/badge-icons/b2w2-unova/insect.png",
+      "sha256": "63fdd0bbe998dc9ff6889d05dfb9883a5b5a8ba517f6824246550e3aebfb27f6",
+      "mediaType": "image/png",
+      "width": 136,
+      "height": 136,
+      "motion": "static",
+      "selectors": {
+        "style": "b2w2-unova",
+        "badge": "insect"
+      }
+    },
+    "badge-icon/b2w2-unova/jet": {
+      "path": "assets/badge-icons/b2w2-unova/jet.png",
+      "sha256": "3c5414760c8338c4257c2d05094a91c504fa34713ce512ac022e42e1aa27da66",
+      "mediaType": "image/png",
+      "width": 158,
+      "height": 158,
+      "motion": "static",
+      "selectors": {
+        "style": "b2w2-unova",
+        "badge": "jet"
+      }
+    },
+    "badge-icon/b2w2-unova/legend": {
+      "path": "assets/badge-icons/b2w2-unova/legend.png",
+      "sha256": "a51d3f8a29ce147990e102f1de555f115152c8d9bc3b720f95cba09e53a32c79",
+      "mediaType": "image/png",
+      "width": 169,
+      "height": 169,
+      "motion": "static",
+      "selectors": {
+        "style": "b2w2-unova",
+        "badge": "legend"
+      }
+    },
+    "badge-icon/b2w2-unova/plasma-logo": {
+      "path": "assets/badge-icons/b2w2-unova/plasma-logo.png",
+      "sha256": "4889b94b15efb752a758b1b2889511f874f087490f9033e7c42616bf1c4bff90",
+      "mediaType": "image/png",
+      "width": 301,
+      "height": 358,
+      "motion": "static",
+      "selectors": {
+        "style": "b2w2-unova",
+        "badge": "plasma-logo"
+      }
+    },
+    "badge-icon/b2w2-unova/pokemon-league-logo": {
+      "path": "assets/badge-icons/b2w2-unova/pokemon-league-logo.png",
+      "sha256": "4f9280b1ce2c2751f389834520db6ec337db9f86160fdc19c041c840ca3bc757",
+      "mediaType": "image/png",
+      "width": 720,
+      "height": 720,
+      "motion": "static",
+      "selectors": {
+        "style": "b2w2-unova",
+        "badge": "pokemon-league-logo"
+      }
+    },
+    "badge-icon/b2w2-unova/quake": {
+      "path": "assets/badge-icons/b2w2-unova/quake.png",
+      "sha256": "3091910c0ebb793747466072d125e9a61f750c292049aeadc8dedc8dbd40245a",
+      "mediaType": "image/png",
+      "width": 143,
+      "height": 143,
+      "motion": "static",
+      "selectors": {
+        "style": "b2w2-unova",
+        "badge": "quake"
+      }
+    },
+    "badge-icon/b2w2-unova/toxic": {
+      "path": "assets/badge-icons/b2w2-unova/toxic.png",
+      "sha256": "53b42666db0b2994faae18116829c670c6a64dd5662d33946d427d0527a25569",
+      "mediaType": "image/png",
+      "width": 148,
+      "height": 148,
+      "motion": "static",
+      "selectors": {
+        "style": "b2w2-unova",
+        "badge": "toxic"
+      }
+    },
+    "badge-icon/b2w2-unova/wave": {
+      "path": "assets/badge-icons/b2w2-unova/wave.png",
+      "sha256": "a67866126b197c3b9e97871ba5b93ebc4753bf6c1af86311e092452a62e786a8",
+      "mediaType": "image/png",
+      "width": 142,
+      "height": 142,
+      "motion": "static",
+      "selectors": {
+        "style": "b2w2-unova",
+        "badge": "wave"
+      }
+    },
+    "badge-icon/dp-sinnoh/beacon": {
+      "path": "assets/badge-icons/dp-sinnoh/beacon.png",
+      "sha256": "4f97d823a9681610a007a00b2841b2161b9bfea5b15ad475fec0a0e831339263",
+      "mediaType": "image/png",
+      "width": 143,
+      "height": 142,
+      "motion": "static",
+      "selectors": {
+        "style": "dp-sinnoh",
+        "badge": "beacon"
+      }
+    },
+    "badge-icon/dp-sinnoh/champion-ribbon": {
+      "path": "assets/badge-icons/dp-sinnoh/champion-ribbon.png",
+      "sha256": "8bcf387eefecfb4a1cf913c76c8718894ebe18c7cbe85449d0f8f0afe3c6dc45",
+      "mediaType": "image/png",
+      "width": 128,
+      "height": 128,
+      "motion": "static",
+      "selectors": {
+        "style": "dp-sinnoh",
+        "badge": "champion-ribbon"
+      },
+      "selectorAliases": [
+        {
+          "style": "lgpe-kanto",
+          "badge": "champion-ribbon"
+        }
+      ]
+    },
+    "badge-icon/dp-sinnoh/coal": {
+      "path": "assets/badge-icons/dp-sinnoh/coal.png",
+      "sha256": "01f17a61dadd980d911589b0462fb31ff377f74c1d52252f39d4de42412958fd",
+      "mediaType": "image/png",
+      "width": 134,
+      "height": 133,
+      "motion": "static",
+      "selectors": {
+        "style": "dp-sinnoh",
+        "badge": "coal"
+      }
+    },
+    "badge-icon/dp-sinnoh/cobble": {
+      "path": "assets/badge-icons/dp-sinnoh/cobble.png",
+      "sha256": "4014cce30ca3e27b61fd46bae363f6e9c44324a883e286e3e7ddbaf0cfb701c0",
+      "mediaType": "image/png",
+      "width": 143,
+      "height": 142,
+      "motion": "static",
+      "selectors": {
+        "style": "dp-sinnoh",
+        "badge": "cobble"
+      }
+    },
+    "badge-icon/dp-sinnoh/fen": {
+      "path": "assets/badge-icons/dp-sinnoh/fen.png",
+      "sha256": "41d519e7b051e0e6b30ef4a812428e531cd3b213c35b57c0f967223671dc6dce",
+      "mediaType": "image/png",
+      "width": 143,
+      "height": 142,
+      "motion": "static",
+      "selectors": {
+        "style": "dp-sinnoh",
+        "badge": "fen"
+      }
+    },
+    "badge-icon/dp-sinnoh/forest": {
+      "path": "assets/badge-icons/dp-sinnoh/forest.png",
+      "sha256": "89badaa12395b9730f114b01a23347183bef6da9e5de36633a0553bdff7ece96",
+      "mediaType": "image/png",
+      "width": 134,
+      "height": 133,
+      "motion": "static",
+      "selectors": {
+        "style": "dp-sinnoh",
+        "badge": "forest"
+      }
+    },
+    "badge-icon/dp-sinnoh/galactic-logo": {
+      "path": "assets/badge-icons/dp-sinnoh/galactic-logo.png",
+      "sha256": "6dad7fe2c47968c5854f96f3e818735383d5013aee497a79ab422304dbaede4b",
+      "mediaType": "image/png",
+      "width": 598,
+      "height": 958,
+      "motion": "static",
+      "selectors": {
+        "style": "dp-sinnoh",
+        "badge": "galactic-logo"
+      }
+    },
+    "badge-icon/dp-sinnoh/icicle": {
+      "path": "assets/badge-icons/dp-sinnoh/icicle.png",
+      "sha256": "456e30b9235abb7c03afbdd021a6c504d5be35e3beb7510f866c7447b3e08a39",
+      "mediaType": "image/png",
+      "width": 143,
+      "height": 142,
+      "motion": "static",
+      "selectors": {
+        "style": "dp-sinnoh",
+        "badge": "icicle"
+      }
+    },
+    "badge-icon/dp-sinnoh/mine": {
+      "path": "assets/badge-icons/dp-sinnoh/mine.png",
+      "sha256": "f3fb6219cbc8d19ab53e3a350b57c815dd31d1087c83a4468ea022ab7cf21972",
+      "mediaType": "image/png",
+      "width": 143,
+      "height": 142,
+      "motion": "static",
+      "selectors": {
+        "style": "dp-sinnoh",
+        "badge": "mine"
+      }
+    },
+    "badge-icon/dp-sinnoh/relic": {
+      "path": "assets/badge-icons/dp-sinnoh/relic.png",
+      "sha256": "442810d0f18fd763d7ad8eecb535928c85aecfe11b9c03a66c87dac3ed737dd7",
+      "mediaType": "image/png",
+      "width": 134,
+      "height": 133,
+      "motion": "static",
+      "selectors": {
+        "style": "dp-sinnoh",
+        "badge": "relic"
+      }
+    },
+    "badge-icon/hgss-johto/fog": {
+      "path": "assets/badge-icons/hgss-johto/fog.png",
+      "sha256": "424c3e0003ef1e198439f798c3a795af03e3e9cb1cd5388febe4cbc4d36842cd",
+      "mediaType": "image/png",
+      "width": 22,
+      "height": 20,
+      "motion": "static",
+      "selectors": {
+        "style": "hgss-johto",
+        "badge": "fog"
+      }
+    },
+    "badge-icon/hgss-johto/glacier": {
+      "path": "assets/badge-icons/hgss-johto/glacier.png",
+      "sha256": "9a79fba528403d9efcabce224434000657f49978624d001811832a517206eac2",
+      "mediaType": "image/png",
+      "width": 20,
+      "height": 22,
+      "motion": "static",
+      "selectors": {
+        "style": "hgss-johto",
+        "badge": "glacier"
+      }
+    },
+    "badge-icon/hgss-johto/hive": {
+      "path": "assets/badge-icons/hgss-johto/hive.png",
+      "sha256": "25fa933747a11a963c895285e1b445c54e3a2a33b38a7ca223140b4876c0f701",
+      "mediaType": "image/png",
+      "width": 22,
+      "height": 22,
+      "motion": "static",
+      "selectors": {
+        "style": "hgss-johto",
+        "badge": "hive"
+      }
+    },
+    "badge-icon/hgss-johto/league-emblem": {
+      "path": "assets/badge-icons/hgss-johto/league-emblem.png",
+      "sha256": "3ad5f5226097a5263950226a3f83e75e56b4faedf45a4d7fbc3cbe2ded343802",
+      "mediaType": "image/png",
+      "width": 52,
+      "height": 54,
+      "motion": "static",
+      "selectors": {
+        "style": "hgss-johto",
+        "badge": "league-emblem"
+      },
+      "selectorAliases": [
+        {
+          "style": "hgss-johto",
+          "badge": "postgame-emblem"
+        }
+      ]
+    },
+    "badge-icon/hgss-johto/mineral": {
+      "path": "assets/badge-icons/hgss-johto/mineral.png",
+      "sha256": "6828289471dcf3102e77f3b30d247906d24752a543a0f85b49ae37a749e463a1",
+      "mediaType": "image/png",
+      "width": 22,
+      "height": 22,
+      "motion": "static",
+      "selectors": {
+        "style": "hgss-johto",
+        "badge": "mineral"
+      }
+    },
+    "badge-icon/hgss-johto/plain": {
+      "path": "assets/badge-icons/hgss-johto/plain.png",
+      "sha256": "ad98efe294a9e13563ad074f427cd141a22b0acbcfcff3f24b6cf2f6a5fc4aaa",
+      "mediaType": "image/png",
+      "width": 24,
+      "height": 24,
+      "motion": "static",
+      "selectors": {
+        "style": "hgss-johto",
+        "badge": "plain"
+      }
+    },
+    "badge-icon/hgss-johto/rising": {
+      "path": "assets/badge-icons/hgss-johto/rising.png",
+      "sha256": "1a6d0a194a5dd0ec35e3e5da97947273dc394cf1912829b9712672ee649342cf",
+      "mediaType": "image/png",
+      "width": 20,
+      "height": 22,
+      "motion": "static",
+      "selectors": {
+        "style": "hgss-johto",
+        "badge": "rising"
+      }
+    },
+    "badge-icon/hgss-johto/storm": {
+      "path": "assets/badge-icons/hgss-johto/storm.png",
+      "sha256": "bd8cbf1c504ea5f45e4d17e0c40ef47daeeed274bf09f1b107dc7fa0c9621948",
+      "mediaType": "image/png",
+      "width": 23,
+      "height": 20,
+      "motion": "static",
+      "selectors": {
+        "style": "hgss-johto",
+        "badge": "storm"
+      }
+    },
+    "badge-icon/hgss-johto/zephyr": {
+      "path": "assets/badge-icons/hgss-johto/zephyr.png",
+      "sha256": "8015747472ab2aaa0cb47617e198e22cbc9ff22421c50883e24879ac2efcc6d8",
+      "mediaType": "image/png",
+      "width": 22,
+      "height": 24,
+      "motion": "static",
+      "selectors": {
+        "style": "hgss-johto",
+        "badge": "zephyr"
+      }
+    },
+    "badge-icon/lgpe-kanto/boulder": {
+      "path": "assets/badge-icons/lgpe-kanto/boulder.png",
+      "sha256": "e29134d483230105be6817bf9098af40a901329dcbe643e14431e55930947a51",
+      "mediaType": "image/png",
+      "width": 64,
+      "height": 64,
+      "motion": "static",
+      "selectors": {
+        "style": "lgpe-kanto",
+        "badge": "boulder"
+      }
+    },
+    "badge-icon/lgpe-kanto/cascade": {
+      "path": "assets/badge-icons/lgpe-kanto/cascade.png",
+      "sha256": "924ec0e83bb1aaed9e039e471818ba299b5168b9a77aadb971ff7e17fd4ebf96",
+      "mediaType": "image/png",
+      "width": 64,
+      "height": 64,
+      "motion": "static",
+      "selectors": {
+        "style": "lgpe-kanto",
+        "badge": "cascade"
+      }
+    },
+    "badge-icon/lgpe-kanto/earth": {
+      "path": "assets/badge-icons/lgpe-kanto/earth.png",
+      "sha256": "1de002ad699d9358ca022852fba6ea37c0ab4a7b15e25f6ed6bc0377131bd8a0",
+      "mediaType": "image/png",
+      "width": 64,
+      "height": 64,
+      "motion": "static",
+      "selectors": {
+        "style": "lgpe-kanto",
+        "badge": "earth"
+      }
+    },
+    "badge-icon/lgpe-kanto/marsh": {
+      "path": "assets/badge-icons/lgpe-kanto/marsh.png",
+      "sha256": "4d80b1abc4fd3dc238a6e2717eee3066c3fc7e3162046a6c29be651888ae84b7",
+      "mediaType": "image/png",
+      "width": 64,
+      "height": 64,
+      "motion": "static",
+      "selectors": {
+        "style": "lgpe-kanto",
+        "badge": "marsh"
+      }
+    },
+    "badge-icon/lgpe-kanto/rainbow": {
+      "path": "assets/badge-icons/lgpe-kanto/rainbow.png",
+      "sha256": "435c309c7471baead3e23700a7c7027b211697efdc73e58a97d9dedd4d2fd883",
+      "mediaType": "image/png",
+      "width": 64,
+      "height": 64,
+      "motion": "static",
+      "selectors": {
+        "style": "lgpe-kanto",
+        "badge": "rainbow"
+      }
+    },
+    "badge-icon/lgpe-kanto/soul": {
+      "path": "assets/badge-icons/lgpe-kanto/soul.png",
+      "sha256": "529b8fa70d6c0988c7ec1c074b753be938f02a0878017f0f481c93c4a28dc239",
+      "mediaType": "image/png",
+      "width": 64,
+      "height": 64,
+      "motion": "static",
+      "selectors": {
+        "style": "lgpe-kanto",
+        "badge": "soul"
+      }
+    },
+    "badge-icon/lgpe-kanto/thunder": {
+      "path": "assets/badge-icons/lgpe-kanto/thunder.png",
+      "sha256": "4f4752238a2bfeb54e1369fbb19f324a9f453f22ae17d24664810beefe263450",
+      "mediaType": "image/png",
+      "width": 64,
+      "height": 64,
+      "motion": "static",
+      "selectors": {
+        "style": "lgpe-kanto",
+        "badge": "thunder"
+      }
+    },
+    "badge-icon/lgpe-kanto/volcano": {
+      "path": "assets/badge-icons/lgpe-kanto/volcano.png",
+      "sha256": "160d53519973e013948f0fd818a18f968c59fdabd9a67facc22e9333288741d8",
+      "mediaType": "image/png",
+      "width": 64,
+      "height": 64,
+      "motion": "static",
+      "selectors": {
+        "style": "lgpe-kanto",
+        "badge": "volcano"
+      }
+    },
+    "badge-icon/pgl-hoenn/balance": {
+      "path": "assets/badge-icons/pgl-hoenn/balance.png",
+      "sha256": "f89b88d35c397971ce7053676000fc9a17834db51053d91678ab30d3a63a2ad3",
+      "mediaType": "image/png",
+      "width": 147,
+      "height": 147,
+      "motion": "static",
+      "selectors": {
+        "style": "pgl-hoenn",
+        "badge": "balance"
+      }
+    },
+    "badge-icon/pgl-hoenn/champion-ribbon": {
+      "path": "assets/badge-icons/pgl-hoenn/champion-ribbon.png",
+      "sha256": "5859e2cacab34e9dd63f97f63f359f41d29c93a627b7c0b65560519c2330616c",
+      "mediaType": "image/png",
+      "width": 128,
+      "height": 128,
+      "motion": "static",
+      "selectors": {
+        "style": "pgl-hoenn",
+        "badge": "champion-ribbon"
+      }
+    },
+    "badge-icon/pgl-hoenn/dynamo": {
+      "path": "assets/badge-icons/pgl-hoenn/dynamo.png",
+      "sha256": "6a308c2d560a155948ac9cbf80e75ed9abbe2ee647086af97c9202895a7147fa",
+      "mediaType": "image/png",
+      "width": 151,
+      "height": 151,
+      "motion": "static",
+      "selectors": {
+        "style": "pgl-hoenn",
+        "badge": "dynamo"
+      }
+    },
+    "badge-icon/pgl-hoenn/feather": {
+      "path": "assets/badge-icons/pgl-hoenn/feather.png",
+      "sha256": "ca439cab2bcfae59d93e254da43746690ec81622552049d427df8472b265b345",
+      "mediaType": "image/png",
+      "width": 139,
+      "height": 139,
+      "motion": "static",
+      "selectors": {
+        "style": "pgl-hoenn",
+        "badge": "feather"
+      }
+    },
+    "badge-icon/pgl-hoenn/heat": {
+      "path": "assets/badge-icons/pgl-hoenn/heat.png",
+      "sha256": "29feac367d0229a68ef44bd9ae865638c7ef5f6f706cbcfaf33ef92746d33bbc",
+      "mediaType": "image/png",
+      "width": 149,
+      "height": 149,
+      "motion": "static",
+      "selectors": {
+        "style": "pgl-hoenn",
+        "badge": "heat"
+      }
+    },
+    "badge-icon/pgl-hoenn/knuckle": {
+      "path": "assets/badge-icons/pgl-hoenn/knuckle.png",
+      "sha256": "a973498f419103f899d1cdac23325cf1ae222c4fa7060442793345902ec3edbd",
+      "mediaType": "image/png",
+      "width": 141,
+      "height": 141,
+      "motion": "static",
+      "selectors": {
+        "style": "pgl-hoenn",
+        "badge": "knuckle"
+      }
+    },
+    "badge-icon/pgl-hoenn/mind": {
+      "path": "assets/badge-icons/pgl-hoenn/mind.png",
+      "sha256": "66cde82c46942d193eebacb8c966bdbd2a46b5304dfc20b1c56b62c8dcf9ee35",
+      "mediaType": "image/png",
+      "width": 143,
+      "height": 143,
+      "motion": "static",
+      "selectors": {
+        "style": "pgl-hoenn",
+        "badge": "mind"
+      }
+    },
+    "badge-icon/pgl-hoenn/rain": {
+      "path": "assets/badge-icons/pgl-hoenn/rain.png",
+      "sha256": "4faf5c504854cf1c4361319f6ba9cd6a62e6c990321a8ef6d0aeb5200e180c3b",
+      "mediaType": "image/png",
+      "width": 146,
+      "height": 146,
+      "motion": "static",
+      "selectors": {
+        "style": "pgl-hoenn",
+        "badge": "rain"
+      }
+    },
+    "badge-icon/pgl-hoenn/stone": {
+      "path": "assets/badge-icons/pgl-hoenn/stone.png",
+      "sha256": "7b2fbe4e14b4cd3acac6832c3892de734b1470d19b79512e37d1022d5ced09fa",
+      "mediaType": "image/png",
+      "width": 154,
+      "height": 154,
+      "motion": "static",
+      "selectors": {
+        "style": "pgl-hoenn",
+        "badge": "stone"
+      }
+    }
+  }
+}

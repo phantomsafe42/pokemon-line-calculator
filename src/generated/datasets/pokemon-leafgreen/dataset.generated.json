@@ -2,12 +2,12 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-leafgreen-dataset",
   "source": "Datasets/Pokemon LeafGreen/source-data",
-  "sourceTreeSha256": "D61214BE6EE8FE42E0C498A4C833832013EF113A76EBCBE35771D40725070C81",
+  "sourceTreeSha256": "C6CF3612A8B6672423918F911833BC92CBF919045EC7194FC2B0F8B32A44EA7C",
   "files": [
     {
       "path": "dataset_manifest.json",
       "bytes": 71699,
-      "sha256": "F4240ED189442FCAA47DB463C7EA7235D2A799BEA950BED7A0D0783DF24C8E39"
+      "sha256": "8850A0465E8057F96D17B7E9F7AA05C9FBC9E98D19399E0CFB5CA5627A5C95DD"
     },
     {
       "path": "battle_mechanics.json",

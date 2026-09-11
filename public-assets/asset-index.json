@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "datasetId": "pokemon-assets",
-  "releaseVersion": "0.4.0-dev.1",
+  "releaseVersion": "0.5.0-dev.1",
   "generated": true,
   "collections": [
     {
@@ -14,10 +14,20 @@
       "assetBytes": 166889950
     },
     {
+      "collectionId": "badge-icon",
+      "kind": "badge-icon",
+      "indexPath": "assets/badge-icons/index.json",
+      "indexSha256": "ebe3e501e8a7defa0d12076008d9af8cbaed06e82b3fdbb95dfe1298b75bedf3",
+      "indexBytes": 21061,
+      "assets": 46,
+      "assetBytes": 815311,
+      "selectors": 48
+    },
+    {
       "collectionId": "item-sprite",
       "kind": "item-sprite",
       "indexPath": "assets/item-sprites/index.json",
-      "indexSha256": "d45d0e8d6423f8bcabb6665bd8ed7d9442b83ad74c117498ef00a876eeedf69f",
+      "indexSha256": "98a5800fcee5660b0d319090300652dacb8a6e172fa82031e23df2a381efe23b",
       "indexBytes": 385700,
       "assets": 852,
       "assetBytes": 511403,
@@ -27,7 +37,7 @@
       "collectionId": "status-condition-icon",
       "kind": "status-condition-icon",
       "indexPath": "assets/status-condition-icons/index.json",
-      "indexSha256": "6863470e745c8476274a00acb6d76c6ffbec2d948a972cfb77a3ae2a46f6eb0a",
+      "indexSha256": "5a4bddae3b13f0688d6f3dfb7fb44bf02095f7a35c02a7c404b570512a43b18b",
       "indexBytes": 7548,
       "metadataFiles": [
         {
@@ -47,7 +57,7 @@
       "collectionId": "type-icon",
       "kind": "type-icon",
       "indexPath": "assets/type-icons/index.json",
-      "indexSha256": "971cc9b32fb11d451e79ca8ded9f4efd901f39969d08cb4d1cd171f616e26b9b",
+      "indexSha256": "9cab723cee7abe45d4d4f8027c4ac541e75ac8c4d9cc19b4b84f312b28ff7fd1",
       "indexBytes": 62045,
       "assets": 111,
       "assetBytes": 322492,

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "datasetId": "pokemon-assets",
-  "releaseVersion": "0.4.0-dev.1",
+  "releaseVersion": "0.5.0-dev.1",
   "collectionId": "type-icon",
   "kind": "type-icon",
   "generated": true,

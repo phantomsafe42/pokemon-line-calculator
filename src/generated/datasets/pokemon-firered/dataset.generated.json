@@ -2,12 +2,12 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-firered-dataset",
   "source": "Datasets/Pokemon FireRed/source-data",
-  "sourceTreeSha256": "F50768E50805BEAEA0D1C826492C6F1F0EC80220CE24E33A8AFD72BFC2B2CD30",
+  "sourceTreeSha256": "58CE994E8C12DB453E3AFFF475AF9E8173B6BB6641C7E68F0D4CEDE22FC582FD",
   "files": [
     {
       "path": "dataset_manifest.json",
       "bytes": 71667,
-      "sha256": "7E41DD5CB4E1516455AD22C11630D5F47DB143D4E34A8D33A22B6CDD498300E5"
+      "sha256": "3E556DDA526A604EE5FA5D9FD5B8C707B23D859314C8776C7358B674FA070FDE"
     },
     {
       "path": "battle_mechanics.json",

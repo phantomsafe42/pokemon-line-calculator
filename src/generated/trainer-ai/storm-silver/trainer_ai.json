@@ -26,7 +26,7 @@
   },
   "bindingEvidence": {
     "source": "trainer_ai_evidence.json",
-    "sha256": "d5e812f2b17587aa10927430e3907c20873686be9fbdd81c9b75eebfbdf1d31a",
+    "sha256": "77e0f38aa299de88cabe8d35c2121cb81f21523017bddbaa74b9778280e5a116",
     "status": "passed",
     "authority": {
       "supportedRom": {

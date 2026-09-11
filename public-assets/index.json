@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "datasetId": "pokemon-assets",
-  "releaseVersion": "0.4.0-dev.1",
+  "releaseVersion": "0.5.0-dev.1",
   "generated": true,
   "assetCatalog": {
     "path": "asset-index.json",
-    "sha256": "e4f2ba67022287a2688e3a180d681a7a49e6938b399d9e2fd64e065ef60aa562",
-    "bytes": 1697
+    "sha256": "044092e5cd524103db46562b6e8e7da0bd3fc181b37377919c88d367de95576e",
+    "bytes": 2012
   },
   "profiles": [
     {
       "profileId": "gen5-animated",
       "indexPath": "profiles/gen5-animated/index.json",
-      "indexSha256": "b5eb2103fb238ab2e39134164c726fdbe299335f75c05799a27c50394c911172",
+      "indexSha256": "74370a2152f00bed8988b5c5a3cfb29f13ba021f4b4cfba0bb76fb3098e6b0a7",
       "indexBytes": 1303911,
       "appearances": 731,
       "assets": 3308,
@@ -23,7 +23,7 @@
     {
       "profileId": "gen5-static",
       "indexPath": "profiles/gen5-static/index.json",
-      "indexSha256": "161288461ab028e5a26eb878296d8ffd5a2971fb6ac0be09b4a64a5993785d1e",
+      "indexSha256": "f317c1de54508920b08a2389167ceafb5e8c48947eb02d6a6964b55ca9725ee4",
       "indexBytes": 2378988,
       "appearances": 1408,
       "assets": 6024,
@@ -34,7 +34,7 @@
     {
       "profileId": "pixel",
       "indexPath": "profiles/pixel/index.json",
-      "indexSha256": "1a3f0b54b3678f7250ed232274050e42297236714e20911eb37fad4584b598e2",
+      "indexSha256": "9c988a76670ef7c749537e2a57229372ec99b3acacbb2cd95c8f334949bdb07a",
       "indexBytes": 3736391,
       "appearances": 1556,
       "assets": 9706,

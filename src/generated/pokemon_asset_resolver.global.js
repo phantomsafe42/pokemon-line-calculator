@@ -115,6 +115,86 @@
     return { style, condition };
   }
 
+  function normalizeBadgeIconQuery(query = {}) {
+    const styleAliases = {
+      lgpekanto: "lgpe-kanto", lgpe: "lgpe-kanto", kanto: "lgpe-kanto", letsgo: "lgpe-kanto",
+      letsgopikachu: "lgpe-kanto", letsgoeevee: "lgpe-kanto", fireredomega: "lgpe-kanto",
+      hgssjohto: "hgss-johto", hgss: "hgss-johto", johto: "hgss-johto", stormsilver: "hgss-johto",
+      pglhoenn: "pgl-hoenn", pgl: "pgl-hoenn", hoenn: "pgl-hoenn", emerald: "pgl-hoenn", emeraldseaglass: "pgl-hoenn",
+      dpsinnoh: "dp-sinnoh", dp: "dp-sinnoh", dpp: "dp-sinnoh", dppt: "dp-sinnoh", sinnoh: "dp-sinnoh",
+      platinum: "dp-sinnoh", platinumkaizo: "dp-sinnoh", renegadeplatinum: "dp-sinnoh",
+      b2w2unova: "b2w2-unova", b2w2: "b2w2-unova", bw2: "b2w2-unova", unova: "b2w2-unova", voltwhite2r: "b2w2-unova",
+      voltwhite2redux: "b2w2-unova"
+    };
+    const style = styleAliases[normalizeToken(query.style || query.game || query.region || query.family)];
+    if (!style) return null;
+    const badgeToken = normalizeToken(query.badge ?? query.badgeId ?? query.split ?? query.leader ?? query.name);
+    if (!badgeToken) return null;
+    const aliases = {
+      "lgpe-kanto": {
+        boulder: "boulder", boulderbadge: "boulder", brock: "boulder",
+        cascade: "cascade", cascadebadge: "cascade", misty: "cascade",
+        thunder: "thunder", thunderbadge: "thunder", ltsurge: "thunder", surge: "thunder",
+        rainbow: "rainbow", rainbowbadge: "rainbow", erika: "rainbow",
+        soul: "soul", soulbadge: "soul", koga: "soul",
+        marsh: "marsh", marshbadge: "marsh", sabrina: "marsh",
+        volcano: "volcano", volcanobadge: "volcano", blaine: "volcano",
+        earth: "earth", earthbadge: "earth", giovanni: "earth",
+        champion: "champion-ribbon", championribbon: "champion-ribbon", elite4: "champion-ribbon", elitefour: "champion-ribbon", blue: "champion-ribbon"
+      },
+      "hgss-johto": {
+        zephyr: "zephyr", zephyrbadge: "zephyr", falkner: "zephyr",
+        hive: "hive", hivebadge: "hive", bugsy: "hive",
+        plain: "plain", plainbadge: "plain", whitney: "plain",
+        fog: "fog", fogbadge: "fog", morty: "fog",
+        storm: "storm", stormbadge: "storm", chuck: "storm",
+        mineral: "mineral", mineralbadge: "mineral", jasmine: "mineral",
+        glacier: "glacier", glacierbadge: "glacier", pryce: "glacier",
+        rising: "rising", risingbadge: "rising", clair: "rising",
+        league: "league-emblem", leagueemblem: "league-emblem", champion: "league-emblem", elite4: "league-emblem", elitefour: "league-emblem", lance: "league-emblem",
+        postgame: "postgame-emblem", postgameemblem: "postgame-emblem"
+      },
+      "pgl-hoenn": {
+        stone: "stone", stonebadge: "stone", roxanne: "stone",
+        knuckle: "knuckle", knucklebadge: "knuckle", brawly: "knuckle",
+        dynamo: "dynamo", dynamobadge: "dynamo", wattson: "dynamo",
+        heat: "heat", heatbadge: "heat", flannery: "heat",
+        balance: "balance", balancebadge: "balance", norman: "balance",
+        feather: "feather", featherbadge: "feather", winona: "feather",
+        mind: "mind", mindbadge: "mind", tate: "mind", liza: "mind", tateandliza: "mind",
+        rain: "rain", rainbadge: "rain", wallace: "rain", juan: "rain",
+        champion: "champion-ribbon", championribbon: "champion-ribbon", elite4: "champion-ribbon", elitefour: "champion-ribbon", steven: "champion-ribbon"
+      },
+      "dp-sinnoh": {
+        coal: "coal", coalbadge: "coal", roark: "coal",
+        forest: "forest", forestbadge: "forest", gardenia: "forest",
+        relic: "relic", relicbadge: "relic", fantina: "relic",
+        cobble: "cobble", cobblebadge: "cobble", maylene: "cobble",
+        fen: "fen", fenbadge: "fen", wake: "fen", crasherwake: "fen",
+        mine: "mine", minebadge: "mine", byron: "mine",
+        icicle: "icicle", iciclebadge: "icicle", candice: "icicle",
+        beacon: "beacon", beaconbadge: "beacon", volkner: "beacon",
+        galactic: "galactic-logo", galacticlogo: "galactic-logo", cyrus: "galactic-logo", postgame: "galactic-logo",
+        champion: "champion-ribbon", championribbon: "champion-ribbon", elite4: "champion-ribbon", elitefour: "champion-ribbon", cynthia: "champion-ribbon"
+      },
+      "b2w2-unova": {
+        basic: "basic", basicbadge: "basic", cheren: "basic",
+        toxic: "toxic", toxicbadge: "toxic", roxie: "toxic",
+        insect: "insect", insectbadge: "insect", burgh: "insect",
+        bolt: "bolt", boltbadge: "bolt", elesa: "bolt",
+        quake: "quake", quakebadge: "quake", clay: "quake",
+        jet: "jet", jetbadge: "jet", skyla: "jet",
+        legend: "legend", legendbadge: "legend", drayden: "legend",
+        wave: "wave", wavebadge: "wave", marlon: "wave",
+        plasma: "plasma-logo", plasmalogo: "plasma-logo", ghetsis: "plasma-logo",
+        pokemonleague: "pokemon-league-logo", pokemonleaguelogo: "pokemon-league-logo", league: "pokemon-league-logo",
+        champion: "pokemon-league-logo", iris: "pokemon-league-logo", elite4: "pokemon-league-logo", elitefour: "pokemon-league-logo"
+      }
+    };
+    const badge = aliases[style]?.[badgeToken];
+    return badge ? { style, badge } : null;
+  }
+
   function trimBaseUrl(value) {
     const result = String(value || "").trim().replace(/\/+$/, "");
     if (!result || /<owner>|<asset-repo>|<immutable-tag>|__POKEMON_ASSET_RELEASE_BASE__/i.test(result)) return null;
@@ -507,6 +587,13 @@
       return resolveCollectionAsset("status-condition-icon", "status-condition-icon", selectors, query);
     }
 
+    async function resolveBadgeIcon(query = {}) {
+      if (!baseUrl) return { status: "unavailable", reason: "release-base-not-configured", requested: query };
+      const selectors = normalizeBadgeIconQuery(query);
+      if (!selectors) return { status: "unavailable", reason: "invalid-badge-icon-selectors", requested: query };
+      return resolveCollectionAsset("badge-icon", "badge-icon", selectors, query);
+    }
+
     async function resolveAsset(query = {}) {
       const kind = normalizeToken(query.kind || query.assetKind || (query.spriteType ? "pokemon-sprite" : ""));
       let result;
@@ -518,6 +605,7 @@
       if (kind === "typeicon" || kind === "type") result = await resolveTypeIcon(query);
       else if (kind === "itemsprite" || kind === "itemicon" || kind === "item") result = await resolveItemSprite(query);
       else if (["statusconditionicon", "statusicon", "conditionicon", "statuscondition", "status"].includes(kind)) result = await resolveStatusConditionIcon(query);
+      else if (["badgeicon", "gymbadge", "progressionicon", "badge"].includes(kind)) result = await resolveBadgeIcon(query);
       else result = { status: "unavailable", reason: "unknown-asset-kind", kind: query.kind, requested: query };
       if (result.status === "ok") diagnostics.resolved += 1;
       else diagnostics.unavailable += 1;
@@ -537,6 +625,8 @@
         if (result.variantKey) image.dataset.pokemonAssetVariant = result.variantKey;
         if (result.collectionId) image.dataset.pokemonAssetCollection = result.collectionId;
         if (result.assetId) image.dataset.pokemonAssetId = result.assetId;
+        if (result.selectors?.style) image.dataset.pokemonAssetStyle = result.selectors.style;
+        if (result.selectors?.badge) image.dataset.pokemonAssetBadge = result.selectors.badge;
         if (result.fallback) image.dataset.pokemonAssetFallback = `${result.fallback.requestedSpriteType}->${result.fallback.resolvedSpriteType}`;
         else delete image.dataset.pokemonAssetFallback;
         image.onerror = () => {
@@ -656,6 +746,7 @@
     variantKeyFor,
     normalizeTypeIconQuery,
     normalizeItemSpriteQuery,
-    normalizeStatusConditionIconQuery
+    normalizeStatusConditionIconQuery,
+    normalizeBadgeIconQuery
   });
 })(globalThis);

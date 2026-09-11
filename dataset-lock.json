@@ -2,13 +2,13 @@
   "schemaVersion": "plc-dataset-lock/v1",
   "repository": "phantomsafe42/pokemon-datasets",
   "visibility": "private",
-  "tag": "v0.1.8",
-  "commit": "4b518a6e1f4ffe07a691be06d88315575c5509ff",
-  "releaseVersion": "0.1.8",
+  "tag": "v0.1.9",
+  "commit": "b8dd569ffcf7f0fe12821fb62e0271862dca1380",
+  "releaseVersion": "0.1.9",
   "profile": "plc-public",
   "artifact": {
-    "name": "pokemon-datasets-plc-public-v0.1.8.zip",
-    "sha256": "d536fb7d4517b7d7afdb4aba7a2f766dff72e2ec2fe7bc2dc62a75febc37ded1"
+    "name": "pokemon-datasets-plc-public-v0.1.9.zip",
+    "sha256": "db5d75b6ad252d38034c647963d7d2450d62be7b95d3cecb0251fe7879270dfb"
   },
   "storageMode": "checked-in-compatibility-snapshot"
 }

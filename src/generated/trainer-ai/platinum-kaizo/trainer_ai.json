@@ -55,7 +55,7 @@
     },
     {
       "source": "trainer_table.json",
-      "sha256": "cfe81fb3d008f8db3306a6d9177355e09338fac7a4fb360ae89c3396c529e506",
+      "sha256": "29130215cedcac1feb7b44e8c89b8fb5526457eb80aab86f22575ae1cae4b040",
       "authority": "Deterministic projection of the native workbook hidden Trainer Data sheet; application is limited to numeric IDs whose party cardinality corroborates the standardized trainer record."
     }
   ],

@@ -14,7 +14,7 @@
   "sourceProfile": "retail-pokemon-ruby-multi-source-pinned",
   "buildInputs": {
     "../../tools/imports/vanilla/source_manifest.json": {
-      "sha256": "91dbeddeeb537c495d68e6351e76ae6b72e1573620f62b3b50308855c4331612",
+      "sha256": "fae3ed97e3c76c0ac17b69fdeadad4344aee4b3105008e902d06b2e7b138626b",
       "role": "immutable upstream source lock"
     },
     "../../tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-ruby.json": {
@@ -82,7 +82,7 @@
       "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
     },
     "../../tools/vanilla_encounter_mechanics.py": {
-      "sha256": "f4b6de0f5f971aef48467ce37fbd1491d7d9ebf79e5909b7a1f17780bd5d51c0",
+      "sha256": "0cf2ca3d353a6ec19d5a8c7dcf6e92f70c9288ddc953296d008166dcd6333739",
       "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
     },
     "../../tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/wild_encounters.json": {
@@ -506,7 +506,7 @@
       "role": "pinned non-wild acquisition policy, provenance, unresolved ledger, or independent verification"
     },
     "../../tools/imports/vanilla/nonwild-acquisition-policies/manifest.json": {
-      "sha256": "026e03f544a31009eb863998cf3beb5e7a2d002bf02d3720a19362a01a258f9a",
+      "sha256": "c9899c20227d58a9f14560ff3d4312532ffa7a62603a2b6deee926ed59c933ae",
       "role": "pinned non-wild acquisition policy, provenance, unresolved ledger, or independent verification"
     },
     "../../tools/imports/vanilla/nonwild-acquisition-policies/source_lock.json": {
@@ -518,7 +518,7 @@
       "role": "pinned non-wild acquisition policy, provenance, unresolved ledger, or independent verification"
     },
     "../../tools/imports/vanilla/nonwild-acquisition-policies/verification_report.json": {
-      "sha256": "2325ae032b535b3c6390f16c7a62389b0f21870012a2bb6435cdbf355525ed87",
+      "sha256": "05975c2ee117d3518c725cc0c0c7b0fe994e2640dfbba3acd34907f329cbfe07",
       "role": "pinned non-wild acquisition policy, provenance, unresolved ledger, or independent verification"
     },
     "../../tools/imports/vanilla/nonwild-acquisition-policies/unresolved_fields.json": {
@@ -530,7 +530,7 @@
       "role": "pinned non-wild acquisition policy, provenance, unresolved ledger, or independent verification"
     },
     "../../tools/import_nonwild_acquisition_policies.py": {
-      "sha256": "14115dc191c716635a06620447eb395090fb504900418d80d4c09564cf15fd9c",
+      "sha256": "b89e8c07d038fa49b36dddd2faa39620c0bcdd40b7c6dcd8eee91396c5009750",
       "role": "pinned non-wild acquisition policy, provenance, unresolved ledger, or independent verification"
     },
     "../../tools/test_nonwild_acquisition_policies.py": {
@@ -570,7 +570,7 @@
       "role": "pinned local generation-reference inheritance input"
     },
     "../../Gen 3/source-data/trainer_ai.json": {
-      "sha256": "cf8bb227dab1fbf6a0a1d7dc24235db22e88ffed24bd706bb9b9ccd0c7784fd9",
+      "sha256": "ce923945437a2b5ed15e27dbf05754737dc57a486bb32c41239cb06c939c1208",
       "role": "pinned local generation-reference inheritance input"
     },
     "../../tools/imports/vanilla/special-trainer-mechanics/mechanics.json": {
