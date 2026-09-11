@@ -1,6 +1,10 @@
 # Local workspace guidance and Codex state are deliberately not public source.
 AGENTS.md
+AGENTS.override.md
 **/AGENTS.md
+**/AGENTS.override.md
+MAINTENANCE.md
+**/MAINTENANCE.md
 SETTLED_HISTORY.md
 **/SETTLED_HISTORY.md
 .codex-project-root

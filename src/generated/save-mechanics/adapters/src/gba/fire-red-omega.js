@@ -1,7 +1,9 @@
 import { asBytes, readUint8 } from "../../../core/src/binary/little-endian.js";
-import { decodeGen3PokemonRecord } from "../../../core/src/gen3/pokemon.js";
-import { reassembleGen3Sections, selectGen3SaveSlot, verifyGen3SectionChecksums } from "../../../core/src/gen3/sectors.js";
-import { decodeGen3Text } from "../../../core/src/gen3/text.js";
+import { decodeGen3PokemonRecord } from "../../../core/src/gba/pokemon.js";
+import { reassembleGen3Sections, selectGen3SaveSlot, verifyGen3SectionChecksums } from "../../../core/src/gba/sectors.js";
+import { decodeGen3Text } from "../../../core/src/gba/text.js";
+import { readGbaPlayerTrainerIdentity } from "../../../core/src/gba/player-trainer-identity.js";
+import { createGbaNeutralSnapshot } from "./shared/neutral-projection.js";
 
 export const FRO_SAVE_BLOCK2_SECTION_IDS = Object.freeze([0]);
 export const FRO_SAVE_BLOCK1_SECTION_IDS = Object.freeze([1, 2, 3, 4]);
@@ -148,8 +150,8 @@ function parseFroRecord(recordValue, {
   const nickname = decodeNickname(context, record);
   const natureNumericId = decoded.personalityValue % 25;
   const locationNumericId = decoded.blocks.misc[1];
-  const moveIds = decoded.moveNumericIds.filter(moveNumericId => moveNumericId > 0);
-  const moves = moveIds.map(moveNumericId => {
+  const moveIds = decoded.moveNumericIds.slice();
+  const moves = moveIds.filter(moveNumericId => moveNumericId > 0).map(moveNumericId => {
     const move = resolveMove(context, moveNumericId);
     if (!move) throw new Error(`Unresolved Fire Red Omega move identity ${moveNumericId}`);
     return move;
@@ -170,6 +172,7 @@ function parseFroRecord(recordValue, {
     displayName: nickname || species,
     level,
     experience: decoded.experienceRaw,
+    friendship: decoded.friendship,
     ability: resolvedName(abilityIdentity, ["name"]),
     abilityId: abilityIdentity && typeof abilityIdentity === "object" ? abilityIdentity.id || null : null,
     abilityBit: decoded.abilityBit,
@@ -184,6 +187,8 @@ function parseFroRecord(recordValue, {
     ivs: statCompatibility(decoded.ivs),
     evs: statCompatibility(decoded.evs),
     moveIds,
+    movePp: decoded.movePp.slice(),
+    movePpUps: [decoded.packedPpUps & 3, (decoded.packedPpUps >>> 2) & 3, (decoded.packedPpUps >>> 4) & 3, (decoded.packedPpUps >>> 6) & 3],
     moves,
     checksumValid: decoded.checksumValid,
     storedChecksum: decoded.storedChecksum,
@@ -195,26 +200,12 @@ function parseFroRecord(recordValue, {
   };
 }
 
-function emptyProgress() {
-  return {
-    badgeByte: null,
-    badgeCount: null,
-    badges: {},
-    earnedBadges: [],
-    currentSplit: "Unknown",
-    currentSplitId: "unknown",
-    nextBoss: "",
-    splitLevelCap: null,
-  };
-}
-
 export function parseFireRedOmegaSave(value, {
   context,
-  updatedAt = new Date().toISOString(),
-  saveFile = "",
+  observedAt,
+  sourceName = "",
   rejectInvalidSectionChecksums = false,
   rejectInvalidPokemonChecksums = false,
-  legacyCompactBoxLocations = true,
 } = {}) {
   if (!context || typeof context !== "object") throw new Error("Fire Red Omega Dataset context is required");
   const bytes = asBytes(value, { copy: true, label: "Fire Red Omega save" });
@@ -226,6 +217,7 @@ export function parseFireRedOmegaSave(value, {
   }
 
   const saveBlock1 = reassembleGen3Sections(bytes, slot, FRO_SAVE_BLOCK1_SECTION_IDS);
+  const saveBlock2 = reassembleGen3Sections(bytes, slot, FRO_SAVE_BLOCK2_SECTION_IDS);
   const storageBlock = reassembleGen3Sections(bytes, slot, FRO_STORAGE_SECTION_IDS);
   const partyCount = Math.min(readUint8(saveBlock1, FRO_PARTY_COUNT_OFFSET), 6);
   const party = [];
@@ -257,49 +249,22 @@ export function parseFireRedOmegaSave(value, {
     if (mon) rawBoxes.push(mon);
   }
 
-  const boxes = rawBoxes.map((mon, index) => legacyCompactBoxLocations
-    ? {
-      ...mon,
-      sourceBox: mon.box,
-      sourceSlot: mon.slot,
-      box: Math.floor(index / FRO_SLOTS_PER_BOX) + 1,
-      slot: (index % FRO_SLOTS_PER_BOX) + 1,
-    }
-    : mon);
-  const collection = [...party, ...boxes];
-  const caughtSpecies = [...new Set(collection.map(mon => mon.species).filter(Boolean))].sort();
-  const progress = emptyProgress();
-  const common = {
-    updatedAt,
-    saveFile,
-    detectedGame: "FRLG",
-    ...progress,
-  };
-
-  return {
-    teamPayload: {
-      ...common,
-      team: party,
-    },
-    collectionPayload: {
-      ...common,
-      partyCount: party.length,
-      boxCount: boxes.length,
-      deadBoxCount: 0,
-      totalCount: collection.length,
-      caughtSpecies,
-      collection,
-      party,
-      boxes,
-      deadMons: [],
-    },
-    parserMeta: {
-      activeSlot: slot.slotIndex,
-      saveCounter: slot.counter,
-      sectionChecksums,
-      invalidSectionIds,
-      rawBoxCount: rawBoxes.length,
-      legacyCompactBoxLocations,
-    },
-  };
+  return createGbaNeutralSnapshot({
+    gameId: "fire-red-omega",
+    formatId: "frlg",
+    context,
+    sourceName,
+    sourceBytes: bytes.byteLength,
+    observedAt,
+    selection: { activeSlot: slot.slotIndex, saveCounter: slot.counter, rawBoxCount: rawBoxes.length },
+    playerTrainerIdentity: readGbaPlayerTrainerIdentity(saveBlock2),
+    boxCount: FRO_BOX_COUNT,
+    party,
+    boxes: rawBoxes,
+    diagnostics: invalidSectionIds.map(sectionId => ({
+      code: "invalid-section-checksum",
+      severity: "warning",
+      message: `Section ${sectionId}`,
+    })),
+  });
 }

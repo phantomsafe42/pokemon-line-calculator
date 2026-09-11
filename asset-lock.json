@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "plc-asset-lock/v1",
+  "source": {
+    "repository": "phantomsafe42/pokemon-assets",
+    "releaseVersion": "0.5.0-dev.1",
+    "commit": "86d01088927edd72257b290b24aab6600d4b3b99",
+    "resolverSha256": "4dacf90fa960897caf198d4548248390a6d072de879767c31ac6145829b2caaf",
+    "indexSha256": "8ea932f01af335da8e6f5b105c94cd874defb216ac6582dc865b8afb8c622884",
+    "manifestSha256": "015470236952e2a9a95d0e68c365e789843cefbe3915c3d770a589e1465ec78c"
+  },
+  "projection": {
+    "profileIds": [
+      "gen5-animated",
+      "gen5-static",
+      "pixel"
+    ],
+    "excludedProfileIds": [
+      "3d",
+      "seaglass"
+    ],
+    "collectionMode": "all"
+  }
+}

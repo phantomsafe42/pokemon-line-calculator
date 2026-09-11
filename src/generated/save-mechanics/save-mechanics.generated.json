@@ -1,31 +1,156 @@
 {
   "schemaVersion": "save-mechanics-generated-copy/v1alpha1",
   "coreVersion": "0.0.0-development",
-  "consumer": "plc-vw2r",
-  "adapter": "adapters/src/plc/save-import.js",
-  "sourceTreeSha256": "9BC981208B24C2DE02A77F6C750211E877FA947BF8897C64108A4E7992D9EFB1",
+  "consumer": "plc-public",
+  "adapter": "adapters/src/parse-save.js",
+  "sourceTreeSha256": "3E80029297CA9A7759DE1D4D3937D70B2352936677BF1C1097B8E814C2320CD3",
   "generatorVersion": "1.0.0",
   "parityValidated": true,
   "files": [
     {
-      "path": "adapters/src/gen3/fire-red-omega.js",
-      "bytes": 11802,
-      "sha256": "7AE655FEE0700230C51C2B45A3B83962CB89A308D86E3259A2A816DC49C58744"
+      "path": "adapters/src/ds/games.js",
+      "bytes": 2968,
+      "sha256": "5FB5FC4CCA4FA989A7CBD250A1A4D1F1360F7E7629C16FBD3E0456052C0282B8"
     },
     {
-      "path": "adapters/src/gen3/pokemon-unbound.js",
-      "bytes": 23647,
-      "sha256": "F40598187546EA82F0C324187E120696D2FC98A83E179C7F416DEDD0933523AE"
+      "path": "adapters/src/ds/gen4/diamond.js",
+      "bytes": 513,
+      "sha256": "AE9774D391ECB63D03CC7DCC7B899DA4B45BC0DE785573C9E4EC86706EEAAB8C"
     },
     {
-      "path": "adapters/src/gen45/experience.js",
-      "bytes": 1171,
-      "sha256": "32947E57123C81FD44CBDD158662E6F8AC32566B6BFA5385A7583999A4BD9C21"
+      "path": "adapters/src/ds/gen4/heartgold.js",
+      "bytes": 527,
+      "sha256": "6BE5221AD5B6DE42850D6F9251893F284AB2B9E46269DC56BF013425C64D463D"
     },
     {
-      "path": "adapters/src/gen45/plc-vw2r.js",
-      "bytes": 6569,
-      "sha256": "E0E0B2E8A02A9F237F14EC50B40525CFB9794587830C2E9667E5292636DF6839"
+      "path": "adapters/src/ds/gen4/pearl.js",
+      "bytes": 503,
+      "sha256": "7563A5DDC9428996F7D36BF108E417A6A0D45F5D648479C6DF34C9928A44CF81"
+    },
+    {
+      "path": "adapters/src/ds/gen4/platinum-kaizo.js",
+      "bytes": 535,
+      "sha256": "081772E7360151B46A760A3C1BD848C54854FFE39D8CC38E43E5B505B426A605"
+    },
+    {
+      "path": "adapters/src/ds/gen4/platinum.js",
+      "bytes": 536,
+      "sha256": "3B5F500D7E2A3CC561C4B04A139B28807EA30F4EB5DA41C819D269F3CAFCB8CD"
+    },
+    {
+      "path": "adapters/src/ds/gen4/renegade-platinum.js",
+      "bytes": 550,
+      "sha256": "E8371DEC4179B0BCC184F9A2EBDFB3F4D77A5BDC7E871AE3670E8863D86ACD97"
+    },
+    {
+      "path": "adapters/src/ds/gen4/shared.js",
+      "bytes": 979,
+      "sha256": "FF3471FA06AD99DD479515F297589ABB39F2A21AE062BAFA6446E052F7B41EE5"
+    },
+    {
+      "path": "adapters/src/ds/gen4/soulsilver.js",
+      "bytes": 532,
+      "sha256": "04C5EA97B117342B937A2F77241DC118482D5F337A6AF8019745944A610679C2"
+    },
+    {
+      "path": "adapters/src/ds/gen4/storm-silver.js",
+      "bytes": 529,
+      "sha256": "B3209BD550B68CF6F2A6DF7BC24BF6411B1B8675CEF0835320A69F8AAE40F764"
+    },
+    {
+      "path": "adapters/src/ds/gen5/black-2.js",
+      "bytes": 513,
+      "sha256": "FCDB5B8E7AA25B88646346F4062FAC0F234B7AA7C2A6EDABA0ABEA142E7CCDF1"
+    },
+    {
+      "path": "adapters/src/ds/gen5/black.js",
+      "bytes": 501,
+      "sha256": "661A02631DA6598DC086F20FE64F42EDFDC7376A37F0B3FC6152B985108DA5BF"
+    },
+    {
+      "path": "adapters/src/ds/gen5/shared.js",
+      "bytes": 489,
+      "sha256": "CCBE42C99A54EF6601DBBA8CFD85ADA43AF19B3DE6F12F506D14814106DB6D5E"
+    },
+    {
+      "path": "adapters/src/ds/gen5/volt-white-2r.js",
+      "bytes": 398,
+      "sha256": "B3293ABA993927E3457F3BF622F05AF7A7E0747C82A33E67F7958F4C81D8520F"
+    },
+    {
+      "path": "adapters/src/ds/gen5/white-2.js",
+      "bytes": 513,
+      "sha256": "9E6FC07199804A2D33060E37111348ADC9A579F198F9CEE66550DF52113817F8"
+    },
+    {
+      "path": "adapters/src/ds/gen5/white.js",
+      "bytes": 501,
+      "sha256": "EF05E40A025BA094478780695F091528F24231FF93C484DEFE4F363E12FC8EC1"
+    },
+    {
+      "path": "adapters/src/ds/shared/neutral-save.js",
+      "bytes": 7739,
+      "sha256": "86DD7E4B35630012FA0D7BC4FFE042652A78D7617B16B054C6FA154C2825F6B3"
+    },
+    {
+      "path": "adapters/src/gba/emerald-seaglass.js",
+      "bytes": 447,
+      "sha256": "D0AE64003A6040B9AF92F8E1C7247FA2B95B766FE6B399B9CF691261A9EC2406"
+    },
+    {
+      "path": "adapters/src/gba/emerald.js",
+      "bytes": 325,
+      "sha256": "D7CE1AC3DD1B12F9A6B4949BD7F34B714EB27805ACE5E45DF65BCBF5F15E306F"
+    },
+    {
+      "path": "adapters/src/gba/fire-red-omega.js",
+      "bytes": 11486,
+      "sha256": "685E86A137C59D559B73D32DA80DF35F137A5E8D0551FC38AA60A8D924F918EA"
+    },
+    {
+      "path": "adapters/src/gba/firered.js",
+      "bytes": 326,
+      "sha256": "ED119E50D23818FBB2A723DB0D94B4506DB33F3450EFDB963B9A67909F189C0D"
+    },
+    {
+      "path": "adapters/src/gba/games.js",
+      "bytes": 2526,
+      "sha256": "EFC698487A80725CCA00E4CC4937EFA648AA51C7785CE4940F8E85B0846F4C25"
+    },
+    {
+      "path": "adapters/src/gba/leafgreen.js",
+      "bytes": 334,
+      "sha256": "764B02CC89650777EAB710AC1B0F7709A18B6FDC56D70B182858744C78AE5834"
+    },
+    {
+      "path": "adapters/src/gba/pokemon-unbound.js",
+      "bytes": 22344,
+      "sha256": "1EEC9CC9F504996521F6977C59F21E7509745F9925A426021F618B963AFD3411"
+    },
+    {
+      "path": "adapters/src/gba/ruby.js",
+      "bytes": 308,
+      "sha256": "B2E1A2CBF715333917D880DB47DDF34EBD8FD3479C968E97F236429EDEFBAA48"
+    },
+    {
+      "path": "adapters/src/gba/sapphire.js",
+      "bytes": 324,
+      "sha256": "20B64887DBC344857273069DBE522EFC261F9FDF911D7186BFA4B2C6C8414EF2"
+    },
+    {
+      "path": "adapters/src/gba/seaglass.js",
+      "bytes": 7627,
+      "sha256": "9302FF62D851415C11261211ECAE4F95D028A1AB40D673AF941FD909963D44E2"
+    },
+    {
+      "path": "adapters/src/gba/shared/neutral-projection.js",
+      "bytes": 6283,
+      "sha256": "E93CC862219B35495A87ABB6CE75CDBD22A85B2B5378342DC1F9F55DB515BC22"
+    },
+    {
+      "path": "adapters/src/gba/shared/standard-save.js",
+      "bytes": 6406,
+      "sha256": "60E1695A27B1A8937C3D94764E07E8FAC6417AC6853BAA3E61D9AF5820B03E0E"
     },
     {
       "path": "adapters/src/identity/standardized-save-identity.js",
@@ -33,9 +158,19 @@
       "sha256": "72248C39794C6F7B203651977389D605830BF6D9EBF3B7C9A447FE9D1F2BA54D"
     },
     {
-      "path": "adapters/src/plc/save-import.js",
-      "bytes": 16989,
-      "sha256": "11F497CB1530146401B04017D15A9AE354D952E3E696E057B18C791D0CB2B90E"
+      "path": "adapters/src/interpretation/experience.js",
+      "bytes": 1228,
+      "sha256": "0123C0ED0D879438E51D4C13461517D23D8BAC4069EE66D54259539E0B9377C5"
+    },
+    {
+      "path": "adapters/src/parse-save.js",
+      "bytes": 900,
+      "sha256": "BD0367C5981B958CA12ED2CE45441D8384097D7175952689C4B3E3E15EB6F33F"
+    },
+    {
+      "path": "adapters/src/standardized-context.js",
+      "bytes": 4906,
+      "sha256": "00A6D392C97899DD429F93B07F9EF07251A845A1FD45B85AFEE51FB719A13C55"
     },
     {
       "path": "core/src/binary/little-endian.js",
@@ -43,39 +178,114 @@
       "sha256": "011B7713078E3236F2D6E1C911228E77DC3940D00C38383876FED60E39D64A8D"
     },
     {
-      "path": "core/src/gen3/pokemon.js",
-      "bytes": 4735,
-      "sha256": "E58944A17869A1EFF2C758820CC9E5AE859FF596EB7892A7E1DE0E9FD23C9327"
+      "path": "core/src/contracts/player-trainer-identity.js",
+      "bytes": 807,
+      "sha256": "30C188E40AF7980842BB0BA23BD00F484C7C23B1F9D008E8CE729F056FE4B521"
     },
     {
-      "path": "core/src/gen3/sectors.js",
-      "bytes": 7768,
-      "sha256": "AE8FB27304F627FC908C60DF69E735DC838A7BC7F4904D90238828371BF44F44"
+      "path": "core/src/contracts/save-snapshot.js",
+      "bytes": 1948,
+      "sha256": "C2E89BF2FBC774066C33CE6D1A1702ED6C6FD0EBE35D6044D089E2D66D3FF7E6"
     },
     {
-      "path": "core/src/gen3/text.js",
-      "bytes": 3892,
-      "sha256": "2EE7D5DC1B294145744A705D86DD1AD5009ADD10CC902C668CB7EBCB15F58201"
+      "path": "core/src/ds/gen4/pokemon.js",
+      "bytes": 179,
+      "sha256": "D46A523256353D313CFE59708B3373EDF12F613F00417496C49F935ECB42C013"
     },
     {
-      "path": "core/src/gen45/pokemon.js",
+      "path": "core/src/ds/gen5/pokemon.js",
+      "bytes": 179,
+      "sha256": "DB393F230CB2000C23BBD265DAADEA69DA66B8928DC751221695C1AA73E8961E"
+    },
+    {
+      "path": "core/src/ds/layouts/bw.js",
+      "bytes": 338,
+      "sha256": "CD62A6B1BA1F282B989DD7071EEF77CE8C6A7D1A4F31386489D1E00E3E7D6929"
+    },
+    {
+      "path": "core/src/ds/layouts/bw2.js",
+      "bytes": 340,
+      "sha256": "D773B2F05722CE69C2BA82E4F81F424886606E0C371054ADC1BA27B24ECFCF64"
+    },
+    {
+      "path": "core/src/ds/layouts/dp.js",
+      "bytes": 387,
+      "sha256": "C49B84E40FD5E54F1EE6CD84B69C847F17D45829A3AE47B3D40DDBC54D5F01DA"
+    },
+    {
+      "path": "core/src/ds/layouts/dppt.js",
+      "bytes": 285,
+      "sha256": "0F98A93243E9B0617B8F47C1F4EA06DE8DAC8A4E467BFF3F5CDEE3B2D3AABF6D"
+    },
+    {
+      "path": "core/src/ds/layouts/hgss.js",
+      "bytes": 392,
+      "sha256": "2B234B8536CACB3A7240173203732FC467ACAE09CD24C06C7EB6218563C8FCFF"
+    },
+    {
+      "path": "core/src/ds/layouts/index.js",
+      "bytes": 6173,
+      "sha256": "F4B9F55BA8446D6A0B78E26AC9854C62664786B73AF90F8B729210CC66EFD733"
+    },
+    {
+      "path": "core/src/ds/layouts/platinum.js",
+      "bytes": 399,
+      "sha256": "C038DB1A59BBE64562BAEBB654887343B8477AFC59B232A5318329106E679C01"
+    },
+    {
+      "path": "core/src/ds/player-trainer-identity.js",
+      "bytes": 967,
+      "sha256": "786EFE5E92C53A170F3A728E62D2E74B81F359816D1E4995CBAD34BCE06D461D"
+    },
+    {
+      "path": "core/src/ds/pokemon.js",
       "bytes": 7122,
       "sha256": "AECBF0DDF0BF5FF955C36A0A241FD301A497C95E9AAEC172C7E4177E53804DCC"
     },
     {
-      "path": "core/src/gen45/save-container.js",
+      "path": "core/src/ds/save-container.js",
       "bytes": 1893,
       "sha256": "69F0D5922D674909FA22F050EC5D603A390E07356A1B4412F97BAA47A1D1FBCF"
     },
     {
-      "path": "core/src/gen45/save-layout.js",
-      "bytes": 8045,
-      "sha256": "427749DFFD232B850C15EF2622504F4146C1894460BD669AEFF1F2DDFFEDE99B"
+      "path": "core/src/gba/layouts/frlg.js",
+      "bytes": 473,
+      "sha256": "99695A458BC352A4A936E4B7BE1632D820A298CF26326D1B723E92F1AE0A0427"
+    },
+    {
+      "path": "core/src/gba/layouts/index.js",
+      "bytes": 2653,
+      "sha256": "084F6E2CA649E1388750DAE552AD7466241223C598FEAE24E941971971D9234F"
+    },
+    {
+      "path": "core/src/gba/layouts/rse.js",
+      "bytes": 684,
+      "sha256": "48A29C58AD5CC8046F023FDF4554EAB83D33C3BD0911553D9133C3AE91D0044A"
+    },
+    {
+      "path": "core/src/gba/player-trainer-identity.js",
+      "bytes": 441,
+      "sha256": "B2923666BFF83B8B87B8FD572C3B6D8C897FAF74B8AB91F7B3372C9081AE7B40"
+    },
+    {
+      "path": "core/src/gba/pokemon.js",
+      "bytes": 4735,
+      "sha256": "E58944A17869A1EFF2C758820CC9E5AE859FF596EB7892A7E1DE0E9FD23C9327"
+    },
+    {
+      "path": "core/src/gba/sectors.js",
+      "bytes": 7768,
+      "sha256": "AE8FB27304F627FC908C60DF69E735DC838A7BC7F4904D90238828371BF44F44"
+    },
+    {
+      "path": "core/src/gba/text.js",
+      "bytes": 3892,
+      "sha256": "2EE7D5DC1B294145744A705D86DD1AD5009ADD10CC902C668CB7EBCB15F58201"
     },
     {
       "path": "package.json",
-      "bytes": 102,
-      "sha256": "851D0618B4CBE6BC9CC2835A25F6F42204357F863B0A50754522B50DDE319D37"
+      "bytes": 104,
+      "sha256": "35AB98B76656B163279916EFB36F5EDAEE9D22F5E640C545670B2D7CC755B8E0"
     }
   ]
 }

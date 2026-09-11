@@ -1,4 +1,2 @@
-# Generated dependency manifests pin exact bytes; never rewrite their line endings.
 src/generated/** -text
-src/rulesets/generated/** -text
 public-assets/** -text

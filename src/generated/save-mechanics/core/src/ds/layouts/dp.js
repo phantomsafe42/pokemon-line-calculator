@@ -1,0 +1,16 @@
+export const DP_SAVE_LAYOUT = Object.freeze({
+  id: "dp",
+  platformId: "ds",
+  generation: 4,
+  generalBlockSize: 0x0c100,
+  storageBlockStart: 0x0c100,
+  storageBlockSize: 0x121e0,
+  partyCountOffset: 0x94,
+  partyDataOffset: 0x98,
+  partyRecordSize: 236,
+  boxDataRelativeOffset: 4,
+  boxRecordSize: 136,
+  boxSlotCount: 540,
+  boxPadding: 0,
+  playerTrainerIdentityOffset: 0x74,
+});

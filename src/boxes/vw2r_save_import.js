@@ -1,16 +1,8 @@
-import {
-  parseVw2rPlcSave,
-  selectVw2rPlcSavePokemon,
-} from "../generated/save-mechanics/adapters/src/gen45/plc-vw2r.js?v=20260905-drafts-freecalc-partners-v1";
-import { nowIso } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
-import { normalizeBoxPokemon } from "./library.js?v=20260905-drafts-freecalc-partners-v1";
+import { parseSave, selectSavePokemon } from "./save_import.js?v=20260911-public-save-mechanics-v1";
 
 export function parseVw2rSave(value, dataset, { sourceName = "Selected VW2R save" } = {}) {
-  return parseVw2rPlcSave(value, dataset, {
-    sourceName,
-    importedAt: nowIso(),
-    normalizePokemon: normalizeBoxPokemon,
-  });
+  if (dataset?.gameId !== "volt-white-2r") throw new Error("This save adapter is available only for Volt White 2 Redux");
+  return parseSave(value, dataset, { sourceName });
 }
 
-export const selectVw2rSavePokemon = selectVw2rPlcSavePokemon;
+export const selectVw2rSavePokemon = selectSavePokemon;

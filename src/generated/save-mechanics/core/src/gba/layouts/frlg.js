@@ -1,0 +1,16 @@
+export const FRLG_SAVE_LAYOUT = Object.freeze({
+  id: "frlg",
+  platformId: "gba",
+  generation: 3,
+  minimumBytes: 0x10000,
+  saveBlock2SectionIds: Object.freeze([0]),
+  saveBlock1SectionIds: Object.freeze([1, 2, 3, 4]),
+  storageSectionIds: Object.freeze([5, 6, 7, 8, 9, 10, 11, 12, 13]),
+  partyCountOffset: 0x34,
+  partyDataOffset: 0x38,
+  partyRecordSize: 100,
+  storageDataOffset: 4,
+  boxRecordSize: 80,
+  boxSlotCount: 420,
+  playerTrainerIdentityOffset: 0x0a,
+});

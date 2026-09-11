@@ -1,6 +1,8 @@
 import { asBytes, readUint16LE, readUint32LE, readUint8 } from "../../../core/src/binary/little-endian.js";
-import { compareGen3SaveCounters } from "../../../core/src/gen3/sectors.js";
-import { decodeGen3Text } from "../../../core/src/gen3/text.js";
+import { compareGen3SaveCounters } from "../../../core/src/gba/sectors.js";
+import { decodeGen3Text } from "../../../core/src/gba/text.js";
+import { createPlayerTrainerIdentity } from "../../../core/src/contracts/player-trainer-identity.js";
+import { createGbaNeutralSnapshot } from "./shared/neutral-projection.js";
 
 export const UNBOUND_CORE_SAVE_SIZE = 0x20000;
 export const UNBOUND_MINIMUM_SAVE_SIZE = 0x1c000;
@@ -40,23 +42,12 @@ const NATURE_FALLBACKS = Object.freeze([
   "Calm", "Gentle", "Sassy", "Careful", "Quirky",
 ]);
 
-const NORMAL_LEVEL_CAPS = Object.freeze([20, 26, 32, 36, 40, 52, 57, 61, 75]);
 const BADGE_FLAG_FIRST = 0x820;
 const BADGE_FLAG_LAST = 0x827;
 const CHAMPION_FLAG = 0x82c;
 const SAVE_BLOCK1_FLAGS_OFFSET = 0x0ee0;
 const SAVE_BLOCK1_SECTION_IDS = Object.freeze([1, 2, 3, 4]);
 const SAVE_BLOCK1_CHUNK_SIZES = Object.freeze([0x0ff0, 0x0ff0, 0x0ff0, 0x0d98]);
-
-const BALLS = Object.freeze([
-  [1, "Master Ball"], [2, "Ultra Ball"], [3, "Great Ball"], [4, "Poke Ball"],
-  [5, "Safari Ball"], [6, "Net Ball"], [7, "Dive Ball"], [8, "Nest Ball"],
-  [9, "Repeat Ball"], [10, "Timer Ball"], [11, "Luxury Ball"], [12, "Premier Ball"],
-  [60, "Dusk Ball"], [61, "Heal Ball"], [62, "Quick Ball"], [53, "Cherish Ball"],
-  [52, "Park Ball"], [622, "Fast Ball"], [623, "Level Ball"], [624, "Lure Ball"],
-  [625, "Heavy Ball"], [626, "Love Ball"], [627, "Friend Ball"], [628, "Moon Ball"],
-  [629, "Sport Ball"], [630, "Beast Ball"], [631, "Dream Ball"],
-].map(([itemId, name], ballId) => Object.freeze({ ballId, itemId, name })));
 
 const PARTY_CHARACTER_MAP = {
   0x00: " ", 0xab: "!", 0xac: "?", 0xad: ".", 0xae: "-",
@@ -212,11 +203,6 @@ function statObject(values) {
   return { hp: values[0], at: values[1], df: values[2], sp: values[3], sa: values[4], sd: values[5] };
 }
 
-function ballInfo(ballId) {
-  const ball = BALLS[ballId];
-  return ball ? { ballId, ballItemId: ball.itemId, ball: ball.name } : { ballId, ballItemId: null, ball: "" };
-}
-
 function normalizeMon(context, values) {
   const species = displaySpecies(context, values.speciesId);
   const nickname = values.nickname || "";
@@ -253,7 +239,7 @@ function normalizeMon(context, values) {
     storage: values.storage,
     box: values.box,
     slot: values.slot,
-    ...ballInfo(values.ballId),
+    ballId: values.ballId,
   };
 }
 
@@ -522,39 +508,34 @@ function readEventFlag(bytes, sections, flagId) {
 
 function parseProgress(bytes, sections) {
   const badges = {};
-  const earnedBadges = [];
   let badgeByte = 0;
+  let badgeCount = 0;
   for (let flag = BADGE_FLAG_FIRST; flag <= BADGE_FLAG_LAST; flag += 1) {
     const number = flag - BADGE_FLAG_FIRST + 1;
     const earned = readEventFlag(bytes, sections, flag);
     badges[`badge${number}`] = earned;
-    if (earned) { badgeByte |= 1 << (number - 1); earnedBadges.push(`Badge ${number}`); }
+    if (earned) { badgeByte |= 1 << (number - 1); badgeCount += 1; }
   }
-  const badgeCount = earnedBadges.length;
   const champion = readEventFlag(bytes, sections, CHAMPION_FLAG);
   const trainer = activeSection(sections, TRAINER_SECTION_ID);
   const section4 = activeSection(sections, 4);
   const money = trainer ? readUint32LE(bytes, trainer.offset + 0x290) : null;
   const battlePoints = section4 ? readUint16LE(bytes, section4.offset + 0x0f34) : null;
-  const splitLevelCap = champion ? 100 : NORMAL_LEVEL_CAPS[Math.min(badgeCount, NORMAL_LEVEL_CAPS.length - 1)];
-  return {
+  const progress = {
     badgeByte,
     badgeCount,
     badges,
-    earnedBadges,
     champion,
-    money,
-    battlePoints,
-    splitLevelCap,
-    currentSplit: champion ? "Champion" : `${badgeCount} Badge${badgeCount === 1 ? "" : "s"}`,
-    currentSplitId: champion ? "champion" : `badges-${badgeCount}`,
   };
+  if (money !== null) progress.money = money;
+  if (battlePoints !== null) progress.battlePoints = battlePoints;
+  return progress;
 }
 
 export function parsePokemonUnboundSave(value, {
   context,
-  updatedAt = new Date().toISOString(),
-  saveFile = "",
+  observedAt,
+  sourceName = "",
 } = {}) {
   const dataset = requiredContext(context);
   const { source, bytes } = coreSaveBytes(value);
@@ -562,42 +543,33 @@ export function parsePokemonUnboundSave(value, {
   const partyResult = parseParty(bytes, sections, dataset);
   const pcResult = parsePc(bytes, sections, dataset);
   const progress = parseProgress(bytes, sections);
-  const collection = [...partyResult.party, ...pcResult.boxes];
-  const caughtSpecies = [...new Set(collection.map(mon => mon.species).filter(Boolean))].sort();
-  return {
-    updatedAt,
-    saveFile,
-    detectedGame: "Pokémon Unbound",
-    saveFormat: "Unbound 2.1.1.1 / CFRU compact",
-    saveSize: source.byteLength,
-    coreSaveSize: bytes.byteLength,
-    rtcTrailerBytes: Math.max(0, source.byteLength - bytes.byteLength),
-    saveIndex: partyResult.trainerSection.saveIndex,
-    badgeByte: progress.badgeByte,
-    badgeCount: progress.badgeCount,
-    badges: progress.badges,
-    earnedBadges: progress.earnedBadges,
-    currentSplit: progress.currentSplit,
-    currentSplitId: progress.currentSplitId,
-    nextBoss: "",
-    splitLevelCap: progress.splitLevelCap,
-    champion: progress.champion,
-    money: progress.money,
-    battlePoints: progress.battlePoints,
-    partyCount: partyResult.party.length,
-    boxCount: pcResult.boxes.length,
-    deadBoxCount: 0,
-    totalCount: collection.length,
-    caughtSpecies,
-    collection,
-    party: partyResult.party,
-    boxes: pcResult.boxes,
-    deadMons: [],
-    parserMeta: {
+  const identitySection = activeSection(sections, 0);
+  if (!identitySection) throw new Error("Active Pokémon Unbound player identity section not found");
+  const playerId32 = readUint32LE(bytes, identitySection.offset + 0x0a);
+  const playerTrainerIdentity = createPlayerTrainerIdentity({
+    trainerId: playerId32 & 0xffff,
+    secretId: playerId32 >>> 16,
+  });
+  return createGbaNeutralSnapshot({
+    gameId: "pokemon-unbound",
+    formatId: "unbound",
+    context: dataset,
+    sourceName,
+    sourceBytes: source.byteLength,
+    observedAt,
+    selection: {
+      saveIndex: partyResult.trainerSection.saveIndex,
       trainerSectionPhysicalIndex: partyResult.trainerSection.physicalIndex,
       activePcSectionIds: pcResult.activePcSectionIds,
       pcSaveIndex: pcResult.pcSaveIndex,
       pcBufferBytes: pcResult.pcBufferBytes,
+      coreSaveBytes: bytes.byteLength,
+      rtcTrailerBytes: Math.max(0, source.byteLength - bytes.byteLength),
     },
-  };
+    playerTrainerIdentity,
+    boxCount: UNBOUND_BOX_COUNT,
+    party: partyResult.party,
+    boxes: pcResult.boxes,
+    progress,
+  });
 }

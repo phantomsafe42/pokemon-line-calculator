@@ -8,10 +8,12 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(here, "..");
 const gitRoot = path.join(projectRoot, ".git");
 const ignoredDirectoryNames = new Set([".codex-tmp", "dist", "node_modules", ".git"]);
-const ignoredFileNames = new Set(["AGENTS.md", "SETTLED_HISTORY.md", ".codex-project-root"]);
+const ignoredFileNames = new Set(["AGENTS.md", "AGENTS.override.md", "MAINTENANCE.md", "SETTLED_HISTORY.md", ".codex-project-root"]);
 
 const forbiddenTrackedPaths = [
   /(^|\/)AGENTS\.md$/i,
+  /(^|\/)AGENTS\.override\.md$/i,
+  /(^|\/)MAINTENANCE\.md$/i,
   /(^|\/)SETTLED_HISTORY\.md$/i,
   /(^|\/)\.codex(?:-|\/|$)/i,
   /(^|\/)dist\//i,

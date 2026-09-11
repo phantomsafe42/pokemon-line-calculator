@@ -18,7 +18,7 @@ function experienceForLevel(level, growthRate) {
   }
 }
 
-export function levelFromRunHistoryExperience(experience, growthRate) {
+export function levelFromExperience(experience, growthRate) {
   let level = 1;
   for (let candidate = 1; candidate <= 100; candidate += 1) {
     if (experienceForLevel(candidate, growthRate) <= experience) level = candidate;
@@ -26,3 +26,5 @@ export function levelFromRunHistoryExperience(experience, growthRate) {
   }
   return level;
 }
+
+export const levelFromRunHistoryExperience = levelFromExperience;

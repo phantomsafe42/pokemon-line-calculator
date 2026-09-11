@@ -1,0 +1,16 @@
+export const PLATINUM_SAVE_LAYOUT = Object.freeze({
+  id: "platinum",
+  platformId: "ds",
+  generation: 4,
+  generalBlockSize: 0x0cf2c,
+  storageBlockStart: 0x0cf2c,
+  storageBlockSize: 0x121e4,
+  partyCountOffset: 0x9c,
+  partyDataOffset: 0xa0,
+  partyRecordSize: 236,
+  boxDataRelativeOffset: 4,
+  boxRecordSize: 136,
+  boxSlotCount: 540,
+  boxPadding: 0,
+  playerTrainerIdentityOffset: 0x78,
+});

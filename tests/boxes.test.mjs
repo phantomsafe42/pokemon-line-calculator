@@ -17,13 +17,13 @@ import {
 } from "../src/boxes/library.js";
 import { addImportedPlanParty, bindPlanPlayerPartyToImportedBox } from "../src/boxes/plan_import.js";
 import { applyBranchProgressionToLibrary, branchProgressionSnapshot } from "../src/boxes/progression.js";
-import { parseSave, selectSavePokemon } from "../src/boxes/save_import.js";
+import { parseSave, PLC_SAVE_GAME_CONFIGS, selectSavePokemon } from "../src/boxes/save_import.js";
 import { exportShowdown, parseShowdown } from "../src/boxes/showdown.js";
 import { parseVw2rSave, selectVw2rSavePokemon } from "../src/boxes/vw2r_save_import.js";
 import {
   DESMUME_DSV_FOOTER_BYTES,
   NINTENDO_DS_RAW_SAVE_BYTES,
-} from "../src/generated/save-mechanics/core/src/gen45/save-container.js";
+} from "../src/generated/save-mechanics/core/src/ds/save-container.js";
 import { fixturePlan } from "./helpers.mjs";
 
 function vw2rDataset() {
@@ -37,6 +37,16 @@ function vw2rDataset() {
 }
 
 const dataset = vw2rDataset();
+
+test("shared save import registers every public vanilla Generation 3 through 5 game", () => {
+  const vanilla = [
+    "pokemon-ruby", "pokemon-sapphire", "pokemon-emerald", "pokemon-firered", "pokemon-leafgreen",
+    "pokemon-diamond", "pokemon-pearl", "pokemon-platinum", "pokemon-heartgold", "pokemon-soulsilver",
+    "pokemon-black", "pokemon-white", "pokemon-black-2", "pokemon-white-2",
+  ];
+  for (const gameId of vanilla) assert.equal(PLC_SAVE_GAME_CONFIGS[gameId], true, `${gameId} save import is not registered`);
+  assert.equal(PLC_SAVE_GAME_CONFIGS["radical-red"], undefined);
+});
 
 test('Box JSON retains observed friendship endpoints and does not invent an unknown value', () => {
   for (const friendship of [0, 255, undefined]) {

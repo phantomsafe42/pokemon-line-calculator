@@ -44,6 +44,8 @@ for (const file of manifest.files) {
 
 const forbiddenPaths = [
   /(^|\/)AGENTS\.md$/i,
+  /(^|\/)AGENTS\.override\.md$/i,
+  /(^|\/)MAINTENANCE\.md$/i,
   /(^|\/)SETTLED_HISTORY\.md$/i,
   /(^|\/)\.codex(?:-|\/|$)/i,
   /(^|\/)src\/integrations\//i,

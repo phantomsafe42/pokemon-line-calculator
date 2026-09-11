@@ -1,0 +1,16 @@
+export const HGSS_SAVE_LAYOUT = Object.freeze({
+  id: "hgss",
+  platformId: "ds",
+  generation: 4,
+  generalBlockSize: 0x0f628,
+  storageBlockStart: 0x0f700,
+  storageBlockSize: 0x12310,
+  partyCountOffset: 0x94,
+  partyDataOffset: 0x98,
+  partyRecordSize: 236,
+  boxDataRelativeOffset: 0,
+  boxRecordSize: 136,
+  boxSlotCount: 540,
+  boxPadding: 16,
+  playerTrainerIdentityOffset: 0x74,
+});
