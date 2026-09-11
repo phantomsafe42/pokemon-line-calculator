@@ -54,7 +54,6 @@ h3 { margin: 0; font-size: 1rem; }
 .site-credit { margin: .2rem 0 0; color: var(--muted); font-size: .76rem; }
 .game-control select { margin-top: .22rem; }
 .game-credit { min-height: 1rem; margin: .22rem 0 0; color: var(--muted); font-size: .72rem; font-weight: 500; }
-.view-mode-toggle { justify-self: end; width: 10rem; margin: 0; }
 .status { margin: 0 0 .75rem; color: var(--muted); text-align: left; font-size: .84rem; line-height: 1.35; }
 .status.error, .error-text { color: var(--red); }
 .app-shell { width: min(2480px, calc(100% - 56px)); margin: 0 auto; padding: 1rem 0 2rem; }
@@ -93,9 +92,6 @@ h3 { margin: 0; font-size: 1rem; }
   width: 11rem; min-height: 44px; height: 44px; margin: 0;
   font-size: .9rem; font-weight: 750; line-height: 1.2;
 }
-/* The local view toggle reuses the public presentation without changing application state. */
-body[data-public-preview="true"] :is(#output-state-anchor, #battle-tracker-anchor, #live-edit-anchor, #battle-tracker-detail, #live-stop-dialog, .node-button.is-actual) { display: none !important; }
-body[data-public-preview="true"] #app-status { display: none !important; }
 .workspace { display: grid; gap: 1rem; }
 .section-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
 .compact-heading { margin-bottom: .75rem; }
@@ -116,18 +112,9 @@ body[data-public-preview="true"] #app-status { display: none !important; }
 .node-branch-rise { position: absolute; left: calc(0px - var(--incoming-connector-length) / 2); bottom: 50%; width: 0; height: calc(var(--branch-rise-rows) * (4.75rem + .42rem)); border-left: 1px solid var(--control-line); pointer-events: none; }
 .node-button.is-replacement .node-sprites { display: flex; width: auto; justify-content: center; }
 .node-button.has-faint { border-color: var(--red); }
-.node-button.is-actual { border-color: #2d8f72; background: #102e29; color: #b8f3df; }
-.node-button.is-actual[aria-selected="true"] { border-color: #5de1b4; background: #16473d; }
 .node-probability { display: block; width: 100%; }
-.node-actual-status { color: var(--muted); font-size: .66rem; letter-spacing: .06em; text-transform: uppercase; }
 .node-sprites { display: grid; grid-template-columns: repeat(4, 26px); justify-content: center; gap: .2rem; }
 .node-sprites.is-triples { grid-template-columns: repeat(6, 26px); }
-.battle-tracker-detail { margin-top: .75rem; padding: .8rem; border: 1px solid #2d8f72; border-radius: 8px; background: #0e2521; }
-.battle-tracker-detail-heading { display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
-.battle-tracker-detail p { margin: .55rem 0; }
-.battle-tracker-events { margin: .55rem 0 .75rem; padding-left: 1.4rem; }
-.battle-tracker-events li { margin: .32rem 0; line-height: 1.35; }
-.tracker-event-kind { display: inline-block; min-width: 4.3rem; margin-right: .45rem; color: #5de1b4; font-size: .67rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
 .node-sprite { display: flex; align-items: center; justify-content: center; width: 26px; height: 26px; border: 1px solid transparent; border-radius: 4px; background: var(--shell); }
 .node-sprite.is-empty { border-style: dashed; border-color: var(--line); background: transparent; opacity: .55; }
 .node-sprite.has-switch-in { border-color: var(--accent-2); }
@@ -476,7 +463,6 @@ dialog::backdrop { background: rgba(0, 0, 0, .75); }
 
 @media (max-width: 820px) {
   .app-header { grid-template-columns: 1fr; padding: .9rem; }
-  .view-mode-toggle { justify-self: stretch; width: 100%; }
   .status { text-align: left; }
   .app-shell { width: calc(100% - 18px); }
   .planner-toolbar, .box-toolbar, .section-heading { align-items: stretch; flex-direction: column; }

@@ -2,7 +2,7 @@ import { calculateStats, normalizePlayerCollection, normalizeTrainerRoster, snap
 import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260909-public-release-v2";
 import { loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260909-public-release-v2";
 import { loadTrainerAiDocumentation } from "./adapters/trainer_ai.js?v=20260909-public-release-v2";
-import { createDraftRecord, destructiveTransitionNotice, IndexedDbDraftStore, markExported, markLiveFlushed, setLocalLiveEdit, updateDraftRecord } from "./cache/active_draft.js?v=20260909-public-release-v2";
+import { createDraftRecord, destructiveTransitionNotice, IndexedDbDraftStore, markExported, updateDraftRecord } from "./cache/active_draft.js?v=20260909-public-release-v2";
 import { TrainerAiForecastCache } from "./cache/trainer_ai_forecast.js?v=20260909-public-release-v2";
 import { SavedDraftStore, savedDraftSnapshot } from "./cache/saved_drafts.js?v=20260909-public-release-v2";
 import { reorderCards } from "./ui/reorder_cards.js?v=20260909-public-release-v2";
@@ -46,7 +46,7 @@ function vanillaGame(gameId, name, generation) {
     activationReady: true,
     datasetBaseUrl: new URL(`./generated/datasets/${gameId}`, import.meta.url).href,
     trainerAiBaseUrl: null,
-    capabilities: Object.freeze({ saveImport: false, liveEdit: false, battleTracker: false })
+    capabilities: Object.freeze({ saveImport: false })
   });
 }
 
@@ -58,7 +58,7 @@ const GAME_REGISTRY = Object.freeze({
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/fire-red-omega", import.meta.url).href,
     trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
-    capabilities: Object.freeze({ saveImport: true, liveEdit: false, battleTracker: false })
+    capabilities: Object.freeze({ saveImport: true })
   },
   "pokemon-unbound": {
     name: "Unbound",
@@ -67,7 +67,7 @@ const GAME_REGISTRY = Object.freeze({
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/pokemon-unbound", import.meta.url).href,
     trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
-    capabilities: Object.freeze({ saveImport: true, liveEdit: false, battleTracker: false })
+    capabilities: Object.freeze({ saveImport: true })
   },
   "platinum-kaizo": {
     name: "Platinum Kaizo",
@@ -76,7 +76,7 @@ const GAME_REGISTRY = Object.freeze({
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/platinum-kaizo", import.meta.url).href,
     trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
-    capabilities: Object.freeze({ saveImport: true, liveEdit: false, battleTracker: false })
+    capabilities: Object.freeze({ saveImport: true })
   },
   "renegade-platinum": {
     name: "Renegade Platinum",
@@ -85,7 +85,7 @@ const GAME_REGISTRY = Object.freeze({
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/renegade-platinum", import.meta.url).href,
     trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
-    capabilities: Object.freeze({ saveImport: true, liveEdit: false, battleTracker: false })
+    capabilities: Object.freeze({ saveImport: true })
   },
   "storm-silver": {
     name: "Storm Silver",
@@ -94,7 +94,7 @@ const GAME_REGISTRY = Object.freeze({
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/storm-silver", import.meta.url).href,
     trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
-    capabilities: Object.freeze({ saveImport: true, liveEdit: false, battleTracker: false })
+    capabilities: Object.freeze({ saveImport: true })
   },
   "volt-white-2r": {
     name: "Volt White 2 Redux - Challenge Mode",
@@ -103,7 +103,7 @@ const GAME_REGISTRY = Object.freeze({
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/volt-white-2r", import.meta.url).href,
     trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
-    capabilities: Object.freeze({ saveImport: true, liveEdit: true, battleTracker: true })
+    capabilities: Object.freeze({ saveImport: true })
   },
   "pokemon-ruby": vanillaGame("pokemon-ruby", "Ruby", 3),
   "pokemon-sapphire": vanillaGame("pokemon-sapphire", "Sapphire", 3),
@@ -120,22 +120,15 @@ const GAME_REGISTRY = Object.freeze({
   "pokemon-black-2": vanillaGame("pokemon-black-2", "Black 2", 5),
   "pokemon-white-2": vanillaGame("pokemon-white-2", "White 2", 5)
 });
-const BUILD_PROFILE = document.querySelector('meta[name="plc-build-profile"]')?.content || "unknown";
 const pokemonAssetResolver = globalThis.PokemonAssets?.createResolver();
-const PUBLIC_BUILD = BUILD_PROFILE === "public";
-const LOOPBACK_HOSTS = new Set(["127.0.0.1", "localhost", "::1", "[::1]"]);
-const PRIVATE_INTEGRATIONS_ALLOWED = !PUBLIC_BUILD && (
-  LOOPBACK_HOSTS.has(location.hostname) || BUILD_PROFILE === "private-remote"
-);
 const SELECTED_GAME_KEY = "plc-selected-game-v1";
-const VIEW_MODE_KEY = "plc-view-mode-v1";
 const STAT_KEYS = Object.freeze(["hp", "atk", "def", "spa", "spd", "spe"]);
 const STAT_LABELS = Object.freeze({ hp: "HP", atk: "Atk", def: "Def", spa: "SpA", spd: "SpD", spe: "Spe" });
 const STATUS_LABELS = Object.freeze({ brn: "Burn", par: "Paralysis", psn: "Poison", tox: "Badly Poisoned", slp: "Sleep", frz: "Freeze" });
 const byId = id => document.getElementById(id);
 const ui = Object.fromEntries([
-  "game-select", "game-credit", "view-mode-toggle", "app-status", "game-gate", "app-tabs", "plc-tab", "boxes-tab", "plc-panel", "boxes-panel",
-  "plan-toolbar-label", "output-state-anchor", "battle-tracker-anchor", "battle-tracker-detail", "commit-turn", "save-plan", "new-plan", "live-edit-anchor", "workspace", "empty-plan",
+  "game-select", "game-credit", "app-status", "game-gate", "app-tabs", "plc-tab", "boxes-tab", "plc-panel", "boxes-panel",
+  "plan-toolbar-label", "commit-turn", "save-plan", "new-plan", "workspace", "empty-plan",
   "node-tree", "turn-label", "revision-label", "battle-workspace", "player-action-panel", "enemy-action-panel", "field-state",
   "readiness", "preview-outcomes", "ai-forecast-toggle", "ai-forecast-body", "ai-notes", "notes-toggle", "notes-body", "node-notes", "notes-status", "boxes-list", "save-import", "save-import-dialog", "save-import-filename",
   "save-import-party-summary", "save-import-pc-boxes", "save-import-status", "select-all-save-boxes", "clear-save-boxes",
@@ -149,7 +142,7 @@ const ui = Object.fromEntries([
   "editor-hp-field", "editor-starting-hp", "editor-status-field", "editor-starting-status", "editor-stats",
   "editor-moves", "editor-error", "save-pokemon", "showdown-dialog", "showdown-text", "showdown-destination",
   "showdown-status", "copy-showdown", "import-showdown", "output-dialog", "export-selection", "select-all-export", "output-plan",
-  "recalculate-plan", "import-plan", "file-status", "live-stop-dialog", "live-save-quit", "live-keep-editing",
+  "recalculate-plan", "import-plan", "file-status",
   "progression-dialog", "progression-summary", "destructive-dialog", "destructive-message", "destructive-output", "destructive-discard"
 ].map(id => [id, byId(id)]));
 
@@ -174,16 +167,6 @@ let needsRecalculation = false;
 let previewGeneration = 0;
 let damageGeneration = 0;
 let exportSelection = new Set();
-let liveWriter = null;
-let liveButton = null;
-let outputStateButton = null;
-let localTestingStateApi = null;
-let createLocalTestingStateSnapshot = null;
-let battleTracker = null;
-let battleTrackerButton = null;
-let battleTrackerSnapshot = null;
-let compareTrackerTurnsFn = null;
-let selectedTrackerTurnNumber = null;
 let activeTab = "plc";
 let destructiveResolver = null;
 let editorMoveRows = [];
@@ -207,32 +190,6 @@ function emptyContextSelection() {
 function setStatus(message, error = false) {
   ui["app-status"].textContent = message;
   ui["app-status"].classList.toggle("error", error);
-}
-
-function setViewMode(mode, { persist = true } = {}) {
-  if (PUBLIC_BUILD) {
-    document.body.dataset.publicPreview = "true";
-    return;
-  }
-  const publicView = mode === "public";
-  document.body.dataset.publicPreview = String(publicView);
-  if (ui["view-mode-toggle"]) {
-    ui["view-mode-toggle"].textContent = publicView ? "Public View" : "Local View";
-    ui["view-mode-toggle"].setAttribute("aria-checked", String(publicView));
-    ui["view-mode-toggle"].title = publicView
-      ? "Show all features available in the local PLC"
-      : "Preview the PLC with local-only features hidden";
-  }
-  if (persist) {
-    try { localStorage.setItem(VIEW_MODE_KEY, publicView ? "public" : "local"); } catch {}
-  }
-  if (plan && ui["node-tree"]) renderTree();
-}
-
-function restoreViewMode() {
-  let savedMode = "local";
-  try { savedMode = localStorage.getItem(VIEW_MODE_KEY) === "public" ? "public" : "local"; } catch {}
-  setViewMode(savedMode, { persist: false });
 }
 
 function renderGameCredit(gameId) {
@@ -384,107 +341,6 @@ function downloadText(text, filename, type = "application/json") {
   setTimeout(() => URL.revokeObjectURL(url), 0);
 }
 
-function testingControlState() {
-  const controls = {};
-  for (const control of document.querySelectorAll("input[id], select[id], textarea[id]")) {
-    if (control.type === "file" || control.type === "password") continue;
-    controls[control.id] = {
-      tag: control.tagName.toLowerCase(),
-      type: control.type || null,
-      value: control.value,
-      checked: "checked" in control ? Boolean(control.checked) : null,
-      disabled: Boolean(control.disabled),
-      hidden: Boolean(control.hidden || control.closest("[hidden]"))
-    };
-  }
-  return controls;
-}
-
-function testingViewState() {
-  const elementScroll = {};
-  for (const element of document.querySelectorAll("[id]")) {
-    if (element.scrollLeft || element.scrollTop) elementScroll[element.id] = { left: element.scrollLeft, top: element.scrollTop };
-  }
-  return {
-    path: location.pathname,
-    viewport: {
-      width: window.innerWidth,
-      height: window.innerHeight,
-      devicePixelRatio: window.devicePixelRatio
-    },
-    document: {
-      width: document.documentElement.scrollWidth,
-      height: document.documentElement.scrollHeight
-    },
-    windowScroll: { x: window.scrollX, y: window.scrollY },
-    elementScroll,
-    colorScheme: matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
-  };
-}
-
-function currentTestingState() {
-  if (!createLocalTestingStateSnapshot) throw new Error("Local testing-state support is unavailable");
-  const focused = document.activeElement && document.activeElement !== document.body
-    ? { id: document.activeElement.id || null, tag: document.activeElement.tagName.toLowerCase() }
-    : null;
-  return createLocalTestingStateSnapshot({
-    selectedGameId,
-    activeTab,
-    plan,
-    boxLibrary,
-    cursorStateNodeId,
-    actionDraft,
-    currentPreview,
-    selectedPreviewOutcomeId,
-    reviewOutcomeStateNodeId,
-    outcomesExpanded: false,
-    needsRecalculation,
-    exportSelection,
-    contextSelection,
-    view: testingViewState(),
-    controls: testingControlState(),
-    openDialogIds: [...document.querySelectorAll("dialog[open][id]")].map(dialog => dialog.id),
-    focusedElement: focused,
-    liveEditActive: Boolean(liveWriter?.active),
-    battleTracker: battleTrackerSnapshot
-  });
-}
-
-async function outputTestingState() {
-  try {
-    const snapshot = currentTestingState();
-    outputStateButton.disabled = true;
-    const receipt = await localTestingStateApi.storeLocalTestingState(snapshot);
-    setStatus(`Testing state saved for Codex at ${receipt.storedAt}. No file-location prompt was opened.`);
-  } catch (error) {
-    setStatus(`Testing state output failed: ${error.message}`, true);
-  } finally {
-    outputStateButton.disabled = false;
-  }
-}
-
-async function installTestingStateOutput() {
-  if (!PRIVATE_INTEGRATIONS_ALLOWED || !ui["output-state-anchor"]) return;
-  const [testingApi, snapshotApi] = await Promise.all([
-    import("./integrations/local_testing_state.js?v=20260909-public-release-v2"),
-    import("./testing/state_snapshot.js?v=20260909-public-release-v2")
-  ]);
-  const capability = await testingApi.detectLocalTestingStateCapability();
-  if (!capability) return;
-  localTestingStateApi = testingApi;
-  createLocalTestingStateSnapshot = snapshotApi.createTestingStateSnapshot;
-  outputStateButton = button("Output State", "secondary");
-  outputStateButton.id = "output-state";
-  outputStateButton.title = "Save a testing snapshot of the current PLC and incomplete action selections for Codex";
-  outputStateButton.addEventListener("click", outputTestingState);
-  ui["output-state-anchor"].append(outputStateButton);
-  Object.defineProperty(globalThis, "__PLC_TESTING_STATE__", {
-    configurable: false,
-    enumerable: false,
-    value: Object.freeze({ capture: currentTestingState })
-  });
-}
-
 function setTab(name) {
   if (freeCalcSession && name !== 'plc') { setStatus('Finish Free Calc with Close, Add, or Save as Draft first.', true); return; }
   activeTab = ["boxes", "drafts"].includes(name) ? name : "plc";
@@ -507,7 +363,6 @@ async function saveNamedDraft() {
 
 function startFreeCalc() {
   if (!plan || freeCalcSession) return;
-  if (liveWriter?.active) { setStatus('Stop Live Edit before opening Free Calc; no temporary edits are sent to Overlay.', true); return; }
   freeCalcSession = { plan, cursorStateNodeId, reviewOutcomeStateNodeId, actionDraft: structuredClone(actionDraft), currentPreview, branchEventModel, selectedPreviewOutcomeId, needsRecalculation };
   const result = addFreeCalcBranch(plan, cursorStateNodeId);
   plan = result.plan; cursorStateNodeId = result.stateId; reviewOutcomeStateNodeId = null;
@@ -1539,7 +1394,7 @@ function initialConditionsForPlan(players) {
 
 async function beginPlanFromContext() {
   if (ui["begin-plan"].disabled) return;
-  if ((liveWriter?.active || plan) && !(await confirmDestructive("Beginning a clean plan"))) return;
+  if (plan && !(await confirmDestructive("Beginning a clean plan"))) return;
   try {
     const trainer = dataset.trainer(contextTrainerId());
     const variantId = trainer.mechanicsVariants?.length ? ui["variant-select"].value : null;
@@ -1844,7 +1699,6 @@ function scheduleNotesPersistence() {
     notesPersistTimer = null;
     try {
       await persistDraft();
-      await flushLiveEdit();
       if (ui["notes-status"]) ui["notes-status"].textContent = `${ui["notes-status"].textContent.replace(/ · (Saving…|Saved)$/, "")} · Saved`;
     } catch (error) { setStatus(`Notes could not be saved: ${error.message}`, true); }
   }, 300);
@@ -3259,7 +3113,6 @@ function nodeActionSummary(state) {
 
 function selectStateNode(stateId, { prefill = false } = {}) {
   if (!plan.stateNodes[stateId]) return;
-  selectedTrackerTurnNumber = null;
   cursorStateNodeId = stateId;
   reviewOutcomeStateNodeId = null;
   actionDraft = emptyActionDraft();
@@ -3275,7 +3128,6 @@ function selectTurnOutcome(stateId) {
   const state = plan.stateNodes[stateId];
   const group = state?.parentActionGroupId ? plan.actionGroups[state.parentActionGroupId] : null;
   if (!state || !group) return;
-  selectedTrackerTurnNumber = null;
   cursorStateNodeId = group.parentStateNodeId;
   reviewOutcomeStateNodeId = stateId;
   actionDraft = emptyActionDraft();
@@ -3291,7 +3143,6 @@ function selectReplacementOutcome(stateId) {
   const state = plan.stateNodes[stateId];
   const transition = state?.parentReplacementTransitionId ? plan.replacementTransitions?.[state.parentReplacementTransitionId] : null;
   if (!state || !transition) return;
-  selectedTrackerTurnNumber = null;
   cursorStateNodeId = transition.parentStateNodeId;
   reviewOutcomeStateNodeId = stateId;
   actionDraft = emptyActionDraft();
@@ -3301,77 +3152,6 @@ function selectReplacementOutcome(stateId) {
   selectedPreviewOutcomeId = null;
   renderWorkspace();
   persistDraft();
-}
-
-function currentTrackerTurns() {
-  return compareTrackerTurnsFn && plan && battleTrackerSnapshot
-    ? compareTrackerTurnsFn(plan, battleTrackerSnapshot, dataset)
-    : [];
-}
-
-function trackerStatusLabel(turn) {
-  return {
-    matched: "Matched",
-    ambiguous: "Ambiguous",
-    unmatched: "Unplanned",
-    insufficient: "Observed",
-    "in-progress": "Live"
-  }[turn?.status] || "Observed";
-}
-
-function renderBattleTrackerDetail() {
-  const container = ui["battle-tracker-detail"];
-  if (!container) return;
-  if (document.body.dataset.publicPreview === "true") {
-    container.hidden = true;
-    return;
-  }
-  if (!battleTrackerSnapshot || (!battleTrackerSnapshot.active && !battleTrackerSnapshot.battleId)) {
-    container.hidden = true;
-    container.replaceChildren();
-    return;
-  }
-  const heading = document.createElement("div"); heading.className = "battle-tracker-detail-heading";
-  const title = document.createElement("strong"); title.textContent = "Actual battle tracker";
-  const status = document.createElement("span"); status.className = "pill";
-  status.textContent = battleTrackerSnapshot.active
-    ? battleTrackerSnapshot.waitingForBattle ? "Waiting for battle" : "Following live battle"
-    : "Tracker stopped";
-  heading.append(title, status);
-  const nodes = [heading];
-  const selected = currentTrackerTurns().find(turn => Number(turn.turnNumber) === Number(selectedTrackerTurnNumber));
-  if (!selected) {
-    const message = document.createElement("p"); message.className = "fine-print";
-    message.textContent = battleTrackerSnapshot.waitingForBattle
-      ? "The reader is attached. Actual nodes will appear when the next VW2R battle begins."
-      : "Select an Actual node to inspect its observed events and branch-match status.";
-    nodes.push(message);
-  } else {
-    const summary = document.createElement("p");
-    summary.innerHTML = `<strong>Turn ${selected.turnNumber} · ${trackerStatusLabel(selected)}</strong>`;
-    const explanation = document.createElement("span"); explanation.textContent = ` ${selected.explanation}`; summary.append(explanation);
-    const list = document.createElement("ol"); list.className = "battle-tracker-events";
-    for (const event of selected.events.filter(event => event.kind !== "turn")) {
-      const item = document.createElement("li");
-      const kind = document.createElement("span"); kind.className = "tracker-event-kind"; kind.textContent = event.kind;
-      item.append(kind, document.createTextNode(event.text || "Observed event"));
-      list.append(item);
-    }
-    if (!list.childElementCount) list.append(Object.assign(document.createElement("li"), { textContent: "No semantic event has been decoded for this turn yet." }));
-    nodes.push(summary, list);
-    const branch = button("Create Branch from Actual", "secondary");
-    branch.disabled = selected.status !== "matched" || !selected.matchedStateNodeId;
-    branch.title = branch.disabled ? selected.explanation : "Continue planning from the uniquely matched observed state";
-    branch.addEventListener("click", () => {
-      const matchedStateId = selected.matchedStateNodeId;
-      if (!matchedStateId || !plan?.stateNodes?.[matchedStateId]) return;
-      selectStateNode(matchedStateId);
-      setStatus(`Turn ${selected.turnNumber} actual events matched ${matchedStateId}. The next action creates or opens a branch from that observed state.`);
-    });
-    nodes.push(branch);
-  }
-  container.hidden = false;
-  container.replaceChildren(...nodes);
 }
 
 function renderTree() {
@@ -3390,13 +3170,6 @@ function renderTree() {
     });
     groups.get(entry.columnKey).entries.push(entry);
   }
-  const trackerTurns = document.body.dataset.publicPreview === "true" ? [] : currentTrackerTurns();
-  for (const trackerTurn of trackerTurns) {
-    const turnNumber = Number(trackerTurn.turnNumber);
-    const key = `turn-${turnNumber}`;
-    if (!groups.has(key)) groups.set(key, { entries: [], order: turnNumber * 100, title: `Turn ${turnNumber}`, turnNumber });
-  }
-  const trackerLane = Math.max(-1, ...ordered.map(entry => Number(entry.lane) || 0)) + 1;
   const orderedGroups = [...groups.entries()].sort(([, left], [, right]) => left.order - right.order);
   const columnIndexByKey = new Map(orderedGroups.map(([key], index) => [key, index]));
   const entryByOutcomeStateId = new Map(ordered.filter(entry => entry.outcomeStateNodeId).map(entry => [entry.outcomeStateNodeId, entry]));
@@ -3516,31 +3289,9 @@ function renderTree() {
       });
       column.append(node);
     });
-    const trackerTurn = trackerTurns.find(entry => Number(entry.turnNumber) === Number(turn));
-    if (trackerTurn) {
-      const node = button("", "node-button is-actual");
-      node.dataset.column = columnIndex;
-      node.dataset.lane = trackerLane;
-      node.dataset.kind = "actual";
-      node.style.gridColumn = "1";
-      node.style.gridRow = String(trackerLane + 2);
-      node.setAttribute("role", "treeitem");
-      node.setAttribute("aria-selected", String(Number(selectedTrackerTurnNumber) === Number(turn)));
-      node.setAttribute("aria-label", `Actual Turn ${turn} · ${trackerStatusLabel(trackerTurn)} · ${trackerTurn.explanation}`);
-      const actual = document.createElement("span"); actual.className = "node-probability"; actual.textContent = "Actual";
-      const match = document.createElement("small"); match.className = "node-actual-status"; match.textContent = trackerStatusLabel(trackerTurn);
-      node.append(actual, match);
-      node.addEventListener("click", () => {
-        selectedTrackerTurnNumber = Number(turn);
-        renderTree();
-        renderBattleTrackerDetail();
-      });
-      column.append(node);
-    }
     return column;
   });
   ui["node-tree"].replaceChildren(...columns);
-  renderBattleTrackerDetail();
 }
 
 function prefillActions(suppliedGroup = null) {
@@ -3638,13 +3389,6 @@ function renderWorkspace() {
   ui["battle-workspace"].classList.toggle("is-rotation", hasPlan && plan.game.battleFormat === "rotation");
   ui["plan-toolbar-label"].textContent = hasPlan ? `${plan.name} · ${currentTrainerName()} · ${battleFormatLabel()}` : "No battle plan open";
   ui["commit-turn"].disabled = true;
-  if (liveButton) {
-    const overlayCompatible = !hasPlan || (!freeCalcSession && plan.schemaVersion < 5 && !["triples", "rotation"].includes(plan.game.battleFormat));
-    liveButton.disabled = !hasPlan || needsRecalculation || !overlayCompatible;
-    liveButton.textContent = liveWriter?.active ? "Stop Live Edit" : "Begin Live Edit";
-    liveButton.title = overlayCompatible ? "" : `${battleFormatLabel()} plans stay local until Overlay gains this projection format`;
-  }
-  updateBattleTrackerButton();
   ui["recalculate-plan"].hidden = !hasPlan || !needsRecalculation;
   if (!hasPlan) return;
   ui["revision-label"].textContent = `Draft r${plan.documentRevision}`;
@@ -3666,13 +3410,6 @@ async function persistDraft() {
   await draftStore.save(draftRecord);
 }
 
-async function flushLiveEdit() {
-  if (!liveWriter?.active || !plan || freeCalcSession) return;
-  await liveWriter.flush(plan);
-  draftRecord = markLiveFlushed(draftRecord, { ...liveWriter.session, documentRevision: plan.documentRevision });
-  await draftStore.save(draftRecord);
-}
-
 async function commitCurrentPreview() {
   if (!currentPreview || !plan) return;
   try {
@@ -3689,7 +3426,6 @@ async function commitCurrentPreview() {
     selectedPreviewOutcomeId = null;
     actionDraft = emptyActionDraft();
     await persistDraft();
-    await flushLiveEdit();
     renderWorkspace();
     setStatus(lockingBattleEnd ? "Battle-ending branch locked in the local draft." : replacementCommit ? "Replacement prepared for the next turn." : result.outcomeAdded ? "Crafted outcome branch added to the local draft." : result.created ? "Turn committed to the local draft." : "Opened the existing branch.");
     if (lockingBattleEnd) {
@@ -3722,7 +3458,7 @@ async function outputPlan() {
 
 async function importPlanFile(file) {
   if (!file || !dataset) return;
-  if ((liveWriter?.active || plan) && !(await confirmDestructive("Importing another plan"))) return;
+  if (plan && !(await confirmDestructive("Importing another plan"))) return;
   try {
     let imported = parsePlan(await file.text());
     assertValidPlanDocument(imported);
@@ -3775,133 +3511,13 @@ async function recalculateImportedPlan() {
     draftRecord = createDraftRecord(plan, cursorStateNodeId);
     await draftStore.save(draftRecord);
     renderWorkspace();
-    setStatus("Recalculation completed. Review the rebuilt branches before output or Live Edit.");
+    setStatus("Recalculation completed. Review the rebuilt branches before output.");
   } catch (error) { plan = original; setStatus(`Recalculation stopped without replacing the imported plan: ${error.message}`, true); }
   finally { ui["recalculate-plan"].disabled = false; }
 }
 
-async function beginLiveEdit() {
-  if (!plan || !liveWriter) return;
-  try {
-    const session = await liveWriter.begin(plan, draftRecord?.localLiveEdit || {});
-    draftRecord = markLiveFlushed(draftRecord, { ...session, documentRevision: plan.documentRevision });
-    await draftStore.save(draftRecord);
-    renderWorkspace();
-    setStatus(`Live Edit started at revision ${session.liveRevision}. Overlay still requires its own attach and explicit Send Turns.`);
-  } catch (error) { setStatus(error.message, true); }
-}
-
-async function stopLiveEdit() {
-  if (!liveWriter?.active || !plan) return;
-  try {
-    await liveWriter.stop(plan);
-    draftRecord = setLocalLiveEdit(draftRecord, null);
-    await draftStore.save(draftRecord);
-    renderWorkspace();
-    ui["live-stop-dialog"].showModal();
-  } catch (error) { setStatus(error.message, true); }
-}
-
-async function installLocalLiveEdit() {
-  if (!PRIVATE_INTEGRATIONS_ALLOWED || !ui["live-edit-anchor"]) return;
-  const enabledForGame = GAME_REGISTRY[selectedGameId]?.capabilities?.liveEdit === true;
-  ui["live-edit-anchor"].hidden = !enabledForGame;
-  if (!enabledForGame) return;
-  const { detectLocalLiveEditCapability, LocalLiveEditWriter } = await import("./integrations/local_live_edit.js?v=20260909-public-release-v2");
-  const capability = await detectLocalLiveEditCapability();
-  if (!capability || liveButton) return;
-  liveWriter = new LocalLiveEditWriter({ onError: error => setStatus(`Live Edit heartbeat failed: ${error.message}`, true) });
-  liveButton = button("Begin Live Edit");
-  liveButton.addEventListener("click", () => liveWriter.active ? stopLiveEdit() : beginLiveEdit());
-  ui["live-edit-anchor"].append(liveButton);
-  if (plan && draftRecord?.localLiveEdit) {
-    try {
-      const session = await liveWriter.begin(plan, draftRecord.localLiveEdit);
-      draftRecord = markLiveFlushed(draftRecord, { ...session, documentRevision: plan.documentRevision });
-      await draftStore.save(draftRecord);
-      setStatus("Recovered the active local Live Edit writer. Overlay publication remains explicit.");
-    } catch {
-      draftRecord = setLocalLiveEdit(draftRecord, null);
-      await draftStore.save(draftRecord);
-    }
-  }
-  renderWorkspace();
-}
-
-function updateBattleTrackerButton() {
-  if (!battleTrackerButton) return;
-  const enabledForGame = GAME_REGISTRY[selectedGameId]?.capabilities?.battleTracker === true;
-  ui["battle-tracker-anchor"].hidden = !enabledForGame;
-  battleTrackerButton.disabled = !enabledForGame || !plan || needsRecalculation;
-  battleTrackerButton.textContent = battleTracker?.active ? "Stop Battle Tracker" : "Begin Battle Tracker";
-  battleTrackerButton.title = plan
-    ? "Follow the private VW2R battle log as an Actual node branch"
-    : "Open a VW2R plan before following the battle log";
-}
-
-async function toggleBattleTracker() {
-  if (!battleTracker || !plan) return;
-  if (battleTracker.active) {
-    battleTracker.stop();
-    updateBattleTrackerButton();
-    renderTree();
-    setStatus("Battle Tracker stopped. The captured Actual branch remains available for review until tracking begins again.");
-    return;
-  }
-  battleTrackerButton.disabled = true;
-  try {
-    selectedTrackerTurnNumber = null;
-    battleTrackerSnapshot = await battleTracker.begin();
-    updateBattleTrackerButton();
-    renderTree();
-    setStatus(battleTrackerSnapshot.waitingForBattle
-      ? "Battle Tracker is attached and waiting for the next VW2R battle."
-      : "Battle Tracker attached to the active VW2R battle; Actual nodes will update as events arrive.");
-  } catch (error) {
-    updateBattleTrackerButton();
-    setStatus(`Battle Tracker could not start: ${error.message}`, true);
-  }
-}
-
-async function installLocalBattleTracker() {
-  if (!PRIVATE_INTEGRATIONS_ALLOWED || !ui["battle-tracker-anchor"]) return;
-  const enabledForGame = GAME_REGISTRY[selectedGameId]?.capabilities?.battleTracker === true;
-  ui["battle-tracker-anchor"].hidden = !enabledForGame;
-  if (!enabledForGame) {
-    battleTracker?.stop();
-    return;
-  }
-  if (battleTrackerButton) {
-    updateBattleTrackerButton();
-    return;
-  }
-  const trackerApi = await import("./integrations/local_battle_tracker.js?v=20260909-public-release-v2");
-  const capability = await trackerApi.detectLocalBattleTrackerCapability();
-  if (!capability) return;
-  compareTrackerTurnsFn = trackerApi.compareTrackerTurns;
-  battleTracker = new trackerApi.LocalBattleTracker({
-    onUpdate: snapshot => {
-      battleTrackerSnapshot = snapshot;
-      updateBattleTrackerButton();
-      if (plan) renderTree();
-      else renderBattleTrackerDetail();
-    },
-    onError: error => setStatus(`Battle Tracker polling failed: ${error.message}`, true)
-  });
-  battleTrackerButton = button("Begin Battle Tracker", "secondary");
-  battleTrackerButton.id = "battle-tracker";
-  battleTrackerButton.addEventListener("click", toggleBattleTracker);
-  ui["battle-tracker-anchor"].append(battleTrackerButton);
-  updateBattleTrackerButton();
-}
-
 async function confirmDestructive(actionLabel) {
   if (freeCalcSession) { setStatus('Close, Add, or Save as Draft to finish Free Calc first.', true); return false; }
-  if (liveWriter?.active) {
-    await stopLiveEdit();
-    setStatus(`${actionLabel} paused because Live Edit had to stop first. Choose the stop flow, then request the change again.`);
-    return false;
-  }
   if (!plan) return true;
   ui["destructive-message"].textContent = "You have a line already open. Please select how to proceed.";
   ui["destructive-output"].hidden = false;
@@ -3930,9 +3546,6 @@ async function resolveDestructive(choice) {
 }
 
 async function clearActiveContext() {
-  battleTracker?.stop();
-  battleTrackerSnapshot = null;
-  selectedTrackerTurnNumber = null;
   plan = null; draftRecord = null; cursorStateNodeId = null; currentPreview = null; branchEventModel = null; selectedPreviewOutcomeId = null; reviewOutcomeStateNodeId = null; needsRecalculation = false;
   actionDraft = emptyActionDraft(); exportSelection.clear();
   await draftStore.clear();
@@ -4001,7 +3614,7 @@ async function restoreDraft() {
 
 async function selectGame(gameId) {
   if (!gameId) { renderGameCredit(""); return; }
-  if (selectedGameId && selectedGameId !== gameId && (liveWriter?.active || plan) && !(await confirmDestructive("Changing games"))) {
+  if (selectedGameId && selectedGameId !== gameId && plan && !(await confirmDestructive("Changing games"))) {
     ui["game-select"].value = selectedGameId;
     renderGameCredit(selectedGameId);
     return;
@@ -4034,8 +3647,6 @@ async function selectGame(gameId) {
     refreshContextBoxSelect();
     setTab(activeTab);
     const restored = await restoreDraft();
-    await installLocalLiveEdit();
-    await installLocalBattleTracker();
     setStatus(restored ? `Recovered the active ${config.name} draft. Nothing has been sent to Overlay.` : `${config.name} is ready. Add or select a Box party to begin.`);
     if (!restored) queueMicrotask(() => openPlanContext());
   } catch (error) {
@@ -4046,9 +3657,6 @@ async function selectGame(gameId) {
 }
 
 function wireEvents() {
-  ui["view-mode-toggle"]?.addEventListener("click", () => {
-    setViewMode(document.body.dataset.publicPreview === "true" ? "local" : "public");
-  });
   ui["game-select"].addEventListener("change", () => {
     renderGameCredit(ui["game-select"].value);
     selectGame(ui["game-select"].value);
@@ -4114,22 +3722,18 @@ function wireEvents() {
     if (!notesPersistTimer) return;
     clearTimeout(notesPersistTimer);
     notesPersistTimer = null;
-    persistDraft().then(flushLiveEdit).catch(error => setStatus(`Notes could not be saved: ${error.message}`, true));
+    persistDraft().catch(error => setStatus(`Notes could not be saved: ${error.message}`, true));
   });
   ui["recalculate-plan"].addEventListener("click", recalculateImportedPlan);
-  ui["live-save-quit"]?.addEventListener("click", () => setTimeout(() => { renderExportSelection(); ui["output-dialog"].showModal(); }, 0));
-  ui["live-keep-editing"]?.addEventListener("click", () => setStatus("Live writing remains stopped. The same local draft is still open."));
   ui["destructive-dialog"].addEventListener("close", () => resolveDestructive(ui["destructive-dialog"].returnValue));
   ui["progression-dialog"].addEventListener("close", resolveProgressionPrompt);
-  window.addEventListener("beforeunload", () => { clearTimeout(notesPersistTimer); worker?.terminate(); liveWriter?.stopHeartbeat?.(); battleTracker?.stop(); });
+  window.addEventListener("beforeunload", () => { clearTimeout(notesPersistTimer); worker?.terminate(); });
 }
 
 async function start() {
-  restoreViewMode();
   wireEvents();
   document.addEventListener('reordererror', event => setStatus(`Party order could not be saved: ${event.detail?.message || event.detail}`, true));
   setAiForecastExpanded(false);
-  await installTestingStateOutput();
   try {
     await populateGameOptions();
     boxLibrary = await boxStore.load() || createEmptyBoxLibrary();

@@ -7,7 +7,6 @@ export function createDraftRecord(document, workingCursorStateNodeId = document.
     cacheSchemaVersion: CACHE_SCHEMA_VERSION,
     draftRevision: Number(document.documentRevision || 0),
     lastExportedRevision: null,
-    lastLiveFlushedRevision: null,
     dirty: true,
     sourceFingerprint: {
       gameId: document.game.gameId,
@@ -20,7 +19,6 @@ export function createDraftRecord(document, workingCursorStateNodeId = document.
     document: clone(document),
     workingCursorStateNodeId,
     exportSelectionDraft: null,
-    localLiveEdit: null,
     cachedAt: nowIso()
   };
 }
@@ -72,29 +70,6 @@ export function fingerprintsMatch(document, currentFingerprint) {
     mechanicsFingerprint: currentFingerprint.mechanicsFingerprint
   };
   return stableStringify(expected) === stableStringify(actual);
-}
-
-export function setLocalLiveEdit(record, session) {
-  return {
-    ...clone(record),
-    localLiveEdit: session ? {
-      sessionId: session.sessionId,
-      planId: session.planId,
-      gameId: session.gameId,
-      liveRevision: Number(session.liveRevision),
-      documentRevision: Number(session.documentRevision),
-      writerLeaseId: session.writerLeaseId
-    } : null,
-    cachedAt: nowIso()
-  };
-}
-
-export function markLiveFlushed(record, session) {
-  return {
-    ...setLocalLiveEdit(record, session),
-    lastLiveFlushedRevision: Number(session.documentRevision),
-    cachedAt: nowIso()
-  };
 }
 
 export class MemoryDraftStore {

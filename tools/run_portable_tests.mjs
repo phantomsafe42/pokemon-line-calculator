@@ -7,12 +7,8 @@ import { fileURLToPath } from "node:url";
 const here = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(here, "..");
 const testsRoot = path.join(projectRoot, "tests");
-const workspaceOnly = new Set([
-  "local_testing_state_endpoint.test.mjs",
-  "server_projection.test.mjs"
-]);
 const files = fs.readdirSync(testsRoot)
-  .filter(name => name.endsWith(".test.mjs") && !workspaceOnly.has(name))
+  .filter(name => name.endsWith(".test.mjs"))
   .sort()
   .map(name => path.join("tests", name));
 

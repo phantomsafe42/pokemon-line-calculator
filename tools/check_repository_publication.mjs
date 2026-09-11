@@ -18,6 +18,9 @@ const forbiddenTrackedPaths = [
   /(^|\/)\.codex(?:-|\/|$)/i,
   /(^|\/)dist\//i,
   /(^|\/)node_modules\//i,
+  /(^|\/)src\/integrations\//i,
+  /(^|\/)src\/testing\//i,
+  /(^|\/)tests\/(?:battle_tracker|local_testing_state_endpoint|server_projection|state_snapshot)\.test\.mjs$/i,
   /\.(?:sav|srm|dsv|nds|gba|gbc|gb|3ds|cia)$/i
 ];
 
@@ -66,6 +69,17 @@ for (const relativePath of tracked) {
   for (const rule of forbiddenText) {
     if (rule.pattern.test(content)) throw new Error(`${rule.label} found in tracked file ${normalized}`);
   }
+}
+
+for (const relativePath of tracked.filter(file => file === "index.html" || file === "styles.css" || file.startsWith("src/") && !file.startsWith("src/generated/"))) {
+  const absolute = path.join(projectRoot, relativePath);
+  if (!fs.existsSync(absolute) || fs.statSync(absolute).size > 2_000_000) continue;
+  const content = fs.readFileSync(absolute, "utf8");
+  for (const [label, pattern] of [
+    ["local integration endpoint", /__stream-tools/i],
+    ["local-only build marker", /PLC_LOCAL_ONLY_|plc-build-profile[^>]+local/i],
+    ["local feature module", /local_(?:live_edit|battle_tracker|testing_state)|src\/(?:integrations|testing)/i],
+  ]) if (pattern.test(content)) throw new Error(`${label} found in public runtime source ${relativePath}`);
 }
 
 console.log(JSON.stringify({ status, trackedFilesChecked: tracked.length }, null, 2));

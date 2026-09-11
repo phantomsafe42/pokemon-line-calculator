@@ -6,10 +6,6 @@ import { fileURLToPath } from "node:url";
 const here = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(here, "..");
 const outputRoot = path.resolve(projectRoot, "dist");
-const localOnlyDirectories = new Set([
-  path.join(projectRoot, "src", "integrations"),
-  path.join(projectRoot, "src", "testing")
-]);
 
 function inside(candidate, root) {
   const relative = path.relative(root, candidate);
@@ -20,7 +16,6 @@ if (!inside(outputRoot, projectRoot) || path.basename(outputRoot) !== "dist") th
 
 function copyTree(source, destination) {
   const sourcePath = path.resolve(source);
-  if (localOnlyDirectories.has(sourcePath)) return;
   const stat = fs.statSync(sourcePath);
   if (stat.isSymbolicLink()) throw new Error(`Public build refuses symbolic link ${sourcePath}`);
   if (stat.isDirectory()) {
@@ -58,7 +53,6 @@ for (const entry of ["styles.css", "contracts", "src", "public-assets", "THIRD_P
   copyTree(path.join(projectRoot, entry), path.join(outputRoot, entry));
 }
 
-const localMarkup = /<!-- PLC_LOCAL_ONLY_START -->[\s\S]*?<!-- PLC_LOCAL_ONLY_END -->/g;
 const sourceHtml = fs.readFileSync(path.join(projectRoot, "index.html"), "utf8");
 const configuredPokemonAssetBase = String(process.env.POKEMON_ASSET_RELEASE_BASE || "").trim();
 if (configuredPokemonAssetBase && (
@@ -68,11 +62,8 @@ if (configuredPokemonAssetBase && (
 )) throw new Error("POKEMON_ASSET_RELEASE_BASE must be an HTTPS URL pinned to an immutable tag or commit");
 const publicPokemonAssetBase = configuredPokemonAssetBase || "./public-assets";
 const publicHtml = sourceHtml
-  .replace(/<body(?: data-public-preview="true")?>/, '<body data-public-preview="true">')
-  .replace('<meta name="plc-build-profile" content="local">', '<meta name="plc-build-profile" content="public">')
-  .replace('<meta name="pokemon-asset-release-base" content="/Datasets/Pokemon%20Assets/release">', `<meta name="pokemon-asset-release-base" content="${publicPokemonAssetBase}">`)
-  .replace(localMarkup, "");
-if (publicHtml.includes("PLC_LOCAL_ONLY_") || !publicHtml.includes('content="public"') || publicHtml.includes('/Datasets/Pokemon%20Assets/release')) throw new Error("Public HTML transform failed");
+  .replace('<meta name="pokemon-asset-release-base" content="./public-assets">', `<meta name="pokemon-asset-release-base" content="${publicPokemonAssetBase}">`);
+if (publicHtml.includes("PLC_LOCAL_ONLY_") || !publicHtml.includes('<meta name="plc-build-profile" content="public">') || publicHtml.includes('/Datasets/Pokemon%20Assets/release')) throw new Error("Public source HTML is not release-safe");
 fs.writeFileSync(path.join(outputRoot, "index.html"), publicHtml);
 fs.writeFileSync(path.join(outputRoot, ".nojekyll"), "");
 

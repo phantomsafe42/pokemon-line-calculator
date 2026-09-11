@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="plc-build-profile" content="local">
-  <meta name="pokemon-asset-release-base" content="/Datasets/Pokemon%20Assets/release">
+  <meta name="plc-build-profile" content="public">
+  <meta name="pokemon-asset-release-base" content="./public-assets">
   <title>Pokémon Line Calculator</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="./styles.css?v=20260909-public-release-v2">
@@ -22,7 +22,6 @@
       </select>
       <p id="game-credit" class="game-credit" aria-live="polite"></p>
     </div>
-    <!-- PLC_LOCAL_ONLY_START --><button id="view-mode-toggle" class="view-mode-toggle secondary" type="button" role="switch" aria-checked="false">Local View</button><!-- PLC_LOCAL_ONLY_END -->
   </header>
 
   <main class="app-shell">
@@ -44,11 +43,8 @@
           <p id="plan-toolbar-label" class="toolbar-label">No battle plan open</p>
         </div>
         <div class="toolbar-actions">
-          <!-- PLC_LOCAL_ONLY_START --><span id="output-state-anchor"></span><!-- PLC_LOCAL_ONLY_END -->
-          <!-- PLC_LOCAL_ONLY_START --><span id="battle-tracker-anchor"></span><!-- PLC_LOCAL_ONLY_END -->
           <label class="file-button secondary toolbar-file-button">Import Line<input id="import-plan" type="file" accept=".json,.plc-plan.json,application/json"></label>
           <button id="export-line" type="button" class="secondary">Export Line</button>
-          <!-- PLC_LOCAL_ONLY_START --><span id="live-edit-anchor"></span><!-- PLC_LOCAL_ONLY_END -->
           <button id="new-plan" type="button" class="secondary">Start New Line</button>
         </div>
       </div>
@@ -62,7 +58,6 @@
             <div class="heading-meta"><span id="turn-label" class="pill"></span><span id="revision-label" class="pill"></span></div>
           </div>
           <div id="node-tree" class="node-tree" role="tree" aria-label="Battle plan nodes"></div>
-          <!-- PLC_LOCAL_ONLY_START --><section id="battle-tracker-detail" class="battle-tracker-detail" hidden aria-live="polite"></section><!-- PLC_LOCAL_ONLY_END -->
         </section>
 
         <div id="battle-workspace" class="battle-workspace">
@@ -288,10 +283,6 @@
       <p id="file-status" class="fine-print">Import and output never publish anything to Overlay or OBS.</p>
     </form>
   </dialog>
-
-  <!-- PLC_LOCAL_ONLY_START --><dialog id="live-stop-dialog" aria-labelledby="live-stop-title">
-    <form method="dialog" class="dialog-card"><h2 id="live-stop-title">Live writing has ended</h2><p>The Overlay may keep reading the final revision until its own Live Edit session is stopped. Choose whether to open ordinary plan output selection now.</p><div class="dialog-actions"><button id="live-save-quit" value="save" type="submit">Save and Quit</button><button id="live-keep-editing" value="keep" type="submit">Keep Editing</button></div></form>
-  </dialog><!-- PLC_LOCAL_ONLY_END -->
 
   <dialog id="progression-dialog" aria-labelledby="progression-title">
     <form method="dialog" class="dialog-card">
