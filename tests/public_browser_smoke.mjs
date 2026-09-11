@@ -14,6 +14,22 @@ const publicPrefix = "/pokemon-line-calculator/";
 const tempRoot = path.join(projectRoot, ".codex-tmp");
 const profile = path.join(tempRoot, `public-browser-smoke-${process.pid}`);
 const screenshot = path.join(tempRoot, "plc-public-pages.png");
+const vanillaGameOptions = [
+  ["pokemon-ruby", "Ruby"],
+  ["pokemon-sapphire", "Sapphire"],
+  ["pokemon-emerald", "Emerald"],
+  ["pokemon-firered", "FireRed"],
+  ["pokemon-leafgreen", "LeafGreen"],
+  ["pokemon-diamond", "Diamond"],
+  ["pokemon-pearl", "Pearl"],
+  ["pokemon-platinum", "Platinum"],
+  ["pokemon-heartgold", "HeartGold"],
+  ["pokemon-soulsilver", "SoulSilver"],
+  ["pokemon-black", "Black"],
+  ["pokemon-white", "White"],
+  ["pokemon-black-2", "Black 2"],
+  ["pokemon-white-2", "White 2"]
+];
 let browser = null;
 let server = null;
 
@@ -183,6 +199,21 @@ try {
     });
     await wait(() => /Select a game to load/.test(document.getElementById('app-status')?.textContent || ''), 'public shell');
     const game = document.getElementById('game-select');
+    const gameOptions = [...game.options].filter(option => option.value).map(option => ({
+      value: option.value,
+      label: option.textContent,
+      disabled: option.disabled
+    }));
+    game.value = 'pokemon-ruby';
+    game.dispatchEvent(new Event('change', { bubbles: true }));
+    await wait(() => /Ruby is ready\./.test(document.getElementById('app-status')?.textContent || '')
+      && document.getElementById('trainer-select').options.length > 1, 'public vanilla game data and worker');
+    const vanilla = {
+      status: document.getElementById('app-status').textContent,
+      credit: document.getElementById('game-credit').textContent,
+      trainers: document.getElementById('trainer-select').options.length,
+      saveImportVisible: !document.getElementById('save-import').closest('label').hidden
+    };
     game.value = 'volt-white-2r';
     game.dispatchEvent(new Event('change', { bubbles: true }));
     await wait(() => /is ready\./.test(document.getElementById('app-status')?.textContent || '')
@@ -194,6 +225,8 @@ try {
     await sprite.decode();
     return {
       profile: document.querySelector('meta[name="plc-build-profile"]')?.content,
+      gameOptions,
+      vanilla,
       spriteLoaded: spriteResult.status === 'ok' && sprite.naturalWidth > 0,
       status: document.getElementById('app-status').textContent,
       gameCredit: document.getElementById('game-credit').textContent,
@@ -212,6 +245,16 @@ try {
   })()`, true);
 
   assert.equal(state.profile, "public");
+  const gameOptionById = new Map(state.gameOptions.map(option => [option.value, option]));
+  assert.deepEqual(
+    vanillaGameOptions.map(([gameId]) => [gameId, gameOptionById.get(gameId)?.label]),
+    vanillaGameOptions
+  );
+  assert.equal(vanillaGameOptions.every(([gameId]) => gameOptionById.get(gameId)?.disabled === false), true);
+  assert.match(state.vanilla.status, /Ruby is ready\./);
+  assert.equal(state.vanilla.credit, "by Game Freak");
+  assert.ok(state.vanilla.trainers > 1);
+  assert.equal(state.vanilla.saveImportVisible, false);
   assert.equal(state.spriteLoaded, true);
   assert.match(state.status, /is ready\./);
   assert.equal(state.gameCredit, "by AphexCubed and Drayano");

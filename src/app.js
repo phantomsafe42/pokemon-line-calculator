@@ -27,7 +27,7 @@ import { effectiveActionSpeed } from "./rulesets/action_order.js?v=20260909-publ
 import { areSlotsAdjacent, canSelectShift, shiftWithCenter, triplePositionForSlot, tripleSlotForPosition } from "./rulesets/triple_battle.js?v=20260909-public-release-v2";
 import { rotationFrontKey, rotationFrontSlot } from "./rulesets/rotation_battle.js?v=20260909-public-release-v2";
 import { experienceForLevel, experienceToNextLevel, projectExperience } from "./rulesets/vw2r_experience.js?v=20260909-public-release-v2";
-import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260909-public-release-v2";
+import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260911-vanilla-games-v1";
 import { battleCompletionState } from "./core/battle_completion.js?v=20260909-public-release-v2";
 import {
   addBox, addParty, boxesForGame, createEmptyBoxLibrary, exportBoxLibrary, IndexedDbBoxLibraryStore,
@@ -38,6 +38,18 @@ import { applyBranchProgressionToLibrary, branchProgressionSnapshot } from "./bo
 import { exportShowdown, parseShowdown } from "./boxes/showdown.js?v=20260909-public-release-v2";
 import { parseSave, selectSavePokemon } from "./boxes/save_import.js?v=20260909-public-release-v2";
 
+function vanillaGame(gameId, name, generation) {
+  return Object.freeze({
+    name,
+    credit: "by Game Freak",
+    expectedDamageGeneration: generation,
+    activationReady: true,
+    datasetBaseUrl: new URL(`./generated/datasets/${gameId}`, import.meta.url).href,
+    trainerAiBaseUrl: null,
+    capabilities: Object.freeze({ saveImport: false, liveEdit: false, battleTracker: false })
+  });
+}
+
 const GAME_REGISTRY = Object.freeze({
   "fire-red-omega": {
     name: "Fire Red Omega",
@@ -46,7 +58,7 @@ const GAME_REGISTRY = Object.freeze({
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/fire-red-omega", import.meta.url).href,
     trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
-    capabilities: Object.freeze({ liveEdit: false, battleTracker: false })
+    capabilities: Object.freeze({ saveImport: true, liveEdit: false, battleTracker: false })
   },
   "pokemon-unbound": {
     name: "Unbound",
@@ -55,7 +67,7 @@ const GAME_REGISTRY = Object.freeze({
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/pokemon-unbound", import.meta.url).href,
     trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
-    capabilities: Object.freeze({ liveEdit: false, battleTracker: false })
+    capabilities: Object.freeze({ saveImport: true, liveEdit: false, battleTracker: false })
   },
   "platinum-kaizo": {
     name: "Platinum Kaizo",
@@ -64,7 +76,7 @@ const GAME_REGISTRY = Object.freeze({
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/platinum-kaizo", import.meta.url).href,
     trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
-    capabilities: Object.freeze({ liveEdit: false, battleTracker: false })
+    capabilities: Object.freeze({ saveImport: true, liveEdit: false, battleTracker: false })
   },
   "renegade-platinum": {
     name: "Renegade Platinum",
@@ -73,7 +85,7 @@ const GAME_REGISTRY = Object.freeze({
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/renegade-platinum", import.meta.url).href,
     trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
-    capabilities: Object.freeze({ liveEdit: false, battleTracker: false })
+    capabilities: Object.freeze({ saveImport: true, liveEdit: false, battleTracker: false })
   },
   "storm-silver": {
     name: "Storm Silver",
@@ -82,7 +94,7 @@ const GAME_REGISTRY = Object.freeze({
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/storm-silver", import.meta.url).href,
     trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
-    capabilities: Object.freeze({ liveEdit: false, battleTracker: false })
+    capabilities: Object.freeze({ saveImport: true, liveEdit: false, battleTracker: false })
   },
   "volt-white-2r": {
     name: "Volt White 2 Redux - Challenge Mode",
@@ -91,8 +103,22 @@ const GAME_REGISTRY = Object.freeze({
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/volt-white-2r", import.meta.url).href,
     trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
-    capabilities: Object.freeze({ liveEdit: true, battleTracker: true })
-  }
+    capabilities: Object.freeze({ saveImport: true, liveEdit: true, battleTracker: true })
+  },
+  "pokemon-ruby": vanillaGame("pokemon-ruby", "Ruby", 3),
+  "pokemon-sapphire": vanillaGame("pokemon-sapphire", "Sapphire", 3),
+  "pokemon-emerald": vanillaGame("pokemon-emerald", "Emerald", 3),
+  "pokemon-firered": vanillaGame("pokemon-firered", "FireRed", 3),
+  "pokemon-leafgreen": vanillaGame("pokemon-leafgreen", "LeafGreen", 3),
+  "pokemon-diamond": vanillaGame("pokemon-diamond", "Diamond", 4),
+  "pokemon-pearl": vanillaGame("pokemon-pearl", "Pearl", 4),
+  "pokemon-platinum": vanillaGame("pokemon-platinum", "Platinum", 4),
+  "pokemon-heartgold": vanillaGame("pokemon-heartgold", "HeartGold", 4),
+  "pokemon-soulsilver": vanillaGame("pokemon-soulsilver", "SoulSilver", 4),
+  "pokemon-black": vanillaGame("pokemon-black", "Black", 5),
+  "pokemon-white": vanillaGame("pokemon-white", "White", 5),
+  "pokemon-black-2": vanillaGame("pokemon-black-2", "Black 2", 5),
+  "pokemon-white-2": vanillaGame("pokemon-white-2", "White 2", 5)
 });
 const BUILD_PROFILE = document.querySelector('meta[name="plc-build-profile"]')?.content || "unknown";
 const pokemonAssetResolver = globalThis.PokemonAssets?.createResolver();
@@ -3988,13 +4014,17 @@ async function selectGame(gameId) {
     worker?.terminate();
     [dataset, trainerAi] = await Promise.all([
       loadStandardizedDataset({ baseUrl: config.datasetBaseUrl }),
-      loadTrainerAiDocumentation({ baseUrl: config.trainerAiBaseUrl, gameId })
+      config.trainerAiBaseUrl
+        ? loadTrainerAiDocumentation({ baseUrl: config.trainerAiBaseUrl, gameId })
+        : Promise.resolve(null)
     ]);
     worker = new ResolverWorkerClient();
     await worker.initialize(config.datasetBaseUrl, config.trainerAiBaseUrl, gameId);
     trainerAiAnalysisCache.clear();
     selectedGameId = gameId;
     renderGameCredit(gameId);
+    const saveImportControl = ui["save-import"]?.closest("label");
+    if (saveImportControl) saveImportControl.hidden = config.capabilities?.saveImport !== true;
     localStorage.setItem(SELECTED_GAME_KEY, gameId);
     ui["game-gate"].hidden = true;
     ui["app-tabs"].hidden = false;

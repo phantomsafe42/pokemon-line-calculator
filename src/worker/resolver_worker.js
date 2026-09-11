@@ -37,11 +37,13 @@ async function initialize(datasetBaseUrl, trainerAiBaseUrl, gameId) {
     dataset.documents
   );
   damageAdapter = damageModule.createSharedDamageAdapter(runtime);
-  trainerAi = await trainerAiModule.loadTrainerAiDocumentation({ baseUrl: trainerAiBaseUrl, gameId });
-  analyzeTrainerAi = trainerAiModule.analyzeTrainerAi;
+  trainerAi = trainerAiBaseUrl
+    ? await trainerAiModule.loadTrainerAiDocumentation({ baseUrl: trainerAiBaseUrl, gameId })
+    : null;
+  analyzeTrainerAi = trainerAiBaseUrl ? trainerAiModule.analyzeTrainerAi : null;
   previewTurn = plannerModule.previewTurn;
   previewCombatantMove = combatantMovesModule.previewCombatantMove;
-  return { gameId: dataset.gameId, resolverReady: runtime.ready, trainerAiProfileId: trainerAi.evaluatorProfile?.profileId || null };
+  return { gameId: dataset.gameId, resolverReady: runtime.ready, trainerAiProfileId: trainerAi?.evaluatorProfile?.profileId || null };
 }
 
 self.addEventListener("message", async event => {
