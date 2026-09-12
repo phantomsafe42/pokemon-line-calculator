@@ -99,6 +99,8 @@ function createRenegadeAiPlan(dataset, trainerId = "renegade-platinum-trainer-05
 
 async function simpleActionFixture(format = "doubles") {
   const dataset = await loadStandardizedDataset({ baseUrl: "http://fixture/vw2r", fetchImpl: generatedVw2rDatasetFetch });
+  const ai = await loadTrainerAiDocumentation({ baseUrl: "http://fixture/trainer-ai", fetchImpl: generatedFetch });
+  dataset.abilityKnowledgePolicy = ai.evaluatorProfile?.constants?.abilityKnowledge || null;
   const trainerId = "vw2r-trainer-0073";
   const battleProfile = dataset.trainer(trainerId).battleProfiles[dataset.mechanics.trainerBattleProfile];
   battleProfile.format = format === "triples" ? "triple" : "double";
@@ -112,7 +114,6 @@ async function simpleActionFixture(format = "doubles") {
     mon.movePp = { tackle: 35, growl: 40 };
     mon.volatileConditions.noSwitch = true;
   }
-  const ai = await loadTrainerAiDocumentation({ baseUrl: "http://fixture/trainer-ai", fetchImpl: generatedFetch });
   return { plan, state, dataset, ai, battleProfile, evaluator: generatedEvaluator(),
     damageAdapter: { calculate: ({ move }) => move.category === "status" ? { status: "status" } : { status: "ok", damage: [10] } } };
 }
