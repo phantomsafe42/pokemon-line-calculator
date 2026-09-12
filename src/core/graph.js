@@ -1,4 +1,4 @@
-import { assertValidPlanDocument } from "../contracts/plan_contract.js?v=20260905-drafts-freecalc-partners-v1";
+import { assertValidPlanDocument } from "../contracts/plan_contract.js?v=20260911-ability-storage-reimp-v1";
 import { actionList } from "./battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
 import { clone, nowIso } from "./primitives.js?v=20260905-drafts-freecalc-partners-v1";
 

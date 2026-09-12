@@ -1,7 +1,7 @@
 import { clone, normalizeRange, shortHash, stableStringify, toId } from "./primitives.js?v=20260905-drafts-freecalc-partners-v1";
 import { effectiveCombatantMove, fieldAdjustedMove } from "./combatant_moves.js?v=20260907-two-turn-immunity-v1";
 import { forcedTurnAction, forcedTurnActionAllows } from "./forced_actions.js?v=20260907-two-turn-immunity-v1";
-import { createDefaultVolatiles, normalizeFieldCondition, resetTurnFlags, updateStateHash } from "./plan.js?v=20260905-drafts-freecalc-partners-v1";
+import { createDefaultVolatiles, normalizeFieldCondition, resetTurnFlags, updateStateHash } from "./plan.js?v=20260911-ability-storage-reimp-v1";
 import { actionEntries, actionList, activeEntries, activeKey, activeKeys, activeSlotEntries, actorSlot, battleFormat, pendingReplacementSlots, replacementList, setActiveKey, setPendingReplacementSlots, slotsPerSide } from "./battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
 import { belongsToSlotParty, eligibleReserves, partyOwnerForSlot } from "./party_ownership.js?v=20260905-drafts-freecalc-partners-v1";
 import { moveSupport as defaultMoveSupport } from "../rulesets/core_move_support.js?v=20260907-two-turn-immunity-v1";
@@ -41,6 +41,7 @@ import {
 } from "../rulesets/ability_rules.js?v=20260905-drafts-freecalc-partners-v1";
 import { applyCombatantFormState, desiredWeatherAbilityForm, desiredZenModeForm, restoreCombatantIdentityState } from "../rulesets/form_rules.js?v=20260905-drafts-freecalc-partners-v1";
 import { afterDamagingMoveItemActivation, damageReductionItemActivation } from "../rulesets/item_rules.js?v=20260909-item-consumption-v1";
+import { observeAbilityEvent, clearFaintedAbilityKnowledge, entryAbilityAnnouncement } from "./ability_knowledge.js?v=20260911-ability-storage-reimp-v1";
 
 const TRACE_BLOCKED_ABILITIES = new Set(["", "flowergift", "forecast", "illusion", "imposter", "multitype", "stancechange", "trace", "wonderguard", "zenmode"]);
 
@@ -398,6 +399,7 @@ function clampStage(value) {
 
 function event(branch, details) {
   const next = { ...details, source: "planned", changes: details.changes || [], metadata: details.metadata || {} };
+  observeAbilityEvent(branch.state, next, branch.abilityKnowledgePolicy);
   branch.events.push(next);
   return next;
 }
@@ -722,6 +724,8 @@ function applyEntryAbilityBranches(branch, combatantKey, side, plan, dataset, { 
       return applyEntryAbilityBranches(next, combatantKey, side, plan, dataset, { entrySlot });
     });
   }
+  const announcement = entryAbilityAnnouncement(branch.state, combatantKey, branch.abilityKnowledgePolicy);
+  if (announcement) event(branch, announcement);
   const opponents = participantKeys(branch.state, opposite(side)).filter(key => Number(branch.state.combatantStates[key]?.hp?.max) > 0);
   const opposingStates = opponents.map(key => entryComparisonState(plan, branch.state, key));
   const firstEffects = entryAbilityEffects({ enteringState: state, opposingState: opposingStates[0] || null, opposingStates, generation });
@@ -4214,6 +4218,7 @@ function decrementTurnLimitedEffects(branch, dataset) {
 }
 
 function updateBattleBoundary(branch, plan) {
+  clearFaintedAbilityKnowledge(branch.state, branch.abilityKnowledgePolicy);
   updateFlowerGiftSideState(branch);
   const pending = [];
   let ended = false;
@@ -4412,6 +4417,7 @@ export function resolveTurn({ plan, parentStateNodeId, actions, dataset, damageA
     probabilityStatus: "known",
     conditions: [],
     planCombatants: plan.combatants,
+    abilityKnowledgePolicy: dataset.abilityKnowledgePolicy || null,
     generation: Number(dataset.mechanics?.damageGeneration || 5)
   };
   refreshWeatherAbilityForms(entryBranch, plan, dataset);
@@ -4438,6 +4444,7 @@ export function resolveTurn({ plan, parentStateNodeId, actions, dataset, damageA
         probabilityStatus: entered.probability === null || order.probability === null ? "unknown" : "known",
         conditions: [...entered.conditions, ...order.conditions],
         planCombatants: plan.combatants,
+        abilityKnowledgePolicy: dataset.abilityKnowledgePolicy || null,
         generation: Number(dataset.mechanics?.damageGeneration || 5)
       }];
       branches = branches.flatMap(branch => resolveActionEntries(branch, order.entries, { plan, dataset, damageAdapter, moveSupport, declaredTargetSlots }));
@@ -4479,6 +4486,7 @@ export function resolveForcedReplacement({ plan, parentStateNodeId, replacements
     probabilityStatus: "known",
     conditions: [],
     planCombatants: plan.combatants,
+    abilityKnowledgePolicy: dataset.abilityKnowledgePolicy || null,
     generation: Number(dataset.mechanics?.damageGeneration || 5)
   }];
   const selectedBySlot = new Map();

@@ -1,4 +1,5 @@
 import { activeSlotEntries } from "../core/battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
+import { upgradeInitialEntryEffects } from "../core/plan.js?v=20260911-ability-storage-reimp-v1";
 import { belongsToSlotParty } from '../core/party_ownership.js?v=20260905-drafts-freecalc-partners-v1';
 import { rotationFrontSlot } from "../rulesets/rotation_battle.js?v=20260905-drafts-freecalc-partners-v1";
 import { areSlotsAdjacent, triplePositionForSlot } from "../rulesets/triple_battle.js?v=20260905-drafts-freecalc-partners-v1";
@@ -525,7 +526,7 @@ function tableContains(profile, tableId, value) {
   return table.some(entry => Number(entry?.numericId ?? entry?.value ?? entry) === Number(value));
 }
 
-function damageMaximum({ plan, state, dataset, actorEntry, targetEntry, move, damageAdapter }) {
+function damageMaximum({ plan, state, dataset, actorEntry, targetEntry, move, damageAdapter, damageRoll = "maximum" }) {
   if (!damageAdapter || !actorEntry || !targetEntry || !move) return undefined;
   const targetMode = String(move.target || "normal").toLowerCase();
   const spreadTargetCount = ["alladjacent", "alladjacentfoes", "allopponents"].includes(targetMode)
@@ -545,7 +546,7 @@ function damageMaximum({ plan, state, dataset, actorEntry, targetEntry, move, da
   });
   if (result?.status === "status" || result?.status === "no-damage") return null;
   const values = (result?.damage || []).map(Number).filter(Number.isFinite);
-  return result?.status === "ok" && values.length ? Math.max(...values) : undefined;
+  return result?.status === "ok" && values.length ? (damageRoll === "minimum" ? Math.min(...values) : Math.max(...values)) : undefined;
 }
 
 export function createPlatinumQueryProvider({ plan, state, dataset, actorEntry, moves, damageAdapter, alreadySelected = [] }) {
@@ -973,12 +974,27 @@ function gen5TypeMultiplier(plan, state, dataset, metadata, moveOverride = null)
     if ((record.weak || []).some(type => toId(type) === attackType)) multiplier *= 2;
     if ((record.resist || []).some(type => toId(type) === attackType)) multiplier /= 2;
   }
+  // Ability immunities belong to the source script's explicit ability-guess
+  // branches, not this type-chart query. In particular, do not repair Script 0's
+  // Storm Drain/Levitate typo or Soundproof/Hyper Voice omission here.
+  // Levitate is different: the source type calculator calls the separate
+  // grounding event, not the omitted move-no-effect event.
   const targetState = state.combatantStates[targetEntry.combatantKey];
-  const ability = targetState?.abilitySuppressed ? "" : toId(targetState?.currentAbilityId);
-  const immunities = { ground: ["levitate"], water: ["waterabsorb", "stormdrain", "dryskin"], electric: ["voltabsorb", "motordrive", "lightningrod"], fire: ["flashfire"], grass: ["sapsipper"] };
-  if ((immunities[toId(move.type)] || []).includes(ability)) return 0;
-  if (ability === "wonderguard" && multiplier <= 1 && isDamagingMove(move)) return 0;
+  if (toId(move.type) === "ground" && !targetState?.abilitySuppressed && toId(targetState?.currentAbilityId) === "levitate") return 0;
   return multiplier;
+}
+
+function gen5DamageState(state, targetEntry, move, policy) {
+  const mon = state.combatantStates[targetEntry?.combatantKey];
+  const ability = toId(mon?.currentAbilityId);
+  const simulation = policy?.damageSimulation;
+  const omitted = simulation?.ignoreDefenderImmunityAbilityIds?.includes(ability)
+    || simulation?.conditionalIgnoreDefenderAbilities?.some(row => row.abilityId === ability && row.moveType === toId(move?.type));
+  if (!omitted || mon?.abilitySuppressed) return state;
+  // The source AI calls the damage formula without the move-no-effect event.
+  // This isolated calculation view must not alter actual battle state or memory.
+  return { ...state, combatantStates: { ...state.combatantStates,
+    [targetEntry.combatantKey]: { ...mon, currentAbilityId: "none", abilitySuppressed: true } } };
 }
 
 function gen5ItemNumericId(dataset, itemId) {
@@ -999,15 +1015,16 @@ function gen5AbilityOptions({ plan, state, dataset, actorEntry, metadata, select
   if (!entry) return undefined;
   const combatant = plan.combatants[entry.combatantKey];
   const combatantState = state.combatantStates[entry.combatantKey];
+  if (combatantState?.abilitySuppressed) return ["ability.none"];
   const actual = combatantState?.abilitySuppressed ? null : combatantState?.currentAbilityId || combatant?.originalAbilityId;
-  const remembered = combatantState?.aiKnownAbilityId || state.trainerAiBelief?.abilityByPosition?.[entry.slot];
+  const remembered = state.trainerAiBelief?.abilityByPosition?.[combatant?.side]?.[entry.slot];
   const trapping = new Set(["shadowtag", "arenatrap", "magnetpull"]);
   if (combatant?.side === "enemy" || remembered || trapping.has(toId(actual))) {
-    const known = remembered || actual;
+    const known = combatant?.side === "enemy" ? actual : remembered || actual;
     return known ? [gen5SourceToken("ability", known, metadata)] : undefined;
   }
   const speciesId = combatantState?.currentSpeciesId || combatant?.speciesId;
-  const abilities = dataset.get("species", speciesId)?.abilities || [];
+  const abilities = (dataset.get("species", speciesId)?.abilities || []).filter(ability => ability && !["none", "0"].includes(toId(ability)));
   return abilities.length ? abilities.map(ability => gen5SourceToken("ability", ability, metadata)) : undefined;
 }
 
@@ -1047,7 +1064,7 @@ export function createGen5QueryProvider({ plan, state, dataset, actorEntry, move
     const targetEntry = entryFor(selector, metadata);
     const move = moveOverride || candidateMove(metadata, dataset);
     const key = `${sourceEntry?.combatantKey || "?"}:${move?.id || "?"}:${targetEntry?.combatantKey || "?"}`;
-    if (!damageCache.has(key)) damageCache.set(key, damageMaximum({ plan, state, dataset, actorEntry: sourceEntry, targetEntry, move, damageAdapter }));
+    if (!damageCache.has(key)) damageCache.set(key, damageMaximum({ plan, state: gen5DamageState(state, targetEntry, move, dataset.abilityKnowledgePolicy), dataset, actorEntry: sourceEntry, targetEntry, move, damageAdapter, damageRoll: "minimum" }));
     return damageCache.get(key);
   };
   const actorAllMoves = () => {
@@ -1059,7 +1076,10 @@ export function createGen5QueryProvider({ plan, state, dataset, actorEntry, move
     if (!sourceEntry || !targetEntry) return undefined;
     const combatant = plan.combatants[sourceEntry.combatantKey];
     const monState = state.combatantStates[sourceEntry.combatantKey];
-    const values = (monState.moveSetOverride || combatant.moves || []).map(move => damageMaximum({ plan, state, dataset, actorEntry: sourceEntry, targetEntry, move: { id: move.moveId, ...dataset.get("moves", move.moveId) }, damageAdapter }));
+    const values = (monState.moveSetOverride || combatant.moves || []).map(entry => {
+      const move = { id: entry.moveId, ...dataset.get("moves", entry.moveId) };
+      return damageMaximum({ plan, state: gen5DamageState(state, targetEntry, move, dataset.abilityKnowledgePolicy), dataset, actorEntry: sourceEntry, targetEntry, move, damageAdapter, damageRoll: "minimum" });
+    });
     if (values.some(value => value === undefined)) return undefined;
     return Math.max(0, ...values.map(value => value === null ? 0 : value));
   };
@@ -2590,6 +2610,13 @@ function evaluatedMoveSummary(result, moveId) {
 
 export function analyzeTrainerAi({ plan, state, dataset, ai, evaluator = null, damageAdapter = null }) {
   if (!plan || !state || !dataset || !ai) return null;
+  const policy = ai.evaluatorProfile?.constants?.abilityKnowledge;
+  if (policy) dataset = { ...dataset, abilityKnowledgePolicy: policy };
+  if (policy && state.trainerAiBelief?.modelId !== policy.modelId) {
+    if (state.stateNodeId !== plan.initialStateNodeId) throw new TrainerAiReadinessError("Recalculate this saved branch to reconstruct Gen 5 ability observations before forecasting.");
+    plan = upgradeInitialEntryEffects(plan, dataset).plan;
+    state = plan.stateNodes[plan.initialStateNodeId];
+  }
   const assumptions = Object.entries(state.combatantStates || {}).flatMap(([combatantKey, mon]) => {
     const { min, max } = mon.hp || {};
     return Number.isInteger(min) && Number.isInteger(max) && min >= 0 && max > min

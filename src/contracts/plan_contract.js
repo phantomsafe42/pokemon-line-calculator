@@ -139,6 +139,14 @@ function validateGraph(plan, issues) {
         if (!plan.combatants?.[combatantKey] || plan.combatants?.[combatantKey]?.side !== side) issue(issues, `${path}.active.${side}CombatantKeys[${slot}]`, "must reference an existing combatant on this side");
       }
     }
+    if (state.trainerAiBelief !== undefined) {
+      validateId(state.trainerAiBelief?.modelId, `${path}.trainerAiBelief.modelId`, issues);
+      for (const side of ["player", "enemy"]) {
+        const values = state.trainerAiBelief?.abilityByPosition?.[side];
+        if (!Array.isArray(values) || values.length !== slotCount) issue(issues, `${path}.trainerAiBelief.abilityByPosition.${side}`, "must contain one ability-memory value per field slot");
+        else values.forEach((value, index) => { if (value !== null) validateId(value, `${path}.trainerAiBelief.abilityByPosition.${side}.${index}`, issues); });
+      }
+    }
     if (schemaVersion >= 2 && !Array.isArray(state.pendingReplacementSlots)) issue(issues, `${path}.pendingReplacementSlots`, "must be an array");
     if (plan.game?.battleFormat === "rotation") {
       for (const side of ["player", "enemy"]) {

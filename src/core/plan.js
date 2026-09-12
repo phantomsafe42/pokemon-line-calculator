@@ -1,14 +1,15 @@
-import { assertValidPlanDocument, PLAN_SCHEMA_VERSION } from "../contracts/plan_contract.js?v=20260905-drafts-freecalc-partners-v1";
+import { assertValidPlanDocument, PLAN_SCHEMA_VERSION } from "../contracts/plan_contract.js?v=20260911-ability-storage-reimp-v1";
 import { clone, exactRange, makeStableId, nowIso, shortHash, stableStringify, toId } from "./primitives.js?v=20260905-drafts-freecalc-partners-v1";
 import { activeKeys, battleFormat as normalizeBattleFormat, slotsPerSide } from "./battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
 import { participatingActiveEntries, participatingActiveKeys } from "../rulesets/rotation_battle.js?v=20260905-drafts-freecalc-partners-v1";
 import { createInitialExperienceState } from "../rulesets/vw2r_experience.js?v=20260905-drafts-freecalc-partners-v1";
 import { entryAbilityEffects } from "../rulesets/switch_rules.js?v=20260907-two-turn-immunity-v1";
-import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260909-runtime-bugfix-release-v1";
+import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260911-ability-storage-reimp-v1";
 import { combatantsAreAdjacent } from "../rulesets/triple_battle.js?v=20260905-drafts-freecalc-partners-v1";
 import { abilityStatStageRule, activeAbilityId } from "../rulesets/ability_rules.js?v=20260905-drafts-freecalc-partners-v1";
 import { weatherIsSuppressed } from "../rulesets/battle_rules.js?v=20260907-two-turn-immunity-v1";
 import { ABILITY_FORM_STATE_VERSION, applyCombatantFormState, desiredWeatherAbilityForm } from "../rulesets/form_rules.js?v=20260905-drafts-freecalc-partners-v1";
+import { initializeAbilityKnowledge, observeAbilityEvent, entryAbilityAnnouncement } from "./ability_knowledge.js?v=20260911-ability-storage-reimp-v1";
 
 export const INITIAL_ENTRY_EFFECTS_VERSION = 2;
 
@@ -284,7 +285,9 @@ function applyInitialEntryEffect(root, events, actorKey, side, effect, opposingK
 export function upgradeInitialEntryEffects(plan, dataset) {
   const needsEntryEffects = Number(plan?.initialEntryEffectsVersion || 0) < INITIAL_ENTRY_EFFECTS_VERSION;
   const needsFormState = Number(plan?.initialAbilityFormStateVersion || 0) < ABILITY_FORM_STATE_VERSION;
-  if (!needsEntryEffects && !needsFormState) return { plan, changed: false };
+  const knowledgePolicy = dataset.abilityKnowledgePolicy;
+  const needsAbilityKnowledge = knowledgePolicy && plan.stateNodes[plan.initialStateNodeId]?.trainerAiBelief?.modelId !== knowledgePolicy.modelId;
+  if (!needsEntryEffects && !needsFormState && !needsAbilityKnowledge) return { plan, changed: false };
   const next = clone(plan);
   const root = next.stateNodes[next.initialStateNodeId];
   if (!root) throw new Error("The plan has no initial state for switch-in ability resolution");
@@ -352,6 +355,17 @@ export function upgradeInitialEntryEffects(plan, dataset) {
       const state = root.combatantStates[key];
       return activeAbilityId(state) === "flowergift" && state.currentSpriteId === "cherrim-sunshine" && Number(state.hp?.max) > 0;
     });
+  }
+  if (knowledgePolicy) {
+    initializeAbilityKnowledge(root, knowledgePolicy);
+    for (const rawEvent of events) observeAbilityEvent(root, rawEvent, knowledgePolicy);
+    for (const entry of initialEntryOrder(next, root)) {
+      const announcement = entryAbilityAnnouncement(root, entry.combatantKey, knowledgePolicy);
+      if (announcement && !events.some(row => row.eventType === announcement.eventType && row.actorKey === announcement.actorKey)) {
+        observeAbilityEvent(root, announcement, knowledgePolicy);
+        initialEntryEvent(events, announcement);
+      }
+    }
   }
   next.resolutionEvents ||= {};
   for (const eventId of root.resolutionEventIds || []) delete next.resolutionEvents[eventId];
@@ -464,6 +478,7 @@ export function updateStateHash(state) {
     combatantStates: state.combatantStates,
     experienceState: state.experienceState || null,
     fieldState: state.fieldState,
+    ...(state.trainerAiBelief ? { trainerAiBelief: state.trainerAiBelief } : {}),
     pendingReplacementSlots: state.pendingReplacementSlots || [],
     battleEnded: Boolean(state.battleEnded)
   }))}`;

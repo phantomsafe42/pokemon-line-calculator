@@ -228,6 +228,27 @@
           }
         },
         "fieldState": { "type": "object" },
+        "trainerAiBelief": {
+          "type": "object",
+          "required": ["modelId", "abilityByPosition"],
+          "properties": {
+            "modelId": { "$ref": "#/$defs/id" },
+            "abilityByPosition": {
+              "type": "object",
+              "required": ["player", "enemy"],
+              "properties": {
+                "player": {
+                  "type": "array",
+                  "items": { "type": ["string", "null"] }
+                },
+                "enemy": {
+                  "type": "array",
+                  "items": { "type": ["string", "null"] }
+                }
+              }
+            }
+          }
+        },
         "rotation": {
           "type": "object",
           "additionalProperties": false,

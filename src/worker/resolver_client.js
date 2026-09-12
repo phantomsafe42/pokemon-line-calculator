@@ -1,5 +1,5 @@
 export class ResolverWorkerClient {
-  constructor(url = new URL("./resolver_worker.js?v=20260911-vanilla-games-v1", import.meta.url)) {
+  constructor(url = new URL("./resolver_worker.js?v=20260911-ability-storage-reimp-v1", import.meta.url)) {
     this.url = url;
     this.worker = new Worker(url);
     this.trainerAiWorker = new Worker(url);

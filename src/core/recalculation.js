@@ -1,9 +1,9 @@
-import { assertValidPlanDocument } from "../contracts/plan_contract.js?v=20260905-drafts-freecalc-partners-v1";
+import { assertValidPlanDocument } from "../contracts/plan_contract.js?v=20260911-ability-storage-reimp-v1";
 import { clone, nowIso, stableStringify } from "./primitives.js?v=20260905-drafts-freecalc-partners-v1";
-import { commitForcedReplacement, commitPreview, previewForcedReplacement } from "./planner.js?v=20260909-item-consumption-v1";
-import { updateStateHash, upgradeInitialEntryEffects } from "./plan.js?v=20260909-level-drift-v1";
+import { commitForcedReplacement, commitPreview, previewForcedReplacement } from "./planner.js?v=20260911-ability-storage-reimp-v1";
+import { updateStateHash, upgradeInitialEntryEffects } from "./plan.js?v=20260911-ability-storage-reimp-v1";
 import { addFreeCalcBranch } from './free_calc.js?v=20260905-drafts-freecalc-partners-v1';
-import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260909-level-drift-v1";
+import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260911-ability-storage-reimp-v1";
 import { calculateStats, normalizeTrainerRoster } from "../adapters/combatant_ingest.js?v=20260909-level-drift-v1";
 
 function runtimeTrainerInputs(plan) {

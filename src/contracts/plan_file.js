@@ -1,4 +1,4 @@
-import { assertValidPlanDocument, MAX_PLAN_BYTES, validatePlanDocument } from "./plan_contract.js?v=20260905-drafts-freecalc-partners-v1";
+import { assertValidPlanDocument, MAX_PLAN_BYTES, validatePlanDocument } from "./plan_contract.js?v=20260911-ability-storage-reimp-v1";
 import { createPlanSubset } from "../core/graph.js?v=20260905-drafts-freecalc-partners-v1";
 import { stableStringify } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
 

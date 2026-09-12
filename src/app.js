@@ -1,33 +1,33 @@
 import { calculateStats, normalizePlayerCollection, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js?v=20260909-public-release-v2";
 import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260909-public-release-v2";
 import { loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260909-public-release-v2";
-import { loadTrainerAiDocumentation } from "./adapters/trainer_ai.js?v=20260909-public-release-v2";
+import { loadTrainerAiDocumentation } from "./adapters/trainer_ai.js?v=20260911-ability-storage-reimp-v1";
 import { createDraftRecord, destructiveTransitionNotice, IndexedDbDraftStore, markExported, updateDraftRecord } from "./cache/active_draft.js?v=20260909-public-release-v2";
 import { TrainerAiForecastCache } from "./cache/trainer_ai_forecast.js?v=20260909-public-release-v2";
-import { SavedDraftStore, savedDraftSnapshot } from "./cache/saved_drafts.js?v=20260909-public-release-v2";
+import { SavedDraftStore, savedDraftSnapshot } from "./cache/saved_drafts.js?v=20260911-ability-storage-reimp-v1";
 import { reorderCards } from "./ui/reorder_cards.js?v=20260909-public-release-v2";
-import { addFreeCalcBranch, editFreeCalcCombatant, replaceFreeCalcSlot, freeCalcAsNewPlan } from './core/free_calc.js?v=20260909-public-release-v2';
+import { addFreeCalcBranch, editFreeCalcCombatant, replaceFreeCalcSlot, freeCalcAsNewPlan } from './core/free_calc.js?v=20260911-ability-storage-reimp-v1';
 import { eligibleReserves } from './core/party_ownership.js?v=20260909-public-release-v2';
-import { downloadPlan, exportSelectedPlan, migratePlanDocument, parsePlan } from "./contracts/plan_file.js?v=20260909-public-release-v2";
-import { assertValidPlanDocument } from "./contracts/plan_contract.js?v=20260909-public-release-v2";
-import { mechanicsCompatibility, validatePlanReferences } from "./contracts/plan_compatibility.js?v=20260909-public-release-v2";
+import { downloadPlan, exportSelectedPlan, migratePlanDocument, parsePlan } from "./contracts/plan_file.js?v=20260911-ability-storage-reimp-v1";
+import { assertValidPlanDocument } from "./contracts/plan_contract.js?v=20260911-ability-storage-reimp-v1";
+import { mechanicsCompatibility, validatePlanReferences } from "./contracts/plan_compatibility.js?v=20260911-ability-storage-reimp-v1";
 import { actionList, activeKey, activeKeys, activeSlotEntries, actorSlot, pendingReplacementSlots, setActiveKey, slotsPerSide } from "./core/battle_slots.js?v=20260909-public-release-v2";
 import { createBranchEventModel, selectBranchEventOutcome, selectedBranchChoices } from "./core/branch_events.js?v=20260909-public-release-v2";
 import { boundedSlotDamageLabel, highestDamageCandidateKeys, resolvedCombatantMovePreview } from "./core/combatant_moves.js?v=20260909-public-release-v2";
-import { exportBranchGroups, planTreeOrder, planTurnTreeOrder, preferredImportedReviewStateId, stateLineage, turnNodeVisuals } from "./core/graph.js?v=20260909-public-release-v2";
+import { exportBranchGroups, planTreeOrder, planTurnTreeOrder, preferredImportedReviewStateId, stateLineage, turnNodeVisuals } from "./core/graph.js?v=20260911-ability-storage-reimp-v1";
 import { HIDDEN_POWER_TYPES, hiddenPowerTypeFromIvs, resolvedHiddenPowerType } from "./core/hidden_power.js?v=20260909-public-release-v2";
 import { forcedTurnAction } from "./core/forced_actions.js?v=20260909-public-release-v2";
 import { formatDamageRollCounts, healingEventDescription, isCriticalOhkoOutcome, isHighRollKoOutcome, outcomePanelEvents, readableMechanicName } from "./core/outcome_presentation.js?v=20260909-public-release-v2";
-import { createPlanDocument, planHasWork, setStateNodeNote, upgradeInitialEntryEffects } from "./core/plan.js?v=20260909-public-release-v2";
-import { commitForcedReplacement, commitLabel, commitPreview, previewForcedReplacement, refreshUnknownCommittedProbabilities, repairStaleLeafBattleEnd, replacementCommitLabel } from "./core/planner.js?v=20260909-public-release-v2";
-import { recalculatePlanDocument } from "./core/recalculation.js?v=20260909-public-release-v2";
-import { upgradeImportedPlanForEditing } from "./core/import_upgrade.js?v=20260909-public-release-v2";
+import { createPlanDocument, planHasWork, setStateNodeNote, upgradeInitialEntryEffects } from "./core/plan.js?v=20260911-ability-storage-reimp-v1";
+import { commitForcedReplacement, commitLabel, commitPreview, previewForcedReplacement, refreshUnknownCommittedProbabilities, repairStaleLeafBattleEnd, replacementCommitLabel } from "./core/planner.js?v=20260911-ability-storage-reimp-v1";
+import { recalculatePlanDocument } from "./core/recalculation.js?v=20260911-ability-storage-reimp-v1";
+import { upgradeImportedPlanForEditing } from "./core/import_upgrade.js?v=20260911-ability-storage-reimp-v1";
 import { moveSupport } from "./rulesets/core_move_support.js?v=20260909-public-release-v2";
 import { effectiveActionSpeed } from "./rulesets/action_order.js?v=20260909-public-release-v2";
 import { areSlotsAdjacent, canSelectShift, shiftWithCenter, triplePositionForSlot, tripleSlotForPosition } from "./rulesets/triple_battle.js?v=20260909-public-release-v2";
 import { rotationFrontKey, rotationFrontSlot } from "./rulesets/rotation_battle.js?v=20260909-public-release-v2";
 import { experienceForLevel, experienceToNextLevel, projectExperience } from "./rulesets/vw2r_experience.js?v=20260909-public-release-v2";
-import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260911-vanilla-games-v1";
+import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260911-ability-storage-reimp-v1";
 import { battleCompletionState } from "./core/battle_completion.js?v=20260909-public-release-v2";
 import {
   addBox, addParty, boxesForGame, createEmptyBoxLibrary, exportBoxLibrary, IndexedDbBoxLibraryStore,
@@ -3631,6 +3631,7 @@ async function selectGame(gameId) {
         ? loadTrainerAiDocumentation({ baseUrl: config.trainerAiBaseUrl, gameId })
         : Promise.resolve(null)
     ]);
+    dataset.abilityKnowledgePolicy = trainerAi?.evaluatorProfile?.constants?.abilityKnowledge || null;
     worker = new ResolverWorkerClient();
     await worker.initialize(config.datasetBaseUrl, config.trainerAiBaseUrl, gameId);
     trainerAiAnalysisCache.clear();

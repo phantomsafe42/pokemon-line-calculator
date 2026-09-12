@@ -1,5 +1,5 @@
 import { clone } from '../core/primitives.js?v=20260905-drafts-freecalc-partners-v1';
-import { assertValidPlanDocument } from '../contracts/plan_contract.js?v=20260905-drafts-freecalc-partners-v1';
+import { assertValidPlanDocument } from '../contracts/plan_contract.js?v=20260911-ability-storage-reimp-v1';
 
 export function savedDraftSnapshot(plan, editor = {}, id = `${plan.planId}:${plan.createdAt}`) {
   assertValidPlanDocument(plan);

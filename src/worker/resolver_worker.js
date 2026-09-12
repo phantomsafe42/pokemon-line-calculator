@@ -26,8 +26,8 @@ let analyzeTrainerAi = null;
 async function initialize(datasetBaseUrl, trainerAiBaseUrl, gameId) {
   const datasetModule = await import("../adapters/standardized_dataset.js?v=20260909-public-release-v2");
   const damageModule = await import("../adapters/shared_damage_adapter.js?v=20260909-public-release-v2");
-  const trainerAiModule = await import("../adapters/trainer_ai.js?v=20260909-public-release-v2");
-  const plannerModule = await import("../core/planner.js?v=20260909-public-release-v2");
+  const trainerAiModule = await import("../adapters/trainer_ai.js?v=20260911-ability-storage-reimp-v1");
+  const plannerModule = await import("../core/planner.js?v=20260911-ability-storage-reimp-v1");
   const combatantMovesModule = await import("../core/combatant_moves.js?v=20260909-public-release-v2");
   dataset = await datasetModule.loadStandardizedDataset({ baseUrl: datasetBaseUrl });
   const runtime = self.SharedDamageCalculator.createFromDocuments(
@@ -40,6 +40,7 @@ async function initialize(datasetBaseUrl, trainerAiBaseUrl, gameId) {
   trainerAi = trainerAiBaseUrl
     ? await trainerAiModule.loadTrainerAiDocumentation({ baseUrl: trainerAiBaseUrl, gameId })
     : null;
+  dataset.abilityKnowledgePolicy = trainerAi?.evaluatorProfile?.constants?.abilityKnowledge || null;
   analyzeTrainerAi = trainerAiBaseUrl ? trainerAiModule.analyzeTrainerAi : null;
   previewTurn = plannerModule.previewTurn;
   previewCombatantMove = combatantMovesModule.previewCombatantMove;
