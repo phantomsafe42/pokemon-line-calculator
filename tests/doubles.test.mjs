@@ -427,7 +427,7 @@ test("spread-move projection preserves a range label for every target", () => {
   const committed = commitPreview(plan, preview, dataset);
   const projectedAction = createDisplayProjection(committed.plan, [committed.cursorStateNodeId]).columns[0].turns[0].players[0].action;
   assert.equal(projectedAction.damagePercent, undefined);
-  assert.match(projectedAction.resultLabel, /Fast B .*Slowmon A .*Slowmon B/);
+  assert.match(projectedAction.resultLabel, /Fast B .*Slowmon .*Slowmon/);
   assert.match(projectedAction.resultLabel, /Fast B Blocked by Protect/);
   assert.equal((projectedAction.resultLabel.match(/%/g) || []).length, 2);
 });

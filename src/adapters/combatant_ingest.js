@@ -1,5 +1,5 @@
 import { canonicalStats, shortHash, stableStringify, toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
-import { canonicalTrainerMember, DatasetReadinessError } from "./standardized_dataset.js?v=20260909-consumer-readiness-v2";
+import { canonicalSpeciesDisplayName, canonicalTrainerMember, DatasetReadinessError } from "./standardized_dataset.js?v=20260912-vanilla-display-names-v1";
 
 const NATURE_MULTIPLIER_DENOMINATOR = 10;
 const NATURE_BOOST_NUMERATOR = 11;
@@ -188,7 +188,7 @@ export function normalizeTrainerRoster(trainerId, trainerVariantId, dataset, run
       },
       speciesId: member.speciesId,
       formId: raw.form ? String(raw.form) : null,
-      displayName: raw.displaySpecies || species?.name || member.speciesId,
+      displayName: canonicalSpeciesDisplayName(dataset, member),
       nickname: "",
       level,
       ...(statCalculationLevelDelta ? { statCalculationLevelDelta } : {}),

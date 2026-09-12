@@ -1,6 +1,6 @@
-import { calculateStats, normalizePlayerCollection, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js?v=20260909-public-release-v2";
+import { calculateStats, normalizePlayerCollection, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js?v=20260912-vanilla-display-names-v1";
 import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260909-public-release-v2";
-import { loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260909-public-release-v2";
+import { canonicalSpeciesDisplayName, loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260912-vanilla-display-names-v1";
 import { loadTrainerAiDocumentation } from "./adapters/trainer_ai.js?v=20260911-ability-storage-reimp-v1";
 import { createDraftRecord, destructiveTransitionNotice, IndexedDbDraftStore, markExported, updateDraftRecord } from "./cache/active_draft.js?v=20260909-public-release-v2";
 import { TrainerAiForecastCache } from "./cache/trainer_ai_forecast.js?v=20260909-public-release-v2";
@@ -1060,7 +1060,7 @@ function trainerLabel(trainer) {
   let team = [];
   try { team = dataset.trainerTeam(trainer.id, null); }
   catch { team = trainer.team || []; }
-  const members = team.map(member => `${member.displaySpecies || dataset.get("species", member.speciesId)?.name || member.speciesId} Lv. ${member.level}`).join(", ");
+  const members = team.map(member => `${canonicalSpeciesDisplayName(dataset, member)} Lv. ${member.level}`).join(", ");
   return `${trainer.displayName || trainer.name || trainer.id}${members ? ` · ${members}` : ""}`;
 }
 
@@ -1105,11 +1105,10 @@ function updateContextTrainer() {
 
 function enemyTeamPreviewRecord(member) {
   const speciesId = member.speciesId || member.species || member.displaySpecies;
-  const species = dataset?.get("species", speciesId);
   return {
     speciesId,
     formId: member.form ? String(member.form) : null,
-    displayName: member.displaySpecies || species?.name || String(speciesId || "Pokémon"),
+    displayName: canonicalSpeciesDisplayName(dataset, member),
     nickname: "",
     level: Number(member.level),
     itemId: member.itemId || null

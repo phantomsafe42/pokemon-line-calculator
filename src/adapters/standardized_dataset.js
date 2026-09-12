@@ -159,6 +159,13 @@ export function mergeTrainerTeam(trainer, trainerVariantId = null) {
   });
 }
 
+export function canonicalSpeciesDisplayName(dataset, member, fallback = "Pokémon") {
+  const speciesId = member?.speciesId || member?.species || member?.displaySpecies;
+  return dataset?.get("species", speciesId)?.name
+    || member?.displaySpecies
+    || String(speciesId || fallback);
+}
+
 export function createDatasetContext({ manifest, mechanics, documents }) {
   if (!manifest || manifest.schemaVersion !== 1 || !manifest.gameId) {
     throw new DatasetReadinessError("The standardized dataset manifest is missing or unsupported");
