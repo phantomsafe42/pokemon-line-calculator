@@ -100,6 +100,15 @@ test("standardized baseExp normalizes to the portable EXP-yield field without ch
   assert.equal(species.baseExperienceYield, undefined);
 });
 
+test("trainer combatants render canonical Dataset species and move names over stale display fallbacks", () => {
+  const dataset = fixtureDataset();
+  dataset.trainer("trainer").team[0].displaySpecies = "slowmon";
+  const [enemy] = normalizeTrainerRoster("trainer", null, dataset);
+  assert.equal(enemy.displayName, "Slowmon");
+  assert.equal(dataset.get("moves", enemy.moves[0].moveId).name, "Tackle");
+  assert.equal(dataset.trainer("trainer").team[0].displaySpecies, "slowmon", "consumer normalization must not rewrite Dataset facts");
+});
+
 test("trainer navigation follows standardized split and within-split order", () => {
   const groups = fixtureDataset().trainerGroups();
   assert.deepEqual(groups.map(group => [group.id, group.label, group.trainers.map(trainer => trainer.id)]), [
