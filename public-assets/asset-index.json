@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "datasetId": "pokemon-assets",
-  "releaseVersion": "0.5.0-dev.1",
+  "releaseVersion": "0.6.0-dev.1",
   "generated": true,
   "collections": [
     {
@@ -17,17 +17,27 @@
       "collectionId": "badge-icon",
       "kind": "badge-icon",
       "indexPath": "assets/badge-icons/index.json",
-      "indexSha256": "ebe3e501e8a7defa0d12076008d9af8cbaed06e82b3fdbb95dfe1298b75bedf3",
+      "indexSha256": "eab5ad8f90f05f4698f21022ff838c3c013ef7c7cc2d6549c4f3a5a4df3db5db",
       "indexBytes": 21061,
       "assets": 46,
       "assetBytes": 815311,
       "selectors": 48
     },
     {
+      "collectionId": "game-title-art",
+      "kind": "game-title-art",
+      "indexPath": "assets/game-title-art/index.json",
+      "indexSha256": "8e5ab42585f72e3f10add03754181b5308bf24710d0c138ccebe3aa28150c56a",
+      "indexBytes": 133857,
+      "assets": 204,
+      "assetBytes": 9198082,
+      "selectors": 368
+    },
+    {
       "collectionId": "item-sprite",
       "kind": "item-sprite",
       "indexPath": "assets/item-sprites/index.json",
-      "indexSha256": "98a5800fcee5660b0d319090300652dacb8a6e172fa82031e23df2a381efe23b",
+      "indexSha256": "9f0ab2da92e023f6c6e5a7abe0de4318a78dcd971796ea3cd9edfc54335f7da4",
       "indexBytes": 385700,
       "assets": 852,
       "assetBytes": 511403,
@@ -37,7 +47,7 @@
       "collectionId": "status-condition-icon",
       "kind": "status-condition-icon",
       "indexPath": "assets/status-condition-icons/index.json",
-      "indexSha256": "5a4bddae3b13f0688d6f3dfb7fb44bf02095f7a35c02a7c404b570512a43b18b",
+      "indexSha256": "356a894a0dc291bc46a4ad8c7d294fdfc7941ee8cdd08d6c35c873db6922723d",
       "indexBytes": 7548,
       "metadataFiles": [
         {
@@ -57,7 +67,7 @@
       "collectionId": "type-icon",
       "kind": "type-icon",
       "indexPath": "assets/type-icons/index.json",
-      "indexSha256": "9cab723cee7abe45d4d4f8027c4ac541e75ac8c4d9cc19b4b84f312b28ff7fd1",
+      "indexSha256": "0074928b2671e1dfc820039672913d0acd542614db2eefec8d6b8d2eaabd5b7a",
       "indexBytes": 62045,
       "assets": 111,
       "assetBytes": 322492,

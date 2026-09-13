@@ -48,18 +48,18 @@ h1 { margin-bottom: 0; font-size: clamp(1.45rem, 2.3vw, 1.85rem); }
 h2 { margin-bottom: 0; font-size: 1.18rem; }
 h3 { margin: 0; font-size: 1rem; }
 .app-header {
-  display: grid; grid-template-columns: auto minmax(16rem, 26rem) minmax(18rem, 1fr); align-items: center;
+  display: grid; grid-template-columns: auto minmax(18rem, 1fr); align-items: center;
   gap: 1rem; border-bottom: 1px solid var(--line); padding: 1rem max(28px, calc((100vw - 2480px) / 2)); background: var(--shell);
 }
 .site-credit { margin: .2rem 0 0; color: var(--muted); font-size: .76rem; }
-.game-control select { margin-top: .22rem; }
+.game-control { display: flex; align-items: center; justify-self: end; gap: .75rem; }
+.current-game-summary { min-width: 12rem; text-align: right; }
+.current-game-summary > strong { display: block; font-size: .9rem; }
 .game-credit { min-height: 1rem; margin: .22rem 0 0; color: var(--muted); font-size: .72rem; font-weight: 500; }
 .status { margin: 0 0 .75rem; color: var(--muted); text-align: left; font-size: .84rem; line-height: 1.35; }
 .status.error, .error-text { color: var(--red); }
 .app-shell { width: min(2480px, calc(100% - 56px)); margin: 0 auto; padding: 1rem 0 2rem; }
 .panel { border: 1px solid var(--line); border-radius: 8px; padding: 1rem; background: var(--shell); }
-.game-gate { max-width: 40rem; margin: 4rem auto; text-align: center; }
-.game-gate p:last-child { margin: .8rem auto 0; color: var(--muted); line-height: 1.55; }
 .tabs { display: flex; gap: .35rem; margin-bottom: 1rem; border-bottom: 1px solid var(--line); }
 .tab-button { border-color: transparent; border-radius: 6px 6px 0 0; background: transparent; color: var(--muted); }
 .tab-button[aria-selected="true"] { border-color: var(--line); border-bottom-color: var(--shell); background: var(--shell); color: var(--text); }
@@ -390,9 +390,25 @@ button.damage-slot[aria-pressed="true"] .damage-slot-label { color: #17345a; }
 .file-button input { position: absolute; width: 1px; height: 1px; min-height: 0; opacity: 0; }
 dialog { width: min(38rem, calc(100vw - 2rem)); max-height: calc(100vh - 2rem); border: 1px solid var(--control-line); border-radius: 8px; padding: 0; color: var(--text); background: var(--shell); overflow: auto; }
 dialog.wide-dialog { width: min(72rem, calc(100vw - 2rem)); }
+dialog.game-dialog { width: min(76rem, calc(100vw - 2rem)); }
 dialog::backdrop { background: rgba(0, 0, 0, .75); }
 .dialog-card { padding: 1rem; }
 .dialog-card > p { color: var(--muted); line-height: 1.5; }
+.game-dialog-card { padding: 1.15rem; }
+.game-picker-sections { display: grid; gap: 1.15rem; margin-top: 1rem; }
+.game-picker-group { display: grid; gap: .65rem; }
+.game-picker-group + .game-picker-group { border-top: 1px solid var(--line); padding-top: 1rem; }
+.game-picker-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: .65rem; }
+.game-picker-option {
+  position: relative; width: 100%; min-height: 0; aspect-ratio: 2 / 1; overflow: hidden;
+  border-color: var(--control-line); padding: .45rem; background: var(--panel-2); color: var(--text);
+}
+.game-picker-option:hover:not(:disabled) { border-color: var(--accent-2); background: var(--soft); }
+.game-picker-option.is-selected { border-color: var(--accent); background: var(--soft); box-shadow: inset 0 0 0 1px var(--accent); }
+.game-picker-option img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.game-picker-option.art-unavailable { background: var(--shell); }
+.game-picker-option.art-unavailable img { visibility: hidden; }
+#game-dialog-status:empty { display: none; }
 .icon-button { width: 40px; padding: 0; font-size: 1.25rem; }
 .context-grid, .editor-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; }
 .editor-heading-identity { display: flex; align-items: center; gap: .75rem; min-width: 0; }
@@ -463,6 +479,8 @@ dialog::backdrop { background: rgba(0, 0, 0, .75); }
 
 @media (max-width: 820px) {
   .app-header { grid-template-columns: 1fr; padding: .9rem; }
+  .game-control { width: 100%; justify-self: stretch; justify-content: space-between; }
+  .current-game-summary { min-width: 0; text-align: left; }
   .status { text-align: left; }
   .app-shell { width: calc(100% - 18px); }
   .planner-toolbar, .box-toolbar, .section-heading { align-items: stretch; flex-direction: column; }

@@ -195,6 +195,31 @@
     return badge ? { style, badge } : null;
   }
 
+  function normalizeGameTitleId(value) {
+    return String(value ?? "")
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/^pokemon\s+/, "")
+      .replace(/&/g, " and ")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  }
+
+  function normalizeGameTitleArtQuery(query = {}) {
+    const titleId = normalizeGameTitleId(query.titleId ?? query.gameId ?? query.game ?? query.title ?? query.name);
+    if (!titleId) return null;
+    const sizeToken = normalizeToken(query.size || query.logoSize || query.variant || "full");
+    const size = ["full", "standard", "large", "original"].includes(sizeToken)
+      ? "full"
+      : ["small", "compact", "thumbnail", "thumb"].includes(sizeToken) ? "small" : null;
+    const formatToken = normalizeToken(query.format || query.extension || query.mediaType || "webp");
+    const format = formatToken === "png" || formatToken === "imagepng"
+      ? "png"
+      : formatToken === "webp" || formatToken === "imagewebp" ? "webp" : null;
+    return size && format ? { titleId, size, format } : null;
+  }
+
   function trimBaseUrl(value) {
     const result = String(value || "").trim().replace(/\/+$/, "");
     if (!result || /<owner>|<asset-repo>|<immutable-tag>|__POKEMON_ASSET_RELEASE_BASE__/i.test(result)) return null;
@@ -594,6 +619,13 @@
       return resolveCollectionAsset("badge-icon", "badge-icon", selectors, query);
     }
 
+    async function resolveGameTitleArt(query = {}) {
+      if (!baseUrl) return { status: "unavailable", reason: "release-base-not-configured", requested: query };
+      const selectors = normalizeGameTitleArtQuery(query);
+      if (!selectors) return { status: "unavailable", reason: "invalid-game-title-art-selectors", requested: query };
+      return resolveCollectionAsset("game-title-art", "game-title-art", selectors, query);
+    }
+
     async function resolveAsset(query = {}) {
       const kind = normalizeToken(query.kind || query.assetKind || (query.spriteType ? "pokemon-sprite" : ""));
       let result;
@@ -606,6 +638,7 @@
       else if (kind === "itemsprite" || kind === "itemicon" || kind === "item") result = await resolveItemSprite(query);
       else if (["statusconditionicon", "statusicon", "conditionicon", "statuscondition", "status"].includes(kind)) result = await resolveStatusConditionIcon(query);
       else if (["badgeicon", "gymbadge", "progressionicon", "badge"].includes(kind)) result = await resolveBadgeIcon(query);
+      else if (["gametitleart", "gametitlelogo", "titlelogo", "gamelogo"].includes(kind)) result = await resolveGameTitleArt(query);
       else result = { status: "unavailable", reason: "unknown-asset-kind", kind: query.kind, requested: query };
       if (result.status === "ok") diagnostics.resolved += 1;
       else diagnostics.unavailable += 1;
@@ -627,6 +660,9 @@
         if (result.assetId) image.dataset.pokemonAssetId = result.assetId;
         if (result.selectors?.style) image.dataset.pokemonAssetStyle = result.selectors.style;
         if (result.selectors?.badge) image.dataset.pokemonAssetBadge = result.selectors.badge;
+        if (result.selectors?.titleId) image.dataset.pokemonAssetTitle = result.selectors.titleId;
+        if (result.selectors?.size) image.dataset.pokemonAssetSize = result.selectors.size;
+        if (result.selectors?.format) image.dataset.pokemonAssetFormat = result.selectors.format;
         if (result.fallback) image.dataset.pokemonAssetFallback = `${result.fallback.requestedSpriteType}->${result.fallback.resolvedSpriteType}`;
         else delete image.dataset.pokemonAssetFallback;
         image.onerror = () => {
@@ -723,6 +759,7 @@
       apiVersion: API_VERSION,
       resolve,
       resolveAsset,
+      resolveGameTitleArt,
       setImage,
       setAssetImage,
       imageHtml,

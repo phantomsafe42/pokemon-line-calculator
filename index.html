@@ -7,7 +7,7 @@
   <meta name="pokemon-asset-release-base" content="./public-assets">
   <title>Pokémon Line Calculator</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./styles.css?v=20260909-public-release-v2">
+  <link rel="stylesheet" href="./styles.css?v=20260912-game-selection-v1">
 </head>
 <body>
   <header class="app-header">
@@ -16,21 +16,16 @@
       <p class="site-credit">twitch.tv/phantomsafe</p>
     </div>
     <div class="game-control">
-      <label for="game-select">Game</label>
-      <select id="game-select">
-        <option value="">Select game…</option>
-      </select>
-      <p id="game-credit" class="game-credit" aria-live="polite"></p>
+      <div class="current-game-summary" aria-live="polite">
+        <strong id="current-game-name">No game selected</strong>
+        <p id="game-credit" class="game-credit"></p>
+      </div>
+      <button id="new-game" type="button" class="secondary">New Game</button>
     </div>
   </header>
 
   <main class="app-shell">
     <p id="app-status" class="status" role="status">Select a game to begin.</p>
-    <section id="game-gate" class="panel game-gate">
-      <h2>Select the game you are planning</h2>
-      <p>Boxes, trainers, mechanics, save parsing, and active plans are scoped to the selected game. Games are enabled only after their standardized mechanics contracts pass validation.</p>
-    </section>
-
     <nav id="app-tabs" class="tabs" aria-label="PLC sections" hidden>
       <button id="plc-tab" class="tab-button" type="button" role="tab" aria-selected="true" aria-controls="plc-panel">PLC</button>
       <button id="boxes-tab" class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="boxes-panel">Boxes</button>
@@ -141,6 +136,26 @@
     </section>
     <section id="drafts-panel" role="tabpanel" aria-labelledby="drafts-tab" hidden><div id="drafts-list"></div></section>
   </main>
+
+  <dialog id="game-dialog" class="game-dialog" aria-labelledby="game-dialog-title">
+    <div class="dialog-card game-dialog-card">
+      <div class="section-heading">
+        <div><h2 id="game-dialog-title">Select Game</h2></div>
+        <button id="close-game-dialog" type="button" class="icon-button secondary" aria-label="Close game selection" hidden>×</button>
+      </div>
+      <div class="game-picker-sections">
+        <section class="game-picker-group" aria-labelledby="rom-hacks-title">
+          <h3 id="rom-hacks-title">ROM Hacks</h3>
+          <div id="rom-hacks-games" class="game-picker-grid"></div>
+        </section>
+        <section class="game-picker-group" aria-labelledby="vanilla-games-title">
+          <h3 id="vanilla-games-title">Vanilla</h3>
+          <div id="vanilla-games" class="game-picker-grid"></div>
+        </section>
+      </div>
+      <p id="game-dialog-status" class="fine-print" role="status"></p>
+    </div>
+  </dialog>
 
   <dialog id="save-import-dialog" class="wide-dialog" aria-labelledby="save-import-title">
     <form method="dialog" class="dialog-card">
@@ -300,6 +315,6 @@
 
   <script src="./src/generated/pokemon_asset_resolver.global.js?v=20260911-assets-v3"></script>
   <script src="./src/generated/battle-mechanics/trainer_ai/trainer_ai_evaluator.js?v=20260909-public-release-v2"></script>
-  <script type="module" src="./src/app.js?v=20260912-vanilla-display-names-v2"></script>
+  <script type="module" src="./src/app.js?v=20260912-game-selection-v1"></script>
 </body>
 </html>

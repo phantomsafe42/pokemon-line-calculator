@@ -1,0 +1,4186 @@
+{
+  "schemaVersion": 1,
+  "datasetId": "pokemon-assets",
+  "releaseVersion": "0.6.0-dev.1",
+  "collectionId": "game-title-art",
+  "kind": "game-title-art",
+  "generated": true,
+  "selectorFields": [
+    "titleId",
+    "size",
+    "format"
+  ],
+  "fallbackPolicy": {
+    "implicitFallbackAllowed": false,
+    "missingAssetResult": "unavailable"
+  },
+  "statistics": {
+    "assets": 204,
+    "assetBytes": 9198082,
+    "selectors": 368
+  },
+  "selectorIndex": {
+    "[\"alpha-sapphire\",\"full\",\"png\"]": "game-title-art/alpha-sapphire/full/png",
+    "[\"as\",\"full\",\"png\"]": "game-title-art/alpha-sapphire/full/png",
+    "[\"alpha-sapphire\",\"full\",\"webp\"]": "game-title-art/alpha-sapphire/full/webp",
+    "[\"as\",\"full\",\"webp\"]": "game-title-art/alpha-sapphire/full/webp",
+    "[\"alpha-sapphire\",\"small\",\"png\"]": "game-title-art/alpha-sapphire/small/png",
+    "[\"as\",\"small\",\"png\"]": "game-title-art/alpha-sapphire/small/png",
+    "[\"alpha-sapphire\",\"small\",\"webp\"]": "game-title-art/alpha-sapphire/small/webp",
+    "[\"as\",\"small\",\"webp\"]": "game-title-art/alpha-sapphire/small/webp",
+    "[\"black-2\",\"full\",\"png\"]": "game-title-art/black-2/full/png",
+    "[\"bl2\",\"full\",\"png\"]": "game-title-art/black-2/full/png",
+    "[\"black-2\",\"full\",\"webp\"]": "game-title-art/black-2/full/webp",
+    "[\"bl2\",\"full\",\"webp\"]": "game-title-art/black-2/full/webp",
+    "[\"black-2\",\"small\",\"png\"]": "game-title-art/black-2/small/png",
+    "[\"bl2\",\"small\",\"png\"]": "game-title-art/black-2/small/png",
+    "[\"black-2\",\"small\",\"webp\"]": "game-title-art/black-2/small/webp",
+    "[\"bl2\",\"small\",\"webp\"]": "game-title-art/black-2/small/webp",
+    "[\"black\",\"full\",\"png\"]": "game-title-art/black/full/png",
+    "[\"bl\",\"full\",\"png\"]": "game-title-art/black/full/png",
+    "[\"black\",\"full\",\"webp\"]": "game-title-art/black/full/webp",
+    "[\"bl\",\"full\",\"webp\"]": "game-title-art/black/full/webp",
+    "[\"black\",\"small\",\"png\"]": "game-title-art/black/small/png",
+    "[\"bl\",\"small\",\"png\"]": "game-title-art/black/small/png",
+    "[\"black\",\"small\",\"webp\"]": "game-title-art/black/small/webp",
+    "[\"bl\",\"small\",\"webp\"]": "game-title-art/black/small/webp",
+    "[\"blaze-black-volt-white-2-redux\",\"full\",\"png\"]": "game-title-art/blaze-black-volt-white-2-redux/full/png",
+    "[\"blazevolt2\",\"full\",\"png\"]": "game-title-art/blaze-black-volt-white-2-redux/full/png",
+    "[\"blaze-black-volt-white-2-redux\",\"full\",\"webp\"]": "game-title-art/blaze-black-volt-white-2-redux/full/webp",
+    "[\"blazevolt2\",\"full\",\"webp\"]": "game-title-art/blaze-black-volt-white-2-redux/full/webp",
+    "[\"blaze-black-volt-white-2-redux\",\"small\",\"png\"]": "game-title-art/blaze-black-volt-white-2-redux/small/png",
+    "[\"blazevolt2\",\"small\",\"png\"]": "game-title-art/blaze-black-volt-white-2-redux/small/png",
+    "[\"blaze-black-volt-white-2-redux\",\"small\",\"webp\"]": "game-title-art/blaze-black-volt-white-2-redux/small/webp",
+    "[\"blazevolt2\",\"small\",\"webp\"]": "game-title-art/blaze-black-volt-white-2-redux/small/webp",
+    "[\"blaze-black\",\"full\",\"png\"]": "game-title-art/blaze-black/full/png",
+    "[\"blaze\",\"full\",\"png\"]": "game-title-art/blaze-black/full/png",
+    "[\"blaze-black\",\"full\",\"webp\"]": "game-title-art/blaze-black/full/webp",
+    "[\"blaze\",\"full\",\"webp\"]": "game-title-art/blaze-black/full/webp",
+    "[\"blaze-black\",\"small\",\"png\"]": "game-title-art/blaze-black/small/png",
+    "[\"blaze\",\"small\",\"png\"]": "game-title-art/blaze-black/small/png",
+    "[\"blaze-black\",\"small\",\"webp\"]": "game-title-art/blaze-black/small/webp",
+    "[\"blaze\",\"small\",\"webp\"]": "game-title-art/blaze-black/small/webp",
+    "[\"blazing-emerald\",\"full\",\"png\"]": "game-title-art/blazing-emerald/full/png",
+    "[\"blazingem\",\"full\",\"png\"]": "game-title-art/blazing-emerald/full/png",
+    "[\"blazing-emerald\",\"full\",\"webp\"]": "game-title-art/blazing-emerald/full/webp",
+    "[\"blazingem\",\"full\",\"webp\"]": "game-title-art/blazing-emerald/full/webp",
+    "[\"blazing-emerald\",\"small\",\"png\"]": "game-title-art/blazing-emerald/small/png",
+    "[\"blazingem\",\"small\",\"png\"]": "game-title-art/blazing-emerald/small/png",
+    "[\"blazing-emerald\",\"small\",\"webp\"]": "game-title-art/blazing-emerald/small/webp",
+    "[\"blazingem\",\"small\",\"webp\"]": "game-title-art/blazing-emerald/small/webp",
+    "[\"blue\",\"full\",\"png\"]": "game-title-art/blue/full/png",
+    "[\"blue\",\"full\",\"webp\"]": "game-title-art/blue/full/webp",
+    "[\"blue\",\"small\",\"png\"]": "game-title-art/blue/small/png",
+    "[\"blue\",\"small\",\"webp\"]": "game-title-art/blue/small/webp",
+    "[\"brilliant-diamond\",\"full\",\"png\"]": "game-title-art/brilliant-diamond/full/png",
+    "[\"bd\",\"full\",\"png\"]": "game-title-art/brilliant-diamond/full/png",
+    "[\"brilliant-diamond\",\"full\",\"webp\"]": "game-title-art/brilliant-diamond/full/webp",
+    "[\"bd\",\"full\",\"webp\"]": "game-title-art/brilliant-diamond/full/webp",
+    "[\"brilliant-diamond\",\"small\",\"png\"]": "game-title-art/brilliant-diamond/small/png",
+    "[\"bd\",\"small\",\"png\"]": "game-title-art/brilliant-diamond/small/png",
+    "[\"brilliant-diamond\",\"small\",\"webp\"]": "game-title-art/brilliant-diamond/small/webp",
+    "[\"bd\",\"small\",\"webp\"]": "game-title-art/brilliant-diamond/small/webp",
+    "[\"crystal\",\"full\",\"png\"]": "game-title-art/crystal/full/png",
+    "[\"crys\",\"full\",\"png\"]": "game-title-art/crystal/full/png",
+    "[\"crystal\",\"full\",\"webp\"]": "game-title-art/crystal/full/webp",
+    "[\"crys\",\"full\",\"webp\"]": "game-title-art/crystal/full/webp",
+    "[\"crystal\",\"small\",\"png\"]": "game-title-art/crystal/small/png",
+    "[\"crys\",\"small\",\"png\"]": "game-title-art/crystal/small/png",
+    "[\"crystal\",\"small\",\"webp\"]": "game-title-art/crystal/small/webp",
+    "[\"crys\",\"small\",\"webp\"]": "game-title-art/crystal/small/webp",
+    "[\"diamond\",\"full\",\"png\"]": "game-title-art/diamond/full/png",
+    "[\"d\",\"full\",\"png\"]": "game-title-art/diamond/full/png",
+    "[\"diamond\",\"full\",\"webp\"]": "game-title-art/diamond/full/webp",
+    "[\"d\",\"full\",\"webp\"]": "game-title-art/diamond/full/webp",
+    "[\"diamond\",\"small\",\"png\"]": "game-title-art/diamond/small/png",
+    "[\"d\",\"small\",\"png\"]": "game-title-art/diamond/small/png",
+    "[\"diamond\",\"small\",\"webp\"]": "game-title-art/diamond/small/webp",
+    "[\"d\",\"small\",\"webp\"]": "game-title-art/diamond/small/webp",
+    "[\"emerald-kaizo\",\"full\",\"png\"]": "game-title-art/emerald-kaizo/full/png",
+    "[\"emkaizo\",\"full\",\"png\"]": "game-title-art/emerald-kaizo/full/png",
+    "[\"emerald-kaizo\",\"full\",\"webp\"]": "game-title-art/emerald-kaizo/full/webp",
+    "[\"emkaizo\",\"full\",\"webp\"]": "game-title-art/emerald-kaizo/full/webp",
+    "[\"emerald-kaizo\",\"small\",\"png\"]": "game-title-art/emerald-kaizo/small/png",
+    "[\"emkaizo\",\"small\",\"png\"]": "game-title-art/emerald-kaizo/small/png",
+    "[\"emerald-kaizo\",\"small\",\"webp\"]": "game-title-art/emerald-kaizo/small/webp",
+    "[\"emkaizo\",\"small\",\"webp\"]": "game-title-art/emerald-kaizo/small/webp",
+    "[\"emerald\",\"full\",\"png\"]": "game-title-art/emerald/full/png",
+    "[\"em\",\"full\",\"png\"]": "game-title-art/emerald/full/png",
+    "[\"emerald\",\"full\",\"webp\"]": "game-title-art/emerald/full/webp",
+    "[\"em\",\"full\",\"webp\"]": "game-title-art/emerald/full/webp",
+    "[\"emerald\",\"small\",\"png\"]": "game-title-art/emerald/small/png",
+    "[\"em\",\"small\",\"png\"]": "game-title-art/emerald/small/png",
+    "[\"emerald\",\"small\",\"webp\"]": "game-title-art/emerald/small/webp",
+    "[\"em\",\"small\",\"webp\"]": "game-title-art/emerald/small/webp",
+    "[\"fire-red\",\"full\",\"png\"]": "game-title-art/fire-red/full/png",
+    "[\"fr\",\"full\",\"png\"]": "game-title-art/fire-red/full/png",
+    "[\"fire-red\",\"full\",\"webp\"]": "game-title-art/fire-red/full/webp",
+    "[\"fr\",\"full\",\"webp\"]": "game-title-art/fire-red/full/webp",
+    "[\"fire-red\",\"small\",\"png\"]": "game-title-art/fire-red/small/png",
+    "[\"fr\",\"small\",\"png\"]": "game-title-art/fire-red/small/png",
+    "[\"fire-red\",\"small\",\"webp\"]": "game-title-art/fire-red/small/webp",
+    "[\"fr\",\"small\",\"webp\"]": "game-title-art/fire-red/small/webp",
+    "[\"glazed\",\"full\",\"png\"]": "game-title-art/glazed/full/png",
+    "[\"glazed\",\"full\",\"webp\"]": "game-title-art/glazed/full/webp",
+    "[\"glazed\",\"small\",\"png\"]": "game-title-art/glazed/small/png",
+    "[\"glazed\",\"small\",\"webp\"]": "game-title-art/glazed/small/webp",
+    "[\"gold\",\"full\",\"png\"]": "game-title-art/gold/full/png",
+    "[\"gold\",\"full\",\"webp\"]": "game-title-art/gold/full/webp",
+    "[\"gold\",\"small\",\"png\"]": "game-title-art/gold/small/png",
+    "[\"gold\",\"small\",\"webp\"]": "game-title-art/gold/small/webp",
+    "[\"heart-gold\",\"full\",\"png\"]": "game-title-art/heart-gold/full/png",
+    "[\"hg\",\"full\",\"png\"]": "game-title-art/heart-gold/full/png",
+    "[\"heart-gold\",\"full\",\"webp\"]": "game-title-art/heart-gold/full/webp",
+    "[\"hg\",\"full\",\"webp\"]": "game-title-art/heart-gold/full/webp",
+    "[\"heart-gold\",\"small\",\"png\"]": "game-title-art/heart-gold/small/png",
+    "[\"hg\",\"small\",\"png\"]": "game-title-art/heart-gold/small/png",
+    "[\"heart-gold\",\"small\",\"webp\"]": "game-title-art/heart-gold/small/webp",
+    "[\"hg\",\"small\",\"webp\"]": "game-title-art/heart-gold/small/webp",
+    "[\"inclement-emerald\",\"full\",\"png\"]": "game-title-art/inclement-emerald/full/png",
+    "[\"incem\",\"full\",\"png\"]": "game-title-art/inclement-emerald/full/png",
+    "[\"inclement-emerald\",\"full\",\"webp\"]": "game-title-art/inclement-emerald/full/webp",
+    "[\"incem\",\"full\",\"webp\"]": "game-title-art/inclement-emerald/full/webp",
+    "[\"inclement-emerald\",\"small\",\"png\"]": "game-title-art/inclement-emerald/small/png",
+    "[\"incem\",\"small\",\"png\"]": "game-title-art/inclement-emerald/small/png",
+    "[\"inclement-emerald\",\"small\",\"webp\"]": "game-title-art/inclement-emerald/small/webp",
+    "[\"incem\",\"small\",\"webp\"]": "game-title-art/inclement-emerald/small/webp",
+    "[\"leaf-green\",\"full\",\"png\"]": "game-title-art/leaf-green/full/png",
+    "[\"lg\",\"full\",\"png\"]": "game-title-art/leaf-green/full/png",
+    "[\"leaf-green\",\"full\",\"webp\"]": "game-title-art/leaf-green/full/webp",
+    "[\"lg\",\"full\",\"webp\"]": "game-title-art/leaf-green/full/webp",
+    "[\"leaf-green\",\"small\",\"png\"]": "game-title-art/leaf-green/small/png",
+    "[\"lg\",\"small\",\"png\"]": "game-title-art/leaf-green/small/png",
+    "[\"leaf-green\",\"small\",\"webp\"]": "game-title-art/leaf-green/small/webp",
+    "[\"lg\",\"small\",\"webp\"]": "game-title-art/leaf-green/small/webp",
+    "[\"moon\",\"full\",\"png\"]": "game-title-art/moon/full/png",
+    "[\"moon\",\"full\",\"webp\"]": "game-title-art/moon/full/webp",
+    "[\"moon\",\"small\",\"png\"]": "game-title-art/moon/small/png",
+    "[\"moon\",\"small\",\"webp\"]": "game-title-art/moon/small/webp",
+    "[\"new-generations\",\"full\",\"png\"]": "game-title-art/new-generations/full/png",
+    "[\"newgen\",\"full\",\"png\"]": "game-title-art/new-generations/full/png",
+    "[\"new-generations\",\"full\",\"webp\"]": "game-title-art/new-generations/full/webp",
+    "[\"newgen\",\"full\",\"webp\"]": "game-title-art/new-generations/full/webp",
+    "[\"new-generations\",\"small\",\"png\"]": "game-title-art/new-generations/small/png",
+    "[\"newgen\",\"small\",\"png\"]": "game-title-art/new-generations/small/png",
+    "[\"new-generations\",\"small\",\"webp\"]": "game-title-art/new-generations/small/webp",
+    "[\"newgen\",\"small\",\"webp\"]": "game-title-art/new-generations/small/webp",
+    "[\"omega-ruby\",\"full\",\"png\"]": "game-title-art/omega-ruby/full/png",
+    "[\"or\",\"full\",\"png\"]": "game-title-art/omega-ruby/full/png",
+    "[\"omega-ruby\",\"full\",\"webp\"]": "game-title-art/omega-ruby/full/webp",
+    "[\"or\",\"full\",\"webp\"]": "game-title-art/omega-ruby/full/webp",
+    "[\"omega-ruby\",\"small\",\"png\"]": "game-title-art/omega-ruby/small/png",
+    "[\"or\",\"small\",\"png\"]": "game-title-art/omega-ruby/small/png",
+    "[\"omega-ruby\",\"small\",\"webp\"]": "game-title-art/omega-ruby/small/webp",
+    "[\"or\",\"small\",\"webp\"]": "game-title-art/omega-ruby/small/webp",
+    "[\"pearl\",\"full\",\"png\"]": "game-title-art/pearl/full/png",
+    "[\"p\",\"full\",\"png\"]": "game-title-art/pearl/full/png",
+    "[\"pearl\",\"full\",\"webp\"]": "game-title-art/pearl/full/webp",
+    "[\"p\",\"full\",\"webp\"]": "game-title-art/pearl/full/webp",
+    "[\"pearl\",\"small\",\"png\"]": "game-title-art/pearl/small/png",
+    "[\"p\",\"small\",\"png\"]": "game-title-art/pearl/small/png",
+    "[\"pearl\",\"small\",\"webp\"]": "game-title-art/pearl/small/webp",
+    "[\"p\",\"small\",\"webp\"]": "game-title-art/pearl/small/webp",
+    "[\"platinum\",\"full\",\"png\"]": "game-title-art/platinum/full/png",
+    "[\"pt\",\"full\",\"png\"]": "game-title-art/platinum/full/png",
+    "[\"platinum\",\"full\",\"webp\"]": "game-title-art/platinum/full/webp",
+    "[\"pt\",\"full\",\"webp\"]": "game-title-art/platinum/full/webp",
+    "[\"platinum\",\"small\",\"png\"]": "game-title-art/platinum/small/png",
+    "[\"pt\",\"small\",\"png\"]": "game-title-art/platinum/small/png",
+    "[\"platinum\",\"small\",\"webp\"]": "game-title-art/platinum/small/webp",
+    "[\"pt\",\"small\",\"webp\"]": "game-title-art/platinum/small/webp",
+    "[\"radical-red\",\"full\",\"png\"]": "game-title-art/radical-red/full/png",
+    "[\"radred\",\"full\",\"png\"]": "game-title-art/radical-red/full/png",
+    "[\"radical-red\",\"full\",\"webp\"]": "game-title-art/radical-red/full/webp",
+    "[\"radred\",\"full\",\"webp\"]": "game-title-art/radical-red/full/webp",
+    "[\"radical-red\",\"small\",\"png\"]": "game-title-art/radical-red/small/png",
+    "[\"radred\",\"small\",\"png\"]": "game-title-art/radical-red/small/png",
+    "[\"radical-red\",\"small\",\"webp\"]": "game-title-art/radical-red/small/webp",
+    "[\"radred\",\"small\",\"webp\"]": "game-title-art/radical-red/small/webp",
+    "[\"red\",\"full\",\"png\"]": "game-title-art/red/full/png",
+    "[\"red\",\"full\",\"webp\"]": "game-title-art/red/full/webp",
+    "[\"red\",\"small\",\"png\"]": "game-title-art/red/small/png",
+    "[\"red\",\"small\",\"webp\"]": "game-title-art/red/small/webp",
+    "[\"renegade-platinum\",\"full\",\"png\"]": "game-title-art/renegade-platinum/full/png",
+    "[\"renplat\",\"full\",\"png\"]": "game-title-art/renegade-platinum/full/png",
+    "[\"renegade-platinum\",\"full\",\"webp\"]": "game-title-art/renegade-platinum/full/webp",
+    "[\"renplat\",\"full\",\"webp\"]": "game-title-art/renegade-platinum/full/webp",
+    "[\"renegade-platinum\",\"small\",\"png\"]": "game-title-art/renegade-platinum/small/png",
+    "[\"renplat\",\"small\",\"png\"]": "game-title-art/renegade-platinum/small/png",
+    "[\"renegade-platinum\",\"small\",\"webp\"]": "game-title-art/renegade-platinum/small/webp",
+    "[\"renplat\",\"small\",\"webp\"]": "game-title-art/renegade-platinum/small/webp",
+    "[\"rising-ruby\",\"full\",\"png\"]": "game-title-art/rising-ruby/full/png",
+    "[\"rrss\",\"full\",\"png\"]": "game-title-art/rising-ruby/full/png",
+    "[\"rising-ruby\",\"full\",\"webp\"]": "game-title-art/rising-ruby/full/webp",
+    "[\"rrss\",\"full\",\"webp\"]": "game-title-art/rising-ruby/full/webp",
+    "[\"rising-ruby\",\"small\",\"png\"]": "game-title-art/rising-ruby/small/png",
+    "[\"rrss\",\"small\",\"png\"]": "game-title-art/rising-ruby/small/png",
+    "[\"rising-ruby\",\"small\",\"webp\"]": "game-title-art/rising-ruby/small/webp",
+    "[\"rrss\",\"small\",\"webp\"]": "game-title-art/rising-ruby/small/webp",
+    "[\"rising-sinking\",\"full\",\"png\"]": "game-title-art/rising-sinking/full/png",
+    "[\"rising-sinking\",\"full\",\"webp\"]": "game-title-art/rising-sinking/full/webp",
+    "[\"rising-sinking\",\"small\",\"png\"]": "game-title-art/rising-sinking/small/png",
+    "[\"rising-sinking\",\"small\",\"webp\"]": "game-title-art/rising-sinking/small/webp",
+    "[\"ruby\",\"full\",\"png\"]": "game-title-art/ruby/full/png",
+    "[\"ruby\",\"full\",\"webp\"]": "game-title-art/ruby/full/webp",
+    "[\"ruby\",\"small\",\"png\"]": "game-title-art/ruby/small/png",
+    "[\"ruby\",\"small\",\"webp\"]": "game-title-art/ruby/small/webp",
+    "[\"runbun\",\"full\",\"png\"]": "game-title-art/runbun/full/png",
+    "[\"emerald-run-and-bun\",\"full\",\"png\"]": "game-title-art/runbun/full/png",
+    "[\"emrunbun\",\"full\",\"png\"]": "game-title-art/runbun/full/png",
+    "[\"runbun\",\"full\",\"webp\"]": "game-title-art/runbun/full/webp",
+    "[\"emerald-run-and-bun\",\"full\",\"webp\"]": "game-title-art/runbun/full/webp",
+    "[\"emrunbun\",\"full\",\"webp\"]": "game-title-art/runbun/full/webp",
+    "[\"runbun\",\"small\",\"png\"]": "game-title-art/runbun/small/png",
+    "[\"emerald-run-and-bun\",\"small\",\"png\"]": "game-title-art/runbun/small/png",
+    "[\"emrunbun\",\"small\",\"png\"]": "game-title-art/runbun/small/png",
+    "[\"runbun\",\"small\",\"webp\"]": "game-title-art/runbun/small/webp",
+    "[\"emerald-run-and-bun\",\"small\",\"webp\"]": "game-title-art/runbun/small/webp",
+    "[\"emrunbun\",\"small\",\"webp\"]": "game-title-art/runbun/small/webp",
+    "[\"sacred-gold\",\"full\",\"png\"]": "game-title-art/sacred-gold/full/png",
+    "[\"sacredgold\",\"full\",\"png\"]": "game-title-art/sacred-gold/full/png",
+    "[\"sacred-gold\",\"full\",\"webp\"]": "game-title-art/sacred-gold/full/webp",
+    "[\"sacredgold\",\"full\",\"webp\"]": "game-title-art/sacred-gold/full/webp",
+    "[\"sacred-gold\",\"small\",\"png\"]": "game-title-art/sacred-gold/small/png",
+    "[\"sacredgold\",\"small\",\"png\"]": "game-title-art/sacred-gold/small/png",
+    "[\"sacred-gold\",\"small\",\"webp\"]": "game-title-art/sacred-gold/small/webp",
+    "[\"sacredgold\",\"small\",\"webp\"]": "game-title-art/sacred-gold/small/webp",
+    "[\"sapphire\",\"full\",\"png\"]": "game-title-art/sapphire/full/png",
+    "[\"saph\",\"full\",\"png\"]": "game-title-art/sapphire/full/png",
+    "[\"sapphire\",\"full\",\"webp\"]": "game-title-art/sapphire/full/webp",
+    "[\"saph\",\"full\",\"webp\"]": "game-title-art/sapphire/full/webp",
+    "[\"sapphire\",\"small\",\"png\"]": "game-title-art/sapphire/small/png",
+    "[\"saph\",\"small\",\"png\"]": "game-title-art/sapphire/small/png",
+    "[\"sapphire\",\"small\",\"webp\"]": "game-title-art/sapphire/small/webp",
+    "[\"saph\",\"small\",\"webp\"]": "game-title-art/sapphire/small/webp",
+    "[\"scarlet\",\"full\",\"png\"]": "game-title-art/scarlet/full/png",
+    "[\"sc\",\"full\",\"png\"]": "game-title-art/scarlet/full/png",
+    "[\"scarlet\",\"full\",\"webp\"]": "game-title-art/scarlet/full/webp",
+    "[\"sc\",\"full\",\"webp\"]": "game-title-art/scarlet/full/webp",
+    "[\"scarlet\",\"small\",\"png\"]": "game-title-art/scarlet/small/png",
+    "[\"sc\",\"small\",\"png\"]": "game-title-art/scarlet/small/png",
+    "[\"scarlet\",\"small\",\"webp\"]": "game-title-art/scarlet/small/webp",
+    "[\"sc\",\"small\",\"webp\"]": "game-title-art/scarlet/small/webp",
+    "[\"shield\",\"full\",\"png\"]": "game-title-art/shield/full/png",
+    "[\"sh\",\"full\",\"png\"]": "game-title-art/shield/full/png",
+    "[\"shield\",\"full\",\"webp\"]": "game-title-art/shield/full/webp",
+    "[\"sh\",\"full\",\"webp\"]": "game-title-art/shield/full/webp",
+    "[\"shield\",\"small\",\"png\"]": "game-title-art/shield/small/png",
+    "[\"sh\",\"small\",\"png\"]": "game-title-art/shield/small/png",
+    "[\"shield\",\"small\",\"webp\"]": "game-title-art/shield/small/webp",
+    "[\"sh\",\"small\",\"webp\"]": "game-title-art/shield/small/webp",
+    "[\"shining-pearl\",\"full\",\"png\"]": "game-title-art/shining-pearl/full/png",
+    "[\"sp\",\"full\",\"png\"]": "game-title-art/shining-pearl/full/png",
+    "[\"shining-pearl\",\"full\",\"webp\"]": "game-title-art/shining-pearl/full/webp",
+    "[\"sp\",\"full\",\"webp\"]": "game-title-art/shining-pearl/full/webp",
+    "[\"shining-pearl\",\"small\",\"png\"]": "game-title-art/shining-pearl/small/png",
+    "[\"sp\",\"small\",\"png\"]": "game-title-art/shining-pearl/small/png",
+    "[\"shining-pearl\",\"small\",\"webp\"]": "game-title-art/shining-pearl/small/webp",
+    "[\"sp\",\"small\",\"webp\"]": "game-title-art/shining-pearl/small/webp",
+    "[\"silver\",\"full\",\"png\"]": "game-title-art/silver/full/png",
+    "[\"silv\",\"full\",\"png\"]": "game-title-art/silver/full/png",
+    "[\"silver\",\"full\",\"webp\"]": "game-title-art/silver/full/webp",
+    "[\"silv\",\"full\",\"webp\"]": "game-title-art/silver/full/webp",
+    "[\"silver\",\"small\",\"png\"]": "game-title-art/silver/small/png",
+    "[\"silv\",\"small\",\"png\"]": "game-title-art/silver/small/png",
+    "[\"silver\",\"small\",\"webp\"]": "game-title-art/silver/small/webp",
+    "[\"silv\",\"small\",\"webp\"]": "game-title-art/silver/small/webp",
+    "[\"sinking-sapphire\",\"full\",\"png\"]": "game-title-art/sinking-sapphire/full/png",
+    "[\"ssaph\",\"full\",\"png\"]": "game-title-art/sinking-sapphire/full/png",
+    "[\"sinking-sapphire\",\"full\",\"webp\"]": "game-title-art/sinking-sapphire/full/webp",
+    "[\"ssaph\",\"full\",\"webp\"]": "game-title-art/sinking-sapphire/full/webp",
+    "[\"sinking-sapphire\",\"small\",\"png\"]": "game-title-art/sinking-sapphire/small/png",
+    "[\"ssaph\",\"small\",\"png\"]": "game-title-art/sinking-sapphire/small/png",
+    "[\"sinking-sapphire\",\"small\",\"webp\"]": "game-title-art/sinking-sapphire/small/webp",
+    "[\"ssaph\",\"small\",\"webp\"]": "game-title-art/sinking-sapphire/small/webp",
+    "[\"soul-silver\",\"full\",\"png\"]": "game-title-art/soul-silver/full/png",
+    "[\"ss\",\"full\",\"png\"]": "game-title-art/soul-silver/full/png",
+    "[\"soul-silver\",\"full\",\"webp\"]": "game-title-art/soul-silver/full/webp",
+    "[\"ss\",\"full\",\"webp\"]": "game-title-art/soul-silver/full/webp",
+    "[\"soul-silver\",\"small\",\"png\"]": "game-title-art/soul-silver/small/png",
+    "[\"ss\",\"small\",\"png\"]": "game-title-art/soul-silver/small/png",
+    "[\"soul-silver\",\"small\",\"webp\"]": "game-title-art/soul-silver/small/webp",
+    "[\"ss\",\"small\",\"webp\"]": "game-title-art/soul-silver/small/webp",
+    "[\"storm-silver\",\"full\",\"png\"]": "game-title-art/storm-silver/full/png",
+    "[\"stormsilv\",\"full\",\"png\"]": "game-title-art/storm-silver/full/png",
+    "[\"storm-silver\",\"full\",\"webp\"]": "game-title-art/storm-silver/full/webp",
+    "[\"stormsilv\",\"full\",\"webp\"]": "game-title-art/storm-silver/full/webp",
+    "[\"storm-silver\",\"small\",\"png\"]": "game-title-art/storm-silver/small/png",
+    "[\"stormsilv\",\"small\",\"png\"]": "game-title-art/storm-silver/small/png",
+    "[\"storm-silver\",\"small\",\"webp\"]": "game-title-art/storm-silver/small/webp",
+    "[\"stormsilv\",\"small\",\"webp\"]": "game-title-art/storm-silver/small/webp",
+    "[\"sun\",\"full\",\"png\"]": "game-title-art/sun/full/png",
+    "[\"sun\",\"full\",\"webp\"]": "game-title-art/sun/full/webp",
+    "[\"sun\",\"small\",\"png\"]": "game-title-art/sun/small/png",
+    "[\"sun\",\"small\",\"webp\"]": "game-title-art/sun/small/webp",
+    "[\"sword\",\"full\",\"png\"]": "game-title-art/sword/full/png",
+    "[\"sw\",\"full\",\"png\"]": "game-title-art/sword/full/png",
+    "[\"sword\",\"full\",\"webp\"]": "game-title-art/sword/full/webp",
+    "[\"sw\",\"full\",\"webp\"]": "game-title-art/sword/full/webp",
+    "[\"sword\",\"small\",\"png\"]": "game-title-art/sword/small/png",
+    "[\"sw\",\"small\",\"png\"]": "game-title-art/sword/small/png",
+    "[\"sword\",\"small\",\"webp\"]": "game-title-art/sword/small/webp",
+    "[\"sw\",\"small\",\"webp\"]": "game-title-art/sword/small/webp",
+    "[\"ultra-moon\",\"full\",\"png\"]": "game-title-art/ultra-moon/full/png",
+    "[\"umoon\",\"full\",\"png\"]": "game-title-art/ultra-moon/full/png",
+    "[\"ultra-moon\",\"full\",\"webp\"]": "game-title-art/ultra-moon/full/webp",
+    "[\"umoon\",\"full\",\"webp\"]": "game-title-art/ultra-moon/full/webp",
+    "[\"ultra-moon\",\"small\",\"png\"]": "game-title-art/ultra-moon/small/png",
+    "[\"umoon\",\"small\",\"png\"]": "game-title-art/ultra-moon/small/png",
+    "[\"ultra-moon\",\"small\",\"webp\"]": "game-title-art/ultra-moon/small/webp",
+    "[\"umoon\",\"small\",\"webp\"]": "game-title-art/ultra-moon/small/webp",
+    "[\"ultra-sun\",\"full\",\"png\"]": "game-title-art/ultra-sun/full/png",
+    "[\"usun\",\"full\",\"png\"]": "game-title-art/ultra-sun/full/png",
+    "[\"ultra-sun\",\"full\",\"webp\"]": "game-title-art/ultra-sun/full/webp",
+    "[\"usun\",\"full\",\"webp\"]": "game-title-art/ultra-sun/full/webp",
+    "[\"ultra-sun\",\"small\",\"png\"]": "game-title-art/ultra-sun/small/png",
+    "[\"usun\",\"small\",\"png\"]": "game-title-art/ultra-sun/small/png",
+    "[\"ultra-sun\",\"small\",\"webp\"]": "game-title-art/ultra-sun/small/webp",
+    "[\"usun\",\"small\",\"webp\"]": "game-title-art/ultra-sun/small/webp",
+    "[\"unbound\",\"full\",\"png\"]": "game-title-art/unbound/full/png",
+    "[\"unbound\",\"full\",\"webp\"]": "game-title-art/unbound/full/webp",
+    "[\"unbound\",\"small\",\"png\"]": "game-title-art/unbound/small/png",
+    "[\"unbound\",\"small\",\"webp\"]": "game-title-art/unbound/small/webp",
+    "[\"violet\",\"full\",\"png\"]": "game-title-art/violet/full/png",
+    "[\"vi\",\"full\",\"png\"]": "game-title-art/violet/full/png",
+    "[\"violet\",\"full\",\"webp\"]": "game-title-art/violet/full/webp",
+    "[\"vi\",\"full\",\"webp\"]": "game-title-art/violet/full/webp",
+    "[\"violet\",\"small\",\"png\"]": "game-title-art/violet/small/png",
+    "[\"vi\",\"small\",\"png\"]": "game-title-art/violet/small/png",
+    "[\"violet\",\"small\",\"webp\"]": "game-title-art/violet/small/webp",
+    "[\"vi\",\"small\",\"webp\"]": "game-title-art/violet/small/webp",
+    "[\"volt-white\",\"full\",\"png\"]": "game-title-art/volt-white/full/png",
+    "[\"volt\",\"full\",\"png\"]": "game-title-art/volt-white/full/png",
+    "[\"volt-white\",\"full\",\"webp\"]": "game-title-art/volt-white/full/webp",
+    "[\"volt\",\"full\",\"webp\"]": "game-title-art/volt-white/full/webp",
+    "[\"volt-white\",\"small\",\"png\"]": "game-title-art/volt-white/small/png",
+    "[\"volt\",\"small\",\"png\"]": "game-title-art/volt-white/small/png",
+    "[\"volt-white\",\"small\",\"webp\"]": "game-title-art/volt-white/small/webp",
+    "[\"volt\",\"small\",\"webp\"]": "game-title-art/volt-white/small/webp",
+    "[\"white-2\",\"full\",\"png\"]": "game-title-art/white-2/full/png",
+    "[\"wh2\",\"full\",\"png\"]": "game-title-art/white-2/full/png",
+    "[\"white-2\",\"full\",\"webp\"]": "game-title-art/white-2/full/webp",
+    "[\"wh2\",\"full\",\"webp\"]": "game-title-art/white-2/full/webp",
+    "[\"white-2\",\"small\",\"png\"]": "game-title-art/white-2/small/png",
+    "[\"wh2\",\"small\",\"png\"]": "game-title-art/white-2/small/png",
+    "[\"white-2\",\"small\",\"webp\"]": "game-title-art/white-2/small/webp",
+    "[\"wh2\",\"small\",\"webp\"]": "game-title-art/white-2/small/webp",
+    "[\"white\",\"full\",\"png\"]": "game-title-art/white/full/png",
+    "[\"wh\",\"full\",\"png\"]": "game-title-art/white/full/png",
+    "[\"white\",\"full\",\"webp\"]": "game-title-art/white/full/webp",
+    "[\"wh\",\"full\",\"webp\"]": "game-title-art/white/full/webp",
+    "[\"white\",\"small\",\"png\"]": "game-title-art/white/small/png",
+    "[\"wh\",\"small\",\"png\"]": "game-title-art/white/small/png",
+    "[\"white\",\"small\",\"webp\"]": "game-title-art/white/small/webp",
+    "[\"wh\",\"small\",\"webp\"]": "game-title-art/white/small/webp",
+    "[\"x\",\"full\",\"png\"]": "game-title-art/x/full/png",
+    "[\"x\",\"full\",\"webp\"]": "game-title-art/x/full/webp",
+    "[\"x\",\"small\",\"png\"]": "game-title-art/x/small/png",
+    "[\"x\",\"small\",\"webp\"]": "game-title-art/x/small/webp",
+    "[\"y\",\"full\",\"png\"]": "game-title-art/y/full/png",
+    "[\"y\",\"full\",\"webp\"]": "game-title-art/y/full/webp",
+    "[\"y\",\"small\",\"png\"]": "game-title-art/y/small/png",
+    "[\"y\",\"small\",\"webp\"]": "game-title-art/y/small/webp",
+    "[\"yellow\",\"full\",\"png\"]": "game-title-art/yellow/full/png",
+    "[\"yel\",\"full\",\"png\"]": "game-title-art/yellow/full/png",
+    "[\"yellow\",\"full\",\"webp\"]": "game-title-art/yellow/full/webp",
+    "[\"yel\",\"full\",\"webp\"]": "game-title-art/yellow/full/webp",
+    "[\"yellow\",\"small\",\"png\"]": "game-title-art/yellow/small/png",
+    "[\"yel\",\"small\",\"png\"]": "game-title-art/yellow/small/png",
+    "[\"yellow\",\"small\",\"webp\"]": "game-title-art/yellow/small/webp",
+    "[\"yel\",\"small\",\"webp\"]": "game-title-art/yellow/small/webp"
+  },
+  "assets": {
+    "game-title-art/alpha-sapphire/full/png": {
+      "path": "assets/game-title-art/alpha-sapphire/full.png",
+      "sha256": "27a8523c90e6da0d5f4f1b376662517c6b7cf5d791527c630eb48b61782614ba",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "alpha-sapphire",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "as",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/alpha-sapphire/full/webp": {
+      "path": "assets/game-title-art/alpha-sapphire/full.webp",
+      "sha256": "de192db3e32ecb52dbbac5e5d5ed426dc76f96ac2404b315df65593aafd12faf",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "alpha-sapphire",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "as",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/alpha-sapphire/small/png": {
+      "path": "assets/game-title-art/alpha-sapphire/small.png",
+      "sha256": "bad447f8c0582786ba9a72a47d99cda92e7b583f940e33c22f275f23dae58310",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "alpha-sapphire",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "as",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/alpha-sapphire/small/webp": {
+      "path": "assets/game-title-art/alpha-sapphire/small.webp",
+      "sha256": "c5cbfaf011ae3ac287f7b70a5a8264e5d4d7c9c294593b88d9c23adafcab65cd",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "alpha-sapphire",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "as",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/black-2/full/png": {
+      "path": "assets/game-title-art/black-2/full.png",
+      "sha256": "e4ce968f9e5b2d9687c10ef5c2caf19fa401ab44a83aa629e1e5cff874c0de45",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "black-2",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "bl2",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/black-2/full/webp": {
+      "path": "assets/game-title-art/black-2/full.webp",
+      "sha256": "195d292112120bf71fc62967c2eae2dfd813dabed8f9e868999564d68b9b3d9c",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "black-2",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "bl2",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/black-2/small/png": {
+      "path": "assets/game-title-art/black-2/small.png",
+      "sha256": "1ae9d9745aa5ca17674134ed5a50b5768971ac43cb8317afde8515b34ed5fbc0",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "black-2",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "bl2",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/black-2/small/webp": {
+      "path": "assets/game-title-art/black-2/small.webp",
+      "sha256": "cf0559948d7b81ab44fbafa49901f4882be80e1b571c265f23c56e0451cbac2f",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "black-2",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "bl2",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/black/full/png": {
+      "path": "assets/game-title-art/black/full.png",
+      "sha256": "e7e3e822d43e085b611245ddd5bd95ca125bd69341c814132197d09ef10bfa00",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "black",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "bl",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/black/full/webp": {
+      "path": "assets/game-title-art/black/full.webp",
+      "sha256": "57a0413a6779f5d7088987471fd195431f10ba1a5b93268d5f3151ddcd292153",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "black",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "bl",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/black/small/png": {
+      "path": "assets/game-title-art/black/small.png",
+      "sha256": "baee8924993a7f4f5412bea47a8fb2ce40b046e988d2463258c59309775778e8",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "black",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "bl",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/black/small/webp": {
+      "path": "assets/game-title-art/black/small.webp",
+      "sha256": "15d12349a21bbc9bc427d22c9116e47f8b29bbfbba188130e7603b3d1fcfe022",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "black",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "bl",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/blaze-black-volt-white-2-redux/full/png": {
+      "path": "assets/game-title-art/blaze-black-volt-white-2-redux/full.png",
+      "sha256": "8a26a486c8d4e1fd31ea7ecba53c3b2816da4f2aeb3c7fa4a698f5e3052e6217",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "blaze-black-volt-white-2-redux",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "blazevolt2",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/blaze-black-volt-white-2-redux/full/webp": {
+      "path": "assets/game-title-art/blaze-black-volt-white-2-redux/full.webp",
+      "sha256": "98d58ed406345bd8a3f9dd1da168e82a51a3dca4db7eeb0809079a85f100a1ce",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "blaze-black-volt-white-2-redux",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "blazevolt2",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/blaze-black-volt-white-2-redux/small/png": {
+      "path": "assets/game-title-art/blaze-black-volt-white-2-redux/small.png",
+      "sha256": "c732fb7a0bfee448b916cb1a1a0b90907ac4828f80880347ee227ee17fef08fd",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "blaze-black-volt-white-2-redux",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "blazevolt2",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/blaze-black-volt-white-2-redux/small/webp": {
+      "path": "assets/game-title-art/blaze-black-volt-white-2-redux/small.webp",
+      "sha256": "08ba4dbf7a9b8091e1f7bd3e596d39cb0fbb838fa28e86b366b09000113f9f85",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "blaze-black-volt-white-2-redux",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "blazevolt2",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/blaze-black/full/png": {
+      "path": "assets/game-title-art/blaze-black/full.png",
+      "sha256": "e1cbac76559b63671569da4b580c0b4a8376917cb87e9208b816077167249467",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "blaze-black",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "blaze",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/blaze-black/full/webp": {
+      "path": "assets/game-title-art/blaze-black/full.webp",
+      "sha256": "263bcaff6c7709e81bba0cb9b1470a28c50b43d256e5fd7953365d242c2f474d",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "blaze-black",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "blaze",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/blaze-black/small/png": {
+      "path": "assets/game-title-art/blaze-black/small.png",
+      "sha256": "81b1bd514c9172dba8903a6a001035b976c76353db8373814ec7a55b163112e9",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "blaze-black",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "blaze",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/blaze-black/small/webp": {
+      "path": "assets/game-title-art/blaze-black/small.webp",
+      "sha256": "0f856560fe6a6e9dfc255423462518e6e3be024470411e92fb3829bba2ff0dfc",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "blaze-black",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "blaze",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/blazing-emerald/full/png": {
+      "path": "assets/game-title-art/blazing-emerald/full.png",
+      "sha256": "e689d0c78071ea39d16021a6ffec5405b899141163433e020065d0560e4503b6",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "blazing-emerald",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "blazingem",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/blazing-emerald/full/webp": {
+      "path": "assets/game-title-art/blazing-emerald/full.webp",
+      "sha256": "7371d24445c22383e31c6cc1390efc3e980fd13c25384e2bfa3eac995a064411",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "blazing-emerald",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "blazingem",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/blazing-emerald/small/png": {
+      "path": "assets/game-title-art/blazing-emerald/small.png",
+      "sha256": "d8a92fe1e574d766c1909b6f062319177aa4d13dc8afb837177db949ea3a9c5d",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "blazing-emerald",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "blazingem",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/blazing-emerald/small/webp": {
+      "path": "assets/game-title-art/blazing-emerald/small.webp",
+      "sha256": "5b287471f389563f126e6d385928631060c9c9c6cd6b1a5acbd33119170b6d80",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "blazing-emerald",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "blazingem",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/blue/full/png": {
+      "path": "assets/game-title-art/blue/full.png",
+      "sha256": "e2d46a0cd2e5a6ab2fcf245c311a8b7ca63a42397a2ca4c510c08353eb05660f",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "blue",
+        "size": "full",
+        "format": "png"
+      }
+    },
+    "game-title-art/blue/full/webp": {
+      "path": "assets/game-title-art/blue/full.webp",
+      "sha256": "b87943b867e4089ccb2a5704f73e1f0f317c53275a8848a3b562013dccfabc38",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "blue",
+        "size": "full",
+        "format": "webp"
+      }
+    },
+    "game-title-art/blue/small/png": {
+      "path": "assets/game-title-art/blue/small.png",
+      "sha256": "c2708f9d1a7def9ddd686c301b8f2ccca5b044566e2bf1e0e82de74868d5ebb8",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "blue",
+        "size": "small",
+        "format": "png"
+      }
+    },
+    "game-title-art/blue/small/webp": {
+      "path": "assets/game-title-art/blue/small.webp",
+      "sha256": "cd098d1c300a6d0f57c44bc8c3990228b138b408ce20046261826be0bd7ebf48",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "blue",
+        "size": "small",
+        "format": "webp"
+      }
+    },
+    "game-title-art/brilliant-diamond/full/png": {
+      "path": "assets/game-title-art/brilliant-diamond/full.png",
+      "sha256": "e15dd2bc6a5ac978b833e2906f8b665aa7a876e0a9228a20848f62233b649509",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "brilliant-diamond",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "bd",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/brilliant-diamond/full/webp": {
+      "path": "assets/game-title-art/brilliant-diamond/full.webp",
+      "sha256": "43b4c621f709a339510df64dfe825fb61fd2f17cf2a349999ddaf53ef212adbf",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "brilliant-diamond",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "bd",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/brilliant-diamond/small/png": {
+      "path": "assets/game-title-art/brilliant-diamond/small.png",
+      "sha256": "65617f1bcd9078e3b031f9e278c551f423e2a4e27c2b8685460ba83980a672fe",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "brilliant-diamond",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "bd",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/brilliant-diamond/small/webp": {
+      "path": "assets/game-title-art/brilliant-diamond/small.webp",
+      "sha256": "6abdf5185a9182ddeca77a6097efbfeb446545b6ddbfb192902c7588c1dcad35",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "brilliant-diamond",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "bd",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/crystal/full/png": {
+      "path": "assets/game-title-art/crystal/full.png",
+      "sha256": "324b26b3d63f44e8c6a0f7215ddc17478ddb264ba66268ad7b6cc92613e6f05f",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "crystal",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "crys",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/crystal/full/webp": {
+      "path": "assets/game-title-art/crystal/full.webp",
+      "sha256": "3034ecb2a030cc5cf94789ebc6e77c74c4b68c5b08eada1230b6af21d8be615d",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "crystal",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "crys",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/crystal/small/png": {
+      "path": "assets/game-title-art/crystal/small.png",
+      "sha256": "62fe0ed9127a9503652099b2425aaa0fd4c1d3e672d84bb4b182056ae86eb3bc",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "crystal",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "crys",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/crystal/small/webp": {
+      "path": "assets/game-title-art/crystal/small.webp",
+      "sha256": "1732c3d74b4f6e22eaa30b8f6d84e137e78dee519b9823830711ceed52867949",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "crystal",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "crys",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/diamond/full/png": {
+      "path": "assets/game-title-art/diamond/full.png",
+      "sha256": "78e0e617091f05a865999594b1944e6dffa120dafcd66ad06521d93217b28e18",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "diamond",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "d",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/diamond/full/webp": {
+      "path": "assets/game-title-art/diamond/full.webp",
+      "sha256": "ae79539d35b4c32d27ac340d2a36155fba6cfe5bcee476575dcb941dccfbd83d",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "diamond",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "d",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/diamond/small/png": {
+      "path": "assets/game-title-art/diamond/small.png",
+      "sha256": "f90f42760a50dae8dfa551492788fd24006486f898c0aff5d9a2340bc9140eda",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "diamond",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "d",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/diamond/small/webp": {
+      "path": "assets/game-title-art/diamond/small.webp",
+      "sha256": "90331713aef091294ceaaa598113ec76bc1938a49869045750a355e90b9e5635",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "diamond",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "d",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/emerald-kaizo/full/png": {
+      "path": "assets/game-title-art/emerald-kaizo/full.png",
+      "sha256": "25dcb0477ae27edd5cc635012e6563e1ab9664272352afe59916e1d6518538cb",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "emerald-kaizo",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "emkaizo",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/emerald-kaizo/full/webp": {
+      "path": "assets/game-title-art/emerald-kaizo/full.webp",
+      "sha256": "fa557b35c1544c2653d92a0e3981e1f87c348aaaf43c6811be0d469ea6e5cd18",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "emerald-kaizo",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "emkaizo",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/emerald-kaizo/small/png": {
+      "path": "assets/game-title-art/emerald-kaizo/small.png",
+      "sha256": "50f76f0cb39e794b24239aecf19f6edec424566467b9c758ffd0a8c8f82092b1",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "emerald-kaizo",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "emkaizo",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/emerald-kaizo/small/webp": {
+      "path": "assets/game-title-art/emerald-kaizo/small.webp",
+      "sha256": "2faf5e821c75dce9902006025eaf44f831a9538f3ee4fad89e7532050a7babf5",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "emerald-kaizo",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "emkaizo",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/emerald/full/png": {
+      "path": "assets/game-title-art/emerald/full.png",
+      "sha256": "010b31136f80b7cf263bb2969a9cde5b5827276f742f96c05999a12f9b48dc51",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "emerald",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "em",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/emerald/full/webp": {
+      "path": "assets/game-title-art/emerald/full.webp",
+      "sha256": "bcaac1f42fa4463c287e4f25c47c645bc573e69264e3f9315a43d9eaf649b189",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "emerald",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "em",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/emerald/small/png": {
+      "path": "assets/game-title-art/emerald/small.png",
+      "sha256": "838bf8a296ff13555632d45b4fd7c4ec812b700b9a282ba6975b9d5e517c8a77",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "emerald",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "em",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/emerald/small/webp": {
+      "path": "assets/game-title-art/emerald/small.webp",
+      "sha256": "6d4ecaa38abbb2e5a19ca8b7365fbe09883685b32c1c5577c4c2320c70da3931",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "emerald",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "em",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/fire-red/full/png": {
+      "path": "assets/game-title-art/fire-red/full.png",
+      "sha256": "a97b1ca425c2b514b1eeeac63564b951634b9531c6eca5ffe3b335380a6e94dc",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "fire-red",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "fr",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/fire-red/full/webp": {
+      "path": "assets/game-title-art/fire-red/full.webp",
+      "sha256": "b06954807f3b8a784e9f71fcce934a5a1a746fa729dab0d3affc11c7e53af88b",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "fire-red",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "fr",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/fire-red/small/png": {
+      "path": "assets/game-title-art/fire-red/small.png",
+      "sha256": "0ff6ac19a0c858588ad144bde1e54e0e972d862515ed347f7691d57f886c42c6",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "fire-red",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "fr",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/fire-red/small/webp": {
+      "path": "assets/game-title-art/fire-red/small.webp",
+      "sha256": "e000848c097f9a1d4c51fb07a8fd9422f506dc215e6d475706aec4881fb59c7c",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "fire-red",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "fr",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/glazed/full/png": {
+      "path": "assets/game-title-art/glazed/full.png",
+      "sha256": "2afac760b833b70fdd17cca6a5e40f28c5c9291c11cf602f4be79a0f539b14fc",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "glazed",
+        "size": "full",
+        "format": "png"
+      }
+    },
+    "game-title-art/glazed/full/webp": {
+      "path": "assets/game-title-art/glazed/full.webp",
+      "sha256": "5a22402fde7a82c758a5feb240edf8e422ee1bf008635e1cac6126e6845f197b",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "glazed",
+        "size": "full",
+        "format": "webp"
+      }
+    },
+    "game-title-art/glazed/small/png": {
+      "path": "assets/game-title-art/glazed/small.png",
+      "sha256": "b885ae7cad104dcd508591f6fb6b875b00a973f06dcf3bbc5a5364f2929fa9aa",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "glazed",
+        "size": "small",
+        "format": "png"
+      }
+    },
+    "game-title-art/glazed/small/webp": {
+      "path": "assets/game-title-art/glazed/small.webp",
+      "sha256": "35589bd85570614ca3d2613b700bc0e773a90c4f31c7eb9e0d5cdf91e0eeff68",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "glazed",
+        "size": "small",
+        "format": "webp"
+      }
+    },
+    "game-title-art/gold/full/png": {
+      "path": "assets/game-title-art/gold/full.png",
+      "sha256": "fa9b9c8a64a35e6a581fadd60e883a73dd8e003c9f04690461f93a94df31f63d",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "gold",
+        "size": "full",
+        "format": "png"
+      }
+    },
+    "game-title-art/gold/full/webp": {
+      "path": "assets/game-title-art/gold/full.webp",
+      "sha256": "57ba8e7ff82aa667f6ae646756bafed4215164bed57c3d97085532956f3604ce",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "gold",
+        "size": "full",
+        "format": "webp"
+      }
+    },
+    "game-title-art/gold/small/png": {
+      "path": "assets/game-title-art/gold/small.png",
+      "sha256": "7d3c3486985f4b3a3e10aac2c00e29524f253ccc4eaec108e2172acee0d33852",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "gold",
+        "size": "small",
+        "format": "png"
+      }
+    },
+    "game-title-art/gold/small/webp": {
+      "path": "assets/game-title-art/gold/small.webp",
+      "sha256": "d4d25a33b1ededa41f714576052af9ed794c413bbf3d018003daf35d8c469345",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "gold",
+        "size": "small",
+        "format": "webp"
+      }
+    },
+    "game-title-art/heart-gold/full/png": {
+      "path": "assets/game-title-art/heart-gold/full.png",
+      "sha256": "dc9daa795840a0e31bff5184ae3605df74883b0507e9b2fce8075c9e7e005daa",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "heart-gold",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "hg",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/heart-gold/full/webp": {
+      "path": "assets/game-title-art/heart-gold/full.webp",
+      "sha256": "a53079865f391f73b794efc76c44e1d8d90f9caaa1d475529c5387f34c2d8eb6",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "heart-gold",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "hg",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/heart-gold/small/png": {
+      "path": "assets/game-title-art/heart-gold/small.png",
+      "sha256": "cf2a64830e76a323b41ae0338491501eb6956346370ee8aae395ffaa99fc1546",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "heart-gold",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "hg",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/heart-gold/small/webp": {
+      "path": "assets/game-title-art/heart-gold/small.webp",
+      "sha256": "ae238b281157d9c0d7bde1d3769447f63790545bca60b0005feafdf8d26a6bfb",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "heart-gold",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "hg",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/inclement-emerald/full/png": {
+      "path": "assets/game-title-art/inclement-emerald/full.png",
+      "sha256": "77171bbe87d7d1e5ddb29e05dfe61bb59be6afb12d0121caa7be58c9239d1fb9",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "inclement-emerald",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "incem",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/inclement-emerald/full/webp": {
+      "path": "assets/game-title-art/inclement-emerald/full.webp",
+      "sha256": "5335e681783675c43948a43146a21950a22427b78672d940b9da7de9953a4ce6",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "inclement-emerald",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "incem",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/inclement-emerald/small/png": {
+      "path": "assets/game-title-art/inclement-emerald/small.png",
+      "sha256": "45837fb8e6e8b777b09382825f3e99b58511f7197838de38de2bbd654fc63132",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "inclement-emerald",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "incem",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/inclement-emerald/small/webp": {
+      "path": "assets/game-title-art/inclement-emerald/small.webp",
+      "sha256": "51bfd7ca98439badb34b8ac2402fe024da87b99e1796d2a3062c5466f8c01891",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "inclement-emerald",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "incem",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/leaf-green/full/png": {
+      "path": "assets/game-title-art/leaf-green/full.png",
+      "sha256": "d88378b40c1ea61e5e0f9728f408adcad4c9b16134039a6064eb69b0a4d0e5b1",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "leaf-green",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "lg",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/leaf-green/full/webp": {
+      "path": "assets/game-title-art/leaf-green/full.webp",
+      "sha256": "1c2a4a2024ac2587154d04551b41b544d690efbf40a30099943d2a7c7e41391e",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "leaf-green",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "lg",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/leaf-green/small/png": {
+      "path": "assets/game-title-art/leaf-green/small.png",
+      "sha256": "645b86dea7deda11079f9869c24c29d693529d38bd9ff51f049a012b5e77b6d6",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "leaf-green",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "lg",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/leaf-green/small/webp": {
+      "path": "assets/game-title-art/leaf-green/small.webp",
+      "sha256": "f8de07d72ef8e9020aee62b11e00044470fcd42e064035a5d760ac309787d9ca",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "leaf-green",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "lg",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/moon/full/png": {
+      "path": "assets/game-title-art/moon/full.png",
+      "sha256": "7540bc1990e6822289097da6646824b345b7361012f35728758a9da9ca409074",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "moon",
+        "size": "full",
+        "format": "png"
+      }
+    },
+    "game-title-art/moon/full/webp": {
+      "path": "assets/game-title-art/moon/full.webp",
+      "sha256": "90c1d6730bfd93e8550a7471bd757770e8ec0da51a3be08ed02d412637f43fec",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "moon",
+        "size": "full",
+        "format": "webp"
+      }
+    },
+    "game-title-art/moon/small/png": {
+      "path": "assets/game-title-art/moon/small.png",
+      "sha256": "bcc8dadce956d4adfd7857ac5aeff3840ac85391e517f0d55c86aa3a0cad0f51",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "moon",
+        "size": "small",
+        "format": "png"
+      }
+    },
+    "game-title-art/moon/small/webp": {
+      "path": "assets/game-title-art/moon/small.webp",
+      "sha256": "fd8f7c7184f941a3119fcf5fa44ff2f236d8c263582baa58682fa411280db4f4",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "moon",
+        "size": "small",
+        "format": "webp"
+      }
+    },
+    "game-title-art/new-generations/full/png": {
+      "path": "assets/game-title-art/new-generations/full.png",
+      "sha256": "44e925f26e482b9a085633dd07c2d7b941bbdbe8c43401e9878209a5a4f20d1f",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "new-generations",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "newgen",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/new-generations/full/webp": {
+      "path": "assets/game-title-art/new-generations/full.webp",
+      "sha256": "45431688dbbde0bacf483db87555deda0464bf9f6454be7a2935a86bd09ae70f",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "new-generations",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "newgen",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/new-generations/small/png": {
+      "path": "assets/game-title-art/new-generations/small.png",
+      "sha256": "54b2b300ec3260a5c79e495aca4e24a050f9a358618f8f44f4795b3176249e0b",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "new-generations",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "newgen",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/new-generations/small/webp": {
+      "path": "assets/game-title-art/new-generations/small.webp",
+      "sha256": "e3e0ce14cf253e1d548085666411bd9e3aff2e09f71c2726a96b2f80cc1c5fab",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "new-generations",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "newgen",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/omega-ruby/full/png": {
+      "path": "assets/game-title-art/omega-ruby/full.png",
+      "sha256": "2d51554f666a5359435e1ee747e1eaa3bebc133f67ce68c069aa6318beb28ccc",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "omega-ruby",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "or",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/omega-ruby/full/webp": {
+      "path": "assets/game-title-art/omega-ruby/full.webp",
+      "sha256": "c73d9ca0ee079956d7cc8e51d2b65776c16f8ca0858d3c7255db0c29de9c0a93",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "omega-ruby",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "or",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/omega-ruby/small/png": {
+      "path": "assets/game-title-art/omega-ruby/small.png",
+      "sha256": "ed4d8c5d9522ba1228a525d042a646e0a8dede755fff8b2186dba698a645b480",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "omega-ruby",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "or",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/omega-ruby/small/webp": {
+      "path": "assets/game-title-art/omega-ruby/small.webp",
+      "sha256": "92a2b6278be4eb0c61b833392605c6e2f6cdf6b9df75ca1e5ccde57e9284042c",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "omega-ruby",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "or",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/pearl/full/png": {
+      "path": "assets/game-title-art/pearl/full.png",
+      "sha256": "4d47a9e604ebfbe3a332d2eea1fbfda2b35747e7467b984e1aa0720c0bf33dc6",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "pearl",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "p",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/pearl/full/webp": {
+      "path": "assets/game-title-art/pearl/full.webp",
+      "sha256": "83b21e2fc7a266497d0bb5492d04165405d1d1e0151a72ea18b916c561d9f409",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "pearl",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "p",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/pearl/small/png": {
+      "path": "assets/game-title-art/pearl/small.png",
+      "sha256": "2f80f224164dea0ad93507540cafa0512cd7bb33aeace012714b9532552e5933",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "pearl",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "p",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/pearl/small/webp": {
+      "path": "assets/game-title-art/pearl/small.webp",
+      "sha256": "bb89c6837ada5b2e7b2216c12ea4f3301d8f51509dc1cb23bd5a06208ff8516a",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "pearl",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "p",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/platinum/full/png": {
+      "path": "assets/game-title-art/platinum/full.png",
+      "sha256": "80a74100bed5dc40d78b17b2970817da376011f5929d3b1c01574e963c884b04",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "platinum",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "pt",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/platinum/full/webp": {
+      "path": "assets/game-title-art/platinum/full.webp",
+      "sha256": "f517bebea2718e2bbecaf29fe44856ab611e0747df3eede94fd7d62e3542486c",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "platinum",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "pt",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/platinum/small/png": {
+      "path": "assets/game-title-art/platinum/small.png",
+      "sha256": "4e8f3641cd0112150a168f8396840326cd5b3c50b7a51018302cb381aec41817",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "platinum",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "pt",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/platinum/small/webp": {
+      "path": "assets/game-title-art/platinum/small.webp",
+      "sha256": "60beb170c5d56d3223d0c79d34315bd43e0b1805672ebe2bbcc5978bc78a86c6",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "platinum",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "pt",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/radical-red/full/png": {
+      "path": "assets/game-title-art/radical-red/full.png",
+      "sha256": "14e279db2d9df01be84637655ee61c79745842ec69424ed82d9eb718f25d0db1",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "radical-red",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "radred",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/radical-red/full/webp": {
+      "path": "assets/game-title-art/radical-red/full.webp",
+      "sha256": "180a2cf4c8576c63b316d60eff332db631c0940b9a5bdf583b460031895e32be",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "radical-red",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "radred",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/radical-red/small/png": {
+      "path": "assets/game-title-art/radical-red/small.png",
+      "sha256": "859a3314bd849ca328abcd27e3c9082be1f58801a7de2de07b072cdd4c751178",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "radical-red",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "radred",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/radical-red/small/webp": {
+      "path": "assets/game-title-art/radical-red/small.webp",
+      "sha256": "5f64a49e6d692870a11cd459026e8f3a704952b30d0215bdfe167e7d16f29cf1",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "radical-red",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "radred",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/red/full/png": {
+      "path": "assets/game-title-art/red/full.png",
+      "sha256": "6914302484c2712991cae71e58af75c90b6e13282c2bf3aa5e0e1fb8dfd86ecd",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "red",
+        "size": "full",
+        "format": "png"
+      }
+    },
+    "game-title-art/red/full/webp": {
+      "path": "assets/game-title-art/red/full.webp",
+      "sha256": "db3dd3196d3e6efa2f97644a59d9d5cdd841ce8920364f8fabd006ffeb5b0d7e",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "red",
+        "size": "full",
+        "format": "webp"
+      }
+    },
+    "game-title-art/red/small/png": {
+      "path": "assets/game-title-art/red/small.png",
+      "sha256": "1dc10db068ffd1db83e2ffd2858e07a6622d2d95062a809afe40963a2242a075",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "red",
+        "size": "small",
+        "format": "png"
+      }
+    },
+    "game-title-art/red/small/webp": {
+      "path": "assets/game-title-art/red/small.webp",
+      "sha256": "546426ab860bd723259b05e597a7a8510188c5f40a85f1a1e647c1154d23219e",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "red",
+        "size": "small",
+        "format": "webp"
+      }
+    },
+    "game-title-art/renegade-platinum/full/png": {
+      "path": "assets/game-title-art/renegade-platinum/full.png",
+      "sha256": "256481cffbdc00d1fb34c37e1f282e4bba0b453c98d8dabf876e538918e424f2",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "renegade-platinum",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "renplat",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/renegade-platinum/full/webp": {
+      "path": "assets/game-title-art/renegade-platinum/full.webp",
+      "sha256": "1318cfa9b6b2897209312cc545e2ba378d3d5f3d376c05aca9c7c7289bccbc46",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "renegade-platinum",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "renplat",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/renegade-platinum/small/png": {
+      "path": "assets/game-title-art/renegade-platinum/small.png",
+      "sha256": "92c7d66abab8318b2c1dd95b14faf2dae2514c109be09c3eb3bab9602e014e77",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "renegade-platinum",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "renplat",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/renegade-platinum/small/webp": {
+      "path": "assets/game-title-art/renegade-platinum/small.webp",
+      "sha256": "22e5137219469000e6d11ae9da49d98614b000c3ce10d61a9dfe91559fa1821b",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "renegade-platinum",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "renplat",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/rising-ruby/full/png": {
+      "path": "assets/game-title-art/rising-ruby/full.png",
+      "sha256": "6f056ffe09946570a96ff79273a8b3a83240788f8f4b16227b396114914aabfc",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "rising-ruby",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "rrss",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/rising-ruby/full/webp": {
+      "path": "assets/game-title-art/rising-ruby/full.webp",
+      "sha256": "2dd12757b345405a5558f3a127891d2ff0699f36533d7662d3a5b4806223ff48",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "rising-ruby",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "rrss",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/rising-ruby/small/png": {
+      "path": "assets/game-title-art/rising-ruby/small.png",
+      "sha256": "4b1cba5a1e06729ec9c679e4e2e6f6053c931b19efc27b897ce1f4899a655502",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "rising-ruby",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "rrss",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/rising-ruby/small/webp": {
+      "path": "assets/game-title-art/rising-ruby/small.webp",
+      "sha256": "3b0c08b95b0133b7b39a61e42a14b84f3e9d896063e9ba1abef31046235bbab7",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "rising-ruby",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "rrss",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/rising-sinking/full/png": {
+      "path": "assets/game-title-art/rising-sinking/full.png",
+      "sha256": "3ae6bf7389b1a09eabe423b60028ba38c13185096f1e87af872eb005e34a7384",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "rising-sinking",
+        "size": "full",
+        "format": "png"
+      }
+    },
+    "game-title-art/rising-sinking/full/webp": {
+      "path": "assets/game-title-art/rising-sinking/full.webp",
+      "sha256": "1a0c6f123caefe8f50153e48e6e3ffb188ff43690db72435e2b364fd15cc5cc3",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "rising-sinking",
+        "size": "full",
+        "format": "webp"
+      }
+    },
+    "game-title-art/rising-sinking/small/png": {
+      "path": "assets/game-title-art/rising-sinking/small.png",
+      "sha256": "d87d07c1a9a5317e704c1d7a6470ded83f0f6feb986ff3fd8e7abce8714d7c17",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "rising-sinking",
+        "size": "small",
+        "format": "png"
+      }
+    },
+    "game-title-art/rising-sinking/small/webp": {
+      "path": "assets/game-title-art/rising-sinking/small.webp",
+      "sha256": "3916dbd13a68c2b10e58a910fb9fb59b0e0d577d9d13d2828c8df832dde98dda",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "rising-sinking",
+        "size": "small",
+        "format": "webp"
+      }
+    },
+    "game-title-art/ruby/full/png": {
+      "path": "assets/game-title-art/ruby/full.png",
+      "sha256": "662b41b592a4647930d0e545a97be704120225348507e1f7c8fc9f93f45b1120",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "ruby",
+        "size": "full",
+        "format": "png"
+      }
+    },
+    "game-title-art/ruby/full/webp": {
+      "path": "assets/game-title-art/ruby/full.webp",
+      "sha256": "e6b16dd2245716882a249178294039ad1761debac624819e96ed7fe18ee83543",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "ruby",
+        "size": "full",
+        "format": "webp"
+      }
+    },
+    "game-title-art/ruby/small/png": {
+      "path": "assets/game-title-art/ruby/small.png",
+      "sha256": "7dc6d3af518eb495e10a8a37655033df860c135b5b80a526e8bd57f293bd0a2d",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "ruby",
+        "size": "small",
+        "format": "png"
+      }
+    },
+    "game-title-art/ruby/small/webp": {
+      "path": "assets/game-title-art/ruby/small.webp",
+      "sha256": "67bd05b3733a2a5d075a102d7ae743f8f25a21f87acba1d70242116d46c029dc",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "ruby",
+        "size": "small",
+        "format": "webp"
+      }
+    },
+    "game-title-art/runbun/full/png": {
+      "path": "assets/game-title-art/runbun/full.png",
+      "sha256": "4020324e010743751257d8486bf05ee682a359ff9ce7a981b51f6424b398b653",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "runbun",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "emerald-run-and-bun",
+          "size": "full",
+          "format": "png"
+        },
+        {
+          "titleId": "emrunbun",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/runbun/full/webp": {
+      "path": "assets/game-title-art/runbun/full.webp",
+      "sha256": "d656d1f9cd78d51a78066a138f758b0329b776e295e7f597cb1c934724f7d3bb",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "runbun",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "emerald-run-and-bun",
+          "size": "full",
+          "format": "webp"
+        },
+        {
+          "titleId": "emrunbun",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/runbun/small/png": {
+      "path": "assets/game-title-art/runbun/small.png",
+      "sha256": "aae5c2856d161a93c0ef054886d582f2e87456b8000c9aa261f5cecf932559c0",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "runbun",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "emerald-run-and-bun",
+          "size": "small",
+          "format": "png"
+        },
+        {
+          "titleId": "emrunbun",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/runbun/small/webp": {
+      "path": "assets/game-title-art/runbun/small.webp",
+      "sha256": "bde31357a82e8435f827795f3882a37ad40126cb14e958fbd71c126be3186068",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "runbun",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "emerald-run-and-bun",
+          "size": "small",
+          "format": "webp"
+        },
+        {
+          "titleId": "emrunbun",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/sacred-gold/full/png": {
+      "path": "assets/game-title-art/sacred-gold/full.png",
+      "sha256": "545f6ed10b56baba90ac6e53f4915c71cd1fea2782bfeda90463e49124a50fc2",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "sacred-gold",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "sacredgold",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/sacred-gold/full/webp": {
+      "path": "assets/game-title-art/sacred-gold/full.webp",
+      "sha256": "0f68e96f9d7487bd382f15819baa1bda999a26a58a2c62aa4a93439c4c969aa1",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "sacred-gold",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "sacredgold",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/sacred-gold/small/png": {
+      "path": "assets/game-title-art/sacred-gold/small.png",
+      "sha256": "f4464d0e16bea897cae30a255ab77da460f8e5cf58ab0a8184f0cb833a2ed0be",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "sacred-gold",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "sacredgold",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/sacred-gold/small/webp": {
+      "path": "assets/game-title-art/sacred-gold/small.webp",
+      "sha256": "c735b621e52112b5e5f96e7bf970d80c969f9435793351d26ba9a3da6fd28f61",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "sacred-gold",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "sacredgold",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/sapphire/full/png": {
+      "path": "assets/game-title-art/sapphire/full.png",
+      "sha256": "348cf55cefc76943f21053cfd5081af0ae219c193faa0700fd09930e0686fdb2",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "sapphire",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "saph",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/sapphire/full/webp": {
+      "path": "assets/game-title-art/sapphire/full.webp",
+      "sha256": "cd6697440e4951ed3ca68e855eb5c0d0fe67618682261c9735911d25cc9f2633",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "sapphire",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "saph",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/sapphire/small/png": {
+      "path": "assets/game-title-art/sapphire/small.png",
+      "sha256": "7a221aa9ff56b4a79e5ca5d7b7e190aba85412c71c44ccc26d41ee2baec17d95",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "sapphire",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "saph",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/sapphire/small/webp": {
+      "path": "assets/game-title-art/sapphire/small.webp",
+      "sha256": "22d58fdedd04afdf60a3fa629a640652fe1f2af5d7285de8d9bd798c6658b95e",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "sapphire",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "saph",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/scarlet/full/png": {
+      "path": "assets/game-title-art/scarlet/full.png",
+      "sha256": "505c861afc00b38dbbe92daf458993092a2f9cefa0bdbad027a88595da68a2c4",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "scarlet",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "sc",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/scarlet/full/webp": {
+      "path": "assets/game-title-art/scarlet/full.webp",
+      "sha256": "b96434bc9497bd1a871e05bfbf5034036d41e6daecd7e39d19f7ee9a0e404a6d",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "scarlet",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "sc",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/scarlet/small/png": {
+      "path": "assets/game-title-art/scarlet/small.png",
+      "sha256": "fe74b1c69c9531304708fe153fdc4181011ec0e0ff1408bc14e10dd1268c9e02",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "scarlet",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "sc",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/scarlet/small/webp": {
+      "path": "assets/game-title-art/scarlet/small.webp",
+      "sha256": "549abf45bdd05a681ac6fffdc84396de03afb7527d2db144f573e9a272376254",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "scarlet",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "sc",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/shield/full/png": {
+      "path": "assets/game-title-art/shield/full.png",
+      "sha256": "948395117d38ae586941ce616a3b06b97f96b1a2889a976e33119279be4d3d82",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "shield",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "sh",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/shield/full/webp": {
+      "path": "assets/game-title-art/shield/full.webp",
+      "sha256": "3bf479fad5df9112407e3ad5aa00a987c8d945bd9e50eb08b45303c9179e96c3",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "shield",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "sh",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/shield/small/png": {
+      "path": "assets/game-title-art/shield/small.png",
+      "sha256": "c76f6a624fc790118cc5a84f55635573149111fdcebef6ea6af18766192b0199",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "shield",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "sh",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/shield/small/webp": {
+      "path": "assets/game-title-art/shield/small.webp",
+      "sha256": "fcbf0e39020e333ddc719593b0c3b66124aac27f153da5195fb76f6da0b122be",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "shield",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "sh",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/shining-pearl/full/png": {
+      "path": "assets/game-title-art/shining-pearl/full.png",
+      "sha256": "d1c7f7dba1fe67cdc62e00af0ac270942e8a1fbc237270070b80ed48e16fa00c",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "shining-pearl",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "sp",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/shining-pearl/full/webp": {
+      "path": "assets/game-title-art/shining-pearl/full.webp",
+      "sha256": "ec0f436c24615d57dfd73422d218c251d90cb928d701dea69e1aa7d683432080",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "shining-pearl",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "sp",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/shining-pearl/small/png": {
+      "path": "assets/game-title-art/shining-pearl/small.png",
+      "sha256": "91603a37753dd2386e2c0b797928db0939837185f6a44c349a791ea15a503376",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "shining-pearl",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "sp",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/shining-pearl/small/webp": {
+      "path": "assets/game-title-art/shining-pearl/small.webp",
+      "sha256": "6472a4e985b6abf85d719256f59ec0120f978b9e833171aa6868dcaae5db3a51",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "shining-pearl",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "sp",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/silver/full/png": {
+      "path": "assets/game-title-art/silver/full.png",
+      "sha256": "ef9e9324886ae66b12ca47ecdba9e3a53f39427b79367c00dfc7155f0a0baf35",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "silver",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "silv",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/silver/full/webp": {
+      "path": "assets/game-title-art/silver/full.webp",
+      "sha256": "9b42721e53d9538db4e80493a674d36adb977139ae775d1888829b6bbdeb6d20",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "silver",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "silv",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/silver/small/png": {
+      "path": "assets/game-title-art/silver/small.png",
+      "sha256": "a666f3a97641676d42cbb6d629cdab944f9c3dc0a8ae04db34a9f2071c4591db",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "silver",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "silv",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/silver/small/webp": {
+      "path": "assets/game-title-art/silver/small.webp",
+      "sha256": "011fb18b5d24340faaa13466cd6c7f6f69c7aaedbfba15f55eff6368071842a6",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "silver",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "silv",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/sinking-sapphire/full/png": {
+      "path": "assets/game-title-art/sinking-sapphire/full.png",
+      "sha256": "2685ee0cdceb6080b260691a6929a44ac9d4b057cd1a71cd0c4144b4281d74cb",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "sinking-sapphire",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "ssaph",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/sinking-sapphire/full/webp": {
+      "path": "assets/game-title-art/sinking-sapphire/full.webp",
+      "sha256": "3448e353b8575198cc8f5dd3a3fed83513d2e38d449310fe825cc0f0fb7db598",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "sinking-sapphire",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "ssaph",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/sinking-sapphire/small/png": {
+      "path": "assets/game-title-art/sinking-sapphire/small.png",
+      "sha256": "57a70a3821c655ef6dc6b9ddeae89a828aab95b4ca8f61a10e1da58ab4f6193b",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "sinking-sapphire",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "ssaph",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/sinking-sapphire/small/webp": {
+      "path": "assets/game-title-art/sinking-sapphire/small.webp",
+      "sha256": "e01da1c433543a31704124aec2d159f9a1a545b91bff357d35eb45b95c1d7e2d",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "sinking-sapphire",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "ssaph",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/soul-silver/full/png": {
+      "path": "assets/game-title-art/soul-silver/full.png",
+      "sha256": "da00b100f5f538bb19879d968a9f735b408bef7bbb4150ed11be0933c2e0c9e0",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "soul-silver",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "ss",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/soul-silver/full/webp": {
+      "path": "assets/game-title-art/soul-silver/full.webp",
+      "sha256": "30ffad3900d65e84a5029d55879c3ff7d66edf8ad0d641f1f655484b2e6f4c59",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "soul-silver",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "ss",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/soul-silver/small/png": {
+      "path": "assets/game-title-art/soul-silver/small.png",
+      "sha256": "48b6cb9f8c54a2314c0040a12de78c9ce4044b2505b4a4610b2a760e088c6e9a",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "soul-silver",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "ss",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/soul-silver/small/webp": {
+      "path": "assets/game-title-art/soul-silver/small.webp",
+      "sha256": "099b64e2ae5aae7077ef5ecf4d6b82708699d077bd5c638b913c20c8e2d6d469",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "soul-silver",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "ss",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/storm-silver/full/png": {
+      "path": "assets/game-title-art/storm-silver/full.png",
+      "sha256": "40f23b8cc0ef8861d996413b966aa5f6410d62dab2d9ad387028ddf5289e33cf",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "storm-silver",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "stormsilv",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/storm-silver/full/webp": {
+      "path": "assets/game-title-art/storm-silver/full.webp",
+      "sha256": "f24da70f912113393e6e92e5a1e7650ed103db9a9e22ad4e42f3d01d0a780b95",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "storm-silver",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "stormsilv",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/storm-silver/small/png": {
+      "path": "assets/game-title-art/storm-silver/small.png",
+      "sha256": "9bc1bb4b0031f3bf9225a5468f7cfc5d2a566462871f1b2a17f3d9f3be1d2d2b",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "storm-silver",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "stormsilv",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/storm-silver/small/webp": {
+      "path": "assets/game-title-art/storm-silver/small.webp",
+      "sha256": "de34329e2b5a7553bc098fa6d32dcf3a089e1971412f522065801c2abf24c06d",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "storm-silver",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "stormsilv",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/sun/full/png": {
+      "path": "assets/game-title-art/sun/full.png",
+      "sha256": "319363a336e8d6b1d898ec360b2fb1616b0f0345e22dfb1f1d95e3c8727678a2",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "sun",
+        "size": "full",
+        "format": "png"
+      }
+    },
+    "game-title-art/sun/full/webp": {
+      "path": "assets/game-title-art/sun/full.webp",
+      "sha256": "36d06b07cd56db86be17a8788e2beda1733952d0f75136eb57fe89b5335c03a9",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "sun",
+        "size": "full",
+        "format": "webp"
+      }
+    },
+    "game-title-art/sun/small/png": {
+      "path": "assets/game-title-art/sun/small.png",
+      "sha256": "992c885a53cd4ef66fbee2632c14cd08a2385d7a7e28187504a18e488662dd90",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "sun",
+        "size": "small",
+        "format": "png"
+      }
+    },
+    "game-title-art/sun/small/webp": {
+      "path": "assets/game-title-art/sun/small.webp",
+      "sha256": "48ca69ad4019bf446ea8dc744ab17a354a453d156fc8e447f6966722fbeea50e",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "sun",
+        "size": "small",
+        "format": "webp"
+      }
+    },
+    "game-title-art/sword/full/png": {
+      "path": "assets/game-title-art/sword/full.png",
+      "sha256": "1a4fd58ec9d53a5aadb5c405ea84c6eef5cd454582559f7fb7fa6e66c1296396",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "sword",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "sw",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/sword/full/webp": {
+      "path": "assets/game-title-art/sword/full.webp",
+      "sha256": "21f237c97cb6e39c8611b40c85ca564b5e3c936708823de5c43593689440afde",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "sword",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "sw",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/sword/small/png": {
+      "path": "assets/game-title-art/sword/small.png",
+      "sha256": "0f633d1321dfb9fcaf687c3bf6105172d043d7c98e924198f6007c5e7e63f211",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "sword",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "sw",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/sword/small/webp": {
+      "path": "assets/game-title-art/sword/small.webp",
+      "sha256": "cf0f5f99b0cfa4bd8cbf713c6981e64fea00255c814e34b7f55df2f206ced713",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "sword",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "sw",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/ultra-moon/full/png": {
+      "path": "assets/game-title-art/ultra-moon/full.png",
+      "sha256": "31d8e17413fd124b40405561fd20b496e757168fc01906ab88441fadb2db3cb7",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "ultra-moon",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "umoon",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/ultra-moon/full/webp": {
+      "path": "assets/game-title-art/ultra-moon/full.webp",
+      "sha256": "a1189a048bdcd286fe223f6d0ccdf79ea312e5b8140de0c59bdeaf2858b57f08",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "ultra-moon",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "umoon",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/ultra-moon/small/png": {
+      "path": "assets/game-title-art/ultra-moon/small.png",
+      "sha256": "aa667632e712546f8f125e7d54106ae292863fa9c3939068ae89ba9658430a7e",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "ultra-moon",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "umoon",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/ultra-moon/small/webp": {
+      "path": "assets/game-title-art/ultra-moon/small.webp",
+      "sha256": "56c8e1eaa1236f8f77092b1c2dfc45d0266af489a60f691652e5a83183609735",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "ultra-moon",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "umoon",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/ultra-sun/full/png": {
+      "path": "assets/game-title-art/ultra-sun/full.png",
+      "sha256": "a7fd0913966682e2394a9da803f3d1d6b11df03638c7ca9da7729c80d8ea644a",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "ultra-sun",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "usun",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/ultra-sun/full/webp": {
+      "path": "assets/game-title-art/ultra-sun/full.webp",
+      "sha256": "5f4de1f7e6a9c8a6f5fe0c3148999f3a29b65cffd79d77c8ebea3d2e65226df8",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "ultra-sun",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "usun",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/ultra-sun/small/png": {
+      "path": "assets/game-title-art/ultra-sun/small.png",
+      "sha256": "11fb90839367d2745f8b99cb036ac36e4f7fcacffd3eb97fb9334ebe1626ca43",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "ultra-sun",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "usun",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/ultra-sun/small/webp": {
+      "path": "assets/game-title-art/ultra-sun/small.webp",
+      "sha256": "22896e3c16a0c8f30aa82798fc6457630906e3df2c5fd2ee793aef3c422b3ea7",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "ultra-sun",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "usun",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/unbound/full/png": {
+      "path": "assets/game-title-art/unbound/full.png",
+      "sha256": "2e12263952958ef3878d644376b51d675f699e50056f3a386623a543ec7d1fb5",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "unbound",
+        "size": "full",
+        "format": "png"
+      }
+    },
+    "game-title-art/unbound/full/webp": {
+      "path": "assets/game-title-art/unbound/full.webp",
+      "sha256": "2929f3c254c428151e5f69f9862495e542d2d03cbe4f70ab44cee0475569adaf",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "unbound",
+        "size": "full",
+        "format": "webp"
+      }
+    },
+    "game-title-art/unbound/small/png": {
+      "path": "assets/game-title-art/unbound/small.png",
+      "sha256": "a3981bbb0ee46415cd416027c458e759797c4e693406b7141ec1e48941273a93",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "unbound",
+        "size": "small",
+        "format": "png"
+      }
+    },
+    "game-title-art/unbound/small/webp": {
+      "path": "assets/game-title-art/unbound/small.webp",
+      "sha256": "e7af274bebb647c1c95ae2a628babf67dc2b900b79ba32f1023c7985adfa1155",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "unbound",
+        "size": "small",
+        "format": "webp"
+      }
+    },
+    "game-title-art/violet/full/png": {
+      "path": "assets/game-title-art/violet/full.png",
+      "sha256": "dba89efc9c2ea2f1462d6aba9885b329ba3cf2e85f2374e919096c51519f004f",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "violet",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "vi",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/violet/full/webp": {
+      "path": "assets/game-title-art/violet/full.webp",
+      "sha256": "e323a4d0f21406814796fd510344277d059523af402c7a489c06c552a6889c74",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "violet",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "vi",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/violet/small/png": {
+      "path": "assets/game-title-art/violet/small.png",
+      "sha256": "16b2c725e50015e68665f1f6bae7c917e5ccac68a5fc1d67241115fd8bfb1e52",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "violet",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "vi",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/violet/small/webp": {
+      "path": "assets/game-title-art/violet/small.webp",
+      "sha256": "7674b4dbaf72d4008b224fd5b745c081fd53dd1848de53659c246d147bb8a8a7",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "violet",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "vi",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/volt-white/full/png": {
+      "path": "assets/game-title-art/volt-white/full.png",
+      "sha256": "f5297a7459c5f6ff946d1ad211d825d566fb66c8f535877c17e8038e3c8d32a3",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "volt-white",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "volt",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/volt-white/full/webp": {
+      "path": "assets/game-title-art/volt-white/full.webp",
+      "sha256": "b7e33d6ac4c86d0b004270081a47a267807651e48e7ea3fe0b0c0fac3e401760",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "volt-white",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "volt",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/volt-white/small/png": {
+      "path": "assets/game-title-art/volt-white/small.png",
+      "sha256": "5f293680bf3b0493e4fcd8d4b299d47858fbe1a3554b1c379bdf15e125ad0bbc",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "volt-white",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "volt",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/volt-white/small/webp": {
+      "path": "assets/game-title-art/volt-white/small.webp",
+      "sha256": "54dc4695db8517806d4413be3de88b1b317ce9d8177311e8cbf4eb12c0c57b0d",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "volt-white",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "volt",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/white-2/full/png": {
+      "path": "assets/game-title-art/white-2/full.png",
+      "sha256": "02239150939f59f47e3a36f15b87f91b05d9a69e9fa6d60dd9ea72dbabf6471f",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "white-2",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "wh2",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/white-2/full/webp": {
+      "path": "assets/game-title-art/white-2/full.webp",
+      "sha256": "2c1f6885fca5519eed9220e7ddd75f9516377725158b39491076dc9495dd9831",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "white-2",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "wh2",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/white-2/small/png": {
+      "path": "assets/game-title-art/white-2/small.png",
+      "sha256": "79063b8813ccbeb1335695578b4bc65724fcdbba2921927ade4f1d7cb50f08aa",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "white-2",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "wh2",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/white-2/small/webp": {
+      "path": "assets/game-title-art/white-2/small.webp",
+      "sha256": "55fa49ee927478f22b90de091d365fe1d3140052d5f8ee70c97393c33f341fd7",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "white-2",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "wh2",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/white/full/png": {
+      "path": "assets/game-title-art/white/full.png",
+      "sha256": "2a755a8b4cbe8b0bae108f47285c28c1966e6b94cbf35a16fbc350208a115fc4",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "white",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "wh",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/white/full/webp": {
+      "path": "assets/game-title-art/white/full.webp",
+      "sha256": "3e1e54cc1b0ce282f7f27e5ee5d53a0ca12e81d89c080f265b9b600f339043d9",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "white",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "wh",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/white/small/png": {
+      "path": "assets/game-title-art/white/small.png",
+      "sha256": "dd668a6d6da4335ab310f352033de3cca130ada8b63edd4840fe152f54ed1a4a",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "white",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "wh",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/white/small/webp": {
+      "path": "assets/game-title-art/white/small.webp",
+      "sha256": "e437c9e1c2bcd5a2a17dd7d3f53b38e0b72838713dd4c2f35ab61fc1926f0598",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "white",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "wh",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/x/full/png": {
+      "path": "assets/game-title-art/x/full.png",
+      "sha256": "2cebd37abf2149a835c30558d54beba0c8295a6a89eb91e339ef8ed89865607e",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "x",
+        "size": "full",
+        "format": "png"
+      }
+    },
+    "game-title-art/x/full/webp": {
+      "path": "assets/game-title-art/x/full.webp",
+      "sha256": "ad7bd2076ce8298e84134c894467a439e96ffbe039b389ef81fdae773fea22bd",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "x",
+        "size": "full",
+        "format": "webp"
+      }
+    },
+    "game-title-art/x/small/png": {
+      "path": "assets/game-title-art/x/small.png",
+      "sha256": "a27e6d44f310e47128153c674f9c8f252c3f21457fb84f21fb2bd6a3b98e5e65",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "x",
+        "size": "small",
+        "format": "png"
+      }
+    },
+    "game-title-art/x/small/webp": {
+      "path": "assets/game-title-art/x/small.webp",
+      "sha256": "391243df3eeeb8d98232e17380c3abf190fd997495970c2ebf7d06bc9c4c209e",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "x",
+        "size": "small",
+        "format": "webp"
+      }
+    },
+    "game-title-art/y/full/png": {
+      "path": "assets/game-title-art/y/full.png",
+      "sha256": "182254d959e9df535bb1b21cd7531b88a476b4411d068d52e48b230336d7838d",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "y",
+        "size": "full",
+        "format": "png"
+      }
+    },
+    "game-title-art/y/full/webp": {
+      "path": "assets/game-title-art/y/full.webp",
+      "sha256": "d5cae649c730cebaeb02e9d51b1f071a3281f67b12c6be7295c25a7af7446fa5",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "y",
+        "size": "full",
+        "format": "webp"
+      }
+    },
+    "game-title-art/y/small/png": {
+      "path": "assets/game-title-art/y/small.png",
+      "sha256": "fa7de13b0852c28d96e8f559b162c95c6a309ce33d19ec7b083728d6bf1bd693",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "y",
+        "size": "small",
+        "format": "png"
+      }
+    },
+    "game-title-art/y/small/webp": {
+      "path": "assets/game-title-art/y/small.webp",
+      "sha256": "8decca7e304775ef235e4f889147e3f298f31dd827cc76444693534a40e01a5e",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "y",
+        "size": "small",
+        "format": "webp"
+      }
+    },
+    "game-title-art/yellow/full/png": {
+      "path": "assets/game-title-art/yellow/full.png",
+      "sha256": "dc21deeb8bfef68943682f59e4b227181ac57b34736ce4ad52ec78e3d02a7adc",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "yellow",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "yel",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/yellow/full/webp": {
+      "path": "assets/game-title-art/yellow/full.webp",
+      "sha256": "bde4f28ef0f0bb12c66b858714739d40c45f50049ef9538cbc88c52d48d701fa",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "yellow",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "yel",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/yellow/small/png": {
+      "path": "assets/game-title-art/yellow/small.png",
+      "sha256": "8bf9a485e4108f8413dfe392dc7c6096f6a482a52bb737299c0c783a7f386e91",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "yellow",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "yel",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/yellow/small/webp": {
+      "path": "assets/game-title-art/yellow/small.webp",
+      "sha256": "cc07e35c920bdac3c8e8899e977025a47cdeff8bc2a723cef4ebbbd51d125b0e",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "yellow",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "yel",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    }
+  }
+}

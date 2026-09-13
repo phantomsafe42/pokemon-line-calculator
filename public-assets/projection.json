@@ -2,10 +2,10 @@
   "schemaVersion": 2,
   "generated": true,
   "sourceRepository": "phantomsafe42/pokemon-assets",
-  "sourceCommit": "86d01088927edd72257b290b24aab6600d4b3b99",
-  "sourceRelease": "0.5.0-dev.1",
-  "sourceIndexSha256": "8ea932f01af335da8e6f5b105c94cd874defb216ac6582dc865b8afb8c622884",
-  "sourceManifestSha256": "015470236952e2a9a95d0e68c365e789843cefbe3915c3d770a589e1465ec78c",
+  "sourceCommit": "305b4cec25e624201abca9ac1f56f67bef8f280c",
+  "sourceRelease": "0.6.0-dev.1",
+  "sourceIndexSha256": "a8baaaa2a8bfc6b99a1167971e1e00b21e8b6076cedf1ce934381e06f5c1c61a",
+  "sourceManifestSha256": "f7670a4182897f4e4cdc8949259e626549dbfa2c7744d86c02a7a706179b7a1d",
   "includedProfiles": [
     "gen5-animated",
     "gen5-static",
@@ -19,8 +19,8 @@
   "files": [
     {
       "path": "asset-index.json",
-      "sha256": "044092e5cd524103db46562b6e8e7da0bd3fc181b37377919c88d367de95576e",
-      "bytes": 2012
+      "sha256": "9505965a874d00b722a5f463672c2af0e4ef60f72f3f9139bc092aae65986cf1",
+      "bytes": 2342
     },
     {
       "path": "assets/badge-icons/b2w2-unova/basic.png",
@@ -169,7 +169,7 @@
     },
     {
       "path": "assets/badge-icons/index.json",
-      "sha256": "ebe3e501e8a7defa0d12076008d9af8cbaed06e82b3fdbb95dfe1298b75bedf3",
+      "sha256": "eab5ad8f90f05f4698f21022ff838c3c013ef7c7cc2d6549c4f3a5a4df3db5db",
       "bytes": 21061
     },
     {
@@ -258,8 +258,1033 @@
       "bytes": 24238
     },
     {
+      "path": "assets/game-title-art/alpha-sapphire/full.png",
+      "sha256": "27a8523c90e6da0d5f4f1b376662517c6b7cf5d791527c630eb48b61782614ba",
+      "bytes": 121510
+    },
+    {
+      "path": "assets/game-title-art/alpha-sapphire/full.webp",
+      "sha256": "de192db3e32ecb52dbbac5e5d5ed426dc76f96ac2404b315df65593aafd12faf",
+      "bytes": 18696
+    },
+    {
+      "path": "assets/game-title-art/alpha-sapphire/small.png",
+      "sha256": "bad447f8c0582786ba9a72a47d99cda92e7b583f940e33c22f275f23dae58310",
+      "bytes": 36541
+    },
+    {
+      "path": "assets/game-title-art/alpha-sapphire/small.webp",
+      "sha256": "c5cbfaf011ae3ac287f7b70a5a8264e5d4d7c9c294593b88d9c23adafcab65cd",
+      "bytes": 28560
+    },
+    {
+      "path": "assets/game-title-art/black-2/full.png",
+      "sha256": "e4ce968f9e5b2d9687c10ef5c2caf19fa401ab44a83aa629e1e5cff874c0de45",
+      "bytes": 110242
+    },
+    {
+      "path": "assets/game-title-art/black-2/full.webp",
+      "sha256": "195d292112120bf71fc62967c2eae2dfd813dabed8f9e868999564d68b9b3d9c",
+      "bytes": 16194
+    },
+    {
+      "path": "assets/game-title-art/black-2/small.png",
+      "sha256": "1ae9d9745aa5ca17674134ed5a50b5768971ac43cb8317afde8515b34ed5fbc0",
+      "bytes": 34795
+    },
+    {
+      "path": "assets/game-title-art/black-2/small.webp",
+      "sha256": "cf0559948d7b81ab44fbafa49901f4882be80e1b571c265f23c56e0451cbac2f",
+      "bytes": 26108
+    },
+    {
+      "path": "assets/game-title-art/black/full.png",
+      "sha256": "e7e3e822d43e085b611245ddd5bd95ca125bd69341c814132197d09ef10bfa00",
+      "bytes": 88206
+    },
+    {
+      "path": "assets/game-title-art/black/full.webp",
+      "sha256": "57a0413a6779f5d7088987471fd195431f10ba1a5b93268d5f3151ddcd292153",
+      "bytes": 14092
+    },
+    {
+      "path": "assets/game-title-art/black/small.png",
+      "sha256": "baee8924993a7f4f5412bea47a8fb2ce40b046e988d2463258c59309775778e8",
+      "bytes": 29071
+    },
+    {
+      "path": "assets/game-title-art/black/small.webp",
+      "sha256": "15d12349a21bbc9bc427d22c9116e47f8b29bbfbba188130e7603b3d1fcfe022",
+      "bytes": 22008
+    },
+    {
+      "path": "assets/game-title-art/blaze-black-volt-white-2-redux/full.png",
+      "sha256": "8a26a486c8d4e1fd31ea7ecba53c3b2816da4f2aeb3c7fa4a698f5e3052e6217",
+      "bytes": 125702
+    },
+    {
+      "path": "assets/game-title-art/blaze-black-volt-white-2-redux/full.webp",
+      "sha256": "98d58ed406345bd8a3f9dd1da168e82a51a3dca4db7eeb0809079a85f100a1ce",
+      "bytes": 19800
+    },
+    {
+      "path": "assets/game-title-art/blaze-black-volt-white-2-redux/small.png",
+      "sha256": "c732fb7a0bfee448b916cb1a1a0b90907ac4828f80880347ee227ee17fef08fd",
+      "bytes": 41597
+    },
+    {
+      "path": "assets/game-title-art/blaze-black-volt-white-2-redux/small.webp",
+      "sha256": "08ba4dbf7a9b8091e1f7bd3e596d39cb0fbb838fa28e86b366b09000113f9f85",
+      "bytes": 27156
+    },
+    {
+      "path": "assets/game-title-art/blaze-black/full.png",
+      "sha256": "e1cbac76559b63671569da4b580c0b4a8376917cb87e9208b816077167249467",
+      "bytes": 92831
+    },
+    {
+      "path": "assets/game-title-art/blaze-black/full.webp",
+      "sha256": "263bcaff6c7709e81bba0cb9b1470a28c50b43d256e5fd7953365d242c2f474d",
+      "bytes": 11716
+    },
+    {
+      "path": "assets/game-title-art/blaze-black/small.png",
+      "sha256": "81b1bd514c9172dba8903a6a001035b976c76353db8373814ec7a55b163112e9",
+      "bytes": 28336
+    },
+    {
+      "path": "assets/game-title-art/blaze-black/small.webp",
+      "sha256": "0f856560fe6a6e9dfc255423462518e6e3be024470411e92fb3829bba2ff0dfc",
+      "bytes": 20174
+    },
+    {
+      "path": "assets/game-title-art/blazing-emerald/full.png",
+      "sha256": "e689d0c78071ea39d16021a6ffec5405b899141163433e020065d0560e4503b6",
+      "bytes": 109000
+    },
+    {
+      "path": "assets/game-title-art/blazing-emerald/full.webp",
+      "sha256": "7371d24445c22383e31c6cc1390efc3e980fd13c25384e2bfa3eac995a064411",
+      "bytes": 19464
+    },
+    {
+      "path": "assets/game-title-art/blazing-emerald/small.png",
+      "sha256": "d8a92fe1e574d766c1909b6f062319177aa4d13dc8afb837177db949ea3a9c5d",
+      "bytes": 34373
+    },
+    {
+      "path": "assets/game-title-art/blazing-emerald/small.webp",
+      "sha256": "5b287471f389563f126e6d385928631060c9c9c6cd6b1a5acbd33119170b6d80",
+      "bytes": 27812
+    },
+    {
+      "path": "assets/game-title-art/blue/full.png",
+      "sha256": "e2d46a0cd2e5a6ab2fcf245c311a8b7ca63a42397a2ca4c510c08353eb05660f",
+      "bytes": 113491
+    },
+    {
+      "path": "assets/game-title-art/blue/full.webp",
+      "sha256": "b87943b867e4089ccb2a5704f73e1f0f317c53275a8848a3b562013dccfabc38",
+      "bytes": 18624
+    },
+    {
+      "path": "assets/game-title-art/blue/small.png",
+      "sha256": "c2708f9d1a7def9ddd686c301b8f2ccca5b044566e2bf1e0e82de74868d5ebb8",
+      "bytes": 34692
+    },
+    {
+      "path": "assets/game-title-art/blue/small.webp",
+      "sha256": "cd098d1c300a6d0f57c44bc8c3990228b138b408ce20046261826be0bd7ebf48",
+      "bytes": 24652
+    },
+    {
+      "path": "assets/game-title-art/brilliant-diamond/full.png",
+      "sha256": "e15dd2bc6a5ac978b833e2906f8b665aa7a876e0a9228a20848f62233b649509",
+      "bytes": 113023
+    },
+    {
+      "path": "assets/game-title-art/brilliant-diamond/full.webp",
+      "sha256": "43b4c621f709a339510df64dfe825fb61fd2f17cf2a349999ddaf53ef212adbf",
+      "bytes": 17360
+    },
+    {
+      "path": "assets/game-title-art/brilliant-diamond/small.png",
+      "sha256": "65617f1bcd9078e3b031f9e278c551f423e2a4e27c2b8685460ba83980a672fe",
+      "bytes": 33108
+    },
+    {
+      "path": "assets/game-title-art/brilliant-diamond/small.webp",
+      "sha256": "6abdf5185a9182ddeca77a6097efbfeb446545b6ddbfb192902c7588c1dcad35",
+      "bytes": 25452
+    },
+    {
+      "path": "assets/game-title-art/crystal/full.png",
+      "sha256": "324b26b3d63f44e8c6a0f7215ddc17478ddb264ba66268ad7b6cc92613e6f05f",
+      "bytes": 115505
+    },
+    {
+      "path": "assets/game-title-art/crystal/full.webp",
+      "sha256": "3034ecb2a030cc5cf94789ebc6e77c74c4b68c5b08eada1230b6af21d8be615d",
+      "bytes": 20008
+    },
+    {
+      "path": "assets/game-title-art/crystal/small.png",
+      "sha256": "62fe0ed9127a9503652099b2425aaa0fd4c1d3e672d84bb4b182056ae86eb3bc",
+      "bytes": 36878
+    },
+    {
+      "path": "assets/game-title-art/crystal/small.webp",
+      "sha256": "1732c3d74b4f6e22eaa30b8f6d84e137e78dee519b9823830711ceed52867949",
+      "bytes": 26662
+    },
+    {
+      "path": "assets/game-title-art/diamond/full.png",
+      "sha256": "78e0e617091f05a865999594b1944e6dffa120dafcd66ad06521d93217b28e18",
+      "bytes": 107621
+    },
+    {
+      "path": "assets/game-title-art/diamond/full.webp",
+      "sha256": "ae79539d35b4c32d27ac340d2a36155fba6cfe5bcee476575dcb941dccfbd83d",
+      "bytes": 17016
+    },
+    {
+      "path": "assets/game-title-art/diamond/small.png",
+      "sha256": "f90f42760a50dae8dfa551492788fd24006486f898c0aff5d9a2340bc9140eda",
+      "bytes": 36185
+    },
+    {
+      "path": "assets/game-title-art/diamond/small.webp",
+      "sha256": "90331713aef091294ceaaa598113ec76bc1938a49869045750a355e90b9e5635",
+      "bytes": 26120
+    },
+    {
+      "path": "assets/game-title-art/emerald-kaizo/full.png",
+      "sha256": "25dcb0477ae27edd5cc635012e6563e1ab9664272352afe59916e1d6518538cb",
+      "bytes": 104646
+    },
+    {
+      "path": "assets/game-title-art/emerald-kaizo/full.webp",
+      "sha256": "fa557b35c1544c2653d92a0e3981e1f87c348aaaf43c6811be0d469ea6e5cd18",
+      "bytes": 15732
+    },
+    {
+      "path": "assets/game-title-art/emerald-kaizo/small.png",
+      "sha256": "50f76f0cb39e794b24239aecf19f6edec424566467b9c758ffd0a8c8f82092b1",
+      "bytes": 31211
+    },
+    {
+      "path": "assets/game-title-art/emerald-kaizo/small.webp",
+      "sha256": "2faf5e821c75dce9902006025eaf44f831a9538f3ee4fad89e7532050a7babf5",
+      "bytes": 23436
+    },
+    {
+      "path": "assets/game-title-art/emerald/full.png",
+      "sha256": "010b31136f80b7cf263bb2969a9cde5b5827276f742f96c05999a12f9b48dc51",
+      "bytes": 98259
+    },
+    {
+      "path": "assets/game-title-art/emerald/full.webp",
+      "sha256": "bcaac1f42fa4463c287e4f25c47c645bc573e69264e3f9315a43d9eaf649b189",
+      "bytes": 15288
+    },
+    {
+      "path": "assets/game-title-art/emerald/small.png",
+      "sha256": "838bf8a296ff13555632d45b4fd7c4ec812b700b9a282ba6975b9d5e517c8a77",
+      "bytes": 33200
+    },
+    {
+      "path": "assets/game-title-art/emerald/small.webp",
+      "sha256": "6d4ecaa38abbb2e5a19ca8b7365fbe09883685b32c1c5577c4c2320c70da3931",
+      "bytes": 24150
+    },
+    {
+      "path": "assets/game-title-art/fire-red/full.png",
+      "sha256": "a97b1ca425c2b514b1eeeac63564b951634b9531c6eca5ffe3b335380a6e94dc",
+      "bytes": 85437
+    },
+    {
+      "path": "assets/game-title-art/fire-red/full.webp",
+      "sha256": "b06954807f3b8a784e9f71fcce934a5a1a746fa729dab0d3affc11c7e53af88b",
+      "bytes": 14188
+    },
+    {
+      "path": "assets/game-title-art/fire-red/small.png",
+      "sha256": "0ff6ac19a0c858588ad144bde1e54e0e972d862515ed347f7691d57f886c42c6",
+      "bytes": 26745
+    },
+    {
+      "path": "assets/game-title-art/fire-red/small.webp",
+      "sha256": "e000848c097f9a1d4c51fb07a8fd9422f506dc215e6d475706aec4881fb59c7c",
+      "bytes": 18768
+    },
+    {
+      "path": "assets/game-title-art/glazed/full.png",
+      "sha256": "2afac760b833b70fdd17cca6a5e40f28c5c9291c11cf602f4be79a0f539b14fc",
+      "bytes": 112068
+    },
+    {
+      "path": "assets/game-title-art/glazed/full.webp",
+      "sha256": "5a22402fde7a82c758a5feb240edf8e422ee1bf008635e1cac6126e6845f197b",
+      "bytes": 15210
+    },
+    {
+      "path": "assets/game-title-art/glazed/small.png",
+      "sha256": "b885ae7cad104dcd508591f6fb6b875b00a973f06dcf3bbc5a5364f2929fa9aa",
+      "bytes": 32585
+    },
+    {
+      "path": "assets/game-title-art/glazed/small.webp",
+      "sha256": "35589bd85570614ca3d2613b700bc0e773a90c4f31c7eb9e0d5cdf91e0eeff68",
+      "bytes": 24158
+    },
+    {
+      "path": "assets/game-title-art/gold/full.png",
+      "sha256": "fa9b9c8a64a35e6a581fadd60e883a73dd8e003c9f04690461f93a94df31f63d",
+      "bytes": 102386
+    },
+    {
+      "path": "assets/game-title-art/gold/full.webp",
+      "sha256": "57ba8e7ff82aa667f6ae646756bafed4215164bed57c3d97085532956f3604ce",
+      "bytes": 17514
+    },
+    {
+      "path": "assets/game-title-art/gold/small.png",
+      "sha256": "7d3c3486985f4b3a3e10aac2c00e29524f253ccc4eaec108e2172acee0d33852",
+      "bytes": 31211
+    },
+    {
+      "path": "assets/game-title-art/gold/small.webp",
+      "sha256": "d4d25a33b1ededa41f714576052af9ed794c413bbf3d018003daf35d8c469345",
+      "bytes": 23536
+    },
+    {
+      "path": "assets/game-title-art/heart-gold/full.png",
+      "sha256": "dc9daa795840a0e31bff5184ae3605df74883b0507e9b2fce8075c9e7e005daa",
+      "bytes": 125981
+    },
+    {
+      "path": "assets/game-title-art/heart-gold/full.webp",
+      "sha256": "a53079865f391f73b794efc76c44e1d8d90f9caaa1d475529c5387f34c2d8eb6",
+      "bytes": 22702
+    },
+    {
+      "path": "assets/game-title-art/heart-gold/small.png",
+      "sha256": "cf2a64830e76a323b41ae0338491501eb6956346370ee8aae395ffaa99fc1546",
+      "bytes": 36865
+    },
+    {
+      "path": "assets/game-title-art/heart-gold/small.webp",
+      "sha256": "ae238b281157d9c0d7bde1d3769447f63790545bca60b0005feafdf8d26a6bfb",
+      "bytes": 29538
+    },
+    {
+      "path": "assets/game-title-art/inclement-emerald/full.png",
+      "sha256": "77171bbe87d7d1e5ddb29e05dfe61bb59be6afb12d0121caa7be58c9239d1fb9",
+      "bytes": 105430
+    },
+    {
+      "path": "assets/game-title-art/inclement-emerald/full.webp",
+      "sha256": "5335e681783675c43948a43146a21950a22427b78672d940b9da7de9953a4ce6",
+      "bytes": 19550
+    },
+    {
+      "path": "assets/game-title-art/inclement-emerald/small.png",
+      "sha256": "45837fb8e6e8b777b09382825f3e99b58511f7197838de38de2bbd654fc63132",
+      "bytes": 31593
+    },
+    {
+      "path": "assets/game-title-art/inclement-emerald/small.webp",
+      "sha256": "51bfd7ca98439badb34b8ac2402fe024da87b99e1796d2a3062c5466f8c01891",
+      "bytes": 23886
+    },
+    {
+      "path": "assets/game-title-art/index.json",
+      "sha256": "8e5ab42585f72e3f10add03754181b5308bf24710d0c138ccebe3aa28150c56a",
+      "bytes": 133857
+    },
+    {
+      "path": "assets/game-title-art/leaf-green/full.png",
+      "sha256": "d88378b40c1ea61e5e0f9728f408adcad4c9b16134039a6064eb69b0a4d0e5b1",
+      "bytes": 105362
+    },
+    {
+      "path": "assets/game-title-art/leaf-green/full.webp",
+      "sha256": "1c2a4a2024ac2587154d04551b41b544d690efbf40a30099943d2a7c7e41391e",
+      "bytes": 15180
+    },
+    {
+      "path": "assets/game-title-art/leaf-green/small.png",
+      "sha256": "645b86dea7deda11079f9869c24c29d693529d38bd9ff51f049a012b5e77b6d6",
+      "bytes": 33186
+    },
+    {
+      "path": "assets/game-title-art/leaf-green/small.webp",
+      "sha256": "f8de07d72ef8e9020aee62b11e00044470fcd42e064035a5d760ac309787d9ca",
+      "bytes": 23648
+    },
+    {
+      "path": "assets/game-title-art/moon/full.png",
+      "sha256": "7540bc1990e6822289097da6646824b345b7361012f35728758a9da9ca409074",
+      "bytes": 119626
+    },
+    {
+      "path": "assets/game-title-art/moon/full.webp",
+      "sha256": "90c1d6730bfd93e8550a7471bd757770e8ec0da51a3be08ed02d412637f43fec",
+      "bytes": 14866
+    },
+    {
+      "path": "assets/game-title-art/moon/small.png",
+      "sha256": "bcc8dadce956d4adfd7857ac5aeff3840ac85391e517f0d55c86aa3a0cad0f51",
+      "bytes": 35980
+    },
+    {
+      "path": "assets/game-title-art/moon/small.webp",
+      "sha256": "fd8f7c7184f941a3119fcf5fa44ff2f236d8c263582baa58682fa411280db4f4",
+      "bytes": 26116
+    },
+    {
+      "path": "assets/game-title-art/new-generations/full.png",
+      "sha256": "44e925f26e482b9a085633dd07c2d7b941bbdbe8c43401e9878209a5a4f20d1f",
+      "bytes": 114386
+    },
+    {
+      "path": "assets/game-title-art/new-generations/full.webp",
+      "sha256": "45431688dbbde0bacf483db87555deda0464bf9f6454be7a2935a86bd09ae70f",
+      "bytes": 14462
+    },
+    {
+      "path": "assets/game-title-art/new-generations/small.png",
+      "sha256": "54b2b300ec3260a5c79e495aca4e24a050f9a358618f8f44f4795b3176249e0b",
+      "bytes": 38011
+    },
+    {
+      "path": "assets/game-title-art/new-generations/small.webp",
+      "sha256": "e3e0ce14cf253e1d548085666411bd9e3aff2e09f71c2726a96b2f80cc1c5fab",
+      "bytes": 24002
+    },
+    {
+      "path": "assets/game-title-art/omega-ruby/full.png",
+      "sha256": "2d51554f666a5359435e1ee747e1eaa3bebc133f67ce68c069aa6318beb28ccc",
+      "bytes": 119924
+    },
+    {
+      "path": "assets/game-title-art/omega-ruby/full.webp",
+      "sha256": "c73d9ca0ee079956d7cc8e51d2b65776c16f8ca0858d3c7255db0c29de9c0a93",
+      "bytes": 17742
+    },
+    {
+      "path": "assets/game-title-art/omega-ruby/small.png",
+      "sha256": "ed4d8c5d9522ba1228a525d042a646e0a8dede755fff8b2186dba698a645b480",
+      "bytes": 35400
+    },
+    {
+      "path": "assets/game-title-art/omega-ruby/small.webp",
+      "sha256": "92a2b6278be4eb0c61b833392605c6e2f6cdf6b9df75ca1e5ccde57e9284042c",
+      "bytes": 27828
+    },
+    {
+      "path": "assets/game-title-art/pearl/full.png",
+      "sha256": "4d47a9e604ebfbe3a332d2eea1fbfda2b35747e7467b984e1aa0720c0bf33dc6",
+      "bytes": 102696
+    },
+    {
+      "path": "assets/game-title-art/pearl/full.webp",
+      "sha256": "83b21e2fc7a266497d0bb5492d04165405d1d1e0151a72ea18b916c561d9f409",
+      "bytes": 16810
+    },
+    {
+      "path": "assets/game-title-art/pearl/small.png",
+      "sha256": "2f80f224164dea0ad93507540cafa0512cd7bb33aeace012714b9532552e5933",
+      "bytes": 33192
+    },
+    {
+      "path": "assets/game-title-art/pearl/small.webp",
+      "sha256": "bb89c6837ada5b2e7b2216c12ea4f3301d8f51509dc1cb23bd5a06208ff8516a",
+      "bytes": 24190
+    },
+    {
+      "path": "assets/game-title-art/platinum/full.png",
+      "sha256": "80a74100bed5dc40d78b17b2970817da376011f5929d3b1c01574e963c884b04",
+      "bytes": 109309
+    },
+    {
+      "path": "assets/game-title-art/platinum/full.webp",
+      "sha256": "f517bebea2718e2bbecaf29fe44856ab611e0747df3eede94fd7d62e3542486c",
+      "bytes": 17106
+    },
+    {
+      "path": "assets/game-title-art/platinum/small.png",
+      "sha256": "4e8f3641cd0112150a168f8396840326cd5b3c50b7a51018302cb381aec41817",
+      "bytes": 35644
+    },
+    {
+      "path": "assets/game-title-art/platinum/small.webp",
+      "sha256": "60beb170c5d56d3223d0c79d34315bd43e0b1805672ebe2bbcc5978bc78a86c6",
+      "bytes": 25318
+    },
+    {
+      "path": "assets/game-title-art/radical-red/full.png",
+      "sha256": "14e279db2d9df01be84637655ee61c79745842ec69424ed82d9eb718f25d0db1",
+      "bytes": 84926
+    },
+    {
+      "path": "assets/game-title-art/radical-red/full.webp",
+      "sha256": "180a2cf4c8576c63b316d60eff332db631c0940b9a5bdf583b460031895e32be",
+      "bytes": 14788
+    },
+    {
+      "path": "assets/game-title-art/radical-red/small.png",
+      "sha256": "859a3314bd849ca328abcd27e3c9082be1f58801a7de2de07b072cdd4c751178",
+      "bytes": 26451
+    },
+    {
+      "path": "assets/game-title-art/radical-red/small.webp",
+      "sha256": "5f64a49e6d692870a11cd459026e8f3a704952b30d0215bdfe167e7d16f29cf1",
+      "bytes": 19242
+    },
+    {
+      "path": "assets/game-title-art/red/full.png",
+      "sha256": "6914302484c2712991cae71e58af75c90b6e13282c2bf3aa5e0e1fb8dfd86ecd",
+      "bytes": 106696
+    },
+    {
+      "path": "assets/game-title-art/red/full.webp",
+      "sha256": "db3dd3196d3e6efa2f97644a59d9d5cdd841ce8920364f8fabd006ffeb5b0d7e",
+      "bytes": 18528
+    },
+    {
+      "path": "assets/game-title-art/red/small.png",
+      "sha256": "1dc10db068ffd1db83e2ffd2858e07a6622d2d95062a809afe40963a2242a075",
+      "bytes": 31726
+    },
+    {
+      "path": "assets/game-title-art/red/small.webp",
+      "sha256": "546426ab860bd723259b05e597a7a8510188c5f40a85f1a1e647c1154d23219e",
+      "bytes": 23544
+    },
+    {
+      "path": "assets/game-title-art/renegade-platinum/full.png",
+      "sha256": "256481cffbdc00d1fb34c37e1f282e4bba0b453c98d8dabf876e538918e424f2",
+      "bytes": 108939
+    },
+    {
+      "path": "assets/game-title-art/renegade-platinum/full.webp",
+      "sha256": "1318cfa9b6b2897209312cc545e2ba378d3d5f3d376c05aca9c7c7289bccbc46",
+      "bytes": 17852
+    },
+    {
+      "path": "assets/game-title-art/renegade-platinum/small.png",
+      "sha256": "92c7d66abab8318b2c1dd95b14faf2dae2514c109be09c3eb3bab9602e014e77",
+      "bytes": 34879
+    },
+    {
+      "path": "assets/game-title-art/renegade-platinum/small.webp",
+      "sha256": "22e5137219469000e6d11ae9da49d98614b000c3ce10d61a9dfe91559fa1821b",
+      "bytes": 24976
+    },
+    {
+      "path": "assets/game-title-art/rising-ruby/full.png",
+      "sha256": "6f056ffe09946570a96ff79273a8b3a83240788f8f4b16227b396114914aabfc",
+      "bytes": 135395
+    },
+    {
+      "path": "assets/game-title-art/rising-ruby/full.webp",
+      "sha256": "2dd12757b345405a5558f3a127891d2ff0699f36533d7662d3a5b4806223ff48",
+      "bytes": 19046
+    },
+    {
+      "path": "assets/game-title-art/rising-ruby/small.png",
+      "sha256": "4b1cba5a1e06729ec9c679e4e2e6f6053c931b19efc27b897ce1f4899a655502",
+      "bytes": 41351
+    },
+    {
+      "path": "assets/game-title-art/rising-ruby/small.webp",
+      "sha256": "3b0c08b95b0133b7b39a61e42a14b84f3e9d896063e9ba1abef31046235bbab7",
+      "bytes": 32440
+    },
+    {
+      "path": "assets/game-title-art/rising-sinking/full.png",
+      "sha256": "3ae6bf7389b1a09eabe423b60028ba38c13185096f1e87af872eb005e34a7384",
+      "bytes": 132096
+    },
+    {
+      "path": "assets/game-title-art/rising-sinking/full.webp",
+      "sha256": "1a0c6f123caefe8f50153e48e6e3ffb188ff43690db72435e2b364fd15cc5cc3",
+      "bytes": 20636
+    },
+    {
+      "path": "assets/game-title-art/rising-sinking/small.png",
+      "sha256": "d87d07c1a9a5317e704c1d7a6470ded83f0f6feb986ff3fd8e7abce8714d7c17",
+      "bytes": 38801
+    },
+    {
+      "path": "assets/game-title-art/rising-sinking/small.webp",
+      "sha256": "3916dbd13a68c2b10e58a910fb9fb59b0e0d577d9d13d2828c8df832dde98dda",
+      "bytes": 31192
+    },
+    {
+      "path": "assets/game-title-art/ruby/full.png",
+      "sha256": "662b41b592a4647930d0e545a97be704120225348507e1f7c8fc9f93f45b1120",
+      "bytes": 93374
+    },
+    {
+      "path": "assets/game-title-art/ruby/full.webp",
+      "sha256": "e6b16dd2245716882a249178294039ad1761debac624819e96ed7fe18ee83543",
+      "bytes": 13522
+    },
+    {
+      "path": "assets/game-title-art/ruby/small.png",
+      "sha256": "7dc6d3af518eb495e10a8a37655033df860c135b5b80a526e8bd57f293bd0a2d",
+      "bytes": 31361
+    },
+    {
+      "path": "assets/game-title-art/ruby/small.webp",
+      "sha256": "67bd05b3733a2a5d075a102d7ae743f8f25a21f87acba1d70242116d46c029dc",
+      "bytes": 23260
+    },
+    {
+      "path": "assets/game-title-art/runbun/full.png",
+      "sha256": "4020324e010743751257d8486bf05ee682a359ff9ce7a981b51f6424b398b653",
+      "bytes": 93769
+    },
+    {
+      "path": "assets/game-title-art/runbun/full.webp",
+      "sha256": "d656d1f9cd78d51a78066a138f758b0329b776e295e7f597cb1c934724f7d3bb",
+      "bytes": 18418
+    },
+    {
+      "path": "assets/game-title-art/runbun/small.png",
+      "sha256": "aae5c2856d161a93c0ef054886d582f2e87456b8000c9aa261f5cecf932559c0",
+      "bytes": 31016
+    },
+    {
+      "path": "assets/game-title-art/runbun/small.webp",
+      "sha256": "bde31357a82e8435f827795f3882a37ad40126cb14e958fbd71c126be3186068",
+      "bytes": 23718
+    },
+    {
+      "path": "assets/game-title-art/sacred-gold/full.png",
+      "sha256": "545f6ed10b56baba90ac6e53f4915c71cd1fea2782bfeda90463e49124a50fc2",
+      "bytes": 110276
+    },
+    {
+      "path": "assets/game-title-art/sacred-gold/full.webp",
+      "sha256": "0f68e96f9d7487bd382f15819baa1bda999a26a58a2c62aa4a93439c4c969aa1",
+      "bytes": 19260
+    },
+    {
+      "path": "assets/game-title-art/sacred-gold/small.png",
+      "sha256": "f4464d0e16bea897cae30a255ab77da460f8e5cf58ab0a8184f0cb833a2ed0be",
+      "bytes": 33055
+    },
+    {
+      "path": "assets/game-title-art/sacred-gold/small.webp",
+      "sha256": "c735b621e52112b5e5f96e7bf970d80c969f9435793351d26ba9a3da6fd28f61",
+      "bytes": 25866
+    },
+    {
+      "path": "assets/game-title-art/sapphire/full.png",
+      "sha256": "348cf55cefc76943f21053cfd5081af0ae219c193faa0700fd09930e0686fdb2",
+      "bytes": 97496
+    },
+    {
+      "path": "assets/game-title-art/sapphire/full.webp",
+      "sha256": "cd6697440e4951ed3ca68e855eb5c0d0fe67618682261c9735911d25cc9f2633",
+      "bytes": 15352
+    },
+    {
+      "path": "assets/game-title-art/sapphire/small.png",
+      "sha256": "7a221aa9ff56b4a79e5ca5d7b7e190aba85412c71c44ccc26d41ee2baec17d95",
+      "bytes": 33306
+    },
+    {
+      "path": "assets/game-title-art/sapphire/small.webp",
+      "sha256": "22d58fdedd04afdf60a3fa629a640652fe1f2af5d7285de8d9bd798c6658b95e",
+      "bytes": 24634
+    },
+    {
+      "path": "assets/game-title-art/scarlet/full.png",
+      "sha256": "505c861afc00b38dbbe92daf458993092a2f9cefa0bdbad027a88595da68a2c4",
+      "bytes": 108946
+    },
+    {
+      "path": "assets/game-title-art/scarlet/full.webp",
+      "sha256": "b96434bc9497bd1a871e05bfbf5034036d41e6daecd7e39d19f7ee9a0e404a6d",
+      "bytes": 16408
+    },
+    {
+      "path": "assets/game-title-art/scarlet/small.png",
+      "sha256": "fe74b1c69c9531304708fe153fdc4181011ec0e0ff1408bc14e10dd1268c9e02",
+      "bytes": 34355
+    },
+    {
+      "path": "assets/game-title-art/scarlet/small.webp",
+      "sha256": "549abf45bdd05a681ac6fffdc84396de03afb7527d2db144f573e9a272376254",
+      "bytes": 26980
+    },
+    {
+      "path": "assets/game-title-art/shield/full.png",
+      "sha256": "948395117d38ae586941ce616a3b06b97f96b1a2889a976e33119279be4d3d82",
+      "bytes": 53768
+    },
+    {
+      "path": "assets/game-title-art/shield/full.webp",
+      "sha256": "3bf479fad5df9112407e3ad5aa00a987c8d945bd9e50eb08b45303c9179e96c3",
+      "bytes": 7556
+    },
+    {
+      "path": "assets/game-title-art/shield/small.png",
+      "sha256": "c76f6a624fc790118cc5a84f55635573149111fdcebef6ea6af18766192b0199",
+      "bytes": 16680
+    },
+    {
+      "path": "assets/game-title-art/shield/small.webp",
+      "sha256": "fcbf0e39020e333ddc719593b0c3b66124aac27f153da5195fb76f6da0b122be",
+      "bytes": 12864
+    },
+    {
+      "path": "assets/game-title-art/shining-pearl/full.png",
+      "sha256": "d1c7f7dba1fe67cdc62e00af0ac270942e8a1fbc237270070b80ed48e16fa00c",
+      "bytes": 95978
+    },
+    {
+      "path": "assets/game-title-art/shining-pearl/full.webp",
+      "sha256": "ec0f436c24615d57dfd73422d218c251d90cb928d701dea69e1aa7d683432080",
+      "bytes": 13934
+    },
+    {
+      "path": "assets/game-title-art/shining-pearl/small.png",
+      "sha256": "91603a37753dd2386e2c0b797928db0939837185f6a44c349a791ea15a503376",
+      "bytes": 27705
+    },
+    {
+      "path": "assets/game-title-art/shining-pearl/small.webp",
+      "sha256": "6472a4e985b6abf85d719256f59ec0120f978b9e833171aa6868dcaae5db3a51",
+      "bytes": 20824
+    },
+    {
+      "path": "assets/game-title-art/silver/full.png",
+      "sha256": "ef9e9324886ae66b12ca47ecdba9e3a53f39427b79367c00dfc7155f0a0baf35",
+      "bytes": 88937
+    },
+    {
+      "path": "assets/game-title-art/silver/full.webp",
+      "sha256": "9b42721e53d9538db4e80493a674d36adb977139ae775d1888829b6bbdeb6d20",
+      "bytes": 14860
+    },
+    {
+      "path": "assets/game-title-art/silver/small.png",
+      "sha256": "a666f3a97641676d42cbb6d629cdab944f9c3dc0a8ae04db34a9f2071c4591db",
+      "bytes": 27401
+    },
+    {
+      "path": "assets/game-title-art/silver/small.webp",
+      "sha256": "011fb18b5d24340faaa13466cd6c7f6f69c7aaedbfba15f55eff6368071842a6",
+      "bytes": 20078
+    },
+    {
+      "path": "assets/game-title-art/sinking-sapphire/full.png",
+      "sha256": "2685ee0cdceb6080b260691a6929a44ac9d4b057cd1a71cd0c4144b4281d74cb",
+      "bytes": 113141
+    },
+    {
+      "path": "assets/game-title-art/sinking-sapphire/full.webp",
+      "sha256": "3448e353b8575198cc8f5dd3a3fed83513d2e38d449310fe825cc0f0fb7db598",
+      "bytes": 17716
+    },
+    {
+      "path": "assets/game-title-art/sinking-sapphire/small.png",
+      "sha256": "57a70a3821c655ef6dc6b9ddeae89a828aab95b4ca8f61a10e1da58ab4f6193b",
+      "bytes": 34963
+    },
+    {
+      "path": "assets/game-title-art/sinking-sapphire/small.webp",
+      "sha256": "e01da1c433543a31704124aec2d159f9a1a545b91bff357d35eb45b95c1d7e2d",
+      "bytes": 27848
+    },
+    {
+      "path": "assets/game-title-art/soul-silver/full.png",
+      "sha256": "da00b100f5f538bb19879d968a9f735b408bef7bbb4150ed11be0933c2e0c9e0",
+      "bytes": 125996
+    },
+    {
+      "path": "assets/game-title-art/soul-silver/full.webp",
+      "sha256": "30ffad3900d65e84a5029d55879c3ff7d66edf8ad0d641f1f655484b2e6f4c59",
+      "bytes": 22464
+    },
+    {
+      "path": "assets/game-title-art/soul-silver/small.png",
+      "sha256": "48b6cb9f8c54a2314c0040a12de78c9ce4044b2505b4a4610b2a760e088c6e9a",
+      "bytes": 37253
+    },
+    {
+      "path": "assets/game-title-art/soul-silver/small.webp",
+      "sha256": "099b64e2ae5aae7077ef5ecf4d6b82708699d077bd5c638b913c20c8e2d6d469",
+      "bytes": 28978
+    },
+    {
+      "path": "assets/game-title-art/storm-silver/full.png",
+      "sha256": "40f23b8cc0ef8861d996413b966aa5f6410d62dab2d9ad387028ddf5289e33cf",
+      "bytes": 112447
+    },
+    {
+      "path": "assets/game-title-art/storm-silver/full.webp",
+      "sha256": "f24da70f912113393e6e92e5a1e7650ed103db9a9e22ad4e42f3d01d0a780b95",
+      "bytes": 18228
+    },
+    {
+      "path": "assets/game-title-art/storm-silver/small.png",
+      "sha256": "9bc1bb4b0031f3bf9225a5468f7cfc5d2a566462871f1b2a17f3d9f3be1d2d2b",
+      "bytes": 34006
+    },
+    {
+      "path": "assets/game-title-art/storm-silver/small.webp",
+      "sha256": "de34329e2b5a7553bc098fa6d32dcf3a089e1971412f522065801c2abf24c06d",
+      "bytes": 25186
+    },
+    {
+      "path": "assets/game-title-art/sun/full.png",
+      "sha256": "319363a336e8d6b1d898ec360b2fb1616b0f0345e22dfb1f1d95e3c8727678a2",
+      "bytes": 108489
+    },
+    {
+      "path": "assets/game-title-art/sun/full.webp",
+      "sha256": "36d06b07cd56db86be17a8788e2beda1733952d0f75136eb57fe89b5335c03a9",
+      "bytes": 14340
+    },
+    {
+      "path": "assets/game-title-art/sun/small.png",
+      "sha256": "992c885a53cd4ef66fbee2632c14cd08a2385d7a7e28187504a18e488662dd90",
+      "bytes": 32871
+    },
+    {
+      "path": "assets/game-title-art/sun/small.webp",
+      "sha256": "48ca69ad4019bf446ea8dc744ab17a354a453d156fc8e447f6966722fbeea50e",
+      "bytes": 24706
+    },
+    {
+      "path": "assets/game-title-art/sword/full.png",
+      "sha256": "1a4fd58ec9d53a5aadb5c405ea84c6eef5cd454582559f7fb7fa6e66c1296396",
+      "bytes": 54433
+    },
+    {
+      "path": "assets/game-title-art/sword/full.webp",
+      "sha256": "21f237c97cb6e39c8611b40c85ca564b5e3c936708823de5c43593689440afde",
+      "bytes": 9096
+    },
+    {
+      "path": "assets/game-title-art/sword/small.png",
+      "sha256": "0f633d1321dfb9fcaf687c3bf6105172d043d7c98e924198f6007c5e7e63f211",
+      "bytes": 16440
+    },
+    {
+      "path": "assets/game-title-art/sword/small.webp",
+      "sha256": "cf0f5f99b0cfa4bd8cbf713c6981e64fea00255c814e34b7f55df2f206ced713",
+      "bytes": 12760
+    },
+    {
+      "path": "assets/game-title-art/ultra-moon/full.png",
+      "sha256": "31d8e17413fd124b40405561fd20b496e757168fc01906ab88441fadb2db3cb7",
+      "bytes": 118776
+    },
+    {
+      "path": "assets/game-title-art/ultra-moon/full.webp",
+      "sha256": "a1189a048bdcd286fe223f6d0ccdf79ea312e5b8140de0c59bdeaf2858b57f08",
+      "bytes": 19176
+    },
+    {
+      "path": "assets/game-title-art/ultra-moon/small.png",
+      "sha256": "aa667632e712546f8f125e7d54106ae292863fa9c3939068ae89ba9658430a7e",
+      "bytes": 37239
+    },
+    {
+      "path": "assets/game-title-art/ultra-moon/small.webp",
+      "sha256": "56c8e1eaa1236f8f77092b1c2dfc45d0266af489a60f691652e5a83183609735",
+      "bytes": 26904
+    },
+    {
+      "path": "assets/game-title-art/ultra-sun/full.png",
+      "sha256": "a7fd0913966682e2394a9da803f3d1d6b11df03638c7ca9da7729c80d8ea644a",
+      "bytes": 117526
+    },
+    {
+      "path": "assets/game-title-art/ultra-sun/full.webp",
+      "sha256": "5f4de1f7e6a9c8a6f5fe0c3148999f3a29b65cffd79d77c8ebea3d2e65226df8",
+      "bytes": 17858
+    },
+    {
+      "path": "assets/game-title-art/ultra-sun/small.png",
+      "sha256": "11fb90839367d2745f8b99cb036ac36e4f7fcacffd3eb97fb9334ebe1626ca43",
+      "bytes": 35606
+    },
+    {
+      "path": "assets/game-title-art/ultra-sun/small.webp",
+      "sha256": "22896e3c16a0c8f30aa82798fc6457630906e3df2c5fd2ee793aef3c422b3ea7",
+      "bytes": 26238
+    },
+    {
+      "path": "assets/game-title-art/unbound/full.png",
+      "sha256": "2e12263952958ef3878d644376b51d675f699e50056f3a386623a543ec7d1fb5",
+      "bytes": 122731
+    },
+    {
+      "path": "assets/game-title-art/unbound/full.webp",
+      "sha256": "2929f3c254c428151e5f69f9862495e542d2d03cbe4f70ab44cee0475569adaf",
+      "bytes": 21914
+    },
+    {
+      "path": "assets/game-title-art/unbound/small.png",
+      "sha256": "a3981bbb0ee46415cd416027c458e759797c4e693406b7141ec1e48941273a93",
+      "bytes": 37359
+    },
+    {
+      "path": "assets/game-title-art/unbound/small.webp",
+      "sha256": "e7af274bebb647c1c95ae2a628babf67dc2b900b79ba32f1023c7985adfa1155",
+      "bytes": 28250
+    },
+    {
+      "path": "assets/game-title-art/violet/full.png",
+      "sha256": "dba89efc9c2ea2f1462d6aba9885b329ba3cf2e85f2374e919096c51519f004f",
+      "bytes": 107194
+    },
+    {
+      "path": "assets/game-title-art/violet/full.webp",
+      "sha256": "e323a4d0f21406814796fd510344277d059523af402c7a489c06c552a6889c74",
+      "bytes": 14518
+    },
+    {
+      "path": "assets/game-title-art/violet/small.png",
+      "sha256": "16b2c725e50015e68665f1f6bae7c917e5ccac68a5fc1d67241115fd8bfb1e52",
+      "bytes": 31472
+    },
+    {
+      "path": "assets/game-title-art/violet/small.webp",
+      "sha256": "7674b4dbaf72d4008b224fd5b745c081fd53dd1848de53659c246d147bb8a8a7",
+      "bytes": 25454
+    },
+    {
+      "path": "assets/game-title-art/volt-white/full.png",
+      "sha256": "f5297a7459c5f6ff946d1ad211d825d566fb66c8f535877c17e8038e3c8d32a3",
+      "bytes": 97222
+    },
+    {
+      "path": "assets/game-title-art/volt-white/full.webp",
+      "sha256": "b7e33d6ac4c86d0b004270081a47a267807651e48e7ea3fe0b0c0fac3e401760",
+      "bytes": 12632
+    },
+    {
+      "path": "assets/game-title-art/volt-white/small.png",
+      "sha256": "5f293680bf3b0493e4fcd8d4b299d47858fbe1a3554b1c379bdf15e125ad0bbc",
+      "bytes": 29137
+    },
+    {
+      "path": "assets/game-title-art/volt-white/small.webp",
+      "sha256": "54dc4695db8517806d4413be3de88b1b317ce9d8177311e8cbf4eb12c0c57b0d",
+      "bytes": 20340
+    },
+    {
+      "path": "assets/game-title-art/white-2/full.png",
+      "sha256": "02239150939f59f47e3a36f15b87f91b05d9a69e9fa6d60dd9ea72dbabf6471f",
+      "bytes": 110219
+    },
+    {
+      "path": "assets/game-title-art/white-2/full.webp",
+      "sha256": "2c1f6885fca5519eed9220e7ddd75f9516377725158b39491076dc9495dd9831",
+      "bytes": 16632
+    },
+    {
+      "path": "assets/game-title-art/white-2/small.png",
+      "sha256": "79063b8813ccbeb1335695578b4bc65724fcdbba2921927ade4f1d7cb50f08aa",
+      "bytes": 34409
+    },
+    {
+      "path": "assets/game-title-art/white-2/small.webp",
+      "sha256": "55fa49ee927478f22b90de091d365fe1d3140052d5f8ee70c97393c33f341fd7",
+      "bytes": 25574
+    },
+    {
+      "path": "assets/game-title-art/white/full.png",
+      "sha256": "2a755a8b4cbe8b0bae108f47285c28c1966e6b94cbf35a16fbc350208a115fc4",
+      "bytes": 98418
+    },
+    {
+      "path": "assets/game-title-art/white/full.webp",
+      "sha256": "3e1e54cc1b0ce282f7f27e5ee5d53a0ca12e81d89c080f265b9b600f339043d9",
+      "bytes": 13856
+    },
+    {
+      "path": "assets/game-title-art/white/small.png",
+      "sha256": "dd668a6d6da4335ab310f352033de3cca130ada8b63edd4840fe152f54ed1a4a",
+      "bytes": 31380
+    },
+    {
+      "path": "assets/game-title-art/white/small.webp",
+      "sha256": "e437c9e1c2bcd5a2a17dd7d3f53b38e0b72838713dd4c2f35ab61fc1926f0598",
+      "bytes": 22460
+    },
+    {
+      "path": "assets/game-title-art/x/full.png",
+      "sha256": "2cebd37abf2149a835c30558d54beba0c8295a6a89eb91e339ef8ed89865607e",
+      "bytes": 93298
+    },
+    {
+      "path": "assets/game-title-art/x/full.webp",
+      "sha256": "ad7bd2076ce8298e84134c894467a439e96ffbe039b389ef81fdae773fea22bd",
+      "bytes": 14342
+    },
+    {
+      "path": "assets/game-title-art/x/small.png",
+      "sha256": "a27e6d44f310e47128153c674f9c8f252c3f21457fb84f21fb2bd6a3b98e5e65",
+      "bytes": 28485
+    },
+    {
+      "path": "assets/game-title-art/x/small.webp",
+      "sha256": "391243df3eeeb8d98232e17380c3abf190fd997495970c2ebf7d06bc9c4c209e",
+      "bytes": 21072
+    },
+    {
+      "path": "assets/game-title-art/y/full.png",
+      "sha256": "182254d959e9df535bb1b21cd7531b88a476b4411d068d52e48b230336d7838d",
+      "bytes": 98494
+    },
+    {
+      "path": "assets/game-title-art/y/full.webp",
+      "sha256": "d5cae649c730cebaeb02e9d51b1f071a3281f67b12c6be7295c25a7af7446fa5",
+      "bytes": 14346
+    },
+    {
+      "path": "assets/game-title-art/y/small.png",
+      "sha256": "fa7de13b0852c28d96e8f559b162c95c6a309ce33d19ec7b083728d6bf1bd693",
+      "bytes": 29233
+    },
+    {
+      "path": "assets/game-title-art/y/small.webp",
+      "sha256": "8decca7e304775ef235e4f889147e3f298f31dd827cc76444693534a40e01a5e",
+      "bytes": 22032
+    },
+    {
+      "path": "assets/game-title-art/yellow/full.png",
+      "sha256": "dc21deeb8bfef68943682f59e4b227181ac57b34736ce4ad52ec78e3d02a7adc",
+      "bytes": 110827
+    },
+    {
+      "path": "assets/game-title-art/yellow/full.webp",
+      "sha256": "bde4f28ef0f0bb12c66b858714739d40c45f50049ef9538cbc88c52d48d701fa",
+      "bytes": 31358
+    },
+    {
+      "path": "assets/game-title-art/yellow/small.png",
+      "sha256": "8bf9a485e4108f8413dfe392dc7c6096f6a482a52bb737299c0c783a7f386e91",
+      "bytes": 41237
+    },
+    {
+      "path": "assets/game-title-art/yellow/small.webp",
+      "sha256": "cc07e35c920bdac3c8e8899e977025a47cdeff8bc2a723cef4ebbbd51d125b0e",
+      "bytes": 37404
+    },
+    {
       "path": "assets/item-sprites/index.json",
-      "sha256": "98a5800fcee5660b0d319090300652dacb8a6e172fa82031e23df2a381efe23b",
+      "sha256": "9f0ab2da92e023f6c6e5a7abe0de4318a78dcd971796ea3cd9edfc54335f7da4",
       "bytes": 385700
     },
     {
@@ -4564,7 +5589,7 @@
     },
     {
       "path": "assets/status-condition-icons/index.json",
-      "sha256": "5a4bddae3b13f0688d6f3dfb7fb44bf02095f7a35c02a7c404b570512a43b18b",
+      "sha256": "356a894a0dc291bc46a4ad8c7d294fdfc7941ee8cdd08d6c35c873db6922723d",
       "bytes": 7548
     },
     {
@@ -4604,7 +5629,7 @@
     },
     {
       "path": "assets/type-icons/index.json",
-      "sha256": "9cab723cee7abe45d4d4f8027c4ac541e75ac8c4d9cc19b4b84f312b28ff7fd1",
+      "sha256": "0074928b2671e1dfc820039672913d0acd542614db2eefec8d6b8d2eaabd5b7a",
       "bytes": 62045
     },
     {
@@ -5164,12 +6189,12 @@
     },
     {
       "path": "index.json",
-      "sha256": "efd77f783b63c372e4f2ee417e1902b003f63dade7449387d548492f064f45c2",
+      "sha256": "d6cfc1f69e5a8bde6516ae0c200109a2e4ea01f0f23fde9cbe969b62e130cbb0",
       "bytes": 1308
     },
     {
       "path": "profiles/gen5-animated/index.json",
-      "sha256": "74370a2152f00bed8988b5c5a3cfb29f13ba021f4b4cfba0bb76fb3098e6b0a7",
+      "sha256": "d4d583788fb3897ada01c6f89e75a5696805b69cf9f122ac8ba8d4e32f5aa11c",
       "bytes": 1303911
     },
     {
@@ -21714,7 +22739,7 @@
     },
     {
       "path": "profiles/gen5-static/index.json",
-      "sha256": "f317c1de54508920b08a2389167ceafb5e8c48947eb02d6a6964b55ca9725ee4",
+      "sha256": "2bc87bf61ea1db74df1f3d172579cc13fdd7b682320fc7ee907115f797822be8",
       "bytes": 2378988
     },
     {
@@ -51839,7 +52864,7 @@
     },
     {
       "path": "profiles/pixel/index.json",
-      "sha256": "9c988a76670ef7c749537e2a57229372ec99b3acacbb2cd95c8f334949bdb07a",
+      "sha256": "f5a219b2acb4d32e9039148ace6f1eedb521376e51ffd2320237ceb0b0765d1e",
       "bytes": 3736391
     },
     {
