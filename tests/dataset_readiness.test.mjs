@@ -39,6 +39,22 @@ test("all retail Gen 3 through 5 datasets load with battle and EXP consumer read
   }
 });
 
+test("retail trainer navigation uses canonical progression names instead of split IDs", () => {
+  for (const gameId of RETAIL_GAME_IDS) {
+    const context = createDatasetContext(generatedInputs(gameId));
+    const progression = readGenerated(gameId, "progression.json");
+    const records = Array.isArray(progression.records) ? progression.records : Object.values(progression.records || {});
+    const namesById = new Map(records.filter(record => record?.id && record?.name).map(record => [String(record.id), String(record.name)]));
+    for (const group of context.trainerGroups()) {
+      const name = namesById.get(group.id);
+      if (!name) continue;
+      const expected = /\s+split$/i.test(name) ? name : `${name} Split`;
+      assert.equal(group.label, expected, `${gameId}:${group.id}`);
+      assert.doesNotMatch(group.label, /^[a-z]/, `${gameId}:${group.id}`);
+    }
+  }
+});
+
 test("each retail Dataset EXP contract executes the generation-correct equal-level trainer projection", () => {
   const plan = {
     combatants: {
