@@ -266,7 +266,7 @@ async function setGameArtwork(image, button, config) {
     kind: "game-title-art",
     titleId: config.titleArtId,
     size: "small",
-    format: "webp"
+    format: "png"
   });
   button.classList.toggle("art-unavailable", result.status !== "ok");
 }
