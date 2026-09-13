@@ -3,10 +3,10 @@
   "source": {
     "repository": "phantomsafe42/pokemon-assets",
     "releaseVersion": "0.6.0-dev.1",
-    "commit": "b51d23f755c055f036a8d1d11225012aced885e5",
+    "commit": "9dadba5e38cf26a7aaf2f32f9c7340dd321dd234",
     "resolverSha256": "306896676978af66ef05c9b7cbd6b6fcddeb98b62f1b10c7cbeeef3822dba222",
-    "indexSha256": "076efaa98e232ecd6909e017197cdc359ebda3241c1f9de674b23601b988225f",
-    "manifestSha256": "4f5cb1cb37ab1842431274dbe67bf24a8cd7a0fa3fc3bfce7139782b685ac40e"
+    "indexSha256": "7ed0a1dadc9f374c2dd0c336aa3f5b59b4963329a8830339184221ed3742c6cf",
+    "manifestSha256": "78b5fc896be207b5a98ae932aa67aa48d603cd0f744348cc68e98383b4019f82"
   },
   "projection": {
     "profileIds": [

@@ -2,10 +2,10 @@
   "schemaVersion": 2,
   "generated": true,
   "sourceRepository": "phantomsafe42/pokemon-assets",
-  "sourceCommit": "b51d23f755c055f036a8d1d11225012aced885e5",
+  "sourceCommit": "9dadba5e38cf26a7aaf2f32f9c7340dd321dd234",
   "sourceRelease": "0.6.0-dev.1",
-  "sourceIndexSha256": "076efaa98e232ecd6909e017197cdc359ebda3241c1f9de674b23601b988225f",
-  "sourceManifestSha256": "4f5cb1cb37ab1842431274dbe67bf24a8cd7a0fa3fc3bfce7139782b685ac40e",
+  "sourceIndexSha256": "7ed0a1dadc9f374c2dd0c336aa3f5b59b4963329a8830339184221ed3742c6cf",
+  "sourceManifestSha256": "78b5fc896be207b5a98ae932aa67aa48d603cd0f744348cc68e98383b4019f82",
   "includedProfiles": [
     "gen5-animated",
     "gen5-static",
@@ -19,7 +19,7 @@
   "files": [
     {
       "path": "asset-index.json",
-      "sha256": "1f75429aa30ee00731a95a57019ebaa695026c3e8ed27beee9656c3e478575ab",
+      "sha256": "1c6246b0202b82dffab95bf1068fe77df26f2f5938b63c624c85c613b7d442c7",
       "bytes": 2342
     },
     {
@@ -499,23 +499,23 @@
     },
     {
       "path": "assets/game-title-art/fire-red-omega/full.png",
-      "sha256": "03422666e9b78134036b0f1a3f97ab6f8e936d0678355808818c7685530f7187",
-      "bytes": 73513
+      "sha256": "4723889366d57a96024c170f73d408f65983660ba3dc9f84e5f22cbf2a94d5da",
+      "bytes": 64471
     },
     {
       "path": "assets/game-title-art/fire-red-omega/full.webp",
-      "sha256": "3eb101b2d407c87586d961203d9246d062113780e91aba10a3c6f2ff7f293606",
-      "bytes": 53650
+      "sha256": "c1cc1d3832cd9a1ec375c5b33135cfc30ea0a1848de9131c6a42b8a51c3e978a",
+      "bytes": 45104
     },
     {
       "path": "assets/game-title-art/fire-red-omega/small.png",
-      "sha256": "67a84b51912500226375db13700414408f2388c63a1674f6094627737c7e66e5",
-      "bytes": 27510
+      "sha256": "30131691a75f53616508dda72aabb71a0a80c3288df8d439bfe4a6cbe5680788",
+      "bytes": 22384
     },
     {
       "path": "assets/game-title-art/fire-red-omega/small.webp",
-      "sha256": "f57e5d0f9934b123887217d00a3ccdb55b1fea9fdbee3400919079be9f70fe57",
-      "bytes": 21064
+      "sha256": "805272d6edaeb97370024697b13294a4c1081dd0446aed124aaed329a2900a30",
+      "bytes": 17056
     },
     {
       "path": "assets/game-title-art/fire-red/full.png",
@@ -619,7 +619,7 @@
     },
     {
       "path": "assets/game-title-art/index.json",
-      "sha256": "441bc8f45d014650d861d863e42f8bb8a4e71f1b239a8fd86bad3b0eb6e5571c",
+      "sha256": "ff072cda6823779ccfd325364f02194b62055926ff2851d7f4f66477da411781",
       "bytes": 139629
     },
     {
@@ -6229,7 +6229,7 @@
     },
     {
       "path": "index.json",
-      "sha256": "340ae9eb0b37ebc34f065eefb245002081f490a495c915b08f2bdc6bf4018eea",
+      "sha256": "e6e6c81c689c07d0f3b7f605d525c06e93ef2f6d52cab060a41d7ed0fa220989",
       "bytes": 1308
     },
     {
