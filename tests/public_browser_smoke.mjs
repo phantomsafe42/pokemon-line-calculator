@@ -168,6 +168,22 @@ async function evaluate(client, expression, awaitPromise = false) {
   return result.result.value;
 }
 
+async function waitForStableRuntime(client, expectedUrl, timeoutMs = 20_000) {
+  const deadline = Date.now() + timeoutMs;
+  let lastError;
+  while (Date.now() < deadline) {
+    try {
+      const state = await evaluate(client, "({ href: location.href, readyState: document.readyState })");
+      if (state.href.startsWith(expectedUrl) && state.readyState === "complete") return;
+    } catch (error) {
+      if (!/Execution context was destroyed|Cannot find context with specified id/.test(error.message)) throw error;
+      lastError = error;
+    }
+    await delay(200);
+  }
+  throw lastError || new Error("Headless browser runtime did not become stable");
+}
+
 try {
   await fs.access(path.join(publicRoot, "public-build-manifest.json"));
   await fs.mkdir(profile, { recursive: true });
@@ -188,6 +204,7 @@ try {
   await page.send("Runtime.enable");
   await page.send("Page.enable");
   await page.send("Network.enable");
+  await waitForStableRuntime(page, appUrl);
 
   const state = await evaluate(page, `(async () => {
     const wait = (predicate, message) => new Promise((resolve, reject) => {
