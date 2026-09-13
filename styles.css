@@ -398,7 +398,7 @@ dialog::backdrop { background: rgba(0, 0, 0, .75); }
 .game-picker-sections { display: grid; gap: 1.15rem; margin-top: 1rem; }
 .game-picker-group { display: grid; gap: .65rem; }
 .game-picker-group + .game-picker-group { border-top: 1px solid var(--line); padding-top: 1rem; }
-.game-picker-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: .65rem; }
+.game-picker-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: .65rem; }
 .game-picker-option {
   position: relative; width: 100%; min-height: 0; aspect-ratio: 2 / 1; overflow: hidden;
   border-color: var(--control-line); padding: .45rem; background: var(--panel-2); color: var(--text);
