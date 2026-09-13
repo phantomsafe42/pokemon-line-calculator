@@ -15,9 +15,9 @@
     "missingAssetResult": "unavailable"
   },
   "statistics": {
-    "assets": 204,
-    "assetBytes": 9198082,
-    "selectors": 368
+    "assets": 212,
+    "assetBytes": 9510757,
+    "selectors": 384
   },
   "selectorIndex": {
     "[\"alpha-sapphire\",\"full\",\"png\"]": "game-title-art/alpha-sapphire/full/png",
@@ -112,6 +112,14 @@
     "[\"em\",\"small\",\"png\"]": "game-title-art/emerald/small/png",
     "[\"emerald\",\"small\",\"webp\"]": "game-title-art/emerald/small/webp",
     "[\"em\",\"small\",\"webp\"]": "game-title-art/emerald/small/webp",
+    "[\"fire-red-omega\",\"full\",\"png\"]": "game-title-art/fire-red-omega/full/png",
+    "[\"fro\",\"full\",\"png\"]": "game-title-art/fire-red-omega/full/png",
+    "[\"fire-red-omega\",\"full\",\"webp\"]": "game-title-art/fire-red-omega/full/webp",
+    "[\"fro\",\"full\",\"webp\"]": "game-title-art/fire-red-omega/full/webp",
+    "[\"fire-red-omega\",\"small\",\"png\"]": "game-title-art/fire-red-omega/small/png",
+    "[\"fro\",\"small\",\"png\"]": "game-title-art/fire-red-omega/small/png",
+    "[\"fire-red-omega\",\"small\",\"webp\"]": "game-title-art/fire-red-omega/small/webp",
+    "[\"fro\",\"small\",\"webp\"]": "game-title-art/fire-red-omega/small/webp",
     "[\"fire-red\",\"full\",\"png\"]": "game-title-art/fire-red/full/png",
     "[\"fr\",\"full\",\"png\"]": "game-title-art/fire-red/full/png",
     "[\"fire-red\",\"full\",\"webp\"]": "game-title-art/fire-red/full/webp",
@@ -180,6 +188,14 @@
     "[\"p\",\"small\",\"png\"]": "game-title-art/pearl/small/png",
     "[\"pearl\",\"small\",\"webp\"]": "game-title-art/pearl/small/webp",
     "[\"p\",\"small\",\"webp\"]": "game-title-art/pearl/small/webp",
+    "[\"platinum-kaizo\",\"full\",\"png\"]": "game-title-art/platinum-kaizo/full/png",
+    "[\"pk\",\"full\",\"png\"]": "game-title-art/platinum-kaizo/full/png",
+    "[\"platinum-kaizo\",\"full\",\"webp\"]": "game-title-art/platinum-kaizo/full/webp",
+    "[\"pk\",\"full\",\"webp\"]": "game-title-art/platinum-kaizo/full/webp",
+    "[\"platinum-kaizo\",\"small\",\"png\"]": "game-title-art/platinum-kaizo/small/png",
+    "[\"pk\",\"small\",\"png\"]": "game-title-art/platinum-kaizo/small/png",
+    "[\"platinum-kaizo\",\"small\",\"webp\"]": "game-title-art/platinum-kaizo/small/webp",
+    "[\"pk\",\"small\",\"webp\"]": "game-title-art/platinum-kaizo/small/webp",
     "[\"platinum\",\"full\",\"png\"]": "game-title-art/platinum/full/png",
     "[\"pt\",\"full\",\"png\"]": "game-title-art/platinum/full/png",
     "[\"platinum\",\"full\",\"webp\"]": "game-title-art/platinum/full/webp",
@@ -1322,6 +1338,86 @@
         }
       ]
     },
+    "game-title-art/fire-red-omega/full/png": {
+      "path": "assets/game-title-art/fire-red-omega/full.png",
+      "sha256": "03422666e9b78134036b0f1a3f97ab6f8e936d0678355808818c7685530f7187",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "fire-red-omega",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "fro",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/fire-red-omega/full/webp": {
+      "path": "assets/game-title-art/fire-red-omega/full.webp",
+      "sha256": "3eb101b2d407c87586d961203d9246d062113780e91aba10a3c6f2ff7f293606",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "fire-red-omega",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "fro",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/fire-red-omega/small/png": {
+      "path": "assets/game-title-art/fire-red-omega/small.png",
+      "sha256": "67a84b51912500226375db13700414408f2388c63a1674f6094627737c7e66e5",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "fire-red-omega",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "fro",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/fire-red-omega/small/webp": {
+      "path": "assets/game-title-art/fire-red-omega/small.webp",
+      "sha256": "f57e5d0f9934b123887217d00a3ccdb55b1fea9fdbee3400919079be9f70fe57",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "fire-red-omega",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "fro",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
     "game-title-art/fire-red/full/png": {
       "path": "assets/game-title-art/fire-red/full.png",
       "sha256": "a97b1ca425c2b514b1eeeac63564b951634b9531c6eca5ffe3b335380a6e94dc",
@@ -2033,6 +2129,86 @@
       "selectorAliases": [
         {
           "titleId": "p",
+          "size": "small",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/platinum-kaizo/full/png": {
+      "path": "assets/game-title-art/platinum-kaizo/full.png",
+      "sha256": "da9195b58bf9ae176bb1d64c85fdc5ca69f48071cf5a853bb4d4a771d633b276",
+      "mediaType": "image/png",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "platinum-kaizo",
+        "size": "full",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "pk",
+          "size": "full",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/platinum-kaizo/full/webp": {
+      "path": "assets/game-title-art/platinum-kaizo/full.webp",
+      "sha256": "7c75d4b19a5262be02d82232d0ff61e5ff2c535886fc16f4baa0d9f1558a4679",
+      "mediaType": "image/webp",
+      "width": 384,
+      "height": 192,
+      "motion": "static",
+      "selectors": {
+        "titleId": "platinum-kaizo",
+        "size": "full",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "pk",
+          "size": "full",
+          "format": "webp"
+        }
+      ]
+    },
+    "game-title-art/platinum-kaizo/small/png": {
+      "path": "assets/game-title-art/platinum-kaizo/small.png",
+      "sha256": "183aca7a5e62f232f351adfd2c7bd641e8a92cfdc9dd71e6540a16f7d847f72c",
+      "mediaType": "image/png",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "platinum-kaizo",
+        "size": "small",
+        "format": "png"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "pk",
+          "size": "small",
+          "format": "png"
+        }
+      ]
+    },
+    "game-title-art/platinum-kaizo/small/webp": {
+      "path": "assets/game-title-art/platinum-kaizo/small.webp",
+      "sha256": "b7976e6edc896e906ff2d3369f746ed27c507eb6392b81acd05b35793284960b",
+      "mediaType": "image/webp",
+      "width": 200,
+      "height": 100,
+      "motion": "static",
+      "selectors": {
+        "titleId": "platinum-kaizo",
+        "size": "small",
+        "format": "webp"
+      },
+      "selectorAliases": [
+        {
+          "titleId": "pk",
           "size": "small",
           "format": "webp"
         }

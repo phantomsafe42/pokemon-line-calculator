@@ -27,11 +27,11 @@
       "collectionId": "game-title-art",
       "kind": "game-title-art",
       "indexPath": "assets/game-title-art/index.json",
-      "indexSha256": "8e5ab42585f72e3f10add03754181b5308bf24710d0c138ccebe3aa28150c56a",
-      "indexBytes": 133857,
-      "assets": 204,
-      "assetBytes": 9198082,
-      "selectors": 368
+      "indexSha256": "441bc8f45d014650d861d863e42f8bb8a4e71f1b239a8fd86bad3b0eb6e5571c",
+      "indexBytes": 139629,
+      "assets": 212,
+      "assetBytes": 9510757,
+      "selectors": 384
     },
     {
       "collectionId": "item-sprite",

@@ -2,10 +2,10 @@
   "schemaVersion": 2,
   "generated": true,
   "sourceRepository": "phantomsafe42/pokemon-assets",
-  "sourceCommit": "305b4cec25e624201abca9ac1f56f67bef8f280c",
+  "sourceCommit": "b51d23f755c055f036a8d1d11225012aced885e5",
   "sourceRelease": "0.6.0-dev.1",
-  "sourceIndexSha256": "a8baaaa2a8bfc6b99a1167971e1e00b21e8b6076cedf1ce934381e06f5c1c61a",
-  "sourceManifestSha256": "f7670a4182897f4e4cdc8949259e626549dbfa2c7744d86c02a7a706179b7a1d",
+  "sourceIndexSha256": "076efaa98e232ecd6909e017197cdc359ebda3241c1f9de674b23601b988225f",
+  "sourceManifestSha256": "4f5cb1cb37ab1842431274dbe67bf24a8cd7a0fa3fc3bfce7139782b685ac40e",
   "includedProfiles": [
     "gen5-animated",
     "gen5-static",
@@ -19,7 +19,7 @@
   "files": [
     {
       "path": "asset-index.json",
-      "sha256": "9505965a874d00b722a5f463672c2af0e4ef60f72f3f9139bc092aae65986cf1",
+      "sha256": "1f75429aa30ee00731a95a57019ebaa695026c3e8ed27beee9656c3e478575ab",
       "bytes": 2342
     },
     {
@@ -498,6 +498,26 @@
       "bytes": 24150
     },
     {
+      "path": "assets/game-title-art/fire-red-omega/full.png",
+      "sha256": "03422666e9b78134036b0f1a3f97ab6f8e936d0678355808818c7685530f7187",
+      "bytes": 73513
+    },
+    {
+      "path": "assets/game-title-art/fire-red-omega/full.webp",
+      "sha256": "3eb101b2d407c87586d961203d9246d062113780e91aba10a3c6f2ff7f293606",
+      "bytes": 53650
+    },
+    {
+      "path": "assets/game-title-art/fire-red-omega/small.png",
+      "sha256": "67a84b51912500226375db13700414408f2388c63a1674f6094627737c7e66e5",
+      "bytes": 27510
+    },
+    {
+      "path": "assets/game-title-art/fire-red-omega/small.webp",
+      "sha256": "f57e5d0f9934b123887217d00a3ccdb55b1fea9fdbee3400919079be9f70fe57",
+      "bytes": 21064
+    },
+    {
       "path": "assets/game-title-art/fire-red/full.png",
       "sha256": "a97b1ca425c2b514b1eeeac63564b951634b9531c6eca5ffe3b335380a6e94dc",
       "bytes": 85437
@@ -599,8 +619,8 @@
     },
     {
       "path": "assets/game-title-art/index.json",
-      "sha256": "8e5ab42585f72e3f10add03754181b5308bf24710d0c138ccebe3aa28150c56a",
-      "bytes": 133857
+      "sha256": "441bc8f45d014650d861d863e42f8bb8a4e71f1b239a8fd86bad3b0eb6e5571c",
+      "bytes": 139629
     },
     {
       "path": "assets/game-title-art/leaf-green/full.png",
@@ -701,6 +721,26 @@
       "path": "assets/game-title-art/pearl/small.webp",
       "sha256": "bb89c6837ada5b2e7b2216c12ea4f3301d8f51509dc1cb23bd5a06208ff8516a",
       "bytes": 24190
+    },
+    {
+      "path": "assets/game-title-art/platinum-kaizo/full.png",
+      "sha256": "da9195b58bf9ae176bb1d64c85fdc5ca69f48071cf5a853bb4d4a771d633b276",
+      "bytes": 61339
+    },
+    {
+      "path": "assets/game-title-art/platinum-kaizo/full.webp",
+      "sha256": "7c75d4b19a5262be02d82232d0ff61e5ff2c535886fc16f4baa0d9f1558a4679",
+      "bytes": 37190
+    },
+    {
+      "path": "assets/game-title-art/platinum-kaizo/small.png",
+      "sha256": "183aca7a5e62f232f351adfd2c7bd641e8a92cfdc9dd71e6540a16f7d847f72c",
+      "bytes": 23587
+    },
+    {
+      "path": "assets/game-title-art/platinum-kaizo/small.webp",
+      "sha256": "b7976e6edc896e906ff2d3369f746ed27c507eb6392b81acd05b35793284960b",
+      "bytes": 14822
     },
     {
       "path": "assets/game-title-art/platinum/full.png",
@@ -6189,7 +6229,7 @@
     },
     {
       "path": "index.json",
-      "sha256": "d6cfc1f69e5a8bde6516ae0c200109a2e4ea01f0f23fde9cbe969b62e130cbb0",
+      "sha256": "340ae9eb0b37ebc34f065eefb245002081f490a495c915b08f2bdc6bf4018eea",
       "bytes": 1308
     },
     {

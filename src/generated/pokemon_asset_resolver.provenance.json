@@ -2,9 +2,9 @@
   "schemaVersion": 2,
   "generated": true,
   "source": "Datasets/Pokemon Assets/consumer/pokemon_asset_resolver.global.js",
-  "sourceCommit": "305b4cec25e624201abca9ac1f56f67bef8f280c",
+  "sourceCommit": "b51d23f755c055f036a8d1d11225012aced885e5",
   "sourceSha256": "306896676978af66ef05c9b7cbd6b6fcddeb98b62f1b10c7cbeeef3822dba222",
   "releaseVersion": "0.6.0-dev.1",
-  "releaseIndexSha256": "a8baaaa2a8bfc6b99a1167971e1e00b21e8b6076cedf1ce934381e06f5c1c61a",
-  "releaseManifestSha256": "f7670a4182897f4e4cdc8949259e626549dbfa2c7744d86c02a7a706179b7a1d"
+  "releaseIndexSha256": "076efaa98e232ecd6909e017197cdc359ebda3241c1f9de674b23601b988225f",
+  "releaseManifestSha256": "4f5cb1cb37ab1842431274dbe67bf24a8cd7a0fa3fc3bfce7139782b685ac40e"
 }

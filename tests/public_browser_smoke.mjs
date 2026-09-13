@@ -289,8 +289,8 @@ try {
   assert.equal(state.gameOptions.every(option => option.visibleText === "" && option.label && option.artSource), true);
   assert.equal(state.gameOptions.filter(option => option.group === "rom-hacks-games").length, 6);
   assert.equal(state.gameOptions.filter(option => option.group === "vanilla-games").length, 14);
-  assert.equal(gameOptionById.get("fire-red-omega")?.artTitle, "fire-red");
-  assert.equal(gameOptionById.get("platinum-kaizo")?.artTitle, "platinum");
+  assert.equal(gameOptionById.get("fire-red-omega")?.artTitle, "fire-red-omega");
+  assert.equal(gameOptionById.get("platinum-kaizo")?.artTitle, "platinum-kaizo");
   assert.equal(state.newGameLabel, "New Game");
   assert.equal(state.dropdownPresent, false);
   assert.match(state.vanilla.status, /Ruby is ready\./);
