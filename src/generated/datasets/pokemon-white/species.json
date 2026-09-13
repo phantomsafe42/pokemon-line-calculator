@@ -12813,6 +12813,13 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "b",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10001,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -12880,6 +12887,13 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "c",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10002,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -12947,6 +12961,13 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "d",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10003,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13014,6 +13035,13 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "e",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10004,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13081,6 +13109,13 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "f",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10005,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13148,6 +13183,13 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "g",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10006,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13215,6 +13257,13 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "h",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10007,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13282,6 +13331,13 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "i",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10008,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13349,6 +13405,13 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "j",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10009,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13416,6 +13479,13 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "k",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10010,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13483,6 +13553,13 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "l",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10011,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13550,6 +13627,13 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "m",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10012,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13617,6 +13701,13 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "n",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10013,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13684,6 +13775,13 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "o",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10014,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13751,6 +13849,13 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "p",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10015,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13818,6 +13923,13 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "q",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10016,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13885,6 +13997,13 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "r",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10017,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13952,6 +14071,13 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "s",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10018,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -14019,6 +14145,13 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "t",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10019,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -14086,6 +14219,13 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "u",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10020,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -14153,6 +14293,13 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "v",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10021,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -14220,6 +14367,13 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "w",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10022,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -14287,6 +14441,13 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "x",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10023,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -14354,6 +14515,13 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "y",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10024,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -14421,6 +14589,13 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "z",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10025,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -14428,7 +14603,7 @@
     "unownexclamation": {
       "num": 201,
       "id": "unownexclamation",
-      "name": "Unown Exclamation",
+      "name": "Unown !",
       "nationalDex": 201,
       "types": [
         "psychic"
@@ -14488,6 +14663,20 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "exclamation",
       "baseSpeciesId": "unown",
+      "displayAliases": [
+        "Unown Exclamation"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10026,
+        "status": "pinned-exact-English-form-name"
+      },
+      "displayAliasStatus": {
+        "status": "not-indexed-normalized-display-name-collision",
+        "conflictsWithSpeciesId": "unown"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -14495,7 +14684,7 @@
     "unownquestion": {
       "num": 201,
       "id": "unownquestion",
-      "name": "Unown Question",
+      "name": "Unown ?",
       "nationalDex": 201,
       "types": [
         "psychic"
@@ -14555,6 +14744,20 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "question",
       "baseSpeciesId": "unown",
+      "displayAliases": [
+        "Unown Question"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10027,
+        "status": "pinned-exact-English-form-name"
+      },
+      "displayAliasStatus": {
+        "status": "not-indexed-normalized-display-name-collision",
+        "conflictsWithSpeciesId": "unown"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -24086,7 +24289,7 @@
     "castformsunny": {
       "num": 351,
       "id": "castformsunny",
-      "name": "Castform Sunny",
+      "name": "Sunny Castform",
       "nationalDex": 351,
       "types": [
         "fire"
@@ -24146,12 +24349,22 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession",
       "form": "sunny",
       "baseSpeciesId": "castform",
+      "displayAliases": [
+        "Castform Sunny"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10028,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "castformrainy": {
       "num": 351,
       "id": "castformrainy",
-      "name": "Castform Rainy",
+      "name": "Rainy Castform",
       "nationalDex": 351,
       "types": [
         "water"
@@ -24211,12 +24424,22 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession",
       "form": "rainy",
       "baseSpeciesId": "castform",
+      "displayAliases": [
+        "Castform Rainy"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10029,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "castformsnowy": {
       "num": 351,
       "id": "castformsnowy",
-      "name": "Castform Snowy",
+      "name": "Snowy Castform",
       "nationalDex": 351,
       "types": [
         "ice"
@@ -24276,6 +24499,16 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession",
       "form": "snowy",
       "baseSpeciesId": "castform",
+      "displayAliases": [
+        "Castform Snowy"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10030,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "kecleon": {
@@ -26499,7 +26732,7 @@
     "deoxysattack": {
       "num": 386,
       "id": "deoxysattack",
-      "name": "Deoxys Attack",
+      "name": "Attack Deoxys",
       "nationalDex": 386,
       "types": [
         "psychic"
@@ -26559,12 +26792,22 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession",
       "form": "attack",
       "baseSpeciesId": "deoxys",
+      "displayAliases": [
+        "Deoxys Attack"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10031,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "deoxysdefense": {
       "num": 386,
       "id": "deoxysdefense",
-      "name": "Deoxys Defense",
+      "name": "Defense Deoxys",
       "nationalDex": 386,
       "types": [
         "psychic"
@@ -26624,12 +26867,22 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession",
       "form": "defense",
       "baseSpeciesId": "deoxys",
+      "displayAliases": [
+        "Deoxys Defense"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10032,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "deoxysspeed": {
       "num": 386,
       "id": "deoxysspeed",
-      "name": "Deoxys Speed",
+      "name": "Speed Deoxys",
       "nationalDex": 386,
       "types": [
         "psychic"
@@ -26689,6 +26942,16 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession",
       "form": "speed",
       "baseSpeciesId": "deoxys",
+      "displayAliases": [
+        "Deoxys Speed"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10033,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "turtwig": {
@@ -28344,7 +28607,7 @@
     "burmysandy": {
       "num": 412,
       "id": "burmysandy",
-      "name": "Burmy Sandy",
+      "name": "Sandy Burmy",
       "nationalDex": 412,
       "types": [
         "bug"
@@ -28404,6 +28667,16 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "sandy",
       "baseSpeciesId": "burmy",
+      "displayAliases": [
+        "Burmy Sandy"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10034,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": true,
       "mechanicsBase": "Burmy",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -28411,7 +28684,7 @@
     "burmytrash": {
       "num": 412,
       "id": "burmytrash",
-      "name": "Burmy Trash",
+      "name": "Trash Burmy",
       "nationalDex": 412,
       "types": [
         "bug"
@@ -28471,6 +28744,16 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "trash",
       "baseSpeciesId": "burmy",
+      "displayAliases": [
+        "Burmy Trash"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10035,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": true,
       "mechanicsBase": "Burmy",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -28542,7 +28825,7 @@
     "wormadamsandy": {
       "num": 413,
       "id": "wormadamsandy",
-      "name": "Wormadam Sandy",
+      "name": "Sandy Wormadam",
       "nationalDex": 413,
       "types": [
         "bug",
@@ -28603,12 +28886,22 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession",
       "form": "sandy",
       "baseSpeciesId": "wormadam",
+      "displayAliases": [
+        "Wormadam Sandy"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10036,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "wormadamtrash": {
       "num": 413,
       "id": "wormadamtrash",
-      "name": "Wormadam Trash",
+      "name": "Trash Wormadam",
       "nationalDex": 413,
       "types": [
         "bug",
@@ -28669,6 +28962,16 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession",
       "form": "trash",
       "baseSpeciesId": "wormadam",
+      "displayAliases": [
+        "Wormadam Trash"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10037,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "mothim": {
@@ -29181,7 +29484,7 @@
     "cherrimsunshine": {
       "num": 421,
       "id": "cherrimsunshine",
-      "name": "Cherrim Sunshine",
+      "name": "Sunshine Cherrim",
       "nationalDex": 421,
       "types": [
         "grass"
@@ -29241,6 +29544,16 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "sunshine",
       "baseSpeciesId": "cherrim",
+      "displayAliases": [
+        "Cherrim Sunshine"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10038,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Cherrim",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -29311,7 +29624,7 @@
     "shelloseast": {
       "num": 422,
       "id": "shelloseast",
-      "name": "Shellos East",
+      "name": "East Shellos",
       "nationalDex": 422,
       "types": [
         "water"
@@ -29371,6 +29684,16 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "east",
       "baseSpeciesId": "shellos",
+      "displayAliases": [
+        "Shellos East"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10039,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": true,
       "mechanicsBase": "Shellos",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -29442,7 +29765,7 @@
     "gastrodoneast": {
       "num": 423,
       "id": "gastrodoneast",
-      "name": "Gastrodon East",
+      "name": "East Gastrodon",
       "nationalDex": 423,
       "types": [
         "water",
@@ -29503,6 +29826,16 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "east",
       "baseSpeciesId": "gastrodon",
+      "displayAliases": [
+        "Gastrodon East"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10040,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Gastrodon",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -33069,7 +33402,7 @@
     "rotomheat": {
       "num": 479,
       "id": "rotomheat",
-      "name": "Rotom Heat",
+      "name": "Heat Rotom",
       "nationalDex": 479,
       "types": [
         "electric",
@@ -33130,12 +33463,22 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession",
       "form": "heat",
       "baseSpeciesId": "rotom",
+      "displayAliases": [
+        "Rotom Heat"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10058,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "rotomwash": {
       "num": 479,
       "id": "rotomwash",
-      "name": "Rotom Wash",
+      "name": "Wash Rotom",
       "nationalDex": 479,
       "types": [
         "electric",
@@ -33196,12 +33539,22 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession",
       "form": "wash",
       "baseSpeciesId": "rotom",
+      "displayAliases": [
+        "Rotom Wash"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10059,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "rotomfrost": {
       "num": 479,
       "id": "rotomfrost",
-      "name": "Rotom Frost",
+      "name": "Frost Rotom",
       "nationalDex": 479,
       "types": [
         "electric",
@@ -33262,12 +33615,22 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession",
       "form": "frost",
       "baseSpeciesId": "rotom",
+      "displayAliases": [
+        "Rotom Frost"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10060,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "rotomfan": {
       "num": 479,
       "id": "rotomfan",
-      "name": "Rotom Fan",
+      "name": "Fan Rotom",
       "nationalDex": 479,
       "types": [
         "electric",
@@ -33328,12 +33691,22 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession",
       "form": "fan",
       "baseSpeciesId": "rotom",
+      "displayAliases": [
+        "Rotom Fan"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10061,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "rotommow": {
       "num": 479,
       "id": "rotommow",
-      "name": "Rotom Mow",
+      "name": "Mow Rotom",
       "nationalDex": 479,
       "types": [
         "electric",
@@ -33394,6 +33767,16 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession",
       "form": "mow",
       "baseSpeciesId": "rotom",
+      "displayAliases": [
+        "Rotom Mow"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10062,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "uxie": {
@@ -33907,7 +34290,7 @@
     "giratinaorigin": {
       "num": 487,
       "id": "giratinaorigin",
-      "name": "Giratina Origin",
+      "name": "Origin Giratina",
       "nationalDex": 487,
       "types": [
         "ghost",
@@ -33968,6 +34351,16 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession",
       "form": "origin",
       "baseSpeciesId": "giratina",
+      "displayAliases": [
+        "Giratina Origin"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10063,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "cresselia": {
@@ -34288,7 +34681,7 @@
     "shayminsky": {
       "num": 492,
       "id": "shayminsky",
-      "name": "Shaymin Sky",
+      "name": "Sky Shaymin",
       "nationalDex": 492,
       "types": [
         "grass",
@@ -34349,6 +34742,16 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession",
       "form": "sky",
       "baseSpeciesId": "shaymin",
+      "displayAliases": [
+        "Shaymin Sky"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10064,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "arceus": {
@@ -34417,7 +34820,7 @@
     "arceusfighting": {
       "num": 493,
       "id": "arceusfighting",
-      "name": "Arceus Fighting",
+      "name": "Fighting Arceus",
       "nationalDex": 493,
       "types": [
         "fighting"
@@ -34477,12 +34880,22 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "fighting",
       "baseSpeciesId": "arceus",
+      "displayAliases": [
+        "Arceus Fighting"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10045,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "arceusflying": {
       "num": 493,
       "id": "arceusflying",
-      "name": "Arceus Flying",
+      "name": "Flying Arceus",
       "nationalDex": 493,
       "types": [
         "flying"
@@ -34542,12 +34955,22 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "flying",
       "baseSpeciesId": "arceus",
+      "displayAliases": [
+        "Arceus Flying"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10047,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "arceuspoison": {
       "num": 493,
       "id": "arceuspoison",
-      "name": "Arceus Poison",
+      "name": "Poison Arceus",
       "nationalDex": 493,
       "types": [
         "poison"
@@ -34607,12 +35030,22 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "poison",
       "baseSpeciesId": "arceus",
+      "displayAliases": [
+        "Arceus Poison"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10052,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "arceusground": {
       "num": 493,
       "id": "arceusground",
-      "name": "Arceus Ground",
+      "name": "Ground Arceus",
       "nationalDex": 493,
       "types": [
         "ground"
@@ -34672,12 +35105,22 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "ground",
       "baseSpeciesId": "arceus",
+      "displayAliases": [
+        "Arceus Ground"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10050,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "arceusrock": {
       "num": 493,
       "id": "arceusrock",
-      "name": "Arceus Rock",
+      "name": "Rock Arceus",
       "nationalDex": 493,
       "types": [
         "rock"
@@ -34737,12 +35180,22 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "rock",
       "baseSpeciesId": "arceus",
+      "displayAliases": [
+        "Arceus Rock"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10054,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "arceusbug": {
       "num": 493,
       "id": "arceusbug",
-      "name": "Arceus Bug",
+      "name": "Bug Arceus",
       "nationalDex": 493,
       "types": [
         "bug"
@@ -34802,12 +35255,22 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "bug",
       "baseSpeciesId": "arceus",
+      "displayAliases": [
+        "Arceus Bug"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10041,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "arceusghost": {
       "num": 493,
       "id": "arceusghost",
-      "name": "Arceus Ghost",
+      "name": "Ghost Arceus",
       "nationalDex": 493,
       "types": [
         "ghost"
@@ -34867,12 +35330,22 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "ghost",
       "baseSpeciesId": "arceus",
+      "displayAliases": [
+        "Arceus Ghost"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10048,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "arceussteel": {
       "num": 493,
       "id": "arceussteel",
-      "name": "Arceus Steel",
+      "name": "Steel Arceus",
       "nationalDex": 493,
       "types": [
         "steel"
@@ -34932,12 +35405,22 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "steel",
       "baseSpeciesId": "arceus",
+      "displayAliases": [
+        "Arceus Steel"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10055,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "arceusfire": {
       "num": 493,
       "id": "arceusfire",
-      "name": "Arceus Fire",
+      "name": "Fire Arceus",
       "nationalDex": 493,
       "types": [
         "fire"
@@ -34997,12 +35480,22 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "fire",
       "baseSpeciesId": "arceus",
+      "displayAliases": [
+        "Arceus Fire"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10046,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "arceuswater": {
       "num": 493,
       "id": "arceuswater",
-      "name": "Arceus Water",
+      "name": "Water Arceus",
       "nationalDex": 493,
       "types": [
         "water"
@@ -35062,12 +35555,22 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "water",
       "baseSpeciesId": "arceus",
+      "displayAliases": [
+        "Arceus Water"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10056,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "arceusgrass": {
       "num": 493,
       "id": "arceusgrass",
-      "name": "Arceus Grass",
+      "name": "Grass Arceus",
       "nationalDex": 493,
       "types": [
         "grass"
@@ -35127,12 +35630,22 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "grass",
       "baseSpeciesId": "arceus",
+      "displayAliases": [
+        "Arceus Grass"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10049,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "arceuselectric": {
       "num": 493,
       "id": "arceuselectric",
-      "name": "Arceus Electric",
+      "name": "Electric Arceus",
       "nationalDex": 493,
       "types": [
         "electric"
@@ -35192,12 +35705,22 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "electric",
       "baseSpeciesId": "arceus",
+      "displayAliases": [
+        "Arceus Electric"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10044,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "arceuspsychic": {
       "num": 493,
       "id": "arceuspsychic",
-      "name": "Arceus Psychic",
+      "name": "Psychic Arceus",
       "nationalDex": 493,
       "types": [
         "psychic"
@@ -35257,12 +35780,22 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "psychic",
       "baseSpeciesId": "arceus",
+      "displayAliases": [
+        "Arceus Psychic"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10053,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "arceusice": {
       "num": 493,
       "id": "arceusice",
-      "name": "Arceus Ice",
+      "name": "Ice Arceus",
       "nationalDex": 493,
       "types": [
         "ice"
@@ -35322,12 +35855,22 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "ice",
       "baseSpeciesId": "arceus",
+      "displayAliases": [
+        "Arceus Ice"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10051,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "arceusdragon": {
       "num": 493,
       "id": "arceusdragon",
-      "name": "Arceus Dragon",
+      "name": "Dragon Arceus",
       "nationalDex": 493,
       "types": [
         "dragon"
@@ -35387,12 +35930,22 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "dragon",
       "baseSpeciesId": "arceus",
+      "displayAliases": [
+        "Arceus Dragon"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10043,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "arceusdark": {
       "num": 493,
       "id": "arceusdark",
-      "name": "Arceus Dark",
+      "name": "Dark Arceus",
       "nationalDex": 493,
       "types": [
         "dark"
@@ -35452,6 +36005,16 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "dark",
       "baseSpeciesId": "arceus",
+      "displayAliases": [
+        "Arceus Dark"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10042,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "victini": {
@@ -39065,7 +39628,7 @@
     "basculinbluestriped": {
       "num": 550,
       "id": "basculinbluestriped",
-      "name": "Basculin Blue Striped",
+      "name": "Blue-Striped Basculin",
       "nationalDex": 550,
       "types": [
         "water"
@@ -39125,6 +39688,16 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession",
       "form": "blue-striped",
       "baseSpeciesId": "basculin",
+      "displayAliases": [
+        "Basculin Blue Striped"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10066,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "sandile": {
@@ -39448,7 +40021,7 @@
     "darmanitanzen": {
       "num": 555,
       "id": "darmanitanzen",
-      "name": "Darmanitan Zen",
+      "name": "Zen Darmanitan",
       "nationalDex": 555,
       "types": [
         "fire",
@@ -39509,6 +40082,16 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession",
       "form": "zen",
       "baseSpeciesId": "darmanitan",
+      "displayAliases": [
+        "Darmanitan Zen"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10067,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "maractus": {
@@ -41416,7 +41999,7 @@
     "deerlingsummer": {
       "num": 585,
       "id": "deerlingsummer",
-      "name": "Deerling Summer",
+      "name": "Summer Deerling",
       "nationalDex": 585,
       "types": [
         "normal",
@@ -41477,6 +42060,16 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "summer",
       "baseSpeciesId": "deerling",
+      "displayAliases": [
+        "Deerling Summer"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10068,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": true,
       "mechanicsBase": "Deerling",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -41484,7 +42077,7 @@
     "deerlingautumn": {
       "num": 585,
       "id": "deerlingautumn",
-      "name": "Deerling Autumn",
+      "name": "Autumn Deerling",
       "nationalDex": 585,
       "types": [
         "normal",
@@ -41545,6 +42138,16 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "autumn",
       "baseSpeciesId": "deerling",
+      "displayAliases": [
+        "Deerling Autumn"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10069,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": true,
       "mechanicsBase": "Deerling",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -41552,7 +42155,7 @@
     "deerlingwinter": {
       "num": 585,
       "id": "deerlingwinter",
-      "name": "Deerling Winter",
+      "name": "Winter Deerling",
       "nationalDex": 585,
       "types": [
         "normal",
@@ -41613,6 +42216,16 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "winter",
       "baseSpeciesId": "deerling",
+      "displayAliases": [
+        "Deerling Winter"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10070,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": true,
       "mechanicsBase": "Deerling",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -41684,7 +42297,7 @@
     "sawsbucksummer": {
       "num": 586,
       "id": "sawsbucksummer",
-      "name": "Sawsbuck Summer",
+      "name": "Summer Sawsbuck",
       "nationalDex": 586,
       "types": [
         "normal",
@@ -41745,6 +42358,16 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "summer",
       "baseSpeciesId": "sawsbuck",
+      "displayAliases": [
+        "Sawsbuck Summer"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10071,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Sawsbuck",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -41752,7 +42375,7 @@
     "sawsbuckautumn": {
       "num": 586,
       "id": "sawsbuckautumn",
-      "name": "Sawsbuck Autumn",
+      "name": "Autumn Sawsbuck",
       "nationalDex": 586,
       "types": [
         "normal",
@@ -41813,6 +42436,16 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "autumn",
       "baseSpeciesId": "sawsbuck",
+      "displayAliases": [
+        "Sawsbuck Autumn"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10072,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Sawsbuck",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -41820,7 +42453,7 @@
     "sawsbuckwinter": {
       "num": 586,
       "id": "sawsbuckwinter",
-      "name": "Sawsbuck Winter",
+      "name": "Winter Sawsbuck",
       "nationalDex": 586,
       "types": [
         "normal",
@@ -41881,6 +42514,16 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "winter",
       "baseSpeciesId": "sawsbuck",
+      "displayAliases": [
+        "Sawsbuck Winter"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10073,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Sawsbuck",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -45832,7 +46475,7 @@
     "meloettapirouette": {
       "num": 648,
       "id": "meloettapirouette",
-      "name": "Meloetta Pirouette",
+      "name": "Pirouette Meloetta",
       "nationalDex": 648,
       "types": [
         "normal",
@@ -45893,6 +46536,16 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession",
       "form": "pirouette",
       "baseSpeciesId": "meloetta",
+      "displayAliases": [
+        "Meloetta Pirouette"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10074,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "genesect": {
@@ -45962,7 +46615,7 @@
     "genesectdouse": {
       "num": 649,
       "id": "genesectdouse",
-      "name": "Genesect Douse",
+      "name": "Douse Genesect",
       "nationalDex": 649,
       "types": [
         "bug",
@@ -46023,6 +46676,16 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "douse",
       "baseSpeciesId": "genesect",
+      "displayAliases": [
+        "Genesect Douse"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10075,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Genesect",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -46030,7 +46693,7 @@
     "genesectshock": {
       "num": 649,
       "id": "genesectshock",
-      "name": "Genesect Shock",
+      "name": "Shock Genesect",
       "nationalDex": 649,
       "types": [
         "bug",
@@ -46091,6 +46754,16 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "shock",
       "baseSpeciesId": "genesect",
+      "displayAliases": [
+        "Genesect Shock"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10076,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Genesect",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -46098,7 +46771,7 @@
     "genesectburn": {
       "num": 649,
       "id": "genesectburn",
-      "name": "Genesect Burn",
+      "name": "Burn Genesect",
       "nationalDex": 649,
       "types": [
         "bug",
@@ -46159,6 +46832,16 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "burn",
       "baseSpeciesId": "genesect",
+      "displayAliases": [
+        "Genesect Burn"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10077,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Genesect",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -46166,7 +46849,7 @@
     "genesectchill": {
       "num": 649,
       "id": "genesectchill",
-      "name": "Genesect Chill",
+      "name": "Chill Genesect",
       "nationalDex": 649,
       "types": [
         "bug",
@@ -46227,10 +46910,26 @@
       "sourceConfidence": "exact-PKHeX-version-personal-table; raw Gen3/4 empty ability slots pending pret supersession; exact shared base personal entry",
       "form": "chill",
       "baseSpeciesId": "genesect",
+      "displayAliases": [
+        "Genesect Chill"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10078,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Genesect",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
     }
+  },
+  "displayNameAuthority": {
+    "baseSpecies": "PokeAPI English pokemon_species_names.csv",
+    "forms": "PokeAPI English pokemon_form_names.csv",
+    "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+    "status": "passed-pinned-English-species-and-form-names"
   },
   "nfeAuthority": {
     "source": "evolutions.json#records.*.fromSpeciesId",

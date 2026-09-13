@@ -14,7 +14,7 @@
   "sourceProfile": "retail-pokemon-pearl-multi-source-pinned",
   "buildInputs": {
     "../../tools/imports/vanilla/source_manifest.json": {
-      "sha256": "fae3ed97e3c76c0ac17b69fdeadad4344aee4b3105008e902d06b2e7b138626b",
+      "sha256": "a1d17584a2b99eb23b62c8e1f45c9c4c8aba3baac2f6d5012275f675e6113556",
       "role": "immutable upstream source lock"
     },
     "../../tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-pearl.json": {
@@ -1117,6 +1117,23 @@
     "speciesSaveIdentity": {
       "required": true,
       "status": "passed-exact-version-raw-species-and-form-projection"
+    },
+    "displayNames": {
+      "required": true,
+      "status": "passed-pinned-English-species-move-and-trainer-presentation-authority",
+      "speciesForms": {
+        "changedFormNames": 31,
+        "unchangedFormNames": 25,
+        "ambiguousLegacyFormNamesNotIndexed": 0,
+        "unresolvedFormNames": 0
+      },
+      "trainers": {
+        "documentedTrainerNames": 423,
+        "ambiguousDocumentedTrainerNames": 0,
+        "normalizedTrainerNameFallbacks": 428,
+        "canonicalPartySpeciesNames": 1591
+      },
+      "partySpeciesInvariant": "trainers.json#records.*.team.*.displaySpecies equals species.json#records.*.name"
     },
     "speciesAbilitySlots": {
       "required": true,

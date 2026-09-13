@@ -12890,6 +12890,13 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret PID-derived Unown form identity; exact shared base personal entry",
       "form": "b",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10001,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -12957,6 +12964,13 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret PID-derived Unown form identity; exact shared base personal entry",
       "form": "c",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10002,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13024,6 +13038,13 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret PID-derived Unown form identity; exact shared base personal entry",
       "form": "d",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10003,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13091,6 +13112,13 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret PID-derived Unown form identity; exact shared base personal entry",
       "form": "e",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10004,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13158,6 +13186,13 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret PID-derived Unown form identity; exact shared base personal entry",
       "form": "f",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10005,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13225,6 +13260,13 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret PID-derived Unown form identity; exact shared base personal entry",
       "form": "g",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10006,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13292,6 +13334,13 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret PID-derived Unown form identity; exact shared base personal entry",
       "form": "h",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10007,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13359,6 +13408,13 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret PID-derived Unown form identity; exact shared base personal entry",
       "form": "i",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10008,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13426,6 +13482,13 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret PID-derived Unown form identity; exact shared base personal entry",
       "form": "j",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10009,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13493,6 +13556,13 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret PID-derived Unown form identity; exact shared base personal entry",
       "form": "k",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10010,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13560,6 +13630,13 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret PID-derived Unown form identity; exact shared base personal entry",
       "form": "l",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10011,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13627,6 +13704,13 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret PID-derived Unown form identity; exact shared base personal entry",
       "form": "m",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10012,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13694,6 +13778,13 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret PID-derived Unown form identity; exact shared base personal entry",
       "form": "n",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10013,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13761,6 +13852,13 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret PID-derived Unown form identity; exact shared base personal entry",
       "form": "o",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10014,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13828,6 +13926,13 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret PID-derived Unown form identity; exact shared base personal entry",
       "form": "p",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10015,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13895,6 +14000,13 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret PID-derived Unown form identity; exact shared base personal entry",
       "form": "q",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10016,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -13962,6 +14074,13 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret PID-derived Unown form identity; exact shared base personal entry",
       "form": "r",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10017,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -14029,6 +14148,13 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret PID-derived Unown form identity; exact shared base personal entry",
       "form": "s",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10018,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -14096,6 +14222,13 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret PID-derived Unown form identity; exact shared base personal entry",
       "form": "t",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10019,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -14163,6 +14296,13 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret PID-derived Unown form identity; exact shared base personal entry",
       "form": "u",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10020,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -14230,6 +14370,13 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret PID-derived Unown form identity; exact shared base personal entry",
       "form": "v",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10021,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -14297,6 +14444,13 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret PID-derived Unown form identity; exact shared base personal entry",
       "form": "w",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10022,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -14364,6 +14518,13 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret PID-derived Unown form identity; exact shared base personal entry",
       "form": "x",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10023,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -14431,6 +14592,13 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret PID-derived Unown form identity; exact shared base personal entry",
       "form": "y",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10024,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -14498,6 +14666,13 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret PID-derived Unown form identity; exact shared base personal entry",
       "form": "z",
       "baseSpeciesId": "unown",
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10025,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -14505,7 +14680,7 @@
     "unownexclamation": {
       "num": 201,
       "id": "unownexclamation",
-      "name": "Unown Exclamation",
+      "name": "Unown !",
       "nationalDex": 201,
       "types": [
         "psychic"
@@ -14565,6 +14740,20 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret PID-derived Unown form identity; exact shared base personal entry",
       "form": "exclamation",
       "baseSpeciesId": "unown",
+      "displayAliases": [
+        "Unown Exclamation"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10026,
+        "status": "pinned-exact-English-form-name"
+      },
+      "displayAliasStatus": {
+        "status": "not-indexed-normalized-display-name-collision",
+        "conflictsWithSpeciesId": "unown"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -14572,7 +14761,7 @@
     "unownquestion": {
       "num": 201,
       "id": "unownquestion",
-      "name": "Unown Question",
+      "name": "Unown ?",
       "nationalDex": 201,
       "types": [
         "psychic"
@@ -14632,6 +14821,20 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret PID-derived Unown form identity; exact shared base personal entry",
       "form": "question",
       "baseSpeciesId": "unown",
+      "displayAliases": [
+        "Unown Question"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10027,
+        "status": "pinned-exact-English-form-name"
+      },
+      "displayAliasStatus": {
+        "status": "not-indexed-normalized-display-name-collision",
+        "conflictsWithSpeciesId": "unown"
+      },
       "nfe": false,
       "mechanicsBase": "Unown",
       "mechanicsInheritance": "explicit-cosmetic-form-equal-to-standardized-base-record"
@@ -24213,7 +24416,7 @@
     "castformsunny": {
       "num": 351,
       "id": "castformsunny",
-      "name": "Castform Sunny",
+      "name": "Sunny Castform",
       "nationalDex": 351,
       "types": [
         "fire"
@@ -24273,12 +24476,22 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret battle-runtime Castform identity; exact shared base personal entry",
       "form": "sunny",
       "baseSpeciesId": "castform",
+      "displayAliases": [
+        "Castform Sunny"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10028,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "castformrainy": {
       "num": 351,
       "id": "castformrainy",
-      "name": "Castform Rainy",
+      "name": "Rainy Castform",
       "nationalDex": 351,
       "types": [
         "water"
@@ -24338,12 +24551,22 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret battle-runtime Castform identity; exact shared base personal entry",
       "form": "rainy",
       "baseSpeciesId": "castform",
+      "displayAliases": [
+        "Castform Rainy"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10029,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "castformsnowy": {
       "num": 351,
       "id": "castformsnowy",
-      "name": "Castform Snowy",
+      "name": "Snowy Castform",
       "nationalDex": 351,
       "types": [
         "ice"
@@ -24403,6 +24626,16 @@
       "sourceConfidence": "exact shared Gen 3 personal entry; PKHeX/pret battle-runtime Castform identity; exact shared base personal entry",
       "form": "snowy",
       "baseSpeciesId": "castform",
+      "displayAliases": [
+        "Castform Snowy"
+      ],
+      "displayNameSource": {
+        "authority": "PokeAPI English pokemon form name",
+        "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+        "file": "csv/pokemon_form_names.csv",
+        "pokemonFormId": 10030,
+        "status": "pinned-exact-English-form-name"
+      },
       "nfe": false
     },
     "kecleon": {
@@ -26624,6 +26857,12 @@
       "rawSpeciesId": 410,
       "nfe": false
     }
+  },
+  "displayNameAuthority": {
+    "baseSpecies": "PokeAPI English pokemon_species_names.csv",
+    "forms": "PokeAPI English pokemon_form_names.csv",
+    "upstreamCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+    "status": "passed-pinned-English-species-and-form-names"
   },
   "nfeAuthority": {
     "source": "evolutions.json#records.*.fromSpeciesId",
