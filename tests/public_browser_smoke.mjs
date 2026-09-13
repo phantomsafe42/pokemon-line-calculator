@@ -271,7 +271,7 @@ try {
   assert.match(state.vanilla.status, /Ruby is ready\./);
   assert.equal(state.vanilla.credit, "by Game Freak");
   assert.ok(state.vanilla.trainers > 1);
-  assert.equal(state.vanilla.saveImportVisible, false);
+  assert.equal(state.vanilla.saveImportVisible, true);
   assert.equal(state.spriteLoaded, true);
   assert.match(state.status, /is ready\./);
   assert.equal(state.gameCredit, "by AphexCubed and Drayano");
