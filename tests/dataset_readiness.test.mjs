@@ -46,11 +46,12 @@ test("retail trainer navigation uses canonical progression names instead of spli
     const records = Array.isArray(progression.records) ? progression.records : Object.values(progression.records || {});
     const namesById = new Map(records.filter(record => record?.id && record?.name).map(record => [String(record.id), String(record.name)]));
     for (const group of context.trainerGroups()) {
+      assert.doesNotMatch(group.label, /^[a-z]/, `${gameId}:${group.id}`);
+      assert.doesNotMatch(group.label, /\bSplit Split$/i, `${gameId}:${group.id}`);
       const name = namesById.get(group.id);
       if (!name) continue;
       const expected = /\s+split$/i.test(name) ? name : `${name} Split`;
       assert.equal(group.label, expected, `${gameId}:${group.id}`);
-      assert.doesNotMatch(group.label, /^[a-z]/, `${gameId}:${group.id}`);
     }
   }
 });
