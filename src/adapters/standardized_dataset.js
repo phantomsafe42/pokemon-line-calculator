@@ -89,6 +89,12 @@ function trainerNavigationGroups(trainerIndex, orderDocument, progressionDocumen
     ? [...orderDocument.records].sort((a, b) => Number(a.order) - Number(b.order))
     : [];
   if (!orderRecords.length) throw new DatasetReadinessError("Trainer order is unavailable");
+  const progressionRecords = Array.isArray(progressionDocument?.records)
+    ? progressionDocument.records
+    : Object.values(progressionDocument?.records || {});
+  const progressionById = new Map(progressionRecords
+    .filter(record => record?.id)
+    .map(record => [String(record.id), record]));
   const declaredSplits = Array.isArray(progressionDocument?.consumerProfile?.splits)
     ? progressionDocument.consumerProfile.splits
     : Array.isArray(progressionDocument?.consumerProfile?.milestones)
@@ -98,10 +104,11 @@ function trainerNavigationGroups(trainerIndex, orderDocument, progressionDocumen
     ? [...declaredSplits].sort((a, b) => Number(a.firstOrder ?? a.order) - Number(b.firstOrder ?? b.order))
     : [...new Set(orderRecords.map(entry => String(entry.splitId || "full-game")))].map(splitId => {
       const entries = orderRecords.filter(entry => String(entry.splitId || "full-game") === splitId);
+      const progression = progressionById.get(splitId);
       return {
         id: splitId,
-        label: splitId === "full-game" ? "Full Game" : splitId,
-        levelCap: null,
+        label: splitId === "full-game" ? "Full Game" : progression?.name || progression?.label || splitId,
+        levelCap: progression?.levelCap ?? null,
         firstOrder: Number(entries[0]?.order),
         lastOrder: Number(entries.at(-1)?.order)
       };
@@ -118,11 +125,12 @@ function trainerNavigationGroups(trainerIndex, orderDocument, progressionDocumen
       .map(entry => trainerIndex.get(String(entry.trainerId)))
       .filter(Boolean);
     for (const trainer of trainers) seen.add(String(trainer.id));
+    const label = String(split.label || split.id);
     return {
       id: String(split.id),
-      label: split.id === "full-game" || String(split.label).toLowerCase() === "full game"
+      label: split.id === "full-game" || label.toLowerCase() === "full game"
         ? "Full Game"
-        : `${split.label || split.id} Split`,
+        : /\s+split$/i.test(label) ? label : `${label} Split`,
       levelCap: split.levelCap !== null && split.levelCap !== undefined && split.levelCap !== "" && Number.isFinite(Number(split.levelCap))
         ? Number(split.levelCap)
         : null,
