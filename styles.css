@@ -48,12 +48,12 @@ h1 { margin-bottom: 0; font-size: clamp(1.45rem, 2.3vw, 1.85rem); }
 h2 { margin-bottom: 0; font-size: 1.18rem; }
 h3 { margin: 0; font-size: 1rem; }
 .app-header {
-  display: grid; grid-template-columns: auto minmax(18rem, 1fr); align-items: center;
+  display: grid; grid-template-columns: auto minmax(16rem, 26rem) minmax(18rem, 1fr); align-items: center;
   gap: 1rem; border-bottom: 1px solid var(--line); padding: 1rem max(28px, calc((100vw - 2480px) / 2)); background: var(--shell);
 }
 .site-credit { margin: .2rem 0 0; color: var(--muted); font-size: .76rem; }
-.game-control { display: flex; align-items: center; justify-self: end; gap: .75rem; }
-.current-game-summary { min-width: 12rem; text-align: right; }
+.game-control { display: flex; align-items: center; justify-content: space-between; justify-self: stretch; gap: .75rem; }
+.current-game-summary { min-width: 12rem; text-align: left; }
 .current-game-summary > strong { display: block; font-size: .9rem; }
 .game-credit { min-height: 1rem; margin: .22rem 0 0; color: var(--muted); font-size: .72rem; font-weight: 500; }
 .status { margin: 0 0 .75rem; color: var(--muted); text-align: left; font-size: .84rem; line-height: 1.35; }
