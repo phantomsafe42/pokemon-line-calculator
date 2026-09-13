@@ -141,7 +141,7 @@ const STAT_LABELS = Object.freeze({ hp: "HP", atk: "Atk", def: "Def", spa: "SpA"
 const STATUS_LABELS = Object.freeze({ brn: "Burn", par: "Paralysis", psn: "Poison", tox: "Badly Poisoned", slp: "Sleep", frz: "Freeze" });
 const byId = id => document.getElementById(id);
 const ui = Object.fromEntries([
-  "current-game-name", "new-game", "game-credit", "game-dialog", "close-game-dialog", "game-dialog-status", "rom-hacks-games", "vanilla-games",
+  "current-game-summary", "current-game-art", "current-game-name", "new-game", "game-credit", "game-dialog", "close-game-dialog", "game-dialog-status", "rom-hacks-games", "vanilla-games",
   "app-status", "app-tabs", "plc-tab", "boxes-tab", "plc-panel", "boxes-panel",
   "plan-toolbar-label", "commit-turn", "save-plan", "new-plan", "workspace", "empty-plan",
   "node-tree", "turn-label", "revision-label", "battle-workspace", "player-action-panel", "enemy-action-panel", "field-state",
@@ -213,6 +213,15 @@ function renderGameCredit(gameId) {
   const config = GAME_REGISTRY[gameId];
   ui["current-game-name"].textContent = config?.name || "No game selected";
   ui["game-credit"].textContent = config?.credit || "";
+  ui["current-game-summary"].hidden = !config;
+  if (config) {
+    ui["current-game-art"].alt = config.name;
+    void setGameArtwork(ui["current-game-art"], ui["current-game-summary"], config);
+  } else {
+    ui["current-game-art"].removeAttribute("src");
+    ui["current-game-art"].alt = "";
+    ui["current-game-summary"].classList.remove("art-unavailable");
+  }
   ui["close-game-dialog"].hidden = !config;
   for (const gameButton of document.querySelectorAll(".game-picker-option")) {
     const selected = gameButton.dataset.gameId === gameId;

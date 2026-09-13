@@ -7,7 +7,7 @@
   <meta name="pokemon-asset-release-base" content="./public-assets">
   <title>Pokémon Line Calculator</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./styles.css?v=20260912-game-selection-v4">
+  <link rel="stylesheet" href="./styles.css?v=20260912-game-selection-v5">
 </head>
 <body>
   <header class="app-header">
@@ -16,11 +16,12 @@
       <p class="site-credit">twitch.tv/phantomsafe</p>
     </div>
     <div class="game-control">
-      <div class="current-game-summary" aria-live="polite">
-        <strong id="current-game-name">No game selected</strong>
+      <button id="new-game" type="button" class="secondary">New Game</button>
+      <div id="current-game-summary" class="current-game-summary" aria-live="polite" hidden>
+        <img id="current-game-art" class="current-game-art" alt="">
+        <strong id="current-game-name" class="sr-only">No game selected</strong>
         <p id="game-credit" class="game-credit"></p>
       </div>
-      <button id="new-game" type="button" class="secondary">New Game</button>
     </div>
   </header>
 
@@ -315,6 +316,6 @@
 
   <script src="./src/generated/pokemon_asset_resolver.global.js?v=20260911-assets-v3"></script>
   <script src="./src/generated/battle-mechanics/trainer_ai/trainer_ai_evaluator.js?v=20260909-public-release-v2"></script>
-  <script type="module" src="./src/app.js?v=20260912-game-selection-v2"></script>
+  <script type="module" src="./src/app.js?v=20260912-game-selection-v3"></script>
 </body>
 </html>
