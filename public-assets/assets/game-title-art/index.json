@@ -16,7 +16,7 @@
   },
   "statistics": {
     "assets": 212,
-    "assetBytes": 9484035,
+    "assetBytes": 9515446,
     "selectors": 384
   },
   "selectorIndex": {
@@ -1340,7 +1340,7 @@
     },
     "game-title-art/fire-red-omega/full/png": {
       "path": "assets/game-title-art/fire-red-omega/full.png",
-      "sha256": "4723889366d57a96024c170f73d408f65983660ba3dc9f84e5f22cbf2a94d5da",
+      "sha256": "14b3f891738f1d8ebea85c15aae0acaa2f313252d6d91b6f000266228ed90e8a",
       "mediaType": "image/png",
       "width": 384,
       "height": 192,
@@ -1360,7 +1360,7 @@
     },
     "game-title-art/fire-red-omega/full/webp": {
       "path": "assets/game-title-art/fire-red-omega/full.webp",
-      "sha256": "c1cc1d3832cd9a1ec375c5b33135cfc30ea0a1848de9131c6a42b8a51c3e978a",
+      "sha256": "81532b48b3511d52adccfeb1fb479c477c2b091986a93f88650100d4fc24975d",
       "mediaType": "image/webp",
       "width": 384,
       "height": 192,
@@ -1380,7 +1380,7 @@
     },
     "game-title-art/fire-red-omega/small/png": {
       "path": "assets/game-title-art/fire-red-omega/small.png",
-      "sha256": "30131691a75f53616508dda72aabb71a0a80c3288df8d439bfe4a6cbe5680788",
+      "sha256": "dd34c371030d5b1226843abfb4f23fc6ea9f4c57b76b8b3a3c731935ba4453e6",
       "mediaType": "image/png",
       "width": 200,
       "height": 100,
@@ -1400,7 +1400,7 @@
     },
     "game-title-art/fire-red-omega/small/webp": {
       "path": "assets/game-title-art/fire-red-omega/small.webp",
-      "sha256": "805272d6edaeb97370024697b13294a4c1081dd0446aed124aaed329a2900a30",
+      "sha256": "4d0067e83d0ac705f29b4c92582d34ce2fccfc59475399b0ab5d2d9b9259d196",
       "mediaType": "image/webp",
       "width": 200,
       "height": 100,
