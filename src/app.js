@@ -1537,7 +1537,7 @@ async function beginPlanFromContext() {
     setTab("plc");
     renderWorkspace();
     const formatLabel = battleFormatLabel(plan.game.battleFormat);
-    setStatus(`Clean ${formatLabel} plan ready for ${trainer.displayName}. Nothing has been sent to Overlay.`);
+    setStatus(`Clean ${formatLabel} plan ready for ${trainer.displayName}.`);
   } catch (error) { setStatus(error.message, true); }
 }
 
@@ -3603,7 +3603,7 @@ async function importPlanFile(file) {
     refreshContextBoxSelect();
     renderWorkspace();
     if (ui["output-dialog"].open) ui["output-dialog"].close();
-    setStatus(`Plan imported into the local draft${importUpgrade.replayed ? " and updated to the current PLC mechanics" : ""}. Player party added to Boxes as Import ${importedParty.importNumber}.${probabilityRepair.refreshedStateNodeIds.length ? ` Repaired ${probabilityRepair.refreshedStateNodeIds.length} stale graph ${probabilityRepair.refreshedStateNodeIds.length === 1 ? "probability" : "probabilities"}.` : ""} Nothing has been sent to Overlay.`);
+    setStatus(`Plan imported into the local draft${importUpgrade.replayed ? " and updated to the current PLC mechanics" : ""}. Player party added to Boxes as Import ${importedParty.importNumber}.${probabilityRepair.refreshedStateNodeIds.length ? ` Repaired ${probabilityRepair.refreshedStateNodeIds.length} stale graph ${probabilityRepair.refreshedStateNodeIds.length === 1 ? "probability" : "probabilities"}.` : ""}`);
   } catch (error) { setStatus(error.message, true); }
   finally { ui["import-plan"].value = ""; }
 }
@@ -3787,7 +3787,7 @@ async function selectGame(gameId) {
     refreshContextBoxSelect();
     setTab(activeTab);
     const restored = await restoreDraft();
-    setStatus(restored ? `Recovered the active ${config.name} draft. Nothing has been sent to Overlay.` : `${config.name} is ready. Add or select a Box party to begin.`);
+    setStatus(restored ? `Recovered the active ${config.name} draft.` : `${config.name} is ready. Add or select a Box party to begin.`);
     return true;
   } catch (error) {
     setStatus(error.message, true);

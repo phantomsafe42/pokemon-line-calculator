@@ -62,7 +62,8 @@ const forbiddenText = [
   { label: "workspace Dataset route", pattern: /\/Datasets\// },
   { label: "workspace Battle Mechanics route", pattern: /\/Battle%20Mechanics\//i },
   { label: "Windows user path", pattern: /[A-Za-z]:[\\/]Users[\\/]/i },
-  { label: "Codex instruction marker", pattern: /PLC_LOCAL_ONLY_|Codex working|AGENTS\.md/i }
+  { label: "Codex instruction marker", pattern: /PLC_LOCAL_ONLY_|Codex working|AGENTS\.md/i },
+  { label: "public OBS or Overlay subtitle copy", pattern: /Nothing has been sent to Overlay|Import and output never publish anything to Overlay or OBS/i }
 ];
 for (const relativePath of actual) {
   if (!textExtensions.has(path.extname(relativePath).toLowerCase())) continue;
