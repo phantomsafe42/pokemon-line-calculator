@@ -47,13 +47,13 @@ function trainerAiMetadata(documentation) {
   };
 }
 
-async function initialize(datasetBaseUrl, datasetHostedPrefix, trainerAiBaseUrl, trainerAiHostedPrefix, hostedRelease, gameId, role) {
+async function initialize(datasetBaseUrl, datasetHostedPrefix, trainerAiBaseUrl, trainerAiHostedPrefix, trainerAiLazyResources, hostedRelease, gameId, role) {
   if (!["resolver", "trainer-ai"].includes(role)) throw new Error(`Unknown Worker role ${role || "missing"}`);
   workerRole = role;
   if (role === "trainer-ai" && !trainerAiBaseUrl) {
     return { gameId, resolverReady: false, trainerAiProfileId: null, trainerAiMetadata: null };
   }
-  const datasetModule = await import("../adapters/standardized_dataset.js?v=20260914-hosted-datasets-v2");
+  const datasetModule = await import("../adapters/standardized_dataset.js?v=20260914-hosted-datasets-v3");
   const damageModule = await import("../adapters/shared_damage_adapter.js?v=20260909-public-release-v2");
   dataset = await datasetModule.loadStandardizedDataset({ baseUrl: datasetBaseUrl, hostedPrefix: datasetHostedPrefix, hostedRelease });
   const runtime = self.SharedDamageCalculator.createFromDocuments(
@@ -72,8 +72,14 @@ async function initialize(datasetBaseUrl, datasetHostedPrefix, trainerAiBaseUrl,
     previewCombatantMove = combatantMovesModule.previewCombatantMove;
   } else {
     importScripts(new URL("trainer_ai/trainer_ai_evaluator.js?v=20260909-public-release-v2", battleMechanicsBase).href);
-    const trainerAiModule = await import("../adapters/trainer_ai.js?v=20260914-hosted-datasets-v2");
-    trainerAi = await trainerAiModule.loadTrainerAiDocumentation({ baseUrl: trainerAiBaseUrl, hostedPrefix: trainerAiHostedPrefix, hostedRelease, gameId });
+    const trainerAiModule = await import("../adapters/trainer_ai.js?v=20260914-hosted-datasets-v3");
+    trainerAi = await trainerAiModule.loadTrainerAiDocumentation({
+      baseUrl: trainerAiBaseUrl,
+      hostedPrefix: trainerAiHostedPrefix,
+      hostedRelease,
+      gameId,
+      resourcePaths: trainerAiLazyResources
+    });
     dataset.abilityKnowledgePolicy = trainerAi?.evaluatorProfile?.constants?.abilityKnowledge || null;
     analyzeTrainerAi = trainerAiModule.analyzeTrainerAi;
   }
@@ -89,7 +95,7 @@ self.addEventListener("message", async event => {
   const { requestId, type, payload } = event.data || {};
   try {
     if (type === "initialize") {
-      const result = await initialize(payload.datasetBaseUrl, payload.datasetHostedPrefix, payload.trainerAiBaseUrl, payload.trainerAiHostedPrefix, payload.hostedRelease, payload.gameId, payload.role);
+      const result = await initialize(payload.datasetBaseUrl, payload.datasetHostedPrefix, payload.trainerAiBaseUrl, payload.trainerAiHostedPrefix, payload.trainerAiLazyResources, payload.hostedRelease, payload.gameId, payload.role);
       self.postMessage({ requestId, ok: true, result });
       return;
     }

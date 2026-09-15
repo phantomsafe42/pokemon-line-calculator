@@ -5,7 +5,7 @@ import { rotationFrontSlot } from "../rulesets/rotation_battle.js?v=20260905-dra
 import { areSlotsAdjacent, triplePositionForSlot } from "../rulesets/triple_battle.js?v=20260905-drafts-freecalc-partners-v1";
 import { trappingAbilityBlocksSwitch } from "../rulesets/ability_rules.js?v=20260905-drafts-freecalc-partners-v1";
 import { effectiveActionSpeed } from "../rulesets/action_order.js?v=20260905-drafts-freecalc-partners-v1";
-import { readDatasetJsonFiles } from "./hosted_dataset.js?v=20260914-hosted-datasets-v2";
+import { readDatasetJsonFiles } from "./hosted_dataset.js?v=20260914-hosted-datasets-v3";
 
 export class TrainerAiReadinessError extends Error {
   constructor(message) {
@@ -23,8 +23,101 @@ function requireProfile(document, { expectedGameId = null, kind, profileId = nul
   return document;
 }
 
-export async function loadTrainerAiDocumentation({ baseUrl, hostedPrefix = null, hostedRelease, gameId = "volt-white-2r", generation = null, fetchImpl = fetch, cacheStorage = globalThis.caches }) {
-  const bindingPath = `${gameId}/trainer_ai.json`;
+function trainerAiRelativePath(path, hostedPrefix, label) {
+  const value = String(path || "");
+  const prefix = `${String(hostedPrefix || "trainer-ai").replace(/^\/+|\/+$/gu, "")}/`;
+  const relative = value.startsWith(prefix) ? value.slice(prefix.length) : value;
+  const parts = relative.split("/");
+  if (!relative || relative.startsWith("/") || relative.includes("\\")
+    || parts.some(part => !part || part === "." || part === ".." || !/^[A-Za-z0-9._-]+$/u.test(part))) {
+    throw new TrainerAiReadinessError(`${label} is not a safe Trainer AI resource path`);
+  }
+  return parts.join("/");
+}
+
+function trainerAiBootstrapMetadata(document, game) {
+  const abilityKnowledge = game.abilityKnowledgeModelId
+    ? document.abilityKnowledgeProfiles?.[game.abilityKnowledgeModelId]
+    : null;
+  if (game.abilityKnowledgeModelId && !abilityKnowledge) {
+    throw new TrainerAiReadinessError(`${game.gameId} Trainer AI bootstrap does not include its ability-knowledge profile`);
+  }
+  return Object.freeze({
+    binding: Object.freeze({
+      gameId: game.gameId,
+      consumerActivation: Object.freeze({ ...game.consumerActivation })
+    }),
+    generation: Number(game.generation),
+    profile: Object.freeze({
+      profileId: game.profiles?.sharedProfileId || game.profiles?.inheritedProfileId || null,
+      scripts: Object.freeze((game.activeAiFlags || []).map(flag => Object.freeze({
+        id: flag.id,
+        name: flag.title,
+        summary: flag.summary,
+        order: Number(flag.order),
+        readiness: flag.readiness
+      })))
+    }),
+    evaluatorProfile: Object.freeze({
+      profileId: game.profiles?.evaluatorProfileId || null,
+      constants: Object.freeze({ abilityKnowledge: abilityKnowledge || null })
+    }),
+    evaluatorReadiness: Object.freeze({ ...game.evaluatorReadiness }),
+    profiles: Object.freeze({ ...game.profiles }),
+    lazyResources: Object.freeze({ ...game.lazyResources })
+  });
+}
+
+export async function loadTrainerAiBootstrap({ baseUrl, hostedPrefix = "trainer-ai", hostedRelease, gameId, fetchImpl = fetch, cacheStorage = globalThis.caches }) {
+  let document;
+  let delivery;
+  if (hostedPrefix) {
+    const loaded = await readDatasetJsonFiles({
+      fallbackBaseUrl: baseUrl,
+      hostedPrefix,
+      paths: ["bootstrap.json"],
+      release: hostedRelease,
+      fetchImpl,
+      cacheStorage
+    });
+    document = loaded.documents["bootstrap.json"];
+    delivery = loaded.delivery;
+  } else {
+    const response = await fetchImpl(`${String(baseUrl || "").replace(/\/$/u, "")}/bootstrap.json`);
+    if (!response.ok) throw new TrainerAiReadinessError(`bootstrap.json returned HTTP ${response.status}`);
+    document = await response.json();
+    delivery = Object.freeze({ mode: "direct" });
+  }
+  if (document?.schemaVersion !== "plc-trainer-ai-bootstrap/v1"
+    || document?.consumerProfileId !== "plc"
+    || !Array.isArray(document.games)
+    || !document.abilityKnowledgeProfiles
+    || typeof document.abilityKnowledgeProfiles !== "object") {
+    throw new TrainerAiReadinessError("Trainer AI bootstrap does not match the PLC contract");
+  }
+  const game = document.games.find(entry => entry?.gameId === gameId);
+  if (!game || !Number.isInteger(Number(game.generation))
+    || typeof game.consumerActivation?.enabled !== "boolean"
+    || !game.profiles || !game.evaluatorReadiness || !Array.isArray(game.activeAiFlags)
+    || !game.lazyResources?.sharedTrainerAiPath) {
+    throw new TrainerAiReadinessError(`${gameId || "Selected game"} is absent from the Trainer AI bootstrap`);
+  }
+  for (const flag of game.activeAiFlags) {
+    if (!flag?.id || !flag?.title || !flag?.summary || !Number.isInteger(Number(flag.order))) {
+      throw new TrainerAiReadinessError(`${gameId} Trainer AI bootstrap has invalid flag metadata`);
+    }
+  }
+  for (const [key, path] of Object.entries(game.lazyResources)) {
+    if (key.endsWith("Path") && path !== null) trainerAiRelativePath(path, hostedPrefix, `${gameId} ${key}`);
+  }
+  return Object.freeze({
+    metadata: trainerAiBootstrapMetadata(document, game),
+    delivery
+  });
+}
+
+export async function loadTrainerAiDocumentation({ baseUrl, hostedPrefix = null, hostedRelease, gameId = "volt-white-2r", generation = null, resourcePaths = null, fetchImpl = fetch, cacheStorage = globalThis.caches }) {
+  const bindingPath = trainerAiRelativePath(resourcePaths?.gameTrainerAiPath || `${gameId}/trainer_ai.json`, hostedPrefix, `${gameId} Trainer AI binding`);
   let binding;
   let bindingGeneration;
   let loaded;
@@ -53,9 +146,13 @@ export async function loadTrainerAiDocumentation({ baseUrl, hostedPrefix = null,
     throw new TrainerAiReadinessError(`${gameId} Trainer AI binding declares Generation ${bindingGeneration}, not Generation ${generation}`);
   }
   const generationKey = `gen${bindingGeneration}`;
+  const sharedPath = trainerAiRelativePath(resourcePaths?.sharedTrainerAiPath || `${generationKey}/trainer_ai.json`, hostedPrefix, `Generation ${bindingGeneration} Trainer AI profile`);
+  const semanticsPath = bindingGeneration === 5
+    ? trainerAiRelativePath(resourcePaths?.engineSemanticsPath || `${generationKey}/trainer_ai_engine_semantics.json`, hostedPrefix, `Generation ${bindingGeneration} Trainer AI semantics`)
+    : null;
   const remainingPaths = [
-    `${generationKey}/trainer_ai.json`,
-    ...(bindingGeneration === 5 ? [`${generationKey}/trainer_ai_engine_semantics.json`] : [])
+    sharedPath,
+    ...(semanticsPath ? [semanticsPath] : [])
   ];
   if (hostedPrefix) {
     loaded = await readDatasetJsonFiles({
@@ -76,8 +173,8 @@ export async function loadTrainerAiDocumentation({ baseUrl, hostedPrefix = null,
     }));
     loaded = { documents: { [bindingPath]: binding, ...Object.fromEntries(entries) }, delivery: Object.freeze({ mode: "direct" }) };
   }
-  const shared = loaded.documents[`${generationKey}/trainer_ai.json`];
-  const semantics = bindingGeneration === 5 ? loaded.documents[`${generationKey}/trainer_ai_engine_semantics.json`] : null;
+  const shared = loaded.documents[sharedPath];
+  const semantics = semanticsPath ? loaded.documents[semanticsPath] : null;
   requireProfile(shared, { expectedGameId: `generation-${bindingGeneration}`, kind: "trainer-ai" });
   const inheritedProfileId = binding.inheritance?.profileId || binding.inheritance?.baseProfile;
   const profile = Array.isArray(shared.profiles)

@@ -1,7 +1,8 @@
 import { calculateStats, normalizePlayerCollection, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js?v=20260912-vanilla-display-names-v2";
-import { HOSTED_DATASET_RELEASE } from "./adapters/hosted_dataset.js?v=20260914-hosted-datasets-v2";
+import { HOSTED_DATASET_RELEASE } from "./adapters/hosted_dataset.js?v=20260914-hosted-datasets-v3";
 import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260909-public-release-v2";
-import { canonicalSpeciesDisplayName, loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260914-hosted-datasets-v2";
+import { canonicalSpeciesDisplayName, loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260914-hosted-datasets-v3";
+import { loadTrainerAiBootstrap } from "./adapters/trainer_ai.js?v=20260914-hosted-datasets-v3";
 import { createDraftRecord, destructiveTransitionNotice, IndexedDbDraftStore, markExported, updateDraftRecord } from "./cache/active_draft.js?v=20260909-public-release-v2";
 import { TrainerAiForecastCache } from "./cache/trainer_ai_forecast.js?v=20260909-public-release-v2";
 import { SavedDraftStore, savedDraftSnapshot } from "./cache/saved_drafts.js?v=20260911-ability-storage-reimp-v1";
@@ -27,7 +28,7 @@ import { effectiveActionSpeed } from "./rulesets/action_order.js?v=20260909-publ
 import { areSlotsAdjacent, canSelectShift, shiftWithCenter, triplePositionForSlot, tripleSlotForPosition } from "./rulesets/triple_battle.js?v=20260909-public-release-v2";
 import { rotationFrontKey, rotationFrontSlot } from "./rulesets/rotation_battle.js?v=20260909-public-release-v2";
 import { experienceForLevel, experienceToNextLevel, projectExperience } from "./rulesets/vw2r_experience.js?v=20260909-public-release-v2";
-import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260914-hosted-datasets-v2";
+import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260914-hosted-datasets-v3";
 import { battleCompletionState } from "./core/battle_completion.js?v=20260909-public-release-v2";
 import {
   addBox, addParty, boxesForGame, createEmptyBoxLibrary, exportBoxLibrary, IndexedDbBoxLibraryStore,
@@ -37,6 +38,9 @@ import { addImportedPlanParty, bindPlanPlayerPartyToImportedBox } from "./boxes/
 import { applyBranchProgressionToLibrary, branchProgressionSnapshot } from "./boxes/progression.js?v=20260909-public-release-v2";
 import { exportShowdown, parseShowdown } from "./boxes/showdown.js?v=20260909-public-release-v2";
 import { parseSave, selectSavePokemon } from "./boxes/save_import.js?v=20260909-public-release-v2";
+
+const TRAINER_AI_BASE_URL = new URL("./generated/trainer-ai", import.meta.url).href;
+const TRAINER_AI_HOSTED_PREFIX = "trainer-ai";
 
 function vanillaGame(gameId, name, generation) {
   return Object.freeze({
@@ -60,8 +64,8 @@ const GAME_REGISTRY = Object.freeze({
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/fire-red-omega", import.meta.url).href,
     datasetHostedPrefix: "datasets/fire-red-omega",
-    trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
-    trainerAiHostedPrefix: "trainer-ai",
+    trainerAiBaseUrl: TRAINER_AI_BASE_URL,
+    trainerAiHostedPrefix: TRAINER_AI_HOSTED_PREFIX,
     capabilities: Object.freeze({ saveImport: true })
   },
   "pokemon-unbound": {
@@ -71,8 +75,8 @@ const GAME_REGISTRY = Object.freeze({
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/pokemon-unbound", import.meta.url).href,
     datasetHostedPrefix: "datasets/pokemon-unbound",
-    trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
-    trainerAiHostedPrefix: "trainer-ai",
+    trainerAiBaseUrl: TRAINER_AI_BASE_URL,
+    trainerAiHostedPrefix: TRAINER_AI_HOSTED_PREFIX,
     capabilities: Object.freeze({ saveImport: true })
   },
   "platinum-kaizo": {
@@ -82,8 +86,8 @@ const GAME_REGISTRY = Object.freeze({
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/platinum-kaizo", import.meta.url).href,
     datasetHostedPrefix: "datasets/platinum-kaizo",
-    trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
-    trainerAiHostedPrefix: "trainer-ai",
+    trainerAiBaseUrl: TRAINER_AI_BASE_URL,
+    trainerAiHostedPrefix: TRAINER_AI_HOSTED_PREFIX,
     capabilities: Object.freeze({ saveImport: true })
   },
   "renegade-platinum": {
@@ -93,8 +97,8 @@ const GAME_REGISTRY = Object.freeze({
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/renegade-platinum", import.meta.url).href,
     datasetHostedPrefix: "datasets/renegade-platinum",
-    trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
-    trainerAiHostedPrefix: "trainer-ai",
+    trainerAiBaseUrl: TRAINER_AI_BASE_URL,
+    trainerAiHostedPrefix: TRAINER_AI_HOSTED_PREFIX,
     capabilities: Object.freeze({ saveImport: true })
   },
   "storm-silver": {
@@ -104,8 +108,8 @@ const GAME_REGISTRY = Object.freeze({
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/storm-silver", import.meta.url).href,
     datasetHostedPrefix: "datasets/storm-silver",
-    trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
-    trainerAiHostedPrefix: "trainer-ai",
+    trainerAiBaseUrl: TRAINER_AI_BASE_URL,
+    trainerAiHostedPrefix: TRAINER_AI_HOSTED_PREFIX,
     capabilities: Object.freeze({ saveImport: true })
   },
   "volt-white-2r": {
@@ -115,8 +119,8 @@ const GAME_REGISTRY = Object.freeze({
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/volt-white-2r", import.meta.url).href,
     datasetHostedPrefix: "datasets/volt-white-2r",
-    trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
-    trainerAiHostedPrefix: "trainer-ai",
+    trainerAiBaseUrl: TRAINER_AI_BASE_URL,
+    trainerAiHostedPrefix: TRAINER_AI_HOSTED_PREFIX,
     capabilities: Object.freeze({ saveImport: true })
   },
   "pokemon-ruby": vanillaGame("pokemon-ruby", "Ruby", 3),
@@ -1461,6 +1465,10 @@ function setAiForecastExpanded(expanded) {
   ui["ai-forecast-toggle"].checked = aiForecastExpanded;
   ui["ai-forecast-toggle"].setAttribute("aria-expanded", String(aiForecastExpanded));
   ui["ai-forecast-body"].hidden = !aiForecastExpanded;
+  if (aiForecastExpanded) {
+    const target = selectedNoteTarget();
+    renderTrainerAiNotes(target?.stateNodeId ? plan?.stateNodes?.[target.stateNodeId] : selectedState());
+  }
 }
 
 function aiProbabilityLabel(weight) {
@@ -1569,6 +1577,7 @@ function renderTrainerAiNotes(state) {
   const forecastSupported = trainerAi?.binding?.consumerActivation?.enabled === true && !selectedState()?.freeCalc;
   container.closest(".ai-forecast-panel").hidden = !forecastSupported;
   if (!forecastSupported) return;
+  if (!aiForecastExpanded) return;
   if (!plan || !state || !dataset || !trainerAi || !worker) {
     container.replaceChildren(Object.assign(document.createElement("p"), { className: "empty", textContent: "Enemy AI documentation is unavailable for this node." }));
     return;
@@ -3620,22 +3629,36 @@ async function selectGame(gameId) {
     setStatus(`Loading ${config.name} data and battle mechanics…`);
     if (selectedGameId && selectedGameId !== gameId) await clearActiveContext();
     worker?.terminate();
-    dataset = await loadStandardizedDataset({
-      baseUrl: config.datasetBaseUrl,
-      hostedPrefix: config.datasetHostedPrefix,
-      hostedRelease: DATASET_HOSTED_RELEASE
-    });
+    const [loadedDataset, trainerAiBootstrap] = await Promise.all([
+      loadStandardizedDataset({
+        baseUrl: config.datasetBaseUrl,
+        hostedPrefix: config.datasetHostedPrefix,
+        hostedRelease: DATASET_HOSTED_RELEASE
+      }),
+      loadTrainerAiBootstrap({
+        baseUrl: TRAINER_AI_BASE_URL,
+        hostedPrefix: TRAINER_AI_HOSTED_PREFIX,
+        hostedRelease: DATASET_HOSTED_RELEASE,
+        gameId
+      })
+    ]);
+    dataset = loadedDataset;
+    trainerAi = trainerAiBootstrap.metadata;
+    if (Number(trainerAi?.generation) !== Number(config.expectedDamageGeneration)) {
+      throw new Error(`${config.name} Trainer AI bootstrap declares Generation ${trainerAi?.generation ?? "unknown"}, not Generation ${config.expectedDamageGeneration}`);
+    }
+    dataset.abilityKnowledgePolicy = trainerAi?.evaluatorProfile?.constants?.abilityKnowledge || null;
     worker = new ResolverWorkerClient();
     const workerReadiness = await worker.initialize({
       datasetBaseUrl: config.datasetBaseUrl,
       datasetHostedPrefix: config.datasetHostedPrefix,
-      trainerAiBaseUrl: config.trainerAiBaseUrl,
-      trainerAiHostedPrefix: config.trainerAiHostedPrefix,
+      trainerAiBaseUrl: trainerAi?.binding?.consumerActivation?.enabled === true ? TRAINER_AI_BASE_URL : null,
+      trainerAiHostedPrefix: trainerAi?.binding?.consumerActivation?.enabled === true ? TRAINER_AI_HOSTED_PREFIX : null,
       hostedRelease: DATASET_HOSTED_RELEASE,
+      trainerAiMetadata: trainerAi,
       gameId
     });
-    trainerAi = workerReadiness.trainerAiMetadata || null;
-    dataset.abilityKnowledgePolicy = trainerAi?.evaluatorProfile?.constants?.abilityKnowledge || null;
+    trainerAi = workerReadiness.trainerAiMetadata || trainerAi;
     trainerAiAnalysisCache.clear();
     selectedGameId = gameId;
     pokemonEditorGameId = null;

@@ -2,7 +2,7 @@ export class ResolverWorkerClient {
   constructor(url = new URL(
     typeof __PLC_RESOLVER_WORKER_FILE__ !== "undefined"
       ? __PLC_RESOLVER_WORKER_FILE__
-      : "./resolver_worker.js?v=20260914-hosted-datasets-v2",
+      : "./resolver_worker.js?v=20260914-hosted-datasets-v3",
     import.meta.url
   )) {
     this.url = url;
@@ -13,6 +13,8 @@ export class ResolverWorkerClient {
     this.pending = new Map();
     this.trainerAiInitializationPayload = null;
     this.trainerAiReady = null;
+    this.trainerAiInitialized = false;
+    this.trainerAiMetadata = null;
     this.bindWorker(this.worker, "resolver");
     this.bindWorker(this.trainerAiWorker, "trainer-ai");
   }
@@ -61,21 +63,27 @@ export class ResolverWorkerClient {
       trainerAiBaseUrl,
       trainerAiHostedPrefix = null,
       hostedRelease,
+      trainerAiMetadata = null,
       gameId
     } = typeof configuration === "string"
       ? { datasetBaseUrl: configuration, trainerAiBaseUrl: legacyTrainerAiBaseUrl, gameId: legacyGameId }
       : configuration;
-    const shared = { datasetBaseUrl, datasetHostedPrefix, trainerAiBaseUrl, trainerAiHostedPrefix, hostedRelease, gameId };
+    const shared = {
+      datasetBaseUrl,
+      datasetHostedPrefix,
+      trainerAiBaseUrl,
+      trainerAiHostedPrefix,
+      trainerAiLazyResources: trainerAiMetadata?.lazyResources || null,
+      hostedRelease,
+      gameId
+    };
     this.trainerAiInitializationPayload = { ...shared, role: "trainer-ai" };
-    const trainerAiReady = this.request("initialize", this.trainerAiInitializationPayload, this.trainerAiWorker, "trainer-ai").promise;
-    this.trainerAiReady = trainerAiReady;
-    const [resolver, trainerAiLane] = await Promise.all([
-      this.request("initialize", { ...shared, role: "resolver" }, this.worker, "resolver").promise,
-      trainerAiReady
-    ]);
-    if (this.trainerAiReady === trainerAiReady) this.trainerAiReady = null;
-    return trainerAiLane?.trainerAiMetadata
-      ? { ...resolver, trainerAiMetadata: trainerAiLane.trainerAiMetadata }
+    this.trainerAiReady = null;
+    this.trainerAiInitialized = false;
+    this.trainerAiMetadata = trainerAiMetadata;
+    const resolver = await this.request("initialize", { ...shared, role: "resolver" }, this.worker, "resolver").promise;
+    return trainerAiMetadata
+      ? { ...resolver, trainerAiMetadata }
       : resolver;
   }
 
@@ -95,8 +103,27 @@ export class ResolverWorkerClient {
     return this.request("damage-preview", payload).promise;
   }
 
+  ensureTrainerAiInitialized() {
+    if (this.trainerAiInitialized) return Promise.resolve();
+    if (this.trainerAiReady) return this.trainerAiReady;
+    if (!this.trainerAiInitializationPayload?.trainerAiBaseUrl) {
+      return Promise.reject(new Error("Trainer AI is unavailable for this game"));
+    }
+    const ready = this.request("initialize", this.trainerAiInitializationPayload, this.trainerAiWorker, "trainer-ai").promise;
+    this.trainerAiReady = ready;
+    ready.then(result => {
+      if (this.trainerAiReady !== ready) return;
+      this.trainerAiInitialized = true;
+      this.trainerAiMetadata = result?.trainerAiMetadata || this.trainerAiMetadata;
+      this.trainerAiReady = null;
+    }, () => {
+      if (this.trainerAiReady === ready) this.trainerAiReady = null;
+    });
+    return ready;
+  }
+
   async trainerAi(payload) {
-    if (this.trainerAiReady) await this.trainerAiReady;
+    await this.ensureTrainerAiInitialized();
     return this.request("trainer-ai", payload, this.trainerAiWorker, "trainer-ai").promise;
   }
 
@@ -114,11 +141,9 @@ export class ResolverWorkerClient {
     this.trainerAiWorker = new Worker(this.url);
     this.bindWorker(this.trainerAiWorker, "trainer-ai");
     if (!this.trainerAiInitializationPayload) throw new Error("Trainer AI Worker has not been initialized");
-    const ready = this.request("initialize", this.trainerAiInitializationPayload, this.trainerAiWorker, "trainer-ai").promise;
-    this.trainerAiReady = ready;
-    ready.then(() => {
-      if (this.trainerAiReady === ready) this.trainerAiReady = null;
-    }, () => {});
+    this.trainerAiInitialized = false;
+    this.trainerAiReady = null;
+    void this.ensureTrainerAiInitialized().catch(() => {});
     return true;
   }
 
@@ -127,5 +152,7 @@ export class ResolverWorkerClient {
     this.trainerAiWorker.terminate();
     for (const entry of this.pending.values()) entry.reject(new Error("Resolver Worker stopped"));
     this.pending.clear();
+    this.trainerAiReady = null;
+    this.trainerAiInitialized = false;
   }
 }

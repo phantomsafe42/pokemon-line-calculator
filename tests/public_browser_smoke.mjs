@@ -14,6 +14,8 @@ const publicPrefix = "/pokemon-line-calculator/";
 const tempRoot = path.join(projectRoot, ".codex-tmp");
 const profile = path.join(tempRoot, `public-browser-smoke-${process.pid}`);
 const screenshot = path.join(tempRoot, "plc-public-pages.png");
+const datasetLock = JSON.parse(await fs.readFile(path.join(projectRoot, "dataset-lock.json"), "utf8"));
+const hostedReleaseRoot = `${datasetLock.hosted.origin}/v1/releases/${datasetLock.releaseVersion}`;
 const vanillaGameOptions = [
   ["pokemon-ruby", "Ruby"],
   ["pokemon-sapphire", "Sapphire"],
@@ -188,14 +190,14 @@ async function waitForStableRuntime(client, expectedUrl, timeoutMs = 20_000) {
 
 try {
   await fs.access(path.join(publicRoot, "public-build-manifest.json"));
-  const corsProbe = await fetch("https://datasets.phantomsafe.tv/v1/releases/0.1.11/profiles/plc/manifest", {
+  const corsProbe = await fetch(`${hostedReleaseRoot}/profiles/${datasetLock.profile}/manifest`, {
     headers: { Origin: "https://phantomsafe42.github.io" }
   });
   assert.equal(corsProbe.status, 200);
   assert.equal(corsProbe.headers.get("access-control-allow-origin"), "https://phantomsafe42.github.io");
   assert.match(corsProbe.headers.get("access-control-expose-headers") || "", /X-Content-Length/i);
   assert.match(corsProbe.headers.get("access-control-expose-headers") || "", /X-Content-SHA256/i);
-  assert.equal(corsProbe.headers.get("x-content-sha256"), "ece8c5f683d12d62e4e4f8ed6aa07966defba1c708bb7f0a5f36c6169799197f");
+  assert.equal(corsProbe.headers.get("x-content-sha256"), datasetLock.hosted.manifest.sha256);
   await corsProbe.arrayBuffer();
   await fs.mkdir(profile, { recursive: true });
   const serverPort = await availablePort();
@@ -245,7 +247,7 @@ try {
     game.value = 'volt-white-2r';
     game.dispatchEvent(new Event('change', { bubbles: true }));
     await wait(() => /is ready\./.test(document.getElementById('app-status')?.textContent || '')
-      && document.getElementById('trainer-select').options.length > 400, 'public game data and worker');
+      && document.getElementById('trainer-select').options.length > 400, 'public game data, AI bootstrap, and resolver');
     if (document.getElementById('plan-context-dialog').open) document.getElementById('plan-context-dialog').close();
     const assetResolver = globalThis.PokemonAssets.createResolver();
     const sprite = document.createElement('img');
@@ -273,7 +275,7 @@ try {
     game.value = 'renegade-platinum';
     game.dispatchEvent(new Event('change', { bubbles: true }));
     await wait(() => /Renegade Platinum is ready\./.test(document.getElementById('app-status')?.textContent || '')
-      && document.getElementById('trainer-select').options.length > 100, 'Renegade Platinum data and Gen 4 AI worker');
+      && document.getElementById('trainer-select').options.length > 100, 'Renegade Platinum data, AI bootstrap, and resolver');
     result.renegadePlatinum = {
       status: document.getElementById('app-status').textContent,
       trainers: document.getElementById('trainer-select').options.length
@@ -348,9 +350,12 @@ try {
     servedRequests: servedRequests.length,
     servedBytes: servedRequests.reduce((sum, request) => sum + request.bytes, 0),
     localDatasetRequests: servedRequests.filter(request => request.path.includes("/src/generated/datasets/") || request.path.includes("/src/generated/trainer-ai/")).length,
-    hostedCatalogRequests: requestedUrls.filter(url => url === "https://datasets.phantomsafe.tv/v1/releases/0.1.11/catalog").length,
-    hostedManifestRequests: requestedUrls.filter(url => url === "https://datasets.phantomsafe.tv/v1/releases/0.1.11/profiles/plc/manifest").length,
-    hostedDatasetManifestRequests: requestedUrls.filter(url => url.includes("datasets.phantomsafe.tv/") && url.endsWith("/dataset_manifest.json")).length
+    hostedCatalogRequests: requestedUrls.filter(url => url === `${hostedReleaseRoot}/catalog`).length,
+    hostedManifestRequests: requestedUrls.filter(url => url === `${hostedReleaseRoot}/profiles/${datasetLock.profile}/manifest`).length,
+    hostedDatasetManifestRequests: requestedUrls.filter(url => url.startsWith(`${hostedReleaseRoot}/`) && url.endsWith("/dataset_manifest.json")).length,
+    hostedTrainerAiBootstrapRequests: requestedUrls.filter(url => url === `${hostedReleaseRoot}/profiles/${datasetLock.profile}/files/trainer-ai/bootstrap.json`).length,
+    hostedTrainerAiEvaluatorRequests: requestedUrls.filter(url => url.startsWith(`${hostedReleaseRoot}/profiles/${datasetLock.profile}/files/trainer-ai/`)
+      && /\/(?:gen\d|[^/]+)\/trainer_ai(?:_engine_semantics)?\.json$/u.test(new URL(url).pathname)).length
   };
   assert.deepEqual(browserErrors, []);
   assert.deepEqual(failedRequests, []);
@@ -365,6 +370,8 @@ try {
   assert.equal(performance.hostedCatalogRequests, 1, "The immutable Dataset catalog must be shared through the release cache");
   assert.equal(performance.hostedManifestRequests, 1, "The immutable PLC manifest must be shared through the release cache");
   assert.equal(performance.hostedDatasetManifestRequests, 3, "Only the three explicitly selected games may load hosted Dataset manifests");
+  assert.equal(performance.hostedTrainerAiBootstrapRequests, 1, "The compact Trainer AI bootstrap must be shared through the release cache");
+  assert.equal(performance.hostedTrainerAiEvaluatorRequests, 0, "Collapsed AI Forecast must not load heavyweight Trainer AI evaluator documents");
 
   page.close();
   console.log(JSON.stringify({ status: "public-browser-smoke-valid", state, mobile, performance, screenshot }, null, 2));
