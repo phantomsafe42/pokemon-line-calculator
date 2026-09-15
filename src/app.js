@@ -42,10 +42,12 @@ import { parseSave, selectSavePokemon } from "./boxes/save_import.js?v=20260909-
 const TRAINER_AI_BASE_URL = new URL("./generated/trainer-ai", import.meta.url).href;
 const TRAINER_AI_HOSTED_PREFIX = "trainer-ai";
 
-function vanillaGame(gameId, name, generation) {
+function vanillaGame(gameId, name, generation, titleArtId) {
   return Object.freeze({
     name,
     credit: "by Game Freak",
+    group: "vanilla",
+    titleArtId,
     expectedDamageGeneration: generation,
     activationReady: true,
     datasetBaseUrl: new URL(`./generated/datasets/${gameId}`, import.meta.url).href,
@@ -60,6 +62,8 @@ const GAME_REGISTRY = Object.freeze({
   "fire-red-omega": {
     name: "Fire Red Omega",
     credit: "by Drayano",
+    group: "rom-hacks",
+    titleArtId: "fire-red-omega",
     expectedDamageGeneration: 3,
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/fire-red-omega", import.meta.url).href,
@@ -71,6 +75,8 @@ const GAME_REGISTRY = Object.freeze({
   "pokemon-unbound": {
     name: "Unbound",
     credit: "by Skeli",
+    group: "rom-hacks",
+    titleArtId: "unbound",
     expectedDamageGeneration: 3,
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/pokemon-unbound", import.meta.url).href,
@@ -82,6 +88,8 @@ const GAME_REGISTRY = Object.freeze({
   "platinum-kaizo": {
     name: "Platinum Kaizo",
     credit: "by SHF",
+    group: "rom-hacks",
+    titleArtId: "platinum-kaizo",
     expectedDamageGeneration: 4,
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/platinum-kaizo", import.meta.url).href,
@@ -93,6 +101,8 @@ const GAME_REGISTRY = Object.freeze({
   "renegade-platinum": {
     name: "Renegade Platinum",
     credit: "by Drayano",
+    group: "rom-hacks",
+    titleArtId: "renegade-platinum",
     expectedDamageGeneration: 4,
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/renegade-platinum", import.meta.url).href,
@@ -104,6 +114,8 @@ const GAME_REGISTRY = Object.freeze({
   "storm-silver": {
     name: "Storm Silver",
     credit: "by Drayano",
+    group: "rom-hacks",
+    titleArtId: "storm-silver",
     expectedDamageGeneration: 4,
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/storm-silver", import.meta.url).href,
@@ -115,6 +127,8 @@ const GAME_REGISTRY = Object.freeze({
   "volt-white-2r": {
     name: "Volt White 2 Redux - Challenge Mode",
     credit: "by AphexCubed and Drayano",
+    group: "rom-hacks",
+    titleArtId: "blaze-black-volt-white-2-redux",
     expectedDamageGeneration: 5,
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/volt-white-2r", import.meta.url).href,
@@ -123,20 +137,20 @@ const GAME_REGISTRY = Object.freeze({
     trainerAiHostedPrefix: TRAINER_AI_HOSTED_PREFIX,
     capabilities: Object.freeze({ saveImport: true })
   },
-  "pokemon-ruby": vanillaGame("pokemon-ruby", "Ruby", 3),
-  "pokemon-sapphire": vanillaGame("pokemon-sapphire", "Sapphire", 3),
-  "pokemon-emerald": vanillaGame("pokemon-emerald", "Emerald", 3),
-  "pokemon-firered": vanillaGame("pokemon-firered", "FireRed", 3),
-  "pokemon-leafgreen": vanillaGame("pokemon-leafgreen", "LeafGreen", 3),
-  "pokemon-diamond": vanillaGame("pokemon-diamond", "Diamond", 4),
-  "pokemon-pearl": vanillaGame("pokemon-pearl", "Pearl", 4),
-  "pokemon-platinum": vanillaGame("pokemon-platinum", "Platinum", 4),
-  "pokemon-heartgold": vanillaGame("pokemon-heartgold", "HeartGold", 4),
-  "pokemon-soulsilver": vanillaGame("pokemon-soulsilver", "SoulSilver", 4),
-  "pokemon-black": vanillaGame("pokemon-black", "Black", 5),
-  "pokemon-white": vanillaGame("pokemon-white", "White", 5),
-  "pokemon-black-2": vanillaGame("pokemon-black-2", "Black 2", 5),
-  "pokemon-white-2": vanillaGame("pokemon-white-2", "White 2", 5)
+  "pokemon-ruby": vanillaGame("pokemon-ruby", "Ruby", 3, "ruby"),
+  "pokemon-sapphire": vanillaGame("pokemon-sapphire", "Sapphire", 3, "sapphire"),
+  "pokemon-emerald": vanillaGame("pokemon-emerald", "Emerald", 3, "emerald"),
+  "pokemon-firered": vanillaGame("pokemon-firered", "FireRed", 3, "fire-red"),
+  "pokemon-leafgreen": vanillaGame("pokemon-leafgreen", "LeafGreen", 3, "leaf-green"),
+  "pokemon-diamond": vanillaGame("pokemon-diamond", "Diamond", 4, "diamond"),
+  "pokemon-pearl": vanillaGame("pokemon-pearl", "Pearl", 4, "pearl"),
+  "pokemon-platinum": vanillaGame("pokemon-platinum", "Platinum", 4, "platinum"),
+  "pokemon-heartgold": vanillaGame("pokemon-heartgold", "HeartGold", 4, "heart-gold"),
+  "pokemon-soulsilver": vanillaGame("pokemon-soulsilver", "SoulSilver", 4, "soul-silver"),
+  "pokemon-black": vanillaGame("pokemon-black", "Black", 5, "black"),
+  "pokemon-white": vanillaGame("pokemon-white", "White", 5, "white"),
+  "pokemon-black-2": vanillaGame("pokemon-black-2", "Black 2", 5, "black-2"),
+  "pokemon-white-2": vanillaGame("pokemon-white-2", "White 2", 5, "white-2")
 });
 const pokemonAssetResolver = globalThis.PokemonAssetGateway?.createClient()
   || globalThis.PokemonAssets?.createResolver();
@@ -150,7 +164,8 @@ const STAT_LABELS = Object.freeze({ hp: "HP", atk: "Atk", def: "Def", spa: "SpA"
 const STATUS_LABELS = Object.freeze({ brn: "Burn", par: "Paralysis", psn: "Poison", tox: "Badly Poisoned", slp: "Sleep", frz: "Freeze" });
 const byId = id => document.getElementById(id);
 const ui = Object.fromEntries([
-  "game-select", "game-credit", "app-status", "game-gate", "app-tabs", "plc-tab", "boxes-tab", "plc-panel", "boxes-panel",
+  "current-game-summary", "current-game-art", "current-game-name", "new-game", "game-credit", "game-dialog", "close-game-dialog", "game-dialog-status", "rom-hacks-games", "vanilla-games",
+  "app-status", "app-tabs", "plc-tab", "boxes-tab", "plc-panel", "boxes-panel",
   "plan-toolbar-label", "commit-turn", "save-plan", "new-plan", "workspace", "empty-plan",
   "node-tree", "turn-label", "revision-label", "battle-workspace", "player-action-panel", "enemy-action-panel", "field-state",
   "readiness", "preview-outcomes", "ai-forecast-toggle", "ai-forecast-body", "ai-notes", "notes-toggle", "notes-body", "node-notes", "notes-status", "boxes-list", "save-import", "save-import-dialog", "save-import-filename",
@@ -173,6 +188,8 @@ const draftStore = new IndexedDbDraftStore();
 const savedDraftStore = new SavedDraftStore();
 const boxStore = new IndexedDbBoxLibraryStore();
 let selectedGameId = null;
+let readyGames = new Map();
+let gameSelectionPending = false;
 let dataset = null;
 let trainerAi = null;
 let worker = null;
@@ -217,7 +234,24 @@ function setStatus(message, error = false) {
 }
 
 function renderGameCredit(gameId) {
-  ui["game-credit"].textContent = GAME_REGISTRY[gameId]?.credit || "";
+  const config = GAME_REGISTRY[gameId];
+  ui["current-game-name"].textContent = config?.name || "No game selected";
+  ui["game-credit"].textContent = config?.credit || "";
+  ui["current-game-summary"].hidden = !config;
+  if (config) {
+    ui["current-game-art"].alt = config.name;
+    void setGameArtwork(ui["current-game-art"], ui["current-game-summary"], config);
+  } else {
+    ui["current-game-art"].removeAttribute("src");
+    ui["current-game-art"].alt = "";
+    ui["current-game-summary"].classList.remove("art-unavailable");
+  }
+  ui["close-game-dialog"].hidden = !config;
+  for (const gameButton of document.querySelectorAll(".game-picker-option")) {
+    const selected = gameButton.dataset.gameId === gameId;
+    gameButton.classList.toggle("is-selected", selected);
+    gameButton.setAttribute("aria-pressed", String(selected));
+  }
 }
 
 function option(value, label, { disabled = false } = {}) {
@@ -232,13 +266,86 @@ function generatedGameIsReady(config) {
   return config.activationReady === true;
 }
 
-function populateGameOptions() {
-  const readyByGame = new Map(Object.entries(GAME_REGISTRY).map(([gameId, config]) => [gameId, generatedGameIsReady(config)]));
-  ui["game-select"].replaceChildren(option("", "Select game…"));
-  for (const [gameId, config] of Object.entries(GAME_REGISTRY)) {
-    const ready = readyByGame.get(gameId) === true;
-    ui["game-select"].append(option(gameId, ready ? config.name : `${config.name} — standardization pending`, { disabled: !ready }));
+async function setGameArtwork(image, button, config) {
+  if (!pokemonAssetResolver || !config.titleArtId) {
+    button.classList.add("art-unavailable");
+    return;
   }
+  const result = await pokemonAssetResolver.setAssetImage(image, {
+    kind: "game-title-art",
+    titleId: config.titleArtId,
+    size: "small",
+    format: "png"
+  });
+  if (result.status === "ok") image.dataset.pokemonAssetTitle = config.titleArtId;
+  button.classList.toggle("art-unavailable", result.status !== "ok");
+}
+
+function setGamePickerBusy(busy) {
+  gameSelectionPending = busy;
+  ui["game-dialog"].setAttribute("aria-busy", String(busy));
+  for (const gameButton of document.querySelectorAll(".game-picker-option")) {
+    const ready = readyGames.get(gameButton.dataset.gameId) === true;
+    gameButton.disabled = busy || !ready;
+  }
+  ui["new-game"].disabled = busy || Boolean(freeCalcSession);
+}
+
+async function chooseGameFromPicker(gameId) {
+  if (gameSelectionPending || readyGames.get(gameId) !== true) return;
+  const config = GAME_REGISTRY[gameId];
+  const selectingCurrentGame = selectedGameId === gameId && Boolean(dataset);
+  setGamePickerBusy(true);
+  ui["game-dialog-status"].textContent = `Loading ${config.name}…`;
+  const selected = await selectGame(gameId);
+  setGamePickerBusy(false);
+  if (selected) {
+    ui["game-dialog-status"].textContent = "";
+    ui["game-dialog"].close();
+    if (!selectingCurrentGame && !plan) queueMicrotask(() => openPlanContext());
+  } else {
+    ui["game-dialog-status"].textContent = selectedGameId
+      ? `${GAME_REGISTRY[selectedGameId].name} remains selected.`
+      : `${config.name} could not be loaded.`;
+  }
+}
+
+function gamePickerButton(gameId, config, ready) {
+  const gameButton = button("", "game-picker-option");
+  gameButton.dataset.gameId = gameId;
+  gameButton.setAttribute("aria-label", config.name);
+  gameButton.setAttribute("aria-pressed", "false");
+  gameButton.disabled = !ready;
+  const artwork = document.createElement("img");
+  artwork.alt = "";
+  artwork.setAttribute("aria-hidden", "true");
+  artwork.loading = "eager";
+  gameButton.append(artwork);
+  gameButton.addEventListener("click", () => chooseGameFromPicker(gameId));
+  void setGameArtwork(artwork, gameButton, config);
+  return gameButton;
+}
+
+function populateGameOptions() {
+  readyGames = new Map(Object.entries(GAME_REGISTRY).map(([gameId, config]) => [gameId, generatedGameIsReady(config)]));
+  ui["rom-hacks-games"].replaceChildren();
+  ui["vanilla-games"].replaceChildren();
+  for (const [gameId, config] of Object.entries(GAME_REGISTRY)) {
+    const ready = readyGames.get(gameId) === true;
+    const target = config.group === "rom-hacks" ? ui["rom-hacks-games"] : ui["vanilla-games"];
+    target.append(gamePickerButton(gameId, config, ready));
+  }
+  renderGameCredit(selectedGameId);
+}
+
+function openGamePicker() {
+  if (ui["game-dialog"].open) return;
+  ui["game-dialog-status"].textContent = "";
+  renderGameCredit(selectedGameId);
+  ui["game-dialog"].showModal();
+  const selected = ui["game-dialog"].querySelector(".game-picker-option.is-selected:not(:disabled)");
+  const firstReady = ui["game-dialog"].querySelector(".game-picker-option:not(:disabled)");
+  queueMicrotask(() => (selected || firstReady)?.focus());
 }
 
 function button(label, className = "") {
@@ -3385,7 +3492,7 @@ function renderWorkspace() {
   for (const id of ['commit-turn', 'free-calc', 'save-plan']) byId(id).hidden = Boolean(freeCalcSession);
   for (const id of ['free-calc-close', 'free-calc-add', 'free-calc-save']) byId(id).hidden = !freeCalcSession;
   byId('free-calc').disabled = !plan || needsRecalculation;
-  for (const id of ['new-plan', 'export-line', 'import-plan', 'game-select']) if (byId(id)) byId(id).disabled = Boolean(freeCalcSession);
+  for (const id of ['new-plan', 'export-line', 'import-plan', 'new-game']) if (byId(id)) byId(id).disabled = Boolean(freeCalcSession);
   const hasPlan = Boolean(plan);
   ui.workspace.hidden = !hasPlan;
   ui["empty-plan"].hidden = hasPlan;
@@ -3550,10 +3657,10 @@ async function resolveDestructive(choice) {
   } else resolve(choice === "discard");
 }
 
-async function clearActiveContext() {
+async function clearActiveContext({ preserveCachedDraft = false } = {}) {
   plan = null; draftRecord = null; cursorStateNodeId = null; currentPreview = null; branchEventModel = null; selectedPreviewOutcomeId = null; reviewOutcomeStateNodeId = null; needsRecalculation = false;
   actionDraft = emptyActionDraft(); exportSelection.clear();
-  await draftStore.clear();
+  if (!preserveCachedDraft) await draftStore.clear();
   renderWorkspace();
 }
 
@@ -3618,17 +3725,24 @@ async function restoreDraft() {
 }
 
 async function selectGame(gameId) {
-  if (!gameId) { renderGameCredit(""); return; }
+  if (!gameId) { renderGameCredit(""); return false; }
+  if (selectedGameId === gameId && dataset) {
+    renderGameCredit(gameId);
+    return true;
+  }
   if (selectedGameId && selectedGameId !== gameId && plan && !(await confirmDestructive("Changing games"))) {
-    ui["game-select"].value = selectedGameId;
     renderGameCredit(selectedGameId);
-    return;
+    return false;
   }
   const config = GAME_REGISTRY[gameId];
-  if (!config) { setStatus(`No PLC adapter is registered for ${gameId}.`, true); return; }
+  if (!config) { setStatus(`No PLC adapter is registered for ${gameId}.`, true); return false; }
   try {
     setStatus(`Loading ${config.name} data and battle mechanics…`);
-    if (selectedGameId && selectedGameId !== gameId) await clearActiveContext();
+    if (selectedGameId && selectedGameId !== gameId) {
+      const cached = plan ? null : await draftStore.load();
+      const preserveCachedDraft = Boolean(cached?.document && cached.document.game?.gameId !== selectedGameId);
+      await clearActiveContext({ preserveCachedDraft });
+    }
     worker?.terminate();
     const [loadedDataset, trainerAiBootstrap] = await Promise.all([
       loadStandardizedDataset({
@@ -3667,7 +3781,6 @@ async function selectGame(gameId) {
     const saveImportControl = ui["save-import"]?.closest("label");
     if (saveImportControl) saveImportControl.hidden = config.capabilities?.saveImport !== true;
     localStorage.setItem(SELECTED_GAME_KEY, gameId);
-    ui["game-gate"].hidden = true;
     ui["app-tabs"].hidden = false;
     fillTrainerSelect();
     renderBoxes();
@@ -3675,18 +3788,21 @@ async function selectGame(gameId) {
     setTab(activeTab);
     const restored = await restoreDraft();
     setStatus(restored ? `Recovered the active ${config.name} draft. Nothing has been sent to Overlay.` : `${config.name} is ready. Add or select a Box party to begin.`);
-    if (!restored) queueMicrotask(() => openPlanContext());
+    return true;
   } catch (error) {
     setStatus(error.message, true);
-    ui["game-select"].value = selectedGameId || "";
     renderGameCredit(selectedGameId);
+    return false;
   }
 }
 
 function wireEvents() {
-  ui["game-select"].addEventListener("change", () => {
-    renderGameCredit(ui["game-select"].value);
-    selectGame(ui["game-select"].value);
+  ui["new-game"].addEventListener("click", openGamePicker);
+  ui["close-game-dialog"].addEventListener("click", () => {
+    if (selectedGameId && !gameSelectionPending) ui["game-dialog"].close();
+  });
+  ui["game-dialog"].addEventListener("cancel", event => {
+    if (!selectedGameId || gameSelectionPending) event.preventDefault();
   });
   ui["plc-tab"].addEventListener("click", () => setTab("plc"));
   ui["boxes-tab"].addEventListener("click", () => setTab("boxes"));
@@ -3765,6 +3881,7 @@ async function start() {
     await populateGameOptions();
     boxLibrary = await boxStore.load() || createEmptyBoxLibrary();
     setStatus("Select a game to load its Boxes, trainers, and mechanics.");
+    openGamePicker();
   } catch (error) { setStatus(`Boxes storage could not be opened: ${error.message}`, true); }
 }
 

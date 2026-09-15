@@ -45,7 +45,8 @@ const contentTypes = new Map([
   [".js", "text/javascript; charset=utf-8"],
   [".json", "application/json; charset=utf-8"],
   [".md", "text/markdown; charset=utf-8"],
-  [".png", "image/png"]
+  [".png", "image/png"],
+  [".webp", "image/webp"]
 ]);
 
 const delay = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
@@ -229,25 +230,34 @@ try {
         : setTimeout(poll, 100);
       poll();
     });
-    await wait(() => /Select a game to load/.test(document.getElementById('app-status')?.textContent || ''), 'public shell');
-    const game = document.getElementById('game-select');
-    const gameOptions = [...game.options].filter(option => option.value).map(option => ({
-      value: option.value,
-      label: option.textContent,
-      disabled: option.disabled
+    await wait(() => /Select a game to load/.test(document.getElementById('app-status')?.textContent || '')
+      && document.getElementById('game-dialog')?.open
+      && document.querySelectorAll('.game-picker-option').length === 20, 'public game picker');
+    await wait(() => [...document.querySelectorAll('.game-picker-option img')].every(image => image.src), 'game artwork');
+    const initialDialogOpen = document.getElementById('game-dialog').open;
+    const gameOptions = [...document.querySelectorAll('.game-picker-option')].map(gameButton => ({
+      value: gameButton.dataset.gameId,
+      label: gameButton.getAttribute('aria-label'),
+      visibleText: gameButton.textContent.trim(),
+      disabled: gameButton.disabled,
+      group: gameButton.parentElement.id,
+      artTitle: gameButton.querySelector('img')?.dataset.pokemonAssetTitle || null,
+      artSource: gameButton.querySelector('img')?.getAttribute('src') || null
     }));
-    game.value = 'pokemon-ruby';
-    game.dispatchEvent(new Event('change', { bubbles: true }));
+    document.querySelector('.game-picker-option[data-game-id="pokemon-ruby"]').click();
     await wait(() => /Ruby is ready\./.test(document.getElementById('app-status')?.textContent || '')
       && document.getElementById('trainer-select').options.length > 1, 'public vanilla game data and worker');
     const vanilla = {
       status: document.getElementById('app-status').textContent,
       credit: document.getElementById('game-credit').textContent,
+      name: document.getElementById('current-game-name').textContent,
       trainers: document.getElementById('trainer-select').options.length,
       saveImportVisible: !document.getElementById('save-import').closest('label').hidden
     };
-    game.value = 'volt-white-2r';
-    game.dispatchEvent(new Event('change', { bubbles: true }));
+    if (document.getElementById('plan-context-dialog').open) document.getElementById('plan-context-dialog').close();
+    document.getElementById('new-game').click();
+    await wait(() => document.getElementById('game-dialog').open, 'reopened game picker');
+    document.querySelector('.game-picker-option[data-game-id="volt-white-2r"]').click();
     await wait(() => /is ready\./.test(document.getElementById('app-status')?.textContent || '')
       && document.getElementById('trainer-select').options.length > 400, 'public game data, AI bootstrap, and resolver');
     if (document.getElementById('plan-context-dialog').open) document.getElementById('plan-context-dialog').close();
@@ -257,7 +267,11 @@ try {
     await sprite.decode();
     const result = {
       profile: document.querySelector('meta[name="plc-build-profile"]')?.content,
+      initialDialogOpen,
       gameOptions,
+      gameGroups: [...document.querySelectorAll('.game-picker-group > h3')].map(heading => heading.textContent),
+      newGameLabel: document.getElementById('new-game').textContent,
+      dropdownPresent: Boolean(document.getElementById('game-select')),
       vanilla,
       spriteLoaded: spriteResult.status === 'ok' && sprite.naturalWidth > 0,
       assetApiVersion: assetResolver.apiVersion,
@@ -266,6 +280,7 @@ try {
       localAssetGlobalType: typeof globalThis.PokemonAssets,
       status: document.getElementById('app-status').textContent,
       gameCredit: document.getElementById('game-credit').textContent,
+      currentGameName: document.getElementById('current-game-name').textContent,
       siteCredit: document.querySelector('.site-credit')?.textContent,
       eyebrowCount: document.querySelectorAll('.eyebrow').length,
       trainers: document.getElementById('trainer-select').options.length,
@@ -278,8 +293,9 @@ try {
       viewport: innerWidth,
       scrollWidth: document.documentElement.scrollWidth
     };
-    game.value = 'renegade-platinum';
-    game.dispatchEvent(new Event('change', { bubbles: true }));
+    document.getElementById('new-game').click();
+    await wait(() => document.getElementById('game-dialog').open, 'reopened game picker for Renegade Platinum');
+    document.querySelector('.game-picker-option[data-game-id="renegade-platinum"]').click();
     await wait(() => /Renegade Platinum is ready\./.test(document.getElementById('app-status')?.textContent || '')
       && document.getElementById('trainer-select').options.length > 100, 'Renegade Platinum data, AI bootstrap, and resolver');
     result.renegadePlatinum = {
@@ -307,8 +323,19 @@ try {
     vanillaGameOptions
   );
   assert.equal(vanillaGameOptions.every(([gameId]) => gameOptionById.get(gameId)?.disabled === false), true);
+  assert.equal(state.initialDialogOpen, true);
+  assert.deepEqual(state.gameGroups, ["ROM Hacks", "Vanilla"]);
+  assert.equal(state.gameOptions.length, 20);
+  assert.equal(state.gameOptions.every(option => option.visibleText === "" && option.label && option.artSource), true);
+  assert.equal(state.gameOptions.filter(option => option.group === "rom-hacks-games").length, 6);
+  assert.equal(state.gameOptions.filter(option => option.group === "vanilla-games").length, 14);
+  assert.equal(gameOptionById.get("fire-red-omega")?.artTitle, "fire-red-omega");
+  assert.equal(gameOptionById.get("platinum-kaizo")?.artTitle, "platinum-kaizo");
+  assert.equal(state.newGameLabel, "New Game");
+  assert.equal(state.dropdownPresent, false);
   assert.match(state.vanilla.status, /Ruby is ready\./);
   assert.equal(state.vanilla.credit, "by Game Freak");
+  assert.equal(state.vanilla.name, "Ruby");
   assert.ok(state.vanilla.trainers > 1);
   assert.equal(state.vanilla.saveImportVisible, false);
   assert.equal(state.spriteLoaded, true);
@@ -318,6 +345,7 @@ try {
   assert.equal(state.localAssetGlobalType, "undefined");
   assert.match(state.status, /is ready\./);
   assert.equal(state.gameCredit, "by AphexCubed and Drayano");
+  assert.equal(state.currentGameName, "Volt White 2 Redux - Challenge Mode");
   assert.equal(state.siteCredit, "twitch.tv/phantomsafe");
   assert.equal(state.eyebrowCount, 0);
   assert.ok(state.trainers > 400);
@@ -333,10 +361,19 @@ try {
   assert.equal(state.localLabels, false);
   assert.ok(state.scrollWidth <= state.viewport);
 
+  await evaluate(page, `document.getElementById('new-game').click()`);
+  await delay(150);
   await page.send("Emulation.setDeviceMetricsOverride", { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
   await delay(250);
-  const mobile = await evaluate(page, `({ viewport: innerWidth, scrollWidth: document.documentElement.scrollWidth })`);
+  const mobile = await evaluate(page, `({
+    viewport: innerWidth,
+    scrollWidth: document.documentElement.scrollWidth,
+    pickerOpen: document.getElementById('game-dialog').open,
+    pickerWidth: document.getElementById('game-dialog').getBoundingClientRect().width
+  })`);
   assert.ok(mobile.scrollWidth <= mobile.viewport);
+  assert.equal(mobile.pickerOpen, true);
+  assert.ok(mobile.pickerWidth <= mobile.viewport);
 
   await page.send("Emulation.setDeviceMetricsOverride", { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
   const image = await page.send("Page.captureScreenshot", { format: "png", captureBeyondViewport: false });
