@@ -23,8 +23,8 @@
       "treeSha256": "ea5d75ce1166107f0db37497b46a237ba73e3d6373ed6b427b07c5ef826d7fb9"
     },
     "gatewayContract": {
-      "tag": "v0.1.14",
-      "commit": "f88a23107a61795fdb96d0602bbbde9928d4302a"
+      "tag": "v0.1.15",
+      "commit": "32cd757d2ff7169b48fcbbb80082a50390fd79d0"
     }
   },
   "fallback": {
