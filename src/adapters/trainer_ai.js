@@ -5,6 +5,7 @@ import { rotationFrontSlot } from "../rulesets/rotation_battle.js?v=20260905-dra
 import { areSlotsAdjacent, triplePositionForSlot } from "../rulesets/triple_battle.js?v=20260905-drafts-freecalc-partners-v1";
 import { trappingAbilityBlocksSwitch } from "../rulesets/ability_rules.js?v=20260905-drafts-freecalc-partners-v1";
 import { effectiveActionSpeed } from "../rulesets/action_order.js?v=20260905-drafts-freecalc-partners-v1";
+import { readDatasetJsonFiles } from "./hosted_dataset.js?v=20260914-hosted-datasets-v1";
 
 export class TrainerAiReadinessError extends Error {
   constructor(message) {
@@ -22,17 +23,29 @@ function requireProfile(document, { expectedGameId = null, kind, profileId = nul
   return document;
 }
 
-export async function loadTrainerAiDocumentation({ baseUrl, gameId = "volt-white-2r", generation = null, fetchImpl = fetch }) {
-  const root = String(baseUrl || "").replace(/\/$/, "");
-  const read = async path => {
-    const response = await fetchImpl(`${root}/${path}`);
-    if (!response.ok) throw new TrainerAiReadinessError(`${path} returned HTTP ${response.status}`);
-    return response.json();
-  };
-  const binding = await read(`${gameId}/trainer_ai.json`);
+export async function loadTrainerAiDocumentation({ baseUrl, hostedPrefix = null, hostedRelease, gameId = "volt-white-2r", generation = null, fetchImpl = fetch, cacheStorage = globalThis.caches }) {
+  const bindingPath = `${gameId}/trainer_ai.json`;
+  let binding;
+  let bindingGeneration;
+  let loaded;
+  if (hostedPrefix) {
+    const bindingResult = await readDatasetJsonFiles({
+      fallbackBaseUrl: baseUrl,
+      hostedPrefix,
+      paths: [bindingPath],
+      release: hostedRelease,
+      fetchImpl,
+      cacheStorage
+    });
+    binding = bindingResult.documents[bindingPath];
+  } else {
+    const response = await fetchImpl(`${String(baseUrl || "").replace(/\/$/u, "")}/${bindingPath}`);
+    if (!response.ok) throw new TrainerAiReadinessError(`${bindingPath} returned HTTP ${response.status}`);
+    binding = await response.json();
+  }
   requireProfile(binding, { expectedGameId: gameId, kind: "trainer-ai" });
   const inheritedSourceGeneration = String(binding.inheritance?.sourceGameId || "").match(/^generation-(\d+)$/)?.[1];
-  const bindingGeneration = Number(binding.inheritance?.generation ?? inheritedSourceGeneration);
+  bindingGeneration = Number(binding.inheritance?.generation ?? inheritedSourceGeneration);
   if (!Number.isInteger(bindingGeneration)) {
     throw new TrainerAiReadinessError(`${gameId} Trainer AI binding does not declare its inherited generation`);
   }
@@ -40,10 +53,31 @@ export async function loadTrainerAiDocumentation({ baseUrl, gameId = "volt-white
     throw new TrainerAiReadinessError(`${gameId} Trainer AI binding declares Generation ${bindingGeneration}, not Generation ${generation}`);
   }
   const generationKey = `gen${bindingGeneration}`;
-  const [shared, semantics] = await Promise.all([
-    read(`${generationKey}/trainer_ai.json`),
-    bindingGeneration === 5 ? read(`${generationKey}/trainer_ai_engine_semantics.json`) : Promise.resolve(null)
-  ]);
+  const remainingPaths = [
+    `${generationKey}/trainer_ai.json`,
+    ...(bindingGeneration === 5 ? [`${generationKey}/trainer_ai_engine_semantics.json`] : [])
+  ];
+  if (hostedPrefix) {
+    loaded = await readDatasetJsonFiles({
+      fallbackBaseUrl: baseUrl,
+      hostedPrefix,
+      paths: [bindingPath, ...remainingPaths],
+      release: hostedRelease,
+      fetchImpl,
+      cacheStorage
+    });
+    binding = loaded.documents[bindingPath];
+  } else {
+    const root = String(baseUrl || "").replace(/\/$/u, "");
+    const entries = await Promise.all(remainingPaths.map(async path => {
+      const response = await fetchImpl(`${root}/${path}`);
+      if (!response.ok) throw new TrainerAiReadinessError(`${path} returned HTTP ${response.status}`);
+      return [path, await response.json()];
+    }));
+    loaded = { documents: { [bindingPath]: binding, ...Object.fromEntries(entries) }, delivery: Object.freeze({ mode: "direct" }) };
+  }
+  const shared = loaded.documents[`${generationKey}/trainer_ai.json`];
+  const semantics = bindingGeneration === 5 ? loaded.documents[`${generationKey}/trainer_ai_engine_semantics.json`] : null;
   requireProfile(shared, { expectedGameId: `generation-${bindingGeneration}`, kind: "trainer-ai" });
   const inheritedProfileId = binding.inheritance?.profileId || binding.inheritance?.baseProfile;
   const profile = Array.isArray(shared.profiles)
@@ -53,7 +87,7 @@ export async function loadTrainerAiDocumentation({ baseUrl, gameId = "volt-white
     throw new TrainerAiReadinessError(`${gameId} Trainer AI binding does not match the generated Generation ${bindingGeneration} profile`);
   }
   if (semantics) requireProfile(semantics, { kind: "trainer-ai-engine-semantics", profileId: profile.profileId });
-  return { binding, shared, profile, semantics, evaluatorProfile: profile.evaluator || null, generation: bindingGeneration };
+  return { binding, shared, profile, semantics, evaluatorProfile: profile.evaluator || null, generation: bindingGeneration, delivery: loaded.delivery };
 }
 
 export function formatTrainerAiProbability(value) {

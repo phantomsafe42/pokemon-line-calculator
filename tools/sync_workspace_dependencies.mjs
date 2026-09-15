@@ -65,17 +65,17 @@ function tryDatasetGit(args) {
   return result.status === 0 ? result.stdout.trim() : null;
 }
 
-function verifyTag(lock) {
+function verifyTag(lock, label = "Dataset") {
   const local = tryDatasetGit(["rev-parse", `${lock.tag}^{commit}`]);
   if (local) {
-    if (local !== lock.commit) throw new Error(`Dataset tag ${lock.tag} resolves to ${local}, not ${lock.commit}`);
+    if (local !== lock.commit) throw new Error(`${label} tag ${lock.tag} resolves to ${local}, not ${lock.commit}`);
     return "local-tag";
   }
   const remoteRows = datasetGit(["ls-remote", "--tags", "origin", `refs/tags/${lock.tag}`, `refs/tags/${lock.tag}^{}`])
     .split(/\r?\n/u).filter(Boolean);
   const peeled = remoteRows.find(row => row.endsWith(`refs/tags/${lock.tag}^{}`)) || remoteRows[0];
   const remoteCommit = peeled?.split(/\s+/u)[0];
-  if (remoteCommit !== lock.commit) throw new Error(`Remote Dataset tag ${lock.tag} does not resolve to ${lock.commit}`);
+  if (remoteCommit !== lock.commit) throw new Error(`Remote ${label} tag ${lock.tag} does not resolve to ${lock.commit}`);
   return "remote-tag";
 }
 
@@ -242,6 +242,142 @@ function synchronizeTree(source, target, ownedBefore) {
   return { files: expectedPaths.length, sourceTreeSha256: sha256(material) };
 }
 
+function hostedProjectionFiles() {
+  return ["datasets", "trainer-ai"].flatMap(target =>
+    listFiles(path.join(generatedRoot, target)).map(relativePath => ({
+      path: `${target}/${relativePath}`,
+      absolute: path.join(generatedRoot, target, relativePath),
+    }))
+  ).sort((left, right) => left.path.localeCompare(right.path));
+}
+
+function hostedTree(files) {
+  const rows = files.map(file => {
+    const bytes = fs.readFileSync(file.absolute);
+    return `${file.path}\0${bytes.byteLength}\0${sha256(bytes).toLowerCase()}\n`;
+  }).join("");
+  return {
+    files: files.length,
+    bytes: files.reduce((sum, file) => sum + fs.statSync(file.absolute).size, 0),
+    treeSha256: sha256(Buffer.from(rows)).toLowerCase(),
+  };
+}
+
+function verifyHostedProjection(lock) {
+  const files = hostedProjectionFiles();
+  const result = hostedTree(files);
+  const expected = lock.hosted.payload;
+  if (result.files !== Number(expected.files)
+    || result.bytes !== Number(expected.bytes)
+    || result.treeSha256 !== String(expected.treeSha256).toLowerCase()) {
+    throw new Error(`Checked-in Dataset fallback does not match release ${lock.releaseVersion}`);
+  }
+  return result;
+}
+
+async function fetchLockedBytes(url, expected, label) {
+  const response = await fetch(url, { headers: { Accept: "application/json" } });
+  if (!response.ok) throw new Error(`${label} returned HTTP ${response.status}`);
+  const bytes = Buffer.from(await response.arrayBuffer());
+  const expectedLength = Number(expected.bytes);
+  const expectedSha = String(expected.sha256).toLowerCase();
+  const declaredLength = response.headers.get("x-content-length");
+  const declaredSha = response.headers.get("x-content-sha256");
+  if ((declaredLength && Number(declaredLength) !== expectedLength)
+    || (declaredSha && String(declaredSha).toLowerCase() !== expectedSha)
+    || bytes.length !== expectedLength
+    || sha256(bytes).toLowerCase() !== expectedSha) {
+    throw new Error(`${label} does not match its immutable Dataset lock`);
+  }
+  return bytes;
+}
+
+function validateHostedIdentity(document, lock, label) {
+  if (document?.dataset?.releaseVersion !== lock.releaseVersion
+    || document?.dataset?.sourceCommit !== lock.commit
+    || document?.dataset?.sourceTag !== lock.tag
+    || document?.publicationStatus !== "published-on-completion-marker") {
+    throw new Error(`${label} does not match the locked Dataset release`);
+  }
+}
+
+async function synchronizeHostedProjection(lock) {
+  const hosted = lock.hosted;
+  const origin = new URL(hosted.origin);
+  if (origin.protocol !== "https:" || origin.pathname !== "/" || origin.search || origin.hash) throw new Error("Dataset host must be a bare HTTPS origin");
+  const catalogBytes = await fetchLockedBytes(
+    `${origin.origin}/v1/releases/${lock.releaseVersion}/catalog`,
+    hosted.catalog,
+    "Dataset catalog",
+  );
+  const catalog = JSON.parse(catalogBytes);
+  validateHostedIdentity(catalog, lock, "Dataset catalog");
+  const catalogProfile = catalog.profiles?.find(profile => profile.profileId === lock.profile);
+  if (!catalogProfile
+    || catalogProfile.profileSchemaVersion !== hosted.profileSchemaVersion
+    || String(catalogProfile.manifestSha256).toLowerCase() !== String(hosted.manifest.sha256).toLowerCase()
+    || String(catalogProfile.payloadTreeSha256).toLowerCase() !== String(hosted.payload.treeSha256).toLowerCase()
+    || Number(catalogProfile.files) !== Number(hosted.payload.files)
+    || Number(catalogProfile.bytes) !== Number(hosted.payload.bytes)) {
+    throw new Error("Dataset catalog profile does not match the PLC lock");
+  }
+  const manifestBytes = await fetchLockedBytes(
+    `${origin.origin}/v1/releases/${lock.releaseVersion}/profiles/${lock.profile}/manifest`,
+    hosted.manifest,
+    "Dataset profile manifest",
+  );
+  const manifest = JSON.parse(manifestBytes);
+  validateHostedIdentity(manifest, lock, "Dataset profile manifest");
+  if (manifest.schemaVersion !== "pokemon-dataset-hosted-profile/v1"
+    || manifest.profileId !== lock.profile
+    || manifest.profileSchemaVersion !== hosted.profileSchemaVersion
+    || manifest.visibility !== "public"
+    || manifest.intendedConsumer !== "plc"
+    || manifest.filesRoot !== "files"
+    || String(manifest.payloadTreeSha256).toLowerCase() !== String(hosted.payload.treeSha256).toLowerCase()) {
+    throw new Error("Dataset profile manifest does not match the public PLC contract");
+  }
+  const expectedPaths = new Set();
+  const pending = [];
+  for (const file of manifest.files || []) {
+    if (typeof file.path !== "string" || /[\\%?#\u0000-\u001f\u007f]/u.test(file.path)) throw new Error("Hosted Dataset path is unsafe");
+    const relativePath = normalizeRelative(file.path, "hosted Dataset path");
+    if (!relativePath.startsWith("datasets/") && !relativePath.startsWith("trainer-ai/")) throw new Error(`Hosted Dataset path is outside the PLC projection: ${relativePath}`);
+    if (expectedPaths.has(relativePath)) throw new Error(`Duplicate hosted Dataset path: ${relativePath}`);
+    expectedPaths.add(relativePath);
+    const target = path.resolve(generatedRoot, relativePath);
+    if (!inside(target, generatedRoot)) throw new Error(`Unsafe hosted Dataset target: ${relativePath}`);
+    const current = fs.existsSync(target) ? fs.readFileSync(target) : null;
+    const expectedSha = String(file.sha256).toLowerCase();
+    if (current && current.length === Number(file.bytes) && sha256(current).toLowerCase() === expectedSha) continue;
+    pending.push((async () => {
+      const bytes = await fetchLockedBytes(
+        `${origin.origin}/v1/releases/${lock.releaseVersion}/profiles/${lock.profile}/files/${relativePath}`,
+        file,
+        relativePath,
+      );
+      fs.mkdirSync(path.dirname(target), { recursive: true });
+      const temporary = `${target}.plc-hosted-sync`;
+      fs.writeFileSync(temporary, bytes);
+      fs.renameSync(temporary, target);
+    })());
+  }
+  const existing = hostedProjectionFiles();
+  const extras = existing.filter(file => !expectedPaths.has(file.path));
+  if (extras.length) throw new Error(`Refusing to remove files outside the hosted PLC projection: ${extras.map(file => file.path).join(", ")}`);
+  await Promise.all(pending);
+  const result = verifyHostedProjection(lock);
+  return {
+    ...result,
+    downloadedFiles: pending.length,
+    bundles: manifest.bundles.map(bundle => ({
+      consumer: bundle.consumer,
+      target: bundle.target,
+      sourceTreeSha256: bundle.sourceTreeSha256,
+    })),
+  };
+}
+
 function runExporter(script, profile, output) {
   const result = spawnSync(process.execPath, [script, "--profile", profile, mode === "sync" ? "--write" : "--check", "--output", output], {
     encoding: "utf8",
@@ -290,15 +426,23 @@ function verifyDatasetLock() {
   if (!fs.existsSync(datasetLockPath)) throw new Error("Missing dataset-lock.json");
   if (!fs.existsSync(path.join(datasetRoot, ".git"))) throw new Error("Datasets must be an independent Git checkout");
   const lock = readJson(datasetLockPath);
-  if (lock.schemaVersion !== "plc-dataset-lock/v1") throw new Error("Unsupported Dataset lock schema");
-  if (lock.repository !== "phantomsafe42/pokemon-datasets" || !["plc", "plc-public"].includes(lock.profile)) {
+  if (lock.schemaVersion !== "plc-dataset-lock/v2") throw new Error("Unsupported Dataset lock schema");
+  if (lock.repository !== "phantomsafe42/pokemon-datasets" || lock.profile !== "plc") {
     throw new Error("Unexpected Dataset release lock");
   }
+  if (lock.fallback?.mode !== "checked-in-last-known-good"
+    || lock.fallback?.root !== "src/generated"
+    || lock.fallback?.releaseVersion !== lock.releaseVersion
+    || lock.fallback?.profile !== lock.profile
+    || String(lock.fallback?.payloadTreeSha256).toLowerCase() !== String(lock.hosted?.payload?.treeSha256).toLowerCase()) {
+    throw new Error("Dataset fallback lock does not match the hosted PLC projection");
+  }
   const tagSource = verifyTag(lock);
-  return { lock, tagSource };
+  const gatewayTagSource = verifyTag(lock.hosted.gatewayContract, "Dataset gateway contract");
+  return { lock, tagSource, gatewayTagSource };
 }
 
-const { lock, tagSource } = verifyDatasetLock();
+const { lock, tagSource, gatewayTagSource } = verifyDatasetLock();
 const profiles = [];
 let artifact = null;
 let datasetResult;
@@ -311,6 +455,12 @@ if (workspaceDataset) {
     target: bundle.target,
     sourceTreeSha256: bundle.sourceTreeSha256,
   })));
+} else if (lock.hosted) {
+  datasetResult = mode === "sync" ? await synchronizeHostedProjection(lock) : verifyHostedProjection(lock);
+  profiles.push(...(datasetResult.bundles || [
+    { consumer: "dataset-hosted", target: "datasets", sourceTreeSha256: datasetResult.treeSha256 },
+    { consumer: "dataset-hosted", target: "trainer-ai", sourceTreeSha256: datasetResult.treeSha256 },
+  ]));
 } else {
   const artifactPath = findArtifact(lock);
   const extracted = extractArtifact(artifactPath);
@@ -337,7 +487,7 @@ if (workspaceDataset) {
 
 const battleResult = runExporter(
   path.join(battleRoot, "tools", "export_plc_bundle.js"),
-  lock.profile,
+  "plc-public",
   path.join(generatedRoot, "battle-mechanics"),
 );
 profiles.push({
@@ -355,7 +505,7 @@ profiles.push({
   sourceCommit: assets.sourceCommit,
 });
 
-const saveMechanics = runSaveMechanics(lock.profile === "plc-public" ? "plc-public" : "plc-private");
+const saveMechanics = runSaveMechanics("plc-public");
 profiles.push({
   consumer: saveMechanics.consumer,
   files: saveMechanics.fileCount,
@@ -366,10 +516,14 @@ profiles.push({
 console.log(JSON.stringify({
   status: mode === "sync" ? "generated" : "current",
   datasetRelease: {
-    sourceMode: workspaceDataset ? "local-workspace" : "immutable-release-artifact",
+    sourceMode: workspaceDataset ? "local-workspace" : lock.hosted ? "immutable-hosted-release" : "immutable-release-artifact",
     repository: lock.repository,
     tag: lock.tag,
     tagSource,
+    gatewayContract: {
+      ...lock.hosted.gatewayContract,
+      tagSource: gatewayTagSource,
+    },
     commit: lock.commit,
     releaseVersion: lock.releaseVersion,
     profile: lock.profile,

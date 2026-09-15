@@ -84,7 +84,20 @@ if (!appBundlePath || !stylesheetPath || !assetResolverPath) throw new Error("Pu
 if (actual.includes("src/app.js") || actual.includes("src/worker/resolver_worker.js")) throw new Error("Unbundled PLC runtime source remains in the public build");
 if (/trainer_ai_evaluator\.js/i.test(html)) throw new Error("Public shell eagerly loads the Trainer AI evaluator");
 const appBundle = fs.readFileSync(path.join(outputRoot, appBundlePath));
-const workerBundleMatch = appBundle.toString("utf8").match(/\.\/worker\/(resolver_worker-[a-f0-9]{12}\.js)/);
+const appBundleText = appBundle.toString("utf8");
+const datasetLock = JSON.parse(fs.readFileSync(path.join(projectRoot, "dataset-lock.json"), "utf8"));
+if (datasetLock.schemaVersion !== "plc-dataset-lock/v2" || datasetLock.profile !== "plc") throw new Error("Public build is not pinned to the hosted PLC Dataset profile");
+for (const token of [
+  datasetLock.hosted.origin,
+  datasetLock.releaseVersion,
+  datasetLock.hosted.catalog.sha256,
+  datasetLock.hosted.manifest.sha256,
+  datasetLock.hosted.payload.treeSha256
+]) {
+  if (!appBundleText.includes(String(token))) throw new Error(`Public app bundle omits its Dataset release lock: ${token}`);
+}
+if (/datasets\.phantomsafe\.tv[^"']*plc-public/iu.test(appBundleText)) throw new Error("Public app uses a legacy hosted Dataset profile name");
+const workerBundleMatch = appBundleText.match(/\.\/worker\/(resolver_worker-[a-f0-9]{12}\.js)/);
 if (!workerBundleMatch || !actual.includes(`src/worker/${workerBundleMatch[1]}`)) throw new Error("Public app does not reference its content-hashed Resolver Worker bundle");
 for (const [label, relativePath, maximumBytes] of [
   ["application", appBundlePath, 1_500_000],

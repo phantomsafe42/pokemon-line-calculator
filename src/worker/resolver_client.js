@@ -2,7 +2,7 @@ export class ResolverWorkerClient {
   constructor(url = new URL(
     typeof __PLC_RESOLVER_WORKER_FILE__ !== "undefined"
       ? __PLC_RESOLVER_WORKER_FILE__
-      : "./resolver_worker.js?v=20260914-public-load-performance-v2",
+      : "./resolver_worker.js?v=20260914-hosted-datasets-v1",
     import.meta.url
   )) {
     this.url = url;
@@ -54,8 +54,17 @@ export class ResolverWorkerClient {
     return { requestId, promise };
   }
 
-  async initialize(datasetBaseUrl, trainerAiBaseUrl, gameId) {
-    const shared = { datasetBaseUrl, trainerAiBaseUrl, gameId };
+  async initialize(configuration, legacyTrainerAiBaseUrl = null, legacyGameId = null) {
+    const {
+      datasetBaseUrl,
+      datasetHostedPrefix = null,
+      trainerAiBaseUrl,
+      trainerAiHostedPrefix = null,
+      gameId
+    } = typeof configuration === "string"
+      ? { datasetBaseUrl: configuration, trainerAiBaseUrl: legacyTrainerAiBaseUrl, gameId: legacyGameId }
+      : configuration;
+    const shared = { datasetBaseUrl, datasetHostedPrefix, trainerAiBaseUrl, trainerAiHostedPrefix, gameId };
     this.trainerAiInitializationPayload = { ...shared, role: "trainer-ai" };
     const trainerAiReady = this.request("initialize", this.trainerAiInitializationPayload, this.trainerAiWorker, "trainer-ai").promise;
     this.trainerAiReady = trainerAiReady;

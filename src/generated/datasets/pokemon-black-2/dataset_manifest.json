@@ -348,6 +348,18 @@
     "../../tools/calculation_reference.js": {
       "sha256": "488b13d0834bcae87f5548b7dd1235b5dbcca1f65df770c11cc069bbadb60dd1",
       "role": "pinned game-specific battle contract, independent known answers, or validation authority"
+    },
+    "../../tools/trainer_visual_identity.py": {
+      "sha256": "496a9be8dffe7dd651d01a8340e8649fdd5408e93ffe10f6ade6415bc82aa4bd",
+      "role": "asset-neutral trainer visual identity resolver or schema"
+    },
+    "../../schemas/trainer-visual-identity.schema.json": {
+      "sha256": "8ef23b44f34dce70ec5b9d125a902b214c774884a911c93bf308e280fead094c",
+      "role": "asset-neutral trainer visual identity resolver or schema"
+    },
+    "../../tools/imports/vanilla/trainer-visual-identity-authority.json": {
+      "sha256": "2c0543f739ee340f86b5a604614d49e98d0bc2fe185316f5062d18bf012b04de",
+      "role": "asset-neutral trainer visual identity resolver or schema"
     }
   },
   "standardizedSources": [
@@ -378,7 +390,8 @@
     "encounter_mechanics.json"
   ],
   "extensions": [
-    "source_verification_report.json"
+    "source_verification_report.json",
+    "trainer_visual_identity_report.json"
   ],
   "sourceRequirements": {
     "specialTrainerMechanics": {
@@ -414,6 +427,23 @@
         "canonicalPartySpeciesNames": 1823
       },
       "partySpeciesInvariant": "trainers.json#records.*.team.*.displaySpecies equals species.json#records.*.name"
+    },
+    "trainerVisualIdentity": {
+      "required": true,
+      "schemaVersion": "trainer-visual-identity/v1alpha1",
+      "source": "trainer_visual_identity_report.json",
+      "relationship": "exact-retail",
+      "presentation": "battle-front",
+      "status": "passed",
+      "counts": {
+        "ambiguous": 0,
+        "inapplicable": 5,
+        "resolved": 813,
+        "unavailable": 0
+      },
+      "unresolvedFieldCounts": {},
+      "records": 818,
+      "policy": "unsupported or non-unique identities fail closed; ROM hacks are base-game candidates until hack-owned evidence resolves them"
     },
     "speciesAbilitySlots": {
       "required": true,

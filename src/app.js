@@ -1,6 +1,6 @@
 import { calculateStats, normalizePlayerCollection, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js?v=20260912-vanilla-display-names-v2";
 import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260909-public-release-v2";
-import { canonicalSpeciesDisplayName, loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260914-public-load-performance-v1";
+import { canonicalSpeciesDisplayName, loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260914-hosted-datasets-v1";
 import { createDraftRecord, destructiveTransitionNotice, IndexedDbDraftStore, markExported, updateDraftRecord } from "./cache/active_draft.js?v=20260909-public-release-v2";
 import { TrainerAiForecastCache } from "./cache/trainer_ai_forecast.js?v=20260909-public-release-v2";
 import { SavedDraftStore, savedDraftSnapshot } from "./cache/saved_drafts.js?v=20260911-ability-storage-reimp-v1";
@@ -26,7 +26,7 @@ import { effectiveActionSpeed } from "./rulesets/action_order.js?v=20260909-publ
 import { areSlotsAdjacent, canSelectShift, shiftWithCenter, triplePositionForSlot, tripleSlotForPosition } from "./rulesets/triple_battle.js?v=20260909-public-release-v2";
 import { rotationFrontKey, rotationFrontSlot } from "./rulesets/rotation_battle.js?v=20260909-public-release-v2";
 import { experienceForLevel, experienceToNextLevel, projectExperience } from "./rulesets/vw2r_experience.js?v=20260909-public-release-v2";
-import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260914-public-load-performance-v2";
+import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260914-hosted-datasets-v1";
 import { battleCompletionState } from "./core/battle_completion.js?v=20260909-public-release-v2";
 import {
   addBox, addParty, boxesForGame, createEmptyBoxLibrary, exportBoxLibrary, IndexedDbBoxLibraryStore,
@@ -44,7 +44,9 @@ function vanillaGame(gameId, name, generation) {
     expectedDamageGeneration: generation,
     activationReady: true,
     datasetBaseUrl: new URL(`./generated/datasets/${gameId}`, import.meta.url).href,
+    datasetHostedPrefix: `datasets/${gameId}`,
     trainerAiBaseUrl: null,
+    trainerAiHostedPrefix: null,
     capabilities: Object.freeze({ saveImport: false })
   });
 }
@@ -56,7 +58,9 @@ const GAME_REGISTRY = Object.freeze({
     expectedDamageGeneration: 3,
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/fire-red-omega", import.meta.url).href,
+    datasetHostedPrefix: "datasets/fire-red-omega",
     trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
+    trainerAiHostedPrefix: "trainer-ai",
     capabilities: Object.freeze({ saveImport: true })
   },
   "pokemon-unbound": {
@@ -65,7 +69,9 @@ const GAME_REGISTRY = Object.freeze({
     expectedDamageGeneration: 3,
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/pokemon-unbound", import.meta.url).href,
+    datasetHostedPrefix: "datasets/pokemon-unbound",
     trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
+    trainerAiHostedPrefix: "trainer-ai",
     capabilities: Object.freeze({ saveImport: true })
   },
   "platinum-kaizo": {
@@ -74,7 +80,9 @@ const GAME_REGISTRY = Object.freeze({
     expectedDamageGeneration: 4,
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/platinum-kaizo", import.meta.url).href,
+    datasetHostedPrefix: "datasets/platinum-kaizo",
     trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
+    trainerAiHostedPrefix: "trainer-ai",
     capabilities: Object.freeze({ saveImport: true })
   },
   "renegade-platinum": {
@@ -83,7 +91,9 @@ const GAME_REGISTRY = Object.freeze({
     expectedDamageGeneration: 4,
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/renegade-platinum", import.meta.url).href,
+    datasetHostedPrefix: "datasets/renegade-platinum",
     trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
+    trainerAiHostedPrefix: "trainer-ai",
     capabilities: Object.freeze({ saveImport: true })
   },
   "storm-silver": {
@@ -92,7 +102,9 @@ const GAME_REGISTRY = Object.freeze({
     expectedDamageGeneration: 4,
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/storm-silver", import.meta.url).href,
+    datasetHostedPrefix: "datasets/storm-silver",
     trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
+    trainerAiHostedPrefix: "trainer-ai",
     capabilities: Object.freeze({ saveImport: true })
   },
   "volt-white-2r": {
@@ -101,7 +113,9 @@ const GAME_REGISTRY = Object.freeze({
     expectedDamageGeneration: 5,
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/volt-white-2r", import.meta.url).href,
+    datasetHostedPrefix: "datasets/volt-white-2r",
     trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
+    trainerAiHostedPrefix: "trainer-ai",
     capabilities: Object.freeze({ saveImport: true })
   },
   "pokemon-ruby": vanillaGame("pokemon-ruby", "Ruby", 3),
@@ -3601,9 +3615,15 @@ async function selectGame(gameId) {
     setStatus(`Loading ${config.name} data and battle mechanics…`);
     if (selectedGameId && selectedGameId !== gameId) await clearActiveContext();
     worker?.terminate();
-    dataset = await loadStandardizedDataset({ baseUrl: config.datasetBaseUrl });
+    dataset = await loadStandardizedDataset({ baseUrl: config.datasetBaseUrl, hostedPrefix: config.datasetHostedPrefix });
     worker = new ResolverWorkerClient();
-    const workerReadiness = await worker.initialize(config.datasetBaseUrl, config.trainerAiBaseUrl, gameId);
+    const workerReadiness = await worker.initialize({
+      datasetBaseUrl: config.datasetBaseUrl,
+      datasetHostedPrefix: config.datasetHostedPrefix,
+      trainerAiBaseUrl: config.trainerAiBaseUrl,
+      trainerAiHostedPrefix: config.trainerAiHostedPrefix,
+      gameId
+    });
     trainerAi = workerReadiness.trainerAiMetadata || null;
     dataset.abilityKnowledgePolicy = trainerAi?.evaluatorProfile?.constants?.abilityKnowledge || null;
     trainerAiAnalysisCache.clear();

@@ -2,12 +2,12 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-ruby-dataset",
   "source": "Datasets/Pokemon Ruby/source-data",
-  "sourceTreeSha256": "8F0C7BF8914B9C1FCE09E2FB06791063B59502AD56133D871B01AC6B0896C947",
+  "sourceTreeSha256": "48219A2208DEC52289B20C2A323BD01C1EF9E30C5A063C0B46D6B96BB1548F72",
   "files": [
     {
       "path": "dataset_manifest.json",
-      "bytes": 62518,
-      "sha256": "2B90803CB9721A32F584FF354B6137F69FD19B4F0B37350726FD95150A6D9662"
+      "bytes": 63842,
+      "sha256": "22BF6B15E19877EFAE1AD868830628791C4805D57BBAD8C1BE1416EB687DA794"
     },
     {
       "path": "battle_mechanics.json",
@@ -51,8 +51,8 @@
     },
     {
       "path": "trainers.json",
-      "bytes": 4747155,
-      "sha256": "50F8A7E409E0DA9C8F0E732C875B1E4E73F09B0D6987B6E70C09D270C7516E0C"
+      "bytes": 5395543,
+      "sha256": "6E58AFE65350587EE9B57375F934974A520E868E459252FF9812E0D44BA2230E"
     },
     {
       "path": "trainer_order.json",

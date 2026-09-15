@@ -1,5 +1,6 @@
 import { canonicalStats, shortHash, stableStringify, toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
 import { installTrainerEncounters, encounterNavigation } from './trainer_encounters.js?v=20260905-drafts-freecalc-partners-v1';
+import { readDatasetJsonFiles } from "./hosted_dataset.js?v=20260914-hosted-datasets-v1";
 
 export const BATTLE_DATASET_SOURCES = Object.freeze([
   "species.json",
@@ -292,19 +293,31 @@ export function createDatasetContext({ manifest, mechanics, documents }) {
   return context;
 }
 
-export async function loadStandardizedDataset({ baseUrl, fetchImpl = fetch }) {
-  const root = String(baseUrl || "").replace(/\/$/, "");
-  const read = async file => {
-    const response = await fetchImpl(`${root}/${file}`);
-    if (!response.ok) throw new DatasetReadinessError(`${file} returned HTTP ${response.status}`);
-    return response.json();
-  };
-  const manifest = await read("dataset_manifest.json");
-  const mechanics = await read("battle_mechanics.json");
-  const documents = Object.fromEntries(await Promise.all(
-    REQUIRED_DATASET_SOURCES.map(async file => [file, await read(file)])
-  ));
-  return createDatasetContext({ manifest, mechanics, documents });
+export async function loadStandardizedDataset({ baseUrl, hostedPrefix = null, hostedRelease, fetchImpl = fetch, cacheStorage = globalThis.caches }) {
+  const paths = ["dataset_manifest.json", "battle_mechanics.json", ...REQUIRED_DATASET_SOURCES];
+  let loaded;
+  if (hostedPrefix) {
+    loaded = await readDatasetJsonFiles({
+      fallbackBaseUrl: baseUrl,
+      hostedPrefix,
+      paths,
+      release: hostedRelease,
+      fetchImpl,
+      cacheStorage
+    });
+  } else {
+    const root = String(baseUrl || "").replace(/\/$/u, "");
+    const entries = await Promise.all(paths.map(async file => {
+      const response = await fetchImpl(`${root}/${file}`);
+      if (!response.ok) throw new DatasetReadinessError(`${file} returned HTTP ${response.status}`);
+      return [file, await response.json()];
+    }));
+    loaded = { documents: Object.fromEntries(entries), delivery: Object.freeze({ mode: "direct" }) };
+  }
+  const { "dataset_manifest.json": manifest, "battle_mechanics.json": mechanics, ...documents } = loaded.documents;
+  const context = createDatasetContext({ manifest, mechanics, documents });
+  context.delivery = loaded.delivery;
+  return context;
 }
 
 export function canonicalTrainerMember(member, fallbackEvs = 0) {

@@ -188,6 +188,15 @@ async function waitForStableRuntime(client, expectedUrl, timeoutMs = 20_000) {
 
 try {
   await fs.access(path.join(publicRoot, "public-build-manifest.json"));
+  const corsProbe = await fetch("https://datasets.phantomsafe.tv/v1/releases/0.1.11/profiles/plc/manifest", {
+    headers: { Origin: "https://phantomsafe42.github.io" }
+  });
+  assert.equal(corsProbe.status, 200);
+  assert.equal(corsProbe.headers.get("access-control-allow-origin"), "https://phantomsafe42.github.io");
+  assert.match(corsProbe.headers.get("access-control-expose-headers") || "", /X-Content-Length/i);
+  assert.match(corsProbe.headers.get("access-control-expose-headers") || "", /X-Content-SHA256/i);
+  assert.equal(corsProbe.headers.get("x-content-sha256"), "ece8c5f683d12d62e4e4f8ed6aa07966defba1c708bb7f0a5f36c6169799197f");
+  await corsProbe.arrayBuffer();
   await fs.mkdir(profile, { recursive: true });
   const serverPort = await availablePort();
   server = await startStaticServer(serverPort);
@@ -195,7 +204,7 @@ try {
   const appUrl = `http://127.0.0.1:${serverPort}${publicPrefix}`;
   const chrome = await findBrowser();
   browser = spawn(chrome, [
-    "--headless=new", "--no-sandbox", "--disable-gpu", "--disable-software-rasterizer", "--no-first-run",
+    "--headless=new", "--no-sandbox", "--disable-gpu", "--disable-software-rasterizer", "--disable-web-security", "--no-first-run",
     "--no-default-browser-check", "--disable-extensions", `--remote-debugging-port=${debugPort}`, "--remote-allow-origins=*",
     `--user-data-dir=${profile}`, appUrl
   ], { windowsHide: true, stdio: "ignore" });
@@ -334,14 +343,14 @@ try {
   const requestedUrls = page.events
     .filter(event => event.method === "Network.requestWillBeSent")
     .map(event => event.params.request.url);
-  const servedCount = suffix => servedRequests.filter(request => request.path.endsWith(suffix)).length;
   const performance = {
     requests: requestedUrls.length,
     servedRequests: servedRequests.length,
     servedBytes: servedRequests.reduce((sum, request) => sum + request.bytes, 0),
-    datasetManifestRequests: servedRequests.filter(request => request.path.endsWith("/dataset_manifest.json")).length,
-    gen4TrainerAiRequests: servedCount("src/generated/trainer-ai/gen4/trainer_ai.json"),
-    gen5TrainerAiRequests: servedCount("src/generated/trainer-ai/gen5/trainer_ai.json")
+    localDatasetRequests: servedRequests.filter(request => request.path.includes("/src/generated/datasets/") || request.path.includes("/src/generated/trainer-ai/")).length,
+    hostedCatalogRequests: requestedUrls.filter(url => url === "https://datasets.phantomsafe.tv/v1/releases/0.1.11/catalog").length,
+    hostedManifestRequests: requestedUrls.filter(url => url === "https://datasets.phantomsafe.tv/v1/releases/0.1.11/profiles/plc/manifest").length,
+    hostedDatasetManifestRequests: requestedUrls.filter(url => url.includes("datasets.phantomsafe.tv/") && url.endsWith("/dataset_manifest.json")).length
   };
   assert.deepEqual(browserErrors, []);
   assert.deepEqual(failedRequests, []);
@@ -352,9 +361,10 @@ try {
   }), false);
   assert.equal(requestedUrls.some(url => /__stream-tools/i.test(url)), false);
   assert.ok(requestedUrls.filter(url => url.startsWith(`http://127.0.0.1:${serverPort}/`)).every(url => url.startsWith(appUrl)));
-  assert.equal(performance.datasetManifestRequests, 8, "Only the three explicitly selected games and their required worker lanes may load Dataset manifests");
-  assert.equal(performance.gen4TrainerAiRequests, 1, "The Gen 4 Trainer AI document must load only in the dedicated AI worker");
-  assert.equal(performance.gen5TrainerAiRequests, 1, "The Gen 5 Trainer AI document must load only in the dedicated AI worker");
+  assert.equal(performance.localDatasetRequests, 0, "A healthy hosted release must not mix in checked-in Dataset files");
+  assert.equal(performance.hostedCatalogRequests, 1, "The immutable Dataset catalog must be shared through the release cache");
+  assert.equal(performance.hostedManifestRequests, 1, "The immutable PLC manifest must be shared through the release cache");
+  assert.equal(performance.hostedDatasetManifestRequests, 3, "Only the three explicitly selected games may load hosted Dataset manifests");
 
   page.close();
   console.log(JSON.stringify({ status: "public-browser-smoke-valid", state, mobile, performance, screenshot }, null, 2));
