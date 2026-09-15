@@ -1,5 +1,5 @@
 import { toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
-import { SHOWDOWN_MOVE_REFERENCE_BY_GAME, SHOWDOWN_MOVE_REFERENCE_BY_GENERATION, SHOWDOWN_REFERENCE_SOURCE } from "./generated/showdown_move_reference.js?v=20260907-two-turn-immunity-v1";
+import { SHOWDOWN_MOVE_REFERENCE_BY_GAME, SHOWDOWN_MOVE_REFERENCE_BY_GENERATION, SHOWDOWN_MOVE_REFERENCE_IDS_BY_GAME, SHOWDOWN_REFERENCE_SOURCE } from "./generated/showdown_move_reference.js?v=20260914-public-load-performance-v1";
 
 const STATUS_RULES = Object.freeze({
   brn: { immuneTypes: ["fire"], immuneAbilities: ["waterveil", "waterbubble"] },
@@ -281,8 +281,9 @@ export function vw2rMoveSupport(move, dataset = null) {
 }
 
 export function vw2rReferenceMoveIds(dataset = null) {
-  const generation = Number(dataset?.mechanics?.damageGeneration || 5);
-  return Object.keys(SHOWDOWN_MOVE_REFERENCE_BY_GAME[dataset?.gameId] || SHOWDOWN_MOVE_REFERENCE_BY_GENERATION[generation] || {});
+  const datasetMoveIds = Object.keys(dataset?.documents?.["moves.json"]?.records || {});
+  if (datasetMoveIds.length) return datasetMoveIds;
+  return [...(SHOWDOWN_MOVE_REFERENCE_IDS_BY_GAME[dataset?.gameId || "volt-white-2r"] || [])];
 }
 
 export function hasShowdownMoveReference(dataset = null) {
@@ -290,5 +291,5 @@ export function hasShowdownMoveReference(dataset = null) {
   return Number.isInteger(generation)
     && Array.isArray(SHOWDOWN_REFERENCE_SOURCE.games)
     && SHOWDOWN_REFERENCE_SOURCE.games.includes(dataset?.gameId)
-    && Boolean(SHOWDOWN_MOVE_REFERENCE_BY_GAME[dataset?.gameId]);
+    && Object.hasOwn(SHOWDOWN_MOVE_REFERENCE_IDS_BY_GAME, dataset?.gameId);
 }

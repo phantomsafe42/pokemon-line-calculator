@@ -32,6 +32,7 @@ const vanillaGameOptions = [
 ];
 let browser = null;
 let server = null;
+const servedRequests = [];
 
 const contentTypes = new Map([
   [".css", "text/css; charset=utf-8"],
@@ -91,6 +92,7 @@ function startStaticServer(port) {
         return;
       }
       const bytes = await fs.readFile(absolute);
+      servedRequests.push({ path: relativePath.replaceAll("\\", "/"), bytes: bytes.byteLength });
       response.writeHead(200, {
         "cache-control": "no-store",
         "content-type": contentTypes.get(path.extname(absolute).toLowerCase()) || "application/octet-stream"
@@ -240,7 +242,7 @@ try {
     const sprite = document.createElement('img');
     const spriteResult = await assetResolver.setImage(sprite, { appearanceId: 'clefairy', spriteType: 'g5-animated', view: 'front' });
     await sprite.decode();
-    return {
+    const result = {
       profile: document.querySelector('meta[name="plc-build-profile"]')?.content,
       gameOptions,
       vanilla,
@@ -259,6 +261,26 @@ try {
       viewport: innerWidth,
       scrollWidth: document.documentElement.scrollWidth
     };
+    game.value = 'renegade-platinum';
+    game.dispatchEvent(new Event('change', { bubbles: true }));
+    await wait(() => /Renegade Platinum is ready\./.test(document.getElementById('app-status')?.textContent || '')
+      && document.getElementById('trainer-select').options.length > 100, 'Renegade Platinum data and Gen 4 AI worker');
+    result.renegadePlatinum = {
+      status: document.getElementById('app-status').textContent,
+      trainers: document.getElementById('trainer-select').options.length
+    };
+    document.getElementById('new-box').click();
+    await wait(() => document.querySelector('.box-card'), 'new Box rendering');
+    [...document.querySelectorAll('.box-card button')].find(button => button.textContent === 'Add Pokémon').click();
+    await wait(() => document.getElementById('pokemon-editor-dialog').open
+      && document.getElementById('editor-species').options.length > 100
+      && document.querySelectorAll('#editor-moves select').length >= 8, 'deferred Pokémon editor');
+    result.deferredEditor = {
+      species: document.getElementById('editor-species').options.length,
+      moveControls: document.querySelectorAll('#editor-moves select').length
+    };
+    document.getElementById('pokemon-editor-dialog').close();
+    return result;
   })()`, true);
 
   assert.equal(state.profile, "public");
@@ -278,6 +300,10 @@ try {
   assert.equal(state.siteCredit, "twitch.tv/phantomsafe");
   assert.equal(state.eyebrowCount, 0);
   assert.ok(state.trainers > 400);
+  assert.match(state.renegadePlatinum.status, /Renegade Platinum is ready\./);
+  assert.ok(state.renegadePlatinum.trainers > 100);
+  assert.ok(state.deferredEditor.species > 100);
+  assert.equal(state.deferredEditor.moveControls, 8);
   assert.equal(state.tabsVisible, true);
   assert.equal(state.localGlobalType, "undefined");
   assert.equal(state.viewToggle, false);
@@ -308,6 +334,15 @@ try {
   const requestedUrls = page.events
     .filter(event => event.method === "Network.requestWillBeSent")
     .map(event => event.params.request.url);
+  const servedCount = suffix => servedRequests.filter(request => request.path.endsWith(suffix)).length;
+  const performance = {
+    requests: requestedUrls.length,
+    servedRequests: servedRequests.length,
+    servedBytes: servedRequests.reduce((sum, request) => sum + request.bytes, 0),
+    datasetManifestRequests: servedRequests.filter(request => request.path.endsWith("/dataset_manifest.json")).length,
+    gen4TrainerAiRequests: servedCount("src/generated/trainer-ai/gen4/trainer_ai.json"),
+    gen5TrainerAiRequests: servedCount("src/generated/trainer-ai/gen5/trainer_ai.json")
+  };
   assert.deepEqual(browserErrors, []);
   assert.deepEqual(failedRequests, []);
   assert.deepEqual(badResponses, []);
@@ -317,9 +352,12 @@ try {
   }), false);
   assert.equal(requestedUrls.some(url => /__stream-tools/i.test(url)), false);
   assert.ok(requestedUrls.filter(url => url.startsWith(`http://127.0.0.1:${serverPort}/`)).every(url => url.startsWith(appUrl)));
+  assert.equal(performance.datasetManifestRequests, 8, "Only the three explicitly selected games and their required worker lanes may load Dataset manifests");
+  assert.equal(performance.gen4TrainerAiRequests, 1, "The Gen 4 Trainer AI document must load only in the dedicated AI worker");
+  assert.equal(performance.gen5TrainerAiRequests, 1, "The Gen 5 Trainer AI document must load only in the dedicated AI worker");
 
   page.close();
-  console.log(JSON.stringify({ status: "public-browser-smoke-valid", state, mobile, requests: requestedUrls.length, screenshot }, null, 2));
+  console.log(JSON.stringify({ status: "public-browser-smoke-valid", state, mobile, performance, screenshot }, null, 2));
 } finally {
   if (browser && browser.exitCode === null) browser.kill();
   if (server) await new Promise(resolve => server.close(resolve));

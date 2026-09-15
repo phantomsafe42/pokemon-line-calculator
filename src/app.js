@@ -1,7 +1,6 @@
 import { calculateStats, normalizePlayerCollection, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js?v=20260912-vanilla-display-names-v2";
 import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260909-public-release-v2";
-import { canonicalSpeciesDisplayName, loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260912-vanilla-display-names-v2";
-import { loadTrainerAiDocumentation } from "./adapters/trainer_ai.js?v=20260911-ability-storage-reimp-v1";
+import { canonicalSpeciesDisplayName, loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260914-public-load-performance-v1";
 import { createDraftRecord, destructiveTransitionNotice, IndexedDbDraftStore, markExported, updateDraftRecord } from "./cache/active_draft.js?v=20260909-public-release-v2";
 import { TrainerAiForecastCache } from "./cache/trainer_ai_forecast.js?v=20260909-public-release-v2";
 import { SavedDraftStore, savedDraftSnapshot } from "./cache/saved_drafts.js?v=20260911-ability-storage-reimp-v1";
@@ -170,6 +169,7 @@ let exportSelection = new Set();
 let activeTab = "plc";
 let destructiveResolver = null;
 let editorMoveRows = [];
+let pokemonEditorGameId = null;
 let actionDraft = emptyActionDraft();
 let notesPersistTimer = null;
 let trainerAiAnalysisCache = new TrainerAiForecastCache();
@@ -204,40 +204,12 @@ function option(value, label, { disabled = false } = {}) {
   return node;
 }
 
-async function generatedGameIsReady(config) {
-  if (config.activationReady !== true) return false;
-  try {
-    const root = String(config.datasetBaseUrl).replace(/\/$/, "");
-    const [manifestResponse, mechanicsResponse, experienceResponse] = await Promise.all([
-      fetch(`${root}/dataset_manifest.json`, { cache: "no-store" }),
-      fetch(`${root}/battle_mechanics.json`, { cache: "no-store" }),
-      fetch(`${root}/experience_mechanics.json`, { cache: "no-store" })
-    ]);
-    if (!manifestResponse.ok || !mechanicsResponse.ok || !experienceResponse.ok) return false;
-    const [manifest, mechanics, experience] = await Promise.all([manifestResponse.json(), mechanicsResponse.json(), experienceResponse.json()]);
-    const damageGeneration = Number(mechanics?.damageGeneration);
-    return manifest?.gameId === mechanics?.gameId
-      && Number.isInteger(damageGeneration)
-      && damageGeneration >= 1
-      && damageGeneration <= 9
-      && (config.expectedDamageGeneration === undefined || damageGeneration === Number(config.expectedDamageGeneration))
-      && mechanics?.validation?.status === "passed"
-      && Number(mechanics?.validation?.unresolved) === 0
-      && experience?.gameId === manifest?.gameId
-      && experience?.validation?.status === "passed"
-      && Number(experience?.validation?.unresolved) === 0
-      && experience?.consumerActivation?.experienceProjectionReady === true;
-  } catch {
-    return false;
-  }
+function generatedGameIsReady(config) {
+  return config.activationReady === true;
 }
 
-async function populateGameOptions() {
-  const availability = await Promise.all(Object.entries(GAME_REGISTRY).map(async ([gameId, config]) => [
-    gameId,
-    await generatedGameIsReady(config)
-  ]));
-  const readyByGame = new Map(availability);
+function populateGameOptions() {
+  const readyByGame = new Map(Object.entries(GAME_REGISTRY).map(([gameId, config]) => [gameId, generatedGameIsReady(config)]));
   ui["game-select"].replaceChildren(option("", "Select game…"));
   for (const [gameId, config] of Object.entries(GAME_REGISTRY)) {
     const ready = readyByGame.get(gameId) === true;
@@ -848,6 +820,7 @@ function loadEditorRecord(record) {
 }
 
 function initializePokemonEditor() {
+  if (pokemonEditorGameId === selectedGameId && editorMoveRows.length === 4) return;
   fillSelect(ui["editor-species"], sortedSpeciesRecords(), { labelFor: speciesSelectLabel });
   fillSelect(ui["editor-nature"], sortedRecords("natures"));
   fillSelect(ui["editor-ability"], sortedRecords("abilities"));
@@ -856,7 +829,7 @@ function initializePokemonEditor() {
     option("", "Auto — from IVs"),
     ...HIDDEN_POWER_TYPES.map(typeId => option(typeId, editorTypeName(typeId)))
   );
-  ui["editor-hidden-power-type"].addEventListener("change", refreshEditorHiddenPower);
+  ui["editor-hidden-power-type"].onchange = refreshEditorHiddenPower;
   const rows = STAT_KEYS.map(stat => {
     const row = document.createElement("tr");
     const label = document.createElement("th"); label.scope = "row"; label.textContent = STAT_LABELS[stat];
@@ -904,9 +877,11 @@ function initializePokemonEditor() {
     });
   };
   for (const id of ["editor-level", "editor-nature"]) ui[id].oninput = refreshEditorActualStats;
+  pokemonEditorGameId = selectedGameId;
 }
 
 function openPokemonEditor(boxId, pokemonId = null, context = false) {
+  initializePokemonEditor();
   const box = selectedBox(boxId);
   const record = pokemonId ? box?.pokemon[pokemonId] : defaultEditorRecord();
   if (!box || !record) return;
@@ -3624,17 +3599,14 @@ async function selectGame(gameId) {
     setStatus(`Loading ${config.name} data and battle mechanics…`);
     if (selectedGameId && selectedGameId !== gameId) await clearActiveContext();
     worker?.terminate();
-    [dataset, trainerAi] = await Promise.all([
-      loadStandardizedDataset({ baseUrl: config.datasetBaseUrl }),
-      config.trainerAiBaseUrl
-        ? loadTrainerAiDocumentation({ baseUrl: config.trainerAiBaseUrl, gameId })
-        : Promise.resolve(null)
-    ]);
-    dataset.abilityKnowledgePolicy = trainerAi?.evaluatorProfile?.constants?.abilityKnowledge || null;
+    dataset = await loadStandardizedDataset({ baseUrl: config.datasetBaseUrl });
     worker = new ResolverWorkerClient();
-    await worker.initialize(config.datasetBaseUrl, config.trainerAiBaseUrl, gameId);
+    const workerReadiness = await worker.initialize(config.datasetBaseUrl, config.trainerAiBaseUrl, gameId);
+    trainerAi = workerReadiness.trainerAiMetadata || null;
+    dataset.abilityKnowledgePolicy = trainerAi?.evaluatorProfile?.constants?.abilityKnowledge || null;
     trainerAiAnalysisCache.clear();
     selectedGameId = gameId;
+    pokemonEditorGameId = null;
     renderGameCredit(gameId);
     const saveImportControl = ui["save-import"]?.closest("label");
     if (saveImportControl) saveImportControl.hidden = config.capabilities?.saveImport !== true;
@@ -3642,7 +3614,6 @@ async function selectGame(gameId) {
     ui["game-gate"].hidden = true;
     ui["app-tabs"].hidden = false;
     fillTrainerSelect();
-    initializePokemonEditor();
     renderBoxes();
     refreshContextBoxSelect();
     setTab(activeTab);

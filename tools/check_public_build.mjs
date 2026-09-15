@@ -77,6 +77,23 @@ for (const forbiddenId of ["output-state", "output-state-anchor", "live-edit-anc
   if (new RegExp(`id=["']${forbiddenId}["']`, "i").test(html)) throw new Error(`Public HTML still exposes ${forbiddenId}`);
 }
 if (!html.includes('<meta name="plc-build-profile" content="public">')) throw new Error("Public HTML does not declare the public profile");
+const appBundlePath = html.match(/<script type="module" src="\.\/(src\/app-[a-f0-9]{12}\.js)"><\/script>/)?.[1];
+const stylesheetPath = html.match(/<link rel="stylesheet" href="\.\/(styles-[a-f0-9]{12}\.css)">/)?.[1];
+const assetResolverPath = html.match(/<script src="\.\/(src\/generated\/pokemon_asset_resolver\.global-[a-f0-9]{12}\.js)"><\/script>/)?.[1];
+if (!appBundlePath || !stylesheetPath || !assetResolverPath) throw new Error("Public HTML does not use content-hashed application assets");
+if (actual.includes("src/app.js") || actual.includes("src/worker/resolver_worker.js")) throw new Error("Unbundled PLC runtime source remains in the public build");
+if (/trainer_ai_evaluator\.js/i.test(html)) throw new Error("Public shell eagerly loads the Trainer AI evaluator");
+const appBundle = fs.readFileSync(path.join(outputRoot, appBundlePath));
+const workerBundleMatch = appBundle.toString("utf8").match(/\.\/worker\/(resolver_worker-[a-f0-9]{12}\.js)/);
+if (!workerBundleMatch || !actual.includes(`src/worker/${workerBundleMatch[1]}`)) throw new Error("Public app does not reference its content-hashed Resolver Worker bundle");
+for (const [label, relativePath, maximumBytes] of [
+  ["application", appBundlePath, 1_500_000],
+  ["Resolver Worker", `src/worker/${workerBundleMatch[1]}`, 1_500_000],
+  ["stylesheet", stylesheetPath, 100_000]
+]) {
+  const bytes = fs.statSync(path.join(outputRoot, relativePath)).size;
+  if (bytes > maximumBytes) throw new Error(`Public ${label} bundle is ${bytes} bytes; expected no more than ${maximumBytes}`);
+}
 const assetBase = html.match(/<meta name="pokemon-asset-release-base" content="([^"]+)">/)?.[1] || "";
 if (!assetBase || assetBase.includes("/Datasets/") || assetBase === "__POKEMON_ASSET_RELEASE_BASE__") throw new Error("Public HTML does not declare a usable Pokemon asset release base");
 if (assetBase === './public-assets') {

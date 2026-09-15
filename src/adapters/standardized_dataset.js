@@ -295,7 +295,7 @@ export function createDatasetContext({ manifest, mechanics, documents }) {
 export async function loadStandardizedDataset({ baseUrl, fetchImpl = fetch }) {
   const root = String(baseUrl || "").replace(/\/$/, "");
   const read = async file => {
-    const response = await fetchImpl(`${root}/${file}`, { cache: "no-store" });
+    const response = await fetchImpl(`${root}/${file}`);
     if (!response.ok) throw new DatasetReadinessError(`${file} returned HTTP ${response.status}`);
     return response.json();
   };

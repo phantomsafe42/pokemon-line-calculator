@@ -1,9 +1,13 @@
 export class ResolverWorkerClient {
-  constructor(url = new URL("./resolver_worker.js?v=20260911-ability-storage-reimp-v1", import.meta.url)) {
+  constructor(url = new URL(
+    typeof __PLC_RESOLVER_WORKER_FILE__ !== "undefined"
+      ? __PLC_RESOLVER_WORKER_FILE__
+      : "./resolver_worker.js?v=20260914-public-load-performance-v1",
+    import.meta.url
+  )) {
     this.url = url;
     this.worker = new Worker(url);
     this.trainerAiWorker = new Worker(url);
-    this.initializationPayload = null;
     this.requestId = 0;
     this.latestPreviewRequest = 0;
     this.pending = new Map();
@@ -49,13 +53,14 @@ export class ResolverWorkerClient {
   }
 
   async initialize(datasetBaseUrl, trainerAiBaseUrl, gameId) {
-    const payload = { datasetBaseUrl, trainerAiBaseUrl, gameId };
-    this.initializationPayload = payload;
-    const [resolver] = await Promise.all([
-      this.request("initialize", payload, this.worker, "resolver").promise,
-      this.request("initialize", payload, this.trainerAiWorker, "trainer-ai").promise
+    const shared = { datasetBaseUrl, trainerAiBaseUrl, gameId };
+    const [resolver, trainerAiLane] = await Promise.all([
+      this.request("initialize", { ...shared, role: "resolver" }, this.worker, "resolver").promise,
+      this.request("initialize", { ...shared, role: "trainer-ai" }, this.trainerAiWorker, "trainer-ai").promise
     ]);
-    return resolver;
+    return trainerAiLane?.trainerAiMetadata
+      ? { ...resolver, trainerAiMetadata: trainerAiLane.trainerAiMetadata }
+      : resolver;
   }
 
   async preview(payload) {
@@ -75,21 +80,6 @@ export class ResolverWorkerClient {
   }
 
   async trainerAi(payload) {
-    const busy = [...this.pending.values()].some(entry => entry.lane === "trainer-ai");
-    if (busy) {
-      const error = new Error("A newer Trainer AI state replaced this analysis");
-      error.name = "StaleTrainerAiError";
-      for (const [requestId, entry] of this.pending) {
-        if (entry.lane !== "trainer-ai") continue;
-        entry.reject(error);
-        this.pending.delete(requestId);
-      }
-      this.trainerAiWorker.terminate();
-      this.trainerAiWorker = new Worker(this.url);
-      this.bindWorker(this.trainerAiWorker, "trainer-ai");
-      if (!this.initializationPayload) throw new Error("Resolver Worker has not been initialized");
-      await this.request("initialize", this.initializationPayload, this.trainerAiWorker, "trainer-ai").promise;
-    }
     return this.request("trainer-ai", payload, this.trainerAiWorker, "trainer-ai").promise;
   }
 

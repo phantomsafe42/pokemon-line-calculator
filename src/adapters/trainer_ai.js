@@ -25,7 +25,7 @@ function requireProfile(document, { expectedGameId = null, kind, profileId = nul
 export async function loadTrainerAiDocumentation({ baseUrl, gameId = "volt-white-2r", generation = null, fetchImpl = fetch }) {
   const root = String(baseUrl || "").replace(/\/$/, "");
   const read = async path => {
-    const response = await fetchImpl(`${root}/${path}`, { cache: "no-store" });
+    const response = await fetchImpl(`${root}/${path}`);
     if (!response.ok) throw new TrainerAiReadinessError(`${path} returned HTTP ${response.status}`);
     return response.json();
   };
