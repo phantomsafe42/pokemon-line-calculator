@@ -2,7 +2,7 @@ export class ResolverWorkerClient {
   constructor(url = new URL(
     typeof __PLC_RESOLVER_WORKER_FILE__ !== "undefined"
       ? __PLC_RESOLVER_WORKER_FILE__
-      : "./resolver_worker.js?v=20260914-hosted-datasets-v1",
+      : "./resolver_worker.js?v=20260914-hosted-datasets-v2",
     import.meta.url
   )) {
     this.url = url;
@@ -60,11 +60,12 @@ export class ResolverWorkerClient {
       datasetHostedPrefix = null,
       trainerAiBaseUrl,
       trainerAiHostedPrefix = null,
+      hostedRelease,
       gameId
     } = typeof configuration === "string"
       ? { datasetBaseUrl: configuration, trainerAiBaseUrl: legacyTrainerAiBaseUrl, gameId: legacyGameId }
       : configuration;
-    const shared = { datasetBaseUrl, datasetHostedPrefix, trainerAiBaseUrl, trainerAiHostedPrefix, gameId };
+    const shared = { datasetBaseUrl, datasetHostedPrefix, trainerAiBaseUrl, trainerAiHostedPrefix, hostedRelease, gameId };
     this.trainerAiInitializationPayload = { ...shared, role: "trainer-ai" };
     const trainerAiReady = this.request("initialize", this.trainerAiInitializationPayload, this.trainerAiWorker, "trainer-ai").promise;
     this.trainerAiReady = trainerAiReady;

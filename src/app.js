@@ -1,6 +1,7 @@
 import { calculateStats, normalizePlayerCollection, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js?v=20260912-vanilla-display-names-v2";
+import { HOSTED_DATASET_RELEASE } from "./adapters/hosted_dataset.js?v=20260914-hosted-datasets-v2";
 import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260909-public-release-v2";
-import { canonicalSpeciesDisplayName, loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260914-hosted-datasets-v1";
+import { canonicalSpeciesDisplayName, loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260914-hosted-datasets-v2";
 import { createDraftRecord, destructiveTransitionNotice, IndexedDbDraftStore, markExported, updateDraftRecord } from "./cache/active_draft.js?v=20260909-public-release-v2";
 import { TrainerAiForecastCache } from "./cache/trainer_ai_forecast.js?v=20260909-public-release-v2";
 import { SavedDraftStore, savedDraftSnapshot } from "./cache/saved_drafts.js?v=20260911-ability-storage-reimp-v1";
@@ -26,7 +27,7 @@ import { effectiveActionSpeed } from "./rulesets/action_order.js?v=20260909-publ
 import { areSlotsAdjacent, canSelectShift, shiftWithCenter, triplePositionForSlot, tripleSlotForPosition } from "./rulesets/triple_battle.js?v=20260909-public-release-v2";
 import { rotationFrontKey, rotationFrontSlot } from "./rulesets/rotation_battle.js?v=20260909-public-release-v2";
 import { experienceForLevel, experienceToNextLevel, projectExperience } from "./rulesets/vw2r_experience.js?v=20260909-public-release-v2";
-import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260914-hosted-datasets-v1";
+import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260914-hosted-datasets-v2";
 import { battleCompletionState } from "./core/battle_completion.js?v=20260909-public-release-v2";
 import {
   addBox, addParty, boxesForGame, createEmptyBoxLibrary, exportBoxLibrary, IndexedDbBoxLibraryStore,
@@ -134,6 +135,10 @@ const GAME_REGISTRY = Object.freeze({
   "pokemon-white-2": vanillaGame("pokemon-white-2", "White 2", 5)
 });
 const pokemonAssetResolver = globalThis.PokemonAssets?.createResolver();
+const hostedOriginOverride = document.querySelector('meta[name="plc-dataset-release-origin"]')?.content?.trim();
+const DATASET_HOSTED_RELEASE = hostedOriginOverride
+  ? Object.freeze({ ...HOSTED_DATASET_RELEASE, origin: new URL(hostedOriginOverride, window.location.href).origin })
+  : HOSTED_DATASET_RELEASE;
 const SELECTED_GAME_KEY = "plc-selected-game-v1";
 const STAT_KEYS = Object.freeze(["hp", "atk", "def", "spa", "spd", "spe"]);
 const STAT_LABELS = Object.freeze({ hp: "HP", atk: "Atk", def: "Def", spa: "SpA", spd: "SpD", spe: "Spe" });
@@ -3615,13 +3620,18 @@ async function selectGame(gameId) {
     setStatus(`Loading ${config.name} data and battle mechanics…`);
     if (selectedGameId && selectedGameId !== gameId) await clearActiveContext();
     worker?.terminate();
-    dataset = await loadStandardizedDataset({ baseUrl: config.datasetBaseUrl, hostedPrefix: config.datasetHostedPrefix });
+    dataset = await loadStandardizedDataset({
+      baseUrl: config.datasetBaseUrl,
+      hostedPrefix: config.datasetHostedPrefix,
+      hostedRelease: DATASET_HOSTED_RELEASE
+    });
     worker = new ResolverWorkerClient();
     const workerReadiness = await worker.initialize({
       datasetBaseUrl: config.datasetBaseUrl,
       datasetHostedPrefix: config.datasetHostedPrefix,
       trainerAiBaseUrl: config.trainerAiBaseUrl,
       trainerAiHostedPrefix: config.trainerAiHostedPrefix,
+      hostedRelease: DATASET_HOSTED_RELEASE,
       gameId
     });
     trainerAi = workerReadiness.trainerAiMetadata || null;

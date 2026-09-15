@@ -59,8 +59,9 @@ function normalizeRelativePath(value, label = "Dataset path") {
 function normalizedRelease(release) {
   const value = release || HOSTED_DATASET_RELEASE;
   const origin = new URL(value.origin);
-  if (origin.protocol !== "https:" || origin.pathname !== "/" || origin.search || origin.hash) {
-    throw new DatasetDeliveryError("Hosted Dataset origin must be an HTTPS origin");
+  const loopbackHttp = origin.protocol === "http:" && ["127.0.0.1", "localhost", "[::1]"].includes(origin.hostname);
+  if ((!loopbackHttp && origin.protocol !== "https:") || origin.pathname !== "/" || origin.search || origin.hash) {
+    throw new DatasetDeliveryError("Hosted Dataset origin must be HTTPS or direct HTTP loopback");
   }
   const releaseVersion = String(value.releaseVersion || "");
   if (!/^\d+\.\d+\.\d+$/u.test(releaseVersion)) throw new DatasetDeliveryError("Hosted Dataset release is invalid");

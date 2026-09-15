@@ -131,6 +131,19 @@ test("runtime hosted Dataset identity matches the repository lock", () => {
   assert.equal(lock.fallback.payloadTreeSha256, lock.hosted.payload.treeSha256);
 });
 
+test("runtime origin overrides accept only HTTPS or direct loopback HTTP", async () => {
+  const loopback = fixtureRelease({ origin: "http://127.0.0.1:8041" });
+  const localFetch = fixtureFetch(loopback.routes);
+  const profile = await loadHostedDatasetProfile({ release: loopback.release, fetchImpl: localFetch.fetchImpl, cacheStorage: null });
+  assert.equal(profile.release.origin, "http://127.0.0.1:8041");
+
+  const insecure = fixtureRelease({ origin: "http://candidate.example" });
+  await assert.rejects(
+    loadHostedDatasetProfile({ release: insecure.release, fetchImpl: fixtureFetch(insecure.routes).fetchImpl, cacheStorage: null }),
+    /HTTPS or direct HTTP loopback/u
+  );
+});
+
 test("hosted Dataset profile and files are accepted only after complete integrity validation", async () => {
   const fixture = fixtureRelease({ files: {
     "datasets/game/one.json": { source: "hosted-one" },

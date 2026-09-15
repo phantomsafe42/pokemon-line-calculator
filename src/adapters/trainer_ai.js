@@ -5,7 +5,7 @@ import { rotationFrontSlot } from "../rulesets/rotation_battle.js?v=20260905-dra
 import { areSlotsAdjacent, triplePositionForSlot } from "../rulesets/triple_battle.js?v=20260905-drafts-freecalc-partners-v1";
 import { trappingAbilityBlocksSwitch } from "../rulesets/ability_rules.js?v=20260905-drafts-freecalc-partners-v1";
 import { effectiveActionSpeed } from "../rulesets/action_order.js?v=20260905-drafts-freecalc-partners-v1";
-import { readDatasetJsonFiles } from "./hosted_dataset.js?v=20260914-hosted-datasets-v1";
+import { readDatasetJsonFiles } from "./hosted_dataset.js?v=20260914-hosted-datasets-v2";
 
 export class TrainerAiReadinessError extends Error {
   constructor(message) {
