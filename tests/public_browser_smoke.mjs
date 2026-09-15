@@ -15,7 +15,9 @@ const tempRoot = path.join(projectRoot, ".codex-tmp");
 const profile = path.join(tempRoot, `public-browser-smoke-${process.pid}`);
 const screenshot = path.join(tempRoot, "plc-public-pages.png");
 const datasetLock = JSON.parse(await fs.readFile(path.join(projectRoot, "dataset-lock.json"), "utf8"));
+const assetLock = JSON.parse(await fs.readFile(path.join(projectRoot, "asset-lock.json"), "utf8"));
 const hostedReleaseRoot = `${datasetLock.hosted.origin}/v1/releases/${datasetLock.releaseVersion}`;
+const hostedAssetReleaseRoot = `${assetLock.gateway.origin}/v1/releases/${assetLock.gateway.releaseVersion}`;
 const vanillaGameOptions = [
   ["pokemon-ruby", "Ruby"],
   ["pokemon-sapphire", "Sapphire"],
@@ -249,7 +251,7 @@ try {
     await wait(() => /is ready\./.test(document.getElementById('app-status')?.textContent || '')
       && document.getElementById('trainer-select').options.length > 400, 'public game data, AI bootstrap, and resolver');
     if (document.getElementById('plan-context-dialog').open) document.getElementById('plan-context-dialog').close();
-    const assetResolver = globalThis.PokemonAssets.createResolver();
+    const assetResolver = globalThis.PokemonAssetGateway.createClient();
     const sprite = document.createElement('img');
     const spriteResult = await assetResolver.setImage(sprite, { appearanceId: 'clefairy', spriteType: 'g5-animated', view: 'front' });
     await sprite.decode();
@@ -258,6 +260,10 @@ try {
       gameOptions,
       vanilla,
       spriteLoaded: spriteResult.status === 'ok' && sprite.naturalWidth > 0,
+      assetApiVersion: assetResolver.apiVersion,
+      assetOrigin: assetResolver.origin,
+      assetReleaseVersion: assetResolver.releaseVersion,
+      localAssetGlobalType: typeof globalThis.PokemonAssets,
       status: document.getElementById('app-status').textContent,
       gameCredit: document.getElementById('game-credit').textContent,
       siteCredit: document.querySelector('.site-credit')?.textContent,
@@ -306,6 +312,10 @@ try {
   assert.ok(state.vanilla.trainers > 1);
   assert.equal(state.vanilla.saveImportVisible, false);
   assert.equal(state.spriteLoaded, true);
+  assert.equal(state.assetApiVersion, "pokemon-asset-gateway-client/v1");
+  assert.equal(state.assetOrigin, assetLock.gateway.origin);
+  assert.equal(state.assetReleaseVersion, assetLock.gateway.releaseVersion);
+  assert.equal(state.localAssetGlobalType, "undefined");
   assert.match(state.status, /is ready\./);
   assert.equal(state.gameCredit, "by AphexCubed and Drayano");
   assert.equal(state.siteCredit, "twitch.tv/phantomsafe");
@@ -355,7 +365,9 @@ try {
     hostedDatasetManifestRequests: requestedUrls.filter(url => url.startsWith(`${hostedReleaseRoot}/`) && url.endsWith("/dataset_manifest.json")).length,
     hostedTrainerAiBootstrapRequests: requestedUrls.filter(url => url === `${hostedReleaseRoot}/profiles/${datasetLock.profile}/files/trainer-ai/bootstrap.json`).length,
     hostedTrainerAiEvaluatorRequests: requestedUrls.filter(url => url.startsWith(`${hostedReleaseRoot}/profiles/${datasetLock.profile}/files/trainer-ai/`)
-      && /\/(?:gen\d|[^/]+)\/trainer_ai(?:_engine_semantics)?\.json$/u.test(new URL(url).pathname)).length
+      && /\/(?:gen\d|[^/]+)\/trainer_ai(?:_engine_semantics)?\.json$/u.test(new URL(url).pathname)).length,
+    hostedAssetRequests: requestedUrls.filter(url => url.startsWith(`${hostedAssetReleaseRoot}/asset?`)).length,
+    bundledAssetRequests: requestedUrls.filter(url => /\/public-assets\//u.test(new URL(url).pathname)).length
   };
   assert.deepEqual(browserErrors, []);
   assert.deepEqual(failedRequests, []);
@@ -372,6 +384,8 @@ try {
   assert.equal(performance.hostedDatasetManifestRequests, 3, "Only the three explicitly selected games may load hosted Dataset manifests");
   assert.equal(performance.hostedTrainerAiBootstrapRequests, 1, "The compact Trainer AI bootstrap must be shared through the release cache");
   assert.equal(performance.hostedTrainerAiEvaluatorRequests, 0, "Collapsed AI Forecast must not load heavyweight Trainer AI evaluator documents");
+  assert.ok(performance.hostedAssetRequests > 0, "Public sprites must use the immutable selector-only asset gateway");
+  assert.equal(performance.bundledAssetRequests, 0, "Public sprites must not use a bundled asset projection");
 
   page.close();
   console.log(JSON.stringify({ status: "public-browser-smoke-valid", state, mobile, performance, screenshot }, null, 2));

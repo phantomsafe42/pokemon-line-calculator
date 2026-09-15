@@ -138,7 +138,8 @@ const GAME_REGISTRY = Object.freeze({
   "pokemon-black-2": vanillaGame("pokemon-black-2", "Black 2", 5),
   "pokemon-white-2": vanillaGame("pokemon-white-2", "White 2", 5)
 });
-const pokemonAssetResolver = globalThis.PokemonAssets?.createResolver();
+const pokemonAssetResolver = globalThis.PokemonAssetGateway?.createClient()
+  || globalThis.PokemonAssets?.createResolver();
 const hostedOriginOverride = document.querySelector('meta[name="plc-dataset-release-origin"]')?.content?.trim();
 const DATASET_HOSTED_RELEASE = hostedOriginOverride
   ? Object.freeze({ ...HOSTED_DATASET_RELEASE, origin: new URL(hostedOriginOverride, window.location.href).origin })

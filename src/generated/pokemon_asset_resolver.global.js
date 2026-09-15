@@ -1,7 +1,7 @@
 (function installPokemonAssetResolver(global) {
   "use strict";
 
-  const API_VERSION = "pokemon-asset-resolver/v3";
+  const API_VERSION = "pokemon-asset-resolver/v4";
   const ROOT_INDEX_PATH = "index.json";
   const PROFILE_BY_TYPE = Object.freeze({
     pixel: "pixel",
@@ -193,6 +193,101 @@
     };
     const badge = aliases[style]?.[badgeToken];
     return badge ? { style, badge } : null;
+  }
+
+  function normalizeGameTitleId(value) {
+    return String(value ?? "")
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/^pokemon\s+/, "")
+      .replace(/&/g, " and ")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  }
+
+  function normalizeGameTitleArtQuery(query = {}) {
+    const titleId = normalizeGameTitleId(query.titleId ?? query.gameId ?? query.game ?? query.title ?? query.name);
+    if (!titleId) return null;
+    const sizeToken = normalizeToken(query.size || query.logoSize || query.variant || "full");
+    const size = ["full", "standard", "large", "original"].includes(sizeToken)
+      ? "full"
+      : ["small", "compact", "thumbnail", "thumb"].includes(sizeToken) ? "small" : null;
+    const formatToken = normalizeToken(query.format || query.extension || query.mediaType || "webp");
+    const format = formatToken === "png" || formatToken === "imagepng"
+      ? "png"
+      : formatToken === "webp" || formatToken === "imagewebp" ? "webp" : null;
+    return size && format ? { titleId, size, format } : null;
+  }
+
+  const TRAINER_GAME_STYLE_ALIASES = Object.freeze({
+    r: "red", red: "red", g: "green", green: "green", b: "blue", blue: "blue",
+    rb: "red-blue", redblue: "red-blue", rg: "red-green", redgreen: "red-green",
+    rgb: "red-green-blue", redgreenblue: "red-green-blue", rgby: "red-green-blue-yellow", redgreenblueyellow: "red-green-blue-yellow",
+    y: "yellow", yellow: "yellow", gs: "gold-silver", goldsilver: "gold-silver", c: "crystal", crystal: "crystal", golddemo: "gold-demo",
+    ruby: "ruby-sapphire", sapphire: "ruby-sapphire", rubysapphire: "ruby-sapphire", rs: "ruby-sapphire",
+    emerald: "emerald", e: "emerald", firered: "firered-leafgreen", leafgreen: "firered-leafgreen", fireredleafgreen: "firered-leafgreen", frlg: "firered-leafgreen",
+    diamond: "diamond-pearl", pearl: "diamond-pearl", diamondpearl: "diamond-pearl", dp: "diamond-pearl", platinum: "platinum", pt: "platinum",
+    heartgold: "heartgold-soulsilver", soulsilver: "heartgold-soulsilver", heartgoldsoulsilver: "heartgold-soulsilver", hgss: "heartgold-soulsilver",
+    black: "black-white", white: "black-white", blackwhite: "black-white", bw: "black-white",
+    black2: "black-2-white-2", white2: "black-2-white-2", black2white2: "black-2-white-2", b2w2: "black-2-white-2",
+    x: "x-y", yversion: "x-y", xy: "x-y", omegaruby: "omega-ruby-alpha-sapphire", alphasapphire: "omega-ruby-alpha-sapphire", oras: "omega-ruby-alpha-sapphire",
+    sun: "sun-moon", moon: "sun-moon", sunmoon: "sun-moon", sm: "sun-moon",
+    ultrasun: "ultra-sun-ultra-moon", ultramoon: "ultra-sun-ultra-moon", ultrasunultramoon: "ultra-sun-ultra-moon", usum: "ultra-sun-ultra-moon",
+    letsgopikachu: "lets-go-pikachu-eevee", letsgoeevee: "lets-go-pikachu-eevee", letsgopikachueevee: "lets-go-pikachu-eevee", lgpe: "lets-go-pikachu-eevee",
+    pokemonruby: "ruby-sapphire", pokemonsapphire: "ruby-sapphire", pokemonemerald: "emerald",
+    pokemonfirered: "firered-leafgreen", pokemonleafgreen: "firered-leafgreen",
+    pokemondiamond: "diamond-pearl", pokemonpearl: "diamond-pearl", pokemonplatinum: "platinum",
+    pokemonheartgold: "heartgold-soulsilver", pokemonsoulsilver: "heartgold-soulsilver",
+    pokemonblack: "black-white", pokemonwhite: "black-white", pokemonblack2: "black-2-white-2", pokemonwhite2: "black-2-white-2"
+  });
+  const TRAINER_CLASS_ALIASES = Object.freeze({
+    cooltrainer: "ace-trainer", cooltrainerf: "ace-trainer", cooltrainerm: "ace-trainer",
+    blackbelt: "black-belt", blackbeltf: "black-belt", blackbeltm: "black-belt", pokemaniac: "poke-maniac", pkmnmaniac: "poke-maniac",
+    pokekid: "poke-kid", pokemonbreeder: "pokemon-breeder", pokemonranger: "pokemon-ranger", pokemontrainer: "pokemon-trainer",
+    teamrocket: "team-rocket-grunt", teamrocketgrunt: "team-rocket-grunt", teamplasmagrunt: "team-plasma-grunt",
+    officeworker: "office-worker", clerk: "office-worker"
+  });
+  function trainerSlug(value) {
+    return String(value ?? "")
+      .toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      .replace(/♀/g, " female ").replace(/♂/g, " male ").replace(/pok[eé]mon/g, "pokemon")
+      .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").replace(/-+/g, "-");
+  }
+  function normalizeTrainerClass(value) {
+    const cleaned = String(value ?? "")
+      .replace(/^TRAINER_?CLASS_/i, "")
+      .replace(/_(?:FEMALE|MALE|F|M)$/i, "")
+      .replace(/\b(?:female|male)\b/gi, "")
+      .replace(/\(Trainer class\)/gi, "")
+      .trim();
+    return TRAINER_CLASS_ALIASES[normalizeToken(cleaned)] || trainerSlug(cleaned);
+  }
+  function normalizeTrainerSpriteQuery(query = {}) {
+    const gameValue = query.gameStyle ?? query.style ?? query.game ?? query.gameId;
+    const directStyle = String(gameValue || "").toLowerCase().trim();
+    const gameStyle = /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(directStyle) && Object.values(TRAINER_GAME_STYLE_ALIASES).includes(directStyle)
+      ? directStyle : TRAINER_GAME_STYLE_ALIASES[normalizeToken(gameValue)];
+    const rawKind = normalizeToken(query.subjectKind || query.trainerKind || (query.trainerClass || query.category ? "class" : query.special ? "special" : "character"));
+    const subjectKind = rawKind === "class" || rawKind === "trainerclass" || rawKind === "category" ? "class"
+      : rawKind === "character" || rawKind === "trainer" || rawKind === "named" ? "character"
+        : rawKind === "special" ? "special" : null;
+    const subjectValue = query.subject ?? query.trainerClass ?? query.category ?? query.character ?? query.trainer ?? query.name ?? query.special;
+    const subject = subjectKind === "class" ? normalizeTrainerClass(subjectValue) : trainerSlug(subjectValue);
+    if (!gameStyle || !subjectKind || !subject) return null;
+    const spriteSet = query.spriteSet == null || query.spriteSet === "" ? null : trainerSlug(query.spriteSet);
+    const gender = query.gender == null || query.gender === "" ? null : normalizeGender(query.gender);
+    if (gender && !["default", "female", "male"].includes(gender)) return null;
+    const presentationAliases = { front: "battle-front", battlefront: "battle-front", back: "battle-back", battleback: "battle-back", versus: "versus", vs: "versus", portrait: "portrait" };
+    const defaultPresentation = ["x-y", "omega-ruby-alpha-sapphire", "sun-moon", "ultra-sun-ultra-moon", "lets-go-pikachu-eevee"].includes(gameStyle) ? "versus" : "battle-front";
+    const presentation = presentationAliases[normalizeToken(query.presentation ?? query.view ?? defaultPresentation)];
+    if (!presentation) return null;
+    const variant = query.variant == null || query.variant === "" ? null : trainerSlug(query.variant);
+    const locale = trainerSlug(query.locale ?? "international");
+    const palette = trainerSlug(query.palette ?? "default");
+    const edition = trainerSlug(query.edition ?? "retail");
+    if ((query.variant != null && !variant) || !locale || !palette || !edition) return null;
+    return { gameStyle, spriteSet, subjectKind, subject, gender, presentation, variant, locale, palette, edition };
   }
 
   function trimBaseUrl(value) {
@@ -532,11 +627,15 @@
         const key = JSON.stringify(index.selectorFields.map(field => selectors[field]));
         const assetId = index.selectorIndex?.[key];
         const asset = assetId ? index.assets?.[assetId] : null;
+        const coverageGap = !asset
+          ? (index.coverageGaps || []).find(gap => JSON.stringify(index.selectorFields.map(field => gap.selectors?.[field])) === key)
+          : null;
         if (!asset) return {
           status: "unavailable",
-          reason: "asset-not-found",
+          reason: coverageGap ? "documented-coverage-gap" : "asset-not-found",
           kind,
           selectors,
+          ...(coverageGap ? { coverageGap } : {}),
           requested: query
         };
         const primaryKey = JSON.stringify(index.selectorFields.map(field => asset.selectors[field]));
@@ -562,6 +661,80 @@
         };
       } catch (error) {
         return { status: "unavailable", reason: "collection-load-failed", error: error.message, kind, requested: query };
+      }
+    }
+
+    async function resolveTrainerSprite(query = {}) {
+      if (!baseUrl) return { status: "unavailable", reason: "release-base-not-configured", requested: query };
+      const requestedSelectors = normalizeTrainerSpriteQuery(query);
+      if (!requestedSelectors) return { status: "unavailable", reason: "invalid-trainer-sprite-selectors", requested: query };
+      try {
+        const index = await loadCollection("trainer-sprite");
+        const candidateMap = new Map();
+        for (const [assetId, asset] of Object.entries(index.assets || {})) {
+          for (const selectors of [asset.selectors, ...(asset.selectorAliases || [])]) {
+            if (Object.entries(requestedSelectors).some(([field, value]) => value !== null && selectors[field] !== value)) continue;
+            if (!candidateMap.has(assetId)) candidateMap.set(assetId, { assetId, asset, matchedSelectors: selectors });
+          }
+        }
+        let candidates = [...candidateMap.values()];
+        if (!requestedSelectors.gender) {
+          const shared = candidates.filter(candidate => candidate.matchedSelectors.gender === "default");
+          if (shared.length) candidates = shared;
+        }
+        const matchingCoverageGaps = (index.coverageGaps || []).filter(gap =>
+          Object.entries(requestedSelectors).every(([field, value]) => value === null || gap.selectors?.[field] === value)
+        );
+        if (!candidates.length && matchingCoverageGaps.length) return {
+          status: "unavailable",
+          reason: "documented-coverage-gap",
+          kind: "trainer-sprite",
+          requestedSelectors,
+          coverageGaps: matchingCoverageGaps,
+          requested: query
+        };
+        if (candidates.length === 1 && matchingCoverageGaps.length) return {
+          status: "unavailable",
+          reason: "ambiguous-trainer-sprite",
+          kind: "trainer-sprite",
+          requestedSelectors,
+          candidateAssetIds: candidates.map(candidate => candidate.assetId).sort(),
+          coverageGaps: matchingCoverageGaps,
+          requested: query
+        };
+        if (candidates.length !== 1) return {
+          status: "unavailable",
+          reason: candidates.length ? "ambiguous-trainer-sprite" : "asset-not-found",
+          kind: "trainer-sprite",
+          requestedSelectors,
+          candidateAssetIds: candidates.map(candidate => candidate.assetId).sort(),
+          requested: query
+        };
+        const { assetId, asset, matchedSelectors } = candidates[0];
+        const primaryKey = JSON.stringify(index.selectorFields.map(field => asset.selectors[field]));
+        const matchedKey = JSON.stringify(index.selectorFields.map(field => matchedSelectors[field]));
+        return {
+          status: "ok",
+          apiVersion: API_VERSION,
+          releaseVersion: index.releaseVersion,
+          kind: "trainer-sprite",
+          collectionId: index.collectionId,
+          assetId,
+          selectors: asset.selectors,
+          matchedSelectors,
+          requestedSelectors,
+          selectorAliasUsed: matchedKey !== primaryKey,
+          path: asset.path,
+          url: joinReleaseUrl(baseUrl, asset.path),
+          sha256: asset.sha256,
+          mediaType: asset.mediaType,
+          width: asset.width,
+          height: asset.height,
+          motion: asset.motion,
+          fallback: null
+        };
+      } catch (error) {
+        return { status: "unavailable", reason: "collection-load-failed", error: error.message, kind: "trainer-sprite", requested: query };
       }
     }
 
@@ -594,6 +767,13 @@
       return resolveCollectionAsset("badge-icon", "badge-icon", selectors, query);
     }
 
+    async function resolveGameTitleArt(query = {}) {
+      if (!baseUrl) return { status: "unavailable", reason: "release-base-not-configured", requested: query };
+      const selectors = normalizeGameTitleArtQuery(query);
+      if (!selectors) return { status: "unavailable", reason: "invalid-game-title-art-selectors", requested: query };
+      return resolveCollectionAsset("game-title-art", "game-title-art", selectors, query);
+    }
+
     async function resolveAsset(query = {}) {
       const kind = normalizeToken(query.kind || query.assetKind || (query.spriteType ? "pokemon-sprite" : ""));
       let result;
@@ -606,6 +786,8 @@
       else if (kind === "itemsprite" || kind === "itemicon" || kind === "item") result = await resolveItemSprite(query);
       else if (["statusconditionicon", "statusicon", "conditionicon", "statuscondition", "status"].includes(kind)) result = await resolveStatusConditionIcon(query);
       else if (["badgeicon", "gymbadge", "progressionicon", "badge"].includes(kind)) result = await resolveBadgeIcon(query);
+      else if (["gametitleart", "gametitlelogo", "titlelogo", "gamelogo"].includes(kind)) result = await resolveGameTitleArt(query);
+      else if (["trainersprite", "trainer", "trainerportrait"].includes(kind)) result = await resolveTrainerSprite(query);
       else result = { status: "unavailable", reason: "unknown-asset-kind", kind: query.kind, requested: query };
       if (result.status === "ok") diagnostics.resolved += 1;
       else diagnostics.unavailable += 1;
@@ -627,6 +809,11 @@
         if (result.assetId) image.dataset.pokemonAssetId = result.assetId;
         if (result.selectors?.style) image.dataset.pokemonAssetStyle = result.selectors.style;
         if (result.selectors?.badge) image.dataset.pokemonAssetBadge = result.selectors.badge;
+        if (result.selectors?.titleId) image.dataset.pokemonAssetTitle = result.selectors.titleId;
+        if (result.selectors?.size) image.dataset.pokemonAssetSize = result.selectors.size;
+        if (result.selectors?.format) image.dataset.pokemonAssetFormat = result.selectors.format;
+        if (result.selectors?.subject) image.dataset.pokemonAssetSubject = result.selectors.subject;
+        if (result.selectors?.spriteSet) image.dataset.pokemonAssetSpriteSet = result.selectors.spriteSet;
         if (result.fallback) image.dataset.pokemonAssetFallback = `${result.fallback.requestedSpriteType}->${result.fallback.resolvedSpriteType}`;
         else delete image.dataset.pokemonAssetFallback;
         image.onerror = () => {
@@ -723,6 +910,8 @@
       apiVersion: API_VERSION,
       resolve,
       resolveAsset,
+      resolveGameTitleArt,
+      resolveTrainerSprite,
       setImage,
       setAssetImage,
       imageHtml,
@@ -747,6 +936,7 @@
     normalizeTypeIconQuery,
     normalizeItemSpriteQuery,
     normalizeStatusConditionIconQuery,
-    normalizeBadgeIconQuery
+    normalizeBadgeIconQuery,
+    normalizeTrainerSpriteQuery
   });
 })(globalThis);

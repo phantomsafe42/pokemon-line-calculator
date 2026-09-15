@@ -55,10 +55,13 @@ function listFiles(root) {
 fs.rmSync(outputRoot, { recursive: true, force: true });
 fs.mkdirSync(outputRoot, { recursive: true });
 
-for (const entry of ["contracts", "public-assets", "THIRD_PARTY_NOTICES.md", "third_party"]) {
+for (const entry of ["contracts", "THIRD_PARTY_NOTICES.md", "third_party"]) {
   copyTree(path.join(projectRoot, entry), path.join(outputRoot, entry));
 }
 copyTree(path.join(projectRoot, "src", "generated"), path.join(outputRoot, "src", "generated"), { minifyJson: true });
+for (const client of ["pokemon_asset_resolver.global.js", "pokemon_asset_gateway.global.js"]) {
+  fs.rmSync(path.join(outputRoot, "src", "generated", client), { force: true });
+}
 
 function writeHashed(relativeDirectory, stem, extension, bytes) {
   const hash = sha256(bytes).slice(0, 12).toLowerCase();
@@ -106,30 +109,33 @@ const css = await transform(fs.readFileSync(path.join(projectRoot, "styles.css")
 });
 const cssPath = writeHashed(".", "styles", "css", Buffer.from(css.code));
 
-const assetResolver = await transform(fs.readFileSync(path.join(projectRoot, "src", "generated", "pokemon_asset_resolver.global.js"), "utf8"), {
+const assetGateway = await transform(fs.readFileSync(path.join(projectRoot, "src", "generated", "pokemon_asset_gateway.global.js"), "utf8"), {
   loader: "js",
   legalComments: "none",
   minify: true,
   target
 });
-const assetResolverPath = writeHashed("src/generated", "pokemon_asset_resolver.global", "js", Buffer.from(assetResolver.code));
+const assetGatewayPath = writeHashed("src/generated", "pokemon_asset_gateway.global", "js", Buffer.from(assetGateway.code));
 
 const sourceHtml = fs.readFileSync(path.join(projectRoot, "index.html"), "utf8");
-const configuredPokemonAssetBase = String(process.env.POKEMON_ASSET_RELEASE_BASE || "").trim();
-if (configuredPokemonAssetBase && (
-  !/^https:\/\//i.test(configuredPokemonAssetBase)
-  || /\/(?:main|master|latest)(?:\/|$)/i.test(configuredPokemonAssetBase)
-  || /<owner>|<asset-repo>|<immutable-tag>/i.test(configuredPokemonAssetBase)
-)) throw new Error("POKEMON_ASSET_RELEASE_BASE must be an HTTPS URL pinned to an immutable tag or commit");
-const publicPokemonAssetBase = configuredPokemonAssetBase || "./public-assets";
+const assetLock = JSON.parse(fs.readFileSync(path.join(projectRoot, "asset-lock.json"), "utf8"));
+if (assetLock.schemaVersion !== "plc-asset-lock/v2") throw new Error("Public build requires the v2 Pokemon Assets lock");
+const publicPokemonAssetOrigin = String(process.env.POKEMON_ASSET_GATEWAY_ORIGIN || assetLock.gateway.origin).trim().replace(/\/+$/u, "");
+const publicPokemonAssetRelease = String(process.env.POKEMON_ASSET_RELEASE_VERSION || assetLock.gateway.releaseVersion).trim();
+if (publicPokemonAssetOrigin !== assetLock.gateway.origin
+  || publicPokemonAssetRelease !== assetLock.gateway.releaseVersion
+  || !/^https:\/\//iu.test(publicPokemonAssetOrigin)
+  || /\/(?:releases|main|master|latest)(?:\/|$)/iu.test(publicPokemonAssetOrigin)) {
+  throw new Error("Public Pokemon Assets configuration must exactly match the immutable selector-gateway lock");
+}
 const publicHtml = sourceHtml
-  .replace('<meta name="pokemon-asset-release-base" content="./public-assets">', `<meta name="pokemon-asset-release-base" content="${publicPokemonAssetBase}">`)
+  .replace(/<meta name="pokemon-asset-release-base" content="[^"]+">/, `<meta name="pokemon-asset-gateway-origin" content="${publicPokemonAssetOrigin}">\n  <meta name="pokemon-asset-release-version" content="${publicPokemonAssetRelease}">`)
   .replace(/<link rel="stylesheet" href="\.\/styles\.css\?v=[^"]+">/, `<link rel="stylesheet" href="./${cssPath}">`)
-  .replace(/\s*<script src="\.\/src\/generated\/pokemon_asset_resolver\.global\.js\?v=[^"]+"><\/script>/, `\n  <script src="./${assetResolverPath}"></script>`)
+  .replace(/\s*<script src="\.\/src\/generated\/pokemon_asset_resolver\.global\.js\?v=[^"]+"><\/script>/, `\n  <script src="./${assetGatewayPath}"></script>`)
   .replace(/\s*<script src="\.\/src\/generated\/battle-mechanics\/trainer_ai\/trainer_ai_evaluator\.js\?v=[^"]+"><\/script>/, "")
   .replace(/<script type="module" src="\.\/src\/app\.js\?v=[^"]+"><\/script>/, `<script type="module" src="./${appPath}"></script>`);
 if (publicHtml.includes("PLC_LOCAL_ONLY_") || !publicHtml.includes('<meta name="plc-build-profile" content="public">') || publicHtml.includes('/Datasets/Pokemon%20Assets/release')) throw new Error("Public source HTML is not release-safe");
-for (const requiredPath of [cssPath, assetResolverPath, appPath, workerPath]) {
+for (const requiredPath of [cssPath, assetGatewayPath, appPath, workerPath]) {
   if (!publicHtml.includes(requiredPath) && requiredPath !== workerPath) throw new Error(`Public HTML does not reference ${requiredPath}`);
 }
 fs.writeFileSync(path.join(outputRoot, "index.html"), publicHtml);

@@ -79,9 +79,12 @@ for (const forbiddenId of ["output-state", "output-state-anchor", "live-edit-anc
 if (!html.includes('<meta name="plc-build-profile" content="public">')) throw new Error("Public HTML does not declare the public profile");
 const appBundlePath = html.match(/<script type="module" src="\.\/(src\/app-[a-f0-9]{12}\.js)"><\/script>/)?.[1];
 const stylesheetPath = html.match(/<link rel="stylesheet" href="\.\/(styles-[a-f0-9]{12}\.css)">/)?.[1];
-const assetResolverPath = html.match(/<script src="\.\/(src\/generated\/pokemon_asset_resolver\.global-[a-f0-9]{12}\.js)"><\/script>/)?.[1];
-if (!appBundlePath || !stylesheetPath || !assetResolverPath) throw new Error("Public HTML does not use content-hashed application assets");
+const assetGatewayPath = html.match(/<script src="\.\/(src\/generated\/pokemon_asset_gateway\.global-[a-f0-9]{12}\.js)"><\/script>/)?.[1];
+if (!appBundlePath || !stylesheetPath || !assetGatewayPath) throw new Error("Public HTML does not use content-hashed application assets");
 if (actual.includes("src/app.js") || actual.includes("src/worker/resolver_worker.js")) throw new Error("Unbundled PLC runtime source remains in the public build");
+if (actual.some(relativePath => relativePath.startsWith("public-assets/") || /pokemon_asset_resolver\.global\.js$/iu.test(relativePath))) {
+  throw new Error("Public build still contains a bundled Pokemon asset projection or local resolver");
+}
 if (/trainer_ai_evaluator\.js/i.test(html)) throw new Error("Public shell eagerly loads the Trainer AI evaluator");
 const appBundle = fs.readFileSync(path.join(outputRoot, appBundlePath));
 const appBundleText = appBundle.toString("utf8");
@@ -107,14 +110,23 @@ for (const [label, relativePath, maximumBytes] of [
   const bytes = fs.statSync(path.join(outputRoot, relativePath)).size;
   if (bytes > maximumBytes) throw new Error(`Public ${label} bundle is ${bytes} bytes; expected no more than ${maximumBytes}`);
 }
-const assetBase = html.match(/<meta name="pokemon-asset-release-base" content="([^"]+)">/)?.[1] || "";
-if (!assetBase || assetBase.includes("/Datasets/") || assetBase === "__POKEMON_ASSET_RELEASE_BASE__") throw new Error("Public HTML does not declare a usable Pokemon asset release base");
-if (assetBase === './public-assets') {
-  const projection = JSON.parse(fs.readFileSync(path.join(outputRoot, 'public-assets/projection.json'), 'utf8'));
-  for (const file of projection.files) {
-    const bytes = fs.readFileSync(path.join(outputRoot, 'public-assets', file.path));
-    if (sha256(bytes) !== file.sha256.toUpperCase() || bytes.length !== file.bytes) throw new Error(`Asset projection mismatch: ${file.path}`);
-  }
+const assetLock = JSON.parse(fs.readFileSync(path.join(projectRoot, "asset-lock.json"), "utf8"));
+if (assetLock.schemaVersion !== "plc-asset-lock/v2") throw new Error("Public build does not use the v2 Pokemon Assets lock");
+const assetOrigin = html.match(/<meta name="pokemon-asset-gateway-origin" content="([^"]+)">/)?.[1] || "";
+const assetRelease = html.match(/<meta name="pokemon-asset-release-version" content="([^"]+)">/)?.[1] || "";
+if (assetOrigin !== assetLock.gateway.origin || assetRelease !== assetLock.gateway.releaseVersion) {
+  throw new Error("Public HTML does not exactly match its immutable Pokemon Assets gateway lock");
+}
+if (/pokemon-asset-release-base|\/releases\//iu.test(html)) throw new Error("Public HTML exposes a raw Pokemon Assets release base");
+const assetGatewayBundle = fs.readFileSync(path.join(outputRoot, assetGatewayPath), "utf8");
+for (const token of [assetLock.gateway.origin, assetLock.gateway.releaseVersion, "pokemon-asset-gateway-client/v1"]) {
+  if (!assetGatewayBundle.includes(String(token))) throw new Error(`Public asset gateway client omits its lock value: ${token}`);
 }
 
-console.log(JSON.stringify({ status: "public-build-valid", files: actual.length, bytes: manifest.files.reduce((sum, file) => sum + file.bytes, 0), pokemonAssetBaseConfigured: assetBase !== "__POKEMON_ASSET_RELEASE_BASE__" }, null, 2));
+console.log(JSON.stringify({
+  status: "public-build-valid",
+  files: actual.length,
+  bytes: manifest.files.reduce((sum, file) => sum + file.bytes, 0),
+  pokemonAssetGateway: assetOrigin,
+  pokemonAssetRelease: assetRelease,
+}, null, 2));

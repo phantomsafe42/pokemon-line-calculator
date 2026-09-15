@@ -501,7 +501,7 @@ const assets = runAssetProjection();
 profiles.push({
   consumer: "pokemon-assets",
   files: assets.files,
-  target: "public-assets",
+  target: "asset-clients",
   sourceCommit: assets.sourceCommit,
 });
 
