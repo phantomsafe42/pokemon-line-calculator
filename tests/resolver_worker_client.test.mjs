@@ -33,7 +33,7 @@ class FakeWorker {
   }
 }
 
-test("Trainer AI analysis uses a dedicated Worker lane and cannot block damage previews", async () => {
+test("Trainer AI analysis initializes lazily on a dedicated lane and cannot block damage previews", async () => {
   const originalWorker = globalThis.Worker;
   FakeWorker.instances = [];
   globalThis.Worker = FakeWorker;
@@ -42,19 +42,30 @@ test("Trainer AI analysis uses a dedicated Worker lane and cannot block damage p
     assert.equal(FakeWorker.instances.length, 2);
     const [resolverWorker, trainerAiWorker] = FakeWorker.instances;
 
-    const initializing = client.initialize("dataset", "trainer-ai", "game");
+    const bootstrap = { binding: { consumerActivation: { enabled: true } }, lazyResources: { sharedTrainerAiPath: "trainer-ai/gen5/trainer_ai.json" } };
+    const initializing = client.initialize({
+      datasetBaseUrl: "dataset",
+      trainerAiBaseUrl: "trainer-ai",
+      trainerAiMetadata: bootstrap,
+      gameId: "game"
+    });
     assert.equal(resolverWorker.messages[0].type, "initialize");
-    assert.equal(trainerAiWorker.messages[0].type, "initialize");
+    assert.equal(resolverWorker.messages[0].payload.role, "resolver");
+    assert.equal(trainerAiWorker.messages.length, 0);
     resolverWorker.emit("message", { requestId: resolverWorker.messages[0].requestId, ok: true, result: { lane: "resolver" } });
-    trainerAiWorker.emit("message", { requestId: trainerAiWorker.messages[0].requestId, ok: true, result: { lane: "trainer-ai" } });
-    assert.deepEqual(await initializing, { lane: "resolver" });
+    assert.deepEqual(await initializing, { lane: "resolver", trainerAiMetadata: bootstrap });
 
     const aiPromise = client.trainerAi({ state: "slow" });
     const damagePromise = client.damagePreview({ move: "fast" });
-    assert.equal(trainerAiWorker.messages.at(-1).type, "trainer-ai");
+    assert.equal(trainerAiWorker.messages[0].type, "initialize");
+    assert.equal(trainerAiWorker.messages[0].payload.role, "trainer-ai");
+    assert.deepEqual(trainerAiWorker.messages[0].payload.trainerAiLazyResources, bootstrap.lazyResources);
     assert.equal(resolverWorker.messages.at(-1).type, "damage-preview");
     resolverWorker.emit("message", { requestId: resolverWorker.messages.at(-1).requestId, ok: true, result: { damage: 42 } });
     assert.deepEqual(await damagePromise, { damage: 42 });
+    trainerAiWorker.emit("message", { requestId: trainerAiWorker.messages[0].requestId, ok: true, result: { lane: "trainer-ai" } });
+    await Promise.resolve();
+    assert.equal(trainerAiWorker.messages[1].type, "trainer-ai");
     trainerAiWorker.emit("message", { requestId: trainerAiWorker.messages.at(-1).requestId, ok: true, result: { probability: 1 } });
     assert.deepEqual(await aiPromise, { probability: 1 });
 
@@ -66,7 +77,7 @@ test("Trainer AI analysis uses a dedicated Worker lane and cannot block damage p
   }
 });
 
-test("a newer Trainer AI state cancels stale synchronous work by replacing only the AI Worker", async () => {
+test("Trainer AI requests queue on the persistent AI Worker without reloading its documentation", async () => {
   const originalWorker = globalThis.Worker;
   FakeWorker.instances = [];
   globalThis.Worker = FakeWorker;
@@ -75,21 +86,58 @@ test("a newer Trainer AI state cancels stale synchronous work by replacing only 
     const [resolverWorker, firstAiWorker] = FakeWorker.instances;
     const initializing = client.initialize("dataset", "trainer-ai", "game");
     resolverWorker.emit("message", { requestId: resolverWorker.messages[0].requestId, ok: true, result: {} });
+    await initializing;
+    assert.equal(firstAiWorker.messages.length, 0);
+
+    const first = client.trainerAi({ state: "old" });
+    const current = client.trainerAi({ state: "new" });
+    assert.equal(FakeWorker.instances.length, 2);
+    assert.equal(firstAiWorker.terminated, false);
+    assert.equal(resolverWorker.terminated, false);
+    assert.deepEqual(firstAiWorker.messages.map(message => message.type), ["initialize"]);
     firstAiWorker.emit("message", { requestId: firstAiWorker.messages[0].requestId, ok: true, result: {} });
+    await Promise.resolve();
+    assert.deepEqual(firstAiWorker.messages.map(message => message.type), ["initialize", "trainer-ai", "trainer-ai"]);
+    firstAiWorker.emit("message", { requestId: firstAiWorker.messages[1].requestId, ok: true, result: { state: "old" } });
+    firstAiWorker.emit("message", { requestId: firstAiWorker.messages[2].requestId, ok: true, result: { state: "new" } });
+    assert.deepEqual(await first, { state: "old" });
+    assert.deepEqual(await current, { state: "new" });
+    client.terminate();
+  } finally {
+    globalThis.Worker = originalWorker;
+  }
+});
+
+test("a new planning context discards stale AI work without restarting the resolver lane", async () => {
+  const originalWorker = globalThis.Worker;
+  FakeWorker.instances = [];
+  globalThis.Worker = FakeWorker;
+  try {
+    const client = new ResolverWorkerClient(new URL("https://example.invalid/resolver_worker.js"));
+    const [resolverWorker, firstAiWorker] = FakeWorker.instances;
+    const initializing = client.initialize("dataset", "trainer-ai", "game");
+    resolverWorker.emit("message", { requestId: resolverWorker.messages[0].requestId, ok: true, result: {} });
     await initializing;
 
-    const stale = client.trainerAi({ state: "old" });
-    const current = client.trainerAi({ state: "new" });
-    await assert.rejects(stale, error => error.name === "StaleTrainerAiError");
+    const stale = client.trainerAi({ state: "old-plan" });
+    firstAiWorker.emit("message", { requestId: firstAiWorker.messages[0].requestId, ok: true, result: {} });
+    await Promise.resolve();
+    const staleRejection = assert.rejects(stale, error => error.name === "StaleTrainerAiError");
+    assert.equal(client.resetTrainerAiLaneIfBusy(), true);
+    await staleRejection;
     assert.equal(firstAiWorker.terminated, true);
     assert.equal(resolverWorker.terminated, false);
+    assert.equal(FakeWorker.instances.length, 3);
+
     const replacementAiWorker = FakeWorker.instances[2];
     assert.equal(replacementAiWorker.messages[0].type, "initialize");
+    const current = client.trainerAi({ state: "new-plan" });
+    assert.equal(replacementAiWorker.messages.length, 1);
     replacementAiWorker.emit("message", { requestId: replacementAiWorker.messages[0].requestId, ok: true, result: {} });
-    await new Promise(resolve => setImmediate(resolve));
+    await Promise.resolve();
     assert.equal(replacementAiWorker.messages[1].type, "trainer-ai");
-    replacementAiWorker.emit("message", { requestId: replacementAiWorker.messages[1].requestId, ok: true, result: { state: "new" } });
-    assert.deepEqual(await current, { state: "new" });
+    replacementAiWorker.emit("message", { requestId: replacementAiWorker.messages[1].requestId, ok: true, result: { state: "new-plan" } });
+    assert.deepEqual(await current, { state: "new-plan" });
     client.terminate();
   } finally {
     globalThis.Worker = originalWorker;

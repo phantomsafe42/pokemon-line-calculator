@@ -14,6 +14,10 @@ const publicPrefix = "/pokemon-line-calculator/";
 const tempRoot = path.join(projectRoot, ".codex-tmp");
 const profile = path.join(tempRoot, `public-browser-smoke-${process.pid}`);
 const screenshot = path.join(tempRoot, "plc-public-pages.png");
+const datasetLock = JSON.parse(await fs.readFile(path.join(projectRoot, "dataset-lock.json"), "utf8"));
+const assetLock = JSON.parse(await fs.readFile(path.join(projectRoot, "asset-lock.json"), "utf8"));
+const hostedReleaseRoot = `${datasetLock.hosted.origin}/v1/releases/${datasetLock.releaseVersion}`;
+const hostedAssetReleaseRoot = `${assetLock.gateway.origin}/v1/releases/${assetLock.gateway.releaseVersion}`;
 const vanillaGameOptions = [
   ["pokemon-ruby", "Ruby"],
   ["pokemon-sapphire", "Sapphire"],
@@ -32,6 +36,7 @@ const vanillaGameOptions = [
 ];
 let browser = null;
 let server = null;
+const servedRequests = [];
 
 const contentTypes = new Map([
   [".css", "text/css; charset=utf-8"],
@@ -91,6 +96,7 @@ function startStaticServer(port) {
         return;
       }
       const bytes = await fs.readFile(absolute);
+      servedRequests.push({ path: relativePath.replaceAll("\\", "/"), bytes: bytes.byteLength });
       response.writeHead(200, {
         "cache-control": "no-store",
         "content-type": contentTypes.get(path.extname(absolute).toLowerCase()) || "application/octet-stream"
@@ -186,6 +192,15 @@ async function waitForStableRuntime(client, expectedUrl, timeoutMs = 20_000) {
 
 try {
   await fs.access(path.join(publicRoot, "public-build-manifest.json"));
+  const corsProbe = await fetch(`${hostedReleaseRoot}/profiles/${datasetLock.profile}/manifest`, {
+    headers: { Origin: "https://phantomsafe42.github.io" }
+  });
+  assert.equal(corsProbe.status, 200);
+  assert.equal(corsProbe.headers.get("access-control-allow-origin"), "https://phantomsafe42.github.io");
+  assert.match(corsProbe.headers.get("access-control-expose-headers") || "", /X-Content-Length/i);
+  assert.match(corsProbe.headers.get("access-control-expose-headers") || "", /X-Content-SHA256/i);
+  assert.equal(corsProbe.headers.get("x-content-sha256"), datasetLock.hosted.manifest.sha256);
+  await corsProbe.arrayBuffer();
   await fs.mkdir(profile, { recursive: true });
   const serverPort = await availablePort();
   server = await startStaticServer(serverPort);
@@ -193,7 +208,7 @@ try {
   const appUrl = `http://127.0.0.1:${serverPort}${publicPrefix}`;
   const chrome = await findBrowser();
   browser = spawn(chrome, [
-    "--headless=new", "--no-sandbox", "--disable-gpu", "--disable-software-rasterizer", "--no-first-run",
+    "--headless=new", "--no-sandbox", "--disable-gpu", "--disable-software-rasterizer", "--disable-web-security", "--no-first-run",
     "--no-default-browser-check", "--disable-extensions", `--remote-debugging-port=${debugPort}`, "--remote-allow-origins=*",
     `--user-data-dir=${profile}`, appUrl
   ], { windowsHide: true, stdio: "ignore" });
@@ -234,17 +249,21 @@ try {
     game.value = 'volt-white-2r';
     game.dispatchEvent(new Event('change', { bubbles: true }));
     await wait(() => /is ready\./.test(document.getElementById('app-status')?.textContent || '')
-      && document.getElementById('trainer-select').options.length > 400, 'public game data and worker');
+      && document.getElementById('trainer-select').options.length > 400, 'public game data, AI bootstrap, and resolver');
     if (document.getElementById('plan-context-dialog').open) document.getElementById('plan-context-dialog').close();
-    const assetResolver = globalThis.PokemonAssets.createResolver();
+    const assetResolver = globalThis.PokemonAssetGateway.createClient();
     const sprite = document.createElement('img');
     const spriteResult = await assetResolver.setImage(sprite, { appearanceId: 'clefairy', spriteType: 'g5-animated', view: 'front' });
     await sprite.decode();
-    return {
+    const result = {
       profile: document.querySelector('meta[name="plc-build-profile"]')?.content,
       gameOptions,
       vanilla,
       spriteLoaded: spriteResult.status === 'ok' && sprite.naturalWidth > 0,
+      assetApiVersion: assetResolver.apiVersion,
+      assetOrigin: assetResolver.origin,
+      assetReleaseVersion: assetResolver.releaseVersion,
+      localAssetGlobalType: typeof globalThis.PokemonAssets,
       status: document.getElementById('app-status').textContent,
       gameCredit: document.getElementById('game-credit').textContent,
       siteCredit: document.querySelector('.site-credit')?.textContent,
@@ -259,6 +278,26 @@ try {
       viewport: innerWidth,
       scrollWidth: document.documentElement.scrollWidth
     };
+    game.value = 'renegade-platinum';
+    game.dispatchEvent(new Event('change', { bubbles: true }));
+    await wait(() => /Renegade Platinum is ready\./.test(document.getElementById('app-status')?.textContent || '')
+      && document.getElementById('trainer-select').options.length > 100, 'Renegade Platinum data, AI bootstrap, and resolver');
+    result.renegadePlatinum = {
+      status: document.getElementById('app-status').textContent,
+      trainers: document.getElementById('trainer-select').options.length
+    };
+    document.getElementById('new-box').click();
+    await wait(() => document.querySelector('.box-card'), 'new Box rendering');
+    [...document.querySelectorAll('.box-card button')].find(button => button.textContent === 'Add Pokémon').click();
+    await wait(() => document.getElementById('pokemon-editor-dialog').open
+      && document.getElementById('editor-species').options.length > 100
+      && document.querySelectorAll('#editor-moves select').length >= 8, 'deferred Pokémon editor');
+    result.deferredEditor = {
+      species: document.getElementById('editor-species').options.length,
+      moveControls: document.querySelectorAll('#editor-moves select').length
+    };
+    document.getElementById('pokemon-editor-dialog').close();
+    return result;
   })()`, true);
 
   assert.equal(state.profile, "public");
@@ -273,11 +312,19 @@ try {
   assert.ok(state.vanilla.trainers > 1);
   assert.equal(state.vanilla.saveImportVisible, false);
   assert.equal(state.spriteLoaded, true);
+  assert.equal(state.assetApiVersion, "pokemon-asset-gateway-client/v1");
+  assert.equal(state.assetOrigin, assetLock.gateway.origin);
+  assert.equal(state.assetReleaseVersion, assetLock.gateway.releaseVersion);
+  assert.equal(state.localAssetGlobalType, "undefined");
   assert.match(state.status, /is ready\./);
   assert.equal(state.gameCredit, "by AphexCubed and Drayano");
   assert.equal(state.siteCredit, "twitch.tv/phantomsafe");
   assert.equal(state.eyebrowCount, 0);
   assert.ok(state.trainers > 400);
+  assert.match(state.renegadePlatinum.status, /Renegade Platinum is ready\./);
+  assert.ok(state.renegadePlatinum.trainers > 100);
+  assert.ok(state.deferredEditor.species > 100);
+  assert.equal(state.deferredEditor.moveControls, 8);
   assert.equal(state.tabsVisible, true);
   assert.equal(state.localGlobalType, "undefined");
   assert.equal(state.viewToggle, false);
@@ -308,6 +355,20 @@ try {
   const requestedUrls = page.events
     .filter(event => event.method === "Network.requestWillBeSent")
     .map(event => event.params.request.url);
+  const performance = {
+    requests: requestedUrls.length,
+    servedRequests: servedRequests.length,
+    servedBytes: servedRequests.reduce((sum, request) => sum + request.bytes, 0),
+    localDatasetRequests: servedRequests.filter(request => request.path.includes("/src/generated/datasets/") || request.path.includes("/src/generated/trainer-ai/")).length,
+    hostedCatalogRequests: requestedUrls.filter(url => url === `${hostedReleaseRoot}/catalog`).length,
+    hostedManifestRequests: requestedUrls.filter(url => url === `${hostedReleaseRoot}/profiles/${datasetLock.profile}/manifest`).length,
+    hostedDatasetManifestRequests: requestedUrls.filter(url => url.startsWith(`${hostedReleaseRoot}/`) && url.endsWith("/dataset_manifest.json")).length,
+    hostedTrainerAiBootstrapRequests: requestedUrls.filter(url => url === `${hostedReleaseRoot}/profiles/${datasetLock.profile}/files/trainer-ai/bootstrap.json`).length,
+    hostedTrainerAiEvaluatorRequests: requestedUrls.filter(url => url.startsWith(`${hostedReleaseRoot}/profiles/${datasetLock.profile}/files/trainer-ai/`)
+      && /\/(?:gen\d|[^/]+)\/trainer_ai(?:_engine_semantics)?\.json$/u.test(new URL(url).pathname)).length,
+    hostedAssetRequests: requestedUrls.filter(url => url.startsWith(`${hostedAssetReleaseRoot}/asset?`)).length,
+    bundledAssetRequests: requestedUrls.filter(url => /\/public-assets\//u.test(new URL(url).pathname)).length
+  };
   assert.deepEqual(browserErrors, []);
   assert.deepEqual(failedRequests, []);
   assert.deepEqual(badResponses, []);
@@ -317,9 +378,17 @@ try {
   }), false);
   assert.equal(requestedUrls.some(url => /__stream-tools/i.test(url)), false);
   assert.ok(requestedUrls.filter(url => url.startsWith(`http://127.0.0.1:${serverPort}/`)).every(url => url.startsWith(appUrl)));
+  assert.equal(performance.localDatasetRequests, 0, "A healthy hosted release must not mix in checked-in Dataset files");
+  assert.equal(performance.hostedCatalogRequests, 1, "The immutable Dataset catalog must be shared through the release cache");
+  assert.equal(performance.hostedManifestRequests, 1, "The immutable PLC manifest must be shared through the release cache");
+  assert.equal(performance.hostedDatasetManifestRequests, 3, "Only the three explicitly selected games may load hosted Dataset manifests");
+  assert.equal(performance.hostedTrainerAiBootstrapRequests, 1, "The compact Trainer AI bootstrap must be shared through the release cache");
+  assert.equal(performance.hostedTrainerAiEvaluatorRequests, 0, "Collapsed AI Forecast must not load heavyweight Trainer AI evaluator documents");
+  assert.ok(performance.hostedAssetRequests > 0, "Public sprites must use the immutable selector-only asset gateway");
+  assert.equal(performance.bundledAssetRequests, 0, "Public sprites must not use a bundled asset projection");
 
   page.close();
-  console.log(JSON.stringify({ status: "public-browser-smoke-valid", state, mobile, requests: requestedUrls.length, screenshot }, null, 2));
+  console.log(JSON.stringify({ status: "public-browser-smoke-valid", state, mobile, performance, screenshot }, null, 2));
 } finally {
   if (browser && browser.exitCode === null) browser.kill();
   if (server) await new Promise(resolve => server.close(resolve));

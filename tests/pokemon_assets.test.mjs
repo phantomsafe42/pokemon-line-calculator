@@ -4,7 +4,7 @@ import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
-import { pokemonAssetAppearanceId, pokemonAssetQuery } from "../src/adapters/pokemon_assets.js";
+import { pokemonAssetAppearanceId, pokemonAssetQuery, setPokemonAssetImage } from "../src/adapters/pokemon_assets.js";
 import { createCombatantState } from "../src/core/plan.js";
 
 function dataset(records) {
@@ -32,6 +32,43 @@ test("runtime species asset IDs inherit a standardized mechanics identity", () =
     spriteType: "g5-animated",
     fallbackSpriteTypes: ["g5-static", "pixel"]
   });
+});
+
+test("gateway image requests omit local-only fallback arrays", async () => {
+  let received;
+  const resolver = {
+    apiVersion: "pokemon-asset-gateway-client/v1",
+    setImage: (_image, query) => { received = query; return { status: "ok" }; },
+  };
+  await setPokemonAssetImage(resolver, {}, { speciesId: "clefairy" });
+  assert.equal(received.appearanceId, "clefairy");
+  assert.equal(received.spriteType, "g5-animated");
+  assert.equal("fallbackSpriteTypes" in received, false);
+});
+
+test("gateway image requests preserve explicit sprite fallback order", async () => {
+  const received = [];
+  const resolver = {
+    apiVersion: "pokemon-asset-gateway-client/v1",
+    setImage: (_image, query, callbacks) => {
+      received.push(query);
+      if (query.spriteType !== "pixel") callbacks.onUnavailable();
+      return { status: "ok" };
+    },
+  };
+  await setPokemonAssetImage(resolver, {}, { speciesId: "clefairy" });
+  assert.deepEqual(received.map(query => query.spriteType), ["g5-animated", "g5-static", "pixel"]);
+  assert.equal(received.every(query => !("fallbackSpriteTypes" in query)), true);
+});
+
+test("local image requests retain explicit fallback profiles", async () => {
+  let received;
+  const resolver = {
+    apiVersion: "pokemon-asset-resolver/v4",
+    setImage: (_image, query) => { received = query; return { status: "ok" }; },
+  };
+  await setPokemonAssetImage(resolver, {}, { speciesId: "clefairy" });
+  assert.deepEqual(received.fallbackSpriteTypes, ["g5-static", "pixel"]);
 });
 
 test("dynamic runtime asset IDs remain available when they are not Dataset species IDs", () => {

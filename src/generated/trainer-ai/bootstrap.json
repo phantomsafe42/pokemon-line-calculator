@@ -1,0 +1,1350 @@
+{
+  "schemaVersion": "plc-trainer-ai-bootstrap/v1",
+  "consumerProfileId": "plc",
+  "generator": {
+    "id": "pokemon-datasets-plc-trainer-ai-bootstrap",
+    "version": "1.0.0",
+    "contract": "schemas/plc-trainer-ai-bootstrap.schema.json"
+  },
+  "abilityKnowledgeProfiles": {
+    "gen5-field-position-ability-memory-v1": {
+      "schemaVersion": 1,
+      "modelId": "gen5-field-position-ability-memory-v1",
+      "generation": 5,
+      "storage": {
+        "key": "side-and-field-slot",
+        "initialValue": null,
+        "onReveal": "overwrite-current-slot",
+        "onFaint": "clear-current-slot",
+        "onSwitch": "retain",
+        "onShift": "retain",
+        "onAllySwitch": "retain",
+        "onRotation": "retain"
+      },
+      "guess": {
+        "precedence": [
+          "suppressed-none",
+          "own-or-ally-actual",
+          "stored-slot-ability",
+          "actual-trapping-ability",
+          "species-ability-slots"
+        ],
+        "trappingAbilityIds": [
+          "shadowtag",
+          "arenatrap",
+          "magnetpull"
+        ],
+        "includeHiddenSlot": true,
+        "preserveDuplicateSlots": true,
+        "excludeEmptySlots": true,
+        "scope": "instruction",
+        "guessesWriteStorage": false,
+        "allowActualAbilityOutsideSpeciesSlotsWhenUnrevealed": false
+      },
+      "revelation": {
+        "source": "resolved-ability-activation-or-announcement",
+        "merePresenceReveals": false,
+        "entryAnnouncementAbilityIds": [
+          "moldbreaker",
+          "teravolt",
+          "turboblaze",
+          "pressure",
+          "unnerve"
+        ],
+        "causeEventTypes": [
+          "ability-activated",
+          "ability-announced",
+          "ability-blocked",
+          "ability-change",
+          "stat-stage-change",
+          "field-change",
+          "form-change",
+          "status-cleared",
+          "status-cured",
+          "status-reflected",
+          "major-status",
+          "heal",
+          "residual-heal",
+          "residual-damage",
+          "volatile-status",
+          "volatile-status-cleared"
+        ],
+        "immunityEventType": "move-immune",
+        "immunityAbilityPath": "metadata.abilityId",
+        "noEffectEventsReveal": false
+      },
+      "damageSimulation": {
+        "omittedEventId": 45,
+        "omittedEventHex": "0x2d",
+        "abilityGuessesApplyTo": "explicit-ability-guess-commands; not a replacement for every damage-formula ability",
+        "ignoreDefenderImmunityAbilityIds": [
+          "sapsipper",
+          "waterabsorb",
+          "voltabsorb",
+          "motordrive",
+          "lightningrod",
+          "stormdrain",
+          "flashfire",
+          "soundproof",
+          "wonderguard"
+        ],
+        "conditionalIgnoreDefenderAbilities": [
+          {
+            "abilityId": "dryskin",
+            "moveType": "water"
+          }
+        ],
+        "preserveOtherDamageFormulaAbilities": true,
+        "levitateUsesSeparateGroundingEvent": 18,
+        "damageRoll": "minimum",
+        "evidence": {
+          "overlayId": 167,
+          "aiDamageEntry": {
+            "address": "0x021ab994",
+            "byteLength": 176,
+            "sha256": "caecd9da0ae4ccca9edf64a54299c6c02ce4c5667a3d93a60631170d9aa7f273"
+          },
+          "damageFormula": {
+            "address": "0x021a5958",
+            "byteLength": 480,
+            "retailSha256": "415472b3a3f23e0dc6675648dbdda3730fba731701f134f4f98a085d276d12d9",
+            "vw2rSha256": "e9fa8ca055c45cf2a3adc7c0db2f9e729f35ab0f58c73526397c39ca88fded0f",
+            "difference": "Only the STAB type-range guard at 0x021a5a92 and 0x021a5a95 differs; the event calls are unchanged.",
+            "directEventIds": [
+              70,
+              71,
+              72
+            ]
+          },
+          "sapSipperHandler": {
+            "address": "0x021c22d0",
+            "byteLength": 48,
+            "sha256": "4548eddc541045f0bb6fba5af605f6270dbd737aac01b49c2684a0523b19d9ca"
+          },
+          "immunityEventTables": [
+            {
+              "abilityId": "sapsipper",
+              "address": "0x021d768c",
+              "byteLength": 8,
+              "sha256": "151397354b75ed283e233f64b11b33ae64ca86c593154ad331133178c66141f3"
+            },
+            {
+              "abilityId": "dryskin",
+              "address": "0x021d7bf4",
+              "byteLength": 24,
+              "sha256": "96b759cf6d84176b8425ea7ca4aa37e9d5e707c884c6cb1dae6d1de706838988"
+            },
+            {
+              "abilityId": "waterabsorb",
+              "address": "0x021d77f4",
+              "byteLength": 8,
+              "sha256": "b8e9aec998145b9a0510c59e8547053fc0d347f58ccbdd7c44781cd15010db9a"
+            },
+            {
+              "abilityId": "voltabsorb",
+              "address": "0x021d7864",
+              "byteLength": 8,
+              "sha256": "76b4cedca45e977422f37dedf2e43b1c7ed98dffaaba8f9c030613a474b6870f"
+            },
+            {
+              "abilityId": "motordrive",
+              "address": "0x021d785c",
+              "byteLength": 8,
+              "sha256": "16edefade4f3e1921827610343a0ead9c1e88378e0a155703a9258f0dc4dbda0"
+            },
+            {
+              "abilityId": "soundproof",
+              "address": "0x021d784c",
+              "byteLength": 8,
+              "sha256": "750198aafb6bdba55f40f943f67455852f1d54c8c03089e02683093f3f555dc0"
+            },
+            {
+              "abilityId": "wonderguard",
+              "address": "0x021d7724",
+              "byteLength": 8,
+              "sha256": "9975720ebae09e0db79e21416596e17ce0119fd380747a46a6b06ba56082f8c8"
+            },
+            {
+              "abilityId": "flashfire",
+              "address": "0x021d7aec",
+              "byteLength": 24,
+              "sha256": "a54c0a9449339b05d2982c5ea16844ec912a204626e5d554727797c129f8e467"
+            },
+            {
+              "abilityId": "stormdrain",
+              "address": "0x021d7b1c",
+              "byteLength": 24,
+              "sha256": "ac6e25a709e9090e227bc70e23e9b94d4ccc44d053784fbf5b40c7df9d4d885d"
+            },
+            {
+              "abilityId": "lightningrod",
+              "address": "0x021d7b34",
+              "byteLength": 24,
+              "sha256": "8332d91a602f6c2488e36e3144108415311874cb69a50c706dcd199cdfd804ff"
+            }
+          ]
+        }
+      },
+      "script0Bugs": {
+        "stormDrain": {
+          "checkedAbilityId": "levitate",
+          "intendedAbilityId": "stormdrain",
+          "moveType": "water",
+          "sourceLabel": "Label_0x011C"
+        },
+        "soundproof": {
+          "omittedMoveId": "hypervoice",
+          "sourceLabel": "Label_0x0148"
+        }
+      },
+      "evidence": {
+        "documentation": {
+          "file": "imports/trainer-ai/gen5-ai-docs.pdf",
+          "sha256": "f92994da676806c3cf79745321abe1f6b5b975972d97a77a3c3085eb674ba2bb",
+          "pages": [
+            20,
+            57,
+            58
+          ]
+        },
+        "script": {
+          "file": "imports/trainer-ai/flag0.ais",
+          "sha256": "ac4f437c0d93970b0f4fb81114a0ca646c1f48d555f2afbb9d77445f9c956681"
+        },
+        "shiftVerification": {
+          "method": "static-call-path-and-byte-comparison; not an emulator reproduction",
+          "romSha256": [
+            "3e50aec3db401332175a5d2b5fe2a68ac1a05ec63995dba9d1506b1b51837446",
+            "e79c34ad710cc8c8da0394a4ef76704cd5fbec9d4b1fa75d934725c010162f2e",
+            "d568cb67b2bb86b078871da30c0d2a0564240a06cda79cd806858b7c9efcb4b7"
+          ],
+          "overlayId": 167,
+          "routines": [
+            {
+              "role": "edge-to-center-shift",
+              "address": "0x021a0ed0",
+              "byteLength": 84,
+              "sha256": "82bc38cf21286e46c014e2866916c7aaaa97d9eecc7e4f393629b57208d87a37",
+              "sharedCall": "0x021a0f24"
+            },
+            {
+              "role": "position-swap-core",
+              "address": "0x021a0f24",
+              "byteLength": 152,
+              "sha256": "99f2ad95157047295e78fed0eee4cfe70b7b3e5c97511895ea28f703aa42c11e"
+            },
+            {
+              "role": "ally-switch-handler",
+              "address": "0x021adf50",
+              "byteLength": 172,
+              "sha256": "5ef0b05bef37b5b1572f787b1e7c1d3a61fad9455b36494b0f5687c7449e81d2",
+              "sharedCall": "0x021a0f24"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "games": [
+    {
+      "gameId": "fire-red-omega",
+      "generation": 3,
+      "consumerActivation": {
+        "enabled": false,
+        "failClosed": true,
+        "failClosedPerPath": false,
+        "state": "disabled-fail-closed",
+        "mode": null,
+        "reason": null
+      },
+      "profiles": {
+        "gameProfileId": null,
+        "inheritedProfileId": "pokemon-firered-us-decomp",
+        "sharedProfileId": "pokemon-firered-us-decomp",
+        "evaluatorProfileId": null
+      },
+      "evaluatorReadiness": {
+        "status": "unavailable",
+        "exactActionProbabilities": false,
+        "conditionalExactPathsAvailable": false,
+        "blockerCount": 2,
+        "activation": null
+      },
+      "abilityKnowledgeModelId": null,
+      "activeAiFlags": [
+        {
+          "id": "AI_SCRIPT_CHECK_BAD_MOVE",
+          "title": "Check Bad Move",
+          "summary": "Activates the AI_CheckBadMove Trainer AI script.",
+          "order": 0,
+          "readiness": "unavailable-no-validated-evaluator"
+        },
+        {
+          "id": "AI_SCRIPT_CHECK_VIABILITY",
+          "title": "Check Viability",
+          "summary": "Activates the AI_CheckViability Trainer AI script.",
+          "order": 1,
+          "readiness": "unavailable-no-validated-evaluator"
+        },
+        {
+          "id": "AI_SCRIPT_TRY_TO_FAINT",
+          "title": "Try To Faint",
+          "summary": "Activates the AI_TryToFaint Trainer AI script.",
+          "order": 2,
+          "readiness": "unavailable-no-validated-evaluator"
+        }
+      ],
+      "lazyResources": {
+        "gameTrainerAiPath": "trainer-ai/fire-red-omega/trainer_ai.json",
+        "sharedTrainerAiPath": "trainer-ai/gen3/trainer_ai.json",
+        "evaluatorJsonPointer": null,
+        "engineSemanticsPath": null
+      }
+    },
+    {
+      "gameId": "platinum-kaizo",
+      "generation": 4,
+      "consumerActivation": {
+        "enabled": true,
+        "failClosed": true,
+        "failClosedPerPath": true,
+        "state": "enabled-fail-closed-per-path",
+        "mode": "enabled-fail-closed-per-path-readiness",
+        "reason": null
+      },
+      "profiles": {
+        "gameProfileId": null,
+        "inheritedProfileId": "platinum-kaizo-nightmare-final",
+        "sharedProfileId": "platinum-kaizo-nightmare-final",
+        "evaluatorProfileId": "gen4-platinum-kaizo-trainer-ai-evaluator-v1alpha1"
+      },
+      "evaluatorReadiness": {
+        "status": "partial",
+        "exactActionProbabilities": false,
+        "conditionalExactPathsAvailable": true,
+        "blockerCount": 1,
+        "activation": "enabled-fail-closed-per-path-readiness"
+      },
+      "abilityKnowledgeModelId": null,
+      "activeAiFlags": [
+        {
+          "id": "AI_FLAG_BASIC",
+          "title": "Basic",
+          "summary": "Apply the pinned retail AI_FLAG_BASIC program in source order.",
+          "order": 0,
+          "readiness": "exact"
+        },
+        {
+          "id": "AI_FLAG_EVAL_ATTACK",
+          "title": "Evaluate Attack",
+          "summary": "Apply the pinned retail AI_FLAG_EVAL_ATTACK program in source order.",
+          "order": 1,
+          "readiness": "partial"
+        },
+        {
+          "id": "AI_FLAG_EXPERT",
+          "title": "Expert",
+          "summary": "Apply the pinned retail AI_FLAG_EXPERT program in source order.",
+          "order": 2,
+          "readiness": "partial"
+        },
+        {
+          "id": "AI_FLAG_SETUP_FIRST_TURN",
+          "title": "Setup First Turn",
+          "summary": "Apply the pinned retail AI_FLAG_SETUP_FIRST_TURN program in source order.",
+          "order": 3,
+          "readiness": "exact"
+        },
+        {
+          "id": "AI_FLAG_RISKY",
+          "title": "Risky",
+          "summary": "Apply the pinned retail AI_FLAG_RISKY program in source order.",
+          "order": 4,
+          "readiness": "exact"
+        },
+        {
+          "id": "AI_FLAG_PRIORITIZE_EXTREMES",
+          "title": "Prioritize Extremes",
+          "summary": "Apply the pinned retail AI_FLAG_PRIORITIZE_EXTREMES program in source order.",
+          "order": 5,
+          "readiness": "exact"
+        },
+        {
+          "id": "AI_FLAG_BATON_PASS",
+          "title": "Baton Pass",
+          "summary": "Apply the pinned retail AI_FLAG_BATON_PASS program in source order.",
+          "order": 6,
+          "readiness": "partial"
+        },
+        {
+          "id": "AI_FLAG_TAG_STRATEGY",
+          "title": "Tag Strategy",
+          "summary": "Apply the pinned retail AI_FLAG_TAG_STRATEGY program in source order.",
+          "order": 7,
+          "readiness": "partial"
+        },
+        {
+          "id": "AI_FLAG_CHECK_HP",
+          "title": "Check HP",
+          "summary": "Apply the pinned retail AI_FLAG_CHECK_HP program in source order.",
+          "order": 8,
+          "readiness": "partial"
+        },
+        {
+          "id": "AI_FLAG_WEATHER",
+          "title": "Weather",
+          "summary": "Apply the pinned retail AI_FLAG_WEATHER program in source order.",
+          "order": 9,
+          "readiness": "exact"
+        },
+        {
+          "id": "AI_FLAG_HARRASSMENT",
+          "title": "Harassment",
+          "summary": "Apply the pinned retail AI_FLAG_HARRASSMENT program in source order.",
+          "order": 10,
+          "readiness": "exact"
+        }
+      ],
+      "lazyResources": {
+        "gameTrainerAiPath": "trainer-ai/platinum-kaizo/trainer_ai.json",
+        "sharedTrainerAiPath": "trainer-ai/gen4/trainer_ai.json",
+        "evaluatorJsonPointer": "#/profiles/2/evaluator",
+        "engineSemanticsPath": null
+      }
+    },
+    {
+      "gameId": "pokemon-black",
+      "generation": 5,
+      "consumerActivation": {
+        "enabled": false,
+        "failClosed": true,
+        "failClosedPerPath": false,
+        "state": "disabled-fail-closed",
+        "mode": null,
+        "reason": "game-specific trainer bindings and executable path known answers are not complete"
+      },
+      "profiles": {
+        "gameProfileId": null,
+        "inheritedProfileId": null,
+        "sharedProfileId": "gen5-b2w2-trainer-ai-v1",
+        "evaluatorProfileId": null
+      },
+      "evaluatorReadiness": {
+        "status": "unavailable",
+        "exactActionProbabilities": false,
+        "conditionalExactPathsAvailable": false,
+        "blockerCount": 0,
+        "activation": null
+      },
+      "abilityKnowledgeModelId": "gen5-field-position-ability-memory-v1",
+      "activeAiFlags": [],
+      "lazyResources": {
+        "gameTrainerAiPath": null,
+        "sharedTrainerAiPath": "trainer-ai/gen5/trainer_ai.json",
+        "evaluatorJsonPointer": null,
+        "engineSemanticsPath": "trainer-ai/gen5/trainer_ai_engine_semantics.json"
+      }
+    },
+    {
+      "gameId": "pokemon-black-2",
+      "generation": 5,
+      "consumerActivation": {
+        "enabled": false,
+        "failClosed": true,
+        "failClosedPerPath": false,
+        "state": "disabled-fail-closed",
+        "mode": null,
+        "reason": "game-specific trainer bindings and executable path known answers are not complete"
+      },
+      "profiles": {
+        "gameProfileId": null,
+        "inheritedProfileId": null,
+        "sharedProfileId": "gen5-b2w2-trainer-ai-v1",
+        "evaluatorProfileId": "gen5-b2w2-trainer-ai-evaluator-v1alpha1"
+      },
+      "evaluatorReadiness": {
+        "status": "exact-for-vw2r-active-trainer-flags-partial-for-unused-scripts",
+        "exactActionProbabilities": true,
+        "conditionalExactPathsAvailable": false,
+        "blockerCount": 1,
+        "activation": null
+      },
+      "abilityKnowledgeModelId": "gen5-field-position-ability-memory-v1",
+      "activeAiFlags": [],
+      "lazyResources": {
+        "gameTrainerAiPath": null,
+        "sharedTrainerAiPath": "trainer-ai/gen5/trainer_ai.json",
+        "evaluatorJsonPointer": "#/evaluator",
+        "engineSemanticsPath": "trainer-ai/gen5/trainer_ai_engine_semantics.json"
+      }
+    },
+    {
+      "gameId": "pokemon-diamond",
+      "generation": 4,
+      "consumerActivation": {
+        "enabled": false,
+        "failClosed": true,
+        "failClosedPerPath": false,
+        "state": "disabled-fail-closed",
+        "mode": null,
+        "reason": "game-specific trainer bindings and executable path known answers are not complete"
+      },
+      "profiles": {
+        "gameProfileId": null,
+        "inheritedProfileId": null,
+        "sharedProfileId": null,
+        "evaluatorProfileId": null
+      },
+      "evaluatorReadiness": {
+        "status": "unavailable",
+        "exactActionProbabilities": false,
+        "conditionalExactPathsAvailable": false,
+        "blockerCount": 0,
+        "activation": null
+      },
+      "abilityKnowledgeModelId": null,
+      "activeAiFlags": [],
+      "lazyResources": {
+        "gameTrainerAiPath": null,
+        "sharedTrainerAiPath": "trainer-ai/gen4/trainer_ai.json",
+        "evaluatorJsonPointer": null,
+        "engineSemanticsPath": null
+      }
+    },
+    {
+      "gameId": "pokemon-emerald",
+      "generation": 3,
+      "consumerActivation": {
+        "enabled": false,
+        "failClosed": true,
+        "failClosedPerPath": false,
+        "state": "disabled-fail-closed",
+        "mode": null,
+        "reason": "game-specific trainer bindings and executable path known answers are not complete"
+      },
+      "profiles": {
+        "gameProfileId": null,
+        "inheritedProfileId": null,
+        "sharedProfileId": "pokemon-emerald-us-decomp",
+        "evaluatorProfileId": null
+      },
+      "evaluatorReadiness": {
+        "status": "unavailable",
+        "exactActionProbabilities": false,
+        "conditionalExactPathsAvailable": false,
+        "blockerCount": 2,
+        "activation": null
+      },
+      "abilityKnowledgeModelId": null,
+      "activeAiFlags": [],
+      "lazyResources": {
+        "gameTrainerAiPath": null,
+        "sharedTrainerAiPath": "trainer-ai/gen3/trainer_ai.json",
+        "evaluatorJsonPointer": null,
+        "engineSemanticsPath": null
+      }
+    },
+    {
+      "gameId": "pokemon-firered",
+      "generation": 3,
+      "consumerActivation": {
+        "enabled": false,
+        "failClosed": true,
+        "failClosedPerPath": false,
+        "state": "disabled-fail-closed",
+        "mode": null,
+        "reason": "game-specific trainer bindings and executable path known answers are not complete"
+      },
+      "profiles": {
+        "gameProfileId": null,
+        "inheritedProfileId": null,
+        "sharedProfileId": "pokemon-firered-us-decomp",
+        "evaluatorProfileId": null
+      },
+      "evaluatorReadiness": {
+        "status": "unavailable",
+        "exactActionProbabilities": false,
+        "conditionalExactPathsAvailable": false,
+        "blockerCount": 2,
+        "activation": null
+      },
+      "abilityKnowledgeModelId": null,
+      "activeAiFlags": [],
+      "lazyResources": {
+        "gameTrainerAiPath": null,
+        "sharedTrainerAiPath": "trainer-ai/gen3/trainer_ai.json",
+        "evaluatorJsonPointer": null,
+        "engineSemanticsPath": null
+      }
+    },
+    {
+      "gameId": "pokemon-heartgold",
+      "generation": 4,
+      "consumerActivation": {
+        "enabled": false,
+        "failClosed": true,
+        "failClosedPerPath": false,
+        "state": "disabled-fail-closed",
+        "mode": null,
+        "reason": "game-specific trainer bindings and executable path known answers are not complete"
+      },
+      "profiles": {
+        "gameProfileId": null,
+        "inheritedProfileId": null,
+        "sharedProfileId": "hgss-retail-partial-decomp",
+        "evaluatorProfileId": "gen4-hgss-trainer-ai-evaluator-v1alpha1"
+      },
+      "evaluatorReadiness": {
+        "status": "unavailable",
+        "exactActionProbabilities": false,
+        "conditionalExactPathsAvailable": false,
+        "blockerCount": 2,
+        "activation": null
+      },
+      "abilityKnowledgeModelId": null,
+      "activeAiFlags": [],
+      "lazyResources": {
+        "gameTrainerAiPath": null,
+        "sharedTrainerAiPath": "trainer-ai/gen4/trainer_ai.json",
+        "evaluatorJsonPointer": "#/profiles/3/evaluator",
+        "engineSemanticsPath": null
+      }
+    },
+    {
+      "gameId": "pokemon-leafgreen",
+      "generation": 3,
+      "consumerActivation": {
+        "enabled": false,
+        "failClosed": true,
+        "failClosedPerPath": false,
+        "state": "disabled-fail-closed",
+        "mode": null,
+        "reason": "game-specific trainer bindings and executable path known answers are not complete"
+      },
+      "profiles": {
+        "gameProfileId": null,
+        "inheritedProfileId": null,
+        "sharedProfileId": null,
+        "evaluatorProfileId": null
+      },
+      "evaluatorReadiness": {
+        "status": "unavailable",
+        "exactActionProbabilities": false,
+        "conditionalExactPathsAvailable": false,
+        "blockerCount": 0,
+        "activation": null
+      },
+      "abilityKnowledgeModelId": null,
+      "activeAiFlags": [],
+      "lazyResources": {
+        "gameTrainerAiPath": null,
+        "sharedTrainerAiPath": "trainer-ai/gen3/trainer_ai.json",
+        "evaluatorJsonPointer": null,
+        "engineSemanticsPath": null
+      }
+    },
+    {
+      "gameId": "pokemon-pearl",
+      "generation": 4,
+      "consumerActivation": {
+        "enabled": false,
+        "failClosed": true,
+        "failClosedPerPath": false,
+        "state": "disabled-fail-closed",
+        "mode": null,
+        "reason": "game-specific trainer bindings and executable path known answers are not complete"
+      },
+      "profiles": {
+        "gameProfileId": null,
+        "inheritedProfileId": null,
+        "sharedProfileId": null,
+        "evaluatorProfileId": null
+      },
+      "evaluatorReadiness": {
+        "status": "unavailable",
+        "exactActionProbabilities": false,
+        "conditionalExactPathsAvailable": false,
+        "blockerCount": 0,
+        "activation": null
+      },
+      "abilityKnowledgeModelId": null,
+      "activeAiFlags": [],
+      "lazyResources": {
+        "gameTrainerAiPath": null,
+        "sharedTrainerAiPath": "trainer-ai/gen4/trainer_ai.json",
+        "evaluatorJsonPointer": null,
+        "engineSemanticsPath": null
+      }
+    },
+    {
+      "gameId": "pokemon-platinum",
+      "generation": 4,
+      "consumerActivation": {
+        "enabled": false,
+        "failClosed": true,
+        "failClosedPerPath": false,
+        "state": "disabled-fail-closed",
+        "mode": null,
+        "reason": "game-specific trainer bindings and executable path known answers are not complete"
+      },
+      "profiles": {
+        "gameProfileId": null,
+        "inheritedProfileId": null,
+        "sharedProfileId": "platinum-retail",
+        "evaluatorProfileId": "gen4-platinum-trainer-ai-evaluator-v1alpha1"
+      },
+      "evaluatorReadiness": {
+        "status": "partial",
+        "exactActionProbabilities": false,
+        "conditionalExactPathsAvailable": false,
+        "blockerCount": 2,
+        "activation": null
+      },
+      "abilityKnowledgeModelId": null,
+      "activeAiFlags": [],
+      "lazyResources": {
+        "gameTrainerAiPath": null,
+        "sharedTrainerAiPath": "trainer-ai/gen4/trainer_ai.json",
+        "evaluatorJsonPointer": "#/profiles/0/evaluator",
+        "engineSemanticsPath": null
+      }
+    },
+    {
+      "gameId": "pokemon-ruby",
+      "generation": 3,
+      "consumerActivation": {
+        "enabled": false,
+        "failClosed": true,
+        "failClosedPerPath": false,
+        "state": "disabled-fail-closed",
+        "mode": null,
+        "reason": "game-specific trainer bindings and executable path known answers are not complete"
+      },
+      "profiles": {
+        "gameProfileId": null,
+        "inheritedProfileId": null,
+        "sharedProfileId": null,
+        "evaluatorProfileId": null
+      },
+      "evaluatorReadiness": {
+        "status": "unavailable",
+        "exactActionProbabilities": false,
+        "conditionalExactPathsAvailable": false,
+        "blockerCount": 0,
+        "activation": null
+      },
+      "abilityKnowledgeModelId": null,
+      "activeAiFlags": [],
+      "lazyResources": {
+        "gameTrainerAiPath": null,
+        "sharedTrainerAiPath": "trainer-ai/gen3/trainer_ai.json",
+        "evaluatorJsonPointer": null,
+        "engineSemanticsPath": null
+      }
+    },
+    {
+      "gameId": "pokemon-sapphire",
+      "generation": 3,
+      "consumerActivation": {
+        "enabled": false,
+        "failClosed": true,
+        "failClosedPerPath": false,
+        "state": "disabled-fail-closed",
+        "mode": null,
+        "reason": "game-specific trainer bindings and executable path known answers are not complete"
+      },
+      "profiles": {
+        "gameProfileId": null,
+        "inheritedProfileId": null,
+        "sharedProfileId": null,
+        "evaluatorProfileId": null
+      },
+      "evaluatorReadiness": {
+        "status": "unavailable",
+        "exactActionProbabilities": false,
+        "conditionalExactPathsAvailable": false,
+        "blockerCount": 0,
+        "activation": null
+      },
+      "abilityKnowledgeModelId": null,
+      "activeAiFlags": [],
+      "lazyResources": {
+        "gameTrainerAiPath": null,
+        "sharedTrainerAiPath": "trainer-ai/gen3/trainer_ai.json",
+        "evaluatorJsonPointer": null,
+        "engineSemanticsPath": null
+      }
+    },
+    {
+      "gameId": "pokemon-soulsilver",
+      "generation": 4,
+      "consumerActivation": {
+        "enabled": false,
+        "failClosed": true,
+        "failClosedPerPath": false,
+        "state": "disabled-fail-closed",
+        "mode": null,
+        "reason": "game-specific trainer bindings and executable path known answers are not complete"
+      },
+      "profiles": {
+        "gameProfileId": null,
+        "inheritedProfileId": null,
+        "sharedProfileId": "hgss-retail-partial-decomp",
+        "evaluatorProfileId": "gen4-hgss-trainer-ai-evaluator-v1alpha1"
+      },
+      "evaluatorReadiness": {
+        "status": "unavailable",
+        "exactActionProbabilities": false,
+        "conditionalExactPathsAvailable": false,
+        "blockerCount": 2,
+        "activation": null
+      },
+      "abilityKnowledgeModelId": null,
+      "activeAiFlags": [],
+      "lazyResources": {
+        "gameTrainerAiPath": null,
+        "sharedTrainerAiPath": "trainer-ai/gen4/trainer_ai.json",
+        "evaluatorJsonPointer": "#/profiles/3/evaluator",
+        "engineSemanticsPath": null
+      }
+    },
+    {
+      "gameId": "pokemon-unbound",
+      "generation": 3,
+      "consumerActivation": {
+        "enabled": false,
+        "failClosed": true,
+        "failClosedPerPath": false,
+        "state": "disabled-fail-closed",
+        "mode": null,
+        "reason": null
+      },
+      "profiles": {
+        "gameProfileId": null,
+        "inheritedProfileId": "cfru-b637a278",
+        "sharedProfileId": "cfru-b637a278",
+        "evaluatorProfileId": null
+      },
+      "evaluatorReadiness": {
+        "status": "unavailable",
+        "exactActionProbabilities": false,
+        "conditionalExactPathsAvailable": false,
+        "blockerCount": 2,
+        "activation": null
+      },
+      "abilityKnowledgeModelId": null,
+      "activeAiFlags": [
+        {
+          "id": "AI_SCRIPT_CHECK_BAD_MOVE",
+          "title": "Check Bad Move",
+          "summary": "Activates the AI_SCRIPT_CHECK_BAD_MOVE Trainer AI flag.",
+          "order": 0,
+          "readiness": "unavailable-no-validated-evaluator"
+        },
+        {
+          "id": "AI_SCRIPT_CHECK_GOOD_MOVE",
+          "title": "Check Good Move",
+          "summary": "Activates the AI_SCRIPT_CHECK_GOOD_MOVE Trainer AI flag.",
+          "order": 9007199254740991,
+          "readiness": "unavailable-no-validated-evaluator"
+        },
+        {
+          "id": "AI_SCRIPT_SEMI_SMART",
+          "title": "Semi Smart",
+          "summary": "Activates the AI_SCRIPT_SEMI_SMART Trainer AI flag.",
+          "order": 9007199254740991,
+          "readiness": "unavailable-no-validated-evaluator"
+        }
+      ],
+      "lazyResources": {
+        "gameTrainerAiPath": "trainer-ai/pokemon-unbound/trainer_ai.json",
+        "sharedTrainerAiPath": "trainer-ai/gen3/trainer_ai.json",
+        "evaluatorJsonPointer": null,
+        "engineSemanticsPath": null
+      }
+    },
+    {
+      "gameId": "pokemon-white",
+      "generation": 5,
+      "consumerActivation": {
+        "enabled": false,
+        "failClosed": true,
+        "failClosedPerPath": false,
+        "state": "disabled-fail-closed",
+        "mode": null,
+        "reason": "game-specific trainer bindings and executable path known answers are not complete"
+      },
+      "profiles": {
+        "gameProfileId": null,
+        "inheritedProfileId": null,
+        "sharedProfileId": "gen5-b2w2-trainer-ai-v1",
+        "evaluatorProfileId": null
+      },
+      "evaluatorReadiness": {
+        "status": "unavailable",
+        "exactActionProbabilities": false,
+        "conditionalExactPathsAvailable": false,
+        "blockerCount": 0,
+        "activation": null
+      },
+      "abilityKnowledgeModelId": "gen5-field-position-ability-memory-v1",
+      "activeAiFlags": [],
+      "lazyResources": {
+        "gameTrainerAiPath": null,
+        "sharedTrainerAiPath": "trainer-ai/gen5/trainer_ai.json",
+        "evaluatorJsonPointer": null,
+        "engineSemanticsPath": "trainer-ai/gen5/trainer_ai_engine_semantics.json"
+      }
+    },
+    {
+      "gameId": "pokemon-white-2",
+      "generation": 5,
+      "consumerActivation": {
+        "enabled": false,
+        "failClosed": true,
+        "failClosedPerPath": false,
+        "state": "disabled-fail-closed",
+        "mode": null,
+        "reason": "game-specific trainer bindings and executable path known answers are not complete"
+      },
+      "profiles": {
+        "gameProfileId": null,
+        "inheritedProfileId": null,
+        "sharedProfileId": "gen5-b2w2-trainer-ai-v1",
+        "evaluatorProfileId": "gen5-b2w2-trainer-ai-evaluator-v1alpha1"
+      },
+      "evaluatorReadiness": {
+        "status": "exact-for-vw2r-active-trainer-flags-partial-for-unused-scripts",
+        "exactActionProbabilities": true,
+        "conditionalExactPathsAvailable": false,
+        "blockerCount": 1,
+        "activation": null
+      },
+      "abilityKnowledgeModelId": "gen5-field-position-ability-memory-v1",
+      "activeAiFlags": [],
+      "lazyResources": {
+        "gameTrainerAiPath": null,
+        "sharedTrainerAiPath": "trainer-ai/gen5/trainer_ai.json",
+        "evaluatorJsonPointer": "#/evaluator",
+        "engineSemanticsPath": "trainer-ai/gen5/trainer_ai_engine_semantics.json"
+      }
+    },
+    {
+      "gameId": "renegade-platinum",
+      "generation": 4,
+      "consumerActivation": {
+        "enabled": true,
+        "failClosed": true,
+        "failClosedPerPath": true,
+        "state": "enabled-fail-closed-per-path",
+        "mode": "enabled-fail-closed-per-path-readiness",
+        "reason": null
+      },
+      "profiles": {
+        "gameProfileId": null,
+        "inheritedProfileId": "renegade-platinum-supported-build",
+        "sharedProfileId": "renegade-platinum-supported-build",
+        "evaluatorProfileId": "gen4-renegade-platinum-trainer-ai-evaluator-v1alpha1"
+      },
+      "evaluatorReadiness": {
+        "status": "partial",
+        "exactActionProbabilities": false,
+        "conditionalExactPathsAvailable": true,
+        "blockerCount": 2,
+        "activation": "enabled-fail-closed-per-path-readiness"
+      },
+      "abilityKnowledgeModelId": null,
+      "activeAiFlags": [
+        {
+          "id": "AI_FLAG_BASIC",
+          "title": "Basic",
+          "summary": "Apply the pinned retail AI_FLAG_BASIC program in source order.",
+          "order": 0,
+          "readiness": "exact"
+        },
+        {
+          "id": "AI_FLAG_EVAL_ATTACK",
+          "title": "Evaluate Attack",
+          "summary": "Apply the pinned retail AI_FLAG_EVAL_ATTACK program in source order.",
+          "order": 1,
+          "readiness": "partial"
+        },
+        {
+          "id": "AI_FLAG_EXPERT",
+          "title": "Expert",
+          "summary": "Apply the pinned retail AI_FLAG_EXPERT program in source order.",
+          "order": 2,
+          "readiness": "partial"
+        },
+        {
+          "id": "AI_FLAG_SETUP_FIRST_TURN",
+          "title": "Setup First Turn",
+          "summary": "Apply the pinned retail AI_FLAG_SETUP_FIRST_TURN program in source order.",
+          "order": 3,
+          "readiness": "exact"
+        },
+        {
+          "id": "AI_FLAG_PRIORITIZE_EXTREMES",
+          "title": "Prioritize Extremes",
+          "summary": "Apply the pinned retail AI_FLAG_PRIORITIZE_EXTREMES program in source order.",
+          "order": 5,
+          "readiness": "exact"
+        }
+      ],
+      "lazyResources": {
+        "gameTrainerAiPath": "trainer-ai/renegade-platinum/trainer_ai.json",
+        "sharedTrainerAiPath": "trainer-ai/gen4/trainer_ai.json",
+        "evaluatorJsonPointer": "#/profiles/1/evaluator",
+        "engineSemanticsPath": null
+      }
+    },
+    {
+      "gameId": "storm-silver",
+      "generation": 4,
+      "consumerActivation": {
+        "enabled": true,
+        "failClosed": true,
+        "failClosedPerPath": true,
+        "state": "enabled-fail-closed-per-path",
+        "mode": "enabled-fail-closed-per-path-readiness",
+        "reason": null
+      },
+      "profiles": {
+        "gameProfileId": null,
+        "inheritedProfileId": "sssg-pchal-supported-build",
+        "sharedProfileId": "sssg-pchal-supported-build",
+        "evaluatorProfileId": "gen4-sssg-pchal-trainer-ai-evaluator-v1alpha1"
+      },
+      "evaluatorReadiness": {
+        "status": "partial",
+        "exactActionProbabilities": false,
+        "conditionalExactPathsAvailable": true,
+        "blockerCount": 1,
+        "activation": "enabled-fail-closed-per-path-readiness"
+      },
+      "abilityKnowledgeModelId": null,
+      "activeAiFlags": [
+        {
+          "id": "AI_FLAG_BASIC",
+          "title": "Basic",
+          "summary": "Apply the pinned retail AI_FLAG_BASIC program in source order.",
+          "order": 0,
+          "readiness": "exact"
+        },
+        {
+          "id": "AI_FLAG_EVAL_ATTACK",
+          "title": "Evaluate Attack",
+          "summary": "Apply the pinned retail AI_FLAG_EVAL_ATTACK program in source order.",
+          "order": 1,
+          "readiness": "partial"
+        },
+        {
+          "id": "AI_FLAG_EXPERT",
+          "title": "Expert",
+          "summary": "Apply the pinned retail AI_FLAG_EXPERT program in source order.",
+          "order": 2,
+          "readiness": "partial"
+        },
+        {
+          "id": "AI_FLAG_SETUP_FIRST_TURN",
+          "title": "Setup First Turn",
+          "summary": "Apply the pinned retail AI_FLAG_SETUP_FIRST_TURN program in source order.",
+          "order": 3,
+          "readiness": "exact"
+        },
+        {
+          "id": "AI_FLAG_PRIORITIZE_EXTREMES",
+          "title": "Prioritize Extremes",
+          "summary": "Apply the pinned retail AI_FLAG_PRIORITIZE_EXTREMES program in source order.",
+          "order": 5,
+          "readiness": "exact"
+        },
+        {
+          "id": "AI_FLAG_BATON_PASS",
+          "title": "Baton Pass",
+          "summary": "Apply the pinned retail AI_FLAG_BATON_PASS program in source order.",
+          "order": 6,
+          "readiness": "partial"
+        },
+        {
+          "id": "AI_FLAG_WEATHER",
+          "title": "Weather",
+          "summary": "Apply the pinned retail AI_FLAG_WEATHER program in source order.",
+          "order": 9,
+          "readiness": "exact"
+        }
+      ],
+      "lazyResources": {
+        "gameTrainerAiPath": "trainer-ai/storm-silver/trainer_ai.json",
+        "sharedTrainerAiPath": "trainer-ai/gen4/trainer_ai.json",
+        "evaluatorJsonPointer": "#/profiles/4/evaluator",
+        "engineSemanticsPath": null
+      }
+    },
+    {
+      "gameId": "volt-white-2r",
+      "generation": 5,
+      "consumerActivation": {
+        "enabled": true,
+        "failClosed": true,
+        "failClosedPerPath": true,
+        "state": "enabled-fail-closed-per-path",
+        "mode": "generated-copy-fail-closed-per-path-readiness",
+        "reason": null
+      },
+      "profiles": {
+        "gameProfileId": "vw2r-gen5-b2w2-trainer-ai-v1",
+        "inheritedProfileId": "gen5-b2w2-trainer-ai-v1",
+        "sharedProfileId": "gen5-b2w2-trainer-ai-v1",
+        "evaluatorProfileId": "gen5-b2w2-trainer-ai-evaluator-v1alpha1"
+      },
+      "evaluatorReadiness": {
+        "status": "exact-for-active-flag-and-item-closure",
+        "exactActionProbabilities": true,
+        "conditionalExactPathsAvailable": false,
+        "blockerCount": 0,
+        "activation": "enabled-fail-closed-per-path-readiness"
+      },
+      "abilityKnowledgeModelId": "gen5-field-position-ability-memory-v1",
+      "activeAiFlags": [
+        {
+          "id": "flag0",
+          "title": "No Effect",
+          "summary": "Discourages moves that fail or have no effect.",
+          "order": 0,
+          "readiness": "exact"
+        },
+        {
+          "id": "flag1",
+          "title": "Evaluate",
+          "summary": "Scores damage, effectiveness, accuracy, priority, and likely knockouts.",
+          "order": 1,
+          "readiness": "exact"
+        },
+        {
+          "id": "flag2",
+          "title": "Expert",
+          "summary": "Adds move-effect-specific expert scoring.",
+          "order": 2,
+          "readiness": "exact"
+        },
+        {
+          "id": "flag3",
+          "title": "Status",
+          "summary": "Prioritizes selected setup and status moves, especially early in battle.",
+          "order": 3,
+          "readiness": "exact"
+        },
+        {
+          "id": "flag4",
+          "title": "Vs Rivals First Battles",
+          "summary": "Controls the opening Bianca and Cheren starter battles.",
+          "order": 4,
+          "readiness": "exact"
+        },
+        {
+          "id": "flag5",
+          "title": "Vs N Final Battle",
+          "summary": "Special scoring for the final N battle in Black and White.",
+          "order": 5,
+          "readiness": "exact"
+        },
+        {
+          "id": "flag7",
+          "title": "Double/Triple Battle",
+          "summary": "Adds ally and multi-target scoring for Doubles and Triples.",
+          "order": 7,
+          "readiness": "exact"
+        }
+      ],
+      "lazyResources": {
+        "gameTrainerAiPath": "trainer-ai/volt-white-2r/trainer_ai.json",
+        "sharedTrainerAiPath": "trainer-ai/gen5/trainer_ai.json",
+        "evaluatorJsonPointer": "#/evaluator",
+        "engineSemanticsPath": "trainer-ai/gen5/trainer_ai_engine_semantics.json"
+      }
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "Fire Red Omega/source-data/dataset_manifest.json",
+      "sha256": "1fda6cb1ec03be6286bacff9ae5f7cecc0beb82af8e2f4554ba32caaf56a146f"
+    },
+    {
+      "path": "Fire Red Omega/source-data/trainer_ai.json",
+      "sha256": "995bb01f82642d20d4ea50caca1f2c7069e86ba6a479e79db79b1f8e3034de0c"
+    },
+    {
+      "path": "Gen 3/source-data/trainer_ai.json",
+      "sha256": "ce923945437a2b5ed15e27dbf05754737dc57a486bb32c41239cb06c939c1208"
+    },
+    {
+      "path": "Gen 4/source-data/trainer_ai.json",
+      "sha256": "5e1a6b564b55dc73374c6864bfdd4fe9c879c6f45f49c37aa841ea7bc56412bf"
+    },
+    {
+      "path": "Gen 5/source-data/trainer_ai.json",
+      "sha256": "66c74733d13d256caedb46f7eefdb6692d75cef19f8108eb8266a3d048f3db3d"
+    },
+    {
+      "path": "Gen 5/source-data/trainer_ai_ability_knowledge.json",
+      "sha256": "5050b0bc517ce1efc40ef14a392fd1abd85993405026884f720128163350c62b"
+    },
+    {
+      "path": "Platinum Kaizo/source-data/dataset_manifest.json",
+      "sha256": "fdd9dc8bd3427990e3d600450c727b8a5b001d4de61c2519239162fcc2d6fc3d"
+    },
+    {
+      "path": "Platinum Kaizo/source-data/trainer_ai.json",
+      "sha256": "4bee0643d463991ef7981a34e7368de790eb01c562d76498b82195f126153c80"
+    },
+    {
+      "path": "Pokemon Black 2/source-data/dataset_manifest.json",
+      "sha256": "52fc892aa2338c1bccddd8fa687f9a758a64801231dadb59764967aa55b0277c"
+    },
+    {
+      "path": "Pokemon Black 2/source-data/trainer_ai.json",
+      "sha256": "627a47c5e4ee96d917220238c732db54c2f8b20453888415bac3168281b8f4a5"
+    },
+    {
+      "path": "Pokemon Black/source-data/dataset_manifest.json",
+      "sha256": "a4d3ee717c292a8d3183b9fdf616348c8696ab40fdb35167050213ab303b5f46"
+    },
+    {
+      "path": "Pokemon Black/source-data/trainer_ai.json",
+      "sha256": "117107a07f9c75288748382292b1ed00b4bc13883f2047b81e39c1413a0053bd"
+    },
+    {
+      "path": "Pokemon Diamond/source-data/dataset_manifest.json",
+      "sha256": "708c1198cf95a67d5252f336051da771a50c8f035c9c92a89e4bd997b40499e1"
+    },
+    {
+      "path": "Pokemon Diamond/source-data/trainer_ai.json",
+      "sha256": "854f2f8988c7fe4ee1b012c2eaa8ef431a50a687d80c4203390ed415aa19a89a"
+    },
+    {
+      "path": "Pokemon Emerald/source-data/dataset_manifest.json",
+      "sha256": "91b29d4554448dc33612ddab8afa5351273e51de28362b382517210426e7f875"
+    },
+    {
+      "path": "Pokemon Emerald/source-data/trainer_ai.json",
+      "sha256": "142629f1289d9fc612112c522b832735d812ef7755db113ac16abab6b7de3056"
+    },
+    {
+      "path": "Pokemon FireRed/source-data/dataset_manifest.json",
+      "sha256": "056fa1900ad4b341068f68bf9068f4928d6b2e7a3f59a674827f21e2804affdb"
+    },
+    {
+      "path": "Pokemon FireRed/source-data/trainer_ai.json",
+      "sha256": "29eeb66faa1aeef09d31a42d182e92987fc09e701d4ff66a52d16174d8c0a2c1"
+    },
+    {
+      "path": "Pokemon HeartGold/source-data/dataset_manifest.json",
+      "sha256": "71e3edc7203b8d08272b52664b2e58aba234434b0338ea6d67a50ccbf576a401"
+    },
+    {
+      "path": "Pokemon HeartGold/source-data/trainer_ai.json",
+      "sha256": "2fc17a584694e49bad2cc2cdfbfd510f51a7ee41f9190c3fc5f9a5b0a5c5b35e"
+    },
+    {
+      "path": "Pokemon LeafGreen/source-data/dataset_manifest.json",
+      "sha256": "df6693c578468abf3981ec654b58bb0a99608ab482a82b02ffa51a2309263b43"
+    },
+    {
+      "path": "Pokemon LeafGreen/source-data/trainer_ai.json",
+      "sha256": "a7185460a0379e9f088369433d3b91ae02c9769050d289b809206c7af9cd03e2"
+    },
+    {
+      "path": "Pokemon Pearl/source-data/dataset_manifest.json",
+      "sha256": "f28da9b41f0ecc8960ce61875758537d0606c85e93ecb3b52272f83c49d68e70"
+    },
+    {
+      "path": "Pokemon Pearl/source-data/trainer_ai.json",
+      "sha256": "ec8d3dcf26640551ee9dfc8e006a3113b11457411cd98059fe893fa5652e0c3a"
+    },
+    {
+      "path": "Pokemon Platinum/source-data/dataset_manifest.json",
+      "sha256": "bfa6a61deeee121250cbb7b68dab5273a4483e85e16647a00f5b9c13a2d6851a"
+    },
+    {
+      "path": "Pokemon Platinum/source-data/trainer_ai.json",
+      "sha256": "d31862857f6c98b94510a5ac4dd1bb11d023f4dcbe5bca9b8e053225f12a415b"
+    },
+    {
+      "path": "Pokemon Ruby/source-data/dataset_manifest.json",
+      "sha256": "22bf6b15e19877efae1ad868830628791c4805d57bbad8c1be1416eb687da794"
+    },
+    {
+      "path": "Pokemon Ruby/source-data/trainer_ai.json",
+      "sha256": "f9cb1c2312023667365734a159151dcf13dbb569a8c211b2084e97c14a105a3d"
+    },
+    {
+      "path": "Pokemon Sapphire/source-data/dataset_manifest.json",
+      "sha256": "4d23ca3d9ed5e5399d677f4be33d500f2da012aa3489ebb86085d367aa188667"
+    },
+    {
+      "path": "Pokemon Sapphire/source-data/trainer_ai.json",
+      "sha256": "9e6a293686f27e7660fe22c07900e7cc8e6283120a74f54b8f7a5cec490400ad"
+    },
+    {
+      "path": "Pokemon SoulSilver/source-data/dataset_manifest.json",
+      "sha256": "463224e3c7e6c65f82baa600c3502c976ffc656f12eda240137a05ac985f957f"
+    },
+    {
+      "path": "Pokemon SoulSilver/source-data/trainer_ai.json",
+      "sha256": "362c418f0d7a8a2d96fc2bdc46eef13f53bbe4ffd20e8a82bf6d1e8d8b449d86"
+    },
+    {
+      "path": "Pokemon Unbound/source-data/dataset_manifest.json",
+      "sha256": "a317539ae52f2cfb30a2f570dfd6080ed1fb6a6cbabdd83eed75f2c2683ce190"
+    },
+    {
+      "path": "Pokemon Unbound/source-data/trainer_ai.json",
+      "sha256": "e2dcea2fc7915bd51b36729a3e05f1d7cbbed9be1ee427bf290d867e1ed8d501"
+    },
+    {
+      "path": "Pokemon White 2/source-data/dataset_manifest.json",
+      "sha256": "816a0c10951af353abc969fc9718e00ce8fa384fee68877a0da3a58803f2808b"
+    },
+    {
+      "path": "Pokemon White 2/source-data/trainer_ai.json",
+      "sha256": "0fee0096fa6153d5dcf8a411c0da57acd0f831a6a81a9ea4d24593088f3f45e8"
+    },
+    {
+      "path": "Pokemon White/source-data/dataset_manifest.json",
+      "sha256": "26301d2db6a790700c7781a65f48829e69188c5b26492bd44a1b52801a6ab947"
+    },
+    {
+      "path": "Pokemon White/source-data/trainer_ai.json",
+      "sha256": "fc60bc881d5d6da14b03ff49d8471020a98f8009513d53bf44c9d5504082d98a"
+    },
+    {
+      "path": "Renegade Platinum/source-data/dataset_manifest.json",
+      "sha256": "8a75f0e6e359cbc8fb25ff04cdd21aec1650a07aa554c6713a5563cde6f6c1ac"
+    },
+    {
+      "path": "Renegade Platinum/source-data/trainer_ai.json",
+      "sha256": "a1000fa8f38bf8c96221cafa15612fac9a80c5bd7353886518d4026ea287f24d"
+    },
+    {
+      "path": "Storm Silver/source-data/dataset_manifest.json",
+      "sha256": "17d39f02021ebccf3f27f78b000b0387c1d2d64ea9efdb8a99763f64821243a2"
+    },
+    {
+      "path": "Storm Silver/source-data/trainer_ai.json",
+      "sha256": "6f15ba47af873da12ca90b30b1681c6813e65435d4867405aa9e15d6d13381c3"
+    },
+    {
+      "path": "Volt White 2R/source-data/dataset_manifest.json",
+      "sha256": "bb1f65173373cc9b7c7c4b8536b12ec13db368819c6dc9a24e56c41198188b14"
+    },
+    {
+      "path": "Volt White 2R/source-data/trainer_ai.json",
+      "sha256": "7b84b33fe2a082cc04dbf0eca0c842ecefb6ae031a81e6b67076447e677c6586"
+    },
+    {
+      "path": "consumer_exports.json",
+      "sha256": "9c4960241384ad0d99b8c729f97a25887ba34cd311e332f6c4c91d6eae1fd0cf"
+    }
+  ]
+}

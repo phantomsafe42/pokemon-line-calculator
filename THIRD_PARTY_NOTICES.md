@@ -8,11 +8,14 @@ The generated VW2R move-semantics reference was derived from `pokemon-showdown@0
 
 PLC resolves Pokémon images through the workspace's versioned Pokémon Asset Dataset. Source-specific sprite provenance, redistribution review, and release metadata live with that Dataset rather than in PLC.
 
-The public build contains a deterministic projection of Dataset release 0.4.0-dev.1,
-not a separately maintained asset library. `public-assets/projection.json` records
-the source root-index and provenance-manifest hashes and every projected file digest.
-Only Gen 5 animated/static, pixel fallback, and UI icon collections are included;
-3D and ROM-derived Seaglass profiles are excluded. No ROM or save bytes are included.
+The public build uses the selector-only Pokémon Asset Gateway at
+<https://assets.phantomsafe.tv> and pins immutable Dataset release
+`0.7.0-dev.2` (tag `v0.7.0-dev.2`, release commit
+`44c778913a42c3752061cb073f000682edff4f9b`). It requests individual display
+assets by typed identity and does not include the private release inventory,
+raw object paths, ROM bytes, or save bytes. The release's machine-readable
+credits contract is available at
+<https://assets.phantomsafe.tv/v1/releases/0.7.0-dev.2/credits>.
 
 Artwork sources include the Smogon Sprite Project (https://github.com/smogon/sprites),
 PokeAPI sprites (https://github.com/PokeAPI/sprites), the DS64 normalized snapshot
@@ -22,13 +25,13 @@ Type and status icons originate from Bulbapedia and Bulbagarden Archives.
 Their copyright policies are https://bulbapedia.bulbagarden.net/wiki/Bulbapedia:Copyrights
 and https://archives.bulbagarden.net/wiki/Archives:Copyrights.
 
-Publication review, September 5, 2026: repository availability and code licenses
-do not establish blanket artwork redistribution rights. Underlying Pokemon art
-and contributor artwork remain owned by their respective rights holders; this
-fan-tool release does not relicense them or claim rights-holder endorsement.
-The project owner authorized proceeding with the public PLC release after the
-asset-publication limitation was disclosed. The shared asset repository remains
-private; this authorization is not represented as a license from the rights holders.
+Publication review, September 14, 2026: the project owner approved publication
+and redistribution of this immutable release for PhantomSafe-owned tools that
+are free to access. The decision is noncommercial, requires attribution and
+provenance, and is not represented as a license from Nintendo, Creatures,
+GAME FREAK, The Pokémon Company, community artists, archive hosts, ROM-hack
+authors, or another third party. Underlying art remains owned by its respective
+rightsholders, and the shared source repository and object store remain private.
 
 Source: <https://github.com/smogon/pokemon-showdown>
 

@@ -18,6 +18,7 @@ SETTLED_HISTORY.md
 coverage/
 dist/
 node_modules/
+/public-assets/
 *.log
 
 # Machine-local configuration and secrets.

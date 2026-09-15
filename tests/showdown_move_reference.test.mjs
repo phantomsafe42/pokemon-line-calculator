@@ -6,6 +6,8 @@ import { fileURLToPath } from "node:url";
 import {
   SHOWDOWN_MOVE_REFERENCE,
   SHOWDOWN_MOVE_REFERENCE_BY_GAME,
+  SHOWDOWN_MOVE_REFERENCE_BY_GENERATION,
+  SHOWDOWN_MOVE_REFERENCE_IDS_BY_GAME,
   SHOWDOWN_REFERENCE_SOURCE
 } from "../src/rulesets/generated/showdown_move_reference.js";
 import { vw2rMoveSupport } from "../src/rulesets/vw2r_move_support.js";
@@ -31,14 +33,20 @@ test("every calculation-applicable standardized game move has a game-scoped refe
       .filter(move => !String(move.calculationApplicability || "").startsWith("inapplicable"))
       .map(move => move.id)
       .sort();
-    assert.deepEqual(Object.keys(SHOWDOWN_MOVE_REFERENCE_BY_GAME[gameId] || {}).sort(), expected, gameId);
+    const generation = Number(JSON.parse(fs.readFileSync(path.join(datasetsRoot, gameId, "battle_mechanics.json"), "utf8")).damageGeneration);
+    assert.deepEqual(SHOWDOWN_MOVE_REFERENCE_IDS_BY_GAME[gameId], expected, gameId);
+    for (const moveId of expected) {
+      assert.ok(SHOWDOWN_MOVE_REFERENCE_BY_GAME[gameId]?.[moveId] || SHOWDOWN_MOVE_REFERENCE_BY_GENERATION[generation]?.[moveId], `${gameId}:${moveId}`);
+    }
   }
 });
 
 test("ROM-specific storage IDs resolve through their explicit mechanics bases", () => {
-  assert.equal(SHOWDOWN_MOVE_REFERENCE_BY_GAME["platinum-kaizo"].faintattack.canonicalMoveNumber, 185);
-  assert.equal(SHOWDOWN_MOVE_REFERENCE_BY_GAME["platinum-kaizo"].weatherballwater.canonicalMoveNumber, 311);
-  assert.equal(SHOWDOWN_MOVE_REFERENCE_BY_GAME["pokemon-unbound"].vicegrip.canonicalMoveNumber, 11);
+  const resolve = (gameId, generation, moveId) => SHOWDOWN_MOVE_REFERENCE_BY_GAME[gameId]?.[moveId]
+    || SHOWDOWN_MOVE_REFERENCE_BY_GENERATION[generation]?.[moveId];
+  assert.equal(resolve("platinum-kaizo", 4, "faintattack").canonicalMoveNumber, 185);
+  assert.equal(resolve("platinum-kaizo", 4, "weatherballwater").canonicalMoveNumber, 311);
+  assert.equal(resolve("pokemon-unbound", 3, "vicegrip").canonicalMoveNumber, 11);
 });
 
 test("representative move mechanics remain structured instead of inferred from prose", () => {

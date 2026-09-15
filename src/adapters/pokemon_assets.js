@@ -69,5 +69,16 @@ export function pokemonAssetQuery(record, dataset = null, overrides = {}) {
 
 export function setPokemonAssetImage(resolver, image, record, dataset = null, overrides = {}) {
   if (!resolver?.setImage) throw new Error("Pokemon asset resolver is unavailable.");
-  return resolver.setImage(image, pokemonAssetQuery(record, dataset, overrides));
+  const query = pokemonAssetQuery(record, dataset, overrides);
+  if (resolver.apiVersion === "pokemon-asset-gateway-client/v1") {
+    const fallbackSpriteTypes = Array.isArray(query.fallbackSpriteTypes) ? query.fallbackSpriteTypes : [];
+    delete query.fallbackSpriteTypes;
+    const attempt = (spriteType, remaining) => resolver.setImage(image, { ...query, spriteType }, {
+      onUnavailable: () => {
+        if (remaining.length) attempt(remaining[0], remaining.slice(1));
+      },
+    });
+    return Promise.resolve(attempt(query.spriteType, fallbackSpriteTypes));
+  }
+  return Promise.resolve(resolver.setImage(image, query));
 }

@@ -1,7 +1,8 @@
 import { calculateStats, normalizePlayerCollection, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js?v=20260912-vanilla-display-names-v2";
+import { HOSTED_DATASET_RELEASE } from "./adapters/hosted_dataset.js?v=20260914-hosted-datasets-v3";
 import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260909-public-release-v2";
-import { canonicalSpeciesDisplayName, loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260912-vanilla-display-names-v2";
-import { loadTrainerAiDocumentation } from "./adapters/trainer_ai.js?v=20260911-ability-storage-reimp-v1";
+import { canonicalSpeciesDisplayName, loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260914-hosted-datasets-v3";
+import { loadTrainerAiBootstrap } from "./adapters/trainer_ai.js?v=20260914-hosted-datasets-v3";
 import { createDraftRecord, destructiveTransitionNotice, IndexedDbDraftStore, markExported, updateDraftRecord } from "./cache/active_draft.js?v=20260909-public-release-v2";
 import { TrainerAiForecastCache } from "./cache/trainer_ai_forecast.js?v=20260909-public-release-v2";
 import { SavedDraftStore, savedDraftSnapshot } from "./cache/saved_drafts.js?v=20260911-ability-storage-reimp-v1";
@@ -27,7 +28,7 @@ import { effectiveActionSpeed } from "./rulesets/action_order.js?v=20260909-publ
 import { areSlotsAdjacent, canSelectShift, shiftWithCenter, triplePositionForSlot, tripleSlotForPosition } from "./rulesets/triple_battle.js?v=20260909-public-release-v2";
 import { rotationFrontKey, rotationFrontSlot } from "./rulesets/rotation_battle.js?v=20260909-public-release-v2";
 import { experienceForLevel, experienceToNextLevel, projectExperience } from "./rulesets/vw2r_experience.js?v=20260909-public-release-v2";
-import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260911-ability-storage-reimp-v1";
+import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260914-hosted-datasets-v3";
 import { battleCompletionState } from "./core/battle_completion.js?v=20260909-public-release-v2";
 import {
   addBox, addParty, boxesForGame, createEmptyBoxLibrary, exportBoxLibrary, IndexedDbBoxLibraryStore,
@@ -38,6 +39,9 @@ import { applyBranchProgressionToLibrary, branchProgressionSnapshot } from "./bo
 import { exportShowdown, parseShowdown } from "./boxes/showdown.js?v=20260909-public-release-v2";
 import { parseSave, selectSavePokemon } from "./boxes/save_import.js?v=20260909-public-release-v2";
 
+const TRAINER_AI_BASE_URL = new URL("./generated/trainer-ai", import.meta.url).href;
+const TRAINER_AI_HOSTED_PREFIX = "trainer-ai";
+
 function vanillaGame(gameId, name, generation) {
   return Object.freeze({
     name,
@@ -45,7 +49,9 @@ function vanillaGame(gameId, name, generation) {
     expectedDamageGeneration: generation,
     activationReady: true,
     datasetBaseUrl: new URL(`./generated/datasets/${gameId}`, import.meta.url).href,
+    datasetHostedPrefix: `datasets/${gameId}`,
     trainerAiBaseUrl: null,
+    trainerAiHostedPrefix: null,
     capabilities: Object.freeze({ saveImport: false })
   });
 }
@@ -57,7 +63,9 @@ const GAME_REGISTRY = Object.freeze({
     expectedDamageGeneration: 3,
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/fire-red-omega", import.meta.url).href,
-    trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
+    datasetHostedPrefix: "datasets/fire-red-omega",
+    trainerAiBaseUrl: TRAINER_AI_BASE_URL,
+    trainerAiHostedPrefix: TRAINER_AI_HOSTED_PREFIX,
     capabilities: Object.freeze({ saveImport: true })
   },
   "pokemon-unbound": {
@@ -66,7 +74,9 @@ const GAME_REGISTRY = Object.freeze({
     expectedDamageGeneration: 3,
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/pokemon-unbound", import.meta.url).href,
-    trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
+    datasetHostedPrefix: "datasets/pokemon-unbound",
+    trainerAiBaseUrl: TRAINER_AI_BASE_URL,
+    trainerAiHostedPrefix: TRAINER_AI_HOSTED_PREFIX,
     capabilities: Object.freeze({ saveImport: true })
   },
   "platinum-kaizo": {
@@ -75,7 +85,9 @@ const GAME_REGISTRY = Object.freeze({
     expectedDamageGeneration: 4,
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/platinum-kaizo", import.meta.url).href,
-    trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
+    datasetHostedPrefix: "datasets/platinum-kaizo",
+    trainerAiBaseUrl: TRAINER_AI_BASE_URL,
+    trainerAiHostedPrefix: TRAINER_AI_HOSTED_PREFIX,
     capabilities: Object.freeze({ saveImport: true })
   },
   "renegade-platinum": {
@@ -84,7 +96,9 @@ const GAME_REGISTRY = Object.freeze({
     expectedDamageGeneration: 4,
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/renegade-platinum", import.meta.url).href,
-    trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
+    datasetHostedPrefix: "datasets/renegade-platinum",
+    trainerAiBaseUrl: TRAINER_AI_BASE_URL,
+    trainerAiHostedPrefix: TRAINER_AI_HOSTED_PREFIX,
     capabilities: Object.freeze({ saveImport: true })
   },
   "storm-silver": {
@@ -93,7 +107,9 @@ const GAME_REGISTRY = Object.freeze({
     expectedDamageGeneration: 4,
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/storm-silver", import.meta.url).href,
-    trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
+    datasetHostedPrefix: "datasets/storm-silver",
+    trainerAiBaseUrl: TRAINER_AI_BASE_URL,
+    trainerAiHostedPrefix: TRAINER_AI_HOSTED_PREFIX,
     capabilities: Object.freeze({ saveImport: true })
   },
   "volt-white-2r": {
@@ -102,7 +118,9 @@ const GAME_REGISTRY = Object.freeze({
     expectedDamageGeneration: 5,
     activationReady: true,
     datasetBaseUrl: new URL("./generated/datasets/volt-white-2r", import.meta.url).href,
-    trainerAiBaseUrl: new URL("./generated/trainer-ai", import.meta.url).href,
+    datasetHostedPrefix: "datasets/volt-white-2r",
+    trainerAiBaseUrl: TRAINER_AI_BASE_URL,
+    trainerAiHostedPrefix: TRAINER_AI_HOSTED_PREFIX,
     capabilities: Object.freeze({ saveImport: true })
   },
   "pokemon-ruby": vanillaGame("pokemon-ruby", "Ruby", 3),
@@ -120,7 +138,12 @@ const GAME_REGISTRY = Object.freeze({
   "pokemon-black-2": vanillaGame("pokemon-black-2", "Black 2", 5),
   "pokemon-white-2": vanillaGame("pokemon-white-2", "White 2", 5)
 });
-const pokemonAssetResolver = globalThis.PokemonAssets?.createResolver();
+const pokemonAssetResolver = globalThis.PokemonAssetGateway?.createClient()
+  || globalThis.PokemonAssets?.createResolver();
+const hostedOriginOverride = document.querySelector('meta[name="plc-dataset-release-origin"]')?.content?.trim();
+const DATASET_HOSTED_RELEASE = hostedOriginOverride
+  ? Object.freeze({ ...HOSTED_DATASET_RELEASE, origin: new URL(hostedOriginOverride, window.location.href).origin })
+  : HOSTED_DATASET_RELEASE;
 const SELECTED_GAME_KEY = "plc-selected-game-v1";
 const STAT_KEYS = Object.freeze(["hp", "atk", "def", "spa", "spd", "spe"]);
 const STAT_LABELS = Object.freeze({ hp: "HP", atk: "Atk", def: "Def", spa: "SpA", spd: "SpD", spe: "Spe" });
@@ -170,6 +193,7 @@ let exportSelection = new Set();
 let activeTab = "plc";
 let destructiveResolver = null;
 let editorMoveRows = [];
+let pokemonEditorGameId = null;
 let actionDraft = emptyActionDraft();
 let notesPersistTimer = null;
 let trainerAiAnalysisCache = new TrainerAiForecastCache();
@@ -204,40 +228,12 @@ function option(value, label, { disabled = false } = {}) {
   return node;
 }
 
-async function generatedGameIsReady(config) {
-  if (config.activationReady !== true) return false;
-  try {
-    const root = String(config.datasetBaseUrl).replace(/\/$/, "");
-    const [manifestResponse, mechanicsResponse, experienceResponse] = await Promise.all([
-      fetch(`${root}/dataset_manifest.json`, { cache: "no-store" }),
-      fetch(`${root}/battle_mechanics.json`, { cache: "no-store" }),
-      fetch(`${root}/experience_mechanics.json`, { cache: "no-store" })
-    ]);
-    if (!manifestResponse.ok || !mechanicsResponse.ok || !experienceResponse.ok) return false;
-    const [manifest, mechanics, experience] = await Promise.all([manifestResponse.json(), mechanicsResponse.json(), experienceResponse.json()]);
-    const damageGeneration = Number(mechanics?.damageGeneration);
-    return manifest?.gameId === mechanics?.gameId
-      && Number.isInteger(damageGeneration)
-      && damageGeneration >= 1
-      && damageGeneration <= 9
-      && (config.expectedDamageGeneration === undefined || damageGeneration === Number(config.expectedDamageGeneration))
-      && mechanics?.validation?.status === "passed"
-      && Number(mechanics?.validation?.unresolved) === 0
-      && experience?.gameId === manifest?.gameId
-      && experience?.validation?.status === "passed"
-      && Number(experience?.validation?.unresolved) === 0
-      && experience?.consumerActivation?.experienceProjectionReady === true;
-  } catch {
-    return false;
-  }
+function generatedGameIsReady(config) {
+  return config.activationReady === true;
 }
 
-async function populateGameOptions() {
-  const availability = await Promise.all(Object.entries(GAME_REGISTRY).map(async ([gameId, config]) => [
-    gameId,
-    await generatedGameIsReady(config)
-  ]));
-  const readyByGame = new Map(availability);
+function populateGameOptions() {
+  const readyByGame = new Map(Object.entries(GAME_REGISTRY).map(([gameId, config]) => [gameId, generatedGameIsReady(config)]));
   ui["game-select"].replaceChildren(option("", "Select game…"));
   for (const [gameId, config] of Object.entries(GAME_REGISTRY)) {
     const ready = readyByGame.get(gameId) === true;
@@ -848,6 +844,7 @@ function loadEditorRecord(record) {
 }
 
 function initializePokemonEditor() {
+  if (pokemonEditorGameId === selectedGameId && editorMoveRows.length === 4) return;
   fillSelect(ui["editor-species"], sortedSpeciesRecords(), { labelFor: speciesSelectLabel });
   fillSelect(ui["editor-nature"], sortedRecords("natures"));
   fillSelect(ui["editor-ability"], sortedRecords("abilities"));
@@ -856,7 +853,7 @@ function initializePokemonEditor() {
     option("", "Auto — from IVs"),
     ...HIDDEN_POWER_TYPES.map(typeId => option(typeId, editorTypeName(typeId)))
   );
-  ui["editor-hidden-power-type"].addEventListener("change", refreshEditorHiddenPower);
+  ui["editor-hidden-power-type"].onchange = refreshEditorHiddenPower;
   const rows = STAT_KEYS.map(stat => {
     const row = document.createElement("tr");
     const label = document.createElement("th"); label.scope = "row"; label.textContent = STAT_LABELS[stat];
@@ -904,9 +901,11 @@ function initializePokemonEditor() {
     });
   };
   for (const id of ["editor-level", "editor-nature"]) ui[id].oninput = refreshEditorActualStats;
+  pokemonEditorGameId = selectedGameId;
 }
 
 function openPokemonEditor(boxId, pokemonId = null, context = false) {
+  initializePokemonEditor();
   const box = selectedBox(boxId);
   const record = pokemonId ? box?.pokemon[pokemonId] : defaultEditorRecord();
   if (!box || !record) return;
@@ -1395,6 +1394,8 @@ async function beginPlanFromContext() {
   if (ui["begin-plan"].disabled) return;
   if (plan && !(await confirmDestructive("Beginning a clean plan"))) return;
   try {
+    trainerAiAnalysisCache.clear();
+    worker?.resetTrainerAiLaneIfBusy();
     const trainer = dataset.trainer(contextTrainerId());
     const variantId = trainer.mechanicsVariants?.length ? ui["variant-select"].value : null;
     const records = selectedContextRecords();
@@ -1465,6 +1466,10 @@ function setAiForecastExpanded(expanded) {
   ui["ai-forecast-toggle"].checked = aiForecastExpanded;
   ui["ai-forecast-toggle"].setAttribute("aria-expanded", String(aiForecastExpanded));
   ui["ai-forecast-body"].hidden = !aiForecastExpanded;
+  if (aiForecastExpanded) {
+    const target = selectedNoteTarget();
+    renderTrainerAiNotes(target?.stateNodeId ? plan?.stateNodes?.[target.stateNodeId] : selectedState());
+  }
 }
 
 function aiProbabilityLabel(weight) {
@@ -1573,6 +1578,7 @@ function renderTrainerAiNotes(state) {
   const forecastSupported = trainerAi?.binding?.consumerActivation?.enabled === true && !selectedState()?.freeCalc;
   container.closest(".ai-forecast-panel").hidden = !forecastSupported;
   if (!forecastSupported) return;
+  if (!aiForecastExpanded) return;
   if (!plan || !state || !dataset || !trainerAi || !worker) {
     container.replaceChildren(Object.assign(document.createElement("p"), { className: "empty", textContent: "Enemy AI documentation is unavailable for this node." }));
     return;
@@ -3624,17 +3630,39 @@ async function selectGame(gameId) {
     setStatus(`Loading ${config.name} data and battle mechanics…`);
     if (selectedGameId && selectedGameId !== gameId) await clearActiveContext();
     worker?.terminate();
-    [dataset, trainerAi] = await Promise.all([
-      loadStandardizedDataset({ baseUrl: config.datasetBaseUrl }),
-      config.trainerAiBaseUrl
-        ? loadTrainerAiDocumentation({ baseUrl: config.trainerAiBaseUrl, gameId })
-        : Promise.resolve(null)
+    const [loadedDataset, trainerAiBootstrap] = await Promise.all([
+      loadStandardizedDataset({
+        baseUrl: config.datasetBaseUrl,
+        hostedPrefix: config.datasetHostedPrefix,
+        hostedRelease: DATASET_HOSTED_RELEASE
+      }),
+      loadTrainerAiBootstrap({
+        baseUrl: TRAINER_AI_BASE_URL,
+        hostedPrefix: TRAINER_AI_HOSTED_PREFIX,
+        hostedRelease: DATASET_HOSTED_RELEASE,
+        gameId
+      })
     ]);
+    dataset = loadedDataset;
+    trainerAi = trainerAiBootstrap.metadata;
+    if (Number(trainerAi?.generation) !== Number(config.expectedDamageGeneration)) {
+      throw new Error(`${config.name} Trainer AI bootstrap declares Generation ${trainerAi?.generation ?? "unknown"}, not Generation ${config.expectedDamageGeneration}`);
+    }
     dataset.abilityKnowledgePolicy = trainerAi?.evaluatorProfile?.constants?.abilityKnowledge || null;
     worker = new ResolverWorkerClient();
-    await worker.initialize(config.datasetBaseUrl, config.trainerAiBaseUrl, gameId);
+    const workerReadiness = await worker.initialize({
+      datasetBaseUrl: config.datasetBaseUrl,
+      datasetHostedPrefix: config.datasetHostedPrefix,
+      trainerAiBaseUrl: trainerAi?.binding?.consumerActivation?.enabled === true ? TRAINER_AI_BASE_URL : null,
+      trainerAiHostedPrefix: trainerAi?.binding?.consumerActivation?.enabled === true ? TRAINER_AI_HOSTED_PREFIX : null,
+      hostedRelease: DATASET_HOSTED_RELEASE,
+      trainerAiMetadata: trainerAi,
+      gameId
+    });
+    trainerAi = workerReadiness.trainerAiMetadata || trainerAi;
     trainerAiAnalysisCache.clear();
     selectedGameId = gameId;
+    pokemonEditorGameId = null;
     renderGameCredit(gameId);
     const saveImportControl = ui["save-import"]?.closest("label");
     if (saveImportControl) saveImportControl.hidden = config.capabilities?.saveImport !== true;
@@ -3642,7 +3670,6 @@ async function selectGame(gameId) {
     ui["game-gate"].hidden = true;
     ui["app-tabs"].hidden = false;
     fillTrainerSelect();
-    initializePokemonEditor();
     renderBoxes();
     refreshContextBoxSelect();
     setTab(activeTab);
