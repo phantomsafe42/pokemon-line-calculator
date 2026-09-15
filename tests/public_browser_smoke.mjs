@@ -337,7 +337,7 @@ try {
   assert.equal(state.vanilla.credit, "by Game Freak");
   assert.equal(state.vanilla.name, "Ruby");
   assert.ok(state.vanilla.trainers > 1);
-  assert.equal(state.vanilla.saveImportVisible, false);
+  assert.equal(state.vanilla.saveImportVisible, true);
   assert.equal(state.spriteLoaded, true);
   assert.equal(state.assetApiVersion, "pokemon-asset-gateway-client/v1");
   assert.equal(state.assetOrigin, assetLock.gateway.origin);

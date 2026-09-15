@@ -37,7 +37,7 @@ import {
 import { addImportedPlanParty, bindPlanPlayerPartyToImportedBox } from "./boxes/plan_import.js?v=20260909-public-release-v2";
 import { applyBranchProgressionToLibrary, branchProgressionSnapshot } from "./boxes/progression.js?v=20260909-public-release-v2";
 import { exportShowdown, parseShowdown } from "./boxes/showdown.js?v=20260909-public-release-v2";
-import { parseSave, selectSavePokemon } from "./boxes/save_import.js?v=20260909-public-release-v2";
+import { PLC_SAVE_GAME_CONFIGS, parseSave, selectSavePokemon } from "./boxes/save_import.js?v=20260912-vanilla-save-import-v1";
 
 const TRAINER_AI_BASE_URL = new URL("./generated/trainer-ai", import.meta.url).href;
 const TRAINER_AI_HOSTED_PREFIX = "trainer-ai";
@@ -54,7 +54,7 @@ function vanillaGame(gameId, name, generation, titleArtId) {
     datasetHostedPrefix: `datasets/${gameId}`,
     trainerAiBaseUrl: null,
     trainerAiHostedPrefix: null,
-    capabilities: Object.freeze({ saveImport: false })
+    capabilities: Object.freeze({ saveImport: PLC_SAVE_GAME_CONFIGS[gameId] === true })
   });
 }
 
