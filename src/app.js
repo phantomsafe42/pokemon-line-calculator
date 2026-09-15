@@ -26,7 +26,7 @@ import { effectiveActionSpeed } from "./rulesets/action_order.js?v=20260909-publ
 import { areSlotsAdjacent, canSelectShift, shiftWithCenter, triplePositionForSlot, tripleSlotForPosition } from "./rulesets/triple_battle.js?v=20260909-public-release-v2";
 import { rotationFrontKey, rotationFrontSlot } from "./rulesets/rotation_battle.js?v=20260909-public-release-v2";
 import { experienceForLevel, experienceToNextLevel, projectExperience } from "./rulesets/vw2r_experience.js?v=20260909-public-release-v2";
-import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260911-ability-storage-reimp-v1";
+import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260914-public-load-performance-v2";
 import { battleCompletionState } from "./core/battle_completion.js?v=20260909-public-release-v2";
 import {
   addBox, addParty, boxesForGame, createEmptyBoxLibrary, exportBoxLibrary, IndexedDbBoxLibraryStore,
@@ -1370,6 +1370,8 @@ async function beginPlanFromContext() {
   if (ui["begin-plan"].disabled) return;
   if (plan && !(await confirmDestructive("Beginning a clean plan"))) return;
   try {
+    trainerAiAnalysisCache.clear();
+    worker?.resetTrainerAiLaneIfBusy();
     const trainer = dataset.trainer(contextTrainerId());
     const variantId = trainer.mechanicsVariants?.length ? ui["variant-select"].value : null;
     const records = selectedContextRecords();

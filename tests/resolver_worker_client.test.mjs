@@ -95,3 +95,38 @@ test("Trainer AI requests queue on the persistent AI Worker without reloading it
     globalThis.Worker = originalWorker;
   }
 });
+
+test("a new planning context discards stale AI work without restarting the resolver lane", async () => {
+  const originalWorker = globalThis.Worker;
+  FakeWorker.instances = [];
+  globalThis.Worker = FakeWorker;
+  try {
+    const client = new ResolverWorkerClient(new URL("https://example.invalid/resolver_worker.js"));
+    const [resolverWorker, firstAiWorker] = FakeWorker.instances;
+    const initializing = client.initialize("dataset", "trainer-ai", "game");
+    resolverWorker.emit("message", { requestId: resolverWorker.messages[0].requestId, ok: true, result: {} });
+    firstAiWorker.emit("message", { requestId: firstAiWorker.messages[0].requestId, ok: true, result: {} });
+    await initializing;
+
+    const stale = client.trainerAi({ state: "old-plan" });
+    const staleRejection = assert.rejects(stale, error => error.name === "StaleTrainerAiError");
+    assert.equal(client.resetTrainerAiLaneIfBusy(), true);
+    await staleRejection;
+    assert.equal(firstAiWorker.terminated, true);
+    assert.equal(resolverWorker.terminated, false);
+    assert.equal(FakeWorker.instances.length, 3);
+
+    const replacementAiWorker = FakeWorker.instances[2];
+    assert.equal(replacementAiWorker.messages[0].type, "initialize");
+    const current = client.trainerAi({ state: "new-plan" });
+    assert.equal(replacementAiWorker.messages.length, 1);
+    replacementAiWorker.emit("message", { requestId: replacementAiWorker.messages[0].requestId, ok: true, result: {} });
+    await Promise.resolve();
+    assert.equal(replacementAiWorker.messages[1].type, "trainer-ai");
+    replacementAiWorker.emit("message", { requestId: replacementAiWorker.messages[1].requestId, ok: true, result: { state: "new-plan" } });
+    assert.deepEqual(await current, { state: "new-plan" });
+    client.terminate();
+  } finally {
+    globalThis.Worker = originalWorker;
+  }
+});

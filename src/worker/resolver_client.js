@@ -2,7 +2,7 @@ export class ResolverWorkerClient {
   constructor(url = new URL(
     typeof __PLC_RESOLVER_WORKER_FILE__ !== "undefined"
       ? __PLC_RESOLVER_WORKER_FILE__
-      : "./resolver_worker.js?v=20260914-public-load-performance-v1",
+      : "./resolver_worker.js?v=20260914-public-load-performance-v2",
     import.meta.url
   )) {
     this.url = url;
@@ -11,6 +11,8 @@ export class ResolverWorkerClient {
     this.requestId = 0;
     this.latestPreviewRequest = 0;
     this.pending = new Map();
+    this.trainerAiInitializationPayload = null;
+    this.trainerAiReady = null;
     this.bindWorker(this.worker, "resolver");
     this.bindWorker(this.trainerAiWorker, "trainer-ai");
   }
@@ -54,10 +56,14 @@ export class ResolverWorkerClient {
 
   async initialize(datasetBaseUrl, trainerAiBaseUrl, gameId) {
     const shared = { datasetBaseUrl, trainerAiBaseUrl, gameId };
+    this.trainerAiInitializationPayload = { ...shared, role: "trainer-ai" };
+    const trainerAiReady = this.request("initialize", this.trainerAiInitializationPayload, this.trainerAiWorker, "trainer-ai").promise;
+    this.trainerAiReady = trainerAiReady;
     const [resolver, trainerAiLane] = await Promise.all([
       this.request("initialize", { ...shared, role: "resolver" }, this.worker, "resolver").promise,
-      this.request("initialize", { ...shared, role: "trainer-ai" }, this.trainerAiWorker, "trainer-ai").promise
+      trainerAiReady
     ]);
+    if (this.trainerAiReady === trainerAiReady) this.trainerAiReady = null;
     return trainerAiLane?.trainerAiMetadata
       ? { ...resolver, trainerAiMetadata: trainerAiLane.trainerAiMetadata }
       : resolver;
@@ -80,7 +86,30 @@ export class ResolverWorkerClient {
   }
 
   async trainerAi(payload) {
+    if (this.trainerAiReady) await this.trainerAiReady;
     return this.request("trainer-ai", payload, this.trainerAiWorker, "trainer-ai").promise;
+  }
+
+  resetTrainerAiLaneIfBusy() {
+    const busy = [...this.pending.values()].some(entry => entry.lane === "trainer-ai");
+    if (!busy) return false;
+    const error = new Error("A new planning context replaced this Trainer AI analysis");
+    error.name = "StaleTrainerAiError";
+    for (const [requestId, entry] of this.pending) {
+      if (entry.lane !== "trainer-ai") continue;
+      entry.reject(error);
+      this.pending.delete(requestId);
+    }
+    this.trainerAiWorker.terminate();
+    this.trainerAiWorker = new Worker(this.url);
+    this.bindWorker(this.trainerAiWorker, "trainer-ai");
+    if (!this.trainerAiInitializationPayload) throw new Error("Trainer AI Worker has not been initialized");
+    const ready = this.request("initialize", this.trainerAiInitializationPayload, this.trainerAiWorker, "trainer-ai").promise;
+    this.trainerAiReady = ready;
+    ready.then(() => {
+      if (this.trainerAiReady === ready) this.trainerAiReady = null;
+    }, () => {});
+    return true;
   }
 
   terminate() {
