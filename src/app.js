@@ -1,8 +1,8 @@
-import { calculateStats, normalizeMultiTrainerRoster, normalizePlayerCollection, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js?v=20260917-encounter-format-v1";
-import { HOSTED_DATASET_RELEASE } from "./adapters/hosted_dataset.js?v=20260914-hosted-datasets-v3";
+import { calculateStats, normalizeMultiTrainerRoster, normalizePlayerCollection, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js?v=20260917-paired-trainer-release-v2";
+import { HOSTED_DATASET_RELEASE } from "./adapters/hosted_dataset.js?v=20260917-paired-trainer-release-v2";
 import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260909-public-release-v2";
-import { canonicalSpeciesDisplayName, loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260917-encounter-format-v1";
-import { loadTrainerAiBootstrap } from "./adapters/trainer_ai.js?v=20260917-encounter-format-v1";
+import { canonicalSpeciesDisplayName, loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260917-paired-trainer-release-v2";
+import { loadTrainerAiBootstrap } from "./adapters/trainer_ai.js?v=20260917-paired-trainer-release-v2";
 import { createDraftRecord, destructiveTransitionNotice, IndexedDbDraftStore, markExported, updateDraftRecord } from "./cache/active_draft.js?v=20260909-public-release-v2";
 import { TrainerAiForecastCache } from "./cache/trainer_ai_forecast.js?v=20260909-public-release-v2";
 import { SavedDraftStore, savedDraftSnapshot } from "./cache/saved_drafts.js?v=20260911-ability-storage-reimp-v1";
@@ -19,16 +19,16 @@ import { exportBranchGroups, planTreeOrder, planTurnTreeOrder, preferredImported
 import { HIDDEN_POWER_TYPES, hiddenPowerTypeFromIvs, resolvedHiddenPowerType } from "./core/hidden_power.js?v=20260909-public-release-v2";
 import { forcedTurnAction } from "./core/forced_actions.js?v=20260909-public-release-v2";
 import { formatDamageRollCounts, healingEventDescription, isCriticalOhkoOutcome, isHighRollKoOutcome, outcomePanelEvents, readableMechanicName } from "./core/outcome_presentation.js?v=20260909-public-release-v2";
-import { createPlanDocument, planHasWork, setStateNodeNote, upgradeInitialEntryEffects } from "./core/plan.js?v=20260917-encounter-format-v1";
+import { createPlanDocument, planHasWork, setStateNodeNote, upgradeInitialEntryEffects } from "./core/plan.js?v=20260917-paired-trainer-release-v2";
 import { commitForcedReplacement, commitLabel, commitPreview, previewForcedReplacement, refreshUnknownCommittedProbabilities, repairStaleLeafBattleEnd, replacementCommitLabel } from "./core/planner.js?v=20260911-ability-storage-reimp-v1";
-import { recalculatePlanDocument } from "./core/recalculation.js?v=20260917-encounter-format-v1";
-import { upgradeImportedPlanForEditing } from "./core/import_upgrade.js?v=20260917-encounter-format-v1";
+import { recalculatePlanDocument } from "./core/recalculation.js?v=20260917-paired-trainer-release-v2";
+import { upgradeImportedPlanForEditing } from "./core/import_upgrade.js?v=20260917-paired-trainer-release-v2";
 import { moveSupport } from "./rulesets/core_move_support.js?v=20260909-public-release-v2";
 import { effectiveActionSpeed } from "./rulesets/action_order.js?v=20260909-public-release-v2";
 import { areSlotsAdjacent, canSelectShift, shiftWithCenter, triplePositionForSlot, tripleSlotForPosition } from "./rulesets/triple_battle.js?v=20260909-public-release-v2";
 import { rotationFrontKey, rotationFrontSlot } from "./rulesets/rotation_battle.js?v=20260909-public-release-v2";
 import { experienceForLevel, experienceToNextLevel, projectExperience } from "./rulesets/vw2r_experience.js?v=20260909-public-release-v2";
-import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260917-encounter-format-v1";
+import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260917-paired-trainer-release-v2";
 import { battleCompletionState } from "./core/battle_completion.js?v=20260909-public-release-v2";
 import {
   addBox, addParty, boxesForGame, createEmptyBoxLibrary, exportBoxLibrary, IndexedDbBoxLibraryStore,

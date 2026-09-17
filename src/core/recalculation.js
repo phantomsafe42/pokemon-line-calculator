@@ -4,7 +4,7 @@ import { commitForcedReplacement, commitPreview, previewForcedReplacement } from
 import { updateStateHash, upgradeInitialEntryEffects } from "./plan.js?v=20260911-ability-storage-reimp-v1";
 import { addFreeCalcBranch } from './free_calc.js?v=20260905-drafts-freecalc-partners-v1';
 import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260911-ability-storage-reimp-v1";
-import { calculateStats, normalizeMultiTrainerRoster, normalizeTrainerRoster } from "../adapters/combatant_ingest.js?v=20260917-encounter-format-v1";
+import { calculateStats, normalizeMultiTrainerRoster, normalizeTrainerRoster } from "../adapters/combatant_ingest.js?v=20260917-paired-trainer-release-v2";
 
 function runtimeTrainerInputs(plan, trainerId = null) {
   const inputs = {
