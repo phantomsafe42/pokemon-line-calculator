@@ -97,12 +97,23 @@ for(const gameId of ['volt-white-2r','fire-red-omega','storm-silver','renegade-p
   const read=file=>JSON.parse(fs.readFileSync(new URL(file,root),'utf8'));
   const dataset=createDatasetContext({manifest:read('dataset_manifest.json'),mechanics:read('battle_mechanics.json'),documents:Object.fromEntries(REQUIRED_DATASET_SOURCES.map(file=>[file,read(file)]))});
   const groups=Object.values(dataset.documents['trainer_battle_groups.json'].records);
+  const navigationIds=dataset.trainerGroups().flatMap(group=>group.trainers.map(trainer=>trainer.id));
   for(const group of groups){
     if(group.consumerActivation?.plc===false||!['double','doubles','tag','multi-trainer'].includes(group.battleFormat)) continue;
     assert.equal(dataset.trainerBattleFormat(group.id),'doubles');
     const team=normalizeTrainerRoster(group.id,null,dataset); assert.ok(team.every(mon=>mon.source.partyOwnerId));
-    const choices=dataset.trainerBattleChoices(group.enemyTrainerIds[0]);
-    assert.equal(choices.length,group.formatChoice==='single-or-double'?2:1);
-    if(choices.length===2) assert.equal(choices[0].format,'singles');
+    for(const trainerId of group.enemyTrainerIds){
+      const choices=dataset.trainerBattleChoices(trainerId);
+      if(group.formatChoice==='single-or-double'){
+        assert.deepEqual(choices.map(choice=>choice.trainerId),[trainerId,group.id]);
+        assert.deepEqual(choices.map(choice=>choice.format),['singles','doubles']);
+        assert.equal(navigationIds.filter(id=>id===trainerId).length,1);
+      }else{
+        assert.deepEqual(choices.map(choice=>choice.trainerId),[group.id]);
+        assert.deepEqual(choices.map(choice=>choice.format),['doubles']);
+        assert.equal(navigationIds.includes(trainerId),false);
+      }
+    }
+    assert.equal(navigationIds.filter(id=>id===group.id).length,group.formatChoice==='double-only'?1:0);
   }
 });

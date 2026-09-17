@@ -11,6 +11,15 @@
         "platinum-kaizo-trainer-0414",
         "platinum-kaizo-trainer-0415"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0414",
+        "platinum-kaizo-trainer-0415"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Gardenia Split",
@@ -30,6 +39,15 @@
         "platinum-kaizo-trainer-0909",
         "platinum-kaizo-trainer-0201"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0909",
+        "platinum-kaizo-trainer-0201"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Gardenia Split",
@@ -49,6 +67,15 @@
         "platinum-kaizo-trainer-0462",
         "platinum-kaizo-trainer-0461"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0462",
+        "platinum-kaizo-trainer-0461"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Gardenia Split",
@@ -68,6 +95,15 @@
         "platinum-kaizo-trainer-0463",
         "platinum-kaizo-trainer-0464"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0463",
+        "platinum-kaizo-trainer-0464"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Gardenia Split",
@@ -87,6 +123,15 @@
         "platinum-kaizo-trainer-0910",
         "platinum-kaizo-trainer-0432"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0910",
+        "platinum-kaizo-trainer-0432"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Gardenia Split",
@@ -106,6 +151,15 @@
         "platinum-kaizo-trainer-0398",
         "platinum-kaizo-trainer-0395"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0398",
+        "platinum-kaizo-trainer-0395"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Gardenia Split",
@@ -125,6 +179,15 @@
         "platinum-kaizo-trainer-0435",
         "platinum-kaizo-trainer-0436"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0435",
+        "platinum-kaizo-trainer-0436"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Gardenia Split",
@@ -144,6 +207,15 @@
         "platinum-kaizo-trainer-0025",
         "platinum-kaizo-trainer-0027"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0025",
+        "platinum-kaizo-trainer-0027"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Fantina Split",
@@ -163,6 +235,15 @@
         "platinum-kaizo-trainer-0029",
         "platinum-kaizo-trainer-0030"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0029",
+        "platinum-kaizo-trainer-0030"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Fantina Split",
@@ -182,6 +263,15 @@
         "platinum-kaizo-trainer-0120",
         "platinum-kaizo-trainer-0119"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0120",
+        "platinum-kaizo-trainer-0119"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Wake Split",
@@ -201,6 +291,15 @@
         "platinum-kaizo-trainer-0688",
         "platinum-kaizo-trainer-0689"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0688",
+        "platinum-kaizo-trainer-0689"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Wake Split",
@@ -220,6 +319,15 @@
         "platinum-kaizo-trainer-0690",
         "platinum-kaizo-trainer-0691"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0690",
+        "platinum-kaizo-trainer-0691"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Wake Split",
@@ -239,6 +347,15 @@
         "platinum-kaizo-trainer-0692",
         "platinum-kaizo-trainer-0693"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0692",
+        "platinum-kaizo-trainer-0693"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Wake Split",
@@ -258,6 +375,15 @@
         "platinum-kaizo-trainer-0694",
         "platinum-kaizo-trainer-0695"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0694",
+        "platinum-kaizo-trainer-0695"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Wake Split",
@@ -277,6 +403,15 @@
         "platinum-kaizo-trainer-0452",
         "platinum-kaizo-trainer-0453"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0452",
+        "platinum-kaizo-trainer-0453"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Byron Split",
@@ -296,6 +431,15 @@
         "platinum-kaizo-trainer-0504",
         "platinum-kaizo-trainer-0505"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0504",
+        "platinum-kaizo-trainer-0505"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Byron Split",
@@ -315,6 +459,15 @@
         "platinum-kaizo-trainer-0457",
         "platinum-kaizo-trainer-0506"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0457",
+        "platinum-kaizo-trainer-0506"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Byron Split",
@@ -334,6 +487,15 @@
         "platinum-kaizo-trainer-0305",
         "platinum-kaizo-trainer-0289"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0305",
+        "platinum-kaizo-trainer-0289"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Byron Split",
@@ -353,6 +515,15 @@
         "platinum-kaizo-trainer-0932",
         "platinum-kaizo-trainer-0372"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0932",
+        "platinum-kaizo-trainer-0372"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Byron Split",
@@ -372,6 +543,15 @@
         "platinum-kaizo-trainer-0379",
         "platinum-kaizo-trainer-0378"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0379",
+        "platinum-kaizo-trainer-0378"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Byron Split",
@@ -391,6 +571,15 @@
         "platinum-kaizo-trainer-0388",
         "platinum-kaizo-trainer-0392"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0388",
+        "platinum-kaizo-trainer-0392"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Byron Split",
@@ -410,6 +599,15 @@
         "platinum-kaizo-trainer-0835",
         "platinum-kaizo-trainer-0836"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0835",
+        "platinum-kaizo-trainer-0836"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Byron Split",
@@ -429,6 +627,15 @@
         "platinum-kaizo-trainer-0399",
         "platinum-kaizo-trainer-0425"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0399",
+        "platinum-kaizo-trainer-0425"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Candice Split",
@@ -448,6 +655,15 @@
         "platinum-kaizo-trainer-0500",
         "platinum-kaizo-trainer-0447"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0500",
+        "platinum-kaizo-trainer-0447"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Candice Split",
@@ -467,6 +683,15 @@
         "platinum-kaizo-trainer-0933",
         "platinum-kaizo-trainer-0397"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0933",
+        "platinum-kaizo-trainer-0397"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Candice Split",
@@ -486,6 +711,15 @@
         "platinum-kaizo-trainer-0386",
         "platinum-kaizo-trainer-0373"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0386",
+        "platinum-kaizo-trainer-0373"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Candice Split",
@@ -505,6 +739,15 @@
         "platinum-kaizo-trainer-0394",
         "platinum-kaizo-trainer-0390"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0394",
+        "platinum-kaizo-trainer-0390"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Candice Split",
@@ -524,6 +767,15 @@
         "platinum-kaizo-trainer-0499",
         "platinum-kaizo-trainer-0288"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0499",
+        "platinum-kaizo-trainer-0288"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Candice Split",
@@ -543,6 +795,15 @@
         "platinum-kaizo-trainer-0417",
         "platinum-kaizo-trainer-0418"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0417",
+        "platinum-kaizo-trainer-0418"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Candice Split",
@@ -562,6 +823,15 @@
         "platinum-kaizo-trainer-0408",
         "platinum-kaizo-trainer-0433"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0408",
+        "platinum-kaizo-trainer-0433"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Candice Split",
@@ -581,6 +851,15 @@
         "platinum-kaizo-trainer-0419",
         "platinum-kaizo-trainer-0426"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0419",
+        "platinum-kaizo-trainer-0426"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Candice Split",
@@ -600,6 +879,15 @@
         "platinum-kaizo-trainer-0286",
         "platinum-kaizo-trainer-0282"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0286",
+        "platinum-kaizo-trainer-0282"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Candice Split",
@@ -619,6 +907,15 @@
         "platinum-kaizo-trainer-0420",
         "platinum-kaizo-trainer-0427"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0420",
+        "platinum-kaizo-trainer-0427"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Candice Split",
@@ -638,6 +935,15 @@
         "platinum-kaizo-trainer-0405",
         "platinum-kaizo-trainer-0934"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0405",
+        "platinum-kaizo-trainer-0934"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Candice Split",
@@ -657,6 +963,15 @@
         "platinum-kaizo-trainer-0175",
         "platinum-kaizo-trainer-0492"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0175",
+        "platinum-kaizo-trainer-0492"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Volkner Split",
@@ -676,6 +991,15 @@
         "platinum-kaizo-trainer-0335",
         "platinum-kaizo-trainer-0333"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0335",
+        "platinum-kaizo-trainer-0333"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Volkner Split",
@@ -695,6 +1019,15 @@
         "platinum-kaizo-trainer-0337",
         "platinum-kaizo-trainer-0359"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0337",
+        "platinum-kaizo-trainer-0359"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Volkner Split",
@@ -714,6 +1047,15 @@
         "platinum-kaizo-trainer-0173",
         "platinum-kaizo-trainer-0180"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0173",
+        "platinum-kaizo-trainer-0180"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Volkner Split",
@@ -733,6 +1075,15 @@
         "platinum-kaizo-trainer-0344",
         "platinum-kaizo-trainer-0349"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0344",
+        "platinum-kaizo-trainer-0349"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Volkner Split",
@@ -752,6 +1103,15 @@
         "platinum-kaizo-trainer-0239",
         "platinum-kaizo-trainer-0940"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0239",
+        "platinum-kaizo-trainer-0940"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Volkner Split",
@@ -771,6 +1131,15 @@
         "platinum-kaizo-trainer-0443",
         "platinum-kaizo-trainer-0383"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0443",
+        "platinum-kaizo-trainer-0383"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Galactic Split",
@@ -790,6 +1159,15 @@
         "platinum-kaizo-trainer-0380",
         "platinum-kaizo-trainer-0458"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0380",
+        "platinum-kaizo-trainer-0458"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Galactic Split",
@@ -809,6 +1187,15 @@
         "platinum-kaizo-trainer-0459",
         "platinum-kaizo-trainer-0460"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0459",
+        "platinum-kaizo-trainer-0460"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Galactic Split",
@@ -828,6 +1215,15 @@
         "platinum-kaizo-trainer-0450",
         "platinum-kaizo-trainer-0496"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0450",
+        "platinum-kaizo-trainer-0496"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Galactic Split",
@@ -847,6 +1243,15 @@
         "platinum-kaizo-trainer-0454",
         "platinum-kaizo-trainer-0455"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0454",
+        "platinum-kaizo-trainer-0455"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Galactic Split",
@@ -866,6 +1271,15 @@
         "platinum-kaizo-trainer-0749",
         "platinum-kaizo-trainer-0750"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0749",
+        "platinum-kaizo-trainer-0750"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Galactic Split",
@@ -885,6 +1299,15 @@
         "platinum-kaizo-trainer-0539",
         "platinum-kaizo-trainer-0540"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0539",
+        "platinum-kaizo-trainer-0540"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Galactic Split",
@@ -904,6 +1327,15 @@
         "platinum-kaizo-trainer-0541",
         "platinum-kaizo-trainer-0542"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0541",
+        "platinum-kaizo-trainer-0542"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Galactic Split",
@@ -923,6 +1355,15 @@
         "platinum-kaizo-trainer-0943",
         "platinum-kaizo-trainer-0557"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0943",
+        "platinum-kaizo-trainer-0557"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Galactic Split",
@@ -942,6 +1383,15 @@
         "platinum-kaizo-trainer-0543",
         "platinum-kaizo-trainer-0544"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0543",
+        "platinum-kaizo-trainer-0544"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Galactic Split",
@@ -961,6 +1411,15 @@
         "platinum-kaizo-trainer-0551",
         "platinum-kaizo-trainer-0945"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0551",
+        "platinum-kaizo-trainer-0945"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Galactic Split",
@@ -980,6 +1439,15 @@
         "platinum-kaizo-trainer-0553",
         "platinum-kaizo-trainer-0554"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0553",
+        "platinum-kaizo-trainer-0554"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Galactic Split",
@@ -999,6 +1467,15 @@
         "platinum-kaizo-trainer-0558",
         "platinum-kaizo-trainer-0559"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0558",
+        "platinum-kaizo-trainer-0559"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Galactic Split",
@@ -1018,6 +1495,15 @@
         "platinum-kaizo-trainer-0628",
         "platinum-kaizo-trainer-0629"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0628",
+        "platinum-kaizo-trainer-0629"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Galactic Split",
@@ -1037,6 +1523,15 @@
         "platinum-kaizo-trainer-0638",
         "platinum-kaizo-trainer-0632"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0638",
+        "platinum-kaizo-trainer-0632"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Galactic Split",
@@ -1056,6 +1551,15 @@
         "platinum-kaizo-trainer-0564",
         "platinum-kaizo-trainer-0565"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0564",
+        "platinum-kaizo-trainer-0565"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Galactic Split",
@@ -1075,6 +1579,15 @@
         "platinum-kaizo-trainer-0566",
         "platinum-kaizo-trainer-0567"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0566",
+        "platinum-kaizo-trainer-0567"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Galactic Split",
@@ -1094,6 +1607,15 @@
         "platinum-kaizo-trainer-0630",
         "platinum-kaizo-trainer-0631"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0630",
+        "platinum-kaizo-trainer-0631"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Galactic Split",
@@ -1113,6 +1635,15 @@
         "platinum-kaizo-trainer-0642",
         "platinum-kaizo-trainer-0643"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0642",
+        "platinum-kaizo-trainer-0643"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Galactic Split",
@@ -1132,6 +1663,15 @@
         "platinum-kaizo-trainer-0569",
         "platinum-kaizo-trainer-0947"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0569",
+        "platinum-kaizo-trainer-0947"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Galactic Split",
@@ -1151,6 +1691,15 @@
         "platinum-kaizo-trainer-0949",
         "platinum-kaizo-trainer-0950"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0949",
+        "platinum-kaizo-trainer-0950"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Galactic Split",
@@ -1170,6 +1719,15 @@
         "platinum-kaizo-trainer-0507",
         "platinum-kaizo-trainer-0508"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0507",
+        "platinum-kaizo-trainer-0508"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Galactic Split",
@@ -1189,6 +1747,15 @@
         "platinum-kaizo-trainer-0513",
         "platinum-kaizo-trainer-0511"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0513",
+        "platinum-kaizo-trainer-0511"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Galactic Split",
@@ -1208,6 +1775,15 @@
         "platinum-kaizo-trainer-0582",
         "platinum-kaizo-trainer-0583"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0582",
+        "platinum-kaizo-trainer-0583"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Galactic Split",
@@ -1227,6 +1803,15 @@
         "platinum-kaizo-trainer-0562",
         "platinum-kaizo-trainer-0572"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0562",
+        "platinum-kaizo-trainer-0572"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Galactic Split",
@@ -1246,6 +1831,15 @@
         "platinum-kaizo-trainer-0531",
         "platinum-kaizo-trainer-0532"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0531",
+        "platinum-kaizo-trainer-0532"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Galactic Split",
@@ -1265,6 +1859,15 @@
         "platinum-kaizo-trainer-0581",
         "platinum-kaizo-trainer-0955"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0581",
+        "platinum-kaizo-trainer-0955"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Galactic Split",
@@ -1284,6 +1887,15 @@
         "platinum-kaizo-trainer-0521",
         "platinum-kaizo-trainer-0527"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0521",
+        "platinum-kaizo-trainer-0527"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Galactic Split",
@@ -1303,6 +1915,15 @@
         "platinum-kaizo-trainer-0528",
         "platinum-kaizo-trainer-0407"
       ],
+      "enemySlotTrainerIds": [
+        "platinum-kaizo-trainer-0528",
+        "platinum-kaizo-trainer-0407"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "PK_Trainer_Documentation.xlsx",
         "sheet": "Galactic Split",

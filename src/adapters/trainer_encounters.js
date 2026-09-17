@@ -5,8 +5,12 @@ export function installTrainerEncounters(index, groupsDocument, profileId) {
     if (group.consumerActivation?.plc === false) continue;
     if (!['double', 'doubles', 'tag', 'multi-trainer'].includes(group.battleFormat)) continue;
     if (!Array.isArray(group.enemyTrainerIds) || group.enemyTrainerIds.length !== 2) throw new Error(`Invalid paired encounter ${group.id}`);
-    if (group.partyPolicy && group.partyPolicy !== 'per-trainer') throw new Error(`Unsupported party policy for ${group.id}`);
-    const ids = group.enemySlotTrainerIds || group.enemyTrainerIds;
+    if (group.partyPolicy !== 'per-trainer') throw new Error(`Unsupported party policy for ${group.id}`);
+    if (!['double-only', 'single-or-double'].includes(group.formatChoice)) throw new Error(`Missing format choice for ${group.id}`);
+    if (!Array.isArray(group.enemySlotTrainerIds) || group.enemySlotTrainerIds.length !== 2
+      || new Set(group.enemySlotTrainerIds).size !== 2
+      || group.enemySlotTrainerIds.some(id => !group.enemyTrainerIds.includes(id))) throw new Error(`Invalid enemy slot ownership for ${group.id}`);
+    const ids = group.enemySlotTrainerIds;
     const trainers = ids.map(id => index.get(id));
     if (trainers.some(trainer => !trainer)) throw new Error(`Missing trainer in ${group.id}`);
     if (trainers.some(trainer => trainer.mechanicsVariants?.length)) throw new Error(`Encounter ${group.id} requires explicit participant variants`);
@@ -38,12 +42,6 @@ export function encounterNavigation(groups, encounters) {
     if (encounters.syntheticIds.has(trainer.id)) return [];
     const paired = encounters.byMember.get(trainer.id);
     if (!paired || paired.encounter.formatChoice === 'single-or-double') return [trainer];
-    // Older source groups establish the pair, but not the field-trigger choice.
-    // Keep the member selections until that classification is explicitly supplied.
-    if (!paired.encounter.formatChoice) {
-      if (seen.has(paired.id)) return [trainer];
-      seen.add(paired.id); return [paired, trainer];
-    }
     if (seen.has(paired.id)) return [];
     seen.add(paired.id); return [paired];
   }) })).filter(group => group.trainers.length);

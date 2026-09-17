@@ -123,7 +123,10 @@ function trainerNavigationGroups(trainerIndex, orderDocument, progressionDocumen
         && Number(entry.order) >= Number(split.firstOrder)
         && Number(entry.order) <= Number(split.lastOrder)
       ))
-      .map(entry => trainerIndex.get(String(entry.trainerId)))
+      .flatMap(entry => (Array.isArray(entry.participantTrainerIds) && entry.participantTrainerIds.length
+        ? entry.participantTrainerIds
+        : [entry.trainerId]
+      ).map(trainerId => trainerIndex.get(String(trainerId))))
       .filter(Boolean);
     for (const trainer of trainers) seen.add(String(trainer.id));
     const label = String(split.label || split.id);
@@ -270,6 +273,9 @@ export function createDatasetContext({ manifest, mechanics, documents }) {
       const paired = encounters.byMember.get(trainer.id);
       if (paired?.encounter.formatChoice === 'single-or-double') return [
         { trainerId: trainer.id, format: 'singles', label: 'Singles' },
+        { trainerId: paired.id, format: 'doubles', label: `Doubles · ${paired.displayName}` }
+      ];
+      if (paired?.encounter.formatChoice === 'double-only') return [
         { trainerId: paired.id, format: 'doubles', label: `Doubles · ${paired.displayName}` }
       ];
       return [{ trainerId: trainer.id, format: this.trainerBattleFormat(trainer.id) }];
