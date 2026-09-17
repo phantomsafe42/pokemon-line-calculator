@@ -403,6 +403,18 @@ export function validatePlanDocument(plan, options = {}) {
         issue(issues, `$.game.partyOwnership.${side}`, 'must declare two distinct trainer owners for Doubles');
       }
     }
+    if (plan.game.playerPartner) {
+      const partnerId = plan.game.playerPartner.trainerId;
+      const owners = plan.game.partyOwnership?.player?.slotOwnerIds;
+      if (!partnerId || !owners || owners[0] !== 'player' || owners[1] !== partnerId) {
+        issue(issues, '$.game.playerPartner', 'must match player and partner slot ownership');
+      }
+      for (const mon of Object.values(plan.combatants || {}).filter(mon => mon.side === 'player')) {
+        if (mon.source?.partyOwnerId !== (mon.source?.isPlayerPartner ? partnerId : 'player')) {
+          issue(issues, '$.combatants', 'player and allied partner rosters must retain their ownership');
+        }
+      }
+    }
   }
   if (!isPlainObject(plan.mechanicsFingerprint)) issue(issues, "$.mechanicsFingerprint", "must be an object");
   if (!isPlainObject(plan.sourceSnapshot)) issue(issues, "$.sourceSnapshot", "must be an object");

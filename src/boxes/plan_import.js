@@ -5,7 +5,7 @@ function playerCombatants(plan) {
   const root = plan.stateNodes?.[plan.initialStateNodeId];
   const active = root?.active?.playerCombatantKeys || [];
   return Object.values(plan?.combatants || {})
-    .filter(combatant => combatant.side === "player" && !root?.freeCalcRemovedKeys?.includes(combatant.combatantKey))
+    .filter(combatant => combatant.side === "player" && !combatant.source?.isPlayerPartner && !root?.freeCalcRemovedKeys?.includes(combatant.combatantKey))
     .sort((left, right) => (root?.freeCalc ? Number(!active.includes(left.combatantKey)) - Number(!active.includes(right.combatantKey)) : 0)
       || Number(left.source?.slot ?? Number.MAX_SAFE_INTEGER) - Number(right.source?.slot ?? Number.MAX_SAFE_INTEGER)
       || left.combatantKey.localeCompare(right.combatantKey))

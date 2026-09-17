@@ -1935,5 +1935,1415 @@
       },
       "sourceConfidence": "native-platinum-kaizo-trainer-documentation-tab-and-row"
     }
+  },
+  "playerPartners": {
+    "schemaVersion": "trainer-player-partners/v1",
+    "bindings": [
+      {
+        "id": "platinum-kaizo-occurrence-0029",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0414",
+          "platinum-kaizo-trainer-0415"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0613",
+            "label": "Lucas · Trainer Dawn/Lucas (TAG PARTNER, Player selected Chimchar)",
+            "sourceRow": 7
+          },
+          {
+            "trainerId": "platinum-kaizo-trainer-0616",
+            "label": "Dawn · Trainer Dawn/Lucas (TAG PARTNER, Player selected Chimchar)",
+            "sourceRow": 7
+          },
+          {
+            "trainerId": "platinum-kaizo-trainer-0614",
+            "label": "Lucas · Trainer Dawn/Lucas (TAG PARTNER, Player selected Piplup)",
+            "sourceRow": 17
+          },
+          {
+            "trainerId": "platinum-kaizo-trainer-0617",
+            "label": "Dawn · Trainer Dawn/Lucas (TAG PARTNER, Player selected Piplup)",
+            "sourceRow": 17
+          },
+          {
+            "trainerId": "platinum-kaizo-trainer-0615",
+            "label": "Lucas · Trainer Dawn/Lucas (TAG PARTNER, Player selected Turtwig)",
+            "sourceRow": 27
+          },
+          {
+            "trainerId": "platinum-kaizo-trainer-0618",
+            "label": "Dawn · Trainer Dawn/Lucas (TAG PARTNER, Player selected Turtwig)",
+            "sourceRow": 27
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "gardenia",
+          "location": "Jubilife City",
+          "enemyRows": [
+            37,
+            47
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0047",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0909",
+          "platinum-kaizo-trainer-0201"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0608",
+            "label": "Trainer Cheryl (TAG PARTNER)",
+            "sourceRow": 248
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "gardenia",
+          "location": "Eterna Forest",
+          "enemyRows": [
+            258,
+            268
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0048",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0462",
+          "platinum-kaizo-trainer-0461"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0608",
+            "label": "Trainer Cheryl (TAG PARTNER)",
+            "sourceRow": 248
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "gardenia",
+          "location": "Eterna Forest",
+          "enemyRows": [
+            278,
+            288
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0049",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0463",
+          "platinum-kaizo-trainer-0464"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0608",
+            "label": "Trainer Cheryl (TAG PARTNER)",
+            "sourceRow": 248
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "gardenia",
+          "location": "Eterna Forest",
+          "enemyRows": [
+            298,
+            308
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0050",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0411"
+        ],
+        "enemyPartyPolicy": "shared",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0608",
+            "label": "Trainer Cheryl (TAG PARTNER)",
+            "sourceRow": 248
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "gardenia",
+          "location": "Eterna Forest",
+          "enemyRows": [
+            318
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0051",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0413"
+        ],
+        "enemyPartyPolicy": "shared",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0608",
+            "label": "Trainer Cheryl (TAG PARTNER)",
+            "sourceRow": 248
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "gardenia",
+          "location": "Eterna Forest",
+          "enemyRows": [
+            328
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0052",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0202"
+        ],
+        "enemyPartyPolicy": "shared",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0608",
+            "label": "Trainer Cheryl (TAG PARTNER)",
+            "sourceRow": 248
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "gardenia",
+          "location": "Eterna Forest",
+          "enemyRows": [
+            338
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0053",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0203"
+        ],
+        "enemyPartyPolicy": "shared",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0608",
+            "label": "Trainer Cheryl (TAG PARTNER)",
+            "sourceRow": 248
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "gardenia",
+          "location": "Eterna Forest",
+          "enemyRows": [
+            348
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0054",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0910",
+          "platinum-kaizo-trainer-0432"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0608",
+            "label": "Trainer Cheryl (TAG PARTNER)",
+            "sourceRow": 248
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "gardenia",
+          "location": "Eterna Forest",
+          "enemyRows": [
+            358,
+            368
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0055",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0398",
+          "platinum-kaizo-trainer-0395"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0608",
+            "label": "Trainer Cheryl (TAG PARTNER)",
+            "sourceRow": 248
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "gardenia",
+          "location": "Eterna Forest",
+          "enemyRows": [
+            378,
+            388
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0056",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0435",
+          "platinum-kaizo-trainer-0436"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0608",
+            "label": "Trainer Cheryl (TAG PARTNER)",
+            "sourceRow": 248
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "gardenia",
+          "location": "Eterna Forest",
+          "enemyRows": [
+            398,
+            408
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-veilstone-tag-battle",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0848",
+          "platinum-kaizo-trainer-0918"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0622",
+            "label": "Lucas · Trainer Dawn/Lucas (TAG PARTNER, Player selected Chimchar)",
+            "sourceRow": 301
+          },
+          {
+            "trainerId": "platinum-kaizo-trainer-0625",
+            "label": "Dawn · Trainer Dawn/Lucas (TAG PARTNER, Player selected Chimchar)",
+            "sourceRow": 301
+          },
+          {
+            "trainerId": "platinum-kaizo-trainer-0623",
+            "label": "Lucas · Trainer Dawn/Lucas (TAG PARTNER, Player selected Piplup)",
+            "sourceRow": 311
+          },
+          {
+            "trainerId": "platinum-kaizo-trainer-0626",
+            "label": "Dawn · Trainer Dawn/Lucas (TAG PARTNER, Player selected Piplup)",
+            "sourceRow": 311
+          },
+          {
+            "trainerId": "platinum-kaizo-trainer-0621",
+            "label": "Lucas · Trainer Dawn/Lucas (TAG PARTNER, Player selected Turtwig)",
+            "sourceRow": 321
+          },
+          {
+            "trainerId": "platinum-kaizo-trainer-0624",
+            "label": "Dawn · Trainer Dawn/Lucas (TAG PARTNER, Player selected Turtwig)",
+            "sourceRow": 321
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "maylene",
+          "location": "Veilstone City",
+          "enemyRows": [
+            281,
+            291
+          ],
+          "rule": "user-confirmed-veilstone-trailing-partners",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0218",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0452",
+          "platinum-kaizo-trainer-0453"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0931",
+            "label": "Pkmn Trainer Riley (TAG PARTNER)",
+            "sourceRow": 512
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "byron",
+          "location": "Iron Island*",
+          "enemyRows": [
+            522,
+            532
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0219",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0504",
+          "platinum-kaizo-trainer-0505"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0931",
+            "label": "Pkmn Trainer Riley (TAG PARTNER)",
+            "sourceRow": 512
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "byron",
+          "location": "Iron Island*",
+          "enemyRows": [
+            542,
+            552
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0220",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0457",
+          "platinum-kaizo-trainer-0506"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0931",
+            "label": "Pkmn Trainer Riley (TAG PARTNER)",
+            "sourceRow": 512
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "byron",
+          "location": "Iron Island*",
+          "enemyRows": [
+            562,
+            572
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0221",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0305",
+          "platinum-kaizo-trainer-0289"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0931",
+            "label": "Pkmn Trainer Riley (TAG PARTNER)",
+            "sourceRow": 512
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "byron",
+          "location": "Iron Island*",
+          "enemyRows": [
+            582,
+            592
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0222",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0932",
+          "platinum-kaizo-trainer-0372"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0931",
+            "label": "Pkmn Trainer Riley (TAG PARTNER)",
+            "sourceRow": 512
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "byron",
+          "location": "Iron Island*",
+          "enemyRows": [
+            602,
+            612
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0223",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0379",
+          "platinum-kaizo-trainer-0378"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0931",
+            "label": "Pkmn Trainer Riley (TAG PARTNER)",
+            "sourceRow": 512
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "byron",
+          "location": "Iron Island*",
+          "enemyRows": [
+            622,
+            632
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0224",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0388",
+          "platinum-kaizo-trainer-0392"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0931",
+            "label": "Pkmn Trainer Riley (TAG PARTNER)",
+            "sourceRow": 512
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "byron",
+          "location": "Iron Island*",
+          "enemyRows": [
+            642,
+            652
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0225",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0835",
+          "platinum-kaizo-trainer-0836"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0931",
+            "label": "Pkmn Trainer Riley (TAG PARTNER)",
+            "sourceRow": 512
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "byron",
+          "location": "Iron Island*",
+          "enemyRows": [
+            662,
+            672
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0231",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0399",
+          "platinum-kaizo-trainer-0425"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0610",
+            "label": "Trainer Marley (PARTNER)",
+            "sourceRow": 7
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "candice",
+          "location": "Lake Valor (PERMANENT RAIN)",
+          "enemyRows": [
+            17,
+            27
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0232",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0500",
+          "platinum-kaizo-trainer-0447"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0610",
+            "label": "Trainer Marley (PARTNER)",
+            "sourceRow": 7
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "candice",
+          "location": "Lake Valor (PERMANENT RAIN)",
+          "enemyRows": [
+            37,
+            47
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0233",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0933",
+          "platinum-kaizo-trainer-0397"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0610",
+            "label": "Trainer Marley (PARTNER)",
+            "sourceRow": 7
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "candice",
+          "location": "Lake Valor (PERMANENT RAIN)",
+          "enemyRows": [
+            57,
+            67
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0234",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0386",
+          "platinum-kaizo-trainer-0373"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0610",
+            "label": "Trainer Marley (PARTNER)",
+            "sourceRow": 7
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "candice",
+          "location": "Lake Valor (PERMANENT RAIN)",
+          "enemyRows": [
+            77,
+            87
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0235",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0394",
+          "platinum-kaizo-trainer-0390"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0610",
+            "label": "Trainer Marley (PARTNER)",
+            "sourceRow": 7
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "candice",
+          "location": "Lake Valor (PERMANENT RAIN)",
+          "enemyRows": [
+            97,
+            107
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0236",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0499",
+          "platinum-kaizo-trainer-0288"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0610",
+            "label": "Trainer Marley (PARTNER)",
+            "sourceRow": 7
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "candice",
+          "location": "Lake Valor (PERMANENT RAIN)",
+          "enemyRows": [
+            117,
+            127
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0237",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0417",
+          "platinum-kaizo-trainer-0418"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0610",
+            "label": "Trainer Marley (PARTNER)",
+            "sourceRow": 7
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "candice",
+          "location": "Lake Valor (PERMANENT RAIN)",
+          "enemyRows": [
+            137,
+            147
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0238",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0408",
+          "platinum-kaizo-trainer-0433"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0610",
+            "label": "Trainer Marley (PARTNER)",
+            "sourceRow": 7
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "candice",
+          "location": "Lake Valor (PERMANENT RAIN)",
+          "enemyRows": [
+            157,
+            167
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0241",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0419",
+          "platinum-kaizo-trainer-0426"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0800",
+            "label": "Lucas · Trainer Dawn/Lucas (TAG PARTNER)",
+            "sourceRow": 182
+          },
+          {
+            "trainerId": "platinum-kaizo-trainer-0801",
+            "label": "Dawn · Trainer Dawn/Lucas (TAG PARTNER)",
+            "sourceRow": 182
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "candice",
+          "location": "Lake Verity",
+          "enemyRows": [
+            192,
+            202
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0242",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0286",
+          "platinum-kaizo-trainer-0282"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0800",
+            "label": "Lucas · Trainer Dawn/Lucas (TAG PARTNER)",
+            "sourceRow": 182
+          },
+          {
+            "trainerId": "platinum-kaizo-trainer-0801",
+            "label": "Dawn · Trainer Dawn/Lucas (TAG PARTNER)",
+            "sourceRow": 182
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "candice",
+          "location": "Lake Verity",
+          "enemyRows": [
+            212,
+            222
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0243",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0420",
+          "platinum-kaizo-trainer-0427"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0800",
+            "label": "Lucas · Trainer Dawn/Lucas (TAG PARTNER)",
+            "sourceRow": 182
+          },
+          {
+            "trainerId": "platinum-kaizo-trainer-0801",
+            "label": "Dawn · Trainer Dawn/Lucas (TAG PARTNER)",
+            "sourceRow": 182
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "candice",
+          "location": "Lake Verity",
+          "enemyRows": [
+            232,
+            242
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0244",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0405",
+          "platinum-kaizo-trainer-0934"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0800",
+            "label": "Lucas · Trainer Dawn/Lucas (TAG PARTNER)",
+            "sourceRow": 182
+          },
+          {
+            "trainerId": "platinum-kaizo-trainer-0801",
+            "label": "Dawn · Trainer Dawn/Lucas (TAG PARTNER)",
+            "sourceRow": 182
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "candice",
+          "location": "Lake Verity",
+          "enemyRows": [
+            252,
+            262
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0296",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0443",
+          "platinum-kaizo-trainer-0383"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0612",
+            "label": "Mira (Tag Partner)",
+            "sourceRow": 107
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "galactic",
+          "location": "Wayward Cave - OPTIONAL Gauntlet With Mira*",
+          "enemyRows": [
+            117,
+            127
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0297",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0380",
+          "platinum-kaizo-trainer-0458"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0612",
+            "label": "Mira (Tag Partner)",
+            "sourceRow": 107
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "galactic",
+          "location": "Wayward Cave - OPTIONAL Gauntlet With Mira*",
+          "enemyRows": [
+            137,
+            147
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0298",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0459",
+          "platinum-kaizo-trainer-0460"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0612",
+            "label": "Mira (Tag Partner)",
+            "sourceRow": 107
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "galactic",
+          "location": "Wayward Cave - OPTIONAL Gauntlet With Mira*",
+          "enemyRows": [
+            157,
+            167
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0299",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0450",
+          "platinum-kaizo-trainer-0496"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0612",
+            "label": "Mira (Tag Partner)",
+            "sourceRow": 107
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "galactic",
+          "location": "Wayward Cave - OPTIONAL Gauntlet With Mira*",
+          "enemyRows": [
+            177,
+            187
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0300",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0454",
+          "platinum-kaizo-trainer-0455"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0612",
+            "label": "Mira (Tag Partner)",
+            "sourceRow": 107
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "galactic",
+          "location": "Wayward Cave - OPTIONAL Gauntlet With Mira*",
+          "enemyRows": [
+            197,
+            207
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0301",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0749",
+          "platinum-kaizo-trainer-0750"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0612",
+            "label": "Mira (Tag Partner)",
+            "sourceRow": 107
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "galactic",
+          "location": "Wayward Cave - OPTIONAL Gauntlet With Mira*",
+          "enemyRows": [
+            217,
+            227
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0350",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0582",
+          "platinum-kaizo-trainer-0583"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0865",
+            "label": "Trainer Cheryl (TAG PARTNER)",
+            "sourceRow": 902
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "galactic",
+          "location": "CORONET HIGHLANDS OUTSIDE 1 (HAIL)",
+          "enemyRows": [
+            912,
+            922
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0354",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0562",
+          "platinum-kaizo-trainer-0572"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0861",
+            "label": "Trainer Riley (TAG PARTNER)",
+            "sourceRow": 965
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "galactic",
+          "location": "CORONET HIGHLANDS ROOM 1 (FOG)",
+          "enemyRows": [
+            975,
+            985
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0364",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0581",
+          "platinum-kaizo-trainer-0955"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0863",
+            "label": "Trainer Marley (TAG PARTNER)",
+            "sourceRow": 1101
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "galactic",
+          "location": "CORONET HIGHLANDS ROOM 3 (RAIN)",
+          "enemyRows": [
+            1111,
+            1121
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0365",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0521",
+          "platinum-kaizo-trainer-0527"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0864",
+            "label": "TAG PARTNER MIRA*",
+            "sourceRow": 1133
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "galactic",
+          "location": "SPEAR PILLAR",
+          "enemyRows": [
+            1143,
+            1153
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      },
+      {
+        "id": "platinum-kaizo-occurrence-0366",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "platinum-kaizo-trainer-0528",
+          "platinum-kaizo-trainer-0407"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "partnerOptions": [
+          {
+            "trainerId": "platinum-kaizo-trainer-0957",
+            "label": "Barry (TAG PARTNER, if Player chose Chimchar)",
+            "sourceRow": 1165
+          },
+          {
+            "trainerId": "platinum-kaizo-trainer-0958",
+            "label": "Barry (TAG PARTNER if Player chose Piplup)",
+            "sourceRow": 1175
+          },
+          {
+            "trainerId": "platinum-kaizo-trainer-0956",
+            "label": "Barry (TAG PARTNER, if Player chose Turtwig)",
+            "sourceRow": 1185
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "8d86a61b999b093a038d521fcc464a50c10ece96ebd4956c16593363674209fd",
+          "splitId": "galactic",
+          "location": "SPEAR PILLAR",
+          "enemyRows": [
+            1195,
+            1205
+          ],
+          "rule": "pk-section-partner-until-next-partner-or-location",
+          "authorityDecision": "pk-player-partner-section-scope-2026-09-17"
+        }
+      }
+    ]
   }
 }

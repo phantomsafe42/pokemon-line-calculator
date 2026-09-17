@@ -11,6 +11,10 @@ export class PlanCompatibilityError extends Error {
 
 export function validatePlanReferences(plan, dataset, { throwOnError = true } = {}) {
   const issues = [];
+  if (plan.game.playerPartner) {
+    const partner = dataset.trainer(plan.game.playerPartner.trainerId);
+    if (!partner) issues.push('The saved player partner is unavailable in this Dataset');
+  }
   const trainerIds = plan.game.enemyTrainerIds?.length ? plan.game.enemyTrainerIds : [plan.game.trainerId];
   for (const [index, trainerId] of trainerIds.entries()) {
     const trainer = dataset.trainer(trainerId);

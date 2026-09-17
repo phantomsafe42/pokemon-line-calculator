@@ -1,5 +1,5 @@
 import { canonicalStats, shortHash, stableStringify, toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
-import { installTrainerEncounters, encounterNavigation } from './trainer_encounters.js?v=20260917-paired-trainer-navigation-v1';
+import { installTrainerEncounters, encounterNavigation } from './trainer_encounters.js?v=20260917-player-partners-v1';
 import { readDatasetJsonFiles } from "./hosted_dataset.js?v=20260917-paired-trainer-release-v2";
 
 export const BATTLE_DATASET_SOURCES = Object.freeze([
@@ -322,7 +322,7 @@ export function createDatasetContext({ manifest, mechanics, documents }) {
       const groups = sourceGroups
         .map(group => ({
           ...group,
-          trainers: uniqueTrainers(group.trainers).filter(trainer => String(trainer.id) !== selectedId && !encounters.syntheticIds.has(trainer.id))
+          trainers: uniqueTrainers(group.trainers).filter(trainer => String(trainer.id) !== selectedId && !encounters.syntheticIds.has(trainer.id) && !encounters.allyIds.has(trainer.id))
         }))
         .filter(group => group.trainers.length || String(group.id) === String(selectedGroupId));
       const selectedGroupIndex = groups.findIndex(group => String(group.id) === String(selectedGroupId));

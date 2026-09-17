@@ -1,7 +1,34 @@
 // Consume explicit encounter relationships; never pair adjacent names/order rows.
 export function installTrainerEncounters(index, groupsDocument, profileId) {
   const byMember = new Map(); const syntheticIds = new Set();
-  for (const group of Object.values(groupsDocument?.records || {})) {
+  const partnerBindings = groupsDocument?.playerPartners;
+  if (partnerBindings && partnerBindings.schemaVersion !== 'trainer-player-partners/v1') throw new Error('Unsupported player partner contract');
+  const groups = { ...groupsDocument?.records };
+  const allyIds = new Set();
+  const boundEnemies = new Set();
+  for (const binding of partnerBindings?.bindings || []) {
+    if (binding.battleFormat !== 'doubles' || binding.playerPartyPolicy !== 'per-trainer'
+      || binding.playerSlot !== 0 || binding.partnerSlot !== 1 || !binding.partnerOptions?.length
+      || ![1, 2].includes(binding.enemyTrainerIds?.length)
+      || binding.enemyPartyPolicy !== (binding.enemyTrainerIds.length === 2 ? 'per-trainer' : 'shared')) throw new Error(`Invalid player partner binding ${binding.id}`);
+    for (const option of binding.partnerOptions) {
+      if (!index.has(option.trainerId) || index.get(option.trainerId).mechanicsVariants?.length) throw new Error(`Unresolved player partner ${option.trainerId}`);
+      allyIds.add(option.trainerId);
+    }
+    for (const id of binding.enemyTrainerIds) {
+      const trainer = structuredClone(index.get(id));
+      if (!trainer || boundEnemies.has(id)) throw new Error(`Ambiguous player partner for ${id}`);
+      boundEnemies.add(id);
+      trainer.playerPartnerBinding = structuredClone(binding);
+      trainer.battleProfiles = { ...trainer.battleProfiles, [profileId]: { ...trainer.battleProfiles?.[profileId], format: 'double', formatSource: `player-partner:${binding.id}` } };
+      index.set(id, trainer);
+    }
+    if (binding.enemyTrainerIds.length === 2 && !groups[binding.id]) {
+      groups[binding.id] = { id: binding.id, battleFormat: 'multi-trainer', enemyTrainerIds: binding.enemyTrainerIds,
+        enemySlotTrainerIds: binding.enemyTrainerIds, partyPolicy: 'per-trainer', formatChoice: 'double-only' };
+    }
+  }
+  for (const group of Object.values(groups)) {
     if (group.consumerActivation?.plc === false) continue;
     if (!['double', 'doubles', 'tag', 'multi-trainer'].includes(group.battleFormat)) continue;
     if (!Array.isArray(group.enemyTrainerIds) || group.enemyTrainerIds.length !== 2) throw new Error(`Invalid paired encounter ${group.id}`);
@@ -33,12 +60,13 @@ export function installTrainerEncounters(index, groupsDocument, profileId) {
       byMember.set(id, paired);
     }
   }
-  return { byMember, syntheticIds };
+  return { byMember, syntheticIds, allyIds };
 }
 
 export function encounterNavigation(groups, encounters) {
   const seen = new Set();
   return groups.map(group => ({ ...group, trainers: group.trainers.flatMap(trainer => {
+    if (encounters.allyIds?.has(trainer.id)) return [];
     if (encounters.syntheticIds.has(trainer.id)) return [];
     const paired = encounters.byMember.get(trainer.id);
     if (!paired || paired.encounter.formatChoice === 'single-or-double') return [trainer];
