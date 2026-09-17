@@ -103,12 +103,38 @@ try {
     el('context-party-select').selectedIndex=1; change('context-party-select');
     el('save-party-selection').click();
     const ready=!el('begin-plan').disabled;
-    el('begin-plan').click();
-    await wait(()=>!el('plan-context-dialog').open && document.querySelectorAll('.combatant-card').length>=4,'partner plan');
-    const text=document.body.innerText;
-    return {ambiguous,singles,partner,ready,hasPartner:text.includes(scenario?.species || 'Chansey'),hasCharmeleon:text.includes('Charmeleon'),
-      cards:document.querySelectorAll('.combatant-card').length,overflow:document.documentElement.scrollWidth>innerWidth};
+    return {ambiguous,singles,partner,ready};
   })()`);
+  await send('Page.enable');
+  const setupLayouts=[];
+  for(const width of [1920,1280,390,320]) {
+    await send('Emulation.setDeviceMetricsOverride',{width,height:960,deviceScaleFactor:1,mobile:false});
+    const layout=await evaluate(`(()=>{
+      const select=document.getElementById('player-partner-select'); select.focus(); select.scrollIntoView({block:'center'});
+      const cards=document.getElementById('player-partner-summary');
+      const style=getComputedStyle(select);
+      const gap=cards.getBoundingClientRect().top-select.getBoundingClientRect().bottom;
+      const focusExtent=parseFloat(style.outlineWidth)+Math.max(0,parseFloat(style.outlineOffset));
+      return {gap,focusExtent,overflow:document.documentElement.scrollWidth>innerWidth};
+    })()`);
+    assert.ok(layout.gap>=8 && layout.gap>layout.focusExtent, `Partner dropdown/cards overlap at ${width}px: ${JSON.stringify(layout)}`);
+    assert.equal(layout.overflow,false);
+    setupLayouts.push({width,...layout});
+    const screenshot=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});
+    await fs.writeFile(path.join(temporary,`partner-setup-${scenario}-${width}.png`),Buffer.from(screenshot.data,'base64'));
+  }
+  await send('Emulation.setDeviceMetricsOverride',{width:1280,height:960,deviceScaleFactor:1,mobile:false});
+  Object.assign(result,await evaluate(`(async()=>{
+    document.getElementById('begin-plan').click();
+    for(let i=0;i<300;i++) {
+      if(!document.getElementById('plan-context-dialog').open && document.querySelectorAll('.combatant-card').length>=4) break;
+      if(i===299) throw new Error('Partner plan did not open');
+      await new Promise(r=>setTimeout(r,100));
+    }
+    const text=document.body.innerText;
+    return {hasPartner:text.includes(${JSON.stringify(cases[scenario]?.species || 'Chansey')}),hasCharmeleon:text.includes('Charmeleon'),
+      cards:document.querySelectorAll('.combatant-card').length,overflow:document.documentElement.scrollWidth>innerWidth};
+  })()`));
   if(scenario === 'platinum-kaizo' || scenario === 'subway') {
     assert.equal(result.ambiguous.options,7); assert.equal(result.ambiguous.selected,''); assert.equal(result.ambiguous.beginDisabled,true);
   }
@@ -124,7 +150,7 @@ try {
     await fs.writeFile(path.join(temporary,`player-partner-${scenario}-${name}.png`),Buffer.from(screenshot.data,'base64'));
   }
   assert.deepEqual(errors,[]);
-  console.log(JSON.stringify({status:'player-partner-browser-valid',result},null,2));
+  console.log(JSON.stringify({status:'player-partner-browser-valid',result,setupLayouts},null,2));
 } finally {
   socket?.close(); browser.kill(); await new Promise(resolve=>server.close(resolve));
   // Keep the isolated profile and screenshots as local diagnostic evidence.
