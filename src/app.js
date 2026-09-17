@@ -1203,8 +1203,11 @@ function updateContextTrainer() {
       ui["battle-format"].value = format === "rotation" ? "Rotation" : format === "triples" ? "Triples" : format === "doubles" ? "Doubles" : "Singles";
     }
     catch (error) { ui["battle-format"].value = error.message; }
-    ui["plan-name"].value = `${trainer.displayName || trainer.name} Plan`;
-  } else ui["battle-format"].value = "Select a trainer";
+    ui["plan-name"].value = trainer.displayName || trainer.name || "";
+  } else {
+    ui["battle-format"].value = "Select a trainer";
+    ui["plan-name"].value = "";
+  }
   renderEnemyTeamSummary();
   updateBeginAvailability();
 }
@@ -1442,7 +1445,11 @@ function updateBeginAvailability() {
 
 function openPlanContext({ reset = true } = {}) {
   if (!dataset) return;
-  if (reset) contextSelection = emptyContextSelection();
+  if (reset) {
+    contextSelection = emptyContextSelection();
+    ui["trainer-select"].value = "";
+    ui["plan-name"].value = "";
+  }
   refreshContextBoxSelect();
   ui["party-selector-controls"].hidden = false;
   ui["party-selection-summary"].hidden = true;
@@ -1513,7 +1520,7 @@ async function beginPlanFromContext() {
     const enemies = normalizeTrainerRoster(trainer.id, variantId, dataset);
     const sourceSnapshot = snapshotFingerprint(players, enemies, boxLibrary.updatedAt);
     plan = createPlanDocument({
-      name: ui["plan-name"].value.trim() || `${trainer.displayName} Plan`,
+      name: ui["plan-name"].value.trim() || trainer.displayName || trainer.name,
       dataset,
       trainerId: trainer.id,
       trainerVariantId: variantId,
