@@ -1,7 +1,7 @@
 import { calculateStats, normalizePlayerCollection, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js?v=20260912-vanilla-display-names-v2";
 import { HOSTED_DATASET_RELEASE } from "./adapters/hosted_dataset.js?v=20260914-hosted-datasets-v3";
 import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260909-public-release-v2";
-import { canonicalSpeciesDisplayName, loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260914-hosted-datasets-v3";
+import { canonicalSpeciesDisplayName, loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260917-paired-trainer-navigation-v1";
 import { loadTrainerAiBootstrap } from "./adapters/trainer_ai.js?v=20260914-hosted-datasets-v3";
 import { createDraftRecord, destructiveTransitionNotice, IndexedDbDraftStore, markExported, updateDraftRecord } from "./cache/active_draft.js?v=20260909-public-release-v2";
 import { TrainerAiForecastCache } from "./cache/trainer_ai_forecast.js?v=20260909-public-release-v2";
@@ -28,7 +28,7 @@ import { effectiveActionSpeed } from "./rulesets/action_order.js?v=20260909-publ
 import { areSlotsAdjacent, canSelectShift, shiftWithCenter, triplePositionForSlot, tripleSlotForPosition } from "./rulesets/triple_battle.js?v=20260909-public-release-v2";
 import { rotationFrontKey, rotationFrontSlot } from "./rulesets/rotation_battle.js?v=20260909-public-release-v2";
 import { experienceForLevel, experienceToNextLevel, projectExperience } from "./rulesets/vw2r_experience.js?v=20260909-public-release-v2";
-import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260914-hosted-datasets-v3";
+import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260917-paired-trainer-navigation-v1";
 import { battleCompletionState } from "./core/battle_completion.js?v=20260909-public-release-v2";
 import {
   addBox, addParty, boxesForGame, createEmptyBoxLibrary, exportBoxLibrary, IndexedDbBoxLibraryStore,
