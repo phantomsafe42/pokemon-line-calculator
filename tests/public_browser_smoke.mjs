@@ -247,12 +247,31 @@ try {
     document.querySelector('.game-picker-option[data-game-id="pokemon-ruby"]').click();
     await wait(() => /Ruby is ready\./.test(document.getElementById('app-status')?.textContent || '')
       && document.getElementById('trainer-select').options.length > 1, 'public vanilla game data and worker');
+    await wait(() => document.getElementById('plan-context-dialog').open, 'clean-plan dialog');
+    const trainerSelect = document.getElementById('trainer-select');
+    const planName = document.getElementById('plan-name');
+    const initialPlanName = planName.value;
+    trainerSelect.selectedIndex = 1;
+    const expectedTrainerName = trainerSelect.selectedOptions[0].textContent.split(' · ')[0];
+    trainerSelect.dispatchEvent(new Event('change', { bubbles: true }));
+    await wait(() => planName.value === expectedTrainerName, 'trainer-derived plan name');
+    const selectedPlanName = planName.value;
+    document.getElementById('plan-context-dialog').close();
+    document.getElementById('new-plan').click();
+    await wait(() => document.getElementById('plan-context-dialog').open
+      && trainerSelect.value === ''
+      && planName.value === '', 'reset clean-plan title');
+    const reopenedPlanName = planName.value;
     const vanilla = {
       status: document.getElementById('app-status').textContent,
       credit: document.getElementById('game-credit').textContent,
       name: document.getElementById('current-game-name').textContent,
       trainers: document.getElementById('trainer-select').options.length,
-      saveImportVisible: !document.getElementById('save-import').closest('label').hidden
+      saveImportVisible: !document.getElementById('save-import').closest('label').hidden,
+      initialPlanName,
+      selectedPlanName,
+      expectedTrainerName,
+      reopenedPlanName
     };
     if (document.getElementById('plan-context-dialog').open) document.getElementById('plan-context-dialog').close();
     document.getElementById('new-game').click();
@@ -338,6 +357,10 @@ try {
   assert.equal(state.vanilla.name, "Ruby");
   assert.ok(state.vanilla.trainers > 1);
   assert.equal(state.vanilla.saveImportVisible, true);
+  assert.equal(state.vanilla.initialPlanName, "");
+  assert.equal(state.vanilla.selectedPlanName, state.vanilla.expectedTrainerName);
+  assert.equal(state.vanilla.selectedPlanName.endsWith(" Plan"), false);
+  assert.equal(state.vanilla.reopenedPlanName, "");
   assert.equal(state.spriteLoaded, true);
   assert.equal(state.assetApiVersion, "pokemon-asset-gateway-client/v1");
   assert.equal(state.assetOrigin, assetLock.gateway.origin);
