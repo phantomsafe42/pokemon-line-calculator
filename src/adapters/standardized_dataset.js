@@ -1,5 +1,5 @@
 import { canonicalStats, shortHash, stableStringify, toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
-import { installTrainerEncounters, encounterNavigation } from './trainer_encounters.js?v=20260917-player-partners-v1';
+import { installTrainerEncounters, encounterNavigation } from './trainer_encounters.js?v=20260917-drayano-partners-v2';
 import { readDatasetJsonFiles } from "./hosted_dataset.js?v=20260917-paired-trainer-release-v2";
 
 export const BATTLE_DATASET_SOURCES = Object.freeze([
@@ -291,10 +291,13 @@ export function createDatasetContext({ manifest, mechanics, documents }) {
       const paired = encounters.byMember.get(trainer.id);
       if (paired?.encounter.formatChoice === 'single-or-double') {
         const defaultPartnerTrainerId = paired.encounter.enemyTrainerIds.find(id => String(id) !== String(trainer.id)) || null;
+        const binding = paired.playerPartnerBinding;
         return [
-          { id: `singles:${trainer.id}`, trainerId: trainer.id, format: 'singles', battleKind: 'single', label: 'Singles' },
-          { id: `doubles:${trainer.id}`, trainerId: trainer.id, format: 'doubles', battleKind: 'double', label: 'Doubles' },
-          { id: `multi:${trainer.id}`, trainerId: trainer.id, format: 'doubles', battleKind: 'multi', label: 'Multi', requiresPartner: true, defaultPartnerTrainerId }
+          { id: `singles:${trainer.id}`, trainerId: trainer.id, format: 'singles', battleKind: 'single', label: 'Singles', withoutPlayerPartner: true },
+          { id: `doubles:${trainer.id}`, trainerId: trainer.id, format: 'doubles', battleKind: 'double', label: 'Doubles', withoutPlayerPartner: true },
+          ...(binding ? [{ id: `allied:${paired.id}`, trainerId: paired.id, format: 'doubles', battleKind: 'multi', label: `Multi · with ${binding.partnerOptions[0].label.split(' · ')[0]}` }] : []),
+          ...(binding?.allowWithoutPartner ? [{ id: `unallied:${paired.id}`, trainerId: paired.id, format: 'doubles', battleKind: 'multi', label: 'Multi · without escort', withoutPlayerPartner: true }] : []),
+          { id: `multi:${trainer.id}`, trainerId: trainer.id, format: 'doubles', battleKind: 'multi', label: binding ? 'Custom Multi' : 'Multi', requiresPartner: true, defaultPartnerTrainerId, withoutPlayerPartner: true }
         ];
       }
       if (paired?.encounter.formatChoice === 'double-only') return [

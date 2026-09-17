@@ -1,5 +1,5 @@
 import { canonicalStats, shortHash, stableStringify, toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
-import { canonicalSpeciesDisplayName, canonicalTrainerMember, DatasetReadinessError } from "./standardized_dataset.js?v=20260917-player-partners-v1";
+import { canonicalSpeciesDisplayName, canonicalTrainerMember, DatasetReadinessError } from "./standardized_dataset.js?v=20260917-drayano-partners-v2";
 
 const NATURE_MULTIPLIER_DENOMINATOR = 10;
 const NATURE_BOOST_NUMERATOR = 11;
@@ -242,8 +242,8 @@ export function normalizeMultiTrainerRoster(participants, dataset, runtimeInputs
 
 // Trainer construction stays shared; side and ownership distinguish the ally
 // from both the opponent and the user's persisted Box roster.
-export function normalizePlayerPartnerRoster(trainerId, dataset) {
-  return normalizeTrainerRoster(trainerId, null, dataset).map(mon => ({
+export function normalizePlayerPartnerRoster(trainerId, dataset, trainerVariantId = null) {
+  return normalizeTrainerRoster(trainerId, trainerVariantId, dataset).map(mon => ({
     ...mon, combatantKey: mon.combatantKey.replace(/^enemy:/, 'player:ally:'), side: 'player',
     source: { ...mon.source, kind: 'standardized-player-partner', partyOwnerId: trainerId,
       isPlayerPartner: true, ownerPartySlot: mon.source.trainerSlot }

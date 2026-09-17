@@ -108,7 +108,7 @@ test("VW2R Dataset baseExp values normalize for every School Kid Neil combatant"
 test("VW2R trainer navigation matches the ten canonical progression splits", () => {
   const groups = loadVw2rDataset().trainerGroups();
   assert.equal(groups.length, 10);
-  assert.equal(groups.flatMap(group => group.trainers).length, 417);
+  assert.equal(groups.flatMap(group => group.trainers).length, 397); // 20 documented ally-only records are no longer opponents.
   assert.deepEqual(groups.map(group => group.label), [
     "Cheren Split", "Roxie Split", "Burgh Split", "Elesa Split", "Clay Split",
     "Skyla Split", "Drayden Split", "Marlon Split", "Ghetsis Split", "Champion Split"

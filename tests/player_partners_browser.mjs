@@ -7,6 +7,14 @@ import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const scenario = process.env.PLC_PARTNER_SCENARIO || 'platinum-kaizo';
+const gameId = scenario === 'subway' ? 'volt-white-2r' : scenario;
+const cases = {
+  'renegade-platinum': {trainer:'renegade-platinum-trainer-0201', choice:'allied:renegade-platinum-player-partner-201-204',partner:'renegade-platinum-trainer-0608',species:'Chansey',cards:3},
+  'storm-silver': {trainer:'storm-silver-player-partner-88-87',partner:'storm-silver-trainer-0040',species:'Porygon2',cards:3},
+  'volt-white-2r': {trainer:'castelia-sewers-plasma-tag',partner:'vw2r-trainer-0062',species:'Pignite',cards:3},
+  subway: {trainer:'nimbasa-subway-bosses-tag',partner:'vw2r-trainer-0099:final-rom-trainer-363',species:'Dewott',cards:2}
+};
 const temporary = path.join(root, '.codex-tmp');
 await fs.mkdir(temporary, {recursive:true});
 const profile = await fs.mkdtemp(path.join(temporary, 'partner-browser-'));
@@ -57,14 +65,14 @@ try {
   const evidence=await evaluate(`(async()=>{
     const wait=async(predicate,label)=>{for(let i=0;i<300;i++){if(predicate())return;await new Promise(r=>setTimeout(r,100));}throw new Error(label+': '+document.querySelector('#app-status')?.textContent)};
     const el=id=>document.getElementById(id);
-    await wait(()=>document.querySelector('[data-game-id="platinum-kaizo"]'),'game picker');
+    await wait(()=>document.querySelector('[data-game-id="${gameId}"]'),'game picker');
     // Seed only this isolated test profile with one user-owned Pokémon.
     const {addBox,IndexedDbBoxLibraryStore}=await import('./src/boxes/library.js');
-    const species=(await (await fetch('./src/generated/datasets/platinum-kaizo/species.json')).json()).records.charmeleon;
+    const species=(await (await fetch('./src/generated/datasets/${gameId}/species.json')).json()).records.charmeleon;
     const record={id:'test-player',speciesId:'charmeleon',displayName:'Charmeleon',level:23,natureId:'hardy',abilityId:'blaze',baseStats:species.baseStats,
       ivs:{hp:31,atk:31,def:31,spa:31,spd:31,spe:31},evs:{hp:0,atk:0,def:0,spa:0,spd:0,spe:0},
       moves:[{moveId:'ember',name:'Ember',pp:25,basePower:40,type:'fire'}]};
-    await new IndexedDbBoxLibraryStore().save(addBox(null,'platinum-kaizo',{pokemon:[record],partyPokemonIds:[record.id]}).library);
+    await new IndexedDbBoxLibraryStore().save(addBox(null,'${gameId}',{pokemon:[record],partyPokemonIds:[record.id]}).library);
     return true;
   })()`);
   assert.equal(evidence,true);
@@ -72,12 +80,24 @@ try {
   const result=await evaluate(`(async()=>{
     const wait=async(predicate,label)=>{for(let i=0;i<300;i++){if(predicate())return;await new Promise(r=>setTimeout(r,100));}throw new Error(label+': '+document.querySelector('#app-status')?.textContent)};
     const el=id=>document.getElementById(id), change=id=>el(id).dispatchEvent(new Event('change',{bubbles:true}));
-    await wait(()=>document.querySelector('[data-game-id="platinum-kaizo"]'),'game picker');
-    document.querySelector('[data-game-id="platinum-kaizo"]').click();
-    await wait(()=>el('trainer-select').options.length>1 && el('plan-context-dialog').open,'PK load');
-    el('trainer-select').value='platinum-kaizo-veilstone-tag-battle'; change('trainer-select');
-    const ambiguous={options:el('player-partner-select').options.length,selected:el('player-partner-select').value,beginDisabled:el('begin-plan').disabled};
-    el('trainer-select').value='platinum-kaizo-occurrence-0047'; change('trainer-select');
+    await wait(()=>document.querySelector('[data-game-id="${gameId}"]'),'game picker');
+    document.querySelector('[data-game-id="${gameId}"]').click();
+    await wait(()=>el('trainer-select').options.length>1 && el('plan-context-dialog').open,'game load');
+    const scenario=${JSON.stringify(cases[scenario] || null)};
+    let ambiguous=null, singles=null;
+    if (!scenario) {
+      el('trainer-select').value='platinum-kaizo-veilstone-tag-battle'; change('trainer-select');
+      ambiguous={options:el('player-partner-select').options.length,selected:el('player-partner-select').value,beginDisabled:el('begin-plan').disabled};
+      el('trainer-select').value='platinum-kaizo-occurrence-0047'; change('trainer-select');
+    } else {
+      el('trainer-select').value=scenario.trainer; change('trainer-select');
+      if(scenario.choice) {
+        singles={format:el('battle-format-choice').selectedOptions[0]?.text,partnerHidden:el('player-partner-panel').hidden};
+        el('battle-format-choice').value=scenario.choice;change('battle-format-choice');
+      }
+      ambiguous={options:el('player-partner-select').options.length,selected:el('player-partner-select').value,beginDisabled:el('begin-plan').disabled};
+      el('player-partner-select').value=scenario.partner;change('player-partner-select');
+    }
     const partner={id:el('player-partner-select').value,cards:el('player-partner-summary').children.length,visible:!el('player-partner-panel').hidden};
     el('context-box-select').selectedIndex=1; change('context-box-select');
     el('context-party-select').selectedIndex=1; change('context-party-select');
@@ -86,19 +106,22 @@ try {
     el('begin-plan').click();
     await wait(()=>!el('plan-context-dialog').open && document.querySelectorAll('.combatant-card').length>=4,'partner plan');
     const text=document.body.innerText;
-    return {ambiguous,partner,ready,hasChansey:text.includes('Chansey'),hasCharmeleon:text.includes('Charmeleon'),
+    return {ambiguous,singles,partner,ready,hasPartner:text.includes(scenario?.species || 'Chansey'),hasCharmeleon:text.includes('Charmeleon'),
       cards:document.querySelectorAll('.combatant-card').length,overflow:document.documentElement.scrollWidth>innerWidth};
   })()`);
-  assert.equal(result.ambiguous.options,7); assert.equal(result.ambiguous.selected,''); assert.equal(result.ambiguous.beginDisabled,true);
-  assert.deepEqual(result.partner,{id:'platinum-kaizo-trainer-0608',cards:6,visible:true});
-  assert.equal(result.ready,true); assert.equal(result.hasChansey,true); assert.equal(result.hasCharmeleon,true); assert.equal(result.overflow,false);
+  if(scenario === 'platinum-kaizo' || scenario === 'subway') {
+    assert.equal(result.ambiguous.options,7); assert.equal(result.ambiguous.selected,''); assert.equal(result.ambiguous.beginDisabled,true);
+  }
+  if(cases[scenario]?.choice) assert.deepEqual(result.singles,{format:'Singles',partnerHidden:true});
+  assert.deepEqual(result.partner,{id:cases[scenario]?.partner || 'platinum-kaizo-trainer-0608',cards:cases[scenario]?.cards || 6,visible:true});
+  assert.equal(result.ready,true); assert.equal(result.hasPartner,true); assert.equal(result.hasCharmeleon,true); assert.equal(result.overflow,false);
   await send('Page.enable');
   await delay(2000);
   for(const [name,width] of [['wide',1920],['desktop',1280],['mobile',390]]){
     await send('Emulation.setDeviceMetricsOverride',{width,height:960,deviceScaleFactor:1,mobile:false}); await delay(400);
     assert.equal(await evaluate('document.documentElement.scrollWidth>innerWidth'),false);
     const screenshot=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});
-    await fs.writeFile(path.join(temporary,`player-partner-${name}.png`),Buffer.from(screenshot.data,'base64'));
+    await fs.writeFile(path.join(temporary,`player-partner-${scenario}-${name}.png`),Buffer.from(screenshot.data,'base64'));
   }
   assert.deepEqual(errors,[]);
   console.log(JSON.stringify({status:'player-partner-browser-valid',result},null,2));

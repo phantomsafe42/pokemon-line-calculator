@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { fixtureDoublesPlan, damageAdapter } from './helpers.mjs';
-import { normalizePlayerPartnerRoster } from '../src/adapters/combatant_ingest.js';
+import { normalizePlayerPartnerRoster, normalizeTrainerRoster } from '../src/adapters/combatant_ingest.js';
 import { createPlanDocument } from '../src/core/plan.js';
 import { eligibleReserves } from '../src/core/party_ownership.js';
 import { resolveTurn, resolveForcedReplacement } from '../src/core/resolver.js';
@@ -12,6 +12,7 @@ import { projectExperience } from '../src/rulesets/vw2r_experience.js';
 import { installTrainerEncounters } from '../src/adapters/trainer_encounters.js';
 import { createDatasetContext, REQUIRED_DATASET_SOURCES } from '../src/adapters/standardized_dataset.js';
 import { recalculatePlanDocument } from '../src/core/recalculation.js';
+import { validatePlanReferences } from '../src/contracts/plan_compatibility.js';
 
 function partnered() {
   const { dataset, players, enemies } = fixtureDoublesPlan();
@@ -104,4 +105,59 @@ test('generated PK bindings load every documented partner without mixing enemy t
   const navigation = dataset.trainerGroups().flatMap(group=>group.trainers.map(trainer=>trainer.id));
   assert.ok(!navigation.includes('platinum-kaizo-trainer-0608'));
   assert.ok(!navigation.includes('platinum-kaizo-trainer-0622'));
+});
+
+function realDataset(gameId) {
+  const root = new URL(`../src/generated/datasets/${gameId}/`, import.meta.url);
+  const load = file => JSON.parse(fs.readFileSync(new URL(file,root),'utf8'));
+  const documents = Object.fromEntries(REQUIRED_DATASET_SOURCES.map(name=>[name,load(name)]));
+  return {documents, dataset:createDatasetContext({manifest:load('dataset_manifest.json'),mechanics:load('battle_mechanics.json'),documents})};
+}
+
+for (const [gameId,count] of [['renegade-platinum',24],['storm-silver',6],['volt-white-2r',10]]) {
+  test(`${gameId}: all documented partners normalize, deploy and round-trip with exact ownership`, () => {
+    const {dataset,documents} = realDataset(gameId);
+    const bindings = documents['trainer_battle_groups.json'].playerPartners.bindings;
+    assert.equal(bindings.length,count);
+    for (const binding of bindings) {
+      const enemies = normalizeTrainerRoster(binding.id,null,dataset);
+      const choices = dataset.trainerBattleChoices(binding.enemyTrainerIds[0]);
+      if (binding.formatChoice === 'single-or-double') {
+        assert.equal(choices[0].format,'singles');
+        assert.equal(choices[0].withoutPlayerPartner,true);
+        assert.ok(choices.some(choice=>choice.trainerId===binding.id && !choice.withoutPlayerPartner));
+        assert.equal(choices.some(choice=>choice.id===`unallied:${binding.id}`),binding.allowWithoutPartner);
+      } else assert.equal(choices[0].trainerId,binding.id);
+      for (const option of binding.partnerOptions) {
+        const allies = normalizePlayerPartnerRoster(option.trainerId,dataset,option.trainerVariantId || null);
+        // Synthetic user-owned lead from the same normalized species avoids
+        // injecting cross-generation fixtures into game-specific mechanics.
+        const own = structuredClone(allies[0]);
+        own.combatantKey='player:owned'; own.source={kind:'test-player'};
+        const playerPartner={trainerId:option.trainerId,trainerVariantId:option.trainerVariantId || null,bindingId:binding.id};
+        const plan = createPlanDocument({dataset,trainerId:binding.id,playerCombatants:[own,...allies],enemyCombatants:enemies,battleFormat:'doubles',playerPartner});
+        const state=plan.stateNodes[plan.initialStateNodeId];
+        assert.deepEqual(state.active.playerCombatantKeys,[own.combatantKey,allies[0].combatantKey]);
+        assert.deepEqual(plan.game.partyOwnership.enemy.slotOwnerIds,binding.enemyTrainerIds);
+        assert.deepEqual(eligibleReserves(plan,state,'player',0),[]);
+        assert.ok(eligibleReserves(plan,state,'player',1).every(mon=>mon.source.partyOwnerId===option.trainerId));
+        assert.deepEqual(parsePlan(serializePlan(plan)).game.playerPartner,playerPartner);
+        assert.equal(validatePlanReferences(plan,dataset).valid,true);
+        if(option.trainerVariantId) assert.ok(allies.every(mon=>mon.source.trainerVariantId===option.trainerVariantId));
+      }
+    }
+  });
+}
+
+test('Drayano partners never hide separately documented opponent appearances or spread by location', () => {
+  const {dataset:rp}=realDataset('renegade-platinum');
+  const rpNavigation=rp.trainerGroups().flatMap(group=>group.trainers.map(trainer=>trainer.id));
+  for(const id of [1064,1065,974,471,472,470]) assert.ok(rpNavigation.includes(`renegade-platinum-trainer-${String(id).padStart(4,'0')}`),`Opponent ${id} retained`);
+  assert.equal(rp.trainer('renegade-platinum-trainer-0390').playerPartnerBinding,undefined,'ordinary Victory Road pair has no Marley');
+  const {dataset:vw}=realDataset('volt-white-2r');
+  for(const id of [95,96,225,330,331,360,361]) assert.equal(vw.trainer(`vw2r-trainer-${String(id).padStart(4,'0')}`).playerPartnerBinding,undefined);
+  const subway=vw.trainer('nimbasa-subway-bosses-tag').playerPartnerBinding;
+  assert.equal(subway.partnerOptions.length,6);
+  assert.throws(()=>normalizePlayerPartnerRoster('vw2r-trainer-0099',vw),/variant/i);
+  assert.equal(realDataset('fire-red-omega').documents['trainer_battle_groups.json'].playerPartners,undefined);
 });

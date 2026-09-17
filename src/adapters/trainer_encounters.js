@@ -11,22 +11,32 @@ export function installTrainerEncounters(index, groupsDocument, profileId) {
       || binding.playerSlot !== 0 || binding.partnerSlot !== 1 || !binding.partnerOptions?.length
       || ![1, 2].includes(binding.enemyTrainerIds?.length)
       || binding.enemyPartyPolicy !== (binding.enemyTrainerIds.length === 2 ? 'per-trainer' : 'shared')) throw new Error(`Invalid player partner binding ${binding.id}`);
+    if (binding.formatChoice && !['double-only', 'single-or-double'].includes(binding.formatChoice)) throw new Error(`Invalid player partner format ${binding.id}`);
+    const optionIds = new Set();
     for (const option of binding.partnerOptions) {
-      if (!index.has(option.trainerId) || index.get(option.trainerId).mechanicsVariants?.length) throw new Error(`Unresolved player partner ${option.trainerId}`);
-      allyIds.add(option.trainerId);
+      const optionId = option.id || option.trainerId;
+      if (!optionId || optionIds.has(optionId)) throw new Error(`Ambiguous player partner option ${binding.id}`);
+      optionIds.add(optionId);
+      const partner = index.get(option.trainerId);
+      if (!partner || (partner.mechanicsVariants?.length && !partner.mechanicsVariants.some(variant => variant.id === option.trainerVariantId))
+        || (option.trainerVariantId && !partner.mechanicsVariants?.some(variant => variant.id === option.trainerVariantId))) throw new Error(`Unresolved player partner ${option.trainerId}`);
+      if (option.hideFromOpponentSelection !== false) allyIds.add(option.trainerId);
     }
     for (const id of binding.enemyTrainerIds) {
       const trainer = structuredClone(index.get(id));
       if (!trainer || boundEnemies.has(id)) throw new Error(`Ambiguous player partner for ${id}`);
       boundEnemies.add(id);
       trainer.playerPartnerBinding = structuredClone(binding);
-      trainer.battleProfiles = { ...trainer.battleProfiles, [profileId]: { ...trainer.battleProfiles?.[profileId], format: 'double', formatSource: `player-partner:${binding.id}` } };
+      if (binding.formatChoice !== 'single-or-double') trainer.battleProfiles = { ...trainer.battleProfiles, [profileId]: { ...trainer.battleProfiles?.[profileId], format: 'double', formatSource: `player-partner:${binding.id}` } };
       index.set(id, trainer);
     }
     if (binding.enemyTrainerIds.length === 2 && !groups[binding.id]) {
       groups[binding.id] = { id: binding.id, battleFormat: 'multi-trainer', enemyTrainerIds: binding.enemyTrainerIds,
-        enemySlotTrainerIds: binding.enemyTrainerIds, partyPolicy: 'per-trainer', formatChoice: 'double-only' };
+        enemySlotTrainerIds: binding.enemyTrainerIds, partyPolicy: 'per-trainer', formatChoice: binding.formatChoice || 'double-only' };
     }
+    if (groups[binding.id] && (groups[binding.id].formatChoice !== (binding.formatChoice || 'double-only')
+      || groups[binding.id].enemyTrainerIds?.length !== binding.enemyTrainerIds.length
+      || binding.enemyTrainerIds.some(id => !groups[binding.id].enemyTrainerIds.includes(id)))) throw new Error(`Conflicting player partner encounter ${binding.id}`);
   }
   for (const group of Object.values(groups)) {
     if (group.consumerActivation?.plc === false) continue;

@@ -1,14 +1,14 @@
-import { assertValidPlanDocument, PLAN_SCHEMA_VERSION } from "../contracts/plan_contract.js?v=20260917-player-partners-v1";
+import { assertValidPlanDocument, PLAN_SCHEMA_VERSION } from "../contracts/plan_contract.js?v=20260917-drayano-partners-v2";
 import { clone, exactRange, makeStableId, nowIso, shortHash, stableStringify, toId } from "./primitives.js?v=20260905-drafts-freecalc-partners-v1";
 import { activeKeys, battleFormat as normalizeBattleFormat, slotsPerSide } from "./battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
 import { participatingActiveEntries, participatingActiveKeys } from "../rulesets/rotation_battle.js?v=20260905-drafts-freecalc-partners-v1";
-import { createInitialExperienceState } from "../rulesets/vw2r_experience.js?v=20260917-player-partners-v1";
+import { createInitialExperienceState } from "../rulesets/vw2r_experience.js?v=20260917-drayano-partners-v2";
 import { entryAbilityEffects } from "../rulesets/switch_rules.js?v=20260907-two-turn-immunity-v1";
 import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260911-ability-storage-reimp-v1";
 import { combatantsAreAdjacent } from "../rulesets/triple_battle.js?v=20260905-drafts-freecalc-partners-v1";
 import { abilityStatStageRule, activeAbilityId } from "../rulesets/ability_rules.js?v=20260905-drafts-freecalc-partners-v1";
 import { weatherIsSuppressed } from "../rulesets/battle_rules.js?v=20260907-two-turn-immunity-v1";
-import { ABILITY_FORM_STATE_VERSION, applyCombatantFormState, desiredWeatherAbilityForm } from "../rulesets/form_rules.js?v=20260917-player-partners-v1";
+import { ABILITY_FORM_STATE_VERSION, applyCombatantFormState, desiredWeatherAbilityForm } from "../rulesets/form_rules.js?v=20260917-drayano-partners-v2";
 import { initializeAbilityKnowledge, observeAbilityEvent, entryAbilityAnnouncement } from "./ability_knowledge.js?v=20260911-ability-storage-reimp-v1";
 
 export const INITIAL_ENTRY_EFFECTS_VERSION = 2;
@@ -417,10 +417,12 @@ export function createPlanDocument({
   const format = normalizeBattleFormat(battleFormat || dataset.trainerBattleFormat?.(trainerId) || "singles");
   if (playerPartner) {
     const binding = dataset.trainer(trainerId)?.playerPartnerBinding;
-    if (format !== 'doubles' || !binding?.partnerOptions.some(option => option.trainerId === playerPartner.trainerId)) throw new Error('Invalid player partner selection');
+    if (format !== 'doubles' || !binding?.partnerOptions.some(option => option.trainerId === playerPartner.trainerId
+      && (option.trainerVariantId || null) === (playerPartner.trainerVariantId || null))) throw new Error('Invalid player partner selection');
     const owned = playerCombatants.filter(mon => !mon.source?.isPlayerPartner);
     const allied = playerCombatants.filter(mon => mon.source?.isPlayerPartner);
-    if (!owned.length || !allied.length || allied.some(mon => mon.source.partyOwnerId !== playerPartner.trainerId)) throw new Error('Invalid player partner roster');
+    if (!owned.length || !allied.length || allied.some(mon => mon.source.partyOwnerId !== playerPartner.trainerId
+      || (mon.source.trainerVariantId || null) !== (playerPartner.trainerVariantId || null))) throw new Error('Invalid player partner roster');
     playerCombatants = playerCombatants.map(mon => mon.source?.isPlayerPartner ? mon : {
       ...mon, source: { ...mon.source, partyOwnerId: 'player' }
     });

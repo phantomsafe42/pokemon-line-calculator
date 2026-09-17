@@ -398,5 +398,461 @@
         "qualification": "Field-pair choices follow documented retail simultaneous-sight versus individual-talk triggers, cross-referenced to the same paired trainers in Redux. These are not assertions from a final-ROM script disassembly. Encounter mandatory flags are unrelated and are not used to decide format choice."
       }
     }
+  },
+  "playerPartners": {
+    "schemaVersion": "trainer-player-partners/v1",
+    "bindings": [
+      {
+        "id": "castelia-sewers-plasma-tag",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "vw2r-trainer-0060",
+          "vw2r-trainer-0061"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "vw2r-trainer-0062",
+            "trainerId": "vw2r-trainer-0062",
+            "label": "Hugh · Player chose Snivy",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 278
+          },
+          {
+            "id": "vw2r-trainer-0063",
+            "trainerId": "vw2r-trainer-0063",
+            "label": "Hugh · Player chose Tepig",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 289
+          },
+          {
+            "id": "vw2r-trainer-0064",
+            "trainerId": "vw2r-trainer-0064",
+            "label": "Hugh · Player chose Oshawott",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 300
+          }
+        ],
+        "source": {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "workbookSha256": "ce91712d697b4122f66e33e2b2f49a6147f5ba9885c80c1e30ed8189651d139d",
+          "splitId": "Burgh Split",
+          "location": "Castelia City - Sewers",
+          "enemyRows": [],
+          "enemyNotes": [],
+          "rule": "explicit-documented-multi-encounter",
+          "corroborationFile": "../VW2R_Documentation/Trainer Changes.txt",
+          "corroborationSha256": "055f04dc3a2e07c9ee4acb6474e22f849506565defffdb598a9e179bed790128"
+        }
+      },
+      {
+        "id": "nimbasa-subway-bosses-tag",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "vw2r-trainer-0097",
+          "vw2r-trainer-0098"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "vw2r-trainer-0099:final-rom-trainer-360",
+            "trainerId": "vw2r-trainer-0099",
+            "trainerVariantId": "final-rom-trainer-360",
+            "label": "Rosa / Nate · Player chose Snivy · ROM team 360",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 388
+          },
+          {
+            "id": "vw2r-trainer-0099:final-rom-trainer-363",
+            "trainerId": "vw2r-trainer-0099",
+            "trainerVariantId": "final-rom-trainer-363",
+            "label": "Rosa / Nate · Player chose Snivy · ROM team 363",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 388
+          },
+          {
+            "id": "vw2r-trainer-0100:final-rom-trainer-361",
+            "trainerId": "vw2r-trainer-0100",
+            "trainerVariantId": "final-rom-trainer-361",
+            "label": "Rosa / Nate · Player chose Tepig · ROM team 361",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 399
+          },
+          {
+            "id": "vw2r-trainer-0100:final-rom-trainer-364",
+            "trainerId": "vw2r-trainer-0100",
+            "trainerVariantId": "final-rom-trainer-364",
+            "label": "Rosa / Nate · Player chose Tepig · ROM team 364",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 399
+          },
+          {
+            "id": "vw2r-trainer-0101:final-rom-trainer-362",
+            "trainerId": "vw2r-trainer-0101",
+            "trainerVariantId": "final-rom-trainer-362",
+            "label": "Rosa / Nate · Player chose Oshawott · ROM team 362",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 410
+          },
+          {
+            "id": "vw2r-trainer-0101:final-rom-trainer-365",
+            "trainerId": "vw2r-trainer-0101",
+            "trainerVariantId": "final-rom-trainer-365",
+            "label": "Rosa / Nate · Player chose Oshawott · ROM team 365",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 410
+          }
+        ],
+        "source": {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "workbookSha256": "ce91712d697b4122f66e33e2b2f49a6147f5ba9885c80c1e30ed8189651d139d",
+          "splitId": "Elesa Split",
+          "location": "Nimbasa City",
+          "enemyRows": [],
+          "enemyNotes": [],
+          "rule": "explicit-documented-multi-encounter",
+          "corroborationFile": "../VW2R_Documentation/Trainer Changes.txt",
+          "corroborationSha256": "055f04dc3a2e07c9ee4acb6474e22f849506565defffdb598a9e179bed790128"
+        }
+      },
+      {
+        "id": "frigate-first-375-374",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "vw2r-trainer-0156",
+          "vw2r-trainer-0157"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "vw2r-trainer-0158",
+            "trainerId": "vw2r-trainer-0158",
+            "label": "Cheren",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 61
+          }
+        ],
+        "source": {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "workbookSha256": "ce91712d697b4122f66e33e2b2f49a6147f5ba9885c80c1e30ed8189651d139d",
+          "splitId": "Skyla Split",
+          "location": "Plasma Frigate",
+          "enemyRows": [],
+          "enemyNotes": [],
+          "rule": "explicit-documented-multi-encounter",
+          "corroborationFile": "../VW2R_Documentation/Trainer Changes.txt",
+          "corroborationSha256": "055f04dc3a2e07c9ee4acb6474e22f849506565defffdb598a9e179bed790128"
+        }
+      },
+      {
+        "id": "frigate-first-377-376",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "vw2r-trainer-0159",
+          "vw2r-trainer-0160"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "vw2r-trainer-0161",
+            "trainerId": "vw2r-trainer-0161",
+            "label": "Hugh · Player chose Snivy",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 94
+          },
+          {
+            "id": "vw2r-trainer-0162",
+            "trainerId": "vw2r-trainer-0162",
+            "label": "Hugh · Player chose Tepig",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 105
+          },
+          {
+            "id": "vw2r-trainer-0163",
+            "trainerId": "vw2r-trainer-0163",
+            "label": "Hugh · Player chose Oshawott",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 116
+          }
+        ],
+        "source": {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "workbookSha256": "ce91712d697b4122f66e33e2b2f49a6147f5ba9885c80c1e30ed8189651d139d",
+          "splitId": "Skyla Split",
+          "location": "Plasma Frigate",
+          "enemyRows": [],
+          "enemyNotes": [],
+          "rule": "explicit-documented-multi-encounter",
+          "corroborationFile": "../VW2R_Documentation/Trainer Changes.txt",
+          "corroborationSha256": "055f04dc3a2e07c9ee4acb6474e22f849506565defffdb598a9e179bed790128"
+        }
+      },
+      {
+        "id": "reversal-kiyo-markus",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "vw2r-trainer-0226",
+          "vw2r-trainer-0227"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "vw2r-trainer-0235",
+            "trainerId": "vw2r-trainer-0235",
+            "label": "Bianca",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 174
+          }
+        ],
+        "source": {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "workbookSha256": "ce91712d697b4122f66e33e2b2f49a6147f5ba9885c80c1e30ed8189651d139d",
+          "splitId": "Drayden Split",
+          "location": "Reversal Mountain - Main Area",
+          "enemyRows": [],
+          "enemyNotes": [],
+          "rule": "explicit-documented-multi-encounter",
+          "corroborationFile": "../VW2R_Documentation/Trainer Changes.txt",
+          "corroborationSha256": "055f04dc3a2e07c9ee4acb6474e22f849506565defffdb598a9e179bed790128"
+        }
+      },
+      {
+        "id": "reversal-jared-kumiko",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "vw2r-trainer-0230",
+          "vw2r-trainer-0231"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "vw2r-trainer-0235",
+            "trainerId": "vw2r-trainer-0235",
+            "label": "Bianca",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 174
+          }
+        ],
+        "source": {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "workbookSha256": "ce91712d697b4122f66e33e2b2f49a6147f5ba9885c80c1e30ed8189651d139d",
+          "splitId": "Drayden Split",
+          "location": "Reversal Mountain - Main Area",
+          "enemyRows": [],
+          "enemyNotes": [],
+          "rule": "explicit-documented-multi-encounter",
+          "corroborationFile": "../VW2R_Documentation/Trainer Changes.txt",
+          "corroborationSha256": "055f04dc3a2e07c9ee4acb6474e22f849506565defffdb598a9e179bed790128"
+        }
+      },
+      {
+        "id": "reversal-ray-cora",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "vw2r-trainer-0233",
+          "vw2r-trainer-0234"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "vw2r-trainer-0235",
+            "trainerId": "vw2r-trainer-0235",
+            "label": "Bianca",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 174
+          }
+        ],
+        "source": {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "workbookSha256": "ce91712d697b4122f66e33e2b2f49a6147f5ba9885c80c1e30ed8189651d139d",
+          "splitId": "Drayden Split",
+          "location": "Reversal Mountain - Main Area",
+          "enemyRows": [],
+          "enemyNotes": [],
+          "rule": "explicit-documented-multi-encounter",
+          "corroborationFile": "../VW2R_Documentation/Trainer Changes.txt",
+          "corroborationSha256": "055f04dc3a2e07c9ee4acb6474e22f849506565defffdb598a9e179bed790128"
+        }
+      },
+      {
+        "id": "lacunosa-zinzolin-grunt",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "vw2r-trainer-0270",
+          "vw2r-trainer-0271"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "vw2r-trainer-0272",
+            "trainerId": "vw2r-trainer-0272",
+            "label": "Hugh · Player chose Snivy",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 588
+          },
+          {
+            "id": "vw2r-trainer-0273",
+            "trainerId": "vw2r-trainer-0273",
+            "label": "Hugh · Player chose Tepig",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 599
+          },
+          {
+            "id": "vw2r-trainer-0274",
+            "trainerId": "vw2r-trainer-0274",
+            "label": "Hugh · Player chose Oshawott",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 610
+          }
+        ],
+        "source": {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "workbookSha256": "ce91712d697b4122f66e33e2b2f49a6147f5ba9885c80c1e30ed8189651d139d",
+          "splitId": "Drayden Split",
+          "location": "Lacunosa Town",
+          "enemyRows": [],
+          "enemyNotes": [],
+          "rule": "explicit-documented-multi-encounter",
+          "corroborationFile": "../VW2R_Documentation/Trainer Changes.txt",
+          "corroborationSha256": "055f04dc3a2e07c9ee4acb6474e22f849506565defffdb598a9e179bed790128"
+        }
+      },
+      {
+        "id": "frigate-second-798-799",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "vw2r-trainer-0340",
+          "vw2r-trainer-0341"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "vw2r-trainer-0342",
+            "trainerId": "vw2r-trainer-0342",
+            "label": "Hugh · Player chose Snivy",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 50
+          },
+          {
+            "id": "vw2r-trainer-0343",
+            "trainerId": "vw2r-trainer-0343",
+            "label": "Hugh · Player chose Tepig",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 61
+          },
+          {
+            "id": "vw2r-trainer-0344",
+            "trainerId": "vw2r-trainer-0344",
+            "label": "Hugh · Player chose Oshawott",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 72
+          }
+        ],
+        "source": {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "workbookSha256": "ce91712d697b4122f66e33e2b2f49a6147f5ba9885c80c1e30ed8189651d139d",
+          "splitId": "Ghetsis Split",
+          "location": "Plasma Frigate - Deck",
+          "enemyRows": [],
+          "enemyNotes": [],
+          "rule": "explicit-documented-multi-encounter",
+          "corroborationFile": "../VW2R_Documentation/Trainer Changes.txt",
+          "corroborationSha256": "055f04dc3a2e07c9ee4acb6474e22f849506565defffdb598a9e179bed790128"
+        }
+      },
+      {
+        "id": "frigate-zinzolin-grunt",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "vw2r-trainer-0354",
+          "vw2r-trainer-0355"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "vw2r-trainer-0356",
+            "trainerId": "vw2r-trainer-0356",
+            "label": "Hugh · Player chose Snivy",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 209
+          },
+          {
+            "id": "vw2r-trainer-0357",
+            "trainerId": "vw2r-trainer-0357",
+            "label": "Hugh · Player chose Tepig",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 220
+          },
+          {
+            "id": "vw2r-trainer-0358",
+            "trainerId": "vw2r-trainer-0358",
+            "label": "Hugh · Player chose Oshawott",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 231
+          }
+        ],
+        "source": {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "workbookSha256": "ce91712d697b4122f66e33e2b2f49a6147f5ba9885c80c1e30ed8189651d139d",
+          "splitId": "Ghetsis Split",
+          "location": "Plasma Frigate - Kyurem's Containment Room",
+          "enemyRows": [],
+          "enemyNotes": [],
+          "rule": "explicit-documented-multi-encounter",
+          "corroborationFile": "../VW2R_Documentation/Trainer Changes.txt",
+          "corroborationSha256": "055f04dc3a2e07c9ee4acb6474e22f849506565defffdb598a9e179bed790128"
+        }
+      }
+    ]
   }
 }

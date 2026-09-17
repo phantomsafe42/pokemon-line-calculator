@@ -413,6 +413,9 @@ export function validatePlanDocument(plan, options = {}) {
         if (mon.source?.partyOwnerId !== (mon.source?.isPlayerPartner ? partnerId : 'player')) {
           issue(issues, '$.combatants', 'player and allied partner rosters must retain their ownership');
         }
+        if (mon.source?.isPlayerPartner && (mon.source.trainerVariantId || null) !== (plan.game.playerPartner.trainerVariantId || null)) {
+          issue(issues, '$.combatants', 'allied partner rosters must retain their exact trainer variant');
+        }
       }
     }
   }
