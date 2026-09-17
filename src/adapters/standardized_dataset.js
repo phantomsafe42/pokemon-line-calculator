@@ -1,6 +1,6 @@
 import { canonicalStats, shortHash, stableStringify, toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
-import { installTrainerEncounters, encounterNavigation } from './trainer_encounters.js?v=20260905-drafts-freecalc-partners-v1';
-import { readDatasetJsonFiles } from "./hosted_dataset.js?v=20260914-hosted-datasets-v3";
+import { installTrainerEncounters, encounterNavigation } from './trainer_encounters.js?v=20260917-paired-trainer-navigation-v1';
+import { readDatasetJsonFiles } from "./hosted_dataset.js?v=20260917-paired-trainer-release-v2";
 
 export const BATTLE_DATASET_SOURCES = Object.freeze([
   "species.json",
@@ -123,7 +123,10 @@ function trainerNavigationGroups(trainerIndex, orderDocument, progressionDocumen
         && Number(entry.order) >= Number(split.firstOrder)
         && Number(entry.order) <= Number(split.lastOrder)
       ))
-      .map(entry => trainerIndex.get(String(entry.trainerId)))
+      .flatMap(entry => (Array.isArray(entry.participantTrainerIds) && entry.participantTrainerIds.length
+        ? entry.participantTrainerIds
+        : [entry.trainerId]
+      ).map(trainerId => trainerIndex.get(String(trainerId))))
       .filter(Boolean);
     for (const trainer of trainers) seen.add(String(trainer.id));
     const label = String(split.label || split.id);
@@ -146,6 +149,16 @@ function trainerNavigationGroups(trainerIndex, orderDocument, progressionDocumen
     .sort((a, b) => String(a.displayName || a.name || a.id).localeCompare(String(b.displayName || b.name || b.id)));
   if (ungrouped.length) groups.push({ id: "other", label: "Other Battles", levelCap: null, firstOrder: null, lastOrder: null, trainers: ungrouped });
   return groups;
+}
+
+function uniqueTrainers(trainers = []) {
+  const seen = new Set();
+  return trainers.filter(trainer => {
+    const id = String(trainer?.id || "");
+    if (!id || seen.has(id)) return false;
+    seen.add(id);
+    return true;
+  });
 }
 
 export function trainerBattleFormat(trainer, mechanics) {
@@ -267,12 +280,54 @@ export function createDatasetContext({ manifest, mechanics, documents }) {
     trainerBattleChoices(trainerId) {
       const trainer = this.trainer(trainerId);
       if (!trainer) return [];
+      if (trainer.encounter) return [{
+        id: `multi:${trainer.id}`,
+        trainerId: trainer.id,
+        format: 'doubles',
+        battleKind: 'multi',
+        label: 'Multi',
+        locked: true
+      }];
       const paired = encounters.byMember.get(trainer.id);
-      if (paired?.encounter.formatChoice === 'single-or-double') return [
-        { trainerId: trainer.id, format: 'singles', label: 'Singles' },
-        { trainerId: paired.id, format: 'doubles', label: `Doubles · ${paired.displayName}` }
+      if (paired?.encounter.formatChoice === 'single-or-double') {
+        const defaultPartnerTrainerId = paired.encounter.enemyTrainerIds.find(id => String(id) !== String(trainer.id)) || null;
+        return [
+          { id: `singles:${trainer.id}`, trainerId: trainer.id, format: 'singles', battleKind: 'single', label: 'Singles' },
+          { id: `doubles:${trainer.id}`, trainerId: trainer.id, format: 'doubles', battleKind: 'double', label: 'Doubles' },
+          { id: `multi:${trainer.id}`, trainerId: trainer.id, format: 'doubles', battleKind: 'multi', label: 'Multi', requiresPartner: true, defaultPartnerTrainerId }
+        ];
+      }
+      if (paired?.encounter.formatChoice === 'double-only') return [
+        { id: `multi:${paired.id}`, trainerId: paired.id, format: 'doubles', battleKind: 'multi', label: 'Multi', locked: true }
       ];
-      return [{ trainerId: trainer.id, format: this.trainerBattleFormat(trainer.id) }];
+      const format = this.trainerBattleFormat(trainer.id);
+      if (format !== 'singles') return [{
+        id: `${format}:${trainer.id}`,
+        trainerId: trainer.id,
+        format,
+        battleKind: format === 'doubles' ? 'double' : format,
+        label: format === 'rotation' ? 'Rotation' : format === 'triples' ? 'Triples' : 'Doubles',
+        locked: true
+      }];
+      return [
+        { id: `singles:${trainer.id}`, trainerId: trainer.id, format: 'singles', battleKind: 'single', label: 'Singles' },
+        { id: `doubles:${trainer.id}`, trainerId: trainer.id, format: 'doubles', battleKind: 'double', label: 'Doubles' },
+        { id: `multi:${trainer.id}`, trainerId: trainer.id, format: 'doubles', battleKind: 'multi', label: 'Multi', requiresPartner: true }
+      ];
+    },
+    trainerPartnerGroups(trainerId) {
+      const selectedId = String(trainerId || '');
+      const sourceGroups = trainerNavigationGroups(indexes.trainers, loaded["trainer_order.json"], loaded["progression.json"]);
+      const selectedGroupId = sourceGroups.find(group => group.trainers.some(trainer => String(trainer.id) === selectedId))?.id;
+      const groups = sourceGroups
+        .map(group => ({
+          ...group,
+          trainers: uniqueTrainers(group.trainers).filter(trainer => String(trainer.id) !== selectedId && !encounters.syntheticIds.has(trainer.id))
+        }))
+        .filter(group => group.trainers.length || String(group.id) === String(selectedGroupId));
+      const selectedGroupIndex = groups.findIndex(group => String(group.id) === String(selectedGroupId));
+      if (selectedGroupIndex <= 0) return groups;
+      return [groups[selectedGroupIndex], ...groups.slice(0, selectedGroupIndex), ...groups.slice(selectedGroupIndex + 1)];
     },
     trainerGroups() {
       const groups = trainerNavigationGroups(indexes.trainers, loaded["trainer_order.json"], loaded["progression.json"]);

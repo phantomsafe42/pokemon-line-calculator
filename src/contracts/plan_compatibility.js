@@ -11,11 +11,15 @@ export class PlanCompatibilityError extends Error {
 
 export function validatePlanReferences(plan, dataset, { throwOnError = true } = {}) {
   const issues = [];
-  const trainer = dataset.trainer(plan.game.trainerId);
-  if (!trainer) issues.push(`Trainer ${plan.game.trainerId} is unavailable in ${dataset.gameId}`);
-  else {
+  const trainerIds = plan.game.enemyTrainerIds?.length ? plan.game.enemyTrainerIds : [plan.game.trainerId];
+  for (const [index, trainerId] of trainerIds.entries()) {
+    const trainer = dataset.trainer(trainerId);
+    if (!trainer) {
+      issues.push(`Trainer ${trainerId} is unavailable in ${dataset.gameId}`);
+      continue;
+    }
     try {
-      dataset.trainerTeam(plan.game.trainerId, plan.game.trainerVariantId);
+      dataset.trainerTeam(trainerId, plan.game.enemyTrainerVariantIds?.[index] ?? (index === 0 ? plan.game.trainerVariantId : null));
     } catch (error) {
       issues.push(error.message);
     }

@@ -4,12 +4,13 @@ import path from "node:path";
 import test from "node:test";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
-import { normalizePlayerCollection, normalizeTrainerRoster, snapshotFingerprint } from "../src/adapters/combatant_ingest.js";
+import { normalizeMultiTrainerRoster, normalizePlayerCollection, normalizeTrainerRoster, snapshotFingerprint } from "../src/adapters/combatant_ingest.js";
 import { createSharedDamageAdapter } from "../src/adapters/shared_damage_adapter.js";
 import { pokemonAssetAppearanceId, pokemonAssetQuery } from "../src/adapters/pokemon_assets.js";
 import { createDatasetContext, REQUIRED_DATASET_SOURCES } from "../src/adapters/standardized_dataset.js";
 import { createPlanDocument } from "../src/core/plan.js";
 import { previewTurn } from "../src/core/planner.js";
+import { recalculatePlanDocument } from "../src/core/recalculation.js";
 import { effectiveActionSpeed } from "../src/rulesets/action_order.js";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -124,6 +125,49 @@ test("Dataset Lenora and Hawes pairing preserves source records and leads", () =
   assert.deepEqual(normalizeTrainerRoster(id, null, dataset).map(mon => mon.speciesId), ["stoutland", "gigalith", "unfezant", "machamp"]);
   assert.equal(dataset.documents["trainers.json"].records["vw2r-trainer-0095"].battleProfiles.challenge.format, "single");
   assert.equal(dataset.trainerGroups().find(group => group.id === "elesa").trainers.filter(trainer => trainer.id === id).length, 1);
+});
+
+test("ordinary trainers offer Singles, shared-party Doubles, and user-defined Multi", async () => {
+  const dataset = loadVw2rDataset();
+  const primaryId = "vw2r-trainer-0050";
+  const partnerId = "vw2r-trainer-0039";
+  const choices = dataset.trainerBattleChoices(primaryId);
+  assert.deepEqual(choices.map(choice => choice.label), ["Singles", "Doubles", "Multi"]);
+  assert.equal(choices[2].requiresPartner, true);
+  const partnerGroups = dataset.trainerPartnerGroups(primaryId);
+  assert.equal(partnerGroups[0].id, "burgh");
+  assert.ok(partnerGroups[0].trainers.some(trainer => trainer.id === partnerId));
+
+  const enemies = normalizeMultiTrainerRoster([
+    { trainerId: primaryId, trainerVariantId: null },
+    { trainerId: partnerId, trainerVariantId: null }
+  ], dataset);
+  assert.deepEqual(enemies.slice(0, 2).map(mon => mon.source.partyOwnerId), [primaryId, partnerId]);
+  const stats = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31 };
+  const evs = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0 };
+  const players = normalizePlayerCollection({ party: [
+    { uniqueKey: "multi-player-a", speciesId: "clefairy", level: 30, nature: "Hardy", ability: "Cute Charm", ivs: stats, evs, moves: ["Tackle"] },
+    { uniqueKey: "multi-player-b", speciesId: "golduck", level: 30, nature: "Hardy", ability: "Cloud Nine", ivs: stats, evs, moves: ["Water Gun"] }
+  ] }, dataset);
+  const plan = createPlanDocument({
+    name: "Manual Multi",
+    dataset,
+    trainerId: primaryId,
+    playerCombatants: players,
+    enemyCombatants: enemies,
+    battleFormat: "doubles",
+    encounterType: "multi",
+    enemyTrainerIds: [primaryId, partnerId],
+    enemyTrainerVariantIds: [null, null],
+    enemyTrainerDisplayName: "School Kid Neil & Harlequin Paul",
+    enemyPartyOwnership: { policy: "per-trainer", slotOwnerIds: [primaryId, partnerId] },
+    sourceSnapshot: snapshotFingerprint(players, enemies, "fixture")
+  });
+  assert.deepEqual(plan.game.partyOwnership.enemy.slotOwnerIds, [primaryId, partnerId]);
+  assert.deepEqual(plan.stateNodes[plan.initialStateNodeId].active.enemyCombatantKeys, enemies.slice(0, 2).map(mon => mon.combatantKey));
+  const rebuilt = await recalculatePlanDocument(plan, { dataset, previewTurnFn: () => { throw new Error("No turns should replay"); } });
+  assert.deepEqual(rebuilt.game.enemyTrainerIds, [primaryId, partnerId]);
+  assert.deepEqual(rebuilt.game.partyOwnership.enemy.slotOwnerIds, [primaryId, partnerId]);
 });
 
 test("VW2R standardized sources drive a complete PLC move preview through the shared calculator", () => {

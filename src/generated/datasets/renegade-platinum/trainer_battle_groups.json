@@ -11,6 +11,15 @@
         "renegade-platinum-trainer-0835",
         "renegade-platinum-trainer-0836"
       ],
+      "enemySlotTrainerIds": [
+        "renegade-platinum-trainer-0835",
+        "renegade-platinum-trainer-0836"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "RP_Trainer_Battles.xlsx",
         "sheet": "Byron Split",
@@ -30,6 +39,15 @@
         "renegade-platinum-trainer-0419",
         "renegade-platinum-trainer-0426"
       ],
+      "enemySlotTrainerIds": [
+        "renegade-platinum-trainer-0419",
+        "renegade-platinum-trainer-0426"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "RP_Trainer_Battles.xlsx",
         "sheet": "Candice Split",
@@ -49,6 +67,15 @@
         "renegade-platinum-trainer-0420",
         "renegade-platinum-trainer-0427"
       ],
+      "enemySlotTrainerIds": [
+        "renegade-platinum-trainer-0420",
+        "renegade-platinum-trainer-0427"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "single-or-double",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "RP_Trainer_Battles.xlsx",
         "sheet": "Candice Split",
@@ -68,6 +95,15 @@
         "renegade-platinum-trainer-0513",
         "renegade-platinum-trainer-0430"
       ],
+      "enemySlotTrainerIds": [
+        "renegade-platinum-trainer-0513",
+        "renegade-platinum-trainer-0430"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "single-or-double",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "RP_Trainer_Battles.xlsx",
         "sheet": "Volkner Split",
@@ -87,6 +123,15 @@
         "renegade-platinum-trainer-0522",
         "renegade-platinum-trainer-0514"
       ],
+      "enemySlotTrainerIds": [
+        "renegade-platinum-trainer-0522",
+        "renegade-platinum-trainer-0514"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "single-or-double",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "RP_Trainer_Battles.xlsx",
         "sheet": "Volkner Split",
@@ -106,6 +151,15 @@
         "renegade-platinum-trainer-0527",
         "renegade-platinum-trainer-0521"
       ],
+      "enemySlotTrainerIds": [
+        "renegade-platinum-trainer-0527",
+        "renegade-platinum-trainer-0521"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "consumerActivation": {
+        "plc": true
+      },
       "source": {
         "workbook": "RP_Trainer_Battles.xlsx",
         "sheet": "Volkner Split",

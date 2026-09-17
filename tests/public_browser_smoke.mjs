@@ -279,6 +279,33 @@ try {
     document.querySelector('.game-picker-option[data-game-id="volt-white-2r"]').click();
     await wait(() => /is ready\./.test(document.getElementById('app-status')?.textContent || '')
       && document.getElementById('trainer-select').options.length > 400, 'public game data, AI bootstrap, and resolver');
+    await wait(() => document.getElementById('plan-context-dialog').open, 'VW2R clean-plan dialog');
+    const vw2rTrainerSelect = document.getElementById('trainer-select');
+    const neilOption = [...vw2rTrainerSelect.options].find(entry => entry.textContent.startsWith('School Kid Neil ·'));
+    if (!neilOption) throw new Error('School Kid Neil is unavailable for encounter-format validation');
+    vw2rTrainerSelect.value = neilOption.value;
+    vw2rTrainerSelect.dispatchEvent(new Event('change', { bubbles: true }));
+    const battleFormatChoice = document.getElementById('battle-format-choice');
+    await wait(() => !battleFormatChoice.hidden && battleFormatChoice.options.length === 3, 'ordinary trainer format choices');
+    battleFormatChoice.value = [...battleFormatChoice.options].find(entry => entry.textContent === 'Multi').value;
+    battleFormatChoice.dispatchEvent(new Event('change', { bubbles: true }));
+    const partnerField = document.getElementById('partner-trainer-field');
+    const partnerSelect = document.getElementById('partner-trainer-select');
+    await wait(() => !partnerField.hidden && partnerSelect.options.length > 1, 'same-split partner choices');
+    const sameSplitPartnerCount = partnerSelect.options.length - 1;
+    document.getElementById('partner-trainer-scope').click();
+    await wait(() => !document.getElementById('partner-trainer-search-field').hidden
+      && partnerSelect.options.length > sameSplitPartnerCount + 1, 'full-game partner choices');
+    const partnerSearch = document.getElementById('partner-trainer-search');
+    partnerSearch.value = 'Lenora';
+    partnerSearch.dispatchEvent(new Event('input', { bubbles: true }));
+    await wait(() => [...partnerSelect.options].some(entry => /Lenora/i.test(entry.textContent)), 'full-game partner search');
+    const encounterFormats = {
+      choices: [...battleFormatChoice.options].map(entry => entry.textContent),
+      sameSplitPartnerCount,
+      searchedPartners: [...partnerSelect.options].slice(1).map(entry => entry.textContent),
+      partnerHeading: partnerField.querySelector('h3')?.textContent
+    };
     if (document.getElementById('plan-context-dialog').open) document.getElementById('plan-context-dialog').close();
     const assetResolver = globalThis.PokemonAssetGateway.createClient();
     const sprite = document.createElement('img');
@@ -292,6 +319,7 @@ try {
       newGameLabel: document.getElementById('new-game').textContent,
       dropdownPresent: Boolean(document.getElementById('game-select')),
       vanilla,
+      encounterFormats,
       spriteLoaded: spriteResult.status === 'ok' && sprite.naturalWidth > 0,
       assetApiVersion: assetResolver.apiVersion,
       assetOrigin: assetResolver.origin,
@@ -336,6 +364,10 @@ try {
   })()`, true);
 
   assert.equal(state.profile, "public");
+  assert.deepEqual(state.encounterFormats.choices, ["Singles", "Doubles", "Multi"]);
+  assert.ok(state.encounterFormats.sameSplitPartnerCount > 0);
+  assert.ok(state.encounterFormats.searchedPartners.every(label => /Lenora/i.test(label)));
+  assert.equal(state.encounterFormats.partnerHeading, "Opponent Partner");
   const gameOptionById = new Map(state.gameOptions.map(option => [option.value, option]));
   assert.deepEqual(
     vanillaGameOptions.map(([gameId]) => [gameId, gameOptionById.get(gameId)?.label]),

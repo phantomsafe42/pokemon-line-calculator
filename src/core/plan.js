@@ -404,6 +404,11 @@ export function createPlanDocument({
   playerActiveKeys = null,
   enemyActiveKeys = null,
   battleFormat = null,
+  encounterType = null,
+  enemyTrainerIds = null,
+  enemyTrainerVariantIds = null,
+  enemyTrainerDisplayName = null,
+  enemyPartyOwnership = null,
   sourceSnapshot,
   initialConditions = {},
   now = nowIso()
@@ -429,7 +434,14 @@ export function createPlanDocument({
     root.displaySnapshot.player = root.displaySnapshot.players[0];
     root.displaySnapshot.enemy = root.displaySnapshot.enemies[0];
   }
-  const identity = { gameId: dataset.gameId, trainerId, trainerVariantId, sourceSnapshot };
+  const trainer = dataset.trainer(trainerId);
+  const encounter = trainer?.encounter;
+  const resolvedEnemyTrainerIds = enemyTrainerIds || encounter?.enemyTrainerIds || null;
+  const resolvedOwnership = enemyPartyOwnership || (encounter ? {
+    policy: 'per-trainer',
+    slotOwnerIds: [...(encounter.enemySlotTrainerIds || encounter.enemyTrainerIds)]
+  } : null);
+  const identity = { gameId: dataset.gameId, trainerId, trainerVariantId, enemyTrainerIds: resolvedEnemyTrainerIds, sourceSnapshot };
   const plan = {
     kind: "pokemon-battle-plan",
     schemaVersion: format === "rotation" ? PLAN_SCHEMA_VERSION : format === "triples" ? 3 : 2,
@@ -438,8 +450,17 @@ export function createPlanDocument({
     createdAt: now,
     updatedAt: now,
     documentRevision: 0,
-    game: { gameId: dataset.gameId, battleFormat: format, trainerId, trainerVariantId,
-      ...(dataset.trainer(trainerId)?.encounter ? { partyOwnership: { enemy: { policy: 'per-trainer', slotOwnerIds: [...(dataset.trainer(trainerId).encounter.enemySlotTrainerIds || dataset.trainer(trainerId).encounter.enemyTrainerIds)] } } } : {}) },
+    game: {
+      gameId: dataset.gameId,
+      battleFormat: format,
+      trainerId,
+      trainerVariantId,
+      ...(encounterType ? { encounterType } : {}),
+      ...(resolvedEnemyTrainerIds ? { enemyTrainerIds: [...resolvedEnemyTrainerIds] } : {}),
+      ...(enemyTrainerVariantIds ? { enemyTrainerVariantIds: [...enemyTrainerVariantIds] } : {}),
+      ...(enemyTrainerDisplayName ? { enemyTrainerDisplayName } : {}),
+      ...(resolvedOwnership ? { partyOwnership: { enemy: clone(resolvedOwnership) } } : {})
+    },
     mechanicsFingerprint: currentMechanicsFingerprint(dataset),
     sourceSnapshot: clone(sourceSnapshot || {}),
     combatants,

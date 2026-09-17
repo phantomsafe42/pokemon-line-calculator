@@ -7,7 +7,7 @@
   <meta name="pokemon-asset-release-base" content="/Datasets/Pokemon%20Assets/release">
   <title>Pokémon Line Calculator</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./styles.css?v=20260912-game-selection-v5">
+  <link rel="stylesheet" href="./styles.css?v=20260917-paired-trainer-release-v2">
 </head>
 <body>
   <header class="app-header">
@@ -190,7 +190,7 @@
         </label>
         <label>Battle format
           <input id="battle-format" value="Select a trainer" readonly>
-          <select id="battle-format-choice" hidden aria-label="Fight as Singles or Doubles"></select>
+          <select id="battle-format-choice" hidden aria-label="Select battle format"></select>
         </label>
         <label id="variant-field" hidden>ROM trainer variant
           <select id="variant-select"></select>
@@ -209,6 +209,24 @@
           </select>
         </label>
       </div>
+
+      <section id="partner-trainer-field" class="party-selector-panel encounter-partner-panel" hidden>
+        <div class="section-heading compact-heading">
+          <div><h3>Opponent Partner</h3></div>
+          <button id="partner-trainer-scope" type="button" class="secondary">Search All Trainers</button>
+        </div>
+        <div class="context-grid">
+          <label>Trainer
+            <select id="partner-trainer-select"><option value="">Select partner…</option></select>
+          </label>
+          <label id="partner-trainer-search-field" hidden>Search
+            <input id="partner-trainer-search" type="search" placeholder="Search trainer or Pokémon" autocomplete="off">
+          </label>
+          <label id="partner-variant-field" hidden>Partner ROM trainer variant
+            <select id="partner-variant-select"></select>
+          </label>
+        </div>
+      </section>
 
       <section id="enemy-team-panel" class="party-selector-panel">
         <div class="section-heading compact-heading">
@@ -315,6 +333,6 @@
   </dialog>
 
   <script src="./src/generated/pokemon_asset_resolver.global.js?v=20260914-assets-v4"></script>
-  <script type="module" src="./src/app.js?v=20260916-clean-plan-title-v1"></script>
+  <script type="module" src="./src/app.js?v=20260917-paired-trainer-release-v2"></script>
 </body>
 </html>
