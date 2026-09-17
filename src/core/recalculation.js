@@ -4,16 +4,17 @@ import { commitForcedReplacement, commitPreview, previewForcedReplacement } from
 import { updateStateHash, upgradeInitialEntryEffects } from "./plan.js?v=20260911-ability-storage-reimp-v1";
 import { addFreeCalcBranch } from './free_calc.js?v=20260905-drafts-freecalc-partners-v1';
 import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260911-ability-storage-reimp-v1";
-import { calculateStats, normalizeTrainerRoster } from "../adapters/combatant_ingest.js?v=20260909-level-drift-v1";
+import { calculateStats, normalizeMultiTrainerRoster, normalizeTrainerRoster } from "../adapters/combatant_ingest.js?v=20260917-encounter-format-v1";
 
-function runtimeTrainerInputs(plan) {
+function runtimeTrainerInputs(plan, trainerId = null) {
   const inputs = {
     highestPlayerPartyLevel: Math.max(1, ...Object.values(plan.combatants || {})
       .filter(combatant => combatant.side === "player")
       .map(combatant => Number(combatant.level) || 1))
   };
-  for (const combatant of Object.values(plan.combatants || {}).filter(entry => entry.side === "enemy")) {
-    const slot = Number(combatant.source?.encounterSlot ?? combatant.source?.trainerSlot);
+  for (const combatant of Object.values(plan.combatants || {}).filter(entry => entry.side === "enemy"
+    && (!trainerId || String(entry.source?.trainerId) === String(trainerId)))) {
+    const slot = Number(combatant.source?.trainerSlot ?? combatant.source?.encounterSlot);
     if (!Number.isInteger(slot) || slot < 1) continue;
     inputs[String(slot)] = {
       nature: combatant.natureId,
@@ -37,12 +38,20 @@ function refreshRootHp(state, previousMaximum, nextMaximum) {
 }
 
 function refreshDatasetDerivedStats(original, dataset) {
-  const normalized = normalizeTrainerRoster(
-    original.game.trainerId,
-    original.game.trainerVariantId,
-    dataset,
-    runtimeTrainerInputs(original)
-  );
+  const manualMulti = original.game.encounterType === "multi"
+    && original.game.enemyTrainerIds?.length === 2
+    && !dataset.trainer(original.game.trainerId)?.encounter;
+  const normalized = manualMulti
+    ? normalizeMultiTrainerRoster(original.game.enemyTrainerIds.map((trainerId, index) => ({
+      trainerId,
+      trainerVariantId: original.game.enemyTrainerVariantIds?.[index] ?? null
+    })), dataset, Object.fromEntries(original.game.enemyTrainerIds.map(trainerId => [trainerId, runtimeTrainerInputs(original, trainerId)])))
+    : normalizeTrainerRoster(
+      original.game.trainerId,
+      original.game.trainerVariantId,
+      dataset,
+      runtimeTrainerInputs(original)
+    );
   const next = clone(original);
   const root = next.stateNodes[next.initialStateNodeId];
   for (const fresh of normalized) {

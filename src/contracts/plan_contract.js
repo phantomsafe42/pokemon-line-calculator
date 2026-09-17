@@ -379,6 +379,23 @@ export function validatePlanDocument(plan, options = {}) {
     if (Number(plan.schemaVersion) < 3 && plan.game.battleFormat === "triples") issue(issues, "$.game.battleFormat", "Triple Battles require schema version 3");
     if (Number(plan.schemaVersion) < 4 && plan.game.battleFormat === "rotation") issue(issues, "$.game.battleFormat", "Rotation Battles require schema version 4");
     if (!["string", "number"].includes(typeof plan.game.trainerId)) issue(issues, "$.game.trainerId", "must be a trainer ID");
+    if (plan.game.encounterType !== undefined && !["single", "double", "multi", "triples", "rotation"].includes(plan.game.encounterType)) {
+      issue(issues, "$.game.encounterType", "must identify a supported encounter type");
+    }
+    if (plan.game.enemyTrainerIds !== undefined) {
+      if (!Array.isArray(plan.game.enemyTrainerIds) || ![1, 2].includes(plan.game.enemyTrainerIds.length)
+        || new Set(plan.game.enemyTrainerIds.map(String)).size !== plan.game.enemyTrainerIds.length
+        || plan.game.enemyTrainerIds.some(id => !["string", "number"].includes(typeof id))) {
+        issue(issues, "$.game.enemyTrainerIds", "must contain one or two distinct trainer IDs");
+      }
+    }
+    if (plan.game.enemyTrainerVariantIds !== undefined && (!Array.isArray(plan.game.enemyTrainerVariantIds)
+      || plan.game.enemyTrainerVariantIds.length !== plan.game.enemyTrainerIds?.length)) {
+      issue(issues, "$.game.enemyTrainerVariantIds", "must align with enemyTrainerIds");
+    }
+    if (plan.game.encounterType === "multi" && (plan.game.battleFormat !== "doubles" || plan.game.enemyTrainerIds?.length !== 2)) {
+      issue(issues, "$.game.encounterType", "Multi encounters require Doubles and two enemy trainers");
+    }
     for (const [side, ownership] of Object.entries(plan.game.partyOwnership || {})) {
       const ids = ownership?.slotOwnerIds;
       if (!['player', 'enemy'].includes(side) || plan.game.battleFormat !== 'doubles' || ownership?.policy !== 'per-trainer'

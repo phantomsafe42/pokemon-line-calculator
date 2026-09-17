@@ -151,6 +151,16 @@ function trainerNavigationGroups(trainerIndex, orderDocument, progressionDocumen
   return groups;
 }
 
+function uniqueTrainers(trainers = []) {
+  const seen = new Set();
+  return trainers.filter(trainer => {
+    const id = String(trainer?.id || "");
+    if (!id || seen.has(id)) return false;
+    seen.add(id);
+    return true;
+  });
+}
+
 export function trainerBattleFormat(trainer, mechanics) {
   const profileId = mechanics?.trainerBattleProfile;
   const raw = profileId ? trainer?.battleProfiles?.[profileId]?.format : null;
@@ -270,15 +280,54 @@ export function createDatasetContext({ manifest, mechanics, documents }) {
     trainerBattleChoices(trainerId) {
       const trainer = this.trainer(trainerId);
       if (!trainer) return [];
+      if (trainer.encounter) return [{
+        id: `multi:${trainer.id}`,
+        trainerId: trainer.id,
+        format: 'doubles',
+        battleKind: 'multi',
+        label: 'Multi',
+        locked: true
+      }];
       const paired = encounters.byMember.get(trainer.id);
-      if (paired?.encounter.formatChoice === 'single-or-double') return [
-        { trainerId: trainer.id, format: 'singles', label: 'Singles' },
-        { trainerId: paired.id, format: 'doubles', label: `Doubles · ${paired.displayName}` }
-      ];
+      if (paired?.encounter.formatChoice === 'single-or-double') {
+        const defaultPartnerTrainerId = paired.encounter.enemyTrainerIds.find(id => String(id) !== String(trainer.id)) || null;
+        return [
+          { id: `singles:${trainer.id}`, trainerId: trainer.id, format: 'singles', battleKind: 'single', label: 'Singles' },
+          { id: `doubles:${trainer.id}`, trainerId: trainer.id, format: 'doubles', battleKind: 'double', label: 'Doubles' },
+          { id: `multi:${trainer.id}`, trainerId: trainer.id, format: 'doubles', battleKind: 'multi', label: 'Multi', requiresPartner: true, defaultPartnerTrainerId }
+        ];
+      }
       if (paired?.encounter.formatChoice === 'double-only') return [
-        { trainerId: paired.id, format: 'doubles', label: `Doubles · ${paired.displayName}` }
+        { id: `multi:${paired.id}`, trainerId: paired.id, format: 'doubles', battleKind: 'multi', label: 'Multi', locked: true }
       ];
-      return [{ trainerId: trainer.id, format: this.trainerBattleFormat(trainer.id) }];
+      const format = this.trainerBattleFormat(trainer.id);
+      if (format !== 'singles') return [{
+        id: `${format}:${trainer.id}`,
+        trainerId: trainer.id,
+        format,
+        battleKind: format === 'doubles' ? 'double' : format,
+        label: format === 'rotation' ? 'Rotation' : format === 'triples' ? 'Triples' : 'Doubles',
+        locked: true
+      }];
+      return [
+        { id: `singles:${trainer.id}`, trainerId: trainer.id, format: 'singles', battleKind: 'single', label: 'Singles' },
+        { id: `doubles:${trainer.id}`, trainerId: trainer.id, format: 'doubles', battleKind: 'double', label: 'Doubles' },
+        { id: `multi:${trainer.id}`, trainerId: trainer.id, format: 'doubles', battleKind: 'multi', label: 'Multi', requiresPartner: true }
+      ];
+    },
+    trainerPartnerGroups(trainerId) {
+      const selectedId = String(trainerId || '');
+      const sourceGroups = trainerNavigationGroups(indexes.trainers, loaded["trainer_order.json"], loaded["progression.json"]);
+      const selectedGroupId = sourceGroups.find(group => group.trainers.some(trainer => String(trainer.id) === selectedId))?.id;
+      const groups = sourceGroups
+        .map(group => ({
+          ...group,
+          trainers: uniqueTrainers(group.trainers).filter(trainer => String(trainer.id) !== selectedId && !encounters.syntheticIds.has(trainer.id))
+        }))
+        .filter(group => group.trainers.length || String(group.id) === String(selectedGroupId));
+      const selectedGroupIndex = groups.findIndex(group => String(group.id) === String(selectedGroupId));
+      if (selectedGroupIndex <= 0) return groups;
+      return [groups[selectedGroupIndex], ...groups.slice(0, selectedGroupIndex), ...groups.slice(selectedGroupIndex + 1)];
     },
     trainerGroups() {
       const groups = trainerNavigationGroups(indexes.trainers, loaded["trainer_order.json"], loaded["progression.json"]);

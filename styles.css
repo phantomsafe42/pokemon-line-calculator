@@ -415,6 +415,8 @@ dialog::backdrop { background: rgba(0, 0, 0, .75); }
 .editor-sprite-preview { display: flex; align-items: center; justify-content: center; width: 64px; height: 64px; flex: 0 0 64px; border: 1px solid var(--line); border-radius: 7px; background: var(--panel-2); }
 .editor-sprite-preview img { max-width: 58px; max-height: 58px; object-fit: contain; image-rendering: pixelated; }
 .party-selector-panel { margin-top: 1rem; border: 1px solid var(--line); border-radius: 7px; padding: .85rem; background: var(--panel); }
+.encounter-partner-panel .context-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.encounter-partner-panel .compact-heading { margin-bottom: .75rem; }
 .party-source-controls { margin-bottom: .75rem; }
 .context-pokemon-grid, .party-selection-summary { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: .5rem; }
 .context-pokemon { position: relative; display: grid; grid-template-columns: 48px 1fr; align-items: center; gap: .45rem; min-width: 0; border: 1px solid var(--line); border-radius: 6px; padding: .45rem; background: var(--panel-2); }
@@ -497,7 +499,7 @@ dialog::backdrop { background: rgba(0, 0, 0, .75); }
   .center-column .notes-panel,
   .center-column .ai-forecast-panel { grid-column: auto; grid-row: auto; }
   .center-column { grid-column: auto; grid-row: auto; }
-  .context-grid, .editor-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .context-grid, .editor-grid, .encounter-partner-panel .context-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .party-card { grid-template-columns: 1fr; }
   .move-editor-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
@@ -512,7 +514,7 @@ dialog::backdrop { background: rgba(0, 0, 0, .75); }
 @media (max-width: 520px) {
   .toolbar-actions, .file-actions, .dialog-actions { align-items: stretch; flex-direction: column; }
   .toolbar-actions > *, .file-actions > *, .dialog-actions > * { width: 100%; }
-  .context-grid, .editor-grid, .move-editor-row { grid-template-columns: 1fr; }
+  .context-grid, .editor-grid, .move-editor-row, .encounter-partner-panel .context-grid { grid-template-columns: 1fr; }
   .static-details { grid-template-columns: 1fr; }
   .static-detail:nth-child(odd) { border-right: 0; }
   .static-detail { border-bottom: 1px solid var(--line) !important; }

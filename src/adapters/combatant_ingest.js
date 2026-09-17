@@ -1,5 +1,5 @@
 import { canonicalStats, shortHash, stableStringify, toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
-import { canonicalSpeciesDisplayName, canonicalTrainerMember, DatasetReadinessError } from "./standardized_dataset.js?v=20260917-paired-trainer-navigation-v1";
+import { canonicalSpeciesDisplayName, canonicalTrainerMember, DatasetReadinessError } from "./standardized_dataset.js?v=20260917-encounter-format-v1";
 
 const NATURE_MULTIPLIER_DENOMINATOR = 10;
 const NATURE_BOOST_NUMERATOR = 11;
@@ -205,6 +205,39 @@ export function normalizeTrainerRoster(trainerId, trainerVariantId, dataset, run
       moves: normalizeMoves(member.moveIds, dataset)
     }, dataset);
   });
+}
+
+export function normalizeMultiTrainerRoster(participants, dataset, runtimeInputsByTrainer = {}) {
+  if (!Array.isArray(participants) || participants.length !== 2) {
+    throw new DatasetReadinessError("Multi battles require exactly two enemy trainers");
+  }
+  const rosters = participants.map((participant, ownerSlot) => {
+    const trainerId = String(participant?.trainerId || "");
+    if (!trainerId || !dataset.trainer(trainerId)) throw new DatasetReadinessError(`Trainer ${trainerId || "unknown"} is unavailable`);
+    return normalizeTrainerRoster(
+      trainerId,
+      participant.trainerVariantId ?? null,
+      dataset,
+      runtimeInputsByTrainer[trainerId] || {}
+    ).map(combatant => ({
+      ...combatant,
+      source: {
+        ...combatant.source,
+        trainerId,
+        partyOwnerId: trainerId,
+        ownerPartySlot: combatant.source?.trainerSlot ?? combatant.source?.encounterSlot ?? null,
+        ownerSlot
+      }
+    }));
+  });
+  const combined = [];
+  for (let partyIndex = 0; partyIndex < Math.max(...rosters.map(roster => roster.length)); partyIndex += 1) {
+    for (const roster of rosters) if (roster[partyIndex]) combined.push(roster[partyIndex]);
+  }
+  return combined.map((combatant, encounterIndex) => ({
+    ...combatant,
+    source: { ...combatant.source, encounterSlot: encounterIndex + 1 }
+  }));
 }
 
 export function snapshotFingerprint(playerCombatants, trainerCombatants, updatedAt = null) {

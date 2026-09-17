@@ -2209,6 +2209,7 @@ function gen5FullActionEvaluation({ plan, state, dataset, ai, actorEntry, moveAc
   const profile = ai.evaluatorProfile;
   if ((!engine?.forecast && !engine?.evaluate) || !profile) return null;
   const actor = normalizedActor(plan, state, actorEntry);
+  const actorTrainerId = trainerProfile(plan, dataset, actorEntry).trainer?.id || plan.game.trainerId;
   const moveActor = moveActorEntry || actorEntry;
   const candidates = moves.flatMap(move => evaluatorMoveTargetEntries(plan, state, moveActor, move, dataset).map(target => ({
     id: `${moveActor.combatantKey}:${move.moveId}:${target.combatantKey}`,
@@ -2244,7 +2245,7 @@ function gen5FullActionEvaluation({ plan, state, dataset, ai, actorEntry, moveAc
       sides: { ai: { party: aiParty }, opponent: { party: opponentParty } }
     },
     trainer: {
-      id: plan.game.trainerId,
+      id: actorTrainerId,
       aiMask: Number(battleProfile.aiMask ?? battleProfile.ai ?? 0),
       aiFlagIds: [...flagIds],
       bagSlots: trainerBagSlots || [...(battleProfile.bagItemIds || [])].map(itemId => gen5ItemNumericId(dataset, itemId) ?? 0)
@@ -2393,6 +2394,7 @@ function platinumFullActionEvaluation({ plan, state, dataset, ai, actorEntry, mo
   const profile = ai.evaluatorProfile;
   if ((!engine?.forecast && !engine?.evaluate) || !profile) return null;
   const actor = normalizedActor(plan, state, actorEntry);
+  const actorTrainerId = trainerProfile(plan, dataset, actorEntry).trainer?.id || plan.game.trainerId;
   const sourceMoves = state.combatantStates[actorEntry.combatantKey].moveSetOverride || plan.combatants[actorEntry.combatantKey].moves;
   const validMoves = platinumValidMoves({ plan, state, dataset, actorEntry, profile });
   const sourceTargets = (plan.game.battleFormat === 'doubles' ? [...activeSlotEntries(state, 'player'), ...activeSlotEntries(state, 'enemy')] : activeSlotEntries(state, 'player')).filter(row => row.combatantKey !== actorEntry.combatantKey && knownHp(state.combatantStates[row.combatantKey]) > 0);
@@ -2434,7 +2436,7 @@ function platinumFullActionEvaluation({ plan, state, dataset, ai, actorEntry, mo
       }
     },
     trainer: {
-      id: plan.game.trainerId,
+      id: actorTrainerId,
       aiMask: Number(battleProfile.aiMask ?? battleProfile.ai ?? 0),
       aiFlagIds: [...flagIds],
       bagSlots: [...(battleProfile.bagItemIds || [])]
@@ -2486,6 +2488,7 @@ function replacementEvaluation({ plan, state, dataset, ai, actorEntry, battlePro
     pivoting: false,
     forcedContinuation: "replacement"
   };
+  const actorTrainerId = trainerProfile(plan, dataset, actorEntry).trainer?.id || plan.game.trainerId;
   const aiParty = actorParty(plan, actorEntry)
     .map((combatant, index) => normalizedPartyMember(plan, state, combatant, index));
   const opponentParty = Object.values(plan.combatants).filter(combatant => combatant.side === "player")
@@ -2503,7 +2506,7 @@ function replacementEvaluation({ plan, state, dataset, ai, actorEntry, battlePro
       sides: { ai: { party: aiParty }, opponent: { party: opponentParty } }
     },
     trainer: {
-      id: plan.game.trainerId,
+      id: actorTrainerId,
       aiMask: Number(battleProfile.aiMask ?? battleProfile.ai ?? 0),
       aiFlagIds: [...(battleProfile.aiFlagIds || [])],
       bagSlots: [...(battleProfile.bagItemIds || [])]
@@ -2596,6 +2599,7 @@ function conditionalMoveEvaluation({ plan, state, dataset, ai, actorEntry, moves
   const profile = ai.evaluatorProfile;
   if (!engine?.evaluate || !profile) return null;
   const actor = normalizedActor(plan, state, actorEntry);
+  const actorTrainerId = trainerProfile(plan, dataset, actorEntry).trainer?.id || plan.game.trainerId;
   const platinum = Number(ai.generation) === 4;
   const candidates = moves.flatMap(move => evaluatorMoveTargetEntries(plan, state, actorEntry, move, dataset).map(target => ({
     id: `${actorEntry.combatantKey}:${move.moveId}:${target.combatantKey}`,
@@ -2628,7 +2632,7 @@ function conditionalMoveEvaluation({ plan, state, dataset, ai, actorEntry, moves
       }
     },
     trainer: {
-      id: plan.game.trainerId,
+      id: actorTrainerId,
       aiMask: Number(battleProfile.aiMask ?? battleProfile.ai ?? 0),
       aiFlagIds: [...flagIds],
       bagSlots: [...(battleProfile.bagItemIds || [])].filter(Boolean)
