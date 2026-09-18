@@ -2,5 +2,1460 @@
   "schemaVersion": 1,
   "gameId": "pokemon-unbound",
   "kind": "trainer-battle-groups",
-  "records": {}
+  "playerPartners": {
+    "schemaVersion": "trainer-player-partners/v1",
+    "bindings": [
+      {
+        "id": "pokemon-unbound-player-partner-448-449",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0448",
+          "pokemon-unbound-trainer-0449"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0450",
+            "trainerId": "pokemon-unbound-trainer-0450",
+            "label": "Jax",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 2
+          }
+        ],
+        "source": {
+          "file": "Boss Trainers.xlsx",
+          "workbookSha256": "99305f8aee27bf62ce5c9bbe686c7d864f16e49738762d94158afd34fa4eecc1",
+          "sheet": "Team Shadow Bosses",
+          "enemyRow": 2,
+          "partnerCells": "I6:K20",
+          "rule": "explicit-documented-tag-battle"
+        }
+      },
+      {
+        "id": "pokemon-unbound-player-partner-453-454",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0453",
+          "pokemon-unbound-trainer-0454"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0455",
+            "trainerId": "pokemon-unbound-trainer-0455",
+            "label": "Jax",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 62
+          }
+        ],
+        "source": {
+          "file": "Boss Trainers.xlsx",
+          "workbookSha256": "99305f8aee27bf62ce5c9bbe686c7d864f16e49738762d94158afd34fa4eecc1",
+          "sheet": "Team Shadow Bosses",
+          "enemyRow": 62,
+          "partnerCells": "I66:K80",
+          "rule": "explicit-documented-tag-battle"
+        }
+      },
+      {
+        "id": "pokemon-unbound-player-partner-459-460",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0459",
+          "pokemon-unbound-trainer-0460"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0532",
+            "trainerId": "pokemon-unbound-trainer-0532",
+            "label": "Marlon · Cinder Volcano partner",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 2
+          }
+        ],
+        "source": {
+          "file": "Boss Trainers.xlsx",
+          "workbookSha256": "99305f8aee27bf62ce5c9bbe686c7d864f16e49738762d94158afd34fa4eecc1",
+          "sheet": "Team Light Of Ruin Bosses",
+          "enemyRow": 2,
+          "partnerCells": "I6:K20",
+          "rule": "explicit-documented-tag-battle"
+        }
+      },
+      {
+        "id": "pokemon-unbound-player-partner-464",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0464"
+        ],
+        "enemyPartyPolicy": "shared",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0465:rival-tyranitarmega",
+            "trainerId": "pokemon-unbound-trainer-0465",
+            "trainerVariantId": "rival-tyranitarmega",
+            "label": "Rival · Tyranitar-Mega",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 62
+          },
+          {
+            "id": "pokemon-unbound-trainer-0465:rival-metagrossmega",
+            "trainerId": "pokemon-unbound-trainer-0465",
+            "trainerVariantId": "rival-metagrossmega",
+            "label": "Rival · Metagross-Mega",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 62
+          },
+          {
+            "id": "pokemon-unbound-trainer-0465:rival-garchompmega",
+            "trainerId": "pokemon-unbound-trainer-0465",
+            "trainerVariantId": "rival-garchompmega",
+            "label": "Rival · Garchomp-Mega",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 62
+          }
+        ],
+        "source": {
+          "file": "Boss Trainers.xlsx",
+          "workbookSha256": "99305f8aee27bf62ce5c9bbe686c7d864f16e49738762d94158afd34fa4eecc1",
+          "sheet": "Team Light Of Ruin Bosses",
+          "enemyRow": 62,
+          "partnerCells": "I66:K80",
+          "rule": "explicit-documented-tag-battle",
+          "starterMovesNote": "K70"
+        }
+      },
+      {
+        "id": "pokemon-unbound-player-partner-458",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0458"
+        ],
+        "enemyPartyPolicy": "shared",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0534:rival-tyranitarmega",
+            "trainerId": "pokemon-unbound-trainer-0534",
+            "trainerVariantId": "rival-tyranitarmega",
+            "label": "Rival · Tyranitar-Mega",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 122
+          },
+          {
+            "id": "pokemon-unbound-trainer-0534:rival-metagrossmega",
+            "trainerId": "pokemon-unbound-trainer-0534",
+            "trainerVariantId": "rival-metagrossmega",
+            "label": "Rival · Metagross-Mega",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 122
+          },
+          {
+            "id": "pokemon-unbound-trainer-0534:rival-garchompmega",
+            "trainerId": "pokemon-unbound-trainer-0534",
+            "trainerVariantId": "rival-garchompmega",
+            "label": "Rival · Garchomp-Mega",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 122
+          }
+        ],
+        "source": {
+          "file": "Boss Trainers.xlsx",
+          "workbookSha256": "99305f8aee27bf62ce5c9bbe686c7d864f16e49738762d94158afd34fa4eecc1",
+          "sheet": "Team Shadow Bosses",
+          "enemyRow": 122,
+          "partnerCells": "I126:K140",
+          "rule": "explicit-documented-tag-battle",
+          "starterMovesNote": "K130"
+        }
+      },
+      {
+        "id": "pokemon-unbound-player-partner-466",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0466"
+        ],
+        "enemyPartyPolicy": "shared",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0533",
+            "trainerId": "pokemon-unbound-trainer-0533",
+            "label": "Jax · Ruins of Void partner",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 82
+          }
+        ],
+        "source": {
+          "file": "Boss Trainers.xlsx",
+          "workbookSha256": "99305f8aee27bf62ce5c9bbe686c7d864f16e49738762d94158afd34fa4eecc1",
+          "sheet": "Team Light Of Ruin Bosses",
+          "enemyRow": 82,
+          "partnerCells": "I86:K100",
+          "rule": "explicit-documented-tag-battle"
+        }
+      },
+      {
+        "id": "pokemon-unbound-player-partner-38",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0038"
+        ],
+        "enemyPartyPolicy": "shared",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0450",
+            "trainerId": "pokemon-unbound-trainer-0450",
+            "label": "Jax",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Boss Trainers.xlsx",
+              "evidence": [
+                "Boss Trainers.xlsx:Team Shadow Bosses!I6",
+                "Boss Trainers.xlsx:Team Shadow Bosses!J6",
+                "Boss Trainers.xlsx:Team Shadow Bosses!K6"
+              ]
+            }
+          }
+        ],
+        "source": {
+          "file": "imports/reference-docs/unbound_partner_encounters.json",
+          "sha256": "4b81dafa3c6b8c9784e1419670e8166a2ce723eb5e39395ca57dc8d2fc9fd7ba",
+          "evidence": [
+            {
+              "windowId": "cinder-west-descent",
+              "referenceUrl": "https://unboundwiki.com/walkthrough/part-5/"
+            }
+          ],
+          "windowId": "cinder-west-descent",
+          "referenceUrl": "https://unboundwiki.com/walkthrough/part-5/"
+        }
+      },
+      {
+        "id": "pokemon-unbound-player-partner-40",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0040"
+        ],
+        "enemyPartyPolicy": "shared",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0450",
+            "trainerId": "pokemon-unbound-trainer-0450",
+            "label": "Jax",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Boss Trainers.xlsx",
+              "evidence": [
+                "Boss Trainers.xlsx:Team Shadow Bosses!I6",
+                "Boss Trainers.xlsx:Team Shadow Bosses!J6",
+                "Boss Trainers.xlsx:Team Shadow Bosses!K6"
+              ]
+            }
+          }
+        ],
+        "source": {
+          "file": "imports/reference-docs/unbound_partner_encounters.json",
+          "sha256": "4b81dafa3c6b8c9784e1419670e8166a2ce723eb5e39395ca57dc8d2fc9fd7ba",
+          "evidence": [
+            {
+              "windowId": "cinder-west-descent",
+              "referenceUrl": "https://unboundwiki.com/walkthrough/part-5/"
+            }
+          ],
+          "windowId": "cinder-west-descent",
+          "referenceUrl": "https://unboundwiki.com/walkthrough/part-5/"
+        }
+      },
+      {
+        "id": "pokemon-unbound-player-partner-41",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0041"
+        ],
+        "enemyPartyPolicy": "shared",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0450",
+            "trainerId": "pokemon-unbound-trainer-0450",
+            "label": "Jax",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Boss Trainers.xlsx",
+              "evidence": [
+                "Boss Trainers.xlsx:Team Shadow Bosses!I6",
+                "Boss Trainers.xlsx:Team Shadow Bosses!J6",
+                "Boss Trainers.xlsx:Team Shadow Bosses!K6"
+              ]
+            }
+          }
+        ],
+        "source": {
+          "file": "imports/reference-docs/unbound_partner_encounters.json",
+          "sha256": "4b81dafa3c6b8c9784e1419670e8166a2ce723eb5e39395ca57dc8d2fc9fd7ba",
+          "evidence": [
+            {
+              "windowId": "cinder-west-descent",
+              "referenceUrl": "https://unboundwiki.com/walkthrough/part-5/"
+            }
+          ],
+          "windowId": "cinder-west-descent",
+          "referenceUrl": "https://unboundwiki.com/walkthrough/part-5/"
+        }
+      },
+      {
+        "id": "pokemon-unbound-player-partner-221",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0221"
+        ],
+        "enemyPartyPolicy": "shared",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0455",
+            "trainerId": "pokemon-unbound-trainer-0455",
+            "label": "Jax",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Boss Trainers.xlsx",
+              "evidence": [
+                "Boss Trainers.xlsx:Team Shadow Bosses!I66",
+                "Boss Trainers.xlsx:Team Shadow Bosses!J66",
+                "Boss Trainers.xlsx:Team Shadow Bosses!K66"
+              ]
+            }
+          }
+        ],
+        "source": {
+          "file": "imports/reference-docs/unbound_partner_encounters.json",
+          "sha256": "4b81dafa3c6b8c9784e1419670e8166a2ce723eb5e39395ca57dc8d2fc9fd7ba",
+          "evidence": [
+            {
+              "windowId": "route9-shadow-occupation",
+              "referenceUrl": "https://unboundwiki.com/walkthrough/part-13/"
+            }
+          ],
+          "windowId": "route9-shadow-occupation",
+          "referenceUrl": "https://unboundwiki.com/walkthrough/part-13/"
+        }
+      },
+      {
+        "id": "pokemon-unbound-player-partner-222",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0222"
+        ],
+        "enemyPartyPolicy": "shared",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0455",
+            "trainerId": "pokemon-unbound-trainer-0455",
+            "label": "Jax",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Boss Trainers.xlsx",
+              "evidence": [
+                "Boss Trainers.xlsx:Team Shadow Bosses!I66",
+                "Boss Trainers.xlsx:Team Shadow Bosses!J66",
+                "Boss Trainers.xlsx:Team Shadow Bosses!K66"
+              ]
+            }
+          }
+        ],
+        "source": {
+          "file": "imports/reference-docs/unbound_partner_encounters.json",
+          "sha256": "4b81dafa3c6b8c9784e1419670e8166a2ce723eb5e39395ca57dc8d2fc9fd7ba",
+          "evidence": [
+            {
+              "windowId": "route9-shadow-occupation",
+              "referenceUrl": "https://unboundwiki.com/walkthrough/part-13/"
+            }
+          ],
+          "windowId": "route9-shadow-occupation",
+          "referenceUrl": "https://unboundwiki.com/walkthrough/part-13/"
+        }
+      },
+      {
+        "id": "pokemon-unbound-player-partner-223",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0223"
+        ],
+        "enemyPartyPolicy": "shared",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0455",
+            "trainerId": "pokemon-unbound-trainer-0455",
+            "label": "Jax",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Boss Trainers.xlsx",
+              "evidence": [
+                "Boss Trainers.xlsx:Team Shadow Bosses!I66",
+                "Boss Trainers.xlsx:Team Shadow Bosses!J66",
+                "Boss Trainers.xlsx:Team Shadow Bosses!K66"
+              ]
+            }
+          }
+        ],
+        "source": {
+          "file": "imports/reference-docs/unbound_partner_encounters.json",
+          "sha256": "4b81dafa3c6b8c9784e1419670e8166a2ce723eb5e39395ca57dc8d2fc9fd7ba",
+          "evidence": [
+            {
+              "windowId": "route9-shadow-occupation",
+              "referenceUrl": "https://unboundwiki.com/walkthrough/part-13/"
+            }
+          ],
+          "windowId": "route9-shadow-occupation",
+          "referenceUrl": "https://unboundwiki.com/walkthrough/part-13/"
+        }
+      },
+      {
+        "id": "pokemon-unbound-player-partner-224",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0224"
+        ],
+        "enemyPartyPolicy": "shared",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0455",
+            "trainerId": "pokemon-unbound-trainer-0455",
+            "label": "Jax",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Boss Trainers.xlsx",
+              "evidence": [
+                "Boss Trainers.xlsx:Team Shadow Bosses!I66",
+                "Boss Trainers.xlsx:Team Shadow Bosses!J66",
+                "Boss Trainers.xlsx:Team Shadow Bosses!K66"
+              ]
+            }
+          }
+        ],
+        "source": {
+          "file": "imports/reference-docs/unbound_partner_encounters.json",
+          "sha256": "4b81dafa3c6b8c9784e1419670e8166a2ce723eb5e39395ca57dc8d2fc9fd7ba",
+          "evidence": [
+            {
+              "windowId": "route9-shadow-occupation",
+              "referenceUrl": "https://unboundwiki.com/walkthrough/part-13/"
+            }
+          ],
+          "windowId": "route9-shadow-occupation",
+          "referenceUrl": "https://unboundwiki.com/walkthrough/part-13/"
+        }
+      },
+      {
+        "id": "pokemon-unbound-player-partner-225",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0225"
+        ],
+        "enemyPartyPolicy": "shared",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0455",
+            "trainerId": "pokemon-unbound-trainer-0455",
+            "label": "Jax",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Boss Trainers.xlsx",
+              "evidence": [
+                "Boss Trainers.xlsx:Team Shadow Bosses!I66",
+                "Boss Trainers.xlsx:Team Shadow Bosses!J66",
+                "Boss Trainers.xlsx:Team Shadow Bosses!K66"
+              ]
+            }
+          }
+        ],
+        "source": {
+          "file": "imports/reference-docs/unbound_partner_encounters.json",
+          "sha256": "4b81dafa3c6b8c9784e1419670e8166a2ce723eb5e39395ca57dc8d2fc9fd7ba",
+          "evidence": [
+            {
+              "windowId": "route9-shadow-occupation",
+              "referenceUrl": "https://unboundwiki.com/walkthrough/part-13/"
+            }
+          ],
+          "windowId": "route9-shadow-occupation",
+          "referenceUrl": "https://unboundwiki.com/walkthrough/part-13/"
+        }
+      },
+      {
+        "id": "pokemon-unbound-player-partner-226",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0226"
+        ],
+        "enemyPartyPolicy": "shared",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0455",
+            "trainerId": "pokemon-unbound-trainer-0455",
+            "label": "Jax",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Boss Trainers.xlsx",
+              "evidence": [
+                "Boss Trainers.xlsx:Team Shadow Bosses!I66",
+                "Boss Trainers.xlsx:Team Shadow Bosses!J66",
+                "Boss Trainers.xlsx:Team Shadow Bosses!K66"
+              ]
+            }
+          }
+        ],
+        "source": {
+          "file": "imports/reference-docs/unbound_partner_encounters.json",
+          "sha256": "4b81dafa3c6b8c9784e1419670e8166a2ce723eb5e39395ca57dc8d2fc9fd7ba",
+          "evidence": [
+            {
+              "windowId": "route9-shadow-occupation",
+              "referenceUrl": "https://unboundwiki.com/walkthrough/part-13/"
+            }
+          ],
+          "windowId": "route9-shadow-occupation",
+          "referenceUrl": "https://unboundwiki.com/walkthrough/part-13/"
+        }
+      },
+      {
+        "id": "pokemon-unbound-player-partner-227",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0227"
+        ],
+        "enemyPartyPolicy": "shared",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0455",
+            "trainerId": "pokemon-unbound-trainer-0455",
+            "label": "Jax",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Boss Trainers.xlsx",
+              "evidence": [
+                "Boss Trainers.xlsx:Team Shadow Bosses!I66",
+                "Boss Trainers.xlsx:Team Shadow Bosses!J66",
+                "Boss Trainers.xlsx:Team Shadow Bosses!K66"
+              ]
+            }
+          }
+        ],
+        "source": {
+          "file": "imports/reference-docs/unbound_partner_encounters.json",
+          "sha256": "4b81dafa3c6b8c9784e1419670e8166a2ce723eb5e39395ca57dc8d2fc9fd7ba",
+          "evidence": [
+            {
+              "windowId": "route9-shadow-occupation",
+              "referenceUrl": "https://unboundwiki.com/walkthrough/part-13/"
+            }
+          ],
+          "windowId": "route9-shadow-occupation",
+          "referenceUrl": "https://unboundwiki.com/walkthrough/part-13/"
+        }
+      },
+      {
+        "id": "pokemon-unbound-player-partner-228",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0228"
+        ],
+        "enemyPartyPolicy": "shared",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0455",
+            "trainerId": "pokemon-unbound-trainer-0455",
+            "label": "Jax",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Boss Trainers.xlsx",
+              "evidence": [
+                "Boss Trainers.xlsx:Team Shadow Bosses!I66",
+                "Boss Trainers.xlsx:Team Shadow Bosses!J66",
+                "Boss Trainers.xlsx:Team Shadow Bosses!K66"
+              ]
+            }
+          }
+        ],
+        "source": {
+          "file": "imports/reference-docs/unbound_partner_encounters.json",
+          "sha256": "4b81dafa3c6b8c9784e1419670e8166a2ce723eb5e39395ca57dc8d2fc9fd7ba",
+          "evidence": [
+            {
+              "windowId": "route9-shadow-occupation",
+              "referenceUrl": "https://unboundwiki.com/walkthrough/part-13/"
+            }
+          ],
+          "windowId": "route9-shadow-occupation",
+          "referenceUrl": "https://unboundwiki.com/walkthrough/part-13/"
+        }
+      },
+      {
+        "id": "pokemon-unbound-player-partner-229",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0229"
+        ],
+        "enemyPartyPolicy": "shared",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0455",
+            "trainerId": "pokemon-unbound-trainer-0455",
+            "label": "Jax",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Boss Trainers.xlsx",
+              "evidence": [
+                "Boss Trainers.xlsx:Team Shadow Bosses!I66",
+                "Boss Trainers.xlsx:Team Shadow Bosses!J66",
+                "Boss Trainers.xlsx:Team Shadow Bosses!K66"
+              ]
+            }
+          }
+        ],
+        "source": {
+          "file": "imports/reference-docs/unbound_partner_encounters.json",
+          "sha256": "4b81dafa3c6b8c9784e1419670e8166a2ce723eb5e39395ca57dc8d2fc9fd7ba",
+          "evidence": [
+            {
+              "windowId": "route9-shadow-occupation",
+              "referenceUrl": "https://unboundwiki.com/walkthrough/part-13/"
+            }
+          ],
+          "windowId": "route9-shadow-occupation",
+          "referenceUrl": "https://unboundwiki.com/walkthrough/part-13/"
+        }
+      },
+      {
+        "id": "pokemon-unbound-player-partner-230",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0230"
+        ],
+        "enemyPartyPolicy": "shared",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0455",
+            "trainerId": "pokemon-unbound-trainer-0455",
+            "label": "Jax",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Boss Trainers.xlsx",
+              "evidence": [
+                "Boss Trainers.xlsx:Team Shadow Bosses!I66",
+                "Boss Trainers.xlsx:Team Shadow Bosses!J66",
+                "Boss Trainers.xlsx:Team Shadow Bosses!K66"
+              ]
+            }
+          }
+        ],
+        "source": {
+          "file": "imports/reference-docs/unbound_partner_encounters.json",
+          "sha256": "4b81dafa3c6b8c9784e1419670e8166a2ce723eb5e39395ca57dc8d2fc9fd7ba",
+          "evidence": [
+            {
+              "windowId": "route9-shadow-occupation",
+              "referenceUrl": "https://unboundwiki.com/walkthrough/part-13/"
+            }
+          ],
+          "windowId": "route9-shadow-occupation",
+          "referenceUrl": "https://unboundwiki.com/walkthrough/part-13/"
+        }
+      },
+      {
+        "id": "pokemon-unbound-player-partner-55",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0055"
+        ],
+        "enemyPartyPolicy": "shared",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0477",
+            "trainerId": "pokemon-unbound-trainer-0477",
+            "label": "Rival",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Boss Trainers.xlsx",
+              "evidence": [
+                "Boss Trainers.xlsx:Boss Wild Battles!E193",
+                "Boss Trainers.xlsx:Boss Wild Battles!F193",
+                "Boss Trainers.xlsx:Boss Wild Battles!G193"
+              ]
+            }
+          }
+        ],
+        "source": {
+          "file": "imports/reference-docs/unbound_partner_encounters.json",
+          "sha256": "4b81dafa3c6b8c9784e1419670e8166a2ce723eb5e39395ca57dc8d2fc9fd7ba",
+          "evidence": [
+            {
+              "windowId": "crystal-peak-ascent",
+              "referenceUrl": "https://unboundwiki.com/walkthrough/part-35/"
+            }
+          ],
+          "windowId": "crystal-peak-ascent",
+          "referenceUrl": "https://unboundwiki.com/walkthrough/part-35/"
+        }
+      },
+      {
+        "id": "pokemon-unbound-player-partner-56",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0056"
+        ],
+        "enemyPartyPolicy": "shared",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0477",
+            "trainerId": "pokemon-unbound-trainer-0477",
+            "label": "Rival",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Boss Trainers.xlsx",
+              "evidence": [
+                "Boss Trainers.xlsx:Boss Wild Battles!E193",
+                "Boss Trainers.xlsx:Boss Wild Battles!F193",
+                "Boss Trainers.xlsx:Boss Wild Battles!G193"
+              ]
+            }
+          }
+        ],
+        "source": {
+          "file": "imports/reference-docs/unbound_partner_encounters.json",
+          "sha256": "4b81dafa3c6b8c9784e1419670e8166a2ce723eb5e39395ca57dc8d2fc9fd7ba",
+          "evidence": [
+            {
+              "windowId": "crystal-peak-ascent",
+              "referenceUrl": "https://unboundwiki.com/walkthrough/part-35/"
+            }
+          ],
+          "windowId": "crystal-peak-ascent",
+          "referenceUrl": "https://unboundwiki.com/walkthrough/part-35/"
+        }
+      },
+      {
+        "id": "pokemon-unbound-player-partner-57",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0057"
+        ],
+        "enemyPartyPolicy": "shared",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0477",
+            "trainerId": "pokemon-unbound-trainer-0477",
+            "label": "Rival",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Boss Trainers.xlsx",
+              "evidence": [
+                "Boss Trainers.xlsx:Boss Wild Battles!E193",
+                "Boss Trainers.xlsx:Boss Wild Battles!F193",
+                "Boss Trainers.xlsx:Boss Wild Battles!G193"
+              ]
+            }
+          }
+        ],
+        "source": {
+          "file": "imports/reference-docs/unbound_partner_encounters.json",
+          "sha256": "4b81dafa3c6b8c9784e1419670e8166a2ce723eb5e39395ca57dc8d2fc9fd7ba",
+          "evidence": [
+            {
+              "windowId": "crystal-peak-ascent",
+              "referenceUrl": "https://unboundwiki.com/walkthrough/part-35/"
+            }
+          ],
+          "windowId": "crystal-peak-ascent",
+          "referenceUrl": "https://unboundwiki.com/walkthrough/part-35/"
+        }
+      },
+      {
+        "id": "pokemon-unbound-occurrence-0448",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0535",
+          "pokemon-unbound-trainer-0536"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0477",
+            "trainerId": "pokemon-unbound-trainer-0477",
+            "label": "Rival",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Boss Trainers.xlsx",
+              "evidence": [
+                "Boss Trainers.xlsx:Boss Wild Battles!E193",
+                "Boss Trainers.xlsx:Boss Wild Battles!F193",
+                "Boss Trainers.xlsx:Boss Wild Battles!G193"
+              ]
+            }
+          }
+        ],
+        "source": {
+          "file": "imports/reference-docs/unbound_partner_encounters.json",
+          "sha256": "4b81dafa3c6b8c9784e1419670e8166a2ce723eb5e39395ca57dc8d2fc9fd7ba",
+          "evidence": [
+            {
+              "navigationTrainerId": "pokemon-unbound-trainer-0058",
+              "romSha256": "7aa25bbf568f7cfcf6ee1cf2e9e6ff637350b3d0705c2375cabb6baa7d9739f7",
+              "sourceTrainerIds": [
+                620,
+                621
+              ]
+            }
+          ],
+          "navigationTrainerId": "pokemon-unbound-trainer-0058",
+          "romSha256": "7aa25bbf568f7cfcf6ee1cf2e9e6ff637350b3d0705c2375cabb6baa7d9739f7",
+          "sourceTrainerIds": [
+            620,
+            621
+          ]
+        }
+      },
+      {
+        "id": "pokemon-unbound-occurrence-0449",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0537",
+          "pokemon-unbound-trainer-0538"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0477",
+            "trainerId": "pokemon-unbound-trainer-0477",
+            "label": "Rival",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Boss Trainers.xlsx",
+              "evidence": [
+                "Boss Trainers.xlsx:Boss Wild Battles!E193",
+                "Boss Trainers.xlsx:Boss Wild Battles!F193",
+                "Boss Trainers.xlsx:Boss Wild Battles!G193"
+              ]
+            }
+          }
+        ],
+        "source": {
+          "file": "imports/reference-docs/unbound_partner_encounters.json",
+          "sha256": "4b81dafa3c6b8c9784e1419670e8166a2ce723eb5e39395ca57dc8d2fc9fd7ba",
+          "evidence": [
+            {
+              "navigationTrainerId": "pokemon-unbound-trainer-0059",
+              "romSha256": "7aa25bbf568f7cfcf6ee1cf2e9e6ff637350b3d0705c2375cabb6baa7d9739f7",
+              "sourceTrainerIds": [
+                623,
+                622
+              ]
+            }
+          ],
+          "navigationTrainerId": "pokemon-unbound-trainer-0059",
+          "romSha256": "7aa25bbf568f7cfcf6ee1cf2e9e6ff637350b3d0705c2375cabb6baa7d9739f7",
+          "sourceTrainerIds": [
+            623,
+            622
+          ]
+        }
+      },
+      {
+        "id": "pokemon-unbound-occurrence-0450",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0539",
+          "pokemon-unbound-trainer-0540"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0477",
+            "trainerId": "pokemon-unbound-trainer-0477",
+            "label": "Rival",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Boss Trainers.xlsx",
+              "evidence": [
+                "Boss Trainers.xlsx:Boss Wild Battles!E193",
+                "Boss Trainers.xlsx:Boss Wild Battles!F193",
+                "Boss Trainers.xlsx:Boss Wild Battles!G193"
+              ]
+            }
+          }
+        ],
+        "source": {
+          "file": "imports/reference-docs/unbound_partner_encounters.json",
+          "sha256": "4b81dafa3c6b8c9784e1419670e8166a2ce723eb5e39395ca57dc8d2fc9fd7ba",
+          "evidence": [
+            {
+              "navigationTrainerId": "pokemon-unbound-trainer-0060",
+              "romSha256": "7aa25bbf568f7cfcf6ee1cf2e9e6ff637350b3d0705c2375cabb6baa7d9739f7",
+              "sourceTrainerIds": [
+                624,
+                625
+              ]
+            }
+          ],
+          "navigationTrainerId": "pokemon-unbound-trainer-0060",
+          "romSha256": "7aa25bbf568f7cfcf6ee1cf2e9e6ff637350b3d0705c2375cabb6baa7d9739f7",
+          "sourceTrainerIds": [
+            624,
+            625
+          ]
+        }
+      },
+      {
+        "id": "pokemon-unbound-occurrence-0451",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0541",
+          "pokemon-unbound-trainer-0542"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0477",
+            "trainerId": "pokemon-unbound-trainer-0477",
+            "label": "Rival",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Boss Trainers.xlsx",
+              "evidence": [
+                "Boss Trainers.xlsx:Boss Wild Battles!E193",
+                "Boss Trainers.xlsx:Boss Wild Battles!F193",
+                "Boss Trainers.xlsx:Boss Wild Battles!G193"
+              ]
+            }
+          }
+        ],
+        "source": {
+          "file": "imports/reference-docs/unbound_partner_encounters.json",
+          "sha256": "4b81dafa3c6b8c9784e1419670e8166a2ce723eb5e39395ca57dc8d2fc9fd7ba",
+          "evidence": [
+            {
+              "navigationTrainerId": "pokemon-unbound-trainer-0061",
+              "romSha256": "7aa25bbf568f7cfcf6ee1cf2e9e6ff637350b3d0705c2375cabb6baa7d9739f7",
+              "sourceTrainerIds": [
+                626,
+                627
+              ]
+            }
+          ],
+          "navigationTrainerId": "pokemon-unbound-trainer-0061",
+          "romSha256": "7aa25bbf568f7cfcf6ee1cf2e9e6ff637350b3d0705c2375cabb6baa7d9739f7",
+          "sourceTrainerIds": [
+            626,
+            627
+          ]
+        }
+      },
+      {
+        "id": "pokemon-unbound-player-partner-467",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0467"
+        ],
+        "enemyPartyPolicy": "shared",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0455",
+            "trainerId": "pokemon-unbound-trainer-0455",
+            "label": "Jax",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Boss Trainers.xlsx",
+              "evidence": [
+                "Boss Trainers.xlsx:Team Shadow Bosses!I66",
+                "Boss Trainers.xlsx:Team Shadow Bosses!J66",
+                "Boss Trainers.xlsx:Team Shadow Bosses!K66"
+              ]
+            }
+          }
+        ],
+        "source": {
+          "file": "imports/reference-docs/unbound_partner_encounters.json",
+          "sha256": "4b81dafa3c6b8c9784e1419670e8166a2ce723eb5e39395ca57dc8d2fc9fd7ba",
+          "evidence": [
+            {
+              "eventId": "route9-shadow-warriors",
+              "referenceUrl": "https://unboundwiki.com/walkthrough/part-13/"
+            }
+          ],
+          "eventId": "route9-shadow-warriors",
+          "referenceUrl": "https://unboundwiki.com/walkthrough/part-13/"
+        }
+      },
+      {
+        "id": "pokemon-unbound-player-partner-476",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0476"
+        ],
+        "enemyPartyPolicy": "shared",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0477",
+            "trainerId": "pokemon-unbound-trainer-0477",
+            "label": "Rival",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Boss Trainers.xlsx",
+              "evidence": [
+                "Boss Trainers.xlsx:Boss Wild Battles!E193",
+                "Boss Trainers.xlsx:Boss Wild Battles!F193",
+                "Boss Trainers.xlsx:Boss Wild Battles!G193"
+              ]
+            }
+          }
+        ],
+        "source": {
+          "file": "imports/reference-docs/unbound_partner_encounters.json",
+          "sha256": "4b81dafa3c6b8c9784e1419670e8166a2ce723eb5e39395ca57dc8d2fc9fd7ba",
+          "evidence": [
+            {
+              "eventId": "crystal-peak-tao-dragons",
+              "referenceUrl": "https://unboundwiki.com/walkthrough/part-35/"
+            }
+          ],
+          "eventId": "crystal-peak-tao-dragons",
+          "referenceUrl": "https://unboundwiki.com/walkthrough/part-35/"
+        }
+      }
+    ],
+    "validation": {
+      "workbookSha256": "99305f8aee27bf62ce5c9bbe686c7d864f16e49738762d94158afd34fa4eecc1",
+      "profile": "unbound-2.1.1.1-difficult",
+      "corrections": [
+        {
+          "category": "trainers",
+          "recordId": "pokemon-unbound-trainer-0532",
+          "field": "partner-team",
+          "legacyValue": null,
+          "referenceValue": {
+            "name": "Marlon · Cinder Volcano partner",
+            "slots": 3,
+            "variants": 1
+          },
+          "authority": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!I6:K20",
+          "resolutionStatus": "resolved",
+          "resolution": "explicit-partner-heading-and-starter-note",
+          "confidence": "documented"
+        },
+        {
+          "category": "trainers",
+          "recordId": "pokemon-unbound-trainer-0533",
+          "field": "partner-team",
+          "legacyValue": null,
+          "referenceValue": {
+            "name": "Jax · Ruins of Void partner",
+            "slots": 3,
+            "variants": 1
+          },
+          "authority": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!I86:K100",
+          "resolutionStatus": "resolved",
+          "resolution": "explicit-partner-heading-and-starter-note",
+          "confidence": "documented"
+        },
+        {
+          "category": "trainers",
+          "recordId": "pokemon-unbound-trainer-0534",
+          "field": "partner-team",
+          "legacyValue": null,
+          "referenceValue": {
+            "name": "Rival · Marlon battle partner",
+            "slots": 3,
+            "variants": 3
+          },
+          "authority": "Boss Trainers.xlsx:Team Shadow Bosses!I126:K140",
+          "resolutionStatus": "resolved",
+          "resolution": "explicit-partner-heading-and-starter-note",
+          "confidence": "documented"
+        },
+        {
+          "category": "trainers",
+          "recordId": "pokemon-unbound-trainer-0465",
+          "field": "partner-team",
+          "legacyValue": {
+            "name": "Jax 2 [Difficult] #3",
+            "slots": 2
+          },
+          "referenceValue": {
+            "name": "Rival · Aklove battle partner",
+            "slots": 3,
+            "variants": 3
+          },
+          "authority": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!I66:K80",
+          "resolutionStatus": "resolved",
+          "resolution": "explicit-partner-heading-and-starter-note",
+          "confidence": "documented"
+        },
+        {
+          "category": "trainers",
+          "recordId": "pokemon-unbound-trainer-0477",
+          "field": "role",
+          "legacyValue": "boss-wild",
+          "referenceValue": "player-partner",
+          "authority": "Boss Trainers.xlsx:Boss Wild Battles!E190:G208",
+          "resolutionStatus": "resolved",
+          "resolution": "explicit-rival-heading",
+          "confidence": "documented"
+        },
+        {
+          "category": "trainers",
+          "recordId": "pokemon-unbound-trainer-0058",
+          "field": "party-ownership",
+          "legacyValue": "merged-workbook-party",
+          "referenceValue": [
+            1,
+            2
+          ],
+          "authority": "ROM 7aa25bbf568f7cfcf6ee1cf2e9e6ff637350b3d0705c2375cabb6baa7d9739f7; trainer IDs 620,621",
+          "resolutionStatus": "resolved",
+          "resolution": "exact-ordered-ROM-party-partition",
+          "confidence": "verified"
+        },
+        {
+          "category": "trainers",
+          "recordId": "pokemon-unbound-trainer-0059",
+          "field": "party-ownership",
+          "legacyValue": "merged-workbook-party",
+          "referenceValue": [
+            2,
+            2
+          ],
+          "authority": "ROM 7aa25bbf568f7cfcf6ee1cf2e9e6ff637350b3d0705c2375cabb6baa7d9739f7; trainer IDs 623,622",
+          "resolutionStatus": "resolved",
+          "resolution": "exact-ordered-ROM-party-partition",
+          "confidence": "verified"
+        },
+        {
+          "category": "trainers",
+          "recordId": "pokemon-unbound-trainer-0060",
+          "field": "party-ownership",
+          "legacyValue": "merged-workbook-party",
+          "referenceValue": [
+            3,
+            1
+          ],
+          "authority": "ROM 7aa25bbf568f7cfcf6ee1cf2e9e6ff637350b3d0705c2375cabb6baa7d9739f7; trainer IDs 624,625",
+          "resolutionStatus": "resolved",
+          "resolution": "exact-ordered-ROM-party-partition",
+          "confidence": "verified"
+        },
+        {
+          "category": "trainers",
+          "recordId": "pokemon-unbound-trainer-0061",
+          "field": "party-ownership",
+          "legacyValue": "merged-workbook-party",
+          "referenceValue": [
+            1,
+            2
+          ],
+          "authority": "ROM 7aa25bbf568f7cfcf6ee1cf2e9e6ff637350b3d0705c2375cabb6baa7d9739f7; trainer IDs 626,627",
+          "resolutionStatus": "resolved",
+          "resolution": "exact-ordered-ROM-party-partition",
+          "confidence": "verified"
+        },
+        {
+          "category": "trainers",
+          "recordId": "pokemon-unbound-trainer-0467",
+          "field": "battle-format",
+          "legacyValue": "single",
+          "referenceValue": "double",
+          "authority": "https://unboundwiki.com/walkthrough/part-13/",
+          "resolutionStatus": "resolved",
+          "resolution": "documented-scripted-double",
+          "confidence": "documented"
+        },
+        {
+          "category": "trainers",
+          "recordId": "pokemon-unbound-trainer-0476",
+          "field": "battle-format",
+          "legacyValue": "single",
+          "referenceValue": "double",
+          "authority": "https://unboundwiki.com/walkthrough/part-35/",
+          "resolutionStatus": "resolved",
+          "resolution": "documented-scripted-double",
+          "confidence": "documented"
+        },
+        {
+          "category": "trainers",
+          "recordId": "pokemon-unbound-trainer-0478",
+          "field": "battle-format",
+          "legacyValue": "single",
+          "referenceValue": "double",
+          "authority": "https://unboundwiki.com/walkthrough/part-35/",
+          "resolutionStatus": "resolved",
+          "resolution": "documented-scripted-double",
+          "confidence": "documented"
+        }
+      ],
+      "excluded": [
+        {
+          "trainerId": "pokemon-unbound-trainer-0462",
+          "reason": "Team-up with Rival's Pokemon is a borrowed-team single battle, not an active NPC partner."
+        },
+        {
+          "trainerId": "pokemon-unbound-trainer-0474",
+          "reason": "Marlon commands the player party against Groudon; this is not a second owned party."
+        },
+        {
+          "trainerId": "pokemon-unbound-trainer-0039",
+          "reason": "Jax escort does not make the one-Pokemon Foster encounter a double."
+        },
+        {
+          "trainerId": "pokemon-unbound-trainer-0220",
+          "reason": "First Route 9 grunt is fought before Jax offers to join."
+        },
+        {
+          "trainerId": "pokemon-unbound-trainer-0478",
+          "reason": "Hoopa/Rayquaza is a player-owned double, not an NPC-partner battle."
+        }
+      ],
+      "encounterEvidence": "imports/reference-docs/unbound_partner_encounters.json"
+    }
+  },
+  "records": {
+    "pokemon-unbound-occurrence-0448": {
+      "id": "pokemon-unbound-occurrence-0448",
+      "displayName": "Light of Ruin Grunt & Grunt |Crystal Peak|",
+      "battleFormat": "multi-trainer",
+      "enemyTrainerIds": [
+        "pokemon-unbound-trainer-0535",
+        "pokemon-unbound-trainer-0536"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-unbound-trainer-0535",
+        "pokemon-unbound-trainer-0536"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "navigationTrainerIds": [
+        "pokemon-unbound-trainer-0058"
+      ]
+    },
+    "pokemon-unbound-occurrence-0449": {
+      "id": "pokemon-unbound-occurrence-0449",
+      "displayName": "Light of Ruin Grunt & Grunt |Crystal Peak| #2",
+      "battleFormat": "multi-trainer",
+      "enemyTrainerIds": [
+        "pokemon-unbound-trainer-0537",
+        "pokemon-unbound-trainer-0538"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-unbound-trainer-0537",
+        "pokemon-unbound-trainer-0538"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "navigationTrainerIds": [
+        "pokemon-unbound-trainer-0059"
+      ]
+    },
+    "pokemon-unbound-occurrence-0450": {
+      "id": "pokemon-unbound-occurrence-0450",
+      "displayName": "Light of Ruin Grunt & Grunt |Crystal Peak| #3",
+      "battleFormat": "multi-trainer",
+      "enemyTrainerIds": [
+        "pokemon-unbound-trainer-0539",
+        "pokemon-unbound-trainer-0540"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-unbound-trainer-0539",
+        "pokemon-unbound-trainer-0540"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "navigationTrainerIds": [
+        "pokemon-unbound-trainer-0060"
+      ]
+    },
+    "pokemon-unbound-occurrence-0451": {
+      "id": "pokemon-unbound-occurrence-0451",
+      "displayName": "Light of Ruin Grunt & Grunt |Crystal Peak| #4",
+      "battleFormat": "multi-trainer",
+      "enemyTrainerIds": [
+        "pokemon-unbound-trainer-0541",
+        "pokemon-unbound-trainer-0542"
+      ],
+      "enemySlotTrainerIds": [
+        "pokemon-unbound-trainer-0541",
+        "pokemon-unbound-trainer-0542"
+      ],
+      "partyPolicy": "per-trainer",
+      "formatChoice": "double-only",
+      "navigationTrainerIds": [
+        "pokemon-unbound-trainer-0061"
+      ]
+    }
+  }
 }

@@ -1,4 +1,4 @@
-import { calculateStats } from "../adapters/combatant_ingest.js?v=20260909-level-drift-v1";
+import { calculateStats } from "../adapters/combatant_ingest.js?v=20260917-partners-release-v1";
 import { clone } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
 import { activeKeys } from "../core/battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
 
@@ -219,7 +219,7 @@ function rewardContext(plan, state, enemyKey, dataset) {
   }
   const tracking = state.experienceState;
   if (!tracking || (tracking.rewardedEnemyKeys || []).includes(enemyKey)) return { available: false, reason: "already-rewarded", rewards: [] };
-  const playerKeys = Object.values(plan.combatants).filter(mon => mon.side === "player").map(mon => mon.combatantKey);
+  const playerKeys = Object.values(plan.combatants).filter(mon => mon.side === "player" && !mon.source?.isPlayerPartner).map(mon => mon.combatantKey);
   const participants = new Set((tracking.participantsByEnemyKey?.[enemyKey] || []).filter(key => playerKeys.includes(key) && live(state, key)));
   if (generation === "custom") return unboundRewards(plan, state, enemyKey, dataset, participants, playerKeys, enemy, enemyState);
   const shareHolders = new Set(playerKeys.filter(key => live(state, key) && state.combatantStates[key]?.currentItemId === EXP_SHARE_ITEM_ID));

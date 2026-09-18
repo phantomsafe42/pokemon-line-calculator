@@ -7,7 +7,7 @@
   <meta name="pokemon-asset-release-base" content="/Datasets/Pokemon%20Assets/release">
   <title>Pokémon Line Calculator</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./styles.css?v=20260917-paired-trainer-release-v2">
+  <link rel="stylesheet" href="./styles.css?v=20260917-partner-selector-spacing-v1">
 </head>
 <body>
   <header class="app-header">
@@ -235,6 +235,12 @@
         <div id="enemy-team-summary" class="party-selection-summary"></div>
       </section>
 
+      <section id="player-partner-panel" class="party-selector-panel" hidden>
+        <div class="section-heading compact-heading"><h3>Partner · Slot 2</h3></div>
+        <label>Partner team<select id="player-partner-select"></select></label>
+        <div id="player-partner-summary" class="party-selection-summary"></div>
+      </section>
+
       <section class="party-selector-panel">
         <div class="section-heading compact-heading">
           <div><h3>Party Selector</h3></div>
@@ -333,6 +339,6 @@
   </dialog>
 
   <script src="./src/generated/pokemon_asset_resolver.global.js?v=20260914-assets-v4"></script>
-  <script type="module" src="./src/app.js?v=20260917-paired-trainer-release-v2"></script>
+  <script type="module" src="./src/app.js?v=20260917-partners-release-v1"></script>
 </body>
 </html>

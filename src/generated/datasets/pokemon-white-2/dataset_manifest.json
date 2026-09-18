@@ -360,6 +360,10 @@
     "../../tools/imports/vanilla/trainer-visual-identity-authority.json": {
       "sha256": "2c0543f739ee340f86b5a604614d49e98d0bc2fe185316f5062d18bf012b04de",
       "role": "asset-neutral trainer visual identity resolver or schema"
+    },
+    "../../tools/imports/vanilla/reviewed-multi-context/multi-encounter-corrections.json": {
+      "sha256": "fe19ca4ac108411ded5fe111788333bc9a54d3b8bc6fbbd941fe6d568a74449f",
+      "role": "reviewed retail Multi encounter corrections"
     }
   },
   "standardizedSources": [

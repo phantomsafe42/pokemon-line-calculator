@@ -8,7 +8,7 @@ function integerOrNull(value) {
 
 function playerCombatants(plan) {
   return Object.values(plan?.combatants || {})
-    .filter(combatant => combatant.side === "player")
+    .filter(combatant => combatant.side === "player" && !combatant.source?.isPlayerPartner)
     .sort((left, right) => Number(left.source?.slot ?? Number.MAX_SAFE_INTEGER) - Number(right.source?.slot ?? Number.MAX_SAFE_INTEGER)
       || left.combatantKey.localeCompare(right.combatantKey));
 }

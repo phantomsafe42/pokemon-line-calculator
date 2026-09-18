@@ -105,10 +105,13 @@ for(const gameId of ['volt-white-2r','fire-red-omega','storm-silver','renegade-p
     for(const trainerId of group.enemyTrainerIds){
       const choices=dataset.trainerBattleChoices(trainerId);
       if(group.formatChoice==='single-or-double'){
-        assert.deepEqual(choices.map(choice=>choice.trainerId),[trainerId,trainerId,trainerId]);
-        assert.deepEqual(choices.map(choice=>choice.format),['singles','doubles','doubles']);
-        assert.deepEqual(choices.map(choice=>choice.battleKind),['single','double','multi']);
-        assert.equal(choices[2].defaultPartnerTrainerId,group.enemyTrainerIds.find(id=>id!==trainerId));
+        const ordinary=choices.filter(choice=>choice.trainerId===trainerId);
+        assert.deepEqual(ordinary.map(choice=>choice.format),['singles','doubles','doubles']);
+        assert.deepEqual(ordinary.map(choice=>choice.battleKind),['single','double','multi']);
+        assert.equal(ordinary[2].defaultPartnerTrainerId,group.enemyTrainerIds.find(id=>id!==trainerId));
+        assert.equal(choices[0].format,'singles');
+        if(dataset.trainer(group.id).playerPartnerBinding) assert.ok(choices.some(choice=>choice.trainerId===group.id && !choice.withoutPlayerPartner));
+        else assert.equal(choices.length,3);
         assert.equal(navigationIds.filter(id=>id===trainerId).length,1);
       }else{
         assert.deepEqual(choices.map(choice=>choice.trainerId),[group.id]);

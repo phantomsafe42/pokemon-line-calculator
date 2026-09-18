@@ -415,6 +415,7 @@ dialog::backdrop { background: rgba(0, 0, 0, .75); }
 .editor-sprite-preview { display: flex; align-items: center; justify-content: center; width: 64px; height: 64px; flex: 0 0 64px; border: 1px solid var(--line); border-radius: 7px; background: var(--panel-2); }
 .editor-sprite-preview img { max-width: 58px; max-height: 58px; object-fit: contain; image-rendering: pixelated; }
 .party-selector-panel { margin-top: 1rem; border: 1px solid var(--line); border-radius: 7px; padding: .85rem; background: var(--panel); }
+#player-partner-panel > label { display: block; margin-bottom: .75rem; }
 .encounter-partner-panel .context-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .encounter-partner-panel .compact-heading { margin-bottom: .75rem; }
 .party-source-controls { margin-bottom: .75rem; }

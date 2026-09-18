@@ -250,5 +250,378 @@
     "dynamicOperandsAreRuntimeSelectorsNotFixedGroupFailures": true,
     "sourceArtifact": "tools/imports/vanilla/gen4-trainer-context/heartgold-soulsilver.json",
     "emptyRecordsAreValidWhenExactScriptAuditFoundNoSeparateRosterGroups": true
+  },
+  "playerPartners": {
+    "schemaVersion": "trainer-player-partners/v1",
+    "bindings": [
+      {
+        "id": "heartgold-soulsilver-script-pair-0479-0499",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-soulsilver-trainer-0479",
+          "pokemon-soulsilver-trainer-0499"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-soulsilver-trainer-0675",
+            "trainerId": "pokemon-soulsilver-trainer-0675",
+            "label": "Pokémon Trainer Lance · dragonite Lv. 40",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon SoulSilver/source-data/trainers.json",
+              "rawTrainerId": 675,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Mahogany Town",
+                    "text": "Mahogany Town"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "Team Rocket HQ",
+                    "text": "Team Rocket HQ"
+                  },
+                  {
+                    "level": 4,
+                    "raw": "B2F (South)",
+                    "text": "B2F (South)"
+                  }
+                ],
+                "line": 380,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_HeartGold_and_SoulSilver/Part_11&oldid=4510771",
+                "pageId": 100784,
+                "revisionId": 4510771,
+                "templateOrdinal": 23,
+                "templateSha256": "6b10b8e163ee66b76aafadf7b264a26f0dd0731f20645007290f9c2624059d56",
+                "title": "Walkthrough:Pokémon HeartGold and SoulSilver/Part 11"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-soulsilver.json",
+          "sha256": "f5ee473ecf7bc292838a3ade39c588960a4ebc843a9a96e112e40aeda6529667",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Team Rocket HQ",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Mahogany Town",
+                  "text": "Mahogany Town"
+                },
+                {
+                  "level": 3,
+                  "raw": "Team Rocket HQ",
+                  "text": "Team Rocket HQ"
+                },
+                {
+                  "level": 4,
+                  "raw": "B2F (South)",
+                  "text": "B2F (South)"
+                }
+              ],
+              "line": 412,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_HeartGold_and_SoulSilver/Part_11&oldid=4510771",
+              "pageId": 100784,
+              "revisionId": 4510771,
+              "templateOrdinal": 24,
+              "templateSha256": "878bcf65cb9bddfb6d55ea35dcab70022e7691274afad3773be4ed1d5d323d07",
+              "title": "Walkthrough:Pokémon HeartGold and SoulSilver/Part 11"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Mahogany Town",
+                  "text": "Mahogany Town"
+                },
+                {
+                  "level": 3,
+                  "raw": "Team Rocket HQ",
+                  "text": "Team Rocket HQ"
+                },
+                {
+                  "level": 4,
+                  "raw": "B2F (South)",
+                  "text": "B2F (South)"
+                }
+              ],
+              "line": 412,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_HeartGold_and_SoulSilver/Part_11&oldid=4510771",
+              "pageId": 100784,
+              "revisionId": 4510771,
+              "templateOrdinal": 24,
+              "templateSha256": "878bcf65cb9bddfb6d55ea35dcab70022e7691274afad3773be4ed1d5d323d07",
+              "title": "Walkthrough:Pokémon HeartGold and SoulSilver/Part 11"
+            },
+            {
+              "path": "files/fielddata/script/scr_seq/scr_seq_0090_D35R0103.s",
+              "sha256": "762edb5a7381e735433f887cc87a5fae69ff3f3e5b2fc6039fdf1a0fef0fbd39",
+              "line": 370,
+              "label": "_0436",
+              "command": "MultiBattle",
+              "arguments": [
+                "TRAINER_PKMN_TRAINER_LANCE_LANCE",
+                "TRAINER_EXECUTIVE_ARIANA_ARIANA_2",
+                "TRAINER_TEAM_ROCKET_GRUNT_25",
+                "1"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "heartgold-soulsilver-script-pair-0733-0734",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-soulsilver-trainer-0733",
+          "pokemon-soulsilver-trainer-0734"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-soulsilver-trainer-0735",
+            "trainerId": "pokemon-soulsilver-trainer-0735",
+            "label": "Rival Silver · meganium Lv. 60, crobat Lv. 58, gengar Lv. 56",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon SoulSilver/source-data/trainers.json",
+              "rawTrainerId": 735,
+              "evidence": {
+                "authority": "commit-pinned pret field-script/runtime source",
+                "contextArtifact": "tools/imports/vanilla/gen4-trainer-context/heartgold-soulsilver.json",
+                "evidence": [
+                  {
+                    "path": "files/fielddata/script/scr_seq/scr_seq_0111_D44R0102.s",
+                    "sha256": "cf26f530801b00cace2982f2b50e9d5f45931dd5163eff899693f34602f9d160",
+                    "line": 423,
+                    "label": "_04B2",
+                    "command": "MultiBattle",
+                    "arguments": [
+                      "TRAINER_PARTNER_RIVAL_2",
+                      "TRAINER_CHAMPION_LANCE_3",
+                      "TRAINER_LEADER_CLAIR_CLAIR_3",
+                      "1"
+                    ]
+                  },
+                  {
+                    "path": "files/fielddata/script/scr_seq/scr_seq_0111_D44R0102.s",
+                    "sha256": "cf26f530801b00cace2982f2b50e9d5f45931dd5163eff899693f34602f9d160",
+                    "line": 429,
+                    "label": "_05AC",
+                    "command": "MultiBattle",
+                    "arguments": [
+                      "TRAINER_PARTNER_RIVAL_3",
+                      "TRAINER_CHAMPION_LANCE_3",
+                      "TRAINER_LEADER_CLAIR_CLAIR_3",
+                      "1"
+                    ]
+                  },
+                  {
+                    "path": "files/fielddata/script/scr_seq/scr_seq_0111_D44R0102.s",
+                    "sha256": "cf26f530801b00cace2982f2b50e9d5f45931dd5163eff899693f34602f9d160",
+                    "line": 433,
+                    "label": "_05C8",
+                    "command": "MultiBattle",
+                    "arguments": [
+                      "TRAINER_PARTNER_RIVAL_1",
+                      "TRAINER_CHAMPION_LANCE_3",
+                      "TRAINER_LEADER_CLAIR_CLAIR_3",
+                      "1"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "pokemon-soulsilver-trainer-0736",
+            "trainerId": "pokemon-soulsilver-trainer-0736",
+            "label": "Rival Silver · typhlosion Lv. 60, crobat Lv. 58, gengar Lv. 56",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon SoulSilver/source-data/trainers.json",
+              "rawTrainerId": 736,
+              "evidence": {
+                "authority": "commit-pinned pret field-script/runtime source",
+                "contextArtifact": "tools/imports/vanilla/gen4-trainer-context/heartgold-soulsilver.json",
+                "evidence": [
+                  {
+                    "path": "files/fielddata/script/scr_seq/scr_seq_0111_D44R0102.s",
+                    "sha256": "cf26f530801b00cace2982f2b50e9d5f45931dd5163eff899693f34602f9d160",
+                    "line": 423,
+                    "label": "_04B2",
+                    "command": "MultiBattle",
+                    "arguments": [
+                      "TRAINER_PARTNER_RIVAL_2",
+                      "TRAINER_CHAMPION_LANCE_3",
+                      "TRAINER_LEADER_CLAIR_CLAIR_3",
+                      "1"
+                    ]
+                  },
+                  {
+                    "path": "files/fielddata/script/scr_seq/scr_seq_0111_D44R0102.s",
+                    "sha256": "cf26f530801b00cace2982f2b50e9d5f45931dd5163eff899693f34602f9d160",
+                    "line": 429,
+                    "label": "_05AC",
+                    "command": "MultiBattle",
+                    "arguments": [
+                      "TRAINER_PARTNER_RIVAL_3",
+                      "TRAINER_CHAMPION_LANCE_3",
+                      "TRAINER_LEADER_CLAIR_CLAIR_3",
+                      "1"
+                    ]
+                  },
+                  {
+                    "path": "files/fielddata/script/scr_seq/scr_seq_0111_D44R0102.s",
+                    "sha256": "cf26f530801b00cace2982f2b50e9d5f45931dd5163eff899693f34602f9d160",
+                    "line": 433,
+                    "label": "_05C8",
+                    "command": "MultiBattle",
+                    "arguments": [
+                      "TRAINER_PARTNER_RIVAL_1",
+                      "TRAINER_CHAMPION_LANCE_3",
+                      "TRAINER_LEADER_CLAIR_CLAIR_3",
+                      "1"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "pokemon-soulsilver-trainer-0737",
+            "trainerId": "pokemon-soulsilver-trainer-0737",
+            "label": "Rival Silver · feraligatr Lv. 60, crobat Lv. 58, gengar Lv. 56",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon SoulSilver/source-data/trainers.json",
+              "rawTrainerId": 737,
+              "evidence": {
+                "authority": "commit-pinned pret field-script/runtime source",
+                "contextArtifact": "tools/imports/vanilla/gen4-trainer-context/heartgold-soulsilver.json",
+                "evidence": [
+                  {
+                    "path": "files/fielddata/script/scr_seq/scr_seq_0111_D44R0102.s",
+                    "sha256": "cf26f530801b00cace2982f2b50e9d5f45931dd5163eff899693f34602f9d160",
+                    "line": 423,
+                    "label": "_04B2",
+                    "command": "MultiBattle",
+                    "arguments": [
+                      "TRAINER_PARTNER_RIVAL_2",
+                      "TRAINER_CHAMPION_LANCE_3",
+                      "TRAINER_LEADER_CLAIR_CLAIR_3",
+                      "1"
+                    ]
+                  },
+                  {
+                    "path": "files/fielddata/script/scr_seq/scr_seq_0111_D44R0102.s",
+                    "sha256": "cf26f530801b00cace2982f2b50e9d5f45931dd5163eff899693f34602f9d160",
+                    "line": 429,
+                    "label": "_05AC",
+                    "command": "MultiBattle",
+                    "arguments": [
+                      "TRAINER_PARTNER_RIVAL_3",
+                      "TRAINER_CHAMPION_LANCE_3",
+                      "TRAINER_LEADER_CLAIR_CLAIR_3",
+                      "1"
+                    ]
+                  },
+                  {
+                    "path": "files/fielddata/script/scr_seq/scr_seq_0111_D44R0102.s",
+                    "sha256": "cf26f530801b00cace2982f2b50e9d5f45931dd5163eff899693f34602f9d160",
+                    "line": 433,
+                    "label": "_05C8",
+                    "command": "MultiBattle",
+                    "arguments": [
+                      "TRAINER_PARTNER_RIVAL_1",
+                      "TRAINER_CHAMPION_LANCE_3",
+                      "TRAINER_LEADER_CLAIR_CLAIR_3",
+                      "1"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-soulsilver.json",
+          "sha256": "f5ee473ecf7bc292838a3ade39c588960a4ebc843a9a96e112e40aeda6529667",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": null,
+          "evidence": [
+            {
+              "path": "files/fielddata/script/scr_seq/scr_seq_0111_D44R0102.s",
+              "sha256": "cf26f530801b00cace2982f2b50e9d5f45931dd5163eff899693f34602f9d160",
+              "line": 423,
+              "label": "_04B2",
+              "command": "MultiBattle",
+              "arguments": [
+                "TRAINER_PARTNER_RIVAL_2",
+                "TRAINER_CHAMPION_LANCE_3",
+                "TRAINER_LEADER_CLAIR_CLAIR_3",
+                "1"
+              ]
+            },
+            {
+              "path": "files/fielddata/script/scr_seq/scr_seq_0111_D44R0102.s",
+              "sha256": "cf26f530801b00cace2982f2b50e9d5f45931dd5163eff899693f34602f9d160",
+              "line": 429,
+              "label": "_05AC",
+              "command": "MultiBattle",
+              "arguments": [
+                "TRAINER_PARTNER_RIVAL_3",
+                "TRAINER_CHAMPION_LANCE_3",
+                "TRAINER_LEADER_CLAIR_CLAIR_3",
+                "1"
+              ]
+            },
+            {
+              "path": "files/fielddata/script/scr_seq/scr_seq_0111_D44R0102.s",
+              "sha256": "cf26f530801b00cace2982f2b50e9d5f45931dd5163eff899693f34602f9d160",
+              "line": 433,
+              "label": "_05C8",
+              "command": "MultiBattle",
+              "arguments": [
+                "TRAINER_PARTNER_RIVAL_1",
+                "TRAINER_CHAMPION_LANCE_3",
+                "TRAINER_LEADER_CLAIR_CLAIR_3",
+                "1"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "validation": {
+      "status": "passed",
+      "scope": "reviewed-story-multi-encounters",
+      "builder": "tools/vanilla_player_partners.js",
+      "excludedEvidenceConflicts": [],
+      "excluded": [
+        "link battles",
+        "randomized battle facilities"
+      ],
+      "note": "No location-wide inference. Separate trainer reserves; optional escort encounters retain Singles."
+    }
   }
 }

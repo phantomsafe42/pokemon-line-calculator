@@ -1,5 +1,5 @@
 import { canonicalStats, shortHash, stableStringify, toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
-import { canonicalSpeciesDisplayName, canonicalTrainerMember, DatasetReadinessError } from "./standardized_dataset.js?v=20260917-paired-trainer-release-v2";
+import { canonicalSpeciesDisplayName, canonicalTrainerMember, DatasetReadinessError } from "./standardized_dataset.js?v=20260917-partners-release-v1";
 
 const NATURE_MULTIPLIER_DENOMINATOR = 10;
 const NATURE_BOOST_NUMERATOR = 11;
@@ -158,6 +158,10 @@ export function normalizeTrainerRoster(trainerId, trainerVariantId, dataset, run
   const maximumBattleLevel = Number(dataset.mechanics?.levelRules?.maximumBattleLevel ?? 100);
   return members.map((raw, index) => {
     const member = canonicalTrainerMember(raw);
+    if (member.initialStatStages && Object.entries(member.initialStatStages).some(([stat,value]) =>
+      !['atk','def','spa','spd','spe','accuracy','evasion'].includes(stat) || !Number.isInteger(value) || value < -6 || value > 6)) {
+      throw new DatasetReadinessError('Invalid documented initial stat stages');
+    }
     const observed = runtimeInputs[String(member.slot ?? index + 1)] || {};
     const natureId = observed.nature ? toId(observed.nature) : member.natureId;
     const ivs = observed.ivs || member.ivs;
@@ -196,6 +200,7 @@ export function normalizeTrainerRoster(trainerId, trainerVariantId, dataset, run
       baseExperienceYield: normalizeBaseExperienceYield(species),
       gender: member.gender ?? null,
       ...(Number.isInteger(member.initialFriendship) ? { friendship: member.initialFriendship } : {}),
+      ...(member.initialStatStages ? { initialStatStages: { ...member.initialStatStages } } : {}),
       natureId,
       ivs,
       evs: member.evs,
@@ -237,6 +242,16 @@ export function normalizeMultiTrainerRoster(participants, dataset, runtimeInputs
   return combined.map((combatant, encounterIndex) => ({
     ...combatant,
     source: { ...combatant.source, encounterSlot: encounterIndex + 1 }
+  }));
+}
+
+// Trainer construction stays shared; side and ownership distinguish the ally
+// from both the opponent and the user's persisted Box roster.
+export function normalizePlayerPartnerRoster(trainerId, dataset, trainerVariantId = null) {
+  return normalizeTrainerRoster(trainerId, trainerVariantId, dataset).map(mon => ({
+    ...mon, combatantKey: mon.combatantKey.replace(/^enemy:/, 'player:ally:'), side: 'player',
+    source: { ...mon.source, kind: 'standardized-player-partner', partyOwnerId: trainerId,
+      isPlayerPartner: true, ownerPartySlot: mon.source.trainerSlot }
   }));
 }
 

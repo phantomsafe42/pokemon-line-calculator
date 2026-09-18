@@ -1,6 +1,6 @@
 import { canonicalStats, shortHash, stableStringify, toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
-import { installTrainerEncounters, encounterNavigation } from './trainer_encounters.js?v=20260917-paired-trainer-navigation-v1';
-import { readDatasetJsonFiles } from "./hosted_dataset.js?v=20260917-paired-trainer-release-v2";
+import { installTrainerEncounters, encounterNavigation } from './trainer_encounters.js?v=20260917-partners-release-v1';
+import { readDatasetJsonFiles } from "./hosted_dataset.js?v=20260917-partners-release-v1";
 
 export const BATTLE_DATASET_SOURCES = Object.freeze([
   "species.json",
@@ -291,14 +291,24 @@ export function createDatasetContext({ manifest, mechanics, documents }) {
       const paired = encounters.byMember.get(trainer.id);
       if (paired?.encounter.formatChoice === 'single-or-double') {
         const defaultPartnerTrainerId = paired.encounter.enemyTrainerIds.find(id => String(id) !== String(trainer.id)) || null;
+        const binding = paired.playerPartnerBinding;
         return [
-          { id: `singles:${trainer.id}`, trainerId: trainer.id, format: 'singles', battleKind: 'single', label: 'Singles' },
-          { id: `doubles:${trainer.id}`, trainerId: trainer.id, format: 'doubles', battleKind: 'double', label: 'Doubles' },
-          { id: `multi:${trainer.id}`, trainerId: trainer.id, format: 'doubles', battleKind: 'multi', label: 'Multi', requiresPartner: true, defaultPartnerTrainerId }
+          { id: `singles:${trainer.id}`, trainerId: trainer.id, format: 'singles', battleKind: 'single', label: 'Singles', withoutPlayerPartner: true },
+          { id: `doubles:${trainer.id}`, trainerId: trainer.id, format: 'doubles', battleKind: 'double', label: 'Doubles', withoutPlayerPartner: true },
+          ...(binding ? [{ id: `allied:${paired.id}`, trainerId: paired.id, format: 'doubles', battleKind: 'multi', label: `Multi · with ${binding.partnerOptions[0].label.split(' · ')[0]}` }] : []),
+          ...(binding?.allowWithoutPartner ? [{ id: `unallied:${paired.id}`, trainerId: paired.id, format: 'doubles', battleKind: 'multi', label: 'Multi · without escort', withoutPlayerPartner: true }] : []),
+          { id: `multi:${trainer.id}`, trainerId: trainer.id, format: 'doubles', battleKind: 'multi', label: binding ? 'Custom Multi' : 'Multi', requiresPartner: true, defaultPartnerTrainerId, withoutPlayerPartner: true }
         ];
       }
       if (paired?.encounter.formatChoice === 'double-only') return [
         { id: `multi:${paired.id}`, trainerId: paired.id, format: 'doubles', battleKind: 'multi', label: 'Multi', locked: true }
+      ];
+      const escort = trainer.playerPartnerBinding;
+      if (escort?.formatChoice === 'single-or-double') return [
+        { id: `singles:${trainer.id}`, trainerId: trainer.id, format: 'singles', battleKind: 'single', label: 'Singles', withoutPlayerPartner: true },
+        { id: `doubles:${trainer.id}`, trainerId: trainer.id, format: 'doubles', battleKind: 'double', label: 'Doubles', withoutPlayerPartner: true },
+        { id: `allied:${trainer.id}`, trainerId: trainer.id, format: 'doubles', battleKind: 'multi', label: `Multi · with ${escort.partnerOptions[0].label.split(' · ')[0]}` },
+        { id: `multi:${trainer.id}`, trainerId: trainer.id, format: 'doubles', battleKind: 'multi', label: 'Custom Multi', requiresPartner: true, withoutPlayerPartner: true }
       ];
       const format = this.trainerBattleFormat(trainer.id);
       if (format !== 'singles') return [{
@@ -322,7 +332,7 @@ export function createDatasetContext({ manifest, mechanics, documents }) {
       const groups = sourceGroups
         .map(group => ({
           ...group,
-          trainers: uniqueTrainers(group.trainers).filter(trainer => String(trainer.id) !== selectedId && !encounters.syntheticIds.has(trainer.id))
+          trainers: uniqueTrainers(group.trainers).filter(trainer => String(trainer.id) !== selectedId && !encounters.syntheticIds.has(trainer.id) && !encounters.allyIds.has(trainer.id))
         }))
         .filter(group => group.trainers.length || String(group.id) === String(selectedGroupId));
       const selectedGroupIndex = groups.findIndex(group => String(group.id) === String(selectedGroupId));

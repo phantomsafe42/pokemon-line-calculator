@@ -12,5 +12,2567 @@
     "dynamicOperandsAreRuntimeSelectorsNotFixedGroupFailures": true,
     "sourceArtifact": "tools/imports/vanilla/gen4-trainer-context/diamond-pearl.json",
     "emptyRecordsAreValidWhenExactScriptAuditFoundNoSeparateRosterGroups": true
+  },
+  "playerPartners": {
+    "schemaVersion": "trainer-player-partners/v1",
+    "bindings": [
+      {
+        "id": "pokemon-diamond-player-partner-201-204",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0201",
+          "pokemon-diamond-trainer-0204"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0608",
+            "trainerId": "pokemon-diamond-trainer-0608",
+            "label": "Pokémon Trainer Cheryl Cheryl · chansey Lv. 15",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 608,
+              "evidence": [
+                {
+                  "url": "https://bulbapedia.bulbagarden.net/wiki/Eterna_Forest",
+                  "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Eterna Forest",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Route 205 (Southwest)",
+                  "text": "Route 205 (Southwest)"
+                },
+                {
+                  "level": 3,
+                  "raw": "Eterna Forest",
+                  "text": "Eterna Forest"
+                }
+              ],
+              "line": 77,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_6&oldid=4462018",
+              "pageId": 99240,
+              "revisionId": 4462018,
+              "templateOrdinal": 9,
+              "templateSha256": "2c939d644f044e342e6d19505e184f7fbb4d3df4dbbe65fb1ae7c7eb4557567d",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 6"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Route 205 (Southwest)",
+                  "text": "Route 205 (Southwest)"
+                },
+                {
+                  "level": 3,
+                  "raw": "Eterna Forest",
+                  "text": "Eterna Forest"
+                }
+              ],
+              "line": 78,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_6&oldid=4462018",
+              "pageId": 99240,
+              "revisionId": 4462018,
+              "templateOrdinal": 10,
+              "templateSha256": "04a88ccb751c77bd4a8bf09c13fc5e38b05dd55f8c6e2fc1aa24ab02fe5d523c",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 6"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Eterna_Forest",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-diamond-player-partner-206-205",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0206",
+          "pokemon-diamond-trainer-0205"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0608",
+            "trainerId": "pokemon-diamond-trainer-0608",
+            "label": "Pokémon Trainer Cheryl Cheryl · chansey Lv. 15",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 608,
+              "evidence": [
+                {
+                  "url": "https://bulbapedia.bulbagarden.net/wiki/Eterna_Forest",
+                  "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Eterna Forest",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Route 205 (Southwest)",
+                  "text": "Route 205 (Southwest)"
+                },
+                {
+                  "level": 3,
+                  "raw": "Eterna Forest",
+                  "text": "Eterna Forest"
+                }
+              ],
+              "line": 80,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_6&oldid=4462018",
+              "pageId": 99240,
+              "revisionId": 4462018,
+              "templateOrdinal": 11,
+              "templateSha256": "8b69b82cb27088fa7aa70635430b8e30601fedbce802f4ae8de01d00f9f0eabe",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 6"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Route 205 (Southwest)",
+                  "text": "Route 205 (Southwest)"
+                },
+                {
+                  "level": 3,
+                  "raw": "Eterna Forest",
+                  "text": "Eterna Forest"
+                }
+              ],
+              "line": 81,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_6&oldid=4462018",
+              "pageId": 99240,
+              "revisionId": 4462018,
+              "templateOrdinal": 12,
+              "templateSha256": "0984c6f7774f6a971c3c6f4607655da20356f216f45af99188cc2fb5c96c985c",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 6"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Eterna_Forest",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-diamond-player-partner-202-203",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0202",
+          "pokemon-diamond-trainer-0203"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0608",
+            "trainerId": "pokemon-diamond-trainer-0608",
+            "label": "Pokémon Trainer Cheryl Cheryl · chansey Lv. 15",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 608,
+              "evidence": [
+                {
+                  "url": "https://bulbapedia.bulbagarden.net/wiki/Eterna_Forest",
+                  "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Eterna Forest",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Route 205 (Southwest)",
+                  "text": "Route 205 (Southwest)"
+                },
+                {
+                  "level": 3,
+                  "raw": "Eterna Forest",
+                  "text": "Eterna Forest"
+                }
+              ],
+              "line": 83,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_6&oldid=4462018",
+              "pageId": 99240,
+              "revisionId": 4462018,
+              "templateOrdinal": 13,
+              "templateSha256": "eab0c82464e1833cfe605c6855e5ae2a0b706f00b1851676b51072271e3e9162",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 6"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Route 205 (Southwest)",
+                  "text": "Route 205 (Southwest)"
+                },
+                {
+                  "level": 3,
+                  "raw": "Eterna Forest",
+                  "text": "Eterna Forest"
+                }
+              ],
+              "line": 84,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_6&oldid=4462018",
+              "pageId": 99240,
+              "revisionId": 4462018,
+              "templateOrdinal": 14,
+              "templateSha256": "72171e2852784cbafe0ac40eb61075a5e0b19a3eb54fe0d63193cf32a3c6bfaa",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 6"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Eterna_Forest",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-diamond-player-partner-395-398",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0395",
+          "pokemon-diamond-trainer-0398"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0608",
+            "trainerId": "pokemon-diamond-trainer-0608",
+            "label": "Pokémon Trainer Cheryl Cheryl · chansey Lv. 15",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 608,
+              "evidence": [
+                {
+                  "url": "https://bulbapedia.bulbagarden.net/wiki/Eterna_Forest",
+                  "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Eterna Forest",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Route 205 (Southwest)",
+                  "text": "Route 205 (Southwest)"
+                },
+                {
+                  "level": 3,
+                  "raw": "Eterna Forest",
+                  "text": "Eterna Forest"
+                }
+              ],
+              "line": 86,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_6&oldid=4462018",
+              "pageId": 99240,
+              "revisionId": 4462018,
+              "templateOrdinal": 15,
+              "templateSha256": "2f078ef7ea3346e56ef52a56367bd31b212f0176306d81725a52f1809a45c552",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 6"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Route 205 (Southwest)",
+                  "text": "Route 205 (Southwest)"
+                },
+                {
+                  "level": 3,
+                  "raw": "Eterna Forest",
+                  "text": "Eterna Forest"
+                }
+              ],
+              "line": 87,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_6&oldid=4462018",
+              "pageId": 99240,
+              "revisionId": 4462018,
+              "templateOrdinal": 16,
+              "templateSha256": "878fd121013e1224877156c25e0f9e511daea9a72a509493de0a8d1cf8b8d48b",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 6"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Eterna_Forest",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-diamond-player-partner-454-455",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0454",
+          "pokemon-diamond-trainer-0455"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0612",
+            "trainerId": "pokemon-diamond-trainer-0612",
+            "label": "Pokémon Trainer Mira Mira · kadabra Lv. 18",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 612,
+              "evidence": [
+                {
+                  "url": "https://bulbapedia.bulbagarden.net/wiki/Wayward_Cave",
+                  "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Wayward Cave",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Route 206",
+                  "text": "Route 206"
+                },
+                {
+                  "level": 3,
+                  "raw": "Wayward Cave",
+                  "text": "Wayward Cave"
+                }
+              ],
+              "line": 85,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_7&oldid=4483911",
+              "pageId": 100311,
+              "revisionId": 4483911,
+              "templateOrdinal": 9,
+              "templateSha256": "258eba59f00b90e8888313751e5afdfaa48f12baec1b66ff832117ce456d1f6c",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 7"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Route 206",
+                  "text": "Route 206"
+                },
+                {
+                  "level": 3,
+                  "raw": "Wayward Cave",
+                  "text": "Wayward Cave"
+                }
+              ],
+              "line": 86,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_7&oldid=4483911",
+              "pageId": 100311,
+              "revisionId": 4483911,
+              "templateOrdinal": 10,
+              "templateSha256": "8159dbebc50b09612df4721b93b8bc5c827b1ea5b176c05b095255790a524f9a",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 7"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Wayward_Cave",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-diamond-player-partner-450-496",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0450",
+          "pokemon-diamond-trainer-0496"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0612",
+            "trainerId": "pokemon-diamond-trainer-0612",
+            "label": "Pokémon Trainer Mira Mira · kadabra Lv. 18",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 612,
+              "evidence": [
+                {
+                  "url": "https://bulbapedia.bulbagarden.net/wiki/Wayward_Cave",
+                  "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Wayward Cave",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Route 206",
+                  "text": "Route 206"
+                },
+                {
+                  "level": 3,
+                  "raw": "Wayward Cave",
+                  "text": "Wayward Cave"
+                }
+              ],
+              "line": 88,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_7&oldid=4483911",
+              "pageId": 100311,
+              "revisionId": 4483911,
+              "templateOrdinal": 11,
+              "templateSha256": "41cb4cffa04f37ac82f20950fcf920fc9f1fe41fe89a43a2d54135bcdea7d98f",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 7"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Route 206",
+                  "text": "Route 206"
+                },
+                {
+                  "level": 3,
+                  "raw": "Wayward Cave",
+                  "text": "Wayward Cave"
+                }
+              ],
+              "line": 89,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_7&oldid=4483911",
+              "pageId": 100311,
+              "revisionId": 4483911,
+              "templateOrdinal": 12,
+              "templateSha256": "b8dd0e3c03b77fc1f8cda4fbc71e0d8e4b4c399bc925ba31c48997e52b3e9ff9",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 7"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Wayward_Cave",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-diamond-player-partner-458-379",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0458",
+          "pokemon-diamond-trainer-0379"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0612",
+            "trainerId": "pokemon-diamond-trainer-0612",
+            "label": "Pokémon Trainer Mira Mira · kadabra Lv. 18",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 612,
+              "evidence": [
+                {
+                  "url": "https://bulbapedia.bulbagarden.net/wiki/Wayward_Cave",
+                  "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Wayward Cave",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Route 206",
+                  "text": "Route 206"
+                },
+                {
+                  "level": 3,
+                  "raw": "Wayward Cave",
+                  "text": "Wayward Cave"
+                }
+              ],
+              "line": 91,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_7&oldid=4483911",
+              "pageId": 100311,
+              "revisionId": 4483911,
+              "templateOrdinal": 13,
+              "templateSha256": "a4fa9ad6a3f0971ddc54699724e7b8cdc127cba3745118508b0822c29100279b",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 7"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Route 206",
+                  "text": "Route 206"
+                },
+                {
+                  "level": 3,
+                  "raw": "Wayward Cave",
+                  "text": "Wayward Cave"
+                }
+              ],
+              "line": 92,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_7&oldid=4483911",
+              "pageId": 100311,
+              "revisionId": 4483911,
+              "templateOrdinal": 14,
+              "templateSha256": "72d33b9f6e10100412fafbf1254b96932c927571ee5f8c3b7c3f438871897156",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 7"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Wayward_Cave",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-diamond-player-partner-459-380",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0459",
+          "pokemon-diamond-trainer-0380"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0612",
+            "trainerId": "pokemon-diamond-trainer-0612",
+            "label": "Pokémon Trainer Mira Mira · kadabra Lv. 18",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 612,
+              "evidence": [
+                {
+                  "url": "https://bulbapedia.bulbagarden.net/wiki/Wayward_Cave",
+                  "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Wayward Cave",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Route 206",
+                  "text": "Route 206"
+                },
+                {
+                  "level": 3,
+                  "raw": "Wayward Cave",
+                  "text": "Wayward Cave"
+                }
+              ],
+              "line": 94,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_7&oldid=4483911",
+              "pageId": 100311,
+              "revisionId": 4483911,
+              "templateOrdinal": 15,
+              "templateSha256": "3cd542f286a2cfcf4c9311c6035852ef2b49a64a188157da0e93ac4248f8e740",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 7"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Route 206",
+                  "text": "Route 206"
+                },
+                {
+                  "level": 3,
+                  "raw": "Wayward Cave",
+                  "text": "Wayward Cave"
+                }
+              ],
+              "line": 95,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_7&oldid=4483911",
+              "pageId": 100311,
+              "revisionId": 4483911,
+              "templateOrdinal": 16,
+              "templateSha256": "de3f7a55195d9d45584bb7cbcc4a990c58267b673c94585716a33dcf5ab8b3ac",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 7"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Wayward_Cave",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-diamond-player-partner-383-443",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0383",
+          "pokemon-diamond-trainer-0443"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0612",
+            "trainerId": "pokemon-diamond-trainer-0612",
+            "label": "Pokémon Trainer Mira Mira · kadabra Lv. 18",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 612,
+              "evidence": [
+                {
+                  "url": "https://bulbapedia.bulbagarden.net/wiki/Wayward_Cave",
+                  "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Wayward Cave",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Route 206",
+                  "text": "Route 206"
+                },
+                {
+                  "level": 3,
+                  "raw": "Wayward Cave",
+                  "text": "Wayward Cave"
+                }
+              ],
+              "line": 97,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_7&oldid=4483911",
+              "pageId": 100311,
+              "revisionId": 4483911,
+              "templateOrdinal": 17,
+              "templateSha256": "f464480638d06887b28548c8ea5ac1d20f625344fd011e5871cdc46ad7c0d7bf",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 7"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Route 206",
+                  "text": "Route 206"
+                },
+                {
+                  "level": 3,
+                  "raw": "Wayward Cave",
+                  "text": "Wayward Cave"
+                }
+              ],
+              "line": 98,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_7&oldid=4483911",
+              "pageId": 100311,
+              "revisionId": 4483911,
+              "templateOrdinal": 18,
+              "templateSha256": "cf10e321d0d273dc838ba57617d05dd466b6b82db011f2a99a67d4b637b751a9",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 7"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Wayward_Cave",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-diamond-player-partner-452-453",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0452",
+          "pokemon-diamond-trainer-0453"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0609",
+            "trainerId": "pokemon-diamond-trainer-0609",
+            "label": "Pokémon Trainer Riley Riley · lucario Lv. 34",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 609,
+              "evidence": [
+                {
+                  "url": "https://bulbapedia.bulbagarden.net/wiki/Iron_Island",
+                  "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Iron Island",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Iron Island",
+                  "text": "Iron Island"
+                }
+              ],
+              "line": 449,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_14&oldid=4537468",
+              "pageId": 152991,
+              "revisionId": 4537468,
+              "templateOrdinal": 12,
+              "templateSha256": "11c0278adc66b5da9ec67088b665543094ccb9bcdc5d5956f6c0cdf97514f8b1",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 14"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Iron Island",
+                  "text": "Iron Island"
+                }
+              ],
+              "line": 450,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_14&oldid=4537468",
+              "pageId": 152991,
+              "revisionId": 4537468,
+              "templateOrdinal": 13,
+              "templateSha256": "78394d5bb07a257c40405b598f5f4f5dbf791bad598d468e74d68501d83eb4ee",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 14"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Iron_Island",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-diamond-player-partner-445-372",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0445",
+          "pokemon-diamond-trainer-0372"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0609",
+            "trainerId": "pokemon-diamond-trainer-0609",
+            "label": "Pokémon Trainer Riley Riley · lucario Lv. 34",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 609,
+              "evidence": [
+                {
+                  "url": "https://bulbapedia.bulbagarden.net/wiki/Iron_Island",
+                  "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Iron Island",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Iron Island",
+                  "text": "Iron Island"
+                }
+              ],
+              "line": 452,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_14&oldid=4537468",
+              "pageId": 152991,
+              "revisionId": 4537468,
+              "templateOrdinal": 14,
+              "templateSha256": "e68ce9d898c4191cd886d885a6d92722cd7b005feebb33f1d88c7bf4a2660363",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 14"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Iron Island",
+                  "text": "Iron Island"
+                }
+              ],
+              "line": 453,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_14&oldid=4537468",
+              "pageId": 152991,
+              "revisionId": 4537468,
+              "templateOrdinal": 15,
+              "templateSha256": "80f08c50e00ffc6fdecc6e851dfe667fae9dd639d125f7924e3c9fdec103129e",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 14"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Iron_Island",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-diamond-player-partner-505-506",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0505",
+          "pokemon-diamond-trainer-0506"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0609",
+            "trainerId": "pokemon-diamond-trainer-0609",
+            "label": "Pokémon Trainer Riley Riley · lucario Lv. 34",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 609,
+              "evidence": [
+                {
+                  "url": "https://bulbapedia.bulbagarden.net/wiki/Iron_Island",
+                  "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Iron Island",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Iron Island",
+                  "text": "Iron Island"
+                }
+              ],
+              "line": 455,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_14&oldid=4537468",
+              "pageId": 152991,
+              "revisionId": 4537468,
+              "templateOrdinal": 16,
+              "templateSha256": "ac01a5c3965986abf4409915be38d8b72917caeed8d410c3f2b41dd85da5974f",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 14"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Iron Island",
+                  "text": "Iron Island"
+                }
+              ],
+              "line": 456,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_14&oldid=4537468",
+              "pageId": 152991,
+              "revisionId": 4537468,
+              "templateOrdinal": 17,
+              "templateSha256": "c4e35ff8b568c0c4ca190d6caac51bcf9a0866cbc88d500e798fc33f50c14051",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 14"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Iron_Island",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-diamond-player-partner-388-392",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0388",
+          "pokemon-diamond-trainer-0392"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0609",
+            "trainerId": "pokemon-diamond-trainer-0609",
+            "label": "Pokémon Trainer Riley Riley · lucario Lv. 34",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 609,
+              "evidence": [
+                {
+                  "url": "https://bulbapedia.bulbagarden.net/wiki/Iron_Island",
+                  "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Iron Island",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Iron Island",
+                  "text": "Iron Island"
+                }
+              ],
+              "line": 458,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_14&oldid=4537468",
+              "pageId": 152991,
+              "revisionId": 4537468,
+              "templateOrdinal": 18,
+              "templateSha256": "2e6097ef622cbc32f7546d074de6280ce900196fdb98b5cf3e3470a7b248ef84",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 14"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Iron Island",
+                  "text": "Iron Island"
+                }
+              ],
+              "line": 459,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_14&oldid=4537468",
+              "pageId": 152991,
+              "revisionId": 4537468,
+              "templateOrdinal": 19,
+              "templateSha256": "c4320f4c2f01cbd0cf845aedd4f75e326bacd2aaaec12446a9af8aa09d219471",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 14"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Iron_Island",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-diamond-player-partner-389-393",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0389",
+          "pokemon-diamond-trainer-0393"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0610",
+            "trainerId": "pokemon-diamond-trainer-0610",
+            "label": "Pokémon Trainer Marley Marley · arcanine Lv. 57",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 610,
+              "evidence": [
+                {
+                  "url": "https://bulbapedia.bulbagarden.net/wiki/Victory_Road",
+                  "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Victory Road",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Victory Road",
+                  "text": "Victory Road"
+                }
+              ],
+              "line": 13,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_30&oldid=4461812",
+              "pageId": 154594,
+              "revisionId": 4461812,
+              "templateOrdinal": 1,
+              "templateSha256": "ed795bd45f676925b31e3d99725af9488e60c0e70a4be76dcfbed95d76cebde1",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 30"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Victory Road",
+                  "text": "Victory Road"
+                }
+              ],
+              "line": 16,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_30&oldid=4461812",
+              "pageId": 154594,
+              "revisionId": 4461812,
+              "templateOrdinal": 2,
+              "templateSha256": "fe0a763a9f72d669b467251f537e9da46f07afa2500938360e5dcf9b2d9a5f6b",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 30"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Victory_Road",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-diamond-player-partner-399-396",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0399",
+          "pokemon-diamond-trainer-0396"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0610",
+            "trainerId": "pokemon-diamond-trainer-0610",
+            "label": "Pokémon Trainer Marley Marley · arcanine Lv. 57",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 610,
+              "evidence": [
+                {
+                  "url": "https://bulbapedia.bulbagarden.net/wiki/Victory_Road",
+                  "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Victory Road",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Victory Road",
+                  "text": "Victory Road"
+                }
+              ],
+              "line": 20,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_30&oldid=4461812",
+              "pageId": 154594,
+              "revisionId": 4461812,
+              "templateOrdinal": 3,
+              "templateSha256": "ed20f0192886c2447ad9f7dbb0d91ee6e2c389bfd17a5f85a63e4aac39ab81e3",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 30"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Victory Road",
+                  "text": "Victory Road"
+                }
+              ],
+              "line": 23,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_30&oldid=4461812",
+              "pageId": 154594,
+              "revisionId": 4461812,
+              "templateOrdinal": 4,
+              "templateSha256": "cc1e76f59a4dbcaf730c18194d6ac1eed7a15859216ec781459d900305acee09",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 30"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Victory_Road",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-diamond-player-partner-446-499",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0446",
+          "pokemon-diamond-trainer-0499"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0610",
+            "trainerId": "pokemon-diamond-trainer-0610",
+            "label": "Pokémon Trainer Marley Marley · arcanine Lv. 57",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 610,
+              "evidence": [
+                {
+                  "url": "https://bulbapedia.bulbagarden.net/wiki/Victory_Road",
+                  "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Victory Road",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Victory Road",
+                  "text": "Victory Road"
+                }
+              ],
+              "line": 27,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_30&oldid=4461812",
+              "pageId": 154594,
+              "revisionId": 4461812,
+              "templateOrdinal": 5,
+              "templateSha256": "2c96045d74777fa885e2d8692290945d906fff81b5d8cbffeab15bc431aed3ef",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 30"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Victory Road",
+                  "text": "Victory Road"
+                }
+              ],
+              "line": 30,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_30&oldid=4461812",
+              "pageId": 154594,
+              "revisionId": 4461812,
+              "templateOrdinal": 6,
+              "templateSha256": "70b505891b77fbf2bf2463de2c78cc1d8d3c866d1f8100ff4d41aa8b9ca2a61c",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 30"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Victory_Road",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-diamond-player-partner-386-373",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0386",
+          "pokemon-diamond-trainer-0373"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0610",
+            "trainerId": "pokemon-diamond-trainer-0610",
+            "label": "Pokémon Trainer Marley Marley · arcanine Lv. 57",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 610,
+              "evidence": [
+                {
+                  "url": "https://bulbapedia.bulbagarden.net/wiki/Victory_Road",
+                  "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Victory Road",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Victory Road",
+                  "text": "Victory Road"
+                }
+              ],
+              "line": 34,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_30&oldid=4461812",
+              "pageId": 154594,
+              "revisionId": 4461812,
+              "templateOrdinal": 7,
+              "templateSha256": "e7819c5793917a5ec1fb47df29a880ddc9927b5b64de2ddc7d0d6e474ae296e4",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 30"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Victory Road",
+                  "text": "Victory Road"
+                }
+              ],
+              "line": 37,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_30&oldid=4461812",
+              "pageId": 154594,
+              "revisionId": 4461812,
+              "templateOrdinal": 8,
+              "templateSha256": "deb93fa54f7d83b09a75368af7be4828728b4c1763a3c27030439e40d43fe53e",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 30"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Victory_Road",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-diamond-player-partner-397-400",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0397",
+          "pokemon-diamond-trainer-0400"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0610",
+            "trainerId": "pokemon-diamond-trainer-0610",
+            "label": "Pokémon Trainer Marley Marley · arcanine Lv. 57",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 610,
+              "evidence": [
+                {
+                  "url": "https://bulbapedia.bulbagarden.net/wiki/Victory_Road",
+                  "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Victory Road",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Victory Road",
+                  "text": "Victory Road"
+                }
+              ],
+              "line": 41,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_30&oldid=4461812",
+              "pageId": 154594,
+              "revisionId": 4461812,
+              "templateOrdinal": 9,
+              "templateSha256": "94333ecf1b0466cb99edf1444d76d7dd672cd201cba66ddb920b9ff52ab77ff9",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 30"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Victory Road",
+                  "text": "Victory Road"
+                }
+              ],
+              "line": 44,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_30&oldid=4461812",
+              "pageId": 154594,
+              "revisionId": 4461812,
+              "templateOrdinal": 10,
+              "templateSha256": "3e50dfd1fbacb9b958c1e863a2bb367aa72e1c8f61d25fca9a97b687d4f9b90c",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 30"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Victory_Road",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-diamond-player-partner-447-500",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0447",
+          "pokemon-diamond-trainer-0500"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0610",
+            "trainerId": "pokemon-diamond-trainer-0610",
+            "label": "Pokémon Trainer Marley Marley · arcanine Lv. 57",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 610,
+              "evidence": [
+                {
+                  "url": "https://bulbapedia.bulbagarden.net/wiki/Victory_Road",
+                  "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Victory Road",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Victory Road",
+                  "text": "Victory Road"
+                }
+              ],
+              "line": 48,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_30&oldid=4461812",
+              "pageId": 154594,
+              "revisionId": 4461812,
+              "templateOrdinal": 11,
+              "templateSha256": "ac2f12606437a94da099a2c1659a7fe127152627fb91bd9d487bb9449cd7bb37",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 30"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Victory Road",
+                  "text": "Victory Road"
+                }
+              ],
+              "line": 51,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_30&oldid=4461812",
+              "pageId": 154594,
+              "revisionId": 4461812,
+              "templateOrdinal": 12,
+              "templateSha256": "ae6a53332be3c5a09e040d01f6ba0427431182e60e1dfb22eb6a237a6156ca98",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 30"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Victory_Road",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-diamond-player-partner-569-579",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0569",
+          "pokemon-diamond-trainer-0579"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0611",
+            "trainerId": "pokemon-diamond-trainer-0611",
+            "label": "Pokémon Trainer Buck Buck · claydol Lv. 58",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 611,
+              "evidence": [
+                {
+                  "url": "https://bulbapedia.bulbagarden.net/wiki/Stark_Mountain",
+                  "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Stark Mountain",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Stark Mountain",
+                  "text": "Stark Mountain"
+                }
+              ],
+              "line": 108,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_25&oldid=4461807",
+              "pageId": 154564,
+              "revisionId": 4461807,
+              "templateOrdinal": 6,
+              "templateSha256": "407a1d679a1275db3098b05d911c9c803248b43ea059c13d0144987537a2df7d",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 25"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Stark Mountain",
+                  "text": "Stark Mountain"
+                }
+              ],
+              "line": 111,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_25&oldid=4461807",
+              "pageId": 154564,
+              "revisionId": 4461807,
+              "templateOrdinal": 7,
+              "templateSha256": "ce108f316236258830197dd5fc3082e6876370c7413f8e951e5231d472a7eccd",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 25"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Stark_Mountain",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-diamond-player-partner-570-580",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0570",
+          "pokemon-diamond-trainer-0580"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0611",
+            "trainerId": "pokemon-diamond-trainer-0611",
+            "label": "Pokémon Trainer Buck Buck · claydol Lv. 58",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 611,
+              "evidence": [
+                {
+                  "url": "https://bulbapedia.bulbagarden.net/wiki/Stark_Mountain",
+                  "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Stark Mountain",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Stark Mountain",
+                  "text": "Stark Mountain"
+                }
+              ],
+              "line": 115,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_25&oldid=4461807",
+              "pageId": 154564,
+              "revisionId": 4461807,
+              "templateOrdinal": 8,
+              "templateSha256": "b9bba6402835075d0286718e4c33c80c38b04f1dc70a5f20e5f12ebbc823b46f",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 25"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Stark Mountain",
+                  "text": "Stark Mountain"
+                }
+              ],
+              "line": 118,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_25&oldid=4461807",
+              "pageId": 154564,
+              "revisionId": 4461807,
+              "templateOrdinal": 9,
+              "templateSha256": "f14dd273992a5e02ff679bc88bc9009ff9337ddebb8548572a54c7a63239ed49",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 25"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Stark_Mountain",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-diamond-player-partner-556-589",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0556",
+          "pokemon-diamond-trainer-0589"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0611",
+            "trainerId": "pokemon-diamond-trainer-0611",
+            "label": "Pokémon Trainer Buck Buck · claydol Lv. 58",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 611,
+              "evidence": [
+                {
+                  "url": "https://bulbapedia.bulbagarden.net/wiki/Stark_Mountain",
+                  "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Stark Mountain",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Stark Mountain",
+                  "text": "Stark Mountain"
+                }
+              ],
+              "line": 122,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_25&oldid=4461807",
+              "pageId": 154564,
+              "revisionId": 4461807,
+              "templateOrdinal": 10,
+              "templateSha256": "2a2c35613afb736b3a3c155b25a6be8697e87b53c2c664532ade0aec10346925",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 25"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Stark Mountain",
+                  "text": "Stark Mountain"
+                }
+              ],
+              "line": 125,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_25&oldid=4461807",
+              "pageId": 154564,
+              "revisionId": 4461807,
+              "templateOrdinal": 11,
+              "templateSha256": "83ef95ace301c0d1a019c876526c2e9e263ba23a8c1db0aec7a09c2f717e15f0",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 25"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Stark_Mountain",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-diamond-player-partner-572-582",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0572",
+          "pokemon-diamond-trainer-0582"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0611",
+            "trainerId": "pokemon-diamond-trainer-0611",
+            "label": "Pokémon Trainer Buck Buck · claydol Lv. 58",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 611,
+              "evidence": [
+                {
+                  "url": "https://bulbapedia.bulbagarden.net/wiki/Stark_Mountain",
+                  "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Stark Mountain",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Stark Mountain",
+                  "text": "Stark Mountain"
+                }
+              ],
+              "line": 129,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_25&oldid=4461807",
+              "pageId": 154564,
+              "revisionId": 4461807,
+              "templateOrdinal": 12,
+              "templateSha256": "98ef19d8cc50d7d46b57d25855d8332907c99d4cc2e6dcf1d1e761c88a840ecc",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 25"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Stark Mountain",
+                  "text": "Stark Mountain"
+                }
+              ],
+              "line": 132,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_25&oldid=4461807",
+              "pageId": 154564,
+              "revisionId": 4461807,
+              "templateOrdinal": 13,
+              "templateSha256": "1d123e6127771534c7c3f04cdfa74a2e19a5421c1c8dadd59881259bacc17912",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 25"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Stark_Mountain",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-diamond-player-partner-586-584",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0586",
+          "pokemon-diamond-trainer-0584"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0611",
+            "trainerId": "pokemon-diamond-trainer-0611",
+            "label": "Pokémon Trainer Buck Buck · claydol Lv. 58",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 611,
+              "evidence": [
+                {
+                  "url": "https://bulbapedia.bulbagarden.net/wiki/Stark_Mountain",
+                  "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Stark Mountain",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Stark Mountain",
+                  "text": "Stark Mountain"
+                }
+              ],
+              "line": 136,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_25&oldid=4461807",
+              "pageId": 154564,
+              "revisionId": 4461807,
+              "templateOrdinal": 14,
+              "templateSha256": "9892a33cf75b5e1f05dfbbd23cdabfad2669c87118fdb6f5fb8f4a6614436bd4",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 25"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Stark Mountain",
+                  "text": "Stark Mountain"
+                }
+              ],
+              "line": 139,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_25&oldid=4461807",
+              "pageId": 154564,
+              "revisionId": 4461807,
+              "templateOrdinal": 15,
+              "templateSha256": "8295556333fdf55936ceb693ad4b55bcba00fe80cc4f5904d57ae2b64bb6e9cb",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 25"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Stark_Mountain",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-diamond-player-partner-606-562",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0606",
+          "pokemon-diamond-trainer-0562"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0611",
+            "trainerId": "pokemon-diamond-trainer-0611",
+            "label": "Pokémon Trainer Buck Buck · claydol Lv. 58",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 611,
+              "evidence": [
+                {
+                  "url": "https://bulbapedia.bulbagarden.net/wiki/Stark_Mountain",
+                  "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Stark Mountain",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Stark Mountain",
+                  "text": "Stark Mountain"
+                }
+              ],
+              "line": 143,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_25&oldid=4461807",
+              "pageId": 154564,
+              "revisionId": 4461807,
+              "templateOrdinal": 16,
+              "templateSha256": "c2dfd2b4dfdf194e2ad441391d58dde49c1e7cd02950641158388f14326a815a",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 25"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Stark Mountain",
+                  "text": "Stark Mountain"
+                }
+              ],
+              "line": 146,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_25&oldid=4461807",
+              "pageId": 154564,
+              "revisionId": 4461807,
+              "templateOrdinal": 17,
+              "templateSha256": "76c4b41668c383f760a37fd67e11f83d78704fcca5a2a9b93c0be5a94991bff6",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 25"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Stark_Mountain",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-diamond-player-partner-571-581",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0571",
+          "pokemon-diamond-trainer-0581"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0611",
+            "trainerId": "pokemon-diamond-trainer-0611",
+            "label": "Pokémon Trainer Buck Buck · claydol Lv. 58",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 611,
+              "evidence": [
+                {
+                  "url": "https://bulbapedia.bulbagarden.net/wiki/Stark_Mountain",
+                  "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+                }
+              ]
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Stark Mountain",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Stark Mountain",
+                  "text": "Stark Mountain"
+                }
+              ],
+              "line": 150,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_25&oldid=4461807",
+              "pageId": 154564,
+              "revisionId": 4461807,
+              "templateOrdinal": 18,
+              "templateSha256": "6efca80b8a7e110a99331c3c5d14ef2fd78fcce3091d16e897c6947aefa11839",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 25"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Stark Mountain",
+                  "text": "Stark Mountain"
+                }
+              ],
+              "line": 153,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_25&oldid=4461807",
+              "pageId": 154564,
+              "revisionId": 4461807,
+              "templateOrdinal": 19,
+              "templateSha256": "0dbcc3f552575e883938ea46201d4316fda7bf0c2c46d0fbcabc6d2b7f2e9cee",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 25"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Stark_Mountain",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-diamond-player-partner-414-415",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0414",
+          "pokemon-diamond-trainer-0415"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0613",
+            "trainerId": "pokemon-diamond-trainer-0613",
+            "label": "Pokémon Trainer Lucas Lucas · turtwig Lv. 13",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 613,
+              "evidence": []
+            }
+          },
+          {
+            "id": "pokemon-diamond-trainer-0614",
+            "trainerId": "pokemon-diamond-trainer-0614",
+            "label": "Pokémon Trainer Lucas Lucas · chimchar Lv. 13",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 614,
+              "evidence": []
+            }
+          },
+          {
+            "id": "pokemon-diamond-trainer-0615",
+            "trainerId": "pokemon-diamond-trainer-0615",
+            "label": "Pokémon Trainer Lucas Lucas · piplup Lv. 13",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 615,
+              "evidence": []
+            }
+          },
+          {
+            "id": "pokemon-diamond-trainer-0616",
+            "trainerId": "pokemon-diamond-trainer-0616",
+            "label": "Pokémon Trainer Dawn Dawn · turtwig Lv. 13",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 616,
+              "evidence": []
+            }
+          },
+          {
+            "id": "pokemon-diamond-trainer-0617",
+            "trainerId": "pokemon-diamond-trainer-0617",
+            "label": "Pokémon Trainer Dawn Dawn · chimchar Lv. 13",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 617,
+              "evidence": []
+            }
+          },
+          {
+            "id": "pokemon-diamond-trainer-0618",
+            "trainerId": "pokemon-diamond-trainer-0618",
+            "label": "Pokémon Trainer Dawn Dawn · piplup Lv. 13",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 618,
+              "evidence": []
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Jubilife City",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Jubilife City",
+                  "text": "Jubilife City"
+                }
+              ],
+              "line": 274,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_4&oldid=4461773",
+              "pageId": 62665,
+              "revisionId": 4461773,
+              "templateOrdinal": 6,
+              "templateSha256": "8ef5b5adda942a8435b201c4658561687bcadd6c742523aacfcc4d8a85697c9d",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 4"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Jubilife City",
+                  "text": "Jubilife City"
+                }
+              ],
+              "line": 275,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_4&oldid=4461773",
+              "pageId": 62665,
+              "revisionId": 4461773,
+              "templateOrdinal": 7,
+              "templateSha256": "4a1c7a4392a1088a5d0747fe3257126f52d8b3f92777b3845157b26fb1d11744",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 4"
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-diamond-player-partner-848-849",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0848",
+          "pokemon-diamond-trainer-0849"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0621",
+            "trainerId": "pokemon-diamond-trainer-0621",
+            "label": "Pokémon Trainer Lucas Lucas · clefairy Lv. 25, kadabra Lv. 25, prinplup Lv. 28",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 621,
+              "evidence": []
+            }
+          },
+          {
+            "id": "pokemon-diamond-trainer-0622",
+            "trainerId": "pokemon-diamond-trainer-0622",
+            "label": "Pokémon Trainer Lucas Lucas · clefairy Lv. 25, kadabra Lv. 25, grotle Lv. 28",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 622,
+              "evidence": []
+            }
+          },
+          {
+            "id": "pokemon-diamond-trainer-0623",
+            "trainerId": "pokemon-diamond-trainer-0623",
+            "label": "Pokémon Trainer Lucas Lucas · clefairy Lv. 25, kadabra Lv. 25, monferno Lv. 28",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 623,
+              "evidence": []
+            }
+          },
+          {
+            "id": "pokemon-diamond-trainer-0624",
+            "trainerId": "pokemon-diamond-trainer-0624",
+            "label": "Pokémon Trainer Dawn Dawn · clefairy Lv. 25, kadabra Lv. 25, prinplup Lv. 28",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 624,
+              "evidence": []
+            }
+          },
+          {
+            "id": "pokemon-diamond-trainer-0625",
+            "trainerId": "pokemon-diamond-trainer-0625",
+            "label": "Pokémon Trainer Dawn Dawn · clefairy Lv. 25, kadabra Lv. 25, grotle Lv. 28",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 625,
+              "evidence": []
+            }
+          },
+          {
+            "id": "pokemon-diamond-trainer-0626",
+            "trainerId": "pokemon-diamond-trainer-0626",
+            "label": "Pokémon Trainer Dawn Dawn · clefairy Lv. 25, kadabra Lv. 25, monferno Lv. 28",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 626,
+              "evidence": []
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Veilstone City",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Veilstone City",
+                  "text": "Veilstone City"
+                }
+              ],
+              "line": 14,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_10&oldid=4461780",
+              "pageId": 102180,
+              "revisionId": 4461780,
+              "templateOrdinal": 1,
+              "templateSha256": "ad72d85616432bf72cbf2051b6ddfb8b45c8cfe54244ef308628862af0149ca2",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 10"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Veilstone City",
+                  "text": "Veilstone City"
+                }
+              ],
+              "line": 15,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_10&oldid=4461780",
+              "pageId": 102180,
+              "revisionId": 4461780,
+              "templateOrdinal": 2,
+              "templateSha256": "65c6fd668f2831bd44d1c6c1b9d4f49e901af0c9e35089d654c6bb53c1f4753a",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 10"
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-diamond-player-partner-528-407",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0528",
+          "pokemon-diamond-trainer-0407"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0607",
+            "trainerId": "pokemon-diamond-trainer-0607",
+            "label": "Pokémon Trainer Cedric · munchlax Lv. 40, staraptor Lv. 40, buizel Lv. 41, heracross Lv. 42, ponyta Lv. 41, torterra Lv. 43",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 607,
+              "evidence": []
+            }
+          },
+          {
+            "id": "pokemon-diamond-trainer-0619",
+            "trainerId": "pokemon-diamond-trainer-0619",
+            "label": "Pokémon Trainer Cedric · munchlax Lv. 40, staraptor Lv. 40, buizel Lv. 41, heracross Lv. 42, roselia Lv. 41, infernape Lv. 43",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 619,
+              "evidence": []
+            }
+          },
+          {
+            "id": "pokemon-diamond-trainer-0620",
+            "trainerId": "pokemon-diamond-trainer-0620",
+            "label": "Pokémon Trainer Cedric · munchlax Lv. 40, staraptor Lv. 40, roselia Lv. 41, heracross Lv. 42, ponyta Lv. 41, empoleon Lv. 43",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 620,
+              "evidence": []
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Spear Pillar",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Mt. Coronet",
+                  "text": "Mt. Coronet"
+                },
+                {
+                  "level": 3,
+                  "raw": "Spear Pillar",
+                  "text": "Spear Pillar"
+                },
+                {
+                  "level": 4,
+                  "raw": "VS Mars & Jupiter",
+                  "text": "VS Mars & Jupiter"
+                }
+              ],
+              "line": 352,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_18&oldid=4555680",
+              "pageId": 153917,
+              "revisionId": 4555680,
+              "templateOrdinal": 13,
+              "templateSha256": "532038866ff1ecd3514ab1e6ede8b09914a617dd0cd15e64c034ea372e1b0e11",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 18"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Mt. Coronet",
+                  "text": "Mt. Coronet"
+                },
+                {
+                  "level": 3,
+                  "raw": "Spear Pillar",
+                  "text": "Spear Pillar"
+                },
+                {
+                  "level": 4,
+                  "raw": "VS Mars & Jupiter",
+                  "text": "VS Mars & Jupiter"
+                }
+              ],
+              "line": 352,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_18&oldid=4555680",
+              "pageId": 153917,
+              "revisionId": 4555680,
+              "templateOrdinal": 13,
+              "templateSha256": "532038866ff1ecd3514ab1e6ede8b09914a617dd0cd15e64c034ea372e1b0e11",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 18"
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-diamond-player-partner-835-836",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-diamond-trainer-0835",
+          "pokemon-diamond-trainer-0836"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-diamond-trainer-0609",
+            "trainerId": "pokemon-diamond-trainer-0609",
+            "label": "Pokémon Trainer Riley Riley · lucario Lv. 34",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Diamond/source-data/trainers.json",
+              "rawTrainerId": 609,
+              "evidence": []
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-diamond.json",
+          "sha256": "279e9816746683dcf93eb52f9c42ae666fb8004a59e88a2fa9c109b96a66ad59",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Iron Island",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Iron Island",
+                  "text": "Iron Island"
+                }
+              ],
+              "line": 462,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_14&oldid=4537468",
+              "pageId": 152991,
+              "revisionId": 4537468,
+              "templateOrdinal": 20,
+              "templateSha256": "feef7110d4f1d541f6d06f20c0ffdfb3eb4cd4cf53aee1aed39daa36306f24f3",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 14"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Iron Island",
+                  "text": "Iron Island"
+                }
+              ],
+              "line": 463,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Diamond_and_Pearl/Part_14&oldid=4537468",
+              "pageId": 152991,
+              "revisionId": 4537468,
+              "templateOrdinal": 21,
+              "templateSha256": "b348ca3a6f192d60e5aad19829a0287d353aa4263901667436171a659babc22d",
+              "title": "Walkthrough:Pokémon Diamond and Pearl/Part 14"
+            }
+          ]
+        }
+      }
+    ],
+    "validation": {
+      "status": "passed",
+      "scope": "reviewed-story-multi-encounters",
+      "builder": "tools/vanilla_player_partners.js",
+      "excludedEvidenceConflicts": [],
+      "excluded": [
+        "link battles",
+        "randomized battle facilities"
+      ],
+      "note": "No location-wide inference. Separate trainer reserves; optional escort encounters retain Singles."
+    }
   }
 }

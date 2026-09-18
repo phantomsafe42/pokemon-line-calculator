@@ -171,5 +171,1069 @@
       },
       "sourceConfidence": "native-drayano-trainer-battles-tab-row-and-classification"
     }
+  },
+  "playerPartners": {
+    "schemaVersion": "trainer-player-partners/v1",
+    "bindings": [
+      {
+        "id": "renegade-platinum-player-partner-414-415",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "renegade-platinum-trainer-0414",
+          "renegade-platinum-trainer-0415"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "renegade-platinum-trainer-0618",
+            "trainerId": "renegade-platinum-trainer-0618",
+            "label": "Dawn · Male · Turtwig",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 39,
+            "sourceNotes": "Partner in Multi Battle against \nTeam Galactic Grunts shown above\n\nIf you chose Male\n\nIf you chose Turtwig",
+            "sourceOccurrenceRole": "ally-reference"
+          },
+          {
+            "id": "renegade-platinum-trainer-0616",
+            "trainerId": "renegade-platinum-trainer-0616",
+            "label": "Dawn · Male · Chimchar",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 49,
+            "sourceNotes": "Partner in Multi Battle against \nTeam Galactic Grunts shown above\n\nIf you chose Male\n\nIf you chose Chimchar",
+            "sourceOccurrenceRole": "ally-reference"
+          },
+          {
+            "id": "renegade-platinum-trainer-0617",
+            "trainerId": "renegade-platinum-trainer-0617",
+            "label": "Dawn · Male · Piplup",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 59,
+            "sourceNotes": "Partner in Multi Battle against \nTeam Galactic Grunts shown above\n\nIf you chose Male\n\nIf you chose Piplup",
+            "sourceOccurrenceRole": "ally-reference"
+          },
+          {
+            "id": "renegade-platinum-trainer-0615",
+            "trainerId": "renegade-platinum-trainer-0615",
+            "label": "Lucas · Female · Turtwig",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 69,
+            "sourceNotes": "Partner in Multi Battle against \nTeam Galactic Grunts shown above\n\nIf you chose Female\n\nIf you chose Turtwig",
+            "sourceOccurrenceRole": "ally-reference"
+          },
+          {
+            "id": "renegade-platinum-trainer-0613",
+            "trainerId": "renegade-platinum-trainer-0613",
+            "label": "Lucas · Female · Chimchar",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 79,
+            "sourceNotes": "Partner in Multi Battle against \nTeam Galactic Grunts shown above\n\nIf you chose Female\n\nIf you chose Chimchar",
+            "sourceOccurrenceRole": "ally-reference"
+          },
+          {
+            "id": "renegade-platinum-trainer-0614",
+            "trainerId": "renegade-platinum-trainer-0614",
+            "label": "Lucas · Female · Piplup",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 89,
+            "sourceNotes": "Partner in Multi Battle against \nTeam Galactic Grunts shown above\n\nIf you chose Female\n\nIf you chose Piplup",
+            "sourceOccurrenceRole": "ally-reference"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "debf709ca9584f8176cd114b34d3e4a16f471abcc681412e3c307f41108967ea",
+          "splitId": "gardenia",
+          "location": "Jubilife City",
+          "enemyRows": [
+            17,
+            28
+          ],
+          "enemyNotes": [
+            "Mutli Battle w/ Galactic Grunt and PKMN Trainer Dawn/Lucas                                                                                                   12IVs",
+            "Mutli Battle w/ Galactic Grunt and PKMN Trainer Dawn/Lucas                                                                                                  12IVs"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      },
+      {
+        "id": "renegade-platinum-player-partner-959-960",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "renegade-platinum-trainer-0959",
+          "renegade-platinum-trainer-0960"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "renegade-platinum-trainer-0471",
+            "trainerId": "renegade-platinum-trainer-0471",
+            "label": "Rival · Turtwig",
+            "hideFromOpponentSelection": false,
+            "sourceRow": 206,
+            "sourceNotes": "Partner in Multi Battle against Commander Saturn and Gentleman Backlot shown above\n\nIf you chose Turtwig",
+            "sourceOccurrenceRole": "ally-reference"
+          },
+          {
+            "id": "renegade-platinum-trainer-0472",
+            "trainerId": "renegade-platinum-trainer-0472",
+            "label": "Rival · Chimchar",
+            "hideFromOpponentSelection": false,
+            "sourceRow": 217,
+            "sourceNotes": "Partner in Multi Battle against Commander Saturn and Gentleman Backlot shown above\n\nIf you chose Chimchar",
+            "sourceOccurrenceRole": "ally-reference"
+          },
+          {
+            "id": "renegade-platinum-trainer-0470",
+            "trainerId": "renegade-platinum-trainer-0470",
+            "label": "Rival · Piplup",
+            "hideFromOpponentSelection": false,
+            "sourceRow": 228,
+            "sourceNotes": "Partner in Multi Battle against Commander Saturn and Gentleman Backlot shown above\n\nIf you chose Piplup",
+            "sourceOccurrenceRole": "ally-reference"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "debf709ca9584f8176cd114b34d3e4a16f471abcc681412e3c307f41108967ea",
+          "splitId": "maylene",
+          "location": "Pokemon Mansion",
+          "enemyRows": [
+            184,
+            195
+          ],
+          "enemyNotes": [
+            "Multi Battle w/ \nGentleman Backlot and Rival",
+            "Multi Battle w/ \nCommander Saturn and Rival\n\nx4 Full Restores"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      },
+      {
+        "id": "renegade-platinum-player-partner-848-849",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "renegade-platinum-trainer-0848",
+          "renegade-platinum-trainer-0849"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "renegade-platinum-trainer-0624",
+            "trainerId": "renegade-platinum-trainer-0624",
+            "label": "Dawn/Lucas · Turtwig",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 39,
+            "sourceNotes": "Partner in Multi Battle against \nTeam Galactic Grunts shown above\n\nLucas uses exact same team\n\nIf you chose Turtwig",
+            "sourceOccurrenceRole": "ally-reference"
+          },
+          {
+            "id": "renegade-platinum-trainer-0625",
+            "trainerId": "renegade-platinum-trainer-0625",
+            "label": "Dawn/Lucas · Chimchar",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 50,
+            "sourceNotes": "Partner in Multi Battle against \nTeam Galactic Grunts shown above\n\nLucas uses exact same team\n\nIf you chose Chimchar",
+            "sourceOccurrenceRole": "ally-reference"
+          },
+          {
+            "id": "renegade-platinum-trainer-0626",
+            "trainerId": "renegade-platinum-trainer-0626",
+            "label": "Dawn/Lucas · Piplup",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 61,
+            "sourceNotes": "Partner in Multi Battle against \nTeam Galactic Grunts shown above\n\nLucas uses exact same team\n\nIf you chose Piplup",
+            "sourceOccurrenceRole": "ally-reference"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "debf709ca9584f8176cd114b34d3e4a16f471abcc681412e3c307f41108967ea",
+          "splitId": "wake",
+          "location": "Veilstone City",
+          "enemyRows": [
+            17,
+            28
+          ],
+          "enemyNotes": [
+            "Mutli Battle w/ Galactic Grunt and PKMN Trainer Dawn/Lucas\n12 IVs",
+            "Mutli Battle w/ Galactic Grunt and PKMN Trainer Dawn/Lucas\n12 IVs"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      },
+      {
+        "id": "renegade-platinum-player-partner-528-407",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "renegade-platinum-trainer-0528",
+          "renegade-platinum-trainer-0407"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "renegade-platinum-trainer-0619",
+            "trainerId": "renegade-platinum-trainer-0619",
+            "label": "Rival · Turtwig",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 353,
+            "sourceNotes": "Partner in Multi Battle against Commander Mars and Commander Jupiter shown above\n\nIf you chose Turtwig",
+            "sourceOccurrenceRole": "ally-reference"
+          },
+          {
+            "id": "renegade-platinum-trainer-0607",
+            "trainerId": "renegade-platinum-trainer-0607",
+            "label": "Rival · Piplup",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 364,
+            "sourceNotes": "Partner in Multi Battle against Commander Mars and Commander Jupiter shown above\n\nIf you chose Piplup",
+            "sourceOccurrenceRole": "ally-reference"
+          },
+          {
+            "id": "renegade-platinum-trainer-0620",
+            "trainerId": "renegade-platinum-trainer-0620",
+            "label": "Rival · Chimchar",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 375,
+            "sourceNotes": "Partner in Multi Battle against Commander Mars and Commander Jupiter shown above\n\nIf you chose Chimchar",
+            "sourceOccurrenceRole": "ally-reference"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "debf709ca9584f8176cd114b34d3e4a16f471abcc681412e3c307f41108967ea",
+          "splitId": "volkner",
+          "location": "Spear Pillar",
+          "enemyRows": [
+            331,
+            342
+          ],
+          "enemyNotes": [
+            "Multi Battle w/ \nCommander Jupiter and Rival",
+            "Multi Battle w/ \nCommander Mars and Rival"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      },
+      {
+        "id": "renegade-platinum-player-partner-201-204",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "renegade-platinum-trainer-0201",
+          "renegade-platinum-trainer-0204"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "renegade-platinum-trainer-0608",
+            "trainerId": "renegade-platinum-trainer-0608",
+            "label": "Cheryl",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 316,
+            "sourceNotes": "Partner in all Multi Battles in Eterna Forest shown below                                                                         30IVs",
+            "sourceOccurrenceRole": "ally-reference"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "debf709ca9584f8176cd114b34d3e4a16f471abcc681412e3c307f41108967ea",
+          "splitId": "gardenia",
+          "location": "Eterna Forest",
+          "enemyRows": [
+            327,
+            338
+          ],
+          "enemyNotes": [
+            "Optional Multi Battle w/ Lass Briana and Cheryl or optional Double Battle w/ Lass Briana once Cheryl leaves\n\n12 IVs",
+            "Optional Multi Battle w/ Bug Catcher Jack and Cheryl or optional Double Battle w/ Bug Catcher Jack once Cheryl leaves\n\n12 IVs"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      },
+      {
+        "id": "renegade-platinum-player-partner-205-206",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "renegade-platinum-trainer-0205",
+          "renegade-platinum-trainer-0206"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "renegade-platinum-trainer-0608",
+            "trainerId": "renegade-platinum-trainer-0608",
+            "label": "Cheryl",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 316,
+            "sourceNotes": "Partner in all Multi Battles in Eterna Forest shown below                                                                         30IVs",
+            "sourceOccurrenceRole": "ally-reference"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "debf709ca9584f8176cd114b34d3e4a16f471abcc681412e3c307f41108967ea",
+          "splitId": "gardenia",
+          "location": "Eterna Forest",
+          "enemyRows": [
+            349,
+            360
+          ],
+          "enemyNotes": [
+            "Either this fight or a Multi Battle w/ Psychic Lindsey and Cheryl                                                both 24 IVs",
+            "Either this fight or a Multi Battle w/ Psychic Elijah and Cheryl"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      },
+      {
+        "id": "renegade-platinum-player-partner-203-202",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "renegade-platinum-trainer-0203",
+          "renegade-platinum-trainer-0202"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "renegade-platinum-trainer-0608",
+            "trainerId": "renegade-platinum-trainer-0608",
+            "label": "Cheryl",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 316,
+            "sourceNotes": "Partner in all Multi Battles in Eterna Forest shown below                                                                         30IVs",
+            "sourceOccurrenceRole": "ally-reference"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "debf709ca9584f8176cd114b34d3e4a16f471abcc681412e3c307f41108967ea",
+          "splitId": "gardenia",
+          "location": "Eterna Forest",
+          "enemyRows": [
+            371,
+            382
+          ],
+          "enemyNotes": [
+            "Optional Multi Battle w/ Bug Catcher Phillip and Cheryl or optional Double Battle w/ Bug Catcher Phillip once Cheryl leaves\n\n12 IVs",
+            "Optional Multi Battle w/ Bug Catcher Donald and Cheryl or optional Double Battle w/ Bug Catcher Donald once Cheryl leaves\n\n12 IVs"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      },
+      {
+        "id": "renegade-platinum-player-partner-395-398",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "renegade-platinum-trainer-0395",
+          "renegade-platinum-trainer-0398"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "renegade-platinum-trainer-0608",
+            "trainerId": "renegade-platinum-trainer-0608",
+            "label": "Cheryl",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 316,
+            "sourceNotes": "Partner in all Multi Battles in Eterna Forest shown below                                                                         30IVs",
+            "sourceOccurrenceRole": "ally-reference"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "debf709ca9584f8176cd114b34d3e4a16f471abcc681412e3c307f41108967ea",
+          "splitId": "gardenia",
+          "location": "Eterna Forest",
+          "enemyRows": [
+            393,
+            404
+          ],
+          "enemyNotes": [
+            "Optional Multi Battle w/ Psychic Rachael and Cheryl or optional Double Battle w/ Psychic Rachael once Cheryl leaves\n\n24 IVs",
+            "Optional Multi Battle w/ Psychic Kody and Cheryl or optional Double Battle w/ Psychic Kody once Cheryl leaves\n\n24 IVs"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      },
+      {
+        "id": "renegade-platinum-player-partner-379-458",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "renegade-platinum-trainer-0379",
+          "renegade-platinum-trainer-0458"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "renegade-platinum-trainer-0612",
+            "trainerId": "renegade-platinum-trainer-0612",
+            "label": "Mira",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 134,
+            "sourceNotes": "Partner in all Multi Battles in Wayward Cave shown below\n\nGifts TM58 - Dazzling Gleam once escort mission is complete\n30 IVs",
+            "sourceOccurrenceRole": "ally-reference"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "debf709ca9584f8176cd114b34d3e4a16f471abcc681412e3c307f41108967ea",
+          "splitId": "fantina",
+          "location": "Wayward Cave",
+          "enemyRows": [
+            145,
+            156
+          ],
+          "enemyNotes": [
+            "Leftmost Camper\n\nOptional Multi Battle w/ Picnicker Tori and Mira or optional Double Battle w/ Picnicker Tori once Mira leaves\n\n12 IVs",
+            "Leftmost Picnicker\n\nOptional Multi Battle w/ Camper Diego and Mira or optional Double Battle w/ Camper Diego once Mira leaves\n\n12 IVs"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      },
+      {
+        "id": "renegade-platinum-player-partner-450-496",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "renegade-platinum-trainer-0450",
+          "renegade-platinum-trainer-0496"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "renegade-platinum-trainer-0612",
+            "trainerId": "renegade-platinum-trainer-0612",
+            "label": "Mira",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 134,
+            "sourceNotes": "Partner in all Multi Battles in Wayward Cave shown below\n\nGifts TM58 - Dazzling Gleam once escort mission is complete\n30 IVs",
+            "sourceOccurrenceRole": "ally-reference"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "debf709ca9584f8176cd114b34d3e4a16f471abcc681412e3c307f41108967ea",
+          "splitId": "fantina",
+          "location": "Wayward Cave",
+          "enemyRows": [
+            167,
+            178
+          ],
+          "enemyNotes": [
+            "Optional Multi Battle w/ Youngster Wayne and Mira or optional Double Battle w/ Youngster Wayne once Mira leaves\n\n12 IVs",
+            "Optional Multi Battle w/ Lass Cassidy and Mira or optional Double Battle w/ Lass Cassidy once Mira leaves\n\n12 IVs"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      },
+      {
+        "id": "renegade-platinum-player-partner-454-455",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "renegade-platinum-trainer-0454",
+          "renegade-platinum-trainer-0455"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "renegade-platinum-trainer-0612",
+            "trainerId": "renegade-platinum-trainer-0612",
+            "label": "Mira",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 134,
+            "sourceNotes": "Partner in all Multi Battles in Wayward Cave shown below\n\nGifts TM58 - Dazzling Gleam once escort mission is complete\n30 IVs",
+            "sourceOccurrenceRole": "ally-reference"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "debf709ca9584f8176cd114b34d3e4a16f471abcc681412e3c307f41108967ea",
+          "splitId": "fantina",
+          "location": "Wayward Cave",
+          "enemyRows": [
+            189,
+            200
+          ],
+          "enemyNotes": [
+            "Leftmost Hiker\n\nOptional Multi Battle w/ Hiker Lorenzo and Mira or optional Double Battle w/ Hiker Lorenzo once Mira leaves\n\n12 IVs",
+            "Rightmost Hiker\n\nOptional Multi Battle w/ Hiker Reginald and Mira or optional Double Battle w/ Hiker Reginald once Mira leaves\n\n12 IVs"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      },
+      {
+        "id": "renegade-platinum-player-partner-459-380",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "renegade-platinum-trainer-0459",
+          "renegade-platinum-trainer-0380"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "renegade-platinum-trainer-0612",
+            "trainerId": "renegade-platinum-trainer-0612",
+            "label": "Mira",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 134,
+            "sourceNotes": "Partner in all Multi Battles in Wayward Cave shown below\n\nGifts TM58 - Dazzling Gleam once escort mission is complete\n30 IVs",
+            "sourceOccurrenceRole": "ally-reference"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "debf709ca9584f8176cd114b34d3e4a16f471abcc681412e3c307f41108967ea",
+          "splitId": "fantina",
+          "location": "Wayward Cave",
+          "enemyRows": [
+            211,
+            222
+          ],
+          "enemyNotes": [
+            "Rightmost Picnicker\n\nOptional Multi Battle w/ Camper Parker and Mira or optional Double Battle w/ Camper Parker once Mira leaves\n\n12 IVs",
+            "Rightmost Camper\n\nOptional Multi Battle w/ Picnicker Ana and Mira or optional Double Battle w/ Picnicker Ana once Mira leaves\n\n12 IVs"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      },
+      {
+        "id": "renegade-platinum-player-partner-383-443",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "renegade-platinum-trainer-0383",
+          "renegade-platinum-trainer-0443"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "renegade-platinum-trainer-0612",
+            "trainerId": "renegade-platinum-trainer-0612",
+            "label": "Mira",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 134,
+            "sourceNotes": "Partner in all Multi Battles in Wayward Cave shown below\n\nGifts TM58 - Dazzling Gleam once escort mission is complete\n30 IVs",
+            "sourceOccurrenceRole": "ally-reference"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "debf709ca9584f8176cd114b34d3e4a16f471abcc681412e3c307f41108967ea",
+          "splitId": "fantina",
+          "location": "Wayward Cave",
+          "enemyRows": [
+            233,
+            244
+          ],
+          "enemyNotes": [
+            "Optional Multi Battle w/ Ruin Maniac Gerald and Mira or optional Double Battle w/ Ruin Maniac Gerald once Mira leaves\n\n12 IVs",
+            "Optional Multi Battle w/ Collector Terry and Mira or optional Double Battle w/ Collector Terry once Mira leaves\n\n12 IVs"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      },
+      {
+        "id": "renegade-platinum-player-partner-452-453",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "renegade-platinum-trainer-0452",
+          "renegade-platinum-trainer-0453"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "renegade-platinum-trainer-0609",
+            "trainerId": "renegade-platinum-trainer-0609",
+            "label": "Riley",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 615,
+            "sourceNotes": "Partner in all Multi Battles shown below\n\n31 IVs",
+            "sourceOccurrenceRole": "ally-reference"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "debf709ca9584f8176cd114b34d3e4a16f471abcc681412e3c307f41108967ea",
+          "splitId": "byron",
+          "location": "Iron Island - B2F (Left Side)",
+          "enemyRows": [
+            626,
+            637
+          ],
+          "enemyNotes": [
+            "Topmost Hiker\nOptional Multi Battle w/ Hiker Maurice and Riley\nor optional Double Battle w/ Hiker Maurice once Riley leaves\n\n12 IVs",
+            "Leftmost Hiker\nOptional Multi Battle w/ Hiker Maurice and Riley\nor optional Double Battle w/ Hiker Maurice once Riley leaves\n\n12 IVs"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      },
+      {
+        "id": "renegade-platinum-player-partner-445-372",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "renegade-platinum-trainer-0445",
+          "renegade-platinum-trainer-0372"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "renegade-platinum-trainer-0609",
+            "trainerId": "renegade-platinum-trainer-0609",
+            "label": "Riley",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 615,
+            "sourceNotes": "Partner in all Multi Battles shown below\n\n31 IVs",
+            "sourceOccurrenceRole": "ally-reference"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "debf709ca9584f8176cd114b34d3e4a16f471abcc681412e3c307f41108967ea",
+          "splitId": "byron",
+          "location": "Iron Island - B2F (Left Side)",
+          "enemyRows": [
+            648,
+            659
+          ],
+          "enemyNotes": [
+            "Optional Multi Battle w/ Battle Girl Tyler and Riley\nor optional Double Battle w/ Battle Girl Tyler once Riley leaves\n\n12 IVs",
+            "Optional Multi Battle w/ Black Belt Kendal and Riley\n\nor optional Double Battle w/ Black Belt Kendal once Riley leaves\n12 IVs"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      },
+      {
+        "id": "renegade-platinum-player-partner-506-505",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "renegade-platinum-trainer-0506",
+          "renegade-platinum-trainer-0505"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "renegade-platinum-trainer-0609",
+            "trainerId": "renegade-platinum-trainer-0609",
+            "label": "Riley",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 615,
+            "sourceNotes": "Partner in all Multi Battles shown below\n\n31 IVs",
+            "sourceOccurrenceRole": "ally-reference"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "debf709ca9584f8176cd114b34d3e4a16f471abcc681412e3c307f41108967ea",
+          "splitId": "byron",
+          "location": "Iron Island - B2F (Left Side)",
+          "enemyRows": [
+            670,
+            681
+          ],
+          "enemyNotes": [
+            "Optional Multi Battle w/ Worker Brendon and Riley\nor optional Double Battle w/ Worker Brendon once Riley leaves",
+            "Optional Multi Battle w/ Worker Quentin and Riley\nor optional Double Battle w/ Worker Quentin once Riley leaves\n\n12 IVs"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      },
+      {
+        "id": "renegade-platinum-player-partner-388-392",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "renegade-platinum-trainer-0388",
+          "renegade-platinum-trainer-0392"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "renegade-platinum-trainer-0609",
+            "trainerId": "renegade-platinum-trainer-0609",
+            "label": "Riley",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 615,
+            "sourceNotes": "Partner in all Multi Battles shown below\n\n31 IVs",
+            "sourceOccurrenceRole": "ally-reference"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "debf709ca9584f8176cd114b34d3e4a16f471abcc681412e3c307f41108967ea",
+          "splitId": "byron",
+          "location": "Iron Island - B2F (Left Side)",
+          "enemyRows": [
+            692,
+            703
+          ],
+          "enemyNotes": [
+            "Either this fight or a Multi Battle w/ Ace Trainer Brenda and Riley\n\n30 IVs",
+            "Either this fight or a Multi Battle w/ Ace Trainer Jonah and Riley\n\n30 IVs"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      },
+      {
+        "id": "renegade-platinum-occurrence-0291",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "renegade-platinum-trainer-0835",
+          "renegade-platinum-trainer-0836"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "renegade-platinum-trainer-0609",
+            "trainerId": "renegade-platinum-trainer-0609",
+            "label": "Riley",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 615,
+            "sourceNotes": "Partner in all Multi Battles shown below\n\n31 IVs",
+            "sourceOccurrenceRole": "ally-reference"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "debf709ca9584f8176cd114b34d3e4a16f471abcc681412e3c307f41108967ea",
+          "splitId": "byron",
+          "location": "Iron Island - B2F (Left Side)",
+          "enemyRows": [
+            714,
+            725
+          ],
+          "enemyNotes": [
+            "Multi Battle w/ Galactic Grunt and Riley                                                                                                                                                 12 IVs",
+            "Multi Battle w/ Galactic Grunt and Riley                                                                                                                                                         12IVs"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      },
+      {
+        "id": "renegade-platinum-player-partner-389-393",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "renegade-platinum-trainer-0389",
+          "renegade-platinum-trainer-0393"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "renegade-platinum-trainer-0610",
+            "trainerId": "renegade-platinum-trainer-0610",
+            "label": "Marley",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 340,
+            "sourceNotes": "Partner in all Multi Battles in Victory Road 1F Back 2 shown below",
+            "sourceOccurrenceRole": "ally-reference"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "debf709ca9584f8176cd114b34d3e4a16f471abcc681412e3c307f41108967ea",
+          "splitId": "champion",
+          "location": "Victory Road - 1F Back 2",
+          "enemyRows": [
+            351,
+            362
+          ],
+          "enemyNotes": [
+            "Leftmost Male Ace Trainer\n\nOptional Multi Battle w/ Ace Trainer Brandi and Marley\n\n30 IVs",
+            "Leftmost Female Ace Trainer\n\nOptional Multi Battle w/ Ace Trainer Micah and Marley\n\n30 IVs"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      },
+      {
+        "id": "renegade-platinum-player-partner-396-399",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "renegade-platinum-trainer-0396",
+          "renegade-platinum-trainer-0399"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "renegade-platinum-trainer-0610",
+            "trainerId": "renegade-platinum-trainer-0610",
+            "label": "Marley",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 340,
+            "sourceNotes": "Partner in all Multi Battles in Victory Road 1F Back 2 shown below",
+            "sourceOccurrenceRole": "ally-reference"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "debf709ca9584f8176cd114b34d3e4a16f471abcc681412e3c307f41108967ea",
+          "splitId": "champion",
+          "location": "Victory Road - 1F Back 2",
+          "enemyRows": [
+            373,
+            384
+          ],
+          "enemyNotes": [
+            "Leftmost Psychic\n\nOptional Multi Battle w/ Psychic Desiree and Marley\nor optional Double Battle w/ Psychic Desiree once Marley leaves\n\n30 IVs",
+            "Topmost Psychic\n\nOptional Multi Battle w/ Psychic Landon and Marley\nor optional Double Battle w/ Psychic Landon once Marley leaves\n\n30 IVs"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      },
+      {
+        "id": "renegade-platinum-player-partner-499-446",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "renegade-platinum-trainer-0499",
+          "renegade-platinum-trainer-0446"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "renegade-platinum-trainer-0610",
+            "trainerId": "renegade-platinum-trainer-0610",
+            "label": "Marley",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 340,
+            "sourceNotes": "Partner in all Multi Battles in Victory Road 1F Back 2 shown below",
+            "sourceOccurrenceRole": "ally-reference"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "debf709ca9584f8176cd114b34d3e4a16f471abcc681412e3c307f41108967ea",
+          "splitId": "champion",
+          "location": "Victory Road - 1F Back 2",
+          "enemyRows": [
+            395,
+            406
+          ],
+          "enemyNotes": [
+            "Topmost Veteran\n\nOptional Multi Battle w/ Black Belt Eddie and Marley\nor optional Double Battle w/ Black Belt Eddie once Marley leaves\n\n30 IVs",
+            "Topmost Black Belt\n\nOptional Multi Battle w/ Veteran Terrel and Marley\nor optional Double Battle w/ Veteran Terrel once Marley leaves\n\n30 IVs"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      },
+      {
+        "id": "renegade-platinum-player-partner-386-373",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "renegade-platinum-trainer-0386",
+          "renegade-platinum-trainer-0373"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "renegade-platinum-trainer-0610",
+            "trainerId": "renegade-platinum-trainer-0610",
+            "label": "Marley",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 340,
+            "sourceNotes": "Partner in all Multi Battles in Victory Road 1F Back 2 shown below",
+            "sourceOccurrenceRole": "ally-reference"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "debf709ca9584f8176cd114b34d3e4a16f471abcc681412e3c307f41108967ea",
+          "splitId": "champion",
+          "location": "Victory Road - 1F Back 2",
+          "enemyRows": [
+            417,
+            428
+          ],
+          "enemyNotes": [
+            "To the right or Veteran Terrel and Black Belt Eddie\n\nOptional Multi Battle w/ BIrd Keeper Autumn and Marley\nor optional Double Battle w/ Bird Keeper Autumn once Marley leaves\n\n30 IVs",
+            "To the right or Veteran Terrel and Black Belt Eddie\n\nOptional Multi Battle w/ Dragon Tamer Joe and Marley\nor optional Double Battle w/ Dragon Tamer Joe once Marley leaves"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      },
+      {
+        "id": "renegade-platinum-player-partner-400-397",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "renegade-platinum-trainer-0400",
+          "renegade-platinum-trainer-0397"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "renegade-platinum-trainer-0610",
+            "trainerId": "renegade-platinum-trainer-0610",
+            "label": "Marley",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 340,
+            "sourceNotes": "Partner in all Multi Battles in Victory Road 1F Back 2 shown below",
+            "sourceOccurrenceRole": "ally-reference"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "debf709ca9584f8176cd114b34d3e4a16f471abcc681412e3c307f41108967ea",
+          "splitId": "champion",
+          "location": "Victory Road - 1F Back 2",
+          "enemyRows": [
+            439,
+            450
+          ],
+          "enemyNotes": [
+            "Second rightmost Psychic\n\nOptional Multi Battle w/ Psychic Deandre and Marley\n\n30 IVs",
+            "Rightmost Psychic\n\nOptional Multi Battle w/ Psychic Kendra and Marley\n\n30 IVs"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      },
+      {
+        "id": "renegade-platinum-player-partner-447-500",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "renegade-platinum-trainer-0447",
+          "renegade-platinum-trainer-0500"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "renegade-platinum-trainer-0610",
+            "trainerId": "renegade-platinum-trainer-0610",
+            "label": "Marley",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 340,
+            "sourceNotes": "Partner in all Multi Battles in Victory Road 1F Back 2 shown below",
+            "sourceOccurrenceRole": "ally-reference"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "debf709ca9584f8176cd114b34d3e4a16f471abcc681412e3c307f41108967ea",
+          "splitId": "champion",
+          "location": "Victory Road - 1F Back 2",
+          "enemyRows": [
+            461,
+            472
+          ],
+          "enemyNotes": [
+            "Bottommost Black Belt\n\nOptional Multi Battle w/ Veteran Brenden and Marley\n\n30 IVs",
+            "Bottommost Veteran\n\nOptional Multi Battle w/ Black Belt Willie and Marley\n\n30 IVs"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      }
+    ]
   }
 }

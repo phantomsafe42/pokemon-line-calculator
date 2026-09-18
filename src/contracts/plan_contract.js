@@ -393,14 +393,30 @@ export function validatePlanDocument(plan, options = {}) {
       || plan.game.enemyTrainerVariantIds.length !== plan.game.enemyTrainerIds?.length)) {
       issue(issues, "$.game.enemyTrainerVariantIds", "must align with enemyTrainerIds");
     }
-    if (plan.game.encounterType === "multi" && (plan.game.battleFormat !== "doubles" || plan.game.enemyTrainerIds?.length !== 2)) {
-      issue(issues, "$.game.encounterType", "Multi encounters require Doubles and two enemy trainers");
+    const alliedAgainstOne = plan.game.enemyTrainerIds?.length === 1 && Boolean(plan.game.playerPartner);
+    if (plan.game.encounterType === "multi" && (plan.game.battleFormat !== "doubles" || !(plan.game.enemyTrainerIds?.length === 2 || alliedAgainstOne))) {
+      issue(issues, "$.game.encounterType", "Multi encounters require Doubles and two enemy trainers or an owned player partner");
     }
     for (const [side, ownership] of Object.entries(plan.game.partyOwnership || {})) {
       const ids = ownership?.slotOwnerIds;
       if (!['player', 'enemy'].includes(side) || plan.game.battleFormat !== 'doubles' || ownership?.policy !== 'per-trainer'
         || !Array.isArray(ids) || ids.length !== 2 || new Set(ids).size !== 2 || ids.some(id => typeof id !== 'string' || !id)) {
         issue(issues, `$.game.partyOwnership.${side}`, 'must declare two distinct trainer owners for Doubles');
+      }
+    }
+    if (plan.game.playerPartner) {
+      const partnerId = plan.game.playerPartner.trainerId;
+      const owners = plan.game.partyOwnership?.player?.slotOwnerIds;
+      if (!partnerId || !owners || owners[0] !== 'player' || owners[1] !== partnerId) {
+        issue(issues, '$.game.playerPartner', 'must match player and partner slot ownership');
+      }
+      for (const mon of Object.values(plan.combatants || {}).filter(mon => mon.side === 'player')) {
+        if (mon.source?.partyOwnerId !== (mon.source?.isPlayerPartner ? partnerId : 'player')) {
+          issue(issues, '$.combatants', 'player and allied partner rosters must retain their ownership');
+        }
+        if (mon.source?.isPlayerPartner && (mon.source.trainerVariantId || null) !== (plan.game.playerPartner.trainerVariantId || null)) {
+          issue(issues, '$.combatants', 'allied partner rosters must retain their exact trainer variant');
+        }
       }
     }
   }

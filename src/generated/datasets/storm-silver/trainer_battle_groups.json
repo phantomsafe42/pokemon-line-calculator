@@ -2,5 +2,250 @@
   "schemaVersion": 1,
   "gameId": "storm-silver",
   "kind": "trainer-battle-groups",
-  "records": {}
+  "records": {},
+  "playerPartners": {
+    "schemaVersion": "trainer-player-partners/v1",
+    "bindings": [
+      {
+        "id": "storm-silver-player-partner-88-87",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "storm-silver-trainer-0088",
+          "storm-silver-trainer-0087"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "storm-silver-trainer-0040",
+            "trainerId": "storm-silver-trainer-0040",
+            "label": "Mira",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 74,
+            "sourceNotes": "Partner in Multi Battle against Team Rocket Grunts shown above\n\n12 IVs",
+            "sourceOccurrenceRole": "opponent-primary"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "77c06ffa350f1446f8765f2dbcb226cbd5b5b8de54e0c491595d846404783767",
+          "splitId": "jasmine",
+          "location": "Route 47",
+          "enemyRows": [
+            52,
+            63
+          ],
+          "enemyNotes": [
+            "Multi Battle w/ Team Rocket Grunt and Mira\n\n\n0 IVs",
+            "Multi Battle w/ Team Rocket Grunt and Mira\n\n0 IVs"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      },
+      {
+        "id": "storm-silver-player-partner-106-105",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "storm-silver-trainer-0106",
+          "storm-silver-trainer-0105"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "storm-silver-trainer-0063",
+            "trainerId": "storm-silver-trainer-0063",
+            "label": "Buck",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 107,
+            "sourceNotes": "Partner in Multi Battle against Team Rocket Grunts shown above\n\n12 IVs",
+            "sourceOccurrenceRole": "opponent-primary"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "77c06ffa350f1446f8765f2dbcb226cbd5b5b8de54e0c491595d846404783767",
+          "splitId": "jasmine",
+          "location": "Route 47",
+          "enemyRows": [
+            85,
+            96
+          ],
+          "enemyNotes": [
+            "Multi Battle w/ Team Rocket Grunt and Buck\n\n0 IVs",
+            "Multi Battle w/ Team Rocket Grunt and Buck"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      },
+      {
+        "id": "storm-silver-player-partner-169-168",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "storm-silver-trainer-0169",
+          "storm-silver-trainer-0168"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "storm-silver-trainer-0138",
+            "trainerId": "storm-silver-trainer-0138",
+            "label": "Cheryl",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 153,
+            "sourceNotes": "Partner in Multi Battle against Team Rocket Grunts shown above\n\n12 IVs",
+            "sourceOccurrenceRole": "opponent-primary"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "77c06ffa350f1446f8765f2dbcb226cbd5b5b8de54e0c491595d846404783767",
+          "splitId": "jasmine",
+          "location": "Route 47",
+          "enemyRows": [
+            131,
+            142
+          ],
+          "enemyNotes": [
+            "Multi Battle w/ Team Rocket Grunt and Cheryl\n\n0 IVs",
+            "Multi Battle w/ Team Rocket Grunt and Cheryl\n\n0 IVs"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      },
+      {
+        "id": "storm-silver-player-partner-171-170",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "storm-silver-trainer-0171",
+          "storm-silver-trainer-0170"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "storm-silver-trainer-0141",
+            "trainerId": "storm-silver-trainer-0141",
+            "label": "Marley",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 186,
+            "sourceNotes": "Partner in Multi Battle against Team Rocket Grunts shown above\n\n12 IVs",
+            "sourceOccurrenceRole": "opponent-primary"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "77c06ffa350f1446f8765f2dbcb226cbd5b5b8de54e0c491595d846404783767",
+          "splitId": "jasmine",
+          "location": "Route 47",
+          "enemyRows": [
+            164,
+            175
+          ],
+          "enemyNotes": [
+            "Multi Battle w/ Team Rocket Grunt and Marley\n\n0 IVs",
+            "Multi Battle w/ Team Rocket Grunt and Marley\n\n0 IVs"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      },
+      {
+        "id": "storm-silver-player-partner-172-173",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "storm-silver-trainer-0172",
+          "storm-silver-trainer-0173"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "storm-silver-trainer-0177",
+            "trainerId": "storm-silver-trainer-0177",
+            "label": "Riley",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 232,
+            "sourceNotes": "Partner in Multi Battle against Team Rocket Grunt and Executive Archer shown above\n\n24 IVs",
+            "sourceOccurrenceRole": "opponent-primary"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "77c06ffa350f1446f8765f2dbcb226cbd5b5b8de54e0c491595d846404783767",
+          "splitId": "jasmine",
+          "location": "Safari Zone Gate",
+          "enemyRows": [
+            210,
+            221
+          ],
+          "enemyNotes": [
+            "Multi Battle w/ Executive Archer and Riley\n\n0 IVs",
+            "Multi Battle w/ Team Rocket Grunt and Riley"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      },
+      {
+        "id": "storm-silver-player-partner-502-482",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "storm-silver-trainer-0502",
+          "storm-silver-trainer-0482"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "storm-silver-trainer-0681",
+            "trainerId": "storm-silver-trainer-0681",
+            "label": "Lance",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 336,
+            "sourceNotes": "Partner in Multi Battle against Team Rocket Grunt and Executive Ariana shown above\n\n30 IVs",
+            "sourceOccurrenceRole": "opponent-primary"
+          }
+        ],
+        "source": {
+          "file": "trainer_documentation.json",
+          "workbookSha256": "77c06ffa350f1446f8765f2dbcb226cbd5b5b8de54e0c491595d846404783767",
+          "splitId": "pryce",
+          "location": "Team Rocket HQ - B2F (Bottom Section)",
+          "enemyRows": [
+            314,
+            325
+          ],
+          "enemyNotes": [
+            "Multi Battle w/ Executive Ariana and Lance\n\n31 iv on magnezone 3 iv on rest",
+            "Multi Battle w/ Team Rocket Grunt and Lance"
+          ],
+          "rule": "explicit-documented-multi-encounter"
+        }
+      }
+    ]
+  }
 }

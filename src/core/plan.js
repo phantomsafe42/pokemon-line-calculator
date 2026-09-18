@@ -1,14 +1,14 @@
-import { assertValidPlanDocument, PLAN_SCHEMA_VERSION } from "../contracts/plan_contract.js?v=20260911-ability-storage-reimp-v1";
+import { assertValidPlanDocument, PLAN_SCHEMA_VERSION } from "../contracts/plan_contract.js?v=20260917-partners-release-v1";
 import { clone, exactRange, makeStableId, nowIso, shortHash, stableStringify, toId } from "./primitives.js?v=20260905-drafts-freecalc-partners-v1";
 import { activeKeys, battleFormat as normalizeBattleFormat, slotsPerSide } from "./battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
 import { participatingActiveEntries, participatingActiveKeys } from "../rulesets/rotation_battle.js?v=20260905-drafts-freecalc-partners-v1";
-import { createInitialExperienceState } from "../rulesets/vw2r_experience.js?v=20260905-drafts-freecalc-partners-v1";
+import { createInitialExperienceState } from "../rulesets/vw2r_experience.js?v=20260917-partners-release-v1";
 import { entryAbilityEffects } from "../rulesets/switch_rules.js?v=20260907-two-turn-immunity-v1";
 import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260911-ability-storage-reimp-v1";
 import { combatantsAreAdjacent } from "../rulesets/triple_battle.js?v=20260905-drafts-freecalc-partners-v1";
 import { abilityStatStageRule, activeAbilityId } from "../rulesets/ability_rules.js?v=20260905-drafts-freecalc-partners-v1";
 import { weatherIsSuppressed } from "../rulesets/battle_rules.js?v=20260907-two-turn-immunity-v1";
-import { ABILITY_FORM_STATE_VERSION, applyCombatantFormState, desiredWeatherAbilityForm } from "../rulesets/form_rules.js?v=20260905-drafts-freecalc-partners-v1";
+import { ABILITY_FORM_STATE_VERSION, applyCombatantFormState, desiredWeatherAbilityForm } from "../rulesets/form_rules.js?v=20260917-partners-release-v1";
 import { initializeAbilityKnowledge, observeAbilityEvent, entryAbilityAnnouncement } from "./ability_knowledge.js?v=20260911-ability-storage-reimp-v1";
 
 export const INITIAL_ENTRY_EFFECTS_VERSION = 2;
@@ -100,7 +100,7 @@ export function createCombatantState(combatant, override = {}) {
     hpDistribution: [{ value: hp, probability: 1 }],
     majorStatus: normalizeMajorStatus(override.majorStatus),
     toxicCounter: normalizeMajorStatus(override.majorStatus) === "tox" ? Math.max(1, Number(override.toxicCounter || 1)) : 0,
-    statStages: { ...defaultStages(), ...(override.statStages || {}) },
+    statStages: { ...defaultStages(), ...(combatant.initialStatStages || {}), ...(override.statStages || {}) },
     currentAbilityId: combatant.originalAbilityId,
     abilitySuppressed: false,
     currentItemId: combatant.originalItemId,
@@ -409,11 +409,26 @@ export function createPlanDocument({
   enemyTrainerVariantIds = null,
   enemyTrainerDisplayName = null,
   enemyPartyOwnership = null,
+  playerPartner = null,
   sourceSnapshot,
   initialConditions = {},
   now = nowIso()
 }) {
   const format = normalizeBattleFormat(battleFormat || dataset.trainerBattleFormat?.(trainerId) || "singles");
+  if (playerPartner) {
+    const binding = dataset.trainer(trainerId)?.playerPartnerBinding;
+    if (format !== 'doubles' || !binding?.partnerOptions.some(option => option.trainerId === playerPartner.trainerId
+      && (option.trainerVariantId || null) === (playerPartner.trainerVariantId || null))) throw new Error('Invalid player partner selection');
+    const owned = playerCombatants.filter(mon => !mon.source?.isPlayerPartner);
+    if (binding.maxPlayerPartySize && owned.length > binding.maxPlayerPartySize) throw new Error(`This encounter allows at most ${binding.maxPlayerPartySize} player Pokémon.`);
+    const allied = playerCombatants.filter(mon => mon.source?.isPlayerPartner);
+    if (!owned.length || !allied.length || allied.some(mon => mon.source.partyOwnerId !== playerPartner.trainerId
+      || (mon.source.trainerVariantId || null) !== (playerPartner.trainerVariantId || null))) throw new Error('Invalid player partner roster');
+    playerCombatants = playerCombatants.map(mon => mon.source?.isPlayerPartner ? mon : {
+      ...mon, source: { ...mon.source, partyOwnerId: 'player' }
+    });
+    playerActiveKeys ||= [owned[0].combatantKey, allied[0].combatantKey];
+  }
   const required = slotsPerSide(format);
   const selectedPlayerKeys = (playerActiveKeys || [playerActiveKey, ...playerCombatants.slice(1).map(mon => mon.combatantKey)]).slice(0, required);
   const defaultEnemyKeys = [enemyActiveKey, ...enemyCombatants.slice(1).map(mon => mon.combatantKey)].slice(0, required);
@@ -441,7 +456,7 @@ export function createPlanDocument({
     policy: 'per-trainer',
     slotOwnerIds: [...(encounter.enemySlotTrainerIds || encounter.enemyTrainerIds)]
   } : null);
-  const identity = { gameId: dataset.gameId, trainerId, trainerVariantId, enemyTrainerIds: resolvedEnemyTrainerIds, sourceSnapshot };
+  const identity = { gameId: dataset.gameId, trainerId, trainerVariantId, enemyTrainerIds: resolvedEnemyTrainerIds, sourceSnapshot, ...(playerPartner ? { playerPartner } : {}) };
   const plan = {
     kind: "pokemon-battle-plan",
     schemaVersion: format === "rotation" ? PLAN_SCHEMA_VERSION : format === "triples" ? 3 : 2,
@@ -459,7 +474,11 @@ export function createPlanDocument({
       ...(resolvedEnemyTrainerIds ? { enemyTrainerIds: [...resolvedEnemyTrainerIds] } : {}),
       ...(enemyTrainerVariantIds ? { enemyTrainerVariantIds: [...enemyTrainerVariantIds] } : {}),
       ...(enemyTrainerDisplayName ? { enemyTrainerDisplayName } : {}),
-      ...(resolvedOwnership ? { partyOwnership: { enemy: clone(resolvedOwnership) } } : {})
+      ...(playerPartner ? { playerPartner: clone(playerPartner) } : {}),
+      ...((resolvedOwnership || playerPartner) ? { partyOwnership: {
+        ...(resolvedOwnership ? { enemy: clone(resolvedOwnership) } : {}),
+        ...(playerPartner ? { player: { policy: 'per-trainer', slotOwnerIds: ['player', playerPartner.trainerId] } } : {})
+      } } : {})
     },
     mechanicsFingerprint: currentMechanicsFingerprint(dataset),
     sourceSnapshot: clone(sourceSnapshot || {}),
