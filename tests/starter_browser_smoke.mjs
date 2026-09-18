@@ -71,10 +71,10 @@ try {
     const store = new IndexedDbBoxLibraryStore();
     const before = JSON.stringify(await store.load());
     const partnerCases = [
-      ['pokemon-diamond','chimchar','pokemon-diamond-trainer-0414',['0613','0616']],
-      ['pokemon-pearl','turtwig','pokemon-pearl-trainer-0848',['0621','0624']],
-      ['platinum-kaizo','piplup','platinum-kaizo-trainer-0414',['0614','0617']],
-      ['pokemon-heartgold','totodile','pokemon-heartgold-trainer-0733',['0735']],
+      ['pokemon-diamond','chimchar','pokemon-diamond-player-partner-414-415',['0613','0616']],
+      ['pokemon-pearl','turtwig','pokemon-pearl-player-partner-848-849',['0621','0624']],
+      ['platinum-kaizo','piplup','platinum-kaizo-occurrence-0029',['0614','0617']],
+      ['pokemon-heartgold','totodile','heartgold-soulsilver-script-pair-0733-0734',['0735']],
       ['pokemon-black-2','snivy',null,['0360','0363']]
     ];
     for (const [game,starter,enemy,expected] of partnerCases) {
