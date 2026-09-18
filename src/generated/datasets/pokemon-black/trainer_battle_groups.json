@@ -9,12 +9,12 @@
       "trainerParticipationMode": "multi-trainer",
       "locationId": "campaign-location-wellspring-cave",
       "enemyTrainerIds": [
-        "pokemon-black-documentation-trainer-0040",
-        "pokemon-black-documentation-trainer-0041"
+        "pokemon-black-trainer-0062",
+        "pokemon-black-trainer-0063"
       ],
       "enemySlotTrainerIds": [
-        "pokemon-black-documentation-trainer-0040",
-        "pokemon-black-documentation-trainer-0041"
+        "pokemon-black-trainer-0062",
+        "pokemon-black-trainer-0063"
       ],
       "enemyOccurrenceIds": [
         "pokemon-black-campaign-occurrence-0040",
@@ -171,7 +171,7 @@
       "participantCandidates": [],
       "choiceVariants": [],
       "consumerActivation": {
-        "plc": false,
+        "plc": true,
         "overlay": false
       },
       "source": {
@@ -237,8 +237,41 @@
             "templateSha256": "d08586bd0ef2ba6ad0c165c6301e00b7a572249005868d13d5d6ab695a018dfd",
             "evidenceKind": "documented-trainer-or-party-template"
           }
-        ]
-      }
+        ],
+        "reviewedCorrection": {
+          "id": "pokemon-black-wellspring-cave-plasma-pair",
+          "status": "resolved",
+          "confidence": "verified",
+          "authority": "retail script ordered Multi battle arguments",
+          "originalContext": {
+            "file": "tools/imports/vanilla/gen5-documented-campaign-context/pokemon-black.json",
+            "sha256": "6d2f868acc3dee6f7fe388c4a45cf654f02a30e89385d333fece9383ec0121eb"
+          },
+          "retailEvidence": {
+            "file": "tools/imports/vanilla/reviewed-multi-context/multi-encounter-corrections.json",
+            "sha256": "fe19ca4ac108411ded5fe111788333bc9a54d3b8bc6fbbd941fe6d568a74449f",
+            "gameId": "pokemon-black"
+          },
+          "changes": [
+            {
+              "field": "enemyTrainerIds / enemySlotTrainerIds",
+              "legacy": [
+                "pokemon-black-documentation-trainer-0040",
+                "pokemon-black-documentation-trainer-0041"
+              ],
+              "selected": [
+                "pokemon-black-trainer-0062",
+                "pokemon-black-trainer-0063"
+              ],
+              "reason": "Script establishes event slot order. Documentation rows remain unidentified individually; navigation aliases refer to the whole encounter only."
+            }
+          ]
+        }
+      },
+      "navigationTrainerIds": [
+        "pokemon-black-documentation-trainer-0040",
+        "pokemon-black-documentation-trainer-0041"
+      ]
     }
   },
   "validation": {
@@ -255,6 +288,189 @@
   "playerPartners": {
     "schemaVersion": "trainer-player-partners/v1",
     "bindings": [
+      {
+        "id": "pokemon-black-wellspring-cave-plasma-pair",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-black-trainer-0062",
+          "pokemon-black-trainer-0063"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-black-trainer-0056",
+            "trainerId": "pokemon-black-trainer-0056",
+            "label": "Pokémon Trainer Cheren · tepig Lv. 14, purrloin Lv. 12",
+            "hideFromOpponentSelection": false,
+            "source": {
+              "file": "Pokemon Black/source-data/trainers.json",
+              "rawTrainerId": 56,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Route 3",
+                    "text": "Route 3"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "Preschool",
+                    "text": "Preschool"
+                  }
+                ],
+                "line": 81,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_and_White/Part_3&oldid=4554226",
+                "pageId": 136373,
+                "revisionId": 4554226,
+                "templateOrdinal": 11,
+                "templateSha256": "cf5bd7050bd0ab72265f84ecfc5e9a338ea0b6de02b11f6a3423491554321988",
+                "title": "Walkthrough:Pokémon Black and White/Part 3"
+              }
+            }
+          },
+          {
+            "id": "pokemon-black-trainer-0057",
+            "trainerId": "pokemon-black-trainer-0057",
+            "label": "Pokémon Trainer Cheren · oshawott Lv. 14, purrloin Lv. 12",
+            "hideFromOpponentSelection": false,
+            "source": {
+              "file": "Pokemon Black/source-data/trainers.json",
+              "rawTrainerId": 57,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Route 3",
+                    "text": "Route 3"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "Preschool",
+                    "text": "Preschool"
+                  }
+                ],
+                "line": 128,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_and_White/Part_3&oldid=4554226",
+                "pageId": 136373,
+                "revisionId": 4554226,
+                "templateOrdinal": 12,
+                "templateSha256": "c1d0b29c79a16c3c0798d5f01221a4115ae77e6788296e442b9e900cd5d40561",
+                "title": "Walkthrough:Pokémon Black and White/Part 3"
+              }
+            }
+          },
+          {
+            "id": "pokemon-black-trainer-0058",
+            "trainerId": "pokemon-black-trainer-0058",
+            "label": "Pokémon Trainer Cheren · snivy Lv. 14, purrloin Lv. 12",
+            "hideFromOpponentSelection": false,
+            "source": {
+              "file": "Pokemon Black/source-data/trainers.json",
+              "rawTrainerId": 58,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Route 3",
+                    "text": "Route 3"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "Preschool",
+                    "text": "Preschool"
+                  }
+                ],
+                "line": 175,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_and_White/Part_3&oldid=4554226",
+                "pageId": 136373,
+                "revisionId": 4554226,
+                "templateOrdinal": 13,
+                "templateSha256": "47d18def396c59b12ca3fc75cb125f3b12a7ede8dbb281181ebc35ff2c288294",
+                "title": "Walkthrough:Pokémon Black and White/Part 3"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-black.json",
+          "sha256": "3acdc6cc5ab8033930dd92fdafe60671fff91037df1f16385715c24605523341",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Wellspring Cave",
+          "evidence": [
+            {
+              "pageId": 136373,
+              "revisionId": 4554226,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_and_White/Part_3&oldid=4554226",
+              "lineStart": 226,
+              "lineEnd": 226,
+              "excerptSha256": "93cab34682972cb20e5deb3190103b3a3afb66af866ee6b4d702184a2bca3bbe",
+              "evidenceKind": "documented-battle-narrative"
+            },
+            {
+              "pageId": 136373,
+              "revisionId": 4554226,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_and_White/Part_3&oldid=4554226",
+              "lineStart": 236,
+              "lineEnd": 236,
+              "excerptSha256": "7d6c43c0873cbd089a892a4cdb2b26fada56fa249b3371e1b5837b7953d49e36",
+              "templateSha256": "7d6c43c0873cbd089a892a4cdb2b26fada56fa249b3371e1b5837b7953d49e36",
+              "evidenceKind": "documented-trainer-or-party-template"
+            },
+            {
+              "pageId": 136373,
+              "revisionId": 4554226,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_and_White/Part_3&oldid=4554226",
+              "lineStart": 237,
+              "lineEnd": 237,
+              "excerptSha256": "7d6c43c0873cbd089a892a4cdb2b26fada56fa249b3371e1b5837b7953d49e36",
+              "templateSha256": "7d6c43c0873cbd089a892a4cdb2b26fada56fa249b3371e1b5837b7953d49e36",
+              "evidenceKind": "documented-trainer-or-party-template"
+            },
+            {
+              "pageId": 136373,
+              "revisionId": 4554226,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_and_White/Part_3&oldid=4554226",
+              "lineStart": 263,
+              "lineEnd": 263,
+              "excerptSha256": "d6f37d169dbb71bab67a0bdf443fc38003b1003e15d83eb19f6b771189c666fe",
+              "templateSha256": "1067ebd1d185f1add8878460244ad9f8aed2c7957d118be824ce2e6dccbfba97",
+              "evidenceKind": "documented-trainer-or-party-template"
+            },
+            {
+              "pageId": 136373,
+              "revisionId": 4554226,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_and_White/Part_3&oldid=4554226",
+              "lineStart": 309,
+              "lineEnd": 309,
+              "excerptSha256": "d6f37d169dbb71bab67a0bdf443fc38003b1003e15d83eb19f6b771189c666fe",
+              "templateSha256": "693322a52cc36a7630eb6f4c3a2af23962d0dd98d0a55a62d1deb4a5ac7635e6",
+              "evidenceKind": "documented-trainer-or-party-template"
+            },
+            {
+              "pageId": 136373,
+              "revisionId": 4554226,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_and_White/Part_3&oldid=4554226",
+              "lineStart": 355,
+              "lineEnd": 355,
+              "excerptSha256": "d6f37d169dbb71bab67a0bdf443fc38003b1003e15d83eb19f6b771189c666fe",
+              "templateSha256": "d08586bd0ef2ba6ad0c165c6301e00b7a572249005868d13d5d6ab695a018dfd",
+              "evidenceKind": "documented-trainer-or-party-template"
+            },
+            {
+              "file": "tools/imports/vanilla/reviewed-multi-context/multi-encounter-corrections.json",
+              "sha256": "fe19ca4ac108411ded5fe111788333bc9a54d3b8bc6fbbd941fe6d568a74449f",
+              "gameId": "pokemon-black"
+            }
+          ]
+        }
+      },
       {
         "id": "pokemon-black-player-partner-401-402",
         "battleFormat": "doubles",
@@ -415,15 +631,7 @@
       "status": "passed",
       "scope": "reviewed-story-multi-encounters",
       "builder": "tools/vanilla_player_partners.js",
-      "excludedEvidenceConflicts": [
-        {
-          "id": "pokemon-black-wellspring-cave-plasma-pair",
-          "status": "not-activated",
-          "reason": "Wellspring enemy documentation shells have no IVs, moves, nature or ability. Event membership resolves to retail trainers 62 and 63, but child/slot assignment is explicitly unresolved and their natures differ. Do not guess the assignment.",
-          "file": "Pokemon Black/source-data/trainers.json",
-          "field": "sourceBindings.specialBinding.childIdentityAssignmentResolved"
-        }
-      ],
+      "excludedEvidenceConflicts": [],
       "excluded": [
         "link battles",
         "randomized battle facilities"

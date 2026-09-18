@@ -259,18 +259,12 @@
       ],
       "partyPolicy": "per-trainer",
       "formatChoice": "double-only",
-      "partner": {
-        "kind": "documented-identity",
-        "identity": "Hugh",
-        "conditions": [
-          "partner species depends on player starter"
-        ]
-      },
+      "partner": null,
       "choiceConditions": [],
       "participantCandidates": [],
       "choiceVariants": [],
       "consumerActivation": {
-        "plc": false,
+        "plc": true,
         "overlay": false
       },
       "source": {
@@ -281,10 +275,10 @@
             "pageId": 172631,
             "revisionId": 4614056,
             "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_2_and_White_2/Part_14&oldid=4614056",
-            "lineStart": 646,
-            "lineEnd": 646,
-            "excerptSha256": "3634c6840e4071131aaa1a228632b0766b703ad7de6d39c2941e9a38935310a3",
-            "evidenceKind": "documented-battle-narrative"
+            "lineStart": 649,
+            "lineEnd": 649,
+            "excerptSha256": "49e130684098d8eea0dcbd9650663488d43ff026f77bb0ded3e6e677348fc99c",
+            "evidenceKind": "documented-separate-Hugh-battle"
           },
           {
             "pageId": 172631,
@@ -306,8 +300,48 @@
             "templateSha256": "fd856da1137457c48f24265375cd4ed33e992c266f6f8f1b53caa8631fe09f8d",
             "evidenceKind": "documented-trainer-or-party-template"
           }
-        ]
-      }
+        ],
+        "reviewedCorrection": {
+          "id": "pokemon-white-2-giant-chasm-plasma-pair",
+          "status": "resolved",
+          "confidence": "verified",
+          "authority": "revision-pinned paired trainer templates and retail zone entities",
+          "originalContext": {
+            "file": "tools/imports/vanilla/gen5-documented-campaign-context/pokemon-white-2.json",
+            "sha256": "e9a01d07b91d4e1ad857b48ceb625a06d18c9fcfc3b6bef2e61e18ce14effd0c"
+          },
+          "retailEvidence": {
+            "file": "tools/imports/vanilla/reviewed-multi-context/multi-encounter-corrections.json",
+            "sha256": "fe19ca4ac108411ded5fe111788333bc9a54d3b8bc6fbbd941fe6d568a74449f",
+            "gameId": "pokemon-white-2"
+          },
+          "changes": [
+            {
+              "field": "partner",
+              "legacy": {
+                "kind": "documented-identity",
+                "identity": "Hugh",
+                "conditions": [
+                  "partner species depends on player starter"
+                ]
+              },
+              "selected": null,
+              "reason": "South entrance grunts 809/807 battle together while Hugh holds off a separate group. Outdoor Giant Chasm narrative at line 646 was misapplied."
+            }
+          ],
+          "documentation": {
+            "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/pages/page-172631-revision-4614056.json",
+            "sha256": "90f342566eb687070b6629a9fd82d59e7e0af85875f516b81a01d49cf2559055",
+            "lines": [
+              649,
+              658,
+              662,
+              663
+            ]
+          }
+        }
+      },
+      "displayName": "Team Plasma Grunts · Plasma Frigate South Entrance"
     },
     "pokemon-white-2-lacunosa-zinzolin-grunt": {
       "id": "pokemon-white-2-lacunosa-zinzolin-grunt",
@@ -5238,14 +5272,7 @@
       "status": "passed",
       "scope": "reviewed-story-multi-encounters",
       "builder": "tools/vanilla_player_partners.js",
-      "excludedEvidenceConflicts": [
-        {
-          "id": "pokemon-white-2-giant-chasm-plasma-pair",
-          "status": "not-activated",
-          "reason": "The old narrative-derived group is not sufficient evidence of a shared Multi battle. Giant Chasm lists a single Grunt opponent; Hugh fights separately. Do not borrow the Frigate ally team.",
-          "url": "https://bulbapedia.bulbagarden.net/wiki/Giant_Chasm#Trainers"
-        }
-      ],
+      "excludedEvidenceConflicts": [],
       "excluded": [
         "link battles",
         "randomized battle facilities"

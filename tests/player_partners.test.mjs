@@ -116,7 +116,7 @@ function realDataset(gameId) {
 
 for (const [gameId,count] of [['renegade-platinum',24],['storm-silver',6],['volt-white-2r',10],
   ['pokemon-emerald',1],['pokemon-diamond',30],['pokemon-pearl',30],['pokemon-platinum',31],
-  ['pokemon-heartgold',2],['pokemon-soulsilver',2],['pokemon-black',1],['pokemon-white',1],['pokemon-black-2',16],['pokemon-white-2',16]]) {
+  ['pokemon-heartgold',2],['pokemon-soulsilver',2],['pokemon-black',2],['pokemon-white',2],['pokemon-black-2',16],['pokemon-white-2',16]]) {
   test(`${gameId}: all documented partners normalize, deploy and round-trip with exact ownership`, () => {
     const {dataset,documents} = realDataset(gameId);
     const bindings = documents['trainer_battle_groups.json'].playerPartners.bindings;
@@ -165,8 +165,12 @@ test('retail choices preserve exact partners, source records and ordinary traine
       assert.ok(!binding.enemyTrainerIds.includes(binding.partnerOptions[0].trainerId));
     }
     assert.equal(dataset.trainer(`${game}-trainer-0494`).playerPartnerBinding,undefined);
-    assert.equal(dataset.trainer(`${game}-giant-chasm-plasma-pair`),null);
-    assert.ok(documents['trainer_battle_groups.json'].playerPartners.validation.excludedEvidenceConflicts.length);
+    const frigate=dataset.trainer(`${game}-giant-chasm-plasma-pair`);
+    assert.equal(frigate.playerPartnerBinding,undefined);
+    assert.equal(frigate.displayName,'Team Plasma Grunts · Plasma Frigate South Entrance');
+    assert.equal(frigate.team.length,6);
+    assert.equal(nav.filter(t=>t.id===frigate.id).length,1);
+    assert.deepEqual(documents['trainer_battle_groups.json'].playerPartners.validation.excludedEvidenceConflicts,[]);
     assert.equal(dataset.trainer(`${game}-nimbasa-subway-bosses`).playerPartnerBinding.partnerOptions.length,6);
     assert.equal(dataset.trainer(`${game}-trainer-0648`).playerPartnerBinding,undefined,'outside Cheren escort segment');
   }
@@ -180,7 +184,44 @@ test('retail choices preserve exact partners, source records and ordinary traine
   for(const game of ['pokemon-black','pokemon-white']) {
     const {dataset}=realDataset(game);
     assert.ok(dataset.trainerGroups().flatMap(g=>g.trainers).some(t=>t.id===`${game}-trainer-0056`),'Cheren opponent remains available');
+    const nav=dataset.trainerGroups().flatMap(g=>g.trainers);
+    const id=`${game}-wellspring-cave-plasma-pair`;
+    assert.equal(nav.filter(t=>t.id===id).length,1);
+    assert.ok(!nav.some(t=>[40,41].some(n=>t.id===`${game}-documentation-trainer-00${n}`)));
+    assert.deepEqual(normalizeTrainerRoster(id,null,dataset).map(m=>m.natureId),['timid','lax']);
   }
+});
+
+test('corrected Frigate battle uses two owned leads and keeps enemy reserves separate',()=>{
+  for(const game of ['pokemon-black-2','pokemon-white-2']) {
+    const {dataset}=realDataset(game),trainerId=`${game}-giant-chasm-plasma-pair`;
+    const enemies=normalizeTrainerRoster(trainerId,null,dataset);
+    const own=enemies.slice(0,2).map((mon,i)=>({...structuredClone(mon),side:'player',combatantKey:`player:owned${i}`,source:{kind:'test-player'}}));
+    const plan=createPlanDocument({dataset,trainerId,playerCombatants:own,enemyCombatants:enemies,battleFormat:'doubles'});
+    const state=plan.stateNodes[plan.initialStateNodeId];
+    assert.deepEqual(state.active.playerCombatantKeys,own.map(mon=>mon.combatantKey));
+    assert.ok(!plan.game.playerPartner);
+    for(const slot of [0,1]) {
+      const expected=`${game}-trainer-${slot===0?'0809':'0807'}`;
+      assert.equal(eligibleReserves(plan,state,'enemy',slot).length,2);
+      assert.ok(eligibleReserves(plan,state,'enemy',slot).every(mon=>mon.source.partyOwnerId===expected));
+    }
+    assert.equal(validatePlanReferences(parsePlan(serializePlan(plan)),dataset).valid,true);
+  }
+});
+
+test('event navigation aliases fail closed on missing, repeated and ambiguous identities',()=>{
+  const {documents}=realDataset('pokemon-black');
+  const original=documents['trainer_battle_groups.json'];
+  const groupId='pokemon-black-wellspring-cave-plasma-pair';
+  for(const aliases of [['missing'],['pokemon-black-trainer-0062'],['pokemon-black-documentation-trainer-0040','pokemon-black-documentation-trainer-0040']]) {
+    const doc=structuredClone(original);doc.records[groupId].navigationTrainerIds=aliases;
+    const index=new Map(Object.entries(structuredClone(documents['trainers.json'].records)));
+    assert.throws(()=>installTrainerEncounters(index,doc,'default'),/navigation aliases/);
+  }
+  const doc=structuredClone(original);
+  doc.records[groupId].navigationTrainerIds=['pokemon-black-trainer-0401'];
+  assert.throws(()=>installTrainerEncounters(new Map(Object.entries(structuredClone(documents['trainers.json'].records))),doc,'default'),/ambiguous encounter membership/);
 });
 
 test('Emerald enforces the selected three without discarding user party records', () => {

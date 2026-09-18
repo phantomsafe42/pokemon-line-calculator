@@ -65,7 +65,7 @@ export function installTrainerEncounters(index, groupsDocument, profileId) {
     if (trainers.some(trainer => !trainer)) throw new Error(`Missing trainer in ${group.id}`);
     if (trainers.some(trainer => trainer.mechanicsVariants?.length)) throw new Error(`Encounter ${group.id} requires explicit participant variants`);
     const paired = structuredClone(trainers[0]);
-    Object.assign(paired, { id: group.id, displayName: trainers.map(trainer => trainer.displayName || trainer.name).join(' & '),
+    Object.assign(paired, { id: group.id, displayName: group.displayName || trainers.map(trainer => trainer.displayName || trainer.name).join(' & '),
       consumerTrainerId: null, finalRomTrainerId: null, finalRomTrainerIds: [],
       encounter: structuredClone(group), team: [] });
     const binding = bindingsById.get(group.id);
@@ -81,7 +81,13 @@ export function installTrainerEncounters(index, groupsDocument, profileId) {
     }
     paired.battleProfiles = { ...paired.battleProfiles, [profileId]: { ...paired.battleProfiles?.[profileId], format: 'double', formatSource: `trainer-battle-groups:${group.id}` } };
     index.set(group.id, paired); syntheticIds.add(group.id);
-    for (const id of ids) {
+    const navigationIds = group.navigationTrainerIds || [];
+    if (!Array.isArray(navigationIds) || new Set(navigationIds).size !== navigationIds.length
+      || navigationIds.some(id => !index.has(id) || ids.includes(id) || syntheticIds.has(id))
+      || navigationIds.length && (group.choiceFamilyId || group.formatChoice !== 'double-only')) throw new Error(`Invalid encounter navigation aliases for ${group.id}`);
+    // Documentation shells navigate to the complete reviewed event. They do
+    // not substitute for a particular enemy's mechanics or slot identity.
+    for (const id of [...ids, ...navigationIds]) {
       if (group.choiceFamilyId) {
         const choices = choicesByMember.get(id) || [];
         if (byMember.has(id) || choices.some(choice=>choice.encounter.choiceFamilyId !== group.choiceFamilyId)) throw new Error(`Trainer ${id} has ambiguous encounter family`);

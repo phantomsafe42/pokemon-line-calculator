@@ -1,5 +1,5 @@
-import { assertValidPlanDocument, MAX_PLAN_BYTES, validatePlanDocument } from "./plan_contract.js?v=20260917-vanilla-partners-v1";
-import { createPlanSubset } from "../core/graph.js?v=20260917-vanilla-partners-v1";
+import { assertValidPlanDocument, MAX_PLAN_BYTES, validatePlanDocument } from "./plan_contract.js?v=20260917-multi-corrections-v2";
+import { createPlanSubset } from "../core/graph.js?v=20260917-multi-corrections-v2";
 import { stableStringify } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
 
 export function migratePlanDocument(plan) {

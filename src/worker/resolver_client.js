@@ -2,7 +2,7 @@ export class ResolverWorkerClient {
   constructor(url = new URL(
     typeof __PLC_RESOLVER_WORKER_FILE__ !== "undefined"
       ? __PLC_RESOLVER_WORKER_FILE__
-      : "./resolver_worker.js?v=20260917-vanilla-partners-v1",
+      : "./resolver_worker.js?v=20260917-multi-corrections-v2",
     import.meta.url
   )) {
     this.url = url;

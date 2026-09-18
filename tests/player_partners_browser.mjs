@@ -8,8 +8,11 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const scenario = process.env.PLC_PARTNER_SCENARIO || 'platinum-kaizo';
-const gameId = scenario === 'subway' ? 'volt-white-2r' : scenario === 'striaton' ? 'pokemon-black-2' : scenario;
+const gameId = scenario === 'subway' ? 'volt-white-2r' : ['striaton','frigate'].includes(scenario) ? 'pokemon-black-2' : scenario;
 const cases = {
+  frigate: {trainer:'pokemon-black-2-giant-chasm-plasma-pair',partner:null,species:'Scraggy',cards:0},
+  'pokemon-black': {trainer:'pokemon-black-wellspring-cave-plasma-pair',partner:'pokemon-black-trainer-0056',species:'Tepig',cards:2},
+  'pokemon-white': {trainer:'pokemon-white-wellspring-cave-plasma-pair',partner:'pokemon-white-trainer-0056',species:'Tepig',cards:2},
   'pokemon-emerald': {trainer:'pokemon-emerald-mossdeep-space-center-maxie-tabitha',partner:'pokemon-emerald-documentation-trainer-0539',species:'Metang',cards:3},
   'pokemon-diamond': {trainer:'pokemon-diamond-player-partner-201-204',partner:'pokemon-diamond-trainer-0608',species:'Chansey',cards:1},
   'pokemon-heartgold': {trainer:'heartgold-soulsilver-script-pair-0479-0499',partner:'pokemon-heartgold-trainer-0675',species:'Dragonite',cards:1},
@@ -77,7 +80,8 @@ try {
     const record={id:'test-player',speciesId:'charmeleon',displayName:'Charmeleon',level:23,natureId:'hardy',abilityId:'blaze',baseStats:species.baseStats,
       ivs:{hp:31,atk:31,def:31,spa:31,spd:31,spe:31},evs:{hp:0,atk:0,def:0,spa:0,spd:0,spe:0},
       moves:[{moveId:'ember',name:'Ember',pp:25,basePower:40,type:'fire'}]};
-    await new IndexedDbBoxLibraryStore().save(addBox(null,'${gameId}',{pokemon:[record],partyPokemonIds:[record.id]}).library);
+    const pokemon=${JSON.stringify(scenario)}==='frigate'?[record,{...structuredClone(record),id:'test-player-two'}]:[record];
+    await new IndexedDbBoxLibraryStore().save(addBox(null,'${gameId}',{pokemon,partyPokemonIds:pokemon.map(mon=>mon.id)}).library);
     return true;
   })()`);
   assert.equal(evidence,true);
@@ -101,7 +105,7 @@ try {
         el('battle-format-choice').value=scenario.choice;change('battle-format-choice');
       }
       ambiguous={options:el('player-partner-select').options.length,selected:el('player-partner-select').value,beginDisabled:el('begin-plan').disabled};
-      el('player-partner-select').value=scenario.partner;change('player-partner-select');
+      if(scenario.partner) {el('player-partner-select').value=scenario.partner;change('player-partner-select');}
     }
     const partner={id:el('player-partner-select').value,cards:el('player-partner-summary').children.length,visible:!el('player-partner-panel').hidden};
     el('context-box-select').selectedIndex=1; change('context-box-select');
@@ -112,7 +116,7 @@ try {
   })()`);
   await send('Page.enable');
   const setupLayouts=[];
-  for(const width of [1920,1280,390,320]) {
+  for(const width of (scenario==='frigate'?[]:[1920,1280,390,320])) {
     await send('Emulation.setDeviceMetricsOverride',{width,height:960,deviceScaleFactor:1,mobile:false});
     const layout=await evaluate(`(()=>{
       const select=document.getElementById('player-partner-select'); select.focus(); select.scrollIntoView({block:'center'});
@@ -144,7 +148,8 @@ try {
     assert.equal(result.ambiguous.options,7); assert.equal(result.ambiguous.selected,''); assert.equal(result.ambiguous.beginDisabled,true);
   }
   if(cases[scenario]?.choice) assert.deepEqual(result.singles,{format:'Singles',partnerHidden:true});
-  assert.deepEqual(result.partner,{id:cases[scenario]?.partner || 'platinum-kaizo-trainer-0608',cards:cases[scenario]?.cards || 6,visible:true});
+  if(scenario==='frigate') assert.equal(result.partner.visible,false);
+  else assert.deepEqual(result.partner,{id:cases[scenario]?.partner || 'platinum-kaizo-trainer-0608',cards:cases[scenario]?.cards || 6,visible:true});
   assert.equal(result.ready,true); assert.equal(result.hasPartner,true); assert.equal(result.hasCharmeleon,true); assert.equal(result.overflow,false);
   await send('Page.enable');
   await delay(2000);
