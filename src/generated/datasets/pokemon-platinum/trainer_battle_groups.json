@@ -995,5 +995,3497 @@
     "dynamicOperandsAreRuntimeSelectorsNotFixedGroupFailures": true,
     "sourceArtifact": "tools/imports/vanilla/gen4-trainer-context/platinum.json",
     "emptyRecordsAreValidWhenExactScriptAuditFoundNoSeparateRosterGroups": true
+  },
+  "playerPartners": {
+    "schemaVersion": "trainer-player-partners/v1",
+    "bindings": [
+      {
+        "id": "pokemon-platinum-player-partner-201-204",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0201",
+          "pokemon-platinum-trainer-0204"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0608",
+            "trainerId": "pokemon-platinum-trainer-0608",
+            "label": "Pokémon Trainer Cheryl · chansey Lv. 20",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 608,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Eterna Forest",
+                    "text": "Eterna Forest"
+                  }
+                ],
+                "line": 215,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_4&oldid=4453203",
+                "pageId": 83199,
+                "revisionId": 4453203,
+                "templateOrdinal": 21,
+                "templateSha256": "7d325cce2e4d9c25c2b75e6a0dbe25e279a5b331bc4fa52ef42dad3a3be46d14",
+                "title": "Walkthrough:Pokémon Platinum/Part 4"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Eterna Forest",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Eterna Forest",
+                  "text": "Eterna Forest"
+                }
+              ],
+              "line": 184,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_4&oldid=4453203",
+              "pageId": 83199,
+              "revisionId": 4453203,
+              "templateOrdinal": 13,
+              "templateSha256": "e8c3fa13336b4f7140544090e873f23642c42ec7822210caf28d21ebfda27525",
+              "title": "Walkthrough:Pokémon Platinum/Part 4"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Eterna Forest",
+                  "text": "Eterna Forest"
+                }
+              ],
+              "line": 185,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_4&oldid=4453203",
+              "pageId": 83199,
+              "revisionId": 4453203,
+              "templateOrdinal": 14,
+              "templateSha256": "6e2ef0a42e19e0cb37f3c4e19ad7e28bb8aec43de885246b32281a7996d83b46",
+              "title": "Walkthrough:Pokémon Platinum/Part 4"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Eterna_Forest",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-platinum-player-partner-206-205",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0206",
+          "pokemon-platinum-trainer-0205"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0608",
+            "trainerId": "pokemon-platinum-trainer-0608",
+            "label": "Pokémon Trainer Cheryl · chansey Lv. 20",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 608,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Eterna Forest",
+                    "text": "Eterna Forest"
+                  }
+                ],
+                "line": 215,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_4&oldid=4453203",
+                "pageId": 83199,
+                "revisionId": 4453203,
+                "templateOrdinal": 21,
+                "templateSha256": "7d325cce2e4d9c25c2b75e6a0dbe25e279a5b331bc4fa52ef42dad3a3be46d14",
+                "title": "Walkthrough:Pokémon Platinum/Part 4"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Eterna Forest",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Eterna Forest",
+                  "text": "Eterna Forest"
+                }
+              ],
+              "line": 187,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_4&oldid=4453203",
+              "pageId": 83199,
+              "revisionId": 4453203,
+              "templateOrdinal": 15,
+              "templateSha256": "efe54f0a5fffe54144d0f26bbbbca97a0dceb2bb6fa8539b8e70912469c7c3ae",
+              "title": "Walkthrough:Pokémon Platinum/Part 4"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Eterna Forest",
+                  "text": "Eterna Forest"
+                }
+              ],
+              "line": 188,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_4&oldid=4453203",
+              "pageId": 83199,
+              "revisionId": 4453203,
+              "templateOrdinal": 16,
+              "templateSha256": "4cd1624a9f8735dbba8491d92a313db2f1edc2c2274f95cc7f824dcafabe5fb9",
+              "title": "Walkthrough:Pokémon Platinum/Part 4"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Eterna_Forest",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-platinum-player-partner-202-203",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0202",
+          "pokemon-platinum-trainer-0203"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0608",
+            "trainerId": "pokemon-platinum-trainer-0608",
+            "label": "Pokémon Trainer Cheryl · chansey Lv. 20",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 608,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Eterna Forest",
+                    "text": "Eterna Forest"
+                  }
+                ],
+                "line": 215,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_4&oldid=4453203",
+                "pageId": 83199,
+                "revisionId": 4453203,
+                "templateOrdinal": 21,
+                "templateSha256": "7d325cce2e4d9c25c2b75e6a0dbe25e279a5b331bc4fa52ef42dad3a3be46d14",
+                "title": "Walkthrough:Pokémon Platinum/Part 4"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Eterna Forest",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Eterna Forest",
+                  "text": "Eterna Forest"
+                }
+              ],
+              "line": 190,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_4&oldid=4453203",
+              "pageId": 83199,
+              "revisionId": 4453203,
+              "templateOrdinal": 17,
+              "templateSha256": "67c22740dfa95770f77c0f8df708d33c1d7fb0ce74e5dc3322f96eea5d4fa036",
+              "title": "Walkthrough:Pokémon Platinum/Part 4"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Eterna Forest",
+                  "text": "Eterna Forest"
+                }
+              ],
+              "line": 191,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_4&oldid=4453203",
+              "pageId": 83199,
+              "revisionId": 4453203,
+              "templateOrdinal": 18,
+              "templateSha256": "471a7407401ae96346cc18570b1158dcfcac825fbf86aac1ade83e82401943e2",
+              "title": "Walkthrough:Pokémon Platinum/Part 4"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Eterna_Forest",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-platinum-player-partner-395-398",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0395",
+          "pokemon-platinum-trainer-0398"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0608",
+            "trainerId": "pokemon-platinum-trainer-0608",
+            "label": "Pokémon Trainer Cheryl · chansey Lv. 20",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 608,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Eterna Forest",
+                    "text": "Eterna Forest"
+                  }
+                ],
+                "line": 215,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_4&oldid=4453203",
+                "pageId": 83199,
+                "revisionId": 4453203,
+                "templateOrdinal": 21,
+                "templateSha256": "7d325cce2e4d9c25c2b75e6a0dbe25e279a5b331bc4fa52ef42dad3a3be46d14",
+                "title": "Walkthrough:Pokémon Platinum/Part 4"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Eterna Forest",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Eterna Forest",
+                  "text": "Eterna Forest"
+                }
+              ],
+              "line": 193,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_4&oldid=4453203",
+              "pageId": 83199,
+              "revisionId": 4453203,
+              "templateOrdinal": 19,
+              "templateSha256": "95fdc4757f477ede0c125544d6133546398c734214a80e4577128ce2f0f6447e",
+              "title": "Walkthrough:Pokémon Platinum/Part 4"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Eterna Forest",
+                  "text": "Eterna Forest"
+                }
+              ],
+              "line": 194,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_4&oldid=4453203",
+              "pageId": 83199,
+              "revisionId": 4453203,
+              "templateOrdinal": 20,
+              "templateSha256": "5883a0d9aade0d1386d0d2c227eafa0d2a3f85d47b073b5361d1c7fd1697e911",
+              "title": "Walkthrough:Pokémon Platinum/Part 4"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Eterna_Forest",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-platinum-player-partner-454-455",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0454",
+          "pokemon-platinum-trainer-0455"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0612",
+            "trainerId": "pokemon-platinum-trainer-0612",
+            "label": "Pokémon Trainer Mira · kadabra Lv. 26",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 612,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Wayward Cave (optional)",
+                    "text": "Wayward Cave (optional)"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "Main Area",
+                    "text": "Main Area"
+                  }
+                ],
+                "line": 349,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_5&oldid=4479270",
+                "pageId": 83201,
+                "revisionId": 4479270,
+                "templateOrdinal": 27,
+                "templateSha256": "87be4b207b0d8858eb7800be5c8704b2433cdad86303750d489cd50e808acc78",
+                "title": "Walkthrough:Pokémon Platinum/Part 5"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Wayward Cave",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Wayward Cave (optional)",
+                  "text": "Wayward Cave (optional)"
+                },
+                {
+                  "level": 3,
+                  "raw": "Main Area",
+                  "text": "Main Area"
+                }
+              ],
+              "line": 312,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_5&oldid=4479270",
+              "pageId": 83201,
+              "revisionId": 4479270,
+              "templateOrdinal": 17,
+              "templateSha256": "e2e3ba62956d3233694a6192267541f4eeb51805c85dcc0d7fae6dfecaf2bb35",
+              "title": "Walkthrough:Pokémon Platinum/Part 5"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Wayward Cave (optional)",
+                  "text": "Wayward Cave (optional)"
+                },
+                {
+                  "level": 3,
+                  "raw": "Main Area",
+                  "text": "Main Area"
+                }
+              ],
+              "line": 313,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_5&oldid=4479270",
+              "pageId": 83201,
+              "revisionId": 4479270,
+              "templateOrdinal": 18,
+              "templateSha256": "15d3896c4aad68f78c1143836dbaa12fdb8adfc215864748fba8704872722758",
+              "title": "Walkthrough:Pokémon Platinum/Part 5"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Wayward_Cave",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-platinum-player-partner-450-496",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0450",
+          "pokemon-platinum-trainer-0496"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0612",
+            "trainerId": "pokemon-platinum-trainer-0612",
+            "label": "Pokémon Trainer Mira · kadabra Lv. 26",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 612,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Wayward Cave (optional)",
+                    "text": "Wayward Cave (optional)"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "Main Area",
+                    "text": "Main Area"
+                  }
+                ],
+                "line": 349,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_5&oldid=4479270",
+                "pageId": 83201,
+                "revisionId": 4479270,
+                "templateOrdinal": 27,
+                "templateSha256": "87be4b207b0d8858eb7800be5c8704b2433cdad86303750d489cd50e808acc78",
+                "title": "Walkthrough:Pokémon Platinum/Part 5"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Wayward Cave",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Wayward Cave (optional)",
+                  "text": "Wayward Cave (optional)"
+                },
+                {
+                  "level": 3,
+                  "raw": "Main Area",
+                  "text": "Main Area"
+                }
+              ],
+              "line": 315,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_5&oldid=4479270",
+              "pageId": 83201,
+              "revisionId": 4479270,
+              "templateOrdinal": 19,
+              "templateSha256": "efbc66b6af0ffddcab9f910dde37e74d4bba7c6f3666d39e01a91c30cab04001",
+              "title": "Walkthrough:Pokémon Platinum/Part 5"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Wayward Cave (optional)",
+                  "text": "Wayward Cave (optional)"
+                },
+                {
+                  "level": 3,
+                  "raw": "Main Area",
+                  "text": "Main Area"
+                }
+              ],
+              "line": 316,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_5&oldid=4479270",
+              "pageId": 83201,
+              "revisionId": 4479270,
+              "templateOrdinal": 20,
+              "templateSha256": "40240da6bafc78c7a5449cb32d2424b9d89e1486e0aa2b78a0f8fd589666e9fc",
+              "title": "Walkthrough:Pokémon Platinum/Part 5"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Wayward_Cave",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-platinum-player-partner-458-379",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0458",
+          "pokemon-platinum-trainer-0379"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0612",
+            "trainerId": "pokemon-platinum-trainer-0612",
+            "label": "Pokémon Trainer Mira · kadabra Lv. 26",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 612,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Wayward Cave (optional)",
+                    "text": "Wayward Cave (optional)"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "Main Area",
+                    "text": "Main Area"
+                  }
+                ],
+                "line": 349,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_5&oldid=4479270",
+                "pageId": 83201,
+                "revisionId": 4479270,
+                "templateOrdinal": 27,
+                "templateSha256": "87be4b207b0d8858eb7800be5c8704b2433cdad86303750d489cd50e808acc78",
+                "title": "Walkthrough:Pokémon Platinum/Part 5"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Wayward Cave",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Wayward Cave (optional)",
+                  "text": "Wayward Cave (optional)"
+                },
+                {
+                  "level": 3,
+                  "raw": "Main Area",
+                  "text": "Main Area"
+                }
+              ],
+              "line": 318,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_5&oldid=4479270",
+              "pageId": 83201,
+              "revisionId": 4479270,
+              "templateOrdinal": 21,
+              "templateSha256": "d480f227a47799dead5dfda2b9cc722bfdadd213fa8a451e41e100b015d4c8aa",
+              "title": "Walkthrough:Pokémon Platinum/Part 5"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Wayward Cave (optional)",
+                  "text": "Wayward Cave (optional)"
+                },
+                {
+                  "level": 3,
+                  "raw": "Main Area",
+                  "text": "Main Area"
+                }
+              ],
+              "line": 319,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_5&oldid=4479270",
+              "pageId": 83201,
+              "revisionId": 4479270,
+              "templateOrdinal": 22,
+              "templateSha256": "28d7503bc6b3d283b8bb656459dfaa2f6ef62b58f090faa6e2c0dd4f0c7ed9fc",
+              "title": "Walkthrough:Pokémon Platinum/Part 5"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Wayward_Cave",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-platinum-player-partner-459-380",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0459",
+          "pokemon-platinum-trainer-0380"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0612",
+            "trainerId": "pokemon-platinum-trainer-0612",
+            "label": "Pokémon Trainer Mira · kadabra Lv. 26",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 612,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Wayward Cave (optional)",
+                    "text": "Wayward Cave (optional)"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "Main Area",
+                    "text": "Main Area"
+                  }
+                ],
+                "line": 349,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_5&oldid=4479270",
+                "pageId": 83201,
+                "revisionId": 4479270,
+                "templateOrdinal": 27,
+                "templateSha256": "87be4b207b0d8858eb7800be5c8704b2433cdad86303750d489cd50e808acc78",
+                "title": "Walkthrough:Pokémon Platinum/Part 5"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Wayward Cave",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Wayward Cave (optional)",
+                  "text": "Wayward Cave (optional)"
+                },
+                {
+                  "level": 3,
+                  "raw": "Main Area",
+                  "text": "Main Area"
+                }
+              ],
+              "line": 321,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_5&oldid=4479270",
+              "pageId": 83201,
+              "revisionId": 4479270,
+              "templateOrdinal": 23,
+              "templateSha256": "b1902f082dec3fd28756581d4d6825f40da4bf49fecf7b6f9264a94c460071bc",
+              "title": "Walkthrough:Pokémon Platinum/Part 5"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Wayward Cave (optional)",
+                  "text": "Wayward Cave (optional)"
+                },
+                {
+                  "level": 3,
+                  "raw": "Main Area",
+                  "text": "Main Area"
+                }
+              ],
+              "line": 322,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_5&oldid=4479270",
+              "pageId": 83201,
+              "revisionId": 4479270,
+              "templateOrdinal": 24,
+              "templateSha256": "c5b50996679bd2936fc6880ac5eb2333eb3a204b44fa0b156f26edcc887ce0c4",
+              "title": "Walkthrough:Pokémon Platinum/Part 5"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Wayward_Cave",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-platinum-player-partner-383-443",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0383",
+          "pokemon-platinum-trainer-0443"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0612",
+            "trainerId": "pokemon-platinum-trainer-0612",
+            "label": "Pokémon Trainer Mira · kadabra Lv. 26",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 612,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Wayward Cave (optional)",
+                    "text": "Wayward Cave (optional)"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "Main Area",
+                    "text": "Main Area"
+                  }
+                ],
+                "line": 349,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_5&oldid=4479270",
+                "pageId": 83201,
+                "revisionId": 4479270,
+                "templateOrdinal": 27,
+                "templateSha256": "87be4b207b0d8858eb7800be5c8704b2433cdad86303750d489cd50e808acc78",
+                "title": "Walkthrough:Pokémon Platinum/Part 5"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Wayward Cave",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Wayward Cave (optional)",
+                  "text": "Wayward Cave (optional)"
+                },
+                {
+                  "level": 3,
+                  "raw": "Main Area",
+                  "text": "Main Area"
+                }
+              ],
+              "line": 324,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_5&oldid=4479270",
+              "pageId": 83201,
+              "revisionId": 4479270,
+              "templateOrdinal": 25,
+              "templateSha256": "6b313b1a4488d8ab106478fd84d0dc9cb4e8f02a87c9e1f4b973840beca51cf8",
+              "title": "Walkthrough:Pokémon Platinum/Part 5"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Wayward Cave (optional)",
+                  "text": "Wayward Cave (optional)"
+                },
+                {
+                  "level": 3,
+                  "raw": "Main Area",
+                  "text": "Main Area"
+                }
+              ],
+              "line": 325,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_5&oldid=4479270",
+              "pageId": 83201,
+              "revisionId": 4479270,
+              "templateOrdinal": 26,
+              "templateSha256": "b3786ce9bf94adac00eb9dfc53112812073e7496eb69e823542f3e9335ec089e",
+              "title": "Walkthrough:Pokémon Platinum/Part 5"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Wayward_Cave",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-platinum-player-partner-452-453",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0452",
+          "pokemon-platinum-trainer-0453"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0609",
+            "trainerId": "pokemon-platinum-trainer-0609",
+            "label": "Pokémon Trainer Riley · lucario Lv. 41",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 609,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Iron Island",
+                    "text": "Iron Island"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "B2F",
+                    "text": "B2F"
+                  }
+                ],
+                "line": 171,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_13&oldid=4453246",
+                "pageId": 161163,
+                "revisionId": 4453246,
+                "templateOrdinal": 13,
+                "templateSha256": "5887246c7c9ec3f6505839c9b1b16f89b167ed6133726fee1039ae932175c464",
+                "title": "Walkthrough:Pokémon Platinum/Part 13"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Iron Island",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Iron Island",
+                  "text": "Iron Island"
+                },
+                {
+                  "level": 3,
+                  "raw": "B2F",
+                  "text": "B2F"
+                }
+              ],
+              "line": 127,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_13&oldid=4453246",
+              "pageId": 161163,
+              "revisionId": 4453246,
+              "templateOrdinal": 5,
+              "templateSha256": "f5cb4c3c542e963a866ea6ae285c49440f7a5f9c749419ddd935bcf3015c38fa",
+              "title": "Walkthrough:Pokémon Platinum/Part 13"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Iron Island",
+                  "text": "Iron Island"
+                },
+                {
+                  "level": 3,
+                  "raw": "B2F",
+                  "text": "B2F"
+                }
+              ],
+              "line": 129,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_13&oldid=4453246",
+              "pageId": 161163,
+              "revisionId": 4453246,
+              "templateOrdinal": 6,
+              "templateSha256": "17133c41c777d0c9c8485ff5abf9a734dd609c1eb8f4890684d638d30b2a8e7c",
+              "title": "Walkthrough:Pokémon Platinum/Part 13"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Iron_Island",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-platinum-player-partner-445-372",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0445",
+          "pokemon-platinum-trainer-0372"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0609",
+            "trainerId": "pokemon-platinum-trainer-0609",
+            "label": "Pokémon Trainer Riley · lucario Lv. 41",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 609,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Iron Island",
+                    "text": "Iron Island"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "B2F",
+                    "text": "B2F"
+                  }
+                ],
+                "line": 171,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_13&oldid=4453246",
+                "pageId": 161163,
+                "revisionId": 4453246,
+                "templateOrdinal": 13,
+                "templateSha256": "5887246c7c9ec3f6505839c9b1b16f89b167ed6133726fee1039ae932175c464",
+                "title": "Walkthrough:Pokémon Platinum/Part 13"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Iron Island",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Iron Island",
+                  "text": "Iron Island"
+                },
+                {
+                  "level": 3,
+                  "raw": "B2F",
+                  "text": "B2F"
+                }
+              ],
+              "line": 131,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_13&oldid=4453246",
+              "pageId": 161163,
+              "revisionId": 4453246,
+              "templateOrdinal": 7,
+              "templateSha256": "7b8c51cfa5eeaf80a6272bf5b5dbb63d71f5c641789aed92bc75e5551de9772a",
+              "title": "Walkthrough:Pokémon Platinum/Part 13"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Iron Island",
+                  "text": "Iron Island"
+                },
+                {
+                  "level": 3,
+                  "raw": "B2F",
+                  "text": "B2F"
+                }
+              ],
+              "line": 132,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_13&oldid=4453246",
+              "pageId": 161163,
+              "revisionId": 4453246,
+              "templateOrdinal": 8,
+              "templateSha256": "059762b7f692c036fb21d5df91e79c3cab148976fb3b733bee8e30f153e263fc",
+              "title": "Walkthrough:Pokémon Platinum/Part 13"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Iron_Island",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-platinum-player-partner-505-506",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0505",
+          "pokemon-platinum-trainer-0506"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0609",
+            "trainerId": "pokemon-platinum-trainer-0609",
+            "label": "Pokémon Trainer Riley · lucario Lv. 41",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 609,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Iron Island",
+                    "text": "Iron Island"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "B2F",
+                    "text": "B2F"
+                  }
+                ],
+                "line": 171,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_13&oldid=4453246",
+                "pageId": 161163,
+                "revisionId": 4453246,
+                "templateOrdinal": 13,
+                "templateSha256": "5887246c7c9ec3f6505839c9b1b16f89b167ed6133726fee1039ae932175c464",
+                "title": "Walkthrough:Pokémon Platinum/Part 13"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Iron Island",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Iron Island",
+                  "text": "Iron Island"
+                },
+                {
+                  "level": 3,
+                  "raw": "B2F",
+                  "text": "B2F"
+                }
+              ],
+              "line": 134,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_13&oldid=4453246",
+              "pageId": 161163,
+              "revisionId": 4453246,
+              "templateOrdinal": 9,
+              "templateSha256": "68229f622680fc699b177847e2ba6b16d763d9b04c1b81cbb93b9c6eeb9cbeb9",
+              "title": "Walkthrough:Pokémon Platinum/Part 13"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Iron Island",
+                  "text": "Iron Island"
+                },
+                {
+                  "level": 3,
+                  "raw": "B2F",
+                  "text": "B2F"
+                }
+              ],
+              "line": 136,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_13&oldid=4453246",
+              "pageId": 161163,
+              "revisionId": 4453246,
+              "templateOrdinal": 10,
+              "templateSha256": "4824bdf7880b7e96c666ebd5af0722680f5c2f13cf8e8646adc99f2228bf3b21",
+              "title": "Walkthrough:Pokémon Platinum/Part 13"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Iron_Island",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-platinum-player-partner-388-392",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0388",
+          "pokemon-platinum-trainer-0392"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0609",
+            "trainerId": "pokemon-platinum-trainer-0609",
+            "label": "Pokémon Trainer Riley · lucario Lv. 41",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 609,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Iron Island",
+                    "text": "Iron Island"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "B2F",
+                    "text": "B2F"
+                  }
+                ],
+                "line": 171,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_13&oldid=4453246",
+                "pageId": 161163,
+                "revisionId": 4453246,
+                "templateOrdinal": 13,
+                "templateSha256": "5887246c7c9ec3f6505839c9b1b16f89b167ed6133726fee1039ae932175c464",
+                "title": "Walkthrough:Pokémon Platinum/Part 13"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Iron Island",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Iron Island",
+                  "text": "Iron Island"
+                },
+                {
+                  "level": 3,
+                  "raw": "B2F",
+                  "text": "B2F"
+                }
+              ],
+              "line": 139,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_13&oldid=4453246",
+              "pageId": 161163,
+              "revisionId": 4453246,
+              "templateOrdinal": 11,
+              "templateSha256": "9b320c35fe11ad3b18d558cba390b961a9be02f51235e4b68792870fd71b64e5",
+              "title": "Walkthrough:Pokémon Platinum/Part 13"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Iron Island",
+                  "text": "Iron Island"
+                },
+                {
+                  "level": 3,
+                  "raw": "B2F",
+                  "text": "B2F"
+                }
+              ],
+              "line": 141,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_13&oldid=4453246",
+              "pageId": 161163,
+              "revisionId": 4453246,
+              "templateOrdinal": 12,
+              "templateSha256": "49ea79de147b3399831e9e3b4b5315c1cba34f2ac782f8ffbb028beedceec0cd",
+              "title": "Walkthrough:Pokémon Platinum/Part 13"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Iron_Island",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-platinum-player-partner-389-393",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0389",
+          "pokemon-platinum-trainer-0393"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0610",
+            "trainerId": "pokemon-platinum-trainer-0610",
+            "label": "Pokémon Trainer Marley · arcanine Lv. 59",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 610,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Victory Road",
+                    "text": "Victory Road"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "B1F (deep area)",
+                    "text": "B1F (deep area)"
+                  }
+                ],
+                "line": 124,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_23&oldid=4453276",
+                "pageId": 174073,
+                "revisionId": 4453276,
+                "templateOrdinal": 15,
+                "templateSha256": "97901e054109ff6c5239906d883659272aa93871d8dd2d174c3950802aff722a",
+                "title": "Walkthrough:Pokémon Platinum/Part 23"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Victory Road",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Victory Road",
+                  "text": "Victory Road"
+                },
+                {
+                  "level": 3,
+                  "raw": "B1F (deep area)",
+                  "text": "B1F (deep area)"
+                }
+              ],
+              "line": 81,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_23&oldid=4453276",
+              "pageId": 174073,
+              "revisionId": 4453276,
+              "templateOrdinal": 1,
+              "templateSha256": "7c3c1ea53aa87e39a5595d15a520c149ddd9084b139e95c56c5b5fdf5345c5ce",
+              "title": "Walkthrough:Pokémon Platinum/Part 23"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Victory Road",
+                  "text": "Victory Road"
+                },
+                {
+                  "level": 3,
+                  "raw": "B1F (deep area)",
+                  "text": "B1F (deep area)"
+                }
+              ],
+              "line": 82,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_23&oldid=4453276",
+              "pageId": 174073,
+              "revisionId": 4453276,
+              "templateOrdinal": 2,
+              "templateSha256": "5721a8b776065bd98e9faefb5bc1bd6b1c59c8750993023375c8a8a63638d890",
+              "title": "Walkthrough:Pokémon Platinum/Part 23"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Victory_Road",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-platinum-player-partner-399-396",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0399",
+          "pokemon-platinum-trainer-0396"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0610",
+            "trainerId": "pokemon-platinum-trainer-0610",
+            "label": "Pokémon Trainer Marley · arcanine Lv. 59",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 610,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Victory Road",
+                    "text": "Victory Road"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "B1F (deep area)",
+                    "text": "B1F (deep area)"
+                  }
+                ],
+                "line": 124,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_23&oldid=4453276",
+                "pageId": 174073,
+                "revisionId": 4453276,
+                "templateOrdinal": 15,
+                "templateSha256": "97901e054109ff6c5239906d883659272aa93871d8dd2d174c3950802aff722a",
+                "title": "Walkthrough:Pokémon Platinum/Part 23"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Victory Road",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Victory Road",
+                  "text": "Victory Road"
+                },
+                {
+                  "level": 3,
+                  "raw": "B1F (deep area)",
+                  "text": "B1F (deep area)"
+                }
+              ],
+              "line": 84,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_23&oldid=4453276",
+              "pageId": 174073,
+              "revisionId": 4453276,
+              "templateOrdinal": 3,
+              "templateSha256": "32d1e98fc1cebb2c464c2e76943dfae26bd5149ca2782262e980f0cbea19f679",
+              "title": "Walkthrough:Pokémon Platinum/Part 23"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Victory Road",
+                  "text": "Victory Road"
+                },
+                {
+                  "level": 3,
+                  "raw": "B1F (deep area)",
+                  "text": "B1F (deep area)"
+                }
+              ],
+              "line": 85,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_23&oldid=4453276",
+              "pageId": 174073,
+              "revisionId": 4453276,
+              "templateOrdinal": 4,
+              "templateSha256": "5fa75bc125851fed336241b33c42b2adb9165563620a6a6003b52edfd7c90e55",
+              "title": "Walkthrough:Pokémon Platinum/Part 23"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Victory_Road",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-platinum-player-partner-446-499",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0446",
+          "pokemon-platinum-trainer-0499"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0610",
+            "trainerId": "pokemon-platinum-trainer-0610",
+            "label": "Pokémon Trainer Marley · arcanine Lv. 59",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 610,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Victory Road",
+                    "text": "Victory Road"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "B1F (deep area)",
+                    "text": "B1F (deep area)"
+                  }
+                ],
+                "line": 124,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_23&oldid=4453276",
+                "pageId": 174073,
+                "revisionId": 4453276,
+                "templateOrdinal": 15,
+                "templateSha256": "97901e054109ff6c5239906d883659272aa93871d8dd2d174c3950802aff722a",
+                "title": "Walkthrough:Pokémon Platinum/Part 23"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Victory Road",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Victory Road",
+                  "text": "Victory Road"
+                },
+                {
+                  "level": 3,
+                  "raw": "B1F (deep area)",
+                  "text": "B1F (deep area)"
+                }
+              ],
+              "line": 87,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_23&oldid=4453276",
+              "pageId": 174073,
+              "revisionId": 4453276,
+              "templateOrdinal": 5,
+              "templateSha256": "345962543b8d3792fb8fff79733cf0c7c9633eef7dec6242a1600f3168155a73",
+              "title": "Walkthrough:Pokémon Platinum/Part 23"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Victory Road",
+                  "text": "Victory Road"
+                },
+                {
+                  "level": 3,
+                  "raw": "B1F (deep area)",
+                  "text": "B1F (deep area)"
+                }
+              ],
+              "line": 88,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_23&oldid=4453276",
+              "pageId": 174073,
+              "revisionId": 4453276,
+              "templateOrdinal": 6,
+              "templateSha256": "bec35baf1cd56c9df6ea77a2ca648ccbc368a307dc0421dfd97c89f2e3495c69",
+              "title": "Walkthrough:Pokémon Platinum/Part 23"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Victory_Road",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-platinum-player-partner-386-373",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0386",
+          "pokemon-platinum-trainer-0373"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0610",
+            "trainerId": "pokemon-platinum-trainer-0610",
+            "label": "Pokémon Trainer Marley · arcanine Lv. 59",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 610,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Victory Road",
+                    "text": "Victory Road"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "B1F (deep area)",
+                    "text": "B1F (deep area)"
+                  }
+                ],
+                "line": 124,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_23&oldid=4453276",
+                "pageId": 174073,
+                "revisionId": 4453276,
+                "templateOrdinal": 15,
+                "templateSha256": "97901e054109ff6c5239906d883659272aa93871d8dd2d174c3950802aff722a",
+                "title": "Walkthrough:Pokémon Platinum/Part 23"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Victory Road",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Victory Road",
+                  "text": "Victory Road"
+                },
+                {
+                  "level": 3,
+                  "raw": "B1F (deep area)",
+                  "text": "B1F (deep area)"
+                }
+              ],
+              "line": 90,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_23&oldid=4453276",
+              "pageId": 174073,
+              "revisionId": 4453276,
+              "templateOrdinal": 7,
+              "templateSha256": "3596caec74aed8921e2f0bc8c85dbf22651edf375282fb919b6aaa320e0b347f",
+              "title": "Walkthrough:Pokémon Platinum/Part 23"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Victory Road",
+                  "text": "Victory Road"
+                },
+                {
+                  "level": 3,
+                  "raw": "B1F (deep area)",
+                  "text": "B1F (deep area)"
+                }
+              ],
+              "line": 91,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_23&oldid=4453276",
+              "pageId": 174073,
+              "revisionId": 4453276,
+              "templateOrdinal": 8,
+              "templateSha256": "5d5ec89326fac1a73e04b603cf93bb5256d01731e65914351d063675dda23f53",
+              "title": "Walkthrough:Pokémon Platinum/Part 23"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Victory_Road",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-platinum-player-partner-397-400",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0397",
+          "pokemon-platinum-trainer-0400"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0610",
+            "trainerId": "pokemon-platinum-trainer-0610",
+            "label": "Pokémon Trainer Marley · arcanine Lv. 59",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 610,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Victory Road",
+                    "text": "Victory Road"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "B1F (deep area)",
+                    "text": "B1F (deep area)"
+                  }
+                ],
+                "line": 124,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_23&oldid=4453276",
+                "pageId": 174073,
+                "revisionId": 4453276,
+                "templateOrdinal": 15,
+                "templateSha256": "97901e054109ff6c5239906d883659272aa93871d8dd2d174c3950802aff722a",
+                "title": "Walkthrough:Pokémon Platinum/Part 23"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Victory Road",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Victory Road",
+                  "text": "Victory Road"
+                },
+                {
+                  "level": 3,
+                  "raw": "B1F (deep area)",
+                  "text": "B1F (deep area)"
+                }
+              ],
+              "line": 93,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_23&oldid=4453276",
+              "pageId": 174073,
+              "revisionId": 4453276,
+              "templateOrdinal": 9,
+              "templateSha256": "2cdb4908908f9a33fa33c857424bf20e23190082c9cbc68e3bff69f82c60b09d",
+              "title": "Walkthrough:Pokémon Platinum/Part 23"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Victory Road",
+                  "text": "Victory Road"
+                },
+                {
+                  "level": 3,
+                  "raw": "B1F (deep area)",
+                  "text": "B1F (deep area)"
+                }
+              ],
+              "line": 94,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_23&oldid=4453276",
+              "pageId": 174073,
+              "revisionId": 4453276,
+              "templateOrdinal": 10,
+              "templateSha256": "a1980d163aa08d76b41d8ec5c62cbd62554242dcba6397fbfa8b55ef2ebd5612",
+              "title": "Walkthrough:Pokémon Platinum/Part 23"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Victory_Road",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-platinum-player-partner-447-500",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0447",
+          "pokemon-platinum-trainer-0500"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0610",
+            "trainerId": "pokemon-platinum-trainer-0610",
+            "label": "Pokémon Trainer Marley · arcanine Lv. 59",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 610,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Victory Road",
+                    "text": "Victory Road"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "B1F (deep area)",
+                    "text": "B1F (deep area)"
+                  }
+                ],
+                "line": 124,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_23&oldid=4453276",
+                "pageId": 174073,
+                "revisionId": 4453276,
+                "templateOrdinal": 15,
+                "templateSha256": "97901e054109ff6c5239906d883659272aa93871d8dd2d174c3950802aff722a",
+                "title": "Walkthrough:Pokémon Platinum/Part 23"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Victory Road",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Victory Road",
+                  "text": "Victory Road"
+                },
+                {
+                  "level": 3,
+                  "raw": "B1F (deep area)",
+                  "text": "B1F (deep area)"
+                }
+              ],
+              "line": 96,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_23&oldid=4453276",
+              "pageId": 174073,
+              "revisionId": 4453276,
+              "templateOrdinal": 11,
+              "templateSha256": "35653702171310dacd0b08f529490a65c365e0777e50948f697e36add9c9c3cc",
+              "title": "Walkthrough:Pokémon Platinum/Part 23"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Victory Road",
+                  "text": "Victory Road"
+                },
+                {
+                  "level": 3,
+                  "raw": "B1F (deep area)",
+                  "text": "B1F (deep area)"
+                }
+              ],
+              "line": 97,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_23&oldid=4453276",
+              "pageId": 174073,
+              "revisionId": 4453276,
+              "templateOrdinal": 12,
+              "templateSha256": "177c4edc8ac782d43f6ebf1c5e8bff419ed35ace756e136aed44d2fd383bf6da",
+              "title": "Walkthrough:Pokémon Platinum/Part 23"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Victory_Road",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-platinum-player-partner-569-579",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0569",
+          "pokemon-platinum-trainer-0579"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0611",
+            "trainerId": "pokemon-platinum-trainer-0611",
+            "label": "Pokémon Trainer Buck · claydol Lv. 63",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 611,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Stark Mountain",
+                    "text": "Stark Mountain"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "Large Room",
+                    "text": "Large Room"
+                  }
+                ],
+                "line": 282,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_25&oldid=4453284",
+                "pageId": 174129,
+                "revisionId": 4453284,
+                "templateOrdinal": 20,
+                "templateSha256": "60317bdfd1cc76b5068fbc3d3370d97123cdc176529e3c9fd0191999797d94b1",
+                "title": "Walkthrough:Pokémon Platinum/Part 25"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Stark Mountain",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Stark Mountain",
+                  "text": "Stark Mountain"
+                },
+                {
+                  "level": 3,
+                  "raw": "Large Room",
+                  "text": "Large Room"
+                }
+              ],
+              "line": 228,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_25&oldid=4453284",
+              "pageId": 174129,
+              "revisionId": 4453284,
+              "templateOrdinal": 6,
+              "templateSha256": "aa56f5d4fcc59c98af25a6c11233a4764e0c0e3154265a239845b4b805270977",
+              "title": "Walkthrough:Pokémon Platinum/Part 25"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Stark Mountain",
+                  "text": "Stark Mountain"
+                },
+                {
+                  "level": 3,
+                  "raw": "Large Room",
+                  "text": "Large Room"
+                }
+              ],
+              "line": 230,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_25&oldid=4453284",
+              "pageId": 174129,
+              "revisionId": 4453284,
+              "templateOrdinal": 7,
+              "templateSha256": "451bb235c9301c3712b7a7890f93f07b3ec5d5e3eaedfe9d2f93869e7ecc8c0f",
+              "title": "Walkthrough:Pokémon Platinum/Part 25"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Stark_Mountain",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-platinum-player-partner-570-580",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0570",
+          "pokemon-platinum-trainer-0580"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0611",
+            "trainerId": "pokemon-platinum-trainer-0611",
+            "label": "Pokémon Trainer Buck · claydol Lv. 63",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 611,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Stark Mountain",
+                    "text": "Stark Mountain"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "Large Room",
+                    "text": "Large Room"
+                  }
+                ],
+                "line": 282,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_25&oldid=4453284",
+                "pageId": 174129,
+                "revisionId": 4453284,
+                "templateOrdinal": 20,
+                "templateSha256": "60317bdfd1cc76b5068fbc3d3370d97123cdc176529e3c9fd0191999797d94b1",
+                "title": "Walkthrough:Pokémon Platinum/Part 25"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Stark Mountain",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Stark Mountain",
+                  "text": "Stark Mountain"
+                },
+                {
+                  "level": 3,
+                  "raw": "Large Room",
+                  "text": "Large Room"
+                }
+              ],
+              "line": 232,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_25&oldid=4453284",
+              "pageId": 174129,
+              "revisionId": 4453284,
+              "templateOrdinal": 8,
+              "templateSha256": "0c7709f8b444e10935675f477b909de1eb66dd752ba64d6fbd8d9c9877b4195b",
+              "title": "Walkthrough:Pokémon Platinum/Part 25"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Stark Mountain",
+                  "text": "Stark Mountain"
+                },
+                {
+                  "level": 3,
+                  "raw": "Large Room",
+                  "text": "Large Room"
+                }
+              ],
+              "line": 234,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_25&oldid=4453284",
+              "pageId": 174129,
+              "revisionId": 4453284,
+              "templateOrdinal": 9,
+              "templateSha256": "89291ddc78568d43c874ee7928c0e200324bafdafafa64b3259418df781b3efc",
+              "title": "Walkthrough:Pokémon Platinum/Part 25"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Stark_Mountain",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-platinum-player-partner-556-589",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0556",
+          "pokemon-platinum-trainer-0589"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0611",
+            "trainerId": "pokemon-platinum-trainer-0611",
+            "label": "Pokémon Trainer Buck · claydol Lv. 63",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 611,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Stark Mountain",
+                    "text": "Stark Mountain"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "Large Room",
+                    "text": "Large Room"
+                  }
+                ],
+                "line": 282,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_25&oldid=4453284",
+                "pageId": 174129,
+                "revisionId": 4453284,
+                "templateOrdinal": 20,
+                "templateSha256": "60317bdfd1cc76b5068fbc3d3370d97123cdc176529e3c9fd0191999797d94b1",
+                "title": "Walkthrough:Pokémon Platinum/Part 25"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Stark Mountain",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Stark Mountain",
+                  "text": "Stark Mountain"
+                },
+                {
+                  "level": 3,
+                  "raw": "Large Room",
+                  "text": "Large Room"
+                }
+              ],
+              "line": 236,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_25&oldid=4453284",
+              "pageId": 174129,
+              "revisionId": 4453284,
+              "templateOrdinal": 10,
+              "templateSha256": "10d157e50912b2c15ff1d223387df5cc61ba9105ab1385413f1460e4a5ec6ca9",
+              "title": "Walkthrough:Pokémon Platinum/Part 25"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Stark Mountain",
+                  "text": "Stark Mountain"
+                },
+                {
+                  "level": 3,
+                  "raw": "Large Room",
+                  "text": "Large Room"
+                }
+              ],
+              "line": 238,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_25&oldid=4453284",
+              "pageId": 174129,
+              "revisionId": 4453284,
+              "templateOrdinal": 11,
+              "templateSha256": "9dd5f401f0cabf397c13e30fb6040a88ecae1dc5182fa7a51ab330fa813ecb5b",
+              "title": "Walkthrough:Pokémon Platinum/Part 25"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Stark_Mountain",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-platinum-player-partner-572-582",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0572",
+          "pokemon-platinum-trainer-0582"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0611",
+            "trainerId": "pokemon-platinum-trainer-0611",
+            "label": "Pokémon Trainer Buck · claydol Lv. 63",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 611,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Stark Mountain",
+                    "text": "Stark Mountain"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "Large Room",
+                    "text": "Large Room"
+                  }
+                ],
+                "line": 282,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_25&oldid=4453284",
+                "pageId": 174129,
+                "revisionId": 4453284,
+                "templateOrdinal": 20,
+                "templateSha256": "60317bdfd1cc76b5068fbc3d3370d97123cdc176529e3c9fd0191999797d94b1",
+                "title": "Walkthrough:Pokémon Platinum/Part 25"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Stark Mountain",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Stark Mountain",
+                  "text": "Stark Mountain"
+                },
+                {
+                  "level": 3,
+                  "raw": "Large Room",
+                  "text": "Large Room"
+                }
+              ],
+              "line": 224,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_25&oldid=4453284",
+              "pageId": 174129,
+              "revisionId": 4453284,
+              "templateOrdinal": 4,
+              "templateSha256": "1d149f3b47b83f7e5f1ef69ebacfc0353246868dc2a59bbd56d26efa274665a3",
+              "title": "Walkthrough:Pokémon Platinum/Part 25"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Stark Mountain",
+                  "text": "Stark Mountain"
+                },
+                {
+                  "level": 3,
+                  "raw": "Large Room",
+                  "text": "Large Room"
+                }
+              ],
+              "line": 226,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_25&oldid=4453284",
+              "pageId": 174129,
+              "revisionId": 4453284,
+              "templateOrdinal": 5,
+              "templateSha256": "a6efd09341be1e5cf02d5df96e9706833aaa03c32a3297c7012ba42f0172eb23",
+              "title": "Walkthrough:Pokémon Platinum/Part 25"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Stark_Mountain",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-platinum-player-partner-586-584",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0586",
+          "pokemon-platinum-trainer-0584"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0611",
+            "trainerId": "pokemon-platinum-trainer-0611",
+            "label": "Pokémon Trainer Buck · claydol Lv. 63",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 611,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Stark Mountain",
+                    "text": "Stark Mountain"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "Large Room",
+                    "text": "Large Room"
+                  }
+                ],
+                "line": 282,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_25&oldid=4453284",
+                "pageId": 174129,
+                "revisionId": 4453284,
+                "templateOrdinal": 20,
+                "templateSha256": "60317bdfd1cc76b5068fbc3d3370d97123cdc176529e3c9fd0191999797d94b1",
+                "title": "Walkthrough:Pokémon Platinum/Part 25"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Stark Mountain",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Stark Mountain",
+                  "text": "Stark Mountain"
+                },
+                {
+                  "level": 3,
+                  "raw": "Large Room",
+                  "text": "Large Room"
+                }
+              ],
+              "line": 240,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_25&oldid=4453284",
+              "pageId": 174129,
+              "revisionId": 4453284,
+              "templateOrdinal": 12,
+              "templateSha256": "70938a799e6ea650e1f9303dde0fbb29cd63b2b91a0a8a9127739a86942ec6f8",
+              "title": "Walkthrough:Pokémon Platinum/Part 25"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Stark Mountain",
+                  "text": "Stark Mountain"
+                },
+                {
+                  "level": 3,
+                  "raw": "Large Room",
+                  "text": "Large Room"
+                }
+              ],
+              "line": 242,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_25&oldid=4453284",
+              "pageId": 174129,
+              "revisionId": 4453284,
+              "templateOrdinal": 13,
+              "templateSha256": "b1e726b9ecbdfa87a48686b6a99a9f7bbe5d1c865e67b83e53eb4307f1fe45ad",
+              "title": "Walkthrough:Pokémon Platinum/Part 25"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Stark_Mountain",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-platinum-player-partner-606-562",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0606",
+          "pokemon-platinum-trainer-0562"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0611",
+            "trainerId": "pokemon-platinum-trainer-0611",
+            "label": "Pokémon Trainer Buck · claydol Lv. 63",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 611,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Stark Mountain",
+                    "text": "Stark Mountain"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "Large Room",
+                    "text": "Large Room"
+                  }
+                ],
+                "line": 282,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_25&oldid=4453284",
+                "pageId": 174129,
+                "revisionId": 4453284,
+                "templateOrdinal": 20,
+                "templateSha256": "60317bdfd1cc76b5068fbc3d3370d97123cdc176529e3c9fd0191999797d94b1",
+                "title": "Walkthrough:Pokémon Platinum/Part 25"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Stark Mountain",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Stark Mountain",
+                  "text": "Stark Mountain"
+                },
+                {
+                  "level": 3,
+                  "raw": "Large Room",
+                  "text": "Large Room"
+                }
+              ],
+              "line": 244,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_25&oldid=4453284",
+              "pageId": 174129,
+              "revisionId": 4453284,
+              "templateOrdinal": 14,
+              "templateSha256": "5487104d62725283636fa463d384cb518866dea7bf3ed9e339dc96d9214a9c73",
+              "title": "Walkthrough:Pokémon Platinum/Part 25"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Stark Mountain",
+                  "text": "Stark Mountain"
+                },
+                {
+                  "level": 3,
+                  "raw": "Large Room",
+                  "text": "Large Room"
+                }
+              ],
+              "line": 246,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_25&oldid=4453284",
+              "pageId": 174129,
+              "revisionId": 4453284,
+              "templateOrdinal": 15,
+              "templateSha256": "208ce162903ac1da2ac6910cd25002ac5f15778d9ffa69cb7befa1651ca5c6eb",
+              "title": "Walkthrough:Pokémon Platinum/Part 25"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Stark_Mountain",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pokemon-platinum-player-partner-571-581",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0571",
+          "pokemon-platinum-trainer-0581"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "single-or-double",
+        "allowWithoutPartner": true,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0611",
+            "trainerId": "pokemon-platinum-trainer-0611",
+            "label": "Pokémon Trainer Buck · claydol Lv. 63",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 611,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Stark Mountain",
+                    "text": "Stark Mountain"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "Large Room",
+                    "text": "Large Room"
+                  }
+                ],
+                "line": 282,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_25&oldid=4453284",
+                "pageId": 174129,
+                "revisionId": 4453284,
+                "templateOrdinal": 20,
+                "templateSha256": "60317bdfd1cc76b5068fbc3d3370d97123cdc176529e3c9fd0191999797d94b1",
+                "title": "Walkthrough:Pokémon Platinum/Part 25"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Stark Mountain",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Stark Mountain",
+                  "text": "Stark Mountain"
+                },
+                {
+                  "level": 3,
+                  "raw": "Large Room",
+                  "text": "Large Room"
+                }
+              ],
+              "line": 248,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_25&oldid=4453284",
+              "pageId": 174129,
+              "revisionId": 4453284,
+              "templateOrdinal": 16,
+              "templateSha256": "64104fbc4592097451a6422996726d15484e2745a01dabea52565771a1f65e77",
+              "title": "Walkthrough:Pokémon Platinum/Part 25"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Stark Mountain",
+                  "text": "Stark Mountain"
+                },
+                {
+                  "level": 3,
+                  "raw": "Large Room",
+                  "text": "Large Room"
+                }
+              ],
+              "line": 250,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_25&oldid=4453284",
+              "pageId": 174129,
+              "revisionId": 4453284,
+              "templateOrdinal": 17,
+              "templateSha256": "4d0d95819cc40b3a2d04af752b344c605a001c3d958c768622c32f532cfb3485",
+              "title": "Walkthrough:Pokémon Platinum/Part 25"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Stark_Mountain",
+              "note": "Reviewed generation-IV trainer pair, Potential versus mandatory Multi notation, and escort presence."
+            }
+          ]
+        }
+      },
+      {
+        "id": "platinum-script-pair-0414-0415",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0414",
+          "pokemon-platinum-trainer-0415"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0613",
+            "trainerId": "pokemon-platinum-trainer-0613",
+            "label": "Pokémon Trainer Lucas · turtwig Lv. 13",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 613,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Jubilife City",
+                    "text": "Jubilife City"
+                  }
+                ],
+                "line": 152,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_3&oldid=4486812",
+                "pageId": 83160,
+                "revisionId": 4486812,
+                "templateOrdinal": 5,
+                "templateSha256": "cd4f1fd472f6867b40cef6c442d9e85a4b85ad5d822a65e70eaa6d07363ef59e",
+                "title": "Walkthrough:Pokémon Platinum/Part 3"
+              }
+            }
+          },
+          {
+            "id": "pokemon-platinum-trainer-0614",
+            "trainerId": "pokemon-platinum-trainer-0614",
+            "label": "Pokémon Trainer Lucas · chimchar Lv. 13",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 614,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Jubilife City",
+                    "text": "Jubilife City"
+                  }
+                ],
+                "line": 190,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_3&oldid=4486812",
+                "pageId": 83160,
+                "revisionId": 4486812,
+                "templateOrdinal": 6,
+                "templateSha256": "9abf4ebb529bf794bb43439b32d63a5ca7ede8a75a26b64794eece4cd0b0519d",
+                "title": "Walkthrough:Pokémon Platinum/Part 3"
+              }
+            }
+          },
+          {
+            "id": "pokemon-platinum-trainer-0615",
+            "trainerId": "pokemon-platinum-trainer-0615",
+            "label": "Pokémon Trainer Lucas · piplup Lv. 13",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 615,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Jubilife City",
+                    "text": "Jubilife City"
+                  }
+                ],
+                "line": 114,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_3&oldid=4486812",
+                "pageId": 83160,
+                "revisionId": 4486812,
+                "templateOrdinal": 4,
+                "templateSha256": "a54e1cb314daed3e3ab691b3396ae1948982321f06d32c6dc760c4696a2a92d7",
+                "title": "Walkthrough:Pokémon Platinum/Part 3"
+              }
+            }
+          },
+          {
+            "id": "pokemon-platinum-trainer-0616",
+            "trainerId": "pokemon-platinum-trainer-0616",
+            "label": "Pokémon Trainer Dawn · turtwig Lv. 13",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 616,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Jubilife City",
+                    "text": "Jubilife City"
+                  }
+                ],
+                "line": 152,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_3&oldid=4486812",
+                "pageId": 83160,
+                "revisionId": 4486812,
+                "templateOrdinal": 5,
+                "templateSha256": "cd4f1fd472f6867b40cef6c442d9e85a4b85ad5d822a65e70eaa6d07363ef59e",
+                "title": "Walkthrough:Pokémon Platinum/Part 3"
+              }
+            }
+          },
+          {
+            "id": "pokemon-platinum-trainer-0617",
+            "trainerId": "pokemon-platinum-trainer-0617",
+            "label": "Pokémon Trainer Dawn · chimchar Lv. 13",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 617,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Jubilife City",
+                    "text": "Jubilife City"
+                  }
+                ],
+                "line": 190,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_3&oldid=4486812",
+                "pageId": 83160,
+                "revisionId": 4486812,
+                "templateOrdinal": 6,
+                "templateSha256": "9abf4ebb529bf794bb43439b32d63a5ca7ede8a75a26b64794eece4cd0b0519d",
+                "title": "Walkthrough:Pokémon Platinum/Part 3"
+              }
+            }
+          },
+          {
+            "id": "pokemon-platinum-trainer-0618",
+            "trainerId": "pokemon-platinum-trainer-0618",
+            "label": "Pokémon Trainer Dawn · piplup Lv. 13",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 618,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Jubilife City",
+                    "text": "Jubilife City"
+                  }
+                ],
+                "line": 114,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_3&oldid=4486812",
+                "pageId": 83160,
+                "revisionId": 4486812,
+                "templateOrdinal": 4,
+                "templateSha256": "a54e1cb314daed3e3ab691b3396ae1948982321f06d32c6dc760c4696a2a92d7",
+                "title": "Walkthrough:Pokémon Platinum/Part 3"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Jubilife City",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Jubilife City",
+                  "text": "Jubilife City"
+                }
+              ],
+              "line": 235,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_3&oldid=4486812",
+              "pageId": 83160,
+              "revisionId": 4486812,
+              "templateOrdinal": 7,
+              "templateSha256": "7cd263913ff8a08665600dcd28dc0f3b32b2add5afd24c921a73942089040b31",
+              "title": "Walkthrough:Pokémon Platinum/Part 3"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Jubilife City",
+                  "text": "Jubilife City"
+                }
+              ],
+              "line": 236,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_3&oldid=4486812",
+              "pageId": 83160,
+              "revisionId": 4486812,
+              "templateOrdinal": 8,
+              "templateSha256": "e4c8f6419ffbff0fb160946fa04cc28ad8fd89280466bf008fa718baabc7d268",
+              "title": "Walkthrough:Pokémon Platinum/Part 3"
+            },
+            {
+              "path": "res/field/scripts/scripts_jubilife_city.s",
+              "sha256": "9973c157ce261e15447d4828135a07a4902712723e9bc11b83fffb0a9632ca33",
+              "line": 876,
+              "label": "JubilifeCity_TeamGalacticBattle",
+              "command": "StartTagBattle",
+              "arguments": [
+                "VAR_0x8004",
+                "TRAINER_GALACTIC_GRUNT_JUBILIFE_CITY_1",
+                "TRAINER_GALACTIC_GRUNT_JUBILIFE_CITY_2"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "platinum-script-pair-0848-0849",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0848",
+          "pokemon-platinum-trainer-0849"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0621",
+            "trainerId": "pokemon-platinum-trainer-0621",
+            "label": "Pokémon Trainer Lucas · clefairy Lv. 25, kadabra Lv. 25, prinplup Lv. 27",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 621,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Veilstone City",
+                    "text": "Veilstone City"
+                  }
+                ],
+                "line": 237,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_8&oldid=4453235",
+                "pageId": 93530,
+                "revisionId": 4453235,
+                "templateOrdinal": 14,
+                "templateSha256": "67221032be0cf5ca96eb181ffbea58f4b329961ae970060ac032ebeaa2668882",
+                "title": "Walkthrough:Pokémon Platinum/Part 8"
+              }
+            }
+          },
+          {
+            "id": "pokemon-platinum-trainer-0622",
+            "trainerId": "pokemon-platinum-trainer-0622",
+            "label": "Pokémon Trainer Lucas · clefairy Lv. 25, kadabra Lv. 25, grotle Lv. 27",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 622,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Veilstone City",
+                    "text": "Veilstone City"
+                  }
+                ],
+                "line": 302,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_8&oldid=4453235",
+                "pageId": 93530,
+                "revisionId": 4453235,
+                "templateOrdinal": 15,
+                "templateSha256": "ce10334d962d21cdab2bac2f81dd25e6cc50f492ecb86dcb4e166364de0c6f58",
+                "title": "Walkthrough:Pokémon Platinum/Part 8"
+              }
+            }
+          },
+          {
+            "id": "pokemon-platinum-trainer-0623",
+            "trainerId": "pokemon-platinum-trainer-0623",
+            "label": "Pokémon Trainer Lucas · clefairy Lv. 25, kadabra Lv. 25, monferno Lv. 27",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 623,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Veilstone City",
+                    "text": "Veilstone City"
+                  }
+                ],
+                "line": 367,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_8&oldid=4453235",
+                "pageId": 93530,
+                "revisionId": 4453235,
+                "templateOrdinal": 16,
+                "templateSha256": "6c404f02e6ce3152d39a8f3587a0a0083e448b90598dbeb59752ef8c60e6c5d7",
+                "title": "Walkthrough:Pokémon Platinum/Part 8"
+              }
+            }
+          },
+          {
+            "id": "pokemon-platinum-trainer-0624",
+            "trainerId": "pokemon-platinum-trainer-0624",
+            "label": "Pokémon Trainer Dawn · clefairy Lv. 25, kadabra Lv. 25, prinplup Lv. 27",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 624,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Veilstone City",
+                    "text": "Veilstone City"
+                  }
+                ],
+                "line": 237,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_8&oldid=4453235",
+                "pageId": 93530,
+                "revisionId": 4453235,
+                "templateOrdinal": 14,
+                "templateSha256": "67221032be0cf5ca96eb181ffbea58f4b329961ae970060ac032ebeaa2668882",
+                "title": "Walkthrough:Pokémon Platinum/Part 8"
+              }
+            }
+          },
+          {
+            "id": "pokemon-platinum-trainer-0625",
+            "trainerId": "pokemon-platinum-trainer-0625",
+            "label": "Pokémon Trainer Dawn · clefairy Lv. 25, kadabra Lv. 25, grotle Lv. 27",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 625,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Veilstone City",
+                    "text": "Veilstone City"
+                  }
+                ],
+                "line": 302,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_8&oldid=4453235",
+                "pageId": 93530,
+                "revisionId": 4453235,
+                "templateOrdinal": 15,
+                "templateSha256": "ce10334d962d21cdab2bac2f81dd25e6cc50f492ecb86dcb4e166364de0c6f58",
+                "title": "Walkthrough:Pokémon Platinum/Part 8"
+              }
+            }
+          },
+          {
+            "id": "pokemon-platinum-trainer-0626",
+            "trainerId": "pokemon-platinum-trainer-0626",
+            "label": "Pokémon Trainer Dawn · clefairy Lv. 25, kadabra Lv. 25, monferno Lv. 27",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 626,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Veilstone City",
+                    "text": "Veilstone City"
+                  }
+                ],
+                "line": 367,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_8&oldid=4453235",
+                "pageId": 93530,
+                "revisionId": 4453235,
+                "templateOrdinal": 16,
+                "templateSha256": "6c404f02e6ce3152d39a8f3587a0a0083e448b90598dbeb59752ef8c60e6c5d7",
+                "title": "Walkthrough:Pokémon Platinum/Part 8"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Veilstone City",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Veilstone City",
+                  "text": "Veilstone City"
+                }
+              ],
+              "line": 440,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_8&oldid=4453235",
+              "pageId": 93530,
+              "revisionId": 4453235,
+              "templateOrdinal": 17,
+              "templateSha256": "07754340f36015fd46c189c8153ce9995912e3b3dffc0c2b6841d35c3057e23c",
+              "title": "Walkthrough:Pokémon Platinum/Part 8"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Veilstone City",
+                  "text": "Veilstone City"
+                }
+              ],
+              "line": 441,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_8&oldid=4453235",
+              "pageId": 93530,
+              "revisionId": 4453235,
+              "templateOrdinal": 18,
+              "templateSha256": "737b83bb4f155aa4c91b3e302cc035b2bed16e97732c86399c5db1715b12c9a0",
+              "title": "Walkthrough:Pokémon Platinum/Part 8"
+            },
+            {
+              "path": "res/field/scripts/scripts_veilstone_city.s",
+              "sha256": "7bb042cdc7bf81ac19601a0f672ee49cecd276e2cbc97707d5a38132008a862f",
+              "line": 503,
+              "label": "VeilstoneCity_WarehouseScene",
+              "command": "StartTagBattle",
+              "arguments": [
+                "VAR_0x8004",
+                "TRAINER_GALACTIC_GRUNT_VEILSTONE_CITY_1",
+                "TRAINER_GALACTIC_GRUNT_VEILSTONE_CITY_2"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "platinum-script-pair-0528-0407",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0528",
+          "pokemon-platinum-trainer-0407"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0607",
+            "trainerId": "pokemon-platinum-trainer-0607",
+            "label": "Pokémon Trainer Barry · munchlax Lv. 40, staraptor Lv. 42, floatzel Lv. 40, heracross Lv. 42, rapidash Lv. 40, torterra Lv. 44",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 607,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Spear Pillar",
+                    "text": "Spear Pillar"
+                  }
+                ],
+                "line": 227,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_17&oldid=4484627",
+                "pageId": 173128,
+                "revisionId": 4484627,
+                "templateOrdinal": 5,
+                "templateSha256": "328b75270edab0137e9313ab20c2feaa9a96337263aaa007c3a77864ef323a5f",
+                "title": "Walkthrough:Pokémon Platinum/Part 17"
+              }
+            }
+          },
+          {
+            "id": "pokemon-platinum-trainer-0619",
+            "trainerId": "pokemon-platinum-trainer-0619",
+            "label": "Pokémon Trainer Barry · munchlax Lv. 40, staraptor Lv. 42, floatzel Lv. 40, heracross Lv. 42, roserade Lv. 40, infernape Lv. 44",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 619,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Spear Pillar",
+                    "text": "Spear Pillar"
+                  }
+                ],
+                "line": 15,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_17&oldid=4484627",
+                "pageId": 173128,
+                "revisionId": 4484627,
+                "templateOrdinal": 3,
+                "templateSha256": "74e084f9378eba1f70fa27424160605435d331acf7e3d09affe3cbf07b7533dd",
+                "title": "Walkthrough:Pokémon Platinum/Part 17"
+              }
+            }
+          },
+          {
+            "id": "pokemon-platinum-trainer-0620",
+            "trainerId": "pokemon-platinum-trainer-0620",
+            "label": "Pokémon Trainer Barry · munchlax Lv. 40, staraptor Lv. 42, roserade Lv. 40, heracross Lv. 42, rapidash Lv. 40, empoleon Lv. 44",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 620,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Spear Pillar",
+                    "text": "Spear Pillar"
+                  }
+                ],
+                "line": 121,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_17&oldid=4484627",
+                "pageId": 173128,
+                "revisionId": 4484627,
+                "templateOrdinal": 4,
+                "templateSha256": "11a060a262e113faaa8b1e784a9ddedcab6f6afefa43e6cbe280a5c56aa874f3",
+                "title": "Walkthrough:Pokémon Platinum/Part 17"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Spear Pillar",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Spear Pillar",
+                  "text": "Spear Pillar"
+                }
+              ],
+              "line": 335,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_17&oldid=4484627",
+              "pageId": 173128,
+              "revisionId": 4484627,
+              "templateOrdinal": 6,
+              "templateSha256": "5914064a3754c51bca00ffeac7b1d836daa15ba64d19eb90f20d80ead8e38774",
+              "title": "Walkthrough:Pokémon Platinum/Part 17"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Spear Pillar",
+                  "text": "Spear Pillar"
+                }
+              ],
+              "line": 335,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_17&oldid=4484627",
+              "pageId": 173128,
+              "revisionId": 4484627,
+              "templateOrdinal": 6,
+              "templateSha256": "5914064a3754c51bca00ffeac7b1d836daa15ba64d19eb90f20d80ead8e38774",
+              "title": "Walkthrough:Pokémon Platinum/Part 17"
+            },
+            {
+              "path": "res/field/scripts/scripts_spear_pillar.s",
+              "sha256": "be3ac2fe74148c2684033eaeef853f9b46e027f52a1e84ba9cf70c0b3bd14dae",
+              "line": 176,
+              "label": "SpearPillar_CoordEvent_MarsJupiter",
+              "command": "StartTagBattle",
+              "arguments": [
+                "VAR_0x8004",
+                "TRAINER_COMMANDER_MARS_SPEAR_PILLAR",
+                "TRAINER_COMMANDER_JUPITER_SPEAR_PILLAR"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "platinum-script-pair-0835-0836",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0835",
+          "pokemon-platinum-trainer-0836"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0609",
+            "trainerId": "pokemon-platinum-trainer-0609",
+            "label": "Pokémon Trainer Riley · lucario Lv. 41",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 609,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Iron Island",
+                    "text": "Iron Island"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "B2F",
+                    "text": "B2F"
+                  }
+                ],
+                "line": 171,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_13&oldid=4453246",
+                "pageId": 161163,
+                "revisionId": 4453246,
+                "templateOrdinal": 13,
+                "templateSha256": "5887246c7c9ec3f6505839c9b1b16f89b167ed6133726fee1039ae932175c464",
+                "title": "Walkthrough:Pokémon Platinum/Part 13"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Iron Island",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Iron Island",
+                  "text": "Iron Island"
+                },
+                {
+                  "level": 3,
+                  "raw": "B2F",
+                  "text": "B2F"
+                }
+              ],
+              "line": 214,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_13&oldid=4453246",
+              "pageId": 161163,
+              "revisionId": 4453246,
+              "templateOrdinal": 14,
+              "templateSha256": "fd02635998448483ff6eb1c0257efcfbfaa83eeade6b3075aeb38150e19200de",
+              "title": "Walkthrough:Pokémon Platinum/Part 13"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Iron Island",
+                  "text": "Iron Island"
+                },
+                {
+                  "level": 3,
+                  "raw": "B2F",
+                  "text": "B2F"
+                }
+              ],
+              "line": 216,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_13&oldid=4453246",
+              "pageId": 161163,
+              "revisionId": 4453246,
+              "templateOrdinal": 15,
+              "templateSha256": "b067813d0b4f7f7d7369a477cb232a52e566daa0854daaaa320606996d91254d",
+              "title": "Walkthrough:Pokémon Platinum/Part 13"
+            },
+            {
+              "path": "res/field/scripts/scripts_iron_island_b2f_left_room.s",
+              "sha256": "377c1a91a7acd0d465931a1cecd755cfa6dbcd34239fa218ea700dc09a4828f1",
+              "line": 172,
+              "label": "IronIslandB2FLeftRoom_CoordEvent_Grunts",
+              "command": "StartTrainerBattle",
+              "arguments": [
+                "TRAINER_GALACTIC_GRUNT_IRON_ISLAND_1",
+                "TRAINER_GALACTIC_GRUNT_IRON_ISLAND_2"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "platinum-script-pair-0921-0922",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-platinum-trainer-0921",
+          "pokemon-platinum-trainer-0922"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-platinum-trainer-0923",
+            "trainerId": "pokemon-platinum-trainer-0923",
+            "label": "Pokémon Trainer Barry · staraptor Lv. 53, floatzel Lv. 52, heracross Lv. 53, rapidash Lv. 52, snorlax Lv. 54, torterra Lv. 56",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 923,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Fight Area",
+                    "text": "Fight Area"
+                  }
+                ],
+                "line": 232,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_24&oldid=4453278",
+                "pageId": 174085,
+                "revisionId": 4453278,
+                "templateOrdinal": 3,
+                "templateSha256": "a14819c495de47c0b8f5f4cb7e4564d43751f9d98306c441cc3d6552888c494e",
+                "title": "Walkthrough:Pokémon Platinum/Part 24"
+              }
+            }
+          },
+          {
+            "id": "pokemon-platinum-trainer-0924",
+            "trainerId": "pokemon-platinum-trainer-0924",
+            "label": "Pokémon Trainer Barry · staraptor Lv. 53, floatzel Lv. 52, heracross Lv. 53, roserade Lv. 52, snorlax Lv. 54, infernape Lv. 56",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 924,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Fight Area",
+                    "text": "Fight Area"
+                  }
+                ],
+                "line": 20,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_24&oldid=4453278",
+                "pageId": 174085,
+                "revisionId": 4453278,
+                "templateOrdinal": 1,
+                "templateSha256": "845bba22b67d4f33c6d434a6bac5fbd0e5b04eb8145a233a948d09fb9911a1cc",
+                "title": "Walkthrough:Pokémon Platinum/Part 24"
+              }
+            }
+          },
+          {
+            "id": "pokemon-platinum-trainer-0925",
+            "trainerId": "pokemon-platinum-trainer-0925",
+            "label": "Pokémon Trainer Barry · staraptor Lv. 53, roserade Lv. 52, heracross Lv. 53, rapidash Lv. 52, snorlax Lv. 54, empoleon Lv. 56",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Platinum/source-data/trainers.json",
+              "rawTrainerId": 925,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Fight Area",
+                    "text": "Fight Area"
+                  }
+                ],
+                "line": 126,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_24&oldid=4453278",
+                "pageId": 174085,
+                "revisionId": 4453278,
+                "templateOrdinal": 2,
+                "templateSha256": "44e8e1215b6dfe62950e52c54ce83698d329412dea112d96eb13f244bdda505c",
+                "title": "Walkthrough:Pokémon Platinum/Part 24"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-platinum.json",
+          "sha256": "e09404faac9bfc2d9487d2cd67bf46d16b5986097286a5b9c949e943691d1f56",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Fight Area",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Fight Area",
+                  "text": "Fight Area"
+                }
+              ],
+              "line": 338,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_24&oldid=4453278",
+              "pageId": 174085,
+              "revisionId": 4453278,
+              "templateOrdinal": 4,
+              "templateSha256": "8a4eb32d43e29c4100f0709e45fc74feaab06ed5f8540e37ec06dd9c17bcc4ac",
+              "title": "Walkthrough:Pokémon Platinum/Part 24"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Fight Area",
+                  "text": "Fight Area"
+                }
+              ],
+              "line": 338,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Platinum/Part_24&oldid=4453278",
+              "pageId": 174085,
+              "revisionId": 4453278,
+              "templateOrdinal": 4,
+              "templateSha256": "8a4eb32d43e29c4100f0709e45fc74feaab06ed5f8540e37ec06dd9c17bcc4ac",
+              "title": "Walkthrough:Pokémon Platinum/Part 24"
+            },
+            {
+              "path": "res/field/scripts/scripts_fight_area.s",
+              "sha256": "7353aeb0649d2e68e5d776ed34715d4d9f79290770d80b4fff74d6de6cd94beb",
+              "line": 103,
+              "label": "FightArea_BattleVolknerFlint",
+              "command": "StartTagBattle",
+              "arguments": [
+                "VAR_0x8004",
+                "TRAINER_LEADER_VOLKNER_FIGHT_AREA",
+                "TRAINER_ELITE_FOUR_FLINT_FIGHT_AREA"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "validation": {
+      "status": "passed",
+      "scope": "reviewed-story-multi-encounters",
+      "builder": "tools/vanilla_player_partners.js",
+      "excludedEvidenceConflicts": [],
+      "excluded": [
+        "link battles",
+        "randomized battle facilities"
+      ],
+      "note": "No location-wide inference. Separate trainer reserves; optional escort encounters retain Singles."
+    }
   }
 }

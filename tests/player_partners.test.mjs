@@ -114,14 +114,16 @@ function realDataset(gameId) {
   return {documents, dataset:createDatasetContext({manifest:load('dataset_manifest.json'),mechanics:load('battle_mechanics.json'),documents})};
 }
 
-for (const [gameId,count] of [['renegade-platinum',24],['storm-silver',6],['volt-white-2r',10]]) {
+for (const [gameId,count] of [['renegade-platinum',24],['storm-silver',6],['volt-white-2r',10],
+  ['pokemon-emerald',1],['pokemon-diamond',30],['pokemon-pearl',30],['pokemon-platinum',31],
+  ['pokemon-heartgold',2],['pokemon-soulsilver',2],['pokemon-black',1],['pokemon-white',1],['pokemon-black-2',16],['pokemon-white-2',16]]) {
   test(`${gameId}: all documented partners normalize, deploy and round-trip with exact ownership`, () => {
     const {dataset,documents} = realDataset(gameId);
     const bindings = documents['trainer_battle_groups.json'].playerPartners.bindings;
     assert.equal(bindings.length,count);
     for (const binding of bindings) {
       const enemies = normalizeTrainerRoster(binding.id,null,dataset);
-      const choices = dataset.trainerBattleChoices(binding.enemyTrainerIds[0]);
+      const choices = dataset.trainerBattleChoices(binding.choiceFamilyId ? binding.id : binding.enemyTrainerIds[0]);
       if (binding.formatChoice === 'single-or-double') {
         assert.equal(choices[0].format,'singles');
         assert.equal(choices[0].withoutPlayerPartner,true);
@@ -148,6 +150,51 @@ for (const [gameId,count] of [['renegade-platinum',24],['storm-silver',6],['volt
     }
   });
 }
+
+test('retail choices preserve exact partners, source records and ordinary trainer battles', () => {
+  for (const game of ['pokemon-black-2','pokemon-white-2']) {
+    const {dataset,documents}=realDataset(game);
+    const nav=dataset.trainerGroups().flatMap(group=>group.trainers);
+    const choices=nav.filter(trainer=>trainer.encounter?.choiceFamilyId===`${game}-striaton-restaurant-brothers`);
+    assert.equal(choices.length,3);
+    const all=new Set([494,495,496].map(n=>`${game}-trainer-0${n}`));
+    for(const choice of choices) {
+      const binding=choice.playerPartnerBinding;
+      assert.equal(binding.partnerOptions.length,1);
+      assert.deepEqual(new Set([...binding.enemyTrainerIds,binding.partnerOptions[0].trainerId]),all);
+      assert.ok(!binding.enemyTrainerIds.includes(binding.partnerOptions[0].trainerId));
+    }
+    assert.equal(dataset.trainer(`${game}-trainer-0494`).playerPartnerBinding,undefined);
+    assert.equal(dataset.trainer(`${game}-giant-chasm-plasma-pair`),null);
+    assert.ok(documents['trainer_battle_groups.json'].playerPartners.validation.excludedEvidenceConflicts.length);
+    assert.equal(dataset.trainer(`${game}-nimbasa-subway-bosses`).playerPartnerBinding.partnerOptions.length,6);
+    assert.equal(dataset.trainer(`${game}-trainer-0648`).playerPartnerBinding,undefined,'outside Cheren escort segment');
+  }
+  for(const game of ['pokemon-diamond','pokemon-pearl','pokemon-platinum']) {
+    const {dataset}=realDataset(game);
+    assert.equal(dataset.trainer(`${game}-trainer-0390`).playerPartnerBinding,undefined,'Marley cannot cross Surf');
+    assert.equal(dataset.trainer(`${game}-trainer-0503`).playerPartnerBinding,undefined,'Riley is not on the other Iron Island floor');
+    assert.equal(dataset.trainerBattleChoices(`${game}-trainer-0201`)[0].format,'doubles','Jack/Briana is mandatory Multi');
+    assert.equal(dataset.trainerBattleChoices(`${game}-trainer-0206`)[0].format,'singles','Lindsey/Elijah has a Singles option');
+  }
+  for(const game of ['pokemon-black','pokemon-white']) {
+    const {dataset}=realDataset(game);
+    assert.ok(dataset.trainerGroups().flatMap(g=>g.trainers).some(t=>t.id===`${game}-trainer-0056`),'Cheren opponent remains available');
+  }
+});
+
+test('Emerald enforces the selected three without discarding user party records', () => {
+  const {dataset}=realDataset('pokemon-emerald');
+  const trainerId='pokemon-emerald-mossdeep-space-center-maxie-tabitha';
+  const binding=dataset.trainer(trainerId).playerPartnerBinding;
+  const option=binding.partnerOptions[0];
+  const allies=normalizePlayerPartnerRoster(option.trainerId,dataset);
+  assert.equal(allies.length,3);
+  const owned=Array.from({length:4},(_,i)=>({...structuredClone(allies[0]),combatantKey:`player:owned${i}`,source:{kind:'test-player'}}));
+  assert.throws(()=>createPlanDocument({dataset,trainerId,playerCombatants:[...owned,...allies],
+    enemyCombatants:normalizeTrainerRoster(trainerId,null,dataset),battleFormat:'doubles',
+    playerPartner:{trainerId:option.trainerId,bindingId:binding.id}}),/at most 3/);
+});
 
 test('Drayano partners never hide separately documented opponent appearances or spread by location', () => {
   const {dataset:rp}=realDataset('renegade-platinum');

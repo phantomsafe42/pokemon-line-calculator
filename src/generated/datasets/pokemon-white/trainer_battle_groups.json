@@ -251,5 +251,184 @@
     "sourceArtifact": "tools/imports/vanilla/gen5-documented-campaign-context/pokemon-white.json",
     "occurrenceContextStatus": "passed",
     "rawFieldMapCoordinatesRequired": false
+  },
+  "playerPartners": {
+    "schemaVersion": "trainer-player-partners/v1",
+    "bindings": [
+      {
+        "id": "pokemon-white-player-partner-401-402",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-white-trainer-0401",
+          "pokemon-white-trainer-0402"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-white-trainer-0090",
+            "trainerId": "pokemon-white-trainer-0090",
+            "label": "Pokémon Trainer Cheren · liepard Lv. 24, pansage Lv. 24, tranquill Lv. 24, pignite Lv. 26",
+            "hideFromOpponentSelection": false,
+            "source": {
+              "file": "Pokemon White/source-data/trainers.json",
+              "rawTrainerId": 90,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Route 5",
+                    "text": "Route 5"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "Battle with Cheren",
+                    "text": "Battle with Cheren"
+                  }
+                ],
+                "line": 73,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_and_White/Part_6&oldid=4438326",
+                "pageId": 137954,
+                "revisionId": 4438326,
+                "templateOrdinal": 10,
+                "templateSha256": "83c3a01d181fb934b749dbb0dee670b20288ee51edf78022f701cea3f4afcba3",
+                "title": "Walkthrough:Pokémon Black and White/Part 6"
+              }
+            }
+          },
+          {
+            "id": "pokemon-white-trainer-0091",
+            "trainerId": "pokemon-white-trainer-0091",
+            "label": "Pokémon Trainer Cheren · liepard Lv. 24, pansear Lv. 24, tranquill Lv. 24, dewott Lv. 26",
+            "hideFromOpponentSelection": false,
+            "source": {
+              "file": "Pokemon White/source-data/trainers.json",
+              "rawTrainerId": 91,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Route 5",
+                    "text": "Route 5"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "Battle with Cheren",
+                    "text": "Battle with Cheren"
+                  }
+                ],
+                "line": 151,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_and_White/Part_6&oldid=4438326",
+                "pageId": 137954,
+                "revisionId": 4438326,
+                "templateOrdinal": 11,
+                "templateSha256": "06af05238be37192452b71410ef37dc26cefd9531d4e5249d609aef58951fd5d",
+                "title": "Walkthrough:Pokémon Black and White/Part 6"
+              }
+            }
+          },
+          {
+            "id": "pokemon-white-trainer-0092",
+            "trainerId": "pokemon-white-trainer-0092",
+            "label": "Pokémon Trainer Cheren · liepard Lv. 24, panpour Lv. 24, tranquill Lv. 24, servine Lv. 26",
+            "hideFromOpponentSelection": false,
+            "source": {
+              "file": "Pokemon White/source-data/trainers.json",
+              "rawTrainerId": 92,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Route 5",
+                    "text": "Route 5"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "Battle with Cheren",
+                    "text": "Battle with Cheren"
+                  }
+                ],
+                "line": 228,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_and_White/Part_6&oldid=4438326",
+                "pageId": 137954,
+                "revisionId": 4438326,
+                "templateOrdinal": 12,
+                "templateSha256": "94feb329962af2a890a2fdf910e4f9385d3b061d8346b9982f8d2a2f137de304",
+                "title": "Walkthrough:Pokémon Black and White/Part 6"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-white.json",
+          "sha256": "ac92e1a6243b031713819eb5d6359a6dcc37238b648781d52648b2055b8adc52",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Route 5",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Route 5",
+                  "text": "Route 5"
+                }
+              ],
+              "line": 13,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_and_White/Part_6&oldid=4438326",
+              "pageId": 137954,
+              "revisionId": 4438326,
+              "templateOrdinal": 1,
+              "templateSha256": "25d499badc75e7820b9471a3fa7f0dda4778c2f74147c8803f577546d6159c45",
+              "title": "Walkthrough:Pokémon Black and White/Part 6"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Route 5",
+                  "text": "Route 5"
+                }
+              ],
+              "line": 14,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Black_and_White/Part_6&oldid=4438326",
+              "pageId": 137954,
+              "revisionId": 4438326,
+              "templateOrdinal": 2,
+              "templateSha256": "993f8af9e8995ad402638a759e644acaaf1b9c5aeb479e08cc200ed5f273bdb7",
+              "title": "Walkthrough:Pokémon Black and White/Part 6"
+            },
+            {
+              "url": "https://bulbapedia.bulbagarden.net/wiki/Cheren#Second_Multi_Battle_partner",
+              "note": "Route 5: Cheren reuses his Route 5 party against Sarah and Billy."
+            }
+          ]
+        }
+      }
+    ],
+    "validation": {
+      "status": "passed",
+      "scope": "reviewed-story-multi-encounters",
+      "builder": "tools/vanilla_player_partners.js",
+      "excludedEvidenceConflicts": [
+        {
+          "id": "pokemon-white-wellspring-cave-plasma-pair",
+          "status": "not-activated",
+          "reason": "Wellspring enemy documentation shells have no IVs, moves, nature or ability. Event membership resolves to retail trainers 62 and 63, but child/slot assignment is explicitly unresolved and their natures differ. Do not guess the assignment.",
+          "file": "Pokemon White/source-data/trainers.json",
+          "field": "sourceBindings.specialBinding.childIdentityAssignmentResolved"
+        }
+      ],
+      "excluded": [
+        "link battles",
+        "randomized battle facilities"
+      ],
+      "note": "No location-wide inference. Separate trainer reserves; optional escort encounters retain Singles."
+    }
   }
 }

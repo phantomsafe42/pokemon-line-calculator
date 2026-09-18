@@ -53,7 +53,7 @@ async function initialize(datasetBaseUrl, datasetHostedPrefix, trainerAiBaseUrl,
   if (role === "trainer-ai" && !trainerAiBaseUrl) {
     return { gameId, resolverReady: false, trainerAiProfileId: null, trainerAiMetadata: null };
   }
-  const datasetModule = await import("../adapters/standardized_dataset.js?v=20260917-drayano-partners-v2");
+  const datasetModule = await import("../adapters/standardized_dataset.js?v=20260917-vanilla-partners-v1");
   const damageModule = await import("../adapters/shared_damage_adapter.js?v=20260909-public-release-v2");
   dataset = await datasetModule.loadStandardizedDataset({ baseUrl: datasetBaseUrl, hostedPrefix: datasetHostedPrefix, hostedRelease });
   const runtime = self.SharedDamageCalculator.createFromDocuments(
@@ -65,14 +65,14 @@ async function initialize(datasetBaseUrl, datasetHostedPrefix, trainerAiBaseUrl,
   damageAdapter = damageModule.createSharedDamageAdapter(runtime);
   if (role === "resolver") {
     const [plannerModule, combatantMovesModule] = await Promise.all([
-      import("../core/planner.js?v=20260917-drayano-partners-v2"),
+      import("../core/planner.js?v=20260917-vanilla-partners-v1"),
       import("../core/combatant_moves.js?v=20260909-public-release-v2")
     ]);
     previewTurn = plannerModule.previewTurn;
     previewCombatantMove = combatantMovesModule.previewCombatantMove;
   } else {
     importScripts(new URL("trainer_ai/trainer_ai_evaluator.js?v=20260909-public-release-v2", battleMechanicsBase).href);
-    const trainerAiModule = await import("../adapters/trainer_ai.js?v=20260917-drayano-partners-v2");
+    const trainerAiModule = await import("../adapters/trainer_ai.js?v=20260917-vanilla-partners-v1");
     trainerAi = await trainerAiModule.loadTrainerAiDocumentation({
       baseUrl: trainerAiBaseUrl,
       hostedPrefix: trainerAiHostedPrefix,

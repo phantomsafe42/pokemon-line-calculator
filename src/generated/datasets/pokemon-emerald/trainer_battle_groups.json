@@ -102,5 +102,192 @@
     "dynamicOperandsAreRuntimeSelectorsNotFixedGroupFailures": true,
     "sourceArtifact": "tools/imports/vanilla/gen3-trainer-context/pokemon-emerald.json",
     "emptyRecordsAreValidWhenExactScriptAuditFoundNoSeparateRosterGroups": true
+  },
+  "playerPartners": {
+    "schemaVersion": "trainer-player-partners/v1",
+    "bindings": [
+      {
+        "id": "pokemon-emerald-mossdeep-space-center-maxie-tabitha",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-emerald-trainer-0734",
+          "pokemon-emerald-trainer-0514"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "maxPlayerPartySize": 3,
+        "partnerOptions": [
+          {
+            "id": "pokemon-emerald-documentation-trainer-0539",
+            "trainerId": "pokemon-emerald-documentation-trainer-0539",
+            "label": "Pokémon Trainer Steven · metang Lv. 42, skarmory Lv. 43, aggron Lv. 44",
+            "hideFromOpponentSelection": true,
+            "source": {
+              "file": "Pokemon Emerald/source-data/trainers.json",
+              "rawTrainerId": 539,
+              "evidence": {
+                "headingPath": [
+                  {
+                    "level": 2,
+                    "raw": "Mossdeep City",
+                    "text": "Mossdeep City"
+                  },
+                  {
+                    "level": 3,
+                    "raw": "Space Center",
+                    "text": "Space Center"
+                  },
+                  {
+                    "level": 4,
+                    "raw": "VS Maxie, Tabitha",
+                    "text": "VS Maxie, Tabitha"
+                  }
+                ],
+                "line": 305,
+                "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Emerald/Part_14&oldid=4446559",
+                "pageId": 160142,
+                "revisionId": 4446559,
+                "templateOrdinal": 35,
+                "templateSha256": "9e7cb1400f8c5f1ecb7e60f3a18b9fcb2c4f233b609b447ec2fa84c7a73efe79",
+                "title": "Walkthrough:Pokémon Emerald/Part 14"
+              }
+            }
+          }
+        ],
+        "source": {
+          "rule": "reviewed-retail-multi-encounter",
+          "file": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/campaign/pokemon-emerald.json",
+          "sha256": "862bbcfc136de683992c6afe398d5688d8e4abb292eb17873edad667e9fc8372",
+          "checklistUrl": "https://bulbapedia.bulbagarden.net/wiki/Multi_Battle",
+          "builder": "tools/vanilla_player_partners.js",
+          "location": "Mossdeep Space Center",
+          "evidence": [
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Mossdeep City",
+                  "text": "Mossdeep City"
+                },
+                {
+                  "level": 3,
+                  "raw": "Space Center",
+                  "text": "Space Center"
+                },
+                {
+                  "level": 4,
+                  "raw": "VS Maxie, Tabitha",
+                  "text": "VS Maxie, Tabitha"
+                }
+              ],
+              "line": 367,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Emerald/Part_14&oldid=4446559",
+              "pageId": 160142,
+              "revisionId": 4446559,
+              "templateOrdinal": 36,
+              "templateSha256": "86aaea75e3dbb50d61d7aefa01a207bd37e0df3f49222eeb81fd1af220482bcc",
+              "title": "Walkthrough:Pokémon Emerald/Part 14"
+            },
+            {
+              "headingPath": [
+                {
+                  "level": 2,
+                  "raw": "Mossdeep City",
+                  "text": "Mossdeep City"
+                },
+                {
+                  "level": 3,
+                  "raw": "Space Center",
+                  "text": "Space Center"
+                },
+                {
+                  "level": 4,
+                  "raw": "VS Maxie, Tabitha",
+                  "text": "VS Maxie, Tabitha"
+                }
+              ],
+              "line": 367,
+              "oldRevisionUrl": "https://bulbapedia.bulbagarden.net/w/index.php?title=Walkthrough:Pok%C3%A9mon_Emerald/Part_14&oldid=4446559",
+              "pageId": 160142,
+              "revisionId": 4446559,
+              "templateOrdinal": 36,
+              "templateSha256": "86aaea75e3dbb50d61d7aefa01a207bd37e0df3f49222eeb81fd1af220482bcc",
+              "title": "Walkthrough:Pokémon Emerald/Part 14"
+            },
+            {
+              "path": "data/maps/MossdeepCity_SpaceCenter_2F/scripts.inc",
+              "line": 315,
+              "text": "trainerbattle TRAINER_BATTLE_SET_TRAINER_A, TRAINER_MAXIE_MOSSDEEP, LOCALID_NONE, MossdeepCity_SpaceCenter_2F_Text_JustWantToExpandLand, MossdeepCity_SpaceCenter_2F_Text_JustWantToExpandLand",
+              "buildConditions": [],
+              "scriptLabel": "MossdeepCity_SpaceCenter_2F_EventScript_MaxieTrainer"
+            },
+            {
+              "path": "data/maps/MossdeepCity_SpaceCenter_2F/scripts.inc",
+              "line": 319,
+              "text": "trainerbattle TRAINER_BATTLE_SET_TRAINER_B, TRAINER_TABITHA_MOSSDEEP, LOCALID_NONE, MossdeepCity_SpaceCenter_Text_TabithaDefeat, MossdeepCity_SpaceCenter_Text_TabithaDefeat",
+              "buildConditions": [],
+              "scriptLabel": "MossdeepCity_SpaceCenter_2F_EventScript_TabithaTrainer"
+            },
+            {
+              "path": "data/maps/MossdeepCity_SpaceCenter_2F/scripts.inc",
+              "line": 234,
+              "text": "special ReducePlayerPartyToSelectedMons",
+              "buildConditions": []
+            },
+            {
+              "path": "data/maps/MossdeepCity_SpaceCenter_2F/scripts.inc",
+              "line": 236,
+              "text": "setvar VAR_0x8004, SPECIAL_BATTLE_STEVEN",
+              "buildConditions": []
+            },
+            {
+              "path": "data/maps/MossdeepCity_SpaceCenter_2F/scripts.inc",
+              "line": 237,
+              "text": "setvar VAR_0x8005, 0",
+              "buildConditions": []
+            },
+            {
+              "path": "data/maps/MossdeepCity_SpaceCenter_2F/scripts.inc",
+              "line": 238,
+              "text": "special DoSpecialTrainerBattle",
+              "buildConditions": []
+            },
+            {
+              "path": "data/maps/MossdeepCity_SpaceCenter_2F/scripts.inc",
+              "line": 240,
+              "text": "special LoadPlayerParty",
+              "buildConditions": []
+            },
+            {
+              "path": "data/maps/MossdeepCity_SpaceCenter_2F/scripts.inc",
+              "line": 244,
+              "text": "special SetCB2WhiteOut",
+              "buildConditions": []
+            },
+            {
+              "path": "src/battle_tower.c",
+              "line": 2122,
+              "endLine": 2133,
+              "text": "case SPECIAL_BATTLE_STEVEN:\n        gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;\n        FillPartnerParty(TRAINER_STEVEN_PARTNER);\n        gApproachingTrainerId = 0;\n        BattleSetup_ConfigureTrainerBattle(MossdeepCity_SpaceCenter_2F_EventScript_MaxieTrainer + 1);\n        gApproachingTrainerId = 1;\n        BattleSetup_ConfigureTrainerBattle(MossdeepCity_SpaceCenter_2F_EventScript_TabithaTrainer + 1);\n        gPartnerTrainerId = TRAINER_STEVEN_PARTNER;\n        CreateTask(Task_StartBattleAfterTransition, 1);\n        PlayMapChosenOrBattleBGM(0);\n        BattleTransition_StartOnField(B_TRANSITION_MAGMA);\n        break;"
+            }
+          ]
+        }
+      }
+    ],
+    "validation": {
+      "status": "passed",
+      "scope": "reviewed-story-multi-encounters",
+      "builder": "tools/vanilla_player_partners.js",
+      "excludedEvidenceConflicts": [],
+      "excluded": [
+        "link battles",
+        "randomized battle facilities"
+      ],
+      "note": "No location-wide inference. Separate trainer reserves; optional escort encounters retain Singles."
+    }
   }
 }

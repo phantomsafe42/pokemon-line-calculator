@@ -1,41 +1,41 @@
-import { calculateStats, normalizeMultiTrainerRoster, normalizePlayerCollection, normalizePlayerPartnerRoster, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js?v=20260917-drayano-partners-v2";
+import { calculateStats, normalizeMultiTrainerRoster, normalizePlayerCollection, normalizePlayerPartnerRoster, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js?v=20260917-vanilla-partners-v1";
 import { HOSTED_DATASET_RELEASE } from "./adapters/hosted_dataset.js?v=20260917-paired-trainer-release-v2";
 import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260909-public-release-v2";
-import { canonicalSpeciesDisplayName, loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260917-drayano-partners-v2";
-import { loadTrainerAiBootstrap } from "./adapters/trainer_ai.js?v=20260917-drayano-partners-v2";
+import { canonicalSpeciesDisplayName, loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260917-vanilla-partners-v1";
+import { loadTrainerAiBootstrap } from "./adapters/trainer_ai.js?v=20260917-vanilla-partners-v1";
 import { createDraftRecord, destructiveTransitionNotice, IndexedDbDraftStore, markExported, updateDraftRecord } from "./cache/active_draft.js?v=20260909-public-release-v2";
 import { TrainerAiForecastCache } from "./cache/trainer_ai_forecast.js?v=20260909-public-release-v2";
-import { SavedDraftStore, savedDraftSnapshot } from "./cache/saved_drafts.js?v=20260917-drayano-partners-v2";
+import { SavedDraftStore, savedDraftSnapshot } from "./cache/saved_drafts.js?v=20260917-vanilla-partners-v1";
 import { reorderCards } from "./ui/reorder_cards.js?v=20260909-public-release-v2";
-import { addFreeCalcBranch, editFreeCalcCombatant, replaceFreeCalcSlot, freeCalcAsNewPlan } from './core/free_calc.js?v=20260917-drayano-partners-v2';
+import { addFreeCalcBranch, editFreeCalcCombatant, replaceFreeCalcSlot, freeCalcAsNewPlan } from './core/free_calc.js?v=20260917-vanilla-partners-v1';
 import { belongsToSlotParty, eligibleReserves, partyOwnerForSlot } from './core/party_ownership.js?v=20260909-public-release-v2';
-import { downloadPlan, exportSelectedPlan, migratePlanDocument, parsePlan } from "./contracts/plan_file.js?v=20260917-drayano-partners-v2";
-import { assertValidPlanDocument } from "./contracts/plan_contract.js?v=20260917-drayano-partners-v2";
-import { mechanicsCompatibility, validatePlanReferences } from "./contracts/plan_compatibility.js?v=20260917-drayano-partners-v2";
+import { downloadPlan, exportSelectedPlan, migratePlanDocument, parsePlan } from "./contracts/plan_file.js?v=20260917-vanilla-partners-v1";
+import { assertValidPlanDocument } from "./contracts/plan_contract.js?v=20260917-vanilla-partners-v1";
+import { mechanicsCompatibility, validatePlanReferences } from "./contracts/plan_compatibility.js?v=20260917-vanilla-partners-v1";
 import { actionList, activeKey, activeKeys, activeSlotEntries, actorSlot, pendingReplacementSlots, setActiveKey, slotsPerSide } from "./core/battle_slots.js?v=20260909-public-release-v2";
 import { createBranchEventModel, selectBranchEventOutcome, selectedBranchChoices } from "./core/branch_events.js?v=20260909-public-release-v2";
 import { boundedSlotDamageLabel, highestDamageCandidateKeys, resolvedCombatantMovePreview } from "./core/combatant_moves.js?v=20260909-public-release-v2";
-import { exportBranchGroups, planTreeOrder, planTurnTreeOrder, preferredImportedReviewStateId, stateLineage, turnNodeVisuals } from "./core/graph.js?v=20260917-drayano-partners-v2";
+import { exportBranchGroups, planTreeOrder, planTurnTreeOrder, preferredImportedReviewStateId, stateLineage, turnNodeVisuals } from "./core/graph.js?v=20260917-vanilla-partners-v1";
 import { HIDDEN_POWER_TYPES, hiddenPowerTypeFromIvs, resolvedHiddenPowerType } from "./core/hidden_power.js?v=20260909-public-release-v2";
 import { forcedTurnAction } from "./core/forced_actions.js?v=20260909-public-release-v2";
 import { formatDamageRollCounts, healingEventDescription, isCriticalOhkoOutcome, isHighRollKoOutcome, outcomePanelEvents, readableMechanicName } from "./core/outcome_presentation.js?v=20260909-public-release-v2";
-import { createPlanDocument, planHasWork, setStateNodeNote, upgradeInitialEntryEffects } from "./core/plan.js?v=20260917-drayano-partners-v2";
-import { commitForcedReplacement, commitLabel, commitPreview, previewForcedReplacement, refreshUnknownCommittedProbabilities, repairStaleLeafBattleEnd, replacementCommitLabel } from "./core/planner.js?v=20260917-drayano-partners-v2";
-import { recalculatePlanDocument } from "./core/recalculation.js?v=20260917-drayano-partners-v2";
-import { upgradeImportedPlanForEditing } from "./core/import_upgrade.js?v=20260917-drayano-partners-v2";
+import { createPlanDocument, planHasWork, setStateNodeNote, upgradeInitialEntryEffects } from "./core/plan.js?v=20260917-vanilla-partners-v1";
+import { commitForcedReplacement, commitLabel, commitPreview, previewForcedReplacement, refreshUnknownCommittedProbabilities, repairStaleLeafBattleEnd, replacementCommitLabel } from "./core/planner.js?v=20260917-vanilla-partners-v1";
+import { recalculatePlanDocument } from "./core/recalculation.js?v=20260917-vanilla-partners-v1";
+import { upgradeImportedPlanForEditing } from "./core/import_upgrade.js?v=20260917-vanilla-partners-v1";
 import { moveSupport } from "./rulesets/core_move_support.js?v=20260909-public-release-v2";
 import { effectiveActionSpeed } from "./rulesets/action_order.js?v=20260909-public-release-v2";
 import { areSlotsAdjacent, canSelectShift, shiftWithCenter, triplePositionForSlot, tripleSlotForPosition } from "./rulesets/triple_battle.js?v=20260909-public-release-v2";
 import { rotationFrontKey, rotationFrontSlot } from "./rulesets/rotation_battle.js?v=20260909-public-release-v2";
-import { experienceForLevel, experienceToNextLevel, projectExperience } from "./rulesets/vw2r_experience.js?v=20260917-drayano-partners-v2";
-import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260917-drayano-partners-v2";
+import { experienceForLevel, experienceToNextLevel, projectExperience } from "./rulesets/vw2r_experience.js?v=20260917-vanilla-partners-v1";
+import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260917-vanilla-partners-v1";
 import { battleCompletionState } from "./core/battle_completion.js?v=20260909-public-release-v2";
 import {
   addBox, addParty, boxesForGame, createEmptyBoxLibrary, exportBoxLibrary, IndexedDbBoxLibraryStore,
   mergeBoxLibrary, parseBoxLibrary, removeBox, removeParty, removePokemon, renameBox, updateParty, upsertPokemon
 } from "./boxes/library.js?v=20260909-public-release-v2";
-import { addImportedPlanParty, bindPlanPlayerPartyToImportedBox } from "./boxes/plan_import.js?v=20260917-drayano-partners-v2";
-import { applyBranchProgressionToLibrary, branchProgressionSnapshot } from "./boxes/progression.js?v=20260917-drayano-partners-v2";
+import { addImportedPlanParty, bindPlanPlayerPartyToImportedBox } from "./boxes/plan_import.js?v=20260917-vanilla-partners-v1";
+import { applyBranchProgressionToLibrary, branchProgressionSnapshot } from "./boxes/progression.js?v=20260917-vanilla-partners-v1";
 import { exportShowdown, parseShowdown } from "./boxes/showdown.js?v=20260909-public-release-v2";
 import { PLC_SAVE_GAME_CONFIGS, parseSave, selectSavePokemon } from "./boxes/save_import.js?v=20260912-vanilla-save-import-v1";
 
@@ -1544,6 +1544,8 @@ function updateBeginAvailability() {
   const playerPartnerReady = !hasPlayerPartner || Boolean(selectedPlayerPartnerOption());
   const playerRequired = hasPlayerPartner ? 1 : required;
   const enough = contextSelection.saved && selectedContextRecords().length >= playerRequired;
+  const playerPartyLimit = contextPlayerPartnerBinding()?.maxPlayerPartySize || 6;
+  const withinPartyLimit = selectedContextRecords().length <= playerPartyLimit;
   const variantReady = !trainer?.mechanicsVariants?.length || Boolean(ui["variant-select"].value);
   const partner = choice?.requiresPartner ? dataset?.trainer(ui["partner-trainer-select"].value) : null;
   const partnerReady = !choice?.requiresPartner || Boolean(partner);
@@ -1554,12 +1556,13 @@ function updateBeginAvailability() {
     if (partner) enemyCount += dataset.trainerTeam(partner.id, ui["partner-variant-select"].value || null).length;
   } catch { enemyCount = 0; }
   const enemyReady = enemyCount >= required;
-  ui["begin-plan"].disabled = !(trainer && enough && variantReady && partnerReady && partnerVariantReady && enemyReady && playerPartnerReady);
+  ui["begin-plan"].disabled = !(trainer && enough && withinPartyLimit && variantReady && partnerReady && partnerVariantReady && enemyReady && playerPartnerReady);
   ui["context-status"].textContent = !trainer ? "Select a trainer."
     : !playerPartnerReady ? "Select your partner’s exact team."
     : !partnerReady ? "Select an opponent partner for the Multi battle."
       : !partnerVariantReady ? "Select the partner trainer's exact ROM variant."
     : !contextSelection.saved ? "Choose and save a player party."
+      : !withinPartyLimit ? `This encounter allows at most ${playerPartyLimit} player Pokémon. Choose which Pokémon to bring.`
       : !enough ? `${ui["battle-format"].value} requires at least ${playerRequired} player Pokémon.`
         : !enemyReady ? `${ui["battle-format"].value} requires at least ${required} enemy Pokémon.`
         : "Trainer and player party are ready.";

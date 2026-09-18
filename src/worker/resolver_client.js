@@ -2,7 +2,7 @@ export class ResolverWorkerClient {
   constructor(url = new URL(
     typeof __PLC_RESOLVER_WORKER_FILE__ !== "undefined"
       ? __PLC_RESOLVER_WORKER_FILE__
-      : "./resolver_worker.js?v=20260917-drayano-partners-v2",
+      : "./resolver_worker.js?v=20260917-vanilla-partners-v1",
     import.meta.url
   )) {
     this.url = url;

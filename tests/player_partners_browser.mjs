@@ -8,8 +8,13 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const scenario = process.env.PLC_PARTNER_SCENARIO || 'platinum-kaizo';
-const gameId = scenario === 'subway' ? 'volt-white-2r' : scenario;
+const gameId = scenario === 'subway' ? 'volt-white-2r' : scenario === 'striaton' ? 'pokemon-black-2' : scenario;
 const cases = {
+  'pokemon-emerald': {trainer:'pokemon-emerald-mossdeep-space-center-maxie-tabitha',partner:'pokemon-emerald-documentation-trainer-0539',species:'Metang',cards:3},
+  'pokemon-diamond': {trainer:'pokemon-diamond-player-partner-201-204',partner:'pokemon-diamond-trainer-0608',species:'Chansey',cards:1},
+  'pokemon-heartgold': {trainer:'heartgold-soulsilver-script-pair-0479-0499',partner:'pokemon-heartgold-trainer-0675',species:'Dragonite',cards:1},
+  'pokemon-black-2': {trainer:'pokemon-black-2-nimbasa-subway-bosses',partner:'pokemon-black-2-trainer-0363',species:'Dewott',cards:2},
+  striaton: {trainer:'pokemon-black-2-striaton-restaurant-brothers-with-0496',partner:'pokemon-black-2-trainer-0496',species:'Maractus',cards:3},
   'renegade-platinum': {trainer:'renegade-platinum-trainer-0201', choice:'allied:renegade-platinum-player-partner-201-204',partner:'renegade-platinum-trainer-0608',species:'Chansey',cards:3},
   'storm-silver': {trainer:'storm-silver-player-partner-88-87',partner:'storm-silver-trainer-0040',species:'Porygon2',cards:3},
   'volt-white-2r': {trainer:'castelia-sewers-plasma-tag',partner:'vw2r-trainer-0062',species:'Pignite',cards:3},
