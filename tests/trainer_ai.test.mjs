@@ -157,6 +157,20 @@ test('Gen 4 forecast ledgers retain target sides for both enemy actors without c
   };
   const before = JSON.stringify(plan);
   const result = analyzeTrainerAi(fixture);
+  const updatedCaption = 'The AI subtracted 30 points for targeting its partner because the move did not match its special partner-support checks. These cover Skill Swap, Will-O-Wisp, Thunder Wave, poisoning moves, Helping Hand, Swagger, Trick, Switcheroo, Gastro Acid, and Acupressure; each has its own follow-up rules.';
+  const oldCaption = 'partner status move: penalty when not (this move is acupressure).';
+  const restoreOldCaption = value => JSON.parse(JSON.stringify(value, (_key, entry) =>
+    typeof entry === 'string' ? entry.replaceAll(updatedCaption, oldCaption) : entry));
+  const legacyDescriptions = analyzeTrainerAi({ ...fixture,
+    ai: { ...ai, evaluatorProfile: restoreOldCaption(ai.evaluatorProfile) }
+  });
+  assert.deepEqual(restoreOldCaption(result), restoreOldCaption(legacyDescriptions),
+    'partner-status wording must not change points, probabilities, target selection or likelihood');
+  const partnerAdjustments = result.actors.flatMap(actor => actor.moves)
+    .flatMap(move => move.incentiveLedger?.adjustments || [])
+    .filter(row => row.title === 'Partner Status Move');
+  assert.ok(partnerAdjustments.length > 0, 'exercise the actual non-Ghost Curse partner penalty');
+  assert.ok(partnerAdjustments.every(row => row.delta === -30 && row.summary === updatedCaption));
   const legacy = analyzeTrainerAi({ ...fixture, evaluator: { ...evaluator, forecast: input => evaluator.forecast({
     ...input, request: withoutTargetSide(input.request),
     precedingActors: input.precedingActors?.map(actor => ({ ...actor, request: withoutTargetSide(actor.request) }))
