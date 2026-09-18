@@ -841,7 +841,8 @@ function sortedSpeciesRecords() {
 function speciesSelectLabel(record) {
   const name = record.name || record.displayName || record.id;
   const dexNumber = speciesDexNumber(record);
-  return dexNumber === null ? name : `#${String(dexNumber).padStart(3, "0")} ${name}`;
+  // Native select type-ahead matches the beginning of the label; keep names first.
+  return dexNumber === null ? name : `${name} · #${String(dexNumber).padStart(3, "0")}`;
 }
 
 function fillSelect(select, records, { blank = null, labelFor = null } = {}) {
