@@ -174,7 +174,7 @@ const ui = Object.fromEntries([
   "confirm-save-import", "showdown-open", "new-box", "export-boxes", "import-boxes",
   "plan-context-dialog", "trainer-select", "battle-format", "battle-format-choice", "variant-field", "variant-select", "plan-name",
   "partner-trainer-field", "partner-trainer-select", "partner-trainer-scope", "partner-trainer-search-field", "partner-trainer-search", "partner-variant-field", "partner-variant-select",
-  "initial-weather", "initial-terrain", "context-box-select", "party-source-mode", "saved-party-field",
+  "initial-weather", "initial-terrain", "context-box-select", "saved-party-field",
   "context-party-select", "context-pokemon-grid", "save-party-selection", "party-selector-controls",
   "enemy-team-summary", "party-selection-summary", "edit-party-selection", "edge-party-exp", "context-status", "begin-plan", "pokemon-editor-dialog",
   "pokemon-editor-form", "pokemon-editor-title", "editor-sprite-preview", "editor-box-id", "editor-pokemon-id", "editor-context", "editor-species",
@@ -1366,14 +1366,13 @@ function refreshContextBoxSelect() {
 
 function refreshContextPartySelect() {
   const box = selectedBox(ui["context-box-select"].value);
-  const previous = contextSelection.partyId || ui["context-party-select"].value;
-  ui["context-party-select"].replaceChildren(option("", "Select Party…"));
+  const previous = contextSelection.partyId || "";
+  ui["context-party-select"].replaceChildren(option("", "New Party"));
   for (const partyId of box?.partyOrder || []) {
     const party = box.parties[partyId];
     ui["context-party-select"].append(option(party.id, `${party.name} · ${party.pokemonIds.length} Pokémon`));
   }
   if ([...ui["context-party-select"].options].some(entry => entry.value === previous)) ui["context-party-select"].value = previous;
-  ui["saved-party-field"].hidden = ui["party-source-mode"].value !== "party";
 }
 
 function ensureContextInitial(record) {
@@ -1388,13 +1387,13 @@ function contextPokemonCard(box, record, selected, manual, { editable = true, fo
   card.append(sprite(record));
   const body = document.createElement("div");
   const name = document.createElement("strong"); name.textContent = recordName(record);
-  const detail = document.createElement("small"); detail.textContent = `${record.displayName} · Lv. ${record.level}`;
+  const detail = document.createElement("small"); detail.textContent = editable ? `${record.displayName} · Lv. ${record.level}` : `Lv. ${record.level}`;
   body.append(name, detail); card.append(body);
   const item = document.createElement("small");
   item.className = "context-held-item";
   const startingItem = editable && forContext && Object.hasOwn(contextSelection.initialConditions[record.id] || {}, "itemId")
     ? contextSelection.initialConditions[record.id].itemId : record.itemId;
-  item.textContent = startingItem ? dataset.get("items", startingItem)?.name || startingItem : "None";
+  item.textContent = startingItem ? dataset.get("items", startingItem)?.name || startingItem : forContext ? "No Item" : "None";
   body.append(item);
   if (editable && forContext) {
     ensureContextInitial(record);
@@ -1436,11 +1435,11 @@ function contextPokemonCard(box, record, selected, manual, { editable = true, fo
     const heldItem = document.createElement("select");
     heldItem.className = "context-pre-item";
     heldItem.setAttribute("aria-label", `Item for ${recordName(record)}`);
-    fillSelect(heldItem, sortedRecords("items"), { blank: "None" });
+    fillSelect(heldItem, sortedRecords("items"), { blank: forContext ? "No Item" : "None" });
     const initial = forContext ? contextSelection.initialConditions[record.id] : record;
     heldItem.value = Object.hasOwn(initial, "itemId") ? initial.itemId || "" : record.itemId || "";
     heldItem.addEventListener("change", async () => {
-      item.textContent = heldItem.selectedOptions[0]?.textContent || "None";
+      item.textContent = heldItem.selectedOptions[0]?.textContent || (forContext ? "No Item" : "None");
       try {
         await persistPartyRecordFields(box.id, record.id, { itemId: heldItem.value || null });
       } catch (error) { setStatus(error.message, true); }
@@ -1468,10 +1467,11 @@ function selectedContextRecords() {
 function renderContextPokemonGrid() {
   const box = selectedBox(ui["context-box-select"].value);
   contextSelection.boxId = box?.id || null;
-  const manual = ui["party-source-mode"].value === "manual";
+  const manual = !ui["context-party-select"].value;
   if (!box) {
     ui["context-pokemon-grid"].replaceChildren();
     ui["save-party-selection"].disabled = true;
+    updateBeginAvailability();
     return;
   }
   if (!manual) {
@@ -1581,7 +1581,6 @@ function openPlanContext({ reset = true } = {}) {
   ui["party-selection-summary"].hidden = true;
   ui["edit-party-selection"].hidden = true;
   ui["edge-party-exp"].hidden = true;
-  ui["party-source-mode"].value = "party";
   updateVariantSelect();
   renderContextPokemonGrid();
   if (!ui["plan-context-dialog"].open) ui["plan-context-dialog"].showModal();
@@ -4011,8 +4010,7 @@ function wireEvents() {
     updateBeginAvailability();
   });
   ui["context-box-select"].addEventListener("change", () => { contextSelection = { ...emptyContextSelection(), boxId: ui["context-box-select"].value || null }; refreshContextPartySelect(); renderContextPokemonGrid(); });
-  ui["party-source-mode"].addEventListener("change", () => { contextSelection.pokemonIds = []; contextSelection.partyId = null; contextSelection.saved = false; refreshContextPartySelect(); renderContextPokemonGrid(); });
-  ui["context-party-select"].addEventListener("change", () => { contextSelection.partyId = ui["context-party-select"].value || null; contextSelection.saved = false; renderContextPokemonGrid(); });
+  ui["context-party-select"].addEventListener("change", () => { contextSelection.pokemonIds = []; contextSelection.partyId = ui["context-party-select"].value || null; contextSelection.saved = false; renderContextPokemonGrid(); });
   ui["save-party-selection"].addEventListener("click", savePartySelection);
   ui["edge-party-exp"].addEventListener("click", edgePartyExperience);
   ui["edit-party-selection"].addEventListener("click", () => { contextSelection.saved = false; ui["party-selector-controls"].hidden = false; ui["party-selection-summary"].hidden = true; ui["edit-party-selection"].hidden = true; ui["edge-party-exp"].hidden = true; renderContextPokemonGrid(); });
