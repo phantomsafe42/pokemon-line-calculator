@@ -1387,7 +1387,7 @@ function contextPokemonCard(box, record, selected, manual, { editable = true, fo
   card.append(sprite(record));
   const body = document.createElement("div");
   const name = document.createElement("strong"); name.textContent = recordName(record);
-  const detail = document.createElement("small"); detail.textContent = editable ? `${record.displayName} · Lv. ${record.level}` : `Lv. ${record.level}`;
+  const detail = document.createElement("small"); detail.textContent = forContext ? `Lv. ${record.level}` : `${record.displayName} · Lv. ${record.level}`;
   body.append(name, detail); card.append(body);
   const item = document.createElement("small");
   item.className = "context-held-item";

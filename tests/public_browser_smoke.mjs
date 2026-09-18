@@ -402,6 +402,8 @@ try {
     check(grid.children.length === 0 && saveParty.disabled, 'blank Party does not select or show Pokémon');
     change(partySelect, '__new_party__');
     check(grid.children.length === 7 && saveParty.disabled, 'manual picker initially empty');
+    check([...grid.children].every(card => /^Lv\\. \\d+$/.test(card.querySelector('small').textContent)), 'player picker level-only subtitles');
+    check([...document.querySelectorAll('.party-card-grid .context-pokemon small')].some(detail => detail.textContent.includes('Bulbasaur · Lv.')), 'Boxes retains species subtitles');
     check([...grid.querySelectorAll('.context-held-item')].every(item => item.textContent === 'No Item'), 'No Item card labels');
     check([...grid.querySelectorAll('.context-pre-item')].every(select => select.options[0].textContent === 'No Item'), 'No Item picker labels');
     for (let index = 0; index < 7; index++) grid.children[index].querySelector('button').click();
@@ -417,6 +419,7 @@ try {
     grid.children[6].querySelector('button').click();
     saveParty.click();
     check(!document.getElementById('party-selection-summary').hidden && document.getElementById('party-selection-summary').children.length === 1, 'save manual Party summary');
+    check(/^Lv\\. \\d+$/.test(document.querySelector('#party-selection-summary .context-pokemon small').textContent), 'saved player summary level-only subtitle');
     document.getElementById('edit-party-selection').click();
     check(partySelect.value === '__new_party__' && grid.children[6].classList.contains('is-selected'), 'edit manual selection preserves chosen member');
     change(partySelect, savedPartyId);
