@@ -268,6 +268,8 @@ try {
     await wait(() => planName.value === expectedTrainerName, 'trainer-derived plan name');
     const selectedPlanName = planName.value;
     document.getElementById('plan-context-dialog').close();
+    if (document.getElementById('new-plan').textContent.trim() !== 'New Line') throw new Error('New Line button label');
+    if (document.querySelector('#empty-plan strong')?.textContent.trim() !== 'New Line') throw new Error('New Line empty-state hint');
     document.getElementById('new-plan').click();
     await wait(() => document.getElementById('plan-context-dialog').open
       && trainerSelect.value === ''
