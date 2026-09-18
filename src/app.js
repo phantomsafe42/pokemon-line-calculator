@@ -4,6 +4,7 @@ import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260909-pu
 import { canonicalSpeciesDisplayName, loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260917-partners-release-v1";
 import { loadTrainerAiBootstrap } from "./adapters/trainer_ai.js?v=20260917-ai-target-slots-v1";
 import { forecastTargetLabel } from "./ui/ai_forecast.js?v=20260917-ai-target-slots-v1";
+import { hasManualStartingHp } from "./ui/editor_hp.js?v=20260917-editor-hp-v1";
 import { createDraftRecord, destructiveTransitionNotice, IndexedDbDraftStore, markExported, updateDraftRecord } from "./cache/active_draft.js?v=20260909-public-release-v2";
 import { TrainerAiForecastCache } from "./cache/trainer_ai_forecast.js?v=20260909-public-release-v2";
 import { SavedDraftStore, savedDraftSnapshot } from "./cache/saved_drafts.js?v=20260917-partners-release-v1";
@@ -212,6 +213,7 @@ let exportSelection = new Set();
 let activeTab = "plc";
 let destructiveResolver = null;
 let editorMoveRows = [];
+let editorHpManuallyEdited = false;
 let pokemonEditorGameId = null;
 let actionDraft = emptyActionDraft();
 let notesPersistTimer = null;
@@ -900,7 +902,10 @@ function refreshEditorActualStats() {
     const draft = readEditorDraft();
     const calculated = calculateStats({ ...draft, displayName: draft.displayName }, dataset);
     for (const stat of STAT_KEYS) byId(`editor-actual-${stat}`).textContent = calculated[stat];
-    if (ui["editor-context"].value === "plan") ui["editor-starting-hp"].max = calculated.hp;
+    if (ui["editor-context"].value === "plan") {
+      ui["editor-starting-hp"].max = calculated.hp;
+      if (!editorHpManuallyEdited) ui["editor-starting-hp"].value = calculated.hp;
+    }
     ui["editor-error"].textContent = "";
   } catch (error) { ui["editor-error"].textContent = error.message; }
 }
@@ -1013,6 +1018,7 @@ function initializePokemonEditor() {
     });
   };
   for (const id of ["editor-level", "editor-nature"]) ui[id].oninput = refreshEditorActualStats;
+  ui["editor-starting-hp"].oninput = () => { editorHpManuallyEdited = true; };
   pokemonEditorGameId = selectedGameId;
 }
 
@@ -1027,6 +1033,7 @@ function openPokemonEditor(boxId, pokemonId = null, context = false) {
   ui["pokemon-editor-title"].textContent = pokemonId ? `Edit ${recordName(record)}` : "Add Pokémon";
   ui["editor-hp-field"].hidden = !context;
   ui["editor-status-field"].hidden = !context;
+  editorHpManuallyEdited = context && hasManualStartingHp(contextSelection.initialConditions[pokemonId], calculateStats(record, dataset).hp);
   loadEditorRecord(record);
   if (context) {
     const initial = contextSelection.initialConditions[pokemonId] || {};
@@ -1060,7 +1067,7 @@ async function savePokemonEditor() {
       const record = selectedBox(boxId).pokemon[result.pokemonId];
       const maxHp = calculateStats(record, dataset).hp;
       const hp = Math.max(0, Math.min(maxHp, Number(ui["editor-starting-hp"].value)));
-      contextSelection.initialConditions[result.pokemonId] = { ...contextSelection.initialConditions[result.pokemonId], currentHp: hp, majorStatus: ui["editor-starting-status"].value || null, itemId: record.itemId || null };
+      contextSelection.initialConditions[result.pokemonId] = { ...contextSelection.initialConditions[result.pokemonId], currentHp: hp, currentHpEdited: editorHpManuallyEdited, majorStatus: ui["editor-starting-status"].value || null, itemId: record.itemId || null };
       if (existingId && !contextSelection.pokemonIds.includes(existingId)) contextSelection.pokemonIds.push(existingId);
     }
     await saveLibrary("Pokémon saved. Every Party in this Box now uses the updated record.");
