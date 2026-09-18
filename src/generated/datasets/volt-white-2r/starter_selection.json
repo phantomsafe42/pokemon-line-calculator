@@ -179,6 +179,10 @@
       ],
       "evidence": [
         {
+          "file": "trainer_battle_groups.json",
+          "locator": "castelia-sewers-plasma-tag:vw2r-trainer-0062"
+        },
+        {
           "file": "../VW2R_Trainer_Battles.xlsx",
           "locator": "Burgh Split!A279:H279"
         }
@@ -191,6 +195,10 @@
       ],
       "evidence": [
         {
+          "file": "trainer_battle_groups.json",
+          "locator": "castelia-sewers-plasma-tag:vw2r-trainer-0063"
+        },
+        {
           "file": "../VW2R_Trainer_Battles.xlsx",
           "locator": "Burgh Split!A290:H290"
         }
@@ -202,6 +210,10 @@
         "oshawott"
       ],
       "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "castelia-sewers-plasma-tag:vw2r-trainer-0064"
+        },
         {
           "file": "../VW2R_Trainer_Battles.xlsx",
           "locator": "Burgh Split!A301:H301"
@@ -251,6 +263,10 @@
       ],
       "evidence": [
         {
+          "file": "trainer_battle_groups.json",
+          "locator": "frigate-first-377-376:vw2r-trainer-0161"
+        },
+        {
           "file": "../VW2R_Trainer_Battles.xlsx",
           "locator": "Skyla Split!A95:H95"
         }
@@ -263,6 +279,10 @@
       ],
       "evidence": [
         {
+          "file": "trainer_battle_groups.json",
+          "locator": "frigate-first-377-376:vw2r-trainer-0162"
+        },
+        {
           "file": "../VW2R_Trainer_Battles.xlsx",
           "locator": "Skyla Split!A106:H106"
         }
@@ -274,6 +294,10 @@
         "oshawott"
       ],
       "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "frigate-first-377-376:vw2r-trainer-0163"
+        },
         {
           "file": "../VW2R_Trainer_Battles.xlsx",
           "locator": "Skyla Split!A117:H117"
@@ -359,6 +383,10 @@
       ],
       "evidence": [
         {
+          "file": "trainer_battle_groups.json",
+          "locator": "lacunosa-zinzolin-grunt:vw2r-trainer-0272"
+        },
+        {
           "file": "../VW2R_Trainer_Battles.xlsx",
           "locator": "Drayden Split!A589:H589"
         }
@@ -370,6 +398,10 @@
         "tepig"
       ],
       "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "lacunosa-zinzolin-grunt:vw2r-trainer-0273"
+        },
         {
           "file": "../VW2R_Trainer_Battles.xlsx",
           "locator": "Drayden Split!A600:H600"
@@ -383,6 +415,10 @@
       ],
       "evidence": [
         {
+          "file": "trainer_battle_groups.json",
+          "locator": "lacunosa-zinzolin-grunt:vw2r-trainer-0274"
+        },
+        {
           "file": "../VW2R_Trainer_Battles.xlsx",
           "locator": "Drayden Split!A611:H611"
         }
@@ -394,6 +430,10 @@
         "snivy"
       ],
       "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "frigate-second-798-799:vw2r-trainer-0342"
+        },
         {
           "file": "../VW2R_Trainer_Battles.xlsx",
           "locator": "Ghetsis Split!A51:H51"
@@ -411,6 +451,10 @@
       ],
       "evidence": [
         {
+          "file": "trainer_battle_groups.json",
+          "locator": "frigate-second-798-799:vw2r-trainer-0343"
+        },
+        {
           "file": "../VW2R_Trainer_Battles.xlsx",
           "locator": "Ghetsis Split!A62:H62"
         },
@@ -426,6 +470,10 @@
         "oshawott"
       ],
       "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "frigate-second-798-799:vw2r-trainer-0344"
+        },
         {
           "file": "../VW2R_Trainer_Battles.xlsx",
           "locator": "Ghetsis Split!A73:H73"
@@ -443,6 +491,10 @@
       ],
       "evidence": [
         {
+          "file": "trainer_battle_groups.json",
+          "locator": "frigate-zinzolin-grunt:vw2r-trainer-0356"
+        },
+        {
           "file": "../VW2R_Trainer_Battles.xlsx",
           "locator": "Ghetsis Split!A51:H51"
         },
@@ -459,6 +511,10 @@
       ],
       "evidence": [
         {
+          "file": "trainer_battle_groups.json",
+          "locator": "frigate-zinzolin-grunt:vw2r-trainer-0357"
+        },
+        {
           "file": "../VW2R_Trainer_Battles.xlsx",
           "locator": "Ghetsis Split!A62:H62"
         },
@@ -474,6 +530,10 @@
         "oshawott"
       ],
       "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "frigate-zinzolin-grunt:vw2r-trainer-0358"
+        },
         {
           "file": "../VW2R_Trainer_Battles.xlsx",
           "locator": "Ghetsis Split!A73:H73"
@@ -521,7 +581,86 @@
       ]
     }
   ],
-  "variantBindings": [],
+  "variantBindings": [
+    {
+      "trainerId": "vw2r-trainer-0099",
+      "variantId": "final-rom-trainer-360",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "nimbasa-subway-bosses-tag:vw2r-trainer-0099:final-rom-trainer-360"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0099",
+      "variantId": "final-rom-trainer-363",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "nimbasa-subway-bosses-tag:vw2r-trainer-0099:final-rom-trainer-363"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0100",
+      "variantId": "final-rom-trainer-361",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "nimbasa-subway-bosses-tag:vw2r-trainer-0100:final-rom-trainer-361"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0100",
+      "variantId": "final-rom-trainer-364",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "nimbasa-subway-bosses-tag:vw2r-trainer-0100:final-rom-trainer-364"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0101",
+      "variantId": "final-rom-trainer-362",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "nimbasa-subway-bosses-tag:vw2r-trainer-0101:final-rom-trainer-362"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0101",
+      "variantId": "final-rom-trainer-365",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "nimbasa-subway-bosses-tag:vw2r-trainer-0101:final-rom-trainer-365"
+        }
+      ]
+    }
+  ],
   "occurrenceAlternatives": [],
   "provenance": {
     "builder": "tools/build_starter_selection.js",
@@ -537,6 +676,10 @@
       {
         "file": "trainer_order.json",
         "sha256": "1d8a90d85a302ad57030de9ee86fe3f8d18b41acd2bcc27e30ddc0ad3c90f675"
+      },
+      {
+        "file": "trainer_battle_groups.json",
+        "sha256": "bf51d96431a0b9ece030ad6af01b5d2b6e59d2f9dbf69f03064ef616b02a6e67"
       },
       {
         "file": "../VW2R_Trainer_Battles.xlsx",

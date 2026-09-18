@@ -77,6 +77,10 @@
         {
           "file": "trainer_documentation.json",
           "locator": "Maylene Split!228"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-959-960:renegade-platinum-trainer-0470"
         }
       ]
     },
@@ -93,6 +97,10 @@
         {
           "file": "trainer_documentation.json",
           "locator": "Maylene Split!206"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-959-960:renegade-platinum-trainer-0471"
         }
       ]
     },
@@ -109,6 +117,10 @@
         {
           "file": "trainer_documentation.json",
           "locator": "Maylene Split!217"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-959-960:renegade-platinum-trainer-0472"
         }
       ]
     },
@@ -229,6 +241,10 @@
         {
           "file": "trainer_documentation.json",
           "locator": "Volkner Split!364"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-528-407:renegade-platinum-trainer-0607"
         }
       ]
     },
@@ -241,6 +257,10 @@
         {
           "file": "trainer_documentation.json",
           "locator": "Gardenia Split!79"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-414-415:renegade-platinum-trainer-0613"
         }
       ]
     },
@@ -253,6 +273,10 @@
         {
           "file": "trainer_documentation.json",
           "locator": "Gardenia Split!89"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-414-415:renegade-platinum-trainer-0614"
         }
       ]
     },
@@ -265,6 +289,10 @@
         {
           "file": "trainer_documentation.json",
           "locator": "Gardenia Split!69"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-414-415:renegade-platinum-trainer-0615"
         }
       ]
     },
@@ -277,6 +305,10 @@
         {
           "file": "trainer_documentation.json",
           "locator": "Gardenia Split!49"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-414-415:renegade-platinum-trainer-0616"
         }
       ]
     },
@@ -289,6 +321,10 @@
         {
           "file": "trainer_documentation.json",
           "locator": "Gardenia Split!59"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-414-415:renegade-platinum-trainer-0617"
         }
       ]
     },
@@ -301,6 +337,10 @@
         {
           "file": "trainer_documentation.json",
           "locator": "Gardenia Split!39"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-414-415:renegade-platinum-trainer-0618"
         }
       ]
     },
@@ -313,6 +353,10 @@
         {
           "file": "trainer_documentation.json",
           "locator": "Volkner Split!353"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-528-407:renegade-platinum-trainer-0619"
         }
       ]
     },
@@ -325,6 +369,10 @@
         {
           "file": "trainer_documentation.json",
           "locator": "Volkner Split!375"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-528-407:renegade-platinum-trainer-0620"
         }
       ]
     },
@@ -337,6 +385,10 @@
         {
           "file": "trainer_documentation.json",
           "locator": "Wake Split!39"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-848-849:renegade-platinum-trainer-0624"
         }
       ]
     },
@@ -349,6 +401,10 @@
         {
           "file": "trainer_documentation.json",
           "locator": "Wake Split!50"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-848-849:renegade-platinum-trainer-0625"
         }
       ]
     },
@@ -361,6 +417,10 @@
         {
           "file": "trainer_documentation.json",
           "locator": "Wake Split!61"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-848-849:renegade-platinum-trainer-0626"
         }
       ]
     },
@@ -838,6 +898,10 @@
       {
         "file": "trainer_documentation.json",
         "sha256": "d51310930ebdf5e781e587994d7aeab0ed78e7debdceabe534a4517e662f828b"
+      },
+      {
+        "file": "trainer_battle_groups.json",
+        "sha256": "796fab01bc6b8c696c2785ebce5c5beb43cacf6cf4559feae27b71358d48c652"
       }
     ]
   },

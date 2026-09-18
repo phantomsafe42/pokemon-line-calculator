@@ -29,6 +29,198 @@
   ],
   "trainerBindings": [
     {
+      "trainerId": "platinum-kaizo-trainer-0613",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Gardenia Split!7"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "platinum-kaizo-occurrence-0029:platinum-kaizo-trainer-0613"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0614",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Gardenia Split!17"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "platinum-kaizo-occurrence-0029:platinum-kaizo-trainer-0614"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0615",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Gardenia Split!27"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "platinum-kaizo-occurrence-0029:platinum-kaizo-trainer-0615"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0616",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Gardenia Split!7"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "platinum-kaizo-occurrence-0029:platinum-kaizo-trainer-0616"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0617",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Gardenia Split!17"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "platinum-kaizo-occurrence-0029:platinum-kaizo-trainer-0617"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0618",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Gardenia Split!27"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "platinum-kaizo-occurrence-0029:platinum-kaizo-trainer-0618"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0621",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Maylene Split!321"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "platinum-kaizo-veilstone-tag-battle:platinum-kaizo-trainer-0621"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0622",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Maylene Split!301"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "platinum-kaizo-veilstone-tag-battle:platinum-kaizo-trainer-0622"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0623",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Maylene Split!311"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "platinum-kaizo-veilstone-tag-battle:platinum-kaizo-trainer-0623"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0624",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Maylene Split!321"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "platinum-kaizo-veilstone-tag-battle:platinum-kaizo-trainer-0624"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0625",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Maylene Split!301"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "platinum-kaizo-veilstone-tag-battle:platinum-kaizo-trainer-0625"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0626",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Maylene Split!311"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "platinum-kaizo-veilstone-tag-battle:platinum-kaizo-trainer-0626"
+        }
+      ]
+    },
+    {
       "trainerId": "platinum-kaizo-trainer-0905",
       "starterIds": [
         "turtwig"
@@ -181,6 +373,10 @@
         {
           "file": "trainer_documentation.json",
           "locator": "Galactic Split!1185"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "platinum-kaizo-occurrence-0366:platinum-kaizo-trainer-0956"
         }
       ]
     },
@@ -193,6 +389,10 @@
         {
           "file": "trainer_documentation.json",
           "locator": "Galactic Split!1165"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "platinum-kaizo-occurrence-0366:platinum-kaizo-trainer-0957"
         }
       ]
     },
@@ -205,6 +405,10 @@
         {
           "file": "trainer_documentation.json",
           "locator": "Galactic Split!1175"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "platinum-kaizo-occurrence-0366:platinum-kaizo-trainer-0958"
         }
       ]
     },
@@ -311,6 +515,10 @@
       {
         "file": "trainer_documentation.json",
         "sha256": "c6376c25aee77b4d0286af4ff6c337ef56b76b94a47c3b6460f7cf340b8de29a"
+      },
+      {
+        "file": "trainer_battle_groups.json",
+        "sha256": "d702410915d11f42c624a225c44817f0b330c71139d5576f82beed02f0bc71bd"
       }
     ]
   },

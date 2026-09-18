@@ -69,3 +69,44 @@ test('partner choices filter starter only, preserving exact ROM and gender alter
   const variants = unbound.trainer('pokemon-unbound-trainer-0465').mechanicsVariants;
   assert.equal(variants.filter(v => starterAllows(unbound.starterSelection, 'gible', 'pokemon-unbound-trainer-0465', v.id)).length, 1);
 });
+
+test('all games retain valid ally choices for each starter without altering trainer lookup', () => {
+  const games = fs.readdirSync(new URL('../src/generated/datasets/', import.meta.url)).filter(g => g !== 'radical-red');
+  for (const game of games) {
+    const data = context(game);
+    const groups = read(game, 'trainer_battle_groups.json').playerPartners?.bindings || [];
+    for (const group of groups) for (const starter of data.starterSelection.choices) {
+      const eligible = group.partnerOptions.filter(o => starterAllows(data.starterSelection, starter.id, o.trainerId, o.trainerVariantId));
+      assert.ok(eligible.length, `${game}:${group.id}:${starter.id}`);
+      for (const option of group.partnerOptions) assert.ok(data.trainer(option.trainerId), 'imports retain unfiltered lookup');
+    }
+  }
+});
+
+test('assistant and ally selection respects retail, hack and protagonist identity boundaries', () => {
+  for (const [game, enemy, starter, expected] of [
+    ['pokemon-diamond',414,'chimchar',[613,616]],
+    ['pokemon-pearl',848,'turtwig',[621,624]],
+    ['pokemon-platinum',414,'piplup',[614,617]],
+    ['platinum-kaizo',414,'chimchar',[613,616]],
+    ['renegade-platinum',414,'turtwig',[618,615]],
+    ['pokemon-heartgold',733,'totodile',[735]],
+    ['pokemon-soulsilver',733,'cyndaquil',[737]],
+    ['pokemon-black',62,'snivy',[56]],
+    ['pokemon-white',401,'tepig',[91]]
+  ]) {
+    const data = context(game), id = n => `${game}-trainer-${String(n).padStart(4,'0')}`;
+    const options = data.trainer(id(enemy)).playerPartnerBinding.partnerOptions;
+    const eligible = options.filter(o => starterAllows(data.starterSelection, starter, o.trainerId, o.trainerVariantId));
+    assert.deepEqual(eligible.map(o => o.trainerId).sort(), expected.map(id).sort(), `${game}:${starter}`);
+  }
+  for (const game of ['pokemon-black-2','pokemon-white-2']) {
+    const data = context(game), id = n => `${game}-trainer-${String(n).padStart(4,'0')}`;
+    const groups = read(game,'trainer_battle_groups.json').playerPartners.bindings;
+    for (const [suffix, starter, expected] of [['nimbasa-subway-bosses','snivy',[360,363]],
+      ['plasma-frigate-north-entrance','tepig',[795]],['plasma-frigate-command-center','oshawott',[796]]]) {
+      const options = groups.find(g => g.id.endsWith(suffix)).partnerOptions;
+      assert.deepEqual(options.filter(o => starterAllows(data.starterSelection,starter,o.trainerId,o.trainerVariantId)).map(o=>o.trainerId).sort(),expected.map(id).sort());
+    }
+  }
+});

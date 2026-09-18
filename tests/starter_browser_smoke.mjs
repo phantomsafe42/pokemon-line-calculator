@@ -70,6 +70,23 @@ try {
     const {IndexedDbBoxLibraryStore} = await import('./src/boxes/library.js');
     const store = new IndexedDbBoxLibraryStore();
     const before = JSON.stringify(await store.load());
+    const partnerCases = [
+      ['pokemon-diamond','chimchar','pokemon-diamond-trainer-0414',['0613','0616']],
+      ['pokemon-pearl','turtwig','pokemon-pearl-trainer-0848',['0621','0624']],
+      ['platinum-kaizo','piplup','platinum-kaizo-trainer-0414',['0614','0617']],
+      ['pokemon-heartgold','totodile','pokemon-heartgold-trainer-0733',['0735']],
+      ['pokemon-black-2','snivy',null,['0360','0363']]
+    ];
+    for (const [game,starter,enemy,expected] of partnerCases) {
+      await chooseGame(game); await chooseStarter(starter);
+      const selected = enemy || trainerIds().find(id=>id.includes('nimbasa-subway-bosses'));
+      check(selected && trainerIds().includes(selected), 'partner encounter exists: '+game);
+      el('trainer-select').value=selected; el('trainer-select').dispatchEvent(new Event('change'));
+      await wait(()=>!el('player-partner-panel').hidden, 'partner panel: '+game);
+      const choices=[...el('player-partner-select').options].filter(o=>o.value).map(o=>o.value.split('-').at(-1)).sort();
+      check(JSON.stringify(choices)===JSON.stringify(expected), 'filtered partner options: '+game+' '+choices);
+      check(el('player-partner-select').disabled===(expected.length===1), 'identity choice preserved: '+game);
+    }
     await chooseGame('volt-white-2r');
     await chooseStarter('snivy');
     check(trainerIds().includes('vw2r-trainer-0001') && !trainerIds().includes('vw2r-trainer-0002'), 'VW2R Snivy route');
@@ -91,7 +108,7 @@ try {
     check(JSON.stringify(await store.load())===before, 'starter choice must not add/change Boxes');
     el('boxes-tab').click(); el('change-starter').click(); await chooseStarter('oshawott');
     check(trainerIds().includes('vw2r-trainer-0003') && !trainerIds().includes('vw2r-trainer-0001'), 'Boxes changes future routes');
-    return {fro, emptyBoxesPreserved:true, testedGames:5};
+    return {fro, emptyBoxesPreserved:true, testedGames:10, partnerCases:partnerCases.length};
   })()`);
   await send('Page.reload'); await delay(500);
   await evaluate(`(async()=>{ ${helpers}

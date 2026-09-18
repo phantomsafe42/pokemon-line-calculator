@@ -2,7 +2,7 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-vw2r-dataset",
   "source": "Datasets/Volt White 2R/source-data",
-  "sourceTreeSha256": "C3EF4ABEA2E4CAC3682DDA6B1D47FB13E0F2DE6D7B8371DA879AA7326C10E45F",
+  "sourceTreeSha256": "790333BA34F75ADDB983A97A00B81D5D3BF43C6F66EA11DCFC8BBE97887F6824",
   "files": [
     {
       "path": "dataset_manifest.json",
@@ -81,8 +81,8 @@
     },
     {
       "path": "starter_selection.json",
-      "bytes": 11868,
-      "sha256": "F0BF1913B47B69DDC09004975453B184184C7C888326DEBA86551F290D7E63DD"
+      "bytes": 16005,
+      "sha256": "2B18459EDBCE2A6EABC2A7198D8CA39C035C543B290707E36C0E46F7E834F764"
     }
   ]
 }

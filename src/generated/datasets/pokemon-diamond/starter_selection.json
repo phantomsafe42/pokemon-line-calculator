@@ -173,6 +173,186 @@
       ]
     },
     {
+      "trainerId": "pokemon-diamond-trainer-0607",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "../../tools/starter_partner_routes.json",
+          "locator": "dp-barry-spear-pillar"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-diamond-trainer-0613",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "../../tools/starter_partner_routes.json",
+          "locator": "dp-assistant-jubilife-veilstone"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-diamond-trainer-0614",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "../../tools/starter_partner_routes.json",
+          "locator": "dp-assistant-jubilife-veilstone"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-diamond-trainer-0615",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "../../tools/starter_partner_routes.json",
+          "locator": "dp-assistant-jubilife-veilstone"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-diamond-trainer-0616",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "../../tools/starter_partner_routes.json",
+          "locator": "dp-assistant-jubilife-veilstone"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-diamond-trainer-0617",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "../../tools/starter_partner_routes.json",
+          "locator": "dp-assistant-jubilife-veilstone"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-diamond-trainer-0618",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "../../tools/starter_partner_routes.json",
+          "locator": "dp-assistant-jubilife-veilstone"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-diamond-trainer-0619",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "../../tools/starter_partner_routes.json",
+          "locator": "dp-barry-spear-pillar"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-diamond-trainer-0620",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "../../tools/starter_partner_routes.json",
+          "locator": "dp-barry-spear-pillar"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-diamond-trainer-0621",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "../../tools/starter_partner_routes.json",
+          "locator": "dp-assistant-jubilife-veilstone"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-diamond-trainer-0622",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "../../tools/starter_partner_routes.json",
+          "locator": "dp-assistant-jubilife-veilstone"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-diamond-trainer-0623",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "../../tools/starter_partner_routes.json",
+          "locator": "dp-assistant-jubilife-veilstone"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-diamond-trainer-0624",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "../../tools/starter_partner_routes.json",
+          "locator": "dp-assistant-jubilife-veilstone"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-diamond-trainer-0625",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "../../tools/starter_partner_routes.json",
+          "locator": "dp-assistant-jubilife-veilstone"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-diamond-trainer-0626",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "../../tools/starter_partner_routes.json",
+          "locator": "dp-assistant-jubilife-veilstone"
+        }
+      ]
+    },
+    {
       "trainerId": "pokemon-diamond-trainer-0837",
       "starterIds": [
         "piplup"
@@ -261,6 +441,18 @@
       {
         "file": "trainer_order.json",
         "sha256": "79b1a30025456677936f43e118c14bce5c0a02cb2afd9b68771225df0b347517"
+      },
+      {
+        "file": "../../tools/starter_partner_routes.json",
+        "sha256": "28d9e1896b0d6b98c13f7ebdff9c3a05ac54401ee5072cc44115ef4994c569d9"
+      },
+      {
+        "file": "../../tools/imports/vanilla/bulbapedia-trainer-docs-20260907/pages/page-18995-revision-4461771.json",
+        "sha256": "70ec626122fe07f001263db13ac0163ee2a1cb005742349a061877ccedda77a7"
+      },
+      {
+        "file": "../../tools/imports/vanilla/bulbapedia-trainer-docs-20260907/pages/page-102180-revision-4461780.json",
+        "sha256": "470b278e0781899f066e11ef27d705a551ff197aeb5a2d7beb3f3000f73779b3"
       }
     ]
   },
