@@ -282,7 +282,7 @@
       </div>
       <input id="editor-box-id" type="hidden"><input id="editor-pokemon-id" type="hidden"><input id="editor-context" type="hidden">
       <div class="editor-grid">
-        <label>Species<select id="editor-species"></select></label>
+        <div><label for="editor-species">Species</label><input id="editor-species-search" type="search" placeholder="Search species…" aria-label="Search species" autocomplete="off"><select id="editor-species"></select></div>
         <label>Nickname<input id="editor-nickname" maxlength="40"></label>
         <label>Level<input id="editor-level" type="number" min="1" max="100"></label>
         <label>Gender<select id="editor-gender"><option value="">Unspecified</option><option value="M">Male</option><option value="F">Female</option><option value="N">Genderless</option></select></label>
@@ -336,6 +336,6 @@
   </dialog>
 
   <script src="./src/generated/pokemon_asset_resolver.global.js?v=20260914-assets-v4"></script>
-  <script type="module" src="./src/app.js?v=20260917-new-line-dialog-v2"></script>
+  <script type="module" src="./src/app.js?v=20260917-species-search-v1"></script>
 </body>
 </html>

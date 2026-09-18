@@ -177,7 +177,7 @@ const ui = Object.fromEntries([
   "initial-weather", "initial-terrain", "context-box-select", "saved-party-field",
   "context-party-select", "context-pokemon-grid", "save-party-selection", "party-selector-controls",
   "enemy-team-summary", "party-selection-summary", "edit-party-selection", "edge-party-exp", "context-status", "begin-plan", "pokemon-editor-dialog",
-  "pokemon-editor-form", "pokemon-editor-title", "editor-sprite-preview", "editor-box-id", "editor-pokemon-id", "editor-context", "editor-species",
+  "pokemon-editor-form", "pokemon-editor-title", "editor-sprite-preview", "editor-box-id", "editor-pokemon-id", "editor-context", "editor-species", "editor-species-search",
   "editor-nickname", "editor-level", "editor-gender", "editor-nature", "editor-ability", "editor-item", "editor-hidden-power-type",
   "editor-hp-field", "editor-starting-hp", "editor-status-field", "editor-starting-status", "editor-stats",
   "editor-moves", "editor-error", "save-pokemon", "showdown-dialog", "showdown-text", "showdown-destination",
@@ -859,6 +859,27 @@ function defaultEditorRecord(speciesId = null) {
   };
 }
 
+function filterEditorSpecies() {
+  const select = ui["editor-species"];
+  const selectedId = select.value;
+  const query = ui["editor-species-search"].value.trim().toLocaleLowerCase();
+  const records = sortedSpeciesRecords();
+  const matches = records.filter(record => speciesSelectLabel(record).toLocaleLowerCase().includes(query));
+  fillSelect(select, matches, { labelFor: speciesSelectLabel });
+  // Retain the actual choice even when it is outside the search results.
+  // Typing is navigation, not an implicit species/form edit.
+  if (selectedId && !matches.some(record => record.id === selectedId)) {
+    const selected = records.find(record => record.id === selectedId);
+    if (selected) {
+      const preserved = option(selectedId, speciesSelectLabel(selected));
+      preserved.hidden = true;
+      select.prepend(preserved);
+    }
+  }
+  if (!matches.length) select.append(option("", "No matching species", { disabled: true }));
+  select.value = selectedId;
+}
+
 function readEditorDraft() {
   const species = dataset.get("species", ui["editor-species"].value);
   const hiddenPowerType = resolvedHiddenPowerType(
@@ -930,6 +951,8 @@ function refreshEditorHiddenPower() {
 
 function loadEditorRecord(record) {
   ui["editor-sprite-preview"].replaceChildren(sprite(record, `${record.displayName || record.speciesId} sprite`));
+  ui["editor-species-search"].value = "";
+  fillSelect(ui["editor-species"], sortedSpeciesRecords(), { labelFor: speciesSelectLabel });
   ui["editor-species"].value = record.speciesId;
   ui["editor-nickname"].value = record.nickname || "";
   ui["editor-level"].value = record.level;
@@ -958,6 +981,22 @@ function loadEditorRecord(record) {
 function initializePokemonEditor() {
   if (pokemonEditorGameId === selectedGameId && editorMoveRows.length === 4) return;
   fillSelect(ui["editor-species"], sortedSpeciesRecords(), { labelFor: speciesSelectLabel });
+  ui["editor-species-search"].oninput = filterEditorSpecies;
+  ui["editor-species-search"].onkeydown = event => {
+    if (event.key === "Escape") {
+      event.preventDefault();
+      event.stopPropagation();
+      ui["editor-species-search"].value = "";
+      filterEditorSpecies();
+    } else if (event.key === "Enter") {
+      event.preventDefault();
+      const matches = [...ui["editor-species"].options].filter(entry => !entry.hidden && !entry.disabled);
+      if (matches.length === 1) {
+        ui["editor-species"].value = matches[0].value;
+        ui["editor-species"].dispatchEvent(new Event("change", { bubbles: true }));
+      } else ui["editor-species"].focus();
+    }
+  };
   fillSelect(ui["editor-nature"], sortedRecords("natures"));
   fillSelect(ui["editor-ability"], sortedRecords("abilities"));
   fillSelect(ui["editor-item"], sortedRecords("items"), { blank: "No item" });
