@@ -258,7 +258,10 @@ try {
     document.querySelector('.game-picker-option[data-game-id="pokemon-ruby"]').click();
     await wait(() => /Ruby is ready\./.test(document.getElementById('app-status')?.textContent || '')
       && document.getElementById('trainer-select').options.length > 1, 'public vanilla game data and worker');
-    await wait(() => document.getElementById('plan-context-dialog').open, 'clean-plan dialog');
+    await wait(() => !document.getElementById('game-dialog').open, 'Ruby game selection complete');
+    if (document.getElementById('plan-context-dialog').open) throw new Error('Game selection must not open New Line');
+    document.getElementById('new-plan').click();
+    await wait(() => document.getElementById('plan-context-dialog').open, 'explicit New Line dialog');
     const trainerSelect = document.getElementById('trainer-select');
     const planName = document.getElementById('plan-name');
     const initialPlanName = planName.value;
@@ -292,7 +295,10 @@ try {
     document.querySelector('.game-picker-option[data-game-id="volt-white-2r"]').click();
     await wait(() => /is ready\./.test(document.getElementById('app-status')?.textContent || '')
       && document.getElementById('trainer-select').options.length === ${expectedVw2rTrainerIds.length + 1}, 'public game data, AI bootstrap, and resolver');
-    await wait(() => document.getElementById('plan-context-dialog').open, 'VW2R clean-plan dialog');
+    await wait(() => !document.getElementById('game-dialog').open, 'VW2R game selection complete');
+    if (document.getElementById('plan-context-dialog').open) throw new Error('Changing game must not open New Line');
+    document.getElementById('new-plan').click();
+    await wait(() => document.getElementById('plan-context-dialog').open, 'explicit VW2R New Line dialog');
     const vw2rTrainerSelect = document.getElementById('trainer-select');
     const neilOption = [...vw2rTrainerSelect.options].find(entry => entry.textContent.startsWith('School Kid Neil ·'));
     if (!neilOption) throw new Error('School Kid Neil is unavailable for encounter-format validation');
