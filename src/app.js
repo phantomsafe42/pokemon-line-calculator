@@ -1870,7 +1870,7 @@ function renderTrainerAiNotes(state) {
   for (const actor of analysis.actors) {
     const article = document.createElement("details"); article.className = "ai-actor-note";
     const title = document.createElement("summary");
-    title.textContent = `${actor.name} · Slot ${slotsPerSide(plan) + actor.slot + 1}${plan.game.battleFormat === "rotation" ? actor.front ? " · currently front" : " · waiting" : ""}`;
+    title.textContent = `${actor.name} · ${forecastTargetLabel({ targetSide: "enemy", targetSlot: actor.slot }, battleSlotNumber)}${plan.game.battleFormat === "rotation" ? actor.front ? " · currently front" : " · waiting" : ""}`;
     if (actor.forecastStatus === "available") {
       const overview = document.createElement("span");
       overview.className = "ai-collapsed-moves";
