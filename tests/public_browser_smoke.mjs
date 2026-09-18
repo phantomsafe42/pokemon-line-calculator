@@ -374,6 +374,71 @@ try {
       moveControls: document.querySelectorAll('#editor-moves select').length
     };
     document.getElementById('pokemon-editor-dialog').close();
+    // Exercise the simplified selector through real UI events in this isolated
+    // browser profile; never read or replace the user's Boxes or active line.
+    if (document.getElementById('plan-context-dialog').open) document.getElementById('plan-context-dialog').close();
+    document.getElementById('showdown-open').click();
+    document.getElementById('showdown-text').value = Array.from({ length: 7 }, (_, i) =>
+      'Picker ' + (i + 1) + ' (Bulbasaur)\\nLevel: 15\\n- Tackle').join('\\n\\n');
+    document.getElementById('import-showdown').click();
+    await wait(() => !document.getElementById('showdown-dialog').open && document.querySelectorAll('.box-card').length === 2, 'picker fixture import');
+    document.getElementById('new-plan').click();
+    const check = (condition, message) => { if (!condition) throw new Error(message); };
+    const change = (element, value) => { element.value = value; element.dispatchEvent(new Event('change', { bubbles: true })); };
+    const dialog = document.getElementById('plan-context-dialog');
+    check(document.getElementById('plan-context-title').textContent === 'New Line', 'New Line dialog title');
+    for (const [id, label] of [['battle-format', 'Format'], ['plan-name', 'Plan Name'], ['initial-weather', 'Weather'], ['initial-terrain', 'Terrain']]) {
+      check(document.getElementById(id).closest('label').firstChild.textContent.trim() === label, 'context label ' + id);
+    }
+    check(!document.getElementById('party-source-mode') && !dialog.textContent.includes('Selection source'), 'removed source selector');
+    const boxSelect = document.getElementById('context-box-select');
+    const partySelect = document.getElementById('context-party-select');
+    const grid = document.getElementById('context-pokemon-grid');
+    const saveParty = document.getElementById('save-party-selection');
+    const fixtureBox = [...boxSelect.options].find(entry => /7 Pokémon/.test(entry.textContent));
+    check(Boolean(fixtureBox), 'seven-member fixture Box');
+    change(boxSelect, fixtureBox.value);
+    check(partySelect.value === '' && partySelect.selectedOptions[0].textContent === '', 'default blank Party');
+    check(grid.children.length === 0 && saveParty.disabled, 'blank Party does not select or show Pokémon');
+    change(partySelect, '__new_party__');
+    check(grid.children.length === 7 && saveParty.disabled, 'manual picker initially empty');
+    check([...grid.querySelectorAll('.context-held-item')].every(item => item.textContent === 'No Item'), 'No Item card labels');
+    check([...grid.querySelectorAll('.context-pre-item')].every(select => select.options[0].textContent === 'No Item'), 'No Item picker labels');
+    for (let index = 0; index < 7; index++) grid.children[index].querySelector('button').click();
+    check(grid.querySelectorAll('.is-selected').length === 6, 'six-Pokémon manual limit');
+    const savedPartyId = partySelect.options[2].value;
+    change(partySelect, savedPartyId);
+    check(grid.children.length === 6 && !saveParty.disabled, 'saved Party loads its six members');
+    check(![...grid.querySelectorAll('button')].some(button => /^(Select|Remove)$/.test(button.textContent)), 'saved Party is not manual');
+    change(partySelect, '');
+    check(grid.children.length === 0 && saveParty.disabled && document.getElementById('begin-plan').disabled, 'blank clears saved Party');
+    change(partySelect, '__new_party__');
+    check(grid.children.length === 7 && !grid.querySelector('.is-selected') && saveParty.disabled, 'returning to New Party clears saved selection');
+    grid.children[6].querySelector('button').click();
+    saveParty.click();
+    check(!document.getElementById('party-selection-summary').hidden && document.getElementById('party-selection-summary').children.length === 1, 'save manual Party summary');
+    document.getElementById('edit-party-selection').click();
+    check(partySelect.value === '__new_party__' && grid.children[6].classList.contains('is-selected'), 'edit manual selection preserves chosen member');
+    change(partySelect, savedPartyId);
+    dialog.close();
+    document.getElementById('new-plan').click();
+    check(partySelect.value === '' && grid.children.length === 0 && saveParty.disabled, 'new line resets saved Party to blank');
+    const emptyBox = [...boxSelect.options].find(entry => /0 Pokémon/.test(entry.textContent));
+    change(boxSelect, emptyBox.value);
+    check(partySelect.value === '' && grid.children.length === 0 && saveParty.disabled, 'empty Box resets picker');
+    change(boxSelect, fixtureBox.value);
+    change(partySelect, savedPartyId);
+    change(document.getElementById('trainer-select'), 'renegade-platinum-trainer-0201');
+    change(document.getElementById('battle-format-choice'), 'allied:renegade-platinum-player-partner-201-204');
+    await wait(() => document.querySelectorAll('#player-partner-summary .context-pokemon').length > 0, 'Cheryl partner preview');
+    for (const panel of ['enemy-team-summary', 'player-partner-summary']) {
+      const cards = [...document.querySelectorAll('#' + panel + ' .context-pokemon')];
+      check(cards.length > 0 && cards.every(card => /^Lv\\. \\d+$/.test(card.querySelector('small').textContent)), 'level-only subtitles ' + panel);
+    }
+    saveParty.click();
+    check(!document.getElementById('begin-plan').disabled, 'saved party can begin partner battle');
+    result.newLineDialog = { manualLimit: 6, savedPartyMembers: 6, enemyAndPartnerLevelOnly: true, labelsVerified: true };
+    dialog.close();
     return result;
   })()`, true);
 
@@ -445,7 +510,29 @@ try {
   assert.equal(mobile.pickerOpen, true);
   assert.ok(mobile.pickerWidth <= mobile.viewport);
 
+  await evaluate(page, `(() => {
+    document.getElementById('game-dialog').close();
+    document.getElementById('new-plan').click();
+    const change = (id, value) => { const element = document.getElementById(id); element.value = value; element.dispatchEvent(new Event('change', { bubbles: true })); };
+    const boxes = document.getElementById('context-box-select');
+    change('context-box-select', [...boxes.options].find(entry => /7 Pokémon/.test(entry.textContent)).value);
+    change('context-party-select', document.getElementById('context-party-select').options[2].value);
+    change('trainer-select', 'renegade-platinum-trainer-0201');
+    change('battle-format-choice', 'allied:renegade-platinum-player-partner-201-204');
+  })()`);
+  for (const width of [320, 390, 1280, 1920]) {
+    await page.send("Emulation.setDeviceMetricsOverride", { width, height: 1000, deviceScaleFactor: 1, mobile: width < 600 });
+    await delay(150);
+    const layout = await evaluate(page, `(() => {
+      const dialog = document.getElementById('plan-context-dialog');
+      return { open: dialog.open, width: dialog.getBoundingClientRect().width, innerWidth, scrollWidth: dialog.scrollWidth, clientWidth: dialog.clientWidth };
+    })()`);
+    assert.equal(layout.open, true);
+    assert.ok(layout.width <= layout.innerWidth, 'New Line dialog fits viewport ' + width);
+    assert.ok(layout.scrollWidth <= layout.clientWidth + 1, 'New Line dialog has no horizontal overflow ' + width);
+  }
   await page.send("Emulation.setDeviceMetricsOverride", { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
+  await delay(150);
   const image = await page.send("Page.captureScreenshot", { format: "png", captureBeyondViewport: false });
   await fs.writeFile(screenshot, Buffer.from(image.data, "base64"));
 

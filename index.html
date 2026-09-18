@@ -181,29 +181,29 @@
   <dialog id="plan-context-dialog" class="wide-dialog" aria-labelledby="plan-context-title">
     <form method="dialog" class="dialog-card" id="plan-context-form">
       <div class="section-heading">
-        <div><h2 id="plan-context-title">Begin a clean plan</h2></div>
+        <div><h2 id="plan-context-title">New Line</h2></div>
         <button id="plan-context-close" type="submit" value="cancel" class="icon-button secondary" aria-label="Close">×</button>
       </div>
       <div class="context-grid">
         <label>Trainer
           <select id="trainer-select"><option value="">Select trainer…</option></select>
         </label>
-        <label>Battle format
+        <label>Format
           <input id="battle-format" value="Select a trainer" readonly>
           <select id="battle-format-choice" hidden aria-label="Select battle format"></select>
         </label>
         <label id="variant-field" hidden>ROM trainer variant
           <select id="variant-select"></select>
         </label>
-        <label>Plan name
+        <label>Plan Name
           <input id="plan-name" maxlength="240">
         </label>
-        <label>Starting weather
+        <label>Weather
           <select id="initial-weather">
             <option value="">Clear</option><option value="rain">Rain</option><option value="sun">Sun</option><option value="sand">Sand</option><option value="hail">Hail</option>
           </select>
         </label>
-        <label>Starting terrain
+        <label>Terrain
           <select id="initial-terrain">
             <option value="">None</option><option value="electric">Electric</option><option value="grassy">Grassy</option><option value="misty">Misty</option><option value="psychic">Psychic</option>
           </select>
@@ -254,11 +254,8 @@
             <label>Box
               <select id="context-box-select"><option value="">Select Box…</option></select>
             </label>
-            <label>Selection source
-              <select id="party-source-mode"><option value="party">Saved Party</option><option value="manual">Choose up to 6</option></select>
-            </label>
             <label id="saved-party-field">Party
-              <select id="context-party-select"><option value="">Select Party…</option></select>
+              <select id="context-party-select"><option value=""></option><option value="__new_party__">New Party</option></select>
             </label>
           </div>
           <div id="context-pokemon-grid" class="context-pokemon-grid"></div>
@@ -339,6 +336,6 @@
   </dialog>
 
   <script src="./src/generated/pokemon_asset_resolver.global.js?v=20260914-assets-v4"></script>
-  <script type="module" src="./src/app.js?v=20260917-new-line-label-v1"></script>
+  <script type="module" src="./src/app.js?v=20260917-new-line-dialog-v2"></script>
 </body>
 </html>
