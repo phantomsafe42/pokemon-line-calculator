@@ -2,12 +2,12 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-emerald-dataset",
   "source": "Datasets/Pokemon Emerald/source-data",
-  "sourceTreeSha256": "6802E50323E8178FCB19683E8FBAC8721BF1D434F09C89046F5908DFCCBF9936",
+  "sourceTreeSha256": "2433CF383CE87B0EF2F83F900DD33DF8388BF8C0A4B588870BDA2168E0D9C267",
   "files": [
     {
       "path": "dataset_manifest.json",
       "bytes": 70864,
-      "sha256": "91B29D4554448DC33612DDAB8AFA5351273E51DE28362B382517210426E7F875"
+      "sha256": "5B23AC965411D0AC10C8F6CBE372358431F0D31E18F14A043A636B0283973356"
     },
     {
       "path": "battle_mechanics.json",
