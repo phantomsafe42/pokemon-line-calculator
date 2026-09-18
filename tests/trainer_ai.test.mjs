@@ -10,6 +10,10 @@ import { normalizePlayerCollection, normalizeTrainerRoster, snapshotFingerprint 
 import { createPlanDocument } from "../src/core/plan.js";
 import { fixturePlan, fixtureRotationPlan } from "./helpers.mjs";
 import { trappingAbilityBlocksSwitch } from "../src/rulesets/ability_rules.js";
+import { forecastTargetLabel } from "../src/ui/ai_forecast.js";
+import { slotsPerSide } from "../src/core/battle_slots.js";
+import { triplePositionForSlot } from "../src/rulesets/triple_battle.js";
+import { TrainerAiForecastCache } from "../src/cache/trainer_ai_forecast.js";
 
 const generatedRoot = fileURLToPath(new URL("../src/generated/trainer-ai/", import.meta.url));
 const generatedDatasetRoot = fileURLToPath(new URL("../src/generated/datasets/renegade-platinum/", import.meta.url));
@@ -97,11 +101,132 @@ function createRenegadeAiPlan(dataset, trainerId = "renegade-platinum-trainer-05
   });
 }
 
-async function simpleActionFixture(format = "doubles") {
+function withoutTargetSide(value) {
+  return JSON.parse(JSON.stringify(value, (key, entry) => {
+    if (key === 'targetSide') return undefined;
+    // The evaluator's action keys serialize the complete action, including display metadata.
+    if (typeof entry === 'string' && entry.startsWith('{') && entry.includes('"targetSide"')) {
+      return JSON.stringify(withoutTargetSide(JSON.parse(entry)));
+    }
+    return entry;
+  }));
+}
+
+function assertForecastTargetLabels(plan, result) {
+  let count = 0;
+  for (const actor of result.actors) for (const move of actor.moves) {
+    for (const row of move.incentiveLedger?.finalScoreDistributions || []) {
+      const target = Object.values(plan.combatants).find(mon => row.candidateId.endsWith(':' + mon.combatantKey));
+      assert.ok(target, row.candidateId);
+      assert.equal(row.targetSide, target.side);
+      const expected = triplePositionForSlot(plan, target.side, row.targetSlot) + 1
+        + (target.side === 'enemy' ? slotsPerSide(plan) : 0);
+      assert.equal(forecastTargetLabel(row, (side, slot) =>
+        triplePositionForSlot(plan, side, slot) + 1 + (side === 'enemy' ? slotsPerSide(plan) : 0)), 'Slot ' + expected);
+      count += 1;
+    }
+  }
+  assert.ok(count > 0, 'must actually exercise scored target tables');
+}
+
+test('Gen 4 forecast ledgers retain target sides for both enemy actors without changing scoring or selections', async () => {
+  const dataset = await loadStandardizedDataset({ baseUrl: 'http://fixture/rp', fetchImpl: generatedDatasetFetch });
+  const plan = createRenegadeAiPlan(dataset, 'renegade-platinum-trainer-0246');
+  const state = plan.stateNodes[plan.initialStateNodeId];
+  plan.game.battleFormat = 'doubles';
+  const enemies = Object.values(plan.combatants).filter(mon => mon.side === 'enemy').map(mon => mon.combatantKey);
+  state.active.enemyCombatantKeys = enemies.slice(0, 2);
+  state.combatantStates[state.active.playerCombatantKeys[0]].currentAbilityId = 'arenatrap';
+  dataset.trainer(plan.game.trainerId).battleProfiles.default.bagItemIds = [];
+  for (const key of enemies) {
+    Object.assign(state.combatantStates[key], {
+      currentAbilityId: '', currentItemId: null,
+      currentTypeIds: ['normal'],
+      moveSetOverride: [{ moveId: 'tackle', maxPp: 35 }, { moveId: 'curse', maxPp: 10 }],
+      movePp: { tackle: 35, curse: 10 }
+    });
+  }
+  const ai = await loadTrainerAiDocumentation({ baseUrl: 'http://fixture/trainer-ai', gameId: 'renegade-platinum', generation: 4, fetchImpl: generatedFetch });
+  const engine = generatedEvaluator();
+  const requests = [];
+  const evaluator = { ...engine, forecast: input => { requests.push(input.request); return engine.forecast({ ...input,
+    request: { ...input.request, state: { ...input.request.state, random: { g4LcrngSeed: 0 } } }
+  }); } };
+  const fixture = { plan, state, dataset, ai, evaluator,
+    damageAdapter: { calculate: ({ move }) => move.category === 'status' ? { status: 'status' } : { status: 'ok', damage: [10] } }
+  };
+  const before = JSON.stringify(plan);
+  const result = analyzeTrainerAi(fixture);
+  const legacy = analyzeTrainerAi({ ...fixture, evaluator: { ...evaluator, forecast: input => evaluator.forecast({
+    ...input, request: withoutTargetSide(input.request),
+    precedingActors: input.precedingActors?.map(actor => ({ ...actor, request: withoutTargetSide(actor.request) }))
+  }) } });
+  assert.deepEqual(withoutTargetSide(result), withoutTargetSide(legacy), 'only side metadata changes');
+  assert.equal(JSON.stringify(plan), before);
+  assertForecastTargetLabels(plan, result);
+  const redirected = requests.flatMap(request => request.phaseInputs['move-target-selection']?.candidates || [])
+    .filter(candidate => candidate.selectedAction && candidate.action.targetSide);
+  assert.ok(redirected.length);
+  for (const candidate of redirected) {
+    assert.equal(candidate.action.targetSide, plan.combatants[candidate.action.targetCombatantKey].side,
+      'score remains associated with the source scoring target');
+    assert.equal(candidate.selectedAction.targetSide, 'enemy', 'self-redirection has its own side');
+    assert.equal(candidate.selectedAction.targetCombatantKey, candidate.action.actorId);
+  }
+  assert.equal(result.actors.length, 2);
+  for (const [slot, actor] of result.actors.entries()) {
+    assert.equal(actor.forecastStatus, 'available', actor.forecastError);
+    const rows = actor.moves.flatMap(move => move.incentiveLedger?.finalScoreDistributions || []);
+    assert.ok(rows.some(row => row.targetSlot === 1 - slot && row.targetSide === 'enemy'),
+      `Enemy Slot ${slot + 3} must identify its ally as enemy slot ${1 - slot}: ${JSON.stringify(rows)}`);
+    assert.ok(rows.some(row => row.targetSlot === 0 && row.targetSide === 'player'));
+  }
+  const cache = new TrainerAiForecastCache();
+  await cache.resolve(plan, state, () => result);
+  const revisited = await cache.resolve(plan, structuredClone(state), () => { throw new Error('must not regenerate'); });
+  assert.equal(revisited, result);
+  assertForecastTargetLabels(plan, revisited);
+});
+
+test('Gen 5 forecast target sides survive Singles, Doubles, Multi, Triples, Rotation and empty slots', async () => {
+  for (const format of ['singles', 'doubles', 'multi', 'triples', 'rotation']) {
+    const fixture = await simpleActionFixture(format === 'rotation' ? 'triples' : format,
+      format === 'multi' ? 'vw2r-lenora-hawes-double' : undefined);
+    if (format === 'multi') for (const mon of Object.values(fixture.plan.combatants).filter(mon => mon.side === 'enemy')) {
+      const profile = fixture.dataset.trainer(mon.source.partyOwnerId).battleProfiles.challenge;
+      profile.aiMask = 0; profile.aiFlagIds = []; profile.bagItemIds = [];
+    }
+    fixture.plan.game.battleFormat = format === 'multi' ? 'doubles' : format;
+    if (format === 'singles') {
+      fixture.state.active.playerCombatantKeys.length = 1;
+      fixture.state.active.enemyCombatantKeys.length = 1;
+    }
+    for (const key of fixture.state.active.enemyCombatantKeys) {
+      fixture.state.combatantStates[key].moveSetOverride.push({ moveId: 'helpinghand', maxPp: 20 });
+      fixture.state.combatantStates[key].movePp.helpinghand = 20;
+    }
+    const result = analyzeTrainerAi(fixture);
+    assertForecastTargetLabels(fixture.plan, result);
+    const engine = fixture.evaluator;
+    const legacy = analyzeTrainerAi({ ...fixture, evaluator: { ...engine, forecast: input => engine.forecast({
+      ...input, request: withoutTargetSide(input.request)
+    }) } });
+    assert.deepEqual(withoutTargetSide(result), withoutTargetSide(legacy), format + ': scores, probabilities and mechanics targets unchanged');
+    if (format === 'doubles') {
+      fixture.state.active.enemyCombatantKeys[1] = null;
+      fixture.state.active.playerCombatantKeys[1] = null;
+      const empty = analyzeTrainerAi(fixture);
+      assertForecastTargetLabels(fixture.plan, empty);
+      assert.ok(empty.actors.flatMap(actor => actor.moves).flatMap(move => move.incentiveLedger?.finalScoreDistributions || [])
+        .every(row => row.targetSlot === 0), 'empty slots never acquire a target label');
+    }
+  }
+});
+
+async function simpleActionFixture(format = "doubles", trainerId = "vw2r-trainer-0073") {
   const dataset = await loadStandardizedDataset({ baseUrl: "http://fixture/vw2r", fetchImpl: generatedVw2rDatasetFetch });
   const ai = await loadTrainerAiDocumentation({ baseUrl: "http://fixture/trainer-ai", fetchImpl: generatedFetch });
   dataset.abilityKnowledgePolicy = ai.evaluatorProfile?.constants?.abilityKnowledge || null;
-  const trainerId = "vw2r-trainer-0073";
   const battleProfile = dataset.trainer(trainerId).battleProfiles[dataset.mechanics.trainerBattleProfile];
   battleProfile.format = format === "triples" ? "triple" : "double";
   battleProfile.aiMask = 0;
