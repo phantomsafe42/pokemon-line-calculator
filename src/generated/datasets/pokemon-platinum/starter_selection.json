@@ -1,0 +1,549 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-platinum",
+  "kind": "starter-selection",
+  "scope": "documented-player-starter-navigation",
+  "unknownPolicy": "preserve-unmapped-options",
+  "choices": [
+    {
+      "id": "chimchar",
+      "speciesId": "chimchar",
+      "label": "Fire",
+      "speciesName": "Chimchar",
+      "type": "Fire"
+    },
+    {
+      "id": "piplup",
+      "speciesId": "piplup",
+      "label": "Water",
+      "speciesName": "Piplup",
+      "type": "Water"
+    },
+    {
+      "id": "turtwig",
+      "speciesId": "turtwig",
+      "label": "Grass",
+      "speciesName": "Turtwig",
+      "type": "Grass"
+    }
+  ],
+  "trainerBindings": [
+    {
+      "trainerId": "pokemon-platinum-trainer-0247",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0017"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0248",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0015"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0249",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0016"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0470",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0121"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0471",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0119"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0472",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0120"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0473",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0200"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0474",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0198"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0475",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0199"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0476",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0281"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0477",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0279"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0478",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0280"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0479",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0431"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0480",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0429"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0481",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0430"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0607",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0377"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0613",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0033"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0614",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0035"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0615",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0031"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0616",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0032"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0617",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0034"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0618",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0030"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0619",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0375"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0620",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0376"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0621",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0160"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0622",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0162"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0623",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0164"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0624",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0159"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0625",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0161"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0626",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0163"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0837",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0504"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0838",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0502"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0839",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0503"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0850",
+      "starterIds": [
+        "chimchar",
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0003"
+        },
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0006"
+        },
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0007"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0851",
+      "starterIds": [
+        "piplup",
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0001"
+        },
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0008"
+        },
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0009"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0852",
+      "starterIds": [
+        "chimchar",
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0002"
+        },
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0004"
+        },
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0005"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0923",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0462"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0924",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0460"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-platinum-trainer-0925",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-platinum-campaign-occurrence-0461"
+        }
+      ]
+    }
+  ],
+  "variantBindings": [],
+  "occurrenceAlternatives": [],
+  "provenance": {
+    "builder": "tools/build_starter_selection.js",
+    "inputs": [
+      {
+        "file": "species.json",
+        "sha256": "46dbc02e4b3b5317fcdb6537f1b06a4458a26dc8bcd3c0e662dc17aafe35b422"
+      },
+      {
+        "file": "trainers.json",
+        "sha256": "234b0d7e1e7c903f1f76738becf6721de04645f90cc1a844e9ff311b5b743d0f"
+      },
+      {
+        "file": "trainer_order.json",
+        "sha256": "87de5690f9937274e86e95cf092715f6ffc0f57f6f342dcbf5ed03d828dea10b"
+      }
+    ]
+  },
+  "limitations": [
+    "Only explicitly documented player choices filter navigation. Unmapped catalogue records and unrelated gender, difficulty and rematch alternatives remain available. Existing plans and legacy consumer starter profiles are unchanged."
+  ]
+}

@@ -1,0 +1,270 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-heartgold",
+  "kind": "starter-selection",
+  "scope": "documented-player-starter-navigation",
+  "unknownPolicy": "preserve-unmapped-options",
+  "choices": [
+    {
+      "id": "cyndaquil",
+      "speciesId": "cyndaquil",
+      "label": "Fire",
+      "speciesName": "Cyndaquil",
+      "type": "Fire"
+    },
+    {
+      "id": "totodile",
+      "speciesId": "totodile",
+      "label": "Water",
+      "speciesName": "Totodile",
+      "type": "Water"
+    },
+    {
+      "id": "chikorita",
+      "speciesId": "chikorita",
+      "label": "Grass",
+      "speciesName": "Chikorita",
+      "type": "Grass"
+    }
+  ],
+  "trainerBindings": [
+    {
+      "trainerId": "pokemon-heartgold-trainer-0001",
+      "starterIds": [
+        "totodile"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-heartgold-campaign-occurrence-0051"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-heartgold-trainer-0263",
+      "starterIds": [
+        "totodile"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-heartgold-campaign-occurrence-0094"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-heartgold-trainer-0264",
+      "starterIds": [
+        "totodile"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-heartgold-campaign-occurrence-0253"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-heartgold-trainer-0266",
+      "starterIds": [
+        "chikorita"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-heartgold-campaign-occurrence-0049"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-heartgold-trainer-0267",
+      "starterIds": [
+        "chikorita"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-heartgold-campaign-occurrence-0092"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-heartgold-trainer-0268",
+      "starterIds": [
+        "chikorita"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-heartgold-campaign-occurrence-0251"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-heartgold-trainer-0269",
+      "starterIds": [
+        "cyndaquil"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-heartgold-campaign-occurrence-0050"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-heartgold-trainer-0270",
+      "starterIds": [
+        "cyndaquil"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-heartgold-campaign-occurrence-0093"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-heartgold-trainer-0271",
+      "starterIds": [
+        "cyndaquil"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-heartgold-campaign-occurrence-0199"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-heartgold-trainer-0272",
+      "starterIds": [
+        "cyndaquil"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-heartgold-campaign-occurrence-0252"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-heartgold-trainer-0285",
+      "starterIds": [
+        "totodile"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-heartgold-campaign-occurrence-0395"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-heartgold-trainer-0286",
+      "starterIds": [
+        "chikorita"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-heartgold-campaign-occurrence-0393"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-heartgold-trainer-0287",
+      "starterIds": [
+        "cyndaquil"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-heartgold-campaign-occurrence-0394"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-heartgold-trainer-0288",
+      "starterIds": [
+        "totodile"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-heartgold-campaign-occurrence-0200"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-heartgold-trainer-0289",
+      "starterIds": [
+        "chikorita"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-heartgold-campaign-occurrence-0198"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-heartgold-trainer-0495",
+      "starterIds": [
+        "totodile"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-heartgold-campaign-occurrence-0006"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-heartgold-trainer-0496",
+      "starterIds": [
+        "chikorita"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-heartgold-campaign-occurrence-0004"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-heartgold-trainer-0497",
+      "starterIds": [
+        "cyndaquil"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-heartgold-campaign-occurrence-0005"
+        }
+      ]
+    }
+  ],
+  "variantBindings": [],
+  "occurrenceAlternatives": [],
+  "provenance": {
+    "builder": "tools/build_starter_selection.js",
+    "inputs": [
+      {
+        "file": "species.json",
+        "sha256": "f068b963792ee3c5db88b2ed65e3fdf59f89a160c87042e86115963805af6ce7"
+      },
+      {
+        "file": "trainers.json",
+        "sha256": "df06c2172ae2fd4d4b3e4f4cb66be9745b238078920450c76c2deacf8c395f00"
+      },
+      {
+        "file": "trainer_order.json",
+        "sha256": "86904342e34086930eaab35c6d2fdc58a659d7b5457aa2e8294f2b22e363268f"
+      }
+    ]
+  },
+  "limitations": [
+    "Only explicitly documented player choices filter navigation. Unmapped catalogue records and unrelated gender, difficulty and rematch alternatives remain available. Existing plans and legacy consumer starter profiles are unchanged."
+  ]
+}

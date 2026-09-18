@@ -2,7 +2,7 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-sapphire-dataset",
   "source": "Datasets/Pokemon Sapphire/source-data",
-  "sourceTreeSha256": "B232CCA4E220A854FF47C8C6175879F857B84D9624922963729CCDB275617849",
+  "sourceTreeSha256": "7ADFEF01F6F8E2E91843B6416197E9224E06A3BF207C81F9A544A1C6AA930A92",
   "files": [
     {
       "path": "dataset_manifest.json",
@@ -78,6 +78,11 @@
       "path": "save_id_maps.json",
       "bytes": 119003,
       "sha256": "2BE5340B70789B0389ECA6BED53AF29B0BF31409AA3C7E7F44DD706971D0CCC6"
+    },
+    {
+      "path": "starter_selection.json",
+      "bytes": 7742,
+      "sha256": "44ADDF88DA3FAB197C5EC4E8E7BBD296C442C9FDEC7F3FC6485D897B781524E5"
     }
   ]
 }

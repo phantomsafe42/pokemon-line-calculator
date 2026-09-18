@@ -1,0 +1,349 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-unbound",
+  "kind": "starter-selection",
+  "scope": "documented-player-starter-navigation",
+  "unknownPolicy": "preserve-unmapped-options",
+  "choices": [
+    {
+      "id": "beldum",
+      "speciesId": "beldum",
+      "label": "Beldum",
+      "speciesName": "Beldum",
+      "type": null
+    },
+    {
+      "id": "gible",
+      "speciesId": "gible",
+      "label": "Gible",
+      "speciesName": "Gible",
+      "type": null
+    },
+    {
+      "id": "larvitar",
+      "speciesId": "larvitar",
+      "label": "Larvitar",
+      "speciesName": "Larvitar",
+      "type": null
+    }
+  ],
+  "trainerBindings": [
+    {
+      "trainerId": "pokemon-unbound-trainer-0433",
+      "starterIds": [
+        "gible"
+      ],
+      "evidence": [
+        {
+          "file": "trainers.json",
+          "locator": "pokemon-unbound-trainer-0433"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0434",
+      "starterIds": [
+        "beldum"
+      ],
+      "evidence": [
+        {
+          "file": "trainers.json",
+          "locator": "pokemon-unbound-trainer-0434"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0435",
+      "starterIds": [
+        "larvitar"
+      ],
+      "evidence": [
+        {
+          "file": "trainers.json",
+          "locator": "pokemon-unbound-trainer-0435"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0436",
+      "starterIds": [
+        "gible"
+      ],
+      "evidence": [
+        {
+          "file": "trainers.json",
+          "locator": "pokemon-unbound-trainer-0436"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0437",
+      "starterIds": [
+        "beldum"
+      ],
+      "evidence": [
+        {
+          "file": "trainers.json",
+          "locator": "pokemon-unbound-trainer-0437"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0438",
+      "starterIds": [
+        "larvitar"
+      ],
+      "evidence": [
+        {
+          "file": "trainers.json",
+          "locator": "pokemon-unbound-trainer-0438"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0439",
+      "starterIds": [
+        "gible"
+      ],
+      "evidence": [
+        {
+          "file": "trainers.json",
+          "locator": "pokemon-unbound-trainer-0439"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0440",
+      "starterIds": [
+        "beldum"
+      ],
+      "evidence": [
+        {
+          "file": "trainers.json",
+          "locator": "pokemon-unbound-trainer-0440"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0441",
+      "starterIds": [
+        "larvitar"
+      ],
+      "evidence": [
+        {
+          "file": "trainers.json",
+          "locator": "pokemon-unbound-trainer-0441"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0442",
+      "starterIds": [
+        "gible"
+      ],
+      "evidence": [
+        {
+          "file": "trainers.json",
+          "locator": "pokemon-unbound-trainer-0442"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0443",
+      "starterIds": [
+        "beldum"
+      ],
+      "evidence": [
+        {
+          "file": "trainers.json",
+          "locator": "pokemon-unbound-trainer-0443"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0444",
+      "starterIds": [
+        "larvitar"
+      ],
+      "evidence": [
+        {
+          "file": "trainers.json",
+          "locator": "pokemon-unbound-trainer-0444"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0445",
+      "starterIds": [
+        "gible"
+      ],
+      "evidence": [
+        {
+          "file": "trainers.json",
+          "locator": "pokemon-unbound-trainer-0445"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0446",
+      "starterIds": [
+        "beldum"
+      ],
+      "evidence": [
+        {
+          "file": "trainers.json",
+          "locator": "pokemon-unbound-trainer-0446"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0447",
+      "starterIds": [
+        "larvitar"
+      ],
+      "evidence": [
+        {
+          "file": "trainers.json",
+          "locator": "pokemon-unbound-trainer-0447"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0521",
+      "starterIds": [
+        "gible"
+      ],
+      "evidence": [
+        {
+          "file": "trainers.json",
+          "locator": "pokemon-unbound-trainer-0521"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0522",
+      "starterIds": [
+        "beldum"
+      ],
+      "evidence": [
+        {
+          "file": "trainers.json",
+          "locator": "pokemon-unbound-trainer-0522"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0523",
+      "starterIds": [
+        "larvitar"
+      ],
+      "evidence": [
+        {
+          "file": "trainers.json",
+          "locator": "pokemon-unbound-trainer-0523"
+        }
+      ]
+    }
+  ],
+  "variantBindings": [
+    {
+      "trainerId": "pokemon-unbound-trainer-0465",
+      "variantId": "rival-garchompmega",
+      "starterIds": [
+        "beldum"
+      ],
+      "evidence": [
+        {
+          "file": "trainers.json",
+          "locator": "pokemon-unbound-trainer-0522;pokemon-unbound-trainer-0465:rival-garchompmega;Boss Trainers.xlsx:Team Light Of Ruin Bosses!K70"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0465",
+      "variantId": "rival-metagrossmega",
+      "starterIds": [
+        "larvitar"
+      ],
+      "evidence": [
+        {
+          "file": "trainers.json",
+          "locator": "pokemon-unbound-trainer-0523;pokemon-unbound-trainer-0465:rival-metagrossmega;Boss Trainers.xlsx:Team Light Of Ruin Bosses!K70"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0465",
+      "variantId": "rival-tyranitarmega",
+      "starterIds": [
+        "gible"
+      ],
+      "evidence": [
+        {
+          "file": "trainers.json",
+          "locator": "pokemon-unbound-trainer-0521;pokemon-unbound-trainer-0465:rival-tyranitarmega;Boss Trainers.xlsx:Team Light Of Ruin Bosses!K70"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0534",
+      "variantId": "rival-garchompmega",
+      "starterIds": [
+        "beldum"
+      ],
+      "evidence": [
+        {
+          "file": "trainers.json",
+          "locator": "pokemon-unbound-trainer-0522;pokemon-unbound-trainer-0534:rival-garchompmega;Boss Trainers.xlsx:Team Shadow Bosses!K130"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0534",
+      "variantId": "rival-metagrossmega",
+      "starterIds": [
+        "larvitar"
+      ],
+      "evidence": [
+        {
+          "file": "trainers.json",
+          "locator": "pokemon-unbound-trainer-0523;pokemon-unbound-trainer-0534:rival-metagrossmega;Boss Trainers.xlsx:Team Shadow Bosses!K130"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0534",
+      "variantId": "rival-tyranitarmega",
+      "starterIds": [
+        "gible"
+      ],
+      "evidence": [
+        {
+          "file": "trainers.json",
+          "locator": "pokemon-unbound-trainer-0521;pokemon-unbound-trainer-0534:rival-tyranitarmega;Boss Trainers.xlsx:Team Shadow Bosses!K130"
+        }
+      ]
+    }
+  ],
+  "occurrenceAlternatives": [],
+  "provenance": {
+    "builder": "tools/build_starter_selection.js",
+    "inputs": [
+      {
+        "file": "species.json",
+        "sha256": "e32ca96cef1a646bfa4bdcfb22275552b5793a82e59fb56a7ab995c9e61be925"
+      },
+      {
+        "file": "trainers.json",
+        "sha256": "50b0edde9344daff050b8e965b78f1213005748ddefb884d4cc2e4f30c820180"
+      },
+      {
+        "file": "trainer_order.json",
+        "sha256": "11189af58621782f158b254014e324a6c0fc254a4ed87f6606bc0ea1f2e42e4a"
+      }
+    ]
+  },
+  "limitations": [
+    "Only explicitly documented player choices filter navigation. Unmapped catalogue records and unrelated gender, difficulty and rematch alternatives remain available. Existing plans and legacy consumer starter profiles are unchanged."
+  ]
+}

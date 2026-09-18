@@ -1,0 +1,270 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-soulsilver",
+  "kind": "starter-selection",
+  "scope": "documented-player-starter-navigation",
+  "unknownPolicy": "preserve-unmapped-options",
+  "choices": [
+    {
+      "id": "cyndaquil",
+      "speciesId": "cyndaquil",
+      "label": "Fire",
+      "speciesName": "Cyndaquil",
+      "type": "Fire"
+    },
+    {
+      "id": "totodile",
+      "speciesId": "totodile",
+      "label": "Water",
+      "speciesName": "Totodile",
+      "type": "Water"
+    },
+    {
+      "id": "chikorita",
+      "speciesId": "chikorita",
+      "label": "Grass",
+      "speciesName": "Chikorita",
+      "type": "Grass"
+    }
+  ],
+  "trainerBindings": [
+    {
+      "trainerId": "pokemon-soulsilver-trainer-0001",
+      "starterIds": [
+        "totodile"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-soulsilver-campaign-occurrence-0051"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-soulsilver-trainer-0263",
+      "starterIds": [
+        "totodile"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-soulsilver-campaign-occurrence-0094"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-soulsilver-trainer-0264",
+      "starterIds": [
+        "totodile"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-soulsilver-campaign-occurrence-0253"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-soulsilver-trainer-0266",
+      "starterIds": [
+        "chikorita"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-soulsilver-campaign-occurrence-0049"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-soulsilver-trainer-0267",
+      "starterIds": [
+        "chikorita"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-soulsilver-campaign-occurrence-0092"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-soulsilver-trainer-0268",
+      "starterIds": [
+        "chikorita"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-soulsilver-campaign-occurrence-0251"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-soulsilver-trainer-0269",
+      "starterIds": [
+        "cyndaquil"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-soulsilver-campaign-occurrence-0050"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-soulsilver-trainer-0270",
+      "starterIds": [
+        "cyndaquil"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-soulsilver-campaign-occurrence-0093"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-soulsilver-trainer-0271",
+      "starterIds": [
+        "cyndaquil"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-soulsilver-campaign-occurrence-0199"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-soulsilver-trainer-0272",
+      "starterIds": [
+        "cyndaquil"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-soulsilver-campaign-occurrence-0252"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-soulsilver-trainer-0285",
+      "starterIds": [
+        "totodile"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-soulsilver-campaign-occurrence-0395"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-soulsilver-trainer-0286",
+      "starterIds": [
+        "chikorita"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-soulsilver-campaign-occurrence-0393"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-soulsilver-trainer-0287",
+      "starterIds": [
+        "cyndaquil"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-soulsilver-campaign-occurrence-0394"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-soulsilver-trainer-0288",
+      "starterIds": [
+        "totodile"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-soulsilver-campaign-occurrence-0200"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-soulsilver-trainer-0289",
+      "starterIds": [
+        "chikorita"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-soulsilver-campaign-occurrence-0198"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-soulsilver-trainer-0495",
+      "starterIds": [
+        "totodile"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-soulsilver-campaign-occurrence-0006"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-soulsilver-trainer-0496",
+      "starterIds": [
+        "chikorita"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-soulsilver-campaign-occurrence-0004"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-soulsilver-trainer-0497",
+      "starterIds": [
+        "cyndaquil"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-soulsilver-campaign-occurrence-0005"
+        }
+      ]
+    }
+  ],
+  "variantBindings": [],
+  "occurrenceAlternatives": [],
+  "provenance": {
+    "builder": "tools/build_starter_selection.js",
+    "inputs": [
+      {
+        "file": "species.json",
+        "sha256": "5fbf54447a31826e5e2d14daad02469e01bf88d7ef3bd4715b2bc17de2ae2a38"
+      },
+      {
+        "file": "trainers.json",
+        "sha256": "3ea53bd99441c9322ad534f3690a6e3ed646db303291ee4d6089142332a5dacd"
+      },
+      {
+        "file": "trainer_order.json",
+        "sha256": "ecbad8e984112fd1570e187fe6b18020cf22e076189cfbb28c040bfd79bfed06"
+      }
+    ]
+  },
+  "limitations": [
+    "Only explicitly documented player choices filter navigation. Unmapped catalogue records and unrelated gender, difficulty and rematch alternatives remain available. Existing plans and legacy consumer starter profiles are unchanged."
+  ]
+}

@@ -1,0 +1,270 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-pearl",
+  "kind": "starter-selection",
+  "scope": "documented-player-starter-navigation",
+  "unknownPolicy": "preserve-unmapped-options",
+  "choices": [
+    {
+      "id": "chimchar",
+      "speciesId": "chimchar",
+      "label": "Fire",
+      "speciesName": "Chimchar",
+      "type": "Fire"
+    },
+    {
+      "id": "piplup",
+      "speciesId": "piplup",
+      "label": "Water",
+      "speciesName": "Piplup",
+      "type": "Water"
+    },
+    {
+      "id": "turtwig",
+      "speciesId": "turtwig",
+      "label": "Grass",
+      "speciesName": "Turtwig",
+      "type": "Grass"
+    }
+  ],
+  "trainerBindings": [
+    {
+      "trainerId": "pokemon-pearl-trainer-0247",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-pearl-campaign-occurrence-0013"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-pearl-trainer-0248",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-pearl-campaign-occurrence-0011"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-pearl-trainer-0249",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-pearl-campaign-occurrence-0012"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-pearl-trainer-0470",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-pearl-campaign-occurrence-0103"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-pearl-trainer-0471",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-pearl-campaign-occurrence-0101"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-pearl-trainer-0472",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-pearl-campaign-occurrence-0102"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-pearl-trainer-0476",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-pearl-campaign-occurrence-0229"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-pearl-trainer-0477",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-pearl-campaign-occurrence-0227"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-pearl-trainer-0478",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-pearl-campaign-occurrence-0228"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-pearl-trainer-0479",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-pearl-campaign-occurrence-0372"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-pearl-trainer-0480",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-pearl-campaign-occurrence-0370"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-pearl-trainer-0481",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-pearl-campaign-occurrence-0371"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-pearl-trainer-0837",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-pearl-campaign-occurrence-0449"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-pearl-trainer-0838",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-pearl-campaign-occurrence-0447"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-pearl-trainer-0839",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-pearl-campaign-occurrence-0448"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-pearl-trainer-0840",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-pearl-campaign-occurrence-0452"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-pearl-trainer-0841",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-pearl-campaign-occurrence-0450"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-pearl-trainer-0842",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-pearl-campaign-occurrence-0451"
+        }
+      ]
+    }
+  ],
+  "variantBindings": [],
+  "occurrenceAlternatives": [],
+  "provenance": {
+    "builder": "tools/build_starter_selection.js",
+    "inputs": [
+      {
+        "file": "species.json",
+        "sha256": "c3c24890fcdc7530b2412ffc8d1b1ddf4695918b12112f2293d27e24e8bfac52"
+      },
+      {
+        "file": "trainers.json",
+        "sha256": "fd0425c8255d0538f1e8d68e10130ebef6dd52fbc2b8e0c9751cce31fe3720a6"
+      },
+      {
+        "file": "trainer_order.json",
+        "sha256": "ebb2c89d72c844a1e1b527538e91e1eaeac977dc5edb0cb76a70745aab27d3cc"
+      }
+    ]
+  },
+  "limitations": [
+    "Only explicitly documented player choices filter navigation. Unmapped catalogue records and unrelated gender, difficulty and rematch alternatives remain available. Existing plans and legacy consumer starter profiles are unchanged."
+  ]
+}

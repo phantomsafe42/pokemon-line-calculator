@@ -1,0 +1,378 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-firered",
+  "kind": "starter-selection",
+  "scope": "documented-player-starter-navigation",
+  "unknownPolicy": "preserve-unmapped-options",
+  "choices": [
+    {
+      "id": "charmander",
+      "speciesId": "charmander",
+      "label": "Fire",
+      "speciesName": "Charmander",
+      "type": "Fire"
+    },
+    {
+      "id": "squirtle",
+      "speciesId": "squirtle",
+      "label": "Water",
+      "speciesName": "Squirtle",
+      "type": "Water"
+    },
+    {
+      "id": "bulbasaur",
+      "speciesId": "bulbasaur",
+      "label": "Grass",
+      "speciesName": "Bulbasaur",
+      "type": "Grass"
+    }
+  ],
+  "trainerBindings": [
+    {
+      "trainerId": "pokemon-firered-trainer-0326",
+      "starterIds": [
+        "charmander"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-firered-campaign-occurrence-0002"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-firered-trainer-0327",
+      "starterIds": [
+        "squirtle"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-firered-campaign-occurrence-0003"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-firered-trainer-0328",
+      "starterIds": [
+        "bulbasaur"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-firered-campaign-occurrence-0001"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-firered-trainer-0329",
+      "starterIds": [
+        "charmander"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-firered-campaign-occurrence-0005"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-firered-trainer-0330",
+      "starterIds": [
+        "squirtle"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-firered-campaign-occurrence-0006"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-firered-trainer-0331",
+      "starterIds": [
+        "bulbasaur"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-firered-campaign-occurrence-0004"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-firered-trainer-0332",
+      "starterIds": [
+        "charmander"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-firered-campaign-occurrence-0038"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-firered-trainer-0333",
+      "starterIds": [
+        "squirtle"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-firered-campaign-occurrence-0039"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-firered-trainer-0334",
+      "starterIds": [
+        "bulbasaur"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-firered-campaign-occurrence-0037"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-firered-trainer-0426",
+      "starterIds": [
+        "charmander"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-firered-campaign-occurrence-0080"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-firered-trainer-0427",
+      "starterIds": [
+        "squirtle"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-firered-campaign-occurrence-0081"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-firered-trainer-0428",
+      "starterIds": [
+        "bulbasaur"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-firered-campaign-occurrence-0079"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-firered-trainer-0429",
+      "starterIds": [
+        "charmander"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-firered-campaign-occurrence-0176"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-firered-trainer-0430",
+      "starterIds": [
+        "squirtle"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-firered-campaign-occurrence-0177"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-firered-trainer-0431",
+      "starterIds": [
+        "bulbasaur"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-firered-campaign-occurrence-0175"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-firered-trainer-0432",
+      "starterIds": [
+        "charmander"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-firered-campaign-occurrence-0276"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-firered-trainer-0433",
+      "starterIds": [
+        "squirtle"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-firered-campaign-occurrence-0277"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-firered-trainer-0434",
+      "starterIds": [
+        "bulbasaur"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-firered-campaign-occurrence-0275"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-firered-trainer-0435",
+      "starterIds": [
+        "charmander"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-firered-campaign-occurrence-0374"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-firered-trainer-0436",
+      "starterIds": [
+        "squirtle"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-firered-campaign-occurrence-0375"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-firered-trainer-0437",
+      "starterIds": [
+        "bulbasaur"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-firered-campaign-occurrence-0373"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-firered-trainer-0438",
+      "starterIds": [
+        "charmander"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-firered-campaign-occurrence-0393"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-firered-trainer-0439",
+      "starterIds": [
+        "squirtle"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-firered-campaign-occurrence-0394"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-firered-trainer-0440",
+      "starterIds": [
+        "bulbasaur"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-firered-campaign-occurrence-0392"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-firered-trainer-0739",
+      "starterIds": [
+        "charmander"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-firered-campaign-occurrence-0473"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-firered-trainer-0740",
+      "starterIds": [
+        "squirtle"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-firered-campaign-occurrence-0474"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-firered-trainer-0741",
+      "starterIds": [
+        "bulbasaur"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-firered-campaign-occurrence-0472"
+        }
+      ]
+    }
+  ],
+  "variantBindings": [],
+  "occurrenceAlternatives": [],
+  "provenance": {
+    "builder": "tools/build_starter_selection.js",
+    "inputs": [
+      {
+        "file": "species.json",
+        "sha256": "420a3b15acfa323a444b5722b58897d9d8eb974ddb11fa7e7d422931fb62e42c"
+      },
+      {
+        "file": "trainers.json",
+        "sha256": "b51af1f27ce65301f5ed583bb2919d2d995ee5736619bf724a5c51c3705c69b9"
+      },
+      {
+        "file": "trainer_order.json",
+        "sha256": "ff0d6aed64228bc3ab21205e878880eb7773f8cc55ce9a81878b7b0b33463eb1"
+      }
+    ]
+  },
+  "limitations": [
+    "Only explicitly documented player choices filter navigation. Unmapped catalogue records and unrelated gender, difficulty and rematch alternatives remain available. Existing plans and legacy consumer starter profiles are unchanged."
+  ]
+}

@@ -1,0 +1,270 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-emerald",
+  "kind": "starter-selection",
+  "scope": "documented-player-starter-navigation",
+  "unknownPolicy": "preserve-unmapped-options",
+  "choices": [
+    {
+      "id": "torchic",
+      "speciesId": "torchic",
+      "label": "Fire",
+      "speciesName": "Torchic",
+      "type": "Fire"
+    },
+    {
+      "id": "mudkip",
+      "speciesId": "mudkip",
+      "label": "Water",
+      "speciesName": "Mudkip",
+      "type": "Water"
+    },
+    {
+      "id": "treecko",
+      "speciesId": "treecko",
+      "label": "Grass",
+      "speciesName": "Treecko",
+      "type": "Grass"
+    }
+  ],
+  "trainerBindings": [
+    {
+      "trainerId": "pokemon-emerald-trainer-0520",
+      "starterIds": [
+        "mudkip"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-emerald-campaign-occurrence-0005"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-emerald-trainer-0521",
+      "starterIds": [
+        "mudkip"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-emerald-campaign-occurrence-0105"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-emerald-trainer-0522",
+      "starterIds": [
+        "mudkip"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-emerald-campaign-occurrence-0384"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-emerald-trainer-0523",
+      "starterIds": [
+        "treecko"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-emerald-campaign-occurrence-0001"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-emerald-trainer-0524",
+      "starterIds": [
+        "treecko"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-emerald-campaign-occurrence-0101"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-emerald-trainer-0525",
+      "starterIds": [
+        "treecko"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-emerald-campaign-occurrence-0380"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-emerald-trainer-0526",
+      "starterIds": [
+        "torchic"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-emerald-campaign-occurrence-0003"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-emerald-trainer-0527",
+      "starterIds": [
+        "torchic"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-emerald-campaign-occurrence-0103"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-emerald-trainer-0528",
+      "starterIds": [
+        "torchic"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-emerald-campaign-occurrence-0382"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-emerald-trainer-0529",
+      "starterIds": [
+        "mudkip"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-emerald-campaign-occurrence-0006"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-emerald-trainer-0532",
+      "starterIds": [
+        "treecko"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-emerald-campaign-occurrence-0002"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-emerald-trainer-0535",
+      "starterIds": [
+        "torchic"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-emerald-campaign-occurrence-0004"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-emerald-trainer-0592",
+      "starterIds": [
+        "treecko"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-emerald-campaign-occurrence-0056"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-emerald-trainer-0593",
+      "starterIds": [
+        "mudkip"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-emerald-campaign-occurrence-0060"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-emerald-trainer-0599",
+      "starterIds": [
+        "torchic"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-emerald-campaign-occurrence-0058"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-emerald-trainer-0661",
+      "starterIds": [
+        "mudkip"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-emerald-campaign-occurrence-0494"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-emerald-trainer-0662",
+      "starterIds": [
+        "treecko"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-emerald-campaign-occurrence-0490"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-emerald-trainer-0663",
+      "starterIds": [
+        "torchic"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-emerald-campaign-occurrence-0492"
+        }
+      ]
+    }
+  ],
+  "variantBindings": [],
+  "occurrenceAlternatives": [],
+  "provenance": {
+    "builder": "tools/build_starter_selection.js",
+    "inputs": [
+      {
+        "file": "species.json",
+        "sha256": "ef3a58873f8a5f15870e20c0703f958dd66c0bd07039c6527c38b19245a1f7ef"
+      },
+      {
+        "file": "trainers.json",
+        "sha256": "0e4d07e377ca58d3546700f536fb5f71ede97b4e358e13961cad124d4b57bdaa"
+      },
+      {
+        "file": "trainer_order.json",
+        "sha256": "8b47a60f29617ef7b983f24994226c8024bc31bb86008c82de89f8689fb39a5e"
+      }
+    ]
+  },
+  "limitations": [
+    "Only explicitly documented player choices filter navigation. Unmapped catalogue records and unrelated gender, difficulty and rematch alternatives remain available. Existing plans and legacy consumer starter profiles are unchanged."
+  ]
+}

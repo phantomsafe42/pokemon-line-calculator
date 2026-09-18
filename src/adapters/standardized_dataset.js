@@ -1,6 +1,7 @@
 import { canonicalStats, shortHash, stableStringify, toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
 import { installTrainerEncounters, encounterNavigation } from './trainer_encounters.js?v=20260917-partners-release-v1';
 import { readDatasetJsonFiles } from "./hosted_dataset.js?v=20260917-partners-release-v1";
+import { starterNavigationInputs, validateStarterSelection } from './starter_selection.js?v=20260918-starter-selection-v1';
 
 export const BATTLE_DATASET_SOURCES = Object.freeze([
   "species.json",
@@ -325,9 +326,10 @@ export function createDatasetContext({ manifest, mechanics, documents }) {
         { id: `multi:${trainer.id}`, trainerId: trainer.id, format: 'doubles', battleKind: 'multi', label: 'Multi', requiresPartner: true }
       ];
     },
-    trainerPartnerGroups(trainerId) {
+    trainerPartnerGroups(trainerId, starterId = null) {
       const selectedId = String(trainerId || '');
-      const sourceGroups = trainerNavigationGroups(indexes.trainers, loaded["trainer_order.json"], loaded["progression.json"]);
+      const navigation = starterNavigationInputs(indexes.trainers, loaded['trainer_order.json'], context.starterSelection, starterId);
+      const sourceGroups = trainerNavigationGroups(navigation.trainers, navigation.order, loaded["progression.json"]);
       const selectedGroupId = sourceGroups.find(group => group.trainers.some(trainer => String(trainer.id) === selectedId))?.id;
       const groups = sourceGroups
         .map(group => ({
@@ -339,8 +341,9 @@ export function createDatasetContext({ manifest, mechanics, documents }) {
       if (selectedGroupIndex <= 0) return groups;
       return [groups[selectedGroupIndex], ...groups.slice(0, selectedGroupIndex), ...groups.slice(selectedGroupIndex + 1)];
     },
-    trainerGroups() {
-      const groups = trainerNavigationGroups(indexes.trainers, loaded["trainer_order.json"], loaded["progression.json"]);
+    trainerGroups(starterId = null) {
+      const navigation = starterNavigationInputs(indexes.trainers, loaded['trainer_order.json'], context.starterSelection, starterId);
+      const groups = trainerNavigationGroups(navigation.trainers, navigation.order, loaded["progression.json"]);
       return encounterNavigation(groups, encounters);
     },
     fingerprint: {
@@ -355,11 +358,14 @@ export function createDatasetContext({ manifest, mechanics, documents }) {
       experienceMechanicsHash: `plc-${shortHash(stableStringify(experienceMechanics))}`
     }
   };
+  context.starterSelection = documents['starter_selection.json']
+    ? validateStarterSelection(documents['starter_selection.json'], gameId, indexes.trainers, indexes.species)
+    : null;
   return context;
 }
 
 export async function loadStandardizedDataset({ baseUrl, hostedPrefix = null, hostedRelease, fetchImpl = fetch, cacheStorage = globalThis.caches }) {
-  const paths = ["dataset_manifest.json", "battle_mechanics.json", ...REQUIRED_DATASET_SOURCES];
+  const paths = ["dataset_manifest.json", "battle_mechanics.json", ...REQUIRED_DATASET_SOURCES, "starter_selection.json"];
   let loaded;
   if (hostedPrefix) {
     loaded = await readDatasetJsonFiles({

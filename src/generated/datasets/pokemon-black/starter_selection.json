@@ -1,0 +1,534 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-black",
+  "kind": "starter-selection",
+  "scope": "documented-player-starter-navigation",
+  "unknownPolicy": "preserve-unmapped-options",
+  "choices": [
+    {
+      "id": "tepig",
+      "speciesId": "tepig",
+      "label": "Fire",
+      "speciesName": "Tepig",
+      "type": "Fire"
+    },
+    {
+      "id": "oshawott",
+      "speciesId": "oshawott",
+      "label": "Water",
+      "speciesName": "Oshawott",
+      "type": "Water"
+    },
+    {
+      "id": "snivy",
+      "speciesId": "snivy",
+      "label": "Grass",
+      "speciesName": "Snivy",
+      "type": "Grass"
+    }
+  ],
+  "trainerBindings": [
+    {
+      "trainerId": "pokemon-black-trainer-0011",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0021"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0012",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0023"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0013",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0022"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0056",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0036"
+        },
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0042"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0057",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0037"
+        },
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0043"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0058",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0038"
+        },
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0044"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0059",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0001"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0060",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0003"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0061",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0005"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0090",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0132"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0091",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0133"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0092",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0134"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0287",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0016"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0288",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0017"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0289",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0018"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0403",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0101"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0404",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0102"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0405",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0103"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0491",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0154"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0492",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0155"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0493",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0156"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0494",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0277"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0495",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0278"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0496",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0279"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0498",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0011"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0499",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0012"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0500",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0013"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0507",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0086"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0508",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0087"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0509",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0088"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0539",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0207"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0540",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0208"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0541",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0209"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0588",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0311"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0589",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0312"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0590",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0313"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0591",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0337"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0592",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0338"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0593",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0339"
+        }
+      ]
+    }
+  ],
+  "variantBindings": [],
+  "occurrenceAlternatives": [],
+  "provenance": {
+    "builder": "tools/build_starter_selection.js",
+    "inputs": [
+      {
+        "file": "species.json",
+        "sha256": "3288a842d960c2c5cdab97c012e5d6362b6b80d66f7631838886e7574dd6fb62"
+      },
+      {
+        "file": "trainers.json",
+        "sha256": "efb5a7bb34d6424ba9a048fd78fb825d8eca34a12f85589842733f4cf603152c"
+      },
+      {
+        "file": "trainer_order.json",
+        "sha256": "9d8e8d3dce10d9b9bbe6408f2107ef075cc0b2f29e53d3090400f772ecd1c147"
+      }
+    ]
+  },
+  "limitations": [
+    "Only explicitly documented player choices filter navigation. Unmapped catalogue records and unrelated gender, difficulty and rematch alternatives remain available. Existing plans and legacy consumer starter profiles are unchanged."
+  ]
+}

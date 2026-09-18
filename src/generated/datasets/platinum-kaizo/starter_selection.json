@@ -1,0 +1,320 @@
+{
+  "schemaVersion": 1,
+  "gameId": "platinum-kaizo",
+  "kind": "starter-selection",
+  "scope": "documented-player-starter-navigation",
+  "unknownPolicy": "preserve-unmapped-options",
+  "choices": [
+    {
+      "id": "chimchar",
+      "speciesId": "chimchar",
+      "label": "Fire",
+      "speciesName": "Chimchar",
+      "type": "Fire"
+    },
+    {
+      "id": "piplup",
+      "speciesId": "piplup",
+      "label": "Water",
+      "speciesName": "Piplup",
+      "type": "Water"
+    },
+    {
+      "id": "turtwig",
+      "speciesId": "turtwig",
+      "label": "Grass",
+      "speciesName": "Turtwig",
+      "type": "Grass"
+    }
+  ],
+  "trainerBindings": [
+    {
+      "trainerId": "platinum-kaizo-trainer-0905",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Roark Split!145"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0906",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Roark Split!125"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0907",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Roark Split!135"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0914",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Maylene Split!27"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0915",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Maylene Split!7"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0916",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Maylene Split!17"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0921",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Wake Split!309"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0922",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Wake Split!289"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0923",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Wake Split!299"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0928",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Byron Split!498"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0929",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Byron Split!478"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0930",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Byron Split!488"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0956",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Galactic Split!1185"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0957",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Galactic Split!1165"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0958",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Galactic Split!1175"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0962",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Elite Four Split!237"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0963",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Elite Four Split!217"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0964",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Elite Four Split!227"
+        }
+      ]
+    }
+  ],
+  "variantBindings": [],
+  "occurrenceAlternatives": [
+    {
+      "occurrenceId": "platinum-kaizo-occurrence-0010",
+      "trainerId": "platinum-kaizo-trainer-0906",
+      "trainerIds": [
+        "platinum-kaizo-trainer-0906",
+        "platinum-kaizo-trainer-0907",
+        "platinum-kaizo-trainer-0905"
+      ]
+    },
+    {
+      "occurrenceId": "platinum-kaizo-occurrence-0104",
+      "trainerId": "platinum-kaizo-trainer-0915",
+      "trainerIds": [
+        "platinum-kaizo-trainer-0915",
+        "platinum-kaizo-trainer-0916",
+        "platinum-kaizo-trainer-0914"
+      ]
+    },
+    {
+      "occurrenceId": "platinum-kaizo-occurrence-0164",
+      "trainerId": "platinum-kaizo-trainer-0922",
+      "trainerIds": [
+        "platinum-kaizo-trainer-0922",
+        "platinum-kaizo-trainer-0923",
+        "platinum-kaizo-trainer-0921"
+      ]
+    },
+    {
+      "occurrenceId": "platinum-kaizo-occurrence-0217",
+      "trainerId": "platinum-kaizo-trainer-0929",
+      "trainerIds": [
+        "platinum-kaizo-trainer-0929",
+        "platinum-kaizo-trainer-0930",
+        "platinum-kaizo-trainer-0928"
+      ]
+    },
+    {
+      "occurrenceId": "platinum-kaizo-occurrence-0389",
+      "trainerId": "platinum-kaizo-trainer-0963",
+      "trainerIds": [
+        "platinum-kaizo-trainer-0963",
+        "platinum-kaizo-trainer-0964",
+        "platinum-kaizo-trainer-0962"
+      ]
+    }
+  ],
+  "provenance": {
+    "builder": "tools/build_starter_selection.js",
+    "inputs": [
+      {
+        "file": "species.json",
+        "sha256": "60103c20c7cf30dec1a8469b1143e01a5e071bcb519df09c192b74230d729d50"
+      },
+      {
+        "file": "trainers.json",
+        "sha256": "cf0045919e1bd309b78a8a93d85eac46076bee74e64079f0475420393ad9388e"
+      },
+      {
+        "file": "trainer_order.json",
+        "sha256": "bf8e62aa0f0f1008411b5d2a2aa0bcef52561bd4aa5cc32edf98e65d6cd5131c"
+      },
+      {
+        "file": "trainer_documentation.json",
+        "sha256": "c6376c25aee77b4d0286af4ff6c337ef56b76b94a47c3b6460f7cf340b8de29a"
+      }
+    ]
+  },
+  "limitations": [
+    "Only explicitly documented player choices filter navigation. Unmapped catalogue records and unrelated gender, difficulty and rematch alternatives remain available. Existing plans and legacy consumer starter profiles are unchanged."
+  ]
+}

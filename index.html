@@ -7,7 +7,7 @@
   <meta name="pokemon-asset-release-base" content="/Datasets/Pokemon%20Assets/release">
   <title>Pokémon Line Calculator</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./styles.css?v=20260917-clean-subtitle-v1">
+  <link rel="stylesheet" href="./styles.css?v=20260918-starter-selection-v1">
 </head>
 <body>
   <header class="app-header">
@@ -119,6 +119,7 @@
       <div class="box-toolbar panel">
         <div>
           <h2 id="boxes-heading">Boxes</h2>
+          <button id="change-starter" type="button" class="secondary" disabled>Choose Starter</button>
           <p class="fine-print">A Pokémon is stored once per Box. Every Party in that Box references the same editable record.</p>
         </div>
         <div class="toolbar-actions">
@@ -155,6 +156,18 @@
         </section>
       </div>
       <p id="game-dialog-status" class="fine-print" role="status"></p>
+    </div>
+  </dialog>
+
+  <dialog id="starter-dialog" class="starter-dialog" aria-labelledby="starter-title">
+    <div class="dialog-card">
+      <div class="section-heading">
+        <div><h2 id="starter-title">Choose Starter</h2><p id="starter-dialog-game"></p></div>
+        <button id="close-starter-dialog" type="button" class="icon-button secondary" aria-label="Close starter selection" hidden>×</button>
+      </div>
+      <div id="starter-choices" class="starter-choices" role="group" aria-label="Starter choices"></div>
+      <p id="starter-dialog-status" class="fine-print" role="status"></p>
+      <div class="dialog-actions"><button id="starter-back" type="button" class="secondary">Change Game</button></div>
     </div>
   </dialog>
 
@@ -336,6 +349,6 @@
   </dialog>
 
   <script src="./src/generated/pokemon_asset_resolver.global.js?v=20260914-assets-v4"></script>
-  <script type="module" src="./src/app.js?v=20260918-easy-ui-release-v1"></script>
+  <script type="module" src="./src/app.js?v=20260918-starter-selection-v1"></script>
 </body>
 </html>

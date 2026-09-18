@@ -1,0 +1,414 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-white-2",
+  "kind": "starter-selection",
+  "scope": "documented-player-starter-navigation",
+  "unknownPolicy": "preserve-unmapped-options",
+  "choices": [
+    {
+      "id": "tepig",
+      "speciesId": "tepig",
+      "label": "Fire",
+      "speciesName": "Tepig",
+      "type": "Fire"
+    },
+    {
+      "id": "oshawott",
+      "speciesId": "oshawott",
+      "label": "Water",
+      "speciesName": "Oshawott",
+      "type": "Water"
+    },
+    {
+      "id": "snivy",
+      "speciesId": "snivy",
+      "label": "Grass",
+      "speciesName": "Snivy",
+      "type": "Grass"
+    }
+  ],
+  "trainerBindings": [
+    {
+      "trainerId": "pokemon-white-2-documentation-trainer-0151",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0151"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-white-2-documentation-trainer-0152",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0152"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-white-2-documentation-trainer-0153",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0153"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-white-2-trainer-0161",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0001"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-white-2-trainer-0162",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0002"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-white-2-trainer-0163",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0003"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-white-2-trainer-0166",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0010"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-white-2-trainer-0167",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0011"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-white-2-trainer-0168",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0012"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-white-2-trainer-0368",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0157"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-white-2-trainer-0369",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0158"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-white-2-trainer-0370",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0159"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-white-2-trainer-0378",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0242"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-white-2-trainer-0379",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0243"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-white-2-trainer-0380",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0244"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-white-2-trainer-0588",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0071"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-white-2-trainer-0589",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0072"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-white-2-trainer-0590",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0073"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-white-2-trainer-0684",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0403"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-white-2-trainer-0685",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0404"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-white-2-trainer-0686",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0405"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-white-2-trainer-0693",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0451"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-white-2-trainer-0694",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0452"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-white-2-trainer-0695",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0453"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-white-2-trainer-0696",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0455"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-white-2-trainer-0697",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0456"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-white-2-trainer-0698",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0457"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-white-2-trainer-0701",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0262"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-white-2-trainer-0702",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0263"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-white-2-trainer-0703",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-white-2-campaign-occurrence-0264"
+        }
+      ]
+    }
+  ],
+  "variantBindings": [],
+  "occurrenceAlternatives": [],
+  "provenance": {
+    "builder": "tools/build_starter_selection.js",
+    "inputs": [
+      {
+        "file": "species.json",
+        "sha256": "597c9e79740a43357a91085587a614ed9b0b987c757ed0bd45e482863bb3dea8"
+      },
+      {
+        "file": "trainers.json",
+        "sha256": "f9c9e98cdea32dfe273759c1b66d0443246b83fdc28088008f29114076435915"
+      },
+      {
+        "file": "trainer_order.json",
+        "sha256": "818e457426cbec321420491e4eb76d89ffe931dc9f47b75ffc15f77cf9a84bba"
+      }
+    ]
+  },
+  "limitations": [
+    "Only explicitly documented player choices filter navigation. Unmapped catalogue records and unrelated gender, difficulty and rematch alternatives remain available. Existing plans and legacy consumer starter profiles are unchanged."
+  ]
+}
