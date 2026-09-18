@@ -117972,8 +117972,8 @@
     "pokemon-unbound-trainer-0465": {
       "id": "pokemon-unbound-trainer-0465",
       "consumerTrainerId": 465,
-      "displayName": "Jax 2 [Difficult] #3",
-      "shortName": "[Difficult]",
+      "displayName": "Rival · Aklove battle partner",
+      "shortName": "Rival · Aklove battle partner",
       "location": "Rival",
       "event": "Rival",
       "sourceType": "boss",
@@ -118023,44 +118023,6 @@
           },
           "gender": null,
           "form": 0,
-          "legacySetKey": "Lvl 61 Jax 2 [Difficult] #3 ",
-          "legacyDisplay": {
-            "ability": "Skill Link",
-            "item": "None",
-            "moves": [
-              "Drill Peck",
-              "Hyper Voice",
-              "Bullet Seed",
-              "Screech"
-            ],
-            "nature": "Jolly"
-          },
-          "legacyProjection": {
-            "set": {
-              "ivs": {
-                "hp": 31,
-                "at": 31,
-                "df": 31,
-                "sa": 31,
-                "sd": 31,
-                "sp": 31
-              },
-              "evs": null,
-              "hasItem": true,
-              "hasIvs": true,
-              "hasEvs": false,
-              "trainerId": 465,
-              "subIndex": 0,
-              "aiMask": 7,
-              "battleType": "Doubles",
-              "rewardItem": "Hyper Potion x2",
-              "form": "",
-              "location": "Rival",
-              "spriteId": null,
-              "orientation": null,
-              "hasGender": true
-            }
-          },
           "sourceReference": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!I66",
           "deterministicDefaults": [
             "ivs"
@@ -118098,48 +118060,48 @@
           },
           "gender": null,
           "form": 0,
-          "legacySetKey": "Lvl 62 Jax 2 [Difficult] #3 ",
-          "legacyDisplay": {
-            "ability": "Water Absorb",
-            "item": "None",
-            "moves": [
-              "Hydro Pump",
-              "Ice Beam",
-              "Acid Armor",
-              "Protect"
-            ],
-            "nature": "Hardy"
-          },
-          "legacyProjection": {
-            "set": {
-              "ivs": {
-                "hp": 0,
-                "at": 0,
-                "df": 0,
-                "sa": 0,
-                "sd": 0,
-                "sp": 0
-              },
-              "evs": null,
-              "hasItem": true,
-              "hasIvs": true,
-              "hasEvs": false,
-              "trainerId": 465,
-              "subIndex": 1,
-              "aiMask": 7,
-              "battleType": "Doubles",
-              "rewardItem": "Hyper Potion x2",
-              "form": "",
-              "location": "Rival",
-              "spriteId": null,
-              "orientation": null,
-              "hasGender": true
-            }
-          },
           "sourceReference": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!J66",
           "deterministicDefaults": [
             "ivs"
           ]
+        },
+        {
+          "slot": 3,
+          "speciesId": "tyranitarmega",
+          "displaySpecies": "Tyranitar Mega",
+          "level": 64,
+          "abilityId": "sandstream",
+          "itemId": "tyranitarite",
+          "moveIds": [
+            "stoneedge",
+            "crunch",
+            "earthquake",
+            "protect"
+          ],
+          "natureId": "hardy",
+          "ivs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "evs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "gender": null,
+          "form": 0,
+          "sourceReference": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!K66",
+          "deterministicDefaults": [
+            "ivs"
+          ],
+          "sourceNoteReference": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!K70"
         }
       ],
       "battleProfiles": {
@@ -118181,7 +118143,366 @@
         "status": "location-window-order-unresolved",
         "source": "trainer_order.json",
         "occurrenceId": "pokemon-unbound-occurrence-0525"
-      }
+      },
+      "mechanicsVariants": [
+        {
+          "id": "rival-tyranitarmega",
+          "label": "Rival · Tyranitar-Mega",
+          "team": [
+            {
+              "slot": 1,
+              "speciesId": "toucannon",
+              "displaySpecies": "Toucannon",
+              "level": 61,
+              "abilityId": "skilllink",
+              "itemId": null,
+              "moveIds": [
+                "drillpeck",
+                "hypervoice",
+                "bulletseed",
+                "screech"
+              ],
+              "natureId": "jolly",
+              "ivs": {
+                "hp": 31,
+                "atk": 31,
+                "def": 31,
+                "spa": 31,
+                "spd": 31,
+                "spe": 31
+              },
+              "evs": {
+                "hp": 252,
+                "atk": 4,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 252
+              },
+              "gender": null,
+              "form": 0,
+              "sourceReference": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!I66",
+              "deterministicDefaults": [
+                "ivs"
+              ]
+            },
+            {
+              "slot": 2,
+              "speciesId": "vaporeon",
+              "displaySpecies": "Vaporeon",
+              "level": 62,
+              "abilityId": "waterabsorb",
+              "itemId": null,
+              "moveIds": [
+                "hydropump",
+                "icebeam",
+                "acidarmor",
+                "protect"
+              ],
+              "natureId": "hardy",
+              "ivs": {
+                "hp": 0,
+                "atk": 0,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+              },
+              "evs": {
+                "hp": 0,
+                "atk": 0,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+              },
+              "gender": null,
+              "form": 0,
+              "sourceReference": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!J66",
+              "deterministicDefaults": [
+                "ivs"
+              ]
+            },
+            {
+              "slot": 3,
+              "speciesId": "tyranitarmega",
+              "displaySpecies": "Tyranitar Mega",
+              "level": 64,
+              "abilityId": "sandstream",
+              "itemId": "tyranitarite",
+              "moveIds": [
+                "stoneedge",
+                "crunch",
+                "earthquake",
+                "protect"
+              ],
+              "natureId": "hardy",
+              "ivs": {
+                "hp": 0,
+                "atk": 0,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+              },
+              "evs": {
+                "hp": 0,
+                "atk": 0,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+              },
+              "gender": null,
+              "form": 0,
+              "sourceReference": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!K66",
+              "deterministicDefaults": [
+                "ivs"
+              ],
+              "sourceNoteReference": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!K70"
+            }
+          ],
+          "sourceReference": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!K70"
+        },
+        {
+          "id": "rival-metagrossmega",
+          "label": "Rival · Metagross-Mega",
+          "team": [
+            {
+              "slot": 1,
+              "speciesId": "toucannon",
+              "displaySpecies": "Toucannon",
+              "level": 61,
+              "abilityId": "skilllink",
+              "itemId": null,
+              "moveIds": [
+                "drillpeck",
+                "hypervoice",
+                "bulletseed",
+                "screech"
+              ],
+              "natureId": "jolly",
+              "ivs": {
+                "hp": 31,
+                "atk": 31,
+                "def": 31,
+                "spa": 31,
+                "spd": 31,
+                "spe": 31
+              },
+              "evs": {
+                "hp": 252,
+                "atk": 4,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 252
+              },
+              "gender": null,
+              "form": 0,
+              "sourceReference": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!I66",
+              "deterministicDefaults": [
+                "ivs"
+              ]
+            },
+            {
+              "slot": 2,
+              "speciesId": "vaporeon",
+              "displaySpecies": "Vaporeon",
+              "level": 62,
+              "abilityId": "waterabsorb",
+              "itemId": null,
+              "moveIds": [
+                "hydropump",
+                "icebeam",
+                "acidarmor",
+                "protect"
+              ],
+              "natureId": "hardy",
+              "ivs": {
+                "hp": 0,
+                "atk": 0,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+              },
+              "evs": {
+                "hp": 0,
+                "atk": 0,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+              },
+              "gender": null,
+              "form": 0,
+              "sourceReference": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!J66",
+              "deterministicDefaults": [
+                "ivs"
+              ]
+            },
+            {
+              "slot": 3,
+              "speciesId": "metagrossmega",
+              "displaySpecies": "Metagross Mega",
+              "level": 64,
+              "abilityId": "toughclaws",
+              "itemId": "metagrossite",
+              "moveIds": [
+                "ironhead",
+                "zenheadbutt",
+                "hammerarm",
+                "protect"
+              ],
+              "natureId": "hardy",
+              "ivs": {
+                "hp": 0,
+                "atk": 0,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+              },
+              "evs": {
+                "hp": 0,
+                "atk": 0,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+              },
+              "gender": null,
+              "form": 0,
+              "sourceReference": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!K66",
+              "deterministicDefaults": [
+                "ivs"
+              ],
+              "sourceNoteReference": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!K70"
+            }
+          ],
+          "sourceReference": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!K70"
+        },
+        {
+          "id": "rival-garchompmega",
+          "label": "Rival · Garchomp-Mega",
+          "team": [
+            {
+              "slot": 1,
+              "speciesId": "toucannon",
+              "displaySpecies": "Toucannon",
+              "level": 61,
+              "abilityId": "skilllink",
+              "itemId": null,
+              "moveIds": [
+                "drillpeck",
+                "hypervoice",
+                "bulletseed",
+                "screech"
+              ],
+              "natureId": "jolly",
+              "ivs": {
+                "hp": 31,
+                "atk": 31,
+                "def": 31,
+                "spa": 31,
+                "spd": 31,
+                "spe": 31
+              },
+              "evs": {
+                "hp": 252,
+                "atk": 4,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 252
+              },
+              "gender": null,
+              "form": 0,
+              "sourceReference": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!I66",
+              "deterministicDefaults": [
+                "ivs"
+              ]
+            },
+            {
+              "slot": 2,
+              "speciesId": "vaporeon",
+              "displaySpecies": "Vaporeon",
+              "level": 62,
+              "abilityId": "waterabsorb",
+              "itemId": null,
+              "moveIds": [
+                "hydropump",
+                "icebeam",
+                "acidarmor",
+                "protect"
+              ],
+              "natureId": "hardy",
+              "ivs": {
+                "hp": 0,
+                "atk": 0,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+              },
+              "evs": {
+                "hp": 0,
+                "atk": 0,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+              },
+              "gender": null,
+              "form": 0,
+              "sourceReference": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!J66",
+              "deterministicDefaults": [
+                "ivs"
+              ]
+            },
+            {
+              "slot": 3,
+              "speciesId": "garchompmega",
+              "displaySpecies": "Garchomp Mega",
+              "level": 64,
+              "abilityId": "sandforce",
+              "itemId": "garchompite",
+              "moveIds": [
+                "dragonrush",
+                "stompingtantrum",
+                "crunch",
+                "protect"
+              ],
+              "natureId": "hardy",
+              "ivs": {
+                "hp": 0,
+                "atk": 0,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+              },
+              "evs": {
+                "hp": 0,
+                "atk": 0,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+              },
+              "gender": null,
+              "form": 0,
+              "sourceReference": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!K66",
+              "deterministicDefaults": [
+                "ivs"
+              ],
+              "sourceNoteReference": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!K70"
+            }
+          ],
+          "sourceReference": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!K70"
+        }
+      ]
     },
     "pokemon-unbound-trainer-0466": {
       "id": "pokemon-unbound-trainer-0466",
@@ -139046,6 +139367,816 @@
         "source": "trainer_order.json",
         "occurrenceId": "pokemon-unbound-occurrence-0521"
       }
+    },
+    "pokemon-unbound-trainer-0532": {
+      "id": "pokemon-unbound-trainer-0532",
+      "consumerTrainerId": 532,
+      "displayName": "Marlon · Cinder Volcano partner",
+      "shortName": "Marlon · Cinder Volcano partner",
+      "sourceType": "player-partner",
+      "location": "Marlon · Cinder Volcano partner",
+      "locationName": "Marlon · Cinder Volcano partner",
+      "event": "Marlon · Cinder Volcano partner",
+      "boss": true,
+      "categoryFlags": [
+        "player-partner"
+      ],
+      "variantConditions": [
+        {
+          "difficulty": "difficult"
+        }
+      ],
+      "battleProfiles": {
+        "default": {
+          "format": "double",
+          "aiMask": null,
+          "aiFlagIds": [],
+          "aiVerificationStatus": "partner-mask-not-verified",
+          "bagItemIds": [
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      },
+      "progressionApplicability": {
+        "status": "ally-reference-only"
+      },
+      "sourceConfidence": "hash-pinned-difficult-workbook-partner-block",
+      "team": [
+        {
+          "slot": 1,
+          "speciesId": "krookodile",
+          "displaySpecies": "Krookodile",
+          "level": 48,
+          "abilityId": "intimidate",
+          "itemId": null,
+          "moveIds": [
+            "stompingtantrum",
+            "stoneedge",
+            "irontail",
+            "protect"
+          ],
+          "natureId": "jolly",
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "evs": {
+            "hp": 252,
+            "atk": 4,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 252
+          },
+          "gender": null,
+          "form": 0,
+          "sourceReference": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!I6",
+          "deterministicDefaults": [
+            "ivs"
+          ]
+        },
+        {
+          "slot": 2,
+          "speciesId": "cacturne",
+          "displaySpecies": "Cacturne",
+          "level": 45,
+          "abilityId": "sandveil",
+          "itemId": null,
+          "moveIds": [
+            "needlearm",
+            "poweruppunch",
+            "poisonjab",
+            "spikyshield"
+          ],
+          "natureId": "jolly",
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "evs": {
+            "hp": 6,
+            "atk": 252,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 252
+          },
+          "gender": null,
+          "form": 0,
+          "sourceReference": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!J6",
+          "deterministicDefaults": [
+            "ivs"
+          ]
+        },
+        {
+          "slot": 3,
+          "speciesId": "dusclops",
+          "displaySpecies": "Dusclops",
+          "level": 46,
+          "abilityId": "pressure",
+          "itemId": null,
+          "moveIds": [
+            "nightshade",
+            "icepunch",
+            "confuseray",
+            "willowisp"
+          ],
+          "natureId": "impish",
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "evs": {
+            "hp": 252,
+            "atk": 0,
+            "def": 252,
+            "spa": 0,
+            "spd": 4,
+            "spe": 0
+          },
+          "gender": null,
+          "form": 0,
+          "sourceReference": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!K6",
+          "deterministicDefaults": [
+            "ivs"
+          ]
+        }
+      ]
+    },
+    "pokemon-unbound-trainer-0533": {
+      "id": "pokemon-unbound-trainer-0533",
+      "consumerTrainerId": 533,
+      "displayName": "Jax · Ruins of Void partner",
+      "shortName": "Jax · Ruins of Void partner",
+      "sourceType": "player-partner",
+      "location": "Jax · Ruins of Void partner",
+      "locationName": "Jax · Ruins of Void partner",
+      "event": "Jax · Ruins of Void partner",
+      "boss": true,
+      "categoryFlags": [
+        "player-partner"
+      ],
+      "variantConditions": [
+        {
+          "difficulty": "difficult"
+        }
+      ],
+      "battleProfiles": {
+        "default": {
+          "format": "double",
+          "aiMask": null,
+          "aiFlagIds": [],
+          "aiVerificationStatus": "partner-mask-not-verified",
+          "bagItemIds": [
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      },
+      "progressionApplicability": {
+        "status": "ally-reference-only"
+      },
+      "sourceConfidence": "hash-pinned-difficult-workbook-partner-block",
+      "team": [
+        {
+          "slot": 1,
+          "speciesId": "staraptor",
+          "displaySpecies": "Staraptor",
+          "level": 83,
+          "abilityId": "intimidate",
+          "itemId": "focussash",
+          "moveIds": [
+            "dualwingbeat",
+            "steelwing",
+            "closecombat",
+            "protect"
+          ],
+          "natureId": "adamant",
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "evs": {
+            "hp": 6,
+            "atk": 252,
+            "def": 252,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "gender": null,
+          "form": 0,
+          "sourceReference": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!I86",
+          "deterministicDefaults": [
+            "ivs"
+          ]
+        },
+        {
+          "slot": 2,
+          "speciesId": "magnezone",
+          "displaySpecies": "Magnezone",
+          "level": 82,
+          "abilityId": "sturdy",
+          "itemId": "expertbelt",
+          "moveIds": [
+            "thunderbolt",
+            "flashcannon",
+            "voltswitch",
+            "protect"
+          ],
+          "natureId": "modest",
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "evs": {
+            "hp": 6,
+            "atk": 0,
+            "def": 0,
+            "spa": 252,
+            "spd": 252,
+            "spe": 0
+          },
+          "gender": null,
+          "form": 0,
+          "sourceReference": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!J86",
+          "deterministicDefaults": [
+            "ivs"
+          ]
+        },
+        {
+          "slot": 3,
+          "speciesId": "golurk",
+          "displaySpecies": "Golurk",
+          "level": 81,
+          "abilityId": "powerspot",
+          "itemId": "lifeorb",
+          "moveIds": [
+            "poltergeist",
+            "highhorsepower",
+            "thunderpunch",
+            "protect"
+          ],
+          "natureId": "adamant",
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "evs": {
+            "hp": 6,
+            "atk": 252,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 252
+          },
+          "gender": null,
+          "form": 0,
+          "sourceReference": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!K86",
+          "deterministicDefaults": [
+            "ivs"
+          ]
+        }
+      ]
+    },
+    "pokemon-unbound-trainer-0534": {
+      "id": "pokemon-unbound-trainer-0534",
+      "consumerTrainerId": 534,
+      "displayName": "Rival · Marlon battle partner",
+      "shortName": "Rival · Marlon battle partner",
+      "sourceType": "player-partner",
+      "location": "Rival · Marlon battle partner",
+      "locationName": "Rival · Marlon battle partner",
+      "event": "Rival · Marlon battle partner",
+      "boss": true,
+      "categoryFlags": [
+        "player-partner"
+      ],
+      "variantConditions": [
+        {
+          "difficulty": "difficult"
+        }
+      ],
+      "battleProfiles": {
+        "default": {
+          "format": "double",
+          "aiMask": null,
+          "aiFlagIds": [],
+          "aiVerificationStatus": "partner-mask-not-verified",
+          "bagItemIds": [
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      },
+      "progressionApplicability": {
+        "status": "ally-reference-only"
+      },
+      "sourceConfidence": "hash-pinned-difficult-workbook-partner-block",
+      "team": [
+        {
+          "slot": 1,
+          "speciesId": "toucannon",
+          "displaySpecies": "Toucannon",
+          "level": 61,
+          "abilityId": "skilllink",
+          "itemId": null,
+          "moveIds": [
+            "drillpeck",
+            "hypervoice",
+            "bulletseed",
+            "screech"
+          ],
+          "natureId": "jolly",
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "evs": {
+            "hp": 252,
+            "atk": 4,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 252
+          },
+          "gender": null,
+          "form": 0,
+          "sourceReference": "Boss Trainers.xlsx:Team Shadow Bosses!I126",
+          "deterministicDefaults": [
+            "ivs"
+          ]
+        },
+        {
+          "slot": 2,
+          "speciesId": "vaporeon",
+          "displaySpecies": "Vaporeon",
+          "level": 62,
+          "abilityId": "waterabsorb",
+          "itemId": null,
+          "moveIds": [
+            "hydropump",
+            "icebeam",
+            "scald",
+            "protect"
+          ],
+          "natureId": "hardy",
+          "ivs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "evs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "gender": null,
+          "form": 0,
+          "sourceReference": "Boss Trainers.xlsx:Team Shadow Bosses!J126",
+          "deterministicDefaults": [
+            "ivs"
+          ]
+        },
+        {
+          "slot": 3,
+          "speciesId": "tyranitarmega",
+          "displaySpecies": "Tyranitar Mega",
+          "level": 64,
+          "abilityId": "sandstream",
+          "itemId": "tyranitarite",
+          "moveIds": [
+            "stoneedge",
+            "crunch",
+            "earthquake",
+            "protect"
+          ],
+          "natureId": "hardy",
+          "ivs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "evs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "gender": null,
+          "form": 0,
+          "sourceReference": "Boss Trainers.xlsx:Team Shadow Bosses!K126",
+          "deterministicDefaults": [
+            "ivs"
+          ],
+          "sourceNoteReference": "Boss Trainers.xlsx:Team Shadow Bosses!K130"
+        }
+      ],
+      "mechanicsVariants": [
+        {
+          "id": "rival-tyranitarmega",
+          "label": "Rival · Tyranitar-Mega",
+          "team": [
+            {
+              "slot": 1,
+              "speciesId": "toucannon",
+              "displaySpecies": "Toucannon",
+              "level": 61,
+              "abilityId": "skilllink",
+              "itemId": null,
+              "moveIds": [
+                "drillpeck",
+                "hypervoice",
+                "bulletseed",
+                "screech"
+              ],
+              "natureId": "jolly",
+              "ivs": {
+                "hp": 31,
+                "atk": 31,
+                "def": 31,
+                "spa": 31,
+                "spd": 31,
+                "spe": 31
+              },
+              "evs": {
+                "hp": 252,
+                "atk": 4,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 252
+              },
+              "gender": null,
+              "form": 0,
+              "sourceReference": "Boss Trainers.xlsx:Team Shadow Bosses!I126",
+              "deterministicDefaults": [
+                "ivs"
+              ]
+            },
+            {
+              "slot": 2,
+              "speciesId": "vaporeon",
+              "displaySpecies": "Vaporeon",
+              "level": 62,
+              "abilityId": "waterabsorb",
+              "itemId": null,
+              "moveIds": [
+                "hydropump",
+                "icebeam",
+                "scald",
+                "protect"
+              ],
+              "natureId": "hardy",
+              "ivs": {
+                "hp": 0,
+                "atk": 0,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+              },
+              "evs": {
+                "hp": 0,
+                "atk": 0,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+              },
+              "gender": null,
+              "form": 0,
+              "sourceReference": "Boss Trainers.xlsx:Team Shadow Bosses!J126",
+              "deterministicDefaults": [
+                "ivs"
+              ]
+            },
+            {
+              "slot": 3,
+              "speciesId": "tyranitarmega",
+              "displaySpecies": "Tyranitar Mega",
+              "level": 64,
+              "abilityId": "sandstream",
+              "itemId": "tyranitarite",
+              "moveIds": [
+                "stoneedge",
+                "crunch",
+                "earthquake",
+                "protect"
+              ],
+              "natureId": "hardy",
+              "ivs": {
+                "hp": 0,
+                "atk": 0,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+              },
+              "evs": {
+                "hp": 0,
+                "atk": 0,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+              },
+              "gender": null,
+              "form": 0,
+              "sourceReference": "Boss Trainers.xlsx:Team Shadow Bosses!K126",
+              "deterministicDefaults": [
+                "ivs"
+              ],
+              "sourceNoteReference": "Boss Trainers.xlsx:Team Shadow Bosses!K130"
+            }
+          ],
+          "sourceReference": "Boss Trainers.xlsx:Team Shadow Bosses!K130"
+        },
+        {
+          "id": "rival-metagrossmega",
+          "label": "Rival · Metagross-Mega",
+          "team": [
+            {
+              "slot": 1,
+              "speciesId": "toucannon",
+              "displaySpecies": "Toucannon",
+              "level": 61,
+              "abilityId": "skilllink",
+              "itemId": null,
+              "moveIds": [
+                "drillpeck",
+                "hypervoice",
+                "bulletseed",
+                "screech"
+              ],
+              "natureId": "jolly",
+              "ivs": {
+                "hp": 31,
+                "atk": 31,
+                "def": 31,
+                "spa": 31,
+                "spd": 31,
+                "spe": 31
+              },
+              "evs": {
+                "hp": 252,
+                "atk": 4,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 252
+              },
+              "gender": null,
+              "form": 0,
+              "sourceReference": "Boss Trainers.xlsx:Team Shadow Bosses!I126",
+              "deterministicDefaults": [
+                "ivs"
+              ]
+            },
+            {
+              "slot": 2,
+              "speciesId": "vaporeon",
+              "displaySpecies": "Vaporeon",
+              "level": 62,
+              "abilityId": "waterabsorb",
+              "itemId": null,
+              "moveIds": [
+                "hydropump",
+                "icebeam",
+                "scald",
+                "protect"
+              ],
+              "natureId": "hardy",
+              "ivs": {
+                "hp": 0,
+                "atk": 0,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+              },
+              "evs": {
+                "hp": 0,
+                "atk": 0,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+              },
+              "gender": null,
+              "form": 0,
+              "sourceReference": "Boss Trainers.xlsx:Team Shadow Bosses!J126",
+              "deterministicDefaults": [
+                "ivs"
+              ]
+            },
+            {
+              "slot": 3,
+              "speciesId": "metagrossmega",
+              "displaySpecies": "Metagross Mega",
+              "level": 64,
+              "abilityId": "toughclaws",
+              "itemId": "metagrossite",
+              "moveIds": [
+                "ironhead",
+                "zenheadbutt",
+                "hammerarm",
+                "protect"
+              ],
+              "natureId": "hardy",
+              "ivs": {
+                "hp": 0,
+                "atk": 0,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+              },
+              "evs": {
+                "hp": 0,
+                "atk": 0,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+              },
+              "gender": null,
+              "form": 0,
+              "sourceReference": "Boss Trainers.xlsx:Team Shadow Bosses!K126",
+              "deterministicDefaults": [
+                "ivs"
+              ],
+              "sourceNoteReference": "Boss Trainers.xlsx:Team Shadow Bosses!K130"
+            }
+          ],
+          "sourceReference": "Boss Trainers.xlsx:Team Shadow Bosses!K130"
+        },
+        {
+          "id": "rival-garchompmega",
+          "label": "Rival · Garchomp-Mega",
+          "team": [
+            {
+              "slot": 1,
+              "speciesId": "toucannon",
+              "displaySpecies": "Toucannon",
+              "level": 61,
+              "abilityId": "skilllink",
+              "itemId": null,
+              "moveIds": [
+                "drillpeck",
+                "hypervoice",
+                "bulletseed",
+                "screech"
+              ],
+              "natureId": "jolly",
+              "ivs": {
+                "hp": 31,
+                "atk": 31,
+                "def": 31,
+                "spa": 31,
+                "spd": 31,
+                "spe": 31
+              },
+              "evs": {
+                "hp": 252,
+                "atk": 4,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 252
+              },
+              "gender": null,
+              "form": 0,
+              "sourceReference": "Boss Trainers.xlsx:Team Shadow Bosses!I126",
+              "deterministicDefaults": [
+                "ivs"
+              ]
+            },
+            {
+              "slot": 2,
+              "speciesId": "vaporeon",
+              "displaySpecies": "Vaporeon",
+              "level": 62,
+              "abilityId": "waterabsorb",
+              "itemId": null,
+              "moveIds": [
+                "hydropump",
+                "icebeam",
+                "scald",
+                "protect"
+              ],
+              "natureId": "hardy",
+              "ivs": {
+                "hp": 0,
+                "atk": 0,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+              },
+              "evs": {
+                "hp": 0,
+                "atk": 0,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+              },
+              "gender": null,
+              "form": 0,
+              "sourceReference": "Boss Trainers.xlsx:Team Shadow Bosses!J126",
+              "deterministicDefaults": [
+                "ivs"
+              ]
+            },
+            {
+              "slot": 3,
+              "speciesId": "garchompmega",
+              "displaySpecies": "Garchomp Mega",
+              "level": 64,
+              "abilityId": "sandforce",
+              "itemId": "garchompite",
+              "moveIds": [
+                "dragonrush",
+                "stompingtantrum",
+                "crunch",
+                "protect"
+              ],
+              "natureId": "hardy",
+              "ivs": {
+                "hp": 0,
+                "atk": 0,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+              },
+              "evs": {
+                "hp": 0,
+                "atk": 0,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+              },
+              "gender": null,
+              "form": 0,
+              "sourceReference": "Boss Trainers.xlsx:Team Shadow Bosses!K126",
+              "deterministicDefaults": [
+                "ivs"
+              ],
+              "sourceNoteReference": "Boss Trainers.xlsx:Team Shadow Bosses!K130"
+            }
+          ],
+          "sourceReference": "Boss Trainers.xlsx:Team Shadow Bosses!K130"
+        }
+      ]
     }
   }
 }

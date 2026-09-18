@@ -8,8 +8,12 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const scenario = process.env.PLC_PARTNER_SCENARIO || 'platinum-kaizo';
-const gameId = scenario === 'subway' ? 'volt-white-2r' : ['striaton','frigate'].includes(scenario) ? 'pokemon-black-2' : scenario;
+const gameId = scenario.startsWith('unbound-') ? 'pokemon-unbound' : scenario === 'subway' ? 'volt-white-2r' : ['striaton','frigate'].includes(scenario) ? 'pokemon-black-2' : scenario;
 const cases = {
+  'pokemon-unbound': {trainer:'pokemon-unbound-player-partner-448-449',partner:'pokemon-unbound-trainer-0450',species:'Staravia',cards:3},
+  'unbound-rival': {trainer:'pokemon-unbound-trainer-0464',partner:'pokemon-unbound-trainer-0465:rival-metagrossmega',species:'Toucannon',cards:3},
+  'unbound-marlon': {trainer:'pokemon-unbound-player-partner-459-460',partner:'pokemon-unbound-trainer-0532',species:'Krookodile',cards:3},
+  'unbound-jax': {trainer:'pokemon-unbound-trainer-0466',partner:'pokemon-unbound-trainer-0533',species:'Staraptor',cards:3},
   frigate: {trainer:'pokemon-black-2-giant-chasm-plasma-pair',partner:null,species:'Scraggy',cards:0},
   'pokemon-black': {trainer:'pokemon-black-wellspring-cave-plasma-pair',partner:'pokemon-black-trainer-0056',species:'Tepig',cards:2},
   'pokemon-white': {trainer:'pokemon-white-wellspring-cave-plasma-pair',partner:'pokemon-white-trainer-0056',species:'Tepig',cards:2},

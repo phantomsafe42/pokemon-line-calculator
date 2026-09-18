@@ -31,7 +31,7 @@
       "role": "ROM-derived item verification table"
     },
     "imports/upstream": {
-      "sha256": "8039aa6bc489222020eca29e4af7e4df965084705087f9d5a6107b4cf80af005",
+      "sha256": "5f0bd001b2ca2bc610bff52f8a0fb0381257a3fc7543ad47f8cd3a8c5ebb0867",
       "files": 294,
       "role": "pinned CFRU and DPE source subset"
     },
@@ -44,19 +44,19 @@
       "role": "exact supported-ROM weights, Portal Power, and experience mechanics authority"
     },
     "imports/reference-docs/Unbound Changes From Official.txt": {
-      "sha256": "5f16c2115d748befad574d675532c913b01616360d48201ab0baf1f42c4bf191",
+      "sha256": "04eefc9d8f2de4876130f1ac99ef30d4ad4e7127a0dc6a3bd5e999e33bc027e1",
       "role": "version/reference documentation"
     },
     "imports/reference-docs/Unbound documentation links.txt": {
-      "sha256": "b4a92665f8f60e74b77c5e2f2d9ccafba9e3718a1a681849300514da226e3782",
+      "sha256": "eb4f600be78ad40a46f980dd0addfce2e14e44e220e2d5437789f3a1e5ad22ed",
       "role": "version/reference documentation"
     },
     "imports/reference-docs/Unbound Main_CHANGELOG.txt": {
-      "sha256": "f9a5d5e016261c65be19044b6d8dd8363e9129545ee32dd641928111d9b99194",
+      "sha256": "9f44a413103edf026b73dd0298973bdba687b163ea1f80ceb8a26b46434a3993",
       "role": "version/reference documentation"
     },
     "imports/reference-docs/Unbound Main_README.txt": {
-      "sha256": "9632a3c6789d4a244e91dbb4d640ffefd1057768179e0dc55a4d519a94fca5d2",
+      "sha256": "8ffffc30af17b36ebb7719781a88787b23345e9a02741caab89b60cc38a09855",
       "role": "version/reference documentation"
     }
   },
@@ -290,6 +290,25 @@
   },
   "knownOmissions": [
     {
+      "category": "player-partners",
+      "trainerId": "pokemon-unbound-trainer-0462",
+      "reason": "Team-up with Rival's Pokemon is a borrowed-team single battle, not an active NPC partner."
+    },
+    {
+      "category": "player-partners",
+      "trainerId": "pokemon-unbound-trainer-0474",
+      "reason": "Marlon commands the player party against Groudon; this is not a second owned party."
+    },
+    {
+      "category": "player-partners",
+      "scope": "escort-and-scripted-wild",
+      "reason": "Optional Jax escort, Crystal Peak escort and scripted wild partner encounters need exact event/roster bindings; no blanket location inference."
+    },
+    {
+      "category": "partner-ai",
+      "reason": "Three recovered ally-only workbook records have no verified AI mask. They are manually planned; no AI forecast is enabled."
+    },
+    {
       "category": "trainer-order",
       "reason": "Gym, Successor Maxima, and League boundaries are exact. Ordinary trainers are assigned to documented story windows, but source-row order within a location is not claimed as canonical."
     },
@@ -300,10 +319,6 @@
     {
       "category": "trainer-ai",
       "reason": "All 519 trainer-table profiles have exact stored-mask bindings and 12 scripted wild records have an explicit runtime-resolution contract. Exact action probabilities remain disabled until a validated evaluator models runtime state, switching, items, randomness, and score ties."
-    },
-    {
-      "category": "trainer-pokemon",
-      "reason": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!K66: No exact species in PU_species.js"
     }
   ],
   "activeConsumerProfile": {

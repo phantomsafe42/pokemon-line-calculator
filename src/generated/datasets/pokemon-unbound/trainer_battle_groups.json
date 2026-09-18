@@ -2,5 +2,318 @@
   "schemaVersion": 1,
   "gameId": "pokemon-unbound",
   "kind": "trainer-battle-groups",
+  "playerPartners": {
+    "schemaVersion": "trainer-player-partners/v1",
+    "bindings": [
+      {
+        "id": "pokemon-unbound-player-partner-448-449",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0448",
+          "pokemon-unbound-trainer-0449"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0450",
+            "trainerId": "pokemon-unbound-trainer-0450",
+            "label": "Jax",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 2
+          }
+        ],
+        "source": {
+          "file": "Boss Trainers.xlsx",
+          "workbookSha256": "99305f8aee27bf62ce5c9bbe686c7d864f16e49738762d94158afd34fa4eecc1",
+          "sheet": "Team Shadow Bosses",
+          "enemyRow": 2,
+          "partnerCells": "I6:K20",
+          "rule": "explicit-documented-tag-battle"
+        }
+      },
+      {
+        "id": "pokemon-unbound-player-partner-453-454",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0453",
+          "pokemon-unbound-trainer-0454"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0455",
+            "trainerId": "pokemon-unbound-trainer-0455",
+            "label": "Jax",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 62
+          }
+        ],
+        "source": {
+          "file": "Boss Trainers.xlsx",
+          "workbookSha256": "99305f8aee27bf62ce5c9bbe686c7d864f16e49738762d94158afd34fa4eecc1",
+          "sheet": "Team Shadow Bosses",
+          "enemyRow": 62,
+          "partnerCells": "I66:K80",
+          "rule": "explicit-documented-tag-battle"
+        }
+      },
+      {
+        "id": "pokemon-unbound-player-partner-459-460",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0459",
+          "pokemon-unbound-trainer-0460"
+        ],
+        "enemyPartyPolicy": "per-trainer",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0532",
+            "trainerId": "pokemon-unbound-trainer-0532",
+            "label": "Marlon · Cinder Volcano partner",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 2
+          }
+        ],
+        "source": {
+          "file": "Boss Trainers.xlsx",
+          "workbookSha256": "99305f8aee27bf62ce5c9bbe686c7d864f16e49738762d94158afd34fa4eecc1",
+          "sheet": "Team Light Of Ruin Bosses",
+          "enemyRow": 2,
+          "partnerCells": "I6:K20",
+          "rule": "explicit-documented-tag-battle"
+        }
+      },
+      {
+        "id": "pokemon-unbound-player-partner-464",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0464"
+        ],
+        "enemyPartyPolicy": "shared",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0465:rival-tyranitarmega",
+            "trainerId": "pokemon-unbound-trainer-0465",
+            "trainerVariantId": "rival-tyranitarmega",
+            "label": "Rival · Tyranitar-Mega",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 62
+          },
+          {
+            "id": "pokemon-unbound-trainer-0465:rival-metagrossmega",
+            "trainerId": "pokemon-unbound-trainer-0465",
+            "trainerVariantId": "rival-metagrossmega",
+            "label": "Rival · Metagross-Mega",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 62
+          },
+          {
+            "id": "pokemon-unbound-trainer-0465:rival-garchompmega",
+            "trainerId": "pokemon-unbound-trainer-0465",
+            "trainerVariantId": "rival-garchompmega",
+            "label": "Rival · Garchomp-Mega",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 62
+          }
+        ],
+        "source": {
+          "file": "Boss Trainers.xlsx",
+          "workbookSha256": "99305f8aee27bf62ce5c9bbe686c7d864f16e49738762d94158afd34fa4eecc1",
+          "sheet": "Team Light Of Ruin Bosses",
+          "enemyRow": 62,
+          "partnerCells": "I66:K80",
+          "rule": "explicit-documented-tag-battle",
+          "starterMovesNote": "K70"
+        }
+      },
+      {
+        "id": "pokemon-unbound-player-partner-458",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0458"
+        ],
+        "enemyPartyPolicy": "shared",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0534:rival-tyranitarmega",
+            "trainerId": "pokemon-unbound-trainer-0534",
+            "trainerVariantId": "rival-tyranitarmega",
+            "label": "Rival · Tyranitar-Mega",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 122
+          },
+          {
+            "id": "pokemon-unbound-trainer-0534:rival-metagrossmega",
+            "trainerId": "pokemon-unbound-trainer-0534",
+            "trainerVariantId": "rival-metagrossmega",
+            "label": "Rival · Metagross-Mega",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 122
+          },
+          {
+            "id": "pokemon-unbound-trainer-0534:rival-garchompmega",
+            "trainerId": "pokemon-unbound-trainer-0534",
+            "trainerVariantId": "rival-garchompmega",
+            "label": "Rival · Garchomp-Mega",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 122
+          }
+        ],
+        "source": {
+          "file": "Boss Trainers.xlsx",
+          "workbookSha256": "99305f8aee27bf62ce5c9bbe686c7d864f16e49738762d94158afd34fa4eecc1",
+          "sheet": "Team Shadow Bosses",
+          "enemyRow": 122,
+          "partnerCells": "I126:K140",
+          "rule": "explicit-documented-tag-battle",
+          "starterMovesNote": "K130"
+        }
+      },
+      {
+        "id": "pokemon-unbound-player-partner-466",
+        "battleFormat": "doubles",
+        "enemyTrainerIds": [
+          "pokemon-unbound-trainer-0466"
+        ],
+        "enemyPartyPolicy": "shared",
+        "playerPartyPolicy": "per-trainer",
+        "playerSlot": 0,
+        "partnerSlot": 1,
+        "maxPlayerPartySize": 3,
+        "formatChoice": "double-only",
+        "allowWithoutPartner": false,
+        "partnerOptions": [
+          {
+            "id": "pokemon-unbound-trainer-0533",
+            "trainerId": "pokemon-unbound-trainer-0533",
+            "label": "Jax · Ruins of Void partner",
+            "hideFromOpponentSelection": true,
+            "sourceRow": 82
+          }
+        ],
+        "source": {
+          "file": "Boss Trainers.xlsx",
+          "workbookSha256": "99305f8aee27bf62ce5c9bbe686c7d864f16e49738762d94158afd34fa4eecc1",
+          "sheet": "Team Light Of Ruin Bosses",
+          "enemyRow": 82,
+          "partnerCells": "I86:K100",
+          "rule": "explicit-documented-tag-battle"
+        }
+      }
+    ],
+    "validation": {
+      "workbookSha256": "99305f8aee27bf62ce5c9bbe686c7d864f16e49738762d94158afd34fa4eecc1",
+      "profile": "unbound-2.1.1.1-difficult",
+      "corrections": [
+        {
+          "category": "trainers",
+          "recordId": "pokemon-unbound-trainer-0532",
+          "field": "partner-team",
+          "legacyValue": null,
+          "referenceValue": {
+            "name": "Marlon · Cinder Volcano partner",
+            "slots": 3,
+            "variants": 1
+          },
+          "authority": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!I6:K20",
+          "resolutionStatus": "resolved",
+          "resolution": "explicit-partner-heading-and-starter-note",
+          "confidence": "documented"
+        },
+        {
+          "category": "trainers",
+          "recordId": "pokemon-unbound-trainer-0533",
+          "field": "partner-team",
+          "legacyValue": null,
+          "referenceValue": {
+            "name": "Jax · Ruins of Void partner",
+            "slots": 3,
+            "variants": 1
+          },
+          "authority": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!I86:K100",
+          "resolutionStatus": "resolved",
+          "resolution": "explicit-partner-heading-and-starter-note",
+          "confidence": "documented"
+        },
+        {
+          "category": "trainers",
+          "recordId": "pokemon-unbound-trainer-0534",
+          "field": "partner-team",
+          "legacyValue": null,
+          "referenceValue": {
+            "name": "Rival · Marlon battle partner",
+            "slots": 3,
+            "variants": 3
+          },
+          "authority": "Boss Trainers.xlsx:Team Shadow Bosses!I126:K140",
+          "resolutionStatus": "resolved",
+          "resolution": "explicit-partner-heading-and-starter-note",
+          "confidence": "documented"
+        },
+        {
+          "category": "trainers",
+          "recordId": "pokemon-unbound-trainer-0465",
+          "field": "partner-team",
+          "legacyValue": {
+            "name": "Jax 2 [Difficult] #3",
+            "slots": 2
+          },
+          "referenceValue": {
+            "name": "Rival · Aklove battle partner",
+            "slots": 3,
+            "variants": 3
+          },
+          "authority": "Boss Trainers.xlsx:Team Light Of Ruin Bosses!I66:K80",
+          "resolutionStatus": "resolved",
+          "resolution": "explicit-partner-heading-and-starter-note",
+          "confidence": "documented"
+        }
+      ],
+      "excluded": [
+        {
+          "trainerId": "pokemon-unbound-trainer-0462",
+          "reason": "Team-up with Rival's Pokemon is a borrowed-team single battle, not an active NPC partner."
+        },
+        {
+          "trainerId": "pokemon-unbound-trainer-0474",
+          "reason": "Marlon commands the player party against Groudon; this is not a second owned party."
+        },
+        {
+          "scope": "escort-and-scripted-wild",
+          "reason": "Optional Jax escort, Crystal Peak escort and scripted wild partner encounters need exact event/roster bindings; no blanket location inference."
+        }
+      ]
+    }
+  },
   "records": {}
 }
