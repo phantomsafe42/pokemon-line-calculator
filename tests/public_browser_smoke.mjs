@@ -6,6 +6,7 @@ import { createServer as createNetServer } from "node:net";
 import path from "node:path";
 import process from "node:process";
 import { fileURLToPath } from "node:url";
+import { createDatasetContext, REQUIRED_DATASET_SOURCES } from "../src/adapters/standardized_dataset.js";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(here, "..");
@@ -18,6 +19,16 @@ const datasetLock = JSON.parse(await fs.readFile(path.join(projectRoot, "dataset
 const assetLock = JSON.parse(await fs.readFile(path.join(projectRoot, "asset-lock.json"), "utf8"));
 const hostedReleaseRoot = `${datasetLock.hosted.origin}/v1/releases/${datasetLock.releaseVersion}`;
 const hostedAssetReleaseRoot = `${assetLock.gateway.origin}/v1/releases/${assetLock.gateway.releaseVersion}`;
+const vw2rRoot = path.join(projectRoot, "src/generated/datasets/volt-white-2r");
+const readVw2r = async name => JSON.parse(await fs.readFile(path.join(vw2rRoot, name), "utf8"));
+const vw2rContext = createDatasetContext({
+  manifest: await readVw2r("dataset_manifest.json"),
+  mechanics: await readVw2r("battle_mechanics.json"),
+  documents: Object.fromEntries(await Promise.all(REQUIRED_DATASET_SOURCES.map(async name => [name, await readVw2r(name)])))
+});
+// Ally-only teams are not enemy encounters. Check the exact released navigation
+// inventory rather than assuming a minimum number of raw trainer records.
+const expectedVw2rTrainerIds = vw2rContext.trainerGroups().flatMap(group => group.trainers.map(trainer => trainer.id));
 const vanillaGameOptions = [
   ["pokemon-ruby", "Ruby"],
   ["pokemon-sapphire", "Sapphire"],
@@ -278,7 +289,7 @@ try {
     await wait(() => document.getElementById('game-dialog').open, 'reopened game picker');
     document.querySelector('.game-picker-option[data-game-id="volt-white-2r"]').click();
     await wait(() => /is ready\./.test(document.getElementById('app-status')?.textContent || '')
-      && document.getElementById('trainer-select').options.length > 400, 'public game data, AI bootstrap, and resolver');
+      && document.getElementById('trainer-select').options.length === ${expectedVw2rTrainerIds.length + 1}, 'public game data, AI bootstrap, and resolver');
     await wait(() => document.getElementById('plan-context-dialog').open, 'VW2R clean-plan dialog');
     const vw2rTrainerSelect = document.getElementById('trainer-select');
     const neilOption = [...vw2rTrainerSelect.options].find(entry => entry.textContent.startsWith('School Kid Neil ·'));
@@ -332,6 +343,7 @@ try {
       eyebrowCount: document.querySelectorAll('.eyebrow').length,
       trainers: document.getElementById('trainer-select').options.length,
       tabsVisible: !document.getElementById('app-tabs').hidden,
+      trainerIds: [...document.getElementById('trainer-select').options].slice(1).map(option => option.value),
       localGlobalType: typeof globalThis.__PLC_TESTING_STATE__,
       viewToggle: Boolean(document.getElementById('view-mode-toggle')),
       outputState: Boolean(document.getElementById('output-state') || document.getElementById('output-state-anchor')),
@@ -403,7 +415,8 @@ try {
   assert.equal(state.currentGameName, "Volt White 2 Redux - Challenge Mode");
   assert.equal(state.siteCredit, "twitch.tv/phantomsafe");
   assert.equal(state.eyebrowCount, 0);
-  assert.ok(state.trainers > 400);
+  assert.equal(state.trainers, expectedVw2rTrainerIds.length + 1);
+  assert.deepEqual(state.trainerIds, expectedVw2rTrainerIds);
   assert.match(state.renegadePlatinum.status, /Renegade Platinum is ready\./);
   assert.ok(state.renegadePlatinum.trainers > 100);
   assert.ok(state.deferredEditor.species > 100);

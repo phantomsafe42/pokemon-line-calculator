@@ -1,14 +1,14 @@
-import { assertValidPlanDocument, PLAN_SCHEMA_VERSION } from "../contracts/plan_contract.js?v=20260917-unbound-escorts-v1";
+import { assertValidPlanDocument, PLAN_SCHEMA_VERSION } from "../contracts/plan_contract.js?v=20260917-partners-release-v1";
 import { clone, exactRange, makeStableId, nowIso, shortHash, stableStringify, toId } from "./primitives.js?v=20260905-drafts-freecalc-partners-v1";
 import { activeKeys, battleFormat as normalizeBattleFormat, slotsPerSide } from "./battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
 import { participatingActiveEntries, participatingActiveKeys } from "../rulesets/rotation_battle.js?v=20260905-drafts-freecalc-partners-v1";
-import { createInitialExperienceState } from "../rulesets/vw2r_experience.js?v=20260917-unbound-escorts-v1";
+import { createInitialExperienceState } from "../rulesets/vw2r_experience.js?v=20260917-partners-release-v1";
 import { entryAbilityEffects } from "../rulesets/switch_rules.js?v=20260907-two-turn-immunity-v1";
 import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260911-ability-storage-reimp-v1";
 import { combatantsAreAdjacent } from "../rulesets/triple_battle.js?v=20260905-drafts-freecalc-partners-v1";
 import { abilityStatStageRule, activeAbilityId } from "../rulesets/ability_rules.js?v=20260905-drafts-freecalc-partners-v1";
 import { weatherIsSuppressed } from "../rulesets/battle_rules.js?v=20260907-two-turn-immunity-v1";
-import { ABILITY_FORM_STATE_VERSION, applyCombatantFormState, desiredWeatherAbilityForm } from "../rulesets/form_rules.js?v=20260917-unbound-escorts-v1";
+import { ABILITY_FORM_STATE_VERSION, applyCombatantFormState, desiredWeatherAbilityForm } from "../rulesets/form_rules.js?v=20260917-partners-release-v1";
 import { initializeAbilityKnowledge, observeAbilityEvent, entryAbilityAnnouncement } from "./ability_knowledge.js?v=20260911-ability-storage-reimp-v1";
 
 export const INITIAL_ENTRY_EFFECTS_VERSION = 2;

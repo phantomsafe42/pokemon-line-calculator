@@ -3,23 +3,23 @@ const SAFE_PATH_PART = /^[A-Za-z0-9._-]+$/u;
 
 export const HOSTED_DATASET_RELEASE = Object.freeze({
   origin: "https://datasets.phantomsafe.tv",
-  releaseVersion: "0.1.16",
+  releaseVersion: "0.1.18",
   profileId: "plc",
   profileSchemaVersion: "pokemon-line-calculator-dataset/v1alpha1",
-  sourceCommit: "ef5076950d506ed7ee2bf282713e115839fef354",
-  sourceTag: "v0.1.16",
+  sourceCommit: "475b23ccd8eb4fe0a0610e8a0871795784a4615b",
+  sourceTag: "v0.1.18",
   catalog: Object.freeze({
     bytes: 1633,
-    sha256: "f8423630ba455d8193a0d41728f7bdd30c84b99b162b1d6c6bb09f93278b9887"
+    sha256: "e829a9cd5615127949f4476a1ebe6924fbf0c3ea9598a4476e68c91e80a86cf8"
   }),
   manifest: Object.freeze({
-    bytes: 85053,
-    sha256: "2875c8c3ec44c1890eff20da1b1e4d5ca73c6f522992481a7148574260c85575"
+    bytes: 85070,
+    sha256: "23b9dd23cde1f29839b72e412ccfef156b977da062618c0360a8e2b9cce19522"
   }),
   payload: Object.freeze({
     files: 332,
-    bytes: 313934210,
-    treeSha256: "16888f2c226da461d93a1ff238a38286e5d24078b6b263d1df3f0d061b395ab8"
+    bytes: 314876472,
+    treeSha256: "c5efd20d05f56d585681b039443c02078db77cfe7c0a0e00d6a3e4e73e21ad6b"
   })
 });
 
