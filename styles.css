@@ -58,6 +58,7 @@ h3 { margin: 0; font-size: 1rem; }
 .game-credit { min-height: 1rem; margin: .22rem 0 0; color: var(--muted); font-size: .72rem; font-weight: 500; }
 .status { margin: 0 0 .75rem; color: var(--muted); text-align: left; font-size: .84rem; line-height: 1.35; }
 .status.error, .error-text { color: var(--red); }
+.status:empty { display: none; }
 .app-shell { width: min(2480px, calc(100% - 56px)); margin: 0 auto; padding: 1rem 0 2rem; }
 .panel { border: 1px solid var(--line); border-radius: 8px; padding: 1rem; background: var(--shell); }
 .tabs { display: flex; gap: .35rem; margin-bottom: 1rem; border-bottom: 1px solid var(--line); }

@@ -1702,7 +1702,7 @@ async function beginPlanFromContext() {
     setTab("plc");
     renderWorkspace();
     const formatLabel = battleFormatLabel(plan.game.battleFormat);
-    setStatus(`Clean ${formatLabel} plan ready for ${enemyTrainerDisplayName}.`);
+    setStatus("");
   } catch (error) { setStatus(error.message, true); }
 }
 
