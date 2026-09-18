@@ -3658,7 +3658,7 @@ function renderWorkspace() {
   ui["battle-workspace"].classList.toggle("is-doubles", hasPlan && plan.game.battleFormat === "doubles");
   ui["battle-workspace"].classList.toggle("is-triples", hasPlan && plan.game.battleFormat === "triples");
   ui["battle-workspace"].classList.toggle("is-rotation", hasPlan && plan.game.battleFormat === "rotation");
-  ui["plan-toolbar-label"].textContent = hasPlan ? `${plan.name} · ${currentTrainerName()} · ${battleFormatLabel()}` : "No battle plan open";
+  ui["plan-toolbar-label"].textContent = hasPlan ? plan.name : "No battle plan open";
   ui["commit-turn"].disabled = true;
   ui["recalculate-plan"].hidden = !hasPlan || !needsRecalculation;
   if (!hasPlan) return;
