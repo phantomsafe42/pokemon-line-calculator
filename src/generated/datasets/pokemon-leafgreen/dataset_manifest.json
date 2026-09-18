@@ -835,7 +835,8 @@
   ],
   "extensions": [
     "source_verification_report.json",
-    "trainer_visual_identity_report.json"
+    "trainer_visual_identity_report.json",
+    "starter_selection.json"
   ],
   "sourceRequirements": {
     "specialTrainerMechanics": {
@@ -1138,7 +1139,7 @@
       "status": "passed-import-and-diagnostic-join",
       "source": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/join-audit/pokemon-leafgreen.json",
       "documentedPartyGroups": 474,
-      "resolvedPercentOfScalar": 100.0,
+      "resolvedPercentOfScalar": 100,
       "promotionStatus": "active-standardized-campaign-order"
     },
     "trainerCampaignOrder": {
@@ -1180,7 +1181,9 @@
   },
   "builders": {
     "build": "python ..\\tools\\build_vanilla_game_datasets.py --game pokemon-leafgreen",
-    "deterministicCheck": "python ..\\tools\\build_vanilla_game_datasets.py --game pokemon-leafgreen --check"
+    "deterministicCheck": "python ..\\tools\\build_vanilla_game_datasets.py --game pokemon-leafgreen --check",
+    "starterSelectionBuild": "node ../tools/build_starter_selection.js --write",
+    "starterSelectionCheck": "node ../tools/build_starter_selection.js --check"
   },
   "consumerProjection": {
     "status": "release-export-consumer-ready",

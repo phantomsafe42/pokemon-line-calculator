@@ -271,6 +271,11 @@
     "trainerGenderInstructions": "TRAINER_GENDER.md",
     "trainerGenderValidation": "node ./source-data/validate_trainer_genders.js",
     "trainerAiDependencySync": "node .\\source-data\\sync_trainer_ai_binding.js",
-    "trainerAiDependencyCheck": "node .\\source-data\\sync_trainer_ai_binding.js --check"
-  }
+    "trainerAiDependencyCheck": "node .\\source-data\\sync_trainer_ai_binding.js --check",
+    "starterSelectionBuild": "node ../tools/build_starter_selection.js --write",
+    "starterSelectionCheck": "node ../tools/build_starter_selection.js --check"
+  },
+  "extensions": [
+    "starter_selection.json"
+  ]
 }
