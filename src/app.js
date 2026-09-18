@@ -298,7 +298,6 @@ function setGamePickerBusy(busy) {
 async function chooseGameFromPicker(gameId) {
   if (gameSelectionPending || readyGames.get(gameId) !== true) return;
   const config = GAME_REGISTRY[gameId];
-  const selectingCurrentGame = selectedGameId === gameId && Boolean(dataset);
   setGamePickerBusy(true);
   ui["game-dialog-status"].textContent = `Loading ${config.name}…`;
   const selected = await selectGame(gameId);
@@ -306,7 +305,6 @@ async function chooseGameFromPicker(gameId) {
   if (selected) {
     ui["game-dialog-status"].textContent = "";
     ui["game-dialog"].close();
-    if (!selectingCurrentGame && !plan) queueMicrotask(() => openPlanContext());
   } else {
     ui["game-dialog-status"].textContent = selectedGameId
       ? `${GAME_REGISTRY[selectedGameId].name} remains selected.`
