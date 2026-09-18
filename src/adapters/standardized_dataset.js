@@ -1,5 +1,5 @@
 import { canonicalStats, shortHash, stableStringify, toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
-import { installTrainerEncounters, encounterNavigation } from './trainer_encounters.js?v=20260917-multi-corrections-v2';
+import { installTrainerEncounters, encounterNavigation } from './trainer_encounters.js?v=20260917-unbound-escorts-v1';
 import { readDatasetJsonFiles } from "./hosted_dataset.js?v=20260917-paired-trainer-release-v2";
 
 export const BATTLE_DATASET_SOURCES = Object.freeze([
@@ -302,6 +302,13 @@ export function createDatasetContext({ manifest, mechanics, documents }) {
       }
       if (paired?.encounter.formatChoice === 'double-only') return [
         { id: `multi:${paired.id}`, trainerId: paired.id, format: 'doubles', battleKind: 'multi', label: 'Multi', locked: true }
+      ];
+      const escort = trainer.playerPartnerBinding;
+      if (escort?.formatChoice === 'single-or-double') return [
+        { id: `singles:${trainer.id}`, trainerId: trainer.id, format: 'singles', battleKind: 'single', label: 'Singles', withoutPlayerPartner: true },
+        { id: `doubles:${trainer.id}`, trainerId: trainer.id, format: 'doubles', battleKind: 'double', label: 'Doubles', withoutPlayerPartner: true },
+        { id: `allied:${trainer.id}`, trainerId: trainer.id, format: 'doubles', battleKind: 'multi', label: `Multi · with ${escort.partnerOptions[0].label.split(' · ')[0]}` },
+        { id: `multi:${trainer.id}`, trainerId: trainer.id, format: 'doubles', battleKind: 'multi', label: 'Custom Multi', requiresPartner: true, withoutPlayerPartner: true }
       ];
       const format = this.trainerBattleFormat(trainer.id);
       if (format !== 'singles') return [{

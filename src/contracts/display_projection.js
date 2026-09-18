@@ -1,4 +1,4 @@
-import { deriveDisplayColumns } from "../core/graph.js?v=20260917-multi-corrections-v2";
+import { deriveDisplayColumns } from "../core/graph.js?v=20260917-unbound-escorts-v1";
 import { clone, nowIso } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
 
 export const DISPLAY_KIND = "battle-plan-display";

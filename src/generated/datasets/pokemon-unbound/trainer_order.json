@@ -7171,7 +7171,11 @@
       ],
       "routeConditions": [],
       "canonicalOrderStatus": "location-window-only",
-      "sourceConfidence": "walkthrough-location-window"
+      "sourceConfidence": "walkthrough-location-window",
+      "participantTrainerIds": [
+        "pokemon-unbound-trainer-0535",
+        "pokemon-unbound-trainer-0536"
+      ]
     },
     {
       "occurrenceId": "pokemon-unbound-occurrence-0449",
@@ -7187,7 +7191,11 @@
       ],
       "routeConditions": [],
       "canonicalOrderStatus": "location-window-only",
-      "sourceConfidence": "walkthrough-location-window"
+      "sourceConfidence": "walkthrough-location-window",
+      "participantTrainerIds": [
+        "pokemon-unbound-trainer-0537",
+        "pokemon-unbound-trainer-0538"
+      ]
     },
     {
       "occurrenceId": "pokemon-unbound-occurrence-0450",
@@ -7203,7 +7211,11 @@
       ],
       "routeConditions": [],
       "canonicalOrderStatus": "location-window-only",
-      "sourceConfidence": "walkthrough-location-window"
+      "sourceConfidence": "walkthrough-location-window",
+      "participantTrainerIds": [
+        "pokemon-unbound-trainer-0539",
+        "pokemon-unbound-trainer-0540"
+      ]
     },
     {
       "occurrenceId": "pokemon-unbound-occurrence-0451",
@@ -7219,7 +7231,11 @@
       ],
       "routeConditions": [],
       "canonicalOrderStatus": "location-window-only",
-      "sourceConfidence": "walkthrough-location-window"
+      "sourceConfidence": "walkthrough-location-window",
+      "participantTrainerIds": [
+        "pokemon-unbound-trainer-0541",
+        "pokemon-unbound-trainer-0542"
+      ]
     },
     {
       "occurrenceId": "pokemon-unbound-occurrence-0452",

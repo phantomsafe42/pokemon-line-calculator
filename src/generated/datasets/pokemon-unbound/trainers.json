@@ -119201,7 +119201,8 @@
           "aiSource": "trainer_ai_evidence.json",
           "aiSourceTrainerIds": [],
           "aiVerificationStatus": "scripted-wild-battle-trainer-table-inapplicable",
-          "aiRuntimeResolution": "BATTLE_TYPE_SCRIPTED_WILD_2 uses CHECK_BAD_MOVE OR WildMonIsSmart(activeBattler); a single mask is invalid without exact species flags and runtime state."
+          "aiRuntimeResolution": "BATTLE_TYPE_SCRIPTED_WILD_2 uses CHECK_BAD_MOVE OR WildMonIsSmart(activeBattler); a single mask is invalid without exact species flags and runtime state.",
+          "formatSource": "imports/reference-docs/unbound_partner_encounters.json"
         }
       },
       "sourceConfidence": "current-linked-difficult-boss-workbook",
@@ -120290,7 +120291,10 @@
           "sourceReference": "Boss Trainers.xlsx:Boss Wild Battles!B193",
           "deterministicDefaults": [
             "ivs"
-          ]
+          ],
+          "initialStatStages": {
+            "atk": 1
+          }
         },
         {
           "slot": 2,
@@ -120365,12 +120369,15 @@
           "sourceReference": "Boss Trainers.xlsx:Boss Wild Battles!C193",
           "deterministicDefaults": [
             "ivs"
-          ]
+          ],
+          "initialStatStages": {
+            "spa": 1
+          }
         }
       ],
       "battleProfiles": {
         "default": {
-          "format": "single",
+          "format": "double",
           "aiMask": null,
           "aiFlagIds": [],
           "bagItemIds": [
@@ -120383,7 +120390,8 @@
           "aiSource": "trainer_ai_evidence.json",
           "aiSourceTrainerIds": [],
           "aiVerificationStatus": "scripted-wild-battle-trainer-table-inapplicable",
-          "aiRuntimeResolution": "BATTLE_TYPE_SCRIPTED_WILD_2 uses CHECK_BAD_MOVE OR WildMonIsSmart(activeBattler); a single mask is invalid without exact species flags and runtime state."
+          "aiRuntimeResolution": "BATTLE_TYPE_SCRIPTED_WILD_2 uses CHECK_BAD_MOVE OR WildMonIsSmart(activeBattler); a single mask is invalid without exact species flags and runtime state.",
+          "formatSource": "imports/reference-docs/unbound_partner_encounters.json"
         }
       },
       "sourceConfidence": "current-linked-difficult-boss-workbook",
@@ -120396,18 +120404,18 @@
     "pokemon-unbound-trainer-0477": {
       "id": "pokemon-unbound-trainer-0477",
       "consumerTrainerId": 477,
-      "displayName": "Boss Wild Battles: Crystal Peak [Group 2]",
-      "shortName": "2]",
+      "displayName": "Rival · Crystal Peak escort",
+      "shortName": "Rival",
       "location": "Crystal Peak",
       "event": "Crystal Peak",
-      "sourceType": "boss-wild",
+      "sourceType": "player-partner",
       "locationName": "Crystal Peak",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
       "boss": true,
       "categoryFlags": [
-        "boss-wild"
+        "player-partner"
       ],
       "variantConditions": [
         {
@@ -120643,7 +120651,7 @@
       ],
       "battleProfiles": {
         "default": {
-          "format": "single",
+          "format": "double",
           "aiMask": null,
           "aiFlagIds": [],
           "bagItemIds": [
@@ -120761,7 +120769,8 @@
           "sourceReference": "Boss Trainers.xlsx:Boss Wild Battles!B212",
           "deterministicDefaults": [
             "ivs"
-          ]
+          ],
+          "initialStatStages": {}
         },
         {
           "slot": 2,
@@ -120836,12 +120845,15 @@
           "sourceReference": "Boss Trainers.xlsx:Boss Wild Battles!C212",
           "deterministicDefaults": [
             "ivs"
-          ]
+          ],
+          "initialStatStages": {
+            "def": 1
+          }
         }
       ],
       "battleProfiles": {
         "default": {
-          "format": "single",
+          "format": "double",
           "aiMask": null,
           "aiFlagIds": [],
           "bagItemIds": [
@@ -120854,7 +120866,8 @@
           "aiSource": "trainer_ai_evidence.json",
           "aiSourceTrainerIds": [],
           "aiVerificationStatus": "scripted-wild-battle-trainer-table-inapplicable",
-          "aiRuntimeResolution": "BATTLE_TYPE_SCRIPTED_WILD_2 uses CHECK_BAD_MOVE OR WildMonIsSmart(activeBattler); a single mask is invalid without exact species flags and runtime state."
+          "aiRuntimeResolution": "BATTLE_TYPE_SCRIPTED_WILD_2 uses CHECK_BAD_MOVE OR WildMonIsSmart(activeBattler); a single mask is invalid without exact species flags and runtime state.",
+          "formatSource": "imports/reference-docs/unbound_partner_encounters.json"
         }
       },
       "sourceConfidence": "current-linked-difficult-boss-workbook",
@@ -140177,6 +140190,1472 @@
           "sourceReference": "Boss Trainers.xlsx:Team Shadow Bosses!K130"
         }
       ]
+    },
+    "pokemon-unbound-trainer-0535": {
+      "id": "pokemon-unbound-trainer-0535",
+      "consumerTrainerId": 535,
+      "displayName": "Light of Ruin Grunt 1 · Crystal Peak pair 1",
+      "shortName": "Grunt",
+      "location": "Crystal Peak",
+      "event": null,
+      "sourceType": "regular",
+      "locationName": "Crystal Peak",
+      "spriteId": null,
+      "orientation": null,
+      "rewardItem": null,
+      "boss": false,
+      "categoryFlags": [
+        "regular"
+      ],
+      "variantConditions": [
+        {
+          "difficulty": "difficult"
+        }
+      ],
+      "team": [
+        {
+          "slot": 1,
+          "speciesId": "dedenne",
+          "displaySpecies": "Dedenne",
+          "level": 53,
+          "abilityId": "cheekpouch",
+          "itemId": null,
+          "moveIds": [
+            "dazzlinggleam",
+            "discharge",
+            "superfang",
+            "thunder"
+          ],
+          "natureId": "hardy",
+          "ivs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "evs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "gender": null,
+          "form": 0,
+          "legacySetKey": "Lvl 53 Light of Ruin Grunt & Grunt |Crystal Peak| ",
+          "legacyDisplay": {
+            "ability": "Cheek Pouch",
+            "item": "None",
+            "moves": [
+              "Dazzlinggleam",
+              "Discharge",
+              "Super Fang",
+              "Thunder"
+            ],
+            "nature": "Hardy"
+          },
+          "legacyProjection": {
+            "set": {
+              "ivs": {
+                "hp": 0,
+                "at": 0,
+                "df": 0,
+                "sa": 0,
+                "sd": 0,
+                "sp": 0
+              },
+              "evs": null,
+              "hasItem": true,
+              "hasIvs": true,
+              "hasEvs": false,
+              "trainerId": 58,
+              "subIndex": 0,
+              "aiMask": 0,
+              "battleType": "Singles",
+              "rewardItem": "",
+              "form": "",
+              "location": "Crystal Peak",
+              "spriteId": null,
+              "orientation": null,
+              "hasGender": true
+            }
+          },
+          "sourceReference": "Regular Trainers.xlsx:Crystal Peak!B25",
+          "deterministicDefaults": [
+            "moves",
+            "ability",
+            "nature",
+            "ivs",
+            "evs"
+          ]
+        }
+      ],
+      "battleProfiles": {
+        "default": {
+          "format": "double",
+          "aiMask": null,
+          "aiFlagIds": [],
+          "bagItemIds": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "aiSourceTrainerIds": [
+            620
+          ],
+          "aiVerificationStatus": "owned-party-verified-mask-not-projected"
+        }
+      },
+      "sourceConfidence": "current-linked-regular-trainer-workbook-with-documented-defaults",
+      "progressionApplicability": {
+        "status": "reference-mechanics-only"
+      }
+    },
+    "pokemon-unbound-trainer-0536": {
+      "id": "pokemon-unbound-trainer-0536",
+      "consumerTrainerId": 536,
+      "displayName": "Light of Ruin Grunt 2 · Crystal Peak pair 1",
+      "shortName": "Grunt",
+      "location": "Crystal Peak",
+      "event": null,
+      "sourceType": "regular",
+      "locationName": "Crystal Peak",
+      "spriteId": null,
+      "orientation": null,
+      "rewardItem": null,
+      "boss": false,
+      "categoryFlags": [
+        "regular"
+      ],
+      "variantConditions": [
+        {
+          "difficulty": "difficult"
+        }
+      ],
+      "team": [
+        {
+          "slot": 1,
+          "speciesId": "wigglytuff",
+          "displaySpecies": "Wigglytuff",
+          "level": 53,
+          "abilityId": "cutecharm",
+          "itemId": null,
+          "moveIds": [
+            "wakeupslap",
+            "gyroball",
+            "playrough",
+            "doubleedge"
+          ],
+          "natureId": "hardy",
+          "ivs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "evs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "gender": null,
+          "form": 0,
+          "legacySetKey": "Lvl 53 Light of Ruin Grunt & Grunt |Crystal Peak| ",
+          "legacyDisplay": {
+            "ability": "Cute Charm",
+            "item": "None",
+            "moves": [
+              "Wake-Up Slap",
+              "Gyro Ball",
+              "Play Rough",
+              "Double-Edge"
+            ],
+            "nature": "Hardy"
+          },
+          "legacyProjection": {
+            "set": {
+              "ivs": {
+                "hp": 0,
+                "at": 0,
+                "df": 0,
+                "sa": 0,
+                "sd": 0,
+                "sp": 0
+              },
+              "evs": null,
+              "hasItem": true,
+              "hasIvs": true,
+              "hasEvs": false,
+              "trainerId": 58,
+              "subIndex": 1,
+              "aiMask": 0,
+              "battleType": "Singles",
+              "rewardItem": "",
+              "form": "",
+              "location": "Crystal Peak",
+              "spriteId": null,
+              "orientation": null,
+              "hasGender": true
+            }
+          },
+          "sourceReference": "Regular Trainers.xlsx:Crystal Peak!C25",
+          "deterministicDefaults": [
+            "moves",
+            "ability",
+            "nature",
+            "ivs",
+            "evs"
+          ]
+        },
+        {
+          "slot": 2,
+          "speciesId": "gallade",
+          "displaySpecies": "Gallade",
+          "level": 54,
+          "abilityId": "steadfast",
+          "itemId": null,
+          "moveIds": [
+            "protect",
+            "swordsdance",
+            "psychocut",
+            "healpulse"
+          ],
+          "natureId": "hardy",
+          "ivs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "evs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "gender": null,
+          "form": 0,
+          "legacySetKey": "Lvl 54 Light of Ruin Grunt & Grunt |Crystal Peak| ",
+          "legacyDisplay": {
+            "ability": "Steadfast",
+            "item": "None",
+            "moves": [
+              "Protect",
+              "Swords Dance",
+              "Psycho Cut",
+              "Heal Pulse"
+            ],
+            "nature": "Hardy"
+          },
+          "legacyProjection": {
+            "set": {
+              "ivs": {
+                "hp": 0,
+                "at": 0,
+                "df": 0,
+                "sa": 0,
+                "sd": 0,
+                "sp": 0
+              },
+              "evs": null,
+              "hasItem": true,
+              "hasIvs": true,
+              "hasEvs": false,
+              "trainerId": 58,
+              "subIndex": 2,
+              "aiMask": 0,
+              "battleType": "Singles",
+              "rewardItem": "",
+              "form": "",
+              "location": "Crystal Peak",
+              "spriteId": null,
+              "orientation": null,
+              "hasGender": true
+            }
+          },
+          "sourceReference": "Regular Trainers.xlsx:Crystal Peak!D25",
+          "deterministicDefaults": [
+            "moves",
+            "ability",
+            "nature",
+            "ivs",
+            "evs"
+          ]
+        }
+      ],
+      "battleProfiles": {
+        "default": {
+          "format": "double",
+          "aiMask": null,
+          "aiFlagIds": [],
+          "bagItemIds": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "aiSourceTrainerIds": [
+            621
+          ],
+          "aiVerificationStatus": "owned-party-verified-mask-not-projected"
+        }
+      },
+      "sourceConfidence": "current-linked-regular-trainer-workbook-with-documented-defaults",
+      "progressionApplicability": {
+        "status": "reference-mechanics-only"
+      }
+    },
+    "pokemon-unbound-trainer-0537": {
+      "id": "pokemon-unbound-trainer-0537",
+      "consumerTrainerId": 537,
+      "displayName": "Light of Ruin Grunt 1 · Crystal Peak pair 2",
+      "shortName": "Grunt",
+      "location": "Crystal Peak",
+      "event": null,
+      "sourceType": "regular",
+      "locationName": "Crystal Peak",
+      "spriteId": null,
+      "orientation": null,
+      "rewardItem": null,
+      "boss": false,
+      "categoryFlags": [
+        "regular"
+      ],
+      "variantConditions": [
+        {
+          "difficulty": "difficult"
+        }
+      ],
+      "team": [
+        {
+          "slot": 1,
+          "speciesId": "carbink",
+          "displaySpecies": "Carbink",
+          "level": 53,
+          "abilityId": "clearbody",
+          "itemId": null,
+          "moveIds": [
+            "rockslide",
+            "skillswap",
+            "powergem",
+            "stealthrock"
+          ],
+          "natureId": "hardy",
+          "ivs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "evs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "gender": null,
+          "form": 0,
+          "legacySetKey": "Lvl 53 Light of Ruin Grunt & Grunt |Crystal Peak| #2 ",
+          "legacyDisplay": {
+            "ability": "Clear Body",
+            "item": "None",
+            "moves": [
+              "Rock Slide",
+              "Skill Swap",
+              "Power Gem",
+              "Stealth Rock"
+            ],
+            "nature": "Hardy"
+          },
+          "legacyProjection": {
+            "set": {
+              "ivs": {
+                "hp": 0,
+                "at": 0,
+                "df": 0,
+                "sa": 0,
+                "sd": 0,
+                "sp": 0
+              },
+              "evs": null,
+              "hasItem": true,
+              "hasIvs": true,
+              "hasEvs": false,
+              "trainerId": 59,
+              "subIndex": 0,
+              "aiMask": 0,
+              "battleType": "Singles",
+              "rewardItem": "",
+              "form": "",
+              "location": "Crystal Peak",
+              "spriteId": null,
+              "orientation": null,
+              "hasGender": true
+            }
+          },
+          "sourceReference": "Regular Trainers.xlsx:Crystal Peak!B32",
+          "deterministicDefaults": [
+            "moves",
+            "ability",
+            "nature",
+            "ivs",
+            "evs"
+          ]
+        },
+        {
+          "slot": 2,
+          "speciesId": "shiinotic",
+          "displaySpecies": "Shiinotic",
+          "level": 54,
+          "abilityId": "raindish",
+          "itemId": null,
+          "moveIds": [
+            "gigadrain",
+            "dazzlinggleam",
+            "spore",
+            "moonblast"
+          ],
+          "natureId": "hardy",
+          "ivs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "evs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "gender": null,
+          "form": 0,
+          "legacySetKey": "Lvl 54 Light of Ruin Grunt & Grunt |Crystal Peak| #2 ",
+          "legacyDisplay": {
+            "ability": "Rain Dish",
+            "item": "None",
+            "moves": [
+              "Giga Drain",
+              "Dazzlinggleam",
+              "Spore",
+              "Moonblast"
+            ],
+            "nature": "Hardy"
+          },
+          "legacyProjection": {
+            "set": {
+              "ivs": {
+                "hp": 0,
+                "at": 0,
+                "df": 0,
+                "sa": 0,
+                "sd": 0,
+                "sp": 0
+              },
+              "evs": null,
+              "hasItem": true,
+              "hasIvs": true,
+              "hasEvs": false,
+              "trainerId": 59,
+              "subIndex": 1,
+              "aiMask": 0,
+              "battleType": "Singles",
+              "rewardItem": "",
+              "form": "",
+              "location": "Crystal Peak",
+              "spriteId": null,
+              "orientation": null,
+              "hasGender": true
+            }
+          },
+          "sourceReference": "Regular Trainers.xlsx:Crystal Peak!C32",
+          "deterministicDefaults": [
+            "moves",
+            "ability",
+            "nature",
+            "ivs",
+            "evs"
+          ]
+        }
+      ],
+      "battleProfiles": {
+        "default": {
+          "format": "double",
+          "aiMask": null,
+          "aiFlagIds": [],
+          "bagItemIds": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "aiSourceTrainerIds": [
+            623
+          ],
+          "aiVerificationStatus": "owned-party-verified-mask-not-projected"
+        }
+      },
+      "sourceConfidence": "current-linked-regular-trainer-workbook-with-documented-defaults",
+      "progressionApplicability": {
+        "status": "reference-mechanics-only"
+      }
+    },
+    "pokemon-unbound-trainer-0538": {
+      "id": "pokemon-unbound-trainer-0538",
+      "consumerTrainerId": 538,
+      "displayName": "Light of Ruin Grunt 2 · Crystal Peak pair 2",
+      "shortName": "Grunt",
+      "location": "Crystal Peak",
+      "event": null,
+      "sourceType": "regular",
+      "locationName": "Crystal Peak",
+      "spriteId": null,
+      "orientation": null,
+      "rewardItem": null,
+      "boss": false,
+      "categoryFlags": [
+        "regular"
+      ],
+      "variantConditions": [
+        {
+          "difficulty": "difficult"
+        }
+      ],
+      "team": [
+        {
+          "slot": 1,
+          "speciesId": "clefable",
+          "displaySpecies": "Clefable",
+          "level": 54,
+          "abilityId": "cutecharm",
+          "itemId": null,
+          "moveIds": [
+            "followme",
+            "moonlight",
+            "moonblast",
+            "meteormash"
+          ],
+          "natureId": "hardy",
+          "ivs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "evs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "gender": null,
+          "form": 0,
+          "legacySetKey": "Lvl 54 Light of Ruin Grunt & Grunt |Crystal Peak| #2 ",
+          "legacyDisplay": {
+            "ability": "Cute Charm",
+            "item": "None",
+            "moves": [
+              "Follow Me",
+              "Moonlight",
+              "Moonblast",
+              "Meteor Mash"
+            ],
+            "nature": "Hardy"
+          },
+          "legacyProjection": {
+            "set": {
+              "ivs": {
+                "hp": 0,
+                "at": 0,
+                "df": 0,
+                "sa": 0,
+                "sd": 0,
+                "sp": 0
+              },
+              "evs": null,
+              "hasItem": true,
+              "hasIvs": true,
+              "hasEvs": false,
+              "trainerId": 59,
+              "subIndex": 2,
+              "aiMask": 0,
+              "battleType": "Singles",
+              "rewardItem": "",
+              "form": "",
+              "location": "Crystal Peak",
+              "spriteId": null,
+              "orientation": null,
+              "hasGender": true
+            }
+          },
+          "sourceReference": "Regular Trainers.xlsx:Crystal Peak!D32",
+          "deterministicDefaults": [
+            "moves",
+            "ability",
+            "nature",
+            "ivs",
+            "evs"
+          ]
+        },
+        {
+          "slot": 2,
+          "speciesId": "sylveon",
+          "displaySpecies": "Sylveon",
+          "level": 54,
+          "abilityId": "cutecharm",
+          "itemId": null,
+          "moveIds": [
+            "mistyterrain",
+            "skillswap",
+            "psychup",
+            "moonblast"
+          ],
+          "natureId": "hardy",
+          "ivs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "evs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "gender": null,
+          "form": 0,
+          "legacySetKey": "Lvl 54 Light of Ruin Grunt & Grunt |Crystal Peak| #2 ",
+          "legacyDisplay": {
+            "ability": "Cute Charm",
+            "item": "None",
+            "moves": [
+              "Mistyterrain",
+              "Skill Swap",
+              "Psych Up",
+              "Moonblast"
+            ],
+            "nature": "Hardy"
+          },
+          "legacyProjection": {
+            "set": {
+              "ivs": {
+                "hp": 0,
+                "at": 0,
+                "df": 0,
+                "sa": 0,
+                "sd": 0,
+                "sp": 0
+              },
+              "evs": null,
+              "hasItem": true,
+              "hasIvs": true,
+              "hasEvs": false,
+              "trainerId": 59,
+              "subIndex": 3,
+              "aiMask": 0,
+              "battleType": "Singles",
+              "rewardItem": "",
+              "form": "",
+              "location": "Crystal Peak",
+              "spriteId": null,
+              "orientation": null,
+              "hasGender": true
+            }
+          },
+          "sourceReference": "Regular Trainers.xlsx:Crystal Peak!E32",
+          "deterministicDefaults": [
+            "moves",
+            "ability",
+            "nature",
+            "ivs",
+            "evs"
+          ]
+        }
+      ],
+      "battleProfiles": {
+        "default": {
+          "format": "double",
+          "aiMask": null,
+          "aiFlagIds": [],
+          "bagItemIds": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "aiSourceTrainerIds": [
+            622
+          ],
+          "aiVerificationStatus": "owned-party-verified-mask-not-projected"
+        }
+      },
+      "sourceConfidence": "current-linked-regular-trainer-workbook-with-documented-defaults",
+      "progressionApplicability": {
+        "status": "reference-mechanics-only"
+      }
+    },
+    "pokemon-unbound-trainer-0539": {
+      "id": "pokemon-unbound-trainer-0539",
+      "consumerTrainerId": 539,
+      "displayName": "Light of Ruin Grunt 1 · Crystal Peak pair 3",
+      "shortName": "Grunt",
+      "location": "Crystal Peak",
+      "event": null,
+      "sourceType": "regular",
+      "locationName": "Crystal Peak",
+      "spriteId": null,
+      "orientation": null,
+      "rewardItem": null,
+      "boss": false,
+      "categoryFlags": [
+        "regular"
+      ],
+      "variantConditions": [
+        {
+          "difficulty": "difficult"
+        }
+      ],
+      "team": [
+        {
+          "slot": 1,
+          "speciesId": "aromatisse",
+          "displaySpecies": "Aromatisse",
+          "level": 54,
+          "abilityId": "healer",
+          "itemId": null,
+          "moveIds": [
+            "calmmind",
+            "moonblast",
+            "skillswap",
+            "psychup"
+          ],
+          "natureId": "hardy",
+          "ivs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "evs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "gender": null,
+          "form": 0,
+          "legacySetKey": "Lvl 54 Light of Ruin Grunt & Grunt |Crystal Peak| #3 ",
+          "legacyDisplay": {
+            "ability": "Healer",
+            "item": "None",
+            "moves": [
+              "Calm Mind",
+              "Moonblast",
+              "Skill Swap",
+              "Psych Up"
+            ],
+            "nature": "Hardy"
+          },
+          "legacyProjection": {
+            "set": {
+              "ivs": {
+                "hp": 0,
+                "at": 0,
+                "df": 0,
+                "sa": 0,
+                "sd": 0,
+                "sp": 0
+              },
+              "evs": null,
+              "hasItem": true,
+              "hasIvs": true,
+              "hasEvs": false,
+              "trainerId": 60,
+              "subIndex": 0,
+              "aiMask": 0,
+              "battleType": "Singles",
+              "rewardItem": "",
+              "form": "",
+              "location": "Crystal Peak",
+              "spriteId": null,
+              "orientation": null,
+              "hasGender": true
+            }
+          },
+          "sourceReference": "Regular Trainers.xlsx:Crystal Peak!B39",
+          "deterministicDefaults": [
+            "moves",
+            "ability",
+            "nature",
+            "ivs",
+            "evs"
+          ]
+        },
+        {
+          "slot": 2,
+          "speciesId": "ribombee",
+          "displaySpecies": "Ribombee",
+          "level": 54,
+          "abilityId": "honeygather",
+          "itemId": null,
+          "moveIds": [
+            "dazzlinggleam",
+            "switcheroo",
+            "bugbuzz",
+            "quiverdance"
+          ],
+          "natureId": "hardy",
+          "ivs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "evs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "gender": null,
+          "form": 0,
+          "legacySetKey": "Lvl 54 Light of Ruin Grunt & Grunt |Crystal Peak| #3 ",
+          "legacyDisplay": {
+            "ability": "Honey Gather",
+            "item": "None",
+            "moves": [
+              "Dazzlinggleam",
+              "Switcheroo",
+              "Bug Buzz",
+              "Quiver Dance"
+            ],
+            "nature": "Hardy"
+          },
+          "legacyProjection": {
+            "set": {
+              "ivs": {
+                "hp": 0,
+                "at": 0,
+                "df": 0,
+                "sa": 0,
+                "sd": 0,
+                "sp": 0
+              },
+              "evs": null,
+              "hasItem": true,
+              "hasIvs": true,
+              "hasEvs": false,
+              "trainerId": 60,
+              "subIndex": 1,
+              "aiMask": 0,
+              "battleType": "Singles",
+              "rewardItem": "",
+              "form": "",
+              "location": "Crystal Peak",
+              "spriteId": null,
+              "orientation": null,
+              "hasGender": true
+            }
+          },
+          "sourceReference": "Regular Trainers.xlsx:Crystal Peak!C39",
+          "deterministicDefaults": [
+            "moves",
+            "ability",
+            "nature",
+            "ivs",
+            "evs"
+          ]
+        },
+        {
+          "slot": 3,
+          "speciesId": "ninetalesa",
+          "displaySpecies": "Ninetales A",
+          "level": 55,
+          "abilityId": "snowcloak",
+          "itemId": null,
+          "moveIds": [
+            "safeguard",
+            "confuseray",
+            "dazzlinggleam",
+            "blizzard"
+          ],
+          "natureId": "hardy",
+          "ivs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "evs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "gender": null,
+          "form": 0,
+          "legacySetKey": "Lvl 55 Light of Ruin Grunt & Grunt |Crystal Peak| #3 ",
+          "legacyDisplay": {
+            "ability": "Snow Cloak",
+            "item": "None",
+            "moves": [
+              "Safeguard",
+              "Confuse Ray",
+              "Dazzlinggleam",
+              "Blizzard"
+            ],
+            "nature": "Hardy"
+          },
+          "legacyProjection": {
+            "set": {
+              "ivs": {
+                "hp": 0,
+                "at": 0,
+                "df": 0,
+                "sa": 0,
+                "sd": 0,
+                "sp": 0
+              },
+              "evs": null,
+              "hasItem": true,
+              "hasIvs": true,
+              "hasEvs": false,
+              "trainerId": 60,
+              "subIndex": 2,
+              "aiMask": 0,
+              "battleType": "Singles",
+              "rewardItem": "",
+              "form": "",
+              "location": "Crystal Peak",
+              "spriteId": null,
+              "orientation": null,
+              "hasGender": true
+            }
+          },
+          "sourceReference": "Regular Trainers.xlsx:Crystal Peak!D39",
+          "deterministicDefaults": [
+            "moves",
+            "ability",
+            "nature",
+            "ivs",
+            "evs"
+          ]
+        }
+      ],
+      "battleProfiles": {
+        "default": {
+          "format": "double",
+          "aiMask": null,
+          "aiFlagIds": [],
+          "bagItemIds": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "aiSourceTrainerIds": [
+            624
+          ],
+          "aiVerificationStatus": "owned-party-verified-mask-not-projected"
+        }
+      },
+      "sourceConfidence": "current-linked-regular-trainer-workbook-with-documented-defaults",
+      "progressionApplicability": {
+        "status": "reference-mechanics-only"
+      }
+    },
+    "pokemon-unbound-trainer-0540": {
+      "id": "pokemon-unbound-trainer-0540",
+      "consumerTrainerId": 540,
+      "displayName": "Light of Ruin Grunt 2 · Crystal Peak pair 3",
+      "shortName": "Grunt",
+      "location": "Crystal Peak",
+      "event": null,
+      "sourceType": "regular",
+      "locationName": "Crystal Peak",
+      "spriteId": null,
+      "orientation": null,
+      "rewardItem": null,
+      "boss": false,
+      "categoryFlags": [
+        "regular"
+      ],
+      "variantConditions": [
+        {
+          "difficulty": "difficult"
+        }
+      ],
+      "team": [
+        {
+          "slot": 1,
+          "speciesId": "slurpuff",
+          "displaySpecies": "Slurpuff",
+          "level": 54,
+          "abilityId": "sweetveil",
+          "itemId": null,
+          "moveIds": [
+            "playrough",
+            "cottonguard",
+            "endeavor",
+            "stickyweb"
+          ],
+          "natureId": "hardy",
+          "ivs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "evs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "gender": null,
+          "form": 0,
+          "legacySetKey": "Lvl 54 Light of Ruin Grunt & Grunt |Crystal Peak| #3 ",
+          "legacyDisplay": {
+            "ability": "Sweet Veil",
+            "item": "None",
+            "moves": [
+              "Play Rough",
+              "Cotton Guard",
+              "Endeavor",
+              "Sticky Web"
+            ],
+            "nature": "Hardy"
+          },
+          "legacyProjection": {
+            "set": {
+              "ivs": {
+                "hp": 0,
+                "at": 0,
+                "df": 0,
+                "sa": 0,
+                "sd": 0,
+                "sp": 0
+              },
+              "evs": null,
+              "hasItem": true,
+              "hasIvs": true,
+              "hasEvs": false,
+              "trainerId": 60,
+              "subIndex": 3,
+              "aiMask": 0,
+              "battleType": "Singles",
+              "rewardItem": "",
+              "form": "",
+              "location": "Crystal Peak",
+              "spriteId": null,
+              "orientation": null,
+              "hasGender": true
+            }
+          },
+          "sourceReference": "Regular Trainers.xlsx:Crystal Peak!E39",
+          "deterministicDefaults": [
+            "moves",
+            "ability",
+            "nature",
+            "ivs",
+            "evs"
+          ]
+        }
+      ],
+      "battleProfiles": {
+        "default": {
+          "format": "double",
+          "aiMask": null,
+          "aiFlagIds": [],
+          "bagItemIds": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "aiSourceTrainerIds": [
+            625
+          ],
+          "aiVerificationStatus": "owned-party-verified-mask-not-projected"
+        }
+      },
+      "sourceConfidence": "current-linked-regular-trainer-workbook-with-documented-defaults",
+      "progressionApplicability": {
+        "status": "reference-mechanics-only"
+      }
+    },
+    "pokemon-unbound-trainer-0541": {
+      "id": "pokemon-unbound-trainer-0541",
+      "consumerTrainerId": 541,
+      "displayName": "Light of Ruin Grunt 1 · Crystal Peak pair 4",
+      "shortName": "Grunt",
+      "location": "Crystal Peak",
+      "event": null,
+      "sourceType": "regular",
+      "locationName": "Crystal Peak",
+      "spriteId": null,
+      "orientation": null,
+      "rewardItem": null,
+      "boss": false,
+      "categoryFlags": [
+        "regular"
+      ],
+      "variantConditions": [
+        {
+          "difficulty": "difficult"
+        }
+      ],
+      "team": [
+        {
+          "slot": 1,
+          "speciesId": "mimikyu",
+          "displaySpecies": "Mimikyu",
+          "level": 55,
+          "abilityId": "disguise",
+          "itemId": null,
+          "moveIds": [
+            "slash",
+            "shadowclaw",
+            "charm",
+            "playrough"
+          ],
+          "natureId": "hardy",
+          "ivs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "evs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "gender": null,
+          "form": 0,
+          "legacySetKey": "Lvl 55 Light of Ruin Grunt & Grunt |Crystal Peak| #4 ",
+          "legacyDisplay": {
+            "ability": "Disguise",
+            "item": "None",
+            "moves": [
+              "Slash",
+              "Shadow Claw",
+              "Charm",
+              "Play Rough"
+            ],
+            "nature": "Hardy"
+          },
+          "legacyProjection": {
+            "set": {
+              "ivs": {
+                "hp": 0,
+                "at": 0,
+                "df": 0,
+                "sa": 0,
+                "sd": 0,
+                "sp": 0
+              },
+              "evs": null,
+              "hasItem": true,
+              "hasIvs": true,
+              "hasEvs": false,
+              "trainerId": 61,
+              "subIndex": 0,
+              "aiMask": 0,
+              "battleType": "Singles",
+              "rewardItem": "",
+              "form": "",
+              "location": "Crystal Peak",
+              "spriteId": null,
+              "orientation": null,
+              "hasGender": true
+            }
+          },
+          "sourceReference": "Regular Trainers.xlsx:Crystal Peak!B46",
+          "deterministicDefaults": [
+            "moves",
+            "ability",
+            "nature",
+            "ivs",
+            "evs"
+          ]
+        }
+      ],
+      "battleProfiles": {
+        "default": {
+          "format": "double",
+          "aiMask": null,
+          "aiFlagIds": [],
+          "bagItemIds": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "aiSourceTrainerIds": [
+            626
+          ],
+          "aiVerificationStatus": "owned-party-verified-mask-not-projected"
+        }
+      },
+      "sourceConfidence": "current-linked-regular-trainer-workbook-with-documented-defaults",
+      "progressionApplicability": {
+        "status": "reference-mechanics-only"
+      }
+    },
+    "pokemon-unbound-trainer-0542": {
+      "id": "pokemon-unbound-trainer-0542",
+      "consumerTrainerId": 542,
+      "displayName": "Light of Ruin Grunt 2 · Crystal Peak pair 4",
+      "shortName": "Grunt",
+      "location": "Crystal Peak",
+      "event": null,
+      "sourceType": "regular",
+      "locationName": "Crystal Peak",
+      "spriteId": null,
+      "orientation": null,
+      "rewardItem": null,
+      "boss": false,
+      "categoryFlags": [
+        "regular"
+      ],
+      "variantConditions": [
+        {
+          "difficulty": "difficult"
+        }
+      ],
+      "team": [
+        {
+          "slot": 1,
+          "speciesId": "togekiss",
+          "displaySpecies": "Togekiss",
+          "level": 55,
+          "abilityId": "hustle",
+          "itemId": null,
+          "moveIds": [
+            "extremespeed",
+            "aurasphere",
+            "airslash",
+            "moonblast"
+          ],
+          "natureId": "hardy",
+          "ivs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "evs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "gender": null,
+          "form": 0,
+          "legacySetKey": "Lvl 55 Light of Ruin Grunt & Grunt |Crystal Peak| #4 ",
+          "legacyDisplay": {
+            "ability": "Hustle",
+            "item": "None",
+            "moves": [
+              "ExtremeSpeed",
+              "Aura Sphere",
+              "Air Slash",
+              "Moonblast"
+            ],
+            "nature": "Hardy"
+          },
+          "legacyProjection": {
+            "set": {
+              "ivs": {
+                "hp": 0,
+                "at": 0,
+                "df": 0,
+                "sa": 0,
+                "sd": 0,
+                "sp": 0
+              },
+              "evs": null,
+              "hasItem": true,
+              "hasIvs": true,
+              "hasEvs": false,
+              "trainerId": 61,
+              "subIndex": 1,
+              "aiMask": 0,
+              "battleType": "Singles",
+              "rewardItem": "",
+              "form": "",
+              "location": "Crystal Peak",
+              "spriteId": null,
+              "orientation": null,
+              "hasGender": true
+            }
+          },
+          "sourceReference": "Regular Trainers.xlsx:Crystal Peak!C46",
+          "deterministicDefaults": [
+            "moves",
+            "ability",
+            "nature",
+            "ivs",
+            "evs"
+          ]
+        },
+        {
+          "slot": 2,
+          "speciesId": "gardevoir",
+          "displaySpecies": "Gardevoir",
+          "level": 56,
+          "abilityId": "synchronize",
+          "itemId": null,
+          "moveIds": [
+            "imprison",
+            "psychic",
+            "healpulse",
+            "moonblast"
+          ],
+          "natureId": "hardy",
+          "ivs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "evs": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0
+          },
+          "gender": null,
+          "form": 0,
+          "legacySetKey": "Lvl 56 Light of Ruin Grunt & Grunt |Crystal Peak| #4 ",
+          "legacyDisplay": {
+            "ability": "Synchronize",
+            "item": "None",
+            "moves": [
+              "Imprison",
+              "Psychic",
+              "Heal Pulse",
+              "Moonblast"
+            ],
+            "nature": "Hardy"
+          },
+          "legacyProjection": {
+            "set": {
+              "ivs": {
+                "hp": 0,
+                "at": 0,
+                "df": 0,
+                "sa": 0,
+                "sd": 0,
+                "sp": 0
+              },
+              "evs": null,
+              "hasItem": true,
+              "hasIvs": true,
+              "hasEvs": false,
+              "trainerId": 61,
+              "subIndex": 2,
+              "aiMask": 0,
+              "battleType": "Singles",
+              "rewardItem": "",
+              "form": "",
+              "location": "Crystal Peak",
+              "spriteId": null,
+              "orientation": null,
+              "hasGender": true
+            }
+          },
+          "sourceReference": "Regular Trainers.xlsx:Crystal Peak!D46",
+          "deterministicDefaults": [
+            "moves",
+            "ability",
+            "nature",
+            "ivs",
+            "evs"
+          ]
+        }
+      ],
+      "battleProfiles": {
+        "default": {
+          "format": "double",
+          "aiMask": null,
+          "aiFlagIds": [],
+          "bagItemIds": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "aiSourceTrainerIds": [
+            627
+          ],
+          "aiVerificationStatus": "owned-party-verified-mask-not-projected"
+        }
+      },
+      "sourceConfidence": "current-linked-regular-trainer-workbook-with-documented-defaults",
+      "progressionApplicability": {
+        "status": "reference-mechanics-only"
+      }
     }
   }
 }

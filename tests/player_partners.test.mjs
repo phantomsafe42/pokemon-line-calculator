@@ -253,19 +253,21 @@ test('Drayano partners never hide separately documented opponent appearances or 
 test('Unbound boss partners preserve both ownership modes and all rival starter choices',async()=>{
   const {dataset,documents}=realDataset('pokemon-unbound');
   const bindings=documents['trainer_battle_groups.json'].playerPartners.bindings;
-  assert.equal(bindings.length,6);
+  assert.equal(bindings.length,28);
   const navigation=dataset.trainerGroups().flatMap(g=>g.trainers.map(t=>t.id));
   for(const binding of bindings){
     const trainerId=binding.enemyTrainerIds.length===2?binding.id:binding.enemyTrainerIds[0];
     const enemies=normalizeTrainerRoster(trainerId,null,dataset);
-    assert.equal(dataset.trainerBattleFormat(trainerId),'doubles');
+    assert.equal(dataset.trainerBattleFormat(trainerId),binding.formatChoice==='single-or-double'?'singles':'doubles');
     assert.ok(navigation.includes(trainerId));
     for(const option of binding.partnerOptions){
       const allies=normalizePlayerPartnerRoster(option.trainerId,dataset,option.trainerVariantId||null);
       assert.equal(allies.length,3);assert.ok(!navigation.includes(option.trainerId));
       const own={...structuredClone(allies[0]),combatantKey:'player:owned',source:{kind:'test-player'}};
       const playerPartner={trainerId:option.trainerId,trainerVariantId:option.trainerVariantId||null,bindingId:binding.id};
-      const plan=createPlanDocument({dataset,trainerId,playerCombatants:[own,...allies],enemyCombatants:enemies,battleFormat:'doubles',playerPartner});
+      const choice=dataset.trainerBattleChoices(trainerId).find(c=>!c.withoutPlayerPartner&&!c.requiresPartner);
+      const plan=createPlanDocument({dataset,trainerId,playerCombatants:[own,...allies],enemyCombatants:enemies,battleFormat:'doubles',playerPartner,
+        encounterType:choice.battleKind,enemyTrainerIds:binding.enemyTrainerIds});
       const state=plan.stateNodes[plan.initialStateNodeId];
       assert.deepEqual(state.active.playerCombatantKeys,[own.combatantKey,allies[0].combatantKey]);
       assert.equal(eligibleReserves(plan,state,'player',0).length,0);
@@ -274,6 +276,10 @@ test('Unbound boss partners preserve both ownership modes and all rival starter 
       if(binding.enemyTrainerIds.length===2)assert.deepEqual(plan.game.partyOwnership.enemy.slotOwnerIds,binding.enemyTrainerIds);
       else assert.equal(eligibleReserves(plan,state,'enemy',0).length,enemies.length-2);
       assert.equal(validatePlanReferences(parsePlan(serializePlan(plan)),dataset).valid,true);
+      if(choice.battleKind==='multi'&&binding.enemyTrainerIds.length===1){
+        const invalid=structuredClone(plan);delete invalid.game.playerPartner;
+        assert.throws(()=>serializePlan(invalid),/Multi encounters/);
+      }
       const rebuilt=await recalculatePlanDocument(plan,{dataset,previewTurnFn:()=>{throw new Error('No committed turns');}});
       assert.deepEqual(rebuilt.game.playerPartner,playerPartner);
       assert.deepEqual(rebuilt.game.partyOwnership,plan.game.partyOwnership);
@@ -282,4 +288,52 @@ test('Unbound boss partners preserve both ownership modes and all rival starter 
   assert.throws(()=>normalizePlayerPartnerRoster('pokemon-unbound-trainer-0465',dataset),/variant/i);
   for(const n of [432,462,474])assert.ok(navigation.includes(`pokemon-unbound-trainer-${String(n).padStart(4,'0')}`));
   assert.equal(dataset.trainerBattleFormat('pokemon-unbound-trainer-0462'),'singles');
+});
+
+test('Unbound optional escorts keep Singles default, with no partner outside exact windows',()=>{
+  const {dataset}=realDataset('pokemon-unbound');
+  for(const n of [38,40,41,221,230]) {
+    const id=`pokemon-unbound-trainer-${String(n).padStart(4,'0')}`;
+    const choices=dataset.trainerBattleChoices(id);
+    assert.equal(choices[0].format,'singles');assert.equal(choices[0].withoutPlayerPartner,true);
+    assert.ok(choices.some(c=>c.id===`allied:${id}`&&!c.withoutPlayerPartner));
+    assert.ok(choices.filter(c=>c.id!==`allied:${id}`).every(c=>c.withoutPlayerPartner));
+  }
+  for(const n of [39,42,62,220,231])assert.ok(!dataset.trainer(`pokemon-unbound-trainer-${String(n).padStart(4,'0')}`).playerPartnerBinding);
+});
+
+test('Crystal Peak one-member owner stays empty instead of stealing the other grunt reserve',()=>{
+  const {dataset,documents}=realDataset('pokemon-unbound');
+  const group=Object.values(documents['trainer_battle_groups.json'].records).find(g=>g.navigationTrainerIds.includes('pokemon-unbound-trainer-0058'));
+  const enemies=normalizeTrainerRoster(group.id,null,dataset);
+  assert.deepEqual(enemies.map(m=>m.speciesId),['dedenne','wigglytuff','gallade']);
+  const option=dataset.trainer(group.id).playerPartnerBinding.partnerOptions[0];
+  const allies=normalizePlayerPartnerRoster(option.trainerId,dataset);
+  const own={...structuredClone(allies[0]),combatantKey:'player:owned',source:{kind:'test-player'}};
+  const plan=createPlanDocument({dataset,trainerId:group.id,playerCombatants:[own,...allies],enemyCombatants:enemies,
+    playerPartner:{trainerId:option.trainerId},battleFormat:'doubles'});
+  const state=plan.stateNodes[plan.initialStateNodeId];
+  state.combatantStates[enemies[0].combatantKey].hp={min:0,max:0,exact:0,maxHp:100};
+  assert.equal(eligibleReserves(plan,state,'enemy',0).length,0);
+  assert.deepEqual(eligibleReserves(plan,state,'enemy',1).map(m=>m.speciesId),['gallade']);
+  const nav=dataset.trainerGroups().flatMap(g=>g.trainers.map(t=>t.id));
+  assert.equal(nav.filter(id=>id===group.id).length,1);
+  assert.ok(!nav.includes('pokemon-unbound-trainer-0058'));
+});
+
+test('scripted wild initial boosts survive export and recalculate without becoming party boosts',async()=>{
+  const {dataset}=realDataset('pokemon-unbound'),trainerId='pokemon-unbound-trainer-0476';
+  const enemies=normalizeTrainerRoster(trainerId,null,dataset);
+  const allyId='pokemon-unbound-trainer-0477',allies=normalizePlayerPartnerRoster(allyId,dataset);
+  const own={...structuredClone(allies[0]),combatantKey:'player:owned',source:{kind:'test-player'}};
+  const plan=createPlanDocument({dataset,trainerId,playerCombatants:[own,...allies],enemyCombatants:enemies,
+    playerPartner:{trainerId:allyId},battleFormat:'doubles'});
+  const imported=parsePlan(serializePlan(plan));
+  const rebuilt=await recalculatePlanDocument(imported,{dataset,previewTurnFn:()=>{throw new Error('No turns');}});
+  for(const p of [plan,imported,rebuilt]){
+    const state=p.stateNodes[p.initialStateNodeId];
+    assert.equal(state.combatantStates[enemies[0].combatantKey].statStages.atk,1);
+    assert.equal(state.combatantStates[enemies[1].combatantKey].statStages.spa,1);
+    assert.equal(state.combatantStates[allies[0].combatantKey].statStages.atk,0);
+  }
 });

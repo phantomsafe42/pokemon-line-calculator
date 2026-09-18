@@ -393,8 +393,9 @@ export function validatePlanDocument(plan, options = {}) {
       || plan.game.enemyTrainerVariantIds.length !== plan.game.enemyTrainerIds?.length)) {
       issue(issues, "$.game.enemyTrainerVariantIds", "must align with enemyTrainerIds");
     }
-    if (plan.game.encounterType === "multi" && (plan.game.battleFormat !== "doubles" || plan.game.enemyTrainerIds?.length !== 2)) {
-      issue(issues, "$.game.encounterType", "Multi encounters require Doubles and two enemy trainers");
+    const alliedAgainstOne = plan.game.enemyTrainerIds?.length === 1 && Boolean(plan.game.playerPartner);
+    if (plan.game.encounterType === "multi" && (plan.game.battleFormat !== "doubles" || !(plan.game.enemyTrainerIds?.length === 2 || alliedAgainstOne))) {
+      issue(issues, "$.game.encounterType", "Multi encounters require Doubles and two enemy trainers or an owned player partner");
     }
     for (const [side, ownership] of Object.entries(plan.game.partyOwnership || {})) {
       const ids = ownership?.slotOwnerIds;

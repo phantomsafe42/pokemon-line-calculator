@@ -32,7 +32,7 @@
     "trainerGender": {
       "policy": "required-when-mechanically-relevant",
       "staticSourceStatus": "not-fixed-by-trainer-source",
-      "affectedTrainerMembers": 1411,
+      "affectedTrainerMembers": 1425,
       "affectedTrainerMemberIds": [
         "pokemon-unbound-trainer-0001-slot-1",
         "pokemon-unbound-trainer-0001-slot-2",
@@ -1444,7 +1444,21 @@
         "pokemon-unbound-trainer-0533-slot-3",
         "pokemon-unbound-trainer-0534-slot-1",
         "pokemon-unbound-trainer-0534-slot-2",
-        "pokemon-unbound-trainer-0534-slot-3"
+        "pokemon-unbound-trainer-0534-slot-3",
+        "pokemon-unbound-trainer-0535-slot-1",
+        "pokemon-unbound-trainer-0536-slot-1",
+        "pokemon-unbound-trainer-0536-slot-2",
+        "pokemon-unbound-trainer-0537-slot-1",
+        "pokemon-unbound-trainer-0537-slot-2",
+        "pokemon-unbound-trainer-0538-slot-1",
+        "pokemon-unbound-trainer-0538-slot-2",
+        "pokemon-unbound-trainer-0539-slot-1",
+        "pokemon-unbound-trainer-0539-slot-2",
+        "pokemon-unbound-trainer-0539-slot-3",
+        "pokemon-unbound-trainer-0540-slot-1",
+        "pokemon-unbound-trainer-0541-slot-1",
+        "pokemon-unbound-trainer-0542-slot-1",
+        "pokemon-unbound-trainer-0542-slot-2"
       ],
       "failClosedWhenRequiredAndUnavailable": true,
       "note": "Observe or supply gender at calculation time when an active mechanic depends on it; do not invent a static trainer gender."

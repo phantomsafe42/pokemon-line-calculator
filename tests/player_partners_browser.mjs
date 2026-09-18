@@ -10,6 +10,11 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const scenario = process.env.PLC_PARTNER_SCENARIO || 'platinum-kaizo';
 const gameId = scenario.startsWith('unbound-') ? 'pokemon-unbound' : scenario === 'subway' ? 'volt-white-2r' : ['striaton','frigate'].includes(scenario) ? 'pokemon-black-2' : scenario;
 const cases = {
+  'unbound-escort': {trainer:'pokemon-unbound-trainer-0038',choice:'allied:pokemon-unbound-trainer-0038',partner:'pokemon-unbound-trainer-0450',species:'Staravia',cards:3},
+  'unbound-route9': {trainer:'pokemon-unbound-trainer-0230',choice:'allied:pokemon-unbound-trainer-0230',partner:'pokemon-unbound-trainer-0455',species:'Staraptor',cards:3},
+  'unbound-dragons': {trainer:'pokemon-unbound-trainer-0476',partner:'pokemon-unbound-trainer-0477',species:'Toucannon',cards:3},
+  'unbound-shadow': {trainer:'pokemon-unbound-trainer-0467',partner:'pokemon-unbound-trainer-0455',species:'Staraptor',cards:3},
+  'unbound-grunts': {trainer:'pokemon-unbound-occurrence-0448',partner:'pokemon-unbound-trainer-0477',species:'Toucannon',cards:3},
   'pokemon-unbound': {trainer:'pokemon-unbound-player-partner-448-449',partner:'pokemon-unbound-trainer-0450',species:'Staravia',cards:3},
   'unbound-rival': {trainer:'pokemon-unbound-trainer-0464',partner:'pokemon-unbound-trainer-0465:rival-metagrossmega',species:'Toucannon',cards:3},
   'unbound-marlon': {trainer:'pokemon-unbound-player-partner-459-460',partner:'pokemon-unbound-trainer-0532',species:'Krookodile',cards:3},
@@ -141,7 +146,7 @@ try {
     document.getElementById('begin-plan').click();
     for(let i=0;i<300;i++) {
       if(!document.getElementById('plan-context-dialog').open && document.querySelectorAll('.combatant-card').length>=4) break;
-      if(i===299) throw new Error('Partner plan did not open');
+      if(i===299) throw new Error('Partner plan did not open: '+document.getElementById('app-status')?.textContent);
       await new Promise(r=>setTimeout(r,100));
     }
     const text=document.body.innerText;

@@ -1,10 +1,10 @@
 import { clone, exactRange, makeStableId, nowIso, STAGE_KEYS } from './primitives.js?v=20260905-drafts-freecalc-partners-v1';
 import { activeKey, activeKeys, setActiveKey } from './battle_slots.js?v=20260905-drafts-freecalc-partners-v1';
-import { createCombatantState, nextCreatedOrder, touchPlan, updateStateHash } from './plan.js?v=20260917-multi-corrections-v2';
-import { calculateStats } from '../adapters/combatant_ingest.js?v=20260917-multi-corrections-v2';
-import { experienceForLevel, levelFromExperience } from '../rulesets/vw2r_experience.js?v=20260917-multi-corrections-v2';
-import { assertValidPlanDocument } from '../contracts/plan_contract.js?v=20260917-multi-corrections-v2';
-import { belongsToSlotParty } from './party_ownership.js?v=20260917-multi-corrections-v2';
+import { createCombatantState, nextCreatedOrder, touchPlan, updateStateHash } from './plan.js?v=20260917-unbound-escorts-v1';
+import { calculateStats } from '../adapters/combatant_ingest.js?v=20260917-unbound-escorts-v1';
+import { experienceForLevel, levelFromExperience } from '../rulesets/vw2r_experience.js?v=20260917-unbound-escorts-v1';
+import { assertValidPlanDocument } from '../contracts/plan_contract.js?v=20260917-unbound-escorts-v1';
+import { belongsToSlotParty } from './party_ownership.js?v=20260917-unbound-escorts-v1';
 
 export function addFreeCalcBranch(original, stateId) {
   const plan = clone(original);

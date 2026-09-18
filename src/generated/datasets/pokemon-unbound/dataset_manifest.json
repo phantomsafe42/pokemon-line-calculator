@@ -43,6 +43,10 @@
       "sha256": "a9cb0c38c1fb13dcbb5b4978ffc2ed25f9bf42184e31f06bef0d0f7c47b062a2",
       "role": "exact supported-ROM weights, Portal Power, and experience mechanics authority"
     },
+    "imports/reference-docs/unbound_partner_encounters.json": {
+      "sha256": "4b81dafa3c6b8c9784e1419670e8166a2ce723eb5e39395ca57dc8d2fc9fd7ba",
+      "role": "reviewed escort boundaries, scripted wild roles, and ROM-verified enemy party partitions"
+    },
     "imports/reference-docs/Unbound Changes From Official.txt": {
       "sha256": "04eefc9d8f2de4876130f1ac99ef30d4ad4e7127a0dc6a3bd5e999e33bc027e1",
       "role": "version/reference documentation"
@@ -301,8 +305,18 @@
     },
     {
       "category": "player-partners",
-      "scope": "escort-and-scripted-wild",
-      "reason": "Optional Jax escort, Crystal Peak escort and scripted wild partner encounters need exact event/roster bindings; no blanket location inference."
+      "trainerId": "pokemon-unbound-trainer-0039",
+      "reason": "Jax escort does not make the one-Pokemon Foster encounter a double."
+    },
+    {
+      "category": "player-partners",
+      "trainerId": "pokemon-unbound-trainer-0220",
+      "reason": "First Route 9 grunt is fought before Jax offers to join."
+    },
+    {
+      "category": "player-partners",
+      "trainerId": "pokemon-unbound-trainer-0478",
+      "reason": "Hoopa/Rayquaza is a player-owned double, not an NPC-partner battle."
     },
     {
       "category": "partner-ai",
