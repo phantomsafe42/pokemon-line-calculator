@@ -496,6 +496,25 @@ try {
   assert.equal(state.localLabels, false);
   assert.ok(state.scrollWidth <= state.viewport);
 
+  await evaluate(page, `(() => {
+    [...document.querySelectorAll('.box-card button')].find(button => button.textContent === 'Add Pokémon').click();
+    document.getElementById('editor-species').focus();
+  })()`);
+  const speciesChoices = await evaluate(page, `({
+    separateSearch: Boolean(document.getElementById('editor-species-search')),
+    labels: [...document.getElementById('editor-species').options].map(option => option.textContent)
+  })`);
+  assert.equal(speciesChoices.separateSearch, false);
+  assert.match(speciesChoices.labels[0], /^Bulbasaur · #001$/);
+  assert.ok(speciesChoices.labels.indexOf('Ivysaur · #002') < speciesChoices.labels.indexOf('Charmander · #004'));
+  for (const key of 'turtwig') {
+    await page.send('Input.dispatchKeyEvent', { type: 'keyDown', key, text: key });
+    await page.send('Input.dispatchKeyEvent', { type: 'keyUp', key });
+  }
+  assert.equal(await evaluate(page, `document.getElementById('editor-species').value`), 'turtwig');
+  assert.equal(await evaluate(page, `document.getElementById('pokemon-editor-dialog').open`), true);
+  await evaluate(page, `document.getElementById('pokemon-editor-dialog').close()`);
+
   await evaluate(page, `document.getElementById('new-game').click()`);
   await delay(150);
   await page.send("Emulation.setDeviceMetricsOverride", { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
