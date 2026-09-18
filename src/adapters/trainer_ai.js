@@ -2222,6 +2222,7 @@ function gen5FullActionEvaluation({ plan, state, dataset, ai, actorEntry, moveAc
       actorId: moveActor.combatantKey,
       target: target.combatantKey,
       targetCombatantKey: target.combatantKey,
+      targetSide: plan.combatants[target.combatantKey].side,
       targetSlot: target.slot
     }
   })));
@@ -2411,6 +2412,7 @@ function platinumFullActionEvaluation({ plan, state, dataset, ai, actorEntry, mo
       actorId: actorEntry.combatantKey,
       target: target.slot === null ? target.combatantKey : gen4BattlerId(plan.combatants[target.combatantKey]?.side || "player", target.slot),
       targetCombatantKey: target.combatantKey,
+      targetSide: plan.combatants[target.combatantKey].side,
       targetSlot: target.slot
     }
   })));
@@ -2418,7 +2420,7 @@ function platinumFullActionEvaluation({ plan, state, dataset, ai, actorEntry, mo
     const source = dataset.get('moves', candidate.action.canonicalMoveId)?.trainerAi;
     if (plan.game.battleFormat === 'doubles' && ((source?.targetId === profile.constants.numericByToken.RANGE_USER_OR_ALLY && !candidate.targetIsAlly)
       || candidate.action.canonicalMoveId === 'curse' && !combatantTypes(plan, state, actorEntry).map(toId).includes('ghost'))) {
-      candidate.selectedAction = { ...candidate.action, target: gen4BattlerId('enemy', actorEntry.slot), targetCombatantKey: actorEntry.combatantKey, targetSlot: actorEntry.slot };
+      candidate.selectedAction = { ...candidate.action, target: gen4BattlerId('enemy', actorEntry.slot), targetCombatantKey: actorEntry.combatantKey, targetSide: 'enemy', targetSlot: actorEntry.slot };
     }
   }
   const actorNeedsReplacement = actor.fainted === true || actor.pivoting === true;
@@ -2613,6 +2615,7 @@ function conditionalMoveEvaluation({ plan, state, dataset, ai, actorEntry, moves
         ? gen4BattlerId(plan.combatants[target.combatantKey]?.side || "player", target.slot)
         : target.combatantKey,
       targetCombatantKey: target.combatantKey,
+      targetSide: plan.combatants[target.combatantKey].side,
       targetSlot: target.slot
     }
   })));
