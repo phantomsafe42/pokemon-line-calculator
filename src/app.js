@@ -229,7 +229,7 @@ function emptyActionDraft() {
 }
 
 function emptyContextSelection() {
-  return { boxId: null, partyId: null, pokemonIds: [], saved: false, initialConditions: {} };
+  return { boxId: null, partyId: null, manual: false, pokemonIds: [], saved: false, initialConditions: {} };
 }
 
 function setStatus(message, error = false) {
@@ -1366,8 +1366,8 @@ function refreshContextBoxSelect() {
 
 function refreshContextPartySelect() {
   const box = selectedBox(ui["context-box-select"].value);
-  const previous = contextSelection.partyId || "";
-  ui["context-party-select"].replaceChildren(option("", "New Party"));
+  const previous = contextSelection.partyId || (contextSelection.manual ? "__new_party__" : "");
+  ui["context-party-select"].replaceChildren(option("", ""), option("__new_party__", "New Party"));
   for (const partyId of box?.partyOrder || []) {
     const party = box.parties[partyId];
     ui["context-party-select"].append(option(party.id, `${party.name} · ${party.pokemonIds.length} Pokémon`));
@@ -1467,7 +1467,7 @@ function selectedContextRecords() {
 function renderContextPokemonGrid() {
   const box = selectedBox(ui["context-box-select"].value);
   contextSelection.boxId = box?.id || null;
-  const manual = !ui["context-party-select"].value;
+  const manual = ui["context-party-select"].value === "__new_party__";
   if (!box) {
     ui["context-pokemon-grid"].replaceChildren();
     ui["save-party-selection"].disabled = true;
@@ -4010,7 +4010,14 @@ function wireEvents() {
     updateBeginAvailability();
   });
   ui["context-box-select"].addEventListener("change", () => { contextSelection = { ...emptyContextSelection(), boxId: ui["context-box-select"].value || null }; refreshContextPartySelect(); renderContextPokemonGrid(); });
-  ui["context-party-select"].addEventListener("change", () => { contextSelection.pokemonIds = []; contextSelection.partyId = ui["context-party-select"].value || null; contextSelection.saved = false; renderContextPokemonGrid(); });
+  ui["context-party-select"].addEventListener("change", () => {
+    const value = ui["context-party-select"].value;
+    contextSelection.pokemonIds = [];
+    contextSelection.manual = value === "__new_party__";
+    contextSelection.partyId = contextSelection.manual ? null : value || null;
+    contextSelection.saved = false;
+    renderContextPokemonGrid();
+  });
   ui["save-party-selection"].addEventListener("click", savePartySelection);
   ui["edge-party-exp"].addEventListener("click", edgePartyExperience);
   ui["edit-party-selection"].addEventListener("click", () => { contextSelection.saved = false; ui["party-selector-controls"].hidden = false; ui["party-selection-summary"].hidden = true; ui["edit-party-selection"].hidden = true; ui["edge-party-exp"].hidden = true; renderContextPokemonGrid(); });
