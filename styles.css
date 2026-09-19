@@ -113,7 +113,11 @@ h3 { margin: 0; font-size: 1rem; }
 .compact-heading { margin-bottom: .75rem; }
 .pill { border: 1px solid var(--line); border-radius: 999px; padding: .26rem .55rem; color: var(--muted); font-size: .73rem; white-space: nowrap; }
 .node-panel { min-width: 0; }
-.node-tree { --node-column-width: 12.5rem; --node-column-gap: .75rem; display: flex; align-items: flex-start; gap: var(--node-column-gap); overflow-x: auto; padding: .1rem .1rem .55rem; scrollbar-color: var(--control-line) transparent; }
+.node-tree { --node-column-width: 12.5rem; --node-column-gap: .75rem; }
+.node-tree-section { min-width: 0; }
+.node-tree-section + .node-tree-section { margin-top: .8rem; padding-top: .8rem; border-top: 1px solid var(--line); }
+.node-section-title { margin: 0 0 .65rem; color: var(--muted); font-size: .85rem; }
+.node-tree-branches { display: flex; align-items: flex-start; gap: var(--node-column-gap); overflow-x: auto; padding: .1rem .1rem .55rem; scrollbar-color: var(--control-line) transparent; }
 .node-column { display: grid; flex: 0 0 var(--node-column-width); grid-template-rows: auto; grid-auto-rows: 4.75rem; align-items: center; gap: .42rem; }
 .node-column-title { margin: 0 0 .15rem; color: var(--muted); font-size: .72rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
 .node-column-title.is-placeholder { visibility: hidden; }
