@@ -1322,7 +1322,7 @@
       "status": "passed-import-and-diagnostic-join",
       "source": "tools/imports/vanilla/bulbapedia-trainer-docs-20260907/normalized/join-audit/pokemon-platinum.json",
       "documentedPartyGroups": 540,
-      "resolvedPercentOfScalar": 100,
+      "resolvedPercentOfScalar": 100.0,
       "promotionStatus": "active-standardized-campaign-order"
     },
     "trainerCampaignOrder": {
