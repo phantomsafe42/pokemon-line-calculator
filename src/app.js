@@ -4,8 +4,8 @@ import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260909-pu
 import { canonicalSpeciesDisplayName, loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260918-starter-selection-v1";
 import { starterAllows, starterChoice } from './adapters/starter_selection.js?v=20260918-starter-selection-v1';
 import { readStarterPreference, saveStarterPreference } from './cache/starter_preferences.js?v=20260918-starter-selection-v1';
-import { loadTrainerAiBootstrap } from "./adapters/trainer_ai.js?v=20260917-ai-target-slots-v1";
-import { forecastTargetLabel } from "./ui/ai_forecast.js?v=20260917-ai-target-slots-v1";
+import { loadTrainerAiBootstrap } from "./adapters/trainer_ai.js?v=20260918-replacement-reasons-v1";
+import { forecastTargetLabel, replacementReasonLines } from "./ui/ai_forecast.js?v=20260918-replacement-reasons-v1";
 import { hasManualStartingHp } from "./ui/editor_hp.js?v=20260917-editor-hp-v1";
 import { createDraftRecord, destructiveTransitionNotice, IndexedDbDraftStore, markExported, updateDraftRecord } from "./cache/active_draft.js?v=20260909-public-release-v2";
 import { TrainerAiForecastCache } from "./cache/trainer_ai_forecast.js?v=20260909-public-release-v2";
@@ -32,7 +32,7 @@ import { effectiveActionSpeed } from "./rulesets/action_order.js?v=20260909-publ
 import { areSlotsAdjacent, canSelectShift, shiftWithCenter, triplePositionForSlot, tripleSlotForPosition } from "./rulesets/triple_battle.js?v=20260909-public-release-v2";
 import { rotationFrontKey, rotationFrontSlot } from "./rulesets/rotation_battle.js?v=20260909-public-release-v2";
 import { experienceForLevel, experienceToNextLevel, projectExperience } from "./rulesets/vw2r_experience.js?v=20260917-partners-release-v1";
-import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260917-ai-target-slots-v1";
+import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260918-replacement-reasons-v1";
 import { battleCompletionState } from "./core/battle_completion.js?v=20260909-public-release-v2";
 import {
   addBox, addParty, boxesForGame, createEmptyBoxLibrary, exportBoxLibrary, IndexedDbBoxLibraryStore,
@@ -1988,28 +1988,9 @@ function renderTrainerAiNotes(state) {
       article.append(Object.assign(document.createElement("p"), { className: "ai-error-note", textContent: `Forecast error: ${replacement.error}` }));
     } else if (replacement.status !== "not-applicable") {
       for (const option of replacement.options) {
-        const line = document.createElement("p");
-        line.className = `ai-forecast-option likelihood-${option.likelihood.id}`;
-        const likelihood = document.createElement("strong");
-        likelihood.textContent = option.likelihood.label;
-        const references = option.highestDamageReferences?.length
-          ? option.highestDamageReferences
-          : option.highestDamageReference ? [option.highestDamageReference] : [];
-        const referencesBySlot = new Map();
-        for (const reference of references) {
-          const targetSlot = Number(reference.targetSlot);
-          if (!Number.isInteger(targetSlot)) continue;
-          const moveNames = referencesBySlot.get(targetSlot) || [];
-          if (reference.moveName && !moveNames.includes(reference.moveName)) moveNames.push(reference.moveName);
-          referencesBySlot.set(targetSlot, moveNames);
+        for (const text of replacementReasonLines(option, battleSlotNumber)) {
+          article.append(Object.assign(document.createElement("p"), { className: "ai-forecast-option", textContent: text }));
         }
-        const reasons = [...referencesBySlot.entries()].map(([targetSlot, moveNames]) => {
-          if (!moveNames.length) return null;
-          return `${moveNames.join(" / ")} ${moveNames.length === 1 ? "is" : "are"} highest damage into Slot ${battleSlotNumber("player", targetSlot)}`;
-        }).filter(Boolean);
-        line.append(document.createTextNode(`${option.name}: `), likelihood);
-        if (reasons.length) line.append(document.createTextNode(` · ${reasons.join(" · ")}`));
-        article.append(line);
       }
     }
     nodes.push(article);

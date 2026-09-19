@@ -10,7 +10,7 @@ import { normalizePlayerCollection, normalizeTrainerRoster, snapshotFingerprint 
 import { createPlanDocument } from "../src/core/plan.js";
 import { fixturePlan, fixtureRotationPlan } from "./helpers.mjs";
 import { trappingAbilityBlocksSwitch } from "../src/rulesets/ability_rules.js";
-import { forecastTargetLabel } from "../src/ui/ai_forecast.js";
+import { forecastTargetLabel, replacementReasonLines } from "../src/ui/ai_forecast.js";
 import { slotsPerSide } from "../src/core/battle_slots.js";
 import { triplePositionForSlot } from "../src/rulesets/triple_battle.js";
 import { TrainerAiForecastCache } from "../src/cache/trainer_ai_forecast.js";
@@ -270,7 +270,11 @@ test('Partner AI uses each trainer mask and maps replacement slots only within t
     const owner=plan.combatants[entry.combatantKey].source.partyOwnerId;
     assert.equal(entry.status,'available',entry.error);
     assert.ok(entry.options.length);
-    for (const option of entry.options) assert.equal(plan.combatants[option.combatantKey].source.partyOwnerId,owner);
+    for (const option of entry.options) {
+      assert.equal(plan.combatants[option.combatantKey].source.partyOwnerId,owner);
+      assert.ok(option.replacementReasons.length, 'partner replacements retain their score evidence');
+      for (const reason of option.replacementReasons) assert.equal(reason.score, Math.trunc(reason.basePower * reason.multiplier));
+    }
   }
   for (const request of requests) {
     const owner=plan.combatants[request.actorId].source.partyOwnerId;
@@ -941,6 +945,9 @@ test("Platinum post-KO fallback executes outgoing-stat damage without PP filteri
   const queries = createPlatinumQueryProvider({ plan, state, dataset, actorEntry, moves: [], damageAdapter: { calculate() { throw new Error("Final damage calculator must not be used for this source bug"); } } });
   const result = queries["platinum.action.result"]("post-ko-replacement", metadata);
   assert.equal(result.reason, "post-ko-stage-two");
+  assert.equal(result.replacementEvidence.kind, "post-ko-stage-two");
+  assert.equal(result.replacementEvidence.moveId, "tackle");
+  assert.ok(Number.isInteger(result.replacementEvidence.score));
   assert.equal(result.partySlot, Number(reserves[1].source.trainerSlot) - 1);
   // Independently isolate the two C assignment boundaries. These mock raw
   // query results do not purport to be damage-formula known answers.
@@ -956,6 +963,14 @@ test("Platinum post-KO fallback executes outgoing-stat damage without PP filteri
   const stageOne = queries['platinum.action.result']('post-ko-replacement', metadata);
   assert.equal(stageOne.reason, 'post-ko-stage-one');
   assert.equal(stageOne.partySlot, Number(reserves[1].source.trainerSlot) - 1, 'duplicate Fire typing scores 320 -> 64, below Ground 80');
+  assert.equal(stageOne.replacementEvidence.score, 80);
+  target.currentTypeIds = ['normal'];
+  for (const reserve of reserves) {
+    state.combatantStates[reserve.combatantKey].currentTypeIds = ['normal'];
+    state.combatantStates[reserve.combatantKey].moveSetOverride = [{ moveId: 'growl', maxPp: 40 }];
+  }
+  metadata.evaluateQueryProgram = () => 0;
+  assert.equal(queries['platinum.action.result']('post-ko-replacement', metadata).replacementEvidence.kind, 'post-ko-party-order-fallback');
 });
 
 test("the PLC full Renegade Platinum forecast resolves retail action precedence into qualitative guidance", async () => {
@@ -1041,6 +1056,49 @@ test("the PLC presents an exact Renegade Platinum stage-one post-KO replacement 
   assert.equal(result.replacementForecasts[0].options.length, 1);
   assert.equal(result.replacementForecasts[0].options[0].likelihood.label, "Guaranteed");
   assert.ok(result.replacementForecasts[0].options[0].name !== "Pokémon");
+  const option = result.replacementForecasts[0].options[0];
+  assert.ok(option.replacementReasons.length);
+  assert.ok(replacementReasonLines(option, (_side, slot) => slot + 1).every(line => /Type score \d+/.test(line)));
+});
+
+test('Gen 4 replacement evidence preserves RNG draws and candidate weights across target worlds', async () => {
+  const dataset = await loadStandardizedDataset({ baseUrl: 'http://fixture/rp', fetchImpl: generatedDatasetFetch });
+  const plan = createRenegadeAiPlan(dataset, 'renegade-platinum-trainer-0246');
+  const state = plan.stateNodes[plan.initialStateNodeId];
+  plan.game.battleFormat = 'doubles';
+  const playerKey = state.active.playerCombatantKeys[0];
+  const second = structuredClone(plan.combatants[playerKey]);
+  second.combatantKey = `${playerKey}-second`;
+  plan.combatants[second.combatantKey] = second;
+  state.combatantStates[second.combatantKey] = structuredClone(state.combatantStates[playerKey]);
+  state.combatantStates[playerKey].currentTypeIds = ['water'];
+  state.combatantStates[second.combatantKey].currentTypeIds = ['grass'];
+  state.active.playerCombatantKeys = [playerKey, second.combatantKey];
+  const ai = await loadTrainerAiDocumentation({ baseUrl: 'http://fixture/trainer-ai', gameId: 'renegade-platinum', generation: 4, fetchImpl: generatedFetch });
+  const engine = generatedEvaluator();
+  const run = stripEvidence => {
+    const draws = [];
+    const evaluator = { ...engine, forecast: input => {
+      const query = input.queries['platinum.action.result'];
+      return engine.forecast({ ...input, queries: { ...input.queries,
+        'platinum.action.result': (phase, metadata) => {
+          const originalDraw = metadata.drawRandom;
+          const observed = Object.create(metadata);
+          Object.defineProperty(observed, 'drawRandom', { value: source => { const value = originalDraw(source); draws.push([source, value]); return value; } });
+          const action = query(phase, observed);
+          if (!action || !stripEvidence) return action;
+          const { replacementEvidence, ...mechanicalAction } = action;
+          return mechanicalAction;
+        }
+      } });
+    } };
+    const forecast = analyzeTrainerAi({ plan, state, dataset, ai, evaluator });
+    return { draws, actors: forecast.actors.map(actor => ({ moves: actor.moves.map(move => [move.moveId, move.modeledWeight, move.modeledWeightRange]) })),
+      replacements: forecast.replacementForecasts.map(row => ({ status: row.status, options: row.options.map(option => [option.partySlot, option.modeledWeight, option.modeledWeightRange, option.likelihood]) })) };
+  };
+  const before = JSON.stringify(plan);
+  assert.deepEqual(run(false), run(true), 'display evidence changes neither draws nor forecast weights');
+  assert.equal(JSON.stringify(plan), before);
 });
 
 test('Platinum query bindings retain source volatile flags and Gyro Ball speed-cache values', async () => {
@@ -1121,6 +1179,9 @@ test('Platinum preserves ordered dual non-immunity flags in switch and post-KO c
   state.combatantStates[reserves[0].combatantKey].moveSetOverride = [{ moveId: 'sandattack', maxPp: dataset.get('moves', 'sandattack').pp }];
   const replacement = query['platinum.action.result']('post-ko-replacement', metadata);
   assert.equal(replacement.reason, 'post-ko-stage-one');
+  assert.equal(replacement.replacementEvidence.kind, 'post-ko-stage-one');
+  assert.equal(replacement.replacementEvidence.moveId, 'sandattack');
+  assert.equal(replacement.replacementEvidence.score, 160);
   assert.equal(replacement.partySlot, Number(reserves[0].source.trainerSlot) - 1, 'party CalcEffectiveness retains the bug even for a zero-power move');
 });
 

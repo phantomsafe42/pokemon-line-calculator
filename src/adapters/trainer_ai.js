@@ -1781,7 +1781,9 @@ function platinumPostKoAction({ plan, state, dataset, actorEntry, metadata, alre
   const reserves = platinumReserves(plan, state, actorEntry, alreadySelected);
   if (!reserves.length) return { status: 'exact', action: { type: 'no-replacement', reason: 'party-exhausted' } };
   if (!targetEntry) return { status: "unavailable", action: undefined, reason: "No living opponent is available for the post-KO selector." };
-  const result = (partySlot, reason) => ({ status: "exact", action: { type: "switch", partySlot, reason } });
+  const result = (partySlot, reason, evidence = {}) => ({ status: "exact", action: { type: "switch", partySlot, reason,
+    replacementEvidence: { generation: 4, kind: reason, targetSlot: targetEntry.slot, ...evidence }
+  } });
   let score; // Deliberately survives the stage-one loop and skipped move slots.
   const disregarded = new Set();
   while (true) {
@@ -1795,10 +1797,11 @@ function platinumPostKoAction({ plan, state, dataset, actorEntry, metadata, alre
     }
     if (!best) break;
     const entry = { combatantKey: best.combatant.combatantKey, slot: best.partySlot };
-    if (platinumMoves(plan, state, dataset, entry.combatantKey).some(move => platinumTypeFacts({ plan, state, dataset, attacker: entry, defender: targetEntry, move, metadata, party: true }).superEffective)) return result(best.partySlot, "post-ko-stage-one");
+    const qualifyingMove = platinumMoves(plan, state, dataset, entry.combatantKey).find(move => platinumTypeFacts({ plan, state, dataset, attacker: entry, defender: targetEntry, move, metadata, party: true }).superEffective);
+    if (qualifyingMove) return result(best.partySlot, "post-ko-stage-one", { score: maximum, moveId: qualifyingMove.id });
     disregarded.add(best.partySlot);
   }
-  let maximum = 0, picked = null;
+  let maximum = 0, picked = null, scoreMoveId = null, scorePartySlot = null, pickedMoveId = null;
   for (const reserve of reserves) {
     const entry = { combatantKey: reserve.combatant.combatantKey, slot: reserve.partySlot };
     const moves = platinumMoves(plan, state, dataset, entry.combatantKey);
@@ -1806,6 +1809,8 @@ function platinumPostKoAction({ plan, state, dataset, actorEntry, metadata, alre
       const move = moves[slot];
       if (move && move.sourcePower !== 1) {
         score = platinumPreTypeDamage({ plan, state, dataset, actorEntry, targetEntry, move, metadata }) & 255;
+        scoreMoveId = move.id;
+        scorePartySlot = reserve.partySlot;
         // Variable type comes from the reserve; stats, ability, STAB and held-item
         // modifiers still come from the outgoing battler, exactly as the source.
         const resolvedType = platinumMoveType(plan, state, dataset, entry, move, metadata, true);
@@ -1828,11 +1833,11 @@ function platinumPostKoAction({ plan, state, dataset, actorEntry, metadata, alre
         score &= 255;
         if (facts.immune) score = 0;
       }
-      if (score > maximum) { maximum = score; picked = reserve.partySlot; }
+      if (score > maximum) { maximum = score; picked = reserve.partySlot; pickedMoveId = scorePartySlot === reserve.partySlot ? scoreMoveId : null; }
     }
   }
   // Both source callers replace the sentinel with the first legal party member.
-  return result(picked ?? reserves[0].partySlot, picked === null ? "post-ko-party-order-fallback" : "post-ko-stage-two");
+  return result(picked ?? reserves[0].partySlot, picked === null ? "post-ko-party-order-fallback" : "post-ko-stage-two", picked === null ? {} : { score: maximum, moveId: pickedMoveId });
 }
 
 function platinumVoluntarySwitchAction({ plan, state, dataset, actorEntry, metadata, alreadySelected = [] }) {
@@ -2061,7 +2066,7 @@ function gen5ReplacementCandidates({ plan, state, dataset, actorEntry, targetEnt
         const multiplier = typeOnlyMultiplier(plan, state, dataset, move, targetEntry);
         if (multiplier === undefined) return undefined;
         const basePower = Number(move.basePower) < 10 ? 60 : Number(move.basePower);
-        return { moveId: move.id, score: Math.trunc(basePower * multiplier) };
+        return { moveId: move.id, basePower, multiplier, score: Math.trunc(basePower * multiplier) };
       });
       const scores = scoredMoves.map(row => row?.score);
       const score = scores.some(value => value === undefined) ? null : Math.max(0, ...scores);
@@ -2072,6 +2077,7 @@ function gen5ReplacementCandidates({ plan, state, dataset, actorEntry, targetEnt
         legal: damageCategoriesComplete && scores.every(score => score !== undefined),
         score,
         highestDamageMoveIds: score === null ? [] : scoredMoves.filter(row => row.score === score).map(row => row.moveId),
+        highestDamageMoves: score === null ? [] : scoredMoves.filter(row => row.score === score),
         hasSuperEffectiveMove: moves.some(move => typeOnlyMultiplier(plan, state, dataset, move, targetEntry) > 1),
         hasNeutralMove: moves.some(move => typeOnlyMultiplier(plan, state, dataset, move, targetEntry) === 1)
       };
@@ -2962,8 +2968,13 @@ function analyzeTrainerAiState({ plan, state, dataset, ai, evaluator = null, dam
     if (result.actions.length && result.actions.every(row => row.action?.type === 'no-replacement')) return { combatantKey: entry.combatantKey, name: combatantName(plan.combatants[entry.combatantKey]), slot: entry.slot, status: 'not-applicable', basis: result.basis, options: [], explanation: 'The earlier fainted slot receives the last healthy reserve; this slot remains empty.' };
     for (const action of result.actions.filter(action => action.action?.type === "switch")) {
       const partySlot = Number(action.action.partySlot);
-      const current = byPartySlot.get(partySlot) || { weight: 0, highestDamageReferences: [] };
+      const current = byPartySlot.get(partySlot) || { weight: 0, highestDamageReferences: [], replacementReasons: [] };
       current.weight += forecastWeight(action);
+      const evidence = action.action.replacementEvidence;
+      if (evidence) {
+        const reason = { ...evidence, moveName: evidence.moveId ? dataset.get("moves", evidence.moveId)?.name || evidence.moveId : null };
+        if (!current.replacementReasons.some(row => stableForecastKey(row) === stableForecastKey(reason))) current.replacementReasons.push(reason);
+      }
       const target = gen5Context?.targets.find(row => row.id === action.action.target || Number(row.position) === Number(action.action.target));
       const candidate = target?.candidates.find(row => Number(row.partySlot) === partySlot);
       for (const moveId of candidate?.highestDamageMoveIds || []) {
@@ -2974,6 +2985,10 @@ function analyzeTrainerAiState({ plan, state, dataset, ai, evaluator = null, dam
           targetSlot: Number(target.position),
           score: candidate.score
         };
+        const scoredMove = candidate.highestDamageMoves.find(row => row.moveId === moveId);
+        Object.assign(reference, { basePower: scoredMove.basePower, multiplier: scoredMove.multiplier });
+        const reason = { generation: 5, kind: "power-times-effectiveness", ...reference };
+        if (!current.replacementReasons.some(row => stableForecastKey(row) === stableForecastKey(reason))) current.replacementReasons.push(reason);
         if (!current.highestDamageReferences.some(row => row.moveId === reference.moveId && row.targetCombatantKey === reference.targetCombatantKey)) {
           current.highestDamageReferences.push(reference);
         }
@@ -2981,7 +2996,7 @@ function analyzeTrainerAiState({ plan, state, dataset, ai, evaluator = null, dam
       byPartySlot.set(partySlot, current);
     }
     const options = [...byPartySlot.entries()].map(([partySlot, details]) => {
-      const { weight, highestDamageReferences } = details;
+      const { weight, highestDamageReferences, replacementReasons } = details;
       const range = forecastGroupRange(result, row => row.action?.type === 'switch' && Number(row.action.partySlot) === partySlot);
       return {
       partySlot,
@@ -2992,6 +3007,7 @@ function analyzeTrainerAiState({ plan, state, dataset, ai, evaluator = null, dam
       likelihood: range ? rangeLikelihood(range, engine) : trainerAiLikelihood(weight, engine),
       highestDamageReference: highestDamageReferences.length === 1 ? highestDamageReferences[0] : null,
       highestDamageReferences,
+      replacementReasons,
       equalLikelihood: { count: 1, labels: [] }
     }; }).sort((left, right) => (right.modeledWeightRange?.maximum ?? right.modeledWeight) - (left.modeledWeightRange?.maximum ?? left.modeledWeight) || left.partySlot - right.partySlot);
     for (const option of options) {

@@ -570,6 +570,73 @@ try {
   const image = await page.send("Page.captureScreenshot", { format: "png", captureBeyondViewport: false });
   await fs.writeFile(screenshot, Buffer.from(image.data, "base64"));
 
+  const beforeForecastEventCount = page.events.length;
+  // Actual worker-to-panel replacement evidence, in this disposable browser only.
+  await evaluate(page, `(() => {
+    const trainers = document.getElementById('trainer-select');
+    trainers.value = 'renegade-platinum-trainer-0246';
+    trainers.dispatchEvent(new Event('change', { bubbles: true }));
+    document.getElementById('save-party-selection').click();
+    document.getElementById('begin-plan').click();
+    const toggle = document.getElementById('ai-forecast-toggle');
+    toggle.checked = true;
+    toggle.dispatchEvent(new Event('change', { bubbles: true }));
+  })()`);
+  let replacementText = [];
+  const replacementDeadline = Date.now() + 60000;
+  while (Date.now() < replacementDeadline) {
+    replacementText = await evaluate(page, `[...document.querySelectorAll('.ai-replacement-note .ai-forecast-option')].map(row => row.textContent)`);
+    if (replacementText.length) break;
+    await delay(250);
+  }
+  assert.ok(replacementText.length, 'real replacement forecast renders');
+  assert.ok(replacementText.every(text => /Type score|AI damage score|First eligible Pokémon/.test(text)), JSON.stringify(replacementText));
+  assert.ok(replacementText.every(text => !/Guaranteed|Likely|Unlikely|Selection details unavailable/.test(text)));
+  for (const width of [390, 1280]) {
+    await page.send('Emulation.setDeviceMetricsOverride', { width, height: 1000, deviceScaleFactor: 1, mobile: width < 600 });
+    await delay(150);
+    const fits = await evaluate(page, `document.documentElement.scrollWidth <= innerWidth + 1`);
+    assert.ok(fits, 'replacement descriptions fit ' + width);
+    await evaluate(page, `document.querySelector('.ai-replacement-note').scrollIntoView({block:'center'})`);
+    const forecastImage = await page.send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });
+    await fs.writeFile(path.join(tempRoot, 'replacement-reasons-' + width + '.png'), Buffer.from(forecastImage.data, 'base64'));
+  }
+
+  await evaluate(page, `(async () => {
+    const wait = async (check, label) => { for (let i = 0; i < 200; i++) { if (check()) return; await new Promise(resolve => setTimeout(resolve, 100)); } throw new Error(label); };
+    const change = (id, value) => { const el = document.getElementById(id); el.value = value; el.dispatchEvent(new Event('change', {bubbles:true})); };
+    document.getElementById('new-game').click();
+    document.querySelector('.game-picker-option[data-game-id="volt-white-2r"]').click();
+    await wait(() => document.getElementById('destructive-dialog').open, 'confirm disposable test line replacement');
+    document.getElementById('destructive-discard').click();
+    await wait(() => /Volt White 2 Redux.*is ready/.test(document.getElementById('app-status').textContent), 'VW2R ready');
+    document.getElementById('showdown-open').click();
+    document.getElementById('showdown-text').value = 'Squirtle\\nLevel: 20\\nHardy Nature\\n- Tackle';
+    document.getElementById('import-showdown').click();
+    await wait(() => !document.getElementById('showdown-dialog').open, 'Showdown import');
+    document.getElementById('new-plan').click();
+    const box = document.getElementById('context-box-select');
+    change('context-box-select', [...box.options].find(option => /1 Pokémon/.test(option.textContent)).value);
+    change('context-party-select', document.getElementById('context-party-select').options[2].value);
+    const trainers = document.getElementById('trainer-select');
+    change('trainer-select', [...trainers.options].find(option => option.textContent.startsWith('School Kid Neil ·')).value);
+    document.getElementById('save-party-selection').click();
+    document.getElementById('begin-plan').click();
+    const toggle = document.getElementById('ai-forecast-toggle');
+    toggle.checked = true; toggle.dispatchEvent(new Event('change', {bubbles:true}));
+  })()`, true);
+  const gen5Deadline = Date.now() + 60000;
+  let gen5Lines = [];
+  while (Date.now() < gen5Deadline) {
+    gen5Lines = await evaluate(page, `[...document.querySelectorAll('.ai-replacement-note .ai-forecast-option')].map(row => row.textContent)`);
+    if (gen5Lines.some(text => text.includes(' × '))) break;
+    await delay(250);
+  }
+  assert.ok(gen5Lines.length && gen5Lines.every(text => /\(\d+ × [\d.]+ = \d+/.test(text)), JSON.stringify(gen5Lines));
+  await evaluate(page, `document.querySelector('.ai-replacement-note').scrollIntoView({block:'center'})`);
+  const gen5Image = await page.send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });
+  await fs.writeFile(path.join(tempRoot, 'replacement-reasons-gen5.png'), Buffer.from(gen5Image.data, 'base64'));
+
   await delay(250);
   const browserErrors = page.events
     .filter(event => event.method === "Runtime.exceptionThrown")
@@ -580,7 +647,7 @@ try {
   const badResponses = page.events
     .filter(event => event.method === "Network.responseReceived" && event.params.response.status >= 400)
     .map(event => `${event.params.response.status} ${event.params.response.url}`);
-  const requestedUrls = page.events
+  const requestedUrls = page.events.slice(0, beforeForecastEventCount)
     .filter(event => event.method === "Network.requestWillBeSent")
     .map(event => event.params.request.url);
   const performance = {
