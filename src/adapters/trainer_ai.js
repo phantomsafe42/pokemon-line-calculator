@@ -1787,18 +1787,20 @@ function platinumPostKoAction({ plan, state, dataset, actorEntry, metadata, alre
   let score; // Deliberately survives the stage-one loop and skipped move slots.
   const disregarded = new Set();
   while (true) {
-    let best = null, maximum = 0;
+    let best = null, maximum = 0, bestTypeComponents = null;
     for (const reserve of reserves) {
       if (disregarded.has(reserve.partySlot)) continue;
       const types = combatantTypes(plan, state, { combatantKey: reserve.combatant.combatantKey });
-      score = (40 * typeOnlyMultiplier(plan, state, dataset, { type: types[0] }, targetEntry)
-        + 40 * typeOnlyMultiplier(plan, state, dataset, { type: types[1] || types[0] }, targetEntry)) & 255;
-      if (score > maximum) { maximum = score; best = reserve; }
+      const typeComponents = [types[0], types[1] || types[0]].map(type => ({
+        type, multiplier: typeOnlyMultiplier(plan, state, dataset, { type }, targetEntry)
+      }));
+      score = (40 * typeComponents[0].multiplier + 40 * typeComponents[1].multiplier) & 255;
+      if (score > maximum) { maximum = score; best = reserve; bestTypeComponents = typeComponents; }
     }
     if (!best) break;
     const entry = { combatantKey: best.combatant.combatantKey, slot: best.partySlot };
     const qualifyingMove = platinumMoves(plan, state, dataset, entry.combatantKey).find(move => platinumTypeFacts({ plan, state, dataset, attacker: entry, defender: targetEntry, move, metadata, party: true }).superEffective);
-    if (qualifyingMove) return result(best.partySlot, "post-ko-stage-one", { score: maximum, moveId: qualifyingMove.id });
+    if (qualifyingMove) return result(best.partySlot, "post-ko-stage-one", { score: maximum, moveId: qualifyingMove.id, typeComponents: bestTypeComponents });
     disregarded.add(best.partySlot);
   }
   let maximum = 0, picked = null, scoreMoveId = null, scorePartySlot = null, pickedMoveId = null;

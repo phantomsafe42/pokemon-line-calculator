@@ -1058,7 +1058,7 @@ test("the PLC presents an exact Renegade Platinum stage-one post-KO replacement 
   assert.ok(result.replacementForecasts[0].options[0].name !== "Pokémon");
   const option = result.replacementForecasts[0].options[0];
   assert.ok(option.replacementReasons.length);
-  assert.ok(replacementReasonLines(option, (_side, slot) => slot + 1).every(line => /Type score \d+/.test(line)));
+  assert.ok(replacementReasonLines(option, (_side, slot) => slot + 1).every(line => /Type score \(.+40 × .+\) \+ \(.+40 × .+\) = \d+/.test(line)));
 });
 
 test('Gen 4 replacement evidence preserves RNG draws and candidate weights across target worlds', async () => {

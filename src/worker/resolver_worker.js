@@ -72,7 +72,7 @@ async function initialize(datasetBaseUrl, datasetHostedPrefix, trainerAiBaseUrl,
     previewCombatantMove = combatantMovesModule.previewCombatantMove;
   } else {
     importScripts(new URL("trainer_ai/trainer_ai_evaluator.js?v=20260909-public-release-v2", battleMechanicsBase).href);
-    const trainerAiModule = await import("../adapters/trainer_ai.js?v=20260918-replacement-reasons-v1");
+    const trainerAiModule = await import("../adapters/trainer_ai.js?v=20260918-replacement-reasons-v2");
     trainerAi = await trainerAiModule.loadTrainerAiDocumentation({
       baseUrl: trainerAiBaseUrl,
       hostedPrefix: trainerAiHostedPrefix,
