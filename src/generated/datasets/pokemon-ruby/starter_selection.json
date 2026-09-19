@@ -1,0 +1,334 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-ruby",
+  "kind": "starter-selection",
+  "scope": "documented-player-starter-navigation",
+  "unknownPolicy": "preserve-unmapped-options",
+  "choices": [
+    {
+      "id": "torchic",
+      "speciesId": "torchic",
+      "label": "Fire",
+      "speciesName": "Torchic",
+      "type": "Fire"
+    },
+    {
+      "id": "mudkip",
+      "speciesId": "mudkip",
+      "label": "Water",
+      "speciesName": "Mudkip",
+      "type": "Water"
+    },
+    {
+      "id": "treecko",
+      "speciesId": "treecko",
+      "label": "Grass",
+      "speciesName": "Treecko",
+      "type": "Grass"
+    }
+  ],
+  "trainerBindings": [
+    {
+      "trainerId": "pokemon-ruby-trainer-0520",
+      "starterIds": [
+        "mudkip"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-ruby-campaign-occurrence-0005"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-ruby-trainer-0522",
+      "starterIds": [
+        "mudkip"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-ruby-campaign-occurrence-0200"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-ruby-trainer-0523",
+      "starterIds": [
+        "treecko"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-ruby-campaign-occurrence-0001"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-ruby-trainer-0524",
+      "starterIds": [
+        "treecko"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-ruby-campaign-occurrence-0084"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-ruby-trainer-0525",
+      "starterIds": [
+        "treecko"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-ruby-campaign-occurrence-0196"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-ruby-trainer-0526",
+      "starterIds": [
+        "torchic"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-ruby-campaign-occurrence-0003"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-ruby-trainer-0527",
+      "starterIds": [
+        "torchic"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-ruby-campaign-occurrence-0086"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-ruby-trainer-0528",
+      "starterIds": [
+        "torchic"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-ruby-campaign-occurrence-0198"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-ruby-trainer-0529",
+      "starterIds": [
+        "mudkip"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-ruby-campaign-occurrence-0006"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-ruby-trainer-0530",
+      "starterIds": [
+        "mudkip"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-ruby-campaign-occurrence-0088"
+        },
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-ruby-campaign-occurrence-0089"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-ruby-trainer-0531",
+      "starterIds": [
+        "mudkip"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-ruby-campaign-occurrence-0201"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-ruby-trainer-0532",
+      "starterIds": [
+        "treecko"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-ruby-campaign-occurrence-0002"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-ruby-trainer-0533",
+      "starterIds": [
+        "treecko"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-ruby-campaign-occurrence-0085"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-ruby-trainer-0534",
+      "starterIds": [
+        "treecko"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-ruby-campaign-occurrence-0197"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-ruby-trainer-0535",
+      "starterIds": [
+        "torchic"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-ruby-campaign-occurrence-0004"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-ruby-trainer-0536",
+      "starterIds": [
+        "torchic"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-ruby-campaign-occurrence-0087"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-ruby-trainer-0537",
+      "starterIds": [
+        "torchic"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-ruby-campaign-occurrence-0199"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-ruby-trainer-0661",
+      "starterIds": [
+        "mudkip"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-ruby-campaign-occurrence-0245"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-ruby-trainer-0662",
+      "starterIds": [
+        "treecko"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-ruby-campaign-occurrence-0241"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-ruby-trainer-0663",
+      "starterIds": [
+        "torchic"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-ruby-campaign-occurrence-0243"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-ruby-trainer-0664",
+      "starterIds": [
+        "mudkip"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-ruby-campaign-occurrence-0246"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-ruby-trainer-0665",
+      "starterIds": [
+        "treecko"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-ruby-campaign-occurrence-0242"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-ruby-trainer-0666",
+      "starterIds": [
+        "torchic"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-ruby-campaign-occurrence-0244"
+        }
+      ]
+    }
+  ],
+  "variantBindings": [],
+  "occurrenceAlternatives": [],
+  "provenance": {
+    "builder": "tools/build_starter_selection.js",
+    "inputs": [
+      {
+        "file": "species.json",
+        "sha256": "040c09dc30f2fa3c40f636018faaeaf0900875f117b7aedcbfd0482bb733bd34"
+      },
+      {
+        "file": "trainers.json",
+        "sha256": "6e58afe65350587ee9b57375f934974a520e868e459252ff9812e0d44ba2230e"
+      },
+      {
+        "file": "trainer_order.json",
+        "sha256": "8812fd77670c05399c4baff7a8c541e94fa6277a81b57171136d9fb35b81e8df"
+      }
+    ]
+  },
+  "limitations": [
+    "Only explicitly documented player choices filter navigation. Unmapped catalogue records and unrelated gender, difficulty and rematch alternatives remain available. Existing plans and legacy consumer starter profiles are unchanged."
+  ]
+}

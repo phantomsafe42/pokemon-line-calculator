@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 1,
+  "gameId": "storm-silver",
+  "kind": "starter-selection",
+  "scope": "documented-player-starter-navigation",
+  "unknownPolicy": "preserve-unmapped-options",
+  "choices": [
+    {
+      "id": "cyndaquil",
+      "speciesId": "cyndaquil",
+      "label": "Fire",
+      "speciesName": "Cyndaquil",
+      "type": "Fire"
+    },
+    {
+      "id": "totodile",
+      "speciesId": "totodile",
+      "label": "Water",
+      "speciesName": "Totodile",
+      "type": "Water"
+    },
+    {
+      "id": "chikorita",
+      "speciesId": "chikorita",
+      "label": "Grass",
+      "speciesName": "Chikorita",
+      "type": "Grass"
+    }
+  ],
+  "trainerBindings": [
+    {
+      "trainerId": "storm-silver-trainer-0001",
+      "starterIds": [
+        "totodile"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Bugsy Split!241"
+        }
+      ]
+    },
+    {
+      "trainerId": "storm-silver-trainer-0266",
+      "starterIds": [
+        "totodile"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Morty Split!96"
+        }
+      ]
+    },
+    {
+      "trainerId": "storm-silver-trainer-0267",
+      "starterIds": [
+        "totodile"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Champion Split!297"
+        }
+      ]
+    },
+    {
+      "trainerId": "storm-silver-trainer-0268",
+      "starterIds": [
+        "totodile"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Falkner Split!39"
+        }
+      ]
+    },
+    {
+      "trainerId": "storm-silver-trainer-0269",
+      "starterIds": [
+        "chikorita"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Bugsy Split!219"
+        }
+      ]
+    },
+    {
+      "trainerId": "storm-silver-trainer-0270",
+      "starterIds": [
+        "chikorita"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Morty Split!74"
+        }
+      ]
+    },
+    {
+      "trainerId": "storm-silver-trainer-0271",
+      "starterIds": [
+        "chikorita"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Champion Split!275"
+        }
+      ]
+    },
+    {
+      "trainerId": "storm-silver-trainer-0272",
+      "starterIds": [
+        "cyndaquil"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Bugsy Split!230"
+        }
+      ]
+    },
+    {
+      "trainerId": "storm-silver-trainer-0273",
+      "starterIds": [
+        "cyndaquil"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Morty Split!85"
+        }
+      ]
+    },
+    {
+      "trainerId": "storm-silver-trainer-0274",
+      "starterIds": [
+        "cyndaquil"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Clair Split!165"
+        }
+      ]
+    },
+    {
+      "trainerId": "storm-silver-trainer-0275",
+      "starterIds": [
+        "cyndaquil"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Champion Split!286"
+        }
+      ]
+    },
+    {
+      "trainerId": "storm-silver-trainer-0291",
+      "starterIds": [
+        "totodile"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Clair Split!176"
+        }
+      ]
+    },
+    {
+      "trainerId": "storm-silver-trainer-0292",
+      "starterIds": [
+        "chikorita"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Clair Split!154"
+        }
+      ]
+    },
+    {
+      "trainerId": "storm-silver-trainer-0499",
+      "starterIds": [
+        "chikorita"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Falkner Split!17"
+        }
+      ]
+    },
+    {
+      "trainerId": "storm-silver-trainer-0500",
+      "starterIds": [
+        "cyndaquil"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Falkner Split!28"
+        }
+      ]
+    }
+  ],
+  "variantBindings": [],
+  "occurrenceAlternatives": [],
+  "provenance": {
+    "builder": "tools/build_starter_selection.js",
+    "inputs": [
+      {
+        "file": "species.json",
+        "sha256": "6afb81067a5d48bd899a7a2430b1f79d041467dc9d5981dec71ad06d6f935d5f"
+      },
+      {
+        "file": "trainers.json",
+        "sha256": "a91f0bce167b9231903d4282372cb04930d323df743b2711820e08ef408b7965"
+      },
+      {
+        "file": "trainer_order.json",
+        "sha256": "d9f9777c39833f23a3a44c0afb333b5844eda5c7b79e58131cef5fed8a3b0cc0"
+      },
+      {
+        "file": "trainer_documentation.json",
+        "sha256": "67c3d9cfb33dd9296fe57ad51edbcf6b2f89b1fa2a1ebd37c2e5e6fbd60d6b46"
+      }
+    ]
+  },
+  "limitations": [
+    "Only explicitly documented player choices filter navigation. Unmapped catalogue records and unrelated gender, difficulty and rematch alternatives remain available. Existing plans and legacy consumer starter profiles are unchanged."
+  ]
+}

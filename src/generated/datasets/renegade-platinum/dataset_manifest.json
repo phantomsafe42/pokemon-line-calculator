@@ -188,7 +188,8 @@
     "trainer_documentation.json",
     "trainer_wiki_evidence.json",
     "trainer_ai_evidence.json",
-    "imports/trainer-ai/renegade-platinum-rom-audit.json"
+    "imports/trainer-ai/renegade-platinum-rom-audit.json",
+    "starter_selection.json"
   ],
   "builders": {
     "build": "node ..\\tools\\standardize_legacy_game.js renegade-platinum",
@@ -207,7 +208,9 @@
     "trainerAiDeterministicCheck": "node ..\\tools\\build_trainer_ai_profiles.js --check",
     "consumerBuild": "node ..\\tools\\build_standardized_consumers.js --game renegade-platinum",
     "consumerDeterministicCheck": "node ..\\tools\\build_standardized_consumers.js --game renegade-platinum --check",
-    "validation": "node ..\\tools\\validate_standardized_dataset.js --game renegade-platinum"
+    "validation": "node ..\\tools\\validate_standardized_dataset.js --game renegade-platinum",
+    "starterSelectionBuild": "node ../tools/build_starter_selection.js --write",
+    "starterSelectionCheck": "node ../tools/build_starter_selection.js --check"
   },
   "categoryApplicability": {
     "species": {

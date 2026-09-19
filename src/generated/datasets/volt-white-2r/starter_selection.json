@@ -1,0 +1,693 @@
+{
+  "schemaVersion": 1,
+  "gameId": "volt-white-2r",
+  "kind": "starter-selection",
+  "scope": "documented-player-starter-navigation",
+  "unknownPolicy": "preserve-unmapped-options",
+  "choices": [
+    {
+      "id": "tepig",
+      "speciesId": "tepig",
+      "label": "Fire",
+      "speciesName": "Tepig",
+      "type": "Fire"
+    },
+    {
+      "id": "oshawott",
+      "speciesId": "oshawott",
+      "label": "Water",
+      "speciesName": "Oshawott",
+      "type": "Water"
+    },
+    {
+      "id": "snivy",
+      "speciesId": "snivy",
+      "label": "Grass",
+      "speciesName": "Snivy",
+      "type": "Grass"
+    }
+  ],
+  "trainerBindings": [
+    {
+      "trainerId": "vw2r-trainer-0001",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Cheren Split!A18:H18"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0002",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Cheren Split!A29:H29"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0003",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Cheren Split!A40:H40"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0007",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Cheren Split!A86:H86"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0008",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Cheren Split!A97:H97"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0009",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Cheren Split!A108:H108"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0014",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Cheren Split!A164:H164"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0015",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Cheren Split!A175:H175"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0016",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Cheren Split!A186:H186"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0017",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Cheren Split!A197:H197"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0018",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Cheren Split!A208:H208"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0019",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Cheren Split!A219:H219"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0062",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "castelia-sewers-plasma-tag:vw2r-trainer-0062"
+        },
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Burgh Split!A279:H279"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0063",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "castelia-sewers-plasma-tag:vw2r-trainer-0063"
+        },
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Burgh Split!A290:H290"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0064",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "castelia-sewers-plasma-tag:vw2r-trainer-0064"
+        },
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Burgh Split!A301:H301"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0099",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Elesa Split!A389:H389"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0100",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Elesa Split!A400:H400"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0101",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Elesa Split!A411:H411"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0161",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "frigate-first-377-376:vw2r-trainer-0161"
+        },
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Skyla Split!A95:H95"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0162",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "frigate-first-377-376:vw2r-trainer-0162"
+        },
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Skyla Split!A106:H106"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0163",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "frigate-first-377-376:vw2r-trainer-0163"
+        },
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Skyla Split!A117:H117"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0178",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Skyla Split!A289:H289"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0179",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Skyla Split!A300:H300"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0180",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Skyla Split!A311:H311"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0238",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Drayden Split!A209:H209"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0239",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Drayden Split!A220:H220"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0240",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Drayden Split!A231:H231"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0272",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "lacunosa-zinzolin-grunt:vw2r-trainer-0272"
+        },
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Drayden Split!A589:H589"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0273",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "lacunosa-zinzolin-grunt:vw2r-trainer-0273"
+        },
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Drayden Split!A600:H600"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0274",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "lacunosa-zinzolin-grunt:vw2r-trainer-0274"
+        },
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Drayden Split!A611:H611"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0342",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "frigate-second-798-799:vw2r-trainer-0342"
+        },
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Ghetsis Split!A51:H51"
+        },
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Ghetsis Split!A210:H210"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0343",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "frigate-second-798-799:vw2r-trainer-0343"
+        },
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Ghetsis Split!A62:H62"
+        },
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Ghetsis Split!A221:H221"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0344",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "frigate-second-798-799:vw2r-trainer-0344"
+        },
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Ghetsis Split!A73:H73"
+        },
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Ghetsis Split!A232:H232"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0356",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "frigate-zinzolin-grunt:vw2r-trainer-0356"
+        },
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Ghetsis Split!A51:H51"
+        },
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Ghetsis Split!A210:H210"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0357",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "frigate-zinzolin-grunt:vw2r-trainer-0357"
+        },
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Ghetsis Split!A62:H62"
+        },
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Ghetsis Split!A221:H221"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0358",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "frigate-zinzolin-grunt:vw2r-trainer-0358"
+        },
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Ghetsis Split!A73:H73"
+        },
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Ghetsis Split!A232:H232"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0420",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Champion Split!A479:H479"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0421",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Champion Split!A490:H490"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0422",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "../VW2R_Trainer_Battles.xlsx",
+          "locator": "Champion Split!A501:H501"
+        }
+      ]
+    }
+  ],
+  "variantBindings": [
+    {
+      "trainerId": "vw2r-trainer-0099",
+      "variantId": "final-rom-trainer-360",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "nimbasa-subway-bosses-tag:vw2r-trainer-0099:final-rom-trainer-360"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0099",
+      "variantId": "final-rom-trainer-363",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "nimbasa-subway-bosses-tag:vw2r-trainer-0099:final-rom-trainer-363"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0100",
+      "variantId": "final-rom-trainer-361",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "nimbasa-subway-bosses-tag:vw2r-trainer-0100:final-rom-trainer-361"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0100",
+      "variantId": "final-rom-trainer-364",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "nimbasa-subway-bosses-tag:vw2r-trainer-0100:final-rom-trainer-364"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0101",
+      "variantId": "final-rom-trainer-362",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "nimbasa-subway-bosses-tag:vw2r-trainer-0101:final-rom-trainer-362"
+        }
+      ]
+    },
+    {
+      "trainerId": "vw2r-trainer-0101",
+      "variantId": "final-rom-trainer-365",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "nimbasa-subway-bosses-tag:vw2r-trainer-0101:final-rom-trainer-365"
+        }
+      ]
+    }
+  ],
+  "occurrenceAlternatives": [],
+  "provenance": {
+    "builder": "tools/build_starter_selection.js",
+    "inputs": [
+      {
+        "file": "species.json",
+        "sha256": "3d2ff49076297d1171bdd023f9c2b38e5a52a4e149169913307f80939f117401"
+      },
+      {
+        "file": "trainers.json",
+        "sha256": "cbaf6cf67b9c2346a3bf5c965bde4b49902c5419942d795edf68e6717cdb6e1c"
+      },
+      {
+        "file": "trainer_order.json",
+        "sha256": "1d8a90d85a302ad57030de9ee86fe3f8d18b41acd2bcc27e30ddc0ad3c90f675"
+      },
+      {
+        "file": "trainer_battle_groups.json",
+        "sha256": "bf51d96431a0b9ece030ad6af01b5d2b6e59d2f9dbf69f03064ef616b02a6e67"
+      },
+      {
+        "file": "../VW2R_Trainer_Battles.xlsx",
+        "sha256": "ce91712d697b4122f66e33e2b2f49a6147f5ba9885c80c1e30ed8189651d139d"
+      }
+    ]
+  },
+  "limitations": [
+    "Only explicitly documented player choices filter navigation. Unmapped catalogue records and unrelated gender, difficulty and rematch alternatives remain available. Existing plans and legacy consumer starter profiles are unchanged."
+  ]
+}

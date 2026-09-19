@@ -1,0 +1,346 @@
+{
+  "schemaVersion": 1,
+  "gameId": "fire-red-omega",
+  "kind": "starter-selection",
+  "scope": "documented-player-starter-navigation",
+  "unknownPolicy": "preserve-unmapped-options",
+  "choices": [
+    {
+      "id": "elekid",
+      "speciesId": "elekid",
+      "label": "Elekid",
+      "speciesName": "Elekid",
+      "type": null
+    },
+    {
+      "id": "magby",
+      "speciesId": "magby",
+      "label": "Magby",
+      "speciesName": "Magby",
+      "type": null
+    },
+    {
+      "id": "smoochum",
+      "speciesId": "smoochum",
+      "label": "Smoochum",
+      "speciesName": "Smoochum",
+      "type": null
+    }
+  ],
+  "trainerBindings": [
+    {
+      "trainerId": "fire-red-omega-trainer-0025",
+      "starterIds": [
+        "elekid"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Koga Split!39"
+        }
+      ]
+    },
+    {
+      "trainerId": "fire-red-omega-trainer-0026",
+      "starterIds": [
+        "magby"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Koga Split!17"
+        }
+      ]
+    },
+    {
+      "trainerId": "fire-red-omega-trainer-0027",
+      "starterIds": [
+        "elekid"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Sabrina Split!309"
+        }
+      ]
+    },
+    {
+      "trainerId": "fire-red-omega-trainer-0028",
+      "starterIds": [
+        "magby"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Sabrina Split!287"
+        }
+      ]
+    },
+    {
+      "trainerId": "fire-red-omega-trainer-0029",
+      "starterIds": [
+        "elekid"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Champion Split!39"
+        }
+      ]
+    },
+    {
+      "trainerId": "fire-red-omega-trainer-0030",
+      "starterIds": [
+        "magby"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Champion Split!17"
+        }
+      ]
+    },
+    {
+      "trainerId": "fire-red-omega-trainer-0031",
+      "starterIds": [
+        "elekid"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Champion Split!243"
+        }
+      ]
+    },
+    {
+      "trainerId": "fire-red-omega-trainer-0032",
+      "starterIds": [
+        "magby"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Champion Split!221"
+        }
+      ]
+    },
+    {
+      "trainerId": "fire-red-omega-trainer-0145",
+      "starterIds": [
+        "smoochum"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Champion Split!232"
+        }
+      ]
+    },
+    {
+      "trainerId": "fire-red-omega-trainer-0265",
+      "starterIds": [
+        "elekid"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Misty Split!274"
+        }
+      ]
+    },
+    {
+      "trainerId": "fire-red-omega-trainer-0274",
+      "starterIds": [
+        "elekid"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Lt Surge Split!396"
+        }
+      ]
+    },
+    {
+      "trainerId": "fire-red-omega-trainer-0467",
+      "starterIds": [
+        "smoochum"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Misty Split!263"
+        }
+      ]
+    },
+    {
+      "trainerId": "fire-red-omega-trainer-0468",
+      "starterIds": [
+        "magby"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Misty Split!252"
+        }
+      ]
+    },
+    {
+      "trainerId": "fire-red-omega-trainer-0473",
+      "starterIds": [
+        "elekid"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Brock Split!39"
+        }
+      ]
+    },
+    {
+      "trainerId": "fire-red-omega-trainer-0474",
+      "starterIds": [
+        "elekid"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Brock Split!73"
+        }
+      ]
+    },
+    {
+      "trainerId": "fire-red-omega-trainer-0508",
+      "starterIds": [
+        "smoochum"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Brock Split!28"
+        }
+      ]
+    },
+    {
+      "trainerId": "fire-red-omega-trainer-0509",
+      "starterIds": [
+        "smoochum"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Brock Split!62"
+        }
+      ]
+    },
+    {
+      "trainerId": "fire-red-omega-trainer-0543",
+      "starterIds": [
+        "smoochum"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Lt Surge Split!385"
+        }
+      ]
+    },
+    {
+      "trainerId": "fire-red-omega-trainer-0544",
+      "starterIds": [
+        "magby"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Lt Surge Split!374"
+        }
+      ]
+    },
+    {
+      "trainerId": "fire-red-omega-trainer-0545",
+      "starterIds": [
+        "smoochum"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Koga Split!28"
+        }
+      ]
+    },
+    {
+      "trainerId": "fire-red-omega-trainer-0630",
+      "starterIds": [
+        "magby"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Brock Split!17"
+        }
+      ]
+    },
+    {
+      "trainerId": "fire-red-omega-trainer-0631",
+      "starterIds": [
+        "magby"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Brock Split!51"
+        }
+      ]
+    },
+    {
+      "trainerId": "fire-red-omega-trainer-0636",
+      "starterIds": [
+        "smoochum"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Sabrina Split!298"
+        }
+      ]
+    },
+    {
+      "trainerId": "fire-red-omega-trainer-0637",
+      "starterIds": [
+        "smoochum"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Champion Split!28"
+        }
+      ]
+    }
+  ],
+  "variantBindings": [],
+  "occurrenceAlternatives": [],
+  "provenance": {
+    "builder": "tools/build_starter_selection.js",
+    "inputs": [
+      {
+        "file": "species.json",
+        "sha256": "8c36f17e9bd25ddd24311beff8dd64f1c330171fa3ac80e79f881f2f640bd4da"
+      },
+      {
+        "file": "trainers.json",
+        "sha256": "b5c69d132708930bee0eebcd31779b0bbbf2347f4113354d12908e4f9272b182"
+      },
+      {
+        "file": "trainer_order.json",
+        "sha256": "2816bbc47578f6bd8b097e207def0eeae124fbe68bcca3291eb634ec4d227952"
+      },
+      {
+        "file": "trainer_documentation.json",
+        "sha256": "cc4aae1bc90a90b35bbcfcbf782446e4beb762d4eeb683240fb15c0cf81798ca"
+      }
+    ]
+  },
+  "limitations": [
+    "Only explicitly documented player choices filter navigation. Unmapped catalogue records and unrelated gender, difficulty and rematch alternatives remain available. Existing plans and legacy consumer starter profiles are unchanged."
+  ]
+}

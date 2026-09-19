@@ -173,7 +173,8 @@
     "imports/trainer-ai/nightmare-final/pk-nightmare-final-trainer-constructor.json",
     "imports/trainer-ai/nightmare-final/pk-nightmare-final-item-parameters.json",
     "imports/trainer-ai/nightmare-final/pk-nightmare-final-reproduction.json",
-    "imports/trainer-ai/nightmare-final/pk-nightmare-final-external-abi.json"
+    "imports/trainer-ai/nightmare-final/pk-nightmare-final-external-abi.json",
+    "starter_selection.json"
   ],
   "builders": {
     "build": "node ..\\tools\\standardize_legacy_game.js platinum-kaizo",
@@ -189,7 +190,9 @@
     "trainerAiDeterministicCheck": "node ..\\tools\\build_trainer_ai_profiles.js --check",
     "consumerBuild": "node ..\\tools\\build_standardized_consumers.js --game platinum-kaizo",
     "consumerDeterministicCheck": "node ..\\tools\\build_standardized_consumers.js --game platinum-kaizo --check",
-    "validation": "node ..\\tools\\validate_standardized_dataset.js --game platinum-kaizo"
+    "validation": "node ..\\tools\\validate_standardized_dataset.js --game platinum-kaizo",
+    "starterSelectionBuild": "node ../tools/build_starter_selection.js --write",
+    "starterSelectionCheck": "node ../tools/build_starter_selection.js --check"
   },
   "categoryApplicability": {
     "species": {

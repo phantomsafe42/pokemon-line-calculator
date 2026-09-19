@@ -164,7 +164,8 @@
     "imports/trainer-ai/sssg-pchal/hgss-item-parameters.json",
     "imports/trainer-ai/sssg-pchal/hgss-trainer-item-known-answers.json",
     "imports/trainer-ai/sssg-pchal/hgss-ai-external-abi.json",
-    "imports/trainer-ai/sssg-pchal/hgss-trainer-constructor.json"
+    "imports/trainer-ai/sssg-pchal/hgss-trainer-constructor.json",
+    "starter_selection.json"
   ],
   "builders": {
     "build": "node ..\\tools\\standardize_legacy_game.js storm-silver",
@@ -180,7 +181,9 @@
     "trainerAiDeterministicCheck": "node ..\\tools\\build_trainer_ai_profiles.js --check",
     "consumerBuild": "node ..\\tools\\build_standardized_consumers.js --game storm-silver",
     "consumerDeterministicCheck": "node ..\\tools\\build_standardized_consumers.js --game storm-silver --check",
-    "validation": "node ..\\tools\\validate_standardized_dataset.js --game storm-silver"
+    "validation": "node ..\\tools\\validate_standardized_dataset.js --game storm-silver",
+    "starterSelectionBuild": "node ../tools/build_starter_selection.js --write",
+    "starterSelectionCheck": "node ../tools/build_starter_selection.js --check"
   },
   "categoryApplicability": {
     "species": {

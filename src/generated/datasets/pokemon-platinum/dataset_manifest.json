@@ -1007,7 +1007,8 @@
   ],
   "extensions": [
     "source_verification_report.json",
-    "trainer_visual_identity_report.json"
+    "trainer_visual_identity_report.json",
+    "starter_selection.json"
   ],
   "sourceRequirements": {
     "specialTrainerMechanics": {
@@ -1363,7 +1364,9 @@
   },
   "builders": {
     "build": "python ..\\tools\\build_vanilla_game_datasets.py --game pokemon-platinum",
-    "deterministicCheck": "python ..\\tools\\build_vanilla_game_datasets.py --game pokemon-platinum --check"
+    "deterministicCheck": "python ..\\tools\\build_vanilla_game_datasets.py --game pokemon-platinum --check",
+    "starterSelectionBuild": "node ../tools/build_starter_selection.js --write",
+    "starterSelectionCheck": "node ../tools/build_starter_selection.js --check"
   },
   "consumerProjection": {
     "status": "release-export-consumer-ready",

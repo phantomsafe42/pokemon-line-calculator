@@ -134,7 +134,8 @@
     "trainer_reconciliation_report.json",
     "species_ability_slots.json",
     "trainer_documentation.json",
-    "trainer_ai_evidence.json"
+    "trainer_ai_evidence.json",
+    "starter_selection.json"
   ],
   "builders": {
     "build": "node ..\\tools\\standardize_legacy_game.js fire-red-omega",
@@ -149,7 +150,9 @@
     "trainerAiDeterministicCheck": "node ..\\tools\\build_trainer_ai_profiles.js --check",
     "consumerBuild": "node ..\\tools\\build_standardized_consumers.js --game fire-red-omega",
     "consumerDeterministicCheck": "node ..\\tools\\build_standardized_consumers.js --game fire-red-omega --check",
-    "validation": "node ..\\tools\\validate_standardized_dataset.js --game fire-red-omega"
+    "validation": "node ..\\tools\\validate_standardized_dataset.js --game fire-red-omega",
+    "starterSelectionBuild": "node ../tools/build_starter_selection.js --write",
+    "starterSelectionCheck": "node ../tools/build_starter_selection.js --check"
   },
   "categoryApplicability": {
     "species": {

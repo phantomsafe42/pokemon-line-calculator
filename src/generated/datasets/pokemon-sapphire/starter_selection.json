@@ -1,0 +1,334 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-sapphire",
+  "kind": "starter-selection",
+  "scope": "documented-player-starter-navigation",
+  "unknownPolicy": "preserve-unmapped-options",
+  "choices": [
+    {
+      "id": "torchic",
+      "speciesId": "torchic",
+      "label": "Fire",
+      "speciesName": "Torchic",
+      "type": "Fire"
+    },
+    {
+      "id": "mudkip",
+      "speciesId": "mudkip",
+      "label": "Water",
+      "speciesName": "Mudkip",
+      "type": "Water"
+    },
+    {
+      "id": "treecko",
+      "speciesId": "treecko",
+      "label": "Grass",
+      "speciesName": "Treecko",
+      "type": "Grass"
+    }
+  ],
+  "trainerBindings": [
+    {
+      "trainerId": "pokemon-sapphire-trainer-0520",
+      "starterIds": [
+        "mudkip"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-sapphire-campaign-occurrence-0005"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-sapphire-trainer-0522",
+      "starterIds": [
+        "mudkip"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-sapphire-campaign-occurrence-0200"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-sapphire-trainer-0523",
+      "starterIds": [
+        "treecko"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-sapphire-campaign-occurrence-0001"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-sapphire-trainer-0524",
+      "starterIds": [
+        "treecko"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-sapphire-campaign-occurrence-0084"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-sapphire-trainer-0525",
+      "starterIds": [
+        "treecko"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-sapphire-campaign-occurrence-0196"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-sapphire-trainer-0526",
+      "starterIds": [
+        "torchic"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-sapphire-campaign-occurrence-0003"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-sapphire-trainer-0527",
+      "starterIds": [
+        "torchic"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-sapphire-campaign-occurrence-0086"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-sapphire-trainer-0528",
+      "starterIds": [
+        "torchic"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-sapphire-campaign-occurrence-0198"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-sapphire-trainer-0529",
+      "starterIds": [
+        "mudkip"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-sapphire-campaign-occurrence-0006"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-sapphire-trainer-0530",
+      "starterIds": [
+        "mudkip"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-sapphire-campaign-occurrence-0088"
+        },
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-sapphire-campaign-occurrence-0089"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-sapphire-trainer-0531",
+      "starterIds": [
+        "mudkip"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-sapphire-campaign-occurrence-0201"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-sapphire-trainer-0532",
+      "starterIds": [
+        "treecko"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-sapphire-campaign-occurrence-0002"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-sapphire-trainer-0533",
+      "starterIds": [
+        "treecko"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-sapphire-campaign-occurrence-0085"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-sapphire-trainer-0534",
+      "starterIds": [
+        "treecko"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-sapphire-campaign-occurrence-0197"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-sapphire-trainer-0535",
+      "starterIds": [
+        "torchic"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-sapphire-campaign-occurrence-0004"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-sapphire-trainer-0536",
+      "starterIds": [
+        "torchic"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-sapphire-campaign-occurrence-0087"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-sapphire-trainer-0537",
+      "starterIds": [
+        "torchic"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-sapphire-campaign-occurrence-0199"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-sapphire-trainer-0661",
+      "starterIds": [
+        "mudkip"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-sapphire-campaign-occurrence-0245"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-sapphire-trainer-0662",
+      "starterIds": [
+        "treecko"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-sapphire-campaign-occurrence-0241"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-sapphire-trainer-0663",
+      "starterIds": [
+        "torchic"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-sapphire-campaign-occurrence-0243"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-sapphire-trainer-0664",
+      "starterIds": [
+        "mudkip"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-sapphire-campaign-occurrence-0246"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-sapphire-trainer-0665",
+      "starterIds": [
+        "treecko"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-sapphire-campaign-occurrence-0242"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-sapphire-trainer-0666",
+      "starterIds": [
+        "torchic"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-sapphire-campaign-occurrence-0244"
+        }
+      ]
+    }
+  ],
+  "variantBindings": [],
+  "occurrenceAlternatives": [],
+  "provenance": {
+    "builder": "tools/build_starter_selection.js",
+    "inputs": [
+      {
+        "file": "species.json",
+        "sha256": "35d31ff910e49406a1f1cf81d8d86c66ce208b352d41652b9f0bfc3980335849"
+      },
+      {
+        "file": "trainers.json",
+        "sha256": "2dffc38cfb67741936f19b6bfd38d873ec8007c72c4aa6637f605af0586ac2c1"
+      },
+      {
+        "file": "trainer_order.json",
+        "sha256": "dee3026856b41f2f7fc5c593af110f07d5e3685c91b1084efde1a7b150586c69"
+      }
+    ]
+  },
+  "limitations": [
+    "Only explicitly documented player choices filter navigation. Unmapped catalogue records and unrelated gender, difficulty and rematch alternatives remain available. Existing plans and legacy consumer starter profiles are unchanged."
+  ]
+}

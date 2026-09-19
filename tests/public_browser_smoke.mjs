@@ -24,11 +24,11 @@ const readVw2r = async name => JSON.parse(await fs.readFile(path.join(vw2rRoot, 
 const vw2rContext = createDatasetContext({
   manifest: await readVw2r("dataset_manifest.json"),
   mechanics: await readVw2r("battle_mechanics.json"),
-  documents: Object.fromEntries(await Promise.all(REQUIRED_DATASET_SOURCES.map(async name => [name, await readVw2r(name)])))
+  documents: Object.fromEntries(await Promise.all([...REQUIRED_DATASET_SOURCES, 'starter_selection.json'].map(async name => [name, await readVw2r(name)])))
 });
 // Ally-only teams are not enemy encounters. Check the exact released navigation
 // inventory rather than assuming a minimum number of raw trainer records.
-const expectedVw2rTrainerIds = vw2rContext.trainerGroups().flatMap(group => group.trainers.map(trainer => trainer.id));
+const expectedVw2rTrainerIds = vw2rContext.trainerGroups('snivy').flatMap(group => group.trainers.map(trainer => trainer.id));
 const vanillaGameOptions = [
   ["pokemon-ruby", "Ruby"],
   ["pokemon-sapphire", "Sapphire"],
@@ -259,6 +259,8 @@ try {
     await wait(() => /Ruby is ready\./.test(document.getElementById('app-status')?.textContent || '')
       && document.getElementById('trainer-select').options.length > 1, 'public vanilla game data and worker');
     await wait(() => !document.getElementById('game-dialog').open, 'Ruby game selection complete');
+    await wait(() => document.getElementById('starter-dialog').open, 'Ruby starter selection');
+    document.querySelector('[data-starter-id="treecko"]').click();
     if (document.getElementById('plan-context-dialog').open) throw new Error('Game selection must not open New Line');
     document.getElementById('new-plan').click();
     await wait(() => document.getElementById('plan-context-dialog').open, 'explicit New Line dialog');
@@ -294,8 +296,10 @@ try {
     await wait(() => document.getElementById('game-dialog').open, 'reopened game picker');
     document.querySelector('.game-picker-option[data-game-id="volt-white-2r"]').click();
     await wait(() => /is ready\./.test(document.getElementById('app-status')?.textContent || '')
-      && document.getElementById('trainer-select').options.length === ${expectedVw2rTrainerIds.length + 1}, 'public game data, AI bootstrap, and resolver');
+      && document.getElementById('trainer-select').options.length > 1, 'public game data, AI bootstrap, and resolver');
     await wait(() => !document.getElementById('game-dialog').open, 'VW2R game selection complete');
+    await wait(() => document.getElementById('starter-dialog').open, 'VW2R starter selection');
+    document.querySelector('[data-starter-id="snivy"]').click();
     if (document.getElementById('plan-context-dialog').open) throw new Error('Changing game must not open New Line');
     document.getElementById('new-plan').click();
     await wait(() => document.getElementById('plan-context-dialog').open, 'explicit VW2R New Line dialog');
@@ -365,6 +369,8 @@ try {
     document.querySelector('.game-picker-option[data-game-id="renegade-platinum"]').click();
     await wait(() => /Renegade Platinum is ready\./.test(document.getElementById('app-status')?.textContent || '')
       && document.getElementById('trainer-select').options.length > 100, 'Renegade Platinum data, AI bootstrap, and resolver');
+    await wait(() => document.getElementById('starter-dialog').open, 'Renegade starter selection');
+    document.querySelector('[data-starter-id="chimchar"]').click();
     result.renegadePlatinum = {
       status: document.getElementById('app-status').textContent,
       trainers: document.getElementById('trainer-select').options.length
@@ -472,7 +478,7 @@ try {
   assert.equal(gameOptionById.get("platinum-kaizo")?.artTitle, "platinum-kaizo");
   assert.equal(state.newGameLabel, "New Game");
   assert.equal(state.dropdownPresent, false);
-  assert.match(state.vanilla.status, /Ruby is ready\./);
+  assert.match(state.vanilla.status, /starter saved for Ruby/);
   assert.equal(state.vanilla.credit, "by Game Freak");
   assert.equal(state.vanilla.name, "Ruby");
   assert.ok(state.vanilla.trainers > 1);
@@ -486,14 +492,14 @@ try {
   assert.equal(state.assetOrigin, assetLock.gateway.origin);
   assert.equal(state.assetReleaseVersion, assetLock.gateway.releaseVersion);
   assert.equal(state.localAssetGlobalType, "undefined");
-  assert.match(state.status, /is ready\./);
+  assert.match(state.status, /starter saved for Volt White 2 Redux/);
   assert.equal(state.gameCredit, "by AphexCubed and Drayano");
   assert.equal(state.currentGameName, "Volt White 2 Redux - Challenge Mode");
   assert.equal(state.siteCredit, "twitch.tv/phantomsafe");
   assert.equal(state.eyebrowCount, 0);
   assert.equal(state.trainers, expectedVw2rTrainerIds.length + 1);
   assert.deepEqual(state.trainerIds, expectedVw2rTrainerIds);
-  assert.match(state.renegadePlatinum.status, /Renegade Platinum is ready\./);
+  assert.match(state.renegadePlatinum.status, /starter saved for Renegade Platinum/);
   assert.ok(state.renegadePlatinum.trainers > 100);
   assert.ok(state.deferredEditor.species > 100);
   assert.equal(state.deferredEditor.moveControls, 8);

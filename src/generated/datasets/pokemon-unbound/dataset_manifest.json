@@ -186,7 +186,8 @@
   "extensions": [
     "source_verification_report.json",
     "consumer_projection.json",
-    "trainer_ai_evidence.json"
+    "trainer_ai_evidence.json",
+    "starter_selection.json"
   ],
   "builders": {
     "build": "node ..\\tools\\standardize_unbound.js",
@@ -198,7 +199,9 @@
     "consumerBuild": "node ..\\tools\\build_standardized_consumers.js --game pokemon-unbound",
     "consumerDeterministicCheck": "node ..\\tools\\build_standardized_consumers.js --game pokemon-unbound --check",
     "validation": "node ..\\tools\\validate_standardized_dataset.js --game pokemon-unbound",
-    "mechanicsAuthorityValidation": "node .\\source-data\\verify_unbound_mechanics_authority.js --rom <approved-supported-rom> --cfru <pinned-cfru-checkout> --dpe <pinned-dpe-checkout>"
+    "mechanicsAuthorityValidation": "node .\\source-data\\verify_unbound_mechanics_authority.js --rom <approved-supported-rom> --cfru <pinned-cfru-checkout> --dpe <pinned-dpe-checkout>",
+    "starterSelectionBuild": "node ../tools/build_starter_selection.js --write",
+    "starterSelectionCheck": "node ../tools/build_starter_selection.js --check"
   },
   "categoryApplicability": {
     "species": {

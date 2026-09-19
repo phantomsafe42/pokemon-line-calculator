@@ -1,7 +1,9 @@
 import { calculateStats, normalizeMultiTrainerRoster, normalizePlayerCollection, normalizePlayerPartnerRoster, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js?v=20260917-partners-release-v1";
 import { HOSTED_DATASET_RELEASE } from "./adapters/hosted_dataset.js?v=20260917-partners-release-v1";
 import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260909-public-release-v2";
-import { canonicalSpeciesDisplayName, loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260917-partners-release-v1";
+import { canonicalSpeciesDisplayName, loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260918-starter-selection-v1";
+import { starterAllows, starterChoice } from './adapters/starter_selection.js?v=20260918-starter-selection-v1';
+import { readStarterPreference, saveStarterPreference } from './cache/starter_preferences.js?v=20260918-starter-selection-v1';
 import { loadTrainerAiBootstrap } from "./adapters/trainer_ai.js?v=20260917-ai-target-slots-v1";
 import { forecastTargetLabel } from "./ui/ai_forecast.js?v=20260917-ai-target-slots-v1";
 import { hasManualStartingHp } from "./ui/editor_hp.js?v=20260917-editor-hp-v1";
@@ -166,6 +168,7 @@ const STAT_LABELS = Object.freeze({ hp: "HP", atk: "Atk", def: "Def", spa: "SpA"
 const STATUS_LABELS = Object.freeze({ brn: "Burn", par: "Paralysis", psn: "Poison", tox: "Badly Poisoned", slp: "Sleep", frz: "Freeze" });
 const byId = id => document.getElementById(id);
 const ui = Object.fromEntries([
+  "starter-dialog", "starter-choices", "starter-dialog-game", "starter-dialog-status", "close-starter-dialog", "starter-back", "change-starter",
   "current-game-summary", "current-game-art", "current-game-name", "new-game", "game-credit", "game-dialog", "close-game-dialog", "game-dialog-status", "rom-hacks-games", "vanilla-games",
   "app-status", "app-tabs", "plc-tab", "boxes-tab", "plc-panel", "boxes-panel",
   "plan-toolbar-label", "commit-turn", "save-plan", "new-plan", "workspace", "empty-plan",
@@ -191,6 +194,7 @@ const draftStore = new IndexedDbDraftStore();
 const savedDraftStore = new SavedDraftStore();
 const boxStore = new IndexedDbBoxLibraryStore();
 let selectedGameId = null;
+let selectedStarterId = null;
 let readyGames = new Map();
 let gameSelectionPending = false;
 let dataset = null;
@@ -307,11 +311,54 @@ async function chooseGameFromPicker(gameId) {
   if (selected) {
     ui["game-dialog-status"].textContent = "";
     ui["game-dialog"].close();
+    if (!selectedStarterId) openStarterPicker();
   } else {
     ui["game-dialog-status"].textContent = selectedGameId
       ? `${GAME_REGISTRY[selectedGameId].name} remains selected.`
       : `${config.name} could not be loaded.`;
   }
+}
+
+function renderStarterControl() {
+  const choice = starterChoice(dataset?.starterSelection, selectedStarterId);
+  ui['change-starter'].textContent = choice ? `Starter: ${choice.speciesName}` : 'Choose Starter';
+  ui['change-starter'].disabled = !dataset?.starterSelection;
+}
+
+function openStarterPicker() {
+  if (!dataset?.starterSelection || ui['starter-dialog'].open) return;
+  ui['starter-dialog-game'].textContent = GAME_REGISTRY[selectedGameId].name;
+  ui['starter-dialog-status'].textContent = 'Sets trainer teams for new lines. Does not add a Pokémon to Boxes or change an open line.';
+  ui['close-starter-dialog'].hidden = !selectedStarterId;
+  ui['starter-choices'].replaceChildren();
+  for (const choice of dataset.starterSelection.choices) {
+    const control = button('', 'starter-choice secondary');
+    control.dataset.starterId = choice.id;
+    control.dataset.type = choice.type?.toLowerCase() || '';
+    control.setAttribute('aria-pressed', String(choice.id === selectedStarterId));
+    const label = document.createElement('strong');
+    label.textContent = choice.label;
+    control.append(label);
+    if (choice.label !== choice.speciesName) {
+      const species = document.createElement('span');
+      species.textContent = choice.speciesName;
+      control.append(species);
+    }
+    control.addEventListener('click', () => {
+      try {
+        selectedStarterId = saveStarterPreference(localStorage, selectedGameId, dataset.starterSelection, choice.id);
+        // Only setup controls change; the active graph, party and saved snapshots
+        // continue to use their existing exact trainer identities and stats.
+        fillTrainerSelect();
+        updateVariantSelect();
+        renderStarterControl();
+        ui['starter-dialog'].close();
+        setStatus(`${choice.speciesName} starter saved for ${GAME_REGISTRY[selectedGameId].name}.`);
+      } catch (error) { ui['starter-dialog-status'].textContent = `Starter could not be saved: ${error.message}`; }
+    });
+    ui['starter-choices'].append(control);
+  }
+  ui['starter-dialog'].showModal();
 }
 
 function gamePickerButton(gameId, config, ready) {
@@ -1183,7 +1230,7 @@ function trainerLabel(trainer) {
 
 function fillTrainerSelect() {
   ui["trainer-select"].replaceChildren(option("", "Select trainer…"));
-  for (const group of dataset.trainerGroups()) {
+  for (const group of dataset.trainerGroups(selectedStarterId)) {
     const optgroup = document.createElement("optgroup");
     optgroup.label = group.label;
     for (const trainer of group.trainers) optgroup.append(option(trainer.id, trainerLabel(trainer)));
@@ -1202,7 +1249,7 @@ function contextTrainerId() { return contextBattleChoice()?.trainerId || ui["tra
 function populateTrainerVariantSelect() {
   const trainer = dataset?.trainer(contextTrainerId());
   const previous = ui["variant-select"].value;
-  const variants = trainer?.mechanicsVariants || [];
+  const variants = (trainer?.mechanicsVariants || []).filter(v => starterAllows(dataset.starterSelection, selectedStarterId, trainer.id, v.id));
   ui["variant-field"].hidden = !variants.length;
   ui["variant-select"].replaceChildren();
   for (const variant of variants) ui["variant-select"].append(option(variant.id, variant.displayName || variant.name || `Variant ${variant.id}`));
@@ -1210,7 +1257,7 @@ function populateTrainerVariantSelect() {
 }
 
 function partnerTrainerGroups() {
-  return dataset?.trainerPartnerGroups(ui["trainer-select"].value) || [];
+  return dataset?.trainerPartnerGroups(ui["trainer-select"].value, selectedStarterId) || [];
 }
 
 function renderPartnerTrainerOptions() {
@@ -1236,7 +1283,7 @@ function renderPartnerTrainerOptions() {
 function populatePartnerVariantSelect() {
   const trainer = dataset?.trainer(ui["partner-trainer-select"].value);
   const previous = ui["partner-variant-select"].value;
-  const variants = trainer?.mechanicsVariants || [];
+  const variants = (trainer?.mechanicsVariants || []).filter(v => starterAllows(dataset.starterSelection, selectedStarterId, trainer.id, v.id));
   ui["partner-variant-field"].hidden = !variants.length;
   ui["partner-variant-select"].replaceChildren();
   for (const variant of variants) ui["partner-variant-select"].append(option(variant.id, variant.displayName || variant.name || `Variant ${variant.id}`));
@@ -1313,9 +1360,10 @@ function renderPlayerPartnerSelection() {
   panel.hidden = !binding;
   select.dataset.binding = binding?.id || "";
   select.replaceChildren(option("", "Select your partner’s team…"));
-  for (const choice of binding?.partnerOptions || []) select.append(option(choice.id || choice.trainerId, choice.label));
-  select.value = binding?.partnerOptions.length === 1 ? (binding.partnerOptions[0].id || binding.partnerOptions[0].trainerId) : previous;
-  select.disabled = binding?.partnerOptions.length === 1;
+  const choices = (binding?.partnerOptions || []).filter(choice => starterAllows(dataset.starterSelection, selectedStarterId, choice.trainerId, choice.trainerVariantId));
+  for (const choice of choices) select.append(option(choice.id || choice.trainerId, choice.label));
+  select.value = choices.length === 1 ? (choices[0].id || choices[0].trainerId) : previous;
+  select.disabled = choices.length === 1;
   const selected = selectedPlayerPartnerOption();
   const members = selected ? dataset.trainerTeam(selected.trainerId, selected.trainerVariantId || null) : [];
   byId("player-partner-summary").replaceChildren(...members.map(member =>
@@ -3941,6 +3989,8 @@ async function selectGame(gameId) {
     trainerAi = workerReadiness.trainerAiMetadata || trainerAi;
     trainerAiAnalysisCache.clear();
     selectedGameId = gameId;
+    selectedStarterId = readStarterPreference(localStorage, gameId, dataset.starterSelection);
+    renderStarterControl();
     pokemonEditorGameId = null;
     renderGameCredit(gameId);
     const saveImportControl = ui["save-import"]?.closest("label");
@@ -3962,12 +4012,19 @@ async function selectGame(gameId) {
 }
 
 function wireEvents() {
+  ui['change-starter'].addEventListener('click', openStarterPicker);
+  ui['close-starter-dialog'].addEventListener('click', () => ui['starter-dialog'].close());
+  ui['starter-dialog'].addEventListener('cancel', event => { if (!selectedStarterId) event.preventDefault(); });
+  ui['starter-back'].addEventListener('click', () => { ui['starter-dialog'].close(); openGamePicker(); });
   ui["new-game"].addEventListener("click", openGamePicker);
   ui["close-game-dialog"].addEventListener("click", () => {
     if (selectedGameId && !gameSelectionPending) ui["game-dialog"].close();
   });
   ui["game-dialog"].addEventListener("cancel", event => {
     if (!selectedGameId || gameSelectionPending) event.preventDefault();
+  });
+  ui['game-dialog'].addEventListener('close', () => {
+    if (dataset && !selectedStarterId && !gameSelectionPending) openStarterPicker();
   });
   ui["plc-tab"].addEventListener("click", () => setTab("plc"));
   ui["boxes-tab"].addEventListener("click", () => setTab("boxes"));

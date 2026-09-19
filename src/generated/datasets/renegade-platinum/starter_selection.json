@@ -1,0 +1,911 @@
+{
+  "schemaVersion": 1,
+  "gameId": "renegade-platinum",
+  "kind": "starter-selection",
+  "scope": "documented-player-starter-navigation",
+  "unknownPolicy": "preserve-unmapped-options",
+  "choices": [
+    {
+      "id": "chimchar",
+      "speciesId": "chimchar",
+      "label": "Fire",
+      "speciesName": "Chimchar",
+      "type": "Fire"
+    },
+    {
+      "id": "piplup",
+      "speciesId": "piplup",
+      "label": "Water",
+      "speciesName": "Piplup",
+      "type": "Water"
+    },
+    {
+      "id": "turtwig",
+      "speciesId": "turtwig",
+      "label": "Grass",
+      "speciesName": "Turtwig",
+      "type": "Grass"
+    }
+  ],
+  "trainerBindings": [
+    {
+      "trainerId": "renegade-platinum-trainer-0247",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Roark Split!208"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0248",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Roark Split!186"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0249",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Roark Split!197"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0470",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Maylene Split!39"
+        },
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Maylene Split!228"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-959-960:renegade-platinum-trainer-0470"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0471",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Maylene Split!17"
+        },
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Maylene Split!206"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-959-960:renegade-platinum-trainer-0471"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0472",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Maylene Split!28"
+        },
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Maylene Split!217"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-959-960:renegade-platinum-trainer-0472"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0473",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Wake Split!572"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0474",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Wake Split!550"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0475",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Wake Split!561"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0476",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Byron Split!544"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0477",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Byron Split!522"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0478",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Byron Split!533"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0479",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Champion Split!683"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0480",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Champion Split!661"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0481",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Champion Split!672"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0607",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Volkner Split!364"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-528-407:renegade-platinum-trainer-0607"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0613",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Gardenia Split!79"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-414-415:renegade-platinum-trainer-0613"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0614",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Gardenia Split!89"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-414-415:renegade-platinum-trainer-0614"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0615",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Gardenia Split!69"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-414-415:renegade-platinum-trainer-0615"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0616",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Gardenia Split!49"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-414-415:renegade-platinum-trainer-0616"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0617",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Gardenia Split!59"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-414-415:renegade-platinum-trainer-0617"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0618",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Gardenia Split!39"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-414-415:renegade-platinum-trainer-0618"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0619",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Volkner Split!353"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-528-407:renegade-platinum-trainer-0619"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0620",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Volkner Split!375"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-528-407:renegade-platinum-trainer-0620"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0624",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Wake Split!39"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-848-849:renegade-platinum-trainer-0624"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0625",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Wake Split!50"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-848-849:renegade-platinum-trainer-0625"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0626",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Wake Split!61"
+        },
+        {
+          "file": "trainer_battle_groups.json",
+          "locator": "renegade-platinum-player-partner-848-849:renegade-platinum-trainer-0626"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0850",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Roark Split!39"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0851",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Roark Split!17"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0852",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Roark Split!28"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0928",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Roark Split!51"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0929",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Roark Split!62"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0930",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Roark Split!73"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0940",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Fantina Split!335"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0941",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Fantina Split!346"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0942",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Fantina Split!324"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0943",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Fantina Split!368"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0944",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Fantina Split!379"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0945",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Fantina Split!357"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0963",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Byron Split!184"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0964",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Byron Split!195"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0965",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Byron Split!173"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0966",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Byron Split!217"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0967",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Byron Split!228"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0968",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Byron Split!206"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0975",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Champion Split!605"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0976",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Champion Split!616"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0977",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Champion Split!594"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0978",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Champion Split!638"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0979",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Champion Split!649"
+        }
+      ]
+    },
+    {
+      "trainerId": "renegade-platinum-trainer-0980",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_documentation.json",
+          "locator": "Champion Split!627"
+        }
+      ]
+    }
+  ],
+  "variantBindings": [],
+  "occurrenceAlternatives": [
+    {
+      "occurrenceId": "renegade-platinum-occurrence-0001",
+      "trainerId": "renegade-platinum-trainer-0851",
+      "trainerIds": [
+        "renegade-platinum-trainer-0851",
+        "renegade-platinum-trainer-0852",
+        "renegade-platinum-trainer-0850"
+      ]
+    },
+    {
+      "occurrenceId": "renegade-platinum-occurrence-0002",
+      "trainerId": "renegade-platinum-trainer-0928",
+      "trainerIds": [
+        "renegade-platinum-trainer-0928",
+        "renegade-platinum-trainer-0929",
+        "renegade-platinum-trainer-0930",
+        "renegade-platinum-trainer-0931",
+        "renegade-platinum-trainer-0932",
+        "renegade-platinum-trainer-0933"
+      ]
+    },
+    {
+      "occurrenceId": "renegade-platinum-occurrence-0012",
+      "trainerId": "renegade-platinum-trainer-0248",
+      "trainerIds": [
+        "renegade-platinum-trainer-0248",
+        "renegade-platinum-trainer-0249",
+        "renegade-platinum-trainer-0247"
+      ]
+    },
+    {
+      "occurrenceId": "renegade-platinum-main-rp-wiki-0053",
+      "trainerId": "renegade-platinum-trainer-0618",
+      "trainerIds": [
+        "renegade-platinum-trainer-0618",
+        "renegade-platinum-trainer-0616",
+        "renegade-platinum-trainer-0617",
+        "renegade-platinum-trainer-0615",
+        "renegade-platinum-trainer-0613",
+        "renegade-platinum-trainer-0614"
+      ]
+    },
+    {
+      "occurrenceId": "renegade-platinum-occurrence-0108",
+      "trainerId": "renegade-platinum-trainer-0942",
+      "trainerIds": [
+        "renegade-platinum-trainer-0942",
+        "renegade-platinum-trainer-0940",
+        "renegade-platinum-trainer-0941",
+        "renegade-platinum-trainer-0945",
+        "renegade-platinum-trainer-0943",
+        "renegade-platinum-trainer-0944"
+      ]
+    },
+    {
+      "occurrenceId": "renegade-platinum-occurrence-0123",
+      "trainerId": "renegade-platinum-trainer-0471",
+      "trainerIds": [
+        "renegade-platinum-trainer-0471",
+        "renegade-platinum-trainer-0472",
+        "renegade-platinum-trainer-0470"
+      ]
+    },
+    {
+      "occurrenceId": "renegade-platinum-occurrence-0229",
+      "trainerId": "renegade-platinum-trainer-0474",
+      "trainerIds": [
+        "renegade-platinum-trainer-0474",
+        "renegade-platinum-trainer-0475",
+        "renegade-platinum-trainer-0473"
+      ]
+    },
+    {
+      "occurrenceId": "renegade-platinum-occurrence-0251",
+      "trainerId": "renegade-platinum-trainer-0965",
+      "trainerIds": [
+        "renegade-platinum-trainer-0965",
+        "renegade-platinum-trainer-0963",
+        "renegade-platinum-trainer-0964",
+        "renegade-platinum-trainer-0968",
+        "renegade-platinum-trainer-0966",
+        "renegade-platinum-trainer-0967"
+      ]
+    },
+    {
+      "occurrenceId": "renegade-platinum-occurrence-0277",
+      "trainerId": "renegade-platinum-trainer-0477",
+      "trainerIds": [
+        "renegade-platinum-trainer-0477",
+        "renegade-platinum-trainer-0478",
+        "renegade-platinum-trainer-0476"
+      ]
+    },
+    {
+      "occurrenceId": "renegade-platinum-occurrence-0423",
+      "trainerId": "renegade-platinum-trainer-0977",
+      "trainerIds": [
+        "renegade-platinum-trainer-0977",
+        "renegade-platinum-trainer-0975",
+        "renegade-platinum-trainer-0976",
+        "renegade-platinum-trainer-0980",
+        "renegade-platinum-trainer-0978",
+        "renegade-platinum-trainer-0979"
+      ]
+    },
+    {
+      "occurrenceId": "renegade-platinum-occurrence-0424",
+      "trainerId": "renegade-platinum-trainer-0480",
+      "trainerIds": [
+        "renegade-platinum-trainer-0480",
+        "renegade-platinum-trainer-0481",
+        "renegade-platinum-trainer-0479"
+      ]
+    },
+    {
+      "occurrenceId": "renegade-platinum-occurrence-0425",
+      "trainerId": "renegade-platinum-trainer-0261",
+      "trainerIds": [
+        "renegade-platinum-trainer-0261",
+        "renegade-platinum-trainer-0981",
+        "renegade-platinum-trainer-0982",
+        "renegade-platinum-trainer-0983"
+      ]
+    },
+    {
+      "occurrenceId": "renegade-platinum-occurrence-0426",
+      "trainerId": "renegade-platinum-trainer-0262",
+      "trainerIds": [
+        "renegade-platinum-trainer-0262",
+        "renegade-platinum-trainer-0984",
+        "renegade-platinum-trainer-0985",
+        "renegade-platinum-trainer-0986"
+      ]
+    },
+    {
+      "occurrenceId": "renegade-platinum-occurrence-0427",
+      "trainerId": "renegade-platinum-trainer-0263",
+      "trainerIds": [
+        "renegade-platinum-trainer-0263",
+        "renegade-platinum-trainer-0987",
+        "renegade-platinum-trainer-0988",
+        "renegade-platinum-trainer-0989"
+      ]
+    },
+    {
+      "occurrenceId": "renegade-platinum-occurrence-0428",
+      "trainerId": "renegade-platinum-trainer-0264",
+      "trainerIds": [
+        "renegade-platinum-trainer-0264",
+        "renegade-platinum-trainer-0990",
+        "renegade-platinum-trainer-0991",
+        "renegade-platinum-trainer-0992"
+      ]
+    },
+    {
+      "occurrenceId": "renegade-platinum-occurrence-0429",
+      "trainerId": "renegade-platinum-trainer-0267",
+      "trainerIds": [
+        "renegade-platinum-trainer-0267",
+        "renegade-platinum-trainer-0993",
+        "renegade-platinum-trainer-0994",
+        "renegade-platinum-trainer-0995"
+      ]
+    }
+  ],
+  "provenance": {
+    "builder": "tools/build_starter_selection.js",
+    "inputs": [
+      {
+        "file": "species.json",
+        "sha256": "db7f886cc239083b7403e74585e5e3333a615841a26e49ff59a8423f2e759e1f"
+      },
+      {
+        "file": "trainers.json",
+        "sha256": "43479b420ca11c2ba67cdda5d684b18c8703481b75635fdcfd979745e0a8df2f"
+      },
+      {
+        "file": "trainer_order.json",
+        "sha256": "c2175c13f91f09bf689daba29d46404d028909d194c3bf56d14187380341863b"
+      },
+      {
+        "file": "trainer_documentation.json",
+        "sha256": "d51310930ebdf5e781e587994d7aeab0ed78e7debdceabe534a4517e662f828b"
+      },
+      {
+        "file": "trainer_battle_groups.json",
+        "sha256": "796fab01bc6b8c696c2785ebce5c5beb43cacf6cf4559feae27b71358d48c652"
+      }
+    ]
+  },
+  "limitations": [
+    "Only explicitly documented player choices filter navigation. Unmapped catalogue records and unrelated gender, difficulty and rematch alternatives remain available. Existing plans and legacy consumer starter profiles are unchanged."
+  ]
+}

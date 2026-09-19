@@ -1,0 +1,530 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-black-2",
+  "kind": "starter-selection",
+  "scope": "documented-player-starter-navigation",
+  "unknownPolicy": "preserve-unmapped-options",
+  "choices": [
+    {
+      "id": "tepig",
+      "speciesId": "tepig",
+      "label": "Fire",
+      "speciesName": "Tepig",
+      "type": "Fire"
+    },
+    {
+      "id": "oshawott",
+      "speciesId": "oshawott",
+      "label": "Water",
+      "speciesName": "Oshawott",
+      "type": "Water"
+    },
+    {
+      "id": "snivy",
+      "speciesId": "snivy",
+      "label": "Grass",
+      "speciesName": "Snivy",
+      "type": "Grass"
+    }
+  ],
+  "trainerBindings": [
+    {
+      "trainerId": "pokemon-black-2-documentation-trainer-0151",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0151"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-documentation-trainer-0152",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0152"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-documentation-trainer-0153",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0153"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0161",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0001"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0162",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0002"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0163",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0003"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0166",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0010"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0167",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0011"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0168",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0012"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0360",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "../../tools/starter_partner_routes.json",
+          "locator": "b2w2-nate-rosa-nimbasa"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0361",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "../../tools/starter_partner_routes.json",
+          "locator": "b2w2-nate-rosa-nimbasa"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0362",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "../../tools/starter_partner_routes.json",
+          "locator": "b2w2-nate-rosa-nimbasa"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0363",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "../../tools/starter_partner_routes.json",
+          "locator": "b2w2-nate-rosa-nimbasa"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0364",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "../../tools/starter_partner_routes.json",
+          "locator": "b2w2-nate-rosa-nimbasa"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0365",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "../../tools/starter_partner_routes.json",
+          "locator": "b2w2-nate-rosa-nimbasa"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0368",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0157"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0369",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0158"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0370",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0159"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0378",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0242"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0379",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0243"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0380",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0244"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0588",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0071"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0589",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0072"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0590",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0073"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0684",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0404"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0685",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0405"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0686",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0406"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0693",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0452"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0694",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0453"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0695",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0454"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0696",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0456"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0697",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0457"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0698",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0458"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0701",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0262"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0702",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0263"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0703",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-2-campaign-occurrence-0264"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0794",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "../../tools/starter_partner_routes.json",
+          "locator": "b2w2-hugh-plasma-frigate"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0795",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "../../tools/starter_partner_routes.json",
+          "locator": "b2w2-hugh-plasma-frigate"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-2-trainer-0796",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "../../tools/starter_partner_routes.json",
+          "locator": "b2w2-hugh-plasma-frigate"
+        }
+      ]
+    }
+  ],
+  "variantBindings": [],
+  "occurrenceAlternatives": [],
+  "provenance": {
+    "builder": "tools/build_starter_selection.js",
+    "inputs": [
+      {
+        "file": "species.json",
+        "sha256": "99851d8b97b5a2aee6fc3d89c7a3429467c5e8e4dda74f6b261d5d1b1e52739b"
+      },
+      {
+        "file": "trainers.json",
+        "sha256": "2d42dc501178ec13e8bbf8a1552e9b7bbfe0912c547873ba03df15b2c8ed7fc9"
+      },
+      {
+        "file": "trainer_order.json",
+        "sha256": "99a029ba90deb22219418e67f36ef5cb2a4162b4eff35f8a704b5191615bbde0"
+      },
+      {
+        "file": "../../tools/starter_partner_routes.json",
+        "sha256": "28d9e1896b0d6b98c13f7ebdff9c3a05ac54401ee5072cc44115ef4994c569d9"
+      },
+      {
+        "file": "../../tools/imports/vanilla/bulbapedia-trainer-docs-20260907/pages/page-169425-revision-4590693.json",
+        "sha256": "ca3b6e3700376b3f49b227b3990d9711d7daaec033f15ff88d670308d532ee1a"
+      }
+    ]
+  },
+  "limitations": [
+    "Only explicitly documented player choices filter navigation. Unmapped catalogue records and unrelated gender, difficulty and rematch alternatives remain available. Existing plans and legacy consumer starter profiles are unchanged."
+  ]
+}

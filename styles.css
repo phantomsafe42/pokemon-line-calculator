@@ -532,3 +532,19 @@ dialog::backdrop { background: rgba(0, 0, 0, .75); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
+
+.starter-dialog { width: min(620px, calc(100vw - 24px)); }
+.starter-choices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; margin: 1rem 0; }
+.starter-choice { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .5rem; min-height: 110px; padding: 1rem .4rem; }
+.starter-choice strong { font-size: 1.1rem; }
+.starter-choice span { color: var(--muted); font-size: .9rem; }
+.starter-choice[data-type="fire"] { border-color: #e96c43; }
+.starter-choice[data-type="water"] { border-color: #5799de; }
+.starter-choice[data-type="grass"] { border-color: #78bb4b; }
+.starter-choice[aria-pressed="true"] { outline: 2px solid var(--accent); outline-offset: 3px; }
+#change-starter { margin-top: .65rem; }
+@media (max-width: 420px) {
+  .starter-choices { gap: .5rem; }
+  .starter-choice strong { font-size: .95rem; }
+  .starter-choice span { font-size: .8rem; }
+}
