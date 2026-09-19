@@ -2,7 +2,7 @@ import { isPlainObject, stableStringify } from "../core/primitives.js?v=20260905
 
 export const PLAN_KIND = "pokemon-battle-plan";
 export const PLAN_SCHEMA_VERSION = 4;
-export const SUPPORTED_PLAN_SCHEMA_VERSIONS = Object.freeze([1, 2, 3, 4, 5]);
+export const SUPPORTED_PLAN_SCHEMA_VERSIONS = Object.freeze([1, 2, 3, 4, 5, 6]);
 export const MAX_PLAN_BYTES = 5_000_000;
 export const SAFE_ID_PATTERN = /^[A-Za-z0-9][A-Za-z0-9:._-]{0,159}$/;
 const STATE_STATUSES = new Set(["resolved", "preview", "stale", "invalid", "incomplete"]);
@@ -236,11 +236,12 @@ function validateGraph(plan, issues) {
     const path = `$.manualTransitions.${key}`;
     validateId(key, path, issues);
     const parent = states[manual?.parentStateNodeId];
-    if (manual?.manualTransitionId !== key || manual?.kind !== 'free-calc') issue(issues, path, 'must be a Free Calc transition with matching ID');
+    const sandbox = plan.game?.planningMode === 'sandbox' && schemaVersion >= 6;
+    if (manual?.manualTransitionId !== key || !(manual?.kind === 'free-calc' || (sandbox && manual?.kind === 'sandbox-edit'))) issue(issues, path, 'must be an enabled manual transition with matching ID');
     if (!parent || Number(manual.turnNumber) !== Number(parent.turnNumber) || !parent.childManualTransitionIds?.includes(key)) issue(issues, path, 'must be linked to its same-turn parent');
     if (!Array.isArray(manual.outcomeStateNodeIds) || manual.outcomeStateNodeIds.length !== 1) issue(issues, path, 'must contain one manual state');
     if (!manual.outcomeStateNodeIds?.includes(manual.defaultOutcomeStateNodeId)) issue(issues, path, 'default must identify its manual state');
-    for (const id of manual.outcomeStateNodeIds || []) if (states[id]?.parentManualTransitionId !== key || !states[id]?.freeCalc) issue(issues, path, 'must reference its Free Calc state');
+    for (const id of manual.outcomeStateNodeIds || []) if (states[id]?.parentManualTransitionId !== key || !(manual.kind === 'sandbox-edit' ? states[id]?.sandboxEdit : states[id]?.freeCalc)) issue(issues, path, 'must reference its manual state');
   }
   for (const [id, state] of Object.entries(states)) for (const key of state.childManualTransitionIds || []) {
     if (manuals[key]?.parentStateNodeId !== id) issue(issues, `$.stateNodes.${id}.childManualTransitionIds`, 'invalid Free Calc child');
@@ -374,6 +375,7 @@ export function validatePlanDocument(plan, options = {}) {
   if (!isPlainObject(plan.game)) issue(issues, "$.game", "must be an object");
   else {
     validateId(plan.game.gameId, "$.game.gameId", issues);
+    if (plan.game.planningMode !== undefined && (plan.game.planningMode !== 'sandbox' || Number(plan.schemaVersion) < 6)) issue(issues, '$.game.planningMode', 'Sandbox requires schema version 6');
     if (!["singles", "doubles", "triples", "rotation"].includes(plan.game.battleFormat)) issue(issues, "$.game.battleFormat", "must be singles, doubles, triples, or rotation");
     if (Number(plan.schemaVersion) === 1 && plan.game.battleFormat !== "singles") issue(issues, "$.game.battleFormat", "schema version 1 supports singles only");
     if (Number(plan.schemaVersion) < 3 && plan.game.battleFormat === "triples") issue(issues, "$.game.battleFormat", "Triple Battles require schema version 3");

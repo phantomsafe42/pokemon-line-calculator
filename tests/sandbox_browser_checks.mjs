@@ -1,0 +1,123 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { normalizePlayerCollection, normalizeTrainerRoster } from '../src/adapters/combatant_ingest.js';
+import { createPlanDocument } from '../src/core/plan.js';
+import { createEmptyBoxLibrary, addBox } from '../src/boxes/library.js';
+import { planPlayerPartyRecords } from '../src/boxes/plan_import.js';
+
+export async function checkSandbox({ page, evaluate, delay, dataset, tempRoot }) {
+  const readStore = (database, store) => evaluate(page, `(async()=>{
+    const db=await new Promise((resolve,reject)=>{const r=indexedDB.open(${JSON.stringify(database)});r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);});
+    try{return await new Promise((resolve,reject)=>{const r=db.transaction(${JSON.stringify(store)},'readonly').objectStore(${JSON.stringify(store)}).getAll();r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);});}finally{db.close();}
+  })()`,true);
+  const upload = async (id, value) => evaluate(page, `(()=>{
+    const t=new DataTransfer();t.items.add(new File([${JSON.stringify(JSON.stringify(value))}],'sandbox.json',{type:'application/json'}));
+    const el=document.getElementById(${JSON.stringify(id)});el.files=t.files;el.dispatchEvent(new Event('change',{bubbles:true}));
+  })()`);
+  const wait = async (expression, message) => {
+    for(let i=0;i<160;i++){if(await evaluate(page,expression)) return;await delay(100);}
+    throw new Error(message+': '+await evaluate(page,`document.getElementById('app-status').textContent+' / '+document.getElementById('context-status').textContent`));
+  };
+  const trainer=dataset.trainerGroups().flatMap(g=>g.trainers).find(t=>{
+    try{return normalizeTrainerRoster(t.id,null,dataset).length>=4 && !t.playerPartnerBinding && !t.encounter;}catch{return false;}
+  });
+  const stats=value=>Object.fromEntries(['hp','atk','def','spa','spd','spe'].map(k=>[k,value]));
+  const players=normalizePlayerCollection({party:['squirtle','bulbasaur','charmander','pikachu'].map((speciesId,index)=>({
+    speciesId,uniqueKey:`sandbox-${index}`,nickname:`Sandbox ${index+1}`,level:30,nature:'Hardy',ability:'Pressure',ivs:stats(31),evs:stats(0),moves:['tackle','protect']
+  }))},dataset);
+  const enemies=normalizeTrainerRoster(trainer.id,null,dataset);
+  const fixture=format=>createPlanDocument({name:`Sandbox ${format}`,dataset,trainerId:trainer.id,playerCombatants:players,enemyCombatants:enemies,battleFormat:format,planningMode:'sandbox'});
+  let library=createEmptyBoxLibrary();
+  const records=planPlayerPartyRecords(fixture('singles'),dataset);
+  for(const [gameId,name,nickname] of [[dataset.gameId,'Sandbox Other Box','Other Box Mon'],['platinum','Foreign Box','Foreign Mon']]) {
+    library=addBox(library,gameId,{name,pokemon:[{...records[0],id:`sandbox-${gameId}`,nickname,majorStatus:'par'}]}).library;
+  }
+  await upload('import-boxes',library);await delay(200);
+  const baseline=await readStore('pokemon-line-calculator-boxes','library');
+  for(const format of ['singles','doubles','triples','rotation']) {
+    await upload('import-plan',fixture(format));
+    await wait(`(()=>{if(document.getElementById('destructive-dialog').open) document.getElementById('destructive-discard').click();return document.getElementById('plan-toolbar-label').textContent===${JSON.stringify('Sandbox '+format)} && Boolean(document.querySelector('[data-free-calc-control="player-0-HP"]'));})()`,'Sandbox import');
+    const result=await evaluate(page,`(()=>{
+      const control=label=>document.querySelector('[data-free-calc-control="player-0-'+label+'"]');
+      const change=(label,value)=>{const el=control(label);el.value=value;el.dispatchEvent(new Event('change',{bubbles:true}));};
+      const names=[...control('Pokémon').options].map(o=>o.textContent);
+      change('HP','25');change('Status','tox');change('Item','leftovers');change('Level EXP','10');
+      const original=control('Pokémon').value;
+      const other=[...control('Pokémon').options].find(o=>o.textContent.includes('Other Box Mon'));
+      change('Pokémon',other.value);
+      const incomingStatus=control('Status').value;
+      change('HP','19');change('Pokémon',original);
+      const restored={hp:control('HP').value,status:control('Status').value,item:control('Item').value};
+      return {names,incomingStatus,restored,aiHidden:document.querySelector('.ai-forecast-panel').hidden,
+        freeCalcHidden:document.getElementById('free-calc').hidden,commitHidden:document.getElementById('commit-turn').hidden,
+        sections:[...document.querySelectorAll('#node-tree > .node-tree-section')].map(s=>s.dataset.treeSection),
+        nodeCount:document.querySelectorAll('#node-tree .node-button').length,badge:document.getElementById('revision-label').textContent};
+    })()`);
+    assert.ok(result.names.some(n=>n.includes('Other Box Mon')));assert.ok(!result.names.some(n=>n.includes('Foreign Mon')));
+    assert.equal(result.incomingStatus,'par');assert.deepEqual(result.restored,{hp:'25',status:'tox',item:'leftovers'});
+    assert.equal(result.aiHidden,true);assert.equal(result.freeCalcHidden,true);assert.equal(result.commitHidden,false);
+    assert.deepEqual(result.sections,['planned']);assert.equal(result.nodeCount,1);assert.match(result.badge,/Sandbox/);
+    for(const width of [390,1280]) {
+      await page.send('Emulation.setDeviceMetricsOverride',{width,height:1100,deviceScaleFactor:1,mobile:width<600});await delay(80);
+      assert.equal(await evaluate(page,`document.documentElement.scrollWidth<=innerWidth+1`),true,`${format} fits ${width}`);
+    }
+    await delay(120);
+    assert.deepEqual(await readStore('pokemon-line-calculator-boxes','library'),baseline,'Sandbox import/edit must not touch Boxes');
+  }
+  // A fresh Singles line checks cross-Box normal switching, commitment, history,
+  // and saving an incomplete edited continuation without a special Free Calc UI.
+  await upload('import-plan',fixture('singles'));
+  await wait(`(()=>{if(document.getElementById('destructive-dialog').open)document.getElementById('destructive-discard').click();return document.getElementById('plan-toolbar-label').textContent==='Sandbox singles' && document.querySelectorAll('.combatant-card').length===2;})()`,'Singles Sandbox');
+  await evaluate(page,`(()=>{
+    const change=(side,label,value)=>{const el=document.querySelector('[data-free-calc-control="'+side+'-0-'+label+'"]');el.value=value;el.dispatchEvent(new Event('change',{bubbles:true}));};
+    change('enemy','Move 1','protect');
+    document.querySelector('[data-side="enemy"] .move-button').click();
+    document.querySelector('[data-side="player"] .switch-button').click();
+    const select=document.querySelector('.sandbox-reserve-picker');
+    select.value=[...select.options].find(o=>o.textContent.includes('Other Box Mon')).value;
+    select.dispatchEvent(new Event('change',{bubbles:true}));
+  })()`);
+  await wait(`!document.getElementById('commit-turn').disabled`,'Sandbox Switch preview');
+  await evaluate(page,`document.getElementById('commit-turn').click()`);
+  await wait(`document.getElementById('turn-label').textContent.startsWith('Turn 2')`,'Sandbox Next Turn');
+  await evaluate(page,`document.querySelector('#node-tree .node-button[data-kind="committed"]').click()`);
+  await evaluate(page,`(()=>{const el=document.querySelector('[data-free-calc-control="player-0-HP"]');el.value='21';el.dispatchEvent(new Event('change',{bubbles:true}));})()`);
+  await wait(`!document.getElementById('commit-turn').disabled`,'Sandbox historical preview');
+  assert.equal(await evaluate(page,`document.getElementById('commit-turn').textContent`),'New Branch');
+  assert.equal(await evaluate(page,`document.querySelectorAll('#node-tree .node-button[data-kind="committed"]').length`),1);
+  await evaluate(page,`document.getElementById('save-plan').click()`);await delay(150);
+  const drafts=await readStore('plc-saved-lines','lines');
+  assert.ok(drafts.some(d=>d.document?.game?.planningMode==='sandbox'));
+  const active=(await readStore('pokemon-line-calculator','draft'))[0];
+  assert.equal(active.document.game.planningMode,'sandbox');
+  const editedState=active.document.stateNodes[active.workingCursorStateNodeId];
+  const editedKey=active.sandboxEditor.actionDraft.player[0].switchToKey;
+  assert.equal(editedState.combatantStates[editedKey].hp.max,21);
+  await page.send('Page.reload',{});
+  await wait(`document.getElementById('game-dialog')?.open && Boolean(document.querySelector('.game-picker-option[data-game-id="volt-white-2r"]:not(:disabled)'))`,'Game picker after reload');
+  await evaluate(page,`document.querySelector('.game-picker-option[data-game-id="volt-white-2r"]').click()`);
+  await wait(`document.querySelector('[data-free-calc-control="player-0-HP"]')?.value==='21'`,'Sandbox cache recovery');
+  assert.equal(await evaluate(page,`document.querySelector('.ai-forecast-panel').hidden`),true);
+  const image=await page.send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});
+  await fs.writeFile(path.join(tempRoot,'sandbox-singles.png'),Buffer.from(image.data,'base64'));
+  assert.deepEqual(await readStore('pokemon-line-calculator-boxes','library'),baseline);
+  await evaluate(page,`document.getElementById('new-plan').click()`);
+  assert.equal(await evaluate(page,`document.getElementById('sandbox-mode').checked`),false,'New Line defaults to ordinary mode');
+  await evaluate(page,`(()=>{
+    const select=(id,value)=>{const el=document.getElementById(id);el.value=value;el.dispatchEvent(new Event('change',{bubbles:true}));};
+    document.getElementById('sandbox-mode').checked=true;
+    select('trainer-select',[...document.getElementById('trainer-select').options].find(o=>o.textContent.includes('School Kid Neil')).value);
+    select('context-box-select',[...document.getElementById('context-box-select').options].find(o=>o.value && !o.textContent.includes('Sandbox Other')).value);
+    select('context-party-select',[...document.getElementById('context-party-select').options].find(o=>o.value && o.value!=='__new_party__').value);
+    document.getElementById('save-party-selection').click();
+  })()`);
+  await wait(`!document.getElementById('begin-plan').disabled`,'Sandbox New Line party');
+  await evaluate(page,`document.getElementById('begin-plan').click()`);
+  await wait(`(()=>{if(document.getElementById('destructive-dialog').open)document.getElementById('destructive-discard').click();return !document.getElementById('plan-context-dialog').open && Boolean(document.querySelector('[data-free-calc-control="player-0-HP"]'));})()`,'New Line Sandbox mode');
+  assert.match(await evaluate(page,`document.getElementById('revision-label').textContent`),/Sandbox/);
+  await evaluate(page,`document.getElementById('new-plan').click()`);
+  assert.equal(await evaluate(page,`document.getElementById('sandbox-mode').checked`),false);
+  await evaluate(page,`document.getElementById('plan-context-dialog').close()`);
+  console.log(JSON.stringify({status:'sandbox-browser-valid',formats:4,crossBox:true,history:true,cache:true,newLine:true,boxIsolation:true}));
+}

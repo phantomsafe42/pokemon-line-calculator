@@ -11,7 +11,9 @@ import { createDraftRecord, destructiveTransitionNotice, IndexedDbDraftStore, ma
 import { TrainerAiForecastCache } from "./cache/trainer_ai_forecast.js?v=20260909-public-release-v2";
 import { SavedDraftStore, savedDraftSnapshot } from "./cache/saved_drafts.js?v=20260917-partners-release-v1";
 import { reorderCards } from "./ui/reorder_cards.js?v=20260909-public-release-v2";
-import { addFreeCalcBranch, editFreeCalcCombatant, replaceFreeCalcSlot, freeCalcAsNewPlan } from './core/free_calc.js?v=20260917-partners-release-v1';
+import { addFreeCalcBranch, editFreeCalcCombatant, replaceFreeCalcSlot, freeCalcAsNewPlan } from './core/free_calc.js?v=20260919-sandbox-v1';
+import { isSandbox, editSandboxCombatant, placeSandboxCombatant, admitSandboxReserve } from './core/sandbox.js?v=20260919-sandbox-v1';
+import { makeStableId } from './core/primitives.js';
 import { freeCalcExperience, freeCalcTotalExperience } from './ui/free_calc.js?v=20260918-free-calc-inline-v1';
 import { nodeTreeSections } from './ui/node_tree.js?v=20260918-free-calc-sections-v1';
 import { belongsToSlotParty, eligibleReserves, partyOwnerForSlot } from './core/party_ownership.js?v=20260909-public-release-v2';
@@ -558,6 +560,50 @@ async function saveFreeCalcDraft() {
   closeFreeCalc(); renderBoxes(); setStatus('Free Calc saved as a new Turn 1 draft with its own Box and Party.');
 }
 
+function acceptSandboxEdit(result) {
+  plan = result.plan; cursorStateNodeId = result.stateId; reviewOutcomeStateNodeId = null;
+  currentPreview = null; branchEventModel = null; selectedPreviewOutcomeId = null; previewGeneration++;
+  persistDraft().catch(error => setStatus(error.message, true));
+}
+
+let sandboxBoxRosterCache = null;
+function sandboxBoxRoster() {
+  if (sandboxBoxRosterCache?.library === boxLibrary && sandboxBoxRosterCache.dataset === dataset) return sandboxBoxRosterCache.entries;
+  const entries = boxesForGame(boxLibrary, plan.game.gameId).flatMap(box => box.pokemonOrder.map(id => {
+    const [entry] = normalizePlayerCollection({ party: [boxRecordToSnapshot(box.pokemon[id], box.id)] }, dataset);
+    entry.combatantKey = makeStableId('player:box', { boxId: box.id, id });
+    entry.source.boxInitialConditions = { majorStatus: box.pokemon[id].majorStatus || null };
+    return entry;
+  }));
+  sandboxBoxRosterCache = { library: boxLibrary, dataset, entries };
+  return entries;
+}
+
+function manualPokemonCandidates(side, slot) {
+  const state = selectedState();
+  const candidates = Object.values(plan.combatants).filter(entry => belongsToSlotParty(plan, entry, side, slot) && !state.freeCalcRemovedKeys?.includes(entry.combatantKey));
+  const byKey = new Map(candidates.map(entry => [entry.combatantKey, entry]));
+  const owner = partyOwnerForSlot(plan, side, slot);
+  if (side === 'player' && (owner === null || owner === 'player')) {
+    if (isSandbox(plan)) {
+      const existing = new Set(candidates.map(entry => JSON.stringify([entry.source?.boxId, entry.source?.uniqueKey])));
+      for (const entry of sandboxBoxRoster()) {
+        if (existing.has(JSON.stringify([entry.source.boxId, entry.source.uniqueKey])) || byKey.has(entry.combatantKey)) continue;
+        byKey.set(entry.combatantKey, owner ? { ...entry, source: { ...entry.source, partyOwnerId: owner } } : entry);
+      }
+      return byKey;
+    }
+    const boxes = [...new Set(candidates.map(entry => entry.source?.boxId).filter(Boolean))].map(selectedBox).filter(Boolean);
+    for (const box of boxes) for (const id of box.pokemonOrder) {
+      if (candidates.some(entry => entry.source?.boxId === box.id && entry.source?.uniqueKey === id)) continue;
+      const [entry] = normalizePlayerCollection({ party: [boxRecordToSnapshot(box.pokemon[id], box.id)] }, dataset);
+      if (owner) entry.source.partyOwnerId = owner;
+      if (!byKey.has(entry.combatantKey)) byKey.set(entry.combatantKey, entry);
+    }
+  }
+  return byKey;
+}
+
 function renderFreeCalcControls(side, slot, actorKey) {
   const controls = {};
   const state = selectedState(); const mon = plan.combatants[actorKey]; const current = state.combatantStates[actorKey];
@@ -566,45 +612,44 @@ function renderFreeCalcControls(side, slot, actorKey) {
     if (focus) delete document.activeElement.dataset.freeCalcEditing;
     currentPreview = null; branchEventModel = null; selectedPreviewOutcomeId = null; previewGeneration++;
     renderWorkspace();
+    if (isSandbox(plan)) persistDraft().catch(error => setStatus(error.message, true));
     if (focus) document.querySelector(`[data-free-calc-control="${CSS.escape(focus)}"]`)?.focus({ preventScroll: true });
   };
   const apply = changes => {
-    try { editFreeCalcCombatant(plan, cursorStateNodeId, actorKey, changes, dataset); rerender(); }
+    try {
+      if (isSandbox(plan)) acceptSandboxEdit(editSandboxCombatant(plan, cursorStateNodeId, actorKey, changes, dataset));
+      else editFreeCalcCombatant(plan, cursorStateNodeId, actorKey, changes, dataset);
+      rerender();
+    }
     catch (error) { setStatus(error.message, true); rerender(); }
   };
   const field = (label, control) => {
     control.classList.add('free-calc-control');
     control.dataset.freeCalcControl = `${side}-${slot}-${label}`;
-    control.setAttribute('aria-label', `Free Calc ${side} Slot ${battleSlotNumber(side, slot)} ${label}`);
+    control.setAttribute('aria-label', `${isSandbox(plan) ? 'Sandbox' : 'Free Calc'} ${side} Slot ${battleSlotNumber(side, slot)} ${label}`);
     control.title = label;
     if (control.tagName === 'INPUT') control.addEventListener('input', () => { control.dataset.freeCalcEditing = 'true'; });
     controls[label] = control;
     return control;
   };
   const select = field('Pokémon', document.createElement('select'));
-  const candidates = Object.values(plan.combatants).filter(entry => belongsToSlotParty(plan, entry, side, slot) && !state.freeCalcRemovedKeys?.includes(entry.combatantKey));
-  const byKey = new Map(candidates.map(entry => [entry.combatantKey, entry]));
-  if (side === 'player' && !mon?.source?.isPlayerPartner) {
-    const boxIds = new Set(Object.values(plan.combatants).filter(entry => entry.side === 'player').map(entry => entry.source?.boxId).filter(Boolean));
-    for (const boxId of boxIds) {
-      const box = selectedBox(boxId); if (!box) continue;
-      for (const id of box.pokemonOrder) {
-        if (candidates.some(entry => entry.source?.boxId === boxId && entry.source?.uniqueKey === id)) continue;
-        const [entry] = normalizePlayerCollection({ party: [boxRecordToSnapshot(box.pokemon[id], boxId)] }, dataset);
-        if (partyOwnerForSlot(plan, side, slot)) entry.source.partyOwnerId = partyOwnerForSlot(plan, side, slot);
-        if (byKey.has(entry.combatantKey)) continue;
-        byKey.set(entry.combatantKey, entry);
-      }
-    }
-  }
+  if (!actorKey) select.append(option('', 'Choose Pokémon…'));
+  const byKey = manualPokemonCandidates(side, slot);
   for (const entry of byKey.values()) {
-    const opt = option(entry.combatantKey, recordName(entry));
+    const box = selectedBox(entry.source?.boxId);
+    const opt = option(entry.combatantKey, `${recordName(entry)}${isSandbox(plan) && box ? ` · ${box.name}` : ''}`);
     opt.disabled = activeKeys(state, side).includes(entry.combatantKey) && entry.combatantKey !== activeKey(state, side, slot);
     select.append(opt);
   }
   select.value = actorKey;
   select.addEventListener('change', () => {
-    try { replaceFreeCalcSlot(plan, cursorStateNodeId, side, slot, byKey.get(select.value)); actionDraft[side][slot] = {}; rerender(); }
+    try {
+      if (isSandbox(plan)) acceptSandboxEdit(placeSandboxCombatant(plan, cursorStateNodeId, side, slot, byKey.get(select.value)));
+      else replaceFreeCalcSlot(plan, cursorStateNodeId, side, slot, byKey.get(select.value));
+      if (isSandbox(plan)) actionDraft = emptyActionDraft();
+      else actionDraft[side][slot] = {};
+      rerender();
+    }
     catch (error) { setStatus(error.message, true); }
   });
   if (!current || !mon) return controls;
@@ -1653,6 +1698,7 @@ function openPlanContext({ reset = true } = {}) {
   if (!dataset) return;
   if (reset) {
     contextSelection = emptyContextSelection();
+    byId('sandbox-mode').checked = false;
     ui["trainer-select"].value = "";
     ui["plan-name"].value = "";
   }
@@ -1747,6 +1793,7 @@ async function beginPlanFromContext() {
     const sourceSnapshot = snapshotFingerprint([...players, ...allies], enemies, boxLibrary.updatedAt);
     plan = createPlanDocument({
       name: ui["plan-name"].value.trim() || enemyTrainerDisplayName,
+      planningMode: byId('sandbox-mode').checked ? 'sandbox' : null,
       dataset,
       trainerId: trainer.id,
       trainerVariantId: variantId,
@@ -1920,7 +1967,7 @@ function renderNotes() {
 function renderTrainerAiNotes(state) {
   const container = ui["ai-notes"];
   if (!container) return;
-  const forecastSupported = trainerAi?.binding?.consumerActivation?.enabled === true && !selectedState()?.freeCalc;
+  const forecastSupported = trainerAi?.binding?.consumerActivation?.enabled === true && !selectedState()?.freeCalc && !isSandbox(plan);
   container.closest(".ai-forecast-panel").hidden = !forecastSupported;
   if (!forecastSupported) return;
   if (!aiForecastExpanded) return;
@@ -2266,6 +2313,7 @@ function setDraft(side, slot, next) {
   }
   actionDraft[side][slot] = next;
   reviewOutcomeStateNodeId = null;
+  if (isSandbox(plan)) persistDraft().catch(error => setStatus(error.message, true));
   if (preserveRenderedPreview) {
     refreshPreview();
     return;
@@ -2569,6 +2617,27 @@ function renderSwitchStrip(container, side, slot, actorKey, draft, { replacement
   const currentCanStay = current && Number(state.combatantStates[actorKey]?.hp?.max) > 0;
   const candidates = [...(currentCanStay ? [current] : []), ...possibleSwitches(state, side, slot)];
   const previewKey = draft.switchToKey || draft.previewSwitchToKey || (currentCanStay ? actorKey : null);
+  if (isSandbox(plan) && side === 'player' && [null, 'player'].includes(partyOwnerForSlot(plan, side, slot))) {
+    const reservePicker = document.createElement('select'); reservePicker.className = 'sandbox-reserve-picker';
+    reservePicker.setAttribute('aria-label', `Sandbox Slot ${battleSlotNumber(side, slot)} Box reserve`);
+    reservePicker.append(option('', 'Choose from Boxes…'));
+    const choices = manualPokemonCandidates(side, slot);
+    for (const mon of choices.values()) {
+      if (state.combatantStates[mon.combatantKey]) continue;
+      const box = selectedBox(mon.source?.boxId);
+      reservePicker.append(option(mon.combatantKey, `${recordName(mon)}${box ? ` · ${box.name}` : ''}`));
+    }
+    reservePicker.disabled = reservePicker.options.length === 1;
+    reservePicker.addEventListener('change', () => {
+      if (!reservePicker.value) return;
+      try {
+        const mon = choices.get(reservePicker.value);
+        acceptSandboxEdit(admitSandboxReserve(plan, cursorStateNodeId, side, slot, mon));
+        setDraft(side, slot, { type: 'switch', actorKey, switchToKey: mon.combatantKey, previewSwitchToKey: mon.combatantKey });
+      } catch (error) { setStatus(error.message, true); }
+    });
+    container.append(reservePicker);
+  }
   for (const mon of candidates) {
     const target = button("", "switch-target");
     target.append(sprite(mon));
@@ -2633,7 +2702,7 @@ function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
   const committedMonState = committedState.combatantStates[displayKey];
   const monState = state.combatantStates[displayKey] || committedMonState;
   const rootState = rootCombatantState(displayKey);
-  const edit = freeCalcSession ? renderFreeCalcControls(side, slot, displayKey) : null;
+  const edit = freeCalcSession || isSandbox(plan) ? renderFreeCalcControls(side, slot, displayKey) : null;
   const card = document.createElement("article"); card.className = `combatant-card slot-position-${displaySlot}`;
   card.classList.toggle('is-free-calc', Boolean(edit));
   const rotation = plan.game?.battleFormat === "rotation";
@@ -2891,7 +2960,7 @@ function renderEmptyCombatantSlot(side, slot, { displaySlot = triplePositionForS
   empty.className = "empty-slot-label";
   empty.textContent = "Empty slot";
   card.append(slotHeading, empty);
-  if (freeCalcSession) {
+  if (freeCalcSession || isSandbox(plan)) {
     card.classList.add('is-free-calc');
     const controls = renderFreeCalcControls(side, slot, activeKey(selectedState(), side, slot));
     card.append(controls['Pokémon']);
@@ -2931,7 +3000,7 @@ function renderActionPanel(side) {
 function renderActionPanels() {
   if (!plan) return;
   const focused = document.activeElement;
-  const focusId = freeCalcSession && focused?.dataset.freeCalcControl;
+  const focusId = (freeCalcSession || isSandbox(plan)) && focused?.dataset.freeCalcControl;
   const draftValue = focused?.dataset.freeCalcEditing ? focused.value : null;
   damageGeneration += 1;
   renderActionPanel("player");
@@ -3589,7 +3658,13 @@ function renderTree() {
       node.classList.toggle("is-draft", entry.kind === "draft");
       node.classList.toggle("is-replacement", replacementNode);
       node.classList.toggle("is-ancestor", entry.kind === "committed" && selectedLineage.has(entry.outcomeStateNodeId) && !selected);
-      const parentEntry = entryByOutcomeStateId.get(entry.decisionStateNodeId);
+      let connectorStateId = entry.decisionStateNodeId;
+      if (isSandbox(plan)) {
+        while (plan.stateNodes[connectorStateId]?.parentManualTransitionId) {
+          connectorStateId = plan.manualTransitions[plan.stateNodes[connectorStateId].parentManualTransitionId].parentStateNodeId;
+        }
+      }
+      const parentEntry = entryByOutcomeStateId.get(connectorStateId);
       const parentColumnIndex = parentEntry ? columnIndexByKey.get(parentEntry.columnKey) : null;
       const incomingColumnSpan = Number.isInteger(parentColumnIndex) ? columnIndex - parentColumnIndex : 1;
       node.dataset.incomingColumnSpan = String(incomingColumnSpan);
@@ -3600,7 +3675,7 @@ function renderTree() {
           `calc(${currentInset}${incomingColumnSpan - 1} * (var(--node-column-width) + var(--node-column-gap)) + var(--node-column-gap))`
         );
       }
-      const previousSiblingLane = previousSiblingLaneByDecision.get(entry.decisionStateNodeId);
+      const previousSiblingLane = previousSiblingLaneByDecision.get(connectorStateId);
       const branchRiseRows = Number.isFinite(previousSiblingLane) ? Number(entry.lane) - previousSiblingLane : 0;
       if (branchRiseRows > 0 && columnIndex > 0) {
         node.classList.add("is-branch-start");
@@ -3610,7 +3685,7 @@ function renderTree() {
         rise.setAttribute("aria-hidden", "true");
         node.append(rise);
       }
-      previousSiblingLaneByDecision.set(entry.decisionStateNodeId, Number(entry.lane));
+      previousSiblingLaneByDecision.set(connectorStateId, Number(entry.lane));
       const probability = outcome ? probabilityLabel(outcome) : "—";
       const visibleProbability = document.createElement("span"); visibleProbability.className = "node-probability"; visibleProbability.textContent = probability;
       const visualOutcomeState = entry.kind === "committed" ? state : draftPreview?.state || draftPreview || null;
@@ -3722,7 +3797,7 @@ function renderExportSelection() {
     ui["output-plan"].disabled = true;
     return;
   }
-  const visibleEntries = planTreeOrder(plan, { includeReplacementStates: false }).filter(entry => entry.state.turnNumber > 0 || entry.state.freeCalc || Object.keys(plan.stateNodes).length === 1);
+  const visibleEntries = planTreeOrder(plan, { includeReplacementStates: false }).filter(entry => entry.state.turnNumber > 0 || entry.state.freeCalc || entry.state.sandboxEdit || Object.keys(plan.stateNodes).length === 1);
   const visibleIds = new Set(visibleEntries.map(entry => entry.state.stateNodeId));
   for (const stateId of exportSelection) if (!visibleIds.has(stateId)) exportSelection.delete(stateId);
   const byId = new Map(visibleEntries.map(({ state }) => [state.stateNodeId, state]));
@@ -3767,6 +3842,7 @@ function renderWorkspace() {
   for (const id of ['commit-turn', 'free-calc', 'save-plan']) byId(id).hidden = Boolean(freeCalcSession);
   for (const id of ['free-calc-close', 'free-calc-add', 'free-calc-save']) byId(id).hidden = !freeCalcSession;
   byId('free-calc').disabled = !plan || needsRecalculation;
+  byId('free-calc').hidden = Boolean(freeCalcSession) || isSandbox(plan);
   for (const id of ['new-plan', 'export-line', 'import-plan', 'new-game']) if (byId(id)) byId(id).disabled = Boolean(freeCalcSession);
   const hasPlan = Boolean(plan);
   ui.workspace.hidden = !hasPlan;
@@ -3778,7 +3854,7 @@ function renderWorkspace() {
   ui["commit-turn"].disabled = true;
   ui["recalculate-plan"].hidden = !hasPlan || !needsRecalculation;
   if (!hasPlan) return;
-  ui["revision-label"].textContent = `Draft r${plan.documentRevision}`;
+  ui["revision-label"].textContent = `${isSandbox(plan) ? 'Sandbox · ' : ''}Draft r${plan.documentRevision}`;
   const selected = selectedState();
   const reviewed = reviewOutcomeStateNodeId ? plan.stateNodes[reviewOutcomeStateNodeId] : null;
   const replacementPhase = Boolean(reviewed?.parentReplacementTransitionId) || (!reviewed && pendingReplacementSlots(selected).length > 0);
@@ -3794,6 +3870,8 @@ function renderWorkspace() {
 async function persistDraft() {
   if (!plan || freeCalcSession) return;
   draftRecord = draftRecord ? updateDraftRecord(draftRecord, plan, cursorStateNodeId) : createDraftRecord(plan, cursorStateNodeId);
+  if (isSandbox(plan)) draftRecord.sandboxEditor = structuredClone({ actionDraft, reviewOutcomeStateNodeId, selectedPreviewOutcomeId });
+  else delete draftRecord.sandboxEditor;
   await draftStore.save(draftRecord);
 }
 
@@ -3815,7 +3893,7 @@ async function commitCurrentPreview() {
     await persistDraft();
     renderWorkspace();
     setStatus(lockingBattleEnd ? "Battle-ending branch locked in the local draft." : replacementCommit ? "Replacement prepared for the next turn." : result.outcomeAdded ? "Crafted outcome branch added to the local draft." : result.created ? "Turn committed to the local draft." : "Opened the existing branch.");
-    if (lockingBattleEnd) {
+    if (lockingBattleEnd && !isSandbox(plan)) {
       const progression = branchProgressionSnapshot(plan, cursorStateNodeId);
       if (progression.length && await requestProgressionSave(progression)) {
         const saved = applyBranchProgressionToLibrary(boxLibrary, plan, cursorStateNodeId);
@@ -3859,12 +3937,12 @@ async function importPlanFile(file) {
     needsRecalculation = false;
     const probabilityRepair = await repairUnknownGraphProbabilities(imported);
     plan = probabilityRepair.plan;
-    const importedParty = addImportedPlanParty(boxLibrary, plan, dataset);
-    bindPlanPlayerPartyToImportedBox(plan, importedParty);
+    const importedParty = isSandbox(plan) ? null : addImportedPlanParty(boxLibrary, plan, dataset);
+    if (importedParty) bindPlanPlayerPartyToImportedBox(plan, importedParty);
     const importedReviewStateId = preferredImportedReviewStateId(plan);
     const importedReviewState = importedReviewStateId ? plan.stateNodes[importedReviewStateId] : null;
     const importedReviewGroup = importedReviewState?.parentActionGroupId ? plan.actionGroups[importedReviewState.parentActionGroupId] : null;
-    cursorStateNodeId = importedReviewGroup?.parentStateNodeId || plan.initialStateNodeId;
+    cursorStateNodeId = importedReviewGroup?.parentStateNodeId || (isSandbox(plan) ? Object.values(plan.stateNodes).sort((a,b) => b.createdOrder-a.createdOrder)[0].stateNodeId : plan.initialStateNodeId);
     reviewOutcomeStateNodeId = importedReviewGroup ? importedReviewStateId : null;
     actionDraft = emptyActionDraft();
     if (importedReviewGroup) prefillActions(importedReviewGroup);
@@ -3872,13 +3950,12 @@ async function importPlanFile(file) {
     draftRecord = createDraftRecord(plan, cursorStateNodeId);
     draftRecord.needsRecalculation = needsRecalculation;
     await draftStore.save(draftRecord);
-    boxLibrary = importedParty.library;
-    await boxStore.save(boxLibrary);
+    if (importedParty) { boxLibrary = importedParty.library; await boxStore.save(boxLibrary); }
     renderBoxes();
     refreshContextBoxSelect();
     renderWorkspace();
     if (ui["output-dialog"].open) ui["output-dialog"].close();
-    setStatus(`Plan imported into the local draft${importUpgrade.replayed ? " and updated to the current PLC mechanics" : ""}. Player party added to Boxes as Import ${importedParty.importNumber}.${probabilityRepair.refreshedStateNodeIds.length ? ` Repaired ${probabilityRepair.refreshedStateNodeIds.length} stale graph ${probabilityRepair.refreshedStateNodeIds.length === 1 ? "probability" : "probabilities"}.` : ""}`);
+    setStatus(`Plan imported into the local draft${importUpgrade.replayed ? " and updated to the current PLC mechanics" : ""}.${importedParty ? ` Player party added to Boxes as Import ${importedParty.importNumber}.` : ' Sandbox left Boxes unchanged.'}${probabilityRepair.refreshedStateNodeIds.length ? ` Repaired ${probabilityRepair.refreshedStateNodeIds.length} stale graph ${probabilityRepair.refreshedStateNodeIds.length === 1 ? "probability" : "probabilities"}.` : ""}`);
   } catch (error) { setStatus(error.message, true); }
   finally { ui["import-plan"].value = ""; }
 }
@@ -3994,6 +4071,11 @@ async function restoreDraft() {
     if (initialUpgrade.changed || probabilityRepair.refreshedStateNodeIds.length) await draftStore.save(draftRecord);
     actionDraft = emptyActionDraft();
     prefillActions();
+    if (isSandbox(plan) && cached.sandboxEditor) {
+      actionDraft = structuredClone(cached.sandboxEditor.actionDraft || actionDraft);
+      reviewOutcomeStateNodeId = plan.stateNodes[cached.sandboxEditor.reviewOutcomeStateNodeId] ? cached.sandboxEditor.reviewOutcomeStateNodeId : null;
+      selectedPreviewOutcomeId = cached.sandboxEditor.selectedPreviewOutcomeId || null;
+    }
     renderWorkspace();
     return true;
   } catch { return false; }

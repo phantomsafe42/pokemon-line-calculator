@@ -411,6 +411,7 @@ export function createPlanDocument({
   enemyPartyOwnership = null,
   playerPartner = null,
   sourceSnapshot,
+  planningMode = null,
   initialConditions = {},
   now = nowIso()
 }) {
@@ -456,10 +457,11 @@ export function createPlanDocument({
     policy: 'per-trainer',
     slotOwnerIds: [...(encounter.enemySlotTrainerIds || encounter.enemyTrainerIds)]
   } : null);
-  const identity = { gameId: dataset.gameId, trainerId, trainerVariantId, enemyTrainerIds: resolvedEnemyTrainerIds, sourceSnapshot, ...(playerPartner ? { playerPartner } : {}) };
+  if (planningMode !== null && planningMode !== 'sandbox') throw new Error('Unknown planning mode');
+  const identity = { gameId: dataset.gameId, trainerId, trainerVariantId, enemyTrainerIds: resolvedEnemyTrainerIds, sourceSnapshot, ...(playerPartner ? { playerPartner } : {}), ...(planningMode ? { planningMode } : {}) };
   const plan = {
     kind: "pokemon-battle-plan",
-    schemaVersion: format === "rotation" ? PLAN_SCHEMA_VERSION : format === "triples" ? 3 : 2,
+    schemaVersion: planningMode === 'sandbox' ? 6 : format === "rotation" ? PLAN_SCHEMA_VERSION : format === "triples" ? 3 : 2,
     planId: makeStableId("plan", identity),
     name: name || `${dataset.displayName} Battle Plan`,
     createdAt: now,
@@ -467,6 +469,7 @@ export function createPlanDocument({
     documentRevision: 0,
     game: {
       gameId: dataset.gameId,
+      ...(planningMode ? { planningMode } : {}),
       battleFormat: format,
       trainerId,
       trainerVariantId,

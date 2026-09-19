@@ -257,7 +257,8 @@ export function planTurnTreeOrder(plan, { additionalDraftStateNodeIds = [] } = {
   const treeStates = planTreeOrder(plan, { includeReplacementStates: true });
   const draftStateNodeIds = new Set(additionalDraftStateNodeIds || []);
   for (const { state } of treeStates) {
-    const hasChildren = (state.childActionGroupIds || []).length || (state.childReplacementTransitionIds || []).length;
+    const hasChildren = (state.childActionGroupIds || []).length || (state.childReplacementTransitionIds || []).length
+      || (plan.game?.planningMode === 'sandbox' && state.childManualTransitionIds?.length);
     if (!hasChildren && !state.battleEnded) draftStateNodeIds.add(state.stateNodeId);
   }
   const { laneByStateId, draftLaneByStateId } = planStateLanes(plan, draftStateNodeIds);
@@ -288,6 +289,7 @@ export function planTurnTreeOrder(plan, { additionalDraftStateNodeIds = [] } = {
   for (const stateNodeId of draftStateNodeIds) {
     const state = plan.stateNodes[stateNodeId];
     if (!state || state.battleEnded) continue;
+    if (plan.game?.planningMode === 'sandbox' && state.childManualTransitionIds?.length && !additionalDraftStateNodeIds.includes(stateNodeId)) continue;
     const replacement = (state.pendingReplacementSlots || state.pendingReplacementSides || []).length > 0;
     const replacementPhase = replacement ? trailingReplacementDepth(plan, stateNodeId) + 1 : 0;
     const turnNumber = Number(state.turnNumber) + 1;
