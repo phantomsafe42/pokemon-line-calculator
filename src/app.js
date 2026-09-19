@@ -13,6 +13,7 @@ import { SavedDraftStore, savedDraftSnapshot } from "./cache/saved_drafts.js?v=2
 import { reorderCards } from "./ui/reorder_cards.js?v=20260909-public-release-v2";
 import { addFreeCalcBranch, editFreeCalcCombatant, replaceFreeCalcSlot, freeCalcAsNewPlan } from './core/free_calc.js?v=20260917-partners-release-v1';
 import { freeCalcExperience, freeCalcTotalExperience } from './ui/free_calc.js?v=20260918-free-calc-inline-v1';
+import { nodeTreeSections } from './ui/node_tree.js?v=20260918-free-calc-sections-v1';
 import { belongsToSlotParty, eligibleReserves, partyOwnerForSlot } from './core/party_ownership.js?v=20260909-public-release-v2';
 import { downloadPlan, exportSelectedPlan, migratePlanDocument, parsePlan } from "./contracts/plan_file.js?v=20260917-partners-release-v1";
 import { assertValidPlanDocument } from "./contracts/plan_contract.js?v=20260917-partners-release-v1";
@@ -3532,7 +3533,17 @@ function renderTree() {
   const selectedCommittedStateNodeId = reviewOutcomeStateNodeId || (battleActuallyEnded(currentState) ? cursorStateNodeId : null);
   const selectedLineage = new Set(stateLineage(plan, selectedCommittedStateNodeId || cursorStateNodeId));
   const additionalDraftStateNodeIds = !reviewOutcomeStateNodeId && !battleActuallyEnded(currentState) ? [cursorStateNodeId] : [];
-  const ordered = planTurnTreeOrder(plan, { additionalDraftStateNodeIds });
+  const treeEntries = planTurnTreeOrder(plan, { additionalDraftStateNodeIds });
+  const sections = nodeTreeSections(plan, treeEntries).map(section => {
+  const ordered = section.entries;
+  const container = document.createElement('section'); container.className = 'node-tree-section';
+  container.dataset.treeSection = section.id; container.setAttribute('role', 'group');
+  container.setAttribute('aria-label', section.title || 'Planned branches');
+  if (section.title) {
+    const heading = document.createElement('h3'); heading.className = 'node-section-title';
+    heading.textContent = section.title; container.append(heading);
+  }
+  const branchTree = document.createElement('div'); branchTree.className = 'node-tree-branches';
   const groups = new Map();
   for (const entry of ordered) {
     if (!groups.has(entry.columnKey)) groups.set(entry.columnKey, {
@@ -3645,7 +3656,7 @@ function renderTree() {
         ? replacementNode ? selectReplacementOutcome(entry.outcomeStateNodeId) : selectTurnOutcome(entry.outcomeStateNodeId)
         : selectStateNode(entry.decisionStateNodeId));
       node.addEventListener("keydown", event => {
-        const cols = [...ui["node-tree"].querySelectorAll(".node-column")];
+        const cols = [...branchTree.querySelectorAll(".node-column")];
         let target = null;
         if (event.key === "ArrowUp" || event.key === "ArrowDown") {
           const siblings = [...column.querySelectorAll(".node-button")].sort((left, right) => Number(left.dataset.lane) - Number(right.dataset.lane));
@@ -3664,7 +3675,10 @@ function renderTree() {
     });
     return column;
   });
-  ui["node-tree"].replaceChildren(...columns);
+  branchTree.append(...columns); container.append(branchTree);
+  return container;
+  });
+  ui["node-tree"].replaceChildren(...sections);
 }
 
 function prefillActions(suppliedGroup = null) {

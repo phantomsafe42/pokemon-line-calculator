@@ -40,6 +40,13 @@ export async function checkFreeCalcInline({ page, evaluate, delay, dataset, temp
     const baseline = await evaluate(page, cardText);
     const boxes = await readStore('pokemon-line-calculator-boxes','library');
     await evaluate(page, `document.getElementById('free-calc').click()`);
+    const treeSections = await evaluate(page, `(() => {
+      const sections=[...document.querySelectorAll('#node-tree > .node-tree-section')];
+      return {ids:sections.map(section=>section.dataset.treeSection),
+        selectedSection:document.querySelector('#node-tree [aria-selected="true"]')?.closest('.node-tree-section').dataset.treeSection,
+        below:sections[1]?.getBoundingClientRect().top >= sections[0]?.getBoundingClientRect().bottom};
+    })()`);
+    assert.deepEqual(treeSections,{ids:['planned','free-calc'],selectedSection:'free-calc',below:true});
     const result = await evaluate(page, `(() => {
       const control = label => document.querySelector('[data-free-calc-control="player-0-'+label+'"]');
       const change = (label,value) => { const node=control(label); if(!node) throw new Error('Missing '+label); node.focus(); node.value=value; node.dispatchEvent(new Event('change',{bubbles:true})); };
@@ -109,6 +116,7 @@ export async function checkFreeCalcInline({ page, evaluate, delay, dataset, temp
     await delay(100);
     assert.equal(await evaluate(page, cardText),baseline);
     assert.equal(await evaluate(page, `document.querySelectorAll('.free-calc-control').length`),0);
+    assert.equal(await evaluate(page, `document.querySelectorAll('[data-tree-section="free-calc"]').length`),0);
     assert.deepEqual(await readStore('pokemon-line-calculator-boxes','library'),boxes,'Close leaves every Box untouched');
   }
   const boxesBefore = await readStore('pokemon-line-calculator-boxes','library');
@@ -123,6 +131,7 @@ export async function checkFreeCalcInline({ page, evaluate, delay, dataset, temp
   const selected = activeAfterAdd.document.stateNodes[activeAfterAdd.workingCursorStateNodeId];
   assert.equal(selected.combatantStates[selected.active.playerCombatantKeys[0]].hp.max,23);
   assert.equal(selected.freeCalc,true);
+  assert.equal(await evaluate(page, `document.querySelector('#node-tree [aria-selected="true"]')?.closest('.node-tree-section').dataset.treeSection`),'free-calc');
   assert.deepEqual(await readStore('pokemon-line-calculator-boxes','library'),boxesBefore,'Add does not edit Boxes');
   await evaluate(page, `(async () => {
     document.getElementById('free-calc').click();
