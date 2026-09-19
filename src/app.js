@@ -2788,7 +2788,7 @@ function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
       moveButton.setAttribute("aria-pressed", String((draft.type === "move" && draft.moveId === entry.moveId) || (forcedAction?.kind === "recharge" && isForcedMove)));
       const copy = document.createElement("span"); copy.className = "move-copy";
       const moveName = document.createElement("strong"); moveName.textContent = move?.name || entry.moveId;
-      if (edit) { moveName.textContent = 'Use'; moveButton.setAttribute('aria-label', `Use ${move?.name || entry.moveId}`); }
+      if (edit) moveButton.setAttribute('aria-label', `Use ${move?.name || entry.moveId}`);
       const currentPp = monState.movePp?.[entry.moveId] ?? entry.maxPp;
       const rootPp = rootState.movePp?.[entry.moveId] ?? entry.maxPp;
       const moveBp = move?.basePower ?? move?.bp;

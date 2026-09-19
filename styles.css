@@ -213,11 +213,11 @@ h3 { margin: 0; font-size: 1rem; }
 .action-panel-title h2 { font-size: 1rem; }
 .action-panel-cards { display: grid; grid-template-columns: 1fr; }
 .action-panel.is-doubles .action-panel-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.action-panel:is(.is-triples, .is-rotation) .action-panel-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; padding: .65rem; }
-.action-panel:is(.is-triples, .is-rotation).is-player .slot-position-0 { grid-column: 1; grid-row: 1; }
+.action-panel:is(.is-triples, .is-rotation) .action-panel-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: max-content max-content; align-items: start; gap: .65rem; padding: .65rem; }
+.action-panel:is(.is-triples, .is-rotation).is-player .slot-position-0 { grid-column: 1; grid-row: 1 / 3; }
 .action-panel:is(.is-triples, .is-rotation).is-player .slot-position-1 { grid-column: 2; grid-row: 1; }
 .action-panel:is(.is-triples, .is-rotation).is-player .slot-position-2 { grid-column: 2; grid-row: 2; }
-.action-panel:is(.is-triples, .is-rotation).is-enemy .slot-position-0 { grid-column: 2; grid-row: 1; }
+.action-panel:is(.is-triples, .is-rotation).is-enemy .slot-position-0 { grid-column: 2; grid-row: 1 / 3; }
 .action-panel:is(.is-triples, .is-rotation).is-enemy .slot-position-1 { grid-column: 1; grid-row: 1; }
 .action-panel:is(.is-triples, .is-rotation).is-enemy .slot-position-2 { grid-column: 1; grid-row: 2; }
 .combatant-card { padding: 1rem; }
