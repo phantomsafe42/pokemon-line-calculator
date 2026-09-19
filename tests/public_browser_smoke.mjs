@@ -7,6 +7,7 @@ import path from "node:path";
 import process from "node:process";
 import { fileURLToPath } from "node:url";
 import { createDatasetContext, REQUIRED_DATASET_SOURCES } from "../src/adapters/standardized_dataset.js";
+import { checkFreeCalcInline } from './free_calc_browser_checks.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(here, "..");
@@ -682,6 +683,9 @@ try {
   assert.ok(performance.hostedAssetRequests > 0, "Public sprites must use the immutable selector-only asset gateway");
   assert.equal(performance.bundledAssetRequests, 0, "Public sprites must not use a bundled asset projection");
 
+  await checkFreeCalcInline({ page, evaluate, delay, dataset: vw2rContext, tempRoot });
+  const freeCalcErrors = page.events.filter(event => event.method === 'Runtime.exceptionThrown');
+  assert.deepEqual(freeCalcErrors, [], 'No exceptions during inline Free Calc checks');
   page.close();
   console.log(JSON.stringify({ status: "public-browser-smoke-valid", state, mobile, performance, screenshot }, null, 2));
 } finally {
