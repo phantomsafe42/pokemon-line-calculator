@@ -393,6 +393,13 @@ export function commitLabel(plan, parentStateNodeId, actions) {
   const signature = actionSignature(parentStateNodeId, actions);
   const children = plan.stateNodes[parentStateNodeId]?.childActionGroupIds || [];
   if (children.some(id => plan.actionGroups[id]?.actionSignature === signature)) return "Open Branch";
+  if (plan.game.planningMode === 'sandbox') {
+    let state = plan.stateNodes[parentStateNodeId];
+    while (state?.parentManualTransitionId) {
+      state = plan.stateNodes[plan.manualTransitions[state.parentManualTransitionId].parentStateNodeId];
+      if (state.childActionGroupIds?.length || state.childReplacementTransitionIds?.length || state.childManualTransitionIds?.length > 1) return 'New Branch';
+    }
+  }
   return children.length ? "New Branch" : "Next Turn";
 }
 

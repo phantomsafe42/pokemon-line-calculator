@@ -4,7 +4,7 @@ import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 import { parsePlan, serializePlan } from "../src/contracts/plan_file.js";
-import { validatePlanDocument } from "../src/contracts/plan_contract.js";
+import { validatePlanDocument, SUPPORTED_PLAN_SCHEMA_VERSIONS } from "../src/contracts/plan_contract.js";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const fixtureText = fs.readFileSync(path.join(here, "fixtures", "vw2r-branch-plan.json"), "utf8");
@@ -19,7 +19,7 @@ test("VW2R branch fixture validates and round-trips without semantic loss", () =
 
 test("contract rejects unsupported schema versions", () => {
   const plan = JSON.parse(fixtureText);
-  plan.schemaVersion = 6;
+  plan.schemaVersion = Math.max(...SUPPORTED_PLAN_SCHEMA_VERSIONS) + 1;
   const result = validatePlanDocument(plan);
   assert.equal(result.valid, false);
   assert.ok(result.issues.some(entry => entry.path === "$.schemaVersion"));

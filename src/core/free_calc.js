@@ -1,10 +1,10 @@
 import { clone, exactRange, makeStableId, nowIso, STAGE_KEYS } from './primitives.js?v=20260905-drafts-freecalc-partners-v1';
-import { activeKey, activeKeys, setActiveKey } from './battle_slots.js?v=20260905-drafts-freecalc-partners-v1';
+import { activeKey, activeKeys, activeSlotKeys, setActiveKey, setPendingReplacementSlots } from './battle_slots.js?v=20260905-drafts-freecalc-partners-v1';
 import { createCombatantState, nextCreatedOrder, touchPlan, updateStateHash } from './plan.js?v=20260917-partners-release-v1';
 import { calculateStats } from '../adapters/combatant_ingest.js?v=20260917-partners-release-v1';
 import { experienceForLevel, levelFromExperience } from '../rulesets/vw2r_experience.js?v=20260917-partners-release-v1';
 import { assertValidPlanDocument } from '../contracts/plan_contract.js?v=20260917-partners-release-v1';
-import { belongsToSlotParty } from './party_ownership.js?v=20260917-partners-release-v1';
+import { belongsToSlotParty, eligibleReserves } from './party_ownership.js?v=20260917-partners-release-v1';
 
 export function addFreeCalcBranch(original, stateId) {
   const plan = clone(original);
@@ -14,14 +14,15 @@ export function addFreeCalcBranch(original, stateId) {
   const transitionId = `free-calc-${order}`;
   const nextId = `state-free-calc-${order}`;
   const state = clone(parent);
+  const sandbox = plan.game.planningMode === 'sandbox';
   Object.assign(state, { stateNodeId: nextId, parentActionGroupId: null, parentReplacementTransitionId: null,
     parentManualTransitionId: transitionId, childActionGroupIds: [], childReplacementTransitionIds: [], childManualTransitionIds: [],
-    createdOrder: order, freeCalc: true, resolutionEventIds: [], notes: '', draftNote: '', status: 'resolved',
-    outcome: { kind: 'decision', label: 'Free Calc', probability: null, probabilityStatus: 'unknown', conditions: [] } });
+    createdOrder: order, ...(sandbox ? { sandboxEdit: true } : { freeCalc: true }), resolutionEventIds: [], notes: sandbox ? parent.notes || '' : '', draftNote: '', status: 'resolved',
+    outcome: { kind: 'decision', label: sandbox ? 'Sandbox' : 'Free Calc', probability: null, probabilityStatus: 'unknown', conditions: [] } });
   delete state.trainerAiForecast;
-  plan.schemaVersion = 5;
+  plan.schemaVersion = Math.max(plan.schemaVersion, sandbox ? 6 : 5);
   plan.manualTransitions ||= {};
-  plan.manualTransitions[transitionId] = { manualTransitionId: transitionId, kind: 'free-calc',
+  plan.manualTransitions[transitionId] = { manualTransitionId: transitionId, kind: sandbox ? 'sandbox-edit' : 'free-calc',
     parentStateNodeId: stateId, turnNumber: parent.turnNumber, createdOrder: order,
     outcomeStateNodeIds: [nextId], defaultOutcomeStateNodeId: nextId };
   parent.childManualTransitionIds = [...(parent.childManualTransitionIds || []), transitionId];
@@ -40,7 +41,7 @@ function integer(value, minimum, maximum, label) {
 
 export function editFreeCalcCombatant(plan, stateId, key, changes, dataset) {
   const state = plan.stateNodes[stateId];
-  if (!state?.freeCalc) throw new Error('Manual editing is available only in Free Calc');
+  if (!state || (!state.freeCalc && plan.game.planningMode !== 'sandbox')) throw new Error('Manual editing is available only in Free Calc or Sandbox');
   const mon = plan.combatants[key];
   const next = clone(state.combatantStates[key]);
   if (!mon || !next) throw new Error('Pokémon is unavailable');
@@ -96,7 +97,7 @@ export function editFreeCalcCombatant(plan, stateId, key, changes, dataset) {
 
 export function replaceFreeCalcSlot(plan, stateId, side, slot, combatant) {
   const state = plan.stateNodes[stateId];
-  if (!state?.freeCalc || combatant.side !== side) throw new Error('Invalid Free Calc Pokémon');
+  if (!state || (!state.freeCalc && plan.game.planningMode !== 'sandbox') || combatant.side !== side) throw new Error('Invalid manual Pokémon selection');
   if (!belongsToSlotParty(plan, combatant, side, slot)) throw new Error('That Pokémon belongs to a different trainer party');
   const key = combatant.combatantKey;
   if (activeKeys(state, side).includes(key) && activeKey(state, side, slot) !== key) throw new Error('That Pokémon is already in another slot');
@@ -107,13 +108,13 @@ export function replaceFreeCalcSlot(plan, stateId, side, slot, combatant) {
     if (side !== 'player') throw new Error('Enemy choices must belong to its party');
     plan.combatants[key] = clone(combatant);
   }
-  if (newcomer) state.combatantStates[key] = createCombatantState(plan.combatants[key]);
+  if (newcomer) state.combatantStates[key] = createCombatantState(plan.combatants[key], plan.game.planningMode === 'sandbox' ? combatant.source?.boxInitialConditions : undefined);
   if (restoring) {
     state.combatantStates[key] = clone(state.freeCalcRetiredStates?.[key] || createCombatantState(plan.combatants[key]));
     state.freeCalcRemovedKeys = state.freeCalcRemovedKeys.filter(id => id !== key);
     if (state.freeCalcRetiredStates) delete state.freeCalcRetiredStates[key];
   }
-  if (newcomer || restoring) {
+  if ((newcomer || restoring) && plan.game.planningMode !== 'sandbox') {
     // A Box newcomer replaces this roster member, without a switch, faint or entry event.
     if (outgoing) {
       state.freeCalcRetiredStates ||= {};
@@ -129,6 +130,12 @@ export function replaceFreeCalcSlot(plan, stateId, side, slot, combatant) {
 
 export function refreshFreeCalcBoundary(plan, state) {
   state.battleEnded = ['player', 'enemy'].some(side => !Object.values(plan.combatants).some(mon => mon.side === side && Number(state.combatantStates[mon.combatantKey]?.hp?.max) > 0));
+  if (plan.game.planningMode === 'sandbox') {
+    const pending = state.battleEnded ? [] : ['player', 'enemy'].flatMap(side => activeSlotKeys(state, side)
+      .flatMap((key, slot) => !(Number(state.combatantStates[key]?.hp?.max) > 0) && eligibleReserves(plan, state, side, slot).length ? [{ side, slot }] : []));
+    setPendingReplacementSlots(state, pending);
+    return;
+  }
   state.pendingReplacementSlots = []; state.pendingReplacementSides = [];
 }
 

@@ -14,6 +14,7 @@ function playerCombatants(plan) {
 }
 
 export function branchProgressionSnapshot(plan, stateNodeId) {
+  if (plan?.game?.planningMode === 'sandbox') return [];
   const initial = plan?.stateNodes?.[plan?.initialStateNodeId];
   const locked = plan?.stateNodes?.[stateNodeId];
   if (!initial || !locked) throw new Error("Locked branch progression references an unavailable state");
@@ -53,6 +54,7 @@ function locateBox(library, gameId, entry) {
 }
 
 export function applyBranchProgressionToLibrary(libraryValue, plan, stateNodeId) {
+  if (plan?.game?.planningMode === 'sandbox') throw new Error('Sandbox changes cannot be saved to Boxes');
   let library = normalizeBoxLibrary(libraryValue);
   const gameId = plan?.game?.gameId;
   const snapshot = branchProgressionSnapshot(plan, stateNodeId);

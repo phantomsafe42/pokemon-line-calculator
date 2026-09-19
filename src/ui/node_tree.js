@@ -9,7 +9,7 @@ export function nodeTreeSections(plan, entries) {
   ];
   for (const entry of entries) {
     const id = entry.outcomeStateNodeId || entry.decisionStateNodeId;
-    const manual = stateLineage(plan, id).some(stateId => plan.stateNodes[stateId]?.freeCalc);
+    const manual = plan.game?.planningMode !== 'sandbox' && stateLineage(plan, id).some(stateId => plan.stateNodes[stateId]?.freeCalc);
     sections[manual ? 1 : 0].entries.push(entry);
   }
   return sections.filter(section => section.entries.length).map(section => {
