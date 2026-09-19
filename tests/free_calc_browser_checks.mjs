@@ -51,6 +51,7 @@ export async function checkFreeCalcInline({ page, evaluate, delay, dataset, temp
       const result = { level:control('Level').value, exp:control('Level EXP').value, hp:control('HP').value,
         status:control('Status').value, item:control('Item').value, ability:control('Ability').value,
         initialStage, stage:Number(control('atk up').parentElement.querySelector('span').textContent), move:control('Move 1').value,
+        moveName:card.querySelector('.move-button .move-copy strong').textContent,
         separateEditor:Boolean(document.querySelector('.free-calc-editor')), nestedControls:Boolean(card.querySelector('button select,button input')),
         moveSelected:card.querySelector('.move-button').getAttribute('aria-pressed'), aiHidden:document.querySelector('.ai-forecast-panel').hidden,
         focus:document.activeElement?.dataset.freeCalcControl };
@@ -61,6 +62,7 @@ export async function checkFreeCalcInline({ page, evaluate, delay, dataset, temp
     assert.deepEqual({level:result.level,exp:result.exp,hp:result.hp,status:result.status,item:result.item,ability:result.ability},
       {level:'30',exp:'250',hp:'25',status:'tox',item:'leftovers',ability:'intimidate'});
     assert.equal(result.stage, result.initialStage+1); assert.equal(result.move,'surf');
+    assert.equal(result.moveName,'Surf');
     assert.equal(result.separateEditor,false); assert.equal(result.nestedControls,false);
     assert.equal(result.moveSelected,'false'); assert.equal(result.canSelect,'true'); assert.equal(result.aiHidden,true);
     assert.equal(result.focus,'player-0-Move 1');
@@ -80,17 +82,23 @@ export async function checkFreeCalcInline({ page, evaluate, delay, dataset, temp
       return {outgoingHp,incomingHp,empty,restored:!control('HP').closest('.combatant-card').classList.contains('empty-combatant-slot')};
     })()`);
     assert.deepEqual(switchCheck,{outgoingHp:'25',incomingHp:'13',empty:true,restored:true});
-    for (const width of [390,1280,1920]) {
+    for (const width of [390,1280,1920,2560]) {
       await page.send('Emulation.setDeviceMetricsOverride',{width,height:1100,deviceScaleFactor:1,mobile:width<600});
       await delay(120);
       const layout = await evaluate(page, `(() => {
         const cards=[...document.querySelectorAll('.combatant-card')];
         return {fits:document.documentElement.scrollWidth<=innerWidth+1,
           controlsFit:cards.every(card=>[...card.querySelectorAll('.free-calc-control')].every(el=>el.getBoundingClientRect().right<=card.getBoundingClientRect().right+1)),
-          cards:cards.length};
+          cards:cards.length,
+          stackGaps:[...document.querySelectorAll('.action-panel:is(.is-triples,.is-rotation) .action-panel-cards')].map(grid=> {
+            const center=grid.querySelector('.slot-position-1').getBoundingClientRect();
+            const lower=grid.querySelector('.slot-position-2').getBoundingClientRect();
+            return lower.top-center.bottom-parseFloat(getComputedStyle(grid).rowGap);
+          })};
       })()`);
       assert.ok(layout.fits, `${format} page fits ${width}`); assert.ok(layout.controlsFit,`${format} controls fit ${width}`);
       assert.equal(layout.cards,format==='singles'?2:format==='doubles'?4:6);
+      assert.ok(layout.stackGaps.every(gap=>Math.abs(gap)<1), `${format} stacked cards have only the intended gap at ${width}: ${layout.stackGaps}`);
       if(width===1280) {
         await evaluate(page, `document.getElementById('player-action-panel').scrollIntoView({block:'start'})`);
         const image=await page.send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});

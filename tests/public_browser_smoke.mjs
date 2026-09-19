@@ -684,6 +684,31 @@ try {
   assert.equal(performance.bundledAssetRequests, 0, "Public sprites must not use a bundled asset projection");
 
   await checkFreeCalcInline({ page, evaluate, delay, dataset: vw2rContext, tempRoot });
+  if (process.env.PLC_LAYOUT_SNAPSHOT) {
+    const snapshot = JSON.parse(await fs.readFile(process.env.PLC_LAYOUT_SNAPSHOT, 'utf8'));
+    await page.send('Emulation.setDeviceMetricsOverride', { width: snapshot.view.viewport.width, height: snapshot.view.viewport.height, deviceScaleFactor: 1, mobile: false });
+    await evaluate(page, `(async () => {
+      const transfer = new DataTransfer(); transfer.items.add(new File([${JSON.stringify(JSON.stringify(snapshot.plan))}], 'layout.json', {type:'application/json'}));
+      const input = document.getElementById('import-plan'); input.files = transfer.files; input.dispatchEvent(new Event('change',{bubbles:true}));
+      for(let i=0;i<200;i++) {
+        if(document.getElementById('destructive-dialog').open) document.getElementById('destructive-discard').click();
+        if(document.getElementById('plan-toolbar-label').textContent === ${JSON.stringify(snapshot.plan.name)} && document.querySelectorAll('.combatant-card').length===6) return;
+        await new Promise(resolve=>setTimeout(resolve,100));
+      }
+      throw new Error('Layout snapshot import timed out');
+    })()`, true);
+    await delay(500);
+    const geometry = await evaluate(page, `(() => [...document.querySelectorAll('.combatant-card')].map(card => {
+      const height=card.getBoundingClientRect().height;
+      card.style.alignSelf='start'; const naturalHeight=card.getBoundingClientRect().height; card.style.removeProperty('align-self');
+      return {slot:card.querySelector('.combatant-slot-heading')?.textContent,height,naturalHeight,extra:height-naturalHeight};
+    }))()`);
+    console.log(JSON.stringify({snapshotCardGeometry:geometry}));
+    assert.ok(geometry.every(card=>Math.abs(card.extra)<1), 'Snapshot cards must not stretch to match adjacent cards');
+    await evaluate(page, `document.getElementById('enemy-action-panel').scrollIntoView({block:'start'})`);
+    const layoutImage = await page.send('Page.captureScreenshot', {format:'png',captureBeyondViewport:false});
+    await fs.writeFile(path.join(tempRoot,'output-state-layout.png'),Buffer.from(layoutImage.data,'base64'));
+  }
   const freeCalcErrors = page.events.filter(event => event.method === 'Runtime.exceptionThrown');
   assert.deepEqual(freeCalcErrors, [], 'No exceptions during inline Free Calc checks');
   page.close();
