@@ -12,6 +12,7 @@ import { TrainerAiForecastCache } from "./cache/trainer_ai_forecast.js?v=2026090
 import { SavedDraftStore, savedDraftSnapshot } from "./cache/saved_drafts.js?v=20260917-partners-release-v1";
 import { reorderCards } from "./ui/reorder_cards.js?v=20260909-public-release-v2";
 import { addFreeCalcBranch, editFreeCalcCombatant, replaceFreeCalcSlot, freeCalcAsNewPlan } from './core/free_calc.js?v=20260917-partners-release-v1';
+import { freeCalcExperience, freeCalcTotalExperience } from './ui/free_calc.js?v=20260918-free-calc-inline-v1';
 import { belongsToSlotParty, eligibleReserves, partyOwnerForSlot } from './core/party_ownership.js?v=20260909-public-release-v2';
 import { downloadPlan, exportSelectedPlan, migratePlanDocument, parsePlan } from "./contracts/plan_file.js?v=20260917-partners-release-v1";
 import { assertValidPlanDocument } from "./contracts/plan_contract.js?v=20260917-partners-release-v1";
@@ -556,19 +557,33 @@ async function saveFreeCalcDraft() {
   closeFreeCalc(); renderBoxes(); setStatus('Free Calc saved as a new Turn 1 draft with its own Box and Party.');
 }
 
-function renderFreeCalcEditor(side, slot, actorKey) {
-  const panel = document.createElement('fieldset'); panel.className = 'free-calc-editor';
-  const legend = document.createElement('legend'); legend.textContent = 'Free Calc'; panel.append(legend);
+function renderFreeCalcControls(side, slot, actorKey) {
+  const controls = {};
   const state = selectedState(); const mon = plan.combatants[actorKey]; const current = state.combatantStates[actorKey];
-  const apply = changes => {
-    try { editFreeCalcCombatant(plan, cursorStateNodeId, actorKey, changes, dataset); currentPreview = null; branchEventModel = null; selectedPreviewOutcomeId = null; previewGeneration++; renderWorkspace(); }
-    catch (error) { setStatus(error.message, true); renderWorkspace(); }
+  const rerender = () => {
+    const focus = document.activeElement?.dataset.freeCalcControl;
+    if (focus) delete document.activeElement.dataset.freeCalcEditing;
+    currentPreview = null; branchEventModel = null; selectedPreviewOutcomeId = null; previewGeneration++;
+    renderWorkspace();
+    if (focus) document.querySelector(`[data-free-calc-control="${CSS.escape(focus)}"]`)?.focus({ preventScroll: true });
   };
-  const field = (label, control) => { const row = document.createElement('label'); row.textContent = label; row.append(control); panel.append(row); return control; };
-  const select = field('Pokémon', document.createElement('select')); select.setAttribute('aria-label', `Free Calc ${side} slot ${slot + 1} Pokémon`);
+  const apply = changes => {
+    try { editFreeCalcCombatant(plan, cursorStateNodeId, actorKey, changes, dataset); rerender(); }
+    catch (error) { setStatus(error.message, true); rerender(); }
+  };
+  const field = (label, control) => {
+    control.classList.add('free-calc-control');
+    control.dataset.freeCalcControl = `${side}-${slot}-${label}`;
+    control.setAttribute('aria-label', `Free Calc ${side} Slot ${battleSlotNumber(side, slot)} ${label}`);
+    control.title = label;
+    if (control.tagName === 'INPUT') control.addEventListener('input', () => { control.dataset.freeCalcEditing = 'true'; });
+    controls[label] = control;
+    return control;
+  };
+  const select = field('Pokémon', document.createElement('select'));
   const candidates = Object.values(plan.combatants).filter(entry => belongsToSlotParty(plan, entry, side, slot) && !state.freeCalcRemovedKeys?.includes(entry.combatantKey));
   const byKey = new Map(candidates.map(entry => [entry.combatantKey, entry]));
-  if (side === 'player' && !mon.source?.isPlayerPartner) {
+  if (side === 'player' && !mon?.source?.isPlayerPartner) {
     const boxIds = new Set(Object.values(plan.combatants).filter(entry => entry.side === 'player').map(entry => entry.source?.boxId).filter(Boolean));
     for (const boxId of boxIds) {
       const box = selectedBox(boxId); if (!box) continue;
@@ -583,20 +598,30 @@ function renderFreeCalcEditor(side, slot, actorKey) {
   }
   for (const entry of byKey.values()) {
     const opt = option(entry.combatantKey, recordName(entry));
-    opt.disabled = activeKeys(state, side).includes(entry.combatantKey) && entry.combatantKey !== actorKey;
+    opt.disabled = activeKeys(state, side).includes(entry.combatantKey) && entry.combatantKey !== activeKey(state, side, slot);
     select.append(opt);
   }
   select.value = actorKey;
   select.addEventListener('change', () => {
-    try { replaceFreeCalcSlot(plan, cursorStateNodeId, side, slot, byKey.get(select.value)); actionDraft[side][slot] = {}; currentPreview = null; previewGeneration++; renderWorkspace(); }
+    try { replaceFreeCalcSlot(plan, cursorStateNodeId, side, slot, byKey.get(select.value)); actionDraft[side][slot] = {}; rerender(); }
     catch (error) { setStatus(error.message, true); }
   });
-  if (!current || !mon) return panel;
-  for (const [label, key, value, min, max] of [['HP', 'hp', current.hp.max, 0, current.hp.maxHp], ['Level', 'level', current.currentLevel ?? mon.level, 1, 100], ['Total EXP', 'experience', current.experience ?? mon.experience ?? '', 0, 10000000]]) {
+  if (!current || !mon) return controls;
+  for (const [label, key, value, min, max] of [['HP', 'hp', current.hp.max, 0, current.hp.maxHp], ['Level', 'level', current.currentLevel ?? mon.level, 1, 100]]) {
     const input = field(label, document.createElement('input')); input.type = 'number'; input.min = min; input.max = max; input.step = '1'; input.value = value;
-    input.setAttribute('aria-label', `Free Calc ${side} slot ${slot + 1} ${label}`);
     if (value === '') input.placeholder = 'Unknown';
     input.addEventListener('change', () => apply({ [key]: input.value }));
+  }
+  const progress = freeCalcExperience(mon, current);
+  if (side === 'player' && !mon.source?.isPlayerPartner && progress) {
+    const input = field('Level EXP', document.createElement('input'));
+    Object.assign(input, { type: 'number', min: '0', max: String(progress.threshold), step: '1', value: progress.value, placeholder: 'Unknown' });
+    input.disabled = progress.threshold === 0;
+    input.addEventListener('change', () => {
+      try { apply({ experience: freeCalcTotalExperience(mon, current, input.value) }); }
+      catch (error) { setStatus(error.message, true); rerender(); }
+    });
+    controls.expThreshold = progress.threshold ? progress.threshold.toLocaleString() : 'Max';
   }
   for (const [label, key, kind, value] of [['Ability', 'abilityId', 'abilities', current.currentAbilityId], ['Item', 'itemId', 'items', current.currentItemId]]) {
     const control = field(label, document.createElement('select')); fillSelect(control, sortedRecords(kind), key === 'itemId' ? { blank: 'None' } : {}); control.value = value || '';
@@ -605,20 +630,20 @@ function renderFreeCalcEditor(side, slot, actorKey) {
   const status = field('Status', document.createElement('select'));
   for (const [id, label] of [['', 'Healthy'], ['brn', 'Burned'], ['par', 'Paralyzed'], ['psn', 'Poisoned'], ['tox', 'Badly Poisoned'], ['slp', 'Asleep'], ['frz', 'Frozen']]) status.append(option(id, label));
   status.value = current.majorStatus || ''; status.addEventListener('change', () => apply({ status: status.value }));
-  const stages = document.createElement('div'); stages.className = 'free-calc-stages';
+  controls.stages = {};
   for (const key of ['atk', 'def', 'spa', 'spd', 'spe', 'accuracy', 'evasion']) {
-    const row = document.createElement('div'); const down = button('−', 'secondary'); const up = button('+', 'secondary');
-    const value = Number(current.statStages[key] || 0); const text = document.createElement('span'); text.textContent = `${({atk:'Atk',def:'Def',spa:'SpA',spd:'SpD',spe:'Spe',accuracy:'Acc',evasion:'Eva'})[key]} ${value > 0 ? '+' : ''}${value}`;
-    for (const [control, delta] of [[down, -1], [up, 1]]) { control.disabled = value + delta < -6 || value + delta > 6; control.setAttribute('aria-label', `${key} ${delta > 0 ? 'up' : 'down'}`); control.addEventListener('click', () => apply({ statStages: { [key]: value + delta } })); }
-    row.append(down, text, up); stages.append(row);
+    const row = document.createElement('div'); row.className = 'free-calc-stage';
+    const down = field(`${key} down`, button('−', 'secondary')); const up = field(`${key} up`, button('+', 'secondary'));
+    const value = Number(current.statStages[key] || 0); const text = document.createElement('span'); text.textContent = `${value > 0 ? '+' : ''}${value}`;
+    for (const [control, delta] of [[down, -1], [up, 1]]) { control.disabled = value + delta < -6 || value + delta > 6; control.addEventListener('click', () => apply({ statStages: { [key]: value + delta } })); }
+    row.append(down, text, up); controls.stages[key] = row;
   }
-  panel.append(stages);
   const moves = (current.moveSetOverride || mon.moves).map(entry => entry.moveId);
   for (let index = 0; index < 4; index++) {
     const control = field(`Move ${index + 1}`, document.createElement('select')); fillSelect(control, sortedRecords('moves'), { blank: 'None' }); control.value = moves[index] || '';
     control.addEventListener('change', () => { const next = Array.from({ length: 4 }, (_, i) => moves[i] || ''); next[index] = control.value; actionDraft[side][slot] = {}; apply({ moves: next.filter(Boolean) }); });
   }
-  return panel;
+  return controls;
 }
 
 async function openSavedDraft(record) {
@@ -2607,7 +2632,9 @@ function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
   const committedMonState = committedState.combatantStates[displayKey];
   const monState = state.combatantStates[displayKey] || committedMonState;
   const rootState = rootCombatantState(displayKey);
+  const edit = freeCalcSession ? renderFreeCalcControls(side, slot, displayKey) : null;
   const card = document.createElement("article"); card.className = `combatant-card slot-position-${displaySlot}`;
+  card.classList.toggle('is-free-calc', Boolean(edit));
   const rotation = plan.game?.battleFormat === "rotation";
   const rotationFront = rotation && slot === rotationFrontSlot(committedState, side);
   card.classList.toggle("is-rotation-front", rotationFront);
@@ -2626,6 +2653,7 @@ function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
   const spriteBox = document.createElement("div"); spriteBox.className = "combatant-sprite"; spriteBox.append(sprite(currentSpriteRecord(mon, monState)));
   const identity = document.createElement("div");
   const name = document.createElement("h3"); name.className = "combatant-name"; name.textContent = recordName(mon);
+  if (edit) name.replaceChildren(edit['Pokémon']);
   if (mon.gender === "M" || mon.gender === "F") {
     const gender = document.createElement("span");
     gender.className = `combatant-gender gender-${mon.gender.toLowerCase()}`;
@@ -2667,6 +2695,10 @@ function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
     levelText = `${levelText} · ${nextLevelExperience}`;
   }
   levelChip.textContent = levelText;
+  if (edit) {
+    levelChip.replaceChildren('Lv. ', edit.Level);
+    if (edit['Level EXP']) levelChip.append(' · ', edit['Level EXP'], `/${edit.expThreshold}`);
+  }
   meta.append(levelChip);
   identity.append(name, meta); header.append(spriteBox, identity); card.append(header);
   const details = document.createElement("div"); details.className = "static-details";
@@ -2680,6 +2712,10 @@ function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
   statCornerStack.className = "combatant-corner-stats";
   const hpCell = staticDetail("", formatHpRemaining(monState.hp), valueTone(state, displayKey, `combatantStates.${displayKey}.hp`, hpChanged, { previewChanged: previewing && (monState.hp.min !== committedMonState.hp.min || monState.hp.max !== committedMonState.hp.max || monState.hp.maxHp !== committedMonState.hp.maxHp), events: previewEvents }));
   const statusCell = staticDetail("", monState.majorStatus ? STATUS_LABELS[monState.majorStatus] || monState.majorStatus : "Healthy", valueTone(state, displayKey, `combatantStates.${displayKey}.majorStatus`, statusChanged, { previewChanged: previewing && monState.majorStatus !== committedMonState.majorStatus, events: previewEvents }));
+  if (edit) {
+    hpCell.replaceChildren(edit.HP, `/${committedMonState.hp.maxHp}`);
+    statusCell.replaceChildren(edit.Status);
+  }
   hpCell.classList.add("combatant-detail-corner");
   statusCell.classList.add("combatant-detail-corner", "combatant-status-detail");
   statusCell.dataset.status = monState.majorStatus || "healthy";
@@ -2689,6 +2725,10 @@ function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
     staticDetail("Ability", ability, valueTone(state, displayKey, `combatantStates.${displayKey}.currentAbilityId`, abilityChanged, { previewChanged: previewing && monState.currentAbilityId !== committedMonState.currentAbilityId, events: previewEvents })),
     staticDetail("Item", item, valueTone(state, displayKey, `combatantStates.${displayKey}.currentItemId`, itemChanged, { previewChanged: previewing && monState.currentItemId !== committedMonState.currentItemId, events: previewEvents }))
   );
+  if (edit) {
+    details.children[0].querySelector('strong').replaceChildren(edit.Ability);
+    details.children[1].querySelector('strong').replaceChildren(edit.Item);
+  }
   card.append(details);
   const table = document.createElement("table"); table.className = "stat-table";
   const head = document.createElement("thead"); head.innerHTML = "<tr><th>Stat</th><th>Actual</th><th>Stage</th></tr>"; table.append(head);
@@ -2716,12 +2756,22 @@ function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
       );
     actual.className = changedThisTurn ? "value-current" : currentBaseStat !== rootBaseStat || stage !== rootStage ? "value-persisted" : "";
     const stageCell = document.createElement("td"); stageCell.textContent = stage ? `${stage > 0 ? "+" : ""}${stage}` : "—"; stageCell.className = actual.className;
+    if (edit) stageCell.replaceChildren(edit.stages[stat]);
     row.append(label, actual, stageCell); body.append(row);
+  }
+  if (edit) for (const [stat, label] of [['accuracy', 'Acc'], ['evasion', 'Eva']]) {
+    const row = document.createElement('tr');
+    const title = document.createElement('th'); title.scope = 'row'; title.textContent = label;
+    const actual = document.createElement('td'); actual.textContent = '—';
+    const stage = document.createElement('td'); stage.append(edit.stages[stat]);
+    row.append(title, actual, stage); body.append(row);
   }
   table.append(body); card.append(table);
   const moveActions = document.createElement("div"); moveActions.className = "move-actions";
   const moves = committedMonState.moveSetOverride || mon.moves;
-  for (const entry of moves) {
+  for (const [moveIndex, entry] of moves.entries()) {
+      const moveRow = edit ? document.createElement('div') : moveActions;
+      if (edit) { moveRow.className = 'free-calc-move-row'; moveRow.append(edit[`Move ${moveIndex + 1}`]); moveActions.append(moveRow); }
       const move = dataset.get("moves", entry.moveId);
       const support = moveSupport(move, dataset);
       const moveButton = button("", "move-button");
@@ -2738,6 +2788,7 @@ function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
       moveButton.setAttribute("aria-pressed", String((draft.type === "move" && draft.moveId === entry.moveId) || (forcedAction?.kind === "recharge" && isForcedMove)));
       const copy = document.createElement("span"); copy.className = "move-copy";
       const moveName = document.createElement("strong"); moveName.textContent = move?.name || entry.moveId;
+      if (edit) { moveName.textContent = 'Use'; moveButton.setAttribute('aria-label', `Use ${move?.name || entry.moveId}`); }
       const currentPp = monState.movePp?.[entry.moveId] ?? entry.maxPp;
       const rootPp = rootState.movePp?.[entry.moveId] ?? entry.maxPp;
       const moveBp = move?.basePower ?? move?.bp;
@@ -2754,7 +2805,7 @@ function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
       moveButton.addEventListener("click", () => configureMoveDraft(side, slot, actorKey, move, support));
       if (forcedAction?.kind === "recharge" && isForcedMove) {
         const damage = document.createElement("span"); damage.className = "damage-label"; damage.textContent = "Recharge"; moveButton.append(damage);
-        moveActions.append(moveButton);
+        moveRow.append(moveButton);
       } else if (support.supported) {
         const targetMode = support.targetMode || canonicalTarget(move);
         const candidates = legalTargets(committedState, side, actorKey, targetMode, support);
@@ -2769,16 +2820,20 @@ function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
           const group = document.createElement("div"); group.className = "move-button-group";
           group.append(moveButton);
           renderSlotDamagePreviews(group, side, slot, displayKey, move, opposingTargets, draft, selectableSlots, { positionActorKey: actorKey });
-          moveActions.append(group);
+          moveRow.append(group);
         } else {
           renderDamagePreview(moveButton, side, displayKey, targetKey, move.id, { positionActorKey: actorKey });
-          moveActions.append(moveButton);
+          moveRow.append(moveButton);
         }
       } else {
         const damage = document.createElement("span"); damage.className = "damage-label"; damage.textContent = "Unsupported"; moveButton.append(damage);
-        moveActions.append(moveButton);
+        moveRow.append(moveButton);
       }
-    if (draft.type === "move" && draft.moveId === entry.moveId) renderActionAux(moveActions, side, slot, actorKey, move, support, draft);
+    if (draft.type === "move" && draft.moveId === entry.moveId) renderActionAux(moveRow, side, slot, actorKey, move, support, draft);
+  }
+  if (edit) for (let index = moves.length; index < 4; index++) {
+    const row = document.createElement('div'); row.className = 'free-calc-move-row';
+    row.append(edit[`Move ${index + 1}`]); moveActions.append(row);
   }
   if (!pending && !forcedAction && canSelectShift(plan, committedState, side, actorKey)) {
     const shiftButton = button(`Shift with Slot ${battleSlotNumberForPosition(side, 1)}`, "shift-button");
@@ -2810,7 +2865,6 @@ function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
     if (draft.type === "switch") renderSwitchStrip(moveActions, side, slot, actorKey, draft);
   }
   card.append(moveActions);
-  if (freeCalcSession) card.append(renderFreeCalcEditor(side, slot, actorKey));
   if (side === "enemy") updateEnemyThreatHighlights(card);
   return card;
 }
@@ -2836,7 +2890,12 @@ function renderEmptyCombatantSlot(side, slot, { displaySlot = triplePositionForS
   empty.className = "empty-slot-label";
   empty.textContent = "Empty slot";
   card.append(slotHeading, empty);
-  if (freeCalcSession) card.append(renderFreeCalcEditor(side, slot, activeKey(selectedState(), side, slot)));
+  if (freeCalcSession) {
+    card.classList.add('is-free-calc');
+    const controls = renderFreeCalcControls(side, slot, activeKey(selectedState(), side, slot));
+    card.append(controls['Pokémon']);
+    if (controls.HP) { const hp = document.createElement('label'); hp.append('HP ', controls.HP); card.append(hp); }
+  }
   return card;
 }
 
@@ -2870,9 +2929,19 @@ function renderActionPanel(side) {
 
 function renderActionPanels() {
   if (!plan) return;
+  const focused = document.activeElement;
+  const focusId = freeCalcSession && focused?.dataset.freeCalcControl;
+  const draftValue = focused?.dataset.freeCalcEditing ? focused.value : null;
   damageGeneration += 1;
   renderActionPanel("player");
   renderActionPanel("enemy");
+  if (focusId) {
+    const control = document.querySelector(`[data-free-calc-control="${CSS.escape(focusId)}"]`);
+    if (control) {
+      if (draftValue !== null) { control.value = draftValue; control.dataset.freeCalcEditing = 'true'; }
+      control.focus({ preventScroll: true });
+    }
+  }
 }
 
 function actionFromDraft(side, slot) {
