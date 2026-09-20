@@ -70,10 +70,28 @@ export function healingEventDescription(event, { moveName = null, maxHp = null }
   return `${source} · ${verb} ${hp} HP${percent ? ` (${percent})` : ""}`;
 }
 
+export function protectionEventDescription(event, { moveName = null, targetLabel = null } = {}) {
+  if (event?.eventType === "protect" && typeof event.metadata?.success === "boolean") {
+    return [moveName || event.moveId, event.metadata.success ? "Protected" : "Failed"].filter(Boolean).join(" · ");
+  }
+  if (event?.eventType === "move-blocked" && (event.metadata?.reason || event.reason) === "protect") {
+    return [targetLabel, moveName || event.moveId, "Blocked by Protect"].filter(Boolean).join(" · ");
+  }
+  return null;
+}
+
 export function outcomePanelEvents(events) {
-  return (events || []).filter(event => {
+  return (events || []).filter((event, index, all) => {
     if (event?.metadata?.hiddenFromOutcomes === true) return false;
     if (["experience-gain", "replacement-required", "slot-emptied"].includes(event?.eventType)) return false;
+    // The structured move path records both the resolved Protect check and its
+    // generic volatile operation. Present the result once (including failure),
+    // but retain both original events for state replay and inspection indices.
+    const previous = all[index - 1];
+    if (event?.eventType === "volatile-status" && event.metadata?.volatileStatusId === "protect"
+      && previous?.eventType === "protect" && typeof previous.metadata?.success === "boolean"
+      && previous.actorKey === event.actorKey && previous.targetKey === event.targetKey
+      && previous.moveId === event.moveId) return false;
     if (event?.eventType !== "action-skipped") return true;
     return !["actor-fainted-before-moving", "target-fainted-before-action"].includes(event.reason);
   });
