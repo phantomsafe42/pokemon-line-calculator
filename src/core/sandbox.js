@@ -1,5 +1,5 @@
 import { clone } from './primitives.js';
-import { addFreeCalcBranch, editFreeCalcCombatant, replaceFreeCalcSlot, refreshFreeCalcBoundary } from './free_calc.js?v=20260920-held-item-activation-v2';
+import { addFreeCalcBranch, editFreeCalcCombatant, replaceFreeCalcSlot, refreshFreeCalcBoundary } from './free_calc.js?v=20260920-held-item-release-v3';
 import { createCombatantState, touchPlan, updateStateHash } from './plan.js';
 import { belongsToSlotParty } from './party_ownership.js';
 import { assertValidPlanDocument } from '../contracts/plan_contract.js';

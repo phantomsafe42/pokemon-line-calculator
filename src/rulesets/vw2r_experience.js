@@ -1,4 +1,4 @@
-import { calculateStats } from "../adapters/combatant_ingest.js?v=20260917-partners-release-v1";
+import { calculateStats } from "../adapters/combatant_ingest.js?v=20260920-held-item-release-v3";
 import { clone } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
 import { activeKeys } from "../core/battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
 import { captureEventTrace } from '../core/event_timeline.js?v=20260920-event-hover-v1';

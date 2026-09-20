@@ -2,7 +2,7 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-white-dataset",
   "source": "Datasets/Pokemon White/source-data",
-  "sourceTreeSha256": "EEE834E45EE122BB1D87A148248A7B83B08A8EB5FD2057C310D7657CA2731EA1",
+  "sourceTreeSha256": "CD4F844AA57CC4A07B59AC6B10CC3F0CEDACABD1C275E9053C1208E817F3F4A7",
   "files": [
     {
       "path": "dataset_manifest.json",
@@ -36,8 +36,8 @@
     },
     {
       "path": "items.json",
-      "bytes": 432356,
-      "sha256": "1ECE02C5549D3F87DFDA172E1A67F6A401DEB20B80E687FD91DCDED5192006F7"
+      "bytes": 451361,
+      "sha256": "8F6E59740E8124F40A62070F6EE343988AAB3C0645A481E725D1BAFDBC369579"
     },
     {
       "path": "natures.json",

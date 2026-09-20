@@ -2,7 +2,7 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-pk-dataset",
   "source": "Datasets/Platinum Kaizo/source-data",
-  "sourceTreeSha256": "0F4260832734D39898AE88F598BD5D8D903FF6820297F2B26B36B801B0BF5B1D",
+  "sourceTreeSha256": "1651DA15BCE9EE8B8C5BF193C9C87566BD65A2A96CEACFD92BB019236DABF018",
   "files": [
     {
       "path": "dataset_manifest.json",
@@ -36,8 +36,8 @@
     },
     {
       "path": "items.json",
-      "bytes": 1066761,
-      "sha256": "DEAC8A722A8249AA671FD4EC7B3B309F8433639A2F3BA323A2E6C5CB401514A0"
+      "bytes": 1085766,
+      "sha256": "AE71892778DE520B369FE779CAB2BD1798B83771D97C654F4C94B77EE75BA85B"
     },
     {
       "path": "natures.json",

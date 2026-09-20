@@ -1,7 +1,7 @@
 import { clone, exactRange, makeStableId, nowIso, STAGE_KEYS } from './primitives.js?v=20260905-drafts-freecalc-partners-v1';
 import { activeKey, activeKeys, activeSlotKeys, setActiveKey, setPendingReplacementSlots } from './battle_slots.js?v=20260905-drafts-freecalc-partners-v1';
-import { createCombatantState, nextCreatedOrder, touchPlan, updateStateHash } from './plan.js?v=20260920-held-item-activation-v2';
-import { calculateStats } from '../adapters/combatant_ingest.js?v=20260917-partners-release-v1';
+import { createCombatantState, nextCreatedOrder, touchPlan, updateStateHash } from './plan.js?v=20260920-held-item-release-v3';
+import { calculateStats } from '../adapters/combatant_ingest.js?v=20260920-held-item-release-v3';
 import { experienceForLevel, levelFromExperience } from '../rulesets/vw2r_experience.js?v=20260917-partners-release-v1';
 import { assertValidPlanDocument } from '../contracts/plan_contract.js?v=20260917-partners-release-v1';
 import { belongsToSlotParty, eligibleReserves } from './party_ownership.js?v=20260917-partners-release-v1';

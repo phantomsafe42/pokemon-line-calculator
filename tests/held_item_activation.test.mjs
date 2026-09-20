@@ -174,9 +174,7 @@ test('unknown effect fields and missing generation gates are rejected', () => {
   }
 });
 
-// Candidate projections are opt-in until the producer release is published.
-// Keep the normal suite valid against the currently pinned public projection.
-test('candidate Dataset contracts execute with generation-specific recovery', { skip: !process.env.PLC_ITEM_DATASET_CANDIDATE }, () => {
+test('pinned Dataset contracts execute with generation-specific recovery', () => {
   for (const [game, generation, heal] of [['fire-red-omega', 3, 30], ['pokemon-emerald', 3, 30], ['renegade-platinum', 4, 25], ['volt-white-2r', 5, 25]]) {
     const document = JSON.parse(fs.readFileSync(new URL(`../src/generated/datasets/${game}/items.json`, import.meta.url)));
     const f = setup({ generation });

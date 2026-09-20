@@ -1,6 +1,6 @@
 import { canonicalStats, shortHash, stableStringify, toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
 import { installTrainerEncounters, encounterNavigation } from './trainer_encounters.js?v=20260917-partners-release-v1';
-import { readDatasetJsonFiles } from "./hosted_dataset.js?v=20260917-partners-release-v1";
+import { readDatasetJsonFiles } from "./hosted_dataset.js?v=20260920-held-item-release-v3";
 import { starterNavigationInputs, validateStarterSelection } from './starter_selection.js?v=20260918-starter-selection-v1';
 
 export const BATTLE_DATASET_SOURCES = Object.freeze([

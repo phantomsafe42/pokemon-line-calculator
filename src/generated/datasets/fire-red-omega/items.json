@@ -858,7 +858,60 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "use",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "heal-low-hp-gen3",
+            "trigger": "holder-state",
+            "timing": "item-residual",
+            "conditions": {
+              "battleGenerations": [
+                3
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "requiresHealingAllowed": true,
+              "blockedByOpponentAbilityIds": []
+            },
+            "effects": [
+              {
+                "kind": "heal",
+                "amount": 20
+              }
+            ],
+            "consumeOnActivation": true
+          },
+          {
+            "id": "heal-low-hp",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "requiresHealingAllowed": true,
+              "blockedByOpponentAbilityIds": []
+            },
+            "effects": [
+              {
+                "kind": "heal",
+                "amount": 20
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "sacredash": {
@@ -2460,7 +2513,40 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "eat",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "cure-status",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "anyStatusIds": [
+                "par"
+              ],
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "cure-status",
+                "statusIds": [
+                  "par"
+                ]
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "chestoberry": {
@@ -2486,7 +2572,40 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "eat",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "cure-status",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "anyStatusIds": [
+                "slp"
+              ],
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "cure-status",
+                "statusIds": [
+                  "slp"
+                ]
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "pechaberry": {
@@ -2512,7 +2631,42 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "eat",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "cure-status",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "anyStatusIds": [
+                "psn",
+                "tox"
+              ],
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "cure-status",
+                "statusIds": [
+                  "psn",
+                  "tox"
+                ]
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "rawstberry": {
@@ -2538,7 +2692,40 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "eat",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "cure-status",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "anyStatusIds": [
+                "brn"
+              ],
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "cure-status",
+                "statusIds": [
+                  "brn"
+                ]
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "aspearberry": {
@@ -2564,7 +2751,40 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "eat",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "cure-status",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "anyStatusIds": [
+                "frz"
+              ],
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "cure-status",
+                "statusIds": [
+                  "frz"
+                ]
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "leppaberry": {
@@ -2590,7 +2810,37 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "eat",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "restore-depleted-pp",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "requiresDepletedMovePp": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "restore-pp",
+                "amount": 10,
+                "selection": "first-depleted-move"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "oranberry": {
@@ -2616,7 +2866,64 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "eat",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "heal-low-hp-gen3",
+            "trigger": "holder-state",
+            "timing": "item-residual",
+            "conditions": {
+              "battleGenerations": [
+                3
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "requiresHealingAllowed": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "heal",
+                "amount": 10
+              }
+            ],
+            "consumeOnActivation": true
+          },
+          {
+            "id": "heal-low-hp",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "requiresHealingAllowed": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "heal",
+                "amount": 10
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "persimberry": {
@@ -2642,7 +2949,40 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "eat",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "cure-status",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "anyStatusIds": [
+                "confusion"
+              ],
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "cure-status",
+                "statusIds": [
+                  "confusion"
+                ]
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "lumberry": {
@@ -2668,7 +3008,52 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "eat",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "cure-status",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "anyStatusIds": [
+                "brn",
+                "par",
+                "psn",
+                "tox",
+                "slp",
+                "frz",
+                "confusion"
+              ],
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "cure-status",
+                "statusIds": [
+                  "brn",
+                  "par",
+                  "psn",
+                  "tox",
+                  "slp",
+                  "frz",
+                  "confusion"
+                ]
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "sitrusberry": {
@@ -2694,7 +3079,65 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "eat",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "heal-low-hp-gen3",
+            "trigger": "holder-state",
+            "timing": "item-residual",
+            "conditions": {
+              "battleGenerations": [
+                3
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "requiresHealingAllowed": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "heal",
+                "amount": 30
+              }
+            ],
+            "consumeOnActivation": true
+          },
+          {
+            "id": "heal-low-hp",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "requiresHealingAllowed": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "heal",
+                "numerator": 1,
+                "denominator": 4
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "figyberry": {
@@ -3370,7 +3813,70 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "eat",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "pinch-stat-gen3",
+            "trigger": "holder-state",
+            "timing": "item-residual",
+            "conditions": {
+              "battleGenerations": [
+                3
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 4
+              },
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "stat-stages",
+                "stages": {
+                  "atk": 1
+                }
+              }
+            ],
+            "consumeOnActivation": true
+          },
+          {
+            "id": "pinch-stat",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 4
+              },
+              "gluttonyHpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "stat-stages",
+                "stages": {
+                  "atk": 1
+                }
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "ganlonberry": {
@@ -3396,7 +3902,70 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "eat",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "pinch-stat-gen3",
+            "trigger": "holder-state",
+            "timing": "item-residual",
+            "conditions": {
+              "battleGenerations": [
+                3
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 4
+              },
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "stat-stages",
+                "stages": {
+                  "def": 1
+                }
+              }
+            ],
+            "consumeOnActivation": true
+          },
+          {
+            "id": "pinch-stat",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 4
+              },
+              "gluttonyHpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "stat-stages",
+                "stages": {
+                  "def": 1
+                }
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "salacberry": {
@@ -3422,7 +3991,70 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "eat",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "pinch-stat-gen3",
+            "trigger": "holder-state",
+            "timing": "item-residual",
+            "conditions": {
+              "battleGenerations": [
+                3
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 4
+              },
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "stat-stages",
+                "stages": {
+                  "spe": 1
+                }
+              }
+            ],
+            "consumeOnActivation": true
+          },
+          {
+            "id": "pinch-stat",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 4
+              },
+              "gluttonyHpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "stat-stages",
+                "stages": {
+                  "spe": 1
+                }
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "petayaberry": {
@@ -3448,7 +4080,70 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "eat",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "pinch-stat-gen3",
+            "trigger": "holder-state",
+            "timing": "item-residual",
+            "conditions": {
+              "battleGenerations": [
+                3
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 4
+              },
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "stat-stages",
+                "stages": {
+                  "spa": 1
+                }
+              }
+            ],
+            "consumeOnActivation": true
+          },
+          {
+            "id": "pinch-stat",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 4
+              },
+              "gluttonyHpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "stat-stages",
+                "stages": {
+                  "spa": 1
+                }
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "apicotberry": {
@@ -3474,7 +4169,70 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "eat",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "pinch-stat-gen3",
+            "trigger": "holder-state",
+            "timing": "item-residual",
+            "conditions": {
+              "battleGenerations": [
+                3
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 4
+              },
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "stat-stages",
+                "stages": {
+                  "spd": 1
+                }
+              }
+            ],
+            "consumeOnActivation": true
+          },
+          {
+            "id": "pinch-stat",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 4
+              },
+              "gluttonyHpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "stat-stages",
+                "stages": {
+                  "spd": 1
+                }
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "lansatberry": {
