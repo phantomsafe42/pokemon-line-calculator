@@ -13,6 +13,7 @@ import { SavedDraftStore, savedDraftSnapshot } from "./cache/saved_drafts.js?v=2
 import { reorderCards } from "./ui/reorder_cards.js?v=20260909-public-release-v2";
 import { addFreeCalcBranch, editFreeCalcCombatant, replaceFreeCalcSlot, freeCalcAsNewPlan } from './core/free_calc.js?v=20260919-sandbox-v1';
 import { isSandbox, editSandboxCombatant, placeSandboxCombatant, admitSandboxReserve } from './core/sandbox.js?v=20260919-sandbox-v1';
+import { sandboxPickerCandidates } from './ui/sandbox_picker.js?v=20260919-sandbox-picker-v2';
 import { makeStableId } from './core/primitives.js';
 import { freeCalcExperience, freeCalcTotalExperience } from './ui/free_calc.js?v=20260918-free-calc-inline-v1';
 import { nodeTreeSections } from './ui/node_tree.js?v=20260918-free-calc-sections-v1';
@@ -567,6 +568,11 @@ function acceptSandboxEdit(result) {
 }
 
 let sandboxBoxRosterCache = null;
+let sandboxReplacePicker = null;
+function sandboxReplaceOpen(side, slot) {
+  return sandboxReplacePicker?.planId === plan?.planId && sandboxReplacePicker?.stateId === cursorStateNodeId
+    && sandboxReplacePicker.side === side && sandboxReplacePicker.slot === slot;
+}
 function sandboxBoxRoster() {
   if (sandboxBoxRosterCache?.library === boxLibrary && sandboxBoxRosterCache.dataset === dataset) return sandboxBoxRosterCache.entries;
   const entries = boxesForGame(boxLibrary, plan.game.gameId).flatMap(box => box.pokemonOrder.map(id => {
@@ -632,26 +638,25 @@ function renderFreeCalcControls(side, slot, actorKey) {
     controls[label] = control;
     return control;
   };
-  const select = field('Pokémon', document.createElement('select'));
-  if (!actorKey) select.append(option('', 'Choose Pokémon…'));
-  const byKey = manualPokemonCandidates(side, slot);
-  for (const entry of byKey.values()) {
-    const box = selectedBox(entry.source?.boxId);
-    const opt = option(entry.combatantKey, `${recordName(entry)}${isSandbox(plan) && box ? ` · ${box.name}` : ''}`);
-    opt.disabled = activeKeys(state, side).includes(entry.combatantKey) && entry.combatantKey !== activeKey(state, side, slot);
-    select.append(opt);
-  }
-  select.value = actorKey;
-  select.addEventListener('change', () => {
-    try {
-      if (isSandbox(plan)) acceptSandboxEdit(placeSandboxCombatant(plan, cursorStateNodeId, side, slot, byKey.get(select.value)));
-      else replaceFreeCalcSlot(plan, cursorStateNodeId, side, slot, byKey.get(select.value));
-      if (isSandbox(plan)) actionDraft = emptyActionDraft();
-      else actionDraft[side][slot] = {};
-      rerender();
+  if (!isSandbox(plan)) {
+    const select = field('Pokémon', document.createElement('select'));
+    if (!actorKey) select.append(option('', 'Choose Pokémon…'));
+    const byKey = manualPokemonCandidates(side, slot);
+    for (const entry of byKey.values()) {
+      const opt = option(entry.combatantKey, recordName(entry));
+      opt.disabled = activeKeys(state, side).includes(entry.combatantKey) && entry.combatantKey !== activeKey(state, side, slot);
+      select.append(opt);
     }
-    catch (error) { setStatus(error.message, true); }
-  });
+    select.value = actorKey;
+    select.addEventListener('change', () => {
+      try {
+        replaceFreeCalcSlot(plan, cursorStateNodeId, side, slot, byKey.get(select.value));
+        actionDraft[side][slot] = {};
+        rerender();
+      }
+      catch (error) { setStatus(error.message, true); }
+    });
+  }
   if (!current || !mon) return controls;
   for (const [label, key, value, min, max] of [['HP', 'hp', current.hp.max, 0, current.hp.maxHp], ['Level', 'level', current.currentLevel ?? mon.level, 1, 100]]) {
     const input = field(label, document.createElement('input')); input.type = 'number'; input.min = min; input.max = max; input.step = '1'; input.value = value;
@@ -2610,43 +2615,43 @@ function renderSlotDamagePreviews(container, side, slot, actorKey, move, opposin
   }
 }
 
-function renderSwitchStrip(container, side, slot, actorKey, draft, { replacement = false } = {}) {
+function renderSwitchStrip(container, side, slot, actorKey, draft, { replacement = false, directReplace = false } = {}) {
   const state = selectedState();
   const strip = document.createElement("div"); strip.className = "switch-strip";
   const current = plan.combatants[actorKey];
   const currentCanStay = current && Number(state.combatantStates[actorKey]?.hp?.max) > 0;
-  const candidates = [...(currentCanStay ? [current] : []), ...possibleSwitches(state, side, slot)];
-  const previewKey = draft.switchToKey || draft.previewSwitchToKey || (currentCanStay ? actorKey : null);
-  if (isSandbox(plan) && side === 'player' && [null, 'player'].includes(partyOwnerForSlot(plan, side, slot))) {
-    const reservePicker = document.createElement('select'); reservePicker.className = 'sandbox-reserve-picker';
-    reservePicker.setAttribute('aria-label', `Sandbox Slot ${battleSlotNumber(side, slot)} Box reserve`);
-    reservePicker.append(option('', 'Choose from Boxes…'));
-    const choices = manualPokemonCandidates(side, slot);
-    for (const mon of choices.values()) {
-      if (state.combatantStates[mon.combatantKey]) continue;
-      const box = selectedBox(mon.source?.boxId);
-      reservePicker.append(option(mon.combatantKey, `${recordName(mon)}${box ? ` · ${box.name}` : ''}`));
-    }
-    reservePicker.disabled = reservePicker.options.length === 1;
-    reservePicker.addEventListener('change', () => {
-      if (!reservePicker.value) return;
-      try {
-        const mon = choices.get(reservePicker.value);
-        acceptSandboxEdit(admitSandboxReserve(plan, cursorStateNodeId, side, slot, mon));
-        setDraft(side, slot, { type: 'switch', actorKey, switchToKey: mon.combatantKey, previewSwitchToKey: mon.combatantKey });
-      } catch (error) { setStatus(error.message, true); }
-    });
-    container.append(reservePicker);
-  }
+  const candidates = isSandbox(plan)
+    ? sandboxPickerCandidates(plan, state, side, slot, manualPokemonCandidates(side, slot).values(), { replace: directReplace })
+    : [...(currentCanStay ? [current] : []), ...possibleSwitches(state, side, slot)];
+  const previewKey = directReplace ? actorKey : draft.switchToKey || draft.previewSwitchToKey || (currentCanStay ? actorKey : null);
   for (const mon of candidates) {
     const target = button("", "switch-target");
-    target.append(sprite(mon));
+    target.dataset.combatantKey = mon.combatantKey;
+    target.append(sprite(currentSpriteRecord(mon, state.combatantStates[mon.combatantKey])));
     const isCurrent = mon.combatantKey === actorKey;
     const name = document.createElement("span"); name.textContent = `${recordName(mon)}${isCurrent ? " · Current" : ""}`; target.append(name);
     target.classList.toggle("is-current", isCurrent);
     target.setAttribute("aria-label", `${recordName(mon)}${isCurrent ? " (current Pokémon; preview staying in)" : ""}`);
+    if (isSandbox(plan)) {
+      const box = selectedBox(mon.source?.boxId);
+      const label = `${directReplace ? 'Replace with' : 'Switch to'} ${recordName(mon)}${box ? ` · ${box.name}` : ''}${isCurrent ? ' · Current' : ''}`;
+      target.title = label; target.setAttribute('aria-label', label);
+    }
     target.setAttribute("aria-pressed", String(previewKey === mon.combatantKey));
     target.addEventListener("click", () => {
+      try {
+      if (directReplace) {
+        if (!isCurrent) {
+          acceptSandboxEdit(placeSandboxCombatant(plan, cursorStateNodeId, side, slot, mon));
+          actionDraft = emptyActionDraft();
+        }
+        sandboxReplacePicker = { planId: plan.planId, stateId: cursorStateNodeId, side, slot };
+        renderWorkspace(); persistDraft().catch(error => setStatus(error.message, true));
+        return;
+      }
+      if (isSandbox(plan) && !state.combatantStates[mon.combatantKey]) {
+        acceptSandboxEdit(admitSandboxReserve(plan, cursorStateNodeId, side, slot, mon));
+      }
       if (replacement && !isCurrent) {
         const sameSidePending = pendingReplacementSlots(state).filter(entry => entry.side === side);
         const required = replacementRequirement(state, side);
@@ -2659,11 +2664,35 @@ function renderSwitchStrip(container, side, slot, actorKey, draft, { replacement
       setDraft(side, slot, isCurrent
         ? { type: "switch", actorKey, previewSwitchToKey: actorKey }
         : { type: "switch", actorKey, switchToKey: mon.combatantKey, previewSwitchToKey: mon.combatantKey });
+      } catch (error) { setStatus(error.message, true); }
     });
     strip.append(target);
   }
   if (!candidates.length) strip.append(Object.assign(document.createElement("p"), { className: "empty", textContent: "No healthy bench Pokémon are available." }));
   container.append(strip);
+}
+
+function renderSandboxSwitchControls(container, side, slot, actorKey, draft, { pending = false, switchDisabled = false, switchTitle = '' } = {}) {
+  const replacing = sandboxReplaceOpen(side, slot);
+  const group = document.createElement('div'); group.className = 'sandbox-switch-actions';
+  group.setAttribute('role', 'group'); group.setAttribute('aria-label', `Slot ${battleSlotNumber(side, slot)} Pokémon selection`);
+  const switchButton = button('Switch', 'switch-button');
+  switchButton.disabled = switchDisabled; switchButton.title = switchTitle;
+  switchButton.setAttribute('aria-pressed', String(!replacing && draft.type === 'switch'));
+  switchButton.addEventListener('click', () => {
+    sandboxReplacePicker = null;
+    setDraft(side, slot, !replacing && draft.type === 'switch' && !pending ? {} : { type: 'switch', actorKey });
+  });
+  const replaceButton = button('Replace', 'replace-button');
+  replaceButton.title = 'Change this slot without a turn or switch-in effects';
+  replaceButton.setAttribute('aria-pressed', String(replacing));
+  replaceButton.addEventListener('click', () => {
+    sandboxReplacePicker = replacing ? null : { planId: plan.planId, stateId: cursorStateNodeId, side, slot };
+    if (!replacing && draft.type === 'switch' && !pending) setDraft(side, slot, {});
+    else renderActionPanels();
+  });
+  group.append(switchButton, replaceButton); container.append(group);
+  if (replacing || pending || draft.type === 'switch') renderSwitchStrip(container, side, slot, actorKey, draft, { replacement: pending, directReplace: replacing });
 }
 
 function replacementSelectionReady(state) {
@@ -2723,7 +2752,7 @@ function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
   const spriteBox = document.createElement("div"); spriteBox.className = "combatant-sprite"; spriteBox.append(sprite(currentSpriteRecord(mon, monState)));
   const identity = document.createElement("div");
   const name = document.createElement("h3"); name.className = "combatant-name"; name.textContent = recordName(mon);
-  if (edit) name.replaceChildren(edit['Pokémon']);
+  if (edit?.['Pokémon']) name.replaceChildren(edit['Pokémon']);
   if (mon.gender === "M" || mon.gender === "F") {
     const gender = document.createElement("span");
     gender.className = `combatant-gender gender-${mon.gender.toLowerCase()}`;
@@ -2913,7 +2942,12 @@ function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
       : setDraft(side, slot, { type: "shift", actorKey }));
     moveActions.append(shiftButton);
   }
-  if (pending) {
+  if (isSandbox(plan)) {
+    renderSandboxSwitchControls(moveActions, side, slot, actorKey, draft, {
+      pending, switchDisabled: Boolean(forcedAction) || (rotation && !rotationFront),
+      switchTitle: forcedAction ? 'This Pokémon must finish its forced action' : rotation && !rotationFront ? 'Rotate this Pokémon to the front before switching it out' : ''
+    });
+  } else if (pending) {
     const replacementCount = replacementRequirement(committedState, side);
     const prompt = document.createElement("p");
     prompt.className = "replacement-prompt";
@@ -2963,7 +2997,8 @@ function renderEmptyCombatantSlot(side, slot, { displaySlot = triplePositionForS
   if (freeCalcSession || isSandbox(plan)) {
     card.classList.add('is-free-calc');
     const controls = renderFreeCalcControls(side, slot, activeKey(selectedState(), side, slot));
-    card.append(controls['Pokémon']);
+    if (isSandbox(plan)) renderSandboxSwitchControls(card, side, slot, activeKey(selectedState(), side, slot), actionForSlot(side, slot), { switchDisabled: true });
+    else card.append(controls['Pokémon']);
     if (controls.HP) { const hp = document.createElement('label'); hp.append('HP ', controls.HP); card.append(hp); }
   }
   return card;

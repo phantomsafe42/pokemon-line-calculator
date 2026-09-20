@@ -13,6 +13,7 @@ import { activeKey } from '../src/core/battle_slots.js';
 import { createDraftRecord } from '../src/cache/active_draft.js';
 import { savedDraftSnapshot } from '../src/cache/saved_drafts.js';
 import { branchProgressionSnapshot, applyBranchProgressionToLibrary } from '../src/boxes/progression.js';
+import { sandboxPickerCandidates } from '../src/ui/sandbox_picker.js';
 
 function sandbox(fixture = fixturePlan) {
   const data = fixture();
@@ -28,6 +29,26 @@ const commit = (plan, id, dataset) => {
   const preview = previewTurn({plan,parentStateNodeId:id,actions,dataset,damageAdapter:damageAdapter(()=>[1])});
   return commitPreview(plan,preview,dataset,{selectedPreviewOutcomeId:preview.defaultPreviewOutcomeId,commitSelectedOnly:true});
 };
+
+test('Sandbox sprite pickers list unadmitted records without mutations and retain slot ownership and branch HP', () => {
+  const {plan,players,enemies}=sandbox(fixtureDoublesPlan);
+  const state=plan.stateNodes[plan.initialStateNodeId];
+  const reserve={...structuredClone(players[0]),combatantKey:'box:new'};
+  const fainted={...structuredClone(players[0]),combatantKey:'box:fainted'};
+  state.combatantStates[fainted.combatantKey]={...structuredClone(state.combatantStates[players[0].combatantKey]),hp:{min:0,max:0,maxHp:100}};
+  const all=[...players,...enemies,reserve,fainted];
+  const original=structuredClone(plan);
+  const keys=options=>sandboxPickerCandidates(plan,state,'player',0,all,options).map(m=>m.combatantKey);
+  const switches=keys();
+  assert.ok(switches.includes(players[0].combatantKey));assert.ok(switches.includes(reserve.combatantKey));
+  assert.ok(!switches.includes(players[1].combatantKey));assert.ok(!switches.includes(enemies[0].combatantKey));
+  assert.ok(!switches.includes(fainted.combatantKey));assert.ok(keys({replace:true}).includes(fainted.combatantKey));
+  assert.deepEqual(plan,original);
+  plan.game.partyOwnership={player:{slotOwnerIds:['player','partner']}};
+  reserve.source={...reserve.source,partyOwnerId:'player'};
+  assert.ok(keys().includes(reserve.combatantKey));
+  assert.equal(sandboxPickerCandidates(plan,state,'player',1,[reserve],{replace:true}).length,0);
+});
 
 test('Sandbox is explicit schema v6; ordinary plans retain their existing contract', () => {
   const ordinary = fixturePlan().plan;
