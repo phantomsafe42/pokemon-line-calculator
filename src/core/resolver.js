@@ -41,7 +41,7 @@ import {
   trappingAbilityBlocksSwitch
 } from "../rulesets/ability_rules.js?v=20260905-drafts-freecalc-partners-v1";
 import { applyCombatantFormState, desiredWeatherAbilityForm, desiredZenModeForm, restoreCombatantIdentityState } from "../rulesets/form_rules.js?v=20260917-partners-release-v1";
-import { afterDamagingMoveItemActivation, damageReductionItemActivation } from "../rulesets/item_rules.js?v=20260909-item-consumption-v1";
+import { afterDamagingMoveItemActivation, damageReductionItemActivation, heldStateItemActivation } from "../rulesets/item_rules.js?v=20260920-held-item-activation-v1";
 import { observeAbilityEvent, clearFaintedAbilityKnowledge, entryAbilityAnnouncement } from "./ability_knowledge.js?v=20260911-ability-storage-reimp-v1";
 
 const TRACE_BLOCKED_ABILITIES = new Set(["", "flowergift", "forecast", "illusion", "imposter", "multitype", "stancechange", "trace", "wonderguard", "zenmode"]);
@@ -1305,7 +1305,7 @@ function consumeHeldItem(branch, { actorKey, holderKey, move, itemId, cause, res
     eventType: "item-consumed",
     actorKey,
     targetKey: holderKey,
-    moveId: move.id,
+    moveId: move?.id || null,
     metadata: { itemId: heldItemId, cause, resultLabel },
     changes: [
       { path: `combatantStates.${holderKey}.currentItemId`, from: previousItemId, to: "" },
@@ -1313,6 +1313,77 @@ function consumeHeldItem(branch, { actorKey, holderKey, move, itemId, cause, res
     ]
   });
   return true;
+}
+
+function applyHeldStateItems(branch, dataset, plan, timing = 'state-update', onlyKey = null) {
+  let branches = [branch];
+  for (const entry of participantEntries(branch.state)) {
+    if (onlyKey && entry.combatantKey !== onlyKey) continue;
+    branches = branches.flatMap(current => {
+      const holderKey = activeKey(current.state, entry.side, entry.slot);
+      const state = current.state.combatantStates[holderKey];
+      const activation = heldStateItemActivation({ dataset, state,
+        activeItemId: activeHeldItemId(state, current.state.fieldState),
+        generation: Number(dataset.mechanics?.damageGeneration), timing,
+        opposingStates: participantKeys(current.state, opposite(entry.side)).map(key => current.state.combatantStates[key]),
+        moves: state?.moveSetOverride || plan.combatants[holderKey]?.moves || [] });
+      if (!activation) return [current];
+      const threshold = activation.hpThreshold;
+      const crosses = threshold !== null && Number(state.hp.min) <= threshold && Number(state.hp.max) > threshold;
+      const distribution = distributionFor(state);
+      if (crosses && !distribution) throw new ResolutionError(`${activation.itemName} activation requires an exact HP distribution`);
+      const groups = crosses ? [
+        { activate: true, entries: distribution.filter(value => value.value > 0 && value.value <= threshold) },
+        { activate: false, entries: distribution.filter(value => value.value > threshold || value.value <= 0) }
+      ].filter(group => group.entries.length) : [{ activate: true, entries: distribution }];
+      return groups.map(group => {
+        const next = groups.length > 1 ? clone(current) : current;
+        const holder = next.state.combatantStates[holderKey];
+        if (groups.length > 1) {
+          const mass = group.entries.reduce((sum, value) => sum + value.probability, 0);
+          next.probability = probabilityProduct(next.probability, mass);
+          setHpDistribution(holder, group.entries);
+          next.conditions.push(`item-threshold:${holderKey}:${activation.itemId}:${group.activate ? 'activated' : 'retained'}`);
+        }
+        if (!group.activate) return next;
+        const ability = activeAbilityId(holder);
+        const multiplier = activation.consumptionMethod === 'eat' && ability === 'ripen' ? 2 : 1;
+        consumeHeldItem(next, { actorKey: holderKey, holderKey, itemId: activation.itemId,
+          cause: activation.activationId, resultLabel: `${activation.itemName} activated` });
+        for (const effect of activation.effects) {
+          if (effect.kind === 'heal') {
+            const amount = multiplier * (effect.amount ?? Math.max(1, Math.floor(Number(holder.hp.maxHp) * effect.numerator / effect.denominator)));
+            if (!Number.isFinite(amount) || amount <= 0) throw new ResolutionError(`${activation.itemName}: invalid recovery amount`);
+            applyResidualHeal(next, holderKey, { amount, cause: activation.itemId, displayName: activation.itemName, actorKey: holderKey });
+          } else if (effect.kind === 'stat-stages') {
+            applyAbilityAwareStatStages(next, { actorKey: holderKey, targetKey: holderKey, cause: activation.itemId,
+              generation: next.generation, statStages: Object.fromEntries(Object.entries(effect.stages).map(([key, value]) => [key, value * multiplier])) });
+          } else if (effect.kind === 'cure-status') {
+            if (effect.statusIds.includes(holder.majorStatus)) cureMajorStatus(next, holderKey, activation.itemId);
+            if (effect.statusIds.includes('confusion') && statusCounterDistribution(holder.volatileConditions, 'confusion')) {
+              setStatusCounterDistribution(holder.volatileConditions, 'confusion', []);
+              event(next, { eventType: 'volatile-ended', actorKey: holderKey, targetKey: holderKey, moveId: null,
+                metadata: { cause: activation.itemId, resultLabel: `${activation.itemName} cured confusion` } });
+            }
+          } else if (effect.kind === 'restore-pp') {
+            const move = activation.depletedMove;
+            if (effect.selection !== 'first-depleted-move' || !move) throw new ResolutionError(`${activation.itemName}: unsupported PP selection`);
+            const from = holder.movePp[move.moveId];
+            const to = Math.min(move.maxPp, from + effect.amount * multiplier);
+            holder.movePp[move.moveId] = to;
+            event(next, { eventType: 'item-pp', actorKey: holderKey, targetKey: holderKey, moveId: move.moveId,
+              changes: [{ path: `combatantStates.${holderKey}.movePp.${move.moveId}`, from, to }],
+              metadata: { cause: activation.itemId, resultLabel: `${activation.itemName} restored ${to - from} PP` } });
+          }
+        }
+        if (activation.consumptionMethod === 'eat' && ability === 'cheekpouch' && !holder.volatileConditions.healBlockTurns) {
+          applyResidualHeal(next, holderKey, { numerator: 1, denominator: 3, cause: 'cheekpouch', displayName: 'Cheek Pouch', actorKey: holderKey });
+        }
+        return next;
+      });
+    });
+  }
+  return branches;
 }
 
 function consumeFocusSash(branch, actorKey, targetKey, move) {
@@ -3189,6 +3260,33 @@ function applyMoveEffect(branch, { side, actorKey, targetKey, actor, target, act
           const calculatedOverrides = damageOverrides(descriptor, currentActorState, targetKey);
           const moveOverrides = dynamicMoveOverrides(damageBranch, { side, move, actor, target, actorState: currentActorState, targetState: currentTargetState, previousLastMoveId, pendingActions, dataset }, damageBranch.currentMoveOverrides || calculatedOverrides.moveOverrides);
           const powerConditionMet = calculatedOverrides.powerConditionMet;
+          const itemTriggers = [currentActorState, currentTargetState].flatMap(mon =>
+            dataset.get('items', activeHeldItemId(mon, damageBranch.state.fieldState))?.heldItemMechanics?.activations || []);
+          const needsItemCheckBetweenHits = hitOutcome.moveHits > 1 && itemTriggers.some(rule =>
+            rule.trigger === 'holder-state' && rule.timing === 'state-update'
+            || rule.effects?.some(effect => effect.kind === 'damage-multiplier' || effect.kind === 'remove-held-item'));
+          if (needsItemCheckBetweenHits) {
+            let hitBranches = [damageBranch];
+            for (let hitIndex = 0; hitIndex < hitOutcome.moveHits; hitIndex += 1) {
+              hitBranches = hitBranches.flatMap(hitBranch => {
+                const attackerState = hitBranch.state.combatantStates[actorKey];
+                const defenderState = hitBranch.state.combatantStates[targetKey];
+                if (Number(attackerState.hp.max) <= 0 || Number(defenderState.hp.max) <= 0) return [hitBranch];
+                return calculateDamageVariants(hitBranch, { actor, target, actorState: attackerState, targetState: defenderState,
+                  move, descriptor, damageAdapter, dataset, battleFormat, spreadTargetCount, moveOverrides, moveHits: 1
+                }).flatMap(variant => applyDamage(variant.branch, {
+                  actorKey, targetKey, move, descriptor, dataset, damageValues: variant.result.damage,
+                  damageDistribution: variant.result.damageDistribution, effectiveBasePower: moveOverrides?.basePower ?? Number(move.basePower || 0),
+                  powerConditionMet, moveHits: 1, appliedDefenderItemIds: variant.result.appliedDefenderItemIds,
+                  criticalHit: variant.criticalHit, criticalHits: variant.criticalHits, criticalHitProbability: variant.criticalHitProbability
+                })).flatMap(next => applyDamageRecovery(next, actorKey, targetKey, move, damageOperation))
+                  .flatMap(next => applyHeldStateItems(next, dataset, plan));
+              });
+              hitBranches = mergeEquivalent(hitBranches);
+              if (hitBranches.length > 4096) throw new ResolutionError('Item activation between hits exceeds the safe exact limit');
+            }
+            return hitBranches;
+          }
           const variants = calculateDamageVariants(damageBranch, {
             actor,
             target,
@@ -3817,7 +3915,7 @@ function applyResidualHeal(branch, targetKey, rule) {
     delete targetState.hpDistribution;
   }
   const healingHp = { min: Math.min(...healedValues), max: Math.max(...healedValues) };
-  event(branch, { eventType: rule.eventType || "residual-heal", actorKey: rule.actorKey ?? null, targetKey, moveId: null, healingHp, healingPercent: percentRange(healingHp, maxHp), metadata: { cause: rule.cause, resultLabel: `${readableMechanicName(rule.cause)} recovery` } });
+  event(branch, { eventType: rule.eventType || "residual-heal", actorKey: rule.actorKey ?? null, targetKey, moveId: null, healingHp, healingPercent: percentRange(healingHp, maxHp), metadata: { cause: rule.cause, sourceName: rule.displayName, resultLabel: `${rule.displayName || readableMechanicName(rule.cause)} recovery` } });
   return [branch];
 }
 
@@ -4119,12 +4217,13 @@ function applyEndOfTurn(branch, dataset, plan, damageAdapter) {
         } else if (phase === "status") {
           rule = statusResidualRule(state, dataset.mechanics?.damageGeneration);
         } else if (phase === "item") {
-          rule = itemResidualRule(state);
+          return applyHeldStateItems(current, dataset, plan, 'item-residual', targetKey).flatMap(next =>
+            applyResidualRule(next, targetKey, itemResidualRule(next.state.combatantStates[targetKey])));
         } else if (phase === "ability-late") {
           return applyAbilityEndOfTurn(current, targetKey, 28);
         }
         return applyResidualRule(current, targetKey, rule);
-      });
+      }).flatMap(next => applyHeldStateItems(next, dataset, plan));
     }
   }
   for (const entry of participantEntries(branch.state)) {
@@ -4132,7 +4231,7 @@ function applyEndOfTurn(branch, dataset, plan, damageAdapter) {
       const targetKey = activeKey(current.state, entry.side, entry.slot);
       const state = current.state.combatantStates[targetKey];
       return !state || Number(state.hp?.max) <= 0 ? [current] : applyVolatileEndOfTurn(current, targetKey, dataset);
-    });
+    }).flatMap(next => applyHeldStateItems(next, dataset, plan));
   }
   for (const entry of participantEntries(branch.state)) {
     branches = branches.flatMap(current => {
@@ -4394,7 +4493,8 @@ function resolveActionEntries(branch, entries, context) {
         actor.lastHitSourceKey = null;
       }
     }
-    const rewarded = mergeEquivalent(applied.map(next => applyDefeatedEnemyExperience(next, context.plan, context.dataset)));
+    const itemChecked = applied.flatMap(next => applyHeldStateItems(next, context.dataset, context.plan));
+    const rewarded = mergeEquivalent(itemChecked.map(next => applyDefeatedEnemyExperience(next, context.plan, context.dataset)));
     resolved.push(...rewarded.flatMap(next => battleRosterEnded(next.state, context.plan)
       ? [next]
       : resolveActionEntries(next, remaining, context)));
@@ -4425,7 +4525,7 @@ export function resolveTurn({ plan, parentStateNodeId, actions, dataset, damageA
     generation: Number(dataset.mechanics?.damageGeneration || 5)
   };
   refreshWeatherAbilityForms(entryBranch, plan, dataset);
-  const entryBranches = resolvePendingTraceBranches(entryBranch, plan, dataset);
+  const entryBranches = resolvePendingTraceBranches(entryBranch, plan, dataset).flatMap(next => applyHeldStateItems(next, dataset, plan));
   for (const entered of entryBranches) {
     applyRotationSelections(entered, actions, plan, dataset);
     const orders = orderedActions(plan, entered.state, actions, dataset);
@@ -4533,7 +4633,7 @@ export function resolveForcedReplacement({ plan, parentStateNodeId, replacements
       actorKey: currentActiveKey,
       switchToKey: action.switchToKey,
       switchKind: "forced"
-    }, plan, dataset));
+    }, plan, dataset)).flatMap(next => applyHeldStateItems(next, dataset, plan));
   }
   branches = branches.map(branch => applyDefeatedEnemyExperience(branch, plan, dataset));
   for (const branch of branches) updateBattleBoundary(branch, plan);
