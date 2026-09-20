@@ -38,16 +38,38 @@ export async function checkSandbox({ page, evaluate, delay, dataset, tempRoot })
   for(const format of ['singles','doubles','triples','rotation']) {
     await upload('import-plan',fixture(format));
     await wait(`(()=>{if(document.getElementById('destructive-dialog').open) document.getElementById('destructive-discard').click();return document.getElementById('plan-toolbar-label').textContent===${JSON.stringify('Sandbox '+format)} && Boolean(document.querySelector('[data-free-calc-control="player-0-HP"]'));})()`,'Sandbox import');
+    await delay(150);
+    const beforePicker=(await readStore('pokemon-line-calculator','draft'))[0].document;
+    const picker=await evaluate(page,`(()=>{
+      const card=document.querySelector('[data-side="player"][data-action-slot="0"]');
+      card.querySelector('.switch-button').click();
+      const current=document.querySelector('[data-side="player"][data-action-slot="0"]');
+      return {names:[...current.querySelectorAll('.switch-target')].map(b=>b.textContent),
+        dropdowns:document.querySelectorAll('.sandbox-reserve-picker,.combatant-name select').length,
+        buttons:[...current.querySelectorAll('.sandbox-switch-actions button')].map(b=>b.textContent)};
+    })()`);
+    assert.ok(picker.names.some(n=>n.includes('Other Box Mon')));
+    assert.ok(!picker.names.some(n=>n.includes('Foreign Mon')));
+    assert.equal(picker.dropdowns,0);assert.deepEqual(picker.buttons,['Switch','Replace']);
+    if(format!=='singles') assert.ok(!picker.names.some(n=>n.includes('Sandbox 2')),'other active slot excluded');
+    await delay(150);
+    const afterPicker=(await readStore('pokemon-line-calculator','draft'))[0].document;
+    assert.deepEqual(afterPicker.combatants,beforePicker.combatants,'showing all Boxes does not admit them');
+    assert.deepEqual(afterPicker.stateNodes,beforePicker.stateNodes,'opening picker does not edit a node');
     const result=await evaluate(page,`(()=>{
       const control=label=>document.querySelector('[data-free-calc-control="player-0-'+label+'"]');
       const change=(label,value)=>{const el=control(label);el.value=value;el.dispatchEvent(new Event('change',{bubbles:true}));};
-      const names=[...control('Pokémon').options].map(o=>o.textContent);
+      const card=()=>document.querySelector('[data-side="player"][data-action-slot="0"]');
+      card().querySelector('.switch-button').click();
       change('HP','25');change('Status','tox');change('Item','leftovers');change('Level EXP','10');
-      const original=control('Pokémon').value;
-      const other=[...control('Pokémon').options].find(o=>o.textContent.includes('Other Box Mon'));
-      change('Pokémon',other.value);
+      const openReplace=()=>{if(card().querySelector('.replace-button').getAttribute('aria-pressed')!=='true')card().querySelector('.replace-button').click();};
+      openReplace();
+      const names=[...card().querySelectorAll('.switch-target')].map(o=>o.textContent);
+      const original=card().querySelector('.switch-target.is-current').dataset.combatantKey;
+      [...card().querySelectorAll('.switch-target')].find(o=>o.textContent.includes('Other Box Mon')).click();
       const incomingStatus=control('Status').value;
-      change('HP','19');change('Pokémon',original);
+      change('HP','19');openReplace();
+      [...card().querySelectorAll('.switch-target')].find(o=>o.dataset.combatantKey===original).click();
       const restored={hp:control('HP').value,status:control('Status').value,item:control('Item').value};
       return {names,incomingStatus,restored,aiHidden:document.querySelector('.ai-forecast-panel').hidden,
         freeCalcHidden:document.getElementById('free-calc').hidden,commitHidden:document.getElementById('commit-turn').hidden,
@@ -74,9 +96,7 @@ export async function checkSandbox({ page, evaluate, delay, dataset, tempRoot })
     change('enemy','Move 1','protect');
     document.querySelector('[data-side="enemy"] .move-button').click();
     document.querySelector('[data-side="player"] .switch-button').click();
-    const select=document.querySelector('.sandbox-reserve-picker');
-    select.value=[...select.options].find(o=>o.textContent.includes('Other Box Mon')).value;
-    select.dispatchEvent(new Event('change',{bubbles:true}));
+    [...document.querySelectorAll('[data-side="player"] .switch-target')].find(o=>o.textContent.includes('Other Box Mon')).click();
   })()`);
   await wait(`!document.getElementById('commit-turn').disabled`,'Sandbox Switch preview');
   await evaluate(page,`document.getElementById('commit-turn').click()`);
@@ -97,7 +117,7 @@ export async function checkSandbox({ page, evaluate, delay, dataset, tempRoot })
   await page.send('Page.reload',{});
   await wait(`document.getElementById('game-dialog')?.open && Boolean(document.querySelector('.game-picker-option[data-game-id="volt-white-2r"]:not(:disabled)'))`,'Game picker after reload');
   await evaluate(page,`document.querySelector('.game-picker-option[data-game-id="volt-white-2r"]').click()`);
-  await wait(`document.querySelector('[data-free-calc-control="player-0-HP"]')?.value==='21'`,'Sandbox cache recovery');
+  await wait(`!document.getElementById('game-dialog').open && document.querySelector('[data-free-calc-control="player-0-HP"]')?.value==='21'`,'Sandbox cache recovery');
   assert.equal(await evaluate(page,`document.querySelector('.ai-forecast-panel').hidden`),true);
   const image=await page.send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});
   await fs.writeFile(path.join(tempRoot,'sandbox-singles.png'),Buffer.from(image.data,'base64'));
