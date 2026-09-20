@@ -1,7 +1,7 @@
 import { assertValidPlanDocument } from "../contracts/plan_contract.js?v=20260917-partners-release-v1";
-import { actionSignature, nextCreatedOrder, touchPlan, updateStateHash } from "./plan.js?v=20260917-partners-release-v1";
+import { actionSignature, nextCreatedOrder, touchPlan, updateStateHash } from "./plan.js?v=20260920-event-hover-v1";
 import { clone, shortHash, stableStringify } from "./primitives.js?v=20260905-drafts-freecalc-partners-v1";
-import { resolveForcedReplacement, resolveTurn } from "./resolver.js?v=20260917-partners-release-v1";
+import { resolveForcedReplacement, resolveTurn } from "./resolver.js?v=20260920-event-hover-v1";
 import { actionList, activeKey, activeSlotEntries, normalizeActionsForPlan, normalizeReplacementsForPlan, pendingReplacementSlots, replacementList } from "./battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
 
 function displayAction(action, events, plan, dataset) {
@@ -193,12 +193,21 @@ export function refreshUnknownCommittedProbabilities(plan, preview) {
   return { plan: next, changed: true, refreshedStateNodeIds: updates.map(update => update.stateId) };
 }
 
-function leadingReplacementEvents(plan, stateNodeId) {
+function leadingReplacementEvents(plan, stateNodeId, dataset, capturePresentation) {
   const segments = [];
   let state = plan.stateNodes[stateNodeId];
   while (state?.parentReplacementTransitionId) {
-    segments.unshift((state.resolutionEventIds || []).map(eventId => plan.resolutionEvents[eventId]).filter(Boolean));
     const transition = plan.replacementTransitions?.[state.parentReplacementTransitionId];
+    let events = (state.resolutionEventIds || []).map(eventId => plan.resolutionEvents[eventId]).filter(Boolean);
+    if (capturePresentation && transition && events.some(event => !event.metadata?.presentation)) {
+      // Older saved replacements predate display traces. Resolve only this
+      // already-selected transition; never change its saved state or choices.
+      const replay = resolveForcedReplacement({ plan, parentStateNodeId: transition.parentStateNodeId,
+        replacements: transition.actions, dataset, capturePresentation: true });
+      const matched = replay.find(outcome => outcome.state.stateHash === state.stateHash);
+      if (matched) events = matched.events;
+    }
+    segments.unshift(events);
     state = transition ? plan.stateNodes[transition.parentStateNodeId] : null;
   }
   return segments.flat().map(entry => ({
@@ -216,10 +225,10 @@ function leadingInitialEntryEvents(plan, stateNodeId) {
   }));
 }
 
-function leadingTurnEvents(plan, stateNodeId) {
+function leadingTurnEvents(plan, stateNodeId, dataset, capturePresentation) {
   return [
     ...leadingInitialEntryEvents(plan, stateNodeId),
-    ...leadingReplacementEvents(plan, stateNodeId)
+    ...leadingReplacementEvents(plan, stateNodeId, dataset, capturePresentation)
   ];
 }
 
@@ -231,12 +240,12 @@ function committedEvent(rawEvent, eventId, turnNumber, step) {
   return { ...saved, eventId, source: "planned", turnNumber, step };
 }
 
-export function previewTurn({ plan, parentStateNodeId, actions, dataset, damageAdapter, moveSupport, expandExisting = false }) {
+export function previewTurn({ plan, parentStateNodeId, actions, dataset, damageAdapter, moveSupport, expandExisting = false, capturePresentation = false }) {
   actions = normalizeActionsForPlan(plan, actions, plan.stateNodes[parentStateNodeId]);
   const signature = actionSignature(parentStateNodeId, actions);
   const existing = Object.values(plan.actionGroups).find(group => group.parentStateNodeId === parentStateNodeId && group.actionSignature === signature);
   if (existing && !expandExisting) {
-    const leadingEvents = leadingTurnEvents(plan, parentStateNodeId);
+    const leadingEvents = leadingTurnEvents(plan, parentStateNodeId, dataset, capturePresentation);
     return {
       baseStateNodeId: parentStateNodeId,
       proposedTurnNumber: existing.turnNumber,
@@ -256,8 +265,8 @@ export function previewTurn({ plan, parentStateNodeId, actions, dataset, damageA
       defaultPreviewOutcomeId: existing.defaultOutcomeStateNodeId
     };
   }
-  const leadingEvents = leadingTurnEvents(plan, parentStateNodeId);
-  const outcomes = resolveTurn({ plan, parentStateNodeId, actions, dataset, damageAdapter, moveSupport }).map(outcome => ({
+  const leadingEvents = leadingTurnEvents(plan, parentStateNodeId, dataset, capturePresentation);
+  const outcomes = resolveTurn({ plan, parentStateNodeId, actions, dataset, damageAdapter, moveSupport, capturePresentation }).map(outcome => ({
     ...outcome,
     events: [...clone(leadingEvents), ...outcome.events]
   }));
@@ -429,9 +438,9 @@ export function repairStaleLeafBattleEnd(plan, stateNodeId) {
   return { plan: next, changed: true, removedEventIds };
 }
 
-export function previewForcedReplacement({ plan, parentStateNodeId, replacements, dataset }) {
+export function previewForcedReplacement({ plan, parentStateNodeId, replacements, dataset, capturePresentation = false }) {
   replacements = normalizeReplacementsForPlan(plan, replacements);
-  const outcomes = resolveForcedReplacement({ plan, parentStateNodeId, replacements, dataset });
+  const outcomes = resolveForcedReplacement({ plan, parentStateNodeId, replacements, dataset, capturePresentation });
   const signature = replacementTransitionSignature(parentStateNodeId, replacements);
   const existing = plan.replacementTransitions?.[signature] || null;
   const savedOutcomeStateNodeIdByPreviewOutcomeId = {};

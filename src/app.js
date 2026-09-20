@@ -19,6 +19,7 @@ import { makeStableId } from './core/primitives.js';
 import { freeCalcExperience, freeCalcTotalExperience } from './ui/free_calc.js?v=20260918-free-calc-inline-v1';
 import { nodeTreeSections } from './ui/node_tree.js?v=20260918-free-calc-sections-v1';
 import { toggleMoveSelection } from './ui/move_selection.js?v=20260920-move-toggle-v1';
+import { createEventTimeline } from './core/event_timeline.js?v=20260920-event-hover-v1';
 import { belongsToSlotParty, eligibleReserves, partyOwnerForSlot } from './core/party_ownership.js?v=20260909-public-release-v2';
 import { downloadPlan, exportSelectedPlan, migratePlanDocument, parsePlan } from "./contracts/plan_file.js?v=20260917-partners-release-v1";
 import { assertValidPlanDocument } from "./contracts/plan_contract.js?v=20260917-partners-release-v1";
@@ -30,8 +31,8 @@ import { exportBranchGroups, planTreeOrder, planTurnTreeOrder, preferredImported
 import { HIDDEN_POWER_TYPES, hiddenPowerTypeFromIvs, resolvedHiddenPowerType } from "./core/hidden_power.js?v=20260909-public-release-v2";
 import { forcedTurnAction } from "./core/forced_actions.js?v=20260909-public-release-v2";
 import { formatDamageRollCounts, healingEventDescription, isCriticalOhkoOutcome, isHighRollKoOutcome, outcomePanelEvents, readableMechanicName } from "./core/outcome_presentation.js?v=20260909-public-release-v2";
-import { createPlanDocument, planHasWork, setStateNodeNote, upgradeInitialEntryEffects } from "./core/plan.js?v=20260917-partners-release-v1";
-import { commitForcedReplacement, commitLabel, commitPreview, previewForcedReplacement, refreshUnknownCommittedProbabilities, repairStaleLeafBattleEnd, replacementCommitLabel } from "./core/planner.js?v=20260917-partners-release-v1";
+import { createPlanDocument, planHasWork, setStateNodeNote, upgradeInitialEntryEffects } from "./core/plan.js?v=20260920-event-hover-v1";
+import { commitForcedReplacement, commitLabel, commitPreview, previewForcedReplacement, refreshUnknownCommittedProbabilities, repairStaleLeafBattleEnd, replacementCommitLabel } from "./core/planner.js?v=20260920-event-hover-v1";
 import { recalculatePlanDocument } from "./core/recalculation.js?v=20260917-partners-release-v1";
 import { upgradeImportedPlanForEditing } from "./core/import_upgrade.js?v=20260917-partners-release-v1";
 import { moveSupport } from "./rulesets/core_move_support.js?v=20260909-public-release-v2";
@@ -39,7 +40,7 @@ import { effectiveActionSpeed } from "./rulesets/action_order.js?v=20260909-publ
 import { areSlotsAdjacent, canSelectShift, shiftWithCenter, triplePositionForSlot, tripleSlotForPosition } from "./rulesets/triple_battle.js?v=20260909-public-release-v2";
 import { rotationFrontKey, rotationFrontSlot } from "./rulesets/rotation_battle.js?v=20260909-public-release-v2";
 import { experienceForLevel, experienceToNextLevel, projectExperience } from "./rulesets/vw2r_experience.js?v=20260917-partners-release-v1";
-import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260920-performance-v1";
+import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260920-event-hover-v1";
 import { battleCompletionState } from "./core/battle_completion.js?v=20260909-public-release-v2";
 import {
   addBox, addParty, boxesForGame, createEmptyBoxLibrary, exportBoxLibrary, IndexedDbBoxLibraryStore,
@@ -2233,9 +2234,10 @@ function targetSlotLabel(state, combatantKey) {
   return recordName(plan?.combatants?.[combatantKey]);
 }
 
-function outcomeTargetSlotLabel(combatantKey) {
+function outcomeTargetSlotLabel(combatantKey, event = null) {
   const previewEntry = defaultPreviewEntry();
-  const states = [previewEntry?.state || previewEntry, selectedState()].filter(Boolean);
+  const eventState = inspectionTimeline[inspectionEventIndices.get(event?.timelineSource || event)]?.state;
+  const states = [eventState, previewEntry?.state || previewEntry, selectedState()].filter(Boolean);
   for (const state of states) {
     for (const side of ["player", "enemy"]) {
       const slot = actorSlot(state, side, combatantKey);
@@ -2737,13 +2739,15 @@ function replacementRequirement(state, side) {
   return Math.min(pendingCount, possibleSwitches(state, side).length);
 }
 
-function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
-  const { state, committedState, events: previewEvents, previewing } = renderedStateContext();
-  const actorKey = activeKey(committedState, side, slot);
+function renderCombatantCard(side, slot, { displaySlot = slot, inspection = null } = {}) {
+  const { state, committedState, events: previewEvents, previewing } = inspection
+    ? { state: inspection.state, committedState: selectedState(), events: inspection.events, previewing: true }
+    : renderedStateContext();
+  const actorKey = activeKey(inspection ? state : committedState, side, slot);
   const original = plan.combatants[actorKey];
-  const pending = pendingReplacementSlots(committedState).some(entry => entry.side === side && entry.slot === slot);
-  let draft = actionForSlot(side, slot);
-  const forcedAction = pending ? null : forcedTurnAction(committedState.combatantStates[actorKey]);
+  const pending = !inspection && pendingReplacementSlots(committedState).some(entry => entry.side === side && entry.slot === slot);
+  let draft = inspection ? {} : actionForSlot(side, slot);
+  const forcedAction = pending || inspection ? null : forcedTurnAction(committedState.combatantStates[actorKey]);
   if (forcedAction && draft.type && (draft.type !== "move" || draft.moveId !== forcedAction.moveId)) {
     actionDraft[side][slot] = {};
     draft = actionDraft[side][slot];
@@ -2758,11 +2762,22 @@ function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
   const committedMonState = committedState.combatantStates[displayKey];
   const monState = state.combatantStates[displayKey] || committedMonState;
   const rootState = rootCombatantState(displayKey);
-  const edit = freeCalcSession || isSandbox(plan) ? renderFreeCalcControls(side, slot, displayKey) : null;
+  const edit = !inspection && (freeCalcSession || isSandbox(plan)) ? renderFreeCalcControls(side, slot, displayKey) : null;
   const card = document.createElement("article"); card.className = `combatant-card slot-position-${displaySlot}`;
+  card.dataset.combatantKey = displayKey;
+  if (inspection) {
+    card.classList.add('event-inspection-card');
+    const acting = inspection.actorKeys.includes(displayKey);
+    const affected = inspection.affectedKeys.includes(displayKey);
+    card.classList.toggle('event-actor', acting);
+    card.classList.toggle('event-affected', affected);
+    const role = acting ? affected && inspection.event.targetKey === displayKey ? 'Actor · Affected' : 'Actor' : affected ? 'Affected' : '';
+    card.dataset.eventRole = role;
+    card.setAttribute('aria-label', `${recordName(mon)}${role ? ` · ${role}` : ''} · Event preview`);
+  }
   card.classList.toggle('is-free-calc', Boolean(edit));
   const rotation = plan.game?.battleFormat === "rotation";
-  const rotationFront = rotation && slot === rotationFrontSlot(committedState, side);
+  const rotationFront = rotation && slot === rotationFrontSlot(inspection ? state : committedState, side);
   card.classList.toggle("is-rotation-front", rotationFront);
   card.classList.toggle("will-rotate", rotation && draft.type === "move" && !rotationFront);
   card.dataset.side = side;
@@ -2893,6 +2908,20 @@ function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
     row.append(title, actual, stage); body.append(row);
   }
   table.append(body); card.append(table);
+  if (inspection) {
+    const moves = document.createElement('div'); moves.className = 'move-actions event-inspection-moves';
+    for (const entry of monState.moveSetOverride || mon.moves) {
+      const move = dataset.get('moves', entry.moveId);
+      const row = document.createElement('div'); row.className = 'move-button';
+      row.dataset.moveType = String(entry.typeOverride || move?.type || 'unknown').toLowerCase();
+      const copy = document.createElement('span'); copy.className = 'move-copy';
+      const title = document.createElement('strong'); title.textContent = move?.name || entry.moveId;
+      const pp = document.createElement('small'); pp.textContent = `${monState.movePp?.[entry.moveId] ?? entry.maxPp} PP`;
+      copy.append(title, pp); row.append(copy); moves.append(row);
+    }
+    card.append(moves);
+    return card;
+  }
   const moveActions = document.createElement("div"); moveActions.className = "move-actions";
   const moves = committedMonState.moveSetOverride || mon.moves;
   for (const [moveIndex, entry] of moves.entries()) {
@@ -3060,6 +3089,7 @@ function renderActionPanel(side) {
 }
 
 function renderActionPanels() {
+  clearEventInspection();
   if (!plan) return;
   const focused = document.activeElement;
   const focusId = (freeCalcSession || isSandbox(plan)) && focused?.dataset.freeCalcControl;
@@ -3215,11 +3245,11 @@ function koDescription(rolls, targetHp) {
 function eventDescription(event) {
   const move = dataset.get("moves", event.moveId || event.metadata?.moveId);
   const healingTargetKey = event.targetKey || event.actorKey;
-  const healingStates = [defaultPreviewEntry()?.state || defaultPreviewEntry(), selectedState()].filter(Boolean);
+  const healingStates = [inspectionTimeline[inspectionEventIndices.get(event)]?.state, defaultPreviewEntry()?.state || defaultPreviewEntry(), selectedState()].filter(Boolean);
   const healingMaxHp = healingStates.map(state => Number(state.combatantStates?.[healingTargetKey]?.hp?.maxHp)).find(Number.isFinite);
   const healing = healingEventDescription(event, { moveName: move?.name || null, maxHp: healingMaxHp });
   if (healing) return { line: healing };
-  const targetPrefix = event.targetKey && event.targetKey !== event.actorKey ? outcomeTargetSlotLabel(event.targetKey) : null;
+  const targetPrefix = event.targetKey && event.targetKey !== event.actorKey ? outcomeTargetSlotLabel(event.targetKey, event) : null;
   if (event.eventType === "shift") {
     const actor = plan.combatants[event.actorKey];
     const side = actor?.side || "player";
@@ -3238,14 +3268,14 @@ function eventDescription(event) {
       trailing: [ko || null, rolls.length ? `Possible damage amounts: (${formatDamageRollCounts(rolls)})` : null].filter(Boolean)
     };
   }
-  if (event.eventType === "move-redirected") return { line: [`Redirected to ${outcomeTargetSlotLabel(event.targetKey)}`, move?.name || event.moveId].filter(Boolean).join(" · ") };
+  if (event.eventType === "move-redirected") return { line: [`Redirected to ${outcomeTargetSlotLabel(event.targetKey, event)}`, move?.name || event.moveId].filter(Boolean).join(" · ") };
   if (event.eventType === "switch") {
-    const slotLabel = outcomeTargetSlotLabel(event.targetKey);
+    const slotLabel = outcomeTargetSlotLabel(event.targetKey, event);
     const forced = event.metadata?.switchKind === "forced" || event.metadata?.phase === "start-of-turn-replacement";
     if (forced) return { line: `Entered ${slotLabel}` };
     return { line: `${slotLabel} · Switched to ${recordName(plan.combatants[event.targetKey])}` };
   }
-  if (event.eventType === "combatant-fainted") return { line: `${outcomeTargetSlotLabel(event.targetKey)} · Fainted` };
+  if (event.eventType === "combatant-fainted") return { line: `${outcomeTargetSlotLabel(event.targetKey, event)} · Fainted` };
   if (event.eventType === "stat-stage-change" && move) {
     return {
       line: [targetPrefix, move.name].filter(Boolean).join(" · "),
@@ -3276,6 +3306,99 @@ function outcomeGroupSpriteKeys(group) {
   return [first.actorKey || first.targetKey].filter(Boolean);
 }
 
+let inspectionTimeline = [];
+let inspectionEventIndices = new Map();
+let activeInspectionIndex = null;
+let inspectionLayers = [];
+let inspectionPinned = false;
+
+function clearEventInspection() {
+  for (const { layer, grid, visibility } of inspectionLayers) {
+    layer.remove();
+    grid.style.visibility = visibility;
+  }
+  inspectionLayers = [];
+  activeInspectionIndex = null;
+  inspectionPinned = false;
+  document.querySelectorAll('.is-inspected-event').forEach(element => element.classList.remove('is-inspected-event'));
+}
+
+function showEventInspection(index, source) {
+  const frame = inspectionTimeline[index];
+  if (!frame?.available || !plan || activeInspectionIndex === index) return;
+  clearEventInspection();
+  activeInspectionIndex = index;
+  source?.classList.add('is-inspected-event');
+  const inspection = { ...frame, events: inspectionTimeline.slice(0, index + 1).map(entry => entry.event) };
+  for (const side of ['player', 'enemy']) {
+    const panel = ui[`${side}-action-panel`];
+    const grid = panel.querySelector('.action-panel-cards');
+    if (!grid) continue;
+    const layer = document.createElement('div');
+    layer.className = 'action-panel-cards event-preview-layer';
+    layer.setAttribute('aria-label', 'Read-only event preview');
+    const rect = grid.getBoundingClientRect(), parent = panel.getBoundingClientRect();
+    Object.assign(layer.style, { left: `${rect.left - parent.left - panel.clientLeft}px`, top: `${rect.top - parent.top - panel.clientTop}px`, width: `${rect.width}px`, height: `${rect.height}px` });
+    for (let position = 0; position < slotsPerSide(plan); position++) {
+      const slot = plan.game.battleFormat === 'triples' ? tripleSlotForPosition(plan, side, position) : position;
+      const key = activeKey(frame.state, side, slot);
+      if (key && plan.combatants[key]) layer.append(renderCombatantCard(side, slot, { displaySlot: position, inspection }));
+      else {
+        const empty = document.createElement('article'); empty.className = `combatant-card empty-combatant-slot slot-position-${position}`;
+        empty.textContent = `Slot ${battleSlotNumberForPosition(side, position)} · Empty slot`;
+        layer.append(empty);
+      }
+    }
+    inspectionLayers.push({ layer, grid, visibility: grid.style.visibility });
+    grid.style.visibility = 'hidden';
+    panel.append(layer);
+  }
+}
+
+function bindEventInspection(element, event) {
+  const index = inspectionEventIndices.get(event?.timelineSource || event);
+  if (index === undefined) return;
+  if (!inspectionTimeline[index]?.available) {
+    element.title = 'This older event has no exact event-time snapshot. Recalculate the line to inspect it.';
+    return;
+  }
+  element.dataset.eventIndex = String(index);
+  element.tabIndex = 0;
+  element.setAttribute('aria-label', 'Inspect this event on the Pokémon cards');
+  element.addEventListener('pointerover', event => {
+    if (event.pointerType === 'touch' || inspectionPinned) return;
+    event.stopPropagation(); showEventInspection(index, element);
+  });
+  element.addEventListener('pointerout', event => {
+    if (inspectionPinned) return;
+    const next = event.relatedTarget?.closest?.('[data-event-index]');
+    if (next && ui['preview-outcomes'].contains(next)) showEventInspection(Number(next.dataset.eventIndex), next);
+    else clearEventInspection();
+    event.stopPropagation();
+  });
+  element.addEventListener('focus', () => showEventInspection(index, element));
+  element.addEventListener('blur', event => {
+    if (!event.relatedTarget?.closest?.('[data-event-index]')) clearEventInspection();
+  });
+  element.addEventListener('click', event => {
+    event.stopPropagation();
+    if (inspectionPinned && activeInspectionIndex === index) clearEventInspection();
+    else { showEventInspection(index, element); inspectionPinned = true; }
+  });
+  element.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); event.stopPropagation(); element.click(); }
+  });
+}
+
+document.addEventListener('keydown', event => { if (event.key === 'Escape') clearEventInspection(); });
+document.addEventListener('pointerdown', event => {
+  if (!event.target.closest('[data-event-index]')) clearEventInspection();
+}, true);
+document.addEventListener('click', event => {
+  if (!event.target.closest('[data-event-index]')) clearEventInspection();
+}, true);
+window.addEventListener('resize', clearEventInspection);
+
 function outcomeActionGroups(events) {
   const groups = [];
   for (const [index, event] of events.entries()) {
@@ -3296,7 +3419,7 @@ function outcomeActionGroups(events) {
       presented.push({
         groupKey: `fainted:${targetKey}`,
         spriteKeys: [targetKey],
-        events: [{ eventType: "combatant-fainted", actorKey: null, targetKey, moveId: null, metadata: {} }]
+        events: [{ eventType: "combatant-fainted", actorKey: null, targetKey, moveId: null, metadata: {}, timelineSource: group.events.findLast(event => event.targetKey === targetKey && event.metadata?.thresholdOutcome === 'ko') }]
       });
     }
   }
@@ -3308,6 +3431,7 @@ function renderOutcomeAction(group, fallbackLabel = null) {
   const spriteBox = document.createElement("div"); spriteBox.className = "outcome-action-sprite";
   const spriteKeys = [...new Set(group.spriteKeys || [])];
   item.classList.toggle("has-two-sprites", spriteKeys.length > 1);
+  bindEventInspection(item, group.events.at(-1));
   for (const combatantKey of spriteKeys) {
     const mon = plan.combatants[combatantKey];
     if (mon) spriteBox.append(sprite(mon, `${recordName(mon)} sprite`));
@@ -3325,8 +3449,8 @@ function renderOutcomeAction(group, fallbackLabel = null) {
   if (abilityStatEvents) {
     appendLine(readableMechanicName(group.events[0].metadata.cause));
     for (const event of group.events) {
-      const target = event.targetKey && event.targetKey !== event.actorKey ? outcomeTargetSlotLabel(event.targetKey) : null;
-      appendLine([target, event.metadata?.resultLabel || "Stats changed"].filter(Boolean).join(" · "), "outcome-effect-line");
+      const target = event.targetKey && event.targetKey !== event.actorKey ? outcomeTargetSlotLabel(event.targetKey, event) : null;
+      bindEventInspection(appendLine([target, event.metadata?.resultLabel || "Stats changed"].filter(Boolean).join(" · "), "outcome-effect-line"), event);
     }
   } else {
     let pendingDamage = null;
@@ -3346,12 +3470,14 @@ function renderOutcomeAction(group, fallbackLabel = null) {
       if (extendsDamage) {
         const effect = document.createElement("p"); effect.className = "outcome-effect-line";
         effect.textContent = event.metadata?.resultLabel || "Stats changed";
+        bindEventInspection(effect, event);
         pendingDamage.detail.append(effect);
         continue;
       }
       flushDamageDetails();
       const description = eventDescription(event);
       const detail = document.createElement("div"); detail.className = "outcome-event-detail";
+      bindEventInspection(detail, event);
       const line = document.createElement("p"); line.className = "event-line"; line.textContent = description.line;
       if (event.eventType === "battle-ended") line.classList.add("battle-ended-text");
       detail.append(line);
@@ -3405,6 +3531,7 @@ function outcomeSplitReason(entry, allEntries) {
 }
 
 function renderPreview(preview) {
+  clearEventInspection();
   const entry = defaultPreviewEntry();
   if (!entry) {
     ui["preview-outcomes"].replaceChildren(Object.assign(document.createElement("p"), { className: "empty", textContent: "No crafted outcome is available." }));
@@ -3421,6 +3548,8 @@ function renderPreview(preview) {
   }
   const outcome = entry.outcome || entry;
   const events = outcomePanelEvents(entry.events || []);
+  inspectionTimeline = createEventTimeline(selectedState(), entry.events || []);
+  inspectionEventIndices = new Map((entry.events || []).map((event, index) => [event, index]));
   const card = document.createElement("article"); card.className = "outcome crafted-outcome";
   const victory = battleVictory(entry.state || entry);
   card.classList.toggle("battle-victory", victory);
@@ -3442,6 +3571,9 @@ function renderPreview(preview) {
 }
 
 function clearPreview(message = "Complete every active Pokémon's action to calculate the turn.") {
+  clearEventInspection();
+  inspectionTimeline = [];
+  inspectionEventIndices = new Map();
   const hadPreview = Boolean(currentPreview);
   currentPreview = null;
   branchEventModel = null;
@@ -3472,7 +3604,7 @@ async function refreshPreview() {
   ui["commit-turn"].disabled = true;
   try {
     const preview = replacement
-      ? { ...previewForcedReplacement({ plan, parentStateNodeId: cursorStateNodeId, replacements: actions, dataset }), previewKind: "replacement" }
+      ? { ...previewForcedReplacement({ plan, parentStateNodeId: cursorStateNodeId, replacements: actions, dataset, capturePresentation: true }), previewKind: "replacement" }
       : await worker.preview({ plan, parentStateNodeId: cursorStateNodeId, actions, expandExisting: true });
     if (generation !== previewGeneration) return;
     currentPreview = preview;
