@@ -3309,6 +3309,7 @@ function outcomeGroupSpriteKeys(group) {
 let inspectionTimeline = [];
 let inspectionEventIndices = new Map();
 let activeInspectionIndex = null;
+let activeInspectionSource = null;
 let inspectionLayers = [];
 let inspectionPinned = false;
 
@@ -3319,15 +3320,25 @@ function clearEventInspection() {
   }
   inspectionLayers = [];
   activeInspectionIndex = null;
+  activeInspectionSource = null;
   inspectionPinned = false;
   document.querySelectorAll('.is-inspected-event').forEach(element => element.classList.remove('is-inspected-event'));
 }
 
 function showEventInspection(index, source) {
   const frame = inspectionTimeline[index];
-  if (!frame?.available || !plan || activeInspectionIndex === index) return;
+  if (!frame?.available || !plan) return;
+  if (activeInspectionIndex === index) {
+    // Separate rendered sections (for example a KO and its Fainted row) can
+    // share a snapshot. Move the highlight even when cards need no rebuild.
+    activeInspectionSource?.classList.remove('is-inspected-event');
+    activeInspectionSource = source;
+    source?.classList.add('is-inspected-event');
+    return;
+  }
   clearEventInspection();
   activeInspectionIndex = index;
+  activeInspectionSource = source;
   source?.classList.add('is-inspected-event');
   const inspection = { ...frame, events: inspectionTimeline.slice(0, index + 1).map(entry => entry.event) };
   for (const side of ['player', 'enemy']) {
@@ -3384,7 +3395,7 @@ function bindEventInspection(element, event) {
   });
   element.addEventListener('click', event => {
     event.stopPropagation();
-    if (inspectionPinned && activeInspectionIndex === index) clearEventInspection();
+    if (inspectionPinned && activeInspectionSource === element) clearEventInspection();
     else { showEventInspection(index, element); inspectionPinned = true; }
   });
   element.addEventListener('keydown', event => {
