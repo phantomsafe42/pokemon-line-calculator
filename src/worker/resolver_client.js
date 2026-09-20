@@ -1,8 +1,11 @@
+import { DamagePreviewQueue } from './damage_preview_queue.js?v=20260920-performance-v1';
+import { LatestPreviewQueue } from './latest_preview_queue.js?v=20260920-performance-v1';
+
 export class ResolverWorkerClient {
   constructor(url = new URL(
     typeof __PLC_RESOLVER_WORKER_FILE__ !== "undefined"
       ? __PLC_RESOLVER_WORKER_FILE__
-      : "./resolver_worker.js?v=20260918-replacement-reasons-v2",
+      : "./resolver_worker.js?v=20260920-performance-v1",
     import.meta.url
   )) {
     this.url = url;
@@ -11,6 +14,8 @@ export class ResolverWorkerClient {
     this.requestId = 0;
     this.latestPreviewRequest = 0;
     this.pending = new Map();
+    this.damageQueue = new DamagePreviewQueue(payload => this.request('damage-preview-batch', payload).promise);
+    this.previewQueue = new LatestPreviewQueue(payload => this.request('preview', payload).promise);
     this.trainerAiInitializationPayload = null;
     this.trainerAiReady = null;
     this.trainerAiInitialized = false;
@@ -57,6 +62,8 @@ export class ResolverWorkerClient {
   }
 
   async initialize(configuration, legacyTrainerAiBaseUrl = null, legacyGameId = null) {
+    this.damageQueue.reset({ clearCache: true });
+    this.previewQueue.cancel();
     const {
       datasetBaseUrl,
       datasetHostedPrefix = null,
@@ -88,19 +95,14 @@ export class ResolverWorkerClient {
   }
 
   async preview(payload) {
-    const { requestId, promise } = this.request("preview", payload);
-    this.latestPreviewRequest = requestId;
-    const result = await promise;
-    if (requestId !== this.latestPreviewRequest) {
-      const error = new Error("A newer turn preview replaced this result");
-      error.name = "StalePreviewError";
-      throw error;
-    }
-    return result;
+    return this.previewQueue.request(payload);
   }
 
+  cancelPreview() { this.previewQueue.cancel(); }
+  beginDamageView() { this.damageQueue.reset(); }
+
   damagePreview(payload) {
-    return this.request("damage-preview", payload).promise;
+    return this.damageQueue.request(payload);
   }
 
   ensureTrainerAiInitialized() {
@@ -148,6 +150,8 @@ export class ResolverWorkerClient {
   }
 
   terminate() {
+    this.damageQueue.reset({ clearCache: true });
+    this.previewQueue.cancel();
     this.worker.terminate();
     this.trainerAiWorker.terminate();
     for (const entry of this.pending.values()) entry.reject(new Error("Resolver Worker stopped"));
