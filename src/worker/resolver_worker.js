@@ -65,14 +65,14 @@ async function initialize(datasetBaseUrl, datasetHostedPrefix, trainerAiBaseUrl,
   damageAdapter = damageModule.createSharedDamageAdapter(runtime);
   if (role === "resolver") {
     const [plannerModule, combatantMovesModule] = await Promise.all([
-      import("../core/planner.js?v=20260920-held-item-activation-v1"),
+      import("../core/planner.js?v=20260920-held-item-activation-v2"),
       import("../core/combatant_moves.js?v=20260909-public-release-v2")
     ]);
     previewTurn = plannerModule.previewTurn;
     previewCombatantMove = combatantMovesModule.previewCombatantMove;
   } else {
     importScripts(new URL("trainer_ai/trainer_ai_evaluator.js?v=20260909-public-release-v2", battleMechanicsBase).href);
-    const trainerAiModule = await import("../adapters/trainer_ai.js?v=20260918-replacement-reasons-v2");
+    const trainerAiModule = await import("../adapters/trainer_ai.js?v=20260920-held-item-activation-v2");
     trainerAi = await trainerAiModule.loadTrainerAiDocumentation({
       baseUrl: trainerAiBaseUrl,
       hostedPrefix: trainerAiHostedPrefix,

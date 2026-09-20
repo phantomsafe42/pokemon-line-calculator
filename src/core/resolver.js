@@ -2,7 +2,7 @@ import { clone, normalizeRange, shortHash, stableStringify, toId } from "./primi
 import { startEventTrace, captureEventTrace } from './event_timeline.js?v=20260920-event-hover-v1';
 import { effectiveCombatantMove, fieldAdjustedMove } from "./combatant_moves.js?v=20260907-two-turn-immunity-v1";
 import { forcedTurnAction, forcedTurnActionAllows } from "./forced_actions.js?v=20260907-two-turn-immunity-v1";
-import { createDefaultVolatiles, normalizeFieldCondition, resetTurnFlags, updateStateHash } from "./plan.js?v=20260920-event-hover-v1";
+import { createDefaultVolatiles, normalizeFieldCondition, resetTurnFlags, updateStateHash } from "./plan.js?v=20260920-held-item-activation-v2";
 import { actionEntries, actionList, activeEntries, activeKey, activeKeys, activeSlotEntries, actorSlot, battleFormat, pendingReplacementSlots, replacementList, setActiveKey, setPendingReplacementSlots, slotsPerSide } from "./battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
 import { belongsToSlotParty, eligibleReserves, partyOwnerForSlot } from "./party_ownership.js?v=20260905-drafts-freecalc-partners-v1";
 import { moveSupport as defaultMoveSupport } from "../rulesets/core_move_support.js?v=20260907-two-turn-immunity-v1";
@@ -41,7 +41,7 @@ import {
   trappingAbilityBlocksSwitch
 } from "../rulesets/ability_rules.js?v=20260905-drafts-freecalc-partners-v1";
 import { applyCombatantFormState, desiredWeatherAbilityForm, desiredZenModeForm, restoreCombatantIdentityState } from "../rulesets/form_rules.js?v=20260917-partners-release-v1";
-import { afterDamagingMoveItemActivation, damageReductionItemActivation, heldStateItemActivation } from "../rulesets/item_rules.js?v=20260920-held-item-activation-v1";
+import { afterDamagingMoveItemActivation, damageReductionItemActivation, heldStateItemActivation } from "../rulesets/item_rules.js?v=20260920-held-item-activation-v2";
 import { observeAbilityEvent, clearFaintedAbilityKnowledge, entryAbilityAnnouncement } from "./ability_knowledge.js?v=20260911-ability-storage-reimp-v1";
 
 const TRACE_BLOCKED_ABILITIES = new Set(["", "flowergift", "forecast", "illusion", "imposter", "multitype", "stancechange", "trace", "wonderguard", "zenmode"]);

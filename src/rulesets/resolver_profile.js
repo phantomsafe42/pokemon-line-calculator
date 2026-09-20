@@ -1,6 +1,6 @@
 // Increment this value whenever PLC resolver behavior changes in a way that can alter
 // committed states or outcome branches without changing standardized Dataset inputs.
-export const PLC_RESOLVER_RULESET_VERSION = "plc-resolver-v13-gen5-ai-ability-storage";
+export const PLC_RESOLVER_RULESET_VERSION = "plc-resolver-v14-held-item-activation";
 
 export function currentMechanicsFingerprint(dataset) {
   if (!dataset?.fingerprint) throw new Error("A Dataset mechanics fingerprint is required");

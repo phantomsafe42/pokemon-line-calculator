@@ -4,7 +4,7 @@ import { activeKeys, battleFormat as normalizeBattleFormat, slotsPerSide } from 
 import { participatingActiveEntries, participatingActiveKeys } from "../rulesets/rotation_battle.js?v=20260905-drafts-freecalc-partners-v1";
 import { createInitialExperienceState } from "../rulesets/vw2r_experience.js?v=20260917-partners-release-v1";
 import { entryAbilityEffects } from "../rulesets/switch_rules.js?v=20260907-two-turn-immunity-v1";
-import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260911-ability-storage-reimp-v1";
+import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260920-held-item-activation-v2";
 import { combatantsAreAdjacent } from "../rulesets/triple_battle.js?v=20260905-drafts-freecalc-partners-v1";
 import { abilityStatStageRule, activeAbilityId } from "../rulesets/ability_rules.js?v=20260905-drafts-freecalc-partners-v1";
 import { weatherIsSuppressed } from "../rulesets/battle_rules.js?v=20260907-two-turn-immunity-v1";
