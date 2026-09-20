@@ -187,7 +187,7 @@ const ui = Object.fromEntries([
   "plan-context-dialog", "trainer-select", "battle-format", "battle-format-choice", "variant-field", "variant-select", "plan-name",
   "partner-trainer-field", "partner-trainer-select", "partner-trainer-scope", "partner-trainer-search-field", "partner-trainer-search", "partner-variant-field", "partner-variant-select",
   "initial-weather", "initial-terrain", "context-mode-select", "context-box-field", "context-box-select", "saved-party-field",
-  "context-party-select", "context-pokemon-grid", "save-party-selection", "party-selector-controls",
+  "context-party-select", "context-pokemon-grid", "save-party-selection", "party-selection-actions", "party-selector-controls",
   "enemy-team-summary", "party-selection-summary", "edit-party-selection", "edge-party-exp", "context-status", "begin-plan", "pokemon-editor-dialog",
   "pokemon-editor-form", "pokemon-editor-title", "editor-sprite-preview", "editor-box-id", "editor-pokemon-id", "editor-context", "editor-species",
   "editor-nickname", "editor-level", "editor-gender", "editor-nature", "editor-ability", "editor-item", "editor-hidden-power-type",
@@ -1439,7 +1439,6 @@ function updateContextTrainer() {
   renderPlayerPartnerSelection();
   if (contextSelection.mode === "sandbox") {
     renderContextPokemonGrid();
-    if (contextSelection.saved) renderPartySummary();
   }
   updateBeginAvailability();
 }
@@ -1627,6 +1626,14 @@ function renderContextPokemonGrid() {
   const box = mode ? selectedBox(ui["context-box-select"].value) : null;
   ui["context-box-field"].hidden = !mode;
   ui["saved-party-field"].hidden = mode !== "party-lock" || !box;
+  ui["party-selection-actions"].hidden = mode !== "party-lock";
+  if (sandbox) {
+    ui["party-selector-controls"].hidden = false;
+    ui["party-selection-summary"].replaceChildren();
+    ui["party-selection-summary"].hidden = true;
+    ui["edit-party-selection"].hidden = true;
+    ui["edge-party-exp"].hidden = true;
+  }
   contextSelection.boxId = box?.id || null;
   const manual = !sandbox && ui["context-party-select"].value === "__new_party__";
   if (!box) {
@@ -1638,16 +1645,15 @@ function renderContextPokemonGrid() {
   if (sandbox) {
     // Sandbox starts from Box order, not from a saved Party or a prior manual selection.
     const ids = box.pokemonOrder.filter(id => box.pokemon[id]).slice(0, contextPlayerPartnerBinding()?.maxPlayerPartySize || 6);
-    if (ids.join("|") !== contextSelection.pokemonIds.join("|")) {
-      contextSelection.saved = false;
-      ui["party-selector-controls"].hidden = false;
-      ui["party-selection-summary"].hidden = true;
-      ui["edit-party-selection"].hidden = true;
-      ui["edge-party-exp"].hidden = true;
-    }
+    contextSelection.saved = false;
     contextSelection.partyId = null;
     contextSelection.manual = false;
     contextSelection.pokemonIds = ids;
+    for (const record of selectedContextRecords()) ensureContextInitial(record);
+    ui["context-pokemon-grid"].replaceChildren();
+    ui["save-party-selection"].disabled = true;
+    updateBeginAvailability();
+    return;
   } else if (!manual) {
     const party = box.parties[ui["context-party-select"].value];
     contextSelection.partyId = party?.id || null;
@@ -1684,6 +1690,7 @@ async function saveContextOrder(pokemonIds) {
 }
 
 async function edgePartyExperience() {
+  if (contextSelection.mode !== "party-lock") return;
   try {
     const records = selectedContextRecords().filter(record => record.level < 100);
     let nextLibrary = boxLibrary;
@@ -1702,6 +1709,7 @@ async function edgePartyExperience() {
 }
 
 function savePartySelection() {
+  if (contextSelection.mode !== "party-lock") return;
   const records = selectedContextRecords();
   if (!records.length) return;
   for (const record of records) ensureContextInitial(record);
@@ -1718,7 +1726,9 @@ function updateBeginAvailability() {
   const hasPlayerPartner = Boolean(contextPlayerPartnerBinding());
   const playerPartnerReady = !hasPlayerPartner || Boolean(selectedPlayerPartnerOption());
   const playerRequired = hasPlayerPartner ? 1 : required;
-  const enough = Boolean(contextSelection.mode) && contextSelection.saved && selectedContextRecords().length >= playerRequired;
+  const sandbox = contextSelection.mode === "sandbox";
+  const partyReady = sandbox || (contextSelection.mode === "party-lock" && contextSelection.saved);
+  const enough = partyReady && selectedContextRecords().length >= playerRequired;
   const playerPartyLimit = contextPlayerPartnerBinding()?.maxPlayerPartySize || 6;
   const withinPartyLimit = selectedContextRecords().length <= playerPartyLimit;
   const variantReady = !trainer?.mechanicsVariants?.length || Boolean(ui["variant-select"].value);
@@ -1737,7 +1747,8 @@ function updateBeginAvailability() {
     : !partnerReady ? "Select an opponent partner for the Multi battle."
       : !partnerVariantReady ? "Select the partner trainer's exact ROM variant."
     : !contextSelection.mode ? "Select a mode."
-    : !contextSelection.saved ? "Choose and save a player party."
+    : sandbox && !contextSelection.boxId ? "Select a box."
+    : !partyReady ? "Choose and save a player party."
       : !withinPartyLimit ? `This encounter allows at most ${playerPartyLimit} player Pokémon. Choose which Pokémon to bring.`
       : !enough ? `${ui["battle-format"].value} requires at least ${playerRequired} player Pokémon.`
         : !enemyReady ? `${ui["battle-format"].value} requires at least ${required} enemy Pokémon.`
