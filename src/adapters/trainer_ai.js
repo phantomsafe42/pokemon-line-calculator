@@ -1,5 +1,5 @@
 import { activeSlotEntries } from "../core/battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
-import { upgradeInitialEntryEffects } from "../core/plan.js?v=20260917-partners-release-v1";
+import { upgradeInitialEntryEffects } from "../core/plan.js?v=20260920-held-item-activation-v2";
 import { belongsToSlotParty } from '../core/party_ownership.js?v=20260905-drafts-freecalc-partners-v1';
 import { rotationFrontSlot } from "../rulesets/rotation_battle.js?v=20260905-drafts-freecalc-partners-v1";
 import { areSlotsAdjacent, triplePositionForSlot } from "../rulesets/triple_battle.js?v=20260905-drafts-freecalc-partners-v1";
