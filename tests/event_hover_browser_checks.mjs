@@ -27,6 +27,7 @@ export async function checkEventHover({page,evaluate,delay,dataset}) {
       const card=document.querySelector('#preview-outcomes .crafted-outcome');
       return {title:!!card.querySelector('.outcome-reason'),events:card.firstElementChild?.className,probability:!!card.querySelector('.outcome-probability')};
     })()`), {title:false,events:'outcome-events',probability:true}, 'Outcomes starts with the complete event list, not a single-action summary');
+    assert.equal(await evaluate(page, `/\\bSlot \\d+ is empty\\b/i.test(document.getElementById('preview-outcomes').textContent)`), false, 'Empty-slot bookkeeping is not displayed in Outcomes');
     await wait(`[...document.querySelectorAll('.damage-slot-value,.damage-label')].every(el=>el.textContent!=='…')`,'hover label settlement');
     await delay(100);
     await evaluate(page,`(()=>{window.__hoverTraffic=0;const post=Worker.prototype.postMessage;Worker.prototype.postMessage=function(...args){window.__hoverTraffic++;return post.apply(this,args);};window.__hoverSaved=[...document.querySelectorAll('.action-panel-cards')];window.__hoverBefore={height:document.documentElement.scrollHeight,tree:document.getElementById('node-tree').textContent,revision:document.getElementById('revision-label').textContent};})()`);
