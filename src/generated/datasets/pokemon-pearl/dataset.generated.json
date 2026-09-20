@@ -2,12 +2,12 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-pearl-dataset",
   "source": "Datasets/Pokemon Pearl/source-data",
-  "sourceTreeSha256": "B6360F9B5BF1D17D9490D135D49016C8DF424442A998DB8B532C1FB4FD0AB8D6",
+  "sourceTreeSha256": "240B3DB41EBDD8E4133AFE1989431B549DE89C6DDF37AB8751B3EB8576E31751",
   "files": [
     {
       "path": "dataset_manifest.json",
       "bytes": 100134,
-      "sha256": "5A27B9CF041021DA95692CA70D97F82454A82BB4FE3D4164BC8CD192A95899E9"
+      "sha256": "F064B07E55808F558172B3A886004F0ED7EF4380A676E48F521937547216BE30"
     },
     {
       "path": "battle_mechanics.json",
@@ -36,8 +36,8 @@
     },
     {
       "path": "items.json",
-      "bytes": 325400,
-      "sha256": "33C4A09D32D0FD23835C2FEDB0ABCFD0165701D55D8F45E2E6D4E09B169BF0ED"
+      "bytes": 344405,
+      "sha256": "798C02CCA8A2A9AA6AB1FDDE882DA1A21695D990B5FB9D50FF485BE2F9BD2EA1"
     },
     {
       "path": "natures.json",

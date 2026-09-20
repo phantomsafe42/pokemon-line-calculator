@@ -2,7 +2,7 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-ss-dataset",
   "source": "Datasets/Storm Silver/source-data",
-  "sourceTreeSha256": "4A8F5ACEC9832388AE2B0802E04D5AC48E943B2559B8BB168ED86769149AE611",
+  "sourceTreeSha256": "1169FF8632F8C0C383D4AFCBE19CADFB0EF1A57A3EB80647E28CB1D4FA1271B6",
   "files": [
     {
       "path": "dataset_manifest.json",
@@ -36,8 +36,8 @@
     },
     {
       "path": "items.json",
-      "bytes": 1338206,
-      "sha256": "C33C3583B7F81383484B5C49E827F460D590A4C95ADF4D5AB016B03E25365EC1"
+      "bytes": 1357211,
+      "sha256": "A83A6CD77580F693E064BB82A39567CAF819C917238CE553C5804BC12ECFD3B9"
     },
     {
       "path": "natures.json",

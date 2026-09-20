@@ -2,7 +2,7 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-ruby-dataset",
   "source": "Datasets/Pokemon Ruby/source-data",
-  "sourceTreeSha256": "A0FCE08C695E289456741E81F677937B9E5F7211D12352E5DB1830966E140222",
+  "sourceTreeSha256": "54C400FC2EB35FD14B36D4D7A5B3C4391609E7415998186D2E745C21B79B62D5",
   "files": [
     {
       "path": "dataset_manifest.json",
@@ -36,8 +36,8 @@
     },
     {
       "path": "items.json",
-      "bytes": 229011,
-      "sha256": "4181800322BEFC213D64C6252508C322CAEA2A3F406771C647CF420486063F62"
+      "bytes": 248016,
+      "sha256": "19EB4D775D7DE26CF555BC5B81F016BE1119634BAC74C88A3814DDC31FBAC910"
     },
     {
       "path": "natures.json",

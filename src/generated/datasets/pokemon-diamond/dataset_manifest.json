@@ -954,7 +954,7 @@
       "role": "pinned local generation-reference inheritance input"
     },
     "../../Gen 4/source-data/trainer_ai.json": {
-      "sha256": "5be8abe801d537d7b7485caa00451e3d015e066acccfd2366f1c98b413ddcb60",
+      "sha256": "272b7392bdbedafd39b26c3895147b09c4fe6caa33f402d2c89518da93ea4bf1",
       "role": "pinned local generation-reference inheritance input"
     },
     "../../tools/imports/vanilla/special-trainer-mechanics/mechanics.json": {
