@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { ResolverWorkerClient } from "../src/worker/resolver_client.js";
+import { fixturePlan } from './helpers.mjs';
 
 class FakeWorker {
   static instances = [];
@@ -56,12 +57,14 @@ test("Trainer AI analysis initializes lazily on a dedicated lane and cannot bloc
     assert.deepEqual(await initializing, { lane: "resolver", trainerAiMetadata: bootstrap });
 
     const aiPromise = client.trainerAi({ state: "slow" });
-    const damagePromise = client.damagePreview({ move: "fast" });
+    const { plan } = fixturePlan();
+    const damagePromise = client.damagePreview({ plan, stateNodeId: plan.initialStateNodeId, moveId: 'tackle' });
+    await Promise.resolve();
     assert.equal(trainerAiWorker.messages[0].type, "initialize");
     assert.equal(trainerAiWorker.messages[0].payload.role, "trainer-ai");
     assert.deepEqual(trainerAiWorker.messages[0].payload.trainerAiLazyResources, bootstrap.lazyResources);
-    assert.equal(resolverWorker.messages.at(-1).type, "damage-preview");
-    resolverWorker.emit("message", { requestId: resolverWorker.messages.at(-1).requestId, ok: true, result: { damage: 42 } });
+    assert.equal(resolverWorker.messages.at(-1).type, "damage-preview-batch");
+    resolverWorker.emit("message", { requestId: resolverWorker.messages.at(-1).requestId, ok: true, result: [{ ok: true, value: { damage: 42 } }] });
     assert.deepEqual(await damagePromise, { damage: 42 });
     trainerAiWorker.emit("message", { requestId: trainerAiWorker.messages[0].requestId, ok: true, result: { lane: "trainer-ai" } });
     await Promise.resolve();

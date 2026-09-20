@@ -24,8 +24,9 @@ export function createDraftRecord(document, workingCursorStateNodeId = document.
 }
 
 export function updateDraftRecord(record, document, cursorStateNodeId) {
+  const { document: previousDocument, ...metadata } = record;
   return {
-    ...clone(record),
+    ...clone(metadata),
     draftRevision: Number(document.documentRevision),
     dirty: Number(record.lastExportedRevision) !== Number(document.documentRevision),
     document: clone(document),
@@ -86,6 +87,7 @@ export class IndexedDbDraftStore {
     this.indexedDB = indexedDB;
     this.databaseName = databaseName;
     this.storeName = storeName;
+    this.tail = Promise.resolve();
   }
 
   open() {
@@ -100,15 +102,27 @@ export class IndexedDbDraftStore {
     });
   }
 
-  async transact(mode, operation) {
+  transact(mode, operation) {
+    // Serialize reads, saves and clears in call order, including when opening
+    // the database is delayed. A late old save must never resurrect a line.
+    const next = this.tail.then(() => this.performTransaction(mode, operation));
+    this.tail = next.catch(() => {});
+    return next;
+  }
+
+  async performTransaction(mode, operation) {
     const database = await this.open();
     try {
       return await new Promise((resolve, reject) => {
         const transaction = database.transaction(this.storeName, mode);
         const store = transaction.objectStore(this.storeName);
         const request = operation(store);
-        request.onsuccess = () => resolve(clone(request.result));
+        let result;
+        request.onsuccess = () => { result = request.result; };
         request.onerror = () => reject(request.error);
+        transaction.oncomplete = () => resolve(result);
+        transaction.onabort = () => reject(transaction.error || new Error('Draft transaction aborted'));
+        transaction.onerror = () => reject(transaction.error || new Error('Draft transaction failed'));
       });
     } finally {
       database.close();
@@ -116,6 +130,11 @@ export class IndexedDbDraftStore {
   }
 
   load() { return this.transact("readonly", store => store.get("active")); }
-  save(value) { return this.transact("readwrite", store => store.put(clone(value), "active")); }
+  save(value) {
+    // Capture now, not after the asynchronous database open. IndexedDB makes
+    // its own copy on put; no extra cloning is needed inside the transaction.
+    const snapshot = clone(value);
+    return this.transact("readwrite", store => store.put(snapshot, "active"));
+  }
   clear() { return this.transact("readwrite", store => store.delete("active")); }
 }

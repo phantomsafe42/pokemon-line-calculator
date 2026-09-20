@@ -112,6 +112,15 @@ self.addEventListener("message", async event => {
       self.postMessage({ requestId, ok: true, result });
       return;
     }
+    if (type === 'damage-preview-batch') {
+      if (workerRole !== 'resolver' || !dataset || !damageAdapter || !previewCombatantMove) throw new Error('Resolver Worker has not been initialized');
+      const result = payload.requests.map(request => {
+        try { return { ok: true, value: previewCombatantMove({ ...request, plan: payload.plan, dataset, damageAdapter }) }; }
+        catch (error) { return { ok: false, error: { name: error.name, message: error.message } }; }
+      });
+      self.postMessage({ requestId, ok: true, result });
+      return;
+    }
     if (type === "damage-preview") {
       if (workerRole !== "resolver" || !dataset || !damageAdapter || !previewCombatantMove) throw new Error("Resolver Worker has not been initialized");
       const result = previewCombatantMove({ ...payload, dataset, damageAdapter });

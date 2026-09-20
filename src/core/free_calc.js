@@ -6,7 +6,7 @@ import { experienceForLevel, levelFromExperience } from '../rulesets/vw2r_experi
 import { assertValidPlanDocument } from '../contracts/plan_contract.js?v=20260917-partners-release-v1';
 import { belongsToSlotParty, eligibleReserves } from './party_ownership.js?v=20260917-partners-release-v1';
 
-export function addFreeCalcBranch(original, stateId) {
+export function addFreeCalcBranch(original, stateId, { validate = true } = {}) {
   const plan = clone(original);
   const parent = plan.stateNodes[stateId];
   if (!parent) throw new Error('Select an existing state for Free Calc');
@@ -29,7 +29,7 @@ export function addFreeCalcBranch(original, stateId) {
   plan.stateNodes[nextId] = state;
   refreshFreeCalcBoundary(plan, state);
   touchPlan(plan); updateStateHash(state);
-  return { plan: assertValidPlanDocument(plan), stateId: nextId };
+  return { plan: validate ? assertValidPlanDocument(plan) : plan, stateId: nextId };
 }
 
 function integer(value, minimum, maximum, label) {

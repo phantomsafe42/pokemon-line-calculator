@@ -1,5 +1,5 @@
 import { clone } from './primitives.js';
-import { addFreeCalcBranch, editFreeCalcCombatant, replaceFreeCalcSlot, refreshFreeCalcBoundary } from './free_calc.js';
+import { addFreeCalcBranch, editFreeCalcCombatant, replaceFreeCalcSlot, refreshFreeCalcBoundary } from './free_calc.js?v=20260920-performance-v1';
 import { createCombatantState, touchPlan, updateStateHash } from './plan.js';
 import { belongsToSlotParty } from './party_ownership.js';
 import { assertValidPlanDocument } from '../contracts/plan_contract.js';
@@ -15,7 +15,9 @@ function editBoundary(original, stateId, operation) {
   if (!state) throw new Error('Select an existing Sandbox node');
   const reusable = state.sandboxEdit && state.parentManualTransitionId
     && ![...(state.childActionGroupIds || []), ...(state.childReplacementTransitionIds || []), ...(state.childManualTransitionIds || [])].length;
-  const result = reusable ? { plan: clone(original), stateId } : addFreeCalcBranch(original, stateId);
+  // Validate the finished transaction below, not an intermediate unedited copy
+  // of the entire history as well. Keep independent snapshots for all nodes.
+  const result = reusable ? { plan: clone(original), stateId } : addFreeCalcBranch(original, stateId, { validate: false });
   operation(result.plan, result.stateId);
   const edited = result.plan.stateNodes[result.stateId];
   delete edited.trainerAiForecast;

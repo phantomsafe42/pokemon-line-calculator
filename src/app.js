@@ -7,12 +7,13 @@ import { readStarterPreference, saveStarterPreference } from './cache/starter_pr
 import { loadTrainerAiBootstrap } from "./adapters/trainer_ai.js?v=20260918-replacement-reasons-v2";
 import { forecastTargetLabel, replacementForecastLines } from "./ui/ai_forecast.js?v=20260918-replacement-reasons-v2";
 import { hasManualStartingHp } from "./ui/editor_hp.js?v=20260917-editor-hp-v1";
-import { createDraftRecord, destructiveTransitionNotice, IndexedDbDraftStore, markExported, updateDraftRecord } from "./cache/active_draft.js?v=20260909-public-release-v2";
+import { createDraftRecord, destructiveTransitionNotice, IndexedDbDraftStore, markExported, updateDraftRecord } from "./cache/active_draft.js?v=20260920-performance-v1";
+import { coalescedTask } from './cache/coalesced_task.js?v=20260920-performance-v1';
 import { TrainerAiForecastCache } from "./cache/trainer_ai_forecast.js?v=20260909-public-release-v2";
 import { SavedDraftStore, savedDraftSnapshot } from "./cache/saved_drafts.js?v=20260917-partners-release-v1";
 import { reorderCards } from "./ui/reorder_cards.js?v=20260909-public-release-v2";
-import { addFreeCalcBranch, editFreeCalcCombatant, replaceFreeCalcSlot, freeCalcAsNewPlan } from './core/free_calc.js?v=20260919-sandbox-v1';
-import { isSandbox, editSandboxCombatant, placeSandboxCombatant, admitSandboxReserve } from './core/sandbox.js?v=20260919-sandbox-v1';
+import { addFreeCalcBranch, editFreeCalcCombatant, replaceFreeCalcSlot, freeCalcAsNewPlan } from './core/free_calc.js?v=20260920-performance-v1';
+import { isSandbox, editSandboxCombatant, placeSandboxCombatant, admitSandboxReserve } from './core/sandbox.js?v=20260920-performance-v1';
 import { sandboxPickerCandidates } from './ui/sandbox_picker.js?v=20260919-sandbox-picker-v2';
 import { makeStableId } from './core/primitives.js';
 import { freeCalcExperience, freeCalcTotalExperience } from './ui/free_calc.js?v=20260918-free-calc-inline-v1';
@@ -38,7 +39,7 @@ import { effectiveActionSpeed } from "./rulesets/action_order.js?v=20260909-publ
 import { areSlotsAdjacent, canSelectShift, shiftWithCenter, triplePositionForSlot, tripleSlotForPosition } from "./rulesets/triple_battle.js?v=20260909-public-release-v2";
 import { rotationFrontKey, rotationFrontSlot } from "./rulesets/rotation_battle.js?v=20260909-public-release-v2";
 import { experienceForLevel, experienceToNextLevel, projectExperience } from "./rulesets/vw2r_experience.js?v=20260917-partners-release-v1";
-import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260918-replacement-reasons-v2";
+import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260920-performance-v1";
 import { battleCompletionState } from "./core/battle_completion.js?v=20260909-public-release-v2";
 import {
   addBox, addParty, boxesForGame, createEmptyBoxLibrary, exportBoxLibrary, IndexedDbBoxLibraryStore,
@@ -937,8 +938,13 @@ function renderBoxes() {
   ui["boxes-list"].replaceChildren(...boxes.map(renderBox));
 }
 
+const sortedRecordCache = new WeakMap();
+const selectOptionCache = new WeakMap();
 function sortedRecords(kind) {
-  return [...dataset.indexes[kind].values()].sort((a, b) => String(a.name || a.displayName).localeCompare(String(b.name || b.displayName)));
+  const index = dataset.indexes[kind];
+  if (!sortedRecordCache.has(index)) sortedRecordCache.set(index,
+    Object.freeze([...index.values()].sort((a, b) => String(a.name || a.displayName).localeCompare(String(b.name || b.displayName)))));
+  return sortedRecordCache.get(index);
 }
 
 function speciesDexNumber(record) {
@@ -968,6 +974,21 @@ function speciesSelectLabel(record) {
 }
 
 function fillSelect(select, records, { blank = null, labelFor = null } = {}) {
+  // Only memoize the frozen Dataset catalogs, never editable Box/party lists.
+  // Clones retain native select/search semantics without rebuilding thousands
+  // of option objects for every Sandbox slot on every move click.
+  if (Object.isFrozen(records) && !labelFor) {
+    if (!selectOptionCache.has(records)) selectOptionCache.set(records, new Map());
+    const variants = selectOptionCache.get(records);
+    if (!variants.has(blank)) {
+      const fragment = document.createDocumentFragment();
+      if (blank !== null) fragment.append(option('', blank));
+      for (const record of records) fragment.append(option(record.id, record.name || record.displayName || record.id));
+      variants.set(blank, fragment);
+    }
+    select.replaceChildren(variants.get(blank).cloneNode(true));
+    return;
+  }
   select.replaceChildren();
   if (blank !== null) select.append(option("", blank));
   for (const record of records) select.append(option(record.id, labelFor?.(record) || record.name || record.displayName || record.id));
@@ -3044,6 +3065,7 @@ function renderActionPanels() {
   const focusId = (freeCalcSession || isSandbox(plan)) && focused?.dataset.freeCalcControl;
   const draftValue = focused?.dataset.freeCalcEditing ? focused.value : null;
   damageGeneration += 1;
+  worker?.beginDamageView();
   renderActionPanel("player");
   renderActionPanel("enemy");
   if (focusId) {
@@ -3441,6 +3463,7 @@ async function refreshPreview() {
   const actions = actionsFromDraft();
   const replacement = pendingReplacementSlots(selectedState()).length > 0;
   if (!actions) {
+    worker.cancelPreview();
     ui.readiness.textContent = replacement ? "Select every required replacement." : "Choose an action for every active Pokémon.";
     clearPreview();
     return;
@@ -3902,19 +3925,20 @@ function renderWorkspace() {
   const turnNumber = reviewed ? displayTurnNumber(reviewed) : battleActuallyEnded(selected) ? Number(selected.turnNumber) : Number(selected.turnNumber) + 1;
   ui["turn-label"].textContent = `Turn ${turnNumber}${replacementPhase ? " · Replacement" : ""}`;
   ui["commit-turn"].textContent = battleCompletionState(plan, selected).commitLabel;
-  renderTree(); renderField(); renderActionPanels(); renderNotes(); renderExportSelection();
+  renderTree(); renderField(); renderActionPanels(); renderNotes();
+  if (ui['output-dialog'].open) renderExportSelection();
   if (battleActuallyEnded(selectedState())) { ui.readiness.textContent = "The battle has ended."; clearPreview("The battle has ended."); }
   else if (needsRecalculation) { ui.readiness.textContent = "Recalculation is required."; clearPreview("This imported plan needs recalculation under the current mechanics fingerprint."); }
   else refreshPreview();
 }
 
-async function persistDraft() {
+const persistDraft = coalescedTask(async () => {
   if (!plan || freeCalcSession) return;
   draftRecord = draftRecord ? updateDraftRecord(draftRecord, plan, cursorStateNodeId) : createDraftRecord(plan, cursorStateNodeId);
   if (isSandbox(plan)) draftRecord.sandboxEditor = structuredClone({ actionDraft, reviewOutcomeStateNodeId, selectedPreviewOutcomeId });
   else delete draftRecord.sandboxEditor;
   await draftStore.save(draftRecord);
-}
+});
 
 async function commitCurrentPreview() {
   if (!currentPreview || !plan) return;
