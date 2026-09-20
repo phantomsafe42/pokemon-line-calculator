@@ -30,7 +30,7 @@ import { boundedSlotDamageLabel, highestDamageCandidateKeys, resolvedCombatantMo
 import { exportBranchGroups, planTreeOrder, planTurnTreeOrder, preferredImportedReviewStateId, stateLineage, turnNodeVisuals } from "./core/graph.js?v=20260917-partners-release-v1";
 import { HIDDEN_POWER_TYPES, hiddenPowerTypeFromIvs, resolvedHiddenPowerType } from "./core/hidden_power.js?v=20260909-public-release-v2";
 import { forcedTurnAction } from "./core/forced_actions.js?v=20260909-public-release-v2";
-import { formatDamageRollCounts, healingEventDescription, isCriticalOhkoOutcome, isHighRollKoOutcome, outcomePanelEvents, readableMechanicName } from "./core/outcome_presentation.js?v=20260909-public-release-v2";
+import { formatDamageRollCounts, healingEventDescription, outcomePanelEvents, readableMechanicName } from "./core/outcome_presentation.js?v=20260909-public-release-v2";
 import { createPlanDocument, planHasWork, setStateNodeNote, upgradeInitialEntryEffects } from "./core/plan.js?v=20260920-event-hover-v1";
 import { commitForcedReplacement, commitLabel, commitPreview, previewForcedReplacement, refreshUnknownCommittedProbabilities, repairStaleLeafBattleEnd, replacementCommitLabel } from "./core/planner.js?v=20260920-event-hover-v1";
 import { recalculatePlanDocument } from "./core/recalculation.js?v=20260917-partners-release-v1";
@@ -3512,35 +3512,6 @@ function renderOutcomeAction(group, fallbackLabel = null) {
   return item;
 }
 
-function outcomeSplitReason(entry, allEntries) {
-  const outcome = entry.outcome || entry;
-  const events = outcomePanelEvents(entry.events || []);
-  const orderModifier = events.find(event => event.eventType === "order-modifier" && event.metadata?.activated === true);
-  if (orderModifier) return orderModifier.metadata.resultLabel || `${orderModifier.metadata.sourceName || "Action order"} activated`;
-  const criticalOhko = isCriticalOhkoOutcome(entry);
-  const highRollKo = isHighRollKoOutcome(entry, allEntries);
-  if (criticalOhko) return "Critical-hit OHKO";
-  if (highRollKo) return "Damage high roll caused a KO";
-  const miss = events.find(event => event.eventType === "miss");
-  if (miss) return `${dataset.get("moves", miss.moveId)?.name || miss.moveId} missed`;
-  const skipped = events.find(event => event.eventType === "action-skipped");
-  if (skipped) return skipped.metadata?.resultLabel || skipped.reason || "Action skipped";
-  const noSecondary = events.find(event => event.eventType === "secondary-effect-missed");
-  if (noSecondary) return `${dataset.get("moves", noSecondary.moveId)?.name || noSecondary.moveId}: no secondary effect`;
-  const critical = events.find(event => event.eventType === "damage" && event.metadata?.criticalHit === true);
-  if (critical) return `${dataset.get("moves", critical.moveId)?.name || critical.moveId} landed a critical hit`;
-  const branchingEffect = events.find(event => [
-    "ability-change", "form-change", "major-status", "volatile-status", "status-failed", "volatile-status-failed", "move-blocked", "move-immune",
-    "protect", "stat-stage-change", "heal", "field-change", "confusion-self-hit"
-  ].includes(event.eventType) && event.metadata?.resultLabel);
-  if (branchingEffect) return branchingEffect.metadata.resultLabel;
-  const ko = events.find(event => event.eventType === "damage" && event.metadata?.thresholdOutcome === "ko");
-  if (ko) return `${recordName(plan.combatants[ko.targetKey])} fainted`;
-  const conditions = (outcome.conditions || []).map(condition => condition.expression).filter(Boolean);
-  if (conditions.length) return conditions.map(condition => condition.startsWith("speed-tie:") ? "Speed-tie order" : condition).join(" · ");
-  return outcome.label || entry.displaySnapshot?.outcomeLabel || "Resolved outcome";
-}
-
 function renderPreview(preview) {
   clearEventInspection();
   const entry = defaultPreviewEntry();
@@ -3564,7 +3535,6 @@ function renderPreview(preview) {
   const card = document.createElement("article"); card.className = "outcome crafted-outcome";
   const victory = battleVictory(entry.state || entry);
   card.classList.toggle("battle-victory", victory);
-  const reason = document.createElement("p"); reason.className = "outcome-reason"; reason.textContent = outcomeSplitReason(entry, preview.outcomes || []);
   const list = document.createElement("ul"); list.className = "outcome-events";
   for (const group of outcomeActionGroups(events)) list.append(renderOutcomeAction(group));
   if (!list.childElementCount) {
@@ -3576,7 +3546,7 @@ function renderPreview(preview) {
     list.append(endedItem);
   }
   const probability = document.createElement("p"); probability.className = "outcome-probability"; probability.textContent = `Crafted outcome probability · ${probabilityLabel(outcome)}`;
-  card.append(reason, list, probability);
+  card.append(list, probability);
   nodes.push(card);
   ui["preview-outcomes"].replaceChildren(...nodes);
 }
