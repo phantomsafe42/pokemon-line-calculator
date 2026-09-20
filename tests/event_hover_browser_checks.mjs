@@ -27,15 +27,24 @@ export async function checkEventHover({page,evaluate,delay,dataset}) {
     await delay(100);
     await evaluate(page,`(()=>{window.__hoverTraffic=0;const post=Worker.prototype.postMessage;Worker.prototype.postMessage=function(...args){window.__hoverTraffic++;return post.apply(this,args);};window.__hoverSaved=[...document.querySelectorAll('.action-panel-cards')];window.__hoverBefore={height:document.documentElement.scrollHeight,tree:document.getElementById('node-tree').textContent,revision:document.getElementById('revision-label').textContent};})()`);
     const result=await evaluate(page,`(()=>{
-      const rows=[...document.querySelectorAll('#preview-outcomes .outcome-event-detail[data-event-index]')];
+      const rows=[...document.querySelectorAll('#preview-outcomes .outcome-action[data-event-index]')];
       const row=rows.find(row=>/Tackle/.test(row.textContent))||document.querySelector('#preview-outcomes [data-event-index]');
       row.dispatchEvent(new PointerEvent('pointerover',{bubbles:true,pointerType:'mouse'}));
       return {layers:document.querySelectorAll('.event-preview-layer').length,actors:document.querySelectorAll('.event-preview-layer .event-actor').length,affected:document.querySelectorAll('.event-preview-layer .event-affected').length,controls:document.querySelectorAll('.event-preview-layer button,.event-preview-layer input,.event-preview-layer select').length,height:document.documentElement.scrollHeight};
     })()`);
     assert.equal(result.layers,2);assert.ok(result.actors>0);assert.ok(result.affected>0);assert.equal(result.controls,0);
     assert.equal(result.height,await evaluate(page,'window.__hoverBefore.height'));
+    const sectionTargets=await evaluate(page,`(()=>{
+      const row=document.querySelector('#preview-outcomes .outcome-action[data-event-index]');
+      const child=row.querySelector('.event-line');
+      const layers=[...document.querySelectorAll('.event-preview-layer')];
+      child.dispatchEvent(new PointerEvent('pointerover',{bubbles:true,pointerType:'mouse',relatedTarget:row}));
+      child.dispatchEvent(new PointerEvent('pointerout',{bubbles:true,pointerType:'mouse',relatedTarget:row.querySelector('.outcome-action-sprite')}));
+      return {innerTargets:document.querySelectorAll('.outcome-action [data-event-index],.outcome-action [tabindex]').length,unchanged:layers.every(layer=>layer.isConnected),wholeSection:document.querySelector('.is-inspected-event')?.classList.contains('outcome-action')};
+    })()`);
+    assert.deepEqual(sectionTargets,{innerTargets:0,unchanged:true,wholeSection:true});
     if(format==='triples') {
-      await evaluate(page,`document.querySelector('#preview-outcomes .outcome-event-detail[data-event-index]').click()`);
+      await evaluate(page,`document.querySelector('#preview-outcomes .outcome-action[data-event-index]').click()`);
       await delay(100);
       assert.equal(await evaluate(page,`document.querySelectorAll('.event-preview-layer').length`),2);
       const shot=await page.send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});
