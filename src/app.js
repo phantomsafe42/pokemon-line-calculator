@@ -30,7 +30,7 @@ import { boundedSlotDamageLabel, highestDamageCandidateKeys, resolvedCombatantMo
 import { exportBranchGroups, planTreeOrder, planTurnTreeOrder, preferredImportedReviewStateId, stateLineage, turnNodeVisuals } from "./core/graph.js?v=20260917-partners-release-v1";
 import { HIDDEN_POWER_TYPES, hiddenPowerTypeFromIvs, resolvedHiddenPowerType } from "./core/hidden_power.js?v=20260909-public-release-v2";
 import { forcedTurnAction } from "./core/forced_actions.js?v=20260909-public-release-v2";
-import { formatDamageRollCounts, healingEventDescription, outcomePanelEvents, readableMechanicName } from "./core/outcome_presentation.js?v=20260920-held-item-release-v3";
+import { formatDamageRollCounts, healingEventDescription, outcomePanelEvents, protectionEventDescription, readableMechanicName } from "./core/outcome_presentation.js?v=20260920-protect-text-v1";
 import { createPlanDocument, planHasWork, setStateNodeNote, upgradeInitialEntryEffects } from "./core/plan.js?v=20260920-held-item-release-v3";
 import { commitForcedReplacement, commitLabel, commitPreview, previewForcedReplacement, refreshUnknownCommittedProbabilities, repairStaleLeafBattleEnd, replacementCommitLabel } from "./core/planner.js?v=20260920-held-item-release-v3";
 import { recalculatePlanDocument } from "./core/recalculation.js?v=20260920-held-item-release-v3";
@@ -3250,6 +3250,8 @@ function eventDescription(event) {
   const healing = healingEventDescription(event, { moveName: move?.name || null, maxHp: healingMaxHp });
   if (healing) return { line: healing };
   const targetPrefix = event.targetKey && event.targetKey !== event.actorKey ? outcomeTargetSlotLabel(event.targetKey, event) : null;
+  const protection = protectionEventDescription(event, { moveName: move?.name, targetLabel: targetPrefix });
+  if (protection) return { line: protection };
   if (event.eventType === "shift") {
     const actor = plan.combatants[event.actorKey];
     const side = actor?.side || "player";
