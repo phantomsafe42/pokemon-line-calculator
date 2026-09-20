@@ -43,6 +43,23 @@ export async function checkEventHover({page,evaluate,delay,dataset}) {
       return {innerTargets:document.querySelectorAll('.outcome-action [data-event-index],.outcome-action [tabindex]').length,unchanged:layers.every(layer=>layer.isConnected),wholeSection:document.querySelector('.is-inspected-event')?.classList.contains('outcome-action')};
     })()`);
     assert.deepEqual(sectionTargets,{innerTargets:0,unchanged:true,wholeSection:true});
+    const transitions=await evaluate(page,`(()=>{
+      const rows=[...document.querySelectorAll('#preview-outcomes .outcome-action[data-event-index]')];
+      let previous=null,sharedSnapshotPairs=0;
+      for(const row of [...rows,...rows.toReversed()]){
+        const shared=previous?.dataset.eventIndex===row.dataset.eventIndex;
+        const layers=[...document.querySelectorAll('.event-preview-layer')];
+        if(shared)sharedSnapshotPairs++;
+        previous?.dispatchEvent(new PointerEvent('pointerout',{bubbles:true,pointerType:'mouse',relatedTarget:row}));
+        row.dispatchEvent(new PointerEvent('pointerover',{bubbles:true,pointerType:'mouse',relatedTarget:previous}));
+        if(!row.classList.contains('is-inspected-event'))return {allSelected:false,text:row.textContent,sharedSnapshotPairs};
+        if(shared&&!layers.every(layer=>layer.isConnected))return {allSelected:false,reason:'Shared snapshot unnecessarily rebuilt',sharedSnapshotPairs};
+        previous=row;
+      }
+      return {allSelected:true,sharedSnapshotPairs};
+    })()`);
+    assert.equal(transitions.allSelected,true,JSON.stringify(transitions));
+    assert.ok(transitions.sharedSnapshotPairs>0,'KO and faint rows exercise a shared event snapshot');
     if(format==='triples') {
       await evaluate(page,`document.querySelector('#preview-outcomes .outcome-action[data-event-index]').click()`);
       await delay(100);
