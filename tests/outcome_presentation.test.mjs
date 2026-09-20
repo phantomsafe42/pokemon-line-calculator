@@ -68,6 +68,18 @@ test("Possible Outcomes omits replacement prompts and obsolete faint-before-acti
   assert.deepEqual(outcomePanelEvents(events), [events[3], events[4]]);
 });
 
+test("Outcomes hides empty-slot bookkeeping on either side without changing the event log", () => {
+  const emptied = ["player", "enemy"].flatMap(side => [0, 1, 2].map(slot => ({
+    eventType: "slot-emptied", targetKey: `${side}-${slot}`,
+    changes: [{ path: `active.${side}CombatantKeys.${slot}`, from: `${side}-${slot}`, to: null }],
+    metadata: { side, slot, resultLabel: `${side} Slot ${slot + 1} is empty` }
+  })));
+  const events = [{ eventType: "damage" }, { eventType: "faint" }, ...emptied, { eventType: "battle-ended" }];
+  const original = structuredClone(events);
+  assert.deepEqual(outcomePanelEvents(events), [events[0], events[1], events.at(-1)]);
+  assert.deepEqual(events, original, "Hidden events remain available for state replay and event-time previews");
+});
+
 function damage(thresholdOutcome, overrides = {}) {
   return {
     eventType: "damage",

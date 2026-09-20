@@ -73,7 +73,7 @@ export function healingEventDescription(event, { moveName = null, maxHp = null }
 export function outcomePanelEvents(events) {
   return (events || []).filter(event => {
     if (event?.metadata?.hiddenFromOutcomes === true) return false;
-    if (["experience-gain", "replacement-required"].includes(event?.eventType)) return false;
+    if (["experience-gain", "replacement-required", "slot-emptied"].includes(event?.eventType)) return false;
     if (event?.eventType !== "action-skipped") return true;
     return !["actor-fainted-before-moving", "target-fainted-before-action"].includes(event.reason);
   });
