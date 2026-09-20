@@ -370,7 +370,6 @@ button.damage-slot[aria-pressed="true"] .damage-slot-label { color: #17345a; }
 .outcomes { display: grid; gap: .55rem; margin-top: .7rem; }
 .outcome { border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 5px; padding: .7rem .75rem; background: var(--panel-2); }
 .outcome.battle-victory { border-color: var(--gold); border-left-color: var(--gold); }
-.outcome-reason { margin: 0 0 .55rem; color: var(--gold); font-size: .72rem; font-weight: 800; line-height: 1.35; }
 .outcome-events { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
 .outcome-action { display: grid; grid-template-columns: 44px minmax(0, 1fr); align-items: start; gap: .65rem; min-width: 0; padding: .65rem 0; }
 .outcome-action.has-two-sprites { grid-template-columns: 84px minmax(0, 1fr); }

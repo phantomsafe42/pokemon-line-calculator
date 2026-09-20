@@ -23,6 +23,10 @@ export async function checkEventHover({page,evaluate,delay,dataset}) {
       await evaluate(page,`(()=>{const card=document.querySelector('#${side}-action-panel .combatant-card[data-action-slot="${slot}"]');const move=[...card.querySelectorAll('.move-button')].find(button=>button.querySelector('strong')?.textContent==='Tackle');if(!move)throw new Error('Missing Tackle');move.click();})()`);
     }
     await wait(`document.querySelectorAll('#preview-outcomes [data-event-index]').length>0&&!document.getElementById('commit-turn').disabled`,'hover outcome calculation');
+    assert.deepEqual(await evaluate(page, `(()=>{
+      const card=document.querySelector('#preview-outcomes .crafted-outcome');
+      return {title:!!card.querySelector('.outcome-reason'),events:card.firstElementChild?.className,probability:!!card.querySelector('.outcome-probability')};
+    })()`), {title:false,events:'outcome-events',probability:true}, 'Outcomes starts with the complete event list, not a single-action summary');
     await wait(`[...document.querySelectorAll('.damage-slot-value,.damage-label')].every(el=>el.textContent!=='…')`,'hover label settlement');
     await delay(100);
     await evaluate(page,`(()=>{window.__hoverTraffic=0;const post=Worker.prototype.postMessage;Worker.prototype.postMessage=function(...args){window.__hoverTraffic++;return post.apply(this,args);};window.__hoverSaved=[...document.querySelectorAll('.action-panel-cards')];window.__hoverBefore={height:document.documentElement.scrollHeight,tree:document.getElementById('node-tree').textContent,revision:document.getElementById('revision-label').textContent};})()`);
