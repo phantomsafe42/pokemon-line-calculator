@@ -34,6 +34,15 @@ export async function checkEventHover({page,evaluate,delay,dataset}) {
     })()`);
     assert.equal(result.layers,2);assert.ok(result.actors>0);assert.ok(result.affected>0);assert.equal(result.controls,0);
     assert.equal(result.height,await evaluate(page,'window.__hoverBefore.height'));
+    const moveAppearance=await evaluate(page,`(()=>{
+      const normal=document.querySelector('.action-panel-cards:not(.event-preview-layer) .move-button');
+      const preview=document.querySelector('.event-preview-layer .move-button');
+      const properties=['display','textAlign','paddingTop','paddingBottom','paddingLeft','paddingRight','borderTopWidth','borderTopLeftRadius','fontFamily','fontSize','fontWeight','minHeight'];
+      const read=element=>Object.fromEntries(properties.map(key=>[key,getComputedStyle(element)[key]]));
+      return {normal:read(normal),preview:read(preview),height:preview.getBoundingClientRect().height};
+    })()`);
+    assert.deepEqual(moveAppearance.preview,moveAppearance.normal,'Read-only moves retain normal button spacing, typography and rounded borders');
+    assert.ok(moveAppearance.height>=40,'Preview moves remain full-sized');
     const sectionTargets=await evaluate(page,`(()=>{
       const row=document.querySelector('#preview-outcomes .outcome-action[data-event-index]');
       const child=row.querySelector('.event-line');
