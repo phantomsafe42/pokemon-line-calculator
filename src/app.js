@@ -186,7 +186,7 @@ const ui = Object.fromEntries([
   "confirm-save-import", "showdown-open", "new-box", "export-boxes", "import-boxes",
   "plan-context-dialog", "trainer-select", "battle-format", "battle-format-choice", "variant-field", "variant-select", "plan-name",
   "partner-trainer-field", "partner-trainer-select", "partner-trainer-scope", "partner-trainer-search-field", "partner-trainer-search", "partner-variant-field", "partner-variant-select",
-  "initial-weather", "initial-terrain", "context-box-select", "saved-party-field",
+  "initial-weather", "initial-terrain", "context-mode-select", "context-box-field", "context-box-select", "saved-party-field",
   "context-party-select", "context-pokemon-grid", "save-party-selection", "party-selector-controls",
   "enemy-team-summary", "party-selection-summary", "edit-party-selection", "edge-party-exp", "context-status", "begin-plan", "pokemon-editor-dialog",
   "pokemon-editor-form", "pokemon-editor-title", "editor-sprite-preview", "editor-box-id", "editor-pokemon-id", "editor-context", "editor-species",
@@ -243,7 +243,7 @@ function emptyActionDraft() {
 }
 
 function emptyContextSelection() {
-  return { boxId: null, partyId: null, manual: false, pokemonIds: [], saved: false, initialConditions: {} };
+  return { mode: null, boxId: null, partyId: null, manual: false, pokemonIds: [], saved: false, initialConditions: {} };
 }
 
 function setStatus(message, error = false) {
@@ -1437,6 +1437,10 @@ function updateContextTrainer() {
   }
   renderEnemyTeamSummary();
   renderPlayerPartnerSelection();
+  if (contextSelection.mode === "sandbox") {
+    renderContextPokemonGrid();
+    if (contextSelection.saved) renderPartySummary();
+  }
   updateBeginAvailability();
 }
 
@@ -1618,16 +1622,33 @@ function selectedContextRecords() {
 }
 
 function renderContextPokemonGrid() {
-  const box = selectedBox(ui["context-box-select"].value);
+  const mode = contextSelection.mode;
+  const sandbox = mode === "sandbox";
+  const box = mode ? selectedBox(ui["context-box-select"].value) : null;
+  ui["context-box-field"].hidden = !mode;
+  ui["saved-party-field"].hidden = mode !== "party-lock" || !box;
   contextSelection.boxId = box?.id || null;
-  const manual = ui["context-party-select"].value === "__new_party__";
+  const manual = !sandbox && ui["context-party-select"].value === "__new_party__";
   if (!box) {
     ui["context-pokemon-grid"].replaceChildren();
     ui["save-party-selection"].disabled = true;
     updateBeginAvailability();
     return;
   }
-  if (!manual) {
+  if (sandbox) {
+    // Sandbox starts from Box order, not from a saved Party or a prior manual selection.
+    const ids = box.pokemonOrder.filter(id => box.pokemon[id]).slice(0, contextPlayerPartnerBinding()?.maxPlayerPartySize || 6);
+    if (ids.join("|") !== contextSelection.pokemonIds.join("|")) {
+      contextSelection.saved = false;
+      ui["party-selector-controls"].hidden = false;
+      ui["party-selection-summary"].hidden = true;
+      ui["edit-party-selection"].hidden = true;
+      ui["edge-party-exp"].hidden = true;
+    }
+    contextSelection.partyId = null;
+    contextSelection.manual = false;
+    contextSelection.pokemonIds = ids;
+  } else if (!manual) {
     const party = box.parties[ui["context-party-select"].value];
     contextSelection.partyId = party?.id || null;
     contextSelection.pokemonIds = party ? [...party.pokemonIds] : [];
@@ -1635,7 +1656,7 @@ function renderContextPokemonGrid() {
   const records = manual ? box.pokemonOrder.map(id => box.pokemon[id]) : contextSelection.pokemonIds.map(id => box.pokemon[id]).filter(Boolean);
   if (!records.length) ui["context-pokemon-grid"].replaceChildren();
   else ui["context-pokemon-grid"].replaceChildren(...records.map(record => contextPokemonCard(box, record, contextSelection.pokemonIds.includes(record.id), manual)));
-  if (!manual) reorderCards(ui["context-pokemon-grid"], saveContextOrder);
+  if (!manual && !sandbox) reorderCards(ui["context-pokemon-grid"], saveContextOrder);
   ui["save-party-selection"].disabled = contextSelection.pokemonIds.length < 1 || contextSelection.pokemonIds.length > 6;
   updateBeginAvailability();
 }
@@ -1647,7 +1668,7 @@ function renderPartySummary() {
     const card = contextPokemonCard(selectedBox(contextSelection.boxId), record, true, false);
     return card;
   }));
-  reorderCards(ui["party-selection-summary"], saveContextOrder);
+  if (contextSelection.mode !== "sandbox") reorderCards(ui["party-selection-summary"], saveContextOrder);
   ui["party-selector-controls"].hidden = true;
   ui["party-selection-summary"].hidden = false;
   ui["edit-party-selection"].hidden = false;
@@ -1697,7 +1718,7 @@ function updateBeginAvailability() {
   const hasPlayerPartner = Boolean(contextPlayerPartnerBinding());
   const playerPartnerReady = !hasPlayerPartner || Boolean(selectedPlayerPartnerOption());
   const playerRequired = hasPlayerPartner ? 1 : required;
-  const enough = contextSelection.saved && selectedContextRecords().length >= playerRequired;
+  const enough = Boolean(contextSelection.mode) && contextSelection.saved && selectedContextRecords().length >= playerRequired;
   const playerPartyLimit = contextPlayerPartnerBinding()?.maxPlayerPartySize || 6;
   const withinPartyLimit = selectedContextRecords().length <= playerPartyLimit;
   const variantReady = !trainer?.mechanicsVariants?.length || Boolean(ui["variant-select"].value);
@@ -1715,6 +1736,7 @@ function updateBeginAvailability() {
     : !playerPartnerReady ? "Select your partner’s exact team."
     : !partnerReady ? "Select an opponent partner for the Multi battle."
       : !partnerVariantReady ? "Select the partner trainer's exact ROM variant."
+    : !contextSelection.mode ? "Select a mode."
     : !contextSelection.saved ? "Choose and save a player party."
       : !withinPartyLimit ? `This encounter allows at most ${playerPartyLimit} player Pokémon. Choose which Pokémon to bring.`
       : !enough ? `${ui["battle-format"].value} requires at least ${playerRequired} player Pokémon.`
@@ -1726,7 +1748,8 @@ function openPlanContext({ reset = true } = {}) {
   if (!dataset) return;
   if (reset) {
     contextSelection = emptyContextSelection();
-    byId('sandbox-mode').checked = false;
+    ui["context-mode-select"].value = "";
+    ui["context-box-select"].value = "";
     ui["trainer-select"].value = "";
     ui["plan-name"].value = "";
   }
@@ -1821,7 +1844,7 @@ async function beginPlanFromContext() {
     const sourceSnapshot = snapshotFingerprint([...players, ...allies], enemies, boxLibrary.updatedAt);
     plan = createPlanDocument({
       name: ui["plan-name"].value.trim() || enemyTrainerDisplayName,
-      planningMode: byId('sandbox-mode').checked ? 'sandbox' : null,
+      planningMode: contextSelection.mode === 'sandbox' ? 'sandbox' : null,
       dataset,
       trainerId: trainer.id,
       trainerVariantId: variantId,
@@ -4396,7 +4419,13 @@ function wireEvents() {
     renderEnemyTeamSummary();
     updateBeginAvailability();
   });
-  ui["context-box-select"].addEventListener("change", () => { contextSelection = { ...emptyContextSelection(), boxId: ui["context-box-select"].value || null }; refreshContextPartySelect(); renderContextPokemonGrid(); });
+  ui["context-mode-select"].addEventListener("change", () => {
+    contextSelection = { ...emptyContextSelection(), mode: ui["context-mode-select"].value || null };
+    ui["context-box-select"].value = "";
+    refreshContextPartySelect();
+    renderContextPokemonGrid();
+  });
+  ui["context-box-select"].addEventListener("change", () => { contextSelection = { ...emptyContextSelection(), mode: contextSelection.mode, boxId: ui["context-box-select"].value || null }; refreshContextPartySelect(); renderContextPokemonGrid(); });
   ui["context-party-select"].addEventListener("change", () => {
     const value = ui["context-party-select"].value;
     contextSelection.pokemonIds = [];

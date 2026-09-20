@@ -22,7 +22,7 @@ export async function checkMoveSelection({page,evaluate,delay,dataset}) {
     throw new Error('Move toggle fixture import failed');
   };
   const modes=['normal','free-calc'];
-  if(await evaluate(page,`Boolean(document.getElementById('sandbox-mode'))`))modes.push('sandbox');
+  if(await evaluate(page,`Boolean(document.querySelector('#context-mode-select option[value="sandbox"]'))`))modes.push('sandbox');
   for(const mode of modes)for(const format of ['singles','doubles','triples','rotation']) {
     await upload(fixture(format,mode));
     if(mode==='free-calc')await evaluate(page,`document.getElementById('free-calc').click()`);

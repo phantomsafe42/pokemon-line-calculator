@@ -117,8 +117,9 @@ try {
       if(scenario.partner) {el('player-partner-select').value=scenario.partner;change('player-partner-select');}
     }
     const partner={id:el('player-partner-select').value,cards:el('player-partner-summary').children.length,visible:!el('player-partner-panel').hidden};
+    el('context-mode-select').value='party-lock'; change('context-mode-select');
     el('context-box-select').selectedIndex=1; change('context-box-select');
-    el('context-party-select').selectedIndex=1; change('context-party-select');
+    el('context-party-select').selectedIndex=2; change('context-party-select');
     el('save-party-selection').click();
     const ready=!el('begin-plan').disabled;
     return {ambiguous,singles,partner,ready};

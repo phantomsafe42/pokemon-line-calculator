@@ -128,6 +128,7 @@ try {
     await wait(()=>el('game-dialog').open, 'seed reload'); await chooseGame('volt-white-2r');
     el('new-plan').click(); await wait(()=>el('plan-context-dialog').open, 'new line');
     el('trainer-select').value='vw2r-trainer-0003'; el('trainer-select').dispatchEvent(new Event('change'));
+    el('context-mode-select').value='party-lock'; el('context-mode-select').dispatchEvent(new Event('change'));
     el('context-box-select').selectedIndex=1; el('context-box-select').dispatchEvent(new Event('change'));
     el('context-party-select').selectedIndex=2; el('context-party-select').dispatchEvent(new Event('change'));
     el('save-party-selection').click(); await wait(()=>!el('begin-plan').hidden&&!el('begin-plan').disabled,'ready to begin');

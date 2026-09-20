@@ -570,8 +570,6 @@ dialog::backdrop { background: rgba(0, 0, 0, .75); }
 .starter-choice[data-type="grass"] { border-color: #78bb4b; }
 .starter-choice[aria-pressed="true"] { outline: 2px solid var(--accent); outline-offset: 3px; }
 #change-starter { margin-top: .65rem; }
-.context-grid .sandbox-option { display: flex; flex-direction: row; align-items: center; gap: .6rem; }
-.sandbox-option input { width: auto; min-height: auto; }
 .sandbox-switch-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .sandbox-switch-actions button { width: 100%; border-color: var(--control-line); background: var(--soft); color: var(--text); }
 .sandbox-switch-actions button:first-child { border-radius: 6px 0 0 6px; }
