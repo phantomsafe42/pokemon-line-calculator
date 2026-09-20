@@ -63,7 +63,7 @@ export function healingEventDescription(event, { moveName = null, maxHp = null }
   if (!["heal", "residual-heal", "switch-heal"].includes(event?.eventType)) return null;
   const healing = numericRange(event.healingHp);
   if (!healing) return null;
-  const source = moveName || readableMechanicName(event.metadata?.cause);
+  const source = moveName || event.metadata?.sourceName || readableMechanicName(event.metadata?.cause);
   const verb = event.metadata?.cause === "drain" ? "Drained" : "Healed";
   const hp = rangeLabel(healing, value => String(Math.round(value)));
   const percent = rangeLabel(healingPercentRange(event, maxHp), value => `${value.toFixed(1)}%`, " - ");
