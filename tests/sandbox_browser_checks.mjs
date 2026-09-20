@@ -33,6 +33,9 @@ export async function checkSandbox({ page, evaluate, delay, dataset, tempRoot })
   for(const [gameId,name,nickname] of [[dataset.gameId,'Sandbox Other Box','Other Box Mon'],['platinum','Foreign Box','Foreign Mon']]) {
     library=addBox(library,gameId,{name,pokemon:[{...records[0],id:`sandbox-${gameId}`,nickname,majorStatus:'par'}]}).library;
   }
+  const startingRecords=Array.from({length:7},(_,i)=>({...records[i%records.length],id:`sandbox-start-${i}`,nickname:`Box Order ${i+1}`}));
+  library=addBox(library,dataset.gameId,{name:'Sandbox Start Order',pokemon:startingRecords,
+    partyPokemonIds:startingRecords.slice(0,6).reverse().map(record=>record.id)}).library;
   await upload('import-boxes',library);await delay(200);
   const baseline=await readStore('pokemon-line-calculator-boxes','library');
   for(const format of ['singles','doubles','triples','rotation']) {
@@ -123,21 +126,25 @@ export async function checkSandbox({ page, evaluate, delay, dataset, tempRoot })
   await fs.writeFile(path.join(tempRoot,'sandbox-singles.png'),Buffer.from(image.data,'base64'));
   assert.deepEqual(await readStore('pokemon-line-calculator-boxes','library'),baseline);
   await evaluate(page,`document.getElementById('new-plan').click()`);
-  assert.equal(await evaluate(page,`document.getElementById('sandbox-mode').checked`),false,'New Line defaults to ordinary mode');
+  assert.equal(await evaluate(page,`document.getElementById('context-mode-select').value`),'','New Line requires explicit mode selection');
+  assert.equal(await evaluate(page,`document.getElementById('context-box-field').hidden && document.getElementById('saved-party-field').hidden`),true);
   await evaluate(page,`(()=>{
     const select=(id,value)=>{const el=document.getElementById(id);el.value=value;el.dispatchEvent(new Event('change',{bubbles:true}));};
-    document.getElementById('sandbox-mode').checked=true;
+    select('context-mode-select','sandbox');
     select('trainer-select',[...document.getElementById('trainer-select').options].find(o=>o.textContent.includes('School Kid Neil')).value);
-    select('context-box-select',[...document.getElementById('context-box-select').options].find(o=>o.value && !o.textContent.includes('Sandbox Other')).value);
-    select('context-party-select',[...document.getElementById('context-party-select').options].find(o=>o.value && o.value!=='__new_party__').value);
+    select('context-box-select',[...document.getElementById('context-box-select').options].find(o=>o.textContent.includes('Sandbox Start Order')).value);
     document.getElementById('save-party-selection').click();
   })()`);
   await wait(`!document.getElementById('begin-plan').disabled`,'Sandbox New Line party');
   await evaluate(page,`document.getElementById('begin-plan').click()`);
   await wait(`(()=>{if(document.getElementById('destructive-dialog').open)document.getElementById('destructive-discard').click();return !document.getElementById('plan-context-dialog').open && Boolean(document.querySelector('[data-free-calc-control="player-0-HP"]'));})()`,'New Line Sandbox mode');
   assert.match(await evaluate(page,`document.getElementById('revision-label').textContent`),/Sandbox/);
+  const started=(await readStore('pokemon-line-calculator','draft'))[0].document;
+  assert.deepEqual(Object.values(started.combatants).filter(mon=>mon.side==='player').map(mon=>mon.nickname),
+    startingRecords.slice(0,6).map(record=>record.nickname),'Sandbox starts in Box order, ignoring reversed saved Party');
+  assert.deepEqual(await readStore('pokemon-line-calculator-boxes','library'),baseline,'New Line does not reorder the Box or its Party');
   await evaluate(page,`document.getElementById('new-plan').click()`);
-  assert.equal(await evaluate(page,`document.getElementById('sandbox-mode').checked`),false);
+  assert.equal(await evaluate(page,`document.getElementById('context-mode-select').value`),'');
   await evaluate(page,`document.getElementById('plan-context-dialog').close()`);
   console.log(JSON.stringify({status:'sandbox-browser-valid',formats:4,crossBox:true,history:true,cache:true,newLine:true,boxIsolation:true}));
 }

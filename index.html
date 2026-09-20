@@ -7,7 +7,7 @@
   <meta name="pokemon-asset-release-base" content="/Datasets/Pokemon%20Assets/release">
   <title>Pokémon Line Calculator</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./styles.css?v=20260920-outcomes-title-v1">
+  <link rel="stylesheet" href="./styles.css?v=20260920-new-line-mode-v1">
 </head>
 <body>
   <header class="app-header">
@@ -211,7 +211,6 @@
         <label>Plan Name
           <input id="plan-name" maxlength="240">
         </label>
-        <label class="sandbox-option"><input id="sandbox-mode" type="checkbox"> Sandbox Mode</label>
         <label>Weather
           <select id="initial-weather">
             <option value="">Clear</option><option value="rain">Rain</option><option value="sun">Sun</option><option value="sand">Sand</option><option value="hail">Hail</option>
@@ -265,10 +264,13 @@
         </div>
         <div id="party-selector-controls">
           <div class="context-grid party-source-controls">
-            <label>Box
+            <label>Mode
+              <select id="context-mode-select"><option value="">Select Mode…</option><option value="sandbox">Sandbox</option><option value="party-lock">Party Lock</option></select>
+            </label>
+            <label id="context-box-field" hidden>Box
               <select id="context-box-select"><option value="">Select Box…</option></select>
             </label>
-            <label id="saved-party-field">Party
+            <label id="saved-party-field" hidden>Party
               <select id="context-party-select"><option value=""></option><option value="__new_party__">New Party</option></select>
             </label>
           </div>
@@ -350,6 +352,6 @@
   </dialog>
 
   <script src="./src/generated/pokemon_asset_resolver.global.js?v=20260914-assets-v4"></script>
-  <script type="module" src="./src/app.js?v=20260920-protect-text-v1"></script>
+  <script type="module" src="./src/app.js?v=20260920-new-line-mode-v1"></script>
 </body>
 </html>
