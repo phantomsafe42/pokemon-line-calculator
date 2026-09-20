@@ -9,6 +9,7 @@ import { fileURLToPath } from "node:url";
 import { createDatasetContext, REQUIRED_DATASET_SOURCES } from "../src/adapters/standardized_dataset.js";
 import { checkFreeCalcInline } from './free_calc_browser_checks.mjs';
 import { checkSandbox } from './sandbox_browser_checks.mjs';
+import { checkMoveSelection } from './move_selection_browser_checks.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(here, "..");
@@ -686,6 +687,7 @@ try {
 
   await checkFreeCalcInline({ page, evaluate, delay, dataset: vw2rContext, tempRoot });
   await checkSandbox({ page, evaluate, delay, dataset: vw2rContext, tempRoot });
+  await checkMoveSelection({ page, evaluate, delay, dataset: vw2rContext });
   if (process.env.PLC_LAYOUT_SNAPSHOT) {
     const snapshot = JSON.parse(await fs.readFile(process.env.PLC_LAYOUT_SNAPSHOT, 'utf8'));
     await page.send('Emulation.setDeviceMetricsOverride', { width: snapshot.view.viewport.width, height: snapshot.view.viewport.height, deviceScaleFactor: 1, mobile: false });

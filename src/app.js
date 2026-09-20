@@ -17,6 +17,7 @@ import { sandboxPickerCandidates } from './ui/sandbox_picker.js?v=20260919-sandb
 import { makeStableId } from './core/primitives.js';
 import { freeCalcExperience, freeCalcTotalExperience } from './ui/free_calc.js?v=20260918-free-calc-inline-v1';
 import { nodeTreeSections } from './ui/node_tree.js?v=20260918-free-calc-sections-v1';
+import { toggleMoveSelection } from './ui/move_selection.js?v=20260920-move-toggle-v1';
 import { belongsToSlotParty, eligibleReserves, partyOwnerForSlot } from './core/party_ownership.js?v=20260909-public-release-v2';
 import { downloadPlan, exportSelectedPlan, migratePlanDocument, parsePlan } from "./contracts/plan_file.js?v=20260917-partners-release-v1";
 import { assertValidPlanDocument } from "./contracts/plan_contract.js?v=20260917-partners-release-v1";
@@ -2337,7 +2338,9 @@ function configureMoveDraft(side, slot, actorKey, move, support) {
   const targetMode = support.targetMode || canonicalTarget(move);
   const candidates = legalTargets(state, side, actorKey, targetMode, support);
   const targetKey = support.target === "self" ? actorKey : support.target === "target" ? candidates[0] || null : null;
-  setDraft(side, slot, { type: "move", moveId: move.id, targetKey, mechanicValue: null });
+  setDraft(side, slot, toggleMoveSelection(actionForSlot(side, slot),
+    { type: "move", moveId: move.id, targetKey, mechanicValue: null },
+    { forced: Boolean(forcedTurnAction(state.combatantStates[actorKey])) }));
 }
 
 function chooseBranchEvent(dimensionId, optionId, selectionModel = branchEventModel) {
@@ -2601,8 +2604,11 @@ function renderSlotDamagePreviews(container, side, slot, actorKey, move, opposin
       section.setAttribute("aria-label", `${move.name} targeting ${slotName}`);
       section.setAttribute("aria-pressed", String(draft.type === "move" && draft.moveId === move.id && draft.targetKey === opposingKey));
       section.addEventListener("click", () => {
-        for (const sibling of section.parentElement.querySelectorAll("button.damage-slot")) sibling.setAttribute("aria-pressed", String(sibling === section));
-        setDraft(side, slot, { type: "move", moveId: move.id, targetKey: opposingKey, mechanicValue: null });
+        const next = toggleMoveSelection(actionForSlot(side, slot),
+          { type: "move", moveId: move.id, targetKey: opposingKey, mechanicValue: null },
+          { targetClick: true, forced: Boolean(forcedTurnAction(selectedState().combatantStates[positionActorKey])) });
+        for (const sibling of section.parentElement.querySelectorAll("button.damage-slot")) sibling.setAttribute("aria-pressed", String(next.type === 'move' && sibling === section));
+        setDraft(side, slot, next);
       });
     }
     container.append(section);
@@ -2911,7 +2917,7 @@ function renderCombatantCard(side, slot, { displaySlot = slot } = {}) {
         const targetKey = support.target === "self" ? actorKey : support.target === "field" ? null : draft.moveId === move.id && draft.targetKey ? draft.targetKey : candidates[0];
         const opposingTargets = opposingMovePreviewEntries(committedState, side, actorKey, move, support);
         const opposingKeys = new Set(opposingTargets.map(target => target.combatantKey));
-        const selectableSlots = !positionSelected
+        const selectableSlots = !moveButton.disabled && !positionSelected
           && support.target === "target"
           && candidates.length > 0
           && candidates.every(key => opposingKeys.has(key));
