@@ -3367,10 +3367,12 @@ function bindEventInspection(element, event) {
   element.setAttribute('aria-label', 'Inspect this event on the Pokémon cards');
   element.addEventListener('pointerover', event => {
     if (event.pointerType === 'touch' || inspectionPinned) return;
+    if (event.relatedTarget instanceof Node && element.contains(event.relatedTarget)) return;
     event.stopPropagation(); showEventInspection(index, element);
   });
   element.addEventListener('pointerout', event => {
     if (inspectionPinned) return;
+    if (event.relatedTarget instanceof Node && element.contains(event.relatedTarget)) return;
     const next = event.relatedTarget?.closest?.('[data-event-index]');
     if (next && ui['preview-outcomes'].contains(next)) showEventInspection(Number(next.dataset.eventIndex), next);
     else clearEventInspection();
@@ -3450,7 +3452,7 @@ function renderOutcomeAction(group, fallbackLabel = null) {
     appendLine(readableMechanicName(group.events[0].metadata.cause));
     for (const event of group.events) {
       const target = event.targetKey && event.targetKey !== event.actorKey ? outcomeTargetSlotLabel(event.targetKey, event) : null;
-      bindEventInspection(appendLine([target, event.metadata?.resultLabel || "Stats changed"].filter(Boolean).join(" · "), "outcome-effect-line"), event);
+      appendLine([target, event.metadata?.resultLabel || "Stats changed"].filter(Boolean).join(" · "), "outcome-effect-line");
     }
   } else {
     let pendingDamage = null;
@@ -3470,14 +3472,12 @@ function renderOutcomeAction(group, fallbackLabel = null) {
       if (extendsDamage) {
         const effect = document.createElement("p"); effect.className = "outcome-effect-line";
         effect.textContent = event.metadata?.resultLabel || "Stats changed";
-        bindEventInspection(effect, event);
         pendingDamage.detail.append(effect);
         continue;
       }
       flushDamageDetails();
       const description = eventDescription(event);
       const detail = document.createElement("div"); detail.className = "outcome-event-detail";
-      bindEventInspection(detail, event);
       const line = document.createElement("p"); line.className = "event-line"; line.textContent = description.line;
       if (event.eventType === "battle-ended") line.classList.add("battle-ended-text");
       detail.append(line);
