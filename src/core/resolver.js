@@ -1,7 +1,8 @@
 import { clone, normalizeRange, shortHash, stableStringify, toId } from "./primitives.js?v=20260905-drafts-freecalc-partners-v1";
+import { startEventTrace, captureEventTrace } from './event_timeline.js?v=20260920-event-hover-v1';
 import { effectiveCombatantMove, fieldAdjustedMove } from "./combatant_moves.js?v=20260907-two-turn-immunity-v1";
 import { forcedTurnAction, forcedTurnActionAllows } from "./forced_actions.js?v=20260907-two-turn-immunity-v1";
-import { createDefaultVolatiles, normalizeFieldCondition, resetTurnFlags, updateStateHash } from "./plan.js?v=20260917-partners-release-v1";
+import { createDefaultVolatiles, normalizeFieldCondition, resetTurnFlags, updateStateHash } from "./plan.js?v=20260920-event-hover-v1";
 import { actionEntries, actionList, activeEntries, activeKey, activeKeys, activeSlotEntries, actorSlot, battleFormat, pendingReplacementSlots, replacementList, setActiveKey, setPendingReplacementSlots, slotsPerSide } from "./battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
 import { belongsToSlotParty, eligibleReserves, partyOwnerForSlot } from "./party_ownership.js?v=20260905-drafts-freecalc-partners-v1";
 import { moveSupport as defaultMoveSupport } from "../rulesets/core_move_support.js?v=20260907-two-turn-immunity-v1";
@@ -25,7 +26,7 @@ import {
   moveImmunity,
   outgoingSwitchEffects
 } from "../rulesets/switch_rules.js?v=20260907-two-turn-immunity-v1";
-import { applyDefeatedEnemyExperience, registerSwitchExperienceParticipation } from "../rulesets/vw2r_experience.js?v=20260917-partners-release-v1";
+import { applyDefeatedEnemyExperience, registerSwitchExperienceParticipation } from "../rulesets/vw2r_experience.js?v=20260920-event-hover-v1";
 import { actionOrderAlternatives, applyActionOrderState, effectiveActionSpeed, effectiveMovePriority } from "../rulesets/action_order.js?v=20260905-drafts-freecalc-partners-v1";
 import { adjacentActiveEntries, areSlotsAdjacent, canSelectShift, combatantsAreAdjacent, shiftWithCenter, triplePositionForSlot, tripleSlotForPosition, TRIPLE_POSITIONS } from "../rulesets/triple_battle.js?v=20260905-drafts-freecalc-partners-v1";
 import { participatingActiveEntries, participatingActiveKeys, rotateToActor, rotationFrontKey, rotationFrontSlot } from "../rulesets/rotation_battle.js?v=20260905-drafts-freecalc-partners-v1";
@@ -400,6 +401,7 @@ function clampStage(value) {
 function event(branch, details) {
   const next = { ...details, source: "planned", changes: details.changes || [], metadata: details.metadata || {} };
   observeAbilityEvent(branch.state, next, branch.abilityKnowledgePolicy);
+  captureEventTrace(branch, next);
   branch.events.push(next);
   return next;
 }
@@ -811,7 +813,7 @@ function applySwitch(branch, side, slot, action, plan, dataset) {
   if (outgoingState.majorStatus === "tox") outgoingState.toxicCounter = 1;
   setActiveKey(branch.state, side, slot, action.switchToKey);
   registerSwitchExperienceParticipation(branch.state, side, action.switchToKey);
-  event(branch, {
+  const switchDisplayEvent = event(branch, {
     eventType: "switch",
     actorKey: outgoingKey,
     targetKey: action.switchToKey,
@@ -829,6 +831,7 @@ function applySwitch(branch, side, slot, action, plan, dataset) {
     enteringState.statStages = batonPassState.statStages;
     enteringState.volatileConditions = { ...enteringState.volatileConditions, ...batonPassState.volatileConditions };
   }
+  captureEventTrace(branch, switchDisplayEvent, { append: true });
   const generation = Number(dataset.mechanics?.damageGeneration || 5);
   const hazards = entryHazardEffects({ state: enteringState, fieldState: branch.state.fieldState, side, dataset, generation });
   branches = [branch];
@@ -4401,7 +4404,7 @@ function resolveActionEntries(branch, entries, context) {
   return resolved;
 }
 
-export function resolveTurn({ plan, parentStateNodeId, actions, dataset, damageAdapter, moveSupport = defaultMoveSupport }) {
+export function resolveTurn({ plan, parentStateNodeId, actions, dataset, damageAdapter, moveSupport = defaultMoveSupport, capturePresentation = false }) {
   const parentState = plan.stateNodes[parentStateNodeId];
   if (!parentState) throw new ResolutionError(`State ${parentStateNodeId} is unavailable`);
   validateTurnActions({ plan, parentState, actions, dataset, moveSupport });
@@ -4411,6 +4414,7 @@ export function resolveTurn({ plan, parentStateNodeId, actions, dataset, damageA
   }
   let resolved = [];
   const entryBranch = {
+    presentationTrace: capturePresentation ? startEventTrace(parentState) : null,
     state: clone(parentState),
     events: [],
     probability: 1,
@@ -4435,6 +4439,7 @@ export function resolveTurn({ plan, parentStateNodeId, actions, dataset, damageA
       state.resolutionEventIds = [];
       for (const monState of Object.values(state.combatantStates)) monState.turnFlags = resetTurnFlags();
       let branches = [{
+        presentationTrace: entered.presentationTrace ? clone(entered.presentationTrace) : null,
         state,
         events: [
           ...entered.events,
@@ -4474,12 +4479,13 @@ export function resolveTurn({ plan, parentStateNodeId, actions, dataset, damageA
   }));
 }
 
-export function resolveForcedReplacement({ plan, parentStateNodeId, replacements, dataset }) {
+export function resolveForcedReplacement({ plan, parentStateNodeId, replacements, dataset, capturePresentation = false }) {
   const parentState = plan.stateNodes[parentStateNodeId];
   if (!parentState) throw new ResolutionError(`State ${parentStateNodeId} is unavailable`);
   const required = pendingReplacementSlots(parentState);
   if (!required.length) throw new ResolutionError("No forced replacement is required");
   let branches = [{
+    presentationTrace: capturePresentation ? startEventTrace(parentState) : null,
     state: clone(parentState),
     events: [],
     probability: 1,

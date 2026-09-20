@@ -1,6 +1,7 @@
 import { calculateStats } from "../adapters/combatant_ingest.js?v=20260917-partners-release-v1";
 import { clone } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
 import { activeKeys } from "../core/battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
+import { captureEventTrace } from '../core/event_timeline.js?v=20260920-event-hover-v1';
 
 const EXP_SHARE_ITEM_ID = "expshare";
 const LUCKY_EGG_ITEM_ID = "luckyegg";
@@ -283,6 +284,7 @@ export function projectVw2rExperience(plan, state, enemyKey) {
 
 function event(branch, details) {
   const next = { ...details, source: "planned", changes: details.changes || [], metadata: details.metadata || {} };
+  captureEventTrace(branch, next);
   branch.events.push(next);
   return next;
 }

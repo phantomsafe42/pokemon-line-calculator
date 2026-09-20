@@ -10,6 +10,7 @@ import { abilityStatStageRule, activeAbilityId } from "../rulesets/ability_rules
 import { weatherIsSuppressed } from "../rulesets/battle_rules.js?v=20260907-two-turn-immunity-v1";
 import { ABILITY_FORM_STATE_VERSION, applyCombatantFormState, desiredWeatherAbilityForm } from "../rulesets/form_rules.js?v=20260917-partners-release-v1";
 import { initializeAbilityKnowledge, observeAbilityEvent, entryAbilityAnnouncement } from "./ability_knowledge.js?v=20260911-ability-storage-reimp-v1";
+import { startEventTrace, captureEventTrace } from './event_timeline.js?v=20260920-event-hover-v1';
 
 export const INITIAL_ENTRY_EFFECTS_VERSION = 2;
 
@@ -198,8 +199,12 @@ function initialEntryOrder(plan, root) {
   }))).sort((left, right) => right.speed - left.speed || left.sideOrder - right.sideOrder || left.slot - right.slot);
 }
 
+const initialPresentationTraces = new WeakMap();
 function initialEntryEvent(events, details) {
-  events.push({ actorKey: null, targetKey: null, moveId: null, source: "planned", changes: [], metadata: {}, ...details });
+  const event = { actorKey: null, targetKey: null, moveId: null, source: "planned", changes: [], metadata: {}, ...details };
+  const trace = initialPresentationTraces.get(events);
+  if (trace) captureEventTrace(trace, event);
+  events.push(event);
 }
 
 function entryComparisonState(plan, state, combatantKey) {
@@ -296,6 +301,7 @@ export function upgradeInitialEntryEffects(plan, dataset) {
     const { eventId, turnNumber, step, ...details } = event;
     return details;
   });
+  initialPresentationTraces.set(events, { state: root, presentationTrace: startEventTrace(root) });
   if (needsEntryEffects) for (const entry of initialEntryOrder(next, root)) {
     const otherSide = entry.side === "player" ? "enemy" : "player";
     const opponents = participatingActiveKeys(root, otherSide).filter(key => Number(root.combatantStates[key]?.hp?.max) > 0);

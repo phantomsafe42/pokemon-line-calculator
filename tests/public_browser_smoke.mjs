@@ -11,6 +11,7 @@ import { checkFreeCalcInline } from './free_calc_browser_checks.mjs';
 import { checkSandbox } from './sandbox_browser_checks.mjs';
 import { checkMoveSelection } from './move_selection_browser_checks.mjs';
 import { checkInteractionPerformance } from './interaction_performance_browser_checks.mjs';
+import { checkEventHover } from './event_hover_browser_checks.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(here, "..");
@@ -690,6 +691,7 @@ try {
   await checkSandbox({ page, evaluate, delay, dataset: vw2rContext, tempRoot });
   await checkMoveSelection({ page, evaluate, delay, dataset: vw2rContext });
   await checkInteractionPerformance({ page, evaluate, delay, dataset: vw2rContext });
+  await checkEventHover({ page, evaluate, delay, dataset: vw2rContext });
   if (process.env.PLC_LAYOUT_SNAPSHOT) {
     const snapshot = JSON.parse(await fs.readFile(process.env.PLC_LAYOUT_SNAPSHOT, 'utf8'));
     await page.send('Emulation.setDeviceMetricsOverride', { width: snapshot.view.viewport.width, height: snapshot.view.viewport.height, deviceScaleFactor: 1, mobile: false });

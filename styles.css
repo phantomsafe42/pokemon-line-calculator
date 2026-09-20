@@ -212,7 +212,16 @@ h3 { margin: 0; font-size: 1rem; }
 .ai-script-note, .ai-limit-note, .ai-model-note { font-size: .78rem; }
 .ai-error-note { color: #ff9b9b !important; font-weight: 700; }
 .ai-limit-note { color: var(--gold) !important; }
-.action-panel { min-width: 0; padding: 0; overflow: hidden; }
+.action-panel { min-width: 0; padding: 0; overflow: hidden; position: relative; }
+.event-preview-layer { position: absolute; z-index: 3; background: var(--shell); overflow: auto; }
+.event-inspection-card { position: relative; }
+.event-inspection-card.event-actor { box-shadow: inset 0 0 0 3px var(--accent-2); }
+.event-inspection-card.event-affected { box-shadow: inset 0 0 0 3px var(--gold); }
+.event-inspection-card.event-actor.event-affected { box-shadow: inset 0 0 0 3px var(--gold), inset 0 0 0 5px var(--accent-2); }
+.event-inspection-card[data-event-role]:not([data-event-role=""])::after { content: attr(data-event-role); display: block; font-size: .7rem; color: var(--muted); margin-top: .5rem; }
+[data-event-index] { cursor: pointer; border-radius: 4px; }
+[data-event-index]:focus-visible, .is-inspected-event { outline: 2px solid var(--accent-2); outline-offset: 2px; }
+.event-inspection-moves .move-button { cursor: default; }
 .action-panel-title { display: flex; align-items: center; justify-content: space-between; gap: .7rem; border-bottom: 1px solid var(--line); padding: .75rem 1rem; background: var(--panel); }
 .action-panel-title h2 { font-size: 1rem; }
 .action-panel-cards { display: grid; grid-template-columns: 1fr; }

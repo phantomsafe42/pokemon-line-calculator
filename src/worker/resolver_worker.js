@@ -65,7 +65,7 @@ async function initialize(datasetBaseUrl, datasetHostedPrefix, trainerAiBaseUrl,
   damageAdapter = damageModule.createSharedDamageAdapter(runtime);
   if (role === "resolver") {
     const [plannerModule, combatantMovesModule] = await Promise.all([
-      import("../core/planner.js?v=20260917-partners-release-v1"),
+      import("../core/planner.js?v=20260920-event-hover-v1"),
       import("../core/combatant_moves.js?v=20260909-public-release-v2")
     ]);
     previewTurn = plannerModule.previewTurn;
@@ -106,6 +106,7 @@ self.addEventListener("message", async event => {
         parentStateNodeId: payload.parentStateNodeId,
         actions: payload.actions,
         expandExisting: payload.expandExisting === true,
+        capturePresentation: true,
         dataset,
         damageAdapter
       });
