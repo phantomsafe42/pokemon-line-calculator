@@ -457,13 +457,13 @@ try {
     change(modeSelect, 'sandbox');
     check(!boxField.hidden && partyField.hidden, 'Sandbox reveals only Box');
     change(boxSelect, fixtureBox.value);
-    check(partyField.hidden && partySelect.value === '' && grid.children.length === 6 && !saveParty.disabled, 'Sandbox selects first six without Party');
-    check([...grid.children].map(card => card.querySelector('strong').textContent).join('|') === 'Picker 1|Picker 2|Picker 3|Picker 4|Picker 5|Picker 6', 'Sandbox uses Box order');
-    saveParty.click();
-    check(document.getElementById('party-selection-summary').children.length === 6, 'Sandbox summary keeps six starters');
-    document.getElementById('edit-party-selection').click();
-    check(partyField.hidden && grid.children.length === 6, 'Sandbox edit keeps Party hidden');
+    check(partyField.hidden && partySelect.value === '' && grid.children.length === 0, 'Sandbox shows no Party or player cards');
+    check(document.getElementById('party-selection-actions').hidden && document.getElementById('edit-party-selection').hidden && document.getElementById('edge-party-exp').hidden, 'Sandbox hides party setup actions');
+    check(document.getElementById('party-selection-summary').hidden, 'Sandbox has no saved-party summary');
+    change(document.getElementById('trainer-select'), 'renegade-platinum-trainer-0201');
+    check(!document.getElementById('begin-plan').disabled, 'Sandbox can begin with Box then trainer, without saving');
     change(modeSelect, 'party-lock');
+    check(!document.getElementById('party-selection-actions').hidden, 'Party Lock restores save controls');
     check(boxSelect.value === '' && partySelect.value === '' && partyField.hidden && grid.children.length === 0 && saveParty.disabled && document.getElementById('begin-plan').disabled, 'switching modes clears stale selection');
     change(modeSelect, '');
     check(boxField.hidden && partyField.hidden, 'clearing Mode hides both dropdowns');
@@ -471,6 +471,7 @@ try {
     const emptyBox = [...boxSelect.options].find(entry => /0 Pokémon/.test(entry.textContent));
     change(boxSelect, emptyBox.value);
     check(partySelect.value === '' && grid.children.length === 0 && saveParty.disabled, 'empty Box resets picker');
+    check(document.getElementById('begin-plan').disabled, 'empty Sandbox Box cannot begin');
     change(modeSelect, 'party-lock');
     change(boxSelect, fixtureBox.value);
     change(partySelect, savedPartyId);

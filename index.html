@@ -7,7 +7,7 @@
   <meta name="pokemon-asset-release-base" content="/Datasets/Pokemon%20Assets/release">
   <title>Pokémon Line Calculator</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./styles.css?v=20260920-new-line-mode-v1">
+  <link rel="stylesheet" href="./styles.css?v=20260920-new-line-mode-v2">
 </head>
 <body>
   <header class="app-header">
@@ -275,7 +275,7 @@
             </label>
           </div>
           <div id="context-pokemon-grid" class="context-pokemon-grid"></div>
-          <div class="dialog-actions"><button id="save-party-selection" type="button" disabled>Save Party Selection</button></div>
+          <div id="party-selection-actions" class="dialog-actions" hidden><button id="save-party-selection" type="button" disabled>Save Party Selection</button></div>
         </div>
         <div id="party-selection-summary" class="party-selection-summary" hidden></div>
       </section>
@@ -352,6 +352,6 @@
   </dialog>
 
   <script src="./src/generated/pokemon_asset_resolver.global.js?v=20260914-assets-v4"></script>
-  <script type="module" src="./src/app.js?v=20260920-new-line-mode-v1"></script>
+  <script type="module" src="./src/app.js?v=20260920-new-line-mode-v2"></script>
 </body>
 </html>

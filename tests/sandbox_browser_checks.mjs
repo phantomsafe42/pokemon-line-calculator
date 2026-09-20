@@ -33,7 +33,7 @@ export async function checkSandbox({ page, evaluate, delay, dataset, tempRoot })
   for(const [gameId,name,nickname] of [[dataset.gameId,'Sandbox Other Box','Other Box Mon'],['platinum','Foreign Box','Foreign Mon']]) {
     library=addBox(library,gameId,{name,pokemon:[{...records[0],id:`sandbox-${gameId}`,nickname,majorStatus:'par'}]}).library;
   }
-  const startingRecords=Array.from({length:7},(_,i)=>({...records[i%records.length],id:`sandbox-start-${i}`,nickname:`Box Order ${i+1}`}));
+  const startingRecords=Array.from({length:7},(_,i)=>({...records[i%records.length],id:`sandbox-start-${i}`,nickname:`Box Order ${i+1}`,majorStatus:i===0?'tox':null,itemId:i===0?'leftovers':null}));
   library=addBox(library,dataset.gameId,{name:'Sandbox Start Order',pokemon:startingRecords,
     partyPokemonIds:startingRecords.slice(0,6).reverse().map(record=>record.id)}).library;
   await upload('import-boxes',library);await delay(200);
@@ -133,15 +133,19 @@ export async function checkSandbox({ page, evaluate, delay, dataset, tempRoot })
     select('context-mode-select','sandbox');
     select('trainer-select',[...document.getElementById('trainer-select').options].find(o=>o.textContent.includes('School Kid Neil')).value);
     select('context-box-select',[...document.getElementById('context-box-select').options].find(o=>o.textContent.includes('Sandbox Start Order')).value);
-    document.getElementById('save-party-selection').click();
   })()`);
-  await wait(`!document.getElementById('begin-plan').disabled`,'Sandbox New Line party');
+  await wait(`!document.getElementById('begin-plan').disabled`,'Sandbox ready immediately after trainer and Box selection');
+  assert.equal(await evaluate(page,`document.getElementById('context-pokemon-grid').children.length`),0);
+  assert.equal(await evaluate(page,`document.getElementById('party-selection-actions').hidden && document.getElementById('edge-party-exp').hidden && document.getElementById('edit-party-selection').hidden`),true);
   await evaluate(page,`document.getElementById('begin-plan').click()`);
   await wait(`(()=>{if(document.getElementById('destructive-dialog').open)document.getElementById('destructive-discard').click();return !document.getElementById('plan-context-dialog').open && Boolean(document.querySelector('[data-free-calc-control="player-0-HP"]'));})()`,'New Line Sandbox mode');
   assert.match(await evaluate(page,`document.getElementById('revision-label').textContent`),/Sandbox/);
   const started=(await readStore('pokemon-line-calculator','draft'))[0].document;
   assert.deepEqual(Object.values(started.combatants).filter(mon=>mon.side==='player').map(mon=>mon.nickname),
     startingRecords.slice(0,6).map(record=>record.nickname),'Sandbox starts in Box order, ignoring reversed saved Party');
+  const lead=Object.values(started.combatants).find(mon=>mon.nickname==='Box Order 1');
+  assert.equal(lead.originalItemId,'leftovers');
+  assert.equal(started.stateNodes[started.initialStateNodeId].combatantStates[lead.combatantKey].majorStatus,'tox','Sandbox retains Box status without rendering cards or saving a Party');
   assert.deepEqual(await readStore('pokemon-line-calculator-boxes','library'),baseline,'New Line does not reorder the Box or its Party');
   await evaluate(page,`document.getElementById('new-plan').click()`);
   assert.equal(await evaluate(page,`document.getElementById('context-mode-select').value`),'');
