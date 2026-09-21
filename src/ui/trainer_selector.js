@@ -89,7 +89,7 @@ const badgeStyles = {
 export function trainerSplitBadgeQuery(gameId, group) {
   if (group.id === 'postgame') return { kind: 'item-sprite', style: 'showdown', item: 'master-ball' };
   if (['facilities', 'frontier', 'battle-frontier'].includes(group.id)) return { kind: 'item-sprite', style: 'showdown', item: 'poke-ball' };
-  if (group.id === 'other') return { kind: 'pokemon-sprite', spriteType: 'pixel', species: 'unown', view: 'front' };
+  if (group.id === 'other') return { kind: 'pokemon-sprite', spriteType: 'pixel', species: 'unown', form: 'question', view: 'front' };
   const style = badgeStyles[gameId];
   // Game context disambiguates BW Gym Leader Iris from the BW2 Champion.
   return { kind: 'badge-icon', game: gameId.replace(/^pokemon-/, ''), ...(style ? { style } : {}),

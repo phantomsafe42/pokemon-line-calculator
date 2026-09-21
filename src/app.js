@@ -1,7 +1,7 @@
 import { calculateStats, normalizeMultiTrainerRoster, normalizePlayerCollection, normalizePlayerPartnerRoster, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js?v=20260921-pk-dataset-v1";
 import { HOSTED_DATASET_RELEASE } from "./adapters/hosted_dataset.js?v=20260921-pk-dataset-v1";
 import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260909-public-release-v2";
-import { createTrainerSelector, displayTrainerName, trainerFormatLabel, preloadTrainerSplitIcons } from './ui/trainer_selector.js?v=20260921-trainer-search-v1';
+import { createTrainerSelector, displayTrainerName, trainerFormatLabel, preloadTrainerSplitIcons } from './ui/trainer_selector.js?v=20260921-ss-sprites-v1';
 import { canonicalSpeciesDisplayName, loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260921-pk-dataset-v1";
 import { starterAllows, starterChoice } from './adapters/starter_selection.js?v=20260918-starter-selection-v1';
 import { readStarterPreference, saveStarterPreference } from './cache/starter_preferences.js?v=20260918-starter-selection-v1';

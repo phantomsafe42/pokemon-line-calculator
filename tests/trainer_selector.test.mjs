@@ -47,6 +47,8 @@ test('split art retains game context for BW Iris and the new Unbound collection'
     { kind: 'badge-icon', game: 'unbound', badge: 'elite-four' });
   assert.equal(trainerSplitBadgeQuery('pokemon-white', { id: 'postgame' }).style, 'showdown');
   assert.equal(trainerSplitBadgeQuery('pokemon-white', { id: 'frontier' }).item, 'poke-ball');
+  assert.deepEqual(trainerSplitBadgeQuery('storm-silver', {id:'other'}),
+    {kind:'pokemon-sprite',spriteType:'pixel',species:'unown',form:'question',view:'front'});
 });
 
 function load(game) {
