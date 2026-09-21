@@ -7,7 +7,7 @@
   <meta name="pokemon-asset-release-base" content="/Datasets/Pokemon%20Assets/release">
   <title>Pokémon Line Calculator</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./styles.css?v=20260921-box-browser-v1">
+  <link rel="stylesheet" href="./styles.css?v=20260921-box-browser-v2">
 </head>
 <body>
   <header class="app-header">
@@ -116,20 +116,15 @@
     </section>
 
     <section id="boxes-panel" role="tabpanel" aria-labelledby="boxes-tab" hidden>
-      <div class="box-toolbar panel">
-        <div>
-          <h2 id="boxes-heading">Boxes</h2>
-          <button id="change-starter" type="button" class="secondary" disabled>Choose Starter</button>
-          <p class="fine-print">A Pokémon is stored once per Box. Every Party in that Box references the same editable record.</p>
-        </div>
+      <div class="box-toolbar panel" aria-label="Box controls">
         <div class="toolbar-actions">
+          <button id="change-starter" type="button" class="secondary" disabled>Choose Starter</button>
           <button id="new-box" type="button" class="secondary">New Box</button>
           <button id="box-view-toggle" type="button" class="secondary" aria-pressed="false" title="Switch to Simple View">Detail View</button>
           <button id="open-box-import" type="button" class="secondary">Import</button>
           <button id="export-boxes" type="button" class="secondary">Export</button>
         </div>
-      </div>
-      <div class="panel box-browse-controls" aria-label="Search, filter and sort Boxes">
+        <div class="box-browse-controls" aria-label="Search, filter and sort Boxes">
         <label class="box-search-label">Search<input id="box-search" type="search" placeholder="Name, species, move, ability, item…"></label>
         <label>Type<select id="box-filter-type1"><option value="">Any type</option></select></label>
         <label>Also type<select id="box-filter-type2"><option value="">Any type</option></select></label>
@@ -142,6 +137,7 @@
         <label>Direction<select id="box-sort-direction"><option value="asc">Ascending</option><option value="desc">Descending</option></select></label>
         <button id="box-clear-filters" type="button" class="secondary">Reset</button>
         <p id="box-search-status" class="fine-print" role="status"></p>
+        </div>
       </div>
       <div id="boxes-list" class="boxes-list"></div>
     </section>
@@ -385,6 +381,6 @@
   </dialog>
 
   <script src="./src/generated/pokemon_asset_resolver.global.js?v=20260914-assets-v4"></script>
-  <script type="module" src="./src/app.js?v=20260921-box-browser-v1"></script>
+  <script type="module" src="./src/app.js?v=20260921-box-browser-v2"></script>
 </body>
 </html>

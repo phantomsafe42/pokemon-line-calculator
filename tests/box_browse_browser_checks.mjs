@@ -12,6 +12,9 @@ export async function checkBoxBrowsing({page,evaluate,delay,dataset,tempRoot}) {
   const wait=async expression=>{for(let i=0;i<100;i++){if(await evaluate(page,expression))return;await delay(50);}throw Error('Browse check timed out: '+expression);};
   await evaluate(page,`(()=>{for(const d of document.querySelectorAll('dialog[open]'))d.close();document.getElementById('boxes-tab').click();const t=new DataTransfer();t.items.add(new File([${JSON.stringify(JSON.stringify(added.library))}],'browse.json',{type:'application/json'}));const input=document.getElementById('import-boxes');input.files=t.files;input.dispatchEvent(new Event('change',{bubbles:true}));})()`);
   await wait(`Boolean(${root})`);
+  assert.equal(await evaluate(page,`document.querySelector('#boxes-heading')`),null,'Tab label is the only Boxes title');
+  assert.ok(await evaluate(page,`document.querySelector('.box-toolbar').contains(document.getElementById('box-search'))`),'Search shares the button control panel');
+  assert.equal(await evaluate(page,`document.querySelector('.box-toolbar').textContent.includes('A Pokémon is stored once per Box')`),false,'No explanatory description');
   assert.equal(await evaluate(page,`${root}.querySelector('.box-expand').getAttribute('aria-expanded')`),'false');
   assert.equal(await evaluate(page,`${root}.querySelectorAll('.box-pokemon-card').length`),0,'Collapsed Box defers card/sprite rendering');
   const saved=()=>evaluate(page,`new Promise((resolve,reject)=>{const request=indexedDB.open('pokemon-line-calculator-boxes');request.onsuccess=()=>{const db=request.result;const read=db.transaction('library').objectStore('library').get('active');read.onsuccess=()=>{db.close();resolve(read.result);};read.onerror=()=>reject(read.error);};})`,true);
@@ -55,6 +58,7 @@ export async function checkBoxBrowsing({page,evaluate,delay,dataset,tempRoot}) {
     await evaluate(page,`document.querySelector('.box-toolbar').scrollIntoView({block:'start'})`);
     const geometry=await evaluate(page,`(()=>{const cards=[...${root}.querySelectorAll('.box-simple-card')].map(c=>c.getBoundingClientRect());return {overflow:document.documentElement.scrollWidth>innerWidth,widths:cards.map(c=>c.width),sameRow:cards.every(c=>c.y===cards[0].y)};})()`);
     assert.equal(geometry.overflow,false,'No page overflow at '+width);
+    assert.ok(await evaluate(page,`Math.abs(document.getElementById('change-starter').getBoundingClientRect().left-document.getElementById('box-search').getBoundingClientRect().left)<2`),'Toolbar buttons align left with Search at '+width);
     assert.ok(geometry.widths.every(w=>w<800),'Simple cards narrower than Detail');
     if(width>=1280)assert.equal(geometry.sameRow,true);
     const shot=await page.send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});
