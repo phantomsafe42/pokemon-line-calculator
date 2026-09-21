@@ -835,16 +835,71 @@ function renderParty(box, party) {
 function renderBoxPokemon(box, record) {
   const card = document.createElement("article");
   card.className = "box-pokemon-card";
-  card.append(sprite(record));
-  const body = document.createElement("div");
+  card.dataset.pokemonId = record.id;
+  const body = document.createElement("div"); body.className = "box-pokemon-summary";
+  const header = document.createElement("div"); header.className = "combatant-header";
+  const spriteBox = document.createElement("div"); spriteBox.className = "combatant-sprite"; spriteBox.append(sprite(record));
+  const identity = document.createElement("div"); identity.className = "box-pokemon-identity";
+  const nameRow = document.createElement("div"); nameRow.className = "box-pokemon-name";
   const heading = document.createElement("h3");
+  heading.className = "combatant-name";
   heading.textContent = recordName(record);
-  const detail = document.createElement("p");
+  nameRow.append(heading);
+  if (record.gender === "M" || record.gender === "F") {
+    const gender = document.createElement("span"); gender.className = `combatant-gender gender-${record.gender.toLowerCase()}`;
+    gender.textContent = record.gender === "M" ? "♂" : "♀";
+    gender.setAttribute("aria-label", record.gender === "M" ? "Male" : "Female"); nameRow.append(gender);
+  }
+  if (record.nickname) {
+    const speciesName = document.createElement("span"); speciesName.className = "combatant-species";
+    speciesName.textContent = record.displayName; nameRow.append(speciesName);
+  }
   const species = dataset.get("species", record.speciesId);
-  const expDetail = Number.isInteger(record.experience)
-    ? ` · ${record.experience.toLocaleString()} EXP · ${experienceToNextLevel(record.experience, species?.growthRate, record.level).toLocaleString()} to next`
-    : "";
-  detail.textContent = `${record.displayName} · Lv. ${record.level}${expDetail} · ${record.moves.map(move => move.name).join(", ") || "No moves"}`;
+  const meta = document.createElement("div"); meta.className = "meta-row";
+  const types = document.createElement("div"); types.className = "combatant-types";
+  for (const type of species?.types || []) {
+    const chip = document.createElement("span"); chip.className = "combatant-type";
+    const label = dataset.get("types", type)?.name || type;
+    const icon = document.createElement("img"); icon.alt = label; icon.title = label; icon.width = 85; icon.height = 17;
+    chip.append(icon); types.append(chip);
+    if (pokemonAssetResolver) void pokemonAssetResolver.setAssetImage(icon, { kind: "type-icon", presentation: "name", style: "home", locale: "en", type }, { onUnavailable: () => { chip.textContent = label; } });
+    else chip.textContent = label;
+  }
+  const level = document.createElement("span"); level.className = "combatant-level"; level.textContent = `Lv. ${record.level}`;
+  if (Number.isInteger(record.experience) && species?.growthRate) {
+    const threshold = experienceForLevel(record.level, species.growthRate);
+    level.textContent += record.level < 100
+      ? ` · ${Math.max(0, record.experience - threshold).toLocaleString()}/${(experienceForLevel(record.level + 1, species.growthRate) - threshold).toLocaleString()}`
+      : " · Max";
+  }
+  meta.append(types, level); identity.append(nameRow, meta); header.append(spriteBox, identity);
+  const stats = document.createElement("div"); stats.className = "combatant-stats";
+  stats.setAttribute("role", "group"); stats.setAttribute("aria-label", "Stats");
+  const statRow = document.createElement("div"); statRow.className = "combatant-stat-row";
+  const calculated = calculateStats(record, dataset), nature = dataset.get("natures", record.natureId);
+  for (const stat of STAT_KEYS.filter(key => key !== "hp")) {
+    const cell = document.createElement("div"); cell.className = "combatant-stat"; cell.dataset.stat = stat;
+    const label = document.createElement("span"); label.className = "combatant-stat-label"; label.textContent = STAT_LABELS[stat];
+    if (nature?.boostedStat && nature?.nerfedStat && nature.boostedStat !== nature.nerfedStat) {
+      if (stat === nature.boostedStat) label.classList.add("combatant-stat-name-buff");
+      if (stat === nature.nerfedStat) label.classList.add("combatant-stat-name-debuff");
+    }
+    const value = document.createElement("strong"); value.className = "combatant-stat-value"; value.textContent = calculated[stat];
+    const stage = document.createElement("div"); stage.className = "combatant-stat-stage"; stage.textContent = "—";
+    stage.setAttribute("aria-label", `${STAT_LABELS[stat]} stage 0`);
+    cell.append(label, value, stage); statRow.append(cell);
+  }
+  stats.append(statRow); body.append(header, stats);
+  const loadout = document.createElement("div"); loadout.className = "box-pokemon-loadout";
+  loadout.append(staticDetail("Ability", dataset.get("abilities", record.abilityId)?.name || record.abilityId || "—"),
+    staticDetail("Item", dataset.get("items", record.itemId)?.name || record.itemId || "None"));
+  const moves = document.createElement("div"); moves.className = "box-pokemon-moves"; moves.setAttribute("aria-label", "Moves");
+  for (let index = 0; index < 4; index++) {
+    const move = document.createElement("div"); move.className = "box-pokemon-move";
+    move.textContent = record.moves[index]?.name || "—";
+    move.setAttribute("aria-label", `Move ${index + 1}: ${record.moves[index]?.name || "Empty"}`); moves.append(move);
+  }
+  loadout.append(moves);
   const actions = document.createElement("div");
   actions.className = "box-card-actions";
   const edit = button("Edit", "secondary");
@@ -858,8 +913,7 @@ function renderBoxPokemon(box, record) {
     await saveLibrary("Pokémon erased from its Box and Party references.");
   });
   actions.append(edit, exportOne, erase);
-  body.append(heading, detail, actions);
-  card.append(body);
+  card.append(body, loadout, actions);
   const membership = document.createElement("div");
   membership.className = "party-membership";
   for (const partyId of box.partyOrder) {

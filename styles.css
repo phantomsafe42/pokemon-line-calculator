@@ -431,13 +431,28 @@ button.damage-slot[aria-pressed="true"] .damage-slot-label { color: #17345a; }
 .party-member img { width: 36px; height: 36px; object-fit: contain; image-rendering: pixelated; }
 .sprite-unavailable { visibility: hidden; }
 .party-member small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--muted); font-size: .58rem; }
-.box-pokemon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: .7rem; padding: 1rem; }
-.box-pokemon-card { display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: .65rem; border: 1px solid var(--line); border-radius: 6px; padding: .65rem; background: var(--panel-2); }
-.box-pokemon-card img { width: 64px; height: 64px; object-fit: contain; image-rendering: pixelated; }
-.box-pokemon-card h3 { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.box-pokemon-card p { margin: .2rem 0 0; color: var(--muted); font-size: .72rem; }
-.box-card-actions { display: flex; gap: .35rem; margin-top: .5rem; flex-wrap: wrap; }
+.box-pokemon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 640px), 1fr)); gap: .8rem; padding: 1rem; }
+.box-pokemon-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-content: start; border: 1px solid var(--line); border-radius: 8px; background: var(--panel-2); overflow: hidden; container-type: inline-size; }
+.box-pokemon-summary, .box-pokemon-loadout { min-width: 0; padding: .9rem; }
+.box-pokemon-summary { display: grid; align-content: start; gap: 1rem; }
+.box-pokemon-summary .combatant-stats { margin: 0; }
+.box-pokemon-summary .combatant-stat-row { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.box-pokemon-identity { min-width: 0; }
+.box-pokemon-name { display: flex; align-items: baseline; flex-wrap: wrap; gap: .25rem .35rem; overflow-wrap: anywhere; }
+.box-pokemon-name .combatant-name { margin: 0; }
+.box-pokemon-name .combatant-species { margin: 0; }
+.box-pokemon-loadout { display: grid; align-content: start; gap: .6rem; border-left: 1px solid var(--line); }
+.box-pokemon-card .box-pokemon-loadout .static-detail { border: 1px solid var(--line); border-radius: 6px; text-align: center; }
+.box-pokemon-loadout .static-detail strong { white-space: normal; overflow-wrap: anywhere; }
+.box-pokemon-moves { display: grid; gap: .45rem; }
+.box-pokemon-move { min-height: 36px; display: grid; place-items: center; border: 1px solid var(--control-line); border-radius: 6px; padding: .35rem .55rem; font-size: .8rem; font-weight: 700; text-align: center; overflow-wrap: anywhere; }
+.box-card-actions { grid-column: 1 / -1; display: flex; gap: .35rem; border-top: 1px solid var(--line); padding: .65rem .9rem; flex-wrap: wrap; }
+@container (max-width: 520px) {
+  .box-pokemon-summary, .box-pokemon-loadout { grid-column: 1 / -1; }
+  .box-pokemon-loadout { border-left: 0; border-top: 1px solid var(--line); }
+}
 .box-card-actions button { min-height: 34px; padding: .35rem .55rem; font-size: .72rem; }
+.box-pokemon-card .party-membership:not(:empty) { padding: 0 .9rem .65rem; }
 .party-membership { grid-column: 1 / -1; }
 .party-membership label { display: inline-flex; align-items: center; gap: .25rem; margin-right: .5rem; font-size: .68rem; }
 .party-membership input { width: auto; min-height: 0; margin: 0; }
