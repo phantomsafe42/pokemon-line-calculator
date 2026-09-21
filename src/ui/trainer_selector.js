@@ -78,7 +78,10 @@ export function createTrainerSelector({ dialog, dataset, starterId, resolver, re
     if (!query) { frame.append(element('span', 'trainer-sprite-missing', 'Sprite unavailable')); return frame; }
     const image = element('img', 'trainer-portrait');
     image.alt = displayTrainerName(trainer.displayName || trainer.name);
-    image.crossOrigin = 'anonymous';
+    // The asset gateway permits image embedding from private test origins but
+    // does not grant those origins CORS pixel access. A CORS image request
+    // would block the portrait entirely; use normal image loading and let the
+    // guarded alpha inspection below fall back to the full canvas.
     image.loading = 'lazy';
     let bounds;
     const fit = () => {

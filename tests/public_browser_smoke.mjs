@@ -231,7 +231,7 @@ try {
   const appUrl = `http://127.0.0.1:${serverPort}${publicPrefix}`;
   const chrome = await findBrowser();
   browser = spawn(chrome, [
-    "--headless=new", "--no-sandbox", "--disable-gpu", "--disable-software-rasterizer", "--disable-web-security", "--no-first-run",
+    "--headless=new", "--no-sandbox", "--disable-gpu", "--disable-software-rasterizer", "--no-first-run",
     "--no-default-browser-check", "--disable-extensions", `--remote-debugging-port=${debugPort}`, "--remote-allow-origins=*",
     `--user-data-dir=${profile}`, appUrl
   ], { windowsHide: true, stdio: "ignore" });

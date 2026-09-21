@@ -19,6 +19,7 @@ export async function checkVw2rTrainerSprites({page,evaluate,delay,tempRoot}) {
     for(const tab of tabs){
       tab.click();
       const images=[...document.querySelectorAll('.trainer-options .trainer-portrait')];
+      if(images.some(image=>image.crossOrigin!==null)) throw new Error('Trainer images must not require CORS pixel access');
       images.forEach(image=>image.loading='eager');
       await window.waitForTrainerArt(()=>images.every(image=>image.complete&&image.naturalWidth>0),tab.textContent+' portrait load');
       if([...document.querySelectorAll('.trainer-options .trainer-sprite-missing')].some(label=>label.textContent==='Sprite unavailable')) throw new Error(tab.textContent+' missing art');
