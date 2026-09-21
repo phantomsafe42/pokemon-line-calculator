@@ -54,6 +54,33 @@ function loadVw2rDataset() {
   return createDatasetContext({ manifest, mechanics, documents });
 }
 
+test("Download is not reapplied when PLC calculates Virizion into Charles's replacement Bouffalant", () => {
+  const dataset = loadVw2rDataset();
+  const runtime = SharedDamageCalculator.createFromDocuments({ gameId: dataset.gameId }, loadCalcEngine(), dataset.mechanics, dataset.documents);
+  const adapter = createSharedDamageAdapter(runtime);
+  const attacker = {
+    speciesId: "virizion", side: "player", level: 44, natureId: "modest", moves: [],
+    ivs: { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31 },
+    evs: { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0 }
+  };
+  const defender = { ...attacker, speciesId: "bouffalant", side: "enemy", level: 39, natureId: "relaxed",
+    source: { consumerTrainerId: 125, trainerSlot: 5 } };
+  const attackerState = { currentAbilityId: "download", currentItemId: "miracleseed", currentTypeIds: ["grass", "fighting"],
+    statStages: { atk: 0, spa: 0 }, hp: { min: 30, max: 30 } };
+  const defenderState = { currentAbilityId: "reckless", currentItemId: "sitrusberry", currentTypeIds: ["normal"],
+    statStages: {}, hp: { min: 128, max: 128 } };
+  const before = JSON.stringify({ attacker, defender, attackerState, defenderState });
+  for (const [id, name, expected] of [["energyball", "Energy Ball", [66, 78]], ["signalbeam", "Signal Beam", [31, 37]]]) {
+    const result = adapter.calculate({ attacker, defender, attackerState, defenderState,
+      move: { id, name }, battleFormat: "triples", criticalHit: false });
+    assert.equal(result.status, "ok", result.reason);
+    assert.deepEqual([Math.min(...result.damage), Math.max(...result.damage)], expected);
+    assert.equal(result.result.attacker.boosts.spa, 0);
+    assert.equal(result.result.attacker.ability, "Download");
+  }
+  assert.equal(JSON.stringify({ attacker, defender, attackerState, defenderState }), before);
+});
+
 test("VW2R form sprites use the centralized asset resolver's canonical appearance IDs", () => {
   const dataset = loadVw2rDataset();
   const record = { speciesId: "keldeoresolute", formId: "keldeoresolute", displayName: "Keldeo - Resolute" };
