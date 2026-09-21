@@ -43,9 +43,10 @@ export function trainerSpriteQuery(trainer) {
 
 const element = (tag, className, text) => Object.assign(document.createElement(tag), { className, ...(text == null ? {} : { textContent: text }) });
 
-// Presentation families for retail titles; split/leader aliases remain owned
-// by the shared asset resolver. Hacks use its existing game selectors.
-const retailBadgeStyles = {
+// Explicit presentation families; split/leader aliases remain owned by the
+// shared asset resolver. VW2R shares the exact B2W2 family with retail B2W2.
+const badgeStyles = {
+  'volt-white-2r': 'b2w2-unova',
   'pokemon-ruby': 'pgl-hoenn', 'pokemon-sapphire': 'pgl-hoenn', 'pokemon-emerald': 'pgl-hoenn',
   'pokemon-firered': 'lgpe-kanto', 'pokemon-leafgreen': 'lgpe-kanto',
   'pokemon-diamond': 'dp-sinnoh', 'pokemon-pearl': 'dp-sinnoh', 'pokemon-platinum': 'dp-sinnoh',
@@ -55,7 +56,7 @@ const retailBadgeStyles = {
 };
 
 export function trainerSplitBadgeQuery(gameId, group) {
-  const style = retailBadgeStyles[gameId];
+  const style = badgeStyles[gameId];
   // Generic buckets are not gym badges. Iris's BW gym split must not use
   // the resolver's B2W2 Champion Iris emblem, nor Sinnoh postgame its logo.
   if (group.id === 'other' || group.id === 'facilities'
