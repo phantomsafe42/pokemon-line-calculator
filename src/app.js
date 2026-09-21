@@ -209,6 +209,8 @@ let dataset = null;
 let trainerAi = null;
 let worker = null;
 let boxLibrary = createEmptyBoxLibrary();
+let editingBoxParty = null;
+let partyMembershipSaving = false;
 let plan = null;
 let freeCalcSession = null;
 let draftTreeObservers = [];
@@ -793,6 +795,8 @@ function partyMemberCell(record) {
 function renderParty(box, party) {
   const card = document.createElement("div");
   card.className = "party-card";
+  card.dataset.partyId = party.id;
+  const header = document.createElement("div"); header.className = "party-card-header";
   const name = document.createElement("input");
   name.className = "party-name";
   name.value = party.name;
@@ -810,26 +814,84 @@ function renderParty(box, party) {
     if (!record) continue;
     const member = contextPokemonCard(box, record, true, false, { forContext: false });
     member.dataset.pokemonId = record.id;
-    const actions = document.createElement('div'); actions.className = 'context-pokemon-actions';
-    const removeMember = button('Remove', 'secondary');
-    removeMember.addEventListener('click', async () => {
-      boxLibrary = updateParty(boxLibrary, selectedGameId, box.id, party.id, { pokemonIds: selectedBox(box.id).parties[party.id].pokemonIds.filter(id => id !== record.id) });
-      await saveLibrary('Party member removed.');
-    });
-    actions.append(removeMember);
-    member.append(actions); members.append(member);
+    members.append(member);
   }
   reorderCards(members, async pokemonIds => {
     boxLibrary = updateParty(boxLibrary, selectedGameId, box.id, party.id, { pokemonIds });
     await boxStore.save(boxLibrary);
   });
-  const deleteParty = button('Delete Party', 'danger');
+  const editParty = button('Edit', 'secondary party-edit');
+  editParty.addEventListener('click', () => {
+    editingBoxParty = editingBoxParty?.gameId === selectedGameId && editingBoxParty.boxId === box.id && editingBoxParty.partyId === party.id
+      ? null : { gameId: selectedGameId, boxId: box.id, partyId: party.id };
+    refreshPartySelection();
+  });
+  const deleteParty = button('Delete', 'danger');
   deleteParty.addEventListener('click', async () => {
     if (!confirm(`Delete ${party.name}? Pokémon stay in the Box.`)) return;
     boxLibrary = removeParty(boxLibrary, selectedGameId, box.id, party.id); await saveLibrary('Party deleted.');
   });
-  card.append(name, members, deleteParty);
+  header.append(name, editParty, deleteParty);
+  card.append(header, members);
   return card;
+}
+
+function refreshPartySelection() {
+  const box = editingBoxParty?.gameId === selectedGameId ? selectedBox(editingBoxParty.boxId) : null;
+  const party = box?.parties[editingBoxParty?.partyId];
+  if (!party) editingBoxParty = null;
+  for (const section of ui['boxes-list'].querySelectorAll('.box-card')) {
+    const activeBox = Boolean(party && section.dataset.boxId === box.id);
+    for (const row of section.querySelectorAll('.party-card')) {
+      const active = activeBox && row.dataset.partyId === party.id;
+      row.classList.toggle('is-editing', active);
+      row.querySelector('.party-edit').setAttribute('aria-pressed', String(active));
+    }
+    for (const card of section.querySelectorAll('.box-pokemon-card')) {
+      let select = card.querySelector('.box-party-select');
+      card.classList.toggle('is-party-selectable', activeBox);
+      card.classList.toggle('is-party-selected', activeBox && party.pokemonIds.includes(card.dataset.pokemonId));
+      if (!activeBox) { select?.remove(); continue; }
+      if (!select) {
+        select = button('', 'box-party-select');
+        select.addEventListener('click', () => toggleBoxPartyMember(section.dataset.boxId, card.dataset.pokemonId));
+        card.prepend(select);
+      }
+      select.setAttribute('aria-disabled', String(partyMembershipSaving));
+      select.setAttribute('aria-label', `${recordName(box.pokemon[card.dataset.pokemonId])} in ${party.name}`);
+      select.setAttribute('aria-pressed', String(party.pokemonIds.includes(card.dataset.pokemonId)));
+    }
+  }
+}
+
+async function toggleBoxPartyMember(boxId, pokemonId) {
+  if (partyMembershipSaving || editingBoxParty?.gameId !== selectedGameId || editingBoxParty.boxId !== boxId) return;
+  const box = selectedBox(boxId), party = box?.parties[editingBoxParty.partyId];
+  if (!party || !box.pokemon[pokemonId]) return;
+  const selected = party.pokemonIds.includes(pokemonId);
+  if (!selected && party.pokemonIds.length >= 6) { setStatus(`${party.name} already has six Pokémon. Deselect one first.`, true); return; }
+  const prior = boxLibrary;
+  let updated;
+  partyMembershipSaving = true;
+  try {
+    boxLibrary = updateParty(boxLibrary, selectedGameId, boxId, party.id, {
+      pokemonIds: selected ? party.pokemonIds.filter(id => id !== pokemonId) : [...party.pokemonIds, pokemonId]
+    });
+    updated = boxLibrary;
+    refreshPartySelection();
+    await boxStore.save(boxLibrary);
+    const section = [...ui['boxes-list'].querySelectorAll('.box-card')].find(row => row.dataset.boxId === boxId);
+    const current = selectedBox(boxId);
+    if (section && current) section.querySelector('.party-shelf').replaceChildren(...current.partyOrder.map(id => renderParty(current, current.parties[id])));
+    refreshContextBoxSelect();
+    setStatus('Party membership saved.');
+  } catch (error) {
+    if (boxLibrary === updated) boxLibrary = prior;
+    setStatus(error.message, true);
+  } finally {
+    partyMembershipSaving = false;
+    refreshPartySelection();
+  }
 }
 
 function renderBoxPokemon(box, record) {
@@ -941,6 +1003,7 @@ function renderBoxPokemon(box, record) {
 function renderBox(box) {
   const section = document.createElement("section");
   section.className = "box-card";
+  section.dataset.boxId = box.id;
   const header = document.createElement("div");
   header.className = "box-card-header";
   const name = document.createElement("input");
@@ -990,9 +1053,11 @@ function renderBoxes() {
     ui["boxes-list"].replaceChildren(Object.assign(document.createElement("section"), {
       className: "panel empty-plan", innerHTML: "<h2>No Boxes yet</h2><p>Import a .sav or .dsv, paste Showdown sets, or create an empty Box.</p>"
     }));
+    refreshPartySelection();
     return;
   }
   ui["boxes-list"].replaceChildren(...boxes.map(renderBox));
+  refreshPartySelection();
 }
 
 const sortedRecordCache = new WeakMap();
@@ -1657,6 +1722,7 @@ function contextPokemonCard(box, record, selected, manual, { editable = true, fo
       } catch (error) { setStatus(error.message, true); }
     });
     actions.append(heldItem, status);
+    if (!forContext) actions.append(edit);
   }
   if (actions.childElementCount) card.append(actions);
   return card;

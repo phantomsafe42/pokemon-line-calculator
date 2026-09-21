@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { addBox, addParty, createEmptyBoxLibrary } from '../src/boxes/library.js';
 
 export async function checkBoxCards({ page, evaluate, delay, tempRoot }) {
   await evaluate(page, `(async () => {
@@ -111,4 +112,71 @@ export async function checkBoxCards({ page, evaluate, delay, tempRoot }) {
   assert.equal(await evaluate(page,`[...document.querySelectorAll('.box-pokemon-card h3')].some(el=>el.textContent==='WWWWWWWWWW')`),false,'Erase remains available');
   await page.send('Emulation.setDeviceMetricsOverride',{width:1280,height:1000,deviceScaleFactor:1,mobile:false});
   console.log(JSON.stringify({status:'box-card-layout-valid',widths:[2560,1800,1280,800,390,320],...before}));
+  await checkPartyEditing({page,evaluate,delay,tempRoot});
+}
+
+async function checkPartyEditing({page,evaluate,delay,tempRoot}) {
+  const stats = n => Object.fromEntries(['hp','atk','def','spa','spd','spe'].map(key=>[key,n]));
+  const pokemon = Array.from({length:7},(_,i)=>({id:`party-edit-${i}`,speciesId:'ditto',displayName:'Ditto',nickname:`Member ${i+1}`,level:30,
+    natureId:'hardy',abilityId:'imposter',baseStats:stats(48),ivs:stats(31),evs:stats(0),moves:[]}));
+  const added=addBox(createEmptyBoxLibrary(),'volt-white-2r',{name:'Party edit fixture',pokemon,partyPokemonIds:[pokemon[0].id]});
+  const second=addParty(added.library,'volt-white-2r',added.boxId,[pokemon[1].id],'Other party');
+  const box=Object.values(second.library.games)[0].boxes[added.boxId];
+  const root=`document.querySelector('.box-card[data-box-id="${box.id}"]')`;
+  const row=id=>`${root}.querySelector('.party-card[data-party-id="${id}"]')`;
+  const picker=i=>`${root}.querySelector('.box-pokemon-card[data-pokemon-id="party-edit-${i}"] .box-party-select')`;
+  await evaluate(page,`(()=>{const transfer=new DataTransfer();transfer.items.add(new File([${JSON.stringify(JSON.stringify(second.library))}],'party-test.json',{type:'application/json'}));const input=document.getElementById('import-boxes');input.files=transfer.files;input.dispatchEvent(new Event('change',{bubbles:true}));})()`);
+  for(let i=0;i<100 && !(await evaluate(page,`Boolean(${root})`));i++) await delay(50);
+  assert.equal(await evaluate(page,`Boolean(${root})`),true);
+  const firstId=box.partyOrder[0];
+  const toggle=async i=>{
+    await evaluate(page,`${picker(i)}.click()`);
+    for(let j=0;j<100 && await evaluate(page,`${picker(i)}.getAttribute('aria-disabled')==='true'`);j++) await delay(30);
+  };
+  const members=async id=>evaluate(page,`[...${row(id)}.querySelectorAll('.party-card-grid > article')].map(e=>e.dataset.pokemonId)`);
+  const initial=await evaluate(page,`(()=>{const row=${row(firstId)};return {buttons:[...row.querySelectorAll('.party-card-header button')].map(e=>e.textContent),controls:[...row.querySelector('.context-pokemon-actions').children].map(e=>e.tagName+':'+(e.textContent==='Edit'?'Edit':e.className)),pickers:document.querySelectorAll('.box-party-select').length};})()`);
+  assert.deepEqual(initial.buttons,['Edit','Delete']);assert.equal(initial.pickers,0);
+  assert.deepEqual(initial.controls,['SELECT:context-pre-item','SELECT:context-pre-status','BUTTON:Edit']);
+  await evaluate(page,`${row(firstId)}.querySelector('.party-edit').click()`);
+  assert.equal(await evaluate(page,`${picker(0)}.getAttribute('aria-pressed')`),'true');
+  assert.equal(await evaluate(page,`document.querySelectorAll('.box-party-select').length`),7,'Only this Box is selectable');
+  await toggle(0);assert.deepEqual(await members(firstId),[]);
+  await toggle(1);assert.deepEqual(await members(firstId),['party-edit-1']);
+  assert.deepEqual(await members(second.partyId),['party-edit-1'],'Shared member does not mutate another Party');
+  for(const i of [0,2,3,4,5]) await toggle(i);
+  await toggle(6);assert.equal((await members(firstId)).length,6,'Six-member limit');
+  assert.equal(await evaluate(page,`${picker(6)}.getAttribute('aria-pressed')`),'false');
+  await toggle(3);await toggle(6);
+  assert.deepEqual(await members(firstId),['party-edit-1','party-edit-0','party-edit-2','party-edit-4','party-edit-5','party-edit-6'],'New members append without disturbing order');
+  // Keyboard activation uses a native, whole-card toggle without trapping card actions.
+  await evaluate(page,`${picker(6)}.focus()`);
+  assert.equal(await evaluate(page,`document.activeElement === ${picker(6)}`),true,'Card selector is keyboard focusable');
+  await page.send('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',text:'\r',windowsVirtualKeyCode:13});
+  await page.send('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
+  for(let j=0;j<100 && (await members(firstId)).length===6;j++) await delay(30);
+  assert.equal((await members(firstId)).length,5);
+  await evaluate(page,`${root}.querySelector('.box-card-actions button').click()`);
+  assert.equal(await evaluate(page,`document.getElementById('pokemon-editor-dialog').open`),true);
+  assert.equal((await members(firstId)).length,5,'Card Edit never toggles membership');
+  await evaluate(page,`document.getElementById('pokemon-editor-dialog').close()`);
+  await evaluate(page,`${row(second.partyId)}.querySelector('.party-edit').click()`);
+  assert.equal(await evaluate(page,`${row(firstId)}.querySelector('.party-edit').getAttribute('aria-pressed')`),'false');
+  assert.equal(await evaluate(page,`${picker(1)}.getAttribute('aria-pressed')`),'true');
+  assert.equal(await evaluate(page,`${picker(0)}.getAttribute('aria-pressed')`),'false');
+  await evaluate(page,`${row(second.partyId)}.querySelector('.party-edit').click()`);
+  assert.equal(await evaluate(page,`document.querySelectorAll('.box-party-select').length`),0,'Edit toggles off');
+  const saved=await evaluate(page,`new Promise((resolve,reject)=>{const open=indexedDB.open('pokemon-line-calculator-boxes');open.onerror=()=>reject(open.error);open.onsuccess=()=>{const db=open.result;const read=db.transaction('library','readonly').objectStore('library').get('active');read.onerror=()=>{db.close();reject(read.error);};read.onsuccess=()=>{db.close();resolve(Object.values(read.result.games).flatMap(game=>Object.values(game.boxes)).find(box=>box.id===${JSON.stringify(box.id)}));};};})`,true);
+  assert.deepEqual(saved.parties[firstId].pokemonIds,await members(firstId),'Membership persisted to IndexedDB');
+  assert.deepEqual(saved.parties[second.partyId].pokemonIds,['party-edit-1']);
+  assert.equal(saved.pokemonOrder.length,7,'No Pokémon erased');
+  for(const width of [1280,390,320]) {
+    await page.send('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:false});
+    await evaluate(page,`${row(firstId)}.scrollIntoView({block:'start'})`);
+    const layout=await evaluate(page,`(()=>{const header=${row(firstId)}.querySelector('.party-card-header');const r=[...header.children].map(e=>e.getBoundingClientRect());return {overflow:document.documentElement.scrollWidth>innerWidth,sameRow:r.every(e=>Math.abs(e.y-r[0].y)<5),equal:r[1].width===r[2].width && r[1].height===r[2].height};})()`);
+    assert.equal(layout.overflow,false);assert.equal(layout.sameRow,true);assert.equal(layout.equal,true);
+    const shot=await page.send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});
+    await fs.writeFile(path.join(tempRoot,`party-edit-${width}.png`),Buffer.from(shot.data,'base64'));
+  }
+  await page.send('Emulation.setDeviceMetricsOverride',{width:1280,height:1000,deviceScaleFactor:1,mobile:false});
+  console.log(JSON.stringify({status:'party-card-edit-valid',membership:true,limit:true,keyboard:true,isolation:true,persistence:true}));
 }
