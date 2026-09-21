@@ -106,16 +106,18 @@ export async function checkSandbox({ page, evaluate, delay, dataset, tempRoot })
       const names=[...card().querySelectorAll('.switch-target')].map(o=>o.textContent);
       const original=card().querySelector('.switch-target.is-current').dataset.combatantKey;
       [...card().querySelectorAll('.switch-target')].find(o=>o.textContent.includes('Other Box Mon')).click();
+      const orderAfterReplace=[...card().querySelectorAll('.switch-target')].map(o=>o.textContent.replace(' · Current',''));
       const incomingStatus=control('Status').value;
       change('HP','19');openReplace();
       [...card().querySelectorAll('.switch-target')].find(o=>o.dataset.combatantKey===original).click();
       const restored={hp:control('HP').value,status:control('Status').value,item:control('Item').value};
-      return {names,incomingStatus,restored,aiHidden:document.querySelector('.ai-forecast-panel').hidden,
+      return {names,orderAfterReplace,incomingStatus,restored,aiHidden:document.querySelector('.ai-forecast-panel').hidden,
         freeCalcHidden:document.getElementById('free-calc').hidden,commitHidden:document.getElementById('commit-turn').hidden,
         sections:[...document.querySelectorAll('#node-tree > .node-tree-section')].map(s=>s.dataset.treeSection),
         nodeCount:document.querySelectorAll('#node-tree .node-button').length,badge:document.getElementById('revision-label').textContent};
     })()`);
     assert.ok(result.names.some(n=>n.includes('Other Box Mon')));assert.ok(!result.names.some(n=>n.includes('Foreign Mon')));
+    assert.deepEqual(result.orderAfterReplace,result.names.map(name=>name.replace(' · Current','')),`Replace preserves Box order in ${format}`);
     assert.equal(result.incomingStatus,'par');assert.deepEqual(result.restored,{hp:'25',status:'tox',item:'leftovers'});
     assert.equal(result.aiHidden,true);assert.equal(result.freeCalcHidden,true);assert.equal(result.commitHidden,false);
     assert.deepEqual(result.sections,['planned']);assert.equal(result.nodeCount,1);assert.match(result.badge,/Sandbox/);
