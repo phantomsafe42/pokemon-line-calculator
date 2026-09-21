@@ -30,9 +30,12 @@ export async function checkVw2rTrainerSprites({page,evaluate,delay,tempRoot}) {
     tabs[0].click();
     const first=[...document.querySelectorAll('.trainer-options .trainer-option')].slice(0,2);
     const subjects=first.map(row=>new URL(row.querySelector('.trainer-portrait').src).searchParams.get('subject'));
-    return {tabs:tabs.length,portraits,alternatives,wild,subjects};
+    await window.waitForTrainerArt(()=>tabs.every(tab=>{const image=tab.querySelector('.trainer-split-badge');return image?.complete&&image.naturalWidth>0&&!image.hidden;}),'all ten VW2R badges load');
+    const badges=tabs.map(tab=>new URL(tab.querySelector('img').src).searchParams.get('style'));
+    return {tabs:tabs.length,portraits,alternatives,wild,subjects,badges};
   })()`,true);
   assert.equal(result.tabs,10);
+  assert.deepEqual(result.badges,Array(10).fill('b2w2-unova'));
   assert.ok(result.portraits>350);
   assert.deepEqual(result.subjects,['hugh','youngster']);
   assert.equal(result.wild,2);
