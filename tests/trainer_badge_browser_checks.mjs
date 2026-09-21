@@ -32,7 +32,14 @@ export async function checkTrainerBadgeRecovery({page,evaluate,delay}) {
   const contexts = page.events.filter(e=>e.method==='Runtime.executionContextCreated').length;
   await page.send('Page.reload',{ignoreCache:true});
   await waitFor(()=>page.events.filter(e=>e.method==='Runtime.executionContextCreated').length>contexts);
-  await evaluate(page,`(async()=>{for(let i=0;i<600;i++){if(document.getElementById('new-plan') && !document.getElementById('new-plan').disabled && !document.getElementById('game-dialog').open){document.getElementById('new-plan').click();return;}await new Promise(r=>setTimeout(r,50));}throw Error('Game reload timeout');})()`,true);
+  await evaluate(page,`(async()=>{
+    const wait=async fn=>{for(let i=0;i<600;i++){if(fn())return;await new Promise(r=>setTimeout(r,50));}throw Error('Game reload timeout');};
+    await wait(()=>document.getElementById('game-dialog')?.open && document.querySelector('.game-picker-option[data-game-id="volt-white-2r"]:not(:disabled)'));
+    document.querySelector('.game-picker-option[data-game-id="volt-white-2r"]').click();
+    await wait(()=>!document.getElementById('game-dialog').open);
+    document.getElementById('new-plan').click();
+    await wait(()=>document.getElementById('trainer-selector-dialog').open);
+  })()`,true);
   await waitFor(()=>paused().length>=before+10);
   for(const event of paused().slice(before,before+10)) await page.send('Fetch.failRequest',{requestId:event.params.requestId,errorReason:'Failed'});
   await waitFor(()=>paused().length>=before+20); await checkLabels();
