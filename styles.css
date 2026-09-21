@@ -24,8 +24,8 @@ html { overflow-y: scroll; scrollbar-gutter: stable; }
 [hidden] { display: none !important; }
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 body { min-width: 320px; min-height: 100vh; margin: 0; background: var(--bg); color: var(--text); }
-button, input, select, textarea, :where(.event-inspection-moves) .move-button { min-height: 40px; font: inherit; }
-button, .file-button, :where(.event-inspection-moves) .move-button {
+button, input, select, textarea, :where(.event-inspection-moves, .box-pokemon-moves) .move-button { min-height: 40px; font: inherit; }
+button, .file-button, :where(.event-inspection-moves, .box-pokemon-moves) .move-button {
   display: inline-flex; align-items: center; justify-content: center; min-height: 40px;
   border: 1px solid var(--accent); border-radius: 6px; padding: .55rem .78rem;
   background: var(--accent); color: #07101f; font-weight: 750; cursor: pointer;
@@ -419,28 +419,56 @@ button.damage-slot[aria-pressed="true"] .damage-slot-label { color: #17345a; }
 .empty-plan { text-align: center; }
 .empty-plan p { margin: .65rem 0 0; color: var(--muted); }
 .box-toolbar { align-items: flex-start; }
-.boxes-list { display: grid; gap: 1rem; }
+.boxes-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
 .box-card { border: 1px solid var(--line); border-radius: 8px; background: var(--shell); overflow: hidden; }
 .box-card-header { display: flex; align-items: center; justify-content: space-between; gap: .8rem; border-bottom: 1px solid var(--line); padding: .8rem 1rem; background: var(--panel); }
 .box-name-input { width: min(22rem, 60vw); margin: 0; font-size: 1rem; font-weight: 750; }
 .party-shelf { display: grid; gap: .6rem; border-bottom: 1px solid var(--line); padding: .8rem 1rem; background: #141b25; }
-.party-card { display: grid; grid-template-columns: minmax(8rem, 14rem) 1fr auto; align-items: center; gap: .7rem; border: 1px solid var(--line); border-radius: 6px; padding: .55rem; background: var(--panel-2); }
+.party-card { display: grid; grid-template-columns: minmax(0, 1fr); align-items: center; gap: .7rem; border: 1px solid var(--line); border-radius: 6px; padding: .55rem; background: var(--panel-2); }
+.party-card-header { display: grid; grid-template-columns: minmax(0, 14rem) repeat(2, 5rem); align-items: center; gap: .5rem; }
+.party-card-header button { width: 100%; height: 42px; padding: .4rem; }
+.party-card.is-editing { border-color: var(--accent); }
+.party-edit[aria-pressed="true"] { background: var(--accent); color: #07101f; }
 .party-name { width: 100%; margin: 0; }
 .party-members { display: grid; grid-template-columns: repeat(6, minmax(40px, 1fr)); gap: .3rem; }
 .party-member { min-height: 54px; border: 1px solid var(--line); border-radius: 5px; padding: .2rem; text-align: center; }
 .party-member img { width: 36px; height: 36px; object-fit: contain; image-rendering: pixelated; }
 .sprite-unavailable { visibility: hidden; }
 .party-member small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--muted); font-size: .58rem; }
-.box-pokemon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: .7rem; padding: 1rem; }
-.box-pokemon-card { display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: .65rem; border: 1px solid var(--line); border-radius: 6px; padding: .65rem; background: var(--panel-2); }
-.box-pokemon-card img { width: 64px; height: 64px; object-fit: contain; image-rendering: pixelated; }
-.box-pokemon-card h3 { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.box-pokemon-card p { margin: .2rem 0 0; color: var(--muted); font-size: .72rem; }
-.box-card-actions { display: flex; gap: .35rem; margin-top: .5rem; flex-wrap: wrap; }
-.box-card-actions button { min-height: 34px; padding: .35rem .55rem; font-size: .72rem; }
-.party-membership { grid-column: 1 / -1; }
-.party-membership label { display: inline-flex; align-items: center; gap: .25rem; margin-right: .5rem; font-size: .68rem; }
-.party-membership input { width: auto; min-height: 0; margin: 0; }
+.box-pokemon-grid { display: flex; flex-wrap: wrap; gap: 16px; padding: 1rem; overflow-x: auto; }
+.box-pokemon-card { position: relative; display: grid; width: 800px; flex: 0 0 800px; grid-template-columns: 475.5px minmax(0, 1fr); align-content: stretch; border: 1px solid var(--line); border-radius: 8px; background: var(--panel-2); overflow: hidden; }
+.box-pokemon-card.is-party-selected { border-color: var(--accent); box-shadow: inset 0 0 0 2px var(--accent); }
+.box-pokemon-card .box-party-select { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; padding: 0; border: 0; border-radius: inherit; background: transparent; cursor: pointer; }
+.box-pokemon-card .box-party-select:hover { background: rgb(47 126 247 / 8%); }
+.box-party-select[aria-pressed="true"]::after { content: "✓"; position: absolute; right: 4px; top: 1px; color: var(--accent-2); font-size: .9rem; }
+.box-party-select:focus-visible { outline: 3px solid var(--accent-2); outline-offset: -4px; }
+.is-party-selectable .box-card-actions { position: relative; z-index: 2; }
+.box-pokemon-summary, .box-pokemon-loadout { min-width: 0; padding: .9rem; }
+.box-pokemon-summary { display: grid; grid-template-rows: auto auto 1fr; align-content: start; gap: 1rem; }
+.box-pokemon-card .combatant-header { grid-template-columns: 114px minmax(0, 1fr) 180px; align-items: start; }
+.box-pokemon-card .combatant-sprite { width: 114px; height: 114px; }
+.box-pokemon-card .combatant-sprite img { max-width: 68px; max-height: 68px; transform: scale(1.5); }
+.box-pokemon-card .combatant-type img { width: 30.8px; height: 30.8px; }
+.box-pokemon-summary .combatant-stats { margin: 0; }
+.box-pokemon-summary .combatant-stat-row { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.box-stat-training { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; }
+.box-stat-training > span { display: flex; align-items: center; justify-content: center; gap: .2rem; color: var(--text); }
+.box-stat-training > span + span { border-left: 1px solid var(--line); }
+.box-stat-training small { font-size: .55rem; color: var(--muted); }
+.box-pokemon-identity { min-width: 0; }
+.box-pokemon-name { display: flex; align-items: baseline; flex-wrap: wrap; gap: .25rem .35rem; overflow-wrap: anywhere; }
+.box-pokemon-name .combatant-name { margin: 0; }
+.box-pokemon-name .combatant-species { margin: 0; flex-basis: 100%; }
+.box-pokemon-details { display: grid; gap: .3rem; }
+.box-pokemon-card .box-pokemon-details .static-detail { display: flex; align-items: center; justify-content: space-between; gap: .5rem; border: 1px solid var(--line) !important; border-radius: 6px; padding: .25rem .4rem; text-align: left; }
+.box-pokemon-details .static-detail small { flex: 0 0 auto; margin: 0; }
+.box-pokemon-details .static-detail strong { min-width: 0; font-size: .78rem; }
+.box-pokemon-exp { color: var(--muted); font-size: .7rem; font-weight: 400; }
+.box-pokemon-loadout { display: grid; align-content: stretch; gap: .6rem; border-left: 1px solid var(--line); }
+.box-pokemon-moves { display: grid; grid-template-rows: repeat(4, minmax(60px, 1fr)); gap: .45rem; }
+.box-pokemon-moves .move-button { min-height: 60px; cursor: default; }
+.box-card-actions { align-self: end; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; }
+.box-card-actions button { width: 100%; min-height: 44px; padding: .6rem .4rem; font-size: .85rem; }
 .file-button { position: relative; }
 .file-button input { position: absolute; width: 1px; height: 1px; min-height: 0; opacity: 0; }
 dialog { width: min(38rem, calc(100vw - 2rem)); max-height: calc(100vh - 2rem); border: 1px solid var(--control-line); border-radius: 8px; padding: 0; color: var(--text); background: var(--shell); overflow: auto; }
@@ -581,7 +609,7 @@ dialog::backdrop { background: rgba(0, 0, 0, .75); }
   .combatant-corner-stats .combatant-detail-corner { border-bottom: 1px solid var(--line) !important; }
   .combatant-corner-stats .combatant-detail-corner:last-child { border-bottom: 0 !important; }
   .switch-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .box-pokemon-grid { grid-template-columns: 1fr; padding: .65rem; }
+  .box-pokemon-grid { padding: .65rem; }
   .party-members { grid-template-columns: repeat(3, minmax(40px, 1fr)); }
 }
 
