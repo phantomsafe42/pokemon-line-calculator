@@ -2905,15 +2905,16 @@ function renderCombatantCard(side, slot, { displaySlot = slot, inspection = null
     details.children[1].querySelector('strong').replaceChildren(edit.Item);
   }
   card.append(details);
-  const table = document.createElement("table"); table.className = "stat-table";
-  const head = document.createElement("thead"); head.innerHTML = "<tr><th>Stat</th><th>Actual</th><th>Stage</th></tr>"; table.append(head);
-  const body = document.createElement("tbody");
+  const stats = document.createElement("div"); stats.className = "combatant-stats";
+  stats.setAttribute("role", "group"); stats.setAttribute("aria-label", "Battle stats");
+  const statRow = document.createElement("div"); statRow.className = "combatant-stat-row";
+  if (edit) statRow.classList.add("is-editable");
   for (const stat of STAT_KEYS.filter(key => key !== "hp")) {
     const stage = Number(monState.statStages[stat] || 0);
     const rootStage = initialStageBaseline(displayKey, stat);
     const committedStage = Number(committedMonState.statStages[stat] || 0);
-    const row = document.createElement("tr");
-    const label = document.createElement("th"); label.scope = "row"; label.textContent = STAT_LABELS[stat];
+    const row = document.createElement("div"); row.className = "combatant-stat"; row.dataset.stat = stat;
+    const label = document.createElement("span"); label.className = "combatant-stat-label"; label.textContent = STAT_LABELS[stat];
     if (natureBoostedStat && natureNerfedStat && natureBoostedStat !== natureNerfedStat) {
       if (stat === natureBoostedStat) label.classList.add("combatant-stat-name-buff");
       if (stat === natureNerfedStat) label.classList.add("combatant-stat-name-debuff");
@@ -2921,7 +2922,7 @@ function renderCombatantCard(side, slot, { displaySlot = slot, inspection = null
     const currentBaseStat = Number(monState.currentStats?.[stat] ?? mon.calculatedStats[stat]);
     const rootBaseStat = Number(rootState.currentStats?.[stat] ?? mon.calculatedStats[stat]);
     const committedBaseStat = Number(committedMonState.currentStats?.[stat] ?? mon.calculatedStats[stat]);
-    const actual = document.createElement("td"); actual.textContent = effectiveStat(currentBaseStat, stage);
+    const actual = document.createElement("strong"); actual.textContent = effectiveStat(currentBaseStat, stage);
     const changedThisTurn = previewing && (currentBaseStat !== committedBaseStat || stage !== committedStage
       || pathWasChanged(state, `combatantStates.${displayKey}.currentStats.${stat}`, displayKey, previewEvents)
       || pathWasChanged(state, `combatantStates.${displayKey}.statStages.${stat}`, displayKey, previewEvents))
@@ -2929,19 +2930,24 @@ function renderCombatantCard(side, slot, { displaySlot = slot, inspection = null
         pathWasChanged(state, `combatantStates.${displayKey}.currentStats.${stat}`, displayKey)
         || pathWasChanged(state, `combatantStates.${displayKey}.statStages.${stat}`, displayKey)
       );
-    actual.className = changedThisTurn ? "value-current" : currentBaseStat !== rootBaseStat || stage !== rootStage ? "value-persisted" : "";
-    const stageCell = document.createElement("td"); stageCell.textContent = stage ? `${stage > 0 ? "+" : ""}${stage}` : "—"; stageCell.className = actual.className;
+    const tone = changedThisTurn ? "value-current" : currentBaseStat !== rootBaseStat || stage !== rootStage ? "value-persisted" : "";
+    actual.className = `combatant-stat-value ${tone}`;
+    const stageCell = document.createElement("div"); stageCell.textContent = stage ? `${stage > 0 ? "+" : ""}${stage}` : "—"; stageCell.className = `combatant-stat-stage ${tone}`;
+    stageCell.setAttribute("aria-label", `${STAT_LABELS[stat]} stage ${stage > 0 ? "+" : ""}${stage}`);
     if (edit) stageCell.replaceChildren(edit.stages[stat]);
-    row.append(label, actual, stageCell); body.append(row);
+    row.append(label, actual, stageCell); statRow.append(row);
   }
-  if (edit) for (const [stat, label] of [['accuracy', 'Acc'], ['evasion', 'Eva']]) {
-    const row = document.createElement('tr');
-    const title = document.createElement('th'); title.scope = 'row'; title.textContent = label;
-    const actual = document.createElement('td'); actual.textContent = '—';
-    const stage = document.createElement('td'); stage.append(edit.stages[stat]);
-    row.append(title, actual, stage); body.append(row);
+  stats.append(statRow);
+  if (edit) {
+    const extra = document.createElement('div'); extra.className = 'combatant-stat-extra';
+    for (const [stat, label] of [['accuracy', 'Acc'], ['evasion', 'Eva']]) {
+      const row = document.createElement('div'); row.className = 'combatant-stat'; row.dataset.stat = stat;
+      const title = document.createElement('span'); title.className = 'combatant-stat-label'; title.textContent = label;
+      row.append(title, edit.stages[stat]); extra.append(row);
+    }
+    stats.append(extra);
   }
-  table.append(body); card.append(table);
+  card.append(stats);
   if (inspection) {
     const moves = document.createElement('div'); moves.className = 'move-actions event-inspection-moves';
     for (const entry of monState.moveSetOverride || mon.moves) {
