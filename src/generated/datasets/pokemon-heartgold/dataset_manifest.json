@@ -74,7 +74,7 @@
       "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
     },
     "../../tools/encounter_mechanics_resolver.js": {
-      "sha256": "b8142a9cf26fb6de9150192b23bc3c1eb99f093689ad0114e8c69eb93d3ceeb1",
+      "sha256": "840664c4cbb84879ed1de10866a9b79a3efb928973e570816bbd6260386a1819",
       "role": "pinned runtime-dependent encounter mechanics authority, contract, resolver, or known-answer test"
     },
     "../../tools/test_encounter_mechanics_resolver.js": {
@@ -338,7 +338,7 @@
       "role": "pinned game-specific battle contract, independent known answers, or validation authority"
     },
     "../../tools/calculation_reference.js": {
-      "sha256": "488b13d0834bcae87f5548b7dd1235b5dbcca1f65df770c11cc069bbadb60dd1",
+      "sha256": "5851326bd47d19c03884998bb8b63a148dca1fe06005dbdc91d1c6fc1d4b5346",
       "role": "pinned game-specific battle contract, independent known answers, or validation authority"
     },
     "../../tools/trainer_visual_identity.py": {

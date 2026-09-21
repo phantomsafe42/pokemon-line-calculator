@@ -12,7 +12,69 @@
   "baseGame": "Pokémon FireRed",
   "sourceProfile": "pokemon-firered-us-decomp",
   "supportedLanguage": "English",
+  "encounterProjection": {
+    "activeBuild": "pchal-fire-red-omega",
+    "evidence": "encounter_import_verification.json",
+    "scope": "documented-eevee-sanctuary-levels-and-random-gift-membership-and-existing-ordinary-pool-supported-build-reconciliation-and-bounded-rooted-acquisition-levels-and-bounded-variable-gift-flow-and-offered-trade-level-policy",
+    "completenessStatus": "partial"
+  },
   "buildInputs": {
+    "source-data/imports/reference-docs/fro-physical-wild-routing.json": {
+      "sha256": "960a47327412022ea8fb6091a3936a6b40e97ad8e9513d16bbff3c85f576f21b",
+      "role": "supported physical-map/header routing and Unown-letter handoff evidence"
+    },
+    "source-data/fire_red_omega_documentation.xlsx": {
+      "sha256": "0cd02a2779b31f3abe356b48e8a02ec7e75c8972588f66f435863684da1c2aff",
+      "role": "immutable game-specific reference"
+    },
+    "source-data/imports/reference-docs/FRO Changes.txt": {
+      "sha256": "c88112153a14855b8561495246dc03c14d4c4379cf020e5485f008ae46d34ad6",
+      "role": "immutable game-specific reference"
+    },
+    "source-data/imports/reference-docs/fro-documentary-acquisitions.json": {
+      "sha256": "8c8a3b88340c013b34479b603cd87a520ecedf9efd2dbe0d2e001baf236da2aa",
+      "role": "bounded FRO encounter reference or supported-build evidence; scope and resolved fields are declared by encounter_import_verification.json"
+    },
+    "source-data/imports/reference-docs/fro-sanctuary-levels.json": {
+      "sha256": "767f8ec870b857de2ca1c4a3332589f3c8ea543e9ef1bc2b2ffbb65bb235718b",
+      "role": "bounded FRO encounter reference or supported-build evidence; scope and resolved fields are declared by encounter_import_verification.json"
+    },
+    "source-data/imports/reference-docs/fro-supported-wild-tables.json": {
+      "sha256": "2c9abe30e8a2cfc168ef152c4954df6854e76ef207b4847602cab56afe0be656",
+      "role": "bounded FRO encounter reference or supported-build evidence; scope and resolved fields are declared by encounter_import_verification.json"
+    },
+    "../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/data/maps/map_groups.json": {
+      "sha256": "ce296c9b54c8bb85cc35870b30a533ab017e72107fd40cf471224a42127af79a",
+      "role": "bounded FRO encounter reference or supported-build evidence; scope and resolved fields are declared by encounter_import_verification.json"
+    },
+    "../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/include/constants/species.h": {
+      "sha256": "fb9172adf738f6c42bd60b4d279ee599a1165de0f1cee4e558217bec2193bc4c",
+      "role": "bounded FRO encounter reference or supported-build evidence; scope and resolved fields are declared by encounter_import_verification.json"
+    },
+    "../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/src/wild_encounter.c": {
+      "sha256": "96cad2edead3dbb06a4e154c95248f40e99912aa648d8c5af9bf566ddc2a3616",
+      "role": "bounded FRO encounter reference or supported-build evidence; scope and resolved fields are declared by encounter_import_verification.json"
+    },
+    "source-data/imports/reference-docs/fro-rooted-acquisition-diagnostic.json": {
+      "sha256": "9ce29427c196fa6ddd5e217f3c3da29f97d82c1515abe4b431d3caa85b7a8cf9",
+      "role": "bounded FRO encounter reference or supported-build evidence; scope and resolved fields are declared by encounter_import_verification.json"
+    },
+    "../tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/asm/macros/event.inc": {
+      "sha256": "3651c8fa9be8c3d4e4f805791494b9119a8fd8ab1575abb2e2926c43d2de9242",
+      "role": "bounded FRO encounter reference or supported-build evidence; scope and resolved fields are declared by encounter_import_verification.json"
+    },
+    "source-data/imports/reference-docs/fro-gift-dataflow.json": {
+      "sha256": "70ad55982bab8bfcfd5bad07fbfed5915811e044c7b3dc5f4a83a53f8c4c97ee",
+      "role": "bounded FRO encounter reference or supported-build evidence; scope and resolved fields are declared by encounter_import_verification.json"
+    },
+    "source-data/imports/reference-docs/fro-trade-levels.json": {
+      "sha256": "3371f1a6e0a24dbcb17e8547fcadcd38d4d6973dd4f1419a0ae6bb74d7c2156f",
+      "role": "bounded FRO encounter reference or supported-build evidence; scope and resolved fields are declared by encounter_import_verification.json"
+    },
+    "source-data/imports/reference-docs/FRO WildPokemon.txt": {
+      "sha256": "5449f0cc8c2c9a6ec8d46d70f2eadf1de9acac21d603e1a5d16e0c57547b00b8",
+      "role": "immutable game-specific reference"
+    },
     "FRO_Stats_Learnsets.xlsx": {
       "sha256": "26e29378b057d06bbc026cc69cc335b47476c6256bcf4ff386541cbde54f7b56",
       "role": "immutable game-specific reference"
@@ -22,23 +84,11 @@
       "role": "immutable game-specific reference"
     },
     "FRO Updated Stats.csv": {
-      "sha256": "9bbef821ae8a4111dc425c537d46d858029ce37b61f8a0f9cb41351c88fba3d3",
-      "role": "immutable game-specific reference"
-    },
-    "source-data/fire_red_omega_documentation.xlsx": {
-      "sha256": "0cd02a2779b31f3abe356b48e8a02ec7e75c8972588f66f435863684da1c2aff",
-      "role": "immutable game-specific reference"
-    },
-    "source-data/imports/reference-docs/FRO Changes.txt": {
-      "sha256": "ba7a0461b63633fe534e20798727d38e6da2c3a7a01c6932e6484a6ef3cf04c3",
-      "role": "immutable game-specific reference"
-    },
-    "source-data/imports/reference-docs/FRO WildPokemon.txt": {
-      "sha256": "f11057b56c4f8e1d4e3acbd1263472d2324f8121114673752f55347b751b94e3",
+      "sha256": "54c02f0061a522a2498c8981c100096ff112e0bdb76321ed6d94dbdec41ceb45",
       "role": "immutable game-specific reference"
     },
     "source-data/imports/reference-docs/PChal_README.md": {
-      "sha256": "553ff99e72a4ec8310460c8394022c063bfe2cb463794ca93c8bad54c6821e8c",
+      "sha256": "dc3f30a468a8513846bf3477f6e27078ba858e6d6b9333fac2778a8e3c4c704f",
       "role": "immutable game-specific reference"
     },
     "imports/legacy-consumers/legacy_consumer_manifest.json": {
@@ -46,7 +96,7 @@
       "role": "immutable pre-cutover legacy consumer input manifest"
     },
     "source-data/trainer_documentation.json": {
-      "sha256": "9e5a0712d61dbb5255b4e6140a3ac7a90cd1ed611065d0c128f149572c6c6a10",
+      "sha256": "cc4aae1bc90a90b35bbcfcbf782446e4beb762d4eeb683240fb15c0cf81798ca",
       "role": "deterministic field-level projection of native trainer workbook order, locations, and mandatory fill classifications"
     },
     "source-data/species_ability_slots.json": {
@@ -100,6 +150,20 @@
       "storedMaskBindings": 666,
       "scriptedWildRuntimeBindings": 0,
       "unresolvedProfiles": 8
+    },
+    "speciesNumericIdentity": {
+      "required": true,
+      "source": "species_numeric_identity.json",
+      "status": "passed",
+      "unresolved": 0,
+      "numericNamespace": "national-dex-after-save-adapter-decoding",
+      "rawInternalNamespace": "fire-red-internal-species",
+      "sourceInputs": {
+        "Gen 3/source-data/species.json": "72afe824feb84dd9b463d733a9735ea8e885d18cbd2aac507fbf33aaf109ac0d",
+        "Gen 3/source-data/base_engine_tables.json": "4d6e6554e1cd19efdcbf7ed14c1c0bb3e3f56cb87b959a222789d5194f5cb9b0",
+        "Fire Red Omega/source-data/species_ability_slots.json": "df2b981792f516827f13c33e6e5684e517dab0e7dda158f686f89a5869e84685",
+        "Fire Red Omega/source-data/imports/legacy-consumers/calc-data/FRO_species.js": "9db947734e91efb56c0777f73bcc709e0a58a25e0fb43803e396e3ad4e988f88"
+      }
     }
   },
   "standardizedSources": [
@@ -132,14 +196,19 @@
     "source_verification_report.json",
     "consumer_projection.json",
     "trainer_reconciliation_report.json",
+    "encounter_import_verification.json",
+    "fro_wild_workbook_audit.json",
     "species_ability_slots.json",
     "trainer_documentation.json",
     "trainer_ai_evidence.json",
-    "starter_selection.json"
+    "starter_selection.json",
+    "encounter_mechanics.json",
+    "species_numeric_identity.json"
   ],
   "builders": {
     "build": "node ..\\tools\\standardize_legacy_game.js fire-red-omega",
     "deterministicCheck": "node ..\\tools\\standardize_legacy_game.js fire-red-omega --check",
+    "encounterImportValidation": "node ..\\tools\\run_python.mjs ..\\tools\\test_fire_red_omega_acquisitions.py",
     "trainerDocumentationBuild": "python ..\\tools\\build_drayano_trainer_documentation.py fire-red-omega",
     "trainerDocumentationDeterministicCheck": "python ..\\tools\\build_drayano_trainer_documentation.py fire-red-omega --check",
     "speciesAbilityBuild": "python ..\\tools\\build_drayano_species_abilities.py --game fire-red-omega --rom <approved-local-final-rom>",
@@ -152,7 +221,9 @@
     "consumerDeterministicCheck": "node ..\\tools\\build_standardized_consumers.js --game fire-red-omega --check",
     "validation": "node ..\\tools\\validate_standardized_dataset.js --game fire-red-omega",
     "starterSelectionBuild": "node ../tools/build_starter_selection.js --write",
-    "starterSelectionCheck": "node ../tools/build_starter_selection.js --check"
+    "starterSelectionCheck": "node ../tools/build_starter_selection.js --check",
+    "speciesNumericIdentityCheck": "node --test tools/test_fire_red_omega_species_identity.js",
+    "physicalWildCheck": "node --test tools/test_fire_red_omega_physical_wild.js && node tools/run_python.mjs tools/test_fire_red_omega_physical_wild.py"
   },
   "categoryApplicability": {
     "species": {

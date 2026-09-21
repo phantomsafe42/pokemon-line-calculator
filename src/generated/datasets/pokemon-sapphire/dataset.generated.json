@@ -2,12 +2,12 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-sapphire-dataset",
   "source": "Datasets/Pokemon Sapphire/source-data",
-  "sourceTreeSha256": "12838C6EC49D5D42DD1A367889522134D26BB696C9361191AA456A426D140A28",
+  "sourceTreeSha256": "3993BBD8740AF26AB65047DA62A87457BA1FA8025A50FDA3E8496B7BDCF59B1C",
   "files": [
     {
       "path": "dataset_manifest.json",
       "bytes": 64098,
-      "sha256": "D85BE32FB3E84C3FD75BBD35CF3BCCDE99881CF9453CA9FA2A7D4176563FD085"
+      "sha256": "844CB919C23CED82CFF70EB91DFA3D486B5DD8677EA69F113377F7D6DAE55A7F"
     },
     {
       "path": "battle_mechanics.json",

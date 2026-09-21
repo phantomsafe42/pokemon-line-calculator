@@ -1689,7 +1689,7 @@
     "unresolvedRecords": [],
     "knownAnswerSuite": {
       "file": "Datasets/tools/validate_battle_mechanics_known_answers.js",
-      "sha256": "dd6eea3ffb567f7d18ca9f1aa7167777cf811de03e0680383fb73149fc80e021",
+      "sha256": "043dae44f0910078fbe07b43c6a68a83865d0c9d31bd11cd4e1eb02e6c82328c",
       "cases": [
         "ordinary",
         "spread",

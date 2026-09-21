@@ -25722,6 +25722,1820 @@
       "baseSpecies": "Meloetta",
       "baseExp": 270,
       "sourceConfidence": "pinned-final-egglocke-rom-personal-table"
+    },
+    "unownb": {
+      "num": 201,
+      "id": "unownb",
+      "name": "Unown B",
+      "gen": 2,
+      "baseStats": {
+        "hp": 48,
+        "atk": 72,
+        "def": 48,
+        "spa": 102,
+        "spd": 48,
+        "spe": 78
+      },
+      "bst": 396,
+      "types": [
+        "psychic"
+      ],
+      "abilities": [
+        "levitate"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "gender": "N",
+      "genderRatio": {
+        "male": 0,
+        "female": 0,
+        "genderless": 1
+      },
+      "genderThresholdRaw": 255,
+      "mechanicsBase": "Unown",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 5,
+      "nfe": false,
+      "baseExp": 118,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Unown",
+      "form": "b",
+      "saveIdentity": {
+        "speciesNum": 201,
+        "form": 1,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "unown",
+        "personalRecordIndex": 201,
+        "personalRecordSha256": "7031d7acf8382174b8fadebd6bfc52ada3dcbc7f828b439b9c7aacd15f8abbbe",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "unownc": {
+      "num": 201,
+      "id": "unownc",
+      "name": "Unown C",
+      "gen": 2,
+      "baseStats": {
+        "hp": 48,
+        "atk": 72,
+        "def": 48,
+        "spa": 102,
+        "spd": 48,
+        "spe": 78
+      },
+      "bst": 396,
+      "types": [
+        "psychic"
+      ],
+      "abilities": [
+        "levitate"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "gender": "N",
+      "genderRatio": {
+        "male": 0,
+        "female": 0,
+        "genderless": 1
+      },
+      "genderThresholdRaw": 255,
+      "mechanicsBase": "Unown",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 5,
+      "nfe": false,
+      "baseExp": 118,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Unown",
+      "form": "c",
+      "saveIdentity": {
+        "speciesNum": 201,
+        "form": 2,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "unown",
+        "personalRecordIndex": 201,
+        "personalRecordSha256": "7031d7acf8382174b8fadebd6bfc52ada3dcbc7f828b439b9c7aacd15f8abbbe",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "unownd": {
+      "num": 201,
+      "id": "unownd",
+      "name": "Unown D",
+      "gen": 2,
+      "baseStats": {
+        "hp": 48,
+        "atk": 72,
+        "def": 48,
+        "spa": 102,
+        "spd": 48,
+        "spe": 78
+      },
+      "bst": 396,
+      "types": [
+        "psychic"
+      ],
+      "abilities": [
+        "levitate"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "gender": "N",
+      "genderRatio": {
+        "male": 0,
+        "female": 0,
+        "genderless": 1
+      },
+      "genderThresholdRaw": 255,
+      "mechanicsBase": "Unown",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 5,
+      "nfe": false,
+      "baseExp": 118,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Unown",
+      "form": "d",
+      "saveIdentity": {
+        "speciesNum": 201,
+        "form": 3,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "unown",
+        "personalRecordIndex": 201,
+        "personalRecordSha256": "7031d7acf8382174b8fadebd6bfc52ada3dcbc7f828b439b9c7aacd15f8abbbe",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "unowne": {
+      "num": 201,
+      "id": "unowne",
+      "name": "Unown E",
+      "gen": 2,
+      "baseStats": {
+        "hp": 48,
+        "atk": 72,
+        "def": 48,
+        "spa": 102,
+        "spd": 48,
+        "spe": 78
+      },
+      "bst": 396,
+      "types": [
+        "psychic"
+      ],
+      "abilities": [
+        "levitate"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "gender": "N",
+      "genderRatio": {
+        "male": 0,
+        "female": 0,
+        "genderless": 1
+      },
+      "genderThresholdRaw": 255,
+      "mechanicsBase": "Unown",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 5,
+      "nfe": false,
+      "baseExp": 118,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Unown",
+      "form": "e",
+      "saveIdentity": {
+        "speciesNum": 201,
+        "form": 4,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "unown",
+        "personalRecordIndex": 201,
+        "personalRecordSha256": "7031d7acf8382174b8fadebd6bfc52ada3dcbc7f828b439b9c7aacd15f8abbbe",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "unownf": {
+      "num": 201,
+      "id": "unownf",
+      "name": "Unown F",
+      "gen": 2,
+      "baseStats": {
+        "hp": 48,
+        "atk": 72,
+        "def": 48,
+        "spa": 102,
+        "spd": 48,
+        "spe": 78
+      },
+      "bst": 396,
+      "types": [
+        "psychic"
+      ],
+      "abilities": [
+        "levitate"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "gender": "N",
+      "genderRatio": {
+        "male": 0,
+        "female": 0,
+        "genderless": 1
+      },
+      "genderThresholdRaw": 255,
+      "mechanicsBase": "Unown",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 5,
+      "nfe": false,
+      "baseExp": 118,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Unown",
+      "form": "f",
+      "saveIdentity": {
+        "speciesNum": 201,
+        "form": 5,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "unown",
+        "personalRecordIndex": 201,
+        "personalRecordSha256": "7031d7acf8382174b8fadebd6bfc52ada3dcbc7f828b439b9c7aacd15f8abbbe",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "unowng": {
+      "num": 201,
+      "id": "unowng",
+      "name": "Unown G",
+      "gen": 2,
+      "baseStats": {
+        "hp": 48,
+        "atk": 72,
+        "def": 48,
+        "spa": 102,
+        "spd": 48,
+        "spe": 78
+      },
+      "bst": 396,
+      "types": [
+        "psychic"
+      ],
+      "abilities": [
+        "levitate"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "gender": "N",
+      "genderRatio": {
+        "male": 0,
+        "female": 0,
+        "genderless": 1
+      },
+      "genderThresholdRaw": 255,
+      "mechanicsBase": "Unown",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 5,
+      "nfe": false,
+      "baseExp": 118,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Unown",
+      "form": "g",
+      "saveIdentity": {
+        "speciesNum": 201,
+        "form": 6,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "unown",
+        "personalRecordIndex": 201,
+        "personalRecordSha256": "7031d7acf8382174b8fadebd6bfc52ada3dcbc7f828b439b9c7aacd15f8abbbe",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "unownh": {
+      "num": 201,
+      "id": "unownh",
+      "name": "Unown H",
+      "gen": 2,
+      "baseStats": {
+        "hp": 48,
+        "atk": 72,
+        "def": 48,
+        "spa": 102,
+        "spd": 48,
+        "spe": 78
+      },
+      "bst": 396,
+      "types": [
+        "psychic"
+      ],
+      "abilities": [
+        "levitate"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "gender": "N",
+      "genderRatio": {
+        "male": 0,
+        "female": 0,
+        "genderless": 1
+      },
+      "genderThresholdRaw": 255,
+      "mechanicsBase": "Unown",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 5,
+      "nfe": false,
+      "baseExp": 118,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Unown",
+      "form": "h",
+      "saveIdentity": {
+        "speciesNum": 201,
+        "form": 7,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "unown",
+        "personalRecordIndex": 201,
+        "personalRecordSha256": "7031d7acf8382174b8fadebd6bfc52ada3dcbc7f828b439b9c7aacd15f8abbbe",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "unowni": {
+      "num": 201,
+      "id": "unowni",
+      "name": "Unown I",
+      "gen": 2,
+      "baseStats": {
+        "hp": 48,
+        "atk": 72,
+        "def": 48,
+        "spa": 102,
+        "spd": 48,
+        "spe": 78
+      },
+      "bst": 396,
+      "types": [
+        "psychic"
+      ],
+      "abilities": [
+        "levitate"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "gender": "N",
+      "genderRatio": {
+        "male": 0,
+        "female": 0,
+        "genderless": 1
+      },
+      "genderThresholdRaw": 255,
+      "mechanicsBase": "Unown",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 5,
+      "nfe": false,
+      "baseExp": 118,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Unown",
+      "form": "i",
+      "saveIdentity": {
+        "speciesNum": 201,
+        "form": 8,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "unown",
+        "personalRecordIndex": 201,
+        "personalRecordSha256": "7031d7acf8382174b8fadebd6bfc52ada3dcbc7f828b439b9c7aacd15f8abbbe",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "unownj": {
+      "num": 201,
+      "id": "unownj",
+      "name": "Unown J",
+      "gen": 2,
+      "baseStats": {
+        "hp": 48,
+        "atk": 72,
+        "def": 48,
+        "spa": 102,
+        "spd": 48,
+        "spe": 78
+      },
+      "bst": 396,
+      "types": [
+        "psychic"
+      ],
+      "abilities": [
+        "levitate"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "gender": "N",
+      "genderRatio": {
+        "male": 0,
+        "female": 0,
+        "genderless": 1
+      },
+      "genderThresholdRaw": 255,
+      "mechanicsBase": "Unown",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 5,
+      "nfe": false,
+      "baseExp": 118,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Unown",
+      "form": "j",
+      "saveIdentity": {
+        "speciesNum": 201,
+        "form": 9,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "unown",
+        "personalRecordIndex": 201,
+        "personalRecordSha256": "7031d7acf8382174b8fadebd6bfc52ada3dcbc7f828b439b9c7aacd15f8abbbe",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "unownk": {
+      "num": 201,
+      "id": "unownk",
+      "name": "Unown K",
+      "gen": 2,
+      "baseStats": {
+        "hp": 48,
+        "atk": 72,
+        "def": 48,
+        "spa": 102,
+        "spd": 48,
+        "spe": 78
+      },
+      "bst": 396,
+      "types": [
+        "psychic"
+      ],
+      "abilities": [
+        "levitate"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "gender": "N",
+      "genderRatio": {
+        "male": 0,
+        "female": 0,
+        "genderless": 1
+      },
+      "genderThresholdRaw": 255,
+      "mechanicsBase": "Unown",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 5,
+      "nfe": false,
+      "baseExp": 118,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Unown",
+      "form": "k",
+      "saveIdentity": {
+        "speciesNum": 201,
+        "form": 10,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "unown",
+        "personalRecordIndex": 201,
+        "personalRecordSha256": "7031d7acf8382174b8fadebd6bfc52ada3dcbc7f828b439b9c7aacd15f8abbbe",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "unownl": {
+      "num": 201,
+      "id": "unownl",
+      "name": "Unown L",
+      "gen": 2,
+      "baseStats": {
+        "hp": 48,
+        "atk": 72,
+        "def": 48,
+        "spa": 102,
+        "spd": 48,
+        "spe": 78
+      },
+      "bst": 396,
+      "types": [
+        "psychic"
+      ],
+      "abilities": [
+        "levitate"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "gender": "N",
+      "genderRatio": {
+        "male": 0,
+        "female": 0,
+        "genderless": 1
+      },
+      "genderThresholdRaw": 255,
+      "mechanicsBase": "Unown",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 5,
+      "nfe": false,
+      "baseExp": 118,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Unown",
+      "form": "l",
+      "saveIdentity": {
+        "speciesNum": 201,
+        "form": 11,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "unown",
+        "personalRecordIndex": 201,
+        "personalRecordSha256": "7031d7acf8382174b8fadebd6bfc52ada3dcbc7f828b439b9c7aacd15f8abbbe",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "unownm": {
+      "num": 201,
+      "id": "unownm",
+      "name": "Unown M",
+      "gen": 2,
+      "baseStats": {
+        "hp": 48,
+        "atk": 72,
+        "def": 48,
+        "spa": 102,
+        "spd": 48,
+        "spe": 78
+      },
+      "bst": 396,
+      "types": [
+        "psychic"
+      ],
+      "abilities": [
+        "levitate"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "gender": "N",
+      "genderRatio": {
+        "male": 0,
+        "female": 0,
+        "genderless": 1
+      },
+      "genderThresholdRaw": 255,
+      "mechanicsBase": "Unown",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 5,
+      "nfe": false,
+      "baseExp": 118,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Unown",
+      "form": "m",
+      "saveIdentity": {
+        "speciesNum": 201,
+        "form": 12,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "unown",
+        "personalRecordIndex": 201,
+        "personalRecordSha256": "7031d7acf8382174b8fadebd6bfc52ada3dcbc7f828b439b9c7aacd15f8abbbe",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "unownn": {
+      "num": 201,
+      "id": "unownn",
+      "name": "Unown N",
+      "gen": 2,
+      "baseStats": {
+        "hp": 48,
+        "atk": 72,
+        "def": 48,
+        "spa": 102,
+        "spd": 48,
+        "spe": 78
+      },
+      "bst": 396,
+      "types": [
+        "psychic"
+      ],
+      "abilities": [
+        "levitate"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "gender": "N",
+      "genderRatio": {
+        "male": 0,
+        "female": 0,
+        "genderless": 1
+      },
+      "genderThresholdRaw": 255,
+      "mechanicsBase": "Unown",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 5,
+      "nfe": false,
+      "baseExp": 118,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Unown",
+      "form": "n",
+      "saveIdentity": {
+        "speciesNum": 201,
+        "form": 13,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "unown",
+        "personalRecordIndex": 201,
+        "personalRecordSha256": "7031d7acf8382174b8fadebd6bfc52ada3dcbc7f828b439b9c7aacd15f8abbbe",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "unowno": {
+      "num": 201,
+      "id": "unowno",
+      "name": "Unown O",
+      "gen": 2,
+      "baseStats": {
+        "hp": 48,
+        "atk": 72,
+        "def": 48,
+        "spa": 102,
+        "spd": 48,
+        "spe": 78
+      },
+      "bst": 396,
+      "types": [
+        "psychic"
+      ],
+      "abilities": [
+        "levitate"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "gender": "N",
+      "genderRatio": {
+        "male": 0,
+        "female": 0,
+        "genderless": 1
+      },
+      "genderThresholdRaw": 255,
+      "mechanicsBase": "Unown",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 5,
+      "nfe": false,
+      "baseExp": 118,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Unown",
+      "form": "o",
+      "saveIdentity": {
+        "speciesNum": 201,
+        "form": 14,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "unown",
+        "personalRecordIndex": 201,
+        "personalRecordSha256": "7031d7acf8382174b8fadebd6bfc52ada3dcbc7f828b439b9c7aacd15f8abbbe",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "unownp": {
+      "num": 201,
+      "id": "unownp",
+      "name": "Unown P",
+      "gen": 2,
+      "baseStats": {
+        "hp": 48,
+        "atk": 72,
+        "def": 48,
+        "spa": 102,
+        "spd": 48,
+        "spe": 78
+      },
+      "bst": 396,
+      "types": [
+        "psychic"
+      ],
+      "abilities": [
+        "levitate"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "gender": "N",
+      "genderRatio": {
+        "male": 0,
+        "female": 0,
+        "genderless": 1
+      },
+      "genderThresholdRaw": 255,
+      "mechanicsBase": "Unown",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 5,
+      "nfe": false,
+      "baseExp": 118,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Unown",
+      "form": "p",
+      "saveIdentity": {
+        "speciesNum": 201,
+        "form": 15,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "unown",
+        "personalRecordIndex": 201,
+        "personalRecordSha256": "7031d7acf8382174b8fadebd6bfc52ada3dcbc7f828b439b9c7aacd15f8abbbe",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "unownq": {
+      "num": 201,
+      "id": "unownq",
+      "name": "Unown Q",
+      "gen": 2,
+      "baseStats": {
+        "hp": 48,
+        "atk": 72,
+        "def": 48,
+        "spa": 102,
+        "spd": 48,
+        "spe": 78
+      },
+      "bst": 396,
+      "types": [
+        "psychic"
+      ],
+      "abilities": [
+        "levitate"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "gender": "N",
+      "genderRatio": {
+        "male": 0,
+        "female": 0,
+        "genderless": 1
+      },
+      "genderThresholdRaw": 255,
+      "mechanicsBase": "Unown",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 5,
+      "nfe": false,
+      "baseExp": 118,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Unown",
+      "form": "q",
+      "saveIdentity": {
+        "speciesNum": 201,
+        "form": 16,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "unown",
+        "personalRecordIndex": 201,
+        "personalRecordSha256": "7031d7acf8382174b8fadebd6bfc52ada3dcbc7f828b439b9c7aacd15f8abbbe",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "unownr": {
+      "num": 201,
+      "id": "unownr",
+      "name": "Unown R",
+      "gen": 2,
+      "baseStats": {
+        "hp": 48,
+        "atk": 72,
+        "def": 48,
+        "spa": 102,
+        "spd": 48,
+        "spe": 78
+      },
+      "bst": 396,
+      "types": [
+        "psychic"
+      ],
+      "abilities": [
+        "levitate"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "gender": "N",
+      "genderRatio": {
+        "male": 0,
+        "female": 0,
+        "genderless": 1
+      },
+      "genderThresholdRaw": 255,
+      "mechanicsBase": "Unown",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 5,
+      "nfe": false,
+      "baseExp": 118,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Unown",
+      "form": "r",
+      "saveIdentity": {
+        "speciesNum": 201,
+        "form": 17,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "unown",
+        "personalRecordIndex": 201,
+        "personalRecordSha256": "7031d7acf8382174b8fadebd6bfc52ada3dcbc7f828b439b9c7aacd15f8abbbe",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "unowns": {
+      "num": 201,
+      "id": "unowns",
+      "name": "Unown S",
+      "gen": 2,
+      "baseStats": {
+        "hp": 48,
+        "atk": 72,
+        "def": 48,
+        "spa": 102,
+        "spd": 48,
+        "spe": 78
+      },
+      "bst": 396,
+      "types": [
+        "psychic"
+      ],
+      "abilities": [
+        "levitate"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "gender": "N",
+      "genderRatio": {
+        "male": 0,
+        "female": 0,
+        "genderless": 1
+      },
+      "genderThresholdRaw": 255,
+      "mechanicsBase": "Unown",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 5,
+      "nfe": false,
+      "baseExp": 118,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Unown",
+      "form": "s",
+      "saveIdentity": {
+        "speciesNum": 201,
+        "form": 18,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "unown",
+        "personalRecordIndex": 201,
+        "personalRecordSha256": "7031d7acf8382174b8fadebd6bfc52ada3dcbc7f828b439b9c7aacd15f8abbbe",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "unownt": {
+      "num": 201,
+      "id": "unownt",
+      "name": "Unown T",
+      "gen": 2,
+      "baseStats": {
+        "hp": 48,
+        "atk": 72,
+        "def": 48,
+        "spa": 102,
+        "spd": 48,
+        "spe": 78
+      },
+      "bst": 396,
+      "types": [
+        "psychic"
+      ],
+      "abilities": [
+        "levitate"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "gender": "N",
+      "genderRatio": {
+        "male": 0,
+        "female": 0,
+        "genderless": 1
+      },
+      "genderThresholdRaw": 255,
+      "mechanicsBase": "Unown",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 5,
+      "nfe": false,
+      "baseExp": 118,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Unown",
+      "form": "t",
+      "saveIdentity": {
+        "speciesNum": 201,
+        "form": 19,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "unown",
+        "personalRecordIndex": 201,
+        "personalRecordSha256": "7031d7acf8382174b8fadebd6bfc52ada3dcbc7f828b439b9c7aacd15f8abbbe",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "unownu": {
+      "num": 201,
+      "id": "unownu",
+      "name": "Unown U",
+      "gen": 2,
+      "baseStats": {
+        "hp": 48,
+        "atk": 72,
+        "def": 48,
+        "spa": 102,
+        "spd": 48,
+        "spe": 78
+      },
+      "bst": 396,
+      "types": [
+        "psychic"
+      ],
+      "abilities": [
+        "levitate"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "gender": "N",
+      "genderRatio": {
+        "male": 0,
+        "female": 0,
+        "genderless": 1
+      },
+      "genderThresholdRaw": 255,
+      "mechanicsBase": "Unown",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 5,
+      "nfe": false,
+      "baseExp": 118,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Unown",
+      "form": "u",
+      "saveIdentity": {
+        "speciesNum": 201,
+        "form": 20,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "unown",
+        "personalRecordIndex": 201,
+        "personalRecordSha256": "7031d7acf8382174b8fadebd6bfc52ada3dcbc7f828b439b9c7aacd15f8abbbe",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "unownv": {
+      "num": 201,
+      "id": "unownv",
+      "name": "Unown V",
+      "gen": 2,
+      "baseStats": {
+        "hp": 48,
+        "atk": 72,
+        "def": 48,
+        "spa": 102,
+        "spd": 48,
+        "spe": 78
+      },
+      "bst": 396,
+      "types": [
+        "psychic"
+      ],
+      "abilities": [
+        "levitate"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "gender": "N",
+      "genderRatio": {
+        "male": 0,
+        "female": 0,
+        "genderless": 1
+      },
+      "genderThresholdRaw": 255,
+      "mechanicsBase": "Unown",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 5,
+      "nfe": false,
+      "baseExp": 118,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Unown",
+      "form": "v",
+      "saveIdentity": {
+        "speciesNum": 201,
+        "form": 21,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "unown",
+        "personalRecordIndex": 201,
+        "personalRecordSha256": "7031d7acf8382174b8fadebd6bfc52ada3dcbc7f828b439b9c7aacd15f8abbbe",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "unownw": {
+      "num": 201,
+      "id": "unownw",
+      "name": "Unown W",
+      "gen": 2,
+      "baseStats": {
+        "hp": 48,
+        "atk": 72,
+        "def": 48,
+        "spa": 102,
+        "spd": 48,
+        "spe": 78
+      },
+      "bst": 396,
+      "types": [
+        "psychic"
+      ],
+      "abilities": [
+        "levitate"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "gender": "N",
+      "genderRatio": {
+        "male": 0,
+        "female": 0,
+        "genderless": 1
+      },
+      "genderThresholdRaw": 255,
+      "mechanicsBase": "Unown",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 5,
+      "nfe": false,
+      "baseExp": 118,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Unown",
+      "form": "w",
+      "saveIdentity": {
+        "speciesNum": 201,
+        "form": 22,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "unown",
+        "personalRecordIndex": 201,
+        "personalRecordSha256": "7031d7acf8382174b8fadebd6bfc52ada3dcbc7f828b439b9c7aacd15f8abbbe",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "unownx": {
+      "num": 201,
+      "id": "unownx",
+      "name": "Unown X",
+      "gen": 2,
+      "baseStats": {
+        "hp": 48,
+        "atk": 72,
+        "def": 48,
+        "spa": 102,
+        "spd": 48,
+        "spe": 78
+      },
+      "bst": 396,
+      "types": [
+        "psychic"
+      ],
+      "abilities": [
+        "levitate"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "gender": "N",
+      "genderRatio": {
+        "male": 0,
+        "female": 0,
+        "genderless": 1
+      },
+      "genderThresholdRaw": 255,
+      "mechanicsBase": "Unown",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 5,
+      "nfe": false,
+      "baseExp": 118,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Unown",
+      "form": "x",
+      "saveIdentity": {
+        "speciesNum": 201,
+        "form": 23,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "unown",
+        "personalRecordIndex": 201,
+        "personalRecordSha256": "7031d7acf8382174b8fadebd6bfc52ada3dcbc7f828b439b9c7aacd15f8abbbe",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "unowny": {
+      "num": 201,
+      "id": "unowny",
+      "name": "Unown Y",
+      "gen": 2,
+      "baseStats": {
+        "hp": 48,
+        "atk": 72,
+        "def": 48,
+        "spa": 102,
+        "spd": 48,
+        "spe": 78
+      },
+      "bst": 396,
+      "types": [
+        "psychic"
+      ],
+      "abilities": [
+        "levitate"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "gender": "N",
+      "genderRatio": {
+        "male": 0,
+        "female": 0,
+        "genderless": 1
+      },
+      "genderThresholdRaw": 255,
+      "mechanicsBase": "Unown",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 5,
+      "nfe": false,
+      "baseExp": 118,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Unown",
+      "form": "y",
+      "saveIdentity": {
+        "speciesNum": 201,
+        "form": 24,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "unown",
+        "personalRecordIndex": 201,
+        "personalRecordSha256": "7031d7acf8382174b8fadebd6bfc52ada3dcbc7f828b439b9c7aacd15f8abbbe",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "unownz": {
+      "num": 201,
+      "id": "unownz",
+      "name": "Unown Z",
+      "gen": 2,
+      "baseStats": {
+        "hp": 48,
+        "atk": 72,
+        "def": 48,
+        "spa": 102,
+        "spd": 48,
+        "spe": 78
+      },
+      "bst": 396,
+      "types": [
+        "psychic"
+      ],
+      "abilities": [
+        "levitate"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "gender": "N",
+      "genderRatio": {
+        "male": 0,
+        "female": 0,
+        "genderless": 1
+      },
+      "genderThresholdRaw": 255,
+      "mechanicsBase": "Unown",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 5,
+      "nfe": false,
+      "baseExp": 118,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Unown",
+      "form": "z",
+      "saveIdentity": {
+        "speciesNum": 201,
+        "form": 25,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "unown",
+        "personalRecordIndex": 201,
+        "personalRecordSha256": "7031d7acf8382174b8fadebd6bfc52ada3dcbc7f828b439b9c7aacd15f8abbbe",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "unownexclamation": {
+      "num": 201,
+      "id": "unownexclamation",
+      "name": "Unown !",
+      "gen": 2,
+      "baseStats": {
+        "hp": 48,
+        "atk": 72,
+        "def": 48,
+        "spa": 102,
+        "spd": 48,
+        "spe": 78
+      },
+      "bst": 396,
+      "types": [
+        "psychic"
+      ],
+      "abilities": [
+        "levitate"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "gender": "N",
+      "genderRatio": {
+        "male": 0,
+        "female": 0,
+        "genderless": 1
+      },
+      "genderThresholdRaw": 255,
+      "mechanicsBase": "Unown",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 5,
+      "nfe": false,
+      "baseExp": 118,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Unown",
+      "form": "exclamation",
+      "saveIdentity": {
+        "speciesNum": 201,
+        "form": 26,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "unown",
+        "personalRecordIndex": 201,
+        "personalRecordSha256": "7031d7acf8382174b8fadebd6bfc52ada3dcbc7f828b439b9c7aacd15f8abbbe",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "unownquestion": {
+      "num": 201,
+      "id": "unownquestion",
+      "name": "Unown ?",
+      "gen": 2,
+      "baseStats": {
+        "hp": 48,
+        "atk": 72,
+        "def": 48,
+        "spa": 102,
+        "spd": 48,
+        "spe": 78
+      },
+      "bst": 396,
+      "types": [
+        "psychic"
+      ],
+      "abilities": [
+        "levitate"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "gender": "N",
+      "genderRatio": {
+        "male": 0,
+        "female": 0,
+        "genderless": 1
+      },
+      "genderThresholdRaw": 255,
+      "mechanicsBase": "Unown",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 5,
+      "nfe": false,
+      "baseExp": 118,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Unown",
+      "form": "question",
+      "saveIdentity": {
+        "speciesNum": 201,
+        "form": 27,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "unown",
+        "personalRecordIndex": 201,
+        "personalRecordSha256": "7031d7acf8382174b8fadebd6bfc52ada3dcbc7f828b439b9c7aacd15f8abbbe",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "cherrimsunshine": {
+      "num": 421,
+      "id": "cherrimsunshine",
+      "name": "Sunshine Cherrim",
+      "gen": 4,
+      "baseStats": {
+        "hp": 70,
+        "atk": 45,
+        "def": 70,
+        "spa": 107,
+        "spd": 83,
+        "spe": 90
+      },
+      "bst": 465,
+      "types": [
+        "grass"
+      ],
+      "abilities": [
+        "flowergift"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "genderRatio": {
+        "male": 0.5,
+        "female": 0.5,
+        "genderless": 0
+      },
+      "genderThresholdRaw": 127,
+      "mechanicsBase": "Cherrim-Sunshine",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 9.3,
+      "nfe": false,
+      "baseExp": 158,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Cherrim",
+      "form": "sunshine",
+      "saveIdentity": {
+        "speciesNum": 421,
+        "form": 1,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "cherrim",
+        "personalRecordIndex": 421,
+        "personalRecordSha256": "362f10e42494266c1332b82f376009aa889bc6f349c0277f24523d8613820dbd",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "shelloseast": {
+      "num": 422,
+      "id": "shelloseast",
+      "name": "East Shellos",
+      "gen": 4,
+      "baseStats": {
+        "hp": 76,
+        "atk": 48,
+        "def": 48,
+        "spa": 57,
+        "spd": 62,
+        "spe": 34
+      },
+      "bst": 325,
+      "types": [
+        "water"
+      ],
+      "abilities": [
+        "stickyhold",
+        "stormdrain",
+        "sandforce"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "genderRatio": {
+        "male": 0.5,
+        "female": 0.5,
+        "genderless": 0
+      },
+      "genderThresholdRaw": 127,
+      "mechanicsBase": "Shellos",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 6.3,
+      "nfe": true,
+      "baseExp": 65,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Shellos",
+      "form": "east",
+      "saveIdentity": {
+        "speciesNum": 422,
+        "form": 1,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "shellos",
+        "personalRecordIndex": 422,
+        "personalRecordSha256": "558b273064d06e9aafe33b585eb232a8dbda92c2cc908a17367a5e57ecf02765",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "gastrodoneast": {
+      "num": 423,
+      "id": "gastrodoneast",
+      "name": "East Gastrodon",
+      "gen": 4,
+      "baseStats": {
+        "hp": 111,
+        "atk": 83,
+        "def": 68,
+        "spa": 92,
+        "spd": 82,
+        "spe": 39
+      },
+      "bst": 475,
+      "types": [
+        "water",
+        "ground"
+      ],
+      "abilities": [
+        "stickyhold",
+        "stormdrain",
+        "sandforce"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "genderRatio": {
+        "male": 0.5,
+        "female": 0.5,
+        "genderless": 0
+      },
+      "genderThresholdRaw": 127,
+      "mechanicsBase": "Gastrodon",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 29.9,
+      "nfe": false,
+      "baseExp": 166,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Gastrodon",
+      "form": "east",
+      "saveIdentity": {
+        "speciesNum": 423,
+        "form": 1,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "gastrodon",
+        "personalRecordIndex": 423,
+        "personalRecordSha256": "a3f16f03b950dc815c217854b4becc2c8f736cc40b31d1a8f0ccb300a89d2dce",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "deerlingsummer": {
+      "num": 585,
+      "id": "deerlingsummer",
+      "name": "Summer Deerling",
+      "gen": 5,
+      "baseStats": {
+        "hp": 60,
+        "atk": 60,
+        "def": 50,
+        "spa": 40,
+        "spd": 50,
+        "spe": 75
+      },
+      "bst": 335,
+      "types": [
+        "normal",
+        "grass"
+      ],
+      "abilities": [
+        "chlorophyll",
+        "sapsipper",
+        "serenegrace"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "genderRatio": {
+        "male": 0.5,
+        "female": 0.5,
+        "genderless": 0
+      },
+      "genderThresholdRaw": 127,
+      "mechanicsBase": "Deerling",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 19.5,
+      "nfe": true,
+      "baseExp": 67,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Deerling",
+      "form": "summer",
+      "saveIdentity": {
+        "speciesNum": 585,
+        "form": 1,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "deerling",
+        "personalRecordIndex": 585,
+        "personalRecordSha256": "51be426b8432dbbfe75c723730266cacd1956d3a7802cbca28975b9d12e0667f",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "deerlingautumn": {
+      "num": 585,
+      "id": "deerlingautumn",
+      "name": "Autumn Deerling",
+      "gen": 5,
+      "baseStats": {
+        "hp": 60,
+        "atk": 60,
+        "def": 50,
+        "spa": 40,
+        "spd": 50,
+        "spe": 75
+      },
+      "bst": 335,
+      "types": [
+        "normal",
+        "grass"
+      ],
+      "abilities": [
+        "chlorophyll",
+        "sapsipper",
+        "serenegrace"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "genderRatio": {
+        "male": 0.5,
+        "female": 0.5,
+        "genderless": 0
+      },
+      "genderThresholdRaw": 127,
+      "mechanicsBase": "Deerling",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 19.5,
+      "nfe": true,
+      "baseExp": 67,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Deerling",
+      "form": "autumn",
+      "saveIdentity": {
+        "speciesNum": 585,
+        "form": 2,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "deerling",
+        "personalRecordIndex": 585,
+        "personalRecordSha256": "51be426b8432dbbfe75c723730266cacd1956d3a7802cbca28975b9d12e0667f",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "deerlingwinter": {
+      "num": 585,
+      "id": "deerlingwinter",
+      "name": "Winter Deerling",
+      "gen": 5,
+      "baseStats": {
+        "hp": 60,
+        "atk": 60,
+        "def": 50,
+        "spa": 40,
+        "spd": 50,
+        "spe": 75
+      },
+      "bst": 335,
+      "types": [
+        "normal",
+        "grass"
+      ],
+      "abilities": [
+        "chlorophyll",
+        "sapsipper",
+        "serenegrace"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "genderRatio": {
+        "male": 0.5,
+        "female": 0.5,
+        "genderless": 0
+      },
+      "genderThresholdRaw": 127,
+      "mechanicsBase": "Deerling",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 19.5,
+      "nfe": true,
+      "baseExp": 67,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Deerling",
+      "form": "winter",
+      "saveIdentity": {
+        "speciesNum": 585,
+        "form": 3,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "deerling",
+        "personalRecordIndex": 585,
+        "personalRecordSha256": "51be426b8432dbbfe75c723730266cacd1956d3a7802cbca28975b9d12e0667f",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "sawsbucksummer": {
+      "num": 586,
+      "id": "sawsbucksummer",
+      "name": "Summer Sawsbuck",
+      "gen": 5,
+      "baseStats": {
+        "hp": 85,
+        "atk": 110,
+        "def": 70,
+        "spa": 60,
+        "spd": 70,
+        "spe": 95
+      },
+      "bst": 490,
+      "types": [
+        "normal",
+        "grass"
+      ],
+      "abilities": [
+        "chlorophyll",
+        "sapsipper",
+        "serenegrace"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "genderRatio": {
+        "male": 0.5,
+        "female": 0.5,
+        "genderless": 0
+      },
+      "genderThresholdRaw": 127,
+      "mechanicsBase": "Sawsbuck",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 92.5,
+      "nfe": false,
+      "baseExp": 166,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Sawsbuck",
+      "form": "summer",
+      "saveIdentity": {
+        "speciesNum": 586,
+        "form": 1,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "sawsbuck",
+        "personalRecordIndex": 586,
+        "personalRecordSha256": "cdb59fdf9ca6376928c15a58715fb3ab73246bd4ef9afc7c74054cddae4f9131",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "sawsbuckautumn": {
+      "num": 586,
+      "id": "sawsbuckautumn",
+      "name": "Autumn Sawsbuck",
+      "gen": 5,
+      "baseStats": {
+        "hp": 85,
+        "atk": 110,
+        "def": 70,
+        "spa": 60,
+        "spd": 70,
+        "spe": 95
+      },
+      "bst": 490,
+      "types": [
+        "normal",
+        "grass"
+      ],
+      "abilities": [
+        "chlorophyll",
+        "sapsipper",
+        "serenegrace"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "genderRatio": {
+        "male": 0.5,
+        "female": 0.5,
+        "genderless": 0
+      },
+      "genderThresholdRaw": 127,
+      "mechanicsBase": "Sawsbuck",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 92.5,
+      "nfe": false,
+      "baseExp": 166,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Sawsbuck",
+      "form": "autumn",
+      "saveIdentity": {
+        "speciesNum": 586,
+        "form": 2,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "sawsbuck",
+        "personalRecordIndex": 586,
+        "personalRecordSha256": "cdb59fdf9ca6376928c15a58715fb3ab73246bd4ef9afc7c74054cddae4f9131",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    "sawsbuckwinter": {
+      "num": 586,
+      "id": "sawsbuckwinter",
+      "name": "Winter Sawsbuck",
+      "gen": 5,
+      "baseStats": {
+        "hp": 85,
+        "atk": 110,
+        "def": 70,
+        "spa": 60,
+        "spd": 70,
+        "spe": 95
+      },
+      "bst": 490,
+      "types": [
+        "normal",
+        "grass"
+      ],
+      "abilities": [
+        "chlorophyll",
+        "sapsipper",
+        "serenegrace"
+      ],
+      "available": true,
+      "growthRate": "Medium Fast",
+      "genderRatio": {
+        "male": 0.5,
+        "female": 0.5,
+        "genderless": 0
+      },
+      "genderThresholdRaw": 127,
+      "mechanicsBase": "Sawsbuck",
+      "mechanicsInheritance": "smogon-calc-0.11.0-generation-9",
+      "weightKg": 92.5,
+      "nfe": false,
+      "baseExp": 166,
+      "sourceConfidence": "pinned-supported-shared-personal-form",
+      "baseSpecies": "Sawsbuck",
+      "form": "winter",
+      "saveIdentity": {
+        "speciesNum": 586,
+        "form": 3,
+        "status": "explicit-form"
+      },
+      "sourceInheritance": {
+        "baseSpeciesId": "sawsbuck",
+        "personalRecordIndex": 586,
+        "personalRecordSha256": "cdb59fdf9ca6376928c15a58715fb3ab73246bd4ef9afc7c74054cddae4f9131",
+        "identityEvidence": "imports/reference-docs/vw2r-shared-form-personal.json",
+        "inheritanceEvidence": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
     }
   }
 }

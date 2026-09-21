@@ -324,7 +324,7 @@
     "inputs": [
       {
         "file": "species.json",
-        "sha256": "8c36f17e9bd25ddd24311beff8dd64f1c330171fa3ac80e79f881f2f640bd4da"
+        "sha256": "dfb7244ca0a3e465aa920bfb787f0f0407850acdc63b70e89c7635bb99861264"
       },
       {
         "file": "trainers.json",

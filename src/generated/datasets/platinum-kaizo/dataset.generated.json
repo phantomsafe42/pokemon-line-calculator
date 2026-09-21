@@ -2,17 +2,17 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-pk-dataset",
   "source": "Datasets/Platinum Kaizo/source-data",
-  "sourceTreeSha256": "1651DA15BCE9EE8B8C5BF193C9C87566BD65A2A96CEACFD92BB019236DABF018",
+  "sourceTreeSha256": "4D432716D1B11B5793539DA35F3920396B2EFB55E377812115593ACD5127A52E",
   "files": [
     {
       "path": "dataset_manifest.json",
-      "bytes": 12255,
-      "sha256": "BD5672D14FD1CD1054BC4D9B9BADD6DCF81C6400EC0DD9D5ADE410AF07918F0E"
+      "bytes": 15534,
+      "sha256": "6645AC30A714499BEE38B8520101E592C14AFAF843B801C027D0454F0D025A4C"
     },
     {
       "path": "battle_mechanics.json",
       "bytes": 2435,
-      "sha256": "8486128F10326BFD1D0E81E87FAFCB81A2F6F0DEDC2C2EDBF638D19AC76D354C"
+      "sha256": "227D5975BF26CDE682DB67F76721D1209546F0C93E4E1EA4ACA911485BE13051"
     },
     {
       "path": "experience_mechanics.json",
@@ -82,7 +82,7 @@
     {
       "path": "starter_selection.json",
       "bytes": 12859,
-      "sha256": "B0F80D9AD1DF5593BB88F2C450817C1994C1D0FEC7412CA3879BA775B323255C"
+      "sha256": "4B4BEEAB980EE63E0BAFC45E4C3E3A785F462E9C505AA58F981ACE9C427A083B"
     }
   ]
 }

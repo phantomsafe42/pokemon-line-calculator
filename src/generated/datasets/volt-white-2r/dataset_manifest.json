@@ -32,11 +32,34 @@
     "../../Gen 5/source-data/trainer_ai_action_semantics.json": "7746d15d6acb8ffbc5fe6bfe290f514c844d9395614423276a12c2e36687d6e1",
     "../../Gen 5/source-data/trainer_ai_action_semantics_verification_report.json": "cd6f59baba0c8acd6dca7cb4f06ccc241a302d4105eea47c61c925bf49f2912d",
     "../../Gen 5/source-data/trainer_ai_item_battle_parameters.json": "4ac6d61d2b26a06b3f5592e7bb078429ff3c851082af37ad5db13de9a89aebca",
-    "../../Gen 5/source-data/trainer_ai_evaluator_verification_report.json": "d034298dd75f006df13e7e8dae32bdd8e9cd4a880c65dc332c90868bdbbd5f9a",
+    "../../Gen 5/source-data/trainer_ai_evaluator_verification_report.json": "e649a422954ccc5af8d1dd53c58794e9eda2927bc8d1285c6ce7477371c51beb",
     "../../Battle Mechanics/vendor/smogon-calc-0.11.0/data.production.min.js": "364be40ea1aec31f413d0036445f717d826ece9c33ec25a02399c3a287c99529",
     "pchalReadmeLogicalSource": "553ff99e72a4ec8310460c8394022c063bfe2cb463794ca93c8bad54c6821e8c",
     "abilityPersistenceReportLogicalSource": "5be6ea70c4b6340fd91d0f3eb569b83e1daa187114c5de5299b1dba25a119726",
-    "noOpeningHealsReportLogicalSource": "112693cec418e6d55bba72b96566909e2194c2c6244e924559c33f827e8bbcf8"
+    "noOpeningHealsReportLogicalSource": "112693cec418e6d55bba72b96566909e2194c2c6244e924559c33f827e8bbcf8",
+    "../VW2R_Documentation/Gift Pokemon.txt": "e1c85e2e94d2946621bedee5ac6fc526b4f14b7c1a0a064629a8fc9a5a85b7dd",
+    "imports/reference-docs/vw2r-wild-table-diagnostic.json": "6142ee63abc4a8718f73e49756d4bdefea4bf14fda883444ea5b682193f42749",
+    "../VW2R_Documentation/Wild Area Changes.txt": "8a631bc0018399d4b7f6e6949ee652a553b79524803639aeb6b43355f4ec029c",
+    "wild_level_correction_bindings.json": "d7dc00bf2365483ed3194c40742f9d6fa54b18fcaebfea6e991c67bc43170218",
+    "imports/reference-docs/vw2r-encounter-engine.json": "2ed6ee77dd47d52c0672aedac03723283de7098a0742f758acad3c46a4e5ec4b",
+    "../VW2R_Documentation/Trade Changes.txt": "3e897e7c070883311eec69e153df36ee7e12a3ba6711ce2b9e7314fb883f1d64",
+    "wild_weight_correction_bindings.json": "6769f1114d0178325aefd8d25a23f4a901e95cb9ed886cbd5266e08b4a6f49fb",
+    "imports/reference-docs/vw2r-slot-normalization.json": "4ac16b142b165d78f9143cf2a94436242e4e13ab3c64ca177c709788e29a3a99",
+    "wild_form_pool_bindings.json": "8cf30dd582566d0e4c9e900774f685703f168d5f19defffaa7880ca2ec8a4643",
+    "wild_membership_pool_bindings.json": "7dfb5af83b0dd172f2dc374c96b20edcff450650fd8c87670decbf7b68d9fb35",
+    "wild_physical_name_bindings.json": "5cc803aee34e6568cf46f32628161da5e3ae3d55c5782e9e249d096f2ff4b262",
+    "imports/reference-docs/bw2-warp-map-dictionary.json": "2f4996d87321ca12c329a098f193b5689537cb0a93ffb641bad8940e9314a7f7",
+    "wild_occurrence_bindings.json": "c2897f68ec1e28940932d514637681886c507b3127880cb3699eb5b76e0d8046",
+    "wild_dictionary_label_aliases.json": "cac7efee07371476a38260839734d7313fb6a9fd72ff79eb38e9aa7bc48348c4",
+    "imports/reference-docs/vw2r-shared-form-personal.json": "b3e734cc0bd89bea1beb8ecdfdaec908d4294da967083e069e9dc8b5eb2d22f3",
+    "imports/reference-docs/vw2r-shared-form-inheritance.json": "141e3c9b0d4bc7372c09438ccc5b987113541ca3c5454cab8666b62f762c7013",
+    "../../tools/imports/vanilla/smogon-calc-0.11.0/data.production.min.js": "364be40ea1aec31f413d0036445f717d826ece9c33ec25a02399c3a287c99529",
+    "shared_form_wild_bindings.json": "43dd5ef46b3e53c32cdb378669ac0a8d235548a5874423b4d2dccef445c14674",
+    "imports/reference-docs/vw2r-relic-room-topology.json": "c97bb0e313a3db0e2a814735084660658d2d593834f21936f754ca3a6c62a16a",
+    "relic_form_bindings.json": "609dbfa08bf3a3edb77c6b8ea0a2f335ace16d877abc8b8ec6b21ffe2073578a",
+    "hidden_grotto_bindings.json": "68dae212ebc69243559d0e74cd63b6ec6f008344578b9fe67d3ef390121414f9",
+    "imports/reference-docs/vw2r-hidden-grotto-tables.json": "fefa3c208f5fb7ba739d5d06377dc948ffdb144efda521d593a9d078032aee34",
+    "imports/reference-docs/vw2r-hidden-grotto-engine.json": "7460957fd2d24bf0ff3cabbb07fb047137c22d17106f4bae9c98681351c01e4b"
   },
   "authorities": [
     {
@@ -151,7 +174,7 @@
       "id": "gen5-b2w2-trainer-ai-evaluator-verification",
       "role": "Dataset contract, source-invariant, readiness, and executable-request-shape verification for the inherited evaluator profile",
       "path": "../../Gen 5/source-data/trainer_ai_evaluator_verification_report.json",
-      "sha256": "d034298dd75f006df13e7e8dae32bdd8e9cd4a880c65dc332c90868bdbbd5f9a"
+      "sha256": "e649a422954ccc5af8d1dd53c58794e9eda2927bc8d1285c6ce7477371c51beb"
     },
     {
       "id": "pkhex-gen5-save-forms",
@@ -234,7 +257,8 @@
     "trainer_ai.json",
     "custom_combatants.json",
     "encounter_groups.json",
-    "recovery_sites.json"
+    "recovery_sites.json",
+    "encounter_mechanics.json"
   ],
   "consumerProjection": {
     "status": "staged-authoritative-candidate",
@@ -272,8 +296,108 @@
     "trainerGenderValidation": "node ./source-data/validate_trainer_genders.js",
     "trainerAiDependencySync": "node .\\source-data\\sync_trainer_ai_binding.js",
     "trainerAiDependencyCheck": "node .\\source-data\\sync_trainer_ai_binding.js --check",
+    "documentedGiftRefresh": "node ./source-data/build_standardized_sources.js --gift-encounters-only",
+    "documentedGiftCheck": "node ./source-data/build_standardized_sources.js --gift-encounters-only --check",
+    "documentedWildRefresh": "node ./source-data/build_standardized_sources.js --wild-encounters-only",
+    "documentedWildCheck": "node ./source-data/build_standardized_sources.js --wild-encounters-only --check",
+    "tradeEncounterRefresh": "node ./source-data/build_standardized_sources.js --trade-encounters-only",
+    "tradeEncounterCheck": "node ./source-data/build_standardized_sources.js --trade-encounters-only --check",
+    "wildWeightRefresh": "node ./source-data/build_standardized_sources.js --wild-weights-only",
+    "wildWeightCheck": "node ./source-data/build_standardized_sources.js --wild-weights-only --check",
+    "wildFormPoolRefresh": "node ./source-data/build_standardized_sources.js --wild-form-pools-only",
+    "wildFormPoolCheck": "node ./source-data/build_standardized_sources.js --wild-form-pools-only --check",
+    "wildMembershipRefresh": "node ./source-data/build_standardized_sources.js --wild-membership-only",
+    "wildMembershipCheck": "node ./source-data/build_standardized_sources.js --wild-membership-only --check",
+    "wildOccurrenceRefresh": "node ./source-data/build_standardized_sources.js --wild-occurrences-only",
+    "wildOccurrenceCheck": "node ./source-data/build_standardized_sources.js --wild-occurrences-only --check",
+    "seasonalWildRefresh": "node ./source-data/build_standardized_sources.js --seasonal-wild-only",
+    "seasonalWildCheck": "node ./source-data/build_standardized_sources.js --seasonal-wild-only --check",
+    "physicalWildRefresh": "node ./source-data/build_standardized_sources.js --physical-wild-only",
+    "physicalWildCheck": "node ./source-data/build_standardized_sources.js --physical-wild-only --check",
+    "sharedFormRefresh": "node ./source-data/build_standardized_sources.js --shared-forms-only",
+    "sharedFormCheck": "node ./source-data/build_standardized_sources.js --shared-forms-only --check",
+    "sharedFormWildRefresh": "node ./source-data/build_standardized_sources.js --shared-form-wild-only",
+    "sharedFormWildCheck": "node ./source-data/build_standardized_sources.js --shared-form-wild-only --check",
+    "relicFormRefresh": "node ./source-data/build_standardized_sources.js --relic-forms-only",
+    "relicFormCheck": "node ./source-data/build_standardized_sources.js --relic-forms-only --check",
+    "hiddenGrottoRefresh": "node ./source-data/build_standardized_sources.js --hidden-grottos-only",
+    "hiddenGrottoCheck": "node ./source-data/build_standardized_sources.js --hidden-grottos-only --check",
     "starterSelectionBuild": "node ../tools/build_starter_selection.js --write",
     "starterSelectionCheck": "node ../tools/build_starter_selection.js --check"
+  },
+  "encounterVerification": {
+    "source": "gift_encounter_verification.json",
+    "status": "passed-documentary-correction",
+    "scope": "three-documented-gift-eggs-and-distinct-battle-company-group",
+    "consumerActivation": false
+  },
+  "wildEncounterVerification": {
+    "source": "wild_encounter_verification.json",
+    "status": "passed-bounded-table-correction",
+    "scope": "74-bound-records-79-level-fields",
+    "consumerActivation": false
+  },
+  "tradeEncounterVerification": {
+    "source": "trade_encounter_verification.json",
+    "status": "passed-bounded-trade-levels",
+    "consumerActivation": false
+  },
+  "wildWeightVerification": {
+    "source": "wild_weight_verification.json",
+    "status": "passed-bounded-base-slot-weights",
+    "baseScenario": {
+      "passPowerStrength": 0,
+      "activeSwarm": false,
+      "leadAbilityModification": false
+    },
+    "consumerActivation": false
+  },
+  "wildFormPoolVerification": {
+    "source": "wild_form_pool_verification.json",
+    "status": "passed-bounded-blue-form-pools",
+    "consumerActivation": false
+  },
+  "wildMembershipVerification": {
+    "source": "wild_membership_verification.json",
+    "status": "passed-bounded-membership-and-method-pools",
+    "consumerActivation": false
+  },
+  "wildOccurrenceVerification": {
+    "source": "wild_occurrence_verification.json",
+    "status": "passed-bounded-occurrence-inventory",
+    "consumerActivation": false
+  },
+  "seasonalWildVerification": {
+    "source": "seasonal_wild_verification.json",
+    "status": "passed-bounded-seasonal-source-profile",
+    "profileSource": "encounter_mechanics.json",
+    "consumerActivation": false
+  },
+  "physicalWildVerification": {
+    "source": "wild_physical_profile_verification.json",
+    "status": "complete-for-declared-base-slot-scenario",
+    "profileSource": "encounter_mechanics.json",
+    "consumerActivation": false
+  },
+  "sharedFormVerification": {
+    "source": "shared_form_verification.json",
+    "status": "passed-bounded-shared-form-source-projection",
+    "consumerActivation": false
+  },
+  "sharedFormWildVerification": {
+    "source": "shared_form_wild_verification.json",
+    "status": "passed-fixed-shared-form-pools",
+    "consumerActivation": false
+  },
+  "relicFormVerification": {
+    "source": "relic_form_verification.json",
+    "status": "passed-complete-relic-form-pools",
+    "consumerActivation": false
+  },
+  "hiddenGrottoVerification": {
+    "source": "hidden_grotto_verification.json",
+    "status": "passed-supported-hidden-grotto-pools",
+    "consumerActivation": false
   },
   "extensions": [
     "starter_selection.json"

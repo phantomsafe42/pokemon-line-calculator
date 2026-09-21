@@ -210,7 +210,9 @@
       "saveIdentity": {
         "speciesNum": 1,
         "form": 0
-      }
+      },
+      "nationalDex": 1,
+      "legacyCalculatorNum": 1
     },
     "ivysaur": {
       "num": 2,
@@ -431,7 +433,9 @@
       "saveIdentity": {
         "speciesNum": 2,
         "form": 0
-      }
+      },
+      "nationalDex": 2,
+      "legacyCalculatorNum": 2
     },
     "venusaur": {
       "num": 3,
@@ -655,7 +659,9 @@
       "saveIdentity": {
         "speciesNum": 3,
         "form": 0
-      }
+      },
+      "nationalDex": 3,
+      "legacyCalculatorNum": 3
     },
     "charmander": {
       "num": 4,
@@ -859,7 +865,9 @@
       "saveIdentity": {
         "speciesNum": 4,
         "form": 0
-      }
+      },
+      "nationalDex": 4,
+      "legacyCalculatorNum": 4
     },
     "charmeleon": {
       "num": 5,
@@ -1083,7 +1091,9 @@
       "saveIdentity": {
         "speciesNum": 5,
         "form": 0
-      }
+      },
+      "nationalDex": 5,
+      "legacyCalculatorNum": 5
     },
     "charizard": {
       "num": 6,
@@ -1301,7 +1311,9 @@
       "saveIdentity": {
         "speciesNum": 6,
         "form": 0
-      }
+      },
+      "nationalDex": 6,
+      "legacyCalculatorNum": 6
     },
     "squirtle": {
       "num": 7,
@@ -1529,7 +1541,9 @@
       "saveIdentity": {
         "speciesNum": 7,
         "form": 0
-      }
+      },
+      "nationalDex": 7,
+      "legacyCalculatorNum": 7
     },
     "wartortle": {
       "num": 8,
@@ -1769,7 +1783,9 @@
       "saveIdentity": {
         "speciesNum": 8,
         "form": 0
-      }
+      },
+      "nationalDex": 8,
+      "legacyCalculatorNum": 8
     },
     "blastoise": {
       "num": 9,
@@ -1895,7 +1911,9 @@
       "saveIdentity": {
         "speciesNum": 9,
         "form": 0
-      }
+      },
+      "nationalDex": 9,
+      "legacyCalculatorNum": 9
     },
     "caterpie": {
       "num": 10,
@@ -1967,7 +1985,9 @@
       "saveIdentity": {
         "speciesNum": 10,
         "form": 0
-      }
+      },
+      "nationalDex": 10,
+      "legacyCalculatorNum": 10
     },
     "metapod": {
       "num": 11,
@@ -2127,7 +2147,9 @@
       "saveIdentity": {
         "speciesNum": 11,
         "form": 0
-      }
+      },
+      "nationalDex": 11,
+      "legacyCalculatorNum": 11
     },
     "butterfree": {
       "num": 12,
@@ -2234,7 +2256,9 @@
       "saveIdentity": {
         "speciesNum": 12,
         "form": 0
-      }
+      },
+      "nationalDex": 12,
+      "legacyCalculatorNum": 12
     },
     "weedle": {
       "num": 13,
@@ -2307,7 +2331,9 @@
       "saveIdentity": {
         "speciesNum": 13,
         "form": 0
-      }
+      },
+      "nationalDex": 13,
+      "legacyCalculatorNum": 13
     },
     "kakuna": {
       "num": 14,
@@ -2460,7 +2486,9 @@
       "saveIdentity": {
         "speciesNum": 14,
         "form": 0
-      }
+      },
+      "nationalDex": 14,
+      "legacyCalculatorNum": 14
     },
     "beedrill": {
       "num": 15,
@@ -2626,7 +2654,9 @@
       "saveIdentity": {
         "speciesNum": 15,
         "form": 0
-      }
+      },
+      "nationalDex": 15,
+      "legacyCalculatorNum": 15
     },
     "pidgey": {
       "num": 16,
@@ -2798,7 +2828,9 @@
       "saveIdentity": {
         "speciesNum": 16,
         "form": 0
-      }
+      },
+      "nationalDex": 16,
+      "legacyCalculatorNum": 16
     },
     "pidgeotto": {
       "num": 17,
@@ -2974,7 +3006,9 @@
       "saveIdentity": {
         "speciesNum": 17,
         "form": 0
-      }
+      },
+      "nationalDex": 17,
+      "legacyCalculatorNum": 17
     },
     "pidgeot": {
       "num": 18,
@@ -3172,7 +3206,9 @@
       "saveIdentity": {
         "speciesNum": 18,
         "form": 0
-      }
+      },
+      "nationalDex": 18,
+      "legacyCalculatorNum": 18
     },
     "rattata": {
       "num": 19,
@@ -3383,7 +3419,9 @@
       "saveIdentity": {
         "speciesNum": 19,
         "form": 0
-      }
+      },
+      "nationalDex": 19,
+      "legacyCalculatorNum": 19
     },
     "raticate": {
       "num": 20,
@@ -3544,7 +3582,9 @@
       "saveIdentity": {
         "speciesNum": 20,
         "form": 0
-      }
+      },
+      "nationalDex": 20,
+      "legacyCalculatorNum": 20
     },
     "spearow": {
       "num": 21,
@@ -3720,7 +3760,9 @@
       "saveIdentity": {
         "speciesNum": 21,
         "form": 0
-      }
+      },
+      "nationalDex": 21,
+      "legacyCalculatorNum": 21
     },
     "fearow": {
       "num": 22,
@@ -3906,7 +3948,9 @@
       "saveIdentity": {
         "speciesNum": 22,
         "form": 0
-      }
+      },
+      "nationalDex": 22,
+      "legacyCalculatorNum": 22
     },
     "ekans": {
       "num": 23,
@@ -4112,7 +4156,9 @@
       "saveIdentity": {
         "speciesNum": 23,
         "form": 0
-      }
+      },
+      "nationalDex": 23,
+      "legacyCalculatorNum": 23
     },
     "arbok": {
       "num": 24,
@@ -4312,7 +4358,9 @@
       "saveIdentity": {
         "speciesNum": 24,
         "form": 0
-      }
+      },
+      "nationalDex": 24,
+      "legacyCalculatorNum": 24
     },
     "pikachu": {
       "num": 25,
@@ -4525,7 +4573,9 @@
       "saveIdentity": {
         "speciesNum": 25,
         "form": 0
-      }
+      },
+      "nationalDex": 25,
+      "legacyCalculatorNum": 25
     },
     "raichu": {
       "num": 26,
@@ -4703,7 +4753,9 @@
       "saveIdentity": {
         "speciesNum": 26,
         "form": 0
-      }
+      },
+      "nationalDex": 26,
+      "legacyCalculatorNum": 26
     },
     "sandshrew": {
       "num": 27,
@@ -4906,7 +4958,9 @@
       "saveIdentity": {
         "speciesNum": 27,
         "form": 0
-      }
+      },
+      "nationalDex": 27,
+      "legacyCalculatorNum": 27
     },
     "sandslash": {
       "num": 28,
@@ -5111,7 +5165,9 @@
       "saveIdentity": {
         "speciesNum": 28,
         "form": 0
-      }
+      },
+      "nationalDex": 28,
+      "legacyCalculatorNum": 28
     },
     "nidoranf": {
       "num": 29,
@@ -5327,7 +5383,9 @@
       "saveIdentity": {
         "speciesNum": 29,
         "form": 0
-      }
+      },
+      "nationalDex": 29,
+      "legacyCalculatorNum": 29
     },
     "nidorina": {
       "num": 30,
@@ -5595,7 +5653,9 @@
       "saveIdentity": {
         "speciesNum": 30,
         "form": 0
-      }
+      },
+      "nationalDex": 30,
+      "legacyCalculatorNum": 30
     },
     "nidoqueen": {
       "num": 31,
@@ -5782,7 +5842,9 @@
       "saveIdentity": {
         "speciesNum": 31,
         "form": 0
-      }
+      },
+      "nationalDex": 31,
+      "legacyCalculatorNum": 31
     },
     "nidoranm": {
       "num": 32,
@@ -5994,7 +6056,9 @@
       "saveIdentity": {
         "speciesNum": 32,
         "form": 0
-      }
+      },
+      "nationalDex": 32,
+      "legacyCalculatorNum": 32
     },
     "nidorino": {
       "num": 33,
@@ -6258,7 +6322,9 @@
       "saveIdentity": {
         "speciesNum": 33,
         "form": 0
-      }
+      },
+      "nationalDex": 33,
+      "legacyCalculatorNum": 33
     },
     "nidoking": {
       "num": 34,
@@ -6481,7 +6547,9 @@
       "saveIdentity": {
         "speciesNum": 34,
         "form": 0
-      }
+      },
+      "nationalDex": 34,
+      "legacyCalculatorNum": 34
     },
     "clefairy": {
       "num": 35,
@@ -6748,7 +6816,9 @@
       "saveIdentity": {
         "speciesNum": 35,
         "form": 0
-      }
+      },
+      "nationalDex": 35,
+      "legacyCalculatorNum": 35
     },
     "clefable": {
       "num": 36,
@@ -6896,7 +6966,9 @@
       "saveIdentity": {
         "speciesNum": 36,
         "form": 0
-      }
+      },
+      "nationalDex": 36,
+      "legacyCalculatorNum": 36
     },
     "vulpix": {
       "num": 37,
@@ -7089,7 +7161,9 @@
       "saveIdentity": {
         "speciesNum": 37,
         "form": 0
-      }
+      },
+      "nationalDex": 37,
+      "legacyCalculatorNum": 37
     },
     "ninetales": {
       "num": 38,
@@ -7298,7 +7372,9 @@
       "saveIdentity": {
         "speciesNum": 38,
         "form": 0
-      }
+      },
+      "nationalDex": 38,
+      "legacyCalculatorNum": 38
     },
     "jigglypuff": {
       "num": 39,
@@ -7547,7 +7623,9 @@
       "saveIdentity": {
         "speciesNum": 39,
         "form": 0
-      }
+      },
+      "nationalDex": 39,
+      "legacyCalculatorNum": 39
     },
     "wigglytuff": {
       "num": 40,
@@ -7707,7 +7785,9 @@
       "saveIdentity": {
         "speciesNum": 40,
         "form": 0
-      }
+      },
+      "nationalDex": 40,
+      "legacyCalculatorNum": 40
     },
     "zubat": {
       "num": 41,
@@ -7908,7 +7988,9 @@
       "saveIdentity": {
         "speciesNum": 41,
         "form": 0
-      }
+      },
+      "nationalDex": 41,
+      "legacyCalculatorNum": 41
     },
     "golbat": {
       "num": 42,
@@ -8094,7 +8176,9 @@
       "saveIdentity": {
         "speciesNum": 42,
         "form": 0
-      }
+      },
+      "nationalDex": 42,
+      "legacyCalculatorNum": 42
     },
     "oddish": {
       "num": 43,
@@ -8265,7 +8349,9 @@
       "saveIdentity": {
         "speciesNum": 43,
         "form": 0
-      }
+      },
+      "nationalDex": 43,
+      "legacyCalculatorNum": 43
     },
     "gloom": {
       "num": 44,
@@ -8455,7 +8541,9 @@
       "saveIdentity": {
         "speciesNum": 44,
         "form": 0
-      }
+      },
+      "nationalDex": 44,
+      "legacyCalculatorNum": 44
     },
     "vileplume": {
       "num": 45,
@@ -8626,7 +8714,9 @@
       "saveIdentity": {
         "speciesNum": 45,
         "form": 0
-      }
+      },
+      "nationalDex": 45,
+      "legacyCalculatorNum": 45
     },
     "paras": {
       "num": 46,
@@ -8822,7 +8912,9 @@
       "saveIdentity": {
         "speciesNum": 46,
         "form": 0
-      }
+      },
+      "nationalDex": 46,
+      "legacyCalculatorNum": 46
     },
     "parasect": {
       "num": 47,
@@ -8996,7 +9088,9 @@
       "saveIdentity": {
         "speciesNum": 47,
         "form": 0
-      }
+      },
+      "nationalDex": 47,
+      "legacyCalculatorNum": 47
     },
     "venonat": {
       "num": 48,
@@ -9194,7 +9288,9 @@
       "saveIdentity": {
         "speciesNum": 48,
         "form": 0
-      }
+      },
+      "nationalDex": 48,
+      "legacyCalculatorNum": 48
     },
     "venomoth": {
       "num": 49,
@@ -9392,7 +9488,9 @@
       "saveIdentity": {
         "speciesNum": 49,
         "form": 0
-      }
+      },
+      "nationalDex": 49,
+      "legacyCalculatorNum": 49
     },
     "diglett": {
       "num": 50,
@@ -9585,7 +9683,9 @@
       "saveIdentity": {
         "speciesNum": 50,
         "form": 0
-      }
+      },
+      "nationalDex": 50,
+      "legacyCalculatorNum": 50
     },
     "dugtrio": {
       "num": 51,
@@ -9806,7 +9906,9 @@
       "saveIdentity": {
         "speciesNum": 51,
         "form": 0
-      }
+      },
+      "nationalDex": 51,
+      "legacyCalculatorNum": 51
     },
     "meowth": {
       "num": 52,
@@ -10030,7 +10132,9 @@
       "saveIdentity": {
         "speciesNum": 52,
         "form": 0
-      }
+      },
+      "nationalDex": 52,
+      "legacyCalculatorNum": 52
     },
     "persian": {
       "num": 53,
@@ -10244,7 +10348,9 @@
       "saveIdentity": {
         "speciesNum": 53,
         "form": 0
-      }
+      },
+      "nationalDex": 53,
+      "legacyCalculatorNum": 53
     },
     "psyduck": {
       "num": 54,
@@ -10464,7 +10570,9 @@
       "saveIdentity": {
         "speciesNum": 54,
         "form": 0
-      }
+      },
+      "nationalDex": 54,
+      "legacyCalculatorNum": 54
     },
     "golduck": {
       "num": 55,
@@ -10674,7 +10782,9 @@
       "saveIdentity": {
         "speciesNum": 55,
         "form": 0
-      }
+      },
+      "nationalDex": 55,
+      "legacyCalculatorNum": 55
     },
     "mankey": {
       "num": 56,
@@ -10903,7 +11013,9 @@
       "saveIdentity": {
         "speciesNum": 56,
         "form": 0
-      }
+      },
+      "nationalDex": 56,
+      "legacyCalculatorNum": 56
     },
     "primeape": {
       "num": 57,
@@ -11108,7 +11220,9 @@
       "saveIdentity": {
         "speciesNum": 57,
         "form": 0
-      }
+      },
+      "nationalDex": 57,
+      "legacyCalculatorNum": 57
     },
     "growlithe": {
       "num": 58,
@@ -11309,7 +11423,9 @@
       "saveIdentity": {
         "speciesNum": 58,
         "form": 0
-      }
+      },
+      "nationalDex": 58,
+      "legacyCalculatorNum": 58
     },
     "arcanine": {
       "num": 59,
@@ -11475,7 +11591,9 @@
       "saveIdentity": {
         "speciesNum": 59,
         "form": 0
-      }
+      },
+      "nationalDex": 59,
+      "legacyCalculatorNum": 59
     },
     "poliwag": {
       "num": 60,
@@ -11682,7 +11800,9 @@
       "saveIdentity": {
         "speciesNum": 60,
         "form": 0
-      }
+      },
+      "nationalDex": 60,
+      "legacyCalculatorNum": 60
     },
     "poliwhirl": {
       "num": 61,
@@ -11921,7 +12041,9 @@
       "saveIdentity": {
         "speciesNum": 61,
         "form": 0
-      }
+      },
+      "nationalDex": 61,
+      "legacyCalculatorNum": 61
     },
     "poliwrath": {
       "num": 62,
@@ -12122,7 +12244,9 @@
       "saveIdentity": {
         "speciesNum": 62,
         "form": 0
-      }
+      },
+      "nationalDex": 62,
+      "legacyCalculatorNum": 62
     },
     "abra": {
       "num": 63,
@@ -12298,7 +12422,9 @@
       "saveIdentity": {
         "speciesNum": 63,
         "form": 0
-      }
+      },
+      "nationalDex": 63,
+      "legacyCalculatorNum": 63
     },
     "kadabra": {
       "num": 64,
@@ -12528,7 +12654,9 @@
       "saveIdentity": {
         "speciesNum": 64,
         "form": 0
-      }
+      },
+      "nationalDex": 64,
+      "legacyCalculatorNum": 64
     },
     "alakazam": {
       "num": 65,
@@ -12742,7 +12870,9 @@
       "saveIdentity": {
         "speciesNum": 65,
         "form": 0
-      }
+      },
+      "nationalDex": 65,
+      "legacyCalculatorNum": 65
     },
     "machop": {
       "num": 66,
@@ -12956,7 +13086,9 @@
       "saveIdentity": {
         "speciesNum": 66,
         "form": 0
-      }
+      },
+      "nationalDex": 66,
+      "legacyCalculatorNum": 66
     },
     "machoke": {
       "num": 67,
@@ -13174,7 +13306,9 @@
       "saveIdentity": {
         "speciesNum": 67,
         "form": 0
-      }
+      },
+      "nationalDex": 67,
+      "legacyCalculatorNum": 67
     },
     "machamp": {
       "num": 68,
@@ -13362,7 +13496,9 @@
       "saveIdentity": {
         "speciesNum": 68,
         "form": 0
-      }
+      },
+      "nationalDex": 68,
+      "legacyCalculatorNum": 68
     },
     "bellsprout": {
       "num": 69,
@@ -13547,7 +13683,9 @@
       "saveIdentity": {
         "speciesNum": 69,
         "form": 0
-      }
+      },
+      "nationalDex": 69,
+      "legacyCalculatorNum": 69
     },
     "weepinbell": {
       "num": 70,
@@ -13736,7 +13874,9 @@
       "saveIdentity": {
         "speciesNum": 70,
         "form": 0
-      }
+      },
+      "nationalDex": 70,
+      "legacyCalculatorNum": 70
     },
     "victreebel": {
       "num": 71,
@@ -13921,7 +14061,9 @@
       "saveIdentity": {
         "speciesNum": 71,
         "form": 0
-      }
+      },
+      "nationalDex": 71,
+      "legacyCalculatorNum": 71
     },
     "tentacool": {
       "num": 72,
@@ -14122,7 +14264,9 @@
       "saveIdentity": {
         "speciesNum": 72,
         "form": 0
-      }
+      },
+      "nationalDex": 72,
+      "legacyCalculatorNum": 72
     },
     "tentacruel": {
       "num": 73,
@@ -14309,7 +14453,9 @@
       "saveIdentity": {
         "speciesNum": 73,
         "form": 0
-      }
+      },
+      "nationalDex": 73,
+      "legacyCalculatorNum": 73
     },
     "geodude": {
       "num": 74,
@@ -14512,7 +14658,9 @@
       "saveIdentity": {
         "speciesNum": 74,
         "form": 0
-      }
+      },
+      "nationalDex": 74,
+      "legacyCalculatorNum": 74
     },
     "graveler": {
       "num": 75,
@@ -14723,7 +14871,9 @@
       "saveIdentity": {
         "speciesNum": 75,
         "form": 0
-      }
+      },
+      "nationalDex": 75,
+      "legacyCalculatorNum": 75
     },
     "golem": {
       "num": 76,
@@ -14904,7 +15054,9 @@
       "saveIdentity": {
         "speciesNum": 76,
         "form": 0
-      }
+      },
+      "nationalDex": 76,
+      "legacyCalculatorNum": 76
     },
     "ponyta": {
       "num": 77,
@@ -15089,7 +15241,9 @@
       "saveIdentity": {
         "speciesNum": 77,
         "form": 0
-      }
+      },
+      "nationalDex": 77,
+      "legacyCalculatorNum": 77
     },
     "rapidash": {
       "num": 78,
@@ -15321,7 +15475,9 @@
       "saveIdentity": {
         "speciesNum": 78,
         "form": 0
-      }
+      },
+      "nationalDex": 78,
+      "legacyCalculatorNum": 78
     },
     "slowpoke": {
       "num": 79,
@@ -15581,7 +15737,9 @@
       "saveIdentity": {
         "speciesNum": 79,
         "form": 0
-      }
+      },
+      "nationalDex": 79,
+      "legacyCalculatorNum": 79
     },
     "slowbro": {
       "num": 80,
@@ -15763,7 +15921,9 @@
       "saveIdentity": {
         "speciesNum": 80,
         "form": 0
-      }
+      },
+      "nationalDex": 80,
+      "legacyCalculatorNum": 80
     },
     "magnemite": {
       "num": 81,
@@ -15950,7 +16110,9 @@
       "saveIdentity": {
         "speciesNum": 81,
         "form": 0
-      }
+      },
+      "nationalDex": 81,
+      "legacyCalculatorNum": 81
     },
     "magneton": {
       "num": 82,
@@ -16131,7 +16293,9 @@
       "saveIdentity": {
         "speciesNum": 82,
         "form": 0
-      }
+      },
+      "nationalDex": 82,
+      "legacyCalculatorNum": 82
     },
     "farfetchd": {
       "num": 83,
@@ -16299,7 +16463,9 @@
       "saveIdentity": {
         "speciesNum": 83,
         "form": 0
-      }
+      },
+      "nationalDex": 83,
+      "legacyCalculatorNum": 83
     },
     "doduo": {
       "num": 84,
@@ -16480,7 +16646,9 @@
       "saveIdentity": {
         "speciesNum": 84,
         "form": 0
-      }
+      },
+      "nationalDex": 84,
+      "legacyCalculatorNum": 84
     },
     "dodrio": {
       "num": 85,
@@ -16663,7 +16831,9 @@
       "saveIdentity": {
         "speciesNum": 85,
         "form": 0
-      }
+      },
+      "nationalDex": 85,
+      "legacyCalculatorNum": 85
     },
     "seel": {
       "num": 86,
@@ -16849,7 +17019,9 @@
       "saveIdentity": {
         "speciesNum": 86,
         "form": 0
-      }
+      },
+      "nationalDex": 86,
+      "legacyCalculatorNum": 86
     },
     "dewgong": {
       "num": 87,
@@ -17052,7 +17224,9 @@
       "saveIdentity": {
         "speciesNum": 87,
         "form": 0
-      }
+      },
+      "nationalDex": 87,
+      "legacyCalculatorNum": 87
     },
     "grimer": {
       "num": 88,
@@ -17281,7 +17455,9 @@
       "saveIdentity": {
         "speciesNum": 88,
         "form": 0
-      }
+      },
+      "nationalDex": 88,
+      "legacyCalculatorNum": 88
     },
     "muk": {
       "num": 89,
@@ -17461,7 +17637,9 @@
       "saveIdentity": {
         "speciesNum": 89,
         "form": 0
-      }
+      },
+      "nationalDex": 89,
+      "legacyCalculatorNum": 89
     },
     "shellder": {
       "num": 90,
@@ -17659,7 +17837,9 @@
       "saveIdentity": {
         "speciesNum": 90,
         "form": 0
-      }
+      },
+      "nationalDex": 90,
+      "legacyCalculatorNum": 90
     },
     "cloyster": {
       "num": 91,
@@ -17834,7 +18014,9 @@
       "saveIdentity": {
         "speciesNum": 91,
         "form": 0
-      }
+      },
+      "nationalDex": 91,
+      "legacyCalculatorNum": 91
     },
     "gastly": {
       "num": 92,
@@ -18040,7 +18222,9 @@
       "saveIdentity": {
         "speciesNum": 92,
         "form": 0
-      }
+      },
+      "nationalDex": 92,
+      "legacyCalculatorNum": 92
     },
     "haunter": {
       "num": 93,
@@ -18280,7 +18464,9 @@
       "saveIdentity": {
         "speciesNum": 93,
         "form": 0
-      }
+      },
+      "nationalDex": 93,
+      "legacyCalculatorNum": 93
     },
     "gengar": {
       "num": 94,
@@ -18491,7 +18677,9 @@
       "saveIdentity": {
         "speciesNum": 94,
         "form": 0
-      }
+      },
+      "nationalDex": 94,
+      "legacyCalculatorNum": 94
     },
     "onix": {
       "num": 95,
@@ -18724,7 +18912,9 @@
       "saveIdentity": {
         "speciesNum": 95,
         "form": 0
-      }
+      },
+      "nationalDex": 95,
+      "legacyCalculatorNum": 95
     },
     "drowzee": {
       "num": 96,
@@ -18949,7 +19139,9 @@
       "saveIdentity": {
         "speciesNum": 96,
         "form": 0
-      }
+      },
+      "nationalDex": 96,
+      "legacyCalculatorNum": 96
     },
     "hypno": {
       "num": 97,
@@ -19167,7 +19359,9 @@
       "saveIdentity": {
         "speciesNum": 97,
         "form": 0
-      }
+      },
+      "nationalDex": 97,
+      "legacyCalculatorNum": 97
     },
     "krabby": {
       "num": 98,
@@ -19376,7 +19570,9 @@
       "saveIdentity": {
         "speciesNum": 98,
         "form": 0
-      }
+      },
+      "nationalDex": 98,
+      "legacyCalculatorNum": 98
     },
     "kingler": {
       "num": 99,
@@ -19575,7 +19771,9 @@
       "saveIdentity": {
         "speciesNum": 99,
         "form": 0
-      }
+      },
+      "nationalDex": 99,
+      "legacyCalculatorNum": 99
     },
     "voltorb": {
       "num": 100,
@@ -19769,7 +19967,9 @@
       "saveIdentity": {
         "speciesNum": 100,
         "form": 0
-      }
+      },
+      "nationalDex": 100,
+      "legacyCalculatorNum": 100
     },
     "electrode": {
       "num": 101,
@@ -19974,7 +20174,9 @@
       "saveIdentity": {
         "speciesNum": 101,
         "form": 0
-      }
+      },
+      "nationalDex": 101,
+      "legacyCalculatorNum": 101
     },
     "exeggcute": {
       "num": 102,
@@ -20179,7 +20381,9 @@
       "saveIdentity": {
         "speciesNum": 102,
         "form": 0
-      }
+      },
+      "nationalDex": 102,
+      "legacyCalculatorNum": 102
     },
     "exeggutor": {
       "num": 103,
@@ -20370,7 +20574,9 @@
       "saveIdentity": {
         "speciesNum": 103,
         "form": 0
-      }
+      },
+      "nationalDex": 103,
+      "legacyCalculatorNum": 103
     },
     "cubone": {
       "num": 104,
@@ -20601,7 +20807,9 @@
       "saveIdentity": {
         "speciesNum": 104,
         "form": 0
-      }
+      },
+      "nationalDex": 104,
+      "legacyCalculatorNum": 104
     },
     "marowak": {
       "num": 105,
@@ -20813,7 +21021,9 @@
       "saveIdentity": {
         "speciesNum": 105,
         "form": 0
-      }
+      },
+      "nationalDex": 105,
+      "legacyCalculatorNum": 105
     },
     "hitmonlee": {
       "num": 106,
@@ -21019,7 +21229,9 @@
       "saveIdentity": {
         "speciesNum": 106,
         "form": 0
-      }
+      },
+      "nationalDex": 106,
+      "legacyCalculatorNum": 106
     },
     "hitmonchan": {
       "num": 107,
@@ -21275,7 +21487,9 @@
       "saveIdentity": {
         "speciesNum": 107,
         "form": 0
-      }
+      },
+      "nationalDex": 107,
+      "legacyCalculatorNum": 107
     },
     "lickitung": {
       "num": 108,
@@ -21474,7 +21688,9 @@
       "saveIdentity": {
         "speciesNum": 108,
         "form": 0
-      }
+      },
+      "nationalDex": 108,
+      "legacyCalculatorNum": 108
     },
     "koffing": {
       "num": 109,
@@ -21682,7 +21898,9 @@
       "saveIdentity": {
         "speciesNum": 109,
         "form": 0
-      }
+      },
+      "nationalDex": 109,
+      "legacyCalculatorNum": 109
     },
     "weezing": {
       "num": 110,
@@ -21910,7 +22128,9 @@
       "saveIdentity": {
         "speciesNum": 110,
         "form": 0
-      }
+      },
+      "nationalDex": 110,
+      "legacyCalculatorNum": 110
     },
     "rhyhorn": {
       "num": 111,
@@ -22156,7 +22376,9 @@
       "saveIdentity": {
         "speciesNum": 111,
         "form": 0
-      }
+      },
+      "nationalDex": 111,
+      "legacyCalculatorNum": 111
     },
     "rhydon": {
       "num": 112,
@@ -22430,7 +22652,9 @@
       "saveIdentity": {
         "speciesNum": 112,
         "form": 0
-      }
+      },
+      "nationalDex": 112,
+      "legacyCalculatorNum": 112
     },
     "chansey": {
       "num": 113,
@@ -22633,7 +22857,9 @@
       "saveIdentity": {
         "speciesNum": 113,
         "form": 0
-      }
+      },
+      "nationalDex": 113,
+      "legacyCalculatorNum": 113
     },
     "tangela": {
       "num": 114,
@@ -22906,7 +23132,9 @@
       "saveIdentity": {
         "speciesNum": 114,
         "form": 0
-      }
+      },
+      "nationalDex": 114,
+      "legacyCalculatorNum": 114
     },
     "kangaskhan": {
       "num": 115,
@@ -23084,7 +23312,9 @@
       "saveIdentity": {
         "speciesNum": 115,
         "form": 0
-      }
+      },
+      "nationalDex": 115,
+      "legacyCalculatorNum": 115
     },
     "horsea": {
       "num": 116,
@@ -23262,7 +23492,9 @@
       "saveIdentity": {
         "speciesNum": 116,
         "form": 0
-      }
+      },
+      "nationalDex": 116,
+      "legacyCalculatorNum": 116
     },
     "seadra": {
       "num": 117,
@@ -23451,7 +23683,9 @@
       "saveIdentity": {
         "speciesNum": 117,
         "form": 0
-      }
+      },
+      "nationalDex": 117,
+      "legacyCalculatorNum": 117
     },
     "goldeen": {
       "num": 118,
@@ -23645,7 +23879,9 @@
       "saveIdentity": {
         "speciesNum": 118,
         "form": 0
-      }
+      },
+      "nationalDex": 118,
+      "legacyCalculatorNum": 118
     },
     "seaking": {
       "num": 119,
@@ -23854,7 +24090,9 @@
       "saveIdentity": {
         "speciesNum": 119,
         "form": 0
-      }
+      },
+      "nationalDex": 119,
+      "legacyCalculatorNum": 119
     },
     "staryu": {
       "num": 120,
@@ -24077,7 +24315,9 @@
       "saveIdentity": {
         "speciesNum": 120,
         "form": 0
-      }
+      },
+      "nationalDex": 120,
+      "legacyCalculatorNum": 120
     },
     "starmie": {
       "num": 121,
@@ -24284,7 +24524,9 @@
       "saveIdentity": {
         "speciesNum": 121,
         "form": 0
-      }
+      },
+      "nationalDex": 121,
+      "legacyCalculatorNum": 121
     },
     "mrmime": {
       "num": 122,
@@ -24492,7 +24734,9 @@
       "saveIdentity": {
         "speciesNum": 122,
         "form": 0
-      }
+      },
+      "nationalDex": 122,
+      "legacyCalculatorNum": 122
     },
     "scyther": {
       "num": 123,
@@ -24727,7 +24971,9 @@
       "saveIdentity": {
         "speciesNum": 123,
         "form": 0
-      }
+      },
+      "nationalDex": 123,
+      "legacyCalculatorNum": 123
     },
     "jynx": {
       "num": 124,
@@ -24956,7 +25202,9 @@
       "saveIdentity": {
         "speciesNum": 124,
         "form": 0
-      }
+      },
+      "nationalDex": 124,
+      "legacyCalculatorNum": 124
     },
     "electabuzz": {
       "num": 125,
@@ -25176,7 +25424,9 @@
       "saveIdentity": {
         "speciesNum": 125,
         "form": 0
-      }
+      },
+      "nationalDex": 125,
+      "legacyCalculatorNum": 125
     },
     "magmar": {
       "num": 126,
@@ -25400,7 +25650,9 @@
       "saveIdentity": {
         "speciesNum": 126,
         "form": 0
-      }
+      },
+      "nationalDex": 126,
+      "legacyCalculatorNum": 126
     },
     "pinsir": {
       "num": 127,
@@ -25627,7 +25879,9 @@
       "saveIdentity": {
         "speciesNum": 127,
         "form": 0
-      }
+      },
+      "nationalDex": 127,
+      "legacyCalculatorNum": 127
     },
     "tauros": {
       "num": 128,
@@ -25733,7 +25987,9 @@
       "saveIdentity": {
         "speciesNum": 128,
         "form": 0
-      }
+      },
+      "nationalDex": 128,
+      "legacyCalculatorNum": 128
     },
     "magikarp": {
       "num": 129,
@@ -25930,7 +26186,9 @@
       "saveIdentity": {
         "speciesNum": 129,
         "form": 0
-      }
+      },
+      "nationalDex": 129,
+      "legacyCalculatorNum": 129
     },
     "gyarados": {
       "num": 130,
@@ -26144,7 +26402,9 @@
       "saveIdentity": {
         "speciesNum": 130,
         "form": 0
-      }
+      },
+      "nationalDex": 130,
+      "legacyCalculatorNum": 130
     },
     "lapras": {
       "num": 131,
@@ -26262,7 +26522,9 @@
       "saveIdentity": {
         "speciesNum": 131,
         "form": 0
-      }
+      },
+      "nationalDex": 131,
+      "legacyCalculatorNum": 131
     },
     "ditto": {
       "num": 132,
@@ -26383,7 +26645,9 @@
       "saveIdentity": {
         "speciesNum": 132,
         "form": 0
-      }
+      },
+      "nationalDex": 132,
+      "legacyCalculatorNum": 132
     },
     "eevee": {
       "num": 133,
@@ -26606,7 +26870,9 @@
       "saveIdentity": {
         "speciesNum": 133,
         "form": 0
-      }
+      },
+      "nationalDex": 133,
+      "legacyCalculatorNum": 133
     },
     "vaporeon": {
       "num": 134,
@@ -26801,7 +27067,9 @@
       "saveIdentity": {
         "speciesNum": 134,
         "form": 0
-      }
+      },
+      "nationalDex": 134,
+      "legacyCalculatorNum": 134
     },
     "jolteon": {
       "num": 135,
@@ -26992,7 +27260,9 @@
       "saveIdentity": {
         "speciesNum": 135,
         "form": 0
-      }
+      },
+      "nationalDex": 135,
+      "legacyCalculatorNum": 135
     },
     "flareon": {
       "num": 136,
@@ -27199,7 +27469,9 @@
       "saveIdentity": {
         "speciesNum": 136,
         "form": 0
-      }
+      },
+      "nationalDex": 136,
+      "legacyCalculatorNum": 136
     },
     "porygon": {
       "num": 137,
@@ -27404,7 +27676,9 @@
       "saveIdentity": {
         "speciesNum": 137,
         "form": 0
-      }
+      },
+      "nationalDex": 137,
+      "legacyCalculatorNum": 137
     },
     "omanyte": {
       "num": 138,
@@ -27610,7 +27884,9 @@
       "saveIdentity": {
         "speciesNum": 138,
         "form": 0
-      }
+      },
+      "nationalDex": 138,
+      "legacyCalculatorNum": 138
     },
     "omastar": {
       "num": 139,
@@ -27829,7 +28105,9 @@
       "saveIdentity": {
         "speciesNum": 139,
         "form": 0
-      }
+      },
+      "nationalDex": 139,
+      "legacyCalculatorNum": 139
     },
     "kabuto": {
       "num": 140,
@@ -28055,7 +28333,9 @@
       "saveIdentity": {
         "speciesNum": 140,
         "form": 0
-      }
+      },
+      "nationalDex": 140,
+      "legacyCalculatorNum": 140
     },
     "kabutops": {
       "num": 141,
@@ -28299,7 +28579,9 @@
       "saveIdentity": {
         "speciesNum": 141,
         "form": 0
-      }
+      },
+      "nationalDex": 141,
+      "legacyCalculatorNum": 141
     },
     "aerodactyl": {
       "num": 142,
@@ -28521,7 +28803,9 @@
       "saveIdentity": {
         "speciesNum": 142,
         "form": 0
-      }
+      },
+      "nationalDex": 142,
+      "legacyCalculatorNum": 142
     },
     "snorlax": {
       "num": 143,
@@ -28740,7 +29024,9 @@
       "saveIdentity": {
         "speciesNum": 143,
         "form": 0
-      }
+      },
+      "nationalDex": 143,
+      "legacyCalculatorNum": 143
     },
     "articuno": {
       "num": 144,
@@ -28944,7 +29230,9 @@
       "saveIdentity": {
         "speciesNum": 144,
         "form": 0
-      }
+      },
+      "nationalDex": 144,
+      "legacyCalculatorNum": 144
     },
     "zapdos": {
       "num": 145,
@@ -29148,7 +29436,9 @@
       "saveIdentity": {
         "speciesNum": 145,
         "form": 0
-      }
+      },
+      "nationalDex": 145,
+      "legacyCalculatorNum": 145
     },
     "moltres": {
       "num": 146,
@@ -29364,7 +29654,9 @@
       "saveIdentity": {
         "speciesNum": 146,
         "form": 0
-      }
+      },
+      "nationalDex": 146,
+      "legacyCalculatorNum": 146
     },
     "dratini": {
       "num": 147,
@@ -29580,7 +29872,9 @@
       "saveIdentity": {
         "speciesNum": 147,
         "form": 0
-      }
+      },
+      "nationalDex": 147,
+      "legacyCalculatorNum": 147
     },
     "dragonair": {
       "num": 148,
@@ -29852,7 +30146,9 @@
       "saveIdentity": {
         "speciesNum": 148,
         "form": 0
-      }
+      },
+      "nationalDex": 148,
+      "legacyCalculatorNum": 148
     },
     "dragonite": {
       "num": 149,
@@ -30136,7 +30432,9 @@
       "saveIdentity": {
         "speciesNum": 149,
         "form": 0
-      }
+      },
+      "nationalDex": 149,
+      "legacyCalculatorNum": 149
     },
     "mewtwo": {
       "num": 150,
@@ -30484,7 +30782,9 @@
       "saveIdentity": {
         "speciesNum": 150,
         "form": 0
-      }
+      },
+      "nationalDex": 150,
+      "legacyCalculatorNum": 150
     },
     "mew": {
       "num": 151,
@@ -30650,7 +30950,9 @@
       "saveIdentity": {
         "speciesNum": 151,
         "form": 0
-      }
+      },
+      "nationalDex": 151,
+      "legacyCalculatorNum": 151
     },
     "chikorita": {
       "num": 152,
@@ -30870,7 +31172,9 @@
       "saveIdentity": {
         "speciesNum": 152,
         "form": 0
-      }
+      },
+      "nationalDex": 152,
+      "legacyCalculatorNum": 152
     },
     "bayleef": {
       "num": 153,
@@ -31098,7 +31402,9 @@
       "saveIdentity": {
         "speciesNum": 153,
         "form": 0
-      }
+      },
+      "nationalDex": 153,
+      "legacyCalculatorNum": 153
     },
     "meganium": {
       "num": 154,
@@ -31302,7 +31608,9 @@
       "saveIdentity": {
         "speciesNum": 154,
         "form": 0
-      }
+      },
+      "nationalDex": 154,
+      "legacyCalculatorNum": 154
     },
     "cyndaquil": {
       "num": 155,
@@ -31517,7 +31825,9 @@
       "saveIdentity": {
         "speciesNum": 155,
         "form": 0
-      }
+      },
+      "nationalDex": 155,
+      "legacyCalculatorNum": 155
     },
     "quilava": {
       "num": 156,
@@ -31740,7 +32050,9 @@
       "saveIdentity": {
         "speciesNum": 156,
         "form": 0
-      }
+      },
+      "nationalDex": 156,
+      "legacyCalculatorNum": 156
     },
     "typhlosion": {
       "num": 157,
@@ -31962,7 +32274,9 @@
       "saveIdentity": {
         "speciesNum": 157,
         "form": 0
-      }
+      },
+      "nationalDex": 157,
+      "legacyCalculatorNum": 157
     },
     "totodile": {
       "num": 158,
@@ -32207,7 +32521,9 @@
       "saveIdentity": {
         "speciesNum": 158,
         "form": 0
-      }
+      },
+      "nationalDex": 158,
+      "legacyCalculatorNum": 158
     },
     "croconaw": {
       "num": 159,
@@ -32464,7 +32780,9 @@
       "saveIdentity": {
         "speciesNum": 159,
         "form": 0
-      }
+      },
+      "nationalDex": 159,
+      "legacyCalculatorNum": 159
     },
     "feraligatr": {
       "num": 160,
@@ -32709,7 +33027,9 @@
       "saveIdentity": {
         "speciesNum": 160,
         "form": 0
-      }
+      },
+      "nationalDex": 160,
+      "legacyCalculatorNum": 160
     },
     "sentret": {
       "num": 161,
@@ -32941,7 +33261,9 @@
       "saveIdentity": {
         "speciesNum": 161,
         "form": 0
-      }
+      },
+      "nationalDex": 161,
+      "legacyCalculatorNum": 161
     },
     "furret": {
       "num": 162,
@@ -33133,7 +33455,9 @@
       "saveIdentity": {
         "speciesNum": 162,
         "form": 0
-      }
+      },
+      "nationalDex": 162,
+      "legacyCalculatorNum": 162
     },
     "hoothoot": {
       "num": 163,
@@ -33326,7 +33650,9 @@
       "saveIdentity": {
         "speciesNum": 163,
         "form": 0
-      }
+      },
+      "nationalDex": 163,
+      "legacyCalculatorNum": 163
     },
     "noctowl": {
       "num": 164,
@@ -33527,7 +33853,9 @@
       "saveIdentity": {
         "speciesNum": 164,
         "form": 0
-      }
+      },
+      "nationalDex": 164,
+      "legacyCalculatorNum": 164
     },
     "ledyba": {
       "num": 165,
@@ -33733,7 +34061,9 @@
       "saveIdentity": {
         "speciesNum": 165,
         "form": 0
-      }
+      },
+      "nationalDex": 165,
+      "legacyCalculatorNum": 165
     },
     "ledian": {
       "num": 166,
@@ -33918,7 +34248,9 @@
       "saveIdentity": {
         "speciesNum": 166,
         "form": 0
-      }
+      },
+      "nationalDex": 166,
+      "legacyCalculatorNum": 166
     },
     "spinarak": {
       "num": 167,
@@ -34108,7 +34440,9 @@
       "saveIdentity": {
         "speciesNum": 167,
         "form": 0
-      }
+      },
+      "nationalDex": 167,
+      "legacyCalculatorNum": 167
     },
     "ariados": {
       "num": 168,
@@ -34318,7 +34652,9 @@
       "saveIdentity": {
         "speciesNum": 168,
         "form": 0
-      }
+      },
+      "nationalDex": 168,
+      "legacyCalculatorNum": 168
     },
     "crobat": {
       "num": 169,
@@ -34528,7 +34864,9 @@
       "saveIdentity": {
         "speciesNum": 169,
         "form": 0
-      }
+      },
+      "nationalDex": 169,
+      "legacyCalculatorNum": 169
     },
     "chinchou": {
       "num": 170,
@@ -34734,7 +35072,9 @@
       "saveIdentity": {
         "speciesNum": 170,
         "form": 0
-      }
+      },
+      "nationalDex": 170,
+      "legacyCalculatorNum": 170
     },
     "lanturn": {
       "num": 171,
@@ -34915,7 +35255,9 @@
       "saveIdentity": {
         "speciesNum": 171,
         "form": 0
-      }
+      },
+      "nationalDex": 171,
+      "legacyCalculatorNum": 171
     },
     "pichu": {
       "num": 172,
@@ -35102,7 +35444,9 @@
       "saveIdentity": {
         "speciesNum": 172,
         "form": 0
-      }
+      },
+      "nationalDex": 172,
+      "legacyCalculatorNum": 172
     },
     "cleffa": {
       "num": 173,
@@ -35290,7 +35634,9 @@
       "saveIdentity": {
         "speciesNum": 173,
         "form": 0
-      }
+      },
+      "nationalDex": 173,
+      "legacyCalculatorNum": 173
     },
     "igglybuff": {
       "num": 174,
@@ -35473,7 +35819,9 @@
       "saveIdentity": {
         "speciesNum": 174,
         "form": 0
-      }
+      },
+      "nationalDex": 174,
+      "legacyCalculatorNum": 174
     },
     "togepi": {
       "num": 175,
@@ -35716,7 +36064,9 @@
       "saveIdentity": {
         "speciesNum": 175,
         "form": 0
-      }
+      },
+      "nationalDex": 175,
+      "legacyCalculatorNum": 175
     },
     "togetic": {
       "num": 176,
@@ -35935,7 +36285,9 @@
       "saveIdentity": {
         "speciesNum": 176,
         "form": 0
-      }
+      },
+      "nationalDex": 176,
+      "legacyCalculatorNum": 176
     },
     "natu": {
       "num": 177,
@@ -36148,7 +36500,9 @@
       "saveIdentity": {
         "speciesNum": 177,
         "form": 0
-      }
+      },
+      "nationalDex": 177,
+      "legacyCalculatorNum": 177
     },
     "xatu": {
       "num": 178,
@@ -36324,7 +36678,9 @@
       "saveIdentity": {
         "speciesNum": 178,
         "form": 0
-      }
+      },
+      "nationalDex": 178,
+      "legacyCalculatorNum": 178
     },
     "mareep": {
       "num": 179,
@@ -36505,7 +36861,9 @@
       "saveIdentity": {
         "speciesNum": 179,
         "form": 0
-      }
+      },
+      "nationalDex": 179,
+      "legacyCalculatorNum": 179
     },
     "flaaffy": {
       "num": 180,
@@ -36705,7 +37063,9 @@
       "saveIdentity": {
         "speciesNum": 180,
         "form": 0
-      }
+      },
+      "nationalDex": 180,
+      "legacyCalculatorNum": 180
     },
     "ampharos": {
       "num": 181,
@@ -36887,7 +37247,9 @@
       "saveIdentity": {
         "speciesNum": 181,
         "form": 0
-      }
+      },
+      "nationalDex": 181,
+      "legacyCalculatorNum": 181
     },
     "bellossom": {
       "num": 182,
@@ -37074,7 +37436,9 @@
       "saveIdentity": {
         "speciesNum": 182,
         "form": 0
-      }
+      },
+      "nationalDex": 182,
+      "legacyCalculatorNum": 182
     },
     "marill": {
       "num": 183,
@@ -37282,7 +37646,9 @@
       "saveIdentity": {
         "speciesNum": 183,
         "form": 0
-      }
+      },
+      "nationalDex": 183,
+      "legacyCalculatorNum": 183
     },
     "azumarill": {
       "num": 184,
@@ -37487,7 +37853,9 @@
       "saveIdentity": {
         "speciesNum": 184,
         "form": 0
-      }
+      },
+      "nationalDex": 184,
+      "legacyCalculatorNum": 184
     },
     "sudowoodo": {
       "num": 185,
@@ -37697,7 +38065,9 @@
       "saveIdentity": {
         "speciesNum": 185,
         "form": 0
-      }
+      },
+      "nationalDex": 185,
+      "legacyCalculatorNum": 185
     },
     "politoed": {
       "num": 186,
@@ -37848,7 +38218,9 @@
       "saveIdentity": {
         "speciesNum": 186,
         "form": 0
-      }
+      },
+      "nationalDex": 186,
+      "legacyCalculatorNum": 186
     },
     "hoppip": {
       "num": 187,
@@ -38025,7 +38397,9 @@
       "saveIdentity": {
         "speciesNum": 187,
         "form": 0
-      }
+      },
+      "nationalDex": 187,
+      "legacyCalculatorNum": 187
     },
     "skiploom": {
       "num": 188,
@@ -38221,7 +38595,9 @@
       "saveIdentity": {
         "speciesNum": 188,
         "form": 0
-      }
+      },
+      "nationalDex": 188,
+      "legacyCalculatorNum": 188
     },
     "jumpluff": {
       "num": 189,
@@ -38459,7 +38835,9 @@
       "saveIdentity": {
         "speciesNum": 189,
         "form": 0
-      }
+      },
+      "nationalDex": 189,
+      "legacyCalculatorNum": 189
     },
     "aipom": {
       "num": 190,
@@ -38642,7 +39020,9 @@
       "saveIdentity": {
         "speciesNum": 190,
         "form": 0
-      }
+      },
+      "nationalDex": 190,
+      "legacyCalculatorNum": 190
     },
     "sunkern": {
       "num": 191,
@@ -38824,7 +39204,9 @@
       "saveIdentity": {
         "speciesNum": 191,
         "form": 0
-      }
+      },
+      "nationalDex": 191,
+      "legacyCalculatorNum": 191
     },
     "sunflora": {
       "num": 192,
@@ -39001,7 +39383,9 @@
       "saveIdentity": {
         "speciesNum": 192,
         "form": 0
-      }
+      },
+      "nationalDex": 192,
+      "legacyCalculatorNum": 192
     },
     "yanma": {
       "num": 193,
@@ -39224,7 +39608,9 @@
       "saveIdentity": {
         "speciesNum": 193,
         "form": 0
-      }
+      },
+      "nationalDex": 193,
+      "legacyCalculatorNum": 193
     },
     "wooper": {
       "num": 194,
@@ -39458,7 +39844,9 @@
       "saveIdentity": {
         "speciesNum": 194,
         "form": 0
-      }
+      },
+      "nationalDex": 194,
+      "legacyCalculatorNum": 194
     },
     "quagsire": {
       "num": 195,
@@ -39663,7 +40051,9 @@
       "saveIdentity": {
         "speciesNum": 195,
         "form": 0
-      }
+      },
+      "nationalDex": 195,
+      "legacyCalculatorNum": 195
     },
     "espeon": {
       "num": 196,
@@ -39862,7 +40252,9 @@
       "saveIdentity": {
         "speciesNum": 196,
         "form": 0
-      }
+      },
+      "nationalDex": 196,
+      "legacyCalculatorNum": 196
     },
     "umbreon": {
       "num": 197,
@@ -40057,7 +40449,9 @@
       "saveIdentity": {
         "speciesNum": 197,
         "form": 0
-      }
+      },
+      "nationalDex": 197,
+      "legacyCalculatorNum": 197
     },
     "murkrow": {
       "num": 198,
@@ -40290,7 +40684,9 @@
       "saveIdentity": {
         "speciesNum": 198,
         "form": 0
-      }
+      },
+      "nationalDex": 198,
+      "legacyCalculatorNum": 198
     },
     "slowking": {
       "num": 199,
@@ -40503,7 +40899,9 @@
       "saveIdentity": {
         "speciesNum": 199,
         "form": 0
-      }
+      },
+      "nationalDex": 199,
+      "legacyCalculatorNum": 199
     },
     "misdreavus": {
       "num": 200,
@@ -40609,7 +41007,9 @@
       "saveIdentity": {
         "speciesNum": 200,
         "form": 0
-      }
+      },
+      "nationalDex": 200,
+      "legacyCalculatorNum": 200
     },
     "unown": {
       "num": 201,
@@ -40670,7 +41070,9 @@
       "saveIdentity": {
         "speciesNum": 201,
         "form": 0
-      }
+      },
+      "nationalDex": 201,
+      "legacyCalculatorNum": 201
     },
     "wobbuffet": {
       "num": 202,
@@ -40854,7 +41256,9 @@
       "saveIdentity": {
         "speciesNum": 202,
         "form": 0
-      }
+      },
+      "nationalDex": 202,
+      "legacyCalculatorNum": 202
     },
     "girafarig": {
       "num": 203,
@@ -41042,7 +41446,9 @@
       "saveIdentity": {
         "speciesNum": 203,
         "form": 0
-      }
+      },
+      "nationalDex": 203,
+      "legacyCalculatorNum": 203
     },
     "pineco": {
       "num": 204,
@@ -41233,7 +41639,9 @@
       "saveIdentity": {
         "speciesNum": 204,
         "form": 0
-      }
+      },
+      "nationalDex": 204,
+      "legacyCalculatorNum": 204
     },
     "forretress": {
       "num": 205,
@@ -41465,7 +41873,9 @@
       "saveIdentity": {
         "speciesNum": 205,
         "form": 0
-      }
+      },
+      "nationalDex": 205,
+      "legacyCalculatorNum": 205
     },
     "dunsparce": {
       "num": 206,
@@ -41673,7 +42083,9 @@
       "saveIdentity": {
         "speciesNum": 206,
         "form": 0
-      }
+      },
+      "nationalDex": 206,
+      "legacyCalculatorNum": 206
     },
     "gligar": {
       "num": 207,
@@ -41868,7 +42280,9 @@
       "saveIdentity": {
         "speciesNum": 207,
         "form": 0
-      }
+      },
+      "nationalDex": 207,
+      "legacyCalculatorNum": 207
     },
     "steelix": {
       "num": 208,
@@ -42123,7 +42537,9 @@
       "saveIdentity": {
         "speciesNum": 208,
         "form": 0
-      }
+      },
+      "nationalDex": 208,
+      "legacyCalculatorNum": 208
     },
     "snubbull": {
       "num": 209,
@@ -42380,7 +42796,9 @@
       "saveIdentity": {
         "speciesNum": 209,
         "form": 0
-      }
+      },
+      "nationalDex": 209,
+      "legacyCalculatorNum": 209
     },
     "granbull": {
       "num": 210,
@@ -42571,7 +42989,9 @@
       "saveIdentity": {
         "speciesNum": 210,
         "form": 0
-      }
+      },
+      "nationalDex": 210,
+      "legacyCalculatorNum": 210
     },
     "qwilfish": {
       "num": 211,
@@ -42764,7 +43184,9 @@
       "saveIdentity": {
         "speciesNum": 211,
         "form": 0
-      }
+      },
+      "nationalDex": 211,
+      "legacyCalculatorNum": 211
     },
     "scizor": {
       "num": 212,
@@ -42961,7 +43383,9 @@
       "saveIdentity": {
         "speciesNum": 212,
         "form": 0
-      }
+      },
+      "nationalDex": 212,
+      "legacyCalculatorNum": 212
     },
     "shuckle": {
       "num": 213,
@@ -43145,7 +43569,9 @@
       "saveIdentity": {
         "speciesNum": 213,
         "form": 0
-      }
+      },
+      "nationalDex": 213,
+      "legacyCalculatorNum": 213
     },
     "heracross": {
       "num": 214,
@@ -43373,7 +43799,9 @@
       "saveIdentity": {
         "speciesNum": 214,
         "form": 0
-      }
+      },
+      "nationalDex": 214,
+      "legacyCalculatorNum": 214
     },
     "sneasel": {
       "num": 215,
@@ -43591,7 +44019,9 @@
       "saveIdentity": {
         "speciesNum": 215,
         "form": 0
-      }
+      },
+      "nationalDex": 215,
+      "legacyCalculatorNum": 215
     },
     "teddiursa": {
       "num": 216,
@@ -43811,7 +44241,9 @@
       "saveIdentity": {
         "speciesNum": 216,
         "form": 0
-      }
+      },
+      "nationalDex": 216,
+      "legacyCalculatorNum": 216
     },
     "ursaring": {
       "num": 217,
@@ -43985,7 +44417,9 @@
       "saveIdentity": {
         "speciesNum": 217,
         "form": 0
-      }
+      },
+      "nationalDex": 217,
+      "legacyCalculatorNum": 217
     },
     "slugma": {
       "num": 218,
@@ -44181,7 +44615,9 @@
       "saveIdentity": {
         "speciesNum": 218,
         "form": 0
-      }
+      },
+      "nationalDex": 218,
+      "legacyCalculatorNum": 218
     },
     "magcargo": {
       "num": 219,
@@ -44381,7 +44817,9 @@
       "saveIdentity": {
         "speciesNum": 219,
         "form": 0
-      }
+      },
+      "nationalDex": 219,
+      "legacyCalculatorNum": 219
     },
     "swinub": {
       "num": 220,
@@ -44580,7 +45018,9 @@
       "saveIdentity": {
         "speciesNum": 220,
         "form": 0
-      }
+      },
+      "nationalDex": 220,
+      "legacyCalculatorNum": 220
     },
     "piloswine": {
       "num": 221,
@@ -44803,7 +45243,9 @@
       "saveIdentity": {
         "speciesNum": 221,
         "form": 0
-      }
+      },
+      "nationalDex": 221,
+      "legacyCalculatorNum": 221
     },
     "corsola": {
       "num": 222,
@@ -45003,7 +45445,9 @@
       "saveIdentity": {
         "speciesNum": 222,
         "form": 0
-      }
+      },
+      "nationalDex": 222,
+      "legacyCalculatorNum": 222
     },
     "remoraid": {
       "num": 223,
@@ -45205,7 +45649,9 @@
       "saveIdentity": {
         "speciesNum": 223,
         "form": 0
-      }
+      },
+      "nationalDex": 223,
+      "legacyCalculatorNum": 223
     },
     "octillery": {
       "num": 224,
@@ -45382,7 +45828,9 @@
       "saveIdentity": {
         "speciesNum": 224,
         "form": 0
-      }
+      },
+      "nationalDex": 224,
+      "legacyCalculatorNum": 224
     },
     "delibird": {
       "num": 225,
@@ -45525,7 +45973,9 @@
       "saveIdentity": {
         "speciesNum": 225,
         "form": 0
-      }
+      },
+      "nationalDex": 225,
+      "legacyCalculatorNum": 225
     },
     "mantine": {
       "num": 226,
@@ -45712,7 +46162,9 @@
       "saveIdentity": {
         "speciesNum": 226,
         "form": 0
-      }
+      },
+      "nationalDex": 226,
+      "legacyCalculatorNum": 226
     },
     "skarmory": {
       "num": 227,
@@ -45916,7 +46368,9 @@
       "saveIdentity": {
         "speciesNum": 227,
         "form": 0
-      }
+      },
+      "nationalDex": 227,
+      "legacyCalculatorNum": 227
     },
     "houndour": {
       "num": 228,
@@ -46134,7 +46588,9 @@
       "saveIdentity": {
         "speciesNum": 228,
         "form": 0
-      }
+      },
+      "nationalDex": 228,
+      "legacyCalculatorNum": 228
     },
     "houndoom": {
       "num": 229,
@@ -46323,7 +46779,9 @@
       "saveIdentity": {
         "speciesNum": 229,
         "form": 0
-      }
+      },
+      "nationalDex": 229,
+      "legacyCalculatorNum": 229
     },
     "kingdra": {
       "num": 230,
@@ -46507,7 +46965,9 @@
       "saveIdentity": {
         "speciesNum": 230,
         "form": 0
-      }
+      },
+      "nationalDex": 230,
+      "legacyCalculatorNum": 230
     },
     "phanpy": {
       "num": 231,
@@ -46690,7 +47150,9 @@
       "saveIdentity": {
         "speciesNum": 231,
         "form": 0
-      }
+      },
+      "nationalDex": 231,
+      "legacyCalculatorNum": 231
     },
     "donphan": {
       "num": 232,
@@ -46887,7 +47349,9 @@
       "saveIdentity": {
         "speciesNum": 232,
         "form": 0
-      }
+      },
+      "nationalDex": 232,
+      "legacyCalculatorNum": 232
     },
     "porygon2": {
       "num": 233,
@@ -47106,7 +47570,9 @@
       "saveIdentity": {
         "speciesNum": 233,
         "form": 0
-      }
+      },
+      "nationalDex": 233,
+      "legacyCalculatorNum": 233
     },
     "stantler": {
       "num": 234,
@@ -47212,7 +47678,9 @@
       "saveIdentity": {
         "speciesNum": 234,
         "form": 0
-      }
+      },
+      "nationalDex": 234,
+      "legacyCalculatorNum": 234
     },
     "smeargle": {
       "num": 235,
@@ -47390,7 +47858,9 @@
       "saveIdentity": {
         "speciesNum": 235,
         "form": 0
-      }
+      },
+      "nationalDex": 235,
+      "legacyCalculatorNum": 235
     },
     "tyrogue": {
       "num": 236,
@@ -47547,7 +48017,9 @@
       "saveIdentity": {
         "speciesNum": 236,
         "form": 0
-      }
+      },
+      "nationalDex": 236,
+      "legacyCalculatorNum": 236
     },
     "hitmontop": {
       "num": 237,
@@ -47750,7 +48222,9 @@
       "saveIdentity": {
         "speciesNum": 237,
         "form": 0
-      }
+      },
+      "nationalDex": 237,
+      "legacyCalculatorNum": 237
     },
     "smoochum": {
       "num": 238,
@@ -47943,7 +48417,9 @@
       "saveIdentity": {
         "speciesNum": 238,
         "form": 0
-      }
+      },
+      "nationalDex": 238,
+      "legacyCalculatorNum": 238
     },
     "elekid": {
       "num": 239,
@@ -48127,7 +48603,9 @@
       "saveIdentity": {
         "speciesNum": 239,
         "form": 0
-      }
+      },
+      "nationalDex": 239,
+      "legacyCalculatorNum": 239
     },
     "magby": {
       "num": 240,
@@ -48355,7 +48833,9 @@
       "saveIdentity": {
         "speciesNum": 240,
         "form": 0
-      }
+      },
+      "nationalDex": 240,
+      "legacyCalculatorNum": 240
     },
     "miltank": {
       "num": 241,
@@ -48612,7 +49092,9 @@
       "saveIdentity": {
         "speciesNum": 241,
         "form": 0
-      }
+      },
+      "nationalDex": 241,
+      "legacyCalculatorNum": 241
     },
     "blissey": {
       "num": 242,
@@ -48829,7 +49311,9 @@
       "saveIdentity": {
         "speciesNum": 242,
         "form": 0
-      }
+      },
+      "nationalDex": 242,
+      "legacyCalculatorNum": 242
     },
     "raikou": {
       "num": 243,
@@ -49035,7 +49519,9 @@
       "saveIdentity": {
         "speciesNum": 243,
         "form": 0
-      }
+      },
+      "nationalDex": 243,
+      "legacyCalculatorNum": 243
     },
     "entei": {
       "num": 244,
@@ -49249,7 +49735,9 @@
       "saveIdentity": {
         "speciesNum": 244,
         "form": 0
-      }
+      },
+      "nationalDex": 244,
+      "legacyCalculatorNum": 244
     },
     "suicune": {
       "num": 245,
@@ -49435,7 +49923,9 @@
       "saveIdentity": {
         "speciesNum": 245,
         "form": 0
-      }
+      },
+      "nationalDex": 245,
+      "legacyCalculatorNum": 245
     },
     "larvitar": {
       "num": 246,
@@ -49628,7 +50118,9 @@
       "saveIdentity": {
         "speciesNum": 246,
         "form": 0
-      }
+      },
+      "nationalDex": 246,
+      "legacyCalculatorNum": 246
     },
     "pupitar": {
       "num": 247,
@@ -49899,7 +50391,9 @@
       "saveIdentity": {
         "speciesNum": 247,
         "form": 0
-      }
+      },
+      "nationalDex": 247,
+      "legacyCalculatorNum": 247
     },
     "tyranitar": {
       "num": 248,
@@ -50172,7 +50666,9 @@
       "saveIdentity": {
         "speciesNum": 248,
         "form": 0
-      }
+      },
+      "nationalDex": 248,
+      "legacyCalculatorNum": 248
     },
     "lugia": {
       "num": 249,
@@ -50419,7 +50915,9 @@
       "saveIdentity": {
         "speciesNum": 249,
         "form": 0
-      }
+      },
+      "nationalDex": 249,
+      "legacyCalculatorNum": 249
     },
     "hooh": {
       "num": 250,
@@ -50634,7 +51132,9 @@
       "saveIdentity": {
         "speciesNum": 250,
         "form": 0
-      }
+      },
+      "nationalDex": 250,
+      "legacyCalculatorNum": 250
     },
     "celebi": {
       "num": 251,
@@ -50741,7 +51241,9 @@
       "saveIdentity": {
         "speciesNum": 251,
         "form": 0
-      }
+      },
+      "nationalDex": 251,
+      "legacyCalculatorNum": 251
     },
     "treecko": {
       "num": 252,
@@ -50938,7 +51440,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 252,
+      "romId": 277,
       "baseExp": 65,
       "abilitySlots": [
         "overgrow",
@@ -50958,7 +51460,9 @@
       "saveIdentity": {
         "speciesNum": 252,
         "form": 0
-      }
+      },
+      "nationalDex": 252,
+      "legacyCalculatorNum": 252
     },
     "grovyle": {
       "num": 253,
@@ -51181,7 +51685,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 253,
+      "romId": 278,
       "baseExp": 141,
       "abilitySlots": [
         "overgrow",
@@ -51201,7 +51705,9 @@
       "saveIdentity": {
         "speciesNum": 253,
         "form": 0
-      }
+      },
+      "nationalDex": 253,
+      "legacyCalculatorNum": 253
     },
     "sceptile": {
       "num": 254,
@@ -51387,7 +51893,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 254,
+      "romId": 279,
       "baseExp": 208,
       "abilitySlots": [
         "overgrow",
@@ -51407,7 +51913,9 @@
       "saveIdentity": {
         "speciesNum": 254,
         "form": 0
-      }
+      },
+      "nationalDex": 254,
+      "legacyCalculatorNum": 254
     },
     "torchic": {
       "num": 255,
@@ -51596,7 +52104,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 255,
+      "romId": 280,
       "baseExp": 65,
       "abilitySlots": [
         "blaze",
@@ -51616,7 +52124,9 @@
       "saveIdentity": {
         "speciesNum": 255,
         "form": 0
-      }
+      },
+      "nationalDex": 255,
+      "legacyCalculatorNum": 255
     },
     "combusken": {
       "num": 256,
@@ -51828,7 +52338,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 256,
+      "romId": 281,
       "baseExp": 142,
       "abilitySlots": [
         "blaze",
@@ -51848,7 +52358,9 @@
       "saveIdentity": {
         "speciesNum": 256,
         "form": 0
-      }
+      },
+      "nationalDex": 256,
+      "legacyCalculatorNum": 256
     },
     "blaziken": {
       "num": 257,
@@ -52052,7 +52564,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 257,
+      "romId": 282,
       "baseExp": 209,
       "abilitySlots": [
         "blaze",
@@ -52072,7 +52584,9 @@
       "saveIdentity": {
         "speciesNum": 257,
         "form": 0
-      }
+      },
+      "nationalDex": 257,
+      "legacyCalculatorNum": 257
     },
     "mudkip": {
       "num": 258,
@@ -52270,7 +52784,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 258,
+      "romId": 283,
       "baseExp": 65,
       "abilitySlots": [
         "torrent",
@@ -52290,7 +52804,9 @@
       "saveIdentity": {
         "speciesNum": 258,
         "form": 0
-      }
+      },
+      "nationalDex": 258,
+      "legacyCalculatorNum": 258
     },
     "marshtomp": {
       "num": 259,
@@ -52510,7 +53026,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 259,
+      "romId": 284,
       "baseExp": 143,
       "abilitySlots": [
         "torrent",
@@ -52530,7 +53046,9 @@
       "saveIdentity": {
         "speciesNum": 259,
         "form": 0
-      }
+      },
+      "nationalDex": 259,
+      "legacyCalculatorNum": 259
     },
     "swampert": {
       "num": 260,
@@ -52721,7 +53239,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 260,
+      "romId": 285,
       "baseExp": 210,
       "abilitySlots": [
         "torrent",
@@ -52741,7 +53259,9 @@
       "saveIdentity": {
         "speciesNum": 260,
         "form": 0
-      }
+      },
+      "nationalDex": 260,
+      "legacyCalculatorNum": 260
     },
     "poochyena": {
       "num": 261,
@@ -52935,7 +53455,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 261,
+      "romId": 286,
       "baseExp": 55,
       "abilitySlots": [
         "runaway",
@@ -52955,7 +53475,9 @@
       "saveIdentity": {
         "speciesNum": 261,
         "form": 0
-      }
+      },
+      "nationalDex": 261,
+      "legacyCalculatorNum": 261
     },
     "mightyena": {
       "num": 262,
@@ -53166,7 +53688,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 262,
+      "romId": 287,
       "baseExp": 128,
       "abilitySlots": [
         "intimidate",
@@ -53186,7 +53708,9 @@
       "saveIdentity": {
         "speciesNum": 262,
         "form": 0
-      }
+      },
+      "nationalDex": 262,
+      "legacyCalculatorNum": 262
     },
     "zigzagoon": {
       "num": 263,
@@ -53400,7 +53924,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 263,
+      "romId": 288,
       "baseExp": 60,
       "abilitySlots": [
         "pickup",
@@ -53420,7 +53944,9 @@
       "saveIdentity": {
         "speciesNum": 263,
         "form": 0
-      }
+      },
+      "nationalDex": 263,
+      "legacyCalculatorNum": 263
     },
     "linoone": {
       "num": 264,
@@ -53526,7 +54052,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 264,
+      "romId": 289,
       "baseExp": 128,
       "abilitySlots": [
         "pickup",
@@ -53546,7 +54072,9 @@
       "saveIdentity": {
         "speciesNum": 264,
         "form": 0
-      }
+      },
+      "nationalDex": 264,
+      "legacyCalculatorNum": 264
     },
     "wurmple": {
       "num": 265,
@@ -53608,7 +54136,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 265,
+      "romId": 290,
       "baseExp": 54,
       "abilitySlots": [
         "shielddust",
@@ -53628,7 +54156,9 @@
       "saveIdentity": {
         "speciesNum": 265,
         "form": 0
-      }
+      },
+      "nationalDex": 265,
+      "legacyCalculatorNum": 265
     },
     "silcoon": {
       "num": 266,
@@ -53760,7 +54290,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 266,
+      "romId": 291,
       "baseExp": 71,
       "abilitySlots": [
         "shedskin",
@@ -53780,7 +54310,9 @@
       "saveIdentity": {
         "speciesNum": 266,
         "form": 0
-      }
+      },
+      "nationalDex": 266,
+      "legacyCalculatorNum": 266
     },
     "beautifly": {
       "num": 267,
@@ -53867,7 +54399,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 267,
+      "romId": 292,
       "baseExp": 161,
       "abilitySlots": [
         "swarm",
@@ -53887,7 +54419,9 @@
       "saveIdentity": {
         "speciesNum": 267,
         "form": 0
-      }
+      },
+      "nationalDex": 267,
+      "legacyCalculatorNum": 267
     },
     "cascoon": {
       "num": 268,
@@ -54023,7 +54557,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 268,
+      "romId": 293,
       "baseExp": 72,
       "abilitySlots": [
         "shedskin",
@@ -54043,7 +54577,9 @@
       "saveIdentity": {
         "speciesNum": 268,
         "form": 0
-      }
+      },
+      "nationalDex": 268,
+      "legacyCalculatorNum": 268
     },
     "dustox": {
       "num": 269,
@@ -54218,7 +54754,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 269,
+      "romId": 294,
       "baseExp": 160,
       "abilitySlots": [
         "shielddust",
@@ -54238,7 +54774,9 @@
       "saveIdentity": {
         "speciesNum": 269,
         "form": 0
-      }
+      },
+      "nationalDex": 269,
+      "legacyCalculatorNum": 269
     },
     "lotad": {
       "num": 270,
@@ -54425,7 +54963,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 270,
+      "romId": 295,
       "baseExp": 74,
       "abilitySlots": [
         "swiftswim",
@@ -54445,7 +54983,9 @@
       "saveIdentity": {
         "speciesNum": 270,
         "form": 0
-      }
+      },
+      "nationalDex": 270,
+      "legacyCalculatorNum": 270
     },
     "lombre": {
       "num": 271,
@@ -54655,7 +55195,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 271,
+      "romId": 296,
       "baseExp": 141,
       "abilitySlots": [
         "swiftswim",
@@ -54675,7 +55215,9 @@
       "saveIdentity": {
         "speciesNum": 271,
         "form": 0
-      }
+      },
+      "nationalDex": 271,
+      "legacyCalculatorNum": 271
     },
     "ludicolo": {
       "num": 272,
@@ -54810,7 +55352,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 272,
+      "romId": 297,
       "baseExp": 181,
       "abilitySlots": [
         "swiftswim",
@@ -54830,7 +55372,9 @@
       "saveIdentity": {
         "speciesNum": 272,
         "form": 0
-      }
+      },
+      "nationalDex": 272,
+      "legacyCalculatorNum": 272
     },
     "seedot": {
       "num": 273,
@@ -55008,7 +55552,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 273,
+      "romId": 298,
       "baseExp": 74,
       "abilitySlots": [
         "chlorophyll",
@@ -55028,7 +55572,9 @@
       "saveIdentity": {
         "speciesNum": 273,
         "form": 0
-      }
+      },
+      "nationalDex": 273,
+      "legacyCalculatorNum": 273
     },
     "nuzleaf": {
       "num": 274,
@@ -55226,7 +55772,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 274,
+      "romId": 299,
       "baseExp": 141,
       "abilitySlots": [
         "chlorophyll",
@@ -55246,7 +55792,9 @@
       "saveIdentity": {
         "speciesNum": 274,
         "form": 0
-      }
+      },
+      "nationalDex": 274,
+      "legacyCalculatorNum": 274
     },
     "shiftry": {
       "num": 275,
@@ -55381,7 +55929,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 275,
+      "romId": 300,
       "baseExp": 181,
       "abilitySlots": [
         "chlorophyll",
@@ -55401,10 +55949,12 @@
       "saveIdentity": {
         "speciesNum": 275,
         "form": 0
-      }
+      },
+      "nationalDex": 275,
+      "legacyCalculatorNum": 275
     },
     "nincada": {
-      "num": 276,
+      "num": 290,
       "id": "nincada",
       "name": "Nincada",
       "gen": 3,
@@ -55583,7 +56133,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 276,
+      "romId": 301,
       "baseExp": 65,
       "abilitySlots": [
         "compoundeyes",
@@ -55601,12 +56151,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 276,
+        "speciesNum": 290,
         "form": 0
-      }
+      },
+      "nationalDex": 290,
+      "legacyCalculatorNum": 276
     },
     "ninjask": {
-      "num": 277,
+      "num": 291,
       "id": "ninjask",
       "name": "Ninjask",
       "gen": 3,
@@ -55795,7 +56347,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 277,
+      "romId": 302,
       "baseExp": 155,
       "abilitySlots": [
         "speedboost",
@@ -55813,12 +56365,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 277,
+        "speciesNum": 291,
         "form": 0
-      }
+      },
+      "nationalDex": 291,
+      "legacyCalculatorNum": 277
     },
     "shedinja": {
-      "num": 278,
+      "num": 292,
       "id": "shedinja",
       "name": "Shedinja",
       "gen": 3,
@@ -55966,7 +56520,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 278,
+      "romId": 303,
       "baseExp": 95,
       "abilitySlots": [
         "wonderguard",
@@ -55984,12 +56538,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 278,
+        "speciesNum": 292,
         "form": 0
-      }
+      },
+      "nationalDex": 292,
+      "legacyCalculatorNum": 278
     },
     "taillow": {
-      "num": 279,
+      "num": 276,
       "id": "taillow",
       "name": "Taillow",
       "gen": 3,
@@ -56142,7 +56698,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 279,
+      "romId": 304,
       "baseExp": 59,
       "abilitySlots": [
         "guts",
@@ -56160,12 +56716,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 279,
+        "speciesNum": 276,
         "form": 0
-      }
+      },
+      "nationalDex": 276,
+      "legacyCalculatorNum": 279
     },
     "swellow": {
-      "num": 280,
+      "num": 277,
       "id": "swellow",
       "name": "Swellow",
       "gen": 3,
@@ -56316,7 +56874,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 280,
+      "romId": 305,
       "baseExp": 162,
       "abilitySlots": [
         "guts",
@@ -56334,12 +56892,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 280,
+        "speciesNum": 277,
         "form": 0
-      }
+      },
+      "nationalDex": 277,
+      "legacyCalculatorNum": 280
     },
     "shroomish": {
-      "num": 281,
+      "num": 285,
       "id": "shroomish",
       "name": "Shroomish",
       "gen": 3,
@@ -56532,7 +57092,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 281,
+      "romId": 306,
       "baseExp": 65,
       "abilitySlots": [
         "effectspore",
@@ -56550,12 +57110,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 281,
+        "speciesNum": 285,
         "form": 0
-      }
+      },
+      "nationalDex": 285,
+      "legacyCalculatorNum": 281
     },
     "breloom": {
-      "num": 282,
+      "num": 286,
       "id": "breloom",
       "name": "Breloom",
       "gen": 3,
@@ -56771,7 +57333,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 282,
+      "romId": 307,
       "baseExp": 165,
       "abilitySlots": [
         "effectspore",
@@ -56789,12 +57351,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 282,
+        "speciesNum": 286,
         "form": 0
-      }
+      },
+      "nationalDex": 286,
+      "legacyCalculatorNum": 282
     },
     "spinda": {
-      "num": 283,
+      "num": 327,
       "id": "spinda",
       "name": "Spinda",
       "gen": 3,
@@ -56962,7 +57526,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 283,
+      "romId": 308,
       "baseExp": 85,
       "abilitySlots": [
         "owntempo",
@@ -56980,12 +57544,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 283,
+        "speciesNum": 327,
         "form": 0
-      }
+      },
+      "nationalDex": 327,
+      "legacyCalculatorNum": 283
     },
     "wingull": {
-      "num": 284,
+      "num": 278,
       "id": "wingull",
       "name": "Wingull",
       "gen": 3,
@@ -57153,7 +57719,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 284,
+      "romId": 309,
       "baseExp": 64,
       "abilitySlots": [
         "keeneye",
@@ -57171,12 +57737,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 284,
+        "speciesNum": 278,
         "form": 0
-      }
+      },
+      "nationalDex": 278,
+      "legacyCalculatorNum": 284
     },
     "pelipper": {
-      "num": 285,
+      "num": 279,
       "id": "pelipper",
       "name": "Pelipper",
       "gen": 3,
@@ -57345,7 +57913,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 285,
+      "romId": 310,
       "baseExp": 164,
       "abilitySlots": [
         "keeneye",
@@ -57363,12 +57931,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 285,
+        "speciesNum": 279,
         "form": 0
-      }
+      },
+      "nationalDex": 279,
+      "legacyCalculatorNum": 285
     },
     "surskit": {
-      "num": 286,
+      "num": 283,
       "id": "surskit",
       "name": "Surskit",
       "gen": 3,
@@ -57536,7 +58106,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 286,
+      "romId": 311,
       "baseExp": 63,
       "abilitySlots": [
         "swiftswim",
@@ -57554,12 +58124,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 286,
+        "speciesNum": 283,
         "form": 0
-      }
+      },
+      "nationalDex": 283,
+      "legacyCalculatorNum": 286
     },
     "masquerain": {
-      "num": 287,
+      "num": 284,
       "id": "masquerain",
       "name": "Masquerain",
       "gen": 3,
@@ -57745,7 +58317,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 287,
+      "romId": 312,
       "baseExp": 128,
       "abilitySlots": [
         "intimidate",
@@ -57763,12 +58335,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 287,
+        "speciesNum": 284,
         "form": 0
-      }
+      },
+      "nationalDex": 284,
+      "legacyCalculatorNum": 287
     },
     "wailmer": {
-      "num": 288,
+      "num": 320,
       "id": "wailmer",
       "name": "Wailmer",
       "gen": 3,
@@ -57964,7 +58538,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 288,
+      "romId": 313,
       "baseExp": 137,
       "abilitySlots": [
         "waterveil",
@@ -57982,12 +58556,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 288,
+        "speciesNum": 320,
         "form": 0
-      }
+      },
+      "nationalDex": 320,
+      "legacyCalculatorNum": 288
     },
     "wailord": {
-      "num": 289,
+      "num": 321,
       "id": "wailord",
       "name": "Wailord",
       "gen": 3,
@@ -58181,7 +58757,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 289,
+      "romId": 314,
       "baseExp": 206,
       "abilitySlots": [
         "waterveil",
@@ -58199,12 +58775,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 289,
+        "speciesNum": 321,
         "form": 0
-      }
+      },
+      "nationalDex": 321,
+      "legacyCalculatorNum": 289
     },
     "skitty": {
-      "num": 290,
+      "num": 300,
       "id": "skitty",
       "name": "Skitty",
       "gen": 3,
@@ -58415,7 +58993,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 290,
+      "romId": 315,
       "baseExp": 65,
       "abilitySlots": [
         "cutecharm",
@@ -58433,12 +59011,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 290,
+        "speciesNum": 300,
         "form": 0
-      }
+      },
+      "nationalDex": 300,
+      "legacyCalculatorNum": 290
     },
     "delcatty": {
-      "num": 291,
+      "num": 301,
       "id": "delcatty",
       "name": "Delcatty",
       "gen": 3,
@@ -58631,7 +59211,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 291,
+      "romId": 316,
       "baseExp": 138,
       "abilitySlots": [
         "cutecharm",
@@ -58649,12 +59229,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 291,
+        "speciesNum": 301,
         "form": 0
-      }
+      },
+      "nationalDex": 301,
+      "legacyCalculatorNum": 291
     },
     "kecleon": {
-      "num": 292,
+      "num": 352,
       "id": "kecleon",
       "name": "Kecleon",
       "gen": 3,
@@ -58844,7 +59426,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 292,
+      "romId": 317,
       "baseExp": 132,
       "abilitySlots": [
         "colorchange",
@@ -58862,12 +59444,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 292,
+        "speciesNum": 352,
         "form": 0
-      }
+      },
+      "nationalDex": 352,
+      "legacyCalculatorNum": 292
     },
     "baltoy": {
-      "num": 293,
+      "num": 343,
       "id": "baltoy",
       "name": "Baltoy",
       "gen": 3,
@@ -59066,7 +59650,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 293,
+      "romId": 318,
       "baseExp": 58,
       "abilitySlots": [
         "levitate",
@@ -59084,12 +59668,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 293,
+        "speciesNum": 343,
         "form": 0
-      }
+      },
+      "nationalDex": 343,
+      "legacyCalculatorNum": 293
     },
     "claydol": {
-      "num": 294,
+      "num": 344,
       "id": "claydol",
       "name": "Claydol",
       "gen": 3,
@@ -59282,7 +59868,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 294,
+      "romId": 319,
       "baseExp": 189,
       "abilitySlots": [
         "levitate",
@@ -59300,12 +59886,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 294,
+        "speciesNum": 344,
         "form": 0
-      }
+      },
+      "nationalDex": 344,
+      "legacyCalculatorNum": 294
     },
     "nosepass": {
-      "num": 295,
+      "num": 299,
       "id": "nosepass",
       "name": "Nosepass",
       "gen": 3,
@@ -59461,7 +60049,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 295,
+      "romId": 320,
       "baseExp": 108,
       "abilitySlots": [
         "sturdy",
@@ -59479,12 +60067,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 295,
+        "speciesNum": 299,
         "form": 0
-      }
+      },
+      "nationalDex": 299,
+      "legacyCalculatorNum": 295
     },
     "torkoal": {
-      "num": 296,
+      "num": 324,
       "id": "torkoal",
       "name": "Torkoal",
       "gen": 3,
@@ -59693,7 +60283,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 296,
+      "romId": 321,
       "baseExp": 161,
       "abilitySlots": [
         "whitesmoke",
@@ -59711,12 +60301,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 296,
+        "speciesNum": 324,
         "form": 0
-      }
+      },
+      "nationalDex": 324,
+      "legacyCalculatorNum": 296
     },
     "sableye": {
-      "num": 297,
+      "num": 302,
       "id": "sableye",
       "name": "Sableye",
       "gen": 3,
@@ -59899,7 +60491,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 297,
+      "romId": 322,
       "baseExp": 98,
       "abilitySlots": [
         "keeneye",
@@ -59917,12 +60509,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 297,
+        "speciesNum": 302,
         "form": 0
-      }
+      },
+      "nationalDex": 302,
+      "legacyCalculatorNum": 297
     },
     "barboach": {
-      "num": 298,
+      "num": 339,
       "id": "barboach",
       "name": "Barboach",
       "gen": 3,
@@ -60113,7 +60707,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 298,
+      "romId": 323,
       "baseExp": 92,
       "abilitySlots": [
         "oblivious",
@@ -60131,12 +60725,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 298,
+        "speciesNum": 339,
         "form": 0
-      }
+      },
+      "nationalDex": 339,
+      "legacyCalculatorNum": 298
     },
     "whiscash": {
-      "num": 299,
+      "num": 340,
       "id": "whiscash",
       "name": "Whiscash",
       "gen": 3,
@@ -60311,7 +60907,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 299,
+      "romId": 324,
       "baseExp": 158,
       "abilitySlots": [
         "oblivious",
@@ -60329,12 +60925,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 299,
+        "speciesNum": 340,
         "form": 0
-      }
+      },
+      "nationalDex": 340,
+      "legacyCalculatorNum": 299
     },
     "luvdisc": {
-      "num": 300,
+      "num": 370,
       "id": "luvdisc",
       "name": "Luvdisc",
       "gen": 3,
@@ -60521,7 +61119,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 300,
+      "romId": 325,
       "baseExp": 110,
       "abilitySlots": [
         "swiftswim",
@@ -60539,12 +61137,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 300,
+        "speciesNum": 370,
         "form": 0
-      }
+      },
+      "nationalDex": 370,
+      "legacyCalculatorNum": 300
     },
     "corphish": {
-      "num": 301,
+      "num": 341,
       "id": "corphish",
       "name": "Corphish",
       "gen": 3,
@@ -60756,7 +61356,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 301,
+      "romId": 326,
       "baseExp": 111,
       "abilitySlots": [
         "hypercutter",
@@ -60774,12 +61374,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 301,
+        "speciesNum": 341,
         "form": 0
-      }
+      },
+      "nationalDex": 341,
+      "legacyCalculatorNum": 301
     },
     "crawdaunt": {
-      "num": 302,
+      "num": 342,
       "id": "crawdaunt",
       "name": "Crawdaunt",
       "gen": 3,
@@ -60961,7 +61563,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 302,
+      "romId": 327,
       "baseExp": 161,
       "abilitySlots": [
         "hypercutter",
@@ -60979,12 +61581,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 302,
+        "speciesNum": 342,
         "form": 0
-      }
+      },
+      "nationalDex": 342,
+      "legacyCalculatorNum": 302
     },
     "feebas": {
-      "num": 303,
+      "num": 349,
       "id": "feebas",
       "name": "Feebas",
       "gen": 3,
@@ -61122,7 +61726,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 303,
+      "romId": 328,
       "baseExp": 61,
       "abilitySlots": [
         "swiftswim",
@@ -61140,12 +61744,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 303,
+        "speciesNum": 349,
         "form": 0
-      }
+      },
+      "nationalDex": 349,
+      "legacyCalculatorNum": 303
     },
     "milotic": {
-      "num": 304,
+      "num": 350,
       "id": "milotic",
       "name": "Milotic",
       "gen": 3,
@@ -61317,7 +61923,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 304,
+      "romId": 329,
       "baseExp": 213,
       "abilitySlots": [
         "marvelscale",
@@ -61335,12 +61941,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 304,
+        "speciesNum": 350,
         "form": 0
-      }
+      },
+      "nationalDex": 350,
+      "legacyCalculatorNum": 304
     },
     "carvanha": {
-      "num": 305,
+      "num": 318,
       "id": "carvanha",
       "name": "Carvanha",
       "gen": 3,
@@ -61538,7 +62146,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 305,
+      "romId": 330,
       "baseExp": 88,
       "abilitySlots": [
         "roughskin",
@@ -61556,12 +62164,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 305,
+        "speciesNum": 318,
         "form": 0
-      }
+      },
+      "nationalDex": 318,
+      "legacyCalculatorNum": 305
     },
     "sharpedo": {
-      "num": 306,
+      "num": 319,
       "id": "sharpedo",
       "name": "Sharpedo",
       "gen": 3,
@@ -61745,7 +62355,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 306,
+      "romId": 331,
       "baseExp": 175,
       "abilitySlots": [
         "roughskin",
@@ -61763,12 +62373,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 306,
+        "speciesNum": 319,
         "form": 0
-      }
+      },
+      "nationalDex": 319,
+      "legacyCalculatorNum": 306
     },
     "trapinch": {
-      "num": 307,
+      "num": 328,
       "id": "trapinch",
       "name": "Trapinch",
       "gen": 3,
@@ -61936,7 +62548,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 307,
+      "romId": 332,
       "baseExp": 73,
       "abilitySlots": [
         "hypercutter",
@@ -61954,12 +62566,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 307,
+        "speciesNum": 328,
         "form": 0
-      }
+      },
+      "nationalDex": 328,
+      "legacyCalculatorNum": 307
     },
     "vibrava": {
-      "num": 308,
+      "num": 329,
       "id": "vibrava",
       "name": "Vibrava",
       "gen": 3,
@@ -62164,7 +62778,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 308,
+      "romId": 333,
       "baseExp": 126,
       "abilitySlots": [
         "levitate",
@@ -62182,12 +62796,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 308,
+        "speciesNum": 329,
         "form": 0
-      }
+      },
+      "nationalDex": 329,
+      "legacyCalculatorNum": 308
     },
     "flygon": {
-      "num": 309,
+      "num": 330,
       "id": "flygon",
       "name": "Flygon",
       "gen": 3,
@@ -62361,7 +62977,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 309,
+      "romId": 334,
       "baseExp": 197,
       "abilitySlots": [
         "levitate",
@@ -62379,12 +62995,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 309,
+        "speciesNum": 330,
         "form": 0
-      }
+      },
+      "nationalDex": 330,
+      "legacyCalculatorNum": 309
     },
     "makuhita": {
-      "num": 310,
+      "num": 296,
       "id": "makuhita",
       "name": "Makuhita",
       "gen": 3,
@@ -62577,7 +63195,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 310,
+      "romId": 335,
       "baseExp": 87,
       "abilitySlots": [
         "thickfat",
@@ -62595,12 +63213,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 310,
+        "speciesNum": 296,
         "form": 0
-      }
+      },
+      "nationalDex": 296,
+      "legacyCalculatorNum": 310
     },
     "hariyama": {
-      "num": 311,
+      "num": 297,
       "id": "hariyama",
       "name": "Hariyama",
       "gen": 3,
@@ -62775,7 +63395,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 311,
+      "romId": 336,
       "baseExp": 184,
       "abilitySlots": [
         "thickfat",
@@ -62793,12 +63413,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 311,
+        "speciesNum": 297,
         "form": 0
-      }
+      },
+      "nationalDex": 297,
+      "legacyCalculatorNum": 311
     },
     "electrike": {
-      "num": 312,
+      "num": 309,
       "id": "electrike",
       "name": "Electrike",
       "gen": 3,
@@ -62986,7 +63608,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 312,
+      "romId": 337,
       "baseExp": 104,
       "abilitySlots": [
         "static",
@@ -63004,12 +63626,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 312,
+        "speciesNum": 309,
         "form": 0
-      }
+      },
+      "nationalDex": 309,
+      "legacyCalculatorNum": 312
     },
     "manectric": {
-      "num": 313,
+      "num": 310,
       "id": "manectric",
       "name": "Manectric",
       "gen": 3,
@@ -63178,7 +63802,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 313,
+      "romId": 338,
       "baseExp": 168,
       "abilitySlots": [
         "static",
@@ -63196,12 +63820,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 313,
+        "speciesNum": 310,
         "form": 0
-      }
+      },
+      "nationalDex": 310,
+      "legacyCalculatorNum": 313
     },
     "numel": {
-      "num": 314,
+      "num": 322,
       "id": "numel",
       "name": "Numel",
       "gen": 3,
@@ -63379,7 +64005,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 314,
+      "romId": 339,
       "baseExp": 88,
       "abilitySlots": [
         "oblivious",
@@ -63397,12 +64023,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 314,
+        "speciesNum": 322,
         "form": 0
-      }
+      },
+      "nationalDex": 322,
+      "legacyCalculatorNum": 314
     },
     "camerupt": {
-      "num": 315,
+      "num": 323,
       "id": "camerupt",
       "name": "Camerupt",
       "gen": 3,
@@ -63593,7 +64221,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 315,
+      "romId": 340,
       "baseExp": 175,
       "abilitySlots": [
         "magmaarmor",
@@ -63611,12 +64239,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 315,
+        "speciesNum": 323,
         "form": 0
-      }
+      },
+      "nationalDex": 323,
+      "legacyCalculatorNum": 315
     },
     "spheal": {
-      "num": 316,
+      "num": 363,
       "id": "spheal",
       "name": "Spheal",
       "gen": 3,
@@ -63817,7 +64447,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 316,
+      "romId": 341,
       "baseExp": 75,
       "abilitySlots": [
         "thickfat",
@@ -63835,12 +64465,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 316,
+        "speciesNum": 363,
         "form": 0
-      }
+      },
+      "nationalDex": 363,
+      "legacyCalculatorNum": 316
     },
     "sealeo": {
-      "num": 317,
+      "num": 364,
       "id": "sealeo",
       "name": "Sealeo",
       "gen": 3,
@@ -64045,7 +64677,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 317,
+      "romId": 342,
       "baseExp": 128,
       "abilitySlots": [
         "thickfat",
@@ -64063,12 +64695,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 317,
+        "speciesNum": 364,
         "form": 0
-      }
+      },
+      "nationalDex": 364,
+      "legacyCalculatorNum": 317
     },
     "walrein": {
-      "num": 318,
+      "num": 365,
       "id": "walrein",
       "name": "Walrein",
       "gen": 3,
@@ -64239,7 +64873,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 318,
+      "romId": 343,
       "baseExp": 192,
       "abilitySlots": [
         "thickfat",
@@ -64257,12 +64891,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 318,
+        "speciesNum": 365,
         "form": 0
-      }
+      },
+      "nationalDex": 365,
+      "legacyCalculatorNum": 318
     },
     "cacnea": {
-      "num": 319,
+      "num": 331,
       "id": "cacnea",
       "name": "Cacnea",
       "gen": 3,
@@ -64451,7 +65087,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 319,
+      "romId": 344,
       "baseExp": 97,
       "abilitySlots": [
         "sandveil",
@@ -64469,12 +65105,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 319,
+        "speciesNum": 331,
         "form": 0
-      }
+      },
+      "nationalDex": 331,
+      "legacyCalculatorNum": 319
     },
     "cacturne": {
-      "num": 320,
+      "num": 332,
       "id": "cacturne",
       "name": "Cacturne",
       "gen": 3,
@@ -64659,7 +65297,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 320,
+      "romId": 345,
       "baseExp": 177,
       "abilitySlots": [
         "sandveil",
@@ -64677,12 +65315,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 320,
+        "speciesNum": 332,
         "form": 0
-      }
+      },
+      "nationalDex": 332,
+      "legacyCalculatorNum": 320
     },
     "snorunt": {
-      "num": 321,
+      "num": 361,
       "id": "snorunt",
       "name": "Snorunt",
       "gen": 3,
@@ -64868,7 +65508,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 321,
+      "romId": 346,
       "baseExp": 74,
       "abilitySlots": [
         "innerfocus",
@@ -64886,12 +65526,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 321,
+        "speciesNum": 361,
         "form": 0
-      }
+      },
+      "nationalDex": 361,
+      "legacyCalculatorNum": 321
     },
     "glalie": {
-      "num": 322,
+      "num": 362,
       "id": "glalie",
       "name": "Glalie",
       "gen": 3,
@@ -65086,7 +65728,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 322,
+      "romId": 347,
       "baseExp": 187,
       "abilitySlots": [
         "innerfocus",
@@ -65104,12 +65746,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 322,
+        "speciesNum": 362,
         "form": 0
-      }
+      },
+      "nationalDex": 362,
+      "legacyCalculatorNum": 322
     },
     "lunatone": {
-      "num": 323,
+      "num": 337,
       "id": "lunatone",
       "name": "Lunatone",
       "gen": 3,
@@ -65297,7 +65941,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 323,
+      "romId": 348,
       "baseExp": 150,
       "abilitySlots": [
         "levitate",
@@ -65315,12 +65959,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 323,
+        "speciesNum": 337,
         "form": 0
-      }
+      },
+      "nationalDex": 337,
+      "legacyCalculatorNum": 323
     },
     "solrock": {
-      "num": 324,
+      "num": 338,
       "id": "solrock",
       "name": "Solrock",
       "gen": 3,
@@ -65476,7 +66122,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 324,
+      "romId": 349,
       "baseExp": 150,
       "abilitySlots": [
         "levitate",
@@ -65494,12 +66140,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 324,
+        "speciesNum": 338,
         "form": 0
-      }
+      },
+      "nationalDex": 338,
+      "legacyCalculatorNum": 324
     },
     "azurill": {
-      "num": 325,
+      "num": 298,
       "id": "azurill",
       "name": "Azurill",
       "gen": 3,
@@ -65669,7 +66317,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 325,
+      "romId": 350,
       "baseExp": 33,
       "abilitySlots": [
         "thickfat",
@@ -65687,12 +66335,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 325,
+        "speciesNum": 298,
         "form": 0
-      }
+      },
+      "nationalDex": 298,
+      "legacyCalculatorNum": 325
     },
     "spoink": {
-      "num": 326,
+      "num": 325,
       "id": "spoink",
       "name": "Spoink",
       "gen": 3,
@@ -65895,7 +66545,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 326,
+      "romId": 351,
       "baseExp": 89,
       "abilitySlots": [
         "thickfat",
@@ -65913,12 +66563,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 326,
+        "speciesNum": 325,
         "form": 0
-      }
+      },
+      "nationalDex": 325,
+      "legacyCalculatorNum": 326
     },
     "grumpig": {
-      "num": 327,
+      "num": 326,
       "id": "grumpig",
       "name": "Grumpig",
       "gen": 3,
@@ -66090,7 +66742,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 327,
+      "romId": 352,
       "baseExp": 164,
       "abilitySlots": [
         "thickfat",
@@ -66108,12 +66760,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 327,
+        "speciesNum": 326,
         "form": 0
-      }
+      },
+      "nationalDex": 326,
+      "legacyCalculatorNum": 327
     },
     "plusle": {
-      "num": 328,
+      "num": 311,
       "id": "plusle",
       "name": "Plusle",
       "gen": 3,
@@ -66269,7 +66923,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 328,
+      "romId": 353,
       "baseExp": 120,
       "abilitySlots": [
         "plus",
@@ -66287,12 +66941,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 328,
+        "speciesNum": 311,
         "form": 0
-      }
+      },
+      "nationalDex": 311,
+      "legacyCalculatorNum": 328
     },
     "minun": {
-      "num": 329,
+      "num": 312,
       "id": "minun",
       "name": "Minun",
       "gen": 3,
@@ -66484,7 +67140,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 329,
+      "romId": 354,
       "baseExp": 120,
       "abilitySlots": [
         "minus",
@@ -66502,12 +67158,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 329,
+        "speciesNum": 312,
         "form": 0
-      }
+      },
+      "nationalDex": 312,
+      "legacyCalculatorNum": 329
     },
     "mawile": {
-      "num": 330,
+      "num": 303,
       "id": "mawile",
       "name": "Mawile",
       "gen": 3,
@@ -66697,7 +67355,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 330,
+      "romId": 355,
       "baseExp": 98,
       "abilitySlots": [
         "hypercutter",
@@ -66715,12 +67373,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 330,
+        "speciesNum": 303,
         "form": 0
-      }
+      },
+      "nationalDex": 303,
+      "legacyCalculatorNum": 330
     },
     "meditite": {
-      "num": 331,
+      "num": 307,
       "id": "meditite",
       "name": "Meditite",
       "gen": 3,
@@ -66920,7 +67580,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 331,
+      "romId": 356,
       "baseExp": 91,
       "abilitySlots": [
         "purepower",
@@ -66938,12 +67598,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 331,
+        "speciesNum": 307,
         "form": 0
-      }
+      },
+      "nationalDex": 307,
+      "legacyCalculatorNum": 331
     },
     "medicham": {
-      "num": 332,
+      "num": 308,
       "id": "medicham",
       "name": "Medicham",
       "gen": 3,
@@ -67143,7 +67805,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 332,
+      "romId": 357,
       "baseExp": 153,
       "abilitySlots": [
         "purepower",
@@ -67161,9 +67823,11 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 332,
+        "speciesNum": 308,
         "form": 0
-      }
+      },
+      "nationalDex": 308,
+      "legacyCalculatorNum": 332
     },
     "swablu": {
       "num": 333,
@@ -67369,7 +68033,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 333,
+      "romId": 358,
       "baseExp": 74,
       "abilitySlots": [
         "naturalcure",
@@ -67389,7 +68053,9 @@
       "saveIdentity": {
         "speciesNum": 333,
         "form": 0
-      }
+      },
+      "nationalDex": 333,
+      "legacyCalculatorNum": 333
     },
     "altaria": {
       "num": 334,
@@ -67496,7 +68162,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 334,
+      "romId": 359,
       "baseExp": 188,
       "abilitySlots": [
         "naturalcure",
@@ -67516,10 +68182,12 @@
       "saveIdentity": {
         "speciesNum": 334,
         "form": 0
-      }
+      },
+      "nationalDex": 334,
+      "legacyCalculatorNum": 334
     },
     "wynaut": {
-      "num": 335,
+      "num": 360,
       "id": "wynaut",
       "name": "Wynaut",
       "gen": 3,
@@ -67685,7 +68353,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 335,
+      "romId": 360,
       "baseExp": 44,
       "abilitySlots": [
         "shadowtag",
@@ -67703,12 +68371,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 335,
+        "speciesNum": 360,
         "form": 0
-      }
+      },
+      "nationalDex": 360,
+      "legacyCalculatorNum": 335
     },
     "duskull": {
-      "num": 336,
+      "num": 355,
       "id": "duskull",
       "name": "Duskull",
       "gen": 3,
@@ -67918,7 +68588,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 336,
+      "romId": 361,
       "baseExp": 97,
       "abilitySlots": [
         "levitate",
@@ -67936,12 +68606,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 336,
+        "speciesNum": 355,
         "form": 0
-      }
+      },
+      "nationalDex": 355,
+      "legacyCalculatorNum": 336
     },
     "dusclops": {
-      "num": 337,
+      "num": 356,
       "id": "dusclops",
       "name": "Dusclops",
       "gen": 3,
@@ -68116,7 +68788,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 337,
+      "romId": 362,
       "baseExp": 179,
       "abilitySlots": [
         "pressure",
@@ -68134,12 +68806,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 337,
+        "speciesNum": 356,
         "form": 0
-      }
+      },
+      "nationalDex": 356,
+      "legacyCalculatorNum": 337
     },
     "roselia": {
-      "num": 338,
+      "num": 315,
       "id": "roselia",
       "name": "Roselia",
       "gen": 3,
@@ -68365,7 +69039,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 338,
+      "romId": 363,
       "baseExp": 152,
       "abilitySlots": [
         "naturalcure",
@@ -68383,12 +69057,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 338,
+        "speciesNum": 315,
         "form": 0
-      }
+      },
+      "nationalDex": 315,
+      "legacyCalculatorNum": 338
     },
     "slakoth": {
-      "num": 339,
+      "num": 287,
       "id": "slakoth",
       "name": "Slakoth",
       "gen": 3,
@@ -68600,7 +69276,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 339,
+      "romId": 364,
       "baseExp": 83,
       "abilitySlots": [
         "truant",
@@ -68618,12 +69294,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 339,
+        "speciesNum": 287,
         "form": 0
-      }
+      },
+      "nationalDex": 287,
+      "legacyCalculatorNum": 339
     },
     "vigoroth": {
-      "num": 340,
+      "num": 288,
       "id": "vigoroth",
       "name": "Vigoroth",
       "gen": 3,
@@ -68854,7 +69532,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 340,
+      "romId": 365,
       "baseExp": 126,
       "abilitySlots": [
         "vitalspirit",
@@ -68872,12 +69550,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 340,
+        "speciesNum": 288,
         "form": 0
-      }
+      },
+      "nationalDex": 288,
+      "legacyCalculatorNum": 340
     },
     "slaking": {
-      "num": 341,
+      "num": 289,
       "id": "slaking",
       "name": "Slaking",
       "gen": 3,
@@ -69062,7 +69742,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 341,
+      "romId": 366,
       "baseExp": 210,
       "abilitySlots": [
         "truant",
@@ -69080,12 +69760,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 341,
+        "speciesNum": 289,
         "form": 0
-      }
+      },
+      "nationalDex": 289,
+      "legacyCalculatorNum": 341
     },
     "gulpin": {
-      "num": 342,
+      "num": 316,
       "id": "gulpin",
       "name": "Gulpin",
       "gen": 3,
@@ -69276,7 +69958,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 342,
+      "romId": 367,
       "baseExp": 75,
       "abilitySlots": [
         "liquidooze",
@@ -69294,12 +69976,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 342,
+        "speciesNum": 316,
         "form": 0
-      }
+      },
+      "nationalDex": 316,
+      "legacyCalculatorNum": 342
     },
     "swalot": {
-      "num": 343,
+      "num": 317,
       "id": "swalot",
       "name": "Swalot",
       "gen": 3,
@@ -69508,7 +70192,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 343,
+      "romId": 368,
       "baseExp": 168,
       "abilitySlots": [
         "liquidooze",
@@ -69526,12 +70210,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 343,
+        "speciesNum": 317,
         "form": 0
-      }
+      },
+      "nationalDex": 317,
+      "legacyCalculatorNum": 343
     },
     "tropius": {
-      "num": 344,
+      "num": 357,
       "id": "tropius",
       "name": "Tropius",
       "gen": 3,
@@ -69704,7 +70390,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 344,
+      "romId": 369,
       "baseExp": 169,
       "abilitySlots": [
         "chlorophyll",
@@ -69722,12 +70408,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 344,
+        "speciesNum": 357,
         "form": 0
-      }
+      },
+      "nationalDex": 357,
+      "legacyCalculatorNum": 344
     },
     "whismur": {
-      "num": 345,
+      "num": 293,
       "id": "whismur",
       "name": "Whismur",
       "gen": 3,
@@ -69933,7 +70621,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 345,
+      "romId": 370,
       "baseExp": 68,
       "abilitySlots": [
         "soundproof",
@@ -69951,12 +70639,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 345,
+        "speciesNum": 293,
         "form": 0
-      }
+      },
+      "nationalDex": 293,
+      "legacyCalculatorNum": 345
     },
     "loudred": {
-      "num": 346,
+      "num": 294,
       "id": "loudred",
       "name": "Loudred",
       "gen": 3,
@@ -70166,7 +70856,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 346,
+      "romId": 371,
       "baseExp": 126,
       "abilitySlots": [
         "soundproof",
@@ -70184,12 +70874,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 346,
+        "speciesNum": 294,
         "form": 0
-      }
+      },
+      "nationalDex": 294,
+      "legacyCalculatorNum": 346
     },
     "exploud": {
-      "num": 347,
+      "num": 295,
       "id": "exploud",
       "name": "Exploud",
       "gen": 3,
@@ -70369,7 +71061,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 347,
+      "romId": 372,
       "baseExp": 184,
       "abilitySlots": [
         "soundproof",
@@ -70387,12 +71079,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 347,
+        "speciesNum": 295,
         "form": 0
-      }
+      },
+      "nationalDex": 295,
+      "legacyCalculatorNum": 347
     },
     "clamperl": {
-      "num": 348,
+      "num": 366,
       "id": "clamperl",
       "name": "Clamperl",
       "gen": 3,
@@ -70540,7 +71234,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 348,
+      "romId": 373,
       "baseExp": 142,
       "abilitySlots": [
         "shellarmor",
@@ -70558,12 +71252,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 348,
+        "speciesNum": 366,
         "form": 0
-      }
+      },
+      "nationalDex": 366,
+      "legacyCalculatorNum": 348
     },
     "huntail": {
-      "num": 349,
+      "num": 367,
       "id": "huntail",
       "name": "Huntail",
       "gen": 3,
@@ -70724,7 +71420,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 349,
+      "romId": 374,
       "baseExp": 178,
       "abilitySlots": [
         "swiftswim",
@@ -70742,12 +71438,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 349,
+        "speciesNum": 367,
         "form": 0
-      }
+      },
+      "nationalDex": 367,
+      "legacyCalculatorNum": 349
     },
     "gorebyss": {
-      "num": 350,
+      "num": 368,
       "id": "gorebyss",
       "name": "Gorebyss",
       "gen": 3,
@@ -70960,7 +71658,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 350,
+      "romId": 375,
       "baseExp": 178,
       "abilitySlots": [
         "swiftswim",
@@ -70978,12 +71676,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 350,
+        "speciesNum": 368,
         "form": 0
-      }
+      },
+      "nationalDex": 368,
+      "legacyCalculatorNum": 350
     },
     "absol": {
-      "num": 351,
+      "num": 359,
       "id": "absol",
       "name": "Absol",
       "gen": 3,
@@ -71167,7 +71867,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 351,
+      "romId": 376,
       "baseExp": 174,
       "abilitySlots": [
         "pressure",
@@ -71185,12 +71885,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 351,
+        "speciesNum": 359,
         "form": 0
-      }
+      },
+      "nationalDex": 359,
+      "legacyCalculatorNum": 351
     },
     "shuppet": {
-      "num": 352,
+      "num": 353,
       "id": "shuppet",
       "name": "Shuppet",
       "gen": 3,
@@ -71379,7 +72081,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 352,
+      "romId": 377,
       "baseExp": 97,
       "abilitySlots": [
         "insomnia",
@@ -71397,12 +72099,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 352,
+        "speciesNum": 353,
         "form": 0
-      }
+      },
+      "nationalDex": 353,
+      "legacyCalculatorNum": 352
     },
     "banette": {
-      "num": 353,
+      "num": 354,
       "id": "banette",
       "name": "Banette",
       "gen": 3,
@@ -71577,7 +72281,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 353,
+      "romId": 378,
       "baseExp": 179,
       "abilitySlots": [
         "insomnia",
@@ -71595,12 +72299,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 353,
+        "speciesNum": 354,
         "form": 0
-      }
+      },
+      "nationalDex": 354,
+      "legacyCalculatorNum": 353
     },
     "seviper": {
-      "num": 354,
+      "num": 336,
       "id": "seviper",
       "name": "Seviper",
       "gen": 3,
@@ -71815,7 +72521,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 354,
+      "romId": 379,
       "baseExp": 165,
       "abilitySlots": [
         "shedskin",
@@ -71833,12 +72539,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 354,
+        "speciesNum": 336,
         "form": 0
-      }
+      },
+      "nationalDex": 336,
+      "legacyCalculatorNum": 354
     },
     "zangoose": {
-      "num": 355,
+      "num": 335,
       "id": "zangoose",
       "name": "Zangoose",
       "gen": 3,
@@ -72026,7 +72734,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 355,
+      "romId": 380,
       "baseExp": 165,
       "abilitySlots": [
         "immunity",
@@ -72044,12 +72752,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 355,
+        "speciesNum": 335,
         "form": 0
-      }
+      },
+      "nationalDex": 335,
+      "legacyCalculatorNum": 355
     },
     "relicanth": {
-      "num": 356,
+      "num": 369,
       "id": "relicanth",
       "name": "Relicanth",
       "gen": 3,
@@ -72235,7 +72945,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 356,
+      "romId": 381,
       "baseExp": 198,
       "abilitySlots": [
         "swiftswim",
@@ -72253,12 +72963,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 356,
+        "speciesNum": 369,
         "form": 0
-      }
+      },
+      "nationalDex": 369,
+      "legacyCalculatorNum": 356
     },
     "aron": {
-      "num": 357,
+      "num": 304,
       "id": "aron",
       "name": "Aron",
       "gen": 3,
@@ -72455,7 +73167,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 357,
+      "romId": 382,
       "baseExp": 96,
       "abilitySlots": [
         "sturdy",
@@ -72473,12 +73185,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 357,
+        "speciesNum": 304,
         "form": 0
-      }
+      },
+      "nationalDex": 304,
+      "legacyCalculatorNum": 357
     },
     "lairon": {
-      "num": 358,
+      "num": 305,
       "id": "lairon",
       "name": "Lairon",
       "gen": 3,
@@ -72742,7 +73456,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 358,
+      "romId": 383,
       "baseExp": 152,
       "abilitySlots": [
         "sturdy",
@@ -72760,12 +73474,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 358,
+        "speciesNum": 305,
         "form": 0
-      }
+      },
+      "nationalDex": 305,
+      "legacyCalculatorNum": 358
     },
     "aggron": {
-      "num": 359,
+      "num": 306,
       "id": "aggron",
       "name": "Aggron",
       "gen": 3,
@@ -72979,7 +73695,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 359,
+      "romId": 384,
       "baseExp": 205,
       "abilitySlots": [
         "sturdy",
@@ -72997,12 +73713,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 359,
+        "speciesNum": 306,
         "form": 0
-      }
+      },
+      "nationalDex": 306,
+      "legacyCalculatorNum": 359
     },
     "castform": {
-      "num": 360,
+      "num": 351,
       "id": "castform",
       "name": "Castform",
       "gen": 3,
@@ -73175,7 +73893,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 360,
+      "romId": 385,
       "baseExp": 145,
       "abilitySlots": [
         "forecast",
@@ -73193,12 +73911,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 360,
+        "speciesNum": 351,
         "form": 0
-      }
+      },
+      "nationalDex": 351,
+      "legacyCalculatorNum": 360
     },
     "volbeat": {
-      "num": 361,
+      "num": 313,
       "id": "volbeat",
       "name": "Volbeat",
       "gen": 3,
@@ -73382,7 +74102,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 361,
+      "romId": 386,
       "baseExp": 146,
       "abilitySlots": [
         "illuminate",
@@ -73400,12 +74120,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 361,
+        "speciesNum": 313,
         "form": 0
-      }
+      },
+      "nationalDex": 313,
+      "legacyCalculatorNum": 361
     },
     "illumise": {
-      "num": 362,
+      "num": 314,
       "id": "illumise",
       "name": "Illumise",
       "gen": 3,
@@ -73552,7 +74274,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 362,
+      "romId": 387,
       "baseExp": 146,
       "abilitySlots": [
         "oblivious",
@@ -73570,12 +74292,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 362,
+        "speciesNum": 314,
         "form": 0
-      }
+      },
+      "nationalDex": 314,
+      "legacyCalculatorNum": 362
     },
     "lileep": {
-      "num": 363,
+      "num": 345,
       "id": "lileep",
       "name": "Lileep",
       "gen": 3,
@@ -73749,7 +74473,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 363,
+      "romId": 388,
       "baseExp": 121,
       "abilitySlots": [
         "suctioncups",
@@ -73767,12 +74491,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 363,
+        "speciesNum": 345,
         "form": 0
-      }
+      },
+      "nationalDex": 345,
+      "legacyCalculatorNum": 363
     },
     "cradily": {
-      "num": 364,
+      "num": 346,
       "id": "cradily",
       "name": "Cradily",
       "gen": 3,
@@ -73932,7 +74658,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 364,
+      "romId": 389,
       "baseExp": 201,
       "abilitySlots": [
         "suctioncups",
@@ -73950,12 +74676,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 364,
+        "speciesNum": 346,
         "form": 0
-      }
+      },
+      "nationalDex": 346,
+      "legacyCalculatorNum": 364
     },
     "anorith": {
-      "num": 365,
+      "num": 347,
       "id": "anorith",
       "name": "Anorith",
       "gen": 3,
@@ -74137,7 +74865,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 365,
+      "romId": 390,
       "baseExp": 119,
       "abilitySlots": [
         "battlearmor",
@@ -74155,12 +74883,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 365,
+        "speciesNum": 347,
         "form": 0
-      }
+      },
+      "nationalDex": 347,
+      "legacyCalculatorNum": 365
     },
     "armaldo": {
-      "num": 366,
+      "num": 348,
       "id": "armaldo",
       "name": "Armaldo",
       "gen": 3,
@@ -74348,7 +75078,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 366,
+      "romId": 391,
       "baseExp": 200,
       "abilitySlots": [
         "battlearmor",
@@ -74366,12 +75096,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 366,
+        "speciesNum": 348,
         "form": 0
-      }
+      },
+      "nationalDex": 348,
+      "legacyCalculatorNum": 366
     },
     "ralts": {
-      "num": 367,
+      "num": 280,
       "id": "ralts",
       "name": "Ralts",
       "gen": 3,
@@ -74565,7 +75297,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 367,
+      "romId": 392,
       "baseExp": 70,
       "abilitySlots": [
         "synchronize",
@@ -74583,12 +75315,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 367,
+        "speciesNum": 280,
         "form": 0
-      }
+      },
+      "nationalDex": 280,
+      "legacyCalculatorNum": 367
     },
     "kirlia": {
-      "num": 368,
+      "num": 281,
       "id": "kirlia",
       "name": "Kirlia",
       "gen": 3,
@@ -74791,7 +75525,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 368,
+      "romId": 393,
       "baseExp": 140,
       "abilitySlots": [
         "synchronize",
@@ -74809,12 +75543,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 368,
+        "speciesNum": 281,
         "form": 0
-      }
+      },
+      "nationalDex": 281,
+      "legacyCalculatorNum": 368
     },
     "gardevoir": {
-      "num": 369,
+      "num": 282,
       "id": "gardevoir",
       "name": "Gardevoir",
       "gen": 3,
@@ -74996,7 +75732,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 369,
+      "romId": 394,
       "baseExp": 208,
       "abilitySlots": [
         "synchronize",
@@ -75014,12 +75750,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 369,
+        "speciesNum": 282,
         "form": 0
-      }
+      },
+      "nationalDex": 282,
+      "legacyCalculatorNum": 369
     },
     "bagon": {
-      "num": 370,
+      "num": 371,
       "id": "bagon",
       "name": "Bagon",
       "gen": 3,
@@ -75201,7 +75939,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 370,
+      "romId": 395,
       "baseExp": 89,
       "abilitySlots": [
         "rockhead",
@@ -75219,12 +75957,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 370,
+        "speciesNum": 371,
         "form": 0
-      }
+      },
+      "nationalDex": 371,
+      "legacyCalculatorNum": 370
     },
     "shelgon": {
-      "num": 371,
+      "num": 372,
       "id": "shelgon",
       "name": "Shelgon",
       "gen": 3,
@@ -75431,7 +76171,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 371,
+      "romId": 396,
       "baseExp": 144,
       "abilitySlots": [
         "rockhead",
@@ -75449,12 +76189,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 371,
+        "speciesNum": 372,
         "form": 0
-      }
+      },
+      "nationalDex": 372,
+      "legacyCalculatorNum": 371
     },
     "salamence": {
-      "num": 372,
+      "num": 373,
       "id": "salamence",
       "name": "Salamence",
       "gen": 3,
@@ -75553,7 +76295,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 372,
+      "romId": 397,
       "baseExp": 218,
       "abilitySlots": [
         "intimidate",
@@ -75571,12 +76313,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 372,
+        "speciesNum": 373,
         "form": 0
-      }
+      },
+      "nationalDex": 373,
+      "legacyCalculatorNum": 372
     },
     "beldum": {
-      "num": 373,
+      "num": 374,
       "id": "beldum",
       "name": "Beldum",
       "gen": 3,
@@ -75725,7 +76469,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 373,
+      "romId": 398,
       "baseExp": 103,
       "abilitySlots": [
         "clearbody",
@@ -75743,12 +76487,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 373,
+        "speciesNum": 374,
         "form": 0
-      }
+      },
+      "nationalDex": 374,
+      "legacyCalculatorNum": 373
     },
     "metang": {
-      "num": 374,
+      "num": 375,
       "id": "metang",
       "name": "Metang",
       "gen": 3,
@@ -75942,7 +76688,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 374,
+      "romId": 399,
       "baseExp": 153,
       "abilitySlots": [
         "clearbody",
@@ -75960,12 +76706,14 @@
       "nfe": true,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 374,
+        "speciesNum": 375,
         "form": 0
-      }
+      },
+      "nationalDex": 375,
+      "legacyCalculatorNum": 374
     },
     "metagross": {
-      "num": 375,
+      "num": 376,
       "id": "metagross",
       "name": "Metagross",
       "gen": 3,
@@ -76156,7 +76904,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 375,
+      "romId": 400,
       "baseExp": 210,
       "abilitySlots": [
         "clearbody",
@@ -76174,12 +76922,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 375,
+        "speciesNum": 376,
         "form": 0
-      }
+      },
+      "nationalDex": 376,
+      "legacyCalculatorNum": 375
     },
     "regirock": {
-      "num": 376,
+      "num": 377,
       "id": "regirock",
       "name": "Regirock",
       "gen": 3,
@@ -76349,7 +77099,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 376,
+      "romId": 401,
       "baseExp": 217,
       "abilitySlots": [
         "clearbody",
@@ -76367,12 +77117,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 376,
+        "speciesNum": 377,
         "form": 0
-      }
+      },
+      "nationalDex": 377,
+      "legacyCalculatorNum": 376
     },
     "regice": {
-      "num": 377,
+      "num": 378,
       "id": "regice",
       "name": "Regice",
       "gen": 3,
@@ -76546,7 +77298,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 377,
+      "romId": 402,
       "baseExp": 216,
       "abilitySlots": [
         "clearbody",
@@ -76564,12 +77316,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 377,
+        "speciesNum": 378,
         "form": 0
-      }
+      },
+      "nationalDex": 378,
+      "legacyCalculatorNum": 377
     },
     "registeel": {
-      "num": 378,
+      "num": 379,
       "id": "registeel",
       "name": "Registeel",
       "gen": 3,
@@ -76768,7 +77522,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 378,
+      "romId": 403,
       "baseExp": 215,
       "abilitySlots": [
         "clearbody",
@@ -76786,12 +77540,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 378,
+        "speciesNum": 379,
         "form": 0
-      }
+      },
+      "nationalDex": 379,
+      "legacyCalculatorNum": 378
     },
     "kyogre": {
-      "num": 379,
+      "num": 382,
       "id": "kyogre",
       "name": "Kyogre",
       "gen": 3,
@@ -77007,7 +77763,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 379,
+      "romId": 404,
       "baseExp": 218,
       "abilitySlots": [
         "drizzle",
@@ -77025,12 +77781,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 379,
+        "speciesNum": 382,
         "form": 0
-      }
+      },
+      "nationalDex": 382,
+      "legacyCalculatorNum": 379
     },
     "groudon": {
-      "num": 380,
+      "num": 383,
       "id": "groudon",
       "name": "Groudon",
       "gen": 3,
@@ -77262,7 +78020,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 380,
+      "romId": 405,
       "baseExp": 218,
       "abilitySlots": [
         "drought",
@@ -77280,12 +78038,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 380,
+        "speciesNum": 383,
         "form": 0
-      }
+      },
+      "nationalDex": 383,
+      "legacyCalculatorNum": 380
     },
     "rayquaza": {
-      "num": 381,
+      "num": 384,
       "id": "rayquaza",
       "name": "Rayquaza",
       "gen": 3,
@@ -77522,7 +78282,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 381,
+      "romId": 406,
       "baseExp": 220,
       "abilitySlots": [
         "airlock",
@@ -77540,12 +78300,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 381,
+        "speciesNum": 384,
         "form": 0
-      }
+      },
+      "nationalDex": 384,
+      "legacyCalculatorNum": 381
     },
     "latias": {
-      "num": 382,
+      "num": 380,
       "id": "latias",
       "name": "Latias",
       "gen": 3,
@@ -77782,7 +78544,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 382,
+      "romId": 407,
       "baseExp": 211,
       "abilitySlots": [
         "levitate",
@@ -77800,12 +78562,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 382,
+        "speciesNum": 380,
         "form": 0
-      }
+      },
+      "nationalDex": 380,
+      "legacyCalculatorNum": 382
     },
     "latios": {
-      "num": 383,
+      "num": 381,
       "id": "latios",
       "name": "Latios",
       "gen": 3,
@@ -77998,7 +78762,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 383,
+      "romId": 408,
       "baseExp": 211,
       "abilitySlots": [
         "levitate",
@@ -78016,12 +78780,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 383,
+        "speciesNum": 381,
         "form": 0
-      }
+      },
+      "nationalDex": 381,
+      "legacyCalculatorNum": 383
     },
     "jirachi": {
-      "num": 384,
+      "num": 385,
       "id": "jirachi",
       "name": "Jirachi",
       "gen": 3,
@@ -78259,7 +79025,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 384,
+      "romId": 409,
       "baseExp": 215,
       "abilitySlots": [
         "serenegrace",
@@ -78277,12 +79043,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 384,
+        "speciesNum": 385,
         "form": 0
-      }
+      },
+      "nationalDex": 385,
+      "legacyCalculatorNum": 384
     },
     "deoxys": {
-      "num": 385,
+      "num": 386,
       "id": "deoxys",
       "name": "Deoxys",
       "gen": 3,
@@ -78471,7 +79239,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 385,
+      "romId": 410,
       "baseExp": 215,
       "abilitySlots": [
         "pressure",
@@ -78489,12 +79257,14 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 385,
+        "speciesNum": 386,
         "form": 0
-      }
+      },
+      "nationalDex": 386,
+      "legacyCalculatorNum": 385
     },
     "chimecho": {
-      "num": 386,
+      "num": 358,
       "id": "chimecho",
       "name": "Chimecho",
       "gen": 3,
@@ -78631,7 +79401,7 @@
       "weight": 0,
       "changes": {},
       "available": true,
-      "romId": 386,
+      "romId": 411,
       "baseExp": 147,
       "abilitySlots": [
         "levitate",
@@ -78649,9 +79419,11 @@
       "nfe": false,
       "mechanicsResolution": "pinned-smogon-calc-generation-3-inheritance-with-game-overrides",
       "saveIdentity": {
-        "speciesNum": 386,
+        "speciesNum": 358,
         "form": 0
-      }
+      },
+      "nationalDex": 358,
+      "legacyCalculatorNum": 386
     }
   }
 }
