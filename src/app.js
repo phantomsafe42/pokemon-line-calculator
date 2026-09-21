@@ -1,6 +1,7 @@
 import { calculateStats, normalizeMultiTrainerRoster, normalizePlayerCollection, normalizePlayerPartnerRoster, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js?v=20260921-pk-dataset-v1";
 import { HOSTED_DATASET_RELEASE } from "./adapters/hosted_dataset.js?v=20260921-pk-dataset-v1";
 import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260909-public-release-v2";
+import { createTrainerSelector, displayTrainerName, trainerFormatLabel } from './ui/trainer_selector.js';
 import { canonicalSpeciesDisplayName, loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260921-pk-dataset-v1";
 import { starterAllows, starterChoice } from './adapters/starter_selection.js?v=20260918-starter-selection-v1';
 import { readStarterPreference, saveStarterPreference } from './cache/starter_preferences.js?v=20260918-starter-selection-v1';
@@ -1324,7 +1325,7 @@ function trainerLabel(trainer) {
   try { team = dataset.trainerTeam(trainer.id, null); }
   catch { team = trainer.team || []; }
   const members = team.map(member => `${canonicalSpeciesDisplayName(dataset, member)} Lv. ${member.level}`).join(", ");
-  return `${trainer.displayName || trainer.name || trainer.id}${members ? ` · ${members}` : ""}`;
+  return `${displayTrainerName(trainer.displayName || trainer.name || trainer.id)}${members ? ` · ${members}` : ""}`;
 }
 
 function fillTrainerSelect() {
@@ -1409,7 +1410,7 @@ function updatePartnerTrainerControls({ reset = false } = {}) {
 function updateVariantSelect() {
   contextBattleChoices = dataset?.trainerBattleChoices(ui["trainer-select"].value) || [];
   const choice = ui["battle-format-choice"];
-  choice.replaceChildren(...contextBattleChoices.map(row => option(row.id, row.label)));
+  choice.replaceChildren(...contextBattleChoices.map(row => option(row.id, row.label.replace(/Singles/g, 'Single').replace(/Doubles/g, 'Double').replace(/Triples/g, 'Triple'))));
   choice.hidden = contextBattleChoices.length < 2;
   ui["battle-format"].hidden = contextBattleChoices.length > 1;
   populateTrainerVariantSelect();
@@ -1424,13 +1425,13 @@ function updateContextTrainer() {
   if (trainer) {
     try {
       const format = choice?.format || dataset.trainerBattleFormat(trainer.id);
-      ui["battle-format"].value = choice?.battleKind === "multi" ? "Multi" : format === "rotation" ? "Rotation" : format === "triples" ? "Triples" : format === "doubles" ? "Doubles" : "Singles";
+      ui["battle-format"].value = choice?.battleKind === "multi" ? "Multi Battle" : trainerFormatLabel(format);
     }
     catch (error) { ui["battle-format"].value = error.message; }
     const partner = choice?.requiresPartner ? dataset.trainer(ui["partner-trainer-select"].value) : null;
-    ui["plan-name"].value = partner
+    ui["plan-name"].value = displayTrainerName(partner
       ? `${trainer.displayName || trainer.name} & ${partner.displayName || partner.name}`
-      : trainer.displayName || trainer.name || "";
+      : trainer.displayName || trainer.name || "");
   } else {
     ui["battle-format"].value = "Select a trainer";
     ui["plan-name"].value = "";
@@ -1755,13 +1756,38 @@ function updateBeginAvailability() {
         : "Trainer and player party are ready.";
 }
 
-function openPlanContext({ reset = true } = {}) {
+let trainerSelector = null;
+let approvedNewLinePlan = undefined;
+let openingTrainerSelector = false;
+
+async function openTrainerSelector() {
+  if (!dataset || openingTrainerSelector) return;
+  openingTrainerSelector = true;
+  try {
+    if (!(await confirmDestructive('Starting a new line'))) return;
+    approvedNewLinePlan = plan;
+    trainerSelector?.dispose();
+    const dialog = byId('trainer-selector-dialog');
+    trainerSelector = createTrainerSelector({ dialog, dataset, starterId: selectedStarterId, resolver: pokemonAssetResolver,
+      renderCard: member => contextPokemonCard(null, enemyTeamPreviewRecord(member), true, false, { editable: false }),
+      onContinue: trainerId => {
+        trainerSelector.dispose();
+        dialog.close('continue');
+        openPlanContext({ trainerId });
+      } });
+    dialog.returnValue = '';
+    dialog.showModal();
+  } catch (error) { setStatus(error.message, true); }
+  finally { openingTrainerSelector = false; }
+}
+
+function openPlanContext({ reset = true, trainerId = '' } = {}) {
   if (!dataset) return;
   if (reset) {
     contextSelection = emptyContextSelection();
     ui["context-mode-select"].value = "";
     ui["context-box-select"].value = "";
-    ui["trainer-select"].value = "";
+    ui["trainer-select"].value = trainerId;
     ui["plan-name"].value = "";
   }
   refreshContextBoxSelect();
@@ -1819,7 +1845,7 @@ function initialConditionsForPlan(players) {
 
 async function beginPlanFromContext() {
   if (ui["begin-plan"].disabled) return;
-  if (plan && !(await confirmDestructive("Beginning a clean plan"))) return;
+  if (plan && approvedNewLinePlan !== plan && !(await confirmDestructive("Beginning a clean plan"))) return;
   try {
     trainerAiAnalysisCache.clear();
     worker?.resetTrainerAiLaneIfBusy();
@@ -4474,7 +4500,15 @@ function wireEvents() {
   ui["edit-party-selection"].addEventListener("click", () => { contextSelection.saved = false; ui["party-selector-controls"].hidden = false; ui["party-selection-summary"].hidden = true; ui["edit-party-selection"].hidden = true; ui["edge-party-exp"].hidden = true; renderContextPokemonGrid(); });
   ui["begin-plan"].addEventListener("click", beginPlanFromContext);
   ui["save-pokemon"].addEventListener("click", savePokemonEditor);
-  ui["new-plan"].addEventListener("click", () => openPlanContext());
+  ui["new-plan"].addEventListener("click", openTrainerSelector);
+  byId('trainer-selector-dialog').addEventListener('close', event => {
+    if (event.target.open) return;
+    trainerSelector?.dispose();
+    if (event.target.returnValue !== 'continue') approvedNewLinePlan = undefined;
+  });
+  ui['plan-context-dialog'].addEventListener('close', () => {
+    if (!ui['plan-context-dialog'].open && !byId('trainer-selector-dialog').open) approvedNewLinePlan = undefined;
+  });
   ui["commit-turn"].addEventListener("click", commitCurrentPreview);
   ui["save-plan"].addEventListener("click", () => saveNamedDraft().catch(error => setStatus(error.message, true)));
   byId('free-calc').addEventListener('click', startFreeCalc);
