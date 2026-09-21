@@ -616,6 +616,9 @@ dialog::backdrop { background: rgba(0, 0, 0, .75); }
 .trainer-split-tabs button { flex:none; white-space:nowrap; }
 .trainer-split-tabs button.has-badge { width:64px; height:64px; padding:7px; display:grid; place-items:center; }
 .trainer-split-badge { width:48px; height:48px; object-fit:contain; }
+.trainer-split-tabs .badge-loading .trainer-split-badge { visibility:hidden; }
+.trainer-split-tabs .badge-loading > * { grid-area:1 / 1; }
+.trainer-split-loading-label { font-size:10px; line-height:1.15; white-space:normal; overflow-wrap:anywhere; }
 .trainer-split-tabs [aria-selected="true"] { background:var(--accent); color:white; }
 .trainer-options { display:grid; grid-template-columns:minmax(0,1fr); align-content:start; gap:14px; overflow-y:auto; min-height:0; flex:1; padding:4px; }
 .trainer-selector-footer { display:flex; align-items:center; gap:12px; justify-content:space-between; flex:none; border-top:1px solid var(--line); padding-top:12px; }

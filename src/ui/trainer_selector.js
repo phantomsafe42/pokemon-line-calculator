@@ -73,6 +73,7 @@ export function createTrainerSelector({ dialog, dataset, starterId, resolver, re
   const summary = dialog.querySelector('.trainer-selection-summary');
   let selected = null, groupIndex = 0;
   const observers = [];
+  const badgeRetries = new Set();
   let disposed = false;
   let sizeFrame;
   const sizeToTabs = () => {
@@ -192,16 +193,42 @@ export function createTrainerSelector({ dialog, dataset, starterId, resolver, re
     const query = trainerSplitBadgeQuery(dataset.gameId, group);
     if (query) {
       const image = element('img', 'trainer-split-badge'); image.alt = '';
-      tab.classList.add('has-badge'); tab.replaceChildren(image);
+      image.loading = 'eager'; image.fetchPriority = 'high';
+      const label = element('span', 'trainer-split-loading-label', group.label.replace(/\s+Split$/iu, ''));
+      tab.classList.add('has-badge', 'badge-loading'); tab.replaceChildren(image, label);
+      tab.dataset.badgeStatus = 'loading';
+      let retried = false, retryPending = false, loadTimer;
+      const clearDeadline = () => { clearTimeout(loadTimer); badgeRetries.delete(loadTimer); };
       const missing = () => {
-        if (disposed) return;
-        tab.classList.remove('has-badge'); tab.textContent = group.label;
+        if (disposed || retryPending) return;
+        clearDeadline();
+        if (!retried) {
+          retried = true; retryPending = true;
+          const timer = setTimeout(() => {
+            badgeRetries.delete(timer); retryPending = false;
+            if (disposed) return;
+            image.removeAttribute('src'); loadBadge();
+          }, 300);
+          badgeRetries.add(timer);
+          return;
+        }
+        tab.classList.remove('has-badge', 'badge-loading'); tab.textContent = group.label;
         tab.dataset.badgeStatus = 'unavailable'; sizeToTabs();
       };
-      image.addEventListener('load', () => { tab.dataset.badgeStatus = 'loaded'; });
+      image.addEventListener('load', () => {
+        if (disposed) return;
+        clearDeadline(); image.hidden = false; tab.replaceChildren(image);
+        tab.classList.add('has-badge'); tab.classList.remove('badge-loading');
+        tab.dataset.badgeStatus = 'loaded';
+        sizeToTabs();
+      });
       image.addEventListener('error', missing);
-      if (resolver.setAssetImage) resolver.setAssetImage(image, query, { onUnavailable: missing });
-      else Promise.resolve(resolver.resolveAsset(query)).then(result => { if (result.status === 'ok') image.src = result.url; else missing(); }).catch(missing);
+      function loadBadge() {
+        loadTimer = setTimeout(missing, 8000); badgeRetries.add(loadTimer);
+        if (resolver.setAssetImage) resolver.setAssetImage(image, query, { onUnavailable: missing });
+        else Promise.resolve(resolver.resolveAsset(query)).then(result => { if (result.status === 'ok') image.src = result.url; else missing(); }).catch(missing);
+      }
+      loadBadge();
     } else tab.dataset.badgeStatus = 'unavailable';
     tab.onclick = () => renderGroup(index);
     tab.onkeydown = event => {
@@ -214,5 +241,5 @@ export function createTrainerSelector({ dialog, dataset, starterId, resolver, re
   next.onclick = () => { if (!next.disabled) onContinue(selected); };
   renderGroup(0);
   sizeToTabs();
-  return { dispose() { disposed = true; cancelAnimationFrame(sizeFrame); tabObserver.disconnect(); for (const observer of observers) observer.disconnect(); next.onclick = null; } };
+  return { dispose() { disposed = true; for (const timer of badgeRetries) clearTimeout(timer); cancelAnimationFrame(sizeFrame); tabObserver.disconnect(); for (const observer of observers) observer.disconnect(); next.onclick = null; } };
 }
