@@ -59,13 +59,15 @@ export async function checkBoxCards({ page, evaluate, delay, tempRoot }) {
         speciesBelow:rect(species).y>=rect(name).bottom,
         trainingColors:[getComputedStyle(value).color,getComputedStyle(training).color],
         moveColor:getComputedStyle(card.querySelector('.box-pokemon-move')).backgroundColor,
-        next:rect(next),grid:rect(grid),gridScrollWidth:grid.scrollWidth,
+        next:rect(next),third:rect(next.nextElementSibling),grid:rect(grid),gridScrollWidth:grid.scrollWidth,
         overflow:document.documentElement.scrollWidth>innerWidth};
     })()`);
     assert.equal(geometry.overflow,false,`No page overflow at ${width}`);
     assert.ok(geometry.stats.every(stat=>Math.abs(stat.y-geometry.stats[0].y)<1),'Stats remain one row');
     assert.ok(geometry.moves.every((move,i)=>!i || move.y>=geometry.moves[i-1].bottom),'Moves are stacked');
-    assert.equal(geometry.card.width,820,'Fixed card width');
+    assert.equal(geometry.card.width,800,'Fixed card width');
+    assert.equal(geometry.left.width,475.5,'Left column retains its approved width');
+    if (width===2560) assert.equal(geometry.third.y,geometry.card.y,'Three cards fit at the user viewport');
     assert.equal(geometry.sprite.width,114); assert.equal(geometry.sprite.height,114);
     assert.ok(geometry.icons.every(icon=>Math.abs(icon.width-30.8)<.1 && Math.abs(icon.height-30.8)<.1),'SV symbol icon dimensions');
     assert.ok(geometry.typeRequests.every(url=>url.includes('presentation=symbol') && url.includes('style=sv')),'Symbol assets requested');
@@ -75,7 +77,7 @@ export async function checkBoxCards({ page, evaluate, delay, tempRoot }) {
     assert.ok(geometry.speciesBelow,'Species below nickname');
     assert.equal(geometry.trainingColors[0],geometry.trainingColors[1],'IV/EV number color');
     assert.equal(geometry.moveColor,'rgb(58, 80, 52)','Grass move background');
-    if (geometry.grid.width>=1688) assert.equal(geometry.next.y,geometry.card.y,'Whole cards share a row when space permits');
+    if (geometry.grid.width>=1648) assert.equal(geometry.next.y,geometry.card.y,'Whole cards share a row when space permits');
     else assert.ok(geometry.next.y>=geometry.card.bottom,'Whole cards wrap onto another row');
     if (width<900) assert.ok(geometry.gridScrollWidth>geometry.grid.width,'Narrow view scrolls only the Box grid');
     const shot=await page.send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});
