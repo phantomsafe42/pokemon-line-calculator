@@ -39,6 +39,7 @@
       "readmeFile": "imports/trainer-ai/_README.docx",
       "syntaxFile": "imports/trainer-ai/gen_5_trainer_ai_script.xml",
       "inputHashes": {
+        "imports/trainer-ai/native-damage-20260921/manifest.json": "c99698c2d3e17b047c02b69baed73195f7d637c37085a8d389272fb1c54f7cc9",
         "imports/trainer-ai/_README.docx": "8b811cb4b3c95b3b5c50795f5b23135d18bef1b55e8d6b41bb7f4287ea03aafd",
         "imports/trainer-ai/flag0.ais": "ac4f437c0d93970b0f4fb81114a0ca646c1f48d555f2afbb9d77445f9c956681",
         "imports/trainer-ai/flag0.bin": "6f137ab92694564792e392f3a94125dc650c8bdd0584933238630f4a9a739e8f",
@@ -70,7 +71,25 @@
         "imports/trainer-ai/flag13.bin": "586a5b9aa50145b6d4428e5638fe9676a1024ecb59f87e62248125a5491cba78",
         "imports/trainer-ai/gen5-ai-docs.pdf": "f92994da676806c3cf79745321abe1f6b5b975972d97a77a3c3085eb674ba2bb",
         "imports/trainer-ai/gen_5_trainer_ai_script.xml": "65a6748d2c63aa1a09f27e3d845f7c0ae1d108c61cfe60c217c59d47d873b294",
-        "imports/trainer-ai/online_command_research.json": "2441652bce703194d2c801b6eb93df30a7949e192937fc10e55387043fbec56e"
+        "imports/trainer-ai/online_command_research.json": "2441652bce703194d2c801b6eb93df30a7949e192937fc10e55387043fbec56e",
+        "imports/trainer-ai/native-damage-20260921/melonds-research-hook.patch": "21edffb43c5d91c7a594ac50af96ec0b1b7f614b00bf0eddc45e6baf209a7953",
+        "imports/trainer-ai/native-damage-20260921/native_probe.cpp": "eb6cd2ccda160a78eea7f1b9a7307381be4f6ebfd210e19013cdc42b5a9d326f",
+        "imports/trainer-ai/native-damage-20260921/verified-101.log": "dcb5af42989cc18a850aae241f11b9054e2d172de2f050face0eebc56f95640f",
+        "imports/trainer-ai/native-damage-20260921/verified-149.log": "7fddd4b56a658436c7c4a3e9f2af30c02db0d50eb83ab73c30d7e73174628f06",
+        "imports/trainer-ai/native-damage-20260921/verified-162.log": "bbbae83fd3d1c21113a2592c401372ac8c9069597e5a07babf0f2a655b247054",
+        "imports/trainer-ai/native-damage-20260921/verified-283.log": "c950bc6eb5d4ab2731cfd313ed0f5e64c7af3805ce556500bea769401040ff14",
+        "imports/trainer-ai/native-damage-20260921/verified-284.log": "96d4971ca7f81ac2b38988d36766f72809ddb1d3c60387a722acf1c3fd99760b",
+        "imports/trainer-ai/native-damage-20260921/verified-360.log": "39b03c4ffe7cfd29ca49c5ad338d1e76fc0c7e496e7d0dbcb9eba0fccee974b9",
+        "imports/trainer-ai/native-damage-20260921/verified-362.log": "8ccdd68e433a70b4743889a91d30c8d34c55c1c1afea4910a01d025737cea80f",
+        "imports/trainer-ai/native-damage-20260921/verified-368.log": "a944dc9ca1004994c22f8cd974ec298351f2ef4d329e5ef2a95d42182c054519",
+        "imports/trainer-ai/native-damage-20260921/verified-412.log": "0211ffc91b8d533df65ebfb0c532f1ae238e320b98cc0c53b6bdb1057e8cac04",
+        "imports/trainer-ai/native-damage-20260921/verified-447.log": "1001d4d89061c5a07865d5d6e59ae5b2c542e1a554a2ec9d111d47335ba59032",
+        "imports/trainer-ai/native-damage-20260921/verified-486.log": "34b13a80e297d2689e1269d2c2db64cd3cfa83c3122d6ec01c7c6d3561064418",
+        "imports/trainer-ai/native-damage-20260921/verified-515.log": "bfbd13411c5c99320018fa9db53a87f159ea2df48ba76851d0626e3629a960f6",
+        "imports/trainer-ai/native-damage-20260921/verified-524.log": "456d358e05a7bf214af643a632d019467172c66a2c5b6bf9adcc80020a47a48c",
+        "imports/trainer-ai/native-damage-20260921/verified-67.log": "09ec18533d3852b8f3956228dfe7e2848d8d424b7409a97c2e17cf26d3fb1630",
+        "imports/trainer-ai/native-damage-20260921/verified-69.log": "a9d2eb82950653c73849dbd71b04c7aa3c55eeabba867b033a0a6e9a273eea63",
+        "imports/trainer-ai/native-damage-20260921/verified-82.log": "8f575feaaf519f367e02caad77b195e11ef3d512c05144a4077b8c1a5c4cff83"
       }
     },
     "semanticNormalization": {
@@ -10848,6 +10867,101 @@
           "role": "pinned-documentation-or-syntax"
         },
         {
+          "file": "imports/trainer-ai/native-damage-20260921/manifest.json",
+          "sha256": "c99698c2d3e17b047c02b69baed73195f7d637c37085a8d389272fb1c54f7cc9",
+          "role": "pinned-documentation-or-syntax"
+        },
+        {
+          "file": "imports/trainer-ai/native-damage-20260921/melonds-research-hook.patch",
+          "sha256": "21edffb43c5d91c7a594ac50af96ec0b1b7f614b00bf0eddc45e6baf209a7953",
+          "role": "pinned-documentation-or-syntax"
+        },
+        {
+          "file": "imports/trainer-ai/native-damage-20260921/native_probe.cpp",
+          "sha256": "eb6cd2ccda160a78eea7f1b9a7307381be4f6ebfd210e19013cdc42b5a9d326f",
+          "role": "pinned-documentation-or-syntax"
+        },
+        {
+          "file": "imports/trainer-ai/native-damage-20260921/verified-101.log",
+          "sha256": "dcb5af42989cc18a850aae241f11b9054e2d172de2f050face0eebc56f95640f",
+          "role": "pinned-documentation-or-syntax"
+        },
+        {
+          "file": "imports/trainer-ai/native-damage-20260921/verified-149.log",
+          "sha256": "7fddd4b56a658436c7c4a3e9f2af30c02db0d50eb83ab73c30d7e73174628f06",
+          "role": "pinned-documentation-or-syntax"
+        },
+        {
+          "file": "imports/trainer-ai/native-damage-20260921/verified-162.log",
+          "sha256": "bbbae83fd3d1c21113a2592c401372ac8c9069597e5a07babf0f2a655b247054",
+          "role": "pinned-documentation-or-syntax"
+        },
+        {
+          "file": "imports/trainer-ai/native-damage-20260921/verified-283.log",
+          "sha256": "c950bc6eb5d4ab2731cfd313ed0f5e64c7af3805ce556500bea769401040ff14",
+          "role": "pinned-documentation-or-syntax"
+        },
+        {
+          "file": "imports/trainer-ai/native-damage-20260921/verified-284.log",
+          "sha256": "96d4971ca7f81ac2b38988d36766f72809ddb1d3c60387a722acf1c3fd99760b",
+          "role": "pinned-documentation-or-syntax"
+        },
+        {
+          "file": "imports/trainer-ai/native-damage-20260921/verified-360.log",
+          "sha256": "39b03c4ffe7cfd29ca49c5ad338d1e76fc0c7e496e7d0dbcb9eba0fccee974b9",
+          "role": "pinned-documentation-or-syntax"
+        },
+        {
+          "file": "imports/trainer-ai/native-damage-20260921/verified-362.log",
+          "sha256": "8ccdd68e433a70b4743889a91d30c8d34c55c1c1afea4910a01d025737cea80f",
+          "role": "pinned-documentation-or-syntax"
+        },
+        {
+          "file": "imports/trainer-ai/native-damage-20260921/verified-368.log",
+          "sha256": "a944dc9ca1004994c22f8cd974ec298351f2ef4d329e5ef2a95d42182c054519",
+          "role": "pinned-documentation-or-syntax"
+        },
+        {
+          "file": "imports/trainer-ai/native-damage-20260921/verified-412.log",
+          "sha256": "0211ffc91b8d533df65ebfb0c532f1ae238e320b98cc0c53b6bdb1057e8cac04",
+          "role": "pinned-documentation-or-syntax"
+        },
+        {
+          "file": "imports/trainer-ai/native-damage-20260921/verified-447.log",
+          "sha256": "1001d4d89061c5a07865d5d6e59ae5b2c542e1a554a2ec9d111d47335ba59032",
+          "role": "pinned-documentation-or-syntax"
+        },
+        {
+          "file": "imports/trainer-ai/native-damage-20260921/verified-486.log",
+          "sha256": "34b13a80e297d2689e1269d2c2db64cd3cfa83c3122d6ec01c7c6d3561064418",
+          "role": "pinned-documentation-or-syntax"
+        },
+        {
+          "file": "imports/trainer-ai/native-damage-20260921/verified-515.log",
+          "sha256": "bfbd13411c5c99320018fa9db53a87f159ea2df48ba76851d0626e3629a960f6",
+          "role": "pinned-documentation-or-syntax"
+        },
+        {
+          "file": "imports/trainer-ai/native-damage-20260921/verified-524.log",
+          "sha256": "456d358e05a7bf214af643a632d019467172c66a2c5b6bf9adcc80020a47a48c",
+          "role": "pinned-documentation-or-syntax"
+        },
+        {
+          "file": "imports/trainer-ai/native-damage-20260921/verified-67.log",
+          "sha256": "09ec18533d3852b8f3956228dfe7e2848d8d424b7409a97c2e17cf26d3fb1630",
+          "role": "pinned-documentation-or-syntax"
+        },
+        {
+          "file": "imports/trainer-ai/native-damage-20260921/verified-69.log",
+          "sha256": "a9d2eb82950653c73849dbd71b04c7aa3c55eeabba867b033a0a6e9a273eea63",
+          "role": "pinned-documentation-or-syntax"
+        },
+        {
+          "file": "imports/trainer-ai/native-damage-20260921/verified-82.log",
+          "sha256": "8f575feaaf519f367e02caad77b195e11ef3d512c05144a4077b8c1a5c4cff83",
+          "role": "pinned-documentation-or-syntax"
+        },
+        {
           "file": "imports/trainer-ai/online_command_research.json",
           "sha256": "2441652bce703194d2c801b6eb93df30a7949e192937fc10e55387043fbec56e",
           "role": "pinned-documentation-or-syntax"
@@ -10865,6 +10979,11 @@
         {
           "file": "trainer_ai_action_semantics.json",
           "sha256": "7746d15d6acb8ffbc5fe6bfe290f514c844d9395614423276a12c2e36687d6e1",
+          "role": "verified-semantic-evidence"
+        },
+        {
+          "file": "trainer_ai_damage_simulation.json",
+          "sha256": "53984eb31f2e2746cb833e83d917c681020adcc42e93c1bed264e1a0b84f77c3",
           "role": "verified-semantic-evidence"
         },
         {
@@ -12944,6 +13063,90 @@
               }
             ]
           }
+        }
+      },
+      "damageSimulation": {
+        "schemaVersion": 1,
+        "modelId": "gen5-unbound-move-damage-v1",
+        "calculationKind": "static-move-data/v1",
+        "moveEvents": "not-bound",
+        "basePower": "raw-move-table",
+        "type": "raw-move-table-with-non-move-event-modifiers",
+        "category": "raw-move-table",
+        "hits": 1,
+        "criticalHit": false,
+        "spreadMultiplier": {
+          "numerator": 1,
+          "denominator": 1
+        },
+        "damageRoll": "minimum",
+        "preserveAbilityAndItemFormulaEvents": true,
+        "immunityPolicy": "evaluator.constants.abilityKnowledge.damageSimulation",
+        "normalizedPowerBindings": {
+          "volt-white-2r": {
+            "romSha256": "d568cb67b2bb86b078871da30c0d2a0564240a06cda79cd806858b7c9efcb4b7",
+            "archive": "a/0/2/1",
+            "fileId": 371,
+            "recordCount": 560,
+            "recordSize": 36,
+            "powerOffset": 3,
+            "normalizedZeroPower": 0,
+            "rawSentinelPower": 1,
+            "sentinelMoveNumericIds": [
+              12,
+              49,
+              67,
+              68,
+              69,
+              82,
+              90,
+              101,
+              117,
+              149,
+              162,
+              175,
+              179,
+              217,
+              243,
+              251,
+              255,
+              283,
+              329,
+              360,
+              363,
+              368,
+              374,
+              376,
+              378,
+              382,
+              462,
+              484,
+              486,
+              515,
+              535
+            ],
+            "otherPowers": "unchanged-from-source-moves"
+          }
+        },
+        "evidence": {
+          "overlayId": 167,
+          "aiDamageEntry": {
+            "address": "0x021ab994",
+            "byteLength": 176,
+            "sha256": "caecd9da0ae4ccca9edf64a54299c6c02ce4c5667a3d93a60631170d9aa7f273"
+          },
+          "calls": {
+            "moveParameters": "0x021aa00c",
+            "damageFormula": "0x021a5958",
+            "power": "0x021aade4"
+          },
+          "nativeCoreCommit": "b86390e4428bf38ce4c1ce0e9ca446d6d25955e8",
+          "nativeTraceManifest": "imports/trainer-ai/native-damage-20260921/manifest.json",
+          "nativeTraceManifestSha256": "c99698c2d3e17b047c02b69baed73195f7d637c37085a8d389272fb1c54f7cc9",
+          "nativeProbeSha256": "eb6cd2ccda160a78eea7f1b9a7307381be4f6ebfd210e19013cdc42b5a9d326f",
+          "checkpointSha256": "5aab31d6319f2a98e268c9a4f250669c46d2f700359521949649f2d96cd86852",
+          "method": "Original ARM scoring executed in isolated melonDS; actor move slots replaced in RAM before scoring; original ROM instructions unchanged. Samples are synthetic Audino versus Foongus, not a replay of Charles.",
+          "limitation": "Move-event isolation and sampled static damage are verified; this does not assert exhaustive parity for every ability, item, field condition or all retail builds."
         }
       }
     },
@@ -305002,7 +305205,7 @@
     "digest": {
       "algorithm": "sha256",
       "canonicalPayload": "JSON.stringify(evaluator without digest)",
-      "value": "940a6bed665df4e14c1f3fdd3ed97f4481cccbdde8285a3db1e2066dda5ff677"
+      "value": "805f27727fe4f1778c186b25b6a2ef87f144c4ebf18bb5d18aa94e2720921d42"
     },
     "scoreTitleCoverage": {
       "scoreInstructions": 526,

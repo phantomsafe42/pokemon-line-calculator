@@ -101,7 +101,7 @@ test("AI damage omits the no-effect immunity event, retains formula modifiers, a
     const dataset = { abilityKnowledgePolicy: policy, get: () => ({ id: "probe", type, category: "special", basePower: 80 }) };
     let actual;
     const provider = createGen5QueryProvider({ plan, state, dataset, actorEntry: { combatantKey: "e" }, damageAdapter: { calculate: request => { actual = request.defenderState.currentAbilityId; return { status: "ok", damage: [40, 50] }; } } });
-    const metadata = { context: { candidate: { action: { canonicalMoveId: "probe", targetCombatantKey: "c" } } } };
+    const metadata = { profile: JSON.parse(fs.readFileSync(new URL("../src/generated/trainer-ai/gen5/trainer_ai.json", import.meta.url))).evaluator, context: { candidate: { action: { canonicalMoveId: "probe", targetCombatantKey: "c" } } } };
     assert.equal(provider["gen5.command.0x36"]("target", metadata), false, "a high-roll-only KO is not an AI minimum-roll KO");
     assert.equal(actual, expected, `${ability}/${type}`);
     assert.equal(state.combatantStates.c.currentAbilityId, ability, "actual ability must remain untouched");
