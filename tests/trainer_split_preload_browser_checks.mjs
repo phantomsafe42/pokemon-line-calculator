@@ -12,6 +12,7 @@ export async function checkTrainerSplitPreload({ page, evaluate, delay, gameId =
     const before = performance.getEntriesByType('resource').filter(e=>e.name.includes('kind=badge-icon')).map(e=>({url:e.name,start:e.startTime,duration:e.duration}));
     document.querySelector('[data-starter-id="${gameId === 'pokemon-unbound' ? 'beldum' : 'snivy'}"]').click();
     const start = performance.now(); document.getElementById('new-plan').click();
+    await wait(()=>document.getElementById('trainer-selector-dialog').open, 'selector');
     const tabs = [...document.querySelectorAll('.trainer-split-tabs button')];
     const readyOnOpen = tabs.filter(t=>t.dataset.badgeStatus==='loaded').length;
     await wait(()=>tabs.length===${count} && tabs.every(t=>t.dataset.badgeStatus==='loaded'), 'all split images');
@@ -20,6 +21,7 @@ export async function checkTrainerSplitPreload({ page, evaluate, delay, gameId =
     document.getElementById('trainer-selector-dialog').close();
     await new Promise(r=>setTimeout(r,100));
     document.getElementById('new-plan').click();
+    await wait(()=>document.getElementById('trainer-selector-dialog').open, 'reopened selector');
     return {before,readyOnOpen,elapsed,images,reopenedReady:document.querySelectorAll('.trainer-split-tabs [data-badge-status="loaded"]').length};
   })()`, true);
   assert.equal(result.readyOnOpen, count, JSON.stringify(result));
