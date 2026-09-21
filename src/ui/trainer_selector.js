@@ -82,6 +82,13 @@ export function trainerSpriteQuery(trainer) {
     ...(identity.spriteSet ? { spriteSet: identity.spriteSet } : {}) };
 }
 
+export function trainerPortraitFallback(trainer) {
+  // A missing singular portrait can also describe paired human trainers.
+  // Only an explicit wild-battle source may be labeled as a wild encounter.
+  return trainer?.sourceType === 'boss-wild' && !trainer.trainerVisualParticipants?.length
+    ? 'Wild encounter' : 'Sprite unavailable';
+}
+
 const element = (tag, className, text) => Object.assign(document.createElement(tag), { className, ...(text == null ? {} : { textContent: text }) });
 
 // Explicit presentation families; split/leader aliases remain owned by the
@@ -186,7 +193,7 @@ export function createTrainerSelector({ dialog, dataset, starterId, resolver, re
       return frame;
     }
     if (identity?.status === 'inapplicable') {
-      frame.append(element('span', 'trainer-sprite-missing', 'Wild encounter'));
+      frame.append(element('span', 'trainer-sprite-missing', trainerPortraitFallback(trainer)));
       return frame;
     }
     const query = trainerSpriteQuery(trainer);
