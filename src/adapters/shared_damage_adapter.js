@@ -61,7 +61,7 @@ export function createSharedDamageAdapter(runtime) {
   }
   return {
     supportsCriticalHits: true,
-    calculate({ attacker, defender, attackerState, defenderState, move, fieldState, moveOverrides, moveHits, criticalHit, battleFormat = "singles", spreadTargetCount = null }) {
+    calculate({ attacker, defender, attackerState, defenderState, move, fieldState, moveOverrides, moveHits, criticalHit, moveSimulation, battleFormat = "singles", spreadTargetCount = null }) {
       let weather;
       let terrain;
       try {
@@ -72,7 +72,7 @@ export function createSharedDamageAdapter(runtime) {
       }
       const attackerSource = sideSource(attacker);
       const defenderSource = sideSource(defender);
-      const effectiveMoveName = calculatorMoveName(move);
+      const effectiveMoveName = moveSimulation ? move.id : calculatorMoveName(move);
       const result = runtime.calculate({
         downloadAlreadyResolved: true,
         attacker: displayCombatant(attacker, attackerState),
@@ -82,6 +82,7 @@ export function createSharedDamageAdapter(runtime) {
         moveOverrides,
         moveHits,
         criticalHit,
+        ...(moveSimulation ? { moveSimulation } : {}),
         attackerSide: attacker.side,
         defenderSide: defender.side,
         attackerTrainerId: attackerSource.trainerId,

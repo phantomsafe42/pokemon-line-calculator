@@ -657,7 +657,7 @@ function tableContains(profile, tableId, value) {
   return table.some(entry => Number(entry?.numericId ?? entry?.value ?? entry) === Number(value));
 }
 
-function damageMaximum({ plan, state, dataset, actorEntry, targetEntry, move, damageAdapter, damageRoll = "maximum" }) {
+function damageMaximum({ plan, state, dataset, actorEntry, targetEntry, move, damageAdapter, damageRoll = "maximum", moveSimulation }) {
   if (!damageAdapter || !actorEntry || !targetEntry || !move) return undefined;
   const targetMode = String(move.target || "normal").toLowerCase();
   const spreadTargetCount = ["alladjacent", "alladjacentfoes", "allopponents"].includes(targetMode)
@@ -672,6 +672,7 @@ function damageMaximum({ plan, state, dataset, actorEntry, targetEntry, move, da
     move,
     fieldState: state.fieldState,
     criticalHit: false,
+    ...(moveSimulation ? { moveSimulation } : {}),
     battleFormat: plan.game.battleFormat,
     spreadTargetCount
   });
@@ -1188,6 +1189,21 @@ function gen5ProgramDataList(metadata, labelToken) {
 
 export function createGen5QueryProvider({ plan, state, dataset, actorEntry, moves, damageAdapter, gameId = "volt-white-2r" }) {
   const damageCache = new Map();
+  const simulationFor = (move, metadata) => {
+    const policy = metadata?.profile?.constants?.damageSimulation;
+    const binding = policy?.normalizedPowerBindings?.[gameId];
+    if (policy?.calculationKind !== "static-move-data/v1" || !binding) {
+      throw new TrainerAiReadinessError("Missing source-bound Gen 5 AI damage simulation");
+    }
+    const normalizedPower = Number(move.basePower);
+    const sentinel = binding.sentinelMoveNumericIds.includes(Number(move.num));
+    const basePower = sentinel && normalizedPower === binding.normalizedZeroPower ? binding.rawSentinelPower : normalizedPower;
+    if (!Number.isInteger(basePower) || basePower < 0 || basePower > 255
+      || String(move.category).toLowerCase() !== "status" && basePower === 0) {
+      throw new TrainerAiReadinessError(`Missing raw AI power for ${move.id}`);
+    }
+    return { kind: policy.calculationKind, basePower };
+  };
   const entryFor = (selector, metadata) => gen5SelectedBattlerEntry(state, actorEntry, metadata, selector);
   const stateFor = (selector, metadata) => gen5EntryState(state, actorEntry, metadata, selector);
   const combatantFor = (selector, metadata) => gen5EntryCombatant(plan, state, actorEntry, metadata, selector);
@@ -1195,7 +1211,7 @@ export function createGen5QueryProvider({ plan, state, dataset, actorEntry, move
     const targetEntry = entryFor(selector, metadata);
     const move = moveOverride || candidateMove(metadata, dataset);
     const key = `${sourceEntry?.combatantKey || "?"}:${move?.id || "?"}:${targetEntry?.combatantKey || "?"}`;
-    if (!damageCache.has(key)) damageCache.set(key, damageMaximum({ plan, state: gen5DamageState(state, targetEntry, move, dataset.abilityKnowledgePolicy), dataset, actorEntry: sourceEntry, targetEntry, move, damageAdapter, damageRoll: "minimum" }));
+    if (!damageCache.has(key)) damageCache.set(key, damageMaximum({ plan, state: gen5DamageState(state, targetEntry, move, dataset.abilityKnowledgePolicy), dataset, actorEntry: sourceEntry, targetEntry, move, damageAdapter, damageRoll: "minimum", moveSimulation: simulationFor(move, metadata) }));
     return damageCache.get(key);
   };
   const actorAllMoves = () => {
@@ -1203,13 +1219,13 @@ export function createGen5QueryProvider({ plan, state, dataset, actorEntry, move
     const monState = state.combatantStates[actorEntry.combatantKey];
     return (monState.moveSetOverride || combatant.moves || []).map(move => ({ id: move.moveId, ...dataset.get("moves", move.moveId) }));
   };
-  const strongestDamage = (sourceEntry, targetEntry) => {
+  const strongestDamage = (sourceEntry, targetEntry, metadata) => {
     if (!sourceEntry || !targetEntry) return undefined;
     const combatant = plan.combatants[sourceEntry.combatantKey];
     const monState = state.combatantStates[sourceEntry.combatantKey];
     const values = (monState.moveSetOverride || combatant.moves || []).map(entry => {
       const move = { id: entry.moveId, ...dataset.get("moves", entry.moveId) };
-      return damageMaximum({ plan, state: gen5DamageState(state, targetEntry, move, dataset.abilityKnowledgePolicy), dataset, actorEntry: sourceEntry, targetEntry, move, damageAdapter, damageRoll: "minimum" });
+      return damageMaximum({ plan, state: gen5DamageState(state, targetEntry, move, dataset.abilityKnowledgePolicy), dataset, actorEntry: sourceEntry, targetEntry, move, damageAdapter, damageRoll: "minimum", moveSimulation: simulationFor(move, metadata) });
     });
     if (values.some(value => value === undefined)) return undefined;
     return Math.max(0, ...values.map(value => value === null ? 0 : value));
@@ -1272,11 +1288,11 @@ export function createGen5QueryProvider({ plan, state, dataset, actorEntry, move
       const index = id.endsWith("type2") ? 1 : 0;
       return gen5SourceToken("type", combatantTypes(plan, state, entryFor(selector, metadata))[index], metadata);
     },
-    "gen5.command.0x21": metadata => candidateMove(metadata, dataset)?.basePower,
+    "gen5.command.0x21": metadata => simulationFor(candidateMove(metadata, dataset), metadata).basePower,
     "gen5.command.0x22": (target, metadata) => {
       const current = damageFor(metadata, target); if (current === undefined) return undefined;
       if (current === null) return "no_damage";
-      const targetEntry = entryFor(target, metadata); const best = strongestDamage(actorEntry, targetEntry);
+      const targetEntry = entryFor(target, metadata); const best = strongestDamage(actorEntry, targetEntry, metadata);
       return best === undefined ? undefined : current >= best ? "is_strongest" : "not_strongest";
     },
     "gen5.command.0x23": (pokemon, metadata) => gen5SourceToken("move", stateFor(pokemon, metadata)?.lastMoveId, metadata, "move.none"),
@@ -1350,15 +1366,15 @@ export function createGen5QueryProvider({ plan, state, dataset, actorEntry, move
     "gen5.command.0x5e": metadata => { const id = state.combatantStates[actorEntry.combatantKey]?.lastMoveId; return id ? dataset.get("moves", id)?.category : 0; },
     "gen5.command.0x5f": (pokemon, metadata) => stateFor(pokemon, metadata)?.turnOrderPosition,
     "gen5.command.0x60": (pokemon, metadata) => { const mon = stateFor(pokemon, metadata); return mon ? Math.max(0, Number(state.turnNumber || 0) - Number(mon.enteredTurnNumber || 0)) : undefined; },
-    "gen5.command.0x61": (pokemon, metadata) => { const target = entryFor(pokemon, metadata); const active = new Set(activeSlotEntries(state, "enemy").map(entry => entry.combatantKey)); const actorBest = strongestDamage(actorEntry, target); if (actorBest === undefined) return undefined; const reserveValues = actorParty(plan, actorEntry).filter(mon => !active.has(mon.combatantKey) && Number(state.combatantStates[mon.combatantKey]?.hp?.max ?? 0) > 0).map(mon => strongestDamage({ combatantKey: mon.combatantKey }, target)); return reserveValues.some(value => value === undefined) ? undefined : reserveValues.some(value => value > actorBest); },
+    "gen5.command.0x61": (pokemon, metadata) => { const target = entryFor(pokemon, metadata); const active = new Set(activeSlotEntries(state, "enemy").map(entry => entry.combatantKey)); const actorBest = strongestDamage(actorEntry, target, metadata); if (actorBest === undefined) return undefined; const reserveValues = actorParty(plan, actorEntry).filter(mon => !active.has(mon.combatantKey) && Number(state.combatantStates[mon.combatantKey]?.hp?.max ?? 0) > 0).map(mon => strongestDamage({ combatantKey: mon.combatantKey }, target, metadata)); return reserveValues.some(value => value === undefined) ? undefined : reserveValues.some(value => value > actorBest); },
     "gen5.command.0x62": metadata => {
       const values = actorAllMoves().map(move => gen5TypeMultiplier(plan, state, dataset, metadata, move));
       return values.some(value => value === undefined) ? undefined : values.some(value => value > 1);
     },
-    "gen5.command.0x63": (previousPokemon, targetPokemon, metadata) => { const previous = stateFor(previousPokemon, metadata); const recorded = previous?.lastMoveDamage; const target = entryFor(targetPokemon, metadata); const best = strongestDamage(actorEntry, target); return Number.isFinite(Number(recorded)) && best !== undefined ? Number(recorded) > best : undefined; },
+    "gen5.command.0x63": (previousPokemon, targetPokemon, metadata) => { const previous = stateFor(previousPokemon, metadata); const recorded = previous?.lastMoveDamage; const target = entryFor(targetPokemon, metadata); const best = strongestDamage(actorEntry, target, metadata); return Number.isFinite(Number(recorded)) && best !== undefined ? Number(recorded) > best : undefined; },
     "gen5.command.0x64": (pokemon, metadata) => { const stages = stateFor(pokemon, metadata)?.statStages; return stages ? ["atk", "def", "spe", "spa", "spd", "accuracy", "evasion"].reduce((sum, key) => sum + Math.max(0, Number(stages[key] || 0)), 0) : undefined; },
     "gen5.command.0x65": (pokemon, stat, metadata) => { const key = ({ atk: "atk", def: "def", spe: "spe", spa: "spa", spd: "spd", acc: "accuracy", eva: "evasion" })[toId(stat)]; const selected = stateFor(pokemon, metadata)?.statStages; const actorStages = state.combatantStates[actorEntry.combatantKey]?.statStages; return key && selected && actorStages ? Number(selected[key] || 0) - Number(actorStages[key] || 0) : undefined; },
-    "gen5.command.0x69": (pokemon, metadata) => { const target = entryFor(pokemon, metadata); const partner = actorPartnerEntry(state, actorEntry); const current = damageFor(metadata, pokemon); const partnerBest = strongestDamage(partner, target); return current === undefined || partnerBest === undefined ? undefined : Number(current || 0) >= partnerBest ? "is_strongest" : "not_strongest"; },
+    "gen5.command.0x69": (pokemon, metadata) => { const target = entryFor(pokemon, metadata); const partner = actorPartnerEntry(state, actorEntry); const current = damageFor(metadata, pokemon); const partnerBest = strongestDamage(partner, target, metadata); return current === undefined || partnerBest === undefined ? undefined : Number(current || 0) >= partnerBest ? "is_strongest" : "not_strongest"; },
     "gen5.command.0x6a": (pokemon, metadata) => { const mon = stateFor(pokemon, metadata); return mon ? Number(mon.hp?.max ?? 0) <= 0 : undefined; },
     "gen5.command.0x6d": (pokemon, metadata) => { const mon = stateFor(pokemon, metadata); return mon ? Number(mon.volatileConditions?.substituteHp || 0) > 0 : undefined; },
     "gen5.command.0x6e": (pokemon, metadata) => gen5SourceToken("species", stateFor(pokemon, metadata)?.currentSpeciesId || combatantFor(pokemon, metadata)?.speciesId, metadata),
