@@ -1,4 +1,4 @@
-import { parseSave as parseNeutralSave } from "../generated/save-mechanics/adapters/src/parse-save.js?v=20260911-public-save-mechanics-v1";
+import { parseSave as parseNeutralSave } from "../generated/save-mechanics/adapters/src/parse-save.js?v=20260921-ds-save-forms-v1";
 import { nowIso } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
 import { normalizeBoxPokemon } from "./library.js?v=20260905-drafts-freecalc-partners-v1";
 

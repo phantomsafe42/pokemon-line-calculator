@@ -125,9 +125,19 @@ export function createStandardizedSaveIdentityResolver(dataset, {
   const resolveSpecies = (numericId, { form = 0 } = {}) => {
     const numeric = numericIdentity(numericId, `${gameId} species save identity`);
     const normalizedForm = formIdentity(form);
-    const species = typeof dataset.getSpeciesBySaveIdentity === "function"
-      ? dataset.getSpeciesBySaveIdentity(numeric, normalizedForm)
-      : dataset.getBySaveNumericId("species", numeric);
+    let species;
+    if (typeof dataset.getSpeciesBySaveIdentity === "function") {
+      species = dataset.getSpeciesBySaveIdentity(numeric, normalizedForm);
+    } else {
+      const saveMaps = dataset.documents?.["save_id_maps.json"];
+      const compoundId = explicitCompoundSpeciesId(
+        saveMaps,
+        numeric,
+        normalizedForm,
+      );
+      if (compoundId !== null) species = dataset.get("species", compoundId);
+      else if (saveMaps || normalizedForm === 0) species = dataset.getBySaveNumericId("species", numeric);
+    }
     if (!species) {
       throw new SaveIdentityResolutionError(`${gameId} has no species identity for save ID ${numeric} form ${normalizedForm}`);
     }
