@@ -53,6 +53,7 @@ test('names and art remain display-only; unresolved selectors and unknown mandat
   assert.equal(displayTrainerName('Galactic Uranus #2 & Galactic Cupid #1'), 'Galactic Uranus & Galactic Cupid');
   const identity = { status:'resolved', gameStyle:'platinum', presentation:'battle-front', subjectKind:'class',subjectId:'galactic-grunt',gender:'female',variant:'default' };
   assert.equal(trainerSpriteQuery({trainerVisualIdentity:identity}).subject,'galactic-grunt');
+  assert.equal(trainerSpriteQuery({trainerVisualIdentity:{...identity,spriteSet:'b2w2'}}).spriteSet,'b2w2');
   assert.equal(trainerSpriteQuery({trainerVisualIdentity:{...identity,status:'ambiguous'}}), null);
   const dataset = { documents: {'trainer_order.json':{records:[{trainerId:'a',splitId:'s',mandatory:false},{trainerId:'a',splitId:'t',mandatory:true}]}}};
   assert.equal(trainerRequirement(dataset,{id:'a'},'s'),'optional');

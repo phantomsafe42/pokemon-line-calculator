@@ -37,7 +37,8 @@ export function trainerSpriteQuery(trainer) {
   const identity = trainer?.trainerVisualIdentity;
   if (identity?.status !== 'resolved') return null;
   return { kind: 'trainer-sprite', gameStyle: identity.gameStyle, presentation: identity.presentation,
-    subjectKind: identity.subjectKind, subject: identity.subjectId, gender: identity.gender, variant: identity.variant };
+    subjectKind: identity.subjectKind, subject: identity.subjectId, gender: identity.gender, variant: identity.variant,
+    ...(identity.spriteSet ? { spriteSet: identity.spriteSet } : {}) };
 }
 
 const element = (tag, className, text) => Object.assign(document.createElement(tag), { className, ...(text == null ? {} : { textContent: text }) });
@@ -59,6 +60,20 @@ export function createTrainerSelector({ dialog, dataset, starterId, resolver, re
   };
   const portrait = (trainer) => {
     const frame = element('div', 'trainer-portrait-frame');
+    const identity = trainer.trainerVisualIdentity;
+    if (identity?.status === 'ambiguous' && identity.alternatives?.length
+      && identity.alternatives.every(choice => choice.status === 'resolved')) {
+      frame.classList.add('trainer-portrait-alternatives');
+      frame.title = 'Trainer artwork depends on the battle variant selected in New Line.';
+      for (const choice of identity.alternatives) {
+        frame.append(portrait({ ...trainer, displayName: choice.subjectId.replaceAll('-', ' '), trainerVisualIdentity: choice }));
+      }
+      return frame;
+    }
+    if (identity?.status === 'inapplicable') {
+      frame.append(element('span', 'trainer-sprite-missing', 'Wild encounter'));
+      return frame;
+    }
     const query = trainerSpriteQuery(trainer);
     if (!query) { frame.append(element('span', 'trainer-sprite-missing', 'Sprite unavailable')); return frame; }
     const image = element('img', 'trainer-portrait');

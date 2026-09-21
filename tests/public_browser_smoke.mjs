@@ -1,4 +1,5 @@
 import { checkTrainerSelector } from './trainer_selector_browser_checks.mjs';
+import { checkVw2rTrainerSprites } from './vw2r_trainer_sprites_browser_checks.mjs';
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
 import fs from "node:fs/promises";
@@ -260,7 +261,8 @@ try {
       await page.send('Network.setBlockedURLs', { urls: [datasetLock.hosted.origin + '/*'] });
       await page.send('Page.reload', {ignoreCache:true});
     }
-    await checkTrainerSelector({page,evaluate,delay,tempRoot,staged:Boolean(process.env.PLC_TRAINER_SELECTOR_DATASET)});
+    if (process.env.PLC_VW2R_TRAINER_SPRITES_ONLY) await checkVw2rTrainerSprites({page,evaluate,delay,tempRoot});
+    else await checkTrainerSelector({page,evaluate,delay,tempRoot,staged:Boolean(process.env.PLC_TRAINER_SELECTOR_DATASET)});
     page.close();
   } else {
   const state = await evaluate(page, `(async () => {
