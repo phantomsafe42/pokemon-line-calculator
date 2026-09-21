@@ -1,10 +1,10 @@
-import { calculateStats, normalizeMultiTrainerRoster, normalizePlayerCollection, normalizePlayerPartnerRoster, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js?v=20260920-held-item-release-v3";
-import { HOSTED_DATASET_RELEASE } from "./adapters/hosted_dataset.js?v=20260920-held-item-release-v3";
+import { calculateStats, normalizeMultiTrainerRoster, normalizePlayerCollection, normalizePlayerPartnerRoster, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js?v=20260921-dataset-identities-v1";
+import { HOSTED_DATASET_RELEASE } from "./adapters/hosted_dataset.js?v=20260921-dataset-identities-v1";
 import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260909-public-release-v2";
-import { canonicalSpeciesDisplayName, loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260920-held-item-release-v3";
+import { canonicalSpeciesDisplayName, loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260921-dataset-identities-v1";
 import { starterAllows, starterChoice } from './adapters/starter_selection.js?v=20260918-starter-selection-v1';
 import { readStarterPreference, saveStarterPreference } from './cache/starter_preferences.js?v=20260918-starter-selection-v1';
-import { loadTrainerAiBootstrap } from "./adapters/trainer_ai.js?v=20260920-held-item-release-v3";
+import { loadTrainerAiBootstrap } from "./adapters/trainer_ai.js?v=20260921-dataset-identities-v1";
 import { forecastTargetLabel, replacementForecastLines } from "./ui/ai_forecast.js?v=20260918-replacement-reasons-v2";
 import { hasManualStartingHp } from "./ui/editor_hp.js?v=20260917-editor-hp-v1";
 import { createDraftRecord, destructiveTransitionNotice, IndexedDbDraftStore, markExported, updateDraftRecord } from "./cache/active_draft.js?v=20260920-performance-v1";
@@ -12,8 +12,8 @@ import { coalescedTask } from './cache/coalesced_task.js?v=20260920-performance-
 import { TrainerAiForecastCache } from "./cache/trainer_ai_forecast.js?v=20260909-public-release-v2";
 import { SavedDraftStore, savedDraftSnapshot } from "./cache/saved_drafts.js?v=20260917-partners-release-v1";
 import { reorderCards } from "./ui/reorder_cards.js?v=20260909-public-release-v2";
-import { addFreeCalcBranch, editFreeCalcCombatant, replaceFreeCalcSlot, freeCalcAsNewPlan } from './core/free_calc.js?v=20260920-held-item-release-v3';
-import { isSandbox, editSandboxCombatant, placeSandboxCombatant, admitSandboxReserve } from './core/sandbox.js?v=20260920-held-item-release-v3';
+import { addFreeCalcBranch, editFreeCalcCombatant, replaceFreeCalcSlot, freeCalcAsNewPlan } from './core/free_calc.js?v=20260921-dataset-identities-v1';
+import { isSandbox, editSandboxCombatant, placeSandboxCombatant, admitSandboxReserve } from './core/sandbox.js?v=20260921-dataset-identities-v1';
 import { sandboxPickerCandidates } from './ui/sandbox_picker.js?v=20260919-sandbox-picker-v2';
 import { makeStableId } from './core/primitives.js';
 import { freeCalcExperience, freeCalcTotalExperience } from './ui/free_calc.js?v=20260918-free-calc-inline-v1';
@@ -23,7 +23,7 @@ import { createEventTimeline } from './core/event_timeline.js?v=20260920-event-h
 import { belongsToSlotParty, eligibleReserves, partyOwnerForSlot } from './core/party_ownership.js?v=20260909-public-release-v2';
 import { downloadPlan, exportSelectedPlan, migratePlanDocument, parsePlan } from "./contracts/plan_file.js?v=20260917-partners-release-v1";
 import { assertValidPlanDocument } from "./contracts/plan_contract.js?v=20260917-partners-release-v1";
-import { mechanicsCompatibility, validatePlanReferences } from "./contracts/plan_compatibility.js?v=20260920-held-item-release-v3";
+import { mechanicsCompatibility, validatePlanReferences } from "./contracts/plan_compatibility.js?v=20260921-dataset-identities-v1";
 import { actionList, activeKey, activeKeys, activeSlotEntries, actorSlot, pendingReplacementSlots, setActiveKey, slotsPerSide } from "./core/battle_slots.js?v=20260909-public-release-v2";
 import { createBranchEventModel, selectBranchEventOutcome, selectedBranchChoices } from "./core/branch_events.js?v=20260909-public-release-v2";
 import { boundedSlotDamageLabel, highestDamageCandidateKeys, resolvedCombatantMovePreview } from "./core/combatant_moves.js?v=20260909-public-release-v2";
@@ -31,16 +31,16 @@ import { exportBranchGroups, planTreeOrder, planTurnTreeOrder, preferredImported
 import { HIDDEN_POWER_TYPES, hiddenPowerTypeFromIvs, resolvedHiddenPowerType } from "./core/hidden_power.js?v=20260909-public-release-v2";
 import { forcedTurnAction } from "./core/forced_actions.js?v=20260909-public-release-v2";
 import { formatDamageRollCounts, healingEventDescription, outcomePanelEvents, protectionEventDescription, readableMechanicName } from "./core/outcome_presentation.js?v=20260920-protect-text-v1";
-import { createPlanDocument, planHasWork, setStateNodeNote, upgradeInitialEntryEffects } from "./core/plan.js?v=20260920-held-item-release-v3";
-import { commitForcedReplacement, commitLabel, commitPreview, previewForcedReplacement, refreshUnknownCommittedProbabilities, repairStaleLeafBattleEnd, replacementCommitLabel } from "./core/planner.js?v=20260920-held-item-release-v3";
-import { recalculatePlanDocument } from "./core/recalculation.js?v=20260920-held-item-release-v3";
-import { upgradeImportedPlanForEditing } from "./core/import_upgrade.js?v=20260920-held-item-release-v3";
+import { createPlanDocument, planHasWork, setStateNodeNote, upgradeInitialEntryEffects } from "./core/plan.js?v=20260921-dataset-identities-v1";
+import { commitForcedReplacement, commitLabel, commitPreview, previewForcedReplacement, refreshUnknownCommittedProbabilities, repairStaleLeafBattleEnd, replacementCommitLabel } from "./core/planner.js?v=20260921-dataset-identities-v1";
+import { recalculatePlanDocument } from "./core/recalculation.js?v=20260921-dataset-identities-v1";
+import { upgradeImportedPlanForEditing } from "./core/import_upgrade.js?v=20260921-dataset-identities-v1";
 import { moveSupport } from "./rulesets/core_move_support.js?v=20260909-public-release-v2";
 import { effectiveActionSpeed } from "./rulesets/action_order.js?v=20260909-public-release-v2";
 import { areSlotsAdjacent, canSelectShift, shiftWithCenter, triplePositionForSlot, tripleSlotForPosition } from "./rulesets/triple_battle.js?v=20260909-public-release-v2";
 import { rotationFrontKey, rotationFrontSlot } from "./rulesets/rotation_battle.js?v=20260909-public-release-v2";
 import { experienceForLevel, experienceToNextLevel, projectExperience } from "./rulesets/vw2r_experience.js?v=20260917-partners-release-v1";
-import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260920-held-item-release-v3";
+import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260921-dataset-identities-v1";
 import { battleCompletionState } from "./core/battle_completion.js?v=20260909-public-release-v2";
 import {
   addBox, addParty, boxesForGame, createEmptyBoxLibrary, exportBoxLibrary, IndexedDbBoxLibraryStore,

@@ -220,7 +220,7 @@
       },
       {
         "file": "trainers.json",
-        "sha256": "a91f0bce167b9231903d4282372cb04930d323df743b2711820e08ef408b7965"
+        "sha256": "b0c06e7db612d4a78437f8edd3a0cdcd20a861b57b9b006187a213d432b5130c"
       },
       {
         "file": "trainer_order.json",
@@ -228,7 +228,7 @@
       },
       {
         "file": "trainer_documentation.json",
-        "sha256": "67c3d9cfb33dd9296fe57ad51edbcf6b2f89b1fa2a1ebd37c2e5e6fbd60d6b46"
+        "sha256": "33b3ec94aeb349805831eccb221da9e9bff4c6f96b52387a324720e031aa0ed0"
       }
     ]
   },

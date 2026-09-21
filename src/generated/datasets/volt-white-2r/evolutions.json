@@ -2531,6 +2531,58 @@
       "method": "Level",
       "parameter": "59",
       "sourceConfidence": "consumer-derived-and-document-verifiable"
+    },
+    {
+      "id": "shelloseast-to-gastrodoneast-shared-form-1",
+      "fromSpeciesId": "shelloseast",
+      "toSpeciesId": "gastrodoneast",
+      "method": "Level",
+      "parameter": "30",
+      "sourceConfidence": "game-specific-base-rule-with-pinned-form-preservation",
+      "sourceInheritance": {
+        "baseEvolutionId": "shellos-to-gastrodon-220",
+        "rawForm": 1,
+        "reference": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    {
+      "id": "deerlingsummer-to-sawsbucksummer-shared-form-1",
+      "fromSpeciesId": "deerlingsummer",
+      "toSpeciesId": "sawsbucksummer",
+      "method": "Level",
+      "parameter": "34",
+      "sourceConfidence": "game-specific-base-rule-with-pinned-form-preservation",
+      "sourceInheritance": {
+        "baseEvolutionId": "deerling-to-sawsbuck-290",
+        "rawForm": 1,
+        "reference": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    {
+      "id": "deerlingautumn-to-sawsbuckautumn-shared-form-2",
+      "fromSpeciesId": "deerlingautumn",
+      "toSpeciesId": "sawsbuckautumn",
+      "method": "Level",
+      "parameter": "34",
+      "sourceConfidence": "game-specific-base-rule-with-pinned-form-preservation",
+      "sourceInheritance": {
+        "baseEvolutionId": "deerling-to-sawsbuck-290",
+        "rawForm": 2,
+        "reference": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
+    },
+    {
+      "id": "deerlingwinter-to-sawsbuckwinter-shared-form-3",
+      "fromSpeciesId": "deerlingwinter",
+      "toSpeciesId": "sawsbuckwinter",
+      "method": "Level",
+      "parameter": "34",
+      "sourceConfidence": "game-specific-base-rule-with-pinned-form-preservation",
+      "sourceInheritance": {
+        "baseEvolutionId": "deerling-to-sawsbuck-290",
+        "rawForm": 3,
+        "reference": "imports/reference-docs/vw2r-shared-form-inheritance.json"
+      }
     }
   ]
 }

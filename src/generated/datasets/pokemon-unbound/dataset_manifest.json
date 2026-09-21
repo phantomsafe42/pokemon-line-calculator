@@ -31,7 +31,7 @@
       "role": "ROM-derived item verification table"
     },
     "imports/upstream": {
-      "sha256": "5f0bd001b2ca2bc610bff52f8a0fb0381257a3fc7543ad47f8cd3a8c5ebb0867",
+      "sha256": "8039aa6bc489222020eca29e4af7e4df965084705087f9d5a6107b4cf80af005",
       "files": 294,
       "role": "pinned CFRU and DPE source subset"
     },
@@ -48,20 +48,148 @@
       "role": "reviewed escort boundaries, scripted wild roles, and ROM-verified enemy party partitions"
     },
     "imports/reference-docs/Unbound Changes From Official.txt": {
-      "sha256": "04eefc9d8f2de4876130f1ac99ef30d4ad4e7127a0dc6a3bd5e999e33bc027e1",
+      "sha256": "5f16c2115d748befad574d675532c913b01616360d48201ab0baf1f42c4bf191",
       "role": "version/reference documentation"
     },
     "imports/reference-docs/Unbound documentation links.txt": {
-      "sha256": "eb4f600be78ad40a46f980dd0addfce2e14e44e220e2d5437789f3a1e5ad22ed",
+      "sha256": "b4a92665f8f60e74b77c5e2f2d9ccafba9e3718a1a681849300514da226e3782",
       "role": "version/reference documentation"
     },
     "imports/reference-docs/Unbound Main_CHANGELOG.txt": {
-      "sha256": "9f44a413103edf026b73dd0298973bdba687b163ea1f80ceb8a26b46434a3993",
+      "sha256": "f9a5d5e016261c65be19044b6d8dd8363e9129545ee32dd641928111d9b99194",
       "role": "version/reference documentation"
     },
     "imports/reference-docs/Unbound Main_README.txt": {
-      "sha256": "8ffffc30af17b36ebb7719781a88787b23345e9a02741caab89b60cc38a09855",
+      "sha256": "9632a3c6789d4a244e91dbb4d640ffefd1057768179e0dc55a4d519a94fca5d2",
       "role": "version/reference documentation"
+    },
+    "imports/reference-docs/unbound-supported-daytime-wild.json": {
+      "sha256": "8958ff1f098d11f2eb8376e4e42131eb87dcc69bbafc27ca8ce36bb5cd40610e",
+      "role": "supported daytime wild membership and executed nominal slot selectors"
+    },
+    "imports/reference-docs/unbound-raid-registry.json": {
+      "sha256": "e6673d2d9f923e08d24885828454de7b69811607feda6e65326efba4a7f83acd",
+      "role": "supported ordinary raid battle-selection evidence"
+    },
+    "imports/reference-docs/unbound-raid-selection.json": {
+      "sha256": "391e2c1cccddc5562344fc805335da98bb21e761ab2cd92331691a4cb7368ed8",
+      "role": "supported ordinary raid battle-selection evidence"
+    },
+    "imports/reference-docs/unbound-raid-level-routines.json": {
+      "sha256": "10f133bd98e5cc38baf6b320aa73e096b9428b7a733ee6c64ea674debfb89bc9",
+      "role": "supported ordinary raid battle-selection evidence"
+    },
+    "imports/reference-docs/unbound-raid-constructor-handoff.json": {
+      "sha256": "f658f85954030a892b1f516b8ac35a171923171b57e6f0f0bb0d2c0073b3358d",
+      "role": "supported ordinary raid battle-selection evidence"
+    },
+    "imports/reference-docs/unbound-raid-form-maps.json": {
+      "sha256": "27253763836fb5bec4baf8edcc7dc4561bd87c2464979cb702cf3ab89890d684",
+      "role": "supported ordinary raid battle-selection evidence"
+    },
+    "imports/reference-docs/unbound-supported-swarm-tables.json": {
+      "sha256": "eb322af90a6f520b1e8c0a4e7d4ea551055e2413712f366ac8eb732bdfef1cc7",
+      "role": "supported land-swarm membership and routing evidence"
+    },
+    "imports/reference-docs/unbound-supported-swarm-routing.json": {
+      "sha256": "349ee1be9314c0690dcc227852e7280a7a663555bb9ea04cdfb91f9fafa061f1",
+      "role": "supported land-swarm membership and routing evidence"
+    },
+    "imports/reference-docs/unbound-encounter-map-headers.json": {
+      "sha256": "04e0f5cd500dbe61db80ec0103ad2888c3f5fd956e57f7ccd7f6420404f77f7b",
+      "role": "supported land-swarm membership and routing evidence"
+    },
+    "imports/reference-docs/unbound-detector-selection-evidence.json": {
+      "sha256": "950bdd003ad094e451e3917bbf3a33a8d049c92bd945439368a4b7462e038dc3",
+      "role": "supported detector membership/levels and pinned reference semantics"
+    },
+    "imports/reference-docs/unbound-detector-level-evidence.json": {
+      "sha256": "4d552199d69b3c96bbde5a6decb9b97a67f688d9c0215582dd46405ccdad34c1",
+      "role": "supported detector membership/levels and pinned reference semantics"
+    },
+    "imports/reference-docs/cfru-dexnav-b637a278.c": {
+      "sha256": "63670643115e4b7a3f4269f41377ed7ffcbeac7a120b1c8006fd982bd95a413f",
+      "role": "supported detector membership/levels and pinned reference semantics"
+    },
+    "imports/reference-docs/cfru-overworld-b637a278.c": {
+      "sha256": "6b7e1e9907aedf500f807dfbfb56d540a39f5c0d056ecdbc095d877820d61652",
+      "role": "supported detector membership/levels and pinned reference semantics"
+    },
+    "imports/reference-docs/unbound-supported-time-tables.json": {
+      "sha256": "16abbd0cee45ed03fdc6b59f2ac1f755bc0d235e3dc1b655036d5a4ea3b43a9a",
+      "role": "supported ordinary time-pool and method-routing evidence"
+    },
+    "imports/reference-docs/unbound-supported-time-routing.json": {
+      "sha256": "d5bb1efbb0e48710d4f0020d3cb47728cd77ce4c74388faafaf0a07ee91aee0b",
+      "role": "supported ordinary time-pool and method-routing evidence"
+    },
+    "imports/reference-docs/unbound-supported-unown-letters.json": {
+      "sha256": "8224a65c5c050e90016002cab29902d582dbe8d63fa1fb50577b1530b3f4cb83",
+      "role": "supported Unown physical-slot letter selection"
+    },
+    "imports/reference-docs/unbound-distortion-reference-evidence.json": {
+      "sha256": "df4dd9c680f09c357e377d190d5e12af11f172028fd16fe4db058b4c43c50b2d",
+      "role": "supported Distortion World ambient tables and non-encounter terrain"
+    },
+    "imports/reference-docs/unbound-acquisitions-user-20260919.xlsx": {
+      "sha256": "d9bf398e7deee3bb85ca85846a7d55972c469cfb49c762fc9dce9e9499aeaecb",
+      "role": "user-authoritative acquisition workbook, explicit clarifications, or documentary verification snapshot"
+    },
+    "imports/reference-docs/unbound-acquisitions-user-20260919.json": {
+      "sha256": "65dc3abfe6b4079f274d2e1296d9db77d76ac4ed97f8fe8c50148d197d395457",
+      "role": "user-authoritative acquisition workbook, explicit clarifications, or documentary verification snapshot"
+    },
+    "imports/reference-docs/unbound-acquisitions-user-clarifications-20260919.json": {
+      "sha256": "4781e7ab00e59cd9a89d00df4a041b42ee76dfa32297ee2cd499c86639f78735",
+      "role": "user-authoritative acquisition workbook, explicit clarifications, or documentary verification snapshot"
+    },
+    "imports/reference-docs/unbound-acquisition-wiki-20260919.json": {
+      "sha256": "b6d5c0d65f89d1808b40336accdb336970ac6d5d0d8a2b34693a0aba6771f06c",
+      "role": "user-authoritative acquisition workbook, explicit clarifications, or documentary verification snapshot"
+    },
+    "imports/reference-docs/unbound-acquisition-level-evidence.json": {
+      "sha256": "5be6f845f7d70d4c71c830755c37e3d745f3b0090472678ff21631e0e52bba10",
+      "role": "user-authoritative acquisition workbook, explicit clarifications, or documentary verification snapshot"
+    },
+    "imports/reference-docs/unbound-wiki-authority-20260919.json": {
+      "sha256": "1ac927949993f64ab37675a853375f26bc01b545d7c7547855acdc8d8555cf8f",
+      "role": "user-authoritative acquisition workbook, explicit clarifications, or documentary verification snapshot"
+    },
+    "imports/reference-docs/unbound-additional-location-wiki-20260919.json": {
+      "sha256": "d473e6476b9e37e6d2d2e16313c792a3ee9d3cd04c98a9315b080be5c6da2142",
+      "role": "user-authoritative acquisition workbook, explicit clarifications, or documentary verification snapshot"
+    },
+    "imports/reference-docs/unbound-location-alias-supplement-20260919.json": {
+      "sha256": "f1eb7f584f1882d305df77269d0ede5af7be3997fcc4342546170d0bbb9d8e72",
+      "role": "user-authoritative acquisition workbook, explicit clarifications, or documentary verification snapshot"
+    },
+    "imports/reference-docs/unbound-reconciliation-wiki-20260919.json": {
+      "sha256": "40d647445da570b123761a17395e50713849ecbe6f6c47bdd0fc361a05af0255",
+      "role": "user-authoritative acquisition workbook, explicit clarifications, or documentary verification snapshot"
+    },
+    "imports/reference-docs/unbound-zygarde-levels-20260919.json": {
+      "sha256": "22ae2451136db9664819580891e512cf20e708cb6f3037a378ce3f809577c426",
+      "role": "user-authoritative acquisition workbook, explicit clarifications, or documentary verification snapshot"
+    },
+    "imports/reference-docs/unbound-legendary-identities-20260920.json": {
+      "sha256": "53a7a2851c03d837022e74a81236d24dbcdf4a4ffd084035cf5b9ebefb21bb00",
+      "role": "user-authoritative acquisition workbook, explicit clarifications, or documentary verification snapshot"
+    },
+    "imports/reference-docs/unbound-211-walkthrough-20260919.txt": {
+      "sha256": "377ae8d0b8d4f66e562aed2c08bba5ca4e45820179b99f0bb5f4fd367690ced0",
+      "role": "user-authoritative acquisition workbook, explicit clarifications, or documentary verification snapshot"
+    },
+    "imports/reference-docs/unbound-acquisition-decisions-20260920.json": {
+      "sha256": "bdc744fe1d336a1e88479d83005c73ca34371dde689c0fb7dcf09aaca8a14928",
+      "role": "user-authoritative acquisition workbook, explicit clarifications, or documentary verification snapshot"
+    },
+    "imports/reference-docs/unbound-211-walkthrough-20260919.json": {
+      "sha256": "941e878eda18dc16321a98daa74e40ce959cb8c112a22c8498687fae622c7a25",
+      "role": "user-authoritative acquisition workbook, explicit clarifications, or documentary verification snapshot"
+    },
+    "imports/reference-docs/unbound-cootes-uncatchable-evidence.json": {
+      "sha256": "333c763c59fc57d798946d033af48db755bab4a4f76614545a9023e6b1182821",
+      "role": "user-authoritative acquisition workbook, explicit clarifications, or documentary verification snapshot"
     }
   },
   "calculationReference": {
@@ -187,7 +315,18 @@
     "source_verification_report.json",
     "consumer_projection.json",
     "trainer_ai_evidence.json",
-    "starter_selection.json"
+    "starter_selection.json",
+    "encounter_weight_verification.json",
+    "encounter_mechanics.json",
+    "raid_profile_verification.json",
+    "swarm_profile_verification.json",
+    "wild_profile_verification.json",
+    "detector_verification.json",
+    "encounter_time_verification.json",
+    "encounter_form_verification.json",
+    "encounter_reference_classification.json",
+    "raid_encounter_projection.json",
+    "acquisition_verification.json"
   ],
   "builders": {
     "build": "node ..\\tools\\standardize_unbound.js",
@@ -201,7 +340,23 @@
     "validation": "node ..\\tools\\validate_standardized_dataset.js --game pokemon-unbound",
     "mechanicsAuthorityValidation": "node .\\source-data\\verify_unbound_mechanics_authority.js --rom <approved-supported-rom> --cfru <pinned-cfru-checkout> --dpe <pinned-dpe-checkout>",
     "starterSelectionBuild": "node ../tools/build_starter_selection.js --write",
-    "starterSelectionCheck": "node ../tools/build_starter_selection.js --check"
+    "starterSelectionCheck": "node ../tools/build_starter_selection.js --check",
+    "encounterWeightsBuild": "node ../tools/unbound_wild_weights.js --write",
+    "encounterWeightsCheck": "node ../tools/unbound_wild_weights.js --check",
+    "raidProfileBuild": "node ../tools/unbound_raid_profiles.js --write",
+    "raidProfileCheck": "node ../tools/unbound_raid_profiles.js --check",
+    "physicalWildCheck": "node ../tools/unbound_physical_wild_profiles.js --check",
+    "detectorCheck": "node ../tools/unbound_detector_profile.js --check",
+    "encounterTimeBuild": "node ../tools/unbound_time_encounters.js --write",
+    "encounterTimeCheck": "node ../tools/unbound_time_encounters.js --check",
+    "encounterFormsBuild": "node ../tools/unbound_unown_encounters.js --write",
+    "encounterFormsCheck": "node ../tools/unbound_unown_encounters.js --check",
+    "encounterReferenceBuild": "node ../tools/unbound_distortion_references.js --write",
+    "encounterReferenceCheck": "node ../tools/unbound_distortion_references.js --check",
+    "raidProjectionBuild": "node ../tools/unbound_raid_projection.js --write",
+    "raidProjectionCheck": "node ../tools/unbound_raid_projection.js --check",
+    "acquisitionCheck": "node ../tools/unbound_user_acquisitions.js --check",
+    "acquisitionWorkbookCheck": "python ../tools/import_unbound_user_acquisitions.py --check"
   },
   "categoryApplicability": {
     "species": {

@@ -1328,7 +1328,43 @@
         "landorustherian": 645,
         "kyuremblack": 646,
         "keldeoresolute": 647,
-        "meloettapirouette": 648
+        "meloettapirouette": 648,
+        "unownb": 201,
+        "unownc": 201,
+        "unownd": 201,
+        "unowne": 201,
+        "unownf": 201,
+        "unowng": 201,
+        "unownh": 201,
+        "unowni": 201,
+        "unownj": 201,
+        "unownk": 201,
+        "unownl": 201,
+        "unownm": 201,
+        "unownn": 201,
+        "unowno": 201,
+        "unownp": 201,
+        "unownq": 201,
+        "unownr": 201,
+        "unowns": 201,
+        "unownt": 201,
+        "unownu": 201,
+        "unownv": 201,
+        "unownw": 201,
+        "unownx": 201,
+        "unowny": 201,
+        "unownz": 201,
+        "unownexclamation": 201,
+        "unownquestion": 201,
+        "cherrimsunshine": 421,
+        "shelloseast": 422,
+        "gastrodoneast": 423,
+        "deerlingsummer": 585,
+        "deerlingautumn": 585,
+        "deerlingwinter": 585,
+        "sawsbucksummer": 586,
+        "sawsbuckautumn": 586,
+        "sawsbuckwinter": 586
       },
       "byNumericIdAndForm": {
         "1": {
@@ -1932,7 +1968,34 @@
           "0": "misdreavus"
         },
         "201": {
-          "0": "unown"
+          "0": "unown",
+          "1": "unownb",
+          "2": "unownc",
+          "3": "unownd",
+          "4": "unowne",
+          "5": "unownf",
+          "6": "unowng",
+          "7": "unownh",
+          "8": "unowni",
+          "9": "unownj",
+          "10": "unownk",
+          "11": "unownl",
+          "12": "unownm",
+          "13": "unownn",
+          "14": "unowno",
+          "15": "unownp",
+          "16": "unownq",
+          "17": "unownr",
+          "18": "unowns",
+          "19": "unownt",
+          "20": "unownu",
+          "21": "unownv",
+          "22": "unownw",
+          "23": "unownx",
+          "24": "unowny",
+          "25": "unownz",
+          "26": "unownexclamation",
+          "27": "unownquestion"
         },
         "202": {
           "0": "wobbuffet"
@@ -2600,13 +2663,16 @@
           "0": "cherubi"
         },
         "421": {
-          "0": "cherrim"
+          "0": "cherrim",
+          "1": "cherrimsunshine"
         },
         "422": {
-          "0": "shellos"
+          "0": "shellos",
+          "1": "shelloseast"
         },
         "423": {
-          "0": "gastrodon"
+          "0": "gastrodon",
+          "1": "gastrodoneast"
         },
         "424": {
           "0": "ambipom"
@@ -3101,10 +3167,16 @@
           "0": "vanilluxe"
         },
         "585": {
-          "0": "deerling"
+          "0": "deerling",
+          "1": "deerlingsummer",
+          "2": "deerlingautumn",
+          "3": "deerlingwinter"
         },
         "586": {
-          "0": "sawsbuck"
+          "0": "sawsbuck",
+          "1": "sawsbucksummer",
+          "2": "sawsbuckautumn",
+          "3": "sawsbuckwinter"
         },
         "587": {
           "0": "emolga"

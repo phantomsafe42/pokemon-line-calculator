@@ -1271,6 +1271,191 @@
         },
         {
           "category": "trainers",
+          "recordId": "pokemon-unbound-trainer-0535",
+          "field": "legacy-set-identity",
+          "legacyValue": [
+            {
+              "key": "Lvl 53 Light of Ruin Grunt & Grunt |Crystal Peak| ",
+              "projection": {
+                "ivs": {
+                  "hp": 0,
+                  "at": 0,
+                  "df": 0,
+                  "sa": 0,
+                  "sd": 0,
+                  "sp": 0
+                },
+                "evs": null,
+                "hasItem": true,
+                "hasIvs": true,
+                "hasEvs": false,
+                "trainerId": 58,
+                "subIndex": 0,
+                "aiMask": 0,
+                "battleType": "Singles",
+                "rewardItem": "",
+                "form": "",
+                "location": "Crystal Peak",
+                "spriteId": null,
+                "orientation": null,
+                "hasGender": true
+              }
+            }
+          ],
+          "referenceValue": [
+            {
+              "projection": {
+                "ivs": {
+                  "hp": 0,
+                  "at": 0,
+                  "df": 0,
+                  "sa": 0,
+                  "sd": 0,
+                  "sp": 0
+                },
+                "evs": null,
+                "hasItem": true,
+                "hasIvs": true,
+                "hasEvs": false,
+                "trainerId": 535,
+                "subIndex": 0,
+                "aiMask": 0,
+                "battleType": "Doubles",
+                "rewardItem": "",
+                "form": "",
+                "location": "Crystal Peak",
+                "spriteId": null,
+                "orientation": null,
+                "hasGender": true
+              }
+            }
+          ],
+          "authority": "explicit owned-party partition and canonical consumer trainer/slot identity",
+          "resolutionStatus": "resolved",
+          "resolution": "distinct-partition-owner-not-navigation-shell",
+          "confidence": "verified"
+        },
+        {
+          "category": "trainers",
+          "recordId": "pokemon-unbound-trainer-0536",
+          "field": "legacy-set-identity",
+          "legacyValue": [
+            {
+              "key": "Lvl 53 Light of Ruin Grunt & Grunt |Crystal Peak| ",
+              "projection": {
+                "ivs": {
+                  "hp": 0,
+                  "at": 0,
+                  "df": 0,
+                  "sa": 0,
+                  "sd": 0,
+                  "sp": 0
+                },
+                "evs": null,
+                "hasItem": true,
+                "hasIvs": true,
+                "hasEvs": false,
+                "trainerId": 58,
+                "subIndex": 1,
+                "aiMask": 0,
+                "battleType": "Singles",
+                "rewardItem": "",
+                "form": "",
+                "location": "Crystal Peak",
+                "spriteId": null,
+                "orientation": null,
+                "hasGender": true
+              }
+            },
+            {
+              "key": "Lvl 54 Light of Ruin Grunt & Grunt |Crystal Peak| ",
+              "projection": {
+                "ivs": {
+                  "hp": 0,
+                  "at": 0,
+                  "df": 0,
+                  "sa": 0,
+                  "sd": 0,
+                  "sp": 0
+                },
+                "evs": null,
+                "hasItem": true,
+                "hasIvs": true,
+                "hasEvs": false,
+                "trainerId": 58,
+                "subIndex": 2,
+                "aiMask": 0,
+                "battleType": "Singles",
+                "rewardItem": "",
+                "form": "",
+                "location": "Crystal Peak",
+                "spriteId": null,
+                "orientation": null,
+                "hasGender": true
+              }
+            }
+          ],
+          "referenceValue": [
+            {
+              "projection": {
+                "ivs": {
+                  "hp": 0,
+                  "at": 0,
+                  "df": 0,
+                  "sa": 0,
+                  "sd": 0,
+                  "sp": 0
+                },
+                "evs": null,
+                "hasItem": true,
+                "hasIvs": true,
+                "hasEvs": false,
+                "trainerId": 536,
+                "subIndex": 0,
+                "aiMask": 0,
+                "battleType": "Doubles",
+                "rewardItem": "",
+                "form": "",
+                "location": "Crystal Peak",
+                "spriteId": null,
+                "orientation": null,
+                "hasGender": true
+              }
+            },
+            {
+              "projection": {
+                "ivs": {
+                  "hp": 0,
+                  "at": 0,
+                  "df": 0,
+                  "sa": 0,
+                  "sd": 0,
+                  "sp": 0
+                },
+                "evs": null,
+                "hasItem": true,
+                "hasIvs": true,
+                "hasEvs": false,
+                "trainerId": 536,
+                "subIndex": 1,
+                "aiMask": 0,
+                "battleType": "Doubles",
+                "rewardItem": "",
+                "form": "",
+                "location": "Crystal Peak",
+                "spriteId": null,
+                "orientation": null,
+                "hasGender": true
+              }
+            }
+          ],
+          "authority": "explicit owned-party partition and canonical consumer trainer/slot identity",
+          "resolutionStatus": "resolved",
+          "resolution": "distinct-partition-owner-not-navigation-shell",
+          "confidence": "verified"
+        },
+        {
+          "category": "trainers",
           "recordId": "pokemon-unbound-trainer-0058",
           "field": "party-ownership",
           "legacyValue": "merged-workbook-party",
@@ -1281,6 +1466,244 @@
           "authority": "ROM 7aa25bbf568f7cfcf6ee1cf2e9e6ff637350b3d0705c2375cabb6baa7d9739f7; trainer IDs 620,621",
           "resolutionStatus": "resolved",
           "resolution": "exact-ordered-ROM-party-partition",
+          "confidence": "verified"
+        },
+        {
+          "category": "trainers",
+          "recordId": "pokemon-unbound-trainer-0537",
+          "field": "legacy-set-identity",
+          "legacyValue": [
+            {
+              "key": "Lvl 53 Light of Ruin Grunt & Grunt |Crystal Peak| #2 ",
+              "projection": {
+                "ivs": {
+                  "hp": 0,
+                  "at": 0,
+                  "df": 0,
+                  "sa": 0,
+                  "sd": 0,
+                  "sp": 0
+                },
+                "evs": null,
+                "hasItem": true,
+                "hasIvs": true,
+                "hasEvs": false,
+                "trainerId": 59,
+                "subIndex": 0,
+                "aiMask": 0,
+                "battleType": "Singles",
+                "rewardItem": "",
+                "form": "",
+                "location": "Crystal Peak",
+                "spriteId": null,
+                "orientation": null,
+                "hasGender": true
+              }
+            },
+            {
+              "key": "Lvl 54 Light of Ruin Grunt & Grunt |Crystal Peak| #2 ",
+              "projection": {
+                "ivs": {
+                  "hp": 0,
+                  "at": 0,
+                  "df": 0,
+                  "sa": 0,
+                  "sd": 0,
+                  "sp": 0
+                },
+                "evs": null,
+                "hasItem": true,
+                "hasIvs": true,
+                "hasEvs": false,
+                "trainerId": 59,
+                "subIndex": 1,
+                "aiMask": 0,
+                "battleType": "Singles",
+                "rewardItem": "",
+                "form": "",
+                "location": "Crystal Peak",
+                "spriteId": null,
+                "orientation": null,
+                "hasGender": true
+              }
+            }
+          ],
+          "referenceValue": [
+            {
+              "projection": {
+                "ivs": {
+                  "hp": 0,
+                  "at": 0,
+                  "df": 0,
+                  "sa": 0,
+                  "sd": 0,
+                  "sp": 0
+                },
+                "evs": null,
+                "hasItem": true,
+                "hasIvs": true,
+                "hasEvs": false,
+                "trainerId": 537,
+                "subIndex": 0,
+                "aiMask": 0,
+                "battleType": "Doubles",
+                "rewardItem": "",
+                "form": "",
+                "location": "Crystal Peak",
+                "spriteId": null,
+                "orientation": null,
+                "hasGender": true
+              }
+            },
+            {
+              "projection": {
+                "ivs": {
+                  "hp": 0,
+                  "at": 0,
+                  "df": 0,
+                  "sa": 0,
+                  "sd": 0,
+                  "sp": 0
+                },
+                "evs": null,
+                "hasItem": true,
+                "hasIvs": true,
+                "hasEvs": false,
+                "trainerId": 537,
+                "subIndex": 1,
+                "aiMask": 0,
+                "battleType": "Doubles",
+                "rewardItem": "",
+                "form": "",
+                "location": "Crystal Peak",
+                "spriteId": null,
+                "orientation": null,
+                "hasGender": true
+              }
+            }
+          ],
+          "authority": "explicit owned-party partition and canonical consumer trainer/slot identity",
+          "resolutionStatus": "resolved",
+          "resolution": "distinct-partition-owner-not-navigation-shell",
+          "confidence": "verified"
+        },
+        {
+          "category": "trainers",
+          "recordId": "pokemon-unbound-trainer-0538",
+          "field": "legacy-set-identity",
+          "legacyValue": [
+            {
+              "key": "Lvl 54 Light of Ruin Grunt & Grunt |Crystal Peak| #2 ",
+              "projection": {
+                "ivs": {
+                  "hp": 0,
+                  "at": 0,
+                  "df": 0,
+                  "sa": 0,
+                  "sd": 0,
+                  "sp": 0
+                },
+                "evs": null,
+                "hasItem": true,
+                "hasIvs": true,
+                "hasEvs": false,
+                "trainerId": 59,
+                "subIndex": 2,
+                "aiMask": 0,
+                "battleType": "Singles",
+                "rewardItem": "",
+                "form": "",
+                "location": "Crystal Peak",
+                "spriteId": null,
+                "orientation": null,
+                "hasGender": true
+              }
+            },
+            {
+              "key": "Lvl 54 Light of Ruin Grunt & Grunt |Crystal Peak| #2 ",
+              "projection": {
+                "ivs": {
+                  "hp": 0,
+                  "at": 0,
+                  "df": 0,
+                  "sa": 0,
+                  "sd": 0,
+                  "sp": 0
+                },
+                "evs": null,
+                "hasItem": true,
+                "hasIvs": true,
+                "hasEvs": false,
+                "trainerId": 59,
+                "subIndex": 3,
+                "aiMask": 0,
+                "battleType": "Singles",
+                "rewardItem": "",
+                "form": "",
+                "location": "Crystal Peak",
+                "spriteId": null,
+                "orientation": null,
+                "hasGender": true
+              }
+            }
+          ],
+          "referenceValue": [
+            {
+              "projection": {
+                "ivs": {
+                  "hp": 0,
+                  "at": 0,
+                  "df": 0,
+                  "sa": 0,
+                  "sd": 0,
+                  "sp": 0
+                },
+                "evs": null,
+                "hasItem": true,
+                "hasIvs": true,
+                "hasEvs": false,
+                "trainerId": 538,
+                "subIndex": 0,
+                "aiMask": 0,
+                "battleType": "Doubles",
+                "rewardItem": "",
+                "form": "",
+                "location": "Crystal Peak",
+                "spriteId": null,
+                "orientation": null,
+                "hasGender": true
+              }
+            },
+            {
+              "projection": {
+                "ivs": {
+                  "hp": 0,
+                  "at": 0,
+                  "df": 0,
+                  "sa": 0,
+                  "sd": 0,
+                  "sp": 0
+                },
+                "evs": null,
+                "hasItem": true,
+                "hasIvs": true,
+                "hasEvs": false,
+                "trainerId": 538,
+                "subIndex": 1,
+                "aiMask": 0,
+                "battleType": "Doubles",
+                "rewardItem": "",
+                "form": "",
+                "location": "Crystal Peak",
+                "spriteId": null,
+                "orientation": null,
+                "hasGender": true
+              }
+            }
+          ],
+          "authority": "explicit owned-party partition and canonical consumer trainer/slot identity",
+          "resolutionStatus": "resolved",
+          "resolution": "distinct-partition-owner-not-navigation-shell",
           "confidence": "verified"
         },
         {
@@ -1299,6 +1722,244 @@
         },
         {
           "category": "trainers",
+          "recordId": "pokemon-unbound-trainer-0539",
+          "field": "legacy-set-identity",
+          "legacyValue": [
+            {
+              "key": "Lvl 54 Light of Ruin Grunt & Grunt |Crystal Peak| #3 ",
+              "projection": {
+                "ivs": {
+                  "hp": 0,
+                  "at": 0,
+                  "df": 0,
+                  "sa": 0,
+                  "sd": 0,
+                  "sp": 0
+                },
+                "evs": null,
+                "hasItem": true,
+                "hasIvs": true,
+                "hasEvs": false,
+                "trainerId": 60,
+                "subIndex": 0,
+                "aiMask": 0,
+                "battleType": "Singles",
+                "rewardItem": "",
+                "form": "",
+                "location": "Crystal Peak",
+                "spriteId": null,
+                "orientation": null,
+                "hasGender": true
+              }
+            },
+            {
+              "key": "Lvl 54 Light of Ruin Grunt & Grunt |Crystal Peak| #3 ",
+              "projection": {
+                "ivs": {
+                  "hp": 0,
+                  "at": 0,
+                  "df": 0,
+                  "sa": 0,
+                  "sd": 0,
+                  "sp": 0
+                },
+                "evs": null,
+                "hasItem": true,
+                "hasIvs": true,
+                "hasEvs": false,
+                "trainerId": 60,
+                "subIndex": 1,
+                "aiMask": 0,
+                "battleType": "Singles",
+                "rewardItem": "",
+                "form": "",
+                "location": "Crystal Peak",
+                "spriteId": null,
+                "orientation": null,
+                "hasGender": true
+              }
+            },
+            {
+              "key": "Lvl 55 Light of Ruin Grunt & Grunt |Crystal Peak| #3 ",
+              "projection": {
+                "ivs": {
+                  "hp": 0,
+                  "at": 0,
+                  "df": 0,
+                  "sa": 0,
+                  "sd": 0,
+                  "sp": 0
+                },
+                "evs": null,
+                "hasItem": true,
+                "hasIvs": true,
+                "hasEvs": false,
+                "trainerId": 60,
+                "subIndex": 2,
+                "aiMask": 0,
+                "battleType": "Singles",
+                "rewardItem": "",
+                "form": "",
+                "location": "Crystal Peak",
+                "spriteId": null,
+                "orientation": null,
+                "hasGender": true
+              }
+            }
+          ],
+          "referenceValue": [
+            {
+              "projection": {
+                "ivs": {
+                  "hp": 0,
+                  "at": 0,
+                  "df": 0,
+                  "sa": 0,
+                  "sd": 0,
+                  "sp": 0
+                },
+                "evs": null,
+                "hasItem": true,
+                "hasIvs": true,
+                "hasEvs": false,
+                "trainerId": 539,
+                "subIndex": 0,
+                "aiMask": 0,
+                "battleType": "Doubles",
+                "rewardItem": "",
+                "form": "",
+                "location": "Crystal Peak",
+                "spriteId": null,
+                "orientation": null,
+                "hasGender": true
+              }
+            },
+            {
+              "projection": {
+                "ivs": {
+                  "hp": 0,
+                  "at": 0,
+                  "df": 0,
+                  "sa": 0,
+                  "sd": 0,
+                  "sp": 0
+                },
+                "evs": null,
+                "hasItem": true,
+                "hasIvs": true,
+                "hasEvs": false,
+                "trainerId": 539,
+                "subIndex": 1,
+                "aiMask": 0,
+                "battleType": "Doubles",
+                "rewardItem": "",
+                "form": "",
+                "location": "Crystal Peak",
+                "spriteId": null,
+                "orientation": null,
+                "hasGender": true
+              }
+            },
+            {
+              "projection": {
+                "ivs": {
+                  "hp": 0,
+                  "at": 0,
+                  "df": 0,
+                  "sa": 0,
+                  "sd": 0,
+                  "sp": 0
+                },
+                "evs": null,
+                "hasItem": true,
+                "hasIvs": true,
+                "hasEvs": false,
+                "trainerId": 539,
+                "subIndex": 2,
+                "aiMask": 0,
+                "battleType": "Doubles",
+                "rewardItem": "",
+                "form": "",
+                "location": "Crystal Peak",
+                "spriteId": null,
+                "orientation": null,
+                "hasGender": true
+              }
+            }
+          ],
+          "authority": "explicit owned-party partition and canonical consumer trainer/slot identity",
+          "resolutionStatus": "resolved",
+          "resolution": "distinct-partition-owner-not-navigation-shell",
+          "confidence": "verified"
+        },
+        {
+          "category": "trainers",
+          "recordId": "pokemon-unbound-trainer-0540",
+          "field": "legacy-set-identity",
+          "legacyValue": [
+            {
+              "key": "Lvl 54 Light of Ruin Grunt & Grunt |Crystal Peak| #3 ",
+              "projection": {
+                "ivs": {
+                  "hp": 0,
+                  "at": 0,
+                  "df": 0,
+                  "sa": 0,
+                  "sd": 0,
+                  "sp": 0
+                },
+                "evs": null,
+                "hasItem": true,
+                "hasIvs": true,
+                "hasEvs": false,
+                "trainerId": 60,
+                "subIndex": 3,
+                "aiMask": 0,
+                "battleType": "Singles",
+                "rewardItem": "",
+                "form": "",
+                "location": "Crystal Peak",
+                "spriteId": null,
+                "orientation": null,
+                "hasGender": true
+              }
+            }
+          ],
+          "referenceValue": [
+            {
+              "projection": {
+                "ivs": {
+                  "hp": 0,
+                  "at": 0,
+                  "df": 0,
+                  "sa": 0,
+                  "sd": 0,
+                  "sp": 0
+                },
+                "evs": null,
+                "hasItem": true,
+                "hasIvs": true,
+                "hasEvs": false,
+                "trainerId": 540,
+                "subIndex": 0,
+                "aiMask": 0,
+                "battleType": "Doubles",
+                "rewardItem": "",
+                "form": "",
+                "location": "Crystal Peak",
+                "spriteId": null,
+                "orientation": null,
+                "hasGender": true
+              }
+            }
+          ],
+          "authority": "explicit owned-party partition and canonical consumer trainer/slot identity",
+          "resolutionStatus": "resolved",
+          "resolution": "distinct-partition-owner-not-navigation-shell",
+          "confidence": "verified"
+        },
+        {
+          "category": "trainers",
           "recordId": "pokemon-unbound-trainer-0060",
           "field": "party-ownership",
           "legacyValue": "merged-workbook-party",
@@ -1309,6 +1970,191 @@
           "authority": "ROM 7aa25bbf568f7cfcf6ee1cf2e9e6ff637350b3d0705c2375cabb6baa7d9739f7; trainer IDs 624,625",
           "resolutionStatus": "resolved",
           "resolution": "exact-ordered-ROM-party-partition",
+          "confidence": "verified"
+        },
+        {
+          "category": "trainers",
+          "recordId": "pokemon-unbound-trainer-0541",
+          "field": "legacy-set-identity",
+          "legacyValue": [
+            {
+              "key": "Lvl 55 Light of Ruin Grunt & Grunt |Crystal Peak| #4 ",
+              "projection": {
+                "ivs": {
+                  "hp": 0,
+                  "at": 0,
+                  "df": 0,
+                  "sa": 0,
+                  "sd": 0,
+                  "sp": 0
+                },
+                "evs": null,
+                "hasItem": true,
+                "hasIvs": true,
+                "hasEvs": false,
+                "trainerId": 61,
+                "subIndex": 0,
+                "aiMask": 0,
+                "battleType": "Singles",
+                "rewardItem": "",
+                "form": "",
+                "location": "Crystal Peak",
+                "spriteId": null,
+                "orientation": null,
+                "hasGender": true
+              }
+            }
+          ],
+          "referenceValue": [
+            {
+              "projection": {
+                "ivs": {
+                  "hp": 0,
+                  "at": 0,
+                  "df": 0,
+                  "sa": 0,
+                  "sd": 0,
+                  "sp": 0
+                },
+                "evs": null,
+                "hasItem": true,
+                "hasIvs": true,
+                "hasEvs": false,
+                "trainerId": 541,
+                "subIndex": 0,
+                "aiMask": 0,
+                "battleType": "Doubles",
+                "rewardItem": "",
+                "form": "",
+                "location": "Crystal Peak",
+                "spriteId": null,
+                "orientation": null,
+                "hasGender": true
+              }
+            }
+          ],
+          "authority": "explicit owned-party partition and canonical consumer trainer/slot identity",
+          "resolutionStatus": "resolved",
+          "resolution": "distinct-partition-owner-not-navigation-shell",
+          "confidence": "verified"
+        },
+        {
+          "category": "trainers",
+          "recordId": "pokemon-unbound-trainer-0542",
+          "field": "legacy-set-identity",
+          "legacyValue": [
+            {
+              "key": "Lvl 55 Light of Ruin Grunt & Grunt |Crystal Peak| #4 ",
+              "projection": {
+                "ivs": {
+                  "hp": 0,
+                  "at": 0,
+                  "df": 0,
+                  "sa": 0,
+                  "sd": 0,
+                  "sp": 0
+                },
+                "evs": null,
+                "hasItem": true,
+                "hasIvs": true,
+                "hasEvs": false,
+                "trainerId": 61,
+                "subIndex": 1,
+                "aiMask": 0,
+                "battleType": "Singles",
+                "rewardItem": "",
+                "form": "",
+                "location": "Crystal Peak",
+                "spriteId": null,
+                "orientation": null,
+                "hasGender": true
+              }
+            },
+            {
+              "key": "Lvl 56 Light of Ruin Grunt & Grunt |Crystal Peak| #4 ",
+              "projection": {
+                "ivs": {
+                  "hp": 0,
+                  "at": 0,
+                  "df": 0,
+                  "sa": 0,
+                  "sd": 0,
+                  "sp": 0
+                },
+                "evs": null,
+                "hasItem": true,
+                "hasIvs": true,
+                "hasEvs": false,
+                "trainerId": 61,
+                "subIndex": 2,
+                "aiMask": 0,
+                "battleType": "Singles",
+                "rewardItem": "",
+                "form": "",
+                "location": "Crystal Peak",
+                "spriteId": null,
+                "orientation": null,
+                "hasGender": true
+              }
+            }
+          ],
+          "referenceValue": [
+            {
+              "projection": {
+                "ivs": {
+                  "hp": 0,
+                  "at": 0,
+                  "df": 0,
+                  "sa": 0,
+                  "sd": 0,
+                  "sp": 0
+                },
+                "evs": null,
+                "hasItem": true,
+                "hasIvs": true,
+                "hasEvs": false,
+                "trainerId": 542,
+                "subIndex": 0,
+                "aiMask": 0,
+                "battleType": "Doubles",
+                "rewardItem": "",
+                "form": "",
+                "location": "Crystal Peak",
+                "spriteId": null,
+                "orientation": null,
+                "hasGender": true
+              }
+            },
+            {
+              "projection": {
+                "ivs": {
+                  "hp": 0,
+                  "at": 0,
+                  "df": 0,
+                  "sa": 0,
+                  "sd": 0,
+                  "sp": 0
+                },
+                "evs": null,
+                "hasItem": true,
+                "hasIvs": true,
+                "hasEvs": false,
+                "trainerId": 542,
+                "subIndex": 1,
+                "aiMask": 0,
+                "battleType": "Doubles",
+                "rewardItem": "",
+                "form": "",
+                "location": "Crystal Peak",
+                "spriteId": null,
+                "orientation": null,
+                "hasGender": true
+              }
+            }
+          ],
+          "authority": "explicit owned-party partition and canonical consumer trainer/slot identity",
+          "resolutionStatus": "resolved",
+          "resolution": "distinct-partition-owner-not-navigation-shell",
           "confidence": "verified"
         },
         {

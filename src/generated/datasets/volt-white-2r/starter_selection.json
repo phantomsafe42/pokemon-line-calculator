@@ -667,7 +667,7 @@
     "inputs": [
       {
         "file": "species.json",
-        "sha256": "3d2ff49076297d1171bdd023f9c2b38e5a52a4e149169913307f80939f117401"
+        "sha256": "45452a247840c16b7073c6292d0ce974c6e6233ad97a8c9c441f4865ee15bbbc"
       },
       {
         "file": "trainers.json",

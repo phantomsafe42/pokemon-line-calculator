@@ -2,17 +2,17 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-rp-dataset",
   "source": "Datasets/Renegade Platinum/source-data",
-  "sourceTreeSha256": "99DE12E749E48F47812F01D22B70D8C65F9BA9402EED4BC01C66906A5F2DEC1A",
+  "sourceTreeSha256": "83180E6A77F0CDD87345E2E4F539FBA09D95903DD5C95FCB3A09F66F760DF1F2",
   "files": [
     {
       "path": "dataset_manifest.json",
-      "bytes": 13740,
-      "sha256": "39250FE1A4CB631EC433EFDA33C019A81C753FCEE7653B886CFF9A4A6D86776F"
+      "bytes": 15653,
+      "sha256": "E543953EEC57435E260C398C1236ECE3F1CBAC4F84270D69CF755F44D7E57871"
     },
     {
       "path": "battle_mechanics.json",
       "bytes": 2411,
-      "sha256": "B03E603E93BFE5AE46A29DBC0B319B3ED0D8D990B394BEEE0E7448EFB0C8235C"
+      "sha256": "A8E2779CC8DDE881F28DF2B1DF2E8716381CB14743D53509F9EBD09DF789BA2D"
     },
     {
       "path": "experience_mechanics.json",
@@ -82,7 +82,7 @@
     {
       "path": "starter_selection.json",
       "bytes": 22691,
-      "sha256": "DD10B8550E89ECDFBF744E4B8770ABA48CE4E1D09BA73518BE54FC4D5D22C1DA"
+      "sha256": "E2A6557A52C1BF057A031994AD899124532B59515D2E40AF120E3F5AD213D898"
     }
   ]
 }

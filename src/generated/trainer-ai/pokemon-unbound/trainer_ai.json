@@ -12624,7 +12624,7 @@
       "trainerId": "pokemon-unbound-trainer-0476",
       "consumerTrainerId": 476,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": null,
       "aiFlagIds": [],
       "bagItemIds": [
@@ -12642,7 +12642,7 @@
       "trainerId": "pokemon-unbound-trainer-0477",
       "consumerTrainerId": 477,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": null,
       "aiFlagIds": [],
       "bagItemIds": [
@@ -12660,7 +12660,7 @@
       "trainerId": "pokemon-unbound-trainer-0478",
       "consumerTrainerId": 478,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": null,
       "aiFlagIds": [],
       "bagItemIds": [

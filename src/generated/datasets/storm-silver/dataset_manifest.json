@@ -12,7 +12,125 @@
   "baseGame": "Pokémon HeartGold and SoulSilver",
   "sourceProfile": "heartgold-soulsilver",
   "supportedLanguage": "English",
+  "encounterProjection": {
+    "activeBuild": "pchal-sacred-gold",
+    "evidence": "encounter_import_verification.json",
+    "scope": "version-range-selection-and-explicit-dratini-override-only-author-documented-night-levels-supported-build-rock-smash-and-night-levels-bounded-radio-profile-trade-level-and-loan-classification-exact-gift-levels-and-togepi-location-documented-pchal-random-gift-groups-supported-walking-pools-and-physical-map-bindings-supported-surf-and-old-rod-pools-supported-good-super-rod-and-invalid-night-slots-rooted-chansey-trade-location",
+    "completenessStatus": "partial"
+  },
   "buildInputs": {
+    "source-data/imports/reference-docs/pchal-sacred-gold-outbreak-evidence.json": {
+      "sha256": "b733010eb8ba41fc55ea3805bdb58e718da2c3c082f362ffbeebef54a0dba095",
+      "role": "supported outbreak schedule and executed replacement evidence"
+    },
+    "source-data/imports/reference-docs/pchal-sacred-gold-special-wild-evidence.json": {
+      "sha256": "d2ca075152f61e1112626e8f63987afd87be9c8d426c754e74cf2ced692bf6ff",
+      "role": "supported special-wild archive, engine and field-level retail inheritance evidence"
+    },
+    "source-data/imports/reference-docs/Drayano_Wild_Pokemon_wordpress.html": {
+      "sha256": "a8822125484499a027c136a04e994745bf3953231db35f657975379e64a61426",
+      "role": "bounded Sacred Gold encounter/acquisition reconciliation; immutable documentary or exact supported-build evidence"
+    },
+    "source-data/imports/reference-docs/pchal-sacred-gold-encounter-evidence.json": {
+      "sha256": "de1bf8c519b1188b08e396bbbe47f253e24d65db08fd0284ccabdf0e79c82215",
+      "role": "bounded Sacred Gold encounter/acquisition reconciliation; immutable documentary or exact supported-build evidence"
+    },
+    "source-data/imports/reference-docs/pret-hgss-0985e871-gs_enc_data.json": {
+      "sha256": "ae0895407231448bbf12be33480e534e5ca812d9f172ffd0b0918c29070f4ab1",
+      "role": "bounded Sacred Gold encounter/acquisition reconciliation; immutable documentary or exact supported-build evidence"
+    },
+    "../tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/include/wild_encounter.h": {
+      "sha256": "0ce619f1ea472f0a3cc241ebd6d4fbeeb4626e4bf67e51500893c5d7a3a27467",
+      "role": "bounded Sacred Gold encounter/acquisition reconciliation; immutable documentary or exact supported-build evidence"
+    },
+    "../tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/src/field/encounter_check.c": {
+      "sha256": "97169189b96ee71ca3f2c3db94631db78736270aa087134cdd75ee3ddbd84bd2",
+      "role": "bounded Sacred Gold encounter/acquisition reconciliation; immutable documentary or exact supported-build evidence"
+    },
+    "../tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/src/data/map_headers.h": {
+      "sha256": "8d5f2786ee8be001fb5a3effd7e3d3c769a46ae1beba6b132b5a95e8f2457fdd",
+      "role": "bounded Sacred Gold encounter/acquisition reconciliation; immutable documentary or exact supported-build evidence"
+    },
+    "source-data/imports/reference-docs/pchal-sacred-gold-trade-evidence.json": {
+      "sha256": "312112f599f7fd4c6236c25e0db66a1ef4b9d11301e592d7af2b11c505bf24ed",
+      "role": "bounded Sacred Gold encounter/acquisition reconciliation; immutable documentary or exact supported-build evidence"
+    },
+    "SS_Encounters.xlsx": {
+      "sha256": "05b91f14ae5fb00698ed0d3a06c7ac060e979c6624fcc51245ee7ff499c1c5d5",
+      "role": "immutable game-specific reference"
+    },
+    "source-data/imports/reference-docs/pret-hgss-0985e871-npc_trade.c": {
+      "sha256": "2ff070ec4455b575ec1d2050e673d0ad7e7ba85a4b1ba423c0a392e057e82b3a",
+      "role": "bounded Sacred Gold encounter/acquisition reconciliation; immutable documentary or exact supported-build evidence"
+    },
+    "source-data/imports/reference-docs/pret-hgss-0985e871-npc_trade.h": {
+      "sha256": "60fdaaefa219e7c22034b9854e1c560b6fbf490d66fd9965dd1efbf5107c9dd5",
+      "role": "bounded Sacred Gold encounter/acquisition reconciliation; immutable documentary or exact supported-build evidence"
+    },
+    "source-data/imports/reference-docs/pret-hgss-0985e871-npc_trade_constants.h": {
+      "sha256": "061d09a3293045cb81188808cf4215fd60971d01bb21c6e0f8ff023c72627d9e",
+      "role": "bounded Sacred Gold encounter/acquisition reconciliation; immutable documentary or exact supported-build evidence"
+    },
+    "source-data/imports/reference-docs/pchal-sacred-gold-gift-evidence.json": {
+      "sha256": "b04ec53687a96da87206d6a26fb95bf1625d9d5ef82301f71892dc6143f3e01e",
+      "role": "bounded Sacred Gold encounter/acquisition reconciliation; immutable documentary or exact supported-build evidence"
+    },
+    "source-data/imports/reference-docs/pret-hgss-0985e871-scrcmd.json": {
+      "sha256": "fbfbf438104cfc3735c3144730ed711bb882fca370a8de680db5c1d39ffaca5a",
+      "role": "bounded Sacred Gold encounter/acquisition reconciliation; immutable documentary or exact supported-build evidence"
+    },
+    "source-data/imports/reference-docs/pret-hgss-0985e871-scrcmd_party.c": {
+      "sha256": "0bbb953f337c5d600d96c946d1dcbb6d70c608f115b105c24868f8aa5a0c1c4c",
+      "role": "bounded Sacred Gold encounter/acquisition reconciliation; immutable documentary or exact supported-build evidence"
+    },
+    "source-data/imports/reference-docs/pret-hgss-0985e871-script_pokemon_util.c": {
+      "sha256": "96eac8702a223ee35a5341bc5228972e0651323a3422f539664e4c1697978aae",
+      "role": "bounded Sacred Gold encounter/acquisition reconciliation; immutable documentary or exact supported-build evidence"
+    },
+    "source-data/imports/reference-docs/pret-hgss-0985e871-get_egg.c": {
+      "sha256": "65f7bc5bb30aedea2260cdbc6a80af99da4d5f34f0681828dfd355b4d8bd08b2",
+      "role": "bounded Sacred Gold encounter/acquisition reconciliation; immutable documentary or exact supported-build evidence"
+    },
+    "source-data/imports/reference-docs/pret-hgss-0985e871-scrcmd_pokemon_misc.c": {
+      "sha256": "daa96a99436821c7b7330374423e7a34d7772cfb98dd421319af1cd3a15e3cd3",
+      "role": "bounded Sacred Gold encounter/acquisition reconciliation; immutable documentary or exact supported-build evidence"
+    },
+    "source-data/imports/reference-docs/pret-hgss-0985e871-map_header.h": {
+      "sha256": "326f080515450519b49bf2b62b3cfba86490a63b305d712cba3d3a4b36ac1074",
+      "role": "bounded Sacred Gold encounter/acquisition reconciliation; immutable documentary or exact supported-build evidence"
+    },
+    "source-data/imports/reference-docs/pret-hgss-0985e871-maps.h": {
+      "sha256": "9ebf1f2f6110af509b830cc33f271d4b5d257f309212345a6bb4557321634adb",
+      "role": "bounded Sacred Gold encounter/acquisition reconciliation; immutable documentary or exact supported-build evidence"
+    },
+    "source-data/imports/reference-docs/pret-hgss-0985e871-script_cmd_table.h": {
+      "sha256": "62104e12b64cd52a089c257c21d438b306c4cc72e126d01ecfe1aa124b34d9a8",
+      "role": "bounded Sacred Gold encounter/acquisition reconciliation; immutable documentary or exact supported-build evidence"
+    },
+    "source-data/imports/reference-docs/pchal-sacred-gold-random-gift-evidence.json": {
+      "sha256": "fd0c4d78c23f75d1a56377a5998d17754eaeb9a366bda2b157e39b2ee248c684",
+      "role": "bounded Sacred Gold encounter/acquisition reconciliation; immutable documentary or exact supported-build evidence"
+    },
+    "source-data/imports/reference-docs/PChal_README.md": {
+      "sha256": "553ff99e72a4ec8310460c8394022c063bfe2cb463794ca93c8bad54c6821e8c",
+      "role": "immutable game-specific reference"
+    },
+    "source-data/imports/reference-docs/pchal-sacred-gold-map-bindings.json": {
+      "sha256": "80079f20f84a7d1e750dd163a78167c64f5c47b285e3b195fccbdf9b5b0b63aa",
+      "role": "bounded Sacred Gold encounter/acquisition reconciliation; immutable documentary or exact supported-build evidence"
+    },
+    "source-data/imports/reference-docs/pchal-sacred-gold-water-evidence.json": {
+      "sha256": "36b4eb635a997257dfa79865989e2baaea9e316591c1a107785c6aeac45e132c",
+      "role": "bounded Sacred Gold encounter/acquisition reconciliation; immutable documentary or exact supported-build evidence"
+    },
+    "source-data/imports/reference-docs/pchal-sacred-gold-night-fishing-evidence.json": {
+      "sha256": "0b329ec88e6c4b64f99aaaebc5f048185ad0bb71bdbda886e699ad7675bd5abf",
+      "role": "bounded Sacred Gold encounter/acquisition reconciliation; immutable documentary or exact supported-build evidence"
+    },
+    "source-data/imports/reference-docs/pchal-sacred-gold-chansey-location.json": {
+      "sha256": "016c1e6bf24016265bf51c0abde5fd5c8961a4e4a1072596c8ee2c55f4ff012f",
+      "role": "bounded Sacred Gold encounter/acquisition reconciliation; immutable documentary or exact supported-build evidence"
+    },
     "SS_Stats_Learnsets.xlsx": {
       "sha256": "89b2cf911d2152b60442978a632dd9543cabf9c3559c4a7e95ce83302358fc34",
       "role": "immutable game-specific reference"
@@ -21,20 +139,12 @@
       "sha256": "77c06ffa350f1446f8765f2dbcb226cbd5b5b8de54e0c491595d846404783767",
       "role": "immutable game-specific reference"
     },
-    "SS_Encounters.xlsx": {
-      "sha256": "05b91f14ae5fb00698ed0d3a06c7ac060e979c6624fcc51245ee7ff499c1c5d5",
-      "role": "immutable game-specific reference"
-    },
     "source-data/imports/reference-docs/SSSG ForumPostWithMoreInfo.txt": {
       "sha256": "c54d117a2f09d2c11a1f3f7329225e2871ccbb4f6de3b77d0166282ab1be886e",
       "role": "immutable game-specific reference"
     },
     "source-data/imports/reference-docs/SSSG README.txt": {
       "sha256": "d719cfd93e9f1f311a20dd9ad45152a43ed95262bd448df60229111986d7905c",
-      "role": "immutable game-specific reference"
-    },
-    "source-data/imports/reference-docs/PChal_README.md": {
-      "sha256": "553ff99e72a4ec8310460c8394022c063bfe2cb463794ca93c8bad54c6821e8c",
       "role": "immutable game-specific reference"
     },
     "imports/legacy-consumers/legacy_consumer_manifest.json": {
@@ -97,7 +207,7 @@
     "trainerInitialState": {
       "required": true,
       "sourceModule": "../../tools/gen4_priority_trainer_state.js",
-      "sourceModuleSha256": "3e7dc96a6820323b6fcb1f52976e4c948e16d1665a1ffb0911a3b43453d16593",
+      "sourceModuleSha256": "1f4cd735338e649ea0ea4badd77c446b3d34e87f21f199c1724e1f47b666d82c",
       "source": "imports/trainer-ai/sssg-pchal/hgss-trainer-constructor.json",
       "matchedTrainers": 737,
       "fields": [
@@ -153,9 +263,11 @@
     "trainer_ai.json"
   ],
   "extensions": [
+    "encounter_mechanics.json",
     "source_verification_report.json",
     "consumer_projection.json",
     "trainer_reconciliation_report.json",
+    "encounter_import_verification.json",
     "species_ability_slots.json",
     "trainer_documentation.json",
     "trainer_ai_evidence.json",
@@ -170,6 +282,7 @@
   "builders": {
     "build": "node ..\\tools\\standardize_legacy_game.js storm-silver",
     "deterministicCheck": "node ..\\tools\\standardize_legacy_game.js storm-silver --check",
+    "encounterImportValidation": "node ..\\tools\\run_python.mjs ..\\tools\\test_storm_silver_encounter_import.py",
     "trainerDocumentationBuild": "python ..\\tools\\build_drayano_trainer_documentation.py storm-silver",
     "trainerDocumentationDeterministicCheck": "python ..\\tools\\build_drayano_trainer_documentation.py storm-silver --check",
     "speciesAbilityBuild": "python ..\\tools\\build_drayano_species_abilities.py --game storm-silver --rom <approved-local-final-rom>",
@@ -183,7 +296,9 @@
     "consumerDeterministicCheck": "node ..\\tools\\build_standardized_consumers.js --game storm-silver --check",
     "validation": "node ..\\tools\\validate_standardized_dataset.js --game storm-silver",
     "starterSelectionBuild": "node ../tools/build_starter_selection.js --write",
-    "starterSelectionCheck": "node ../tools/build_starter_selection.js --check"
+    "starterSelectionCheck": "node ../tools/build_starter_selection.js --check",
+    "physicalWildCheck": "node --test tools/test_sacred_gold_physical_wild.js && node tools/run_python.mjs tools/test_sacred_gold_physical_wild.py",
+    "specialWildCheck": "node --test tools/test_sacred_gold_special_wild.js && node tools/run_python.mjs tools/test_sacred_gold_special_wild.py"
   },
   "categoryApplicability": {
     "species": {

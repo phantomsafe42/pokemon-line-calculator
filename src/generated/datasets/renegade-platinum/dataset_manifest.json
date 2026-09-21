@@ -12,7 +12,37 @@
   "baseGame": "Pokémon Platinum",
   "sourceProfile": "platinum",
   "supportedLanguage": "English",
+  "encounterProjection": {
+    "activeBuild": "pchal-complete",
+    "evidence": "encounter_import_verification.json",
+    "scope": "explicit-pchal-removals-resort-rods-victory-road-bindings-and-coronet-tunnel-and-exact-build-water-fields-route221-levels-and-rear-room-separation-trade-level-policy-and-random-starter-semantics",
+    "completenessStatus": "partial"
+  },
   "buildInputs": {
+    "source-data/imports/reference-docs/pchal-trade-encounter-evidence.json": {
+      "sha256": "c5ad56af1058b160cf47a4496305144a23a6cdf94f064cbc48a75c40b4254c49",
+      "role": "bounded supported-build trade level policy or explicit PChal random starter semantics"
+    },
+    "source-data/imports/reference-docs/PChal_README.md": {
+      "sha256": "553ff99e72a4ec8310460c8394022c063bfe2cb463794ca93c8bad54c6821e8c",
+      "role": "immutable game-specific reference"
+    },
+    "source-data/imports/reference-docs/pret-platinum-7ebfc44-npc_trade.c": {
+      "sha256": "0d044d98a22b499cb26dc3be43f97821573541a8eb4584ec00d72fd6b35e3646",
+      "role": "bounded supported-build trade level policy or explicit PChal random starter semantics"
+    },
+    "source-data/imports/reference-docs/pret-platinum-7ebfc44-npc_trade.h": {
+      "sha256": "1f6cab3b8cf188c6282da0c9dae56784b96969fdddac4b844934591a9f06bb0f",
+      "role": "bounded supported-build trade level policy or explicit PChal random starter semantics"
+    },
+    "source-data/imports/reference-docs/pchal-water-encounter-evidence.json": {
+      "sha256": "9db69d075b3e35bbb1192732ec72f35fb2d13ba1ac3659cd7e6cdfcebbec778c",
+      "role": "supported final-build water tables and 400 CPU-verified slot-selector buckets; scoped documented location bindings"
+    },
+    "source-data/imports/pinned/platinum-renegade-wiki-8125b60.zip": {
+      "sha256": "0c1962833e7dd30bef8da5321a5793eee856d2f27a7b1726b1ef0adec74abdb8",
+      "role": "pinned supplemental encounter documentation; Resort Area rod coverage corroborates the Mastersheet"
+    },
     "RP_Trainer_Battles.xlsx": {
       "sha256": "debf709ca9584f8176cd114b34d3e4a16f471abcc681412e3c307f41108967ea",
       "role": "immutable game-specific reference"
@@ -35,10 +65,6 @@
     },
     "source-data/imports/reference-docs/RenPlat Changelog_v2.txt": {
       "sha256": "35e660bda243f1ae30b7392606b0c164cbe1c19b73ed61902bbaf8726a9832d6",
-      "role": "immutable game-specific reference"
-    },
-    "source-data/imports/reference-docs/PChal_README.md": {
-      "sha256": "553ff99e72a4ec8310460c8394022c063bfe2cb463794ca93c8bad54c6821e8c",
       "role": "immutable game-specific reference"
     },
     "imports/legacy-consumers/legacy_consumer_manifest.json": {
@@ -184,6 +210,7 @@
     "source_verification_report.json",
     "consumer_projection.json",
     "trainer_reconciliation_report.json",
+    "encounter_import_verification.json",
     "species_ability_slots.json",
     "trainer_documentation.json",
     "trainer_wiki_evidence.json",
@@ -194,6 +221,7 @@
   "builders": {
     "build": "node ..\\tools\\standardize_legacy_game.js renegade-platinum",
     "deterministicCheck": "node ..\\tools\\standardize_legacy_game.js renegade-platinum --check",
+    "encounterImportValidation": "node --test ..\\tools\\test_renegade_platinum_encounter_corrections.js",
     "trainerDocumentationBuild": "python ..\\tools\\build_drayano_trainer_documentation.py renegade-platinum",
     "trainerDocumentationDeterministicCheck": "python ..\\tools\\build_drayano_trainer_documentation.py renegade-platinum --check",
     "trainerWikiEvidenceBuild": "python ..\\tools\\build_renegade_platinum_wiki_trainers.py",

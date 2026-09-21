@@ -12,7 +12,45 @@
   "baseGame": "Pokémon Platinum",
   "sourceProfile": "platinum",
   "supportedLanguage": "English",
+  "encounterProjection": {
+    "activeBuild": "nightmare-final",
+    "evidence": "encounter_import_verification.json",
+    "scope": "great-marsh-area-3-surf-endpoint-normalization-only-official-fishing-form-egg-honey-pool-reconciliation",
+    "completenessStatus": "partial"
+  },
   "buildInputs": {
+    "source-data/imports/reference-docs/native-pk-encounters-2026-09-19.json": {
+      "sha256": "261309d708c138a18c1723c1af3c479ee1b0cefd62cbfb5fbe0f599aa87ba9f3",
+      "role": "official calculator encounter reference or supported engine inheritance; bounded verified fields are declared by encounter_import_verification.json"
+    },
+    "source-data/imports/official-pkcalc/2026-09-19-encounters/source_manifest.json": {
+      "sha256": "99ad4e2a631bf88ce8155e2edc63196d877c047757d034f05d8f537e71a14b86",
+      "role": "official calculator encounter reference or supported engine inheritance; bounded verified fields are declared by encounter_import_verification.json"
+    },
+    "source-data/imports/official-pkcalc/2026-09-19-encounters/locations.js": {
+      "sha256": "aca10d4898ef86ff9afbf96b10a8693a7e0afef17ba84ae563952472641b3754",
+      "role": "official calculator encounter reference or supported engine inheritance; bounded verified fields are declared by encounter_import_verification.json"
+    },
+    "source-data/imports/official-pkcalc/2026-09-19-encounters/encounter_methods.js": {
+      "sha256": "0d7ac325461449e7f75ec7e378aee72594ca417cafffee20e633d0e66c889a78",
+      "role": "official calculator encounter reference or supported engine inheritance; bounded verified fields are declared by encounter_import_verification.json"
+    },
+    "source-data/imports/official-pkcalc/2026-09-19-encounters/dex-controls.js": {
+      "sha256": "04718df7b2aa6d8f8040c2aa5520676c442ad7d182996797fbb01374e19de962",
+      "role": "official calculator encounter reference or supported engine inheritance; bounded verified fields are declared by encounter_import_verification.json"
+    },
+    "source-data/imports/reference-docs/pk_encounter_range_authority.json": {
+      "sha256": "307558efc4e08e4b8f14e431e1ba6854cb3ff6ebe68254916848aa9a773ffb2b",
+      "role": "bounded supported-ROM Surf range observation and exact retail encounter-engine inheritance"
+    },
+    "source-data/imports/reference-docs/pk_retained_room_authority.json": {
+      "sha256": "aeb93d047e68da59375a8ff62b5bfd33a674862d654d98948a945944ed59c7bb",
+      "role": "official calculator encounter reference or supported engine inheritance; bounded verified fields are declared by encounter_import_verification.json"
+    },
+    "source-data/imports/reference-docs/pk-map-header-layout.h": {
+      "sha256": "30f19790adac0578bd34d787fcfd5ca6955ded9eb1ae75b109793749b4835bdf",
+      "role": "official calculator encounter reference or supported engine inheritance; bounded verified fields are declared by encounter_import_verification.json"
+    },
     "PokemonPersonalData.csv": {
       "sha256": "7ca52d09e1a7ec473157c83908d39557ab84420ebf7e431536dbe3bf104ecc55",
       "role": "immutable game-specific reference"
@@ -108,7 +146,7 @@
     "trainerInitialState": {
       "required": true,
       "sourceModule": "../../tools/gen4_priority_trainer_state.js",
-      "sourceModuleSha256": "3e7dc96a6820323b6fcb1f52976e4c948e16d1665a1ffb0911a3b43453d16593",
+      "sourceModuleSha256": "1f4cd735338e649ea0ea4badd77c446b3d34e87f21f199c1724e1f47b666d82c",
       "source": "imports/trainer-ai/nightmare-final/pk-nightmare-final-trainer-constructor.json",
       "matchedTrainers": 484,
       "fields": [
@@ -164,6 +202,7 @@
     "source_verification_report.json",
     "consumer_projection.json",
     "trainer_reconciliation_report.json",
+    "encounter_import_verification.json",
     "pkcalc_reference_audit.json",
     "trainer_ai_authority_resolution.json",
     "trainer_documentation.json",
@@ -179,6 +218,7 @@
   "builders": {
     "build": "node ..\\tools\\standardize_legacy_game.js platinum-kaizo",
     "deterministicCheck": "node ..\\tools\\standardize_legacy_game.js platinum-kaizo --check",
+    "encounterImportValidation": "node --test ..\\tools\\test_platinum_kaizo_encounter_corrections.js",
     "trainerDocumentationBuild": "python ..\\tools\\build_platinum_kaizo_trainer_documentation.py",
     "trainerDocumentationDeterministicCheck": "python ..\\tools\\build_platinum_kaizo_trainer_documentation.py --check",
     "trainerTableBuild": "python ..\\tools\\build_platinum_kaizo_trainer_table.py",
@@ -192,7 +232,8 @@
     "consumerDeterministicCheck": "node ..\\tools\\build_standardized_consumers.js --game platinum-kaizo --check",
     "validation": "node ..\\tools\\validate_standardized_dataset.js --game platinum-kaizo",
     "starterSelectionBuild": "node ../tools/build_starter_selection.js --write",
-    "starterSelectionCheck": "node ../tools/build_starter_selection.js --check"
+    "starterSelectionCheck": "node ../tools/build_starter_selection.js --check",
+    "officialEncounterCheck": "node tools/acquire_pk_encounter_reference.mjs --check && node --test tools/test_platinum_kaizo_official_encounters.js && node tools/run_python.mjs tools/test_platinum_kaizo_official_encounters.py"
   },
   "categoryApplicability": {
     "species": {
