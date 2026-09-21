@@ -50,9 +50,11 @@ export async function checkBoxTransfers({ page, evaluate, delay, tempRoot }) {
     input.checked = true; input.dispatchEvent(new Event('change'));
     el('box-export-format').value = 'plc'; el('box-export-format').dispatchEvent(new Event('change'));
     const originalClick = HTMLAnchorElement.prototype.click;
+    const originalCreateObjectURL = URL.createObjectURL;
     let captured;
-    HTMLAnchorElement.prototype.click = function() { captured = fetch(this.href).then(response=>response.text()); };
-    try { el('confirm-box-export').click(); } finally { HTMLAnchorElement.prototype.click = originalClick; }
+    URL.createObjectURL = function(blob) { captured = blob.text(); return originalCreateObjectURL.call(this,blob); };
+    HTMLAnchorElement.prototype.click = function() {};
+    try { el('confirm-box-export').click(); } finally { HTMLAnchorElement.prototype.click = originalClick; URL.createObjectURL = originalCreateObjectURL; }
     check(captured, 'PLC download generated');
     const json = await captured;
     const library = JSON.parse(json);
