@@ -10,8 +10,9 @@ test('A saved unchanged line and read-only navigation need no destructive prompt
   assert.equal(savedDraftIsCurrent(saved,plan,editor),true);
   assert.equal(savedDraftIsCurrent(saved,plan,{...editor,cursorStateNodeId:'view-another-node'}),true);
   assert.equal(savedDraftIsCurrent(null,plan,editor),false);
+  assert.equal(savedDraftIsCurrent(saved,{...plan,documentRevision:plan.documentRevision+2,updatedAt:'later'},editor),true,'Bookkeeping alone is not unsaved content');
   for(const change of [p=>p.name+=' renamed',p=>p.stateNodes[p.initialStateNodeId].notes='Unsaved note',
-    p=>p.combatants[Object.keys(p.combatants)[0]].level++,p=>p.documentRevision++]) {
+    p=>p.combatants[Object.keys(p.combatants)[0]].level++]) {
     const edited=structuredClone(plan);change(edited);
     assert.equal(savedDraftIsCurrent(saved,edited,editor),false);
   }

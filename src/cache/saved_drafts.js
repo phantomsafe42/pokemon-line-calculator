@@ -10,7 +10,10 @@ export function savedDraftSnapshot(plan, editor = {}, id = `${plan.planId}:${pla
 }
 
 export function savedDraftIsCurrent(saved, plan, editor, editorChanged = false) {
-  if (!saved?.document || stableStringify(saved.document) !== stableStringify(plan)) return false;
+  // A change reverted to its saved value is clean even if touchPlan advanced
+  // its bookkeeping revision/time. Preserve every actual document field.
+  const content = document => { const { documentRevision, updatedAt, ...rest } = document; return rest; };
+  if (!saved?.document || !plan || stableStringify(content(saved.document)) !== stableStringify(content(plan))) return false;
   // Looking at another node is not an edit. User-selected, uncommitted actions
   // and outcome choices still need protection even without a document revision.
   if (!editorChanged) return true;
