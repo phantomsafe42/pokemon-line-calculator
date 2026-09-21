@@ -2773,6 +2773,15 @@ function replacementRequirement(state, side) {
   return Math.min(pendingCount, possibleSwitches(state, side).length);
 }
 
+function sandboxMovePicker(moveButton, select) {
+  // Sibling controls keep changing a move separate from choosing its action.
+  const main = document.createElement('div'); main.className = 'sandbox-move-main';
+  const picker = document.createElement('span'); picker.className = 'sandbox-move-picker';
+  select.title = 'Change move';
+  picker.append(select); main.append(moveButton, picker);
+  return main;
+}
+
 function renderCombatantCard(side, slot, { displaySlot = slot, inspection = null } = {}) {
   const { state, committedState, events: previewEvents, previewing } = inspection
     ? { state: inspection.state, committedState: selectedState(), events: inspection.events, previewing: true }
@@ -2966,7 +2975,11 @@ function renderCombatantCard(side, slot, { displaySlot = slot, inspection = null
   const moves = committedMonState.moveSetOverride || mon.moves;
   for (const [moveIndex, entry] of moves.entries()) {
       const moveRow = edit ? document.createElement('div') : moveActions;
-      if (edit) { moveRow.className = 'free-calc-move-row'; moveRow.append(edit[`Move ${moveIndex + 1}`]); moveActions.append(moveRow); }
+      if (edit) {
+        moveRow.className = 'free-calc-move-row';
+        if (!isSandbox(plan)) moveRow.append(edit[`Move ${moveIndex + 1}`]);
+        moveActions.append(moveRow);
+      }
       const move = dataset.get("moves", entry.moveId);
       const support = moveSupport(move, dataset);
       const moveButton = button("", "move-button");
@@ -2998,9 +3011,10 @@ function renderCombatantCard(side, slot, { displaySlot = slot, inspection = null
       copy.append(moveName, moveMeta);
       moveButton.append(copy);
       moveButton.addEventListener("click", () => configureMoveDraft(side, slot, actorKey, move, support));
+      const moveFace = edit && isSandbox(plan) ? sandboxMovePicker(moveButton, edit[`Move ${moveIndex + 1}`]) : moveButton;
       if (forcedAction?.kind === "recharge" && isForcedMove) {
         const damage = document.createElement("span"); damage.className = "damage-label"; damage.textContent = "Recharge"; moveButton.append(damage);
-        moveRow.append(moveButton);
+        moveRow.append(moveFace);
       } else if (support.supported) {
         const targetMode = support.targetMode || canonicalTarget(move);
         const candidates = legalTargets(committedState, side, actorKey, targetMode, support);
@@ -3013,22 +3027,26 @@ function renderCombatantCard(side, slot, { displaySlot = slot, inspection = null
           && candidates.every(key => opposingKeys.has(key));
         if (opposingTargets.length) {
           const group = document.createElement("div"); group.className = "move-button-group";
-          group.append(moveButton);
+          group.append(moveFace);
           renderSlotDamagePreviews(group, side, slot, displayKey, move, opposingTargets, draft, selectableSlots, { positionActorKey: actorKey });
           moveRow.append(group);
         } else {
           renderDamagePreview(moveButton, side, displayKey, targetKey, move.id, { positionActorKey: actorKey });
-          moveRow.append(moveButton);
+          moveRow.append(moveFace);
         }
       } else {
         const damage = document.createElement("span"); damage.className = "damage-label"; damage.textContent = "Unsupported"; moveButton.append(damage);
-        moveRow.append(moveButton);
+        moveRow.append(moveFace);
       }
     if (draft.type === "move" && draft.moveId === entry.moveId) renderActionAux(moveRow, side, slot, actorKey, move, support, draft);
   }
   if (edit) for (let index = moves.length; index < 4; index++) {
     const row = document.createElement('div'); row.className = 'free-calc-move-row';
-    row.append(edit[`Move ${index + 1}`]); moveActions.append(row);
+    if (isSandbox(plan)) {
+      const empty = button('None', 'move-button'); empty.disabled = true;
+      row.append(sandboxMovePicker(empty, edit[`Move ${index + 1}`]));
+    } else row.append(edit[`Move ${index + 1}`]);
+    moveActions.append(row);
   }
   if (!pending && !forcedAction && canSelectShift(plan, committedState, side, actorKey)) {
     const shiftButton = button(`Shift with Slot ${battleSlotNumberForPosition(side, 1)}`, "shift-button");
