@@ -35,7 +35,8 @@ export async function checkVw2rTrainerSprites({page,evaluate,delay,tempRoot}) {
   assert.ok(result.portraits>350);
   assert.deepEqual(result.subjects,['hugh','youngster']);
   assert.equal(result.wild,2);
-  assert.ok(result.alternatives>=4);
+  // The chosen starter exposes one of the three rival-partner occurrences.
+  assert.equal(result.alternatives,2,JSON.stringify(result));
   for(const width of [1280,390]) {
     await page.send('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:width<600});
     await delay(300);
