@@ -117,7 +117,7 @@ export async function checkFreeCalcInline({ page, evaluate, delay, dataset, temp
       return {outgoingHp,incomingHp,empty,restored:!control('HP').closest('.combatant-card').classList.contains('empty-combatant-slot')};
     })()`);
     assert.deepEqual(switchCheck,{outgoingHp:'25',incomingHp:'13',empty:true,restored:true});
-    for (const width of [390,1280,1920,2560]) {
+    for (const width of [320,390,1280,1920,2560]) {
       await page.send('Emulation.setDeviceMetricsOverride',{width,height:1100,deviceScaleFactor:1,mobile:width<600});
       await delay(120);
       const layout = await evaluate(page, `(() => {
@@ -140,6 +140,14 @@ export async function checkFreeCalcInline({ page, evaluate, delay, dataset, temp
             return bounds.left>=box.left && bounds.right<=box.right;
           })),
           cards:cards.length,
+          headers:cards.map(card=>{
+            const header=card.querySelector('.combatant-header'),sprite=header.querySelector('.combatant-sprite').getBoundingClientRect();
+            const identity=header.children[1].getBoundingClientRect(),hp=header.querySelector('.combatant-corner-stats').getBoundingClientRect();
+            const style=getComputedStyle(card),contentWidth=card.clientWidth-parseFloat(style.paddingLeft)-parseFloat(style.paddingRight);
+            return {sameRow:Math.abs(identity.top-sprite.top)<1,beside:identity.left>=sprite.right,
+              hpFits:contentWidth<390 || (Math.abs(hp.top-sprite.top)<1 && hp.left>=identity.right),
+              overlaps:identity.left<hp.right && identity.right>hp.left && identity.top<hp.bottom && identity.bottom>hp.top};
+          }),
           stackGaps:[...document.querySelectorAll('.action-panel:is(.is-triples,.is-rotation) .action-panel-cards')].map(grid=> {
             const center=grid.querySelector('.slot-position-1').getBoundingClientRect();
             const lower=grid.querySelector('.slot-position-2').getBoundingClientRect();
@@ -152,11 +160,12 @@ export async function checkFreeCalcInline({ page, evaluate, delay, dataset, temp
       assert.ok(layout.noStatScroll,'Editable stats fit the same five-column row without scrolling');
       assert.ok(layout.segments,'Stage buttons are flush with the segment and box edges');
       assert.equal(layout.cards,format==='singles'?2:format==='doubles'?4:6);
+      assert.ok(layout.headers.every(header=>header.sameRow && header.beside && header.hpFits && !header.overlaps), `Editable headers retain sprite/identity placement without overlaps: ${format} ${width} ${JSON.stringify(layout.headers)}`);
       assert.ok(layout.stackGaps.every(gap=>Math.abs(gap)<1), `${format} stacked cards have only the intended gap at ${width}: ${layout.stackGaps}`);
-      if(width===1280) {
+      if(width===1280 || width===2560 || width===390) {
         await evaluate(page, `document.getElementById('player-action-panel').scrollIntoView({block:'start'})`);
         const image=await page.send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});
-        await fs.writeFile(path.join(tempRoot,`free-calc-${format}.png`),Buffer.from(image.data,'base64'));
+        await fs.writeFile(path.join(tempRoot,`free-calc-${format}-${width}.png`),Buffer.from(image.data,'base64'));
       }
     }
     await evaluate(page, `document.getElementById('free-calc-close').click()`);
