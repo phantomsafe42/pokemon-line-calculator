@@ -1,5 +1,5 @@
 import { canonicalStats, shortHash, stableStringify, toId } from "../core/primitives.js?v=20260905-drafts-freecalc-partners-v1";
-import { canonicalSpeciesDisplayName, canonicalTrainerMember, DatasetReadinessError } from "./standardized_dataset.js?v=20260921-pk-dataset-v1";
+import { canonicalSpeciesDisplayName, canonicalTrainerMember, DatasetReadinessError } from "./standardized_dataset.js?v=20260921-dataset-034-v1";
 
 const NATURE_MULTIPLIER_DENOMINATOR = 10;
 const NATURE_BOOST_NUMERATOR = 11;

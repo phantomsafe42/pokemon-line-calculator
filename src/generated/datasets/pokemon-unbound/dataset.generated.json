@@ -2,12 +2,12 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-unbound-dataset",
   "source": "Datasets/Pokemon Unbound/source-data",
-  "sourceTreeSha256": "D815191593FF0AFD3C68E59BEF707FD7F145163B278B77B7459A418C2FF326DF",
+  "sourceTreeSha256": "0395C4B4751C2CA3DAB6CE3CCDFB8A60BE741AFD148D132DD8E6F42881C97BF6",
   "files": [
     {
       "path": "dataset_manifest.json",
-      "bytes": 22322,
-      "sha256": "82799C1B5F276854E252AF2D62BBBB820A47D4C207534EFE0690C7BB0FC6BDFE"
+      "bytes": 23449,
+      "sha256": "5D43D78CA5A0B153824B019690FD8643C1234F8B96D6676DE37F2B2D598F4652"
     },
     {
       "path": "battle_mechanics.json",
@@ -51,8 +51,8 @@
     },
     {
       "path": "trainers.json",
-      "bytes": 3744218,
-      "sha256": "1745CDFB0CF891A805C4420D2D3CDBC5FCDE879E75478515014F7E29B3E407A6"
+      "bytes": 4369224,
+      "sha256": "CD94100922A44F926BCA4C9384542E0E672BE7986F1E2FF228C28F4D36460815"
     },
     {
       "path": "trainer_order.json",
@@ -61,8 +61,8 @@
     },
     {
       "path": "trainer_battle_groups.json",
-      "bytes": 77712,
-      "sha256": "C1C1A1236E8AFE105FEB19AC26D1B5B33EFA913FC194C21A4D2750AA7F3F5411"
+      "bytes": 77953,
+      "sha256": "79FBE7F659E7B987899602951EC010A702AC59DA729DFF6666F12A6FC8D1A468"
     },
     {
       "path": "progression.json",
@@ -82,7 +82,17 @@
     {
       "path": "starter_selection.json",
       "bytes": 8231,
-      "sha256": "6577DB7A7E2AE4482E65D3420760E40E5DC643640E5A1DC3BC38823B9E153CAB"
+      "sha256": "1C5FE02F0ED0BBEE14669E684D4588FF40F1101B1988FE1D7B10102AD88BF788"
+    },
+    {
+      "path": "trainer_visual_sources.json",
+      "bytes": 73274,
+      "sha256": "D74A358D37AEDEC0D4053085D2B0EE967B24B17C6320E9E39FCFDD1DFB46F8F1"
+    },
+    {
+      "path": "trainer_visual_identity_report.json",
+      "bytes": 528800,
+      "sha256": "4A9C398810674086102DD54D21246EE56EAFCB2F625FFE45424BB48B02DB1F6F"
     }
   ]
 }

@@ -259,6 +259,34 @@
       "storedMaskBindings": 519,
       "scriptedWildRuntimeBindings": 12,
       "unresolvedProfiles": 0
+    },
+    "trainerVisualIdentity": {
+      "required": true,
+      "schemaVersion": "trainer-visual-identity/v1alpha2",
+      "source": "trainer_visual_identity_report.json",
+      "relationship": "documented-game",
+      "presentation": "battle-front",
+      "status": "passed",
+      "counts": {
+        "ambiguous": 0,
+        "inapplicable": 32,
+        "resolved": 510,
+        "unavailable": 0
+      },
+      "unresolvedFieldCounts": {},
+      "decisionsSha256": "f39d5ea9303da5b748037ecc2026964a1a63773424f064d8137c85ab50f05b05",
+      "authority": {
+        "path": "trainer_visual_sources.json",
+        "sha256": "d74a358d37aedec0d4053085d2b0ee967b24b17c6320e9e39fcfdd1dfb46f8f1"
+      },
+      "resolver": {
+        "path": "tools/unbound_trainer_visuals.js",
+        "sha256": "85cca44a613d8b11e93eebf74452ecda33840e9a691ee1e57bb432b9423908ed"
+      },
+      "schema": {
+        "path": "schemas/trainer-visual-identity-v1alpha2.schema.json",
+        "sha256": "9d59c0b88a242b5f73f4f798c60ab7df8f3cbfbe70a0f941a37d0bf672ee79e5"
+      }
     }
   },
   "onlineReferences": {
@@ -326,7 +354,9 @@
     "encounter_form_verification.json",
     "encounter_reference_classification.json",
     "raid_encounter_projection.json",
-    "acquisition_verification.json"
+    "acquisition_verification.json",
+    "trainer_visual_sources.json",
+    "trainer_visual_identity_report.json"
   ],
   "builders": {
     "build": "node ..\\tools\\standardize_unbound.js",

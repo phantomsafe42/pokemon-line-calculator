@@ -4432,7 +4432,7 @@
       "id": "pokemon-heartgold-trainer-0012",
       "consumerTrainerId": 12,
       "rawTrainerId": 12,
-      "displayName": "Trainerclass_Team_Rocket Grunt",
+      "displayName": "Team Rocket Grunt",
       "shortName": "Grunt",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -4872,7 +4872,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -23455,7 +23455,7 @@
       "id": "pokemon-heartgold-trainer-0063",
       "consumerTrainerId": 63,
       "rawTrainerId": 63,
-      "displayName": "Trainerclass_Team_Rocket Mickey",
+      "displayName": "Team Rocket Mickey",
       "shortName": "Mickey",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -23578,7 +23578,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -38844,7 +38844,7 @@
       "id": "pokemon-heartgold-trainer-0101",
       "consumerTrainerId": 101,
       "rawTrainerId": 101,
-      "displayName": "Trainerclass_Team_Rocket Grunt",
+      "displayName": "Team Rocket Grunt",
       "shortName": "Grunt",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -39164,7 +39164,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -51497,7 +51497,7 @@
       "id": "pokemon-heartgold-trainer-0133",
       "consumerTrainerId": 133,
       "rawTrainerId": 133,
-      "displayName": "Trainerclass_Poke_Maniac Morgan",
+      "displayName": "PokéManiac Morgan",
       "shortName": "Morgan",
       "trainerClass": "TRAINERCLASS_POKE_MANIAC",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -51753,7 +51753,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Poke_Maniac",
+      "displayTrainerClass": "PokéManiac",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -62685,7 +62685,7 @@
       "id": "pokemon-heartgold-trainer-0165",
       "consumerTrainerId": 165,
       "rawTrainerId": 165,
-      "displayName": "Trainerclass_Swimmer_F Mickey",
+      "displayName": "Swimmer ♀ Mickey",
       "shortName": "Mickey",
       "trainerClass": "TRAINERCLASS_SWIMMER_F",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -62808,7 +62808,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Swimmer_F",
+      "displayTrainerClass": "Swimmer ♀",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -62837,7 +62837,7 @@
       "id": "pokemon-heartgold-trainer-0166",
       "consumerTrainerId": 166,
       "rawTrainerId": 166,
-      "displayName": "Trainerclass_Swimmer_F Mickey",
+      "displayName": "Swimmer ♀ Mickey",
       "shortName": "Mickey",
       "trainerClass": "TRAINERCLASS_SWIMMER_F",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -62960,7 +62960,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Swimmer_F",
+      "displayTrainerClass": "Swimmer ♀",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -62989,7 +62989,7 @@
       "id": "pokemon-heartgold-trainer-0167",
       "consumerTrainerId": 167,
       "rawTrainerId": 167,
-      "displayName": "Trainerclass_Swimmer_F Mickey",
+      "displayName": "Swimmer ♀ Mickey",
       "shortName": "Mickey",
       "trainerClass": "TRAINERCLASS_SWIMMER_F",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -63112,7 +63112,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Swimmer_F",
+      "displayTrainerClass": "Swimmer ♀",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -64358,7 +64358,7 @@
       "id": "pokemon-heartgold-trainer-0172",
       "consumerTrainerId": 172,
       "rawTrainerId": 172,
-      "displayName": "Trainerclass_Poke_Maniac Brent",
+      "displayName": "PokéManiac Brent",
       "shortName": "Brent",
       "trainerClass": "TRAINERCLASS_POKE_MANIAC",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -64655,7 +64655,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Poke_Maniac",
+      "displayTrainerClass": "PokéManiac",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -64684,7 +64684,7 @@
       "id": "pokemon-heartgold-trainer-0173",
       "consumerTrainerId": 173,
       "rawTrainerId": 173,
-      "displayName": "Trainerclass_Poke_Maniac Brent",
+      "displayName": "PokéManiac Brent",
       "shortName": "Brent",
       "trainerClass": "TRAINERCLASS_POKE_MANIAC",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -65068,7 +65068,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Poke_Maniac",
+      "displayTrainerClass": "PokéManiac",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -68581,7 +68581,7 @@
       "id": "pokemon-heartgold-trainer-0185",
       "consumerTrainerId": 185,
       "rawTrainerId": 185,
-      "displayName": "Trainerclass_Team_Rocket Grunt",
+      "displayName": "Team Rocket Grunt",
       "shortName": "Grunt",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -68917,7 +68917,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -68946,7 +68946,7 @@
       "id": "pokemon-heartgold-trainer-0186",
       "consumerTrainerId": 186,
       "rawTrainerId": 186,
-      "displayName": "Trainerclass_Team_Rocket Grunt",
+      "displayName": "Team Rocket Grunt",
       "shortName": "Grunt",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -69482,7 +69482,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -69511,7 +69511,7 @@
       "id": "pokemon-heartgold-trainer-0187",
       "consumerTrainerId": 187,
       "rawTrainerId": 187,
-      "displayName": "Trainerclass_Team_Rocket Grunt",
+      "displayName": "Team Rocket Grunt",
       "shortName": "Grunt",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -70423,7 +70423,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -70452,7 +70452,7 @@
       "id": "pokemon-heartgold-trainer-0188",
       "consumerTrainerId": 188,
       "rawTrainerId": 188,
-      "displayName": "Trainerclass_Team_Rocket Grunt",
+      "displayName": "Team Rocket Grunt",
       "shortName": "Grunt",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -70890,7 +70890,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -70919,7 +70919,7 @@
       "id": "pokemon-heartgold-trainer-0189",
       "consumerTrainerId": 189,
       "rawTrainerId": 189,
-      "displayName": "Trainerclass_Team_Rocket Grunt",
+      "displayName": "Team Rocket Grunt",
       "shortName": "Grunt",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -71379,7 +71379,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -71408,7 +71408,7 @@
       "id": "pokemon-heartgold-trainer-0190",
       "consumerTrainerId": 190,
       "rawTrainerId": 190,
-      "displayName": "Trainerclass_Team_Rocket Grunt",
+      "displayName": "Team Rocket Grunt",
       "shortName": "Grunt",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -71634,7 +71634,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -71663,7 +71663,7 @@
       "id": "pokemon-heartgold-trainer-0191",
       "consumerTrainerId": 191,
       "rawTrainerId": 191,
-      "displayName": "Trainerclass_Team_Rocket Grunt",
+      "displayName": "Team Rocket Grunt",
       "shortName": "Grunt",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -72003,7 +72003,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -72032,7 +72032,7 @@
       "id": "pokemon-heartgold-trainer-0192",
       "consumerTrainerId": 192,
       "rawTrainerId": 192,
-      "displayName": "Trainerclass_Team_Rocket Grunt",
+      "displayName": "Team Rocket Grunt",
       "shortName": "Grunt",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -72656,7 +72656,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -72685,7 +72685,7 @@
       "id": "pokemon-heartgold-trainer-0193",
       "consumerTrainerId": 193,
       "rawTrainerId": 193,
-      "displayName": "Trainerclass_Team_Rocket Grunt",
+      "displayName": "Team Rocket Grunt",
       "shortName": "Grunt",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -73124,7 +73124,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -73153,7 +73153,7 @@
       "id": "pokemon-heartgold-trainer-0194",
       "consumerTrainerId": 194,
       "rawTrainerId": 194,
-      "displayName": "Trainerclass_Team_Rocket Mickey",
+      "displayName": "Team Rocket Mickey",
       "shortName": "Mickey",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -73276,7 +73276,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -73305,7 +73305,7 @@
       "id": "pokemon-heartgold-trainer-0195",
       "consumerTrainerId": 195,
       "rawTrainerId": 195,
-      "displayName": "Trainerclass_Team_Rocket Grunt",
+      "displayName": "Team Rocket Grunt",
       "shortName": "Grunt",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -73590,7 +73590,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -73619,7 +73619,7 @@
       "id": "pokemon-heartgold-trainer-0196",
       "consumerTrainerId": 196,
       "rawTrainerId": 196,
-      "displayName": "Trainerclass_Team_Rocket Grunt",
+      "displayName": "Team Rocket Grunt",
       "shortName": "Grunt",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -74072,7 +74072,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -74101,7 +74101,7 @@
       "id": "pokemon-heartgold-trainer-0197",
       "consumerTrainerId": 197,
       "rawTrainerId": 197,
-      "displayName": "Trainerclass_Team_Rocket Grunt",
+      "displayName": "Team Rocket Grunt",
       "shortName": "Grunt",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -74544,7 +74544,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -81346,7 +81346,7 @@
       "id": "pokemon-heartgold-trainer-0216",
       "consumerTrainerId": 216,
       "rawTrainerId": 216,
-      "displayName": "Trainerclass_Team_Rocket Grunt",
+      "displayName": "Team Rocket Grunt",
       "shortName": "Grunt",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -81749,7 +81749,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -82393,7 +82393,7 @@
       "id": "pokemon-heartgold-trainer-0218",
       "consumerTrainerId": 218,
       "rawTrainerId": 218,
-      "displayName": "Trainerclass_Team_Rocket Grunt",
+      "displayName": "Team Rocket Grunt",
       "shortName": "Grunt",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -82619,7 +82619,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -82648,7 +82648,7 @@
       "id": "pokemon-heartgold-trainer-0219",
       "consumerTrainerId": 219,
       "rawTrainerId": 219,
-      "displayName": "Trainerclass_Team_Rocket Grunt",
+      "displayName": "Team Rocket Grunt",
       "shortName": "Grunt",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -83031,7 +83031,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -83060,7 +83060,7 @@
       "id": "pokemon-heartgold-trainer-0220",
       "consumerTrainerId": 220,
       "rawTrainerId": 220,
-      "displayName": "Trainerclass_Team_Rocket Grunt",
+      "displayName": "Team Rocket Grunt",
       "shortName": "Grunt",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -83508,7 +83508,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -83537,7 +83537,7 @@
       "id": "pokemon-heartgold-trainer-0221",
       "consumerTrainerId": 221,
       "rawTrainerId": 221,
-      "displayName": "Trainerclass_Team_Rocket Mickey",
+      "displayName": "Team Rocket Mickey",
       "shortName": "Mickey",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -83660,7 +83660,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -83689,7 +83689,7 @@
       "id": "pokemon-heartgold-trainer-0222",
       "consumerTrainerId": 222,
       "rawTrainerId": 222,
-      "displayName": "Trainerclass_Team_Rocket Grunt",
+      "displayName": "Team Rocket Grunt",
       "shortName": "Grunt",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -83969,7 +83969,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -83998,7 +83998,7 @@
       "id": "pokemon-heartgold-trainer-0223",
       "consumerTrainerId": 223,
       "rawTrainerId": 223,
-      "displayName": "Trainerclass_Team_Rocket Grunt",
+      "displayName": "Team Rocket Grunt",
       "shortName": "Grunt",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -84718,7 +84718,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -84747,7 +84747,7 @@
       "id": "pokemon-heartgold-trainer-0224",
       "consumerTrainerId": 224,
       "rawTrainerId": 224,
-      "displayName": "Trainerclass_Team_Rocket Grunt",
+      "displayName": "Team Rocket Grunt",
       "shortName": "Grunt",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -85554,7 +85554,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -85583,7 +85583,7 @@
       "id": "pokemon-heartgold-trainer-0225",
       "consumerTrainerId": 225,
       "rawTrainerId": 225,
-      "displayName": "Trainerclass_Team_Rocket Mickey",
+      "displayName": "Team Rocket Mickey",
       "shortName": "Mickey",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -85706,7 +85706,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -85735,7 +85735,7 @@
       "id": "pokemon-heartgold-trainer-0226",
       "consumerTrainerId": 226,
       "rawTrainerId": 226,
-      "displayName": "Trainerclass_Team_Rocket Mickey",
+      "displayName": "Team Rocket Mickey",
       "shortName": "Mickey",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -85858,7 +85858,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -85887,7 +85887,7 @@
       "id": "pokemon-heartgold-trainer-0227",
       "consumerTrainerId": 227,
       "rawTrainerId": 227,
-      "displayName": "Trainerclass_Team_Rocket Grunt",
+      "displayName": "Team Rocket Grunt",
       "shortName": "Grunt",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -86222,7 +86222,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -86251,7 +86251,7 @@
       "id": "pokemon-heartgold-trainer-0228",
       "consumerTrainerId": 228,
       "rawTrainerId": 228,
-      "displayName": "Trainerclass_Team_Rocket Grunt",
+      "displayName": "Team Rocket Grunt",
       "shortName": "Grunt",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -86664,7 +86664,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -86693,7 +86693,7 @@
       "id": "pokemon-heartgold-trainer-0229",
       "consumerTrainerId": 229,
       "rawTrainerId": 229,
-      "displayName": "Trainerclass_Team_Rocket Mickey",
+      "displayName": "Team Rocket Mickey",
       "shortName": "Mickey",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -86903,7 +86903,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -92286,7 +92286,7 @@
       "id": "pokemon-heartgold-trainer-0243",
       "consumerTrainerId": 243,
       "rawTrainerId": 243,
-      "displayName": "Trainerclass_Swimmer_F Katie",
+      "displayName": "Swimmer ♀ Katie",
       "shortName": "Katie",
       "trainerClass": "TRAINERCLASS_SWIMMER_F",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -92409,7 +92409,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Swimmer_F",
+      "displayTrainerClass": "Swimmer ♀",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -101692,7 +101692,7 @@
       "id": "pokemon-heartgold-trainer-0262",
       "consumerTrainerId": 262,
       "rawTrainerId": 262,
-      "displayName": "Trainerclass_Team_Rocket Mickey",
+      "displayName": "Team Rocket Mickey",
       "shortName": "Mickey",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -101989,7 +101989,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -114189,7 +114189,7 @@
       "id": "pokemon-heartgold-trainer-0292",
       "consumerTrainerId": 292,
       "rawTrainerId": 292,
-      "displayName": "Trainerclass_Swimmer_F Mickey",
+      "displayName": "Swimmer ♀ Mickey",
       "shortName": "Mickey",
       "trainerClass": "TRAINERCLASS_SWIMMER_F",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -114312,7 +114312,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Swimmer_F",
+      "displayTrainerClass": "Swimmer ♀",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -115526,7 +115526,7 @@
       "id": "pokemon-heartgold-trainer-0295",
       "consumerTrainerId": 295,
       "rawTrainerId": 295,
-      "displayName": "Trainerclass_Swimmer_F Mickey",
+      "displayName": "Swimmer ♀ Mickey",
       "shortName": "Mickey",
       "trainerClass": "TRAINERCLASS_SWIMMER_F",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -115649,7 +115649,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Swimmer_F",
+      "displayTrainerClass": "Swimmer ♀",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -136750,7 +136750,7 @@
       "id": "pokemon-heartgold-trainer-0353",
       "consumerTrainerId": 353,
       "rawTrainerId": 353,
-      "displayName": "Trainerclass_Team_Rocket Grunt",
+      "displayName": "Team Rocket Grunt",
       "shortName": "Grunt",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -136977,7 +136977,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -197246,7 +197246,7 @@
       "id": "pokemon-heartgold-trainer-0530",
       "consumerTrainerId": 530,
       "rawTrainerId": 530,
-      "displayName": "Trainerclass_Poke_Maniac Brent",
+      "displayName": "PokéManiac Brent",
       "shortName": "Brent",
       "trainerClass": "TRAINERCLASS_POKE_MANIAC",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -197630,7 +197630,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Poke_Maniac",
+      "displayTrainerClass": "PokéManiac",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -221582,7 +221582,7 @@
       "id": "pokemon-heartgold-trainer-0601",
       "consumerTrainerId": 601,
       "rawTrainerId": 601,
-      "displayName": "Trainerclass_Team_Rocket Grunt",
+      "displayName": "Team Rocket Grunt",
       "shortName": "Grunt",
       "trainerClass": "TRAINERCLASS_TEAM_ROCKET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -221809,7 +221809,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Team_Rocket",
+      "displayTrainerClass": "Team Rocket",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -239924,7 +239924,7 @@
       "id": "pokemon-heartgold-trainer-0667",
       "consumerTrainerId": 667,
       "rawTrainerId": 667,
-      "displayName": "Trainerclass_Pkmn_Trainer_Cheryl Cheryl",
+      "displayName": "Pokémon Trainer Cheryl",
       "shortName": "Cheryl",
       "trainerClass": "TRAINERCLASS_PKMN_TRAINER_CHERYL",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -240322,7 +240322,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Pkmn_Trainer_Cheryl",
+      "displayTrainerClass": "Pokémon Trainer",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -240351,7 +240351,7 @@
       "id": "pokemon-heartgold-trainer-0668",
       "consumerTrainerId": 668,
       "rawTrainerId": 668,
-      "displayName": "Trainerclass_Pkmn_Trainer_Buck Marley",
+      "displayName": "Pokémon Trainer Marley",
       "shortName": "Marley",
       "trainerClass": "TRAINERCLASS_PKMN_TRAINER_BUCK",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -240749,7 +240749,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Pkmn_Trainer_Buck",
+      "displayTrainerClass": "Pokémon Trainer",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -240778,7 +240778,7 @@
       "id": "pokemon-heartgold-trainer-0669",
       "consumerTrainerId": 669,
       "rawTrainerId": 669,
-      "displayName": "Trainerclass_Pkmn_Trainer_Marley Mira",
+      "displayName": "Pokémon Trainer Mira",
       "shortName": "Mira",
       "trainerClass": "TRAINERCLASS_PKMN_TRAINER_MARLEY",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -241174,7 +241174,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Pkmn_Trainer_Marley",
+      "displayTrainerClass": "Pokémon Trainer",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -241203,7 +241203,7 @@
       "id": "pokemon-heartgold-trainer-0670",
       "consumerTrainerId": 670,
       "rawTrainerId": 670,
-      "displayName": "Trainerclass_Pkmn_Trainer_Riley Riley",
+      "displayName": "Pokémon Trainer Riley",
       "shortName": "Riley",
       "trainerClass": "TRAINERCLASS_PKMN_TRAINER_RILEY",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -241599,7 +241599,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Pkmn_Trainer_Riley",
+      "displayTrainerClass": "Pokémon Trainer",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -241628,7 +241628,7 @@
       "id": "pokemon-heartgold-trainer-0671",
       "consumerTrainerId": 671,
       "rawTrainerId": 671,
-      "displayName": "Trainerclass_Pkmn_Trainer_Mira Buck",
+      "displayName": "Pokémon Trainer Buck",
       "shortName": "Buck",
       "trainerClass": "TRAINERCLASS_PKMN_TRAINER_MIRA",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -242024,7 +242024,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Pkmn_Trainer_Mira",
+      "displayTrainerClass": "Pokémon Trainer",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -251206,7 +251206,7 @@
       "id": "pokemon-heartgold-trainer-0700",
       "consumerTrainerId": 700,
       "rawTrainerId": 700,
-      "displayName": "Trainerclass_Rocket_Boss Giovanni",
+      "displayName": "Rocket Boss Giovanni",
       "shortName": "Giovanni",
       "trainerClass": "TRAINERCLASS_ROCKET_BOSS",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -251622,7 +251622,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Rocket_Boss",
+      "displayTrainerClass": "Rocket Boss",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -255284,7 +255284,7 @@
       "id": "pokemon-heartgold-trainer-0707",
       "consumerTrainerId": 707,
       "rawTrainerId": 707,
-      "displayName": "Trainerclass_Tower_Tycoon Palmer",
+      "displayName": "Tower Tycoon Palmer",
       "shortName": "Palmer",
       "trainerClass": "TRAINERCLASS_TOWER_TYCOON",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -255405,7 +255405,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Tower_Tycoon",
+      "displayTrainerClass": "Tower Tycoon",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -255434,7 +255434,7 @@
       "id": "pokemon-heartgold-trainer-0708",
       "consumerTrainerId": 708,
       "rawTrainerId": 708,
-      "displayName": "Trainerclass_Hall_Matron Argenta",
+      "displayName": "Hall Matron Argenta",
       "shortName": "Argenta",
       "trainerClass": "TRAINERCLASS_HALL_MATRON",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -255555,7 +255555,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Hall_Matron",
+      "displayTrainerClass": "Hall Matron",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -255584,7 +255584,7 @@
       "id": "pokemon-heartgold-trainer-0709",
       "consumerTrainerId": 709,
       "rawTrainerId": 709,
-      "displayName": "Trainerclass_Factory_Head Thorton",
+      "displayName": "Factory Head Thorton",
       "shortName": "Thorton",
       "trainerClass": "TRAINERCLASS_FACTORY_HEAD",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -255705,7 +255705,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Factory_Head",
+      "displayTrainerClass": "Factory Head",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -255734,7 +255734,7 @@
       "id": "pokemon-heartgold-trainer-0710",
       "consumerTrainerId": 710,
       "rawTrainerId": 710,
-      "displayName": "Trainerclass_Arcade_Star Dahlia",
+      "displayName": "Arcade Star Dahlia",
       "shortName": "Dahlia",
       "trainerClass": "TRAINERCLASS_ARCADE_STAR",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -255855,7 +255855,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Arcade_Star",
+      "displayTrainerClass": "Arcade Star",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
@@ -255884,7 +255884,7 @@
       "id": "pokemon-heartgold-trainer-0711",
       "consumerTrainerId": 711,
       "rawTrainerId": 711,
-      "displayName": "Trainerclass_Castle_Valet Darach",
+      "displayName": "Castle Valet Darach",
       "shortName": "Darach",
       "trainerClass": "TRAINERCLASS_CASTLE_VALET",
       "trainerClassSource": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json",
@@ -256005,7 +256005,7 @@
           "sourceStatus": "exact-header-projection"
         }
       },
-      "displayTrainerClass": "Trainerclass_Castle_Valet",
+      "displayTrainerClass": "Castle Valet",
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
