@@ -83,9 +83,20 @@ export async function checkSandbox({ page, evaluate, delay, dataset, tempRoot })
     assert.equal(result.incomingStatus,'par');assert.deepEqual(result.restored,{hp:'25',status:'tox',item:'leftovers'});
     assert.equal(result.aiHidden,true);assert.equal(result.freeCalcHidden,true);assert.equal(result.commitHidden,false);
     assert.deepEqual(result.sections,['planned']);assert.equal(result.nodeCount,1);assert.match(result.badge,/Sandbox/);
-    for(const width of [390,1280]) {
+    for(const width of [390,1280,1920,2560]) {
       await page.send('Emulation.setDeviceMetricsOverride',{width,height:1100,deviceScaleFactor:1,mobile:width<600});await delay(80);
       assert.equal(await evaluate(page,`document.documentElement.scrollWidth<=innerWidth+1`),true,`${format} fits ${width}`);
+      assert.equal(await evaluate(page,`[...document.querySelectorAll('.combatant-card .combatant-header')].every(header=>{
+        const sprite=header.querySelector('.combatant-sprite').getBoundingClientRect(),identity=header.children[1].getBoundingClientRect();
+        const hp=header.querySelector('.combatant-corner-stats').getBoundingClientRect();
+        return Math.abs(identity.top-sprite.top)<1 && identity.left>=sprite.right &&
+          !(identity.left<hp.right && identity.right>hp.left && identity.top<hp.bottom && identity.bottom>hp.top);
+      })`),true,`Sandbox identity stays beside its sprite without overlapping HP: ${format} ${width}`);
+      if(width===2560 || width===390) {
+        await evaluate(page,`document.getElementById('player-action-panel').scrollIntoView({block:'start'})`);
+        const shot=await page.send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});
+        await fs.writeFile(path.join(tempRoot,`sandbox-header-${format}-${width}.png`),Buffer.from(shot.data,'base64'));
+      }
     }
     await delay(120);
     assert.deepEqual(await readStore('pokemon-line-calculator-boxes','library'),baseline,'Sandbox import/edit must not touch Boxes');
