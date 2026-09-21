@@ -2,7 +2,7 @@ import { starterPresentationType } from './ui/starter_presentation.js?v=20260922
 import { calculateStats, normalizeMultiTrainerRoster, normalizePlayerCollection, normalizePlayerPartnerRoster, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js?v=20260922-public-cards-v1";
 import { HOSTED_DATASET_RELEASE } from "./adapters/hosted_dataset.js?v=20260922-public-cards-v1";
 import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260909-public-release-v2";
-import { createTrainerSelector, displayTrainerName, trainerFormatLabel, preloadTrainerSplitIcons } from './ui/trainer_selector.js?v=20260922-release-assembly-v1';
+import { createTrainerSelector, displayTrainerName, trainerFormatLabel, preloadTrainerSplitIcons, preloadTrainerSprites } from './ui/trainer_selector.js?v=20260922-trainer-review-v1';
 import { canonicalSpeciesDisplayName, loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260921-dataset-034-v1";
 import { starterAllows, starterChoice } from './adapters/starter_selection.js?v=20260918-starter-selection-v1';
 import { readStarterPreference, saveStarterPreference } from './cache/starter_preferences.js?v=20260918-starter-selection-v1';
@@ -4736,6 +4736,7 @@ async function selectGame(gameId) {
     ]);
     dataset = loadedDataset;
     preloadTrainerSplitIcons(dataset, pokemonAssetResolver);
+    void preloadTrainerSprites(dataset, pokemonAssetResolver);
     trainerAi = trainerAiBootstrap.metadata;
     if (Number(trainerAi?.generation) !== Number(config.expectedDamageGeneration)) {
       throw new Error(`${config.name} Trainer AI bootstrap declares Generation ${trainerAi?.generation ?? "unknown"}, not Generation ${config.expectedDamageGeneration}`);

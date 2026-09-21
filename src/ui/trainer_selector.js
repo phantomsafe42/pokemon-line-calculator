@@ -143,6 +143,58 @@ export function preloadTrainerSplitIcons(dataset, resolver) {
   }
 }
 
+export function trainerSpriteQueries(dataset) {
+  const queries = new Map();
+  const visit = trainer => {
+    const query = trainerSpriteQuery(trainer);
+    if (query) queries.set(JSON.stringify(query), query);
+    for (const identity of trainer.trainerVisualIdentity?.alternatives || []) visit({ trainerVisualIdentity: identity });
+    for (const participant of trainer.trainerVisualParticipants || []) visit(participant);
+  };
+  for (const trainer of Object.values(dataset.documents['trainers.json'].records)) visit(trainer);
+  return [...queries.values()];
+}
+
+// Start at game selection, deduplicating shared class portraits. Four low-priority
+// downloads at a time leave capacity for game data and split icons. Retain loaded
+// images so later portrait elements reuse the browser's decoded image cache.
+const trainerImageCaches = new WeakMap();
+export function preloadTrainerSprites(dataset, resolver) {
+  if (!resolver) return Promise.resolve();
+  let state = trainerImageCaches.get(resolver);
+  if (!state) { state = { images: new Map(), run: 0 }; trainerImageCaches.set(resolver, state); }
+  const run = ++state.run, queries = trainerSpriteQueries(dataset);
+  const load = query => {
+    const key = JSON.stringify(query);
+    if (state.images.has(key)) return state.images.get(key).done;
+    const image = element('img', ''); image.loading = 'eager'; image.fetchPriority = 'low';
+    const entry = { image };
+    state.images.set(key, entry);
+    entry.done = new Promise(resolve => {
+      let finished = false;
+      const finish = ok => {
+        if (finished) return; finished = true; clearTimeout(timer);
+        image.onload = null; image.onerror = null;
+        if (!ok) state.images.delete(key);
+        resolve();
+      };
+      const timer = setTimeout(() => finish(false), 15000);
+      image.onload = () => finish(true); image.onerror = () => finish(false);
+      try {
+        if (resolver.setAssetImage) resolver.setAssetImage(image, query, { onUnavailable: () => finish(false) });
+        else Promise.resolve(resolver.resolveAsset(query)).then(result => {
+          if (result.status === 'ok') image.src = result.url; else finish(false);
+        }).catch(() => finish(false));
+      } catch { finish(false); }
+    });
+    if (state.images.size > 384) state.images.delete(state.images.keys().next().value);
+    return entry.done;
+  };
+  return Promise.all(Array.from({ length: 4 }, async () => {
+    while (state.run === run && queries.length) await load(queries.shift());
+  }));
+}
+
 export function createTrainerSelector({ dialog, dataset, starterId, resolver, renderCard, onContinue }) {
   const groups = dataset.trainerGroups(starterId);
   const tabs = dialog.querySelector('.trainer-split-tabs');

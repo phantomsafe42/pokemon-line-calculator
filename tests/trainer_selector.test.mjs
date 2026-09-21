@@ -4,7 +4,25 @@ import fs from 'node:fs';
 import { fixtureTriplePlan } from './helpers.mjs';
 import { createDatasetContext, REQUIRED_DATASET_SOURCES } from '../src/adapters/standardized_dataset.js';
 import { triplePositionForSlot } from '../src/rulesets/triple_battle.js';
-import { displayTrainerName, trainerDisplayBlocks, trainerRequirement, trainerSpriteQuery, trainerSplitBadgeQuery, trainerSearchIndex, searchTrainerIndex, trainerPortraitFallback } from '../src/ui/trainer_selector.js';
+import { displayTrainerName, trainerDisplayBlocks, trainerRequirement, trainerSpriteQuery, trainerSplitBadgeQuery, trainerSearchIndex, searchTrainerIndex, trainerPortraitFallback, trainerSpriteQueries, preloadTrainerSprites } from '../src/ui/trainer_selector.js';
+
+test('portrait preload deduplicates classes, includes alternatives and participants, and bounds concurrent loads', async () => {
+  const identity = subjectId => ({status:'resolved',gameStyle:'platinum',presentation:'battle-front',subjectKind:'character',subjectId,gender:'default',variant:'default'});
+  const records = Object.fromEntries(Array.from({length:12},(_,i)=>[i,{trainerVisualIdentity:identity(String(i%7))}]));
+  records.pair={trainerVisualParticipants:[{trainerVisualIdentity:identity('partner')}]};
+  records.variant={trainerVisualIdentity:{status:'ambiguous',alternatives:[identity('alternative'),identity('0')]}};
+  const dataset={documents:{'trainers.json':{records}}};
+  assert.equal(trainerSpriteQueries(dataset).length,9);
+  const before=JSON.stringify(records), oldDocument=globalThis.document;
+  globalThis.document={createElement:()=>({})};
+  let active=0, peak=0, requests=0;
+  const resolver={setAssetImage(image){requests++;peak=Math.max(peak,++active);setTimeout(()=>{active--;image.onload();},1);}};
+  try {
+    await preloadTrainerSprites(dataset,resolver);assert.equal(peak,4);assert.equal(requests,9);
+    await preloadTrainerSprites(dataset,resolver);assert.equal(requests,9);
+    assert.equal(JSON.stringify(records),before);
+  } finally {globalThis.document=oldDocument;}
+});
 
 test('inapplicable portraits do not classify paired human trainers as wild battles', () => {
   const dataset = load('pokemon-unbound');
