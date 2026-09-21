@@ -19,8 +19,19 @@ test('Box filters combine both types and record-specific fields',()=>{
   assert.deepEqual(query({gender:'N'}),['Gamma']); assert.deepEqual(query({gender:'unknown'}),['Delta']);
   assert.deepEqual(query({item:'none',status:'healthy',gender:'F'}),['Beta']);
   assert.deepEqual(query({move:'surf'}),[]);
-  assert.deepEqual(query({search:'alpha leftovers tackle'}),['Alpha']);
-  assert.deepEqual(query({search:'charmander blaze'}),['Beta']);
+  assert.deepEqual(query({search:'alpha bulbasaur'}),['Alpha']);
+  assert.deepEqual(query({search:'charmander'}),['Beta']);
+  assert.deepEqual(query({search:'leftovers'}),[], 'Species search does not search unrelated item/move fields');
+});
+
+test('Four move searches combine independent of moveset order and accept names or IDs',()=>{
+  const multi=record('Multi',{moves:[{moveId:'gigadrain',name:'Giga Drain'},{moveId:'protect',name:'Protect'},{moveId:'quickattack',name:'Quick Attack'},{moveId:'swordsdance',name:'Swords Dance'}]});
+  const team={pokemonOrder:[multi.id],pokemon:{[multi.id]:multi}};
+  const filter=values=>browseBox(team,dataset,{...emptyBoxQuery(),...values}).map(r=>r.id);
+  assert.deepEqual(filter({move:'Swords Dance',move2:'Giga Drain',move3:'quickattack',move4:'Protect'}),['Multi']);
+  assert.deepEqual(filter({move:'Giga',move2:'Protect',ability:'OVERGROW',type1:'Grass'}),['Multi']);
+  assert.deepEqual(filter({move:'Giga Drain',move2:'Surf'}),[]);
+  assert.deepEqual(filter({move:'   '}),['Multi']);
 });
 test('Box sorting uses calculated stats, stable ties, and puts missing dex last in either direction',()=>{
   assert.deepEqual(query({sort:'dex'}),['Alpha','Gamma','Beta','Delta']);

@@ -40,6 +40,8 @@ export async function checkBoxCards({ page, evaluate, delay, tempRoot }) {
   assert.equal(before.details[0],'44','Showdown does not invent an EXP total'); assert.ok(Number(before.details[1])>0);
   assert.deepEqual(before.details.slice(2),['Justified','Leftovers']);
   assert.equal(before.checkboxes,0);
+  const segments=await evaluate(page,`(()=>{const card=[...document.querySelectorAll('.box-pokemon-card')].find(el=>el.querySelector('h3').textContent==='Box Layout');return [...card.querySelectorAll('.box-pokemon-move')].map(move=>[...move.querySelectorAll('.move-icon img')].map(image=>image.alt));})()`);
+  assert.deepEqual(segments,[['grass','special'],['normal','status'],['normal','physical'],['normal','status']],'Detail moves use actual type and category icon segments');
   assert.equal(before.nature,'SpA'); assert.equal(before.species,'Virizion');
   assert.deepEqual(before.empty,['Transform','—','—','—']);
   for (const width of [2560,1800,1280,800,390,320]) {
