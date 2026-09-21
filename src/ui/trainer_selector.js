@@ -56,12 +56,12 @@ const badgeStyles = {
 };
 
 export function trainerSplitBadgeQuery(gameId, group) {
+  if (group.id === 'postgame') return { kind: 'item-sprite', style: 'showdown', item: 'master-ball' };
+  if (['facilities', 'frontier', 'battle-frontier'].includes(group.id)) return { kind: 'item-sprite', style: 'showdown', item: 'poke-ball' };
+  if (group.id === 'other') return { kind: 'pokemon-sprite', spriteType: 'pixel', species: 'unown', view: 'front' };
   const style = badgeStyles[gameId];
-  // Generic buckets are not gym badges. Iris's BW gym split must not use
-  // the resolver's B2W2 Champion Iris emblem, nor Sinnoh postgame its logo.
-  if (group.id === 'other' || group.id === 'facilities'
-    || (group.id === 'postgame' && style !== 'hgss-johto')
-    || (gameId === 'pokemon-white' && group.id === 'iris')) return null;
+  // Iris's BW gym split must not use the B2W2 Champion Iris emblem.
+  if (gameId === 'pokemon-white' && group.id === 'iris') return null;
   return { kind: 'badge-icon', ...(style ? { style } : { game: gameId }),
     badge: group.id === 'league' ? 'elite-four' : group.id };
 }
@@ -194,6 +194,7 @@ export function createTrainerSelector({ dialog, dataset, starterId, resolver, re
     const query = trainerSplitBadgeQuery(dataset.gameId, group);
     if (query) {
       const image = element('img', 'trainer-split-badge'); image.alt = '';
+      image.dataset.assetKind = query.kind;
       image.loading = 'eager'; image.fetchPriority = 'high';
       const label = element('span', 'trainer-split-loading-label', group.label.replace(/\s+Split$/iu, ''));
       tab.classList.add('has-badge', 'badge-loading'); tab.replaceChildren(image, label);
@@ -227,10 +228,12 @@ export function createTrainerSelector({ dialog, dataset, starterId, resolver, re
       function loadBadge() {
         loadTimer = setTimeout(missing, 8000); badgeRetries.add(loadTimer);
         // A same-URL image retry can rejoin the stalled browser request. The
-        // shared API's equivalent badgeId selector gives this one retry a
+        // shared API's equivalent selector gives this one retry a
         // separate request without changing the requested asset or release.
         const request = { ...query };
-        if (retried) { request.badgeId = request.badge; delete request.badge; }
+        if (retried && request.kind === 'badge-icon') { request.badgeId = request.badge; delete request.badge; }
+        if (retried && request.kind === 'item-sprite') { request.itemId = request.item; delete request.item; }
+        if (retried && request.kind === 'pokemon-sprite') { request.name = request.species; delete request.species; }
         if (resolver.setAssetImage) resolver.setAssetImage(image, request, { onUnavailable: missing });
         else Promise.resolve(resolver.resolveAsset(request)).then(result => { if (result.status === 'ok') image.src = result.url; else missing(); }).catch(missing);
       }

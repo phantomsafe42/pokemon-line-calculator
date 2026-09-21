@@ -614,8 +614,10 @@ dialog::backdrop { background: rgba(0, 0, 0, .75); }
 .trainer-selector-shell > .section-heading { margin:0; flex:none; flex-direction:row; align-items:center; }
 .trainer-split-tabs { display:flex; gap:6px; overflow-x:auto; flex:none; padding:3px 2px 8px; }
 .trainer-split-tabs button { flex:none; white-space:nowrap; }
-.trainer-split-tabs button.has-badge { width:64px; height:64px; padding:7px; display:grid; place-items:center; }
-.trainer-split-badge { width:48px; height:48px; object-fit:contain; }
+.trainer-split-tabs { --split-icon-size:57.6px; }
+.trainer-split-tabs button.has-badge { width:calc(var(--split-icon-size) + 16px); height:calc(var(--split-icon-size) + 16px); padding:7px; display:grid; place-items:center; }
+/* FireRed's previous 48px display size plus 20%; preserve the full image. */
+.trainer-split-badge { width:var(--split-icon-size); height:var(--split-icon-size); object-fit:contain; }
 .trainer-split-tabs .badge-loading .trainer-split-badge { visibility:hidden; }
 .trainer-split-tabs .badge-loading > * { grid-area:1 / 1; }
 .trainer-split-loading-label { font-size:10px; line-height:1.15; white-space:normal; overflow-wrap:anywhere; }

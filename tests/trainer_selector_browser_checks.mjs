@@ -34,7 +34,7 @@ export async function checkTrainerSelector({ page, evaluate, delay, tempRoot, st
     document.querySelector('[data-trainer-id="platinum-kaizo-veilstone-tag-battle"]').scrollIntoView({block:'start'});
   })()`, true);
   if (staged) await evaluate(page, `window.waitForSelectorTest(() => [...document.querySelectorAll('[data-trainer-id="platinum-kaizo-veilstone-tag-battle"] .trainer-portrait')].length===2 && [...document.querySelectorAll('[data-trainer-id="platinum-kaizo-veilstone-tag-battle"] .trainer-portrait')].every(image=>image.complete&&image.naturalWidth>0),'confirmed class sprites load')`,true);
-  await evaluate(page, `window.waitForSelectorTest(() => [...document.querySelectorAll('.trainer-split-tabs img')].length===10 && [...document.querySelectorAll('.trainer-split-tabs img')].every(image=>image.complete&&image.naturalWidth>0), 'PK badge and progression images load')`, true);
+  await evaluate(page, `window.waitForSelectorTest(() => document.querySelectorAll('.trainer-split-tabs img[data-asset-kind="badge-icon"]').length===10 && document.querySelectorAll('.trainer-split-tabs img[data-asset-kind="pokemon-sprite"]').length===1 && [...document.querySelectorAll('.trainer-split-tabs img')].every(image=>image.complete&&image.naturalWidth>0), 'PK badges and Other Battles Unown load')`, true);
   for (const width of [1920,1280,390,320]) {
     await page.send('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:width<600}); await delay(200);
     await evaluate(page, `(() => {document.querySelector('[data-trainer-id="platinum-kaizo-veilstone-tag-battle"]').scrollIntoView({block:'start'});document.querySelector('.trainer-split-tabs [aria-selected="true"]').scrollIntoView({block:'nearest',inline:'nearest'});})()`);
