@@ -609,17 +609,17 @@ dialog::backdrop { background: rgba(0, 0, 0, .75); }
 }
 
 /* Trainer selection is a presentation of the existing encounter navigation. */
-.trainer-selector-dialog { width:min(1000px,calc(100vw - 32px)); max-width:none; padding:0; }
-.trainer-selector-shell { height:min(820px,calc(100dvh - 48px)); display:flex; flex-direction:column; padding:18px; gap:14px; min-width:0; }
+.trainer-selector-dialog { width:min(2160px,calc(100vw - 32px)); max-width:none; max-height:calc(100dvh - 24px); padding:0; }
+.trainer-selector-shell { height:calc(100dvh - 32px); display:flex; flex-direction:column; padding:18px; gap:14px; min-width:0; }
 .trainer-selector-shell > .section-heading { margin:0; flex:none; flex-direction:row; align-items:center; }
 .trainer-split-tabs { display:flex; gap:6px; overflow-x:auto; flex:none; padding:3px 2px 8px; }
 .trainer-split-tabs button { flex:none; white-space:nowrap; }
 .trainer-split-tabs [aria-selected="true"] { background:var(--accent); color:white; }
-.trainer-options { overflow-y:auto; min-height:0; flex:1; padding:4px; }
+.trainer-options { display:grid; grid-template-columns:minmax(0,1fr); align-content:start; gap:14px; overflow-y:auto; min-height:0; flex:1; padding:4px; }
 .trainer-selector-footer { display:flex; align-items:center; gap:12px; justify-content:space-between; flex:none; border-top:1px solid var(--line); padding-top:12px; }
 .trainer-selection-summary { color:var(--muted); font-size:13px; }
 .trainer-continue { margin-left:auto; }
-.trainer-option { background:var(--shell); border:2px solid var(--line); border-radius:8px; cursor:pointer; margin-bottom:14px; }
+.trainer-option { background:var(--shell); border:2px solid var(--line); border-radius:8px; cursor:pointer; min-width:0; }
 .trainer-option[data-requirement="required"] { border-color:var(--red); }
 .trainer-option[data-requirement="optional"] { border-color:var(--accent); }
 .trainer-option[aria-selected="true"] { outline:3px solid var(--accent-2); outline-offset:1px; }
@@ -638,6 +638,7 @@ dialog::backdrop { background: rgba(0, 0, 0, .75); }
 .trainer-entry { min-width:0; display:flex; flex-direction:column; justify-content:flex-end; }
 .trainer-entry .combatant-slot-heading { text-align:center; margin:0; padding:.35rem .45rem; border:1px solid var(--accent); border-bottom:1px solid var(--line); border-radius:6px 6px 0 0; }
 .trainer-entry.has-slot-heading .context-pokemon { border-top:0; border-radius:0 0 6px 6px; }
+@media(min-width:1500px) { .trainer-options { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media(max-width:650px) {
  .trainer-selector-dialog { width:calc(100vw - 16px); }
  .trainer-selector-shell { height:calc(100dvh - 32px); padding:10px; gap:10px; }
