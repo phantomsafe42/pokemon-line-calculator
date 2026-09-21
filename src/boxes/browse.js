@@ -2,7 +2,9 @@ import { calculateStats } from '../adapters/combatant_ingest.js';
 
 export const BOX_SORTS = Object.freeze([
   ['order', 'Box order'], ['name', 'Name'], ['dex', 'Pokédex number'], ['level', 'Level'],
-  ['hp', 'HP'], ['atk', 'Attack'], ['def', 'Defense'], ['spa', 'Sp. Atk'], ['spd', 'Sp. Def'], ['spe', 'Speed']
+  ['hp', 'HP'], ['atk', 'Attack'], ['def', 'Defense'], ['spa', 'Sp. Atk'], ['spd', 'Sp. Def'], ['spe', 'Speed'],
+  ['base-hp', 'Base HP'], ['base-atk', 'Base Attack'], ['base-def', 'Base Defense'],
+  ['base-spa', 'Base Sp. Atk'], ['base-spd', 'Base Sp. Def'], ['base-spe', 'Base Speed']
 ]);
 export const emptyBoxQuery = () => ({ search: '', type1: '', type2: '', ability: '', move: '', move2: '', move3: '', move4: '', gender: '', item: '', status: '', sort: 'order', direction: 'asc' });
 const text = value => String(value || '').normalize('NFKD').replace(/\p{M}/gu, '').toLowerCase();
@@ -25,9 +27,14 @@ export function browseBox(box, dataset, query = emptyBoxQuery()) {
   });
   if (!query.sort || query.sort === 'order') return query.direction === 'desc' ? records.reverse() : records;
   const stat = ['hp', 'atk', 'def', 'spa', 'spd', 'spe'].includes(query.sort);
+  const baseStat = query.sort.startsWith('base-') && ['hp', 'atk', 'def', 'spa', 'spd', 'spe'].includes(query.sort.slice(5)) ? query.sort.slice(5) : null;
   const values = new Map(records.map(record => {
     let value = null;
     if (stat) { try { value = calculateStats(record, dataset)[query.sort]; } catch { /* Unavailable sorts last, never invented. */ } }
+    else if (baseStat) {
+      const base = record.baseStats?.[baseStat] ?? dataset.get('species', record.speciesId)?.baseStats?.[baseStat];
+      if (base != null && base !== '' && Number(base) > 0) value = Number(base);
+    }
     else if (query.sort === 'level') value = record.level;
     else if (query.sort === 'name') value = text(record.nickname || record.displayName);
     else if (query.sort === 'dex') { const num = Number(dataset.get('species', record.speciesId)?.num); if (num > 0) value = num; }

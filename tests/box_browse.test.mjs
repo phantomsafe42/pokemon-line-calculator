@@ -49,3 +49,18 @@ test('Box browsing never changes canonical or Party order',()=>{
   query({search:'grass',sort:'hp'}); query({sort:'level'});
   assert.deepEqual(box,before);
 });
+
+test('Base stat sorting ignores level, IVs, EVs and nature, and honors edited bases',()=>{
+  const entries=[record('Low',{baseStats:stats(20),level:100,evs:stats(252)}),
+    record('High',{baseStats:stats(100),level:1,ivs:stats(0),natureId:'modest'}),
+    record('Fallback',{baseStats:null}),record('Tie',{baseStats:stats(50)}),
+    record('Unavailable',{speciesId:'absent',baseStats:{}})];
+  const sample={pokemonOrder:entries.map(r=>r.id),pokemon:Object.fromEntries(entries.map(r=>[r.id,r]))};
+  const before=structuredClone(sample);
+  for(const stat of ['hp','atk','def','spa','spd','spe']) {
+    const sorted=direction=>browseBox(sample,dataset,{...emptyBoxQuery(),sort:`base-${stat}`,direction}).map(r=>r.id);
+    assert.deepEqual(sorted('asc'),['Low','Fallback','Tie','High','Unavailable']);
+    assert.deepEqual(sorted('desc'),['High','Fallback','Tie','Low','Unavailable']);
+  }
+  assert.deepEqual(sample,before,'Sorting cannot change Box records or canonical order');
+});

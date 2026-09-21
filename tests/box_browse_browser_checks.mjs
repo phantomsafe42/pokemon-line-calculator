@@ -18,6 +18,9 @@ export async function checkBoxBrowsing({page,evaluate,delay,dataset,tempRoot}) {
   assert.equal(await evaluate(page,`document.querySelector('.box-toolbar .toolbar-actions').firstElementChild.id`),'box-view-toggle');
   assert.equal(await evaluate(page,`document.querySelectorAll('.box-browse-controls label').length`),0,'Headings are replaced by accessible labels');
   assert.ok(await evaluate(page,`[...document.querySelectorAll('.box-browse-controls input,.box-browse-controls select')].every(c=>c.getAttribute('aria-label'))`));
+  assert.deepEqual(await evaluate(page,`[...document.getElementById('box-sort').options].filter(o=>o.value.startsWith('base-')).map(o=>o.textContent)`),
+    ['Base HP','Base Attack','Base Defense','Base Sp. Atk','Base Sp. Def','Base Speed']);
+  assert.equal(await evaluate(page,`[...document.getElementById('box-sort').options].some(o=>/^Sort by:/i.test(o.textContent))`),false);
   assert.equal(await evaluate(page,`${root}.querySelector('.box-expand').getAttribute('aria-expanded')`),'false');
   assert.equal(await evaluate(page,`${root}.querySelectorAll('.box-pokemon-card').length`),0,'Collapsed Box defers card/sprite rendering');
   const saved=()=>evaluate(page,`new Promise((resolve,reject)=>{const request=indexedDB.open('pokemon-line-calculator-boxes');request.onsuccess=()=>{const db=request.result;const read=db.transaction('library').objectStore('library').get('active');read.onsuccess=()=>{db.close();resolve(read.result);};read.onerror=()=>reject(read.error);};})`,true);
@@ -58,6 +61,14 @@ export async function checkBoxBrowsing({page,evaluate,delay,dataset,tempRoot}) {
   assert.deepEqual(await ids(),[records[1].id,records[2].id,records[0].id]);
   await change('box-sort','spe');
   assert.equal((await ids()).length,3);
+  for(const stat of ['hp','atk','def','spa','spd','spe']) {
+    await change('box-sort',`base-${stat}`);
+    for(const direction of ['asc','desc']) {
+      await change('box-sort-direction',direction);
+      const expected=[...records].sort((a,b)=>(direction==='asc'?1:-1)*(a.baseStats[stat]-b.baseStats[stat])).map(r=>r.id);
+      assert.deepEqual(await ids(),expected,`${stat} base sort ${direction}`);
+    }
+  }
   // Edit does not select/deselect a member while the whole-card party picker is active.
   await evaluate(page,`${root}.querySelector('.party-edit').click()`);
   assert.equal(await evaluate(page,`${root}.querySelectorAll('.box-simple-card .box-party-select').length`),3);
