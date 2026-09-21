@@ -2233,7 +2233,7 @@
   "records": {
     "pokemon-unbound-occurrence-0448": {
       "id": "pokemon-unbound-occurrence-0448",
-      "displayName": "Light of Ruin Grunt & Grunt |Crystal Peak|",
+      "displayName": "Light of Ruin Grunt & Grunt",
       "battleFormat": "multi-trainer",
       "enemyTrainerIds": [
         "pokemon-unbound-trainer-0535",
@@ -2247,11 +2247,12 @@
       "formatChoice": "double-only",
       "navigationTrainerIds": [
         "pokemon-unbound-trainer-0058"
-      ]
+      ],
+      "sourceDisplayName": "Light of Ruin Grunt & Grunt |Crystal Peak|"
     },
     "pokemon-unbound-occurrence-0449": {
       "id": "pokemon-unbound-occurrence-0449",
-      "displayName": "Light of Ruin Grunt & Grunt |Crystal Peak| #2",
+      "displayName": "Light of Ruin Grunt & Grunt #2",
       "battleFormat": "multi-trainer",
       "enemyTrainerIds": [
         "pokemon-unbound-trainer-0537",
@@ -2265,11 +2266,12 @@
       "formatChoice": "double-only",
       "navigationTrainerIds": [
         "pokemon-unbound-trainer-0059"
-      ]
+      ],
+      "sourceDisplayName": "Light of Ruin Grunt & Grunt |Crystal Peak| #2"
     },
     "pokemon-unbound-occurrence-0450": {
       "id": "pokemon-unbound-occurrence-0450",
-      "displayName": "Light of Ruin Grunt & Grunt |Crystal Peak| #3",
+      "displayName": "Light of Ruin Grunt & Grunt #3",
       "battleFormat": "multi-trainer",
       "enemyTrainerIds": [
         "pokemon-unbound-trainer-0539",
@@ -2283,11 +2285,12 @@
       "formatChoice": "double-only",
       "navigationTrainerIds": [
         "pokemon-unbound-trainer-0060"
-      ]
+      ],
+      "sourceDisplayName": "Light of Ruin Grunt & Grunt |Crystal Peak| #3"
     },
     "pokemon-unbound-occurrence-0451": {
       "id": "pokemon-unbound-occurrence-0451",
-      "displayName": "Light of Ruin Grunt & Grunt |Crystal Peak| #4",
+      "displayName": "Light of Ruin Grunt & Grunt #4",
       "battleFormat": "multi-trainer",
       "enemyTrainerIds": [
         "pokemon-unbound-trainer-0541",
@@ -2301,7 +2304,8 @@
       "formatChoice": "double-only",
       "navigationTrainerIds": [
         "pokemon-unbound-trainer-0061"
-      ]
+      ],
+      "sourceDisplayName": "Light of Ruin Grunt & Grunt |Crystal Peak| #4"
     }
   }
 }

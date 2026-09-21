@@ -1,0 +1,2085 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-unbound",
+  "supportedBuild": "Pokemon Unbound 2.1.1.1",
+  "relationship": "documented-game",
+  "evidenceLimit": "Community wiki documents the visuals; no ROM-byte identity claim.",
+  "wikiSnapshot": {
+    "path": "imports/trainer-art-wiki/pages.json",
+    "sha256": "a37956143dba33acfb5d112442423d699eabd7f7108ded69eb98845a5c29184a"
+  },
+  "catalog": [
+    {
+      "wikiFile": "Spr Ace Trainer Double.png",
+      "subjectKind": "class",
+      "subjectId": "ace-trainer-double",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Ace_Trainer_Double.png",
+      "revisionTimestamp": "2024-08-22T10:04:57Z"
+    },
+    {
+      "wikiFile": "Spr Ace Trainer F.png",
+      "subjectKind": "class",
+      "subjectId": "ace-trainer",
+      "gender": "female",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Ace_Trainer_F.png",
+      "revisionTimestamp": "2024-08-19T17:24:40Z"
+    },
+    {
+      "wikiFile": "Spr Ace Trainer M.png",
+      "subjectKind": "class",
+      "subjectId": "ace-trainer",
+      "gender": "male",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Ace_Trainer_M.png",
+      "revisionTimestamp": "2024-08-19T17:24:43Z"
+    },
+    {
+      "wikiFile": "Spr Aklove.png",
+      "subjectKind": "character",
+      "subjectId": "aklove",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Aklove.png",
+      "revisionTimestamp": "2024-08-19T17:24:44Z"
+    },
+    {
+      "wikiFile": "Spr Alice.png",
+      "subjectKind": "character",
+      "subjectId": "alice",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Alice.png",
+      "revisionTimestamp": "2024-08-19T17:24:42Z"
+    },
+    {
+      "wikiFile": "Spr Arabella.png",
+      "subjectKind": "character",
+      "subjectId": "arabella",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Arabella.png",
+      "revisionTimestamp": "2024-08-19T17:24:42Z"
+    },
+    {
+      "wikiFile": "Spr Aroma Lady.png",
+      "subjectKind": "class",
+      "subjectId": "aroma-lady",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Aroma_Lady.png",
+      "revisionTimestamp": "2024-08-19T17:24:44Z"
+    },
+    {
+      "wikiFile": "Spr Barbs.png",
+      "subjectKind": "character",
+      "subjectId": "barbs",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Barbs.png",
+      "revisionTimestamp": "2024-08-19T17:24:44Z"
+    },
+    {
+      "wikiFile": "Spr Battle Girl.png",
+      "subjectKind": "class",
+      "subjectId": "battle-girl",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Battle_Girl.png",
+      "revisionTimestamp": "2024-08-19T17:24:46Z"
+    },
+    {
+      "wikiFile": "Spr Beauty.png",
+      "subjectKind": "class",
+      "subjectId": "beauty",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Beauty.png",
+      "revisionTimestamp": "2024-08-19T17:24:43Z"
+    },
+    {
+      "wikiFile": "Spr Beauty2.png",
+      "subjectKind": "class",
+      "subjectId": "beauty",
+      "gender": "default",
+      "variant": "variant-2",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Beauty2.png",
+      "revisionTimestamp": "2024-08-19T17:24:40Z"
+    },
+    {
+      "wikiFile": "Spr Benjamin.png",
+      "subjectKind": "character",
+      "subjectId": "benjamin",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Benjamin.png",
+      "revisionTimestamp": "2024-08-19T17:24:42Z"
+    },
+    {
+      "wikiFile": "Spr Big Mo.png",
+      "subjectKind": "character",
+      "subjectId": "big-mo",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Big_Mo.png",
+      "revisionTimestamp": "2024-08-19T17:24:44Z"
+    },
+    {
+      "wikiFile": "Spr Biker.png",
+      "subjectKind": "class",
+      "subjectId": "biker",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Biker.png",
+      "revisionTimestamp": "2024-08-22T10:04:58Z"
+    },
+    {
+      "wikiFile": "Spr Bird Keeper.png",
+      "subjectKind": "class",
+      "subjectId": "bird-keeper",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Bird_Keeper.png",
+      "revisionTimestamp": "2024-08-19T17:24:44Z"
+    },
+    {
+      "wikiFile": "Spr Bird Keeper2.png",
+      "subjectKind": "class",
+      "subjectId": "bird-keeper",
+      "gender": "default",
+      "variant": "variant-2",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Bird_Keeper2.png",
+      "revisionTimestamp": "2024-08-22T10:04:55Z"
+    },
+    {
+      "wikiFile": "Spr Black Belt.png",
+      "subjectKind": "class",
+      "subjectId": "black-belt",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Black_Belt.png",
+      "revisionTimestamp": "2024-08-19T17:24:44Z"
+    },
+    {
+      "wikiFile": "Spr Black Emboar Biker.png",
+      "subjectKind": "class",
+      "subjectId": "black-emboar-biker",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Black_Emboar_Biker.png",
+      "revisionTimestamp": "2024-08-19T17:24:44Z"
+    },
+    {
+      "wikiFile": "Spr Black Emboar Goon.png",
+      "subjectKind": "class",
+      "subjectId": "black-emboar-goon",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Black_Emboar_Goon.png",
+      "revisionTimestamp": "2024-08-19T17:24:44Z"
+    },
+    {
+      "wikiFile": "Spr Black Ferrothorn Biker.png",
+      "subjectKind": "class",
+      "subjectId": "black-ferrothorn-biker",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Black_Ferrothorn_Biker.png",
+      "revisionTimestamp": "2024-08-19T17:24:45Z"
+    },
+    {
+      "wikiFile": "Spr Black Ferrothorn Goon.png",
+      "subjectKind": "class",
+      "subjectId": "black-ferrothorn-goon",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Black_Ferrothorn_Goon.png",
+      "revisionTimestamp": "2024-08-19T17:24:45Z"
+    },
+    {
+      "wikiFile": "Spr Breeder F.png",
+      "subjectKind": "class",
+      "subjectId": "pokemon-breeder",
+      "gender": "female",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Breeder_F.png",
+      "revisionTimestamp": "2024-08-19T17:24:45Z"
+    },
+    {
+      "wikiFile": "Spr Breeder M.png",
+      "subjectKind": "class",
+      "subjectId": "pokemon-breeder",
+      "gender": "male",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Breeder_M.png",
+      "revisionTimestamp": "2024-08-19T17:24:44Z"
+    },
+    {
+      "wikiFile": "Spr Bug Catcher.png",
+      "subjectKind": "class",
+      "subjectId": "bug-catcher",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Bug_Catcher.png",
+      "revisionTimestamp": "2024-08-19T17:24:45Z"
+    },
+    {
+      "wikiFile": "Spr Bug Maniac.png",
+      "subjectKind": "class",
+      "subjectId": "bug-maniac",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Bug_Maniac.png",
+      "revisionTimestamp": "2024-08-19T17:24:44Z"
+    },
+    {
+      "wikiFile": "Spr Burglar.png",
+      "subjectKind": "class",
+      "subjectId": "burglar",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Burglar.png",
+      "revisionTimestamp": "2024-08-19T17:24:44Z"
+    },
+    {
+      "wikiFile": "Spr Cameraman.png",
+      "subjectKind": "class",
+      "subjectId": "cameraman",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Cameraman.png",
+      "revisionTimestamp": "2024-08-19T17:24:42Z"
+    },
+    {
+      "wikiFile": "Spr Camper.png",
+      "subjectKind": "class",
+      "subjectId": "camper",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Camper.png",
+      "revisionTimestamp": "2024-08-19T17:24:44Z"
+    },
+    {
+      "wikiFile": "Spr Candice.png",
+      "subjectKind": "character",
+      "subjectId": "candice",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Candice.png",
+      "revisionTimestamp": "2024-08-19T17:24:45Z"
+    },
+    {
+      "wikiFile": "Spr Circus Ringmaster.png",
+      "subjectKind": "character",
+      "subjectId": "paula",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Circus_Ringmaster.png",
+      "revisionTimestamp": "2024-08-19T17:24:43Z"
+    },
+    {
+      "wikiFile": "Spr Collector.png",
+      "subjectKind": "class",
+      "subjectId": "collector",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Collector.png",
+      "revisionTimestamp": "2024-08-19T17:24:45Z"
+    },
+    {
+      "wikiFile": "Spr Cowgirl.png",
+      "subjectKind": "class",
+      "subjectId": "cowgirl",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Cowgirl.png",
+      "revisionTimestamp": "2024-08-19T17:24:45Z"
+    },
+    {
+      "wikiFile": "Spr Criminon.png",
+      "subjectKind": "character",
+      "subjectId": "criminon",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Criminon.png",
+      "revisionTimestamp": "2024-09-22T10:42:49Z"
+    },
+    {
+      "wikiFile": "Spr Crush Girl.png",
+      "subjectKind": "class",
+      "subjectId": "crush-girl",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Crush_Girl.png",
+      "revisionTimestamp": "2024-08-19T17:24:45Z"
+    },
+    {
+      "wikiFile": "Spr Crush Kin.png",
+      "subjectKind": "class",
+      "subjectId": "crush-kin",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Crush_Kin.png",
+      "revisionTimestamp": "2024-08-19T17:24:44Z"
+    },
+    {
+      "wikiFile": "Spr Cyclist F.png",
+      "subjectKind": "class",
+      "subjectId": "cyclist",
+      "gender": "female",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Cyclist_F.png",
+      "revisionTimestamp": "2024-08-22T10:04:59Z"
+    },
+    {
+      "wikiFile": "Spr Cyclist M.png",
+      "subjectKind": "class",
+      "subjectId": "cyclist",
+      "gender": "male",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Cyclist_M.png",
+      "revisionTimestamp": "2024-08-22T10:05:00Z"
+    },
+    {
+      "wikiFile": "Spr Cyclist-F.png",
+      "subjectKind": "class",
+      "subjectId": "cyclist",
+      "gender": "female",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Cyclist-F.png",
+      "revisionTimestamp": "2024-08-19T17:24:45Z"
+    },
+    {
+      "wikiFile": "Spr Cyclist-M.png",
+      "subjectKind": "class",
+      "subjectId": "cyclist",
+      "gender": "male",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Cyclist-M.png",
+      "revisionTimestamp": "2024-08-19T17:24:46Z"
+    },
+    {
+      "wikiFile": "Spr Cynthia.png",
+      "subjectKind": "character",
+      "subjectId": "cynthia",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Cynthia.png",
+      "revisionTimestamp": "2024-08-19T17:24:46Z"
+    },
+    {
+      "wikiFile": "Spr Default F.png",
+      "subjectKind": "class",
+      "subjectId": "default",
+      "gender": "female",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Default_F.png",
+      "revisionTimestamp": "2024-08-19T17:08:25Z"
+    },
+    {
+      "wikiFile": "Spr Default M.png",
+      "subjectKind": "class",
+      "subjectId": "default",
+      "gender": "male",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Default_M.png",
+      "revisionTimestamp": "2024-08-19T17:24:45Z"
+    },
+    {
+      "wikiFile": "Spr Default Red Sand M.png",
+      "subjectKind": "special",
+      "subjectId": "default-red-sand",
+      "gender": "male",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Default_Red_Sand_M.png",
+      "revisionTimestamp": "2024-08-14T09:38:36Z"
+    },
+    {
+      "wikiFile": "Spr Dragon Tamer.png",
+      "subjectKind": "class",
+      "subjectId": "dragon-tamer",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Dragon_Tamer.png",
+      "revisionTimestamp": "2024-08-19T17:24:47Z"
+    },
+    {
+      "wikiFile": "Spr Elias.png",
+      "subjectKind": "character",
+      "subjectId": "elias",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Elias.png",
+      "revisionTimestamp": "2024-08-19T17:24:50Z"
+    },
+    {
+      "wikiFile": "Spr Ex Shadow Admin.png",
+      "subjectKind": "character",
+      "subjectId": "marlon",
+      "gender": "default",
+      "variant": "ex-shadow",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Ex_Shadow_Admin.png",
+      "revisionTimestamp": "2024-08-19T17:24:45Z"
+    },
+    {
+      "wikiFile": "Spr Expert F.png",
+      "subjectKind": "class",
+      "subjectId": "expert",
+      "gender": "female",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Expert_F.png",
+      "revisionTimestamp": "2024-08-22T10:04:59Z"
+    },
+    {
+      "wikiFile": "Spr Expert M.png",
+      "subjectKind": "class",
+      "subjectId": "expert",
+      "gender": "male",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Expert_M.png",
+      "revisionTimestamp": "2024-08-22T10:04:56Z"
+    },
+    {
+      "wikiFile": "Spr Firebreather.png",
+      "subjectKind": "class",
+      "subjectId": "firebreather",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Firebreather.png",
+      "revisionTimestamp": "2024-08-19T17:24:46Z"
+    },
+    {
+      "wikiFile": "Spr Fisherman.png",
+      "subjectKind": "class",
+      "subjectId": "fisherman",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Fisherman.png",
+      "revisionTimestamp": "2024-08-19T17:24:47Z"
+    },
+    {
+      "wikiFile": "Spr Galavan.png",
+      "subjectKind": "character",
+      "subjectId": "galavan",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Galavan.png",
+      "revisionTimestamp": "2024-08-19T17:24:46Z"
+    },
+    {
+      "wikiFile": "Spr Gambler.png",
+      "subjectKind": "class",
+      "subjectId": "gamer",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Gambler.png",
+      "revisionTimestamp": "2024-08-19T17:24:47Z"
+    },
+    {
+      "wikiFile": "Spr Gentleman.png",
+      "subjectKind": "class",
+      "subjectId": "gentleman",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Gentleman.png",
+      "revisionTimestamp": "2024-08-19T17:24:44Z"
+    },
+    {
+      "wikiFile": "Spr Gentleman2.png",
+      "subjectKind": "class",
+      "subjectId": "gentleman",
+      "gender": "default",
+      "variant": "variant-2",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Gentleman2.png",
+      "revisionTimestamp": "2024-08-22T10:05:01Z"
+    },
+    {
+      "wikiFile": "Spr Giovanni.png",
+      "subjectKind": "character",
+      "subjectId": "giovanni",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Giovanni.png",
+      "revisionTimestamp": "2024-08-19T17:24:47Z"
+    },
+    {
+      "wikiFile": "Spr Golche.png",
+      "subjectKind": "character",
+      "subjectId": "golche",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Golche.png",
+      "revisionTimestamp": "2024-09-21T16:54:00Z"
+    },
+    {
+      "wikiFile": "Spr Gruff.png",
+      "subjectKind": "character",
+      "subjectId": "gruff",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Gruff.png",
+      "revisionTimestamp": "2024-08-19T17:24:46Z"
+    },
+    {
+      "wikiFile": "Spr Guitarist.png",
+      "subjectKind": "class",
+      "subjectId": "guitarist",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Guitarist.png",
+      "revisionTimestamp": "2024-08-19T17:24:47Z"
+    },
+    {
+      "wikiFile": "Spr Hiker.png",
+      "subjectKind": "class",
+      "subjectId": "hiker",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Hiker.png",
+      "revisionTimestamp": "2024-08-19T17:24:48Z"
+    },
+    {
+      "wikiFile": "Spr Idol.png",
+      "subjectKind": "class",
+      "subjectId": "idol",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Idol.png",
+      "revisionTimestamp": "2024-08-19T17:24:47Z"
+    },
+    {
+      "wikiFile": "Spr Interviewers.png",
+      "subjectKind": "class",
+      "subjectId": "interviewers",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Interviewers.png",
+      "revisionTimestamp": "2024-08-22T10:05:02Z"
+    },
+    {
+      "wikiFile": "Spr Ivory.png",
+      "subjectKind": "character",
+      "subjectId": "ivory",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Ivory.png",
+      "revisionTimestamp": "2024-08-19T17:24:47Z"
+    },
+    {
+      "wikiFile": "Spr James.png",
+      "subjectKind": "character",
+      "subjectId": "james",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_James.png",
+      "revisionTimestamp": "2024-08-19T17:24:47Z"
+    },
+    {
+      "wikiFile": "Spr Jax.png",
+      "subjectKind": "character",
+      "subjectId": "jax",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Jax.png",
+      "revisionTimestamp": "2024-08-19T17:24:46Z"
+    },
+    {
+      "wikiFile": "Spr Jogger.png",
+      "subjectKind": "class",
+      "subjectId": "jogger",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Jogger.png",
+      "revisionTimestamp": "2024-08-19T17:24:47Z"
+    },
+    {
+      "wikiFile": "Spr Juggler.png",
+      "subjectKind": "class",
+      "subjectId": "juggler",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Juggler.png",
+      "revisionTimestamp": "2024-08-19T17:24:47Z"
+    },
+    {
+      "wikiFile": "Spr Kindler.png",
+      "subjectKind": "class",
+      "subjectId": "kindler",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Kindler.png",
+      "revisionTimestamp": "2024-08-19T17:24:46Z"
+    },
+    {
+      "wikiFile": "Spr Lady.png",
+      "subjectKind": "class",
+      "subjectId": "lady",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Lady.png",
+      "revisionTimestamp": "2024-08-19T17:24:48Z"
+    },
+    {
+      "wikiFile": "Spr Lass.png",
+      "subjectKind": "class",
+      "subjectId": "lass",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Lass.png",
+      "revisionTimestamp": "2024-08-19T17:24:48Z"
+    },
+    {
+      "wikiFile": "Spr Light of Ruin Grunt.png",
+      "subjectKind": "class",
+      "subjectId": "light-of-ruin-grunt",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Light_of_Ruin_Grunt.png",
+      "revisionTimestamp": "2024-08-19T17:24:47Z"
+    },
+    {
+      "wikiFile": "Spr Lixdel.png",
+      "subjectKind": "character",
+      "subjectId": "lixdel",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Lixdel.png",
+      "revisionTimestamp": "2024-09-22T14:19:22Z"
+    },
+    {
+      "wikiFile": "Spr Mad Scientist.png",
+      "subjectKind": "class",
+      "subjectId": "mad-scientist",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Mad_Scientist.png",
+      "revisionTimestamp": "2024-08-19T17:24:46Z"
+    },
+    {
+      "wikiFile": "Spr Marlon.png",
+      "subjectKind": "character",
+      "subjectId": "marlon",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Marlon.png",
+      "revisionTimestamp": "2024-08-19T17:24:47Z"
+    },
+    {
+      "wikiFile": "Spr Maxima.png",
+      "subjectKind": "character",
+      "subjectId": "maxima",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Maxima.png",
+      "revisionTimestamp": "2024-08-19T17:24:47Z"
+    },
+    {
+      "wikiFile": "Spr Medium.png",
+      "subjectKind": "class",
+      "subjectId": "medium",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Medium.png",
+      "revisionTimestamp": "2024-08-19T17:24:49Z"
+    },
+    {
+      "wikiFile": "Spr Mel.png",
+      "subjectKind": "character",
+      "subjectId": "mel",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Mel.png",
+      "revisionTimestamp": "2024-08-19T17:24:47Z"
+    },
+    {
+      "wikiFile": "Spr Mine Excavator.png",
+      "subjectKind": "character",
+      "subjectId": "pablo",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Mine_Excavator.png",
+      "revisionTimestamp": "2024-08-19T17:24:48Z"
+    },
+    {
+      "wikiFile": "Spr Mirskle.png",
+      "subjectKind": "character",
+      "subjectId": "mirskle",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Mirskle.png",
+      "revisionTimestamp": "2024-08-19T17:24:50Z"
+    },
+    {
+      "wikiFile": "Spr Moleman.png",
+      "subjectKind": "character",
+      "subjectId": "moleman",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Moleman.png",
+      "revisionTimestamp": "2024-08-19T17:24:49Z"
+    },
+    {
+      "wikiFile": "Spr Nex.png",
+      "subjectKind": "character",
+      "subjectId": "nex",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Nex.png",
+      "revisionTimestamp": "2024-09-21T06:50:41Z"
+    },
+    {
+      "wikiFile": "Spr Ninja Boy.png",
+      "subjectKind": "class",
+      "subjectId": "ninja-boy",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Ninja_Boy.png",
+      "revisionTimestamp": "2024-08-22T10:05:02Z"
+    },
+    {
+      "wikiFile": "Spr Nurse.png",
+      "subjectKind": "class",
+      "subjectId": "nurse",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Nurse.png",
+      "revisionTimestamp": "2024-08-19T17:24:47Z"
+    },
+    {
+      "wikiFile": "Spr Painter.png",
+      "subjectKind": "class",
+      "subjectId": "painter",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Painter.png",
+      "revisionTimestamp": "2024-08-19T17:24:50Z"
+    },
+    {
+      "wikiFile": "Spr Palmer.png",
+      "subjectKind": "character",
+      "subjectId": "palmer",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Palmer.png",
+      "revisionTimestamp": "2024-08-19T17:24:48Z"
+    },
+    {
+      "wikiFile": "Spr Parasol Lady.png",
+      "subjectKind": "class",
+      "subjectId": "parasol-lady",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Parasol_Lady.png",
+      "revisionTimestamp": "2024-08-19T17:24:49Z"
+    },
+    {
+      "wikiFile": "Spr Penny.png",
+      "subjectKind": "character",
+      "subjectId": "penny",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Penny.png",
+      "revisionTimestamp": "2024-08-19T17:24:48Z"
+    },
+    {
+      "wikiFile": "Spr Picnicker and Camper.png",
+      "subjectKind": "class",
+      "subjectId": "picnicker-and-camper",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Picnicker_and_Camper.png",
+      "revisionTimestamp": "2024-08-22T10:05:00Z"
+    },
+    {
+      "wikiFile": "Spr Picnicker.png",
+      "subjectKind": "class",
+      "subjectId": "picnicker",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Picnicker.png",
+      "revisionTimestamp": "2024-08-19T17:24:49Z"
+    },
+    {
+      "wikiFile": "Spr Player Ethan.png",
+      "subjectKind": "special",
+      "subjectId": "player-ethan",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Player_Ethan.png",
+      "revisionTimestamp": "2024-08-22T10:04:59Z"
+    },
+    {
+      "wikiFile": "Spr Player Leaf.png",
+      "subjectKind": "special",
+      "subjectId": "player-leaf",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Player_Leaf.png",
+      "revisionTimestamp": "2024-08-22T10:04:58Z"
+    },
+    {
+      "wikiFile": "Spr Player Lyra.png",
+      "subjectKind": "special",
+      "subjectId": "player-lyra",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Player_Lyra.png",
+      "revisionTimestamp": "2024-08-22T10:04:58Z"
+    },
+    {
+      "wikiFile": "Spr Player Red.png",
+      "subjectKind": "special",
+      "subjectId": "player-red",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Player_Red.png",
+      "revisionTimestamp": "2024-08-22T10:04:58Z"
+    },
+    {
+      "wikiFile": "Spr Player Shadow F.png",
+      "subjectKind": "special",
+      "subjectId": "player-shadow",
+      "gender": "female",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Player_Shadow_F.png",
+      "revisionTimestamp": "2024-08-19T17:24:49Z"
+    },
+    {
+      "wikiFile": "Spr Player Shadow M.png",
+      "subjectKind": "special",
+      "subjectId": "player-shadow",
+      "gender": "male",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Player_Shadow_M.png",
+      "revisionTimestamp": "2024-08-19T17:24:49Z"
+    },
+    {
+      "wikiFile": "Spr Poké Fan F.png",
+      "subjectKind": "class",
+      "subjectId": "pokefan",
+      "gender": "female",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Pok%C3%A9_Fan_F.png",
+      "revisionTimestamp": "2024-08-22T10:05:00Z"
+    },
+    {
+      "wikiFile": "Spr Poké Fan M.png",
+      "subjectKind": "class",
+      "subjectId": "pokefan",
+      "gender": "male",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Pok%C3%A9_Fan_M.png",
+      "revisionTimestamp": "2024-08-22T10:04:58Z"
+    },
+    {
+      "wikiFile": "Spr Poké Kid.png",
+      "subjectKind": "class",
+      "subjectId": "poke-kid",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Pok%C3%A9_Kid.png",
+      "revisionTimestamp": "2024-08-22T10:04:59Z"
+    },
+    {
+      "wikiFile": "Spr Poké Maniac.png",
+      "subjectKind": "class",
+      "subjectId": "poke-maniac",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Pok%C3%A9_Maniac.png",
+      "revisionTimestamp": "2024-08-22T10:04:59Z"
+    },
+    {
+      "wikiFile": "Spr PokéFan F.png",
+      "subjectKind": "class",
+      "subjectId": "pokefan",
+      "gender": "female",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Pok%C3%A9Fan_F.png",
+      "revisionTimestamp": "2024-08-19T17:24:48Z"
+    },
+    {
+      "wikiFile": "Spr PokéFan M.png",
+      "subjectKind": "class",
+      "subjectId": "pokefan",
+      "gender": "male",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Pok%C3%A9Fan_M.png",
+      "revisionTimestamp": "2024-08-19T17:24:48Z"
+    },
+    {
+      "wikiFile": "Spr PokéKid.png",
+      "subjectKind": "class",
+      "subjectId": "poke-kid",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Pok%C3%A9Kid.png",
+      "revisionTimestamp": "2024-08-19T17:24:50Z"
+    },
+    {
+      "wikiFile": "Spr PokéManiac.png",
+      "subjectKind": "class",
+      "subjectId": "poke-maniac",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Pok%C3%A9Maniac.png",
+      "revisionTimestamp": "2024-08-19T17:24:50Z"
+    },
+    {
+      "wikiFile": "Spr Police.png",
+      "subjectKind": "class",
+      "subjectId": "officer",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Police.png",
+      "revisionTimestamp": "2024-08-19T17:24:49Z"
+    },
+    {
+      "wikiFile": "Spr Psychic F.png",
+      "subjectKind": "class",
+      "subjectId": "psychic",
+      "gender": "female",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Psychic_F.png",
+      "revisionTimestamp": "2024-08-19T17:24:49Z"
+    },
+    {
+      "wikiFile": "Spr Psychic M.png",
+      "subjectKind": "class",
+      "subjectId": "psychic",
+      "gender": "male",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Psychic_M.png",
+      "revisionTimestamp": "2024-08-22T10:04:59Z"
+    },
+    {
+      "wikiFile": "Spr Psychic.png",
+      "subjectKind": "class",
+      "subjectId": "psychic",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Psychic.png",
+      "revisionTimestamp": "2024-08-19T17:24:49Z"
+    },
+    {
+      "wikiFile": "Spr Rancher.png",
+      "subjectKind": "class",
+      "subjectId": "rancher",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Rancher.png",
+      "revisionTimestamp": "2024-08-22T10:04:58Z"
+    },
+    {
+      "wikiFile": "Spr Ranger F.png",
+      "subjectKind": "class",
+      "subjectId": "pokemon-ranger",
+      "gender": "female",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Ranger_F.png",
+      "revisionTimestamp": "2024-08-19T17:24:48Z"
+    },
+    {
+      "wikiFile": "Spr Ranger M.png",
+      "subjectKind": "class",
+      "subjectId": "pokemon-ranger",
+      "gender": "male",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Ranger_M.png",
+      "revisionTimestamp": "2024-08-19T17:24:44Z"
+    },
+    {
+      "wikiFile": "Spr Rangers.png",
+      "subjectKind": "class",
+      "subjectId": "pokemon-rangers",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Rangers.png",
+      "revisionTimestamp": "2024-09-25T06:29:26Z"
+    },
+    {
+      "wikiFile": "Spr Red.png",
+      "subjectKind": "character",
+      "subjectId": "red",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Red.png",
+      "revisionTimestamp": "2024-08-22T10:04:59Z"
+    },
+    {
+      "wikiFile": "Spr Reporter.png",
+      "subjectKind": "class",
+      "subjectId": "reporter",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Reporter.png",
+      "revisionTimestamp": "2024-08-19T17:24:50Z"
+    },
+    {
+      "wikiFile": "Spr Rich Boy.png",
+      "subjectKind": "class",
+      "subjectId": "rich-boy",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Rich_Boy.png",
+      "revisionTimestamp": "2024-08-19T17:24:50Z"
+    },
+    {
+      "wikiFile": "Spr Rival.png",
+      "subjectKind": "character",
+      "subjectId": "ace",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Rival.png",
+      "revisionTimestamp": "2024-08-19T17:24:49Z"
+    },
+    {
+      "wikiFile": "Spr Roughneck.png",
+      "subjectKind": "class",
+      "subjectId": "roughneck",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Roughneck.png",
+      "revisionTimestamp": "2024-08-22T10:05:00Z"
+    },
+    {
+      "wikiFile": "Spr Ruin Maniac.png",
+      "subjectKind": "class",
+      "subjectId": "ruin-maniac",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Ruin_Maniac.png",
+      "revisionTimestamp": "2024-08-19T17:24:50Z"
+    },
+    {
+      "wikiFile": "Spr Sailor.png",
+      "subjectKind": "class",
+      "subjectId": "sailor",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Sailor.png",
+      "revisionTimestamp": "2024-08-19T17:24:49Z"
+    },
+    {
+      "wikiFile": "Spr Sands King.png",
+      "subjectKind": "character",
+      "subjectId": "patroz",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Sands_King.png",
+      "revisionTimestamp": "2024-08-19T17:24:50Z"
+    },
+    {
+      "wikiFile": "Spr School Kid M.png",
+      "subjectKind": "class",
+      "subjectId": "school-kid",
+      "gender": "male",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_School_Kid_M.png",
+      "revisionTimestamp": "2024-08-19T17:24:49Z"
+    },
+    {
+      "wikiFile": "Spr Science Society F.png",
+      "subjectKind": "class",
+      "subjectId": "science-society",
+      "gender": "female",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Science_Society_F.png",
+      "revisionTimestamp": "2024-08-19T17:24:49Z"
+    },
+    {
+      "wikiFile": "Spr Science Society M.png",
+      "subjectKind": "class",
+      "subjectId": "science-society",
+      "gender": "male",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Science_Society_M.png",
+      "revisionTimestamp": "2024-08-19T17:24:49Z"
+    },
+    {
+      "wikiFile": "Spr Scientist.png",
+      "subjectKind": "class",
+      "subjectId": "scientist",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Scientist.png",
+      "revisionTimestamp": "2024-08-19T17:24:49Z"
+    },
+    {
+      "wikiFile": "Spr Shadow Grunt F.png",
+      "subjectKind": "class",
+      "subjectId": "shadow-grunt",
+      "gender": "female",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Shadow_Grunt_F.png",
+      "revisionTimestamp": "2024-08-22T10:05:00Z"
+    },
+    {
+      "wikiFile": "Spr Shadow Grunt M.png",
+      "subjectKind": "class",
+      "subjectId": "shadow-grunt",
+      "gender": "male",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Shadow_Grunt_M.png",
+      "revisionTimestamp": "2024-08-22T10:05:01Z"
+    },
+    {
+      "wikiFile": "Spr Shadow.png",
+      "subjectKind": "class",
+      "subjectId": "shadow",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Shadow.png",
+      "revisionTimestamp": "2024-08-19T17:24:50Z"
+    },
+    {
+      "wikiFile": "Spr Shocker.png",
+      "subjectKind": "class",
+      "subjectId": "shocker",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Shocker.png",
+      "revisionTimestamp": "2024-08-19T17:24:49Z"
+    },
+    {
+      "wikiFile": "Spr Sis & Bro.png",
+      "subjectKind": "class",
+      "subjectId": "sis-bro",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Sis_%26_Bro.png",
+      "revisionTimestamp": "2024-08-22T10:05:01Z"
+    },
+    {
+      "wikiFile": "Spr Skeli.png",
+      "subjectKind": "character",
+      "subjectId": "skeli",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Skeli.png",
+      "revisionTimestamp": "2024-08-19T17:24:52Z"
+    },
+    {
+      "wikiFile": "Spr Skier F.png",
+      "subjectKind": "class",
+      "subjectId": "skier",
+      "gender": "female",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Skier_F.png",
+      "revisionTimestamp": "2024-08-19T17:24:46Z"
+    },
+    {
+      "wikiFile": "Spr Skier M.png",
+      "subjectKind": "class",
+      "subjectId": "skier",
+      "gender": "male",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Skier_M.png",
+      "revisionTimestamp": "2024-08-19T17:24:50Z"
+    },
+    {
+      "wikiFile": "Spr Steven.png",
+      "subjectKind": "class",
+      "subjectId": "steven",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Steven.png",
+      "revisionTimestamp": "2024-08-19T17:24:50Z"
+    },
+    {
+      "wikiFile": "Spr Super Nerd.png",
+      "subjectKind": "class",
+      "subjectId": "super-nerd",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Super_Nerd.png",
+      "revisionTimestamp": "2024-08-19T17:24:50Z"
+    },
+    {
+      "wikiFile": "Spr Swimmer F.png",
+      "subjectKind": "class",
+      "subjectId": "swimmer",
+      "gender": "female",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Swimmer_F.png",
+      "revisionTimestamp": "2024-08-19T17:24:51Z"
+    },
+    {
+      "wikiFile": "Spr Swimmer M.png",
+      "subjectKind": "class",
+      "subjectId": "swimmer",
+      "gender": "male",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Swimmer_M.png",
+      "revisionTimestamp": "2024-08-19T17:24:52Z"
+    },
+    {
+      "wikiFile": "Spr Tamer.png",
+      "subjectKind": "class",
+      "subjectId": "tamer",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Tamer.png",
+      "revisionTimestamp": "2024-10-14T12:56:28Z"
+    },
+    {
+      "wikiFile": "Spr Terror Granbull Goon.png",
+      "subjectKind": "class",
+      "subjectId": "terror-granbull-goon",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Terror_Granbull_Goon.png",
+      "revisionTimestamp": "2024-08-19T17:24:52Z"
+    },
+    {
+      "wikiFile": "Spr Tessy.png",
+      "subjectKind": "character",
+      "subjectId": "tessy",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Tessy.png",
+      "revisionTimestamp": "2024-08-19T17:24:51Z"
+    },
+    {
+      "wikiFile": "Spr Thanasis.png",
+      "subjectKind": "character",
+      "subjectId": "thanasis",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Thanasis.png",
+      "revisionTimestamp": "2024-09-22T13:03:59Z"
+    },
+    {
+      "wikiFile": "Spr Triathlete.png",
+      "subjectKind": "class",
+      "subjectId": "triathlete",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Triathlete.png",
+      "revisionTimestamp": "2024-08-22T10:04:58Z"
+    },
+    {
+      "wikiFile": "Spr Tuber F.png",
+      "subjectKind": "class",
+      "subjectId": "tuber",
+      "gender": "female",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Tuber_F.png",
+      "revisionTimestamp": "2024-08-22T10:05:03Z"
+    },
+    {
+      "wikiFile": "Spr Tuber M.png",
+      "subjectKind": "class",
+      "subjectId": "tuber",
+      "gender": "male",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Tuber_M.png",
+      "revisionTimestamp": "2024-08-22T10:05:02Z"
+    },
+    {
+      "wikiFile": "Spr Tuber.png",
+      "subjectKind": "class",
+      "subjectId": "tuber",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Tuber.png",
+      "revisionTimestamp": "2024-08-19T17:24:52Z"
+    },
+    {
+      "wikiFile": "Spr Twins.png",
+      "subjectKind": "class",
+      "subjectId": "twins",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Twins.png",
+      "revisionTimestamp": "2024-08-22T10:05:01Z"
+    },
+    {
+      "wikiFile": "Spr Twins2.png",
+      "subjectKind": "class",
+      "subjectId": "twins",
+      "gender": "default",
+      "variant": "variant-2",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Twins2.png",
+      "revisionTimestamp": "2024-08-22T10:05:01Z"
+    },
+    {
+      "wikiFile": "Spr Véga.png",
+      "subjectKind": "character",
+      "subjectId": "vega",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_V%C3%A9ga.png",
+      "revisionTimestamp": "2024-08-19T17:24:53Z"
+    },
+    {
+      "wikiFile": "Spr Waiter.png",
+      "subjectKind": "class",
+      "subjectId": "waiter",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Waiter.png",
+      "revisionTimestamp": "2024-08-19T17:24:52Z"
+    },
+    {
+      "wikiFile": "Spr Waitress.png",
+      "subjectKind": "class",
+      "subjectId": "waitress",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Waitress.png",
+      "revisionTimestamp": "2024-08-19T17:24:53Z"
+    },
+    {
+      "wikiFile": "Spr Worker.png",
+      "subjectKind": "class",
+      "subjectId": "worker",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Worker.png",
+      "revisionTimestamp": "2024-08-19T17:24:52Z"
+    },
+    {
+      "wikiFile": "Spr Young Couple.png",
+      "subjectKind": "class",
+      "subjectId": "young-couple",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Young_Couple.png",
+      "revisionTimestamp": "2024-08-19T17:24:49Z"
+    },
+    {
+      "wikiFile": "Spr Youngster.png",
+      "subjectKind": "class",
+      "subjectId": "youngster",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Youngster.png",
+      "revisionTimestamp": "2024-08-19T17:24:53Z"
+    },
+    {
+      "wikiFile": "Spr Zeph.png",
+      "subjectKind": "character",
+      "subjectId": "zeph",
+      "gender": "default",
+      "variant": "default",
+      "sourcePage": "https://pokemonunbound.miraheze.org/wiki/File:Spr_Zeph.png",
+      "revisionTimestamp": "2024-08-19T17:24:53Z"
+    }
+  ],
+  "classAliases": {
+    "Bug Cathcer": "Bug Catcher",
+    "Picknicker": "Picnicker",
+    "Black Ferrothon": "Black Ferrothorn",
+    "Team Shadow": "Shadow",
+    "Team Light of Ruin": "Light of Ruin",
+    "School Kid": "School Kid",
+    "Pokefan": "Pokefan",
+    "Gambler": "Gamer",
+    "Painter": "Painter",
+    "Officer": "Officer",
+    "Shocker": "Shocker"
+  },
+  "subjectAliases": {
+    "black-emboar": "black-emboar-goon",
+    "black-ferrothorn": "black-ferrothorn-goon",
+    "terror-granbull": "terror-granbull-goon",
+    "shadow": "shadow-grunt",
+    "light-of-ruin": "light-of-ruin-grunt",
+    "science-society-scientist": "science-society",
+    "school-kid": "school-kid",
+    "pokemon-ranger": "pokemon-ranger",
+    "pokemon-breeder": "pokemon-breeder",
+    "poke-maniac": "poke-maniac"
+  },
+  "namedCharacters": {
+    "Mirskle": "mirskle",
+    "Vega": "vega",
+    "Alice": "alice",
+    "Mel": "mel",
+    "Galavan": "galavan",
+    "Big Mo": "big-mo",
+    "Tessy": "tessy",
+    "Benjamin": "benjamin",
+    "Moleman": "moleman",
+    "Elias": "elias",
+    "Arabella": "arabella",
+    "Penny": "penny",
+    "Jax": "jax",
+    "Rival": "ace",
+    "Ace": "ace",
+    "Aklove": "aklove",
+    "Zeph": "zeph",
+    "Ivory": "ivory",
+    "Marlon": "marlon",
+    "Maxima": "maxima",
+    "Barbs": "barbs",
+    "James": "james",
+    "Gruff": "gruff",
+    "Candice": "candice"
+  },
+  "userConfirmedVisuals": [
+    {
+      "trainerId": "pokemon-unbound-trainer-0005",
+      "expectedDisplayName": "Swimmer Nicole |Auburn Waterway|",
+      "wikiFile": "Spr Swimmer F.png",
+      "gender": "female",
+      "confirmedDate": "2026-09-21",
+      "authority": "user-confirmed trainer sprite gender",
+      "source": "User supplied ordered F F F F M F F M F choices; Ryuzoji and Kenlawa each cover their three listed Mimikyu variants."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0189",
+      "expectedDisplayName": "Pokemon Breeder Annie |Route 5|",
+      "wikiFile": "Spr Breeder F.png",
+      "gender": "female",
+      "confirmedDate": "2026-09-21",
+      "authority": "user-confirmed trainer sprite gender",
+      "source": "User supplied ordered F F F F M F F M F choices; Ryuzoji and Kenlawa each cover their three listed Mimikyu variants."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0300",
+      "expectedDisplayName": "Swimmer Shirly |Route 16|",
+      "wikiFile": "Spr Swimmer F.png",
+      "gender": "female",
+      "confirmedDate": "2026-09-21",
+      "authority": "user-confirmed trainer sprite gender",
+      "source": "User supplied ordered F F F F M F F M F choices; Ryuzoji and Kenlawa each cover their three listed Mimikyu variants."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0353",
+      "expectedDisplayName": "Expert Sheri |Tarmigan Mansion|",
+      "wikiFile": "Spr Expert F.png",
+      "gender": "female",
+      "confirmedDate": "2026-09-21",
+      "authority": "user-confirmed trainer sprite gender",
+      "source": "User supplied ordered F F F F M F F M F choices; Ryuzoji and Kenlawa each cover their three listed Mimikyu variants."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0374",
+      "expectedDisplayName": "Cyclist Issac |Thundercap Mountain|",
+      "wikiFile": "Spr Cyclist M.png",
+      "gender": "male",
+      "confirmedDate": "2026-09-21",
+      "authority": "user-confirmed trainer sprite gender",
+      "source": "User supplied ordered F F F F M F F M F choices; Ryuzoji and Kenlawa each cover their three listed Mimikyu variants."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0449",
+      "expectedDisplayName": "Shadow Grunt w/ Marlon 1 - Difficult",
+      "wikiFile": "Spr Shadow Grunt F.png",
+      "gender": "female",
+      "confirmedDate": "2026-09-21",
+      "authority": "user-confirmed trainer sprite gender",
+      "source": "User supplied ordered F F F F M F F M F choices; Ryuzoji and Kenlawa each cover their three listed Mimikyu variants."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0454",
+      "expectedDisplayName": "Shadow Grunt w/ Ivory 2 - Difficult",
+      "wikiFile": "Spr Shadow Grunt F.png",
+      "gender": "female",
+      "confirmedDate": "2026-09-21",
+      "authority": "user-confirmed trainer sprite gender",
+      "source": "User supplied ordered F F F F M F F M F choices; Ryuzoji and Kenlawa each cover their three listed Mimikyu variants."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0508",
+      "expectedDisplayName": "Expert Ryuzoji: Mimikyu 1 - Difficult",
+      "wikiFile": "Spr Expert M.png",
+      "gender": "male",
+      "confirmedDate": "2026-09-21",
+      "authority": "user-confirmed trainer sprite gender",
+      "source": "User supplied ordered F F F F M F F M F choices; Ryuzoji and Kenlawa each cover their three listed Mimikyu variants."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0509",
+      "expectedDisplayName": "Expert Ryuzoji: Mimikyu 2 - Difficult",
+      "wikiFile": "Spr Expert M.png",
+      "gender": "male",
+      "confirmedDate": "2026-09-21",
+      "authority": "user-confirmed trainer sprite gender",
+      "source": "User supplied ordered F F F F M F F M F choices; Ryuzoji and Kenlawa each cover their three listed Mimikyu variants."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0510",
+      "expectedDisplayName": "Expert Ryuzoji: Mimikyu 3 - Difficult",
+      "wikiFile": "Spr Expert M.png",
+      "gender": "male",
+      "confirmedDate": "2026-09-21",
+      "authority": "user-confirmed trainer sprite gender",
+      "source": "User supplied ordered F F F F M F F M F choices; Ryuzoji and Kenlawa each cover their three listed Mimikyu variants."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0511",
+      "expectedDisplayName": "Expert Kenlawa: Mimikyu 1 - Difficult",
+      "wikiFile": "Spr Expert F.png",
+      "gender": "female",
+      "confirmedDate": "2026-09-21",
+      "authority": "user-confirmed trainer sprite gender",
+      "source": "User supplied ordered F F F F M F F M F choices; Ryuzoji and Kenlawa each cover their three listed Mimikyu variants."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0512",
+      "expectedDisplayName": "Expert Kenlawa: Mimikyu 2 - Difficult",
+      "wikiFile": "Spr Expert F.png",
+      "gender": "female",
+      "confirmedDate": "2026-09-21",
+      "authority": "user-confirmed trainer sprite gender",
+      "source": "User supplied ordered F F F F M F F M F choices; Ryuzoji and Kenlawa each cover their three listed Mimikyu variants."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0513",
+      "expectedDisplayName": "Expert Kenlawa: Mimikyu 3 - Difficult",
+      "wikiFile": "Spr Expert F.png",
+      "gender": "female",
+      "confirmedDate": "2026-09-21",
+      "authority": "user-confirmed trainer sprite gender",
+      "source": "User supplied ordered F F F F M F F M F choices; Ryuzoji and Kenlawa each cover their three listed Mimikyu variants."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0480",
+      "expectedDisplayName": "Mega Trainer Vivian - Difficult",
+      "wikiFile": "Spr Battle Girl.png",
+      "gender": "default",
+      "confirmedTrainerClass": "Battle Girl",
+      "confirmedTrainerGender": "female",
+      "confirmedDate": "2026-09-21",
+      "authority": "user-confirmed trainer class and gender",
+      "source": "User supplied the eight remaining entries in order: Battle Girl; Black Belt; Ace Trainer F; Veteran M; Veteran F; Bird Keeper M; Breeder F; Science Society F."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0481",
+      "expectedDisplayName": "Mega Trainer Mathis - Difficult",
+      "wikiFile": "Spr Black Belt.png",
+      "gender": "default",
+      "confirmedTrainerClass": "Black Belt",
+      "confirmedTrainerGender": "male",
+      "confirmedDate": "2026-09-21",
+      "authority": "user-confirmed trainer class and gender",
+      "source": "User supplied the eight remaining entries in order: Battle Girl; Black Belt; Ace Trainer F; Veteran M; Veteran F; Bird Keeper M; Breeder F; Science Society F."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0489",
+      "expectedDisplayName": "Mega Trainer Krystal - Difficult",
+      "wikiFile": "Spr Ace Trainer F.png",
+      "gender": "female",
+      "confirmedTrainerClass": "Ace Trainer",
+      "confirmedTrainerGender": "female",
+      "confirmedDate": "2026-09-21",
+      "authority": "user-confirmed trainer class and gender",
+      "source": "User supplied the eight remaining entries in order: Battle Girl; Black Belt; Ace Trainer F; Veteran M; Veteran F; Bird Keeper M; Breeder F; Science Society F."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0490",
+      "expectedDisplayName": "Mega Trainer Sterling - Difficult",
+      "wikiFile": "Spr Expert M.png",
+      "gender": "male",
+      "confirmedTrainerClass": "Veteran",
+      "confirmedTrainerGender": "male",
+      "confirmedDate": "2026-09-21",
+      "authority": "user-confirmed trainer class and gender",
+      "source": "User supplied the eight remaining entries in order: Battle Girl; Black Belt; Ace Trainer F; Veteran M; Veteran F; Bird Keeper M; Breeder F; Science Society F.",
+      "artNamingNote": "The Victory Road wiki battle entry names this Veteran artwork Spr Expert M/F.png."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0491",
+      "expectedDisplayName": "Mega Trainer Portia - Difficult",
+      "wikiFile": "Spr Expert F.png",
+      "gender": "female",
+      "confirmedTrainerClass": "Veteran",
+      "confirmedTrainerGender": "female",
+      "confirmedDate": "2026-09-21",
+      "authority": "user-confirmed trainer class and gender",
+      "source": "User supplied the eight remaining entries in order: Battle Girl; Black Belt; Ace Trainer F; Veteran M; Veteran F; Bird Keeper M; Breeder F; Science Society F.",
+      "artNamingNote": "The Victory Road wiki battle entry names this Veteran artwork Spr Expert M/F.png."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0496",
+      "expectedDisplayName": "Mega Trainers: Mega Trainer Almuth [Sky Battle]",
+      "wikiFile": "Spr Bird Keeper2.png",
+      "gender": "default",
+      "confirmedTrainerClass": "Bird Keeper",
+      "confirmedTrainerGender": "male",
+      "confirmedDate": "2026-09-21",
+      "authority": "user-confirmed trainer class and gender",
+      "source": "User supplied the eight remaining entries in order: Battle Girl; Black Belt; Ace Trainer F; Veteran M; Veteran F; Bird Keeper M; Breeder F; Science Society F.",
+      "artNamingNote": "The Route 17 wiki battle entry selects Spr Bird Keeper2.png (variant-2)."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0498",
+      "expectedDisplayName": "Breeder Annie",
+      "wikiFile": "Spr Breeder F.png",
+      "gender": "female",
+      "confirmedTrainerClass": "Breeder",
+      "confirmedTrainerGender": "female",
+      "confirmedDate": "2026-09-21",
+      "authority": "user-confirmed trainer class and gender",
+      "source": "User supplied the eight remaining entries in order: Battle Girl; Black Belt; Ace Trainer F; Veteran M; Veteran F; Bird Keeper M; Breeder F; Science Society F."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0505",
+      "expectedDisplayName": "Science Society Scientist (Rogue Electivire) - Difficult",
+      "wikiFile": "Spr Science Society F.png",
+      "gender": "female",
+      "confirmedTrainerClass": "Science Society",
+      "confirmedTrainerGender": "female",
+      "confirmedDate": "2026-09-21",
+      "authority": "user-confirmed trainer class and gender",
+      "source": "User supplied the eight remaining entries in order: Battle Girl; Black Belt; Ace Trainer F; Veteran M; Veteran F; Bird Keeper M; Breeder F; Science Society F."
+    }
+  ],
+  "doubleBattles": [
+    {
+      "trainerId": "pokemon-unbound-trainer-0058",
+      "expectedDisplayName": "Light of Ruin Grunt & Grunt |Crystal Peak|",
+      "battleFormat": "double",
+      "previousFormat": "single",
+      "authority": "user-confirmed double battle; wiki-documented class artwork",
+      "source": "https://pokemonunbound.miraheze.org/wiki/Crystal_Peak",
+      "revisionId": 17940,
+      "participants": [
+        {
+          "slot": 0,
+          "label": "Light of Ruin Grunt 1",
+          "wikiFile": "Spr Light of Ruin Grunt.png",
+          "trainerId": "pokemon-unbound-trainer-0535"
+        },
+        {
+          "slot": 1,
+          "label": "Light of Ruin Grunt 2",
+          "wikiFile": "Spr Light of Ruin Grunt.png",
+          "trainerId": "pokemon-unbound-trainer-0536"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0059",
+      "expectedDisplayName": "Light of Ruin Grunt & Grunt |Crystal Peak| #2",
+      "battleFormat": "double",
+      "previousFormat": "single",
+      "authority": "user-confirmed double battle; wiki-documented class artwork",
+      "source": "https://pokemonunbound.miraheze.org/wiki/Crystal_Peak",
+      "revisionId": 17940,
+      "participants": [
+        {
+          "slot": 0,
+          "label": "Light of Ruin Grunt 1",
+          "wikiFile": "Spr Light of Ruin Grunt.png",
+          "trainerId": "pokemon-unbound-trainer-0537"
+        },
+        {
+          "slot": 1,
+          "label": "Light of Ruin Grunt 2",
+          "wikiFile": "Spr Light of Ruin Grunt.png",
+          "trainerId": "pokemon-unbound-trainer-0538"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0060",
+      "expectedDisplayName": "Light of Ruin Grunt & Grunt |Crystal Peak| #3",
+      "battleFormat": "double",
+      "previousFormat": "single",
+      "authority": "user-confirmed double battle; wiki-documented class artwork",
+      "source": "https://pokemonunbound.miraheze.org/wiki/Crystal_Peak",
+      "revisionId": 17940,
+      "participants": [
+        {
+          "slot": 0,
+          "label": "Light of Ruin Grunt 1",
+          "wikiFile": "Spr Light of Ruin Grunt.png",
+          "trainerId": "pokemon-unbound-trainer-0539"
+        },
+        {
+          "slot": 1,
+          "label": "Light of Ruin Grunt 2",
+          "wikiFile": "Spr Light of Ruin Grunt.png",
+          "trainerId": "pokemon-unbound-trainer-0540"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0061",
+      "expectedDisplayName": "Light of Ruin Grunt & Grunt |Crystal Peak| #4",
+      "battleFormat": "double",
+      "previousFormat": "single",
+      "authority": "user-confirmed double battle; wiki-documented class artwork",
+      "source": "https://pokemonunbound.miraheze.org/wiki/Crystal_Peak",
+      "revisionId": 17940,
+      "participants": [
+        {
+          "slot": 0,
+          "label": "Light of Ruin Grunt 1",
+          "wikiFile": "Spr Light of Ruin Grunt.png",
+          "trainerId": "pokemon-unbound-trainer-0541"
+        },
+        {
+          "slot": 1,
+          "label": "Light of Ruin Grunt 2",
+          "wikiFile": "Spr Light of Ruin Grunt.png",
+          "trainerId": "pokemon-unbound-trainer-0542"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0139",
+      "expectedDisplayName": "Ace Trainer Lia & Lucian [Double Battle] |Icicle Cave|",
+      "battleFormat": "double",
+      "previousFormat": "double",
+      "authority": "user-confirmed double battle; wiki-documented class artwork",
+      "source": "https://pokemonunbound.miraheze.org/wiki/Icicle_Cave",
+      "revisionId": 17905,
+      "participants": [
+        {
+          "slot": 0,
+          "label": "Ace Trainer Lia",
+          "wikiFile": "Spr Ace Trainer F.png"
+        },
+        {
+          "slot": 1,
+          "label": "Ace Trainer Lucian",
+          "wikiFile": "Spr Ace Trainer M.png"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0140",
+      "expectedDisplayName": "Skier Anna & Ruby [Double Battle] |Icicle Cave|",
+      "battleFormat": "double",
+      "previousFormat": "double",
+      "authority": "user-confirmed double battle; wiki-documented class artwork",
+      "source": "https://pokemonunbound.miraheze.org/wiki/Icicle_Cave",
+      "revisionId": 17905,
+      "participants": [
+        {
+          "slot": 0,
+          "label": "Skier Anna",
+          "wikiFile": "Spr Skier F.png"
+        },
+        {
+          "slot": 1,
+          "label": "Skier Ruby",
+          "wikiFile": "Spr Skier F.png"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0169",
+      "expectedDisplayName": "Picknicker Kelsey & Camper Chad [Double Battle] |Route 2|",
+      "battleFormat": "double",
+      "previousFormat": "double",
+      "authority": "user-confirmed double battle; wiki-documented class artwork",
+      "source": "https://pokemonunbound.miraheze.org/wiki/Route_2",
+      "revisionId": 17964,
+      "participants": [
+        {
+          "slot": 0,
+          "label": "Picnicker Kelsey",
+          "wikiFile": "Spr Picnicker.png"
+        },
+        {
+          "slot": 1,
+          "label": "Camper Chad",
+          "wikiFile": "Spr Camper.png"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0247",
+      "expectedDisplayName": "Pokemon Ranger Jackson & Beth |Route 11|",
+      "battleFormat": "double",
+      "previousFormat": "single",
+      "authority": "user-confirmed double battle; wiki-documented class artwork",
+      "source": "https://pokemonunbound.miraheze.org/wiki/Route_11",
+      "revisionId": 17907,
+      "participants": [
+        {
+          "slot": 0,
+          "label": "Pokemon Ranger Jackson",
+          "wikiFile": "Spr Ranger M.png"
+        },
+        {
+          "slot": 1,
+          "label": "Pokemon Ranger Beth",
+          "wikiFile": "Spr Ranger F.png"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0334",
+      "expectedDisplayName": "Burglar Swizer & Black Ferrothorn Bullo [Double Battle] |Seaport City|",
+      "battleFormat": "double",
+      "previousFormat": "double",
+      "authority": "user-confirmed double battle; wiki-documented class artwork",
+      "source": "https://pokemonunbound.miraheze.org/wiki/Seaport_City",
+      "revisionId": 17919,
+      "participants": [
+        {
+          "slot": 0,
+          "label": "Burglar Swizer",
+          "wikiFile": "Spr Burglar.png"
+        },
+        {
+          "slot": 1,
+          "label": "Black Ferrothorn Bullo",
+          "wikiFile": "Spr Black Ferrothorn Biker.png"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0335",
+      "expectedDisplayName": "Black Ferrothorn Goon & Burglar Milan [Double Battle] |Seaport City|",
+      "battleFormat": "double",
+      "previousFormat": "double",
+      "authority": "user-confirmed double battle; wiki-documented class artwork",
+      "source": "https://pokemonunbound.miraheze.org/wiki/Seaport_City",
+      "revisionId": 17919,
+      "participants": [
+        {
+          "slot": 0,
+          "label": "Black Ferrothorn Goon",
+          "wikiFile": "Spr Black Ferrothorn Goon.png"
+        },
+        {
+          "slot": 1,
+          "label": "Burglar Milan",
+          "wikiFile": "Spr Burglar.png"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0336",
+      "expectedDisplayName": "Black Ferrothorn Goon & Burglar Colin [Double Battle] |Seaport City|",
+      "battleFormat": "double",
+      "previousFormat": "double",
+      "authority": "user-confirmed double battle; wiki-documented class artwork",
+      "source": "https://pokemonunbound.miraheze.org/wiki/Seaport_City",
+      "revisionId": 17919,
+      "participants": [
+        {
+          "slot": 0,
+          "label": "Black Ferrothorn Goon",
+          "wikiFile": "Spr Black Ferrothorn Goon.png"
+        },
+        {
+          "slot": 1,
+          "label": "Burglar Colin",
+          "wikiFile": "Spr Burglar.png"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0337",
+      "expectedDisplayName": "Black Ferrothorn Goon & Burglar Toby [Double Battle] |Seaport City|",
+      "battleFormat": "double",
+      "previousFormat": "double",
+      "authority": "user-confirmed double battle; wiki-documented class artwork",
+      "source": "https://pokemonunbound.miraheze.org/wiki/Seaport_City",
+      "revisionId": 17919,
+      "participants": [
+        {
+          "slot": 0,
+          "label": "Black Ferrothorn Goon",
+          "wikiFile": "Spr Black Ferrothorn Goon.png"
+        },
+        {
+          "slot": 1,
+          "label": "Burglar Toby",
+          "wikiFile": "Spr Burglar.png"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0338",
+      "expectedDisplayName": "Black Ferrothorn Goon & Burglar Fernando [Double Battle] |Seaport City|",
+      "battleFormat": "double",
+      "previousFormat": "double",
+      "authority": "user-confirmed double battle; wiki-documented class artwork",
+      "source": "https://pokemonunbound.miraheze.org/wiki/Seaport_City",
+      "revisionId": 17919,
+      "participants": [
+        {
+          "slot": 0,
+          "label": "Black Ferrothorn Goon",
+          "wikiFile": "Spr Black Ferrothorn Goon.png"
+        },
+        {
+          "slot": 1,
+          "label": "Burglar Fernando",
+          "wikiFile": "Spr Burglar.png"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0350",
+      "expectedDisplayName": "Collector Winston & Kindler Jeff |Tarmigan Mansion|",
+      "battleFormat": "double",
+      "previousFormat": "single",
+      "authority": "user-confirmed double battle; wiki-documented class artwork",
+      "source": "https://pokemonunbound.miraheze.org/wiki/Tarmigan_Mansion",
+      "revisionId": 17961,
+      "participants": [
+        {
+          "slot": 0,
+          "label": "Collector Winston",
+          "wikiFile": "Spr Collector.png"
+        },
+        {
+          "slot": 1,
+          "label": "Kindler Jeff",
+          "wikiFile": "Spr Kindler.png"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0375",
+      "expectedDisplayName": "Camper Phillip & Picnicker Tina |Thundercap Mountain|",
+      "battleFormat": "double",
+      "previousFormat": "single",
+      "authority": "user-confirmed double battle; wiki-documented class artwork",
+      "source": "https://pokemonunbound.miraheze.org/wiki/Thundercap_Mt.",
+      "revisionId": 17840,
+      "participants": [
+        {
+          "slot": 0,
+          "label": "Camper Phillip",
+          "wikiFile": "Spr Camper.png"
+        },
+        {
+          "slot": 1,
+          "label": "Picnicker Tina",
+          "wikiFile": "Spr Picnicker.png"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0376",
+      "expectedDisplayName": "Hiker Daryl & Hiker Dario |Thundercap Mountain|",
+      "battleFormat": "double",
+      "previousFormat": "single",
+      "authority": "user-confirmed double battle; wiki-documented class artwork",
+      "source": "https://pokemonunbound.miraheze.org/wiki/Thundercap_Mt.",
+      "revisionId": 17840,
+      "participants": [
+        {
+          "slot": 0,
+          "label": "Hiker Daryl",
+          "wikiFile": "Spr Hiker.png"
+        },
+        {
+          "slot": 1,
+          "label": "Hiker Dario",
+          "wikiFile": "Spr Hiker.png"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0377",
+      "expectedDisplayName": "Camper Dwayne & Picnicker Martha |Thundercap Mountain|",
+      "battleFormat": "double",
+      "previousFormat": "single",
+      "authority": "user-confirmed double battle; wiki-documented class artwork",
+      "source": "https://pokemonunbound.miraheze.org/wiki/Thundercap_Mt.",
+      "revisionId": 17840,
+      "participants": [
+        {
+          "slot": 0,
+          "label": "Camper Dwayne",
+          "wikiFile": "Spr Camper.png"
+        },
+        {
+          "slot": 1,
+          "label": "Picnicker Martha",
+          "wikiFile": "Spr Picnicker.png"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0378",
+      "expectedDisplayName": "Youngster Benward & Lass Miriam |Thundercap Mountain|",
+      "battleFormat": "double",
+      "previousFormat": "single",
+      "authority": "user-confirmed double battle; wiki-documented class artwork",
+      "source": "https://pokemonunbound.miraheze.org/wiki/Thundercap_Mt.",
+      "revisionId": 17840,
+      "participants": [
+        {
+          "slot": 0,
+          "label": "Youngster Benward",
+          "wikiFile": "Spr Youngster.png"
+        },
+        {
+          "slot": 1,
+          "label": "Lass Miriam",
+          "wikiFile": "Spr Lass.png"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0396",
+      "expectedDisplayName": "Tamer Phil & Dragon Tamer Pierce |Victory Road|",
+      "battleFormat": "double",
+      "previousFormat": "single",
+      "authority": "user-confirmed double battle; wiki-documented class artwork",
+      "source": "https://pokemonunbound.miraheze.org/wiki/Victory_Road",
+      "revisionId": 17958,
+      "participants": [
+        {
+          "slot": 0,
+          "label": "Tamer Phil",
+          "wikiFile": "Spr Tamer.png"
+        },
+        {
+          "slot": 1,
+          "label": "Dragon Tamer Pierce",
+          "wikiFile": "Spr Dragon Tamer.png"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0397",
+      "expectedDisplayName": "Kindler Elmer & Bug Maniac Webster |Victory Road|",
+      "battleFormat": "double",
+      "previousFormat": "single",
+      "authority": "user-confirmed double battle; wiki-documented class artwork",
+      "source": "https://pokemonunbound.miraheze.org/wiki/Victory_Road",
+      "revisionId": 17958,
+      "participants": [
+        {
+          "slot": 0,
+          "label": "Kindler Elmer",
+          "wikiFile": "Spr Kindler.png"
+        },
+        {
+          "slot": 1,
+          "label": "Bug Maniac Webster",
+          "wikiFile": "Spr Bug Maniac.png",
+          "note": "Dataset preserves Webster; wiki Bug Maniac row mistakenly repeats Elmer."
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0398",
+      "expectedDisplayName": "Aroma Lady Mya & Tuber Elle |Victory Road|",
+      "battleFormat": "double",
+      "previousFormat": "single",
+      "authority": "user-confirmed double battle; wiki-documented class artwork",
+      "source": "https://pokemonunbound.miraheze.org/wiki/Victory_Road",
+      "revisionId": 17958,
+      "participants": [
+        {
+          "slot": 0,
+          "label": "Aroma Lady Mya",
+          "wikiFile": "Spr Aroma Lady.png"
+        },
+        {
+          "slot": 1,
+          "label": "Tuber Elle",
+          "wikiFile": "Spr Tuber F.png"
+        }
+      ]
+    }
+  ]
+}
