@@ -3,7 +3,7 @@
   "coreVersion": "0.0.0-development",
   "consumer": "plc-public",
   "adapter": "adapters/src/parse-save.js",
-  "sourceTreeSha256": "3E80029297CA9A7759DE1D4D3937D70B2352936677BF1C1097B8E814C2320CD3",
+  "sourceTreeSha256": "D7C48CF0A40374E539859E80631578CF5B41C9946286DAA7D5DAC0258D4032E4",
   "generatorVersion": "1.0.0",
   "parityValidated": true,
   "files": [
@@ -89,8 +89,8 @@
     },
     {
       "path": "adapters/src/ds/shared/neutral-save.js",
-      "bytes": 7739,
-      "sha256": "86DD7E4B35630012FA0D7BC4FFE042652A78D7617B16B054C6FA154C2825F6B3"
+      "bytes": 7903,
+      "sha256": "A14DFCF901BA1EC5DAB18C4F08E66083224BEB0B0D916EE6801BB05176A48A7F"
     },
     {
       "path": "adapters/src/gba/emerald-seaglass.js",
@@ -154,8 +154,8 @@
     },
     {
       "path": "adapters/src/identity/standardized-save-identity.js",
-      "bytes": 7308,
-      "sha256": "72248C39794C6F7B203651977389D605830BF6D9EBF3B7C9A447FE9D1F2BA54D"
+      "bytes": 7657,
+      "sha256": "E980D47703EEC7495D9D7667A85F9EF8546E572FB3D7D528DA298E5612D8196E"
     },
     {
       "path": "adapters/src/interpretation/experience.js",
@@ -169,8 +169,8 @@
     },
     {
       "path": "adapters/src/standardized-context.js",
-      "bytes": 4906,
-      "sha256": "00A6D392C97899DD429F93B07F9EF07251A845A1FD45B85AFEE51FB719A13C55"
+      "bytes": 5118,
+      "sha256": "6BE56AE2888A53616DAE5BDD4DEB941D0DC780B2F41F79CF6BC4D881F0B4CEF5"
     },
     {
       "path": "core/src/binary/little-endian.js",

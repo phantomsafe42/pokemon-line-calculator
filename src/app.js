@@ -49,7 +49,7 @@ import {
 import { addImportedPlanParty, bindPlanPlayerPartyToImportedBox } from "./boxes/plan_import.js?v=20260917-partners-release-v1";
 import { applyBranchProgressionToLibrary, branchProgressionSnapshot } from "./boxes/progression.js?v=20260917-partners-release-v1";
 import { exportShowdown, parseShowdown } from "./boxes/showdown.js?v=20260909-public-release-v2";
-import { PLC_SAVE_GAME_CONFIGS, parseSave, selectSavePokemon } from "./boxes/save_import.js?v=20260912-vanilla-save-import-v1";
+import { PLC_SAVE_GAME_CONFIGS, parseSave, selectSavePokemon } from "./boxes/save_import.js?v=20260921-ds-save-forms-v1";
 
 const TRAINER_AI_BASE_URL = new URL("./generated/trainer-ai", import.meta.url).href;
 const TRAINER_AI_HOSTED_PREFIX = "trainer-ai";
@@ -2773,6 +2773,15 @@ function replacementRequirement(state, side) {
   return Math.min(pendingCount, possibleSwitches(state, side).length);
 }
 
+function sandboxMovePicker(moveButton, select) {
+  // Sibling controls keep changing a move separate from choosing its action.
+  const main = document.createElement('div'); main.className = 'sandbox-move-main';
+  const picker = document.createElement('span'); picker.className = 'sandbox-move-picker';
+  select.title = 'Change move';
+  picker.append(select); main.append(moveButton, picker);
+  return main;
+}
+
 function renderCombatantCard(side, slot, { displaySlot = slot, inspection = null } = {}) {
   const { state, committedState, events: previewEvents, previewing } = inspection
     ? { state: inspection.state, committedState: selectedState(), events: inspection.events, previewing: true }
@@ -2905,15 +2914,16 @@ function renderCombatantCard(side, slot, { displaySlot = slot, inspection = null
     details.children[1].querySelector('strong').replaceChildren(edit.Item);
   }
   card.append(details);
-  const table = document.createElement("table"); table.className = "stat-table";
-  const head = document.createElement("thead"); head.innerHTML = "<tr><th>Stat</th><th>Actual</th><th>Stage</th></tr>"; table.append(head);
-  const body = document.createElement("tbody");
+  const stats = document.createElement("div"); stats.className = "combatant-stats";
+  stats.setAttribute("role", "group"); stats.setAttribute("aria-label", "Battle stats");
+  const statRow = document.createElement("div"); statRow.className = "combatant-stat-row";
+  if (edit) statRow.classList.add("is-editable");
   for (const stat of STAT_KEYS.filter(key => key !== "hp")) {
     const stage = Number(monState.statStages[stat] || 0);
     const rootStage = initialStageBaseline(displayKey, stat);
     const committedStage = Number(committedMonState.statStages[stat] || 0);
-    const row = document.createElement("tr");
-    const label = document.createElement("th"); label.scope = "row"; label.textContent = STAT_LABELS[stat];
+    const row = document.createElement("div"); row.className = "combatant-stat"; row.dataset.stat = stat;
+    const label = document.createElement("span"); label.className = "combatant-stat-label"; label.textContent = STAT_LABELS[stat];
     if (natureBoostedStat && natureNerfedStat && natureBoostedStat !== natureNerfedStat) {
       if (stat === natureBoostedStat) label.classList.add("combatant-stat-name-buff");
       if (stat === natureNerfedStat) label.classList.add("combatant-stat-name-debuff");
@@ -2921,7 +2931,7 @@ function renderCombatantCard(side, slot, { displaySlot = slot, inspection = null
     const currentBaseStat = Number(monState.currentStats?.[stat] ?? mon.calculatedStats[stat]);
     const rootBaseStat = Number(rootState.currentStats?.[stat] ?? mon.calculatedStats[stat]);
     const committedBaseStat = Number(committedMonState.currentStats?.[stat] ?? mon.calculatedStats[stat]);
-    const actual = document.createElement("td"); actual.textContent = effectiveStat(currentBaseStat, stage);
+    const actual = document.createElement("strong"); actual.textContent = effectiveStat(currentBaseStat, stage);
     const changedThisTurn = previewing && (currentBaseStat !== committedBaseStat || stage !== committedStage
       || pathWasChanged(state, `combatantStates.${displayKey}.currentStats.${stat}`, displayKey, previewEvents)
       || pathWasChanged(state, `combatantStates.${displayKey}.statStages.${stat}`, displayKey, previewEvents))
@@ -2929,19 +2939,24 @@ function renderCombatantCard(side, slot, { displaySlot = slot, inspection = null
         pathWasChanged(state, `combatantStates.${displayKey}.currentStats.${stat}`, displayKey)
         || pathWasChanged(state, `combatantStates.${displayKey}.statStages.${stat}`, displayKey)
       );
-    actual.className = changedThisTurn ? "value-current" : currentBaseStat !== rootBaseStat || stage !== rootStage ? "value-persisted" : "";
-    const stageCell = document.createElement("td"); stageCell.textContent = stage ? `${stage > 0 ? "+" : ""}${stage}` : "—"; stageCell.className = actual.className;
+    const tone = changedThisTurn ? "value-current" : currentBaseStat !== rootBaseStat || stage !== rootStage ? "value-persisted" : "";
+    actual.className = `combatant-stat-value ${tone}`;
+    const stageCell = document.createElement("div"); stageCell.textContent = stage ? `${stage > 0 ? "+" : ""}${stage}` : "—"; stageCell.className = `combatant-stat-stage ${tone}`;
+    stageCell.setAttribute("aria-label", `${STAT_LABELS[stat]} stage ${stage > 0 ? "+" : ""}${stage}`);
     if (edit) stageCell.replaceChildren(edit.stages[stat]);
-    row.append(label, actual, stageCell); body.append(row);
+    row.append(label, actual, stageCell); statRow.append(row);
   }
-  if (edit) for (const [stat, label] of [['accuracy', 'Acc'], ['evasion', 'Eva']]) {
-    const row = document.createElement('tr');
-    const title = document.createElement('th'); title.scope = 'row'; title.textContent = label;
-    const actual = document.createElement('td'); actual.textContent = '—';
-    const stage = document.createElement('td'); stage.append(edit.stages[stat]);
-    row.append(title, actual, stage); body.append(row);
+  stats.append(statRow);
+  if (edit) {
+    const extra = document.createElement('div'); extra.className = 'combatant-stat-extra';
+    for (const [stat, label] of [['accuracy', 'Acc'], ['evasion', 'Eva']]) {
+      const row = document.createElement('div'); row.className = 'combatant-stat'; row.dataset.stat = stat;
+      const title = document.createElement('span'); title.className = 'combatant-stat-label'; title.textContent = label;
+      row.append(title, edit.stages[stat]); extra.append(row);
+    }
+    stats.append(extra);
   }
-  table.append(body); card.append(table);
+  card.append(stats);
   if (inspection) {
     const moves = document.createElement('div'); moves.className = 'move-actions event-inspection-moves';
     for (const entry of monState.moveSetOverride || mon.moves) {
@@ -2960,7 +2975,11 @@ function renderCombatantCard(side, slot, { displaySlot = slot, inspection = null
   const moves = committedMonState.moveSetOverride || mon.moves;
   for (const [moveIndex, entry] of moves.entries()) {
       const moveRow = edit ? document.createElement('div') : moveActions;
-      if (edit) { moveRow.className = 'free-calc-move-row'; moveRow.append(edit[`Move ${moveIndex + 1}`]); moveActions.append(moveRow); }
+      if (edit) {
+        moveRow.className = 'free-calc-move-row';
+        if (!isSandbox(plan)) moveRow.append(edit[`Move ${moveIndex + 1}`]);
+        moveActions.append(moveRow);
+      }
       const move = dataset.get("moves", entry.moveId);
       const support = moveSupport(move, dataset);
       const moveButton = button("", "move-button");
@@ -2992,9 +3011,10 @@ function renderCombatantCard(side, slot, { displaySlot = slot, inspection = null
       copy.append(moveName, moveMeta);
       moveButton.append(copy);
       moveButton.addEventListener("click", () => configureMoveDraft(side, slot, actorKey, move, support));
+      const moveFace = edit && isSandbox(plan) ? sandboxMovePicker(moveButton, edit[`Move ${moveIndex + 1}`]) : moveButton;
       if (forcedAction?.kind === "recharge" && isForcedMove) {
         const damage = document.createElement("span"); damage.className = "damage-label"; damage.textContent = "Recharge"; moveButton.append(damage);
-        moveRow.append(moveButton);
+        moveRow.append(moveFace);
       } else if (support.supported) {
         const targetMode = support.targetMode || canonicalTarget(move);
         const candidates = legalTargets(committedState, side, actorKey, targetMode, support);
@@ -3007,22 +3027,26 @@ function renderCombatantCard(side, slot, { displaySlot = slot, inspection = null
           && candidates.every(key => opposingKeys.has(key));
         if (opposingTargets.length) {
           const group = document.createElement("div"); group.className = "move-button-group";
-          group.append(moveButton);
+          group.append(moveFace);
           renderSlotDamagePreviews(group, side, slot, displayKey, move, opposingTargets, draft, selectableSlots, { positionActorKey: actorKey });
           moveRow.append(group);
         } else {
           renderDamagePreview(moveButton, side, displayKey, targetKey, move.id, { positionActorKey: actorKey });
-          moveRow.append(moveButton);
+          moveRow.append(moveFace);
         }
       } else {
         const damage = document.createElement("span"); damage.className = "damage-label"; damage.textContent = "Unsupported"; moveButton.append(damage);
-        moveRow.append(moveButton);
+        moveRow.append(moveFace);
       }
     if (draft.type === "move" && draft.moveId === entry.moveId) renderActionAux(moveRow, side, slot, actorKey, move, support, draft);
   }
   if (edit) for (let index = moves.length; index < 4; index++) {
     const row = document.createElement('div'); row.className = 'free-calc-move-row';
-    row.append(edit[`Move ${index + 1}`]); moveActions.append(row);
+    if (isSandbox(plan)) {
+      const empty = button('None', 'move-button'); empty.disabled = true;
+      row.append(sandboxMovePicker(empty, edit[`Move ${index + 1}`]));
+    } else row.append(edit[`Move ${index + 1}`]);
+    moveActions.append(row);
   }
   if (!pending && !forcedAction && canSelectShift(plan, committedState, side, actorKey)) {
     const shiftButton = button(`Shift with Slot ${battleSlotNumberForPosition(side, 1)}`, "shift-button");
