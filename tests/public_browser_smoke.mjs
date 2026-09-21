@@ -1,4 +1,5 @@
 import { checkTrainerSplitPreload } from './trainer_split_preload_browser_checks.mjs';
+import { checkTrainerSearch } from './trainer_search_browser_checks.mjs';
 import { checkTrainerBadgeRecovery } from './trainer_badge_browser_checks.mjs';
 import { checkTrainerSelector } from './trainer_selector_browser_checks.mjs';
 import { checkVw2rTrainerSprites } from './vw2r_trainer_sprites_browser_checks.mjs';
@@ -263,7 +264,8 @@ try {
       await page.send('Network.setBlockedURLs', { urls: [datasetLock.hosted.origin + '/*'] });
       await page.send('Page.reload', {ignoreCache:true});
     }
-    if (process.env.PLC_SPLIT_PRELOAD_ONLY) await checkTrainerSplitPreload({page,evaluate,delay,gameId:process.env.PLC_SPLIT_PRELOAD_GAME});
+    if (process.env.PLC_TRAINER_SEARCH_ONLY) await checkTrainerSearch({page,evaluate,delay,tempRoot});
+    else if (process.env.PLC_SPLIT_PRELOAD_ONLY) await checkTrainerSplitPreload({page,evaluate,delay,gameId:process.env.PLC_SPLIT_PRELOAD_GAME});
     else if (process.env.PLC_TRAINER_BADGE_RECOVERY_ONLY) await checkTrainerBadgeRecovery({page,evaluate,delay});
     else if (process.env.PLC_VW2R_TRAINER_SPRITES_ONLY) await checkVw2rTrainerSprites({page,evaluate,delay,tempRoot});
     else await checkTrainerSelector({page,evaluate,delay,tempRoot,staged:Boolean(process.env.PLC_TRAINER_SELECTOR_DATASET)});

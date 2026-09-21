@@ -4,7 +4,37 @@ import fs from 'node:fs';
 import { fixtureTriplePlan } from './helpers.mjs';
 import { createDatasetContext, REQUIRED_DATASET_SOURCES } from '../src/adapters/standardized_dataset.js';
 import { triplePositionForSlot } from '../src/rulesets/triple_battle.js';
-import { displayTrainerName, trainerDisplayBlocks, trainerRequirement, trainerSpriteQuery, trainerSplitBadgeQuery } from '../src/ui/trainer_selector.js';
+import { displayTrainerName, trainerDisplayBlocks, trainerRequirement, trainerSpriteQuery, trainerSplitBadgeQuery, trainerSearchIndex, searchTrainerIndex } from '../src/ui/trainer_selector.js';
+
+test('game-wide search preserves navigation order, combined encounters, location and source data', () => {
+  const dataset = load('platinum-kaizo'), groups = dataset.trainerGroups('chimchar');
+  const before = JSON.stringify(groups);
+  const index = trainerSearchIndex(dataset, groups, 'chimchar');
+  assert.equal(new Set(index.map(entry => entry.trainer.id)).size, index.length);
+  const pair = 'platinum-kaizo-veilstone-tag-battle';
+  for (const query of ['Cupid', 'uranus', 'abomasnow', 'Veilstone']) assert.ok(searchTrainerIndex(index, query).some(entry => entry.trainer.id === pair), query);
+  assert.ok(searchTrainerIndex(index, 'route 202').length);
+  assert.deepEqual(searchTrainerIndex(index, 'not-a-trainer-or-pokemon'), []);
+  assert.deepEqual(searchTrainerIndex(index, '').map(entry => entry.trainer.id), [...new Set(groups.flatMap(group => group.trainers.map(trainer => trainer.id)))]);
+  assert.equal(JSON.stringify(groups), before);
+});
+
+test('search supports accents and starter-specific variant teams without indexing excluded species', () => {
+  const trainer = {id:'rival',displayName:'Rivál',locationName:'Pokémon Tower',team:[{speciesId:'bulbasaur'}],mechanicsVariants:[{id:'a'},{id:'b'}]};
+  const dataset = {get:()=>null,starterSelection:{choices:[{id:'starter'}],trainerBindings:[],variantBindings:[{trainerId:'rival',variantId:'b',starterIds:['other']}]},
+    trainerTeam:(_id,variant)=>[{speciesId:variant==='a'?'mr-mime':'squirtle'}]};
+  const index=trainerSearchIndex(dataset,[{id:'first',trainers:[trainer]}],'starter');
+  for(const query of ['rival','pokemon tower','mr mime']) assert.equal(searchTrainerIndex(index,query).length,1,query);
+  for(const query of ['bulbasaur','squirtle']) assert.equal(searchTrainerIndex(index,query).length,0,query);
+});
+
+test('every supported game can build a search index from existing consumer data', () => {
+  for (const game of fs.readdirSync(new URL('../src/generated/datasets/',import.meta.url))) {
+    const dataset=load(game), starter=dataset.starterSelection.choices[0].id;
+    const index=trainerSearchIndex(dataset,dataset.trainerGroups(starter),starter);
+    assert.ok(index.length, game);
+  }
+});
 
 test('split art retains game context for BW Iris and the new Unbound collection', () => {
   for (const game of ['pokemon-white', 'pokemon-white-2']) {

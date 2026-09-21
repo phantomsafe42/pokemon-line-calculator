@@ -1,8 +1,39 @@
 import { slotsPerSide } from '../core/battle_slots.js';
 import { triplePositionForSlot } from '../rulesets/triple_battle.js';
+import { starterAllows } from '../adapters/starter_selection.js';
 
 export const displayTrainerName = name => String(name || '').replace(/\s+#\d+(?=\s*(?:&|·|$))/gu, '');
 export const trainerFormatLabel = format => ({ singles: 'Single', doubles: 'Double', triples: 'Triple', rotation: 'Rotation' })[format] || format;
+
+const searchText = value => String(value || '').normalize('NFKD').replace(/\p{M}/gu, '').toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
+
+export function trainerSearchIndex(dataset, groups, starterId) {
+  const entries = new Map();
+  for (const group of groups) for (const trainer of group.trainers) {
+    if (entries.has(trainer.id)) continue;
+    const participants = trainer.encounter?.enemyTrainerIds?.map(id => dataset.trainer(id)).filter(Boolean) || [];
+    const records = [trainer, ...participants];
+    const fields = [], locations = [];
+    for (const record of records) {
+      fields.push(displayTrainerName(record.displayName || record.name), record.shortName);
+      locations.push(record.locationName, record.location);
+      const variants = (record.mechanicsVariants || []).filter(v => starterAllows(dataset.starterSelection, starterId, record.id, v.id));
+      const teams = record.mechanicsVariants?.length ? variants.map(v => dataset.trainerTeam(record.id, v.id)) : [record.team || []];
+      for (const member of teams.flat()) {
+        const species = dataset.get('species', member.speciesId);
+        fields.push(member.speciesId, species?.name || species?.displayName || member.displaySpecies);
+      }
+    }
+    entries.set(trainer.id, { trainer, splitId: group.id, hasLocation: locations.some(value => typeof value === 'string' && value.trim()),
+      terms: [...fields, ...locations].filter(value => typeof value === 'string').map(searchText) });
+  }
+  return [...entries.values()];
+}
+
+export function searchTrainerIndex(index, query) {
+  const terms = String(query).trim().split(/\s+/u).map(searchText).filter(Boolean);
+  return index.filter(entry => terms.every(term => entry.terms.some(field => field.includes(term))));
+}
 
 export function trainerRequirement(dataset, trainer, splitId) {
   const ids = trainer.encounter?.enemyTrainerIds || [trainer.id];
@@ -100,8 +131,12 @@ export function createTrainerSelector({ dialog, dataset, starterId, resolver, re
   const tabs = dialog.querySelector('.trainer-split-tabs');
   const list = dialog.querySelector('.trainer-options');
   const next = dialog.querySelector('.trainer-continue');
-  const summary = dialog.querySelector('.trainer-selection-summary');
+  const search = dialog.querySelector('.trainer-search');
+  const searchIndex = trainerSearchIndex(dataset, groups, starterId);
+  const searchLabel = searchIndex.some(entry => entry.hasLocation) ? 'Search trainers, Pokémon, or locations' : 'Search trainers or Pokémon';
+  search.value = ''; search.placeholder = searchLabel; search.setAttribute('aria-label', searchLabel);
   let selected = null, groupIndex = 0;
+  let visibleEntries = [], searchTimer;
   const observers = [];
   const badgeRetries = new Set();
   const badgeListeners = [];
@@ -124,9 +159,8 @@ export function createTrainerSelector({ dialog, dataset, starterId, resolver, re
   const tabObserver = new ResizeObserver(sizeToTabs);
   tabObserver.observe(tabs);
   const updateSelection = () => {
-    const visible = groups[groupIndex]?.trainers.find(trainer => trainer.id === selected);
+    const visible = visibleEntries.find(entry => entry.trainer.id === selected);
     next.disabled = !visible;
-    summary.textContent = visible ? displayTrainerName(visible.displayName || visible.name) : 'Choose a trainer';
     for (const row of list.querySelectorAll('.trainer-option')) row.setAttribute('aria-selected', String(row.dataset.trainerId === selected));
   };
   const portrait = (trainer) => {
@@ -176,14 +210,20 @@ export function createTrainerSelector({ dialog, dataset, starterId, resolver, re
   };
   function renderGroup(index) {
     groupIndex = index;
+    search.value = ''; clearTimeout(searchTimer);
+    renderEntries((groups[index]?.trainers || []).map(trainer => ({ trainer, splitId: groups[index].id })), index);
+  }
+  function renderEntries(entries, activeSplit = null) {
+    visibleEntries = entries;
     for (const observer of observers.splice(0)) observer.disconnect();
-    for (const [i, tab] of [...tabs.children].entries()) { tab.setAttribute('aria-selected', String(i === index)); tab.tabIndex = i === index ? 0 : -1; }
-    const group = groups[index];
+    for (const [i, tab] of [...tabs.children].entries()) { tab.setAttribute('aria-selected', String(i === activeSplit)); tab.tabIndex = i === (activeSplit ?? groupIndex) ? 0 : -1; }
     list.replaceChildren(); list.scrollTop = 0;
-    list.setAttribute('aria-labelledby', `trainer-split-${index}`);
-    for (const trainer of group?.trainers || []) {
+    if (activeSplit === null) { list.removeAttribute('aria-labelledby'); list.setAttribute('aria-label', 'Game-wide trainer search results'); }
+    else { list.removeAttribute('aria-label'); list.setAttribute('aria-labelledby', `trainer-split-${activeSplit}`); }
+    if (!entries.length) list.append(element('p', 'muted trainer-search-empty', 'No trainers match your search.'));
+    for (const { trainer, splitId } of entries) {
       const row = element('div', 'trainer-option'); row.tabIndex = 0; row.setAttribute('role', 'option'); row.dataset.trainerId = trainer.id;
-      const requirement = trainerRequirement(dataset, trainer, group.id); row.dataset.requirement = requirement;
+      const requirement = trainerRequirement(dataset, trainer, splitId); row.dataset.requirement = requirement;
       const requirementLabel = requirement === 'unknown' ? 'Requirement unspecified' : requirement === 'required' ? 'Required' : 'Optional';
       row.setAttribute('aria-label', `${displayTrainerName(trainer.displayName || trainer.name)} · ${requirementLabel}`);
       row.title = requirementLabel;
@@ -283,7 +323,19 @@ export function createTrainerSelector({ dialog, dataset, starterId, resolver, re
     return tab;
   }));
   next.onclick = () => { if (!next.disabled) onContinue(selected); };
+  search.oninput = () => {
+    clearTimeout(searchTimer); selected = null; next.disabled = true;
+    searchTimer = setTimeout(() => {
+      if (search.value.trim()) renderEntries(searchTrainerIndex(searchIndex, search.value));
+      else renderGroup(groupIndex);
+    }, 120);
+  };
+  search.onkeydown = event => {
+    // Enter in this form must not submit/close the selector.
+    if (event.key === 'Enter') event.preventDefault();
+    if (event.key === 'ArrowUp') { event.preventDefault(); list.querySelector('.trainer-option')?.focus(); }
+  };
   renderGroup(0);
   sizeToTabs();
-  return { dispose() { disposed = true; for (const timer of badgeRetries) clearTimeout(timer); for (const cleanup of badgeListeners) cleanup(); cancelAnimationFrame(sizeFrame); tabObserver.disconnect(); for (const observer of observers) observer.disconnect(); next.onclick = null; } };
+  return { dispose() { disposed = true; clearTimeout(searchTimer); search.oninput = null; search.onkeydown = null; for (const timer of badgeRetries) clearTimeout(timer); for (const cleanup of badgeListeners) cleanup(); cancelAnimationFrame(sizeFrame); tabObserver.disconnect(); for (const observer of observers) observer.disconnect(); next.onclick = null; } };
 }

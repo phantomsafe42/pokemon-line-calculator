@@ -624,7 +624,7 @@ dialog::backdrop { background: rgba(0, 0, 0, .75); }
 .trainer-split-tabs [aria-selected="true"] { background:var(--accent); color:white; }
 .trainer-options { display:grid; grid-template-columns:minmax(0,1fr); align-content:start; gap:14px; overflow-y:auto; min-height:0; flex:1; padding:4px; }
 .trainer-selector-footer { display:flex; align-items:center; gap:12px; justify-content:space-between; flex:none; border-top:1px solid var(--line); padding-top:12px; }
-.trainer-selection-summary { color:var(--muted); font-size:13px; }
+.trainer-search { flex:1; width:0; min-width:0; font-size:13px; }
 .trainer-continue { margin-left:auto; }
 .trainer-option { background:var(--shell); border:2px solid var(--line); border-radius:8px; cursor:pointer; min-width:0; }
 .trainer-option[data-requirement="required"] { border-color:var(--red); }

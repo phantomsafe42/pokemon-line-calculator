@@ -7,7 +7,7 @@
   <meta name="pokemon-asset-release-base" content="/Datasets/Pokemon%20Assets/release">
   <title>Pokémon Line Calculator</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./styles.css?v=20260921-split-icons-v1">
+  <link rel="stylesheet" href="./styles.css?v=20260921-trainer-search-v1">
 </head>
 <body>
   <header class="app-header">
@@ -196,7 +196,7 @@
       <header class="section-heading"><h2 id="trainer-selector-title">Select Trainer</h2><button type="submit" value="cancel" class="icon-button secondary" aria-label="Close trainer selection">×</button></header>
       <div class="trainer-split-tabs" role="tablist" aria-label="Game splits"></div>
       <div id="trainer-options-panel" class="trainer-options" role="listbox" aria-label="Trainers"></div>
-      <footer class="trainer-selector-footer"><span class="trainer-selection-summary" aria-live="polite">Choose a trainer</span><button type="button" class="trainer-continue" disabled>Continue</button></footer>
+      <footer class="trainer-selector-footer"><input type="search" class="trainer-search" aria-label="Search trainers, Pokémon, or locations" placeholder="Search trainers, Pokémon, or locations" autocomplete="off" aria-controls="trainer-options-panel"><button type="button" class="trainer-continue" disabled>Continue</button></footer>
     </form>
   </dialog>
 
@@ -361,6 +361,6 @@
   </dialog>
 
   <script src="./src/generated/pokemon_asset_resolver.global.js?v=20260921-assets-080-v1"></script>
-  <script type="module" src="./src/app.js?v=20260921-split-preload-v1"></script>
+  <script type="module" src="./src/app.js?v=20260921-trainer-search-v1"></script>
 </body>
 </html>
