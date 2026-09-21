@@ -13,7 +13,7 @@ export async function checkTrainerSelector({ page, evaluate, delay, tempRoot, st
     document.getElementById('new-plan').click();
     await wait(() => document.getElementById('trainer-selector-dialog').open,'trainer selector');
     if(!document.querySelector('.trainer-continue').disabled) throw new Error('Continue requires a selection');
-    const tab=[...document.querySelectorAll('.trainer-split-tabs button')].find(tab=>tab.getAttribute('aria-label')==='Maylene');
+    const tab=[...document.querySelectorAll('.trainer-split-tabs button')].find(tab=>tab.getAttribute('aria-label')?.includes('Maylene'));
     tab.click();
     const pair=document.querySelector('[data-trainer-id="platinum-kaizo-veilstone-tag-battle"]');
     if(!pair || pair.querySelectorAll('.trainer-block').length!==2) throw new Error('Combined multi encounter');
