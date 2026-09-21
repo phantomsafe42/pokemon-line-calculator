@@ -13,7 +13,7 @@ export async function checkTrainerSelector({ page, evaluate, delay, tempRoot, st
     document.getElementById('new-plan').click();
     await wait(() => document.getElementById('trainer-selector-dialog').open,'trainer selector');
     if(!document.querySelector('.trainer-continue').disabled) throw new Error('Continue requires a selection');
-    const tab=[...document.querySelectorAll('.trainer-split-tabs button')].find(tab=>tab.textContent.includes('Maylene'));
+    const tab=[...document.querySelectorAll('.trainer-split-tabs button')].find(tab=>tab.getAttribute('aria-label')==='Maylene');
     tab.click();
     const pair=document.querySelector('[data-trainer-id="platinum-kaizo-veilstone-tag-battle"]');
     if(!pair || pair.querySelectorAll('.trainer-block').length!==2) throw new Error('Combined multi encounter');
@@ -34,12 +34,15 @@ export async function checkTrainerSelector({ page, evaluate, delay, tempRoot, st
     document.querySelector('[data-trainer-id="platinum-kaizo-veilstone-tag-battle"]').scrollIntoView({block:'start'});
   })()`, true);
   if (staged) await evaluate(page, `window.waitForSelectorTest(() => [...document.querySelectorAll('[data-trainer-id="platinum-kaizo-veilstone-tag-battle"] .trainer-portrait')].length===2 && [...document.querySelectorAll('[data-trainer-id="platinum-kaizo-veilstone-tag-battle"] .trainer-portrait')].every(image=>image.complete&&image.naturalWidth>0),'confirmed class sprites load')`,true);
-  for (const width of [1280,390,320]) {
+  await evaluate(page, `window.waitForSelectorTest(() => [...document.querySelectorAll('.trainer-split-tabs img')].length===10 && [...document.querySelectorAll('.trainer-split-tabs img')].every(image=>image.complete&&image.naturalWidth>0), 'PK badge and progression images load')`, true);
+  for (const width of [1920,1280,390,320]) {
     await page.send('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:width<600}); await delay(200);
     await evaluate(page, `(() => {document.querySelector('[data-trainer-id="platinum-kaizo-veilstone-tag-battle"]').scrollIntoView({block:'start'});document.querySelector('.trainer-split-tabs [aria-selected="true"]').scrollIntoView({block:'nearest',inline:'nearest'});})()`);
-    const geometry = await evaluate(page, `(() => {const d=document.getElementById('trainer-selector-dialog'), list=d.querySelector('.trainer-options'), f=d.querySelector('footer').getBoundingClientRect();return {width:d.getBoundingClientRect().width,overflow:d.scrollWidth-d.clientWidth,listOverflow:list.scrollWidth-list.clientWidth,footerBottom:f.bottom,viewport:innerHeight};})()`);
+    const geometry = await evaluate(page, `(() => {const d=document.getElementById('trainer-selector-dialog'), list=d.querySelector('.trainer-options'), tabs=d.querySelector('.trainer-split-tabs'), f=d.querySelector('footer').getBoundingClientRect(), buttons=[...tabs.children];return {width:d.getBoundingClientRect().width,overflow:d.scrollWidth-d.clientWidth,listOverflow:list.scrollWidth-list.clientWidth,footerBottom:f.bottom,viewport:innerHeight,columns:getComputedStyle(list).gridTemplateColumns.split(' ').length,tabExcess:tabs.clientWidth-(buttons.reduce((sum,b)=>sum+b.getBoundingClientRect().width,0)+(buttons.length-1)*6+4)};})()`);
     assert.ok(geometry.width <= width && geometry.overflow <= 1 && geometry.listOverflow <= 1,JSON.stringify({width,...geometry}));
     assert.ok(geometry.footerBottom <= geometry.viewport,'Continue stays on screen');
+    assert.equal(geometry.columns,1,'Trainer list stays in one column');
+    if (width >= 1280) assert.ok(Math.abs(geometry.tabExcess) <= 2, 'Dialog fits the complete tab strip: '+JSON.stringify(geometry));
     const image=await page.send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});
     await fs.writeFile(path.join(tempRoot,`trainer-selector-${width}.png`),Buffer.from(image.data,'base64'));
   }

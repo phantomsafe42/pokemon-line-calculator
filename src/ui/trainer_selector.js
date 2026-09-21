@@ -43,6 +43,28 @@ export function trainerSpriteQuery(trainer) {
 
 const element = (tag, className, text) => Object.assign(document.createElement(tag), { className, ...(text == null ? {} : { textContent: text }) });
 
+// Presentation families for retail titles; split/leader aliases remain owned
+// by the shared asset resolver. Hacks use its existing game selectors.
+const retailBadgeStyles = {
+  'pokemon-ruby': 'pgl-hoenn', 'pokemon-sapphire': 'pgl-hoenn', 'pokemon-emerald': 'pgl-hoenn',
+  'pokemon-firered': 'lgpe-kanto', 'pokemon-leafgreen': 'lgpe-kanto',
+  'pokemon-diamond': 'dp-sinnoh', 'pokemon-pearl': 'dp-sinnoh', 'pokemon-platinum': 'dp-sinnoh',
+  'pokemon-heartgold': 'hgss-johto', 'pokemon-soulsilver': 'hgss-johto',
+  'pokemon-black': 'b2w2-unova', 'pokemon-white': 'b2w2-unova',
+  'pokemon-black-2': 'b2w2-unova', 'pokemon-white-2': 'b2w2-unova'
+};
+
+export function trainerSplitBadgeQuery(gameId, group) {
+  const style = retailBadgeStyles[gameId];
+  // Generic buckets are not gym badges. Iris's BW gym split must not use
+  // the resolver's B2W2 Champion Iris emblem, nor Sinnoh postgame its logo.
+  if (group.id === 'other' || group.id === 'facilities'
+    || (group.id === 'postgame' && style !== 'hgss-johto')
+    || (gameId === 'pokemon-white' && group.id === 'iris')) return null;
+  return { kind: 'badge-icon', ...(style ? { style } : { game: gameId }),
+    badge: group.id === 'league' ? 'elite-four' : group.id };
+}
+
 export function createTrainerSelector({ dialog, dataset, starterId, resolver, renderCard, onContinue }) {
   const groups = dataset.trainerGroups(starterId);
   const tabs = dialog.querySelector('.trainer-split-tabs');
@@ -52,6 +74,23 @@ export function createTrainerSelector({ dialog, dataset, starterId, resolver, re
   let selected = null, groupIndex = 0;
   const observers = [];
   let disposed = false;
+  let sizeFrame;
+  const sizeToTabs = () => {
+    cancelAnimationFrame(sizeFrame);
+    sizeFrame = requestAnimationFrame(() => {
+      if (disposed || !dialog.open) return;
+      const css = getComputedStyle(tabs), shell = getComputedStyle(tabs.parentElement), border = getComputedStyle(dialog);
+      const number = value => parseFloat(value) || 0;
+      const width = [...tabs.children].reduce((sum, tab) => sum + tab.getBoundingClientRect().width, 0)
+        + Math.max(0, tabs.children.length - 1) * number(css.columnGap)
+        + number(css.paddingLeft) + number(css.paddingRight)
+        + number(shell.paddingLeft) + number(shell.paddingRight)
+        + number(border.borderLeftWidth) + number(border.borderRightWidth);
+      dialog.style.width = `${Math.ceil(width)}px`;
+    });
+  };
+  const tabObserver = new ResizeObserver(sizeToTabs);
+  tabObserver.observe(tabs);
   const updateSelection = () => {
     const visible = groups[groupIndex]?.trainers.find(trainer => trainer.id === selected);
     next.disabled = !visible;
@@ -149,6 +188,21 @@ export function createTrainerSelector({ dialog, dataset, starterId, resolver, re
   }
   tabs.replaceChildren(...groups.map((group, index) => {
     const tab = element('button', 'secondary', group.label); tab.type = 'button'; tab.id = `trainer-split-${index}`; tab.setAttribute('role', 'tab'); tab.setAttribute('aria-controls', 'trainer-options-panel');
+    tab.setAttribute('aria-label', group.label); tab.title = group.label;
+    const query = trainerSplitBadgeQuery(dataset.gameId, group);
+    if (query) {
+      const image = element('img', 'trainer-split-badge'); image.alt = '';
+      tab.classList.add('has-badge'); tab.replaceChildren(image);
+      const missing = () => {
+        if (disposed) return;
+        tab.classList.remove('has-badge'); tab.textContent = group.label;
+        tab.dataset.badgeStatus = 'unavailable'; sizeToTabs();
+      };
+      image.addEventListener('load', () => { tab.dataset.badgeStatus = 'loaded'; });
+      image.addEventListener('error', missing);
+      if (resolver.setAssetImage) resolver.setAssetImage(image, query, { onUnavailable: missing });
+      else Promise.resolve(resolver.resolveAsset(query)).then(result => { if (result.status === 'ok') image.src = result.url; else missing(); }).catch(missing);
+    } else tab.dataset.badgeStatus = 'unavailable';
     tab.onclick = () => renderGroup(index);
     tab.onkeydown = event => {
       if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
@@ -159,5 +213,6 @@ export function createTrainerSelector({ dialog, dataset, starterId, resolver, re
   }));
   next.onclick = () => { if (!next.disabled) onContinue(selected); };
   renderGroup(0);
-  return { dispose() { disposed = true; for (const observer of observers) observer.disconnect(); next.onclick = null; } };
+  sizeToTabs();
+  return { dispose() { disposed = true; cancelAnimationFrame(sizeFrame); tabObserver.disconnect(); for (const observer of observers) observer.disconnect(); next.onclick = null; } };
 }
