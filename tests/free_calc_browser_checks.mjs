@@ -126,6 +126,15 @@ export async function checkFreeCalcInline({ page, evaluate, delay, dataset, temp
           controlsFit:cards.every(card=>[...card.querySelectorAll('.free-calc-control')].every(el=>el.closest('.combatant-stats') || el.getBoundingClientRect().right<=card.getBoundingClientRect().right+1)),
           statRows:cards.every(card=>card.querySelectorAll('.combatant-stat-row > .combatant-stat').length===5 && card.querySelectorAll('.combatant-stat-extra > .combatant-stat').length===2),
           scrollContained:cards.every(card=>card.querySelector('.combatant-stats').getBoundingClientRect().right<=card.getBoundingClientRect().right+1),
+          noStatScroll:cards.every(card=>{const stats=card.querySelector('.combatant-stats');return stats.scrollWidth<=stats.clientWidth+1;}),
+          segments:cards.every(card=>[...card.querySelectorAll('.combatant-stat-row > .combatant-stat')].every(box=>{
+            const value=box.querySelector('.combatant-stat-value'),stage=box.querySelector('.combatant-stat-stage');
+            const bounds=box.getBoundingClientRect(),row=stage.getBoundingClientRect();
+            const buttons=[...stage.querySelectorAll('button')].map(el=>el.getBoundingClientRect());
+            return getComputedStyle(value).borderTopWidth==='1px' && getComputedStyle(stage).borderTopWidth==='1px'
+              && Math.abs(buttons[0].left-bounds.left-1)<1 && Math.abs(buttons[1].right-bounds.right+1)<1
+              && buttons.every(button=>Math.abs(button.bottom-bounds.bottom+1)<1 && Math.abs(button.top-row.top-1)<1 && button.width<40);
+          })),
           stageControlsFit:cards.every(card=>[...card.querySelectorAll('.combatant-stat .free-calc-stage')].every(el=>{
             const box=el.closest('.combatant-stat').getBoundingClientRect(),bounds=el.getBoundingClientRect();
             return bounds.left>=box.left && bounds.right<=box.right;
@@ -140,6 +149,8 @@ export async function checkFreeCalcInline({ page, evaluate, delay, dataset, temp
       assert.ok(layout.fits, `${format} page fits ${width}`); assert.ok(layout.controlsFit,`${format} controls fit ${width}`);
       assert.ok(layout.statRows && layout.scrollContained,'Editable stats and Acc/Eva remain in bounded stat boxes');
       assert.ok(layout.stageControlsFit,'Stage buttons do not cross their stat box borders');
+      assert.ok(layout.noStatScroll,'Editable stats fit the same five-column row without scrolling');
+      assert.ok(layout.segments,'Stage buttons are flush with the segment and box edges');
       assert.equal(layout.cards,format==='singles'?2:format==='doubles'?4:6);
       assert.ok(layout.stackGaps.every(gap=>Math.abs(gap)<1), `${format} stacked cards have only the intended gap at ${width}: ${layout.stackGaps}`);
       if(width===1280) {
