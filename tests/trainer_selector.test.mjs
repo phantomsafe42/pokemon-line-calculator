@@ -4,7 +4,20 @@ import fs from 'node:fs';
 import { fixtureTriplePlan } from './helpers.mjs';
 import { createDatasetContext, REQUIRED_DATASET_SOURCES } from '../src/adapters/standardized_dataset.js';
 import { triplePositionForSlot } from '../src/rulesets/triple_battle.js';
-import { displayTrainerName, trainerDisplayBlocks, trainerRequirement, trainerSpriteQuery } from '../src/ui/trainer_selector.js';
+import { displayTrainerName, trainerDisplayBlocks, trainerRequirement, trainerSpriteQuery, trainerSplitBadgeQuery } from '../src/ui/trainer_selector.js';
+
+test('split art retains game context for BW Iris and the new Unbound collection', () => {
+  for (const game of ['pokemon-white', 'pokemon-white-2']) {
+    assert.deepEqual(trainerSplitBadgeQuery(game, { id: 'iris' }),
+      { kind: 'badge-icon', game: game.replace(/^pokemon-/, ''), style: 'b2w2-unova', badge: 'iris' });
+  }
+  assert.deepEqual(trainerSplitBadgeQuery('pokemon-unbound', { id: 'maxima' }),
+    { kind: 'badge-icon', game: 'unbound', badge: 'maxima' });
+  assert.deepEqual(trainerSplitBadgeQuery('pokemon-unbound', { id: 'league' }),
+    { kind: 'badge-icon', game: 'unbound', badge: 'elite-four' });
+  assert.equal(trainerSplitBadgeQuery('pokemon-white', { id: 'postgame' }).style, 'showdown');
+  assert.equal(trainerSplitBadgeQuery('pokemon-white', { id: 'frontier' }).item, 'poke-ball');
+});
 
 function load(game) {
   const read = name => JSON.parse(fs.readFileSync(new URL(`../src/generated/datasets/${game}/${name}`, import.meta.url)));

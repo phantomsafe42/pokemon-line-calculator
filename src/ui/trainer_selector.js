@@ -60,10 +60,39 @@ export function trainerSplitBadgeQuery(gameId, group) {
   if (['facilities', 'frontier', 'battle-frontier'].includes(group.id)) return { kind: 'item-sprite', style: 'showdown', item: 'poke-ball' };
   if (group.id === 'other') return { kind: 'pokemon-sprite', spriteType: 'pixel', species: 'unown', view: 'front' };
   const style = badgeStyles[gameId];
-  // Iris's BW gym split must not use the B2W2 Champion Iris emblem.
-  if (gameId === 'pokemon-white' && group.id === 'iris') return null;
-  return { kind: 'badge-icon', ...(style ? { style } : { game: gameId }),
+  // Game context disambiguates BW Gym Leader Iris from the BW2 Champion.
+  return { kind: 'badge-icon', game: gameId.replace(/^pokemon-/, ''), ...(style ? { style } : {}),
     badge: group.id === 'league' ? 'elite-four' : group.id };
+}
+
+// Keep a small, resolver-scoped set of image elements alive so opening the
+// selector can attach already-loaded artwork without another request/decode.
+const splitIconCaches = new WeakMap();
+function splitIconImage(resolver, query) {
+  let cache = splitIconCaches.get(resolver);
+  if (!cache) { cache = new Map(); splitIconCaches.set(resolver, cache); }
+  const key = JSON.stringify(query);
+  let image = cache.get(key);
+  if (!image) {
+    image = element('img', 'trainer-split-badge'); image.alt = '';
+    image.dataset.assetKind = query.kind;
+    image.loading = 'eager'; image.fetchPriority = 'high';
+    cache.set(key, image);
+    if (cache.size > 64) cache.delete(cache.keys().next().value);
+    if (resolver.setAssetImage) resolver.setAssetImage(image, query);
+    else Promise.resolve(resolver.resolveAsset(query)).then(result => {
+      if (result.status === 'ok') image.src = result.url;
+    }).catch(() => {});
+  }
+  return image;
+}
+
+export function preloadTrainerSplitIcons(dataset, resolver) {
+  if (!resolver) return;
+  for (const group of dataset.trainerGroups()) {
+    const query = trainerSplitBadgeQuery(dataset.gameId, group);
+    if (query) splitIconImage(resolver, query);
+  }
 }
 
 export function createTrainerSelector({ dialog, dataset, starterId, resolver, renderCard, onContinue }) {
@@ -75,6 +104,7 @@ export function createTrainerSelector({ dialog, dataset, starterId, resolver, re
   let selected = null, groupIndex = 0;
   const observers = [];
   const badgeRetries = new Set();
+  const badgeListeners = [];
   let disposed = false;
   let sizeFrame;
   const sizeToTabs = () => {
@@ -193,9 +223,7 @@ export function createTrainerSelector({ dialog, dataset, starterId, resolver, re
     tab.setAttribute('aria-label', group.label); tab.title = group.label;
     const query = trainerSplitBadgeQuery(dataset.gameId, group);
     if (query) {
-      const image = element('img', 'trainer-split-badge'); image.alt = '';
-      image.dataset.assetKind = query.kind;
-      image.loading = 'eager'; image.fetchPriority = 'high';
+      const image = splitIconImage(resolver, query);
       const label = element('span', 'trainer-split-loading-label', group.label.replace(/\s+Split$/iu, ''));
       tab.classList.add('has-badge', 'badge-loading'); tab.replaceChildren(image, label);
       tab.dataset.badgeStatus = 'loading';
@@ -217,14 +245,19 @@ export function createTrainerSelector({ dialog, dataset, starterId, resolver, re
         tab.classList.remove('has-badge', 'badge-loading'); tab.textContent = group.label;
         tab.dataset.badgeStatus = 'unavailable'; sizeToTabs();
       };
-      image.addEventListener('load', () => {
+      const loaded = () => {
         if (disposed) return;
         clearDeadline(); image.hidden = false; tab.replaceChildren(image);
         tab.classList.add('has-badge'); tab.classList.remove('badge-loading');
         tab.dataset.badgeStatus = 'loaded';
         sizeToTabs();
-      });
+      };
+      image.addEventListener('load', loaded);
       image.addEventListener('error', missing);
+      badgeListeners.push(() => {
+        image.removeEventListener('load', loaded); image.removeEventListener('error', missing);
+        image.onerror = null;
+      });
       function loadBadge() {
         loadTimer = setTimeout(missing, 8000); badgeRetries.add(loadTimer);
         // A same-URL image retry can rejoin the stalled browser request. The
@@ -237,7 +270,9 @@ export function createTrainerSelector({ dialog, dataset, starterId, resolver, re
         if (resolver.setAssetImage) resolver.setAssetImage(image, request, { onUnavailable: missing });
         else Promise.resolve(resolver.resolveAsset(request)).then(result => { if (result.status === 'ok') image.src = result.url; else missing(); }).catch(missing);
       }
-      loadBadge();
+      if (image.complete && image.naturalWidth > 0) loaded();
+      else if (!image.getAttribute('src') || image.complete) loadBadge();
+      else { loadTimer = setTimeout(missing, 8000); badgeRetries.add(loadTimer); }
     } else tab.dataset.badgeStatus = 'unavailable';
     tab.onclick = () => renderGroup(index);
     tab.onkeydown = event => {
@@ -250,5 +285,5 @@ export function createTrainerSelector({ dialog, dataset, starterId, resolver, re
   next.onclick = () => { if (!next.disabled) onContinue(selected); };
   renderGroup(0);
   sizeToTabs();
-  return { dispose() { disposed = true; for (const timer of badgeRetries) clearTimeout(timer); cancelAnimationFrame(sizeFrame); tabObserver.disconnect(); for (const observer of observers) observer.disconnect(); next.onclick = null; } };
+  return { dispose() { disposed = true; for (const timer of badgeRetries) clearTimeout(timer); for (const cleanup of badgeListeners) cleanup(); cancelAnimationFrame(sizeFrame); tabObserver.disconnect(); for (const observer of observers) observer.disconnect(); next.onclick = null; } };
 }

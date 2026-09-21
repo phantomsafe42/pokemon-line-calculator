@@ -124,7 +124,9 @@
       dpsinnoh: "dp-sinnoh", dp: "dp-sinnoh", dpp: "dp-sinnoh", dppt: "dp-sinnoh", sinnoh: "dp-sinnoh",
       platinum: "dp-sinnoh", platinumkaizo: "dp-sinnoh", renegadeplatinum: "dp-sinnoh",
       b2w2unova: "b2w2-unova", b2w2: "b2w2-unova", bw2: "b2w2-unova", unova: "b2w2-unova", voltwhite2r: "b2w2-unova",
-      voltwhite2redux: "b2w2-unova"
+      voltwhite2redux: "b2w2-unova", black2: "b2w2-unova", white2: "b2w2-unova", black2white2: "b2w2-unova",
+      bw: "b2w2-unova", bwunova: "b2w2-unova", black: "b2w2-unova", white: "b2w2-unova", blackwhite: "b2w2-unova",
+      pokemonunbound: "pokemon-unbound", unbound: "pokemon-unbound", borrius: "pokemon-unbound"
     };
     const style = styleAliases[normalizeToken(query.style || query.game || query.region || query.family)];
     if (!style) return null;
@@ -178,7 +180,9 @@
         champion: "champion-ribbon", championribbon: "champion-ribbon", elite4: "champion-ribbon", elitefour: "champion-ribbon", cynthia: "champion-ribbon"
       },
       "b2w2-unova": {
-        basic: "basic", basicbadge: "basic", cheren: "basic",
+        basic: "basic", basicbadge: "basic", cheren: "basic", lenora: "basic",
+        trio: "trio", triobadge: "trio", cilan: "trio", chili: "trio", cress: "trio",
+        freeze: "freeze", freezebadge: "freeze", brycen: "freeze",
         toxic: "toxic", toxicbadge: "toxic", roxie: "toxic",
         insect: "insect", insectbadge: "insect", burgh: "insect",
         bolt: "bolt", boltbadge: "bolt", elesa: "bolt",
@@ -189,9 +193,26 @@
         plasma: "plasma-logo", plasmalogo: "plasma-logo", ghetsis: "plasma-logo",
         pokemonleague: "pokemon-league-logo", pokemonleaguelogo: "pokemon-league-logo", league: "pokemon-league-logo",
         champion: "pokemon-league-logo", iris: "pokemon-league-logo", elite4: "pokemon-league-logo", elitefour: "pokemon-league-logo"
+      },
+      "pokemon-unbound": {
+        leaf: "leaf", leafbadge: "leaf", mirskle: "leaf",
+        vision: "vision", visionbadge: "vision", vega: "vision",
+        wings: "wings", wingsbadge: "wings", alice: "wings",
+        fall: "fall", fallbadge: "fall", mel: "fall",
+        maxima: "maxima-emblem", successormaxima: "maxima-emblem", maximaemblem: "maxima-emblem",
+        battery: "battery", batterybadge: "battery", galavan: "battery",
+        ring: "ring", ringbadge: "ring", bigmo: "ring",
+        swamp: "swamp", swampbadge: "swamp", tessy: "swamp",
+        time: "time", timebadge: "time", benjamin: "time",
+        league: "champion-ribbon", pokemonleague: "champion-ribbon", champion: "champion-ribbon",
+        championribbon: "champion-ribbon", elite4: "champion-ribbon", elitefour: "champion-ribbon", e4: "champion-ribbon"
       }
     };
-    const badge = aliases[style]?.[badgeToken];
+    // Art style and game context are independent: Iris changes roles in BW2.
+    const gameToken = normalizeToken(query.game || query.style || query.family);
+    const isBw = ["bw", "bwunova", "black", "white", "blackwhite"].includes(gameToken);
+    const badge = style === "b2w2-unova" && badgeToken === "iris" && isBw
+      ? "legend" : aliases[style]?.[badgeToken];
     return badge ? { style, badge } : null;
   }
 
@@ -774,6 +795,17 @@
       return resolveCollectionAsset("game-title-art", "game-title-art", selectors, query);
     }
 
+    async function resolveMoveCategoryIcon(query = {}) {
+      if (!baseUrl) return { status: "unavailable", reason: "release-base-not-configured", requested: query };
+      const category = normalizeToken(query.category || query.name);
+      const style = normalizeToken(query.style || "champions-approved");
+      if (!["physical", "special", "status"].includes(category) || !["champions", "championsapproved"].includes(style)) {
+        return { status: "unavailable", reason: "invalid-move-category-selectors", requested: query };
+      }
+      return resolveCollectionAsset("move-category-icon", "move-category-icon",
+        { style: "champions-approved", category }, query);
+    }
+
     async function resolveAsset(query = {}) {
       const kind = normalizeToken(query.kind || query.assetKind || (query.spriteType ? "pokemon-sprite" : ""));
       let result;
@@ -783,6 +815,7 @@
         return result;
       }
       if (kind === "typeicon" || kind === "type") result = await resolveTypeIcon(query);
+      else if (["movecategoryicon", "movecategory"].includes(kind)) result = await resolveMoveCategoryIcon(query);
       else if (kind === "itemsprite" || kind === "itemicon" || kind === "item") result = await resolveItemSprite(query);
       else if (["statusconditionicon", "statusicon", "conditionicon", "statuscondition", "status"].includes(kind)) result = await resolveStatusConditionIcon(query);
       else if (["badgeicon", "gymbadge", "progressionicon", "badge"].includes(kind)) result = await resolveBadgeIcon(query);

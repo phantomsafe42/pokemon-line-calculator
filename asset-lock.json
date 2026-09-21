@@ -2,24 +2,24 @@
   "schemaVersion": "plc-asset-lock/v2",
   "repository": "phantomsafe42/pokemon-assets",
   "release": {
-    "version": "0.7.0-dev.2",
-    "tag": "v0.7.0-dev.2",
-    "commit": "44c778913a42c3752061cb073f000682edff4f9b",
-    "indexSha256": "68ffb8b28d46750e508986dcce63ea9129efc9555e84d744976ec4dfcfb6bdc5",
-    "manifestSha256": "a2bb1f2cea5daba191792ec3bc6aac94946d0b74e3af50d0552ad4bab778f00f",
-    "creditsSha256": "e38e4098842c396d5be3c542a53d6e28cac06249b7bc9e31f7f0f40db3353f7e"
+    "version": "0.8.0-dev.1",
+    "tag": "v0.8.0-dev.1",
+    "commit": "9fbb8cd08e284756e7b873cddf856cd280200bf8",
+    "indexSha256": "7ea1331cdbfee0767f53453e1674a91cf295fbc63e2c2e14d923697bbbed89ce",
+    "manifestSha256": "4d88a5834c134c976fa47410f33925116d7af3731ab0a99e53ec8e694b475fba",
+    "creditsSha256": "a6efac13cae3a8787c0d33e6f6efa3eecaa58493c6d1060aac2661d85fdfb37e"
   },
   "clients": {
-    "sourceCommit": "40742dc7d8bfe7d58db7f121f88117d05ed66244",
-    "resolverSha256": "56117010bbcf4e9698b1df69fd00177e17b694165718b556c9cce545e7cddda5",
-    "gatewaySha256": "e739e39bb2eee9db58bbb77fef20a7ca5ed3cb3c586edc762ae916a4fc71f485"
+    "sourceCommit": "4ab21a14d5a40feba5928d4cd143eede555abd90",
+    "resolverSha256": "671206ec2c85206b55d4bc7ce15465654e19b672423d26ad4759fe272388780e",
+    "gatewaySha256": "bc46626ef815107825076f108d9c8b62b9b3cb66a616a3d3d2c43497a11660bc"
   },
   "gateway": {
     "contract": "pokemon-asset-gateway/v1",
     "origin": "https://assets.phantomsafe.tv",
-    "releaseVersion": "0.7.0-dev.2",
-    "configSha256": "45bb867037666ea7ce3c50032a23af615db347901e342dcf8f5658b6a36ebccd",
-    "completionPlanSha256": "b0f5478b37bfda74e5c7d49339e527511fee3b56a34533c56baad9b6de39b7b1",
-    "deploymentVersion": "7ad963da-2106-423e-8d44-e9bb2342c905"
+    "releaseVersion": "0.8.0-dev.1",
+    "configSha256": "a87ca9320d06b121e327050bc74affd152b9929a97d147acbc371c2cd7616c65",
+    "completionPlanSha256": "9b35fd32d7b9c7f87d275e85cfcec8db98693ad72de6c86ad594bb26ae602d53",
+    "deploymentVersion": "4dd4d8b2-54c0-47c1-983d-4c417017a846"
   }
 }

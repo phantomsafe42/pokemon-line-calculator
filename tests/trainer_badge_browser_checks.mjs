@@ -28,7 +28,9 @@ export async function checkTrainerBadgeRecovery({page,evaluate,delay}) {
   await evaluate(page,`document.getElementById('trainer-selector-dialog').close();`); await delay(100);
   const before=paused().length;
   await page.send('Network.setCacheDisabled',{cacheDisabled:true});
-  await evaluate(page,`document.getElementById('new-plan').click();`);
+  // A fresh document discards the in-memory image cache as well as HTTP cache.
+  await page.send('Page.reload',{ignoreCache:true});
+  await evaluate(page,`(async()=>{for(let i=0;i<600;i++){if(document.getElementById('new-plan') && !document.getElementById('new-plan').disabled && !document.getElementById('game-dialog').open){document.getElementById('new-plan').click();return;}await new Promise(r=>setTimeout(r,50));}throw Error('Game reload timeout');})()`,true);
   await waitFor(()=>paused().length>=before+10);
   for(const event of paused().slice(before,before+10)) await page.send('Fetch.failRequest',{requestId:event.params.requestId,errorReason:'Failed'});
   await waitFor(()=>paused().length>=before+20); await checkLabels();
