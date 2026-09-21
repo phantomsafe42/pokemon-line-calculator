@@ -1,5 +1,6 @@
-import { damagingMoveImmunity } from "../rulesets/switch_rules.js?v=20260907-two-turn-immunity-v1";
-import { semiInvulnerabilityResult } from "../rulesets/battle_rules.js?v=20260907-two-turn-immunity-v1";
+import { damagingMoveImmunity, moveImmunity } from "../rulesets/switch_rules.js?v=20260907-two-turn-immunity-v1";
+import { semiInvulnerabilityResult, statusApplicationResult } from "../rulesets/battle_rules.js?v=20260907-two-turn-immunity-v1";
+import { moveSupport } from "../rulesets/core_move_support.js?v=20260907-two-turn-immunity-v1";
 import { adjacentActiveEntries } from "../rulesets/triple_battle.js?v=20260905-drafts-freecalc-partners-v1";
 import { toId } from "./primitives.js?v=20260905-drafts-freecalc-partners-v1";
 
@@ -109,14 +110,18 @@ export function previewCombatantMove({ plan, stateNodeId, actorKey, positionActo
     label: "Immune",
     reason: semiInvulnerability.reason
   };
-  const immunity = damagingMoveImmunity({
+  const isStatus = toId(move.category) === "status";
+  const support = isStatus ? moveSupport(move, dataset) : null;
+  const targetsOpponent = support?.supported && !["self", "field"].includes(support.target) && actorKey !== targetKey;
+  const immunity = (isStatus && targetsOpponent ? moveImmunity : damagingMoveImmunity)({
     dataset,
     move,
     attackerState: actorState,
     defenderState: targetState,
     fieldState: state.fieldState,
     attackerSide: actor.side,
-    defenderSide: target.side
+    defenderSide: target.side,
+    ignoreImmunity: support?.ignoreImmunity
   });
   if (immunity) return {
     status: "immune",
@@ -124,6 +129,19 @@ export function previewCombatantMove({ plan, stateNodeId, actorKey, positionActo
     reason: immunity.reason,
     ...(immunity.abilityId ? { abilityId: immunity.abilityId } : {})
   };
+  // Reuse the resolver's primary status rules. Do not label a mixed-effect move
+  // immune merely because one operation fails, or predict a reflected status.
+  const statusDescriptor = support?.effectId === "major-status" ? support
+    : support?.operations?.length === 1 && support.operations[0].kind === "major-status"
+      && support.operations[0].target === "target" ? support.operations[0] : null;
+  const reflects = !targetState.abilitySuppressed && toId(targetState.currentAbilityId) === "magicbounce";
+  if (isStatus && targetsOpponent && statusDescriptor && !reflects) {
+    const statusResult = statusApplicationResult({ descriptor: statusDescriptor, attackerState: actorState,
+      targetState, fieldState: state.fieldState, generation: dataset.mechanics?.damageGeneration });
+    if (!statusResult.applies && statusResult.reason?.includes("immune")) {
+      return { status: "immune", label: "Immune", reason: statusResult.reason };
+    }
+  }
   const result = damageAdapter.calculate({
     attacker: actor,
     defender: target,

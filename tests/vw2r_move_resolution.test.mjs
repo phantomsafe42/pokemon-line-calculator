@@ -320,6 +320,42 @@ test("VW2R Thunder Wave respects Ground immunity before accuracy and status bran
   assert.equal(outcomes[0].state.combatantStates[enemyKey].majorStatus, null);
 });
 
+test("status move cards preview current immunities without treating every status move as damage", () => {
+  const cases = [
+    { move: "thunderwave", types: ["ground"], expected: "Immune" },
+    { move: "thunderwave", types: ["ground"], item: "ringtarget", expected: "Status" },
+    { move: "thunderwave", types: ["normal"], expected: "Status" },
+    { move: "thunderwave", types: ["electric"], expected: "Status" },
+    { move: "thunderwave", types: ["normal"], ability: "limber", expected: "Immune" },
+    { move: "thunderwave", types: ["normal"], ability: "limber", suppressed: true, expected: "Status" },
+    { move: "thunderwave", types: ["normal"], ability: "voltabsorb", expected: "Immune" },
+    { move: "thunderwave", types: ["normal"], ability: "voltabsorb", attackerAbility: "moldbreaker", expected: "Status" },
+    { move: "glare", types: ["ghost"], expected: "Status" },
+    { move: "toxic", types: ["steel"], expected: "Immune" },
+    { move: "toxic", types: ["steel"], attackerAbility: "corrosion", expected: "Status" },
+    { move: "toxic", types: ["steel"], ability: "magicbounce", expected: "Status" },
+    { move: "willowisp", types: ["fire"], expected: "Immune" },
+    { move: "swordsdance", types: ["ghost"], expected: "Status" }
+  ];
+  for (const entry of cases) {
+    const { dataset, plan, playerKey, enemyKey } = vw2rFixture(entry.move);
+    for (const id of ["ground", "normal", "electric", "ghost", "steel", "fire", "poison"])
+      dataset.indexes.types.set(id, vw2rTypes[id]);
+    dataset.mechanics.damageGeneration = entry.generation || 5;
+    const state = plan.stateNodes[plan.initialStateNodeId];
+    Object.assign(state.combatantStates[enemyKey], { currentTypeIds: entry.types,
+      currentItemId: entry.item || null, itemState: entry.item ? "held" : "none", currentAbilityId: entry.ability || "pressure",
+      abilitySuppressed: Boolean(entry.suppressed) });
+    state.combatantStates[playerKey].currentAbilityId = entry.attackerAbility || "pressure";
+    const before = JSON.stringify(plan);
+    const result = previewCombatantMove({ plan, stateNodeId: plan.initialStateNodeId,
+      actorKey: playerKey, targetKey: enemyKey, moveId: entry.move, dataset,
+      damageAdapter: { calculate: () => ({ status: "status", label: "Status" }) } });
+    assert.equal(result.label, entry.expected, JSON.stringify(entry));
+    assert.equal(JSON.stringify(plan), before, "Preview must not mutate battle state");
+  }
+});
+
 test("VW2R Dig is semi-invulnerable, forces its release turn, and spends PP once", () => {
   const fixture = vw2rFixture("dig");
   const { dataset, plan, playerKey, enemyKey } = fixture;
