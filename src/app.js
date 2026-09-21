@@ -11,7 +11,7 @@ import { hasManualStartingHp } from "./ui/editor_hp.js?v=20260917-editor-hp-v1";
 import { createDraftRecord, destructiveTransitionNotice, IndexedDbDraftStore, markExported, updateDraftRecord } from "./cache/active_draft.js?v=20260920-performance-v1";
 import { coalescedTask } from './cache/coalesced_task.js?v=20260920-performance-v1';
 import { TrainerAiForecastCache } from "./cache/trainer_ai_forecast.js?v=20260909-public-release-v2";
-import { SavedDraftStore, savedDraftSnapshot } from "./cache/saved_drafts.js?v=20260917-partners-release-v1";
+import { SavedDraftStore, savedDraftSnapshot, savedDraftIsCurrent } from "./cache/saved_drafts.js?v=20260921-saved-draft-guard-v1";
 import { reorderCards } from "./ui/reorder_cards.js?v=20260909-public-release-v2";
 import { addFreeCalcBranch, editFreeCalcCombatant, replaceFreeCalcSlot, freeCalcAsNewPlan } from './core/free_calc.js?v=20260921-dataset-identities-v1';
 import { isSandbox, editSandboxCombatant, placeSandboxCombatant, admitSandboxReserve } from './core/sandbox.js?v=20260921-dataset-identities-v1';
@@ -204,6 +204,11 @@ const ui = Object.fromEntries([
 
 const draftStore = new IndexedDbDraftStore();
 const savedDraftStore = new SavedDraftStore();
+let editorChangeGeneration = 0;
+let unsavedEditorChanges = false;
+function resetEditorChanges() { editorChangeGeneration++; unsavedEditorChanges = false; }
+function markEditorChanged() { editorChangeGeneration++; unsavedEditorChanges = true; }
+function currentDraftEditor() { return { cursorStateNodeId, reviewOutcomeStateNodeId, actionDraft, selectedPreviewOutcomeId, needsRecalculation }; }
 const boxStore = new IndexedDbBoxLibraryStore();
 let selectedGameId = null;
 let selectedStarterId = null;
@@ -527,8 +532,11 @@ function setTab(name) {
 
 async function saveNamedDraft() {
   if (!plan) return false;
-  const editor = { cursorStateNodeId, reviewOutcomeStateNodeId, actionDraft, selectedPreviewOutcomeId, needsRecalculation };
-  await savedDraftStore.save(savedDraftSnapshot(plan, editor));
+  const generation = editorChangeGeneration;
+  const snapshot = savedDraftSnapshot(plan, currentDraftEditor());
+  await savedDraftStore.save(snapshot);
+  if (generation === editorChangeGeneration) unsavedEditorChanges = false;
+  await persistDraft();
   setStatus('Line saved to Drafts.');
   return true;
 }
@@ -718,6 +726,7 @@ async function openSavedDraft(record) {
   const restored = structuredClone(record.document);
   const editor = structuredClone(record.editor || {});
   plan = restored;
+  resetEditorChanges();
   cursorStateNodeId = plan.stateNodes[editor.cursorStateNodeId] ? editor.cursorStateNodeId : plan.initialStateNodeId;
   reviewOutcomeStateNodeId = editor.reviewOutcomeStateNodeId || null;
   actionDraft = editor.actionDraft || emptyActionDraft();
@@ -2656,6 +2665,7 @@ function actionForSlot(side, slot) {
 }
 
 function setDraft(side, slot, next) {
+  markEditorChanged();
   const previous = { ...actionForSlot(side, slot) };
   const preserveRenderedPreview = Boolean(currentPreview
     && previous.type === "move"
@@ -2694,6 +2704,7 @@ function configureMoveDraft(side, slot, actorKey, move, support) {
 
 function chooseBranchEvent(dimensionId, optionId, selectionModel = branchEventModel) {
   if (!currentPreview || !branchEventModel) return;
+  markEditorChanged();
   reviewOutcomeStateNodeId = null;
   selectedPreviewOutcomeId = selectBranchEventOutcome(
     selectionModel,
@@ -2707,6 +2718,7 @@ function chooseBranchEvent(dimensionId, optionId, selectionModel = branchEventMo
   renderActionPanels();
   renderTree();
   const selected = defaultPreviewEntry();
+  persistDraft().catch(error => setStatus(error.message, true));
   ui["commit-turn"].textContent = previewCommitLabel();
   ui.readiness.textContent = selected ? `Crafted outcome ready · ${probabilityLabel(selected.outcome || selected)}` : "Crafted outcome ready.";
 }
@@ -4085,6 +4097,7 @@ function nodeActionSummary(state) {
 
 function selectStateNode(stateId, { prefill = false } = {}) {
   if (!plan.stateNodes[stateId]) return;
+  resetEditorChanges();
   cursorStateNodeId = stateId;
   reviewOutcomeStateNodeId = null;
   actionDraft = emptyActionDraft();
@@ -4100,6 +4113,7 @@ function selectTurnOutcome(stateId) {
   const state = plan.stateNodes[stateId];
   const group = state?.parentActionGroupId ? plan.actionGroups[state.parentActionGroupId] : null;
   if (!state || !group) return;
+  resetEditorChanges();
   cursorStateNodeId = group.parentStateNodeId;
   reviewOutcomeStateNodeId = stateId;
   actionDraft = emptyActionDraft();
@@ -4115,6 +4129,7 @@ function selectReplacementOutcome(stateId) {
   const state = plan.stateNodes[stateId];
   const transition = state?.parentReplacementTransitionId ? plan.replacementTransitions?.[state.parentReplacementTransitionId] : null;
   if (!state || !transition) return;
+  resetEditorChanges();
   cursorStateNodeId = transition.parentStateNodeId;
   reviewOutcomeStateNodeId = stateId;
   actionDraft = emptyActionDraft();
@@ -4400,6 +4415,7 @@ function renderWorkspace() {
 const persistDraft = coalescedTask(async () => {
   if (!plan || freeCalcSession) return;
   draftRecord = draftRecord ? updateDraftRecord(draftRecord, plan, cursorStateNodeId) : createDraftRecord(plan, cursorStateNodeId);
+  draftRecord.unsavedEditorChanges = unsavedEditorChanges;
   if (isSandbox(plan)) draftRecord.sandboxEditor = structuredClone({ actionDraft, reviewOutcomeStateNodeId, selectedPreviewOutcomeId });
   else delete draftRecord.sandboxEditor;
   await draftStore.save(draftRecord);
@@ -4513,6 +4529,12 @@ async function recalculateImportedPlan() {
 async function confirmDestructive(actionLabel) {
   if (freeCalcSession) { setStatus('Close, Add, or Save as Draft to finish Free Calc first.', true); return false; }
   if (!plan) return true;
+  try {
+    const saved = await savedDraftStore.get(`${plan.planId}:${plan.createdAt}`);
+    if (savedDraftIsCurrent(saved, plan, currentDraftEditor(), unsavedEditorChanges)) return true;
+  } catch {
+    // A missing/deleted/unreadable saved copy must never waive the guard.
+  }
   ui["destructive-message"].textContent = "You have a line already open. Please select how to proceed.";
   ui["destructive-output"].hidden = false;
   ui["destructive-discard"].textContent = "Discard";
@@ -4540,6 +4562,7 @@ async function resolveDestructive(choice) {
 }
 
 async function clearActiveContext({ preserveCachedDraft = false } = {}) {
+  resetEditorChanges();
   plan = null; draftRecord = null; cursorStateNodeId = null; currentPreview = null; branchEventModel = null; selectedPreviewOutcomeId = null; reviewOutcomeStateNodeId = null; needsRecalculation = false;
   actionDraft = emptyActionDraft(); exportSelection.clear();
   if (!preserveCachedDraft) await draftStore.clear();
@@ -4595,6 +4618,8 @@ async function restoreDraft() {
     restored = probabilityRepair.plan;
     plan = restored;
     draftRecord = { ...cached, document: restored };
+    editorChangeGeneration++;
+    unsavedEditorChanges = Boolean(cached.unsavedEditorChanges);
     cursorStateNodeId = plan.stateNodes[cached.workingCursorStateNodeId] ? cached.workingCursorStateNodeId : plan.initialStateNodeId;
     reviewOutcomeStateNodeId = null;
     draftRecord.needsRecalculation = needsRecalculation;

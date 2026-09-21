@@ -1,4 +1,4 @@
-import { clone } from '../core/primitives.js?v=20260905-drafts-freecalc-partners-v1';
+import { clone, stableStringify } from '../core/primitives.js?v=20260905-drafts-freecalc-partners-v1';
 import { assertValidPlanDocument } from '../contracts/plan_contract.js?v=20260917-partners-release-v1';
 
 export function savedDraftSnapshot(plan, editor = {}, id = `${plan.planId}:${plan.createdAt}`) {
@@ -7,6 +7,16 @@ export function savedDraftSnapshot(plan, editor = {}, id = `${plan.planId}:${pla
   return { id: String(id || crypto.randomUUID()), gameId: document.game.gameId,
     name: document.name || document.planName || 'Untitled Line', document,
     editor: clone(editor), savedAt: new Date().toISOString() };
+}
+
+export function savedDraftIsCurrent(saved, plan, editor, editorChanged = false) {
+  if (!saved?.document || stableStringify(saved.document) !== stableStringify(plan)) return false;
+  // Looking at another node is not an edit. User-selected, uncommitted actions
+  // and outcome choices still need protection even without a document revision.
+  if (!editorChanged) return true;
+  const selection = value => ({ cursorStateNodeId: value?.cursorStateNodeId || plan.initialStateNodeId,
+    actionDraft: value?.actionDraft || {}, selectedPreviewOutcomeId: value?.selectedPreviewOutcomeId || null });
+  return stableStringify(selection(saved.editor)) === stableStringify(selection(editor));
 }
 
 // Separate database preserves the existing single-active-draft recovery store.
@@ -31,5 +41,6 @@ export class SavedDraftStore {
   }
   async list(gameId) { return (await this.transact('readonly', store => store.getAll())).filter(row => !gameId || row.gameId === gameId).sort((a, b) => b.savedAt.localeCompare(a.savedAt)); }
   save(record) { return this.transact('readwrite', store => store.put(clone(record))); }
+  get(id) { return this.transact('readonly', store => store.get(id)); }
   delete(id) { return this.transact('readwrite', store => store.delete(id)); }
 }
