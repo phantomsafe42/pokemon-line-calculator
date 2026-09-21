@@ -2,7 +2,17 @@ import { slotsPerSide } from '../core/battle_slots.js';
 import { triplePositionForSlot } from '../rulesets/triple_battle.js';
 import { starterAllows } from '../adapters/starter_selection.js';
 
-export const displayTrainerName = name => String(name || '').replace(/\s+#\d+(?=\s*(?:&|·|$))/gu, '');
+// Presentation only: keep source names, IDs and encounter disambiguators intact.
+export const displayTrainerName = name => String(name || '')
+  // Square/pipe annotations in the current contracts describe teams,
+  // difficulty, battle format or location, not the in-game trainer name.
+  .replace(/\s*\[[^\[\]]*\]/gu, '')
+  .replace(/\s*\|[^|]*\|/gu, '')
+  // Keep narrative names (e.g. named quests) and genuine title qualifiers;
+  // remove only recognizable technical parenthetical annotations.
+  .replace(/\s*\((?:Encounter\s*#?\s*\d+|(?:Single|Double|Triple|Rotation|Multi)\s+Battle|(?:Morning|Day|Night)\s+only|w\.\s+[^()]+|(?:immediately\s+after|after|three\s+beasts\s+back\s+to\s+back|two\s+birds\s+back\s+to\s+back|entrance\s+and)\s+[^()]+)\)/giu, '')
+  .replace(/\s+(?:[·—–-]\s*)?(?:Encounter\s*#?\s*\d+|#\d+)(?=\s*(?:&|·|\(|$))/giu, '')
+  .trim();
 export const trainerFormatLabel = format => ({ singles: 'Single', doubles: 'Double', triples: 'Triple', rotation: 'Rotation' })[format] || format;
 
 const searchText = value => String(value || '').normalize('NFKD').replace(/\p{M}/gu, '').toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
@@ -15,7 +25,7 @@ export function trainerSearchIndex(dataset, groups, starterId) {
     const records = [trainer, ...participants];
     const fields = [], locations = [];
     for (const record of records) {
-      fields.push(displayTrainerName(record.displayName || record.name), record.shortName);
+      fields.push(displayTrainerName(record.displayName || record.name), record.displayName || record.name, record.shortName);
       locations.push(record.locationName, record.location);
       const variants = (record.mechanicsVariants || []).filter(v => starterAllows(dataset.starterSelection, starterId, record.id, v.id));
       const teams = record.mechanicsVariants?.length ? variants.map(v => dataset.trainerTeam(record.id, v.id)) : [record.team || []];

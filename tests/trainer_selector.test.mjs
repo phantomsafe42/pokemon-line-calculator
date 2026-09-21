@@ -36,6 +36,17 @@ test('every supported game can build a search index from existing consumer data'
   }
 });
 
+test('hidden location and starter annotations remain searchable without changing source names', () => {
+  const trainer = {id:'bugsy',displayName:'Leader Bugsy [Rematch] |Goldenrod City|',team:[]};
+  const before = structuredClone(trainer);
+  const index = trainerSearchIndex({get:()=>null}, [{id:'johto',trainers:[trainer]}]);
+  assert.equal(displayTrainerName(trainer.displayName), 'Leader Bugsy');
+  for (const query of ['Bugsy', 'Goldenrod', 'Rematch']) {
+    assert.deepEqual(searchTrainerIndex(index, query).map(entry=>entry.trainer.id), ['bugsy']);
+  }
+  assert.deepEqual(trainer, before);
+});
+
 test('split art retains game context for BW Iris and the new Unbound collection', () => {
   for (const game of ['pokemon-white', 'pokemon-white-2']) {
     assert.deepEqual(trainerSplitBadgeQuery(game, { id: 'iris' }),
@@ -55,6 +66,39 @@ function load(game) {
   const read = name => JSON.parse(fs.readFileSync(new URL(`../src/generated/datasets/${game}/${name}`, import.meta.url)));
   return createDatasetContext({ manifest: read('dataset_manifest.json'), mechanics: read('battle_mechanics.json'), documents: Object.fromEntries([...REQUIRED_DATASET_SOURCES, 'starter_selection.json'].map(name => [name, read(name)])) });
 }
+
+test('Technical trainer annotations are hidden across games without changing records', () => {
+  for (const [input, expected] of [
+    ['Pokémon Trainer Barry #2 [Piplup]', 'Pokémon Trainer Barry'],
+    ['Plasma Grunt #884', 'Plasma Grunt'],
+    ['Lenora #1 & Scientist Hawes #2', 'Lenora & Scientist Hawes'],
+    ['Leader · Encounter #2', 'Leader'], ['Leader (Encounter #2)', 'Leader'],
+    ['Route 9 Trainer', 'Route 9 Trainer'], ['Trainer [Round 2]', 'Trainer'],
+    ['Leader Bugsy |Goldenrod City|', 'Leader Bugsy'],
+    ['Leader Clair |Route 26|', 'Leader Clair'],
+    ['Rival [Piplup] & Partner [Chimchar]', 'Rival & Partner'],
+    ['Ace Trainer Bram [Double Battle] |Icicle Cave| #2', 'Ace Trainer Bram'],
+    ['Veteran Grant (DOUBLE BATTLE)', 'Veteran Grant'],
+    ['Jogger Raul (Morning only)', 'Jogger Raul'],
+    ['Galactic Grunt (w. Galactic Grunt)', 'Galactic Grunt'],
+    ['Science Society Scientist (Supply and Demand) - Difficult', 'Science Society Scientist (Supply and Demand) - Difficult'],
+    ['Black Ferrothorn Goon ("Odd Odd Docks") |Antisis City| #2', 'Black Ferrothorn Goon ("Odd Odd Docks")'],
+    ['Rival ???', 'Rival ???']
+  ]) assert.equal(displayTrainerName(input), expected);
+  const root = new URL('../src/generated/datasets/', import.meta.url);
+  for (const game of fs.readdirSync(root)) {
+    const file = new URL(`${game}/trainers.json`, root);
+    if (!fs.existsSync(file)) continue;
+    const records = JSON.parse(fs.readFileSync(file)).records;
+    const before = JSON.stringify(records);
+    for (const record of Object.values(records)) {
+      const name = record.displayName || record.name || '';
+      assert.doesNotMatch(displayTrainerName(name), /\s+#\d+(?=\s*(?:&|·|\[|\(|\||$))/u, `${game}: ${name}`);
+      assert.doesNotMatch(displayTrainerName(name), /\[[^\]]*\]|\|[^|]*\|/u, `${game}: ${name}`);
+    }
+    assert.equal(JSON.stringify(records), before);
+  }
+});
 
 test('selector Triple labels match the actual plan opening without changing the roster', () => {
   const { dataset, enemies, plan } = fixtureTriplePlan();
