@@ -49,7 +49,7 @@ import {
 import { addImportedPlanParty, bindPlanPlayerPartyToImportedBox } from "./boxes/plan_import.js?v=20260917-partners-release-v1";
 import { applyBranchProgressionToLibrary, branchProgressionSnapshot } from "./boxes/progression.js?v=20260917-partners-release-v1";
 import { exportShowdown, parseShowdown } from "./boxes/showdown.js?v=20260909-public-release-v2";
-import { PLC_SAVE_GAME_CONFIGS, parseSave, selectSavePokemon } from "./boxes/save_import.js?v=20260912-vanilla-save-import-v1";
+import { PLC_SAVE_GAME_CONFIGS, parseSave, selectSavePokemon } from "./boxes/save_import.js?v=20260921-ds-save-forms-v1";
 
 const TRAINER_AI_BASE_URL = new URL("./generated/trainer-ai", import.meta.url).href;
 const TRAINER_AI_HOSTED_PREFIX = "trainer-ai";

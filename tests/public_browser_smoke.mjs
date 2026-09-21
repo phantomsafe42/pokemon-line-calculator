@@ -13,6 +13,7 @@ import { checkMoveSelection } from './move_selection_browser_checks.mjs';
 import { checkInteractionPerformance } from './interaction_performance_browser_checks.mjs';
 import { checkEventHover } from './event_hover_browser_checks.mjs';
 import { checkProtectOutcomes } from './protect_browser_checks.mjs';
+import { checkDsSaveForms } from './ds_save_forms_browser_checks.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(here, "..");
@@ -722,6 +723,7 @@ try {
   await checkInteractionPerformance({ page, evaluate, delay, dataset: vw2rContext });
   await checkEventHover({ page, evaluate, delay, dataset: vw2rContext });
   await checkProtectOutcomes({ page, evaluate, delay, dataset: vw2rContext });
+  await checkDsSaveForms({ page, evaluate, delay, dataset: vw2rContext });
   if (process.env.PLC_LAYOUT_SNAPSHOT) {
     const snapshot = JSON.parse(await fs.readFile(process.env.PLC_LAYOUT_SNAPSHOT, 'utf8'));
     await page.send('Emulation.setDeviceMetricsOverride', { width: snapshot.view.viewport.width, height: snapshot.view.viewport.height, deviceScaleFactor: 1, mobile: false });

@@ -35,6 +35,9 @@ function findLocation(records, numericId) {
 }
 
 function resolveSpecies(context, decoded) {
+  if (typeof context.resolveSpeciesIdentity === "function") {
+    return context.resolveSpeciesIdentity(decoded.speciesNumericId, { form: decoded.formIndex });
+  }
   let species = findByNum(context.SPECIES, decoded.speciesNumericId);
   if (!species) return undefined;
   if (decoded.formIndex && species.formes?.[decoded.formIndex]) {

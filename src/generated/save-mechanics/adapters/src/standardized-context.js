@@ -31,7 +31,9 @@ function byNumeric(dataset, kind, numericId) {
 }
 
 function dsContext(dataset) {
+  const identity = createStandardizedSaveIdentityResolver(dataset, { expectedGameId: dataset.gameId });
   return {
+    resolveSpeciesIdentity: (numericId, { form = 0 } = {}) => identity.resolveSpecies(numericId, { form }),
     SPECIES: recordsObject(dataset, "species"),
     ITEMS: recordsObject(dataset, "items"),
     ABILITIES: recordsObject(dataset, "abilities"),
