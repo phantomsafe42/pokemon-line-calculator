@@ -506,15 +506,15 @@
       },
       {
         "file": "trainers.json",
-        "sha256": "cf0045919e1bd309b78a8a93d85eac46076bee74e64079f0475420393ad9388e"
+        "sha256": "0b4f265e783249ce3c0510869c6676ed112635eea9dc7deae27b73035afc68d5"
       },
       {
         "file": "trainer_order.json",
-        "sha256": "bf8e62aa0f0f1008411b5d2a2aa0bcef52561bd4aa5cc32edf98e65d6cd5131c"
+        "sha256": "9579f843efe450f28776f67a214c2253a867200e828efc66845f9ba55319e136"
       },
       {
         "file": "trainer_documentation.json",
-        "sha256": "14657ba4aeb8d3bfa53f96e409d9013f7c5412e59abd2f0242b0d0c138e5ee22"
+        "sha256": "64dff68ee7f88e2d5080ab924badb5eecdbbdca1b0192ca1f471b5021feaa485"
       },
       {
         "file": "trainer_battle_groups.json",

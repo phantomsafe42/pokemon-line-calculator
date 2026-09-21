@@ -21,6 +21,7 @@ const generatedRoot = path.resolve(projectRoot, "src", "generated");
 const datasetLockPath = path.resolve(projectRoot, "dataset-lock.json");
 const mode = process.argv.includes("--sync") ? "sync" : process.argv.includes("--check") ? "check" : null;
 const workspaceDataset = process.argv.includes("--workspace-dataset");
+const datasetOnly = process.argv.includes("--dataset-only");
 
 if (!mode || process.argv.filter(argument => argument === "--sync" || argument === "--check").length !== 1) {
   throw new Error("Use exactly one mode: --sync or --check");
@@ -485,6 +486,7 @@ if (workspaceDataset) {
   }
 }
 
+if (!datasetOnly) {
 const battleResult = runExporter(
   path.join(battleRoot, "tools", "export_plc_bundle.js"),
   "plc-public",
@@ -512,9 +514,11 @@ profiles.push({
   target: "save-mechanics",
   sourceTreeSha256: saveMechanics.sourceTreeSha256,
 });
+}
 
 console.log(JSON.stringify({
   status: mode === "sync" ? "generated" : "current",
+  scope: datasetOnly ? "dataset-only" : "all-workspace-dependencies",
   datasetRelease: {
     sourceMode: workspaceDataset ? "local-workspace" : lock.hosted ? "immutable-hosted-release" : "immutable-release-artifact",
     repository: lock.repository,

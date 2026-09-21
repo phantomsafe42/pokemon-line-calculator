@@ -2,12 +2,12 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-pk-dataset",
   "source": "Datasets/Platinum Kaizo/source-data",
-  "sourceTreeSha256": "4D432716D1B11B5793539DA35F3920396B2EFB55E377812115593ACD5127A52E",
+  "sourceTreeSha256": "365049090EAC544BB2F76143D3B47463A87DEBBC96DA28B0845719332457C7C9",
   "files": [
     {
       "path": "dataset_manifest.json",
-      "bytes": 15534,
-      "sha256": "6645AC30A714499BEE38B8520101E592C14AFAF843B801C027D0454F0D025A4C"
+      "bytes": 17209,
+      "sha256": "86D52DAB3E5427A4D1E7CB01317C70E489609CDCF9C1C214071E2FFAACCD5DFF"
     },
     {
       "path": "battle_mechanics.json",
@@ -51,13 +51,13 @@
     },
     {
       "path": "trainers.json",
-      "bytes": 6512322,
-      "sha256": "CF0045919E1BD309B78A8A93D85EAC46076BEE74E64079F0475420393AD9388E"
+      "bytes": 6616392,
+      "sha256": "0B4F265E783249CE3C0510869C6676ED112635EEA9DC7DEAE27B73035AFC68D5"
     },
     {
       "path": "trainer_order.json",
-      "bytes": 303511,
-      "sha256": "BF8E62AA0F0F1008411B5D2A2AA0BCEF52561BD4AA5CC32EDF98E65D6CD5131C"
+      "bytes": 499575,
+      "sha256": "9579F843EFE450F28776F67A214C2253A867200E828EFC66845F9BA55319E136"
     },
     {
       "path": "trainer_battle_groups.json",
@@ -66,8 +66,8 @@
     },
     {
       "path": "progression.json",
-      "bytes": 3810,
-      "sha256": "33C20D5A262A30490DDF234891765D42DF3AF2A175E510256F8D91E62B61F687"
+      "bytes": 3674,
+      "sha256": "B681FBCD1022B7B3CB12A35E9B8A7BD181581BF030D52BE8EBCC940888B04114"
     },
     {
       "path": "evolutions.json",
@@ -82,7 +82,7 @@
     {
       "path": "starter_selection.json",
       "bytes": 12859,
-      "sha256": "4B4BEEAB980EE63E0BAFC45E4C3E3A785F462E9C505AA58F981ACE9C427A083B"
+      "sha256": "F3154A7A4963E0D8A10DF5A9C34024C5B1E94512AC0D859B5F8B78004E900A5E"
     }
   ]
 }

@@ -99,7 +99,6 @@
   "referenceProfiles": [],
   "unresolved": [
     "5 complete trainer cards could not be joined to the immutable legacy trainer snapshot and were materialized as source-only trainer records.",
-    "479 matched trainer occurrences have no authoritative mandatory classification in the supplied workbook; mandatory remains null.",
     "Story flags, mutually exclusive route choices, and branch prerequisites beyond workbook notes require script or ROM evidence."
   ],
   "source": {

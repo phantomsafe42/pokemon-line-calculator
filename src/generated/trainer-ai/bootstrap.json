@@ -1192,7 +1192,7 @@
     },
     {
       "path": "Platinum Kaizo/source-data/dataset_manifest.json",
-      "sha256": "6645ac30a714499bee38b8520101e592c14afaf843b801c027d0454f0d025a4c"
+      "sha256": "86d52dab3e5427a4d1e7cb01317c70e489609cdcf9c1c214071e2ffaaccd5dff"
     },
     {
       "path": "Platinum Kaizo/source-data/trainer_ai.json",
@@ -1344,7 +1344,7 @@
     },
     {
       "path": "consumer_exports.json",
-      "sha256": "3019c76d24628e9254398321084b79653c5d17674ddf255b4e87b291d79ac2af"
+      "sha256": "876561d7667268c0ea8353206f7faa294c50f8aa6090b3327341a86fe880d52c"
     }
   ]
 }
