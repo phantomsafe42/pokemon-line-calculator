@@ -6,7 +6,7 @@ import { createPlanDocument } from '../src/core/plan.js';
 import { createEmptyBoxLibrary, addBox } from '../src/boxes/library.js';
 import { planPlayerPartyRecords } from '../src/boxes/plan_import.js';
 
-export async function checkSandbox({ page, evaluate, delay, dataset, tempRoot }) {
+export async function checkSandbox({ page, evaluate, delay, dataset, tempRoot, pickerOnly = false }) {
   const readStore = (database, store) => evaluate(page, `(async()=>{
     const db=await new Promise((resolve,reject)=>{const r=indexedDB.open(${JSON.stringify(database)});r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);});
     try{return await new Promise((resolve,reject)=>{const r=db.transaction(${JSON.stringify(store)},'readonly').objectStore(${JSON.stringify(store)}).getAll();r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);});}finally{db.close();}
@@ -121,7 +121,7 @@ export async function checkSandbox({ page, evaluate, delay, dataset, tempRoot })
     assert.equal(result.incomingStatus,'par');assert.deepEqual(result.restored,{hp:'25',status:'tox',item:'leftovers'});
     assert.equal(result.aiHidden,true);assert.equal(result.freeCalcHidden,true);assert.equal(result.commitHidden,false);
     assert.deepEqual(result.sections,['planned']);assert.equal(result.nodeCount,1);assert.match(result.badge,/Sandbox/);
-    for(const width of [390,1280,1920,2560]) {
+    for(const width of pickerOnly ? [] : [390,1280,1920,2560]) {
       await page.send('Emulation.setDeviceMetricsOverride',{width,height:1100,deviceScaleFactor:1,mobile:width<600});await delay(80);
       assert.equal(await evaluate(page,`document.documentElement.scrollWidth<=innerWidth+1`),true,`${format} fits ${width}`);
       assert.equal(await evaluate(page,`[...document.querySelectorAll('.combatant-card .combatant-header')].every(header=>{
@@ -147,6 +147,10 @@ export async function checkSandbox({ page, evaluate, delay, dataset, tempRoot })
     }
     await delay(120);
     assert.deepEqual(await readStore('pokemon-line-calculator-boxes','library'),baseline,'Sandbox import/edit must not touch Boxes');
+  }
+  if(pickerOnly) {
+    console.log(JSON.stringify({status:'sandbox-picker-browser-valid',formats:4,boxOrder:true,restoredState:true,boxIsolation:true}));
+    return;
   }
   // A fresh Singles line checks cross-Box normal switching, commitment, history,
   // and saving an incomplete edited continuation without a special Free Calc UI.
