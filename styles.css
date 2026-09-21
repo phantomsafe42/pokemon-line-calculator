@@ -419,9 +419,19 @@ button.damage-slot[aria-pressed="true"] .damage-slot-label { color: #17345a; }
 .empty-plan { text-align: center; }
 .empty-plan p { margin: .65rem 0 0; color: var(--muted); }
 .box-toolbar { align-items: flex-start; }
+#box-view-toggle { background: #39d77b; border-color: #65efa0; color: #071b10; }
 .boxes-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
 .box-card { border: 1px solid var(--line); border-radius: 8px; background: var(--shell); overflow: hidden; }
-.box-card-header { display: flex; align-items: center; justify-content: space-between; gap: .8rem; border-bottom: 1px solid var(--line); padding: .8rem 1rem; background: var(--panel); }
+.box-card-header { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem; border-bottom: 1px solid #485a72; padding: .8rem 1rem; background: #29384c; cursor: pointer; }
+.box-card-header .toolbar-actions { margin-left: auto; }
+.box-card-header button.secondary { background: #34475f; border-color: #5d728e; }
+.box-card-header .box-name-input { background: #1e2e42; border-color: #5d728e; }
+.box-card-header .box-expand { flex: 0 0 42px; width: 42px; height: 42px; padding: 0; }
+.box-match-count { color: var(--muted); font-size: .8rem; }
+.box-browse-controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(155px, 1fr)); gap: .65rem; margin-bottom: 1rem; align-items: end; }
+.box-browse-controls .box-search-label { grid-column: 1 / -1; }
+.box-browse-controls input, .box-browse-controls select { margin-bottom: 0; }
+#box-search-status { grid-column: 1 / -1; margin: 0; }
 .box-name-input { width: min(22rem, 60vw); margin: 0; font-size: 1rem; font-weight: 750; }
 .party-shelf { display: grid; gap: .6rem; border-bottom: 1px solid var(--line); padding: .8rem 1rem; background: #141b25; }
 .party-card { display: grid; grid-template-columns: minmax(0, 1fr); align-items: center; gap: .7rem; border: 1px solid var(--line); border-radius: 6px; padding: .55rem; background: var(--panel-2); }
@@ -511,6 +521,16 @@ dialog::backdrop { background: rgba(0, 0, 0, .75); }
 .context-pokemon-actions { grid-column: 1 / -1; display: flex; gap: .35rem; }
 .context-pokemon-actions button { min-height: 32px; padding: .25rem .45rem; font-size: .68rem; }
 .context-pokemon > div { min-width: 0; }
+.box-pokemon-grid.is-simple { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); align-items: start; gap: .5rem; }
+.box-pokemon-card.box-simple-card { width: auto; min-width: 0; grid-template-columns: 48px minmax(0, 1fr); border-radius: 6px; padding: .45rem; overflow: hidden; }
+.box-simple-card.is-party-selectable .context-pokemon-actions { position: relative; z-index: 2; }
+@media (max-width: 600px) {
+  .box-card-header { gap: .5rem; padding: .65rem; }
+  .box-card-header .box-name-input { flex: 1; width: 0; min-width: 0; }
+  .box-card-header .box-match-count { flex-basis: 100%; }
+  .box-card-header .toolbar-actions { width: 100%; flex-direction: row; }
+  .box-card-header .toolbar-actions > button { flex: 1; width: auto; padding-inline: .3rem; }
+}
 .context-pokemon-actions { flex-wrap: wrap; }
 .context-pre-status, .context-pre-item { flex: 1; width: auto; min-width: 100px; min-height: 32px; margin: 0; padding: .25rem; font-size: .68rem; font-weight: 750; border-color: var(--control-line); background: var(--soft); color: var(--text); }
 .context-party-actions { display: flex; flex-wrap: wrap; gap: .35rem; }

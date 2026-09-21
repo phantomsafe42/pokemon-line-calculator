@@ -16,6 +16,7 @@ import { checkProtectOutcomes } from './protect_browser_checks.mjs';
 import { checkDsSaveForms } from './ds_save_forms_browser_checks.mjs';
 import { checkBoxTransfers } from './box_transfer_browser_checks.mjs';
 import { checkBoxCards } from './box_cards_browser_checks.mjs';
+import { checkBoxBrowsing } from './box_browse_browser_checks.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(here, "..");
@@ -404,6 +405,7 @@ try {
       'Picker ' + (i + 1) + ' (Bulbasaur)\\nLevel: 15\\n- Tackle').join('\\n\\n');
     document.getElementById('import-showdown').click();
     await wait(() => !document.getElementById('showdown-dialog').open && document.querySelectorAll('.box-card').length === 2, 'picker fixture import');
+    for (const toggle of document.querySelectorAll('.box-expand[aria-expanded="false"]')) toggle.click();
     document.getElementById('new-plan').click();
     const check = (condition, message) => { if (!condition) throw new Error(message); };
     const change = (element, value) => { element.value = value; element.dispatchEvent(new Event('change', { bubbles: true })); };
@@ -730,6 +732,7 @@ try {
   await checkDsSaveForms({ page, evaluate, delay, dataset: vw2rContext });
   await checkBoxTransfers({ page, evaluate, delay, tempRoot });
   await checkBoxCards({ page, evaluate, delay, tempRoot });
+  await checkBoxBrowsing({ page, evaluate, delay, dataset: vw2rContext, tempRoot });
   if (process.env.PLC_LAYOUT_SNAPSHOT) {
     const snapshot = JSON.parse(await fs.readFile(process.env.PLC_LAYOUT_SNAPSHOT, 'utf8'));
     await page.send('Emulation.setDeviceMetricsOverride', { width: snapshot.view.viewport.width, height: snapshot.view.viewport.height, deviceScaleFactor: 1, mobile: false });

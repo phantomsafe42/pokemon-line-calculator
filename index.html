@@ -7,7 +7,7 @@
   <meta name="pokemon-asset-release-base" content="/Datasets/Pokemon%20Assets/release">
   <title>Pokémon Line Calculator</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./styles.css?v=20260921-box-transfer-v1">
+  <link rel="stylesheet" href="./styles.css?v=20260921-box-browser-v1">
 </head>
 <body>
   <header class="app-header">
@@ -124,9 +124,24 @@
         </div>
         <div class="toolbar-actions">
           <button id="new-box" type="button" class="secondary">New Box</button>
+          <button id="box-view-toggle" type="button" class="secondary" aria-pressed="false" title="Switch to Simple View">Detail View</button>
           <button id="open-box-import" type="button" class="secondary">Import</button>
           <button id="export-boxes" type="button" class="secondary">Export</button>
         </div>
+      </div>
+      <div class="panel box-browse-controls" aria-label="Search, filter and sort Boxes">
+        <label class="box-search-label">Search<input id="box-search" type="search" placeholder="Name, species, move, ability, item…"></label>
+        <label>Type<select id="box-filter-type1"><option value="">Any type</option></select></label>
+        <label>Also type<select id="box-filter-type2"><option value="">Any type</option></select></label>
+        <label>Ability<select id="box-filter-ability"><option value="">Any ability</option></select></label>
+        <label>Move<select id="box-filter-move"><option value="">Any move</option></select></label>
+        <label>Gender<select id="box-filter-gender"><option value="">Any gender</option><option value="M">Male</option><option value="F">Female</option><option value="N">Genderless</option><option value="unknown">Unknown</option></select></label>
+        <label>Item<select id="box-filter-item"><option value="">Any item</option></select></label>
+        <label>Status<select id="box-filter-status"><option value="">Any status</option><option value="healthy">Healthy</option><option value="brn">Burned</option><option value="par">Paralyzed</option><option value="psn">Poisoned</option><option value="tox">Badly Poisoned</option><option value="slp">Asleep</option><option value="frz">Frozen</option></select></label>
+        <label>Sort by<select id="box-sort"></select></label>
+        <label>Direction<select id="box-sort-direction"><option value="asc">Ascending</option><option value="desc">Descending</option></select></label>
+        <button id="box-clear-filters" type="button" class="secondary">Reset</button>
+        <p id="box-search-status" class="fine-print" role="status"></p>
       </div>
       <div id="boxes-list" class="boxes-list"></div>
     </section>
@@ -370,6 +385,6 @@
   </dialog>
 
   <script src="./src/generated/pokemon_asset_resolver.global.js?v=20260914-assets-v4"></script>
-  <script type="module" src="./src/app.js?v=20260921-box-transfer-v1"></script>
+  <script type="module" src="./src/app.js?v=20260921-box-browser-v1"></script>
 </body>
 </html>

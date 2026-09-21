@@ -7,10 +7,12 @@ export async function checkBoxCards({ page, evaluate, delay, tempRoot }) {
   await evaluate(page, `(async () => {
     for (const dialog of document.querySelectorAll('dialog[open]')) dialog.close();
     document.getElementById('boxes-tab').click();
+    document.getElementById('open-box-import').click();
     document.getElementById('showdown-open').click();
     document.getElementById('showdown-text').value = 'Box Layout (Virizion) (M) @ Leftovers\\nAbility: Justified\\nLevel: 44\\nModest Nature\\nEVs: 252 SpA / 4 SpD / 252 Spe\\nIVs: 0 Atk\\n- Giga Drain\\n- Protect\\n- Quick Attack\\n- Swords Dance\\n\\nDitto\\nLevel: 100\\nHardy Nature\\n- Transform\\n\\nWWWWWWWWWW (Rotom-Frost)\\nLevel: 50\\nModest Nature\\n- Blizzard';
     document.getElementById('import-showdown').click();
     for (let i=0;i<150;i++) {
+      if (!document.getElementById('showdown-dialog').open) for (const toggle of document.querySelectorAll('.box-expand[aria-expanded="false"]')) toggle.click();
       if (!document.getElementById('showdown-dialog').open && [...document.querySelectorAll('.box-pokemon-card h3')].some(el=>el.textContent==='Box Layout')) return;
       await new Promise(resolve=>setTimeout(resolve,100));
     }
@@ -97,14 +99,11 @@ export async function checkBoxCards({ page, evaluate, delay, tempRoot }) {
   await evaluate(page,`[...document.querySelectorAll('.box-pokemon-card')].find(el=>el.querySelector('h3').textContent==='Box Layout').querySelector('.box-card-actions button').click()`);
   assert.equal(await evaluate(page,`document.getElementById('pokemon-editor-dialog').open`),true,'Edit remains available');
   await evaluate(page,`document.getElementById('pokemon-editor-dialog').close()`);
-  await evaluate(page,`[...document.querySelectorAll('.box-pokemon-card')].find(el=>el.querySelector('h3').textContent==='Box Layout').querySelectorAll('.box-card-actions button')[1].click()`);
-  assert.equal(await evaluate(page,`document.getElementById('showdown-dialog').open`),true,'Showdown remains available');
-  assert.match(await evaluate(page,`document.getElementById('showdown-text').value`),/Box Layout \(Virizion\)/);
-  await evaluate(page,`document.getElementById('showdown-dialog').close()`);
+  assert.equal(await evaluate(page,`[...document.querySelectorAll('.box-pokemon-card')].find(el=>el.querySelector('h3').textContent==='Box Layout').querySelector('.box-card-actions').textContent`),'EditErase');
   // Confirming Erase affects only this disposable fixture, not a user library.
   await evaluate(page,`(() => {
     const original=window.confirm;window.confirm=()=>true;
-    try{[...document.querySelectorAll('.box-pokemon-card')].find(el=>el.querySelector('h3').textContent==='WWWWWWWWWW').querySelectorAll('.box-card-actions button')[2].click();}
+    try{[...document.querySelectorAll('.box-pokemon-card')].find(el=>el.querySelector('h3').textContent==='WWWWWWWWWW').querySelectorAll('.box-card-actions button')[1].click();}
     finally{window.confirm=original;}
   })()`);
   for(let i=0;i<100;i++) {
@@ -130,6 +129,7 @@ async function checkPartyEditing({page,evaluate,delay,tempRoot}) {
   await evaluate(page,`(()=>{const transfer=new DataTransfer();transfer.items.add(new File([${JSON.stringify(JSON.stringify(second.library))}],'party-test.json',{type:'application/json'}));const input=document.getElementById('import-boxes');input.files=transfer.files;input.dispatchEvent(new Event('change',{bubbles:true}));})()`);
   for(let i=0;i<100 && !(await evaluate(page,`Boolean(${root})`));i++) await delay(50);
   assert.equal(await evaluate(page,`Boolean(${root})`),true);
+  await evaluate(page,`${root}.querySelector('.box-expand').click()`);
   const firstId=box.partyOrder[0];
   const toggle=async i=>{
     await evaluate(page,`${picker(i)}.click()`);
