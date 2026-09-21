@@ -226,8 +226,13 @@ export function createTrainerSelector({ dialog, dataset, starterId, resolver, re
       image.addEventListener('error', missing);
       function loadBadge() {
         loadTimer = setTimeout(missing, 8000); badgeRetries.add(loadTimer);
-        if (resolver.setAssetImage) resolver.setAssetImage(image, query, { onUnavailable: missing });
-        else Promise.resolve(resolver.resolveAsset(query)).then(result => { if (result.status === 'ok') image.src = result.url; else missing(); }).catch(missing);
+        // A same-URL image retry can rejoin the stalled browser request. The
+        // shared API's equivalent badgeId selector gives this one retry a
+        // separate request without changing the requested asset or release.
+        const request = { ...query };
+        if (retried) { request.badgeId = request.badge; delete request.badge; }
+        if (resolver.setAssetImage) resolver.setAssetImage(image, request, { onUnavailable: missing });
+        else Promise.resolve(resolver.resolveAsset(request)).then(result => { if (result.status === 'ok') image.src = result.url; else missing(); }).catch(missing);
       }
       loadBadge();
     } else tab.dataset.badgeStatus = 'unavailable';
