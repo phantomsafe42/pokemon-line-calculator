@@ -88,8 +88,12 @@
       "role": "immutable pre-cutover legacy consumer input manifest"
     },
     "source-data/trainer_documentation.json": {
-      "sha256": "14657ba4aeb8d3bfa53f96e409d9013f7c5412e59abd2f0242b0d0c138e5ee22",
-      "role": "deterministic field-level projection of native trainer workbook order and location headers; mandatory classification is not supplied"
+      "sha256": "64dff68ee7f88e2d5080ab924badb5eecdbbdca1b0192ca1f471b5021feaa485",
+      "role": "deterministic native workbook order, location and Optional Trainer formula classification with user-confirmed unmarked-enemy convention"
+    },
+    "source-data/imports/reference-docs/pk_trainer_optionality_authority.json": {
+      "sha256": "2551ec645756f00d0c5645b828fe2cbdd732bdb946ff0fedebcab7206d8e36a6",
+      "role": "native Sheets badge formula parity and user-confirmed mandatory convention"
     },
     "source-data/trainer_table.json": {
       "sha256": "cfe81fb3d008f8db3306a6d9177355e09338fac7a4fb360ae89c3396c529e506",
@@ -98,6 +102,14 @@
     "source-data/trainer_ai_authority_resolution.json": {
       "sha256": "9a620e5c111d209558354f9cb6020d5a42225c77bd28ce79a25f6745b7a3a456",
       "role": "user-approved authority decision for exactly eight Nightmare Final trainer masks and four Mercury natures; superseded workbook values retained"
+    },
+    "source-data/imports/reference-docs/pk_battle_format_authority.json": {
+      "sha256": "9e519ceaaee903bcdea770fbe09ab17f021634536f895c99df611969dedd6d3e",
+      "role": "pinned PK native encounter-format authority and pre-correction comparison values"
+    },
+    "source-data/imports/reference-docs/pk_battle_format_baseline.json": {
+      "sha256": "1bef21453af1bfbbfedfc50b0da5e2d9470bae65263ceac17b13a6578270d3d1",
+      "role": "pinned PK native encounter-format authority and pre-correction comparison values"
     }
   },
   "inheritedBaseTables": {
@@ -170,6 +182,21 @@
       "status": "passed",
       "unresolved": 0,
       "runtimeNetworkDependency": false
+    },
+    "trainerOptionality": {
+      "required": true,
+      "source": "imports/reference-docs/pk_trainer_optionality_authority.json",
+      "sha256": "2551ec645756f00d0c5645b828fe2cbdd732bdb946ff0fedebcab7206d8e36a6",
+      "status": "passed",
+      "unresolved": 0
+    },
+    "trainerBattleFormats": {
+      "required": true,
+      "source": "trainer_battle_format_report.json",
+      "status": "passed",
+      "unresolved": 0,
+      "sha256": "562269e70d3cd930d5c44be02351f4dc9d6fe6aeae2eebf9d214ccbdeca3456b",
+      "excludedReferenceRecords": 5
     }
   },
   "standardizedSources": [
@@ -213,7 +240,8 @@
     "imports/trainer-ai/nightmare-final/pk-nightmare-final-item-parameters.json",
     "imports/trainer-ai/nightmare-final/pk-nightmare-final-reproduction.json",
     "imports/trainer-ai/nightmare-final/pk-nightmare-final-external-abi.json",
-    "starter_selection.json"
+    "starter_selection.json",
+    "trainer_battle_format_report.json"
   ],
   "builders": {
     "build": "node ..\\tools\\standardize_legacy_game.js platinum-kaizo",
@@ -233,6 +261,8 @@
     "validation": "node ..\\tools\\validate_standardized_dataset.js --game platinum-kaizo",
     "starterSelectionBuild": "node ../tools/build_starter_selection.js --write",
     "starterSelectionCheck": "node ../tools/build_starter_selection.js --check",
+    "trainerOptionalityCheck": "node --test tools/test_platinum_kaizo_optionality.js && node tools/run_python.mjs tools/test_platinum_kaizo_optionality.py",
+    "trainerBattleFormatCheck": "node --test tools/test_platinum_kaizo_battle_formats.js && node tools/run_python.mjs tools/test_platinum_kaizo_battle_formats.py",
     "officialEncounterCheck": "node tools/acquire_pk_encounter_reference.mjs --check && node --test tools/test_platinum_kaizo_official_encounters.js && node tools/run_python.mjs tools/test_platinum_kaizo_official_encounters.py"
   },
   "categoryApplicability": {
@@ -330,7 +360,7 @@
   "knownOmissions": [
     {
       "category": "progression",
-      "reason": "Native workbook split/order/location evidence is applied to 475 matched trainers; 5 unmatched complete cards are materialized source-only, mandatory classification is unavailable, and branch prerequisites still need script evidence."
+      "reason": "Native workbook split/order/location and optionality evidence is applied to 475 matched trainers; 5 unmatched complete cards remain source-only, and branch prerequisites still need script evidence."
     },
     {
       "category": "trainer-ai",
