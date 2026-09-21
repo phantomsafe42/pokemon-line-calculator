@@ -59,6 +59,8 @@ export async function checkBoxBrowsing({page,evaluate,delay,dataset,tempRoot}) {
     const geometry=await evaluate(page,`(()=>{const cards=[...${root}.querySelectorAll('.box-simple-card')].map(c=>c.getBoundingClientRect());return {overflow:document.documentElement.scrollWidth>innerWidth,widths:cards.map(c=>c.width),sameRow:cards.every(c=>c.y===cards[0].y)};})()`);
     assert.equal(geometry.overflow,false,'No page overflow at '+width);
     assert.ok(await evaluate(page,`Math.abs(document.getElementById('change-starter').getBoundingClientRect().left-document.getElementById('box-search').getBoundingClientRect().left)<2`),'Toolbar buttons align left with Search at '+width);
+    assert.ok(await evaluate(page,`(()=>{const p=document.querySelector('.box-toolbar'),s=document.getElementById('box-search');return Math.abs(p.getBoundingClientRect().right-parseFloat(getComputedStyle(p).paddingRight)-1-s.getBoundingClientRect().right)<2;})()`),'Search fills the control panel at '+width);
+    if(width>=1280)assert.ok(await evaluate(page,`Math.abs(document.getElementById('change-starter').getBoundingClientRect().top-document.getElementById('new-box').getBoundingClientRect().top)<2`),'Toolbar buttons share a row');
     assert.ok(geometry.widths.every(w=>w<800),'Simple cards narrower than Detail');
     if(width>=1280)assert.equal(geometry.sameRow,true);
     const shot=await page.send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});

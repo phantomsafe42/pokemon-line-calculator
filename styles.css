@@ -418,7 +418,7 @@ button.damage-slot[aria-pressed="true"] .damage-slot-label { color: #17345a; }
 .outcomes-toggle { width: 100%; border-color: var(--accent); background: var(--control); color: var(--text); }
 .empty-plan { text-align: center; }
 .empty-plan p { margin: .65rem 0 0; color: var(--muted); }
-.box-toolbar { display: grid; gap: 1rem; }
+.box-toolbar { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
 .box-toolbar > .toolbar-actions { justify-content: flex-start; }
 #box-view-toggle { background: #39d77b; border-color: #65efa0; color: #071b10; }
 .boxes-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
@@ -647,7 +647,7 @@ dialog::backdrop { background: rgba(0, 0, 0, .75); }
 .starter-choice[data-type="water"] { border-color: #5799de; }
 .starter-choice[data-type="grass"] { border-color: #78bb4b; }
 .starter-choice[aria-pressed="true"] { outline: 2px solid var(--accent); outline-offset: 3px; }
-#change-starter { margin-top: .65rem; }
+#change-starter { margin: 0; }
 .sandbox-switch-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .sandbox-switch-actions button { width: 100%; border-color: var(--control-line); background: var(--soft); color: var(--text); }
 .sandbox-switch-actions button:first-child { border-radius: 6px 0 0 6px; }
