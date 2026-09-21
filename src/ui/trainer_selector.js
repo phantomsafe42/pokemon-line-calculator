@@ -79,31 +79,20 @@ export function createTrainerSelector({ dialog, dataset, starterId, resolver, re
     const image = element('img', 'trainer-portrait');
     image.alt = displayTrainerName(trainer.displayName || trainer.name);
     // The asset gateway permits image embedding from private test origins but
-    // does not grant those origins CORS pixel access. A CORS image request
-    // would block the portrait entirely; use normal image loading and let the
-    // guarded alpha inspection below fall back to the full canvas.
+    // does not grant those origins CORS pixel access. Use normal image loading.
     image.loading = 'lazy';
     let bounds;
     const fit = () => {
       if (!bounds || !frame.isConnected) return;
-      const [x, y, w, h] = bounds, scale = Math.min(frame.clientWidth / w, frame.clientHeight / h);
+      const [x, y, w, h] = bounds, scale = Math.min(2, frame.clientWidth / w, frame.clientHeight / h);
       Object.assign(image.style, { width: `${image.naturalWidth * scale}px`, height: `${image.naturalHeight * scale}px`,
         left: `${(frame.clientWidth - w * scale) / 2 - x * scale}px`, top: `${(frame.clientHeight - h * scale) / 2 - y * scale}px` });
     };
     image.addEventListener('load', () => {
       if (disposed) return;
-      // Inspect only alpha padding. The original image retains APNG animation.
+      // Keep source-pixel proportions and APNG animation. A shared frame and
+      // 2x cap make the scale independent of the number of Pokemon card rows.
       bounds = [0, 0, image.naturalWidth, image.naturalHeight];
-      try {
-        const canvas = document.createElement('canvas'); canvas.width = image.naturalWidth; canvas.height = image.naturalHeight;
-        const context = canvas.getContext('2d'); context.drawImage(image, 0, 0);
-        const pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
-        let left = canvas.width, top = canvas.height, right = -1, bottom = -1;
-        for (let y = 0; y < canvas.height; y++) for (let x = 0; x < canvas.width; x++) {
-          if (pixels[(y * canvas.width + x) * 4 + 3]) { left = Math.min(left, x); top = Math.min(top, y); right = Math.max(right, x); bottom = Math.max(bottom, y); }
-        }
-        if (right >= left) bounds = [left, top, right - left + 1, bottom - top + 1];
-      } catch { /* A non-CORS asset still fits its full canvas. */ }
       fit();
     });
     const observer = new ResizeObserver(fit); observer.observe(frame); observers.push(observer);
