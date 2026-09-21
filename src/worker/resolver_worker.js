@@ -10,7 +10,7 @@ const battleMechanicsBase = new URL("../generated/battle-mechanics/", self.locat
 importScripts(
   new URL("vendor/smogon-calc-0.11.0/data.production.min.js?v=20260909-public-release-v2", battleMechanicsBase).href,
   new URL("vendor/smogon-calc-0.11.0/engine.production.min.js?v=20260909-public-release-v2", battleMechanicsBase).href,
-  new URL("shared_damage_calculator.js?v=20260909-public-release-v2", battleMechanicsBase).href
+  new URL("shared_damage_calculator.js?v=20260921-download-entry-v1", battleMechanicsBase).href
 );
 if (previousRequire) self.require = previousRequire;
 else delete self.require;
@@ -54,7 +54,7 @@ async function initialize(datasetBaseUrl, datasetHostedPrefix, trainerAiBaseUrl,
     return { gameId, resolverReady: false, trainerAiProfileId: null, trainerAiMetadata: null };
   }
   const datasetModule = await import("../adapters/standardized_dataset.js?v=20260921-dataset-identities-v1");
-  const damageModule = await import("../adapters/shared_damage_adapter.js?v=20260909-public-release-v2");
+  const damageModule = await import("../adapters/shared_damage_adapter.js?v=20260921-download-entry-v1");
   dataset = await datasetModule.loadStandardizedDataset({ baseUrl: datasetBaseUrl, hostedPrefix: datasetHostedPrefix, hostedRelease });
   const runtime = self.SharedDamageCalculator.createFromDocuments(
     { gameId: dataset.gameId },

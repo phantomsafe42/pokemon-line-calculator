@@ -3,7 +3,7 @@ import { clone, nowIso, stableStringify } from "./primitives.js?v=20260905-draft
 import { commitForcedReplacement, commitPreview, previewForcedReplacement } from "./planner.js?v=20260920-held-item-release-v3";
 import { updateStateHash, upgradeInitialEntryEffects } from "./plan.js?v=20260920-held-item-release-v3";
 import { addFreeCalcBranch } from './free_calc.js?v=20260920-held-item-release-v3';
-import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260920-held-item-release-v3";
+import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260921-download-entry-v1";
 import { calculateStats, normalizeMultiTrainerRoster, normalizeTrainerRoster } from "../adapters/combatant_ingest.js?v=20260920-held-item-release-v3";
 
 function runtimeTrainerInputs(plan, trainerId = null) {

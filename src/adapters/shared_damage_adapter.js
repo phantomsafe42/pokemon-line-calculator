@@ -74,6 +74,7 @@ export function createSharedDamageAdapter(runtime) {
       const defenderSource = sideSource(defender);
       const effectiveMoveName = calculatorMoveName(move);
       const result = runtime.calculate({
+        downloadAlreadyResolved: true,
         attacker: displayCombatant(attacker, attackerState),
         defender: displayCombatant(defender, defenderState),
         moveName: effectiveMoveName,

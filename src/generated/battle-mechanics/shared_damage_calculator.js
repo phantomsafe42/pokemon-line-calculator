@@ -616,6 +616,26 @@
         return [{ hits: Math.min(max, hits), probability: 1 }];
     }
 
+    function calculateWithResolvedDownload(runtime, attacker, defender, move, field, downloadAlreadyResolved) {
+        // The pinned calculator normally applies Download on every calculation.
+        // Stateful callers have already resolved entry effects against the actual
+        // opposing field. Download has no remaining damage-time effect.
+        const suppressed = downloadAlreadyResolved === true
+            ? [attacker, defender].map(mon => mon.ability === "Download")
+            : [false, false];
+        const pokemon = [attacker, defender];
+        try {
+            pokemon.forEach((mon, index) => { if (suppressed[index]) mon.ability = ""; });
+            const result = runtime.calc.calculate(runtime.generation, attacker, defender, move, field);
+            [result.attacker, result.defender].forEach((mon, index) => {
+                if (suppressed[index]) mon.ability = "Download";
+            });
+            return result;
+        } finally {
+            pokemon.forEach((mon, index) => { if (suppressed[index]) mon.ability = "Download"; });
+        }
+    }
+
     function calculate(runtime, request) {
         if (!runtime?.ready) return { status: "unavailable", label: runtime?.label || "Calc data pending" };
         try {
@@ -636,13 +656,22 @@
             const moveCandidates = [request.moveName, ...(request.moveCandidates || [])].filter(Boolean);
             const moveData = moveCandidates.map(value => runtime.generation.moves.get(toId(value))).find(Boolean);
             if (!moveData) throw new Error(`Move ${request.moveName} is unavailable`);
+            const simulation = request.moveSimulation;
+            if (simulation !== undefined && (simulation?.kind !== "static-move-data/v1"
+                || !Number.isInteger(simulation.basePower) || simulation.basePower < 0 || simulation.basePower > 255
+                || Object.keys(simulation).some(key => !["kind", "basePower"].includes(key)))) {
+                throw new Error("Invalid static move-data simulation request");
+            }
+            if (simulation && (request.moveOverrides || request.moveHits !== undefined || request.criticalHit === true)) {
+                throw new Error("Static move-data simulation cannot be combined with battle move overrides");
+            }
             if (String(moveData.category).toLowerCase() === "status") return { status: "status", label: "Status" };
             const stateDependentRetaliation = runtime.mechanics.runtimeInputs?.moves?.[toId(moveData.id || moveData.name)]?.retaliationPolicy;
             const blockedMove = (runtime.mechanics.gateOwnership?.consumer?.records || []).find(issue =>
                 toId(issue.recordId) === toId(moveData.id || moveData.name)
                 && (issue.fields || []).includes("target-policy-execution")
             );
-            if (blockedMove || stateDependentRetaliation?.kind === "retaliation") {
+            if (!simulation && (blockedMove || stateDependentRetaliation?.kind === "retaliation")) {
                 throw new Error(`${moveData.name} requires the integrating battle-state resolver`);
             }
 
@@ -654,8 +683,22 @@
                 applyFormulaLevelAdjustment(attackerPokemon, attacker.damageFormulaLevelDelta);
             }
             const field = new runtime.calc.Field(fieldOptions(source.trainer || defenderSource.trainer, request, runtime.mechanics));
-            const hitOptions = hitCountOptions(moveData, request.moveHits, attacker);
+            const hitOptions = simulation ? [{ hits: 1, probability: 1 }] : hitCountOptions(moveData, request.moveHits, attacker);
             const hitResults = hitOptions.map(hitOption => {
+                if (simulation) {
+                    // A fresh identity prevents the formula engine's name-based move
+                    // handlers and clone() from reintroducing actual battle effects.
+                    // Keep static flags/secondary metadata used by ability/item handlers.
+                    const move = new runtime.calc.Move(runtime.generation, "Static Formula Move", {
+                        overrides: {
+                            basePower: simulation.basePower, type: moveData.type, category: moveData.category,
+                            flags: { ...moveData.flags }, secondaries: clone(moveData.secondaries),
+                            target: "normal", priority: moveData.priority, willCrit: false
+                        }, hits: 1
+                    });
+                    const result = calculateWithResolvedDownload(runtime, attackerPokemon, defenderPokemon, move, field, request.downloadAlreadyResolved);
+                    return { ...hitOption, result, distribution: damageDistribution(result.damage) };
+                }
                 const sourceMoveVariant = (source.mon?.moveVariants || []).find(variant =>
                     toId(variant.moveId) === toId(moveData.id || moveData.name)
                 );
@@ -671,7 +714,7 @@
                     moveHits: hitOption.hits,
                     moveOverrides: { ...automaticOverrides, ...(exactHiddenPower || {}), ...(request.moveOverrides || {}) }
                 }, runtime.generation));
-                const result = runtime.calc.calculate(runtime.generation, attackerPokemon, defenderPokemon, move, field);
+                const result = calculateWithResolvedDownload(runtime, attackerPokemon, defenderPokemon, move, field, request.downloadAlreadyResolved);
                 return { ...hitOption, result, distribution: damageDistribution(result.damage) };
             });
             const combined = new Map();
