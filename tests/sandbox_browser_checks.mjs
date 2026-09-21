@@ -42,6 +42,42 @@ export async function checkSandbox({ page, evaluate, delay, dataset, tempRoot })
     await upload('import-plan',fixture(format));
     await wait(`(()=>{if(document.getElementById('destructive-dialog').open) document.getElementById('destructive-discard').click();return document.getElementById('plan-toolbar-label').textContent===${JSON.stringify('Sandbox '+format)} && Boolean(document.querySelector('[data-free-calc-control="player-0-HP"]'));})()`,'Sandbox import');
     await delay(150);
+    const movePickers=await evaluate(page,`(()=>{
+      const results=[];
+      for(const side of ['player','enemy']) {
+        const card=()=>document.querySelector('[data-side="'+side+'"][data-action-slot="0"]');
+        const control=i=>card().querySelector('[data-free-calc-control="'+side+'-0-Move '+i+'"]');
+        const change=(i,value)=>{const el=control(i);el.value=value;el.dispatchEvent(new Event('change',{bubbles:true}));};
+        const original=control(1).value;
+        change(1,'watergun');
+        const face=()=>control(1).closest('.sandbox-move-main').querySelector('.move-button');
+        const unselected=face().getAttribute('aria-pressed')==='false';
+        const name=face().querySelector('strong').textContent;
+        face().click();const selected=face().getAttribute('aria-pressed')==='true';
+        control(1).click();const pickerDoesNotToggle=face().getAttribute('aria-pressed')==='true';
+        face().click();const deselected=face().getAttribute('aria-pressed')==='false';
+        change(1,original);
+        results.push({unselected,name,selected,pickerDoesNotToggle,deselected,count:card().querySelectorAll('.sandbox-move-picker select').length,
+          separate:card().querySelectorAll('.free-calc-move-row > select').length});
+      }
+      const empty=()=>document.querySelector('[data-free-calc-control="player-0-Move 3"]');
+      empty().value='scratch';empty().dispatchEvent(new Event('change',{bubbles:true}));
+      const added=empty().closest('.sandbox-move-main').querySelector('strong').textContent==='Scratch';
+      empty().value='';empty().dispatchEvent(new Event('change',{bubbles:true}));
+      const cleared=empty().closest('.sandbox-move-main').querySelector('.move-button').textContent==='None';
+      empty().focus();const focusable=document.activeElement===empty();
+      return {results,added,cleared,focusable};
+    })()`);
+    assert.ok(movePickers.results.every(r=>r.unselected && r.name==='Water Gun' && r.selected && r.pickerDoesNotToggle && r.deselected && r.count===4 && r.separate===0),JSON.stringify(movePickers));
+    assert.ok(movePickers.added && movePickers.cleared && movePickers.focusable,'Empty slots stay editable and keyboard accessible');
+    await page.send('Input.dispatchKeyEvent',{type:'keyDown',key:'ArrowDown',code:'ArrowDown',windowsVirtualKeyCode:40});
+    await page.send('Input.dispatchKeyEvent',{type:'keyUp',key:'ArrowDown',code:'ArrowDown',windowsVirtualKeyCode:40});
+    assert.equal(await evaluate(page,`(()=>{
+      const select=document.querySelector('[data-free-calc-control="player-0-Move 3"]');
+      const changed=Boolean(select.value) && Boolean(select.closest('.sandbox-move-main').querySelector('strong'));
+      select.value='';select.dispatchEvent(new Event('change',{bubbles:true}));return changed;
+    })()`),true,'Arrow key changes the embedded native move selector');
+    await delay(150);
     const beforePicker=(await readStore('pokemon-line-calculator','draft'))[0].document;
     const picker=await evaluate(page,`(()=>{
       const card=document.querySelector('[data-side="player"][data-action-slot="0"]');
@@ -86,6 +122,15 @@ export async function checkSandbox({ page, evaluate, delay, dataset, tempRoot })
     for(const width of [390,1280]) {
       await page.send('Emulation.setDeviceMetricsOverride',{width,height:1100,deviceScaleFactor:1,mobile:width<600});await delay(80);
       assert.equal(await evaluate(page,`document.documentElement.scrollWidth<=innerWidth+1`),true,`${format} fits ${width}`);
+      assert.equal(await evaluate(page,`[...document.querySelectorAll('.sandbox-move-main')].every(main=>{
+        const face=main.querySelector('.move-button').getBoundingClientRect(),select=main.querySelector('select').getBoundingClientRect();
+        return Math.abs(face.top-select.top)<1 && Math.abs(face.right-select.right)<1 && Math.abs(face.bottom-select.bottom)<1 && select.width>=32;
+      })`),true,'Move picker stays inside the right edge of its move box');
+      if(width===1280 || width===390) {
+        await evaluate(page,`document.getElementById('player-action-panel').scrollIntoView({block:'start'})`);
+        const shot=await page.send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});
+        await fs.writeFile(path.join(tempRoot,`sandbox-move-picker-${format}-${width}.png`),Buffer.from(shot.data,'base64'));
+      }
     }
     await delay(120);
     assert.deepEqual(await readStore('pokemon-line-calculator-boxes','library'),baseline,'Sandbox import/edit must not touch Boxes');
