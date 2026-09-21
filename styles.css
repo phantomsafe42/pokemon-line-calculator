@@ -499,6 +499,8 @@ dialog::backdrop { background: rgba(0, 0, 0, .75); }
 .save-import-heading { margin-top: 1rem; }
 .save-import-heading .fine-print { margin-top: .22rem; }
 .save-box-selection { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: .5rem; }
+.box-transfer-formats { display: grid; gap: .65rem; }
+.box-transfer-formats > button, .box-transfer-formats > .file-button { width: 100%; min-height: 44px; justify-content: center; }
 .save-box-option { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: .55rem; border: 1px solid var(--line); border-radius: 6px; padding: .65rem; background: var(--panel-2); cursor: pointer; }
 .save-box-option:has(input:checked) { border-color: var(--accent); background: #17345a; }
 .save-box-option input { width: auto; min-height: 0; margin: 0; }

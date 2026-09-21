@@ -45,7 +45,7 @@ import { battleCompletionState } from "./core/battle_completion.js?v=20260909-pu
 import {
   addBox, addParty, boxesForGame, createEmptyBoxLibrary, exportBoxLibrary, IndexedDbBoxLibraryStore,
   mergeBoxLibrary, parseBoxLibrary, removeBox, removeParty, removePokemon, renameBox, updateParty, upsertPokemon
-} from "./boxes/library.js?v=20260909-public-release-v2";
+} from "./boxes/library.js?v=20260921-box-transfer-v1";
 import { addImportedPlanParty, bindPlanPlayerPartyToImportedBox } from "./boxes/plan_import.js?v=20260917-partners-release-v1";
 import { applyBranchProgressionToLibrary, branchProgressionSnapshot } from "./boxes/progression.js?v=20260917-partners-release-v1";
 import { exportShowdown, parseShowdown } from "./boxes/showdown.js?v=20260909-public-release-v2";
@@ -184,6 +184,8 @@ const ui = Object.fromEntries([
   "readiness", "preview-outcomes", "ai-forecast-toggle", "ai-forecast-body", "ai-notes", "notes-toggle", "notes-body", "node-notes", "notes-status", "boxes-list", "save-import", "save-import-dialog", "save-import-filename",
   "save-import-party-summary", "save-import-pc-boxes", "save-import-status", "select-all-save-boxes", "clear-save-boxes",
   "confirm-save-import", "showdown-open", "new-box", "export-boxes", "import-boxes",
+  "open-box-import", "box-import-dialog", "box-import-status", "box-export-dialog", "box-export-format",
+  "box-export-selection", "box-export-status", "select-all-box-export", "clear-box-export", "confirm-box-export",
   "plan-context-dialog", "trainer-select", "battle-format", "battle-format-choice", "variant-field", "variant-select", "plan-name",
   "partner-trainer-field", "partner-trainer-select", "partner-trainer-scope", "partner-trainer-search-field", "partner-trainer-search", "partner-variant-field", "partner-variant-select",
   "initial-weather", "initial-terrain", "context-mode-select", "context-box-field", "context-box-select", "saved-party-field",
@@ -849,15 +851,13 @@ function renderBoxPokemon(box, record) {
   actions.className = "box-card-actions";
   const edit = button("Edit", "secondary");
   edit.addEventListener("click", () => openPokemonEditor(box.id, record.id));
-  const exportOne = button("Showdown", "secondary");
-  exportOne.addEventListener("click", () => openShowdownExport([record]));
   const erase = button("Erase", "danger");
   erase.addEventListener("click", async () => {
     if (!confirm(`Erase ${recordName(record)} from ${box.name} and every Party in it?`)) return;
     boxLibrary = removePokemon(boxLibrary, selectedGameId, box.id, record.id);
     await saveLibrary("Pokémon erased from its Box and Party references.");
   });
-  actions.append(edit, exportOne, erase);
+  actions.append(edit, erase);
   body.append(heading, detail, actions);
   card.append(body);
   const membership = document.createElement("div");
@@ -905,15 +905,13 @@ function renderBox(box) {
     boxLibrary = result.library;
     await saveLibrary("Party added.");
   });
-  const exportBox = button("Showdown Export", "secondary");
-  exportBox.addEventListener("click", () => openShowdownExport(box.pokemonOrder.map(id => box.pokemon[id])));
   const deleteBoxButton = button("Delete Box", "danger");
   deleteBoxButton.addEventListener("click", async () => {
     if (!confirm(`Delete ${box.name}, all of its Pokémon, and all of its Parties?`)) return;
     boxLibrary = removeBox(boxLibrary, selectedGameId, box.id);
     await saveLibrary("Box deleted.");
   });
-  actions.append(addPokemonButton, addPartyButton, exportBox, deleteBoxButton);
+  actions.append(addPokemonButton, addPartyButton, deleteBoxButton);
   header.append(name, actions);
   const parties = document.createElement("div");
   parties.className = "party-shelf";
@@ -1230,10 +1228,73 @@ function refreshShowdownDestinations() {
 }
 
 function openShowdownExport(records) {
-  refreshShowdownDestinations();
+  setShowdownMode(true);
   ui["showdown-text"].value = exportShowdown(records, dataset);
-  ui["showdown-status"].textContent = `Exported ${records.length} Pokémon. Copy the text or replace it with sets to import.`;
+  ui["showdown-status"].textContent = `Exported ${records.length} Pokémon. Copy the sets below.`;
   ui["showdown-dialog"].showModal();
+}
+
+function setShowdownMode(exporting) {
+  byId("showdown-title").textContent = exporting ? "Export Showdown" : "Import Showdown";
+  ui["showdown-destination"].closest(".context-grid").hidden = exporting;
+  ui["import-showdown"].hidden = exporting;
+  ui["copy-showdown"].hidden = !exporting;
+  ui["showdown-text"].readOnly = exporting;
+}
+
+function selectedExportBoxIds() {
+  return [...ui["box-export-selection"].querySelectorAll('input:checked')].map(input => input.value);
+}
+
+function updateBoxExportStatus() {
+  const ids = new Set(selectedExportBoxIds());
+  const boxes = selectedGameBoxes().filter(box => ids.has(box.id));
+  const count = boxes.reduce((sum, box) => sum + box.pokemonOrder.length, 0);
+  const emptyShowdown = ui["box-export-format"].value === "showdown" && !count;
+  ui["confirm-box-export"].disabled = !boxes.length || emptyShowdown;
+  ui["box-export-status"].textContent = !selectedGameBoxes().length ? "No Boxes to export in this game."
+    : !boxes.length ? "Select at least one Box."
+    : emptyShowdown ? "Select a Box containing Pokémon to export Showdown sets."
+    : `${boxes.length} ${boxes.length === 1 ? "Box" : "Boxes"} · ${count} Pokémon`;
+}
+
+function openBoxExport() {
+  const options = selectedGameBoxes().map(box => {
+    const label = document.createElement("label");
+    label.className = "save-box-option";
+    const input = document.createElement("input");
+    input.type = "checkbox";
+    input.value = box.id;
+    input.checked = true;
+    input.addEventListener("change", updateBoxExportStatus);
+    const detail = document.createElement("span");
+    const name = document.createElement("strong");
+    name.textContent = box.name;
+    const count = document.createElement("small");
+    count.textContent = `${box.pokemonOrder.length} Pokémon · ${box.partyOrder.length} Parties`;
+    detail.append(name, count);
+    label.append(input, detail);
+    return label;
+  });
+  ui["box-export-selection"].replaceChildren(...options);
+  updateBoxExportStatus();
+  ui["box-export-dialog"].showModal();
+}
+
+function confirmBoxExport() {
+  try {
+    const json = exportBoxLibrary(boxLibrary, selectedGameId, selectedExportBoxIds());
+    if (ui["box-export-format"].value === "showdown") {
+      const boxes = boxesForGame(parseBoxLibrary(json), selectedGameId);
+      const records = boxes.flatMap(box => box.pokemonOrder.map(id => box.pokemon[id]));
+      if (!records.length) throw new Error("Select a Box containing Pokémon.");
+      ui["box-export-dialog"].close();
+      openShowdownExport(records);
+    } else {
+      downloadText(json, `${selectedGameId}-plc-boxes.json`);
+      ui["box-export-dialog"].close();
+    }
+  } catch (error) { ui["box-export-status"].textContent = error.message; }
 }
 
 async function importShowdownText() {
@@ -4411,7 +4472,13 @@ function wireEvents() {
   ui["plc-tab"].addEventListener("click", () => setTab("plc"));
   ui["boxes-tab"].addEventListener("click", () => setTab("boxes"));
   ui["new-box"].addEventListener("click", async () => { const result = addBox(boxLibrary, selectedGameId); boxLibrary = result.library; await saveLibrary("Box added."); });
-  ui["save-import"].addEventListener("change", () => prepareSaveImport(ui["save-import"].files?.[0]));
+  ui["open-box-import"].addEventListener("click", () => { ui["box-import-status"].textContent = ""; ui["box-import-dialog"].showModal(); });
+  ui["save-import"].addEventListener("change", () => {
+    const file = ui["save-import"].files?.[0];
+    if (!file) return;
+    ui["box-import-dialog"].close();
+    prepareSaveImport(file);
+  });
   ui["select-all-save-boxes"].addEventListener("click", () => {
     for (const input of ui["save-import-pc-boxes"].querySelectorAll('input[type="checkbox"]')) input.checked = true;
     updateSaveImportStatus();
@@ -4425,14 +4492,22 @@ function wireEvents() {
     if (ui["save-import-dialog"].returnValue !== "imported") pendingSaveImport = null;
     ui["save-import-pc-boxes"].replaceChildren();
   });
-  ui["showdown-open"].addEventListener("click", () => { refreshShowdownDestinations(); ui["showdown-text"].value = ""; ui["showdown-status"].textContent = "Paste one or more Showdown sets."; ui["showdown-dialog"].showModal(); });
+  ui["showdown-open"].addEventListener("click", () => { ui["box-import-dialog"].close(); setShowdownMode(false); refreshShowdownDestinations(); ui["showdown-text"].value = ""; ui["showdown-status"].textContent = "Paste one or more Showdown sets."; ui["showdown-dialog"].showModal(); });
   ui["import-showdown"].addEventListener("click", importShowdownText);
   ui["copy-showdown"].addEventListener("click", async () => { try { await navigator.clipboard.writeText(ui["showdown-text"].value); ui["showdown-status"].textContent = "Copied Showdown text."; } catch { ui["showdown-text"].select(); ui["showdown-status"].textContent = "Text selected; press Ctrl+C to copy."; } });
-  ui["export-boxes"].addEventListener("click", () => downloadText(exportBoxLibrary(boxLibrary, selectedGameId), `${selectedGameId}-plc-boxes.json`));
+  ui["export-boxes"].addEventListener("click", openBoxExport);
+  ui["box-export-format"].addEventListener("change", updateBoxExportStatus);
+  for (const [id, checked] of [["select-all-box-export", true], ["clear-box-export", false]]) {
+    ui[id].addEventListener("click", () => {
+      for (const input of ui["box-export-selection"].querySelectorAll("input")) input.checked = checked;
+      updateBoxExportStatus();
+    });
+  }
+  ui["confirm-box-export"].addEventListener("click", confirmBoxExport);
   ui["import-boxes"].addEventListener("change", async () => {
     const file = ui["import-boxes"].files?.[0]; if (!file) return;
-    try { boxLibrary = mergeBoxLibrary(boxLibrary, parseBoxLibrary(await file.text())); await saveLibrary("Portable Boxes JSON imported and merged."); }
-    catch (error) { setStatus(error.message, true); }
+    try { boxLibrary = mergeBoxLibrary(boxLibrary, parseBoxLibrary(await file.text())); await saveLibrary("PLC Box file imported and merged."); ui["box-import-dialog"].close(); }
+    catch (error) { ui["box-import-status"].textContent = error.message; setStatus(error.message, true); }
     finally { ui["import-boxes"].value = ""; }
   });
   ui["trainer-select"].addEventListener("change", updateVariantSelect);

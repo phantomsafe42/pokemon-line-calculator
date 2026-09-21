@@ -7,7 +7,7 @@
   <meta name="pokemon-asset-release-base" content="/Datasets/Pokemon%20Assets/release">
   <title>Pokémon Line Calculator</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./styles.css?v=20260921-ds-save-forms-v1">
+  <link rel="stylesheet" href="./styles.css?v=20260921-box-transfer-v1">
 </head>
 <body>
   <header class="app-header">
@@ -123,15 +123,9 @@
           <p class="fine-print">A Pokémon is stored once per Box. Every Party in that Box references the same editable record.</p>
         </div>
         <div class="toolbar-actions">
-          <label class="file-button">Import .sav / .dsv
-            <input id="save-import" type="file" accept=".sav,.dsv,application/octet-stream">
-          </label>
-          <button id="showdown-open" type="button" class="secondary">Showdown Import</button>
           <button id="new-box" type="button" class="secondary">New Box</button>
-          <button id="export-boxes" type="button" class="secondary">Export Boxes JSON</button>
-          <label class="file-button secondary">Import Boxes JSON
-            <input id="import-boxes" type="file" accept=".json,application/json">
-          </label>
+          <button id="open-box-import" type="button" class="secondary">Import</button>
+          <button id="export-boxes" type="button" class="secondary">Export</button>
         </div>
       </div>
       <div id="boxes-list" class="boxes-list"></div>
@@ -318,6 +312,30 @@
     </form>
   </dialog>
 
+  <dialog id="box-import-dialog" aria-labelledby="box-import-title">
+    <form method="dialog" class="dialog-card">
+      <div class="section-heading"><h2 id="box-import-title">Import Boxes</h2><button type="submit" class="icon-button secondary" aria-label="Close">×</button></div>
+      <div class="box-transfer-formats">
+        <label class="file-button">.sav / .dsv<input id="save-import" type="file" accept=".sav,.dsv,application/octet-stream"></label>
+        <button id="showdown-open" type="button" class="secondary">Showdown</button>
+        <label class="file-button secondary">PLC Box file<input id="import-boxes" type="file" accept=".json,application/json"></label>
+      </div>
+      <p id="box-import-status" class="fine-print" role="status"></p>
+    </form>
+  </dialog>
+
+  <dialog id="box-export-dialog" class="wide-dialog" aria-labelledby="box-export-title">
+    <form method="dialog" class="dialog-card">
+      <div class="section-heading"><h2 id="box-export-title">Export Boxes</h2><button type="submit" class="icon-button secondary" aria-label="Close">×</button></div>
+      <label>Format<select id="box-export-format"><option value="plc">PLC Box file</option><option value="showdown">Showdown</option></select></label>
+      <p class="fine-print">PLC Box files preserve Boxes, Parties and edits. Showdown exports Pokémon sets.</p>
+      <div class="section-heading"><h3>Boxes</h3><div class="toolbar-actions"><button id="select-all-box-export" type="button" class="secondary">Select All</button><button id="clear-box-export" type="button" class="secondary">Clear</button></div></div>
+      <div id="box-export-selection" class="save-box-selection"></div>
+      <p id="box-export-status" class="fine-print" role="status"></p>
+      <div class="dialog-actions"><button type="submit" class="secondary">Cancel</button><button id="confirm-box-export" type="button">Export</button></div>
+    </form>
+  </dialog>
+
   <dialog id="showdown-dialog" aria-labelledby="showdown-title">
     <form method="dialog" class="dialog-card">
       <div class="section-heading"><div><h2 id="showdown-title">Showdown Tool</h2></div><button type="submit" value="cancel" class="icon-button secondary" aria-label="Close">×</button></div>
@@ -352,6 +370,6 @@
   </dialog>
 
   <script src="./src/generated/pokemon_asset_resolver.global.js?v=20260914-assets-v4"></script>
-  <script type="module" src="./src/app.js?v=20260921-pk-dataset-v1"></script>
+  <script type="module" src="./src/app.js?v=20260921-box-transfer-v1"></script>
 </body>
 </html>
