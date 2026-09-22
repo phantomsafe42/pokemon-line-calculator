@@ -3337,7 +3337,7 @@ function renderCombatantCard(side, slot, { displaySlot = slot, inspection = null
       const copy = document.createElement('span'); copy.className = 'move-copy';
       const title = document.createElement('strong'); title.textContent = move?.name || entry.moveId;
       const pp = document.createElement('small'); pp.textContent = `${monState.movePp?.[entry.moveId] ?? entry.maxPp} PP`;
-      copy.append(title, pp); row.append(copy); moves.append(row);
+      copy.append(title, pp); row.append(renderMoveHeading(copy, entry.typeOverride || move?.type, move?.category)); moves.append(row);
     }
     card.append(moves);
     return card;

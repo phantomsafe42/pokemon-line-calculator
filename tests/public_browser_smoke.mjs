@@ -2,6 +2,7 @@ import { checkTrainerSplitPreload } from './trainer_split_preload_browser_checks
 import { checkTrainerSearch } from './trainer_search_browser_checks.mjs';
 import { checkTrainerBadgeRecovery } from './trainer_badge_browser_checks.mjs';
 import { checkTrainerSelector } from './trainer_selector_browser_checks.mjs';
+import { campaignTrainerGroups } from '../src/ui/trainer_selector.js';
 import { checkVw2rTrainerSprites } from './vw2r_trainer_sprites_browser_checks.mjs';
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
@@ -43,7 +44,7 @@ const vw2rContext = createDatasetContext({
 });
 // Ally-only teams are not enemy encounters. Check the exact released navigation
 // inventory rather than assuming a minimum number of raw trainer records.
-const expectedVw2rTrainerIds = vw2rContext.trainerGroups('snivy').flatMap(group => group.trainers.map(trainer => trainer.id));
+const expectedVw2rTrainerIds = campaignTrainerGroups(vw2rContext.trainerGroups('snivy')).flatMap(group => group.trainers.map(trainer => trainer.id));
 const vanillaGameOptions = [
   ["pokemon-ruby", "Ruby"],
   ["pokemon-sapphire", "Sapphire"],
