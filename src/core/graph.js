@@ -1,4 +1,4 @@
-import { assertValidPlanDocument } from "../contracts/plan_contract.js?v=20260917-partners-release-v1";
+import { assertValidPlanDocument } from "../contracts/plan_contract.js?v=20260921-card-design-v1";
 import { actionList } from "./battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
 import { clone, nowIso } from "./primitives.js?v=20260905-drafts-freecalc-partners-v1";
 

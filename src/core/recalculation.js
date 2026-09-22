@@ -1,10 +1,10 @@
-import { assertValidPlanDocument } from "../contracts/plan_contract.js?v=20260917-partners-release-v1";
+import { assertValidPlanDocument } from "../contracts/plan_contract.js?v=20260921-card-design-v1";
 import { clone, nowIso, stableStringify } from "./primitives.js?v=20260905-drafts-freecalc-partners-v1";
-import { commitForcedReplacement, commitPreview, previewForcedReplacement } from "./planner.js?v=20260920-held-item-release-v3";
-import { updateStateHash, upgradeInitialEntryEffects } from "./plan.js?v=20260920-held-item-release-v3";
-import { addFreeCalcBranch } from './free_calc.js?v=20260920-held-item-release-v3';
-import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260921-download-entry-v1";
-import { calculateStats, normalizeMultiTrainerRoster, normalizeTrainerRoster } from "../adapters/combatant_ingest.js?v=20260920-held-item-release-v3";
+import { commitForcedReplacement, commitPreview, previewForcedReplacement } from "./planner.js?v=20260922-public-cards-v1";
+import { updateStateHash, upgradeInitialEntryEffects } from "./plan.js?v=20260922-public-cards-v1";
+import { addFreeCalcBranch } from './free_calc.js?v=20260922-public-cards-v1';
+import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260922-public-cards-v1";
+import { calculateStats, normalizeMultiTrainerRoster, normalizeTrainerRoster } from "../adapters/combatant_ingest.js?v=20260922-public-cards-v1";
 
 function runtimeTrainerInputs(plan, trainerId = null) {
   const inputs = {
@@ -67,6 +67,9 @@ function refreshDatasetDerivedStats(original, dataset) {
     const species = dataset.get("species", currentSpeciesId);
     const currentStats = calculateStats({
       ...combatant,
+      natureId: state.currentNatureId ?? combatant.natureId,
+      ivs: state.currentIvs ?? combatant.ivs,
+      evs: state.currentEvs ?? combatant.evs,
       speciesId: currentSpeciesId,
       level: Number(state.currentLevel ?? combatant.level),
       baseStats: currentSpeciesId === combatant.speciesId ? combatant.baseStats : species?.baseStats

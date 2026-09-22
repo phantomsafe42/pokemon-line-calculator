@@ -11,6 +11,7 @@ const ignoredDirectoryNames = new Set([".codex-tmp", "dist", "node_modules", ".g
 const ignoredFileNames = new Set(["AGENTS.md", "AGENTS.override.md", "MAINTENANCE.md", "SETTLED_HISTORY.md", ".codex-project-root"]);
 
 const forbiddenTrackedPaths = [
+  /(^|\/)src\/generated\/move_icon_/i,
   /(^|\/)AGENTS\.md$/i,
   /(^|\/)AGENTS\.override\.md$/i,
   /(^|\/)MAINTENANCE\.md$/i,

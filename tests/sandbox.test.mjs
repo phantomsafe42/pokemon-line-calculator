@@ -14,6 +14,8 @@ import { createDraftRecord } from '../src/cache/active_draft.js';
 import { savedDraftSnapshot } from '../src/cache/saved_drafts.js';
 import { branchProgressionSnapshot, applyBranchProgressionToLibrary } from '../src/boxes/progression.js';
 import { sandboxPickerCandidates } from '../src/ui/sandbox_picker.js';
+import { calculateStats } from '../src/adapters/combatant_ingest.js';
+import { createSharedDamageAdapter } from '../src/adapters/shared_damage_adapter.js';
 
 function sandbox(fixture = fixturePlan) {
   const data = fixture();
@@ -22,6 +24,38 @@ function sandbox(fixture = fixturePlan) {
     battleFormat: data.plan.game.battleFormat, planningMode: 'sandbox', sourceSnapshot: data.plan.sourceSnapshot });
   return data;
 }
+
+test('Sandbox training validates atomically, recalculates and survives history, export and replay', async () => {
+  const {plan: original, dataset, players, enemies} = sandbox();
+  const key = players[0].combatantKey; const base = structuredClone(original);
+  let edited = editSandboxCombatant(original, original.initialStateNodeId, key, {hp: 17, statStages: {atk: 2}, natureId: 'timid', ivs: {atk: 0}, evs: {spe: 252, spa: 252, hp: 6}}, dataset);
+  let current = edited.plan.stateNodes[edited.stateId].combatantStates[key];
+  const expected = calculateStats({...players[0], natureId: 'timid', ivs: current.currentIvs, evs: current.currentEvs}, dataset);
+  assert.deepEqual(current.currentStats, expected);
+  assert.equal(current.hp.max, 17); assert.equal(current.hp.maxHp, expected.hp); assert.equal(current.statStages.atk, 2);
+  assert.deepEqual(original, base); assert.deepEqual(edited.plan.combatants[key], original.combatants[key]);
+  for (const changes of [{ivs:{atk:32}}, {ivs:{hp:-1}}, {ivs:{def:1.5}}, {ivs:{spd:''}}, {evs:{hp:253}}, {evs:{hp:7}}, {evs:{hp:1.5}}, {natureId:'missing'}]) {
+    assert.throws(() => editSandboxCombatant(edited.plan, edited.stateId, key, changes, dataset));
+  }
+  edited = editSandboxCombatant(edited.plan, edited.stateId, key, {evs:{spa:0}}, dataset);
+  edited = editSandboxCombatant(edited.plan, edited.stateId, key, {evs:{atk:252}, level: 60}, dataset);
+  current = edited.plan.stateNodes[edited.stateId].combatantStates[key];
+  assert.deepEqual(current.currentStats, calculateStats({...players[0], level:60, natureId:'timid', ivs:current.currentIvs, evs:current.currentEvs}, dataset));
+  let request;
+  const adapter = createSharedDamageAdapter({ready:true, calculate: value => {request=value;return {status:'unavailable',reason:'captured'};}});
+  adapter.calculate({attacker:players[0],defender:enemies[0],attackerState:current,defenderState:edited.plan.stateNodes[edited.stateId].combatantStates[enemies[0].combatantKey],move:dataset.get('moves','tackle'),fieldState:edited.plan.stateNodes[edited.stateId].fieldState});
+  assert.equal(request.attacker.nature, 'timid'); assert.equal(request.attacker.ivs.atk, 0); assert.equal(request.attacker.evs.atk,252);
+  assert.deepEqual(request.attackerRuntimeInputs, {nature:'timid', ivs:current.currentIvs, evs:current.currentEvs});
+  const reopened = parsePlan(serializePlan(edited.plan));
+  assert.deepEqual(reopened.stateNodes[edited.stateId].combatantStates[key],current);
+  const replayed = await recalculatePlanDocument(reopened,{dataset,previewTurnFn:request=>previewTurn({...request,dataset,damageAdapter:damageAdapter(()=>[1])})});
+  assert.ok(Object.values(replayed.stateNodes).some(state=>state.combatantStates[key].currentEvs?.atk===252));
+  const committed = commit(edited.plan, edited.stateId, dataset);
+  const fork = editSandboxCombatant(committed.plan, edited.stateId,key,{ivs:{atk:31}},dataset);
+  assert.equal(fork.plan.stateNodes[committed.cursorStateNodeId].combatantStates[key].currentIvs.atk,0);
+  const invalid=structuredClone(edited.plan);invalid.stateNodes[edited.stateId].combatantStates[key].currentEvs.hp=252;
+  assert.throws(()=>assertValidPlanDocument(invalid),/training/);
+});
 const move = (actorKey, target) => ({actionType:'move',actorKey,moveId:'tackle',targetKeys:[target],mechanicActivations:[],declaredAtStateHash:'fixture'});
 const commit = (plan, id, dataset) => {
   const state = plan.stateNodes[id];
