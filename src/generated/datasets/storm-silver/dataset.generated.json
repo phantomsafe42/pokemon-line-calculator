@@ -2,12 +2,12 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-ss-dataset",
   "source": "Datasets/Storm Silver/source-data",
-  "sourceTreeSha256": "DB86978B976112F7FBCDE842D87097F27C03BE09034CB077D573F0A354F4CBCD",
+  "sourceTreeSha256": "31EEE35DDCFDE899363EBCFBC013625FF50909376E0938CDD27D4CD2A24F6DBA",
   "files": [
     {
       "path": "dataset_manifest.json",
-      "bytes": 19982,
-      "sha256": "C46B9B2D9AC953B416F46DA58365DBB1CFD82DA505BDEC260C47FCB6B8CFA53F"
+      "bytes": 20542,
+      "sha256": "491C99AAE190360F47BCDF032ABBBF79382353C099CE342C4D60B3AC6DDBD7CC"
     },
     {
       "path": "battle_mechanics.json",
@@ -51,8 +51,8 @@
     },
     {
       "path": "trainers.json",
-      "bytes": 7096874,
-      "sha256": "B0C06E7DB612D4A78437F8EDD3A0CDCD20A861B57B9B006187A213D432B5130C"
+      "bytes": 8146112,
+      "sha256": "3377354E2392328C7DEC7708C60E504B99E9C973B8A185527F1F74EE1A08B678"
     },
     {
       "path": "trainer_order.json",
@@ -82,7 +82,7 @@
     {
       "path": "starter_selection.json",
       "bytes": 5353,
-      "sha256": "A12E918A7918661A0D337B155769039100DC5DFC57134E1B4E88AFEAD9AEAC4A"
+      "sha256": "4E9C992CBA1BD0B637D6B9B3677F63BA868D057F1AEAEEC208CF5BD6DE2DF001"
     }
   ]
 }

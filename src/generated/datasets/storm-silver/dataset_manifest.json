@@ -234,6 +234,14 @@
       "storedMaskBindings": 737,
       "scriptedWildRuntimeBindings": 0,
       "unresolvedProfiles": 0
+    },
+    "trainerSelectVisuals": {
+      "required": true,
+      "source": "trainer_select_visual_report.json",
+      "status": "passed",
+      "resolved": 737,
+      "unmapped": 0,
+      "scope": "User-approved SoulSilver presentation joined through exact supported-build trainer classes"
     }
   },
   "standardizedSources": [
@@ -277,7 +285,8 @@
     "imports/trainer-ai/sssg-pchal/hgss-trainer-item-known-answers.json",
     "imports/trainer-ai/sssg-pchal/hgss-ai-external-abi.json",
     "imports/trainer-ai/sssg-pchal/hgss-trainer-constructor.json",
-    "starter_selection.json"
+    "starter_selection.json",
+    "trainer_select_visual_report.json"
   ],
   "builders": {
     "build": "node ..\\tools\\standardize_legacy_game.js storm-silver",
@@ -298,7 +307,9 @@
     "starterSelectionBuild": "node ../tools/build_starter_selection.js --write",
     "starterSelectionCheck": "node ../tools/build_starter_selection.js --check",
     "physicalWildCheck": "node --test tools/test_sacred_gold_physical_wild.js && node tools/run_python.mjs tools/test_sacred_gold_physical_wild.py",
-    "specialWildCheck": "node --test tools/test_sacred_gold_special_wild.js && node tools/run_python.mjs tools/test_sacred_gold_special_wild.py"
+    "specialWildCheck": "node --test tools/test_sacred_gold_special_wild.js && node tools/run_python.mjs tools/test_sacred_gold_special_wild.py",
+    "trainerSelectVisuals": "node tools/storm_silver_trainer_visuals.js --write",
+    "trainerSelectVisualsCheck": "node tools/storm_silver_trainer_visuals.js --check && node --test tools/test_storm_silver_trainer_visuals.js"
   },
   "categoryApplicability": {
     "species": {

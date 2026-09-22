@@ -9,7 +9,7 @@
         "id": "roark",
         "label": "Roark",
         "firstOrder": 1,
-        "lastOrder": 22,
+        "lastOrder": 25,
         "levelCap": 16,
         "leaderTrainerId": "platinum-kaizo-trainer-0246",
         "sourceConfidence": "native-platinum-kaizo-trainer-documentation-split-tab"
@@ -17,8 +17,8 @@
       {
         "id": "gardenia",
         "label": "Gardenia",
-        "firstOrder": 23,
-        "lastOrder": 63,
+        "firstOrder": 26,
+        "lastOrder": 66,
         "levelCap": 28,
         "leaderTrainerId": "platinum-kaizo-trainer-0911",
         "sourceConfidence": "native-platinum-kaizo-trainer-documentation-split-tab"
@@ -26,8 +26,8 @@
       {
         "id": "fantina",
         "label": "Fantina",
-        "firstOrder": 64,
-        "lastOrder": 103,
+        "firstOrder": 67,
+        "lastOrder": 106,
         "levelCap": 38,
         "leaderTrainerId": "platinum-kaizo-trainer-0913",
         "sourceConfidence": "native-platinum-kaizo-trainer-documentation-split-tab"
@@ -35,8 +35,8 @@
       {
         "id": "maylene",
         "label": "Maylene",
-        "firstOrder": 104,
-        "lastOrder": 141,
+        "firstOrder": 107,
+        "lastOrder": 144,
         "levelCap": 47,
         "leaderTrainerId": "platinum-kaizo-trainer-0317",
         "sourceConfidence": "native-platinum-kaizo-trainer-documentation-split-tab"
@@ -44,8 +44,8 @@
       {
         "id": "wake",
         "label": "Wake",
-        "firstOrder": 142,
-        "lastOrder": 172,
+        "firstOrder": 145,
+        "lastOrder": 175,
         "levelCap": 54,
         "leaderTrainerId": "platinum-kaizo-trainer-0316",
         "sourceConfidence": "native-platinum-kaizo-trainer-documentation-split-tab"
@@ -53,8 +53,8 @@
       {
         "id": "byron",
         "label": "Byron",
-        "firstOrder": 173,
-        "lastOrder": 230,
+        "firstOrder": 176,
+        "lastOrder": 233,
         "levelCap": 65,
         "leaderTrainerId": "platinum-kaizo-trainer-0250",
         "sourceConfidence": "native-platinum-kaizo-trainer-documentation-split-tab"
@@ -62,8 +62,8 @@
       {
         "id": "candice",
         "label": "Candice",
-        "firstOrder": 231,
-        "lastOrder": 268,
+        "firstOrder": 234,
+        "lastOrder": 271,
         "levelCap": 74,
         "leaderTrainerId": "platinum-kaizo-trainer-0319",
         "sourceConfidence": "native-platinum-kaizo-trainer-documentation-split-tab"
@@ -71,8 +71,8 @@
       {
         "id": "volkner",
         "label": "Volkner",
-        "firstOrder": 269,
-        "lastOrder": 287,
+        "firstOrder": 272,
+        "lastOrder": 290,
         "levelCap": 84,
         "leaderTrainerId": "platinum-kaizo-trainer-0320",
         "sourceConfidence": "native-platinum-kaizo-trainer-documentation-split-tab"
@@ -80,8 +80,8 @@
       {
         "id": "galactic",
         "label": "Galactic",
-        "firstOrder": 288,
-        "lastOrder": 368,
+        "firstOrder": 291,
+        "lastOrder": 371,
         "levelCap": 100,
         "leaderTrainerId": "platinum-kaizo-trainer-0960",
         "sourceConfidence": "native-platinum-kaizo-trainer-documentation-split-tab"
@@ -89,8 +89,8 @@
       {
         "id": "elitefour",
         "label": "Elite Four",
-        "firstOrder": 369,
-        "lastOrder": 389,
+        "firstOrder": 372,
+        "lastOrder": 392,
         "sourceConfidence": "native-platinum-kaizo-trainer-documentation-split-tab"
       }
     ],

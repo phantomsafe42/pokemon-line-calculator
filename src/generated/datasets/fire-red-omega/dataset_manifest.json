@@ -164,6 +164,15 @@
         "Fire Red Omega/source-data/species_ability_slots.json": "df2b981792f516827f13c33e6e5684e517dab0e7dda158f686f89a5869e84685",
         "Fire Red Omega/source-data/imports/legacy-consumers/calc-data/FRO_species.js": "9db947734e91efb56c0777f73bcc709e0a58a25e0fb43803e396e3ad4e988f88"
       }
+    },
+    "trainerSelectVisuals": {
+      "required": true,
+      "source": "trainer_select_visual_report.json",
+      "status": "passed",
+      "resolved": 647,
+      "variantDependent": 19,
+      "unmapped": 8,
+      "scope": "FRO uses FireRed art; PK and Renegade Platinum use Platinum art. Exact ROM selectors, not display names, identify the class. This is presentation policy, not proof of identical ROM artwork."
     }
   },
   "standardizedSources": [
@@ -203,7 +212,8 @@
     "trainer_ai_evidence.json",
     "starter_selection.json",
     "encounter_mechanics.json",
-    "species_numeric_identity.json"
+    "species_numeric_identity.json",
+    "trainer_select_visual_report.json"
   ],
   "builders": {
     "build": "node ..\\tools\\standardize_legacy_game.js fire-red-omega",
@@ -223,7 +233,9 @@
     "starterSelectionBuild": "node ../tools/build_starter_selection.js --write",
     "starterSelectionCheck": "node ../tools/build_starter_selection.js --check",
     "speciesNumericIdentityCheck": "node --test tools/test_fire_red_omega_species_identity.js",
-    "physicalWildCheck": "node --test tools/test_fire_red_omega_physical_wild.js && node tools/run_python.mjs tools/test_fire_red_omega_physical_wild.py"
+    "physicalWildCheck": "node --test tools/test_fire_red_omega_physical_wild.js && node tools/run_python.mjs tools/test_fire_red_omega_physical_wild.py",
+    "trainerSelectVisuals": "node tools/hack_trainer_visuals.js --write",
+    "trainerSelectVisualsCheck": "node tools/hack_trainer_visuals.js --check && node --test tools/test_hack_trainer_visuals.js"
   },
   "categoryApplicability": {
     "species": {

@@ -4799,7 +4799,12 @@
       "strictDependencyGraph": false,
       "mandatory": null,
       "requiredForProfiles": [],
-      "routeConditions": [],
+      "routeConditions": [
+        {
+          "kind": "documented-condition",
+          "value": "{{PlayerChoice|0495|Snivy}}"
+        }
+      ],
       "locationId": "campaign-location-nuvema-town",
       "locationName": "Nuvema Town",
       "alternativeGroupId": "pokemon-black-observation-bulbapedia-black-white-120122-0002",
@@ -4862,6 +4867,10 @@
           "templateSha256": "aea6a9fcc8c9ab6c8a69a95736a5a4458b75a318d3f59f8e01ef7715befb5ab3",
           "title": "Walkthrough:Pokémon Black and White/Part 1"
         }
+      },
+      "reviewEvidence": {
+        "source": "tools/imports/trainer-name-review-20260921.json",
+        "reviewId": "trainer-name-review-20260921"
       }
     },
     {
@@ -4958,7 +4967,12 @@
       "strictDependencyGraph": false,
       "mandatory": null,
       "requiredForProfiles": [],
-      "routeConditions": [],
+      "routeConditions": [
+        {
+          "kind": "documented-condition",
+          "value": "{{PlayerChoice|0498|Tepig}}"
+        }
+      ],
       "locationId": "campaign-location-nuvema-town",
       "locationName": "Nuvema Town",
       "alternativeGroupId": "pokemon-black-observation-bulbapedia-black-white-120122-0004",
@@ -5021,6 +5035,10 @@
           "templateSha256": "aea6a9fcc8c9ab6c8a69a95736a5a4458b75a318d3f59f8e01ef7715befb5ab3",
           "title": "Walkthrough:Pokémon Black and White/Part 1"
         }
+      },
+      "reviewEvidence": {
+        "source": "tools/imports/trainer-name-review-20260921.json",
+        "reviewId": "trainer-name-review-20260921"
       }
     },
     {
@@ -5117,7 +5135,12 @@
       "strictDependencyGraph": false,
       "mandatory": null,
       "requiredForProfiles": [],
-      "routeConditions": [],
+      "routeConditions": [
+        {
+          "kind": "documented-condition",
+          "value": "{{PlayerChoice|0501|Oshawott}}"
+        }
+      ],
       "locationId": "campaign-location-nuvema-town",
       "locationName": "Nuvema Town",
       "alternativeGroupId": "pokemon-black-observation-bulbapedia-black-white-120122-0006",
@@ -5180,6 +5203,10 @@
           "templateSha256": "aea6a9fcc8c9ab6c8a69a95736a5a4458b75a318d3f59f8e01ef7715befb5ab3",
           "title": "Walkthrough:Pokémon Black and White/Part 1"
         }
+      },
+      "reviewEvidence": {
+        "source": "tools/imports/trainer-name-review-20260921.json",
+        "reviewId": "trainer-name-review-20260921"
       }
     },
     {

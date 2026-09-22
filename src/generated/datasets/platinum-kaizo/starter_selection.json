@@ -221,6 +221,42 @@
       ]
     },
     {
+      "trainerId": "platinum-kaizo-trainer-0902",
+      "starterIds": [
+        "turtwig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "platinum-kaizo-review-initial-rival-1"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0903",
+      "starterIds": [
+        "chimchar"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "platinum-kaizo-review-initial-rival-2"
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0904",
+      "starterIds": [
+        "piplup"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "platinum-kaizo-review-initial-rival-3"
+        }
+      ]
+    },
+    {
       "trainerId": "platinum-kaizo-trainer-0905",
       "starterIds": [
         "turtwig"
@@ -506,11 +542,11 @@
       },
       {
         "file": "trainers.json",
-        "sha256": "0b4f265e783249ce3c0510869c6676ed112635eea9dc7deae27b73035afc68d5"
+        "sha256": "296f0c3048ab3e412ba5111ae8178994dd69161b904f79744e9a9d37b3d13341"
       },
       {
         "file": "trainer_order.json",
-        "sha256": "9579f843efe450f28776f67a214c2253a867200e828efc66845f9ba55319e136"
+        "sha256": "ebae696cea81d4f672f0e3ba0ab4964c13d7d96036c0527b81cedbdeeab45b7c"
       },
       {
         "file": "trainer_documentation.json",

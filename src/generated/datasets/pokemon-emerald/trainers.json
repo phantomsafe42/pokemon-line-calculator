@@ -1781,6 +1781,36 @@
             ]
           }
         ]
+      },
+      "presentation": {
+        "trainerVisualIdentity": {
+          "schemaVersion": "trainer-visual-identity/v1alpha1",
+          "status": "resolved",
+          "relationship": "exact-retail",
+          "gameStyle": "emerald",
+          "presentation": "battle-front",
+          "subjectKind": "class",
+          "subjectId": "teammates",
+          "gender": "default",
+          "variant": "default",
+          "rawSelector": null,
+          "unresolvedFields": [],
+          "evidence": [
+            {
+              "kind": "trainer-order-mechanics-binding",
+              "trainerIds": [
+                "pokemon-emerald-trainer-0288",
+                "pokemon-emerald-trainer-0289"
+              ]
+            },
+            {
+              "source": "tools/imports/trainer-name-review-20260921.json",
+              "reviewId": "trainer-name-review-20260921",
+              "kind": "user-confirmed-existing-assets-class-selector"
+            }
+          ],
+          "spriteSet": "rs"
+        }
       }
     },
     "pokemon-emerald-documentation-trainer-0145": {
@@ -87281,6 +87311,42 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Sr. and Jr. Kate & Joy",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921",
+          "ref": "R00765"
+        },
+        "trainerVisualIdentity": {
+          "schemaVersion": "trainer-visual-identity/v1alpha1",
+          "status": "resolved",
+          "relationship": "exact-retail",
+          "gameStyle": "emerald",
+          "presentation": "battle-front",
+          "subjectKind": "class",
+          "subjectId": "teammates",
+          "gender": "default",
+          "variant": "default",
+          "rawSelector": {
+            "kind": "gen3-trainer-pic-token",
+            "value": "TRAINER_PIC_SR_AND_JR"
+          },
+          "unresolvedFields": [],
+          "evidence": [
+            {
+              "kind": "exact-retail-selector",
+              "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
+            },
+            {
+              "source": "tools/imports/trainer-name-review-20260921.json",
+              "reviewId": "trainer-name-review-20260921",
+              "kind": "user-confirmed-existing-assets-class-selector"
+            }
+          ],
+          "spriteSet": "rs"
+        }
       }
     },
     "pokemon-emerald-trainer-0287": {
@@ -87691,6 +87757,36 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "trainerVisualIdentity": {
+          "schemaVersion": "trainer-visual-identity/v1alpha1",
+          "status": "resolved",
+          "relationship": "exact-retail",
+          "gameStyle": "emerald",
+          "presentation": "battle-front",
+          "subjectKind": "class",
+          "subjectId": "teammates",
+          "gender": "default",
+          "variant": "default",
+          "rawSelector": {
+            "kind": "gen3-trainer-pic-token",
+            "value": "TRAINER_PIC_SR_AND_JR"
+          },
+          "unresolvedFields": [],
+          "evidence": [
+            {
+              "kind": "exact-retail-selector",
+              "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
+            },
+            {
+              "source": "tools/imports/trainer-name-review-20260921.json",
+              "reviewId": "trainer-name-review-20260921",
+              "kind": "user-confirmed-existing-assets-class-selector"
+            }
+          ],
+          "spriteSet": "rs"
+        }
       }
     },
     "pokemon-emerald-trainer-0288": {
@@ -87872,6 +87968,36 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "trainerVisualIdentity": {
+          "schemaVersion": "trainer-visual-identity/v1alpha1",
+          "status": "resolved",
+          "relationship": "exact-retail",
+          "gameStyle": "emerald",
+          "presentation": "battle-front",
+          "subjectKind": "class",
+          "subjectId": "teammates",
+          "gender": "default",
+          "variant": "default",
+          "rawSelector": {
+            "kind": "gen3-trainer-pic-token",
+            "value": "TRAINER_PIC_SR_AND_JR"
+          },
+          "unresolvedFields": [],
+          "evidence": [
+            {
+              "kind": "exact-retail-selector",
+              "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
+            },
+            {
+              "source": "tools/imports/trainer-name-review-20260921.json",
+              "reviewId": "trainer-name-review-20260921",
+              "kind": "user-confirmed-existing-assets-class-selector"
+            }
+          ],
+          "spriteSet": "rs"
+        }
       }
     },
     "pokemon-emerald-trainer-0289": {
@@ -88053,6 +88179,36 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "trainerVisualIdentity": {
+          "schemaVersion": "trainer-visual-identity/v1alpha1",
+          "status": "resolved",
+          "relationship": "exact-retail",
+          "gameStyle": "emerald",
+          "presentation": "battle-front",
+          "subjectKind": "class",
+          "subjectId": "teammates",
+          "gender": "default",
+          "variant": "default",
+          "rawSelector": {
+            "kind": "gen3-trainer-pic-token",
+            "value": "TRAINER_PIC_SR_AND_JR"
+          },
+          "unresolvedFields": [],
+          "evidence": [
+            {
+              "kind": "exact-retail-selector",
+              "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
+            },
+            {
+              "source": "tools/imports/trainer-name-review-20260921.json",
+              "reviewId": "trainer-name-review-20260921",
+              "kind": "user-confirmed-existing-assets-class-selector"
+            }
+          ],
+          "spriteSet": "rs"
+        }
       }
     },
     "pokemon-emerald-trainer-0290": {
@@ -88259,6 +88415,36 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "trainerVisualIdentity": {
+          "schemaVersion": "trainer-visual-identity/v1alpha1",
+          "status": "resolved",
+          "relationship": "exact-retail",
+          "gameStyle": "emerald",
+          "presentation": "battle-front",
+          "subjectKind": "class",
+          "subjectId": "teammates",
+          "gender": "default",
+          "variant": "default",
+          "rawSelector": {
+            "kind": "gen3-trainer-pic-token",
+            "value": "TRAINER_PIC_SR_AND_JR"
+          },
+          "unresolvedFields": [],
+          "evidence": [
+            {
+              "kind": "exact-retail-selector",
+              "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
+            },
+            {
+              "source": "tools/imports/trainer-name-review-20260921.json",
+              "reviewId": "trainer-name-review-20260921",
+              "kind": "user-confirmed-existing-assets-class-selector"
+            }
+          ],
+          "spriteSet": "rs"
+        }
       }
     },
     "pokemon-emerald-trainer-0291": {
@@ -88465,6 +88651,36 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "trainerVisualIdentity": {
+          "schemaVersion": "trainer-visual-identity/v1alpha1",
+          "status": "resolved",
+          "relationship": "exact-retail",
+          "gameStyle": "emerald",
+          "presentation": "battle-front",
+          "subjectKind": "class",
+          "subjectId": "teammates",
+          "gender": "default",
+          "variant": "default",
+          "rawSelector": {
+            "kind": "gen3-trainer-pic-token",
+            "value": "TRAINER_PIC_SR_AND_JR"
+          },
+          "unresolvedFields": [],
+          "evidence": [
+            {
+              "kind": "exact-retail-selector",
+              "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
+            },
+            {
+              "source": "tools/imports/trainer-name-review-20260921.json",
+              "reviewId": "trainer-name-review-20260921",
+              "kind": "user-confirmed-existing-assets-class-selector"
+            }
+          ],
+          "spriteSet": "rs"
+        }
       }
     },
     "pokemon-emerald-trainer-0292": {
@@ -119938,6 +120154,14 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Battle Girl Jocelyn",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921",
+          "ref": "R00652"
+        }
       }
     },
     "pokemon-emerald-trainer-0426": {
@@ -143937,6 +144161,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0521": {
@@ -144250,6 +144481,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0522": {
@@ -144633,6 +144871,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0523": {
@@ -144837,6 +145082,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0524": {
@@ -145083,6 +145335,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0525": {
@@ -145329,6 +145588,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0526": {
@@ -145533,6 +145799,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0527": {
@@ -145779,6 +146052,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0528": {
@@ -146025,6 +146305,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0529": {
@@ -146258,6 +146545,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0530": {
@@ -146581,6 +146875,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0531": {
@@ -146827,6 +147128,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0532": {
@@ -147060,6 +147368,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0533": {
@@ -147363,6 +147678,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0534": {
@@ -147686,6 +148008,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0535": {
@@ -147919,6 +148248,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0536": {
@@ -148222,6 +148558,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0537": {
@@ -148525,6 +148868,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0538": {
@@ -162518,6 +162868,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0593": {
@@ -162836,6 +163193,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0594": {
@@ -164474,6 +164838,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0600": {
@@ -164834,6 +165205,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0601": {
@@ -181234,6 +181612,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0662": {
@@ -181554,6 +181939,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0663": {
@@ -181874,6 +182266,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0664": {
@@ -182330,6 +182729,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0665": {
@@ -182806,6 +183212,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0666": {
@@ -183242,6 +183655,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0667": {
@@ -186685,6 +187105,42 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Sr. and Jr. Kim & Iris",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921",
+          "ref": "R00796"
+        },
+        "trainerVisualIdentity": {
+          "schemaVersion": "trainer-visual-identity/v1alpha1",
+          "status": "resolved",
+          "relationship": "exact-retail",
+          "gameStyle": "emerald",
+          "presentation": "battle-front",
+          "subjectKind": "class",
+          "subjectId": "teammates",
+          "gender": "default",
+          "variant": "default",
+          "rawSelector": {
+            "kind": "gen3-trainer-pic-token",
+            "value": "TRAINER_PIC_SR_AND_JR"
+          },
+          "unresolvedFields": [],
+          "evidence": [
+            {
+              "kind": "exact-retail-selector",
+              "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
+            },
+            {
+              "source": "tools/imports/trainer-name-review-20260921.json",
+              "reviewId": "trainer-name-review-20260921",
+              "kind": "user-confirmed-existing-assets-class-selector"
+            }
+          ],
+          "spriteSet": "rs"
+        }
       }
     },
     "pokemon-emerald-trainer-0679": {
@@ -186989,6 +187445,36 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "trainerVisualIdentity": {
+          "schemaVersion": "trainer-visual-identity/v1alpha1",
+          "status": "resolved",
+          "relationship": "exact-retail",
+          "gameStyle": "emerald",
+          "presentation": "battle-front",
+          "subjectKind": "class",
+          "subjectId": "teammates",
+          "gender": "default",
+          "variant": "default",
+          "rawSelector": {
+            "kind": "gen3-trainer-pic-token",
+            "value": "TRAINER_PIC_SR_AND_JR"
+          },
+          "unresolvedFields": [],
+          "evidence": [
+            {
+              "kind": "exact-retail-selector",
+              "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
+            },
+            {
+              "source": "tools/imports/trainer-name-review-20260921.json",
+              "reviewId": "trainer-name-review-20260921",
+              "kind": "user-confirmed-existing-assets-class-selector"
+            }
+          ],
+          "spriteSet": "rs"
+        }
       }
     },
     "pokemon-emerald-trainer-0680": {
@@ -209171,6 +209657,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0769": {
@@ -209530,6 +210023,13 @@
             "source": "tools/imports/vanilla/pret-pokeemerald-5eff78649e7170a877b961ef0b3da13b81a16038/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-emerald-trainer-0770": {

@@ -2,12 +2,12 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-diamond-dataset",
   "source": "Datasets/Pokemon Diamond/source-data",
-  "sourceTreeSha256": "AD8828CB7FAF53658DE247FDABB268419D9D8FC51EC6DF894B20F1C894CF8466",
+  "sourceTreeSha256": "D1C2C119B10673FAE2300BA4BEC51B8F61C05AC6AA548AB7274A1B6EE3F382AC",
   "files": [
     {
       "path": "dataset_manifest.json",
-      "bytes": 100166,
-      "sha256": "6C6C2C093E0944A099CFC72F62E0CAA78A03CE7D94AD7CD391E70E4182CF2839"
+      "bytes": 100397,
+      "sha256": "C379965778E4820B8A675D6AB6183064CD1C3FF0006C28D1189A430484210F19"
     },
     {
       "path": "battle_mechanics.json",
@@ -51,8 +51,8 @@
     },
     {
       "path": "trainers.json",
-      "bytes": 5858992,
-      "sha256": "98713AC45CF6E07549431EFA3AFA38E960543CB9767460352FF7D09B9E865793"
+      "bytes": 5863893,
+      "sha256": "A859090918D499B6FA01B0FC3AC47FAAD3C0424E9B5747E7CE87A59AEB12CC5B"
     },
     {
       "path": "trainer_order.json",
@@ -82,7 +82,7 @@
     {
       "path": "starter_selection.json",
       "bytes": 10983,
-      "sha256": "05B27F8749FC5D3F8C223B087D27C0C5CAAAB808718D7E66F6E9C590163C6B0C"
+      "sha256": "3D70116FE85AF7A308A5D9DE7512486B384ACEEBFAA0A8551086DAAA1E6336D4"
     }
   ]
 }

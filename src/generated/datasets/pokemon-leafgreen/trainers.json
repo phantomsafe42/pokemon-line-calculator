@@ -70739,6 +70739,13 @@
             "source": "tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-leafgreen-trainer-0327": {
@@ -70942,6 +70949,13 @@
             "source": "tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-leafgreen-trainer-0328": {
@@ -71145,6 +71159,13 @@
             "source": "tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-leafgreen-trainer-0329": {
@@ -71408,6 +71429,13 @@
             "source": "tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-leafgreen-trainer-0330": {
@@ -71681,6 +71709,13 @@
             "source": "tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-leafgreen-trainer-0331": {
@@ -71934,6 +71969,13 @@
             "source": "tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-leafgreen-trainer-0332": {
@@ -72374,6 +72416,13 @@
             "source": "tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-leafgreen-trainer-0333": {
@@ -72804,6 +72853,13 @@
             "source": "tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-leafgreen-trainer-0334": {
@@ -73224,6 +73280,13 @@
             "source": "tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-leafgreen-trainer-0335": {
@@ -104104,6 +104167,13 @@
             "source": "tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-leafgreen-trainer-0427": {
@@ -104508,6 +104578,13 @@
             "source": "tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-leafgreen-trainer-0428": {
@@ -104932,6 +105009,13 @@
             "source": "tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-leafgreen-trainer-0429": {
@@ -105264,6 +105348,13 @@
             "source": "tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-leafgreen-trainer-0430": {
@@ -105719,6 +105810,13 @@
             "source": "tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-leafgreen-trainer-0431": {
@@ -106184,6 +106282,13 @@
             "source": "tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-leafgreen-trainer-0432": {
@@ -106516,6 +106621,13 @@
             "source": "tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-leafgreen-trainer-0433": {
@@ -107003,6 +107115,13 @@
             "source": "tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-leafgreen-trainer-0434": {
@@ -107450,6 +107569,13 @@
             "source": "tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-leafgreen-trainer-0435": {
@@ -107935,6 +108061,13 @@
             "source": "tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-leafgreen-trainer-0436": {
@@ -108420,6 +108553,13 @@
             "source": "tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-leafgreen-trainer-0437": {
@@ -108945,6 +109085,13 @@
             "source": "tools/imports/vanilla/pret-pokefirered-c75f352304d529f6ba92d4f74b9cf8b5c3810788/src/data/trainers.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-leafgreen-trainer-0438": {

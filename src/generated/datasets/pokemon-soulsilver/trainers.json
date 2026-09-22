@@ -1037,6 +1037,13 @@
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-soulsilver-trainer-0002": {
@@ -1218,6 +1225,13 @@
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-soulsilver-trainer-0003": {
@@ -1383,6 +1397,13 @@
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-soulsilver-trainer-0004": {
@@ -11293,7 +11314,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0030": {
@@ -18913,7 +18935,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0051": {
@@ -27243,7 +27266,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0073": {
@@ -28254,7 +28278,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0074": {
@@ -31567,7 +31592,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0083": {
@@ -54045,7 +54071,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0138": {
@@ -82386,7 +82413,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0218": {
@@ -102457,6 +102485,13 @@
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-soulsilver-trainer-0264": {
@@ -103041,6 +103076,13 @@
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-soulsilver-trainer-0265": {
@@ -103222,6 +103264,13 @@
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-soulsilver-trainer-0266": {
@@ -103711,6 +103760,13 @@
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-soulsilver-trainer-0267": {
@@ -104156,6 +104212,13 @@
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-soulsilver-trainer-0268": {
@@ -104740,6 +104803,13 @@
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-soulsilver-trainer-0269": {
@@ -105209,6 +105279,13 @@
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-soulsilver-trainer-0270": {
@@ -105654,6 +105731,13 @@
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-soulsilver-trainer-0271": {
@@ -106266,6 +106350,13 @@
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-soulsilver-trainer-0272": {
@@ -106850,6 +106941,13 @@
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-soulsilver-trainer-0273": {
@@ -111282,6 +111380,13 @@
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-soulsilver-trainer-0286": {
@@ -111861,6 +111966,13 @@
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-soulsilver-trainer-0287": {
@@ -112440,6 +112552,13 @@
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-soulsilver-trainer-0288": {
@@ -112957,6 +113076,13 @@
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-soulsilver-trainer-0289": {
@@ -113474,6 +113600,13 @@
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-soulsilver-trainer-0290": {
@@ -117290,7 +117423,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0300": {
@@ -117742,7 +117876,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0301": {
@@ -118139,7 +118274,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0302": {
@@ -118433,7 +118569,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0303": {
@@ -118580,7 +118717,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0304": {
@@ -149141,7 +149279,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0384": {
@@ -161173,7 +161312,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0415": {
@@ -163423,7 +163563,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0421": {
@@ -163875,7 +164016,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0422": {
@@ -170471,7 +170613,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0447": {
@@ -170710,7 +170853,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0448": {
@@ -171036,7 +171180,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0449": {
@@ -176408,7 +176553,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0469": {
@@ -176625,7 +176771,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0470": {
@@ -177220,7 +177367,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0471": {
@@ -177905,7 +178053,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0472": {
@@ -178217,7 +178366,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0473": {
@@ -184659,6 +184809,13 @@
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-soulsilver-trainer-0490": {
@@ -185208,6 +185365,13 @@
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-soulsilver-trainer-0491": {
@@ -185757,6 +185921,13 @@
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-soulsilver-trainer-0492": {
@@ -187340,7 +187511,7 @@
         "gameStyle": "heartgold-soulsilver",
         "presentation": "battle-front",
         "subjectKind": "character",
-        "subjectId": "giovanni",
+        "subjectId": "silver",
         "gender": "default",
         "variant": "default",
         "rawSelector": {
@@ -187570,7 +187741,7 @@
         "gameStyle": "heartgold-soulsilver",
         "presentation": "battle-front",
         "subjectKind": "character",
-        "subjectId": "giovanni",
+        "subjectId": "silver",
         "gender": "default",
         "variant": "default",
         "rawSelector": {
@@ -187800,7 +187971,7 @@
         "gameStyle": "heartgold-soulsilver",
         "presentation": "battle-front",
         "subjectKind": "character",
-        "subjectId": "giovanni",
+        "subjectId": "silver",
         "gender": "default",
         "variant": "default",
         "rawSelector": {
@@ -205559,7 +205730,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0556": {
@@ -206011,7 +206183,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0557": {
@@ -208924,7 +209097,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0566": {
@@ -215206,7 +215380,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0584": {
@@ -215500,7 +215675,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0585": {
@@ -219987,7 +220163,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0597": {
@@ -220795,7 +220972,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0598": {
@@ -222118,7 +222296,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0603": {
@@ -225089,7 +225268,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0613": {
@@ -233456,7 +233636,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0647": {
@@ -233695,7 +233876,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0648": {
@@ -233934,7 +234116,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0649": {
@@ -248343,7 +248526,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0693": {
@@ -248640,7 +248824,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0694": {
@@ -248917,7 +249102,8 @@
             "kind": "exact-retail-selector",
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
-        ]
+        ],
+        "spriteSet": "hgss"
       }
     },
     "pokemon-soulsilver-trainer-0695": {
@@ -268171,6 +268357,13 @@
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-soulsilver-trainer-0736": {
@@ -268504,6 +268697,13 @@
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-soulsilver-trainer-0737": {
@@ -268837,6 +269037,13 @@
             "source": "tools/imports/vanilla/pret-pokeheartgold-0985e8718df4f25e64d6507d89c0c97c0d288981/files/poketool/trainer/trainers.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     }
   },

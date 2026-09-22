@@ -1,0 +1,444 @@
+{
+  "schemaVersion": "trainer-visual-identity/v1alpha2",
+  "gameId": "platinum-kaizo",
+  "kind": "trainer-visual-identity-report",
+  "relationship": "documented-game",
+  "presentation": "battle-front",
+  "scope": "galactic-squad-only",
+  "counts": {
+    "ambiguous": 0,
+    "inapplicable": 0,
+    "resolved": 14,
+    "unavailable": 0
+  },
+  "unresolvedFieldCounts": {},
+  "decisionsSha256": "731d684cf4f739e4f7de755118dd8f43f4b5b5b54f3b060ea54013895de3a863",
+  "decisions": [
+    {
+      "trainerId": "platinum-kaizo-trainer-0068",
+      "schemaVersion": "trainer-visual-identity/v1alpha2",
+      "status": "resolved",
+      "relationship": "documented-game",
+      "gameStyle": "platinum-kaizo",
+      "presentation": "battle-front",
+      "subjectKind": "class",
+      "subjectId": "galactic-squad",
+      "gender": "default",
+      "variant": "default",
+      "rawSelector": null,
+      "unresolvedFields": [],
+      "evidence": [
+        {
+          "kind": "user-confirmed-class-art",
+          "source": "galactic_squad_visual_sources.json",
+          "trainerId": "platinum-kaizo-trainer-0068",
+          "assetId": "trainer-sprite/pk/battle-front/class/galactic-squad/default/default",
+          "sourceId": "user-provided-platinum-kaizo-galactic-squad",
+          "sourceFile": "T_G_Squad.png",
+          "sha256": "2d93a9c6656f4bc463d68351f3b19b821045ec90a77ec38822c3f9340eb210aa",
+          "release": "0.8.2-dev.1",
+          "tag": "v0.8.2-dev.1",
+          "sourceCommit": "b578f9018f32edb1193f7a618e6e9a81484e547c",
+          "artist": "unknown",
+          "note": "Visual identity only; existing battle format and participant relationships are independent."
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0079",
+      "schemaVersion": "trainer-visual-identity/v1alpha2",
+      "status": "resolved",
+      "relationship": "documented-game",
+      "gameStyle": "platinum-kaizo",
+      "presentation": "battle-front",
+      "subjectKind": "class",
+      "subjectId": "galactic-squad",
+      "gender": "default",
+      "variant": "default",
+      "rawSelector": null,
+      "unresolvedFields": [],
+      "evidence": [
+        {
+          "kind": "user-confirmed-class-art",
+          "source": "galactic_squad_visual_sources.json",
+          "trainerId": "platinum-kaizo-trainer-0079",
+          "assetId": "trainer-sprite/pk/battle-front/class/galactic-squad/default/default",
+          "sourceId": "user-provided-platinum-kaizo-galactic-squad",
+          "sourceFile": "T_G_Squad.png",
+          "sha256": "2d93a9c6656f4bc463d68351f3b19b821045ec90a77ec38822c3f9340eb210aa",
+          "release": "0.8.2-dev.1",
+          "tag": "v0.8.2-dev.1",
+          "sourceCommit": "b578f9018f32edb1193f7a618e6e9a81484e547c",
+          "artist": "unknown",
+          "note": "Visual identity only; existing battle format and participant relationships are independent."
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0298",
+      "schemaVersion": "trainer-visual-identity/v1alpha2",
+      "status": "resolved",
+      "relationship": "documented-game",
+      "gameStyle": "platinum-kaizo",
+      "presentation": "battle-front",
+      "subjectKind": "class",
+      "subjectId": "galactic-squad",
+      "gender": "default",
+      "variant": "default",
+      "rawSelector": null,
+      "unresolvedFields": [],
+      "evidence": [
+        {
+          "kind": "user-confirmed-class-art",
+          "source": "galactic_squad_visual_sources.json",
+          "trainerId": "platinum-kaizo-trainer-0298",
+          "assetId": "trainer-sprite/pk/battle-front/class/galactic-squad/default/default",
+          "sourceId": "user-provided-platinum-kaizo-galactic-squad",
+          "sourceFile": "T_G_Squad.png",
+          "sha256": "2d93a9c6656f4bc463d68351f3b19b821045ec90a77ec38822c3f9340eb210aa",
+          "release": "0.8.2-dev.1",
+          "tag": "v0.8.2-dev.1",
+          "sourceCommit": "b578f9018f32edb1193f7a618e6e9a81484e547c",
+          "artist": "unknown",
+          "note": "Visual identity only; existing battle format and participant relationships are independent."
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0299",
+      "schemaVersion": "trainer-visual-identity/v1alpha2",
+      "status": "resolved",
+      "relationship": "documented-game",
+      "gameStyle": "platinum-kaizo",
+      "presentation": "battle-front",
+      "subjectKind": "class",
+      "subjectId": "galactic-squad",
+      "gender": "default",
+      "variant": "default",
+      "rawSelector": null,
+      "unresolvedFields": [],
+      "evidence": [
+        {
+          "kind": "user-confirmed-class-art",
+          "source": "galactic_squad_visual_sources.json",
+          "trainerId": "platinum-kaizo-trainer-0299",
+          "assetId": "trainer-sprite/pk/battle-front/class/galactic-squad/default/default",
+          "sourceId": "user-provided-platinum-kaizo-galactic-squad",
+          "sourceFile": "T_G_Squad.png",
+          "sha256": "2d93a9c6656f4bc463d68351f3b19b821045ec90a77ec38822c3f9340eb210aa",
+          "release": "0.8.2-dev.1",
+          "tag": "v0.8.2-dev.1",
+          "sourceCommit": "b578f9018f32edb1193f7a618e6e9a81484e547c",
+          "artist": "unknown",
+          "note": "Visual identity only; existing battle format and participant relationships are independent."
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0420",
+      "schemaVersion": "trainer-visual-identity/v1alpha2",
+      "status": "resolved",
+      "relationship": "documented-game",
+      "gameStyle": "platinum-kaizo",
+      "presentation": "battle-front",
+      "subjectKind": "class",
+      "subjectId": "galactic-squad",
+      "gender": "default",
+      "variant": "default",
+      "rawSelector": null,
+      "unresolvedFields": [],
+      "evidence": [
+        {
+          "kind": "user-confirmed-class-art",
+          "source": "galactic_squad_visual_sources.json",
+          "trainerId": "platinum-kaizo-trainer-0420",
+          "assetId": "trainer-sprite/pk/battle-front/class/galactic-squad/default/default",
+          "sourceId": "user-provided-platinum-kaizo-galactic-squad",
+          "sourceFile": "T_G_Squad.png",
+          "sha256": "2d93a9c6656f4bc463d68351f3b19b821045ec90a77ec38822c3f9340eb210aa",
+          "release": "0.8.2-dev.1",
+          "tag": "v0.8.2-dev.1",
+          "sourceCommit": "b578f9018f32edb1193f7a618e6e9a81484e547c",
+          "artist": "unknown",
+          "note": "Visual identity only; existing battle format and participant relationships are independent."
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0427",
+      "schemaVersion": "trainer-visual-identity/v1alpha2",
+      "status": "resolved",
+      "relationship": "documented-game",
+      "gameStyle": "platinum-kaizo",
+      "presentation": "battle-front",
+      "subjectKind": "class",
+      "subjectId": "galactic-squad",
+      "gender": "default",
+      "variant": "default",
+      "rawSelector": null,
+      "unresolvedFields": [],
+      "evidence": [
+        {
+          "kind": "user-confirmed-class-art",
+          "source": "galactic_squad_visual_sources.json",
+          "trainerId": "platinum-kaizo-trainer-0427",
+          "assetId": "trainer-sprite/pk/battle-front/class/galactic-squad/default/default",
+          "sourceId": "user-provided-platinum-kaizo-galactic-squad",
+          "sourceFile": "T_G_Squad.png",
+          "sha256": "2d93a9c6656f4bc463d68351f3b19b821045ec90a77ec38822c3f9340eb210aa",
+          "release": "0.8.2-dev.1",
+          "tag": "v0.8.2-dev.1",
+          "sourceCommit": "b578f9018f32edb1193f7a618e6e9a81484e547c",
+          "artist": "unknown",
+          "note": "Visual identity only; existing battle format and participant relationships are independent."
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0525",
+      "schemaVersion": "trainer-visual-identity/v1alpha2",
+      "status": "resolved",
+      "relationship": "documented-game",
+      "gameStyle": "platinum-kaizo",
+      "presentation": "battle-front",
+      "subjectKind": "class",
+      "subjectId": "galactic-squad",
+      "gender": "default",
+      "variant": "default",
+      "rawSelector": null,
+      "unresolvedFields": [],
+      "evidence": [
+        {
+          "kind": "user-confirmed-class-art",
+          "source": "galactic_squad_visual_sources.json",
+          "trainerId": "platinum-kaizo-trainer-0525",
+          "assetId": "trainer-sprite/pk/battle-front/class/galactic-squad/default/default",
+          "sourceId": "user-provided-platinum-kaizo-galactic-squad",
+          "sourceFile": "T_G_Squad.png",
+          "sha256": "2d93a9c6656f4bc463d68351f3b19b821045ec90a77ec38822c3f9340eb210aa",
+          "release": "0.8.2-dev.1",
+          "tag": "v0.8.2-dev.1",
+          "sourceCommit": "b578f9018f32edb1193f7a618e6e9a81484e547c",
+          "artist": "unknown",
+          "note": "Visual identity only; existing battle format and participant relationships are independent."
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0533",
+      "schemaVersion": "trainer-visual-identity/v1alpha2",
+      "status": "resolved",
+      "relationship": "documented-game",
+      "gameStyle": "platinum-kaizo",
+      "presentation": "battle-front",
+      "subjectKind": "class",
+      "subjectId": "galactic-squad",
+      "gender": "default",
+      "variant": "default",
+      "rawSelector": null,
+      "unresolvedFields": [],
+      "evidence": [
+        {
+          "kind": "user-confirmed-class-art",
+          "source": "galactic_squad_visual_sources.json",
+          "trainerId": "platinum-kaizo-trainer-0533",
+          "assetId": "trainer-sprite/pk/battle-front/class/galactic-squad/default/default",
+          "sourceId": "user-provided-platinum-kaizo-galactic-squad",
+          "sourceFile": "T_G_Squad.png",
+          "sha256": "2d93a9c6656f4bc463d68351f3b19b821045ec90a77ec38822c3f9340eb210aa",
+          "release": "0.8.2-dev.1",
+          "tag": "v0.8.2-dev.1",
+          "sourceCommit": "b578f9018f32edb1193f7a618e6e9a81484e547c",
+          "artist": "unknown",
+          "note": "Visual identity only; existing battle format and participant relationships are independent."
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0534",
+      "schemaVersion": "trainer-visual-identity/v1alpha2",
+      "status": "resolved",
+      "relationship": "documented-game",
+      "gameStyle": "platinum-kaizo",
+      "presentation": "battle-front",
+      "subjectKind": "class",
+      "subjectId": "galactic-squad",
+      "gender": "default",
+      "variant": "default",
+      "rawSelector": null,
+      "unresolvedFields": [],
+      "evidence": [
+        {
+          "kind": "user-confirmed-class-art",
+          "source": "galactic_squad_visual_sources.json",
+          "trainerId": "platinum-kaizo-trainer-0534",
+          "assetId": "trainer-sprite/pk/battle-front/class/galactic-squad/default/default",
+          "sourceId": "user-provided-platinum-kaizo-galactic-squad",
+          "sourceFile": "T_G_Squad.png",
+          "sha256": "2d93a9c6656f4bc463d68351f3b19b821045ec90a77ec38822c3f9340eb210aa",
+          "release": "0.8.2-dev.1",
+          "tag": "v0.8.2-dev.1",
+          "sourceCommit": "b578f9018f32edb1193f7a618e6e9a81484e547c",
+          "artist": "unknown",
+          "note": "Visual identity only; existing battle format and participant relationships are independent."
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0545",
+      "schemaVersion": "trainer-visual-identity/v1alpha2",
+      "status": "resolved",
+      "relationship": "documented-game",
+      "gameStyle": "platinum-kaizo",
+      "presentation": "battle-front",
+      "subjectKind": "class",
+      "subjectId": "galactic-squad",
+      "gender": "default",
+      "variant": "default",
+      "rawSelector": null,
+      "unresolvedFields": [],
+      "evidence": [
+        {
+          "kind": "user-confirmed-class-art",
+          "source": "galactic_squad_visual_sources.json",
+          "trainerId": "platinum-kaizo-trainer-0545",
+          "assetId": "trainer-sprite/pk/battle-front/class/galactic-squad/default/default",
+          "sourceId": "user-provided-platinum-kaizo-galactic-squad",
+          "sourceFile": "T_G_Squad.png",
+          "sha256": "2d93a9c6656f4bc463d68351f3b19b821045ec90a77ec38822c3f9340eb210aa",
+          "release": "0.8.2-dev.1",
+          "tag": "v0.8.2-dev.1",
+          "sourceCommit": "b578f9018f32edb1193f7a618e6e9a81484e547c",
+          "artist": "unknown",
+          "note": "Visual identity only; existing battle format and participant relationships are independent."
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0546",
+      "schemaVersion": "trainer-visual-identity/v1alpha2",
+      "status": "resolved",
+      "relationship": "documented-game",
+      "gameStyle": "platinum-kaizo",
+      "presentation": "battle-front",
+      "subjectKind": "class",
+      "subjectId": "galactic-squad",
+      "gender": "default",
+      "variant": "default",
+      "rawSelector": null,
+      "unresolvedFields": [],
+      "evidence": [
+        {
+          "kind": "user-confirmed-class-art",
+          "source": "galactic_squad_visual_sources.json",
+          "trainerId": "platinum-kaizo-trainer-0546",
+          "assetId": "trainer-sprite/pk/battle-front/class/galactic-squad/default/default",
+          "sourceId": "user-provided-platinum-kaizo-galactic-squad",
+          "sourceFile": "T_G_Squad.png",
+          "sha256": "2d93a9c6656f4bc463d68351f3b19b821045ec90a77ec38822c3f9340eb210aa",
+          "release": "0.8.2-dev.1",
+          "tag": "v0.8.2-dev.1",
+          "sourceCommit": "b578f9018f32edb1193f7a618e6e9a81484e547c",
+          "artist": "unknown",
+          "note": "Visual identity only; existing battle format and participant relationships are independent."
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0555",
+      "schemaVersion": "trainer-visual-identity/v1alpha2",
+      "status": "resolved",
+      "relationship": "documented-game",
+      "gameStyle": "platinum-kaizo",
+      "presentation": "battle-front",
+      "subjectKind": "class",
+      "subjectId": "galactic-squad",
+      "gender": "default",
+      "variant": "default",
+      "rawSelector": null,
+      "unresolvedFields": [],
+      "evidence": [
+        {
+          "kind": "user-confirmed-class-art",
+          "source": "galactic_squad_visual_sources.json",
+          "trainerId": "platinum-kaizo-trainer-0555",
+          "assetId": "trainer-sprite/pk/battle-front/class/galactic-squad/default/default",
+          "sourceId": "user-provided-platinum-kaizo-galactic-squad",
+          "sourceFile": "T_G_Squad.png",
+          "sha256": "2d93a9c6656f4bc463d68351f3b19b821045ec90a77ec38822c3f9340eb210aa",
+          "release": "0.8.2-dev.1",
+          "tag": "v0.8.2-dev.1",
+          "sourceCommit": "b578f9018f32edb1193f7a618e6e9a81484e547c",
+          "artist": "unknown",
+          "note": "Visual identity only; existing battle format and participant relationships are independent."
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0944",
+      "schemaVersion": "trainer-visual-identity/v1alpha2",
+      "status": "resolved",
+      "relationship": "documented-game",
+      "gameStyle": "platinum-kaizo",
+      "presentation": "battle-front",
+      "subjectKind": "class",
+      "subjectId": "galactic-squad",
+      "gender": "default",
+      "variant": "default",
+      "rawSelector": null,
+      "unresolvedFields": [],
+      "evidence": [
+        {
+          "kind": "user-confirmed-class-art",
+          "source": "galactic_squad_visual_sources.json",
+          "trainerId": "platinum-kaizo-trainer-0944",
+          "assetId": "trainer-sprite/pk/battle-front/class/galactic-squad/default/default",
+          "sourceId": "user-provided-platinum-kaizo-galactic-squad",
+          "sourceFile": "T_G_Squad.png",
+          "sha256": "2d93a9c6656f4bc463d68351f3b19b821045ec90a77ec38822c3f9340eb210aa",
+          "release": "0.8.2-dev.1",
+          "tag": "v0.8.2-dev.1",
+          "sourceCommit": "b578f9018f32edb1193f7a618e6e9a81484e547c",
+          "artist": "unknown",
+          "note": "Visual identity only; existing battle format and participant relationships are independent."
+        }
+      ]
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0951",
+      "schemaVersion": "trainer-visual-identity/v1alpha2",
+      "status": "resolved",
+      "relationship": "documented-game",
+      "gameStyle": "platinum-kaizo",
+      "presentation": "battle-front",
+      "subjectKind": "class",
+      "subjectId": "galactic-squad",
+      "gender": "default",
+      "variant": "default",
+      "rawSelector": null,
+      "unresolvedFields": [],
+      "evidence": [
+        {
+          "kind": "user-confirmed-class-art",
+          "source": "galactic_squad_visual_sources.json",
+          "trainerId": "platinum-kaizo-trainer-0951",
+          "assetId": "trainer-sprite/pk/battle-front/class/galactic-squad/default/default",
+          "sourceId": "user-provided-platinum-kaizo-galactic-squad",
+          "sourceFile": "T_G_Squad.png",
+          "sha256": "2d93a9c6656f4bc463d68351f3b19b821045ec90a77ec38822c3f9340eb210aa",
+          "release": "0.8.2-dev.1",
+          "tag": "v0.8.2-dev.1",
+          "sourceCommit": "b578f9018f32edb1193f7a618e6e9a81484e547c",
+          "artist": "unknown",
+          "note": "Visual identity only; existing battle format and participant relationships are independent."
+        }
+      ]
+    }
+  ],
+  "conflicts": [],
+  "validation": {
+    "status": "passed",
+    "records": 14,
+    "unresolvedFields": 0
+  }
+}

@@ -2,12 +2,12 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-leafgreen-dataset",
   "source": "Datasets/Pokemon LeafGreen/source-data",
-  "sourceTreeSha256": "B79893B39020BB741191C78A512B2E21F4AB0A56BE924ACADE41E933F52475BE",
+  "sourceTreeSha256": "665B8FA060CFB27FE007457C0284FCF37DD77EB24DC7A002481D979F524840A4",
   "files": [
     {
       "path": "dataset_manifest.json",
-      "bytes": 73855,
-      "sha256": "F686D8E545D833797FCD45A379DFB172436BD6339458F8F3FD266FC508997871"
+      "bytes": 74086,
+      "sha256": "8FA7917348CE05523CB2298F06F3100DBF01565256D2FFE35E353A861048818B"
     },
     {
       "path": "battle_mechanics.json",
@@ -51,8 +51,8 @@
     },
     {
       "path": "trainers.json",
-      "bytes": 5958114,
-      "sha256": "C472272CD663D2F1CD026842D95FC93359BE8FA249317891582BAB987713B3FB"
+      "bytes": 5962755,
+      "sha256": "7EF174F2AD8A5B908EC15AC408DA112DEE078EA5D9C2BBAEA2ECC6EDA7BE9DA0"
     },
     {
       "path": "trainer_order.json",
@@ -82,7 +82,7 @@
     {
       "path": "starter_selection.json",
       "bytes": 8821,
-      "sha256": "688F0E803D492235948DFFDA6F3B4DFDF1BE460AAC564ACD835CE52DCE93248F"
+      "sha256": "438431C5D5958412336CAF9E157F65F7218BC774A2263C82808DFC146FF37836"
     }
   ]
 }

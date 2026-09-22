@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "gameId": "platinum-kaizo",
+  "scope": "Visual-only mapping of the user-confirmed Galactic Squad class. Does not specify battle format, participants, teams, or engine trainer-class IDs.",
+  "asset": {
+    "assetId": "trainer-sprite/pk/battle-front/class/galactic-squad/default/default",
+    "sourceId": "user-provided-platinum-kaizo-galactic-squad",
+    "sourceFile": "T_G_Squad.png",
+    "sha256": "2d93a9c6656f4bc463d68351f3b19b821045ec90a77ec38822c3f9340eb210aa",
+    "release": "0.8.2-dev.1",
+    "tag": "v0.8.2-dev.1",
+    "sourceCommit": "b578f9018f32edb1193f7a618e6e9a81484e547c",
+    "artist": "unknown"
+  },
+  "records": [
+    {
+      "trainerId": "platinum-kaizo-trainer-0298",
+      "expectedDisplayName": "Galactic Squad Deimos #1"
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0299",
+      "expectedDisplayName": "Galactic Squad Phobos #1"
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0068",
+      "expectedDisplayName": "Galactic Squad Themisto"
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0079",
+      "expectedDisplayName": "Galactic Squad Himalia"
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0420",
+      "expectedDisplayName": "Galactic Squad Deimos #2"
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0427",
+      "expectedDisplayName": "Galactic Squad Phobos #2"
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0545",
+      "expectedDisplayName": "Galactic Squad Juliet"
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0944",
+      "expectedDisplayName": "Galactic Squad Perdita #1"
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0555",
+      "expectedDisplayName": "Galactic Squad Mab"
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0546",
+      "expectedDisplayName": "Galactic Squad Belinda"
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0525",
+      "expectedDisplayName": "Galactic Squad Phobos #3"
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0533",
+      "expectedDisplayName": "Galactic Squad Deimos #3"
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0951",
+      "expectedDisplayName": "Galactic Squad Perdita #2"
+    },
+    {
+      "trainerId": "platinum-kaizo-trainer-0534",
+      "expectedDisplayName": "Galactic Squad Amalthia"
+    }
+  ]
+}

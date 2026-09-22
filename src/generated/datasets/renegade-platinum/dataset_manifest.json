@@ -178,6 +178,15 @@
       "reachableTrainerItemRecords": 10,
       "auditToolSha256": "252779fad4f3896842c0d7399328d1ab45f8e3e0c7b6f7991c810c62f8e56cfa",
       "auditRequirementsSha256": "74d4867f80b855f3d1a809dd84021a2867aa9bc01090b306742745b1a674361a"
+    },
+    "trainerSelectVisuals": {
+      "required": true,
+      "source": "trainer_select_visual_report.json",
+      "status": "passed",
+      "resolved": 1056,
+      "variantDependent": 0,
+      "unmapped": 3,
+      "scope": "FRO uses FireRed art; PK and Renegade Platinum use Platinum art. Exact ROM selectors, not display names, identify the class. This is presentation policy, not proof of identical ROM artwork."
     }
   },
   "standardizedSources": [
@@ -216,7 +225,8 @@
     "trainer_wiki_evidence.json",
     "trainer_ai_evidence.json",
     "imports/trainer-ai/renegade-platinum-rom-audit.json",
-    "starter_selection.json"
+    "starter_selection.json",
+    "trainer_select_visual_report.json"
   ],
   "builders": {
     "build": "node ..\\tools\\standardize_legacy_game.js renegade-platinum",
@@ -238,7 +248,9 @@
     "consumerDeterministicCheck": "node ..\\tools\\build_standardized_consumers.js --game renegade-platinum --check",
     "validation": "node ..\\tools\\validate_standardized_dataset.js --game renegade-platinum",
     "starterSelectionBuild": "node ../tools/build_starter_selection.js --write",
-    "starterSelectionCheck": "node ../tools/build_starter_selection.js --check"
+    "starterSelectionCheck": "node ../tools/build_starter_selection.js --check",
+    "trainerSelectVisuals": "node tools/hack_trainer_visuals.js --write",
+    "trainerSelectVisualsCheck": "node tools/hack_trainer_visuals.js --check && node --test tools/test_hack_trainer_visuals.js"
   },
   "categoryApplicability": {
     "species": {

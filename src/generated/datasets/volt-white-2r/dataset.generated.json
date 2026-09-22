@@ -2,12 +2,12 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-vw2r-dataset",
   "source": "Datasets/Volt White 2R/source-data",
-  "sourceTreeSha256": "577DC438378B2315686182821566F1524F7D9F9FB0BB0477FE225C1B0EBFA601",
+  "sourceTreeSha256": "0F6AE2AA91F243571A7FC1A620A00BEEF6EEEA960A6CFD65F092671B31DD2CAC",
   "files": [
     {
       "path": "dataset_manifest.json",
-      "bytes": 21456,
-      "sha256": "ADEE9F25DE2FA3555583769922AC0C791A658256B9CE7D59685B9C6D9FDD7EBB"
+      "bytes": 22717,
+      "sha256": "AE0445FC2A095354FED2BD81660DAC07D67A859656AD64E4CC7167FF43370F5C"
     },
     {
       "path": "battle_mechanics.json",
@@ -51,13 +51,13 @@
     },
     {
       "path": "trainers.json",
-      "bytes": 2675591,
-      "sha256": "CBAF6CF67B9C2346A3BF5C965BDE4B49902C5419942D795EDF68E6717CDB6E1C"
+      "bytes": 3232050,
+      "sha256": "9F5E610D4F1828F62B3B63431145FFD60C310D31FB1FEA5897C4F12155CCAF71"
     },
     {
       "path": "trainer_order.json",
-      "bytes": 174809,
-      "sha256": "1D8A90D85A302AD57030DE9EE86FE3F8D18B41ACD2BCC27E30DDC0AD3C90F675"
+      "bytes": 194176,
+      "sha256": "7C5170294E4F92BF18B0D751AD7E46C7D51D8E150A244F7B356688B5363E83B2"
     },
     {
       "path": "trainer_battle_groups.json",
@@ -82,7 +82,7 @@
     {
       "path": "starter_selection.json",
       "bytes": 16005,
-      "sha256": "FA0F1248D558A851E52B9453EBF2D25969B1A93629B243ECD4F2DFB2B4A326B5"
+      "sha256": "A00AFA180F18F18CFF08FEB2F8F9C4C60D3CCC0AFF5C188ACBF9AFC2890615EA"
     }
   ]
 }
