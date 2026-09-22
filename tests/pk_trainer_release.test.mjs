@@ -30,11 +30,11 @@ test("PK released standalone encounters use mandatory Doubles, while later Cyrus
 
 test("PK occurrence optionality is separate from mandatory battle format", () => {
   const records = documents["trainer_order.json"].records;
-  assert.equal(records.length, 389);
-  assert.equal(records.filter(row => row.mandatory === true).length, 321);
+  assert.equal(records.length, 392);
+  assert.equal(records.filter(row => row.mandatory === true).length, 324);
   assert.equal(records.filter(row => row.mandatory === false).length, 68);
   const formats = records.map(row => dataset.trainerBattleFormat(row.trainerId));
-  assert.equal(formats.filter(format => format === "singles").length, 278);
+  assert.equal(formats.filter(format => format === "singles").length, 281);
   assert.equal(formats.filter(format => format === "doubles").length, 111);
 });
 

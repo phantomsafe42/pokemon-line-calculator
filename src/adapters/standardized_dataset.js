@@ -234,6 +234,10 @@ export function createDatasetContext({ manifest, mechanics, documents }) {
     types: asMap(loaded["types.json"]),
     trainers: asMap(loaded["trainers.json"])
   };
+  // Dataset-reviewed labels are separate from raw trainer identity and mechanics.
+  indexes.trainers = new Map([...indexes.trainers].map(([id, trainer]) => [id,
+    trainer.presentation?.displayName ? { ...trainer, sourceDisplayName: trainer.displayName, displayName: trainer.presentation.displayName } : trainer
+  ]));
   indexes.evolutions = asMap(loaded["evolutions.json"]);
 
   const encounters = installTrainerEncounters(indexes.trainers, loaded['trainer_battle_groups.json'], mechanics.trainerBattleProfile);
