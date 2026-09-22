@@ -242,6 +242,8 @@
   }
 
   const TRAINER_GAME_STYLE_ALIASES = Object.freeze({
+    pk: "platinum-kaizo", platinumkaizo: "platinum-kaizo", pokemonplatinumkaizo: "platinum-kaizo",
+    unbound: "pokemon-unbound", pokemonunbound: "pokemon-unbound",
     r: "red", red: "red", g: "green", green: "green", b: "blue", blue: "blue",
     rb: "red-blue", redblue: "red-blue", rg: "red-green", redgreen: "red-green",
     rgb: "red-green-blue", redgreenblue: "red-green-blue", rgby: "red-green-blue-yellow", redgreenblueyellow: "red-green-blue-yellow",
@@ -294,12 +296,12 @@
       : rawKind === "character" || rawKind === "trainer" || rawKind === "named" ? "character"
         : rawKind === "special" ? "special" : null;
     const subjectValue = query.subject ?? query.trainerClass ?? query.category ?? query.character ?? query.trainer ?? query.name ?? query.special;
-    const subject = subjectKind === "class" ? normalizeTrainerClass(subjectValue) : trainerSlug(subjectValue);
+    const subject = subjectKind === "class" && gameStyle !== "pokemon-unbound" ? normalizeTrainerClass(subjectValue) : trainerSlug(subjectValue);
     if (!gameStyle || !subjectKind || !subject) return null;
     const spriteSet = query.spriteSet == null || query.spriteSet === "" ? null : trainerSlug(query.spriteSet);
     const gender = query.gender == null || query.gender === "" ? null : normalizeGender(query.gender);
     if (gender && !["default", "female", "male"].includes(gender)) return null;
-    const presentationAliases = { front: "battle-front", battlefront: "battle-front", back: "battle-back", battleback: "battle-back", versus: "versus", vs: "versus", portrait: "portrait" };
+    const presentationAliases = { front: "battle-front", battlefront: "battle-front", back: "battle-back", battleback: "battle-back", versus: "versus", vs: "versus", portrait: "portrait", overworld: "overworld" };
     const defaultPresentation = ["x-y", "omega-ruby-alpha-sapphire", "sun-moon", "ultra-sun-ultra-moon", "lets-go-pikachu-eevee"].includes(gameStyle) ? "versus" : "battle-front";
     const presentation = presentationAliases[normalizeToken(query.presentation ?? query.view ?? defaultPresentation)];
     if (!presentation) return null;
