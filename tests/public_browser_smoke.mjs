@@ -728,6 +728,8 @@ try {
     await delay(250);
   }
   assert.ok(gen5Lines.length && gen5Lines.every(text => /\(\d+ × [\d.]+ = \d+/.test(text)), JSON.stringify(gen5Lines));
+  const calcTypeSegmentColor = await evaluate(page, `getComputedStyle(document.querySelector('#player-action-panel .move-button[data-move-type="normal"] .move-type-icon')).backgroundColor`);
+  assert.equal(calcTypeSegmentColor, 'rgb(159, 161, 159)', 'Type icon color fills its main battle-card segment');
   await evaluate(page, `document.querySelector('.ai-replacement-note').scrollIntoView({block:'center'})`);
   const gen5Image = await page.send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });
   await fs.writeFile(path.join(tempRoot, 'replacement-reasons-gen5.png'), Buffer.from(gen5Image.data, 'base64'));

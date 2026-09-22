@@ -876,7 +876,6 @@ dialog::backdrop { background: rgba(0, 0, 0, .75); }
   border-left: 1px solid var(--control-line);
   background: rgb(0 0 0 / 10%);
 }
-.move-type-icon { background: var(--preview-type-color); }
 .move-category-icon { background: var(--bg); }
 .move-type-icon img { width: 30.8px; height: 30.8px; object-fit: contain; }
 .move-category-icon img { width: 33px; height: 22px; object-fit: contain; }
