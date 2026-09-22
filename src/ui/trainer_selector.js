@@ -3,7 +3,7 @@ import { triplePositionForSlot } from '../rulesets/triple_battle.js';
 import { starterAllows } from '../adapters/starter_selection.js';
 
 // Presentation only: keep source names, IDs and encounter disambiguators intact.
-export const displayTrainerName = name => String(name || '')
+export const displayBattleLabel = name => String(name || '')
   // Square/pipe annotations in the current contracts describe teams,
   // difficulty, battle format or location, not the in-game trainer name.
   .replace(/\s*\[[^\[\]]*\]/gu, '')
@@ -13,6 +13,35 @@ export const displayTrainerName = name => String(name || '')
   .replace(/\s*\((?:Encounter\s*#?\s*\d+|(?:Single|Double|Triple|Rotation|Multi)\s+Battle|(?:Morning|Day|Night)\s+only|w\.\s+[^()]+|(?:immediately\s+after|after|three\s+beasts\s+back\s+to\s+back|two\s+birds\s+back\s+to\s+back|entrance\s+and)\s+[^()]+)\)/giu, '')
   .replace(/\s+(?:[·—–-]\s*)?(?:Encounter\s*#?\s*\d+|#\d+)(?=\s*(?:&|·|\(|$))/giu, '')
   .trim();
+// Name presentation only. Do not apply these rules to user-authored plan names
+// or mechanics-variant labels, whose numbers are meaningful.
+export function displayTrainerName(name, gameId) {
+  const decoded = String(name || '').replace(/\{\{([^{}]+)\}\}/gu, (_, body) => body.includes('|') ? body.split('|').at(-1) : body.replace(/^ho(?=[A-Z])/u, ''));
+  let label = displayBattleLabel(decoded)
+    .replace(/[♂♀]/gu, '')
+    .replace(/\s*\([MF]\)/gu, '')
+    .replace(/\b(Swimmer|Cooltrainer|Ace Trainer|Pokémon Ranger|Pokemon Ranger|Clerk|Camper|Picnicker|Psychic|Tuber)[-~][MF0-9]+\b/giu, '$1')
+    .replace(/[{}]/gu, '')
+    .replace(/\.{2,}/gu, ' ')
+    .replace(/\bCooltrainer\b/giu, 'Cool Trainer')
+    .replace(/\s+-\s+(?:Easy|Normal|Difficult|Expert|Insane)\s*$/giu, '')
+    .replace(/\d+(?:\s+\d+)*(?=\s*(?:&|$))/gu, '')
+    .replace(/\b(Team Plasma Grunt)\s+\1\b/giu, '$1')
+    .replace(/\s+/gu, ' ').trim();
+  // A rival label is presentation; source character identity stays intact.
+  label = label.split(/\s+&\s+/u).map(part =>
+    /^(?:Rival(?:\s|$)|Pok[eé]mon Trainer Barry$)/iu.test(part) ? 'Rival' : part
+  ).join(' & ');
+  if (gameId === 'fire-red-omega') label = label.replace(/^Leader\s+/u, '');
+  return label;
+}
+
+export function campaignTrainerGroups(groups) {
+  const end = groups.findIndex(group => /^(?:champion|league|elite-?four)$/u.test(group.id));
+  const bounded = end < 0 ? groups : groups.slice(0, end + 1);
+  return bounded.filter(group => !['other', 'postgame', 'facilities', 'frontier', 'battle-frontier'].includes(group.id));
+}
+
 export const trainerFormatLabel = format => ({ singles: 'Single', doubles: 'Double', triples: 'Triple', rotation: 'Rotation' })[format] || format;
 
 const searchText = value => String(value || '').normalize('NFKD').replace(/\p{M}/gu, '').toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
@@ -25,7 +54,7 @@ export function trainerSearchIndex(dataset, groups, starterId) {
     const records = [trainer, ...participants];
     const fields = [], locations = [];
     for (const record of records) {
-      fields.push(displayTrainerName(record.displayName || record.name), record.displayName || record.name, record.shortName);
+      fields.push(displayTrainerName(record.displayName || record.name, dataset.gameId), record.displayName || record.name, record.shortName);
       locations.push(record.locationName, record.location);
       const variants = (record.mechanicsVariants || []).filter(v => starterAllows(dataset.starterSelection, starterId, record.id, v.id));
       const teams = record.mechanicsVariants?.length ? variants.map(v => dataset.trainerTeam(record.id, v.id)) : [record.team || []];
@@ -75,7 +104,7 @@ export function trainerDisplayBlocks(dataset, trainer) {
 }
 
 export function trainerSpriteQuery(trainer) {
-  const identity = trainer?.trainerVisualIdentity;
+  const identity = trainer?.presentation?.trainerVisualIdentity || trainer?.trainerVisualIdentity;
   if (identity?.status !== 'resolved') return null;
   return { kind: 'trainer-sprite', gameStyle: identity.gameStyle, presentation: identity.presentation,
     subjectKind: identity.subjectKind, subject: identity.subjectId, gender: identity.gender, variant: identity.variant,
@@ -143,8 +172,60 @@ export function preloadTrainerSplitIcons(dataset, resolver) {
   }
 }
 
+export function trainerSpriteQueries(dataset) {
+  const queries = new Map();
+  const visit = trainer => {
+    const query = trainerSpriteQuery(trainer);
+    if (query) queries.set(JSON.stringify(query), query);
+    for (const identity of trainer.trainerVisualIdentity?.alternatives || []) visit({ trainerVisualIdentity: identity });
+    for (const participant of trainer.trainerVisualParticipants || []) visit(participant);
+  };
+  for (const trainer of Object.values(dataset.documents['trainers.json'].records)) visit(trainer);
+  return [...queries.values()];
+}
+
+// Start at game selection, deduplicating shared class portraits. Four low-priority
+// downloads at a time leave capacity for game data and split icons. Retain loaded
+// images so later portrait elements reuse the browser's decoded image cache.
+const trainerImageCaches = new WeakMap();
+export function preloadTrainerSprites(dataset, resolver) {
+  if (!resolver) return Promise.resolve();
+  let state = trainerImageCaches.get(resolver);
+  if (!state) { state = { images: new Map(), run: 0 }; trainerImageCaches.set(resolver, state); }
+  const run = ++state.run, queries = trainerSpriteQueries(dataset);
+  const load = query => {
+    const key = JSON.stringify(query);
+    if (state.images.has(key)) return state.images.get(key).done;
+    const image = element('img', ''); image.loading = 'eager'; image.fetchPriority = 'low';
+    const entry = { image };
+    state.images.set(key, entry);
+    entry.done = new Promise(resolve => {
+      let finished = false;
+      const finish = ok => {
+        if (finished) return; finished = true; clearTimeout(timer);
+        image.onload = null; image.onerror = null;
+        if (!ok) state.images.delete(key);
+        resolve();
+      };
+      const timer = setTimeout(() => finish(false), 15000);
+      image.onload = () => finish(true); image.onerror = () => finish(false);
+      try {
+        if (resolver.setAssetImage) resolver.setAssetImage(image, query, { onUnavailable: () => finish(false) });
+        else Promise.resolve(resolver.resolveAsset(query)).then(result => {
+          if (result.status === 'ok') image.src = result.url; else finish(false);
+        }).catch(() => finish(false));
+      } catch { finish(false); }
+    });
+    if (state.images.size > 384) state.images.delete(state.images.keys().next().value);
+    return entry.done;
+  };
+  return Promise.all(Array.from({ length: 4 }, async () => {
+    while (state.run === run && queries.length) await load(queries.shift());
+  }));
+}
+
 export function createTrainerSelector({ dialog, dataset, starterId, resolver, renderCard, onContinue }) {
-  const groups = dataset.trainerGroups(starterId);
+  const groups = campaignTrainerGroups(dataset.trainerGroups(starterId));
   const tabs = dialog.querySelector('.trainer-split-tabs');
   const list = dialog.querySelector('.trainer-options');
   const next = dialog.querySelector('.trainer-continue');
@@ -242,14 +323,14 @@ export function createTrainerSelector({ dialog, dataset, starterId, resolver, re
       const row = element('div', 'trainer-option'); row.tabIndex = 0; row.setAttribute('role', 'option'); row.dataset.trainerId = trainer.id;
       const requirement = trainerRequirement(dataset, trainer, splitId); row.dataset.requirement = requirement;
       const requirementLabel = requirement === 'unknown' ? 'Requirement unspecified' : requirement === 'required' ? 'Required' : 'Optional';
-      row.setAttribute('aria-label', `${displayTrainerName(trainer.displayName || trainer.name)} · ${requirementLabel}`);
+      row.setAttribute('aria-label', `${displayTrainerName(trainer.displayName || trainer.name, dataset.gameId)} · ${requirementLabel}`);
       row.title = requirementLabel;
       let blocks;
       try { blocks = trainerDisplayBlocks(dataset, trainer); } catch { blocks = []; }
       for (const block of blocks) {
         const section = element('div', 'trainer-block'); section.dataset.ownerTrainerId = block.trainer.id;
         const heading = element('div', 'trainer-heading');
-        heading.append(element('h3', 'trainer-name', displayTrainerName(block.trainer.displayName || block.trainer.name)),
+        heading.append(element('h3', 'trainer-name', displayTrainerName(block.trainer.displayName || block.trainer.name, dataset.gameId)),
           element('span', 'trainer-format', `· ${block.multi ? 'Multi Battle' : trainerFormatLabel(block.format)}`));
         if (block.trainer.mechanicsVariants?.length > 1) heading.append(element('span', 'trainer-format', '· Team varies'));
         const team = element('div', 'trainer-team');
@@ -261,7 +342,7 @@ export function createTrainerSelector({ dialog, dataset, starterId, resolver, re
         if (!block.entries.length) team.append(element('p', 'muted', 'Choose an exact team in New Line.'));
         section.append(heading, portrait(block.trainer), team); row.append(section);
       }
-      if (!blocks.length) row.append(element('h3', 'trainer-name', displayTrainerName(trainer.displayName || trainer.name)));
+      if (!blocks.length) row.append(element('h3', 'trainer-name', displayTrainerName(trainer.displayName || trainer.name, dataset.gameId)));
       const select = () => { selected = trainer.id; updateSelection(); };
       row.onclick = select;
       row.onkeydown = event => {

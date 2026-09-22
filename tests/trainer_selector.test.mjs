@@ -4,7 +4,25 @@ import fs from 'node:fs';
 import { fixtureTriplePlan } from './helpers.mjs';
 import { createDatasetContext, REQUIRED_DATASET_SOURCES } from '../src/adapters/standardized_dataset.js';
 import { triplePositionForSlot } from '../src/rulesets/triple_battle.js';
-import { displayTrainerName, trainerDisplayBlocks, trainerRequirement, trainerSpriteQuery, trainerSplitBadgeQuery, trainerSearchIndex, searchTrainerIndex, trainerPortraitFallback } from '../src/ui/trainer_selector.js';
+import { campaignTrainerGroups, displayBattleLabel, displayTrainerName, trainerDisplayBlocks, trainerRequirement, trainerSpriteQuery, trainerSplitBadgeQuery, trainerSearchIndex, searchTrainerIndex, trainerPortraitFallback, trainerSpriteQueries, preloadTrainerSprites } from '../src/ui/trainer_selector.js';
+
+test('portrait preload deduplicates classes, includes alternatives and participants, and bounds concurrent loads', async () => {
+  const identity = subjectId => ({status:'resolved',gameStyle:'platinum',presentation:'battle-front',subjectKind:'character',subjectId,gender:'default',variant:'default'});
+  const records = Object.fromEntries(Array.from({length:12},(_,i)=>[i,{trainerVisualIdentity:identity(String(i%7))}]));
+  records.pair={trainerVisualParticipants:[{trainerVisualIdentity:identity('partner')}]};
+  records.variant={trainerVisualIdentity:{status:'ambiguous',alternatives:[identity('alternative'),identity('0')]}};
+  const dataset={documents:{'trainers.json':{records}}};
+  assert.equal(trainerSpriteQueries(dataset).length,9);
+  const before=JSON.stringify(records), oldDocument=globalThis.document;
+  globalThis.document={createElement:()=>({})};
+  let active=0, peak=0, requests=0;
+  const resolver={setAssetImage(image){requests++;peak=Math.max(peak,++active);setTimeout(()=>{active--;image.onload();},1);}};
+  try {
+    await preloadTrainerSprites(dataset,resolver);assert.equal(peak,4);assert.equal(requests,9);
+    await preloadTrainerSprites(dataset,resolver);assert.equal(requests,9);
+    assert.equal(JSON.stringify(records),before);
+  } finally {globalThis.document=oldDocument;}
+});
 
 test('inapplicable portraits do not classify paired human trainers as wild battles', () => {
   const dataset = load('pokemon-unbound');
@@ -90,7 +108,7 @@ function load(game) {
 
 test('Technical trainer annotations are hidden across games without changing records', () => {
   for (const [input, expected] of [
-    ['Pokémon Trainer Barry #2 [Piplup]', 'Pokémon Trainer Barry'],
+    ['Pokémon Trainer Barry #2 [Piplup]', 'Rival'],
     ['Plasma Grunt #884', 'Plasma Grunt'],
     ['Lenora #1 & Scientist Hawes #2', 'Lenora & Scientist Hawes'],
     ['Leader · Encounter #2', 'Leader'], ['Leader (Encounter #2)', 'Leader'],
@@ -102,9 +120,9 @@ test('Technical trainer annotations are hidden across games without changing rec
     ['Veteran Grant (DOUBLE BATTLE)', 'Veteran Grant'],
     ['Jogger Raul (Morning only)', 'Jogger Raul'],
     ['Galactic Grunt (w. Galactic Grunt)', 'Galactic Grunt'],
-    ['Science Society Scientist (Supply and Demand) - Difficult', 'Science Society Scientist (Supply and Demand) - Difficult'],
+    ['Science Society Scientist (Supply and Demand) - Difficult', 'Science Society Scientist (Supply and Demand)'],
     ['Black Ferrothorn Goon ("Odd Odd Docks") |Antisis City| #2', 'Black Ferrothorn Goon ("Odd Odd Docks")'],
-    ['Rival ???', 'Rival ???']
+    ['Rival ???', 'Rival']
   ]) assert.equal(displayTrainerName(input), expected);
   const root = new URL('../src/generated/datasets/', import.meta.url);
   for (const game of fs.readdirSync(root)) {
@@ -119,6 +137,38 @@ test('Technical trainer annotations are hidden across games without changing rec
     }
     assert.equal(JSON.stringify(records), before);
   }
+});
+
+
+test('review cleanup preserves initials, paired names, user titles and internal identities', () => {
+  for (const [input, expected] of [
+    ['Clerk ♀ Ingrid2', 'Clerk Ingrid'], ['Swimmer-M Luis', 'Swimmer Luis'],
+    ['Tuber~3 Alexis', 'Tuber Alexis'], ['Cooltrainer {Mary}12', 'Cool Trainer Mary'],
+    ['Team Plasma Grunt Team Plasma Grunt18 1', 'Team Plasma Grunt'],
+    ['Leader..Roark3', 'Leader Roark'], ['Hiker J.J. Ahern', 'Hiker J.J. Ahern'],
+    ['Lucas12 & Dawn11', 'Lucas & Dawn'], ['Team Rocket Grunt (M)', 'Team Rocket Grunt'],
+    ['Rival Blue12', 'Rival'], ['Lt. Surge', 'Lt. Surge']
+  ]) assert.equal(displayTrainerName(input), expected);
+  assert.equal(displayTrainerName('Leader Brock', 'fire-red-omega'), 'Brock');
+  assert.equal(displayTrainerName('Leader Brock', 'pokemon-firered'), 'Leader Brock');
+  assert.equal(displayBattleLabel('My attempt 12'), 'My attempt 12');
+  assert.equal(displayBattleLabel('Variant 360'), 'Variant 360');
+});
+
+
+test('campaign UI ends at the first league and hidden cards remain addressable', () => {
+  for (const game of fs.readdirSync(new URL('../src/generated/datasets/', import.meta.url))) {
+    const dataset = load(game), all = dataset.trainerGroups(), groups = campaignTrainerGroups(all);
+    assert.match(groups.at(-1).id, /^(champion|league|elitefour)$/u, game);
+    assert.ok(groups.every(g => !['other','postgame','facilities','frontier'].includes(g.id)), game);
+    const index = trainerSearchIndex(dataset, groups, null), shown = new Set(index.map(e=>e.trainer.id));
+    for(const group of all.filter(g=>!groups.includes(g)))for(const trainer of group.trainers){
+      assert.ok(dataset.trainer(trainer.id), 'hidden trainer remains in data');
+      if(!groups.some(g=>g.trainers.some(t=>t.id===trainer.id)))assert.ok(!shown.has(trainer.id));
+    }
+  }
+  assert.equal(displayTrainerName('Roughneck {{un|Nicky}}'), 'Roughneck Nicky');
+  assert.equal(displayTrainerName('Battle Girl {{hoTessa}}'), 'Battle Girl Tessa');
 });
 
 test('selector Triple labels match the actual plan opening without changing the roster', () => {
