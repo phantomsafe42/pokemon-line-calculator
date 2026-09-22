@@ -2,12 +2,12 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-firered-dataset",
   "source": "Datasets/Pokemon FireRed/source-data",
-  "sourceTreeSha256": "E3AE91A5EE17ECA59A10611022A5D4C1E3FF0F55004B7313477F10D2C4489ABE",
+  "sourceTreeSha256": "8C3DE81C85C619B543F5BAF37C93D4AD470DE2D484336A7156D53E5683AF776C",
   "files": [
     {
       "path": "dataset_manifest.json",
-      "bytes": 73823,
-      "sha256": "A9C432CB35C21AE5F431F080880F18B36100C3B0BE987C66750A5B316DC47C2E"
+      "bytes": 74054,
+      "sha256": "699929648F19A8A42A232FC1C9993F7A71BF2D9F179952BC145E33727BD5AB43"
     },
     {
       "path": "battle_mechanics.json",
@@ -51,8 +51,8 @@
     },
     {
       "path": "trainers.json",
-      "bytes": 5950696,
-      "sha256": "B51AF1F27CE65301F5ED583BB2919D2D995EE5736619BF724A5C51C3705C69B9"
+      "bytes": 5955589,
+      "sha256": "D4D27A85D1A4B09912C063DAA9B53CE081A0FDAA29B94B9C718E789A1675FF37"
     },
     {
       "path": "trainer_order.json",
@@ -82,7 +82,7 @@
     {
       "path": "starter_selection.json",
       "bytes": 8711,
-      "sha256": "05ED34B92605C7F068ED93FAE479FEE87F7364D6BFE7A8346ED19B951034655E"
+      "sha256": "7D9B765544B3EB54FCCB582424546D346ED190279131AF184ED422CADB7B4CAF"
     }
   ]
 }

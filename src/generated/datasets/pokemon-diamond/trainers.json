@@ -58442,6 +58442,13 @@
             "source": "tools/imports/vanilla/pret-pokediamond-038cccaed5de8f013875bc5d734f912d1de08e0f/files/poketool/trainer/trdata.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-diamond-trainer-0248": {
@@ -58769,6 +58776,13 @@
             "source": "tools/imports/vanilla/pret-pokediamond-038cccaed5de8f013875bc5d734f912d1de08e0f/files/poketool/trainer/trdata.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-diamond-trainer-0249": {
@@ -58958,6 +58972,13 @@
             "source": "tools/imports/vanilla/pret-pokediamond-038cccaed5de8f013875bc5d734f912d1de08e0f/files/poketool/trainer/trdata.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-diamond-trainer-0250": {
@@ -69622,6 +69643,14 @@
             "source": "tools/imports/vanilla/pret-pokediamond-038cccaed5de8f013875bc5d734f912d1de08e0f/files/poketool/trainer/trdata.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Ace Trainer Jamie",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921",
+          "ref": "R00619"
+        }
       }
     },
     "pokemon-diamond-trainer-0287": {
@@ -109858,6 +109887,13 @@
             "source": "tools/imports/vanilla/pret-pokediamond-038cccaed5de8f013875bc5d734f912d1de08e0f/files/poketool/trainer/trdata.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-diamond-trainer-0471": {
@@ -110441,6 +110477,13 @@
             "source": "tools/imports/vanilla/pret-pokediamond-038cccaed5de8f013875bc5d734f912d1de08e0f/files/poketool/trainer/trdata.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-diamond-trainer-0472": {
@@ -110732,6 +110775,13 @@
             "source": "tools/imports/vanilla/pret-pokediamond-038cccaed5de8f013875bc5d734f912d1de08e0f/files/poketool/trainer/trdata.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-diamond-trainer-0473": {
@@ -111315,6 +111365,13 @@
             "source": "tools/imports/vanilla/pret-pokediamond-038cccaed5de8f013875bc5d734f912d1de08e0f/files/poketool/trainer/trdata.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-diamond-trainer-0474": {
@@ -111888,6 +111945,13 @@
             "source": "tools/imports/vanilla/pret-pokediamond-038cccaed5de8f013875bc5d734f912d1de08e0f/files/poketool/trainer/trdata.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-diamond-trainer-0475": {
@@ -112179,6 +112243,13 @@
             "source": "tools/imports/vanilla/pret-pokediamond-038cccaed5de8f013875bc5d734f912d1de08e0f/files/poketool/trainer/trdata.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-diamond-trainer-0476": {
@@ -112519,6 +112590,13 @@
             "source": "tools/imports/vanilla/pret-pokediamond-038cccaed5de8f013875bc5d734f912d1de08e0f/files/poketool/trainer/trdata.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-diamond-trainer-0477": {
@@ -112859,6 +112937,13 @@
             "source": "tools/imports/vanilla/pret-pokediamond-038cccaed5de8f013875bc5d734f912d1de08e0f/files/poketool/trainer/trdata.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-diamond-trainer-0478": {
@@ -113199,6 +113284,13 @@
             "source": "tools/imports/vanilla/pret-pokediamond-038cccaed5de8f013875bc5d734f912d1de08e0f/files/poketool/trainer/trdata.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-diamond-trainer-0479": {
@@ -113588,6 +113680,13 @@
             "source": "tools/imports/vanilla/pret-pokediamond-038cccaed5de8f013875bc5d734f912d1de08e0f/files/poketool/trainer/trdata.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-diamond-trainer-0480": {
@@ -113977,6 +114076,13 @@
             "source": "tools/imports/vanilla/pret-pokediamond-038cccaed5de8f013875bc5d734f912d1de08e0f/files/poketool/trainer/trdata.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-diamond-trainer-0481": {
@@ -114366,6 +114472,13 @@
             "source": "tools/imports/vanilla/pret-pokediamond-038cccaed5de8f013875bc5d734f912d1de08e0f/files/poketool/trainer/trdata.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-diamond-trainer-0482": {
@@ -176584,6 +176697,13 @@
             "source": "tools/imports/vanilla/pret-pokediamond-038cccaed5de8f013875bc5d734f912d1de08e0f/files/poketool/trainer/trdata.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-diamond-trainer-0838": {
@@ -176978,6 +177098,13 @@
             "source": "tools/imports/vanilla/pret-pokediamond-038cccaed5de8f013875bc5d734f912d1de08e0f/files/poketool/trainer/trdata.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-diamond-trainer-0839": {
@@ -177372,6 +177499,13 @@
             "source": "tools/imports/vanilla/pret-pokediamond-038cccaed5de8f013875bc5d734f912d1de08e0f/files/poketool/trainer/trdata.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-diamond-trainer-0840": {
@@ -177766,6 +177900,13 @@
             "source": "tools/imports/vanilla/pret-pokediamond-038cccaed5de8f013875bc5d734f912d1de08e0f/files/poketool/trainer/trdata.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-diamond-trainer-0841": {
@@ -178160,6 +178301,13 @@
             "source": "tools/imports/vanilla/pret-pokediamond-038cccaed5de8f013875bc5d734f912d1de08e0f/files/poketool/trainer/trdata.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-diamond-trainer-0842": {
@@ -178554,6 +178702,13 @@
             "source": "tools/imports/vanilla/pret-pokediamond-038cccaed5de8f013875bc5d734f912d1de08e0f/files/poketool/trainer/trdata.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-diamond-trainer-0843": {

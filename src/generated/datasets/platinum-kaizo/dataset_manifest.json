@@ -195,8 +195,43 @@
       "source": "trainer_battle_format_report.json",
       "status": "passed",
       "unresolved": 0,
-      "sha256": "562269e70d3cd930d5c44be02351f4dc9d6fe6aeae2eebf9d214ccbdeca3456b",
+      "sha256": "a424ff9acbbcc1d736c405a9f907c89aaeada0c3f428a67c2ce62d22b4860996",
       "excludedReferenceRecords": 5
+    },
+    "galacticSquadVisualIdentity": {
+      "required": true,
+      "scope": "galactic-squad-only",
+      "schemaVersion": "trainer-visual-identity/v1alpha2",
+      "source": "galactic_squad_visual_report.json",
+      "status": "passed",
+      "counts": {
+        "ambiguous": 0,
+        "inapplicable": 0,
+        "resolved": 14,
+        "unavailable": 0
+      },
+      "decisionsSha256": "731d684cf4f739e4f7de755118dd8f43f4b5b5b54f3b060ea54013895de3a863",
+      "authority": {
+        "path": "galactic_squad_visual_sources.json",
+        "sha256": "d50ddc96d27fb06127a985a508a20f37770408b0958ce3277868a257c011ceda"
+      },
+      "resolver": {
+        "path": "tools/pk_galactic_squad_visuals.js",
+        "sha256": "ddfd74bcef455809e04cf91222d5b41b23d1a5fc556c90bd3184ce50a9f442f0"
+      },
+      "schema": {
+        "path": "schemas/trainer-visual-identity-v1alpha2.schema.json",
+        "sha256": "9d59c0b88a242b5f73f4f798c60ab7df8f3cbfbe70a0f941a37d0bf672ee79e5"
+      }
+    },
+    "trainerSelectVisuals": {
+      "required": true,
+      "source": "trainer_select_visual_report.json",
+      "status": "passed",
+      "resolved": 483,
+      "variantDependent": 0,
+      "unmapped": 6,
+      "scope": "FRO uses FireRed art; PK and Renegade Platinum use Platinum art. Exact ROM selectors, not display names, identify the class. This is presentation policy, not proof of identical ROM artwork."
     }
   },
   "standardizedSources": [
@@ -241,7 +276,10 @@
     "imports/trainer-ai/nightmare-final/pk-nightmare-final-reproduction.json",
     "imports/trainer-ai/nightmare-final/pk-nightmare-final-external-abi.json",
     "starter_selection.json",
-    "trainer_battle_format_report.json"
+    "trainer_battle_format_report.json",
+    "galactic_squad_visual_sources.json",
+    "galactic_squad_visual_report.json",
+    "trainer_select_visual_report.json"
   ],
   "builders": {
     "build": "node ..\\tools\\standardize_legacy_game.js platinum-kaizo",
@@ -263,7 +301,9 @@
     "starterSelectionCheck": "node ../tools/build_starter_selection.js --check",
     "trainerOptionalityCheck": "node --test tools/test_platinum_kaizo_optionality.js && node tools/run_python.mjs tools/test_platinum_kaizo_optionality.py",
     "trainerBattleFormatCheck": "node --test tools/test_platinum_kaizo_battle_formats.js && node tools/run_python.mjs tools/test_platinum_kaizo_battle_formats.py",
-    "officialEncounterCheck": "node tools/acquire_pk_encounter_reference.mjs --check && node --test tools/test_platinum_kaizo_official_encounters.js && node tools/run_python.mjs tools/test_platinum_kaizo_official_encounters.py"
+    "officialEncounterCheck": "node tools/acquire_pk_encounter_reference.mjs --check && node --test tools/test_platinum_kaizo_official_encounters.js && node tools/run_python.mjs tools/test_platinum_kaizo_official_encounters.py",
+    "trainerSelectVisuals": "node tools/hack_trainer_visuals.js --write",
+    "trainerSelectVisualsCheck": "node tools/hack_trainer_visuals.js --check && node --test tools/test_hack_trainer_visuals.js"
   },
   "categoryApplicability": {
     "species": {

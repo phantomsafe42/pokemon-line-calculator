@@ -762,11 +762,15 @@
       "role": "pinned game-specific battle contract, independent known answers, or validation authority"
     },
     "../../tools/trainer_visual_identity.py": {
-      "sha256": "496a9be8dffe7dd651d01a8340e8649fdd5408e93ffe10f6ade6415bc82aa4bd",
+      "sha256": "c8fb45d558cfc16c6a3cea64ece291fd4844963977198f5a6ba2d5b1ec3273e4",
+      "role": "asset-neutral trainer visual identity resolver or schema"
+    },
+    "../../tools/imports/vanilla/b2w2-trainer-sprite-sets.json": {
+      "sha256": "ff6e1f89ca2f6f5f995374737e1c42b20317eccd71359ab1aa4b0db0ccf990e7",
       "role": "asset-neutral trainer visual identity resolver or schema"
     },
     "../../schemas/trainer-visual-identity.schema.json": {
-      "sha256": "8ef23b44f34dce70ec5b9d125a902b214c774884a911c93bf308e280fead094c",
+      "sha256": "283aa92ff7a402c7c4816e6a8a59caddbf5fe4fd23ad779c5b537dba9f4ad0e2",
       "role": "asset-neutral trainer visual identity resolver or schema"
     },
     "../../tools/imports/vanilla/trainer-visual-identity-authority.json": {

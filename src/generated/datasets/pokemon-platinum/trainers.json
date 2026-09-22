@@ -18631,6 +18631,14 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/twins_teri_and_tia.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Twins Teri & Tia",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921",
+          "ref": "R01045"
+        }
       }
     },
     "pokemon-platinum-trainer-0066": {
@@ -22256,6 +22264,14 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/double_team_zac_and_jen.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Double Team Zac & Jen",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921",
+          "ref": "R01046"
+        }
       }
     },
     "pokemon-platinum-trainer-0076": {
@@ -71752,6 +71768,13 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/rival_route_203_piplup.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-platinum-trainer-0248": {
@@ -72079,6 +72102,13 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/rival_route_203_turtwig.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-platinum-trainer-0249": {
@@ -72406,6 +72436,13 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/rival_route_203_chimchar.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-platinum-trainer-0250": {
@@ -85574,6 +85611,14 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/ace_trainer_jamie.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Ace Trainer Jamie",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921",
+          "ref": "R01049"
+        }
       }
     },
     "pokemon-platinum-trainer-0287": {
@@ -87099,6 +87144,14 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/belle_and_pa_ava_and_matt.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Belle & Pa Ava & Matt",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921",
+          "ref": "R01044"
+        }
       }
     },
     "pokemon-platinum-trainer-0291": {
@@ -137664,6 +137717,13 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/rival_route_209_piplup.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-platinum-trainer-0471": {
@@ -138189,6 +138249,13 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/rival_route_209_turtwig.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-platinum-trainer-0472": {
@@ -138694,6 +138761,13 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/rival_route_209_chimchar.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-platinum-trainer-0473": {
@@ -139189,6 +139263,13 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/rival_pastoria_city_piplup.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-platinum-trainer-0474": {
@@ -139704,6 +139785,13 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/rival_pastoria_city_turtwig.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-platinum-trainer-0475": {
@@ -140199,6 +140287,13 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/rival_pastoria_city_chimchar.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-platinum-trainer-0476": {
@@ -140781,6 +140876,13 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/rival_canalave_city_piplup.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-platinum-trainer-0477": {
@@ -141383,6 +141485,13 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/rival_canalave_city_turtwig.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-platinum-trainer-0478": {
@@ -141965,6 +142074,13 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/rival_canalave_city_chimchar.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-platinum-trainer-0479": {
@@ -142634,6 +142750,13 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/rival_pokemon_league_piplup.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-platinum-trainer-0480": {
@@ -143323,6 +143446,13 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/rival_pokemon_league_turtwig.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-platinum-trainer-0481": {
@@ -144012,6 +144142,13 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/rival_pokemon_league_chimchar.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-platinum-trainer-0482": {
@@ -189290,6 +189427,13 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/rival_spear_pillar_piplup.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-platinum-trainer-0608": {
@@ -191882,6 +192026,13 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/rival_spear_pillar_turtwig.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-platinum-trainer-0620": {
@@ -192503,6 +192654,13 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/rival_spear_pillar_chimchar.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-platinum-trainer-0621": {
@@ -258768,6 +258926,13 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/rival_survival_area_1_piplup.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-platinum-trainer-0838": {
@@ -259335,6 +259500,13 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/rival_survival_area_1_turtwig.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-platinum-trainer-0839": {
@@ -259902,6 +260074,13 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/rival_survival_area_1_chimchar.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-platinum-trainer-0840": {
@@ -263868,6 +264047,13 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/rival_route_201_piplup.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-platinum-trainer-0851": {
@@ -264135,6 +264321,13 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/rival_route_201_turtwig.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-platinum-trainer-0852": {
@@ -264402,6 +264595,13 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/rival_route_201_chimchar.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-platinum-trainer-0853": {
@@ -288483,6 +288683,13 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/rival_fight_area_piplup.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-platinum-trainer-0924": {
@@ -289002,6 +289209,13 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/rival_fight_area_turtwig.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-platinum-trainer-0925": {
@@ -289541,6 +289755,13 @@
             "source": "tools/imports/vanilla/pret-pokeplatinum-7ebfc44ee950e0ecd0c68065bcfb8917df7e6917/res/trainers/data/rival_fight_area_chimchar.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-platinum-trainer-0926": {

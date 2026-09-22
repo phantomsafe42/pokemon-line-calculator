@@ -2,12 +2,12 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-black-dataset",
   "source": "Datasets/Pokemon Black/source-data",
-  "sourceTreeSha256": "0FB6C43B94C07CC1C49A3F27D8CD876BBC6E7759124251DAB2A8505CADFA7EE0",
+  "sourceTreeSha256": "13297D2295BA0D8AD28A06CD5C715C332F3BC89549E7DE74EDC9B04B69C4D34A",
   "files": [
     {
       "path": "dataset_manifest.json",
-      "bytes": 36172,
-      "sha256": "FE5262ABFF22FB0BE1868449201D51B47D722BC223BCD8C8AE456CCF5D84ECE2"
+      "bytes": 36403,
+      "sha256": "E1374EF27164327C50703FBD10625213836915949FE9B60DB2CFB7259FB1BF46"
     },
     {
       "path": "battle_mechanics.json",
@@ -51,13 +51,13 @@
     },
     {
       "path": "trainers.json",
-      "bytes": 6085393,
-      "sha256": "EFB5A7BB34D6424BA9A048FD78FB825D8ECA34A12F85589842733F4CF603152C"
+      "bytes": 6094675,
+      "sha256": "3EB444397779FDB28A94E30ADBD1C8FFA51DFCDFEE178FC5476310293FFB9B32"
     },
     {
       "path": "trainer_order.json",
-      "bytes": 1464334,
-      "sha256": "9D8E8D3DCE10D9B9BBE6408F2107EF075CC0B2F29E53D3090400F772ECD1C147"
+      "bytes": 1465156,
+      "sha256": "49A7010D9A0F11EF1876BB8F39D3B47B983F725A3F744440E032CED6C8C518EE"
     },
     {
       "path": "trainer_battle_groups.json",
@@ -81,8 +81,8 @@
     },
     {
       "path": "starter_selection.json",
-      "bytes": 11982,
-      "sha256": "BED4823B9DAD079DB94E3132C896B57F50D79B4C079E9324AA1E2D3479111EA5"
+      "bytes": 12762,
+      "sha256": "41F5441F342CB8C62EA99C8E56536D0EF5133FFB3E0BA92C821BEC68CC8FD172"
     }
   ]
 }

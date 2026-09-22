@@ -671,11 +671,11 @@
       },
       {
         "file": "trainers.json",
-        "sha256": "cbaf6cf67b9c2346a3bf5c965bde4b49902c5419942d795edf68e6717cdb6e1c"
+        "sha256": "9f5e610d4f1828f62b3b63431145ffd60c310d31fb1fea5897c4f12155ccaf71"
       },
       {
         "file": "trainer_order.json",
-        "sha256": "1d8a90d85a302ad57030de9ee86fe3f8d18b41acd2bcc27e30ddc0ad3c90f675"
+        "sha256": "7c5170294e4f92bf18b0d751ad7e46c7d51d8e150a244f7b356688b5363e83b2"
       },
       {
         "file": "trainer_battle_groups.json",

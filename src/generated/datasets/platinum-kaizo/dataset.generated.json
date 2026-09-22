@@ -2,12 +2,12 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-pk-dataset",
   "source": "Datasets/Platinum Kaizo/source-data",
-  "sourceTreeSha256": "365049090EAC544BB2F76143D3B47463A87DEBBC96DA28B0845719332457C7C9",
+  "sourceTreeSha256": "6DB3681EF5E6A057FB2FE1E43BAD9D0C2A123F0214278EB0C890E66E1FAA95A9",
   "files": [
     {
       "path": "dataset_manifest.json",
-      "bytes": 17209,
-      "sha256": "86D52DAB3E5427A4D1E7CB01317C70E489609CDCF9C1C214071E2FFAACCD5DFF"
+      "bytes": 18940,
+      "sha256": "79E911F6673A09CFE5141CE0F7E7C084DD836E0AA6963B2A5CF93B37D18BC6E3"
     },
     {
       "path": "battle_mechanics.json",
@@ -51,13 +51,13 @@
     },
     {
       "path": "trainers.json",
-      "bytes": 6616392,
-      "sha256": "0B4F265E783249CE3C0510869C6676ED112635EEA9DC7DEAE27B73035AFC68D5"
+      "bytes": 7164468,
+      "sha256": "296F0C3048AB3E412BA5111AE8178994DD69161B904F79744E9A9D37B3D13341"
     },
     {
       "path": "trainer_order.json",
-      "bytes": 499575,
-      "sha256": "9579F843EFE450F28776F67A214C2253A867200E828EFC66845F9BA55319E136"
+      "bytes": 502942,
+      "sha256": "EBAE696CEA81D4F672F0E3BA0AB4964C13D7D96036C0527B81CEDBDEEAB45B7C"
     },
     {
       "path": "trainer_battle_groups.json",
@@ -67,7 +67,7 @@
     {
       "path": "progression.json",
       "bytes": 3674,
-      "sha256": "B681FBCD1022B7B3CB12A35E9B8A7BD181581BF030D52BE8EBCC940888B04114"
+      "sha256": "8714424AE1DF4A62946FF806E4A70D2D5FCD34DB3D2F04C201390B00ABCBE010"
     },
     {
       "path": "evolutions.json",
@@ -81,8 +81,18 @@
     },
     {
       "path": "starter_selection.json",
-      "bytes": 12859,
-      "sha256": "F3154A7A4963E0D8A10DF5A9C34024C5B1E94512AC0D859B5F8B78004E900A5E"
+      "bytes": 13642,
+      "sha256": "51779A9A0B4E3F4FA5E81A1BD4F94D048BDA5495BBF5E07D2C878D03D56646E5"
+    },
+    {
+      "path": "galactic_squad_visual_sources.json",
+      "bytes": 2316,
+      "sha256": "D50DDC96D27FB06127A985A508A20F37770408B0958CE3277868A257C011CEDA"
+    },
+    {
+      "path": "galactic_squad_visual_report.json",
+      "bytes": 17714,
+      "sha256": "B8C5979D30EEB985D5A7204FBDC0BA8709A098D88CC3428559001DE473AD431D"
     }
   ]
 }

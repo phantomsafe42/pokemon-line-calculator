@@ -12606,6 +12606,14 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Tuber Gwen",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921",
+          "ref": "R01070"
+        }
       }
     },
     "pokemon-ruby-trainer-0060": {
@@ -68904,6 +68912,42 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Sr. and Jr. Kate & Joy",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921",
+          "ref": "R01081"
+        },
+        "trainerVisualIdentity": {
+          "schemaVersion": "trainer-visual-identity/v1alpha1",
+          "status": "resolved",
+          "relationship": "exact-retail",
+          "gameStyle": "ruby-sapphire",
+          "presentation": "battle-front",
+          "subjectKind": "class",
+          "subjectId": "teammates",
+          "gender": "default",
+          "variant": "default",
+          "rawSelector": {
+            "kind": "gen3-trainer-pic-token",
+            "value": "TRAINER_PIC_SR_AND_JR"
+          },
+          "unresolvedFields": [],
+          "evidence": [
+            {
+              "kind": "exact-retail-selector",
+              "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
+            },
+            {
+              "source": "tools/imports/trainer-name-review-20260921.json",
+              "reviewId": "trainer-name-review-20260921",
+              "kind": "user-confirmed-existing-assets-class-selector"
+            }
+          ],
+          "spriteSet": "rs"
+        }
       }
     },
     "pokemon-ruby-trainer-0287": {
@@ -69355,6 +69399,42 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Sr. and Jr. Anna & Meg",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921",
+          "ref": "R01076"
+        },
+        "trainerVisualIdentity": {
+          "schemaVersion": "trainer-visual-identity/v1alpha1",
+          "status": "resolved",
+          "relationship": "exact-retail",
+          "gameStyle": "ruby-sapphire",
+          "presentation": "battle-front",
+          "subjectKind": "class",
+          "subjectId": "teammates",
+          "gender": "default",
+          "variant": "default",
+          "rawSelector": {
+            "kind": "gen3-trainer-pic-token",
+            "value": "TRAINER_PIC_SR_AND_JR"
+          },
+          "unresolvedFields": [],
+          "evidence": [
+            {
+              "kind": "exact-retail-selector",
+              "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
+            },
+            {
+              "source": "tools/imports/trainer-name-review-20260921.json",
+              "reviewId": "trainer-name-review-20260921",
+              "kind": "user-confirmed-existing-assets-class-selector"
+            }
+          ],
+          "spriteSet": "rs"
+        }
       }
     },
     "pokemon-ruby-trainer-0288": {
@@ -69538,6 +69618,36 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "trainerVisualIdentity": {
+          "schemaVersion": "trainer-visual-identity/v1alpha1",
+          "status": "resolved",
+          "relationship": "exact-retail",
+          "gameStyle": "ruby-sapphire",
+          "presentation": "battle-front",
+          "subjectKind": "class",
+          "subjectId": "teammates",
+          "gender": "default",
+          "variant": "default",
+          "rawSelector": {
+            "kind": "gen3-trainer-pic-token",
+            "value": "TRAINER_PIC_SR_AND_JR"
+          },
+          "unresolvedFields": [],
+          "evidence": [
+            {
+              "kind": "exact-retail-selector",
+              "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
+            },
+            {
+              "source": "tools/imports/trainer-name-review-20260921.json",
+              "reviewId": "trainer-name-review-20260921",
+              "kind": "user-confirmed-existing-assets-class-selector"
+            }
+          ],
+          "spriteSet": "rs"
+        }
       }
     },
     "pokemon-ruby-trainer-0289": {
@@ -69721,6 +69831,36 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "trainerVisualIdentity": {
+          "schemaVersion": "trainer-visual-identity/v1alpha1",
+          "status": "resolved",
+          "relationship": "exact-retail",
+          "gameStyle": "ruby-sapphire",
+          "presentation": "battle-front",
+          "subjectKind": "class",
+          "subjectId": "teammates",
+          "gender": "default",
+          "variant": "default",
+          "rawSelector": {
+            "kind": "gen3-trainer-pic-token",
+            "value": "TRAINER_PIC_SR_AND_JR"
+          },
+          "unresolvedFields": [],
+          "evidence": [
+            {
+              "kind": "exact-retail-selector",
+              "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
+            },
+            {
+              "source": "tools/imports/trainer-name-review-20260921.json",
+              "reviewId": "trainer-name-review-20260921",
+              "kind": "user-confirmed-existing-assets-class-selector"
+            }
+          ],
+          "spriteSet": "rs"
+        }
       }
     },
     "pokemon-ruby-trainer-0290": {
@@ -69904,6 +70044,36 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "trainerVisualIdentity": {
+          "schemaVersion": "trainer-visual-identity/v1alpha1",
+          "status": "resolved",
+          "relationship": "exact-retail",
+          "gameStyle": "ruby-sapphire",
+          "presentation": "battle-front",
+          "subjectKind": "class",
+          "subjectId": "teammates",
+          "gender": "default",
+          "variant": "default",
+          "rawSelector": {
+            "kind": "gen3-trainer-pic-token",
+            "value": "TRAINER_PIC_SR_AND_JR"
+          },
+          "unresolvedFields": [],
+          "evidence": [
+            {
+              "kind": "exact-retail-selector",
+              "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
+            },
+            {
+              "source": "tools/imports/trainer-name-review-20260921.json",
+              "reviewId": "trainer-name-review-20260921",
+              "kind": "user-confirmed-existing-assets-class-selector"
+            }
+          ],
+          "spriteSet": "rs"
+        }
       }
     },
     "pokemon-ruby-trainer-0291": {
@@ -70087,6 +70257,36 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "trainerVisualIdentity": {
+          "schemaVersion": "trainer-visual-identity/v1alpha1",
+          "status": "resolved",
+          "relationship": "exact-retail",
+          "gameStyle": "ruby-sapphire",
+          "presentation": "battle-front",
+          "subjectKind": "class",
+          "subjectId": "teammates",
+          "gender": "default",
+          "variant": "default",
+          "rawSelector": {
+            "kind": "gen3-trainer-pic-token",
+            "value": "TRAINER_PIC_SR_AND_JR"
+          },
+          "unresolvedFields": [],
+          "evidence": [
+            {
+              "kind": "exact-retail-selector",
+              "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
+            },
+            {
+              "source": "tools/imports/trainer-name-review-20260921.json",
+              "reviewId": "trainer-name-review-20260921",
+              "kind": "user-confirmed-existing-assets-class-selector"
+            }
+          ],
+          "spriteSet": "rs"
+        }
       }
     },
     "pokemon-ruby-trainer-0292": {
@@ -116061,6 +116261,14 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Twins Miu & Yuki",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921",
+          "ref": "R01073"
+        }
       }
     },
     "pokemon-ruby-trainer-0485": {
@@ -123737,6 +123945,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-ruby-trainer-0521": {
@@ -123949,6 +124164,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-ruby-trainer-0522": {
@@ -124192,6 +124414,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-ruby-trainer-0523": {
@@ -124393,6 +124622,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-ruby-trainer-0524": {
@@ -124636,6 +124872,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-ruby-trainer-0525": {
@@ -124879,6 +125122,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-ruby-trainer-0526": {
@@ -125080,6 +125330,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-ruby-trainer-0527": {
@@ -125322,6 +125579,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-ruby-trainer-0528": {
@@ -125565,6 +125829,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-ruby-trainer-0529": {
@@ -125796,6 +126067,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-ruby-trainer-0530": {
@@ -126215,6 +126493,14 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921",
+          "ref": "R01074"
+        }
       }
     },
     "pokemon-ruby-trainer-0531": {
@@ -126458,6 +126744,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-ruby-trainer-0532": {
@@ -126689,6 +126982,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-ruby-trainer-0533": {
@@ -127000,6 +127300,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-ruby-trainer-0534": {
@@ -127243,6 +127550,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-ruby-trainer-0535": {
@@ -127474,6 +127788,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-ruby-trainer-0536": {
@@ -127784,6 +128105,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-ruby-trainer-0537": {
@@ -128125,6 +128453,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-ruby-trainer-0538": {
@@ -159387,6 +159722,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-ruby-trainer-0662": {
@@ -159704,6 +160046,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-ruby-trainer-0663": {
@@ -160021,6 +160370,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-ruby-trainer-0664": {
@@ -160338,6 +160694,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-ruby-trainer-0665": {
@@ -160655,6 +161018,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-ruby-trainer-0666": {
@@ -160972,6 +161342,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-ruby-trainer-0667": {
@@ -165032,6 +165409,42 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Sr. and Jr. Kim & Iris",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921",
+          "ref": "R01086"
+        },
+        "trainerVisualIdentity": {
+          "schemaVersion": "trainer-visual-identity/v1alpha1",
+          "status": "resolved",
+          "relationship": "exact-retail",
+          "gameStyle": "ruby-sapphire",
+          "presentation": "battle-front",
+          "subjectKind": "class",
+          "subjectId": "teammates",
+          "gender": "default",
+          "variant": "default",
+          "rawSelector": {
+            "kind": "gen3-trainer-pic-token",
+            "value": "TRAINER_PIC_SR_AND_JR"
+          },
+          "unresolvedFields": [],
+          "evidence": [
+            {
+              "kind": "exact-retail-selector",
+              "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
+            },
+            {
+              "source": "tools/imports/trainer-name-review-20260921.json",
+              "reviewId": "trainer-name-review-20260921",
+              "kind": "user-confirmed-existing-assets-class-selector"
+            }
+          ],
+          "spriteSet": "rs"
+        }
       }
     },
     "pokemon-ruby-trainer-0679": {
@@ -165377,6 +165790,42 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Sr. and Jr. Tyra & Ivy",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921",
+          "ref": "R01078"
+        },
+        "trainerVisualIdentity": {
+          "schemaVersion": "trainer-visual-identity/v1alpha1",
+          "status": "resolved",
+          "relationship": "exact-retail",
+          "gameStyle": "ruby-sapphire",
+          "presentation": "battle-front",
+          "subjectKind": "class",
+          "subjectId": "teammates",
+          "gender": "default",
+          "variant": "default",
+          "rawSelector": {
+            "kind": "gen3-trainer-pic-token",
+            "value": "TRAINER_PIC_SR_AND_JR"
+          },
+          "unresolvedFields": [],
+          "evidence": [
+            {
+              "kind": "exact-retail-selector",
+              "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
+            },
+            {
+              "source": "tools/imports/trainer-name-review-20260921.json",
+              "reviewId": "trainer-name-review-20260921",
+              "kind": "user-confirmed-existing-assets-class-selector"
+            }
+          ],
+          "spriteSet": "rs"
+        }
       }
     },
     "pokemon-ruby-trainer-0680": {

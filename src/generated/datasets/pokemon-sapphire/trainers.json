@@ -13670,6 +13670,14 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Tuber Gwen",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921",
+          "ref": "R01138"
+        }
       }
     },
     "pokemon-sapphire-trainer-0060": {
@@ -69968,6 +69976,42 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Sr. and Jr. Kate & Joy",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921",
+          "ref": "R01149"
+        },
+        "trainerVisualIdentity": {
+          "schemaVersion": "trainer-visual-identity/v1alpha1",
+          "status": "resolved",
+          "relationship": "exact-retail",
+          "gameStyle": "ruby-sapphire",
+          "presentation": "battle-front",
+          "subjectKind": "class",
+          "subjectId": "teammates",
+          "gender": "default",
+          "variant": "default",
+          "rawSelector": {
+            "kind": "gen3-trainer-pic-token",
+            "value": "TRAINER_PIC_SR_AND_JR"
+          },
+          "unresolvedFields": [],
+          "evidence": [
+            {
+              "kind": "exact-retail-selector",
+              "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
+            },
+            {
+              "source": "tools/imports/trainer-name-review-20260921.json",
+              "reviewId": "trainer-name-review-20260921",
+              "kind": "user-confirmed-existing-assets-class-selector"
+            }
+          ],
+          "spriteSet": "rs"
+        }
       }
     },
     "pokemon-sapphire-trainer-0287": {
@@ -70419,6 +70463,36 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "trainerVisualIdentity": {
+          "schemaVersion": "trainer-visual-identity/v1alpha1",
+          "status": "resolved",
+          "relationship": "exact-retail",
+          "gameStyle": "ruby-sapphire",
+          "presentation": "battle-front",
+          "subjectKind": "class",
+          "subjectId": "teammates",
+          "gender": "default",
+          "variant": "default",
+          "rawSelector": {
+            "kind": "gen3-trainer-pic-token",
+            "value": "TRAINER_PIC_SR_AND_JR"
+          },
+          "unresolvedFields": [],
+          "evidence": [
+            {
+              "kind": "exact-retail-selector",
+              "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
+            },
+            {
+              "source": "tools/imports/trainer-name-review-20260921.json",
+              "reviewId": "trainer-name-review-20260921",
+              "kind": "user-confirmed-existing-assets-class-selector"
+            }
+          ],
+          "spriteSet": "rs"
+        }
       }
     },
     "pokemon-sapphire-trainer-0288": {
@@ -70602,6 +70676,36 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "trainerVisualIdentity": {
+          "schemaVersion": "trainer-visual-identity/v1alpha1",
+          "status": "resolved",
+          "relationship": "exact-retail",
+          "gameStyle": "ruby-sapphire",
+          "presentation": "battle-front",
+          "subjectKind": "class",
+          "subjectId": "teammates",
+          "gender": "default",
+          "variant": "default",
+          "rawSelector": {
+            "kind": "gen3-trainer-pic-token",
+            "value": "TRAINER_PIC_SR_AND_JR"
+          },
+          "unresolvedFields": [],
+          "evidence": [
+            {
+              "kind": "exact-retail-selector",
+              "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
+            },
+            {
+              "source": "tools/imports/trainer-name-review-20260921.json",
+              "reviewId": "trainer-name-review-20260921",
+              "kind": "user-confirmed-existing-assets-class-selector"
+            }
+          ],
+          "spriteSet": "rs"
+        }
       }
     },
     "pokemon-sapphire-trainer-0289": {
@@ -70785,6 +70889,36 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "trainerVisualIdentity": {
+          "schemaVersion": "trainer-visual-identity/v1alpha1",
+          "status": "resolved",
+          "relationship": "exact-retail",
+          "gameStyle": "ruby-sapphire",
+          "presentation": "battle-front",
+          "subjectKind": "class",
+          "subjectId": "teammates",
+          "gender": "default",
+          "variant": "default",
+          "rawSelector": {
+            "kind": "gen3-trainer-pic-token",
+            "value": "TRAINER_PIC_SR_AND_JR"
+          },
+          "unresolvedFields": [],
+          "evidence": [
+            {
+              "kind": "exact-retail-selector",
+              "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
+            },
+            {
+              "source": "tools/imports/trainer-name-review-20260921.json",
+              "reviewId": "trainer-name-review-20260921",
+              "kind": "user-confirmed-existing-assets-class-selector"
+            }
+          ],
+          "spriteSet": "rs"
+        }
       }
     },
     "pokemon-sapphire-trainer-0290": {
@@ -70968,6 +71102,36 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "trainerVisualIdentity": {
+          "schemaVersion": "trainer-visual-identity/v1alpha1",
+          "status": "resolved",
+          "relationship": "exact-retail",
+          "gameStyle": "ruby-sapphire",
+          "presentation": "battle-front",
+          "subjectKind": "class",
+          "subjectId": "teammates",
+          "gender": "default",
+          "variant": "default",
+          "rawSelector": {
+            "kind": "gen3-trainer-pic-token",
+            "value": "TRAINER_PIC_SR_AND_JR"
+          },
+          "unresolvedFields": [],
+          "evidence": [
+            {
+              "kind": "exact-retail-selector",
+              "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
+            },
+            {
+              "source": "tools/imports/trainer-name-review-20260921.json",
+              "reviewId": "trainer-name-review-20260921",
+              "kind": "user-confirmed-existing-assets-class-selector"
+            }
+          ],
+          "spriteSet": "rs"
+        }
       }
     },
     "pokemon-sapphire-trainer-0291": {
@@ -71151,6 +71315,36 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "trainerVisualIdentity": {
+          "schemaVersion": "trainer-visual-identity/v1alpha1",
+          "status": "resolved",
+          "relationship": "exact-retail",
+          "gameStyle": "ruby-sapphire",
+          "presentation": "battle-front",
+          "subjectKind": "class",
+          "subjectId": "teammates",
+          "gender": "default",
+          "variant": "default",
+          "rawSelector": {
+            "kind": "gen3-trainer-pic-token",
+            "value": "TRAINER_PIC_SR_AND_JR"
+          },
+          "unresolvedFields": [],
+          "evidence": [
+            {
+              "kind": "exact-retail-selector",
+              "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
+            },
+            {
+              "source": "tools/imports/trainer-name-review-20260921.json",
+              "reviewId": "trainer-name-review-20260921",
+              "kind": "user-confirmed-existing-assets-class-selector"
+            }
+          ],
+          "spriteSet": "rs"
+        }
       }
     },
     "pokemon-sapphire-trainer-0292": {
@@ -102876,6 +103070,14 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Battle Girl Tessa",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921",
+          "ref": "R01137"
+        }
       }
     },
     "pokemon-sapphire-trainer-0426": {
@@ -117125,6 +117327,14 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Twins Miu & Yuki",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921",
+          "ref": "R01151"
+        }
       }
     },
     "pokemon-sapphire-trainer-0485": {
@@ -124801,6 +125011,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-sapphire-trainer-0521": {
@@ -125013,6 +125230,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-sapphire-trainer-0522": {
@@ -125256,6 +125480,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-sapphire-trainer-0523": {
@@ -125457,6 +125688,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-sapphire-trainer-0524": {
@@ -125700,6 +125938,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-sapphire-trainer-0525": {
@@ -125943,6 +126188,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-sapphire-trainer-0526": {
@@ -126144,6 +126396,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-sapphire-trainer-0527": {
@@ -126386,6 +126645,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-sapphire-trainer-0528": {
@@ -126629,6 +126895,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-sapphire-trainer-0529": {
@@ -126860,6 +127133,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-sapphire-trainer-0530": {
@@ -127279,6 +127559,14 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921",
+          "ref": "R01142"
+        }
       }
     },
     "pokemon-sapphire-trainer-0531": {
@@ -127522,6 +127810,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-sapphire-trainer-0532": {
@@ -127753,6 +128048,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-sapphire-trainer-0533": {
@@ -128064,6 +128366,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-sapphire-trainer-0534": {
@@ -128307,6 +128616,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-sapphire-trainer-0535": {
@@ -128538,6 +128854,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-sapphire-trainer-0536": {
@@ -128848,6 +129171,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-sapphire-trainer-0537": {
@@ -129189,6 +129519,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-sapphire-trainer-0538": {
@@ -159576,6 +159913,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-sapphire-trainer-0662": {
@@ -159893,6 +160237,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-sapphire-trainer-0663": {
@@ -160210,6 +160561,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-sapphire-trainer-0664": {
@@ -160527,6 +160885,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-sapphire-trainer-0665": {
@@ -160844,6 +161209,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-sapphire-trainer-0666": {
@@ -161161,6 +161533,13 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-sapphire-trainer-0667": {
@@ -165221,6 +165600,42 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Sr. and Jr. Kim & Iris",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921",
+          "ref": "R01154"
+        },
+        "trainerVisualIdentity": {
+          "schemaVersion": "trainer-visual-identity/v1alpha1",
+          "status": "resolved",
+          "relationship": "exact-retail",
+          "gameStyle": "ruby-sapphire",
+          "presentation": "battle-front",
+          "subjectKind": "class",
+          "subjectId": "teammates",
+          "gender": "default",
+          "variant": "default",
+          "rawSelector": {
+            "kind": "gen3-trainer-pic-token",
+            "value": "TRAINER_PIC_SR_AND_JR"
+          },
+          "unresolvedFields": [],
+          "evidence": [
+            {
+              "kind": "exact-retail-selector",
+              "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
+            },
+            {
+              "source": "tools/imports/trainer-name-review-20260921.json",
+              "reviewId": "trainer-name-review-20260921",
+              "kind": "user-confirmed-existing-assets-class-selector"
+            }
+          ],
+          "spriteSet": "rs"
+        }
       }
     },
     "pokemon-sapphire-trainer-0679": {
@@ -165566,6 +165981,36 @@
             "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
           }
         ]
+      },
+      "presentation": {
+        "trainerVisualIdentity": {
+          "schemaVersion": "trainer-visual-identity/v1alpha1",
+          "status": "resolved",
+          "relationship": "exact-retail",
+          "gameStyle": "ruby-sapphire",
+          "presentation": "battle-front",
+          "subjectKind": "class",
+          "subjectId": "teammates",
+          "gender": "default",
+          "variant": "default",
+          "rawSelector": {
+            "kind": "gen3-trainer-pic-token",
+            "value": "TRAINER_PIC_SR_AND_JR"
+          },
+          "unresolvedFields": [],
+          "evidence": [
+            {
+              "kind": "exact-retail-selector",
+              "source": "tools/imports/vanilla/pret-pokeruby-63a8cbf0016b351a4e68f7036fa0b77e23d2f2c1/src/data/trainers_en.h"
+            },
+            {
+              "source": "tools/imports/trainer-name-review-20260921.json",
+              "reviewId": "trainer-name-review-20260921",
+              "kind": "user-confirmed-existing-assets-class-selector"
+            }
+          ],
+          "spriteSet": "rs"
+        }
       }
     },
     "pokemon-sapphire-trainer-0680": {

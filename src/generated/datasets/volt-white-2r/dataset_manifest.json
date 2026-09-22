@@ -59,7 +59,8 @@
     "relic_form_bindings.json": "609dbfa08bf3a3edb77c6b8ea0a2f335ace16d877abc8b8ec6b21ffe2073578a",
     "hidden_grotto_bindings.json": "68dae212ebc69243559d0e74cd63b6ec6f008344578b9fe67d3ef390121414f9",
     "imports/reference-docs/vw2r-hidden-grotto-tables.json": "fefa3c208f5fb7ba739d5d06377dc948ffdb144efda521d593a9d078032aee34",
-    "imports/reference-docs/vw2r-hidden-grotto-engine.json": "7460957fd2d24bf0ff3cabbb07fb047137c22d17106f4bae9c98681351c01e4b"
+    "imports/reference-docs/vw2r-hidden-grotto-engine.json": "7460957fd2d24bf0ff3cabbb07fb047137c22d17106f4bae9c98681351c01e4b",
+    "imports/reference-docs/vw2r_trainer_optionality_authority.json": "f4ce47fbab6acaa167ee856c62d0d258e7accc184fce66a294669fc7be0330f6"
   },
   "authorities": [
     {
@@ -323,7 +324,11 @@
     "hiddenGrottoRefresh": "node ./source-data/build_standardized_sources.js --hidden-grottos-only",
     "hiddenGrottoCheck": "node ./source-data/build_standardized_sources.js --hidden-grottos-only --check",
     "starterSelectionBuild": "node ../tools/build_starter_selection.js --write",
-    "starterSelectionCheck": "node ../tools/build_starter_selection.js --check"
+    "starterSelectionCheck": "node ../tools/build_starter_selection.js --check",
+    "trainerOptionalityRefresh": "node ./source-data/build_standardized_sources.js --trainer-optionality-only",
+    "trainerOptionalityCheck": "node ./source-data/build_standardized_sources.js --trainer-optionality-only --check",
+    "trainerSelectVisuals": "node tools/trainer_select_visuals.js --write",
+    "trainerSelectVisualsCheck": "node tools/trainer_select_visuals.js --check && node --test tools/test_trainer_select_visuals.js"
   },
   "encounterVerification": {
     "source": "gift_encounter_verification.json",
@@ -400,6 +405,24 @@
     "consumerActivation": false
   },
   "extensions": [
-    "starter_selection.json"
-  ]
+    "starter_selection.json",
+    "trainer_select_visual_report.json"
+  ],
+  "sourceRequirements": {
+    "trainerSelectVisuals": {
+      "required": true,
+      "source": "trainer_select_visual_report.json",
+      "status": "passed",
+      "resolved": 421,
+      "variantDependent": 4,
+      "inapplicable": 2,
+      "unmapped": 0,
+      "scope": "user-approved vanilla class artwork joined to supported ROM trainer IDs; variant alternatives remain explicit; wild encounters have no trainer portrait"
+    }
+  },
+  "trainerOptionalityVerification": {
+    "source": "trainer_optionality_verification.json",
+    "status": "passed-user-confirmed-optionality",
+    "scope": "73-user-confirmed-PLC-visible-occurrences"
+  }
 }

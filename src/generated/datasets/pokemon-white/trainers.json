@@ -15259,6 +15259,13 @@
             "source": "tools/imports/vanilla/trainer-visual-identity-authority.json#gen5ClassIdMappings.black-white.37"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0054": {
@@ -15470,6 +15477,13 @@
             "source": "tools/imports/vanilla/trainer-visual-identity-authority.json#gen5ClassIdMappings.black-white.37"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0055": {
@@ -15681,6 +15695,13 @@
             "source": "tools/imports/vanilla/trainer-visual-identity-authority.json#gen5ClassIdMappings.black-white.37"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0056": {
@@ -16041,6 +16062,13 @@
             "source": "tools/imports/vanilla/trainer-visual-identity-authority.json#gen5ClassIdMappings.black-white.37"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0057": {
@@ -16401,6 +16429,13 @@
             "source": "tools/imports/vanilla/trainer-visual-identity-authority.json#gen5ClassIdMappings.black-white.37"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0058": {
@@ -16781,6 +16816,13 @@
             "source": "tools/imports/vanilla/trainer-visual-identity-authority.json#gen5ClassIdMappings.black-white.37"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0059": {
@@ -16988,6 +17030,13 @@
             "source": "tools/imports/vanilla/gen5-retail-rom-trainers/pokemon-white.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0060": {
@@ -17178,6 +17227,13 @@
             "source": "tools/imports/vanilla/gen5-retail-rom-trainers/pokemon-white.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0061": {
@@ -17385,6 +17441,13 @@
             "source": "tools/imports/vanilla/gen5-retail-rom-trainers/pokemon-white.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0062": {
@@ -25660,6 +25723,13 @@
             "source": "tools/imports/vanilla/trainer-visual-identity-authority.json#gen5ClassIdMappings.black-white.37"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0091": {
@@ -26209,6 +26279,13 @@
             "source": "tools/imports/vanilla/trainer-visual-identity-authority.json#gen5ClassIdMappings.black-white.37"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0092": {
@@ -26798,6 +26875,13 @@
             "source": "tools/imports/vanilla/trainer-visual-identity-authority.json#gen5ClassIdMappings.black-white.37"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0093": {
@@ -84020,6 +84104,13 @@
             "source": "tools/imports/vanilla/trainer-visual-identity-authority.json#gen5ClassIdMappings.black-white.37"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0288": {
@@ -84345,6 +84436,13 @@
             "source": "tools/imports/vanilla/trainer-visual-identity-authority.json#gen5ClassIdMappings.black-white.37"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0289": {
@@ -84688,6 +84786,13 @@
             "source": "tools/imports/vanilla/trainer-visual-identity-authority.json#gen5ClassIdMappings.black-white.37"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0290": {
@@ -116642,6 +116747,13 @@
             "source": "tools/imports/vanilla/trainer-visual-identity-authority.json#gen5ClassIdMappings.black-white.37"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0404": {
@@ -117122,6 +117234,13 @@
             "source": "tools/imports/vanilla/trainer-visual-identity-authority.json#gen5ClassIdMappings.black-white.37"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0405": {
@@ -117602,6 +117721,13 @@
             "source": "tools/imports/vanilla/trainer-visual-identity-authority.json#gen5ClassIdMappings.black-white.37"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0406": {
@@ -141612,6 +141738,13 @@
             "source": "tools/imports/vanilla/gen5-retail-rom-trainers/pokemon-white.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0492": {
@@ -142087,6 +142220,13 @@
             "source": "tools/imports/vanilla/gen5-retail-rom-trainers/pokemon-white.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0493": {
@@ -142650,6 +142790,13 @@
             "source": "tools/imports/vanilla/gen5-retail-rom-trainers/pokemon-white.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0494": {
@@ -143194,6 +143341,13 @@
             "source": "tools/imports/vanilla/gen5-retail-rom-trainers/pokemon-white.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0495": {
@@ -143738,6 +143892,13 @@
             "source": "tools/imports/vanilla/gen5-retail-rom-trainers/pokemon-white.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0496": {
@@ -144282,6 +144443,13 @@
             "source": "tools/imports/vanilla/gen5-retail-rom-trainers/pokemon-white.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0497": {
@@ -144770,6 +144938,13 @@
             "source": "tools/imports/vanilla/gen5-retail-rom-trainers/pokemon-white.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0499": {
@@ -145105,6 +145280,13 @@
             "source": "tools/imports/vanilla/gen5-retail-rom-trainers/pokemon-white.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0500": {
@@ -145420,6 +145602,13 @@
             "source": "tools/imports/vanilla/gen5-retail-rom-trainers/pokemon-white.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0501": {
@@ -147964,6 +148153,13 @@
             "source": "tools/imports/vanilla/gen5-retail-rom-trainers/pokemon-white.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0508": {
@@ -148507,6 +148703,13 @@
             "source": "tools/imports/vanilla/gen5-retail-rom-trainers/pokemon-white.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0509": {
@@ -149050,6 +149253,13 @@
             "source": "tools/imports/vanilla/gen5-retail-rom-trainers/pokemon-white.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0510": {
@@ -157527,6 +157737,13 @@
             "source": "tools/imports/vanilla/trainer-visual-identity-authority.json#gen5ClassIdMappings.black-white.37"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0540": {
@@ -158002,6 +158219,13 @@
             "source": "tools/imports/vanilla/trainer-visual-identity-authority.json#gen5ClassIdMappings.black-white.37"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0541": {
@@ -158477,6 +158701,13 @@
             "source": "tools/imports/vanilla/trainer-visual-identity-authority.json#gen5ClassIdMappings.black-white.37"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0542": {
@@ -175242,6 +175473,13 @@
             "source": "tools/imports/vanilla/trainer-visual-identity-authority.json#gen5ClassIdMappings.black-white.37"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0589": {
@@ -175717,6 +175955,13 @@
             "source": "tools/imports/vanilla/trainer-visual-identity-authority.json#gen5ClassIdMappings.black-white.37"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0590": {
@@ -176192,6 +176437,13 @@
             "source": "tools/imports/vanilla/trainer-visual-identity-authority.json#gen5ClassIdMappings.black-white.37"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0591": {
@@ -176729,6 +176981,13 @@
             "source": "tools/imports/vanilla/trainer-visual-identity-authority.json#gen5ClassIdMappings.black-white.37"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0592": {
@@ -177266,6 +177525,13 @@
             "source": "tools/imports/vanilla/trainer-visual-identity-authority.json#gen5ClassIdMappings.black-white.37"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0593": {
@@ -177803,6 +178069,13 @@
             "source": "tools/imports/vanilla/trainer-visual-identity-authority.json#gen5ClassIdMappings.black-white.37"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0594": {
@@ -178311,6 +178584,13 @@
             "source": "tools/imports/vanilla/gen5-retail-rom-trainers/pokemon-white.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0595": {
@@ -178819,6 +179099,13 @@
             "source": "tools/imports/vanilla/gen5-retail-rom-trainers/pokemon-white.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0596": {
@@ -179327,6 +179614,13 @@
             "source": "tools/imports/vanilla/gen5-retail-rom-trainers/pokemon-white.json"
           }
         ]
+      },
+      "presentation": {
+        "displayName": "Rival",
+        "evidence": {
+          "source": "tools/imports/trainer-name-review-20260921.json",
+          "reviewId": "trainer-name-review-20260921"
+        }
       }
     },
     "pokemon-white-trainer-0597": {

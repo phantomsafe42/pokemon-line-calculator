@@ -542,26 +542,36 @@
       "trainerId": "vw2r-trainer-0042",
       "splitId": "burgh",
       "locationName": "Liberty Garden",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": false,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "double",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "removed-by-egglocke-patch",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0514",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 43,
       "trainerId": "vw2r-trainer-0043",
       "splitId": "burgh",
       "locationName": "Liberty Garden",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": false,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0515",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 44,
@@ -594,52 +604,72 @@
       "trainerId": "vw2r-trainer-0046",
       "splitId": "burgh",
       "locationName": "Castelia City - Battle Company 47F",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": false,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0516",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 47,
       "trainerId": "vw2r-trainer-0047",
       "splitId": "burgh",
       "locationName": "Castelia City - Battle Company 47F",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": false,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0517",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 48,
       "trainerId": "vw2r-trainer-0048",
       "splitId": "burgh",
       "locationName": "Castelia City - Battle Company 47F",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": false,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0518",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 49,
       "trainerId": "vw2r-trainer-0049",
       "splitId": "burgh",
       "locationName": "Castelia City - Battle Company 47F",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": false,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0519",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 50,
@@ -776,26 +806,36 @@
       "trainerId": "vw2r-trainer-0060",
       "splitId": "burgh",
       "locationName": "Castelia City - Sewers",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0520",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 61,
       "trainerId": "vw2r-trainer-0061",
       "splitId": "burgh",
       "locationName": "Castelia City - Sewers",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0521",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 62,
@@ -1231,52 +1271,72 @@
       "trainerId": "vw2r-trainer-0095",
       "splitId": "elesa",
       "locationName": "Nimbasa City",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "removed-by-egglocke-patch",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0522",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 96,
       "trainerId": "vw2r-trainer-0096",
       "splitId": "elesa",
       "locationName": "Nimbasa City",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0523",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 97,
       "trainerId": "vw2r-trainer-0097",
       "splitId": "elesa",
       "locationName": "Nimbasa City",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": false,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0524",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 98,
       "trainerId": "vw2r-trainer-0098",
       "splitId": "elesa",
       "locationName": "Nimbasa City",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": false,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0525",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 99,
@@ -1426,26 +1486,36 @@
       "trainerId": "vw2r-trainer-0110",
       "splitId": "elesa",
       "locationName": "Lostlorn Forest",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": false,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0526",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 111,
       "trainerId": "vw2r-trainer-0111",
       "splitId": "elesa",
       "locationName": "Lostlorn Forest",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": false,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0527",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 112,
@@ -1504,13 +1574,18 @@
       "trainerId": "vw2r-trainer-0116",
       "splitId": "elesa",
       "locationName": "Route 5",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": false,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0528",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 117,
@@ -1569,13 +1644,18 @@
       "trainerId": "vw2r-trainer-0121",
       "splitId": "elesa",
       "locationName": "Nimbasa City Gym",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0529",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 122,
@@ -1621,13 +1701,18 @@
       "trainerId": "vw2r-trainer-0125",
       "splitId": "clay",
       "locationName": "Route 5",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "triple",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0530",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 126,
@@ -1764,13 +1849,18 @@
       "trainerId": "vw2r-trainer-0136",
       "splitId": "clay",
       "locationName": "Route 6",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0531",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 137,
@@ -1855,26 +1945,36 @@
       "trainerId": "vw2r-trainer-0143",
       "splitId": "clay",
       "locationName": "Clay Tunnel - Twist Mountain/Underground Ruins Entrance",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": false,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0532",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 144,
       "trainerId": "vw2r-trainer-0144",
       "splitId": "clay",
       "locationName": "Clay Tunnel - Twist Mountain/Underground Ruins Entrance",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": false,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0533",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 145,
@@ -2024,26 +2124,36 @@
       "trainerId": "vw2r-trainer-0156",
       "splitId": "skyla",
       "locationName": "Plasma Frigate",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0534",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 157,
       "trainerId": "vw2r-trainer-0157",
       "splitId": "skyla",
       "locationName": "Plasma Frigate",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0535",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 158,
@@ -2063,26 +2173,36 @@
       "trainerId": "vw2r-trainer-0159",
       "splitId": "skyla",
       "locationName": "Plasma Frigate",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0536",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 160,
       "trainerId": "vw2r-trainer-0160",
       "splitId": "skyla",
       "locationName": "Plasma Frigate",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0537",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 161,
@@ -2440,13 +2560,18 @@
       "trainerId": "vw2r-trainer-0188",
       "splitId": "skyla",
       "locationName": "Chargestone Cave - B1F",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0538",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 189,
@@ -2934,26 +3059,36 @@
       "trainerId": "vw2r-trainer-0226",
       "splitId": "drayden",
       "locationName": "Reversal Mountain - Main Area",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0539",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 227,
       "trainerId": "vw2r-trainer-0227",
       "splitId": "drayden",
       "locationName": "Reversal Mountain - Main Area",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0540",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 228,
@@ -2986,26 +3121,36 @@
       "trainerId": "vw2r-trainer-0230",
       "splitId": "drayden",
       "locationName": "Reversal Mountain - Main Area",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0541",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 231,
       "trainerId": "vw2r-trainer-0231",
       "splitId": "drayden",
       "locationName": "Reversal Mountain - Main Area",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0542",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 232,
@@ -3025,26 +3170,36 @@
       "trainerId": "vw2r-trainer-0233",
       "splitId": "drayden",
       "locationName": "Reversal Mountain - Main Area",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0543",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 234,
       "trainerId": "vw2r-trainer-0234",
       "splitId": "drayden",
       "locationName": "Reversal Mountain - Main Area",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0544",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 235,
@@ -3142,39 +3297,54 @@
       "trainerId": "vw2r-trainer-0242",
       "splitId": "drayden",
       "locationName": "Undella Bay",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": false,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0545",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 243,
       "trainerId": "vw2r-trainer-0243",
       "splitId": "drayden",
       "locationName": "Undella Bay",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": false,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0546",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 244,
       "trainerId": "vw2r-trainer-0244",
       "splitId": "drayden",
       "locationName": "Undella Bay",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": false,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0547",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 245,
@@ -3467,26 +3637,36 @@
       "trainerId": "vw2r-trainer-0267",
       "splitId": "drayden",
       "locationName": "Route 13",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "triple",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0548",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 268,
       "trainerId": "vw2r-trainer-0268",
       "splitId": "drayden",
       "locationName": "Route 13",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": false,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "rotation",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0549",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 269,
@@ -3506,26 +3686,36 @@
       "trainerId": "vw2r-trainer-0270",
       "splitId": "drayden",
       "locationName": "Lacunosa Town",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0550",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 271,
       "trainerId": "vw2r-trainer-0271",
       "splitId": "drayden",
       "locationName": "Lacunosa Town",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0551",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 272,
@@ -3610,13 +3800,18 @@
       "trainerId": "vw2r-trainer-0278",
       "splitId": "drayden",
       "locationName": "Route 12",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "removed-by-egglocke-patch",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0552",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 279,
@@ -3753,13 +3948,18 @@
       "trainerId": "vw2r-trainer-0289",
       "splitId": "drayden",
       "locationName": "Route 11",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0553",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 290,
@@ -3779,13 +3979,18 @@
       "trainerId": "vw2r-trainer-0291",
       "splitId": "drayden",
       "locationName": "Opelucid City",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": false,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "double",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "removed-by-egglocke-patch",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0554",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 292,
@@ -4000,26 +4205,36 @@
       "trainerId": "vw2r-trainer-0308",
       "splitId": "marlon",
       "locationName": "Opelucid City",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0555",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 309,
       "trainerId": "vw2r-trainer-0309",
       "splitId": "marlon",
       "locationName": "Opelucid City",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0556",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 310,
@@ -4208,13 +4423,18 @@
       "trainerId": "vw2r-trainer-0324",
       "splitId": "marlon",
       "locationName": "Route 22",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0557",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 325,
@@ -4286,26 +4506,36 @@
       "trainerId": "vw2r-trainer-0330",
       "splitId": "marlon",
       "locationName": "Humilau City",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": false,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "removed-by-egglocke-patch",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0558",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 331,
       "trainerId": "vw2r-trainer-0331",
       "splitId": "marlon",
       "locationName": "Humilau City",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": false,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "removed-by-egglocke-patch",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0559",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 332,
@@ -4416,26 +4646,36 @@
       "trainerId": "vw2r-trainer-0340",
       "splitId": "ghetsis",
       "locationName": "Plasma Frigate - Deck",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0560",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 341,
       "trainerId": "vw2r-trainer-0341",
       "splitId": "ghetsis",
       "locationName": "Plasma Frigate - Deck",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0561",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 342,
@@ -4598,26 +4838,36 @@
       "trainerId": "vw2r-trainer-0354",
       "splitId": "ghetsis",
       "locationName": "Plasma Frigate - Kyurem's Containment Room",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0562",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 355,
       "trainerId": "vw2r-trainer-0355",
       "splitId": "ghetsis",
       "locationName": "Plasma Frigate - Kyurem's Containment Room",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0563",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 356,
@@ -4676,26 +4926,36 @@
       "trainerId": "vw2r-trainer-0360",
       "splitId": "ghetsis",
       "locationName": "Plasma Frigate - Giant Chasm",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0564",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 361,
       "trainerId": "vw2r-trainer-0361",
       "splitId": "ghetsis",
       "locationName": "Plasma Frigate - Giant Chasm",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0565",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 362,
@@ -4832,13 +5092,18 @@
       "trainerId": "vw2r-trainer-0372",
       "splitId": "ghetsis",
       "locationName": "Plasma Frigate - Past the Laser Barrier",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "double",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0566",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 373,
@@ -4858,39 +5123,54 @@
       "trainerId": "vw2r-trainer-0374",
       "splitId": "ghetsis",
       "locationName": "Plasma Frigate - Frigate Control Room",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "double",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0567",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 375,
       "trainerId": "vw2r-trainer-0375",
       "splitId": "ghetsis",
       "locationName": "Plasma Frigate - Frigate Control Room",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "triple",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0568",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 376,
       "trainerId": "vw2r-trainer-0376",
       "splitId": "ghetsis",
       "locationName": "Plasma Frigate - Frigate Control Room",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "rotation",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0569",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 377,
@@ -4910,13 +5190,18 @@
       "trainerId": "vw2r-trainer-0378",
       "splitId": "ghetsis",
       "locationName": "Giant Chasm - Kyurem's Cave",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "removed-by-egglocke-patch",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0570",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 379,
@@ -5131,26 +5416,36 @@
       "trainerId": "vw2r-trainer-0395",
       "splitId": "champion",
       "locationName": "Victory Road - Ruined Area/Cave 1F",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": false,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0571",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 396,
       "trainerId": "vw2r-trainer-0396",
       "splitId": "champion",
       "locationName": "Victory Road - Ruined Area/Cave 1F",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": false,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0572",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 397,
@@ -5183,13 +5478,18 @@
       "trainerId": "vw2r-trainer-0399",
       "splitId": "champion",
       "locationName": "Victory Road - Grove",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0573",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 400,
@@ -5209,13 +5509,18 @@
       "trainerId": "vw2r-trainer-0401",
       "splitId": "champion",
       "locationName": "Victory Road - Lower Mountainside",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0574",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 402,
@@ -5300,26 +5605,36 @@
       "trainerId": "vw2r-trainer-0408",
       "splitId": "champion",
       "locationName": "Victory Road - Connecting Caves 1/Cave 2F",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0575",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 409,
       "trainerId": "vw2r-trainer-0409",
       "splitId": "champion",
       "locationName": "Victory Road - Connecting Caves 1/Cave 2F",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0576",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 410,
@@ -5378,52 +5693,72 @@
       "trainerId": "vw2r-trainer-0414",
       "splitId": "champion",
       "locationName": "Victory Road - Upper Mountainside",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0577",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 415,
       "trainerId": "vw2r-trainer-0415",
       "splitId": "champion",
       "locationName": "Victory Road - Upper Mountainside",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0578",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 416,
       "trainerId": "vw2r-trainer-0416",
       "splitId": "champion",
       "locationName": "Victory Road - Upper Mountainside",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0579",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 417,
       "trainerId": "vw2r-trainer-0417",
       "splitId": "champion",
       "locationName": "Victory Road - Upper Mountainside",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0580",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 418,
@@ -5456,52 +5791,72 @@
       "trainerId": "vw2r-trainer-0420",
       "splitId": "champion",
       "locationName": "Victory Road - Connecting Caves 3/Cave 3F",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0581",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 421,
       "trainerId": "vw2r-trainer-0421",
       "splitId": "champion",
       "locationName": "Victory Road - Connecting Caves 3/Cave 3F",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0582",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 422,
       "trainerId": "vw2r-trainer-0422",
       "splitId": "champion",
       "locationName": "Victory Road - Connecting Caves 3/Cave 3F",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "single",
       "levelCapMarker": false,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order-with-wiki-annotation"
+      "sourceConfidence": "consumer-order-with-wiki-annotation",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0583",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 423,
       "trainerId": "vw2r-trainer-0423",
       "splitId": "champion",
       "locationName": "Pokemon League - Elite Four",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "triple",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "removed-by-egglocke-patch",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0584",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 424,
@@ -5521,26 +5876,36 @@
       "trainerId": "vw2r-trainer-0425",
       "splitId": "champion",
       "locationName": "Pokemon League - Elite Four",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "double",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0585",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 426,
       "trainerId": "vw2r-trainer-0426",
       "splitId": "champion",
       "locationName": "Pokemon League - Elite Four",
-      "mandatory": null,
-      "mandatorySource": "unresolved",
+      "mandatory": true,
+      "mandatorySource": "user-confirmed-review-2026-09-22",
       "battleFormat": "double",
       "levelCapMarker": null,
       "routeConditions": [],
       "recoveryBeforeBattle": "none-known",
-      "sourceConfidence": "consumer-order"
+      "sourceConfidence": "consumer-order",
+      "mandatoryEvidence": {
+        "file": "imports/reference-docs/vw2r_trainer_optionality_authority.json",
+        "reviewEntry": "A0586",
+        "reviewSha256": "f407f7cc8ffb29a30fe89d3fd824f7d834e751bc580f127259a6dbf396d55f08"
+      }
     },
     {
       "order": 427,

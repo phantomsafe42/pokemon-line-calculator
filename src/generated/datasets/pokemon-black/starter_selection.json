@@ -65,6 +65,42 @@
       ]
     },
     {
+      "trainerId": "pokemon-black-trainer-0053",
+      "starterIds": [
+        "snivy"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0002"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0054",
+      "starterIds": [
+        "tepig"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0004"
+        }
+      ]
+    },
+    {
+      "trainerId": "pokemon-black-trainer-0055",
+      "starterIds": [
+        "oshawott"
+      ],
+      "evidence": [
+        {
+          "file": "trainer_order.json",
+          "locator": "pokemon-black-campaign-occurrence-0006"
+        }
+      ]
+    },
+    {
       "trainerId": "pokemon-black-trainer-0056",
       "starterIds": [
         "snivy"
@@ -520,11 +556,11 @@
       },
       {
         "file": "trainers.json",
-        "sha256": "efb5a7bb34d6424ba9a048fd78fb825d8eca34a12f85589842733f4cf603152c"
+        "sha256": "3eb444397779fdb28a94e30adbd1c8ffa51dfcdfee178fc5476310293ffb9b32"
       },
       {
         "file": "trainer_order.json",
-        "sha256": "9d8e8d3dce10d9b9bbe6408f2107ef075cc0b2f29e53d3090400f772ecd1c147"
+        "sha256": "49a7010d9a0f11ef1876bb8f39d3b47b983f725a3f744440e032ced6c8c518ee"
       }
     ]
   },
