@@ -4,7 +4,28 @@ import fs from 'node:fs';
 import { fixtureTriplePlan } from './helpers.mjs';
 import { createDatasetContext, REQUIRED_DATASET_SOURCES } from '../src/adapters/standardized_dataset.js';
 import { triplePositionForSlot } from '../src/rulesets/triple_battle.js';
-import { displayTrainerName, trainerDisplayBlocks, trainerRequirement, trainerSpriteQuery, trainerSplitBadgeQuery, trainerSearchIndex, searchTrainerIndex } from '../src/ui/trainer_selector.js';
+import { displayTrainerName, trainerDisplayBlocks, trainerRequirement, trainerSpriteQuery, trainerSplitBadgeQuery, trainerSearchIndex, searchTrainerIndex, trainerPortraitFallback } from '../src/ui/trainer_selector.js';
+
+test('inapplicable portraits do not classify paired human trainers as wild battles', () => {
+  const dataset = load('pokemon-unbound');
+  const records = Object.values(dataset.documents['trainers.json'].records);
+  const pairs = records.filter(trainer => trainer.trainerVisualParticipants?.length);
+  assert.equal(pairs.length, 21);
+  const before = JSON.stringify(records);
+  for (const trainer of pairs) {
+    assert.equal(trainer.trainerVisualIdentity.status, 'inapplicable');
+    assert.equal(trainerPortraitFallback(trainer), 'Sprite unavailable', trainer.id);
+    assert.equal(trainerSpriteQuery(trainer), null);
+    assert.equal(trainer.trainerVisualParticipants.length, 2);
+  }
+  const wild = records.filter(trainer => trainer.sourceType === 'boss-wild');
+  assert.ok(wild.length);
+  for (const trainer of wild) assert.equal(trainerPortraitFallback(trainer), 'Wild encounter', trainer.id);
+  assert.equal(trainerPortraitFallback({trainerVisualIdentity:{status:'inapplicable'}}), 'Sprite unavailable');
+  assert.equal(trainerPortraitFallback(null), 'Sprite unavailable');
+  assert.equal(trainerPortraitFallback({...pairs[0],sourceType:'boss-wild'}), 'Sprite unavailable');
+  assert.equal(JSON.stringify(records), before);
+});
 
 test('game-wide search preserves navigation order, combined encounters, location and source data', () => {
   const dataset = load('platinum-kaizo'), groups = dataset.trainerGroups('chimchar');
