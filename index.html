@@ -17,6 +17,10 @@
     </div>
     <div class="game-control">
       <button id="new-game" type="button" class="secondary">New Game</button>
+      <div class="starter-header-control">
+        <span>Starter</span>
+        <button id="change-starter" type="button" class="secondary move-button starter-button" aria-label="Choose Starter" title="Choose Starter" disabled>?</button>
+      </div>
       <div id="current-game-summary" class="current-game-summary" aria-live="polite" hidden>
         <img id="current-game-art" class="current-game-art" alt="">
         <strong id="current-game-name" class="sr-only">No game selected</strong>
@@ -118,24 +122,36 @@
     <section id="boxes-panel" role="tabpanel" aria-labelledby="boxes-tab" hidden>
       <div class="box-toolbar panel" aria-label="Box controls">
         <div class="toolbar-actions">
-          <button id="change-starter" type="button" class="secondary" disabled>Choose Starter</button>
-          <button id="new-box" type="button" class="secondary">New Box</button>
           <button id="box-view-toggle" type="button" class="secondary" aria-pressed="false" title="Switch to Simple View">Detail View</button>
+          <button id="new-box" type="button" class="secondary">New Box</button>
           <button id="open-box-import" type="button" class="secondary">Import</button>
           <button id="export-boxes" type="button" class="secondary">Export</button>
         </div>
         <div class="box-browse-controls" aria-label="Search, filter and sort Boxes">
-        <label class="box-search-label">Search<input id="box-search" type="search" placeholder="Name, species, move, ability, item…"></label>
-        <label>Type<select id="box-filter-type1"><option value="">Any type</option></select></label>
-        <label>Also type<select id="box-filter-type2"><option value="">Any type</option></select></label>
-        <label>Ability<select id="box-filter-ability"><option value="">Any ability</option></select></label>
-        <label>Move<select id="box-filter-move"><option value="">Any move</option></select></label>
-        <label>Gender<select id="box-filter-gender"><option value="">Any gender</option><option value="M">Male</option><option value="F">Female</option><option value="N">Genderless</option><option value="unknown">Unknown</option></select></label>
-        <label>Item<select id="box-filter-item"><option value="">Any item</option></select></label>
-        <label>Status<select id="box-filter-status"><option value="">Any status</option><option value="healthy">Healthy</option><option value="brn">Burned</option><option value="par">Paralyzed</option><option value="psn">Poisoned</option><option value="tox">Badly Poisoned</option><option value="slp">Asleep</option><option value="frz">Frozen</option></select></label>
-        <label>Sort by<select id="box-sort"></select></label>
-        <label>Direction<select id="box-sort-direction"><option value="asc">Ascending</option><option value="desc">Descending</option></select></label>
-        <button id="box-clear-filters" type="button" class="secondary">Reset</button>
+          <div class="box-filter-row box-filter-identity">
+            <input id="box-search" type="search" list="box-species-options" aria-label="Species or nickname" placeholder="Search species or nickname…">
+            <input id="box-filter-type1" type="search" list="box-type-options" aria-label="Type 1" placeholder="Type 1">
+            <input id="box-filter-type2" type="search" list="box-type-options" aria-label="Type 2" placeholder="Type 2">
+            <input id="box-filter-ability" type="search" list="box-ability-options" aria-label="Ability" placeholder="Search ability">
+            <button id="box-clear-filters" type="button" class="secondary">Clear Set</button>
+          </div>
+          <div class="box-filter-row box-filter-moves">
+            <input id="box-filter-move" type="search" list="box-move-options" aria-label="Move 1" placeholder="Move 1">
+            <input id="box-filter-move2" type="search" list="box-move-options" aria-label="Move 2" placeholder="Move 2">
+            <input id="box-filter-move3" type="search" list="box-move-options" aria-label="Move 3" placeholder="Move 3">
+            <input id="box-filter-move4" type="search" list="box-move-options" aria-label="Move 4" placeholder="Move 4">
+          </div>
+          <div class="box-filter-row box-filter-extra">
+            <select id="box-filter-gender" aria-label="Gender"><option value="">Any gender</option><option value="M">Male</option><option value="F">Female</option><option value="N">Genderless</option><option value="unknown">Unknown</option></select>
+            <select id="box-filter-item" aria-label="Item"><option value="">Any item</option></select>
+            <select id="box-filter-status" aria-label="Status"><option value="">Any status</option><option value="healthy">Healthy</option><option value="brn">Burned</option><option value="par">Paralyzed</option><option value="psn">Poisoned</option><option value="tox">Badly Poisoned</option><option value="slp">Asleep</option><option value="frz">Frozen</option></select>
+          </div>
+          <div class="box-filter-row box-filter-sorting">
+            <select id="box-sort" aria-label="Sort by"></select>
+            <select id="box-sort-direction" aria-label="Sort direction"><option value="asc">Ascending</option><option value="desc">Descending</option></select>
+            <button id="box-clear-sort" type="button" class="secondary">Clear</button>
+          </div>
+          <datalist id="box-species-options"></datalist><datalist id="box-type-options"></datalist><datalist id="box-ability-options"></datalist><datalist id="box-move-options"></datalist>
         <p id="box-search-status" class="fine-print" role="status"></p>
         </div>
       </div>

@@ -1,3 +1,4 @@
+import { starterPresentationType } from './ui/starter_presentation.js?v=20260922-box-design-v1';
 import { calculateStats, normalizeMultiTrainerRoster, normalizePlayerCollection, normalizePlayerPartnerRoster, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js?v=20260922-public-cards-v1";
 import { HOSTED_DATASET_RELEASE } from "./adapters/hosted_dataset.js?v=20260922-public-cards-v1";
 import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260909-public-release-v2";
@@ -50,7 +51,7 @@ import {
 import { addImportedPlanParty, bindPlanPlayerPartyToImportedBox } from "./boxes/plan_import.js?v=20260917-partners-release-v1";
 import { applyBranchProgressionToLibrary, branchProgressionSnapshot } from "./boxes/progression.js?v=20260917-partners-release-v1";
 import { exportShowdown, parseShowdown } from "./boxes/showdown.js?v=20260909-public-release-v2";
-import { browseBox, BOX_SORTS, emptyBoxQuery } from './boxes/browse.js?v=20260921-box-browser-v1';
+import { browseBox, BOX_SORTS, emptyBoxQuery } from './boxes/browse.js?v=20260922-box-design-v1';
 import { PLC_SAVE_GAME_CONFIGS, parseSave, selectSavePokemon } from "./boxes/save_import.js?v=20260921-ds-save-forms-v1";
 
 const TRAINER_AI_BASE_URL = new URL("./generated/trainer-ai", import.meta.url).href;
@@ -344,8 +345,12 @@ async function chooseGameFromPicker(gameId) {
 
 function renderStarterControl() {
   const choice = starterChoice(dataset?.starterSelection, selectedStarterId);
-  ui['change-starter'].textContent = choice ? `Starter: ${choice.speciesName}` : 'Choose Starter';
-  ui['change-starter'].disabled = !dataset?.starterSelection;
+  const control = ui['change-starter'];
+  control.replaceChildren(choice ? sprite({ speciesId: choice.speciesId, displayName: choice.speciesName }) : document.createTextNode('?'));
+  control.dataset.moveType = starterPresentationType(selectedGameId, choice, dataset?.get('species', choice?.speciesId)) || '';
+  control.title = choice ? `Change starter: ${choice.speciesName}` : 'Choose Starter';
+  control.setAttribute('aria-label', control.title);
+  control.disabled = !dataset?.starterSelection;
 }
 
 function openStarterPicker() {
@@ -1031,7 +1036,7 @@ function renderBoxPokemon(box, record) {
       meta.textContent = [entry.basePower ? `${entry.basePower} BP` : null, `${entry.pp} PP`].filter(Boolean).join(" · ");
       copy.append(meta);
     }
-    move.append(copy);
+    move.append(entry ? renderMoveHeading(copy, entry.type || definition?.type, definition?.category) : copy);
     move.setAttribute("aria-label", `Move ${index + 1}: ${entry?.name || definition?.name || "Empty"}`); moves.append(move);
   }
   loadout.append(moves);
@@ -1136,19 +1141,21 @@ function renderBox(box, records) {
 }
 
 function refreshBoxBrowseControls() {
-  const controls = { type1: 'types', type2: 'types', ability: 'abilities', move: 'moves', item: 'items' };
   const records = selectedGameBoxes().flatMap(box => box.pokemonOrder.map(id => box.pokemon[id]));
-  for (const [key, kind] of Object.entries(controls)) {
-    const ids = new Set(key.startsWith('type') ? records.flatMap(record => dataset.get('species', record.speciesId)?.types || [])
-      : key === 'move' ? records.flatMap(record => record.moves.map(move => move.moveId))
-      : records.map(record => record[`${key}Id`]).filter(Boolean));
-    if (boxQuery[key] && boxQuery[key] !== 'none') ids.add(boxQuery[key]);
-    const select = byId(`box-filter-${key}`);
-    select.replaceChildren(option('', `Any ${key.startsWith('type') ? 'type' : key}`));
-    if (key === 'item') select.append(option('none', 'None'));
-    for (const id of [...ids].sort((a, b) => String(dataset.get(kind, a)?.name || a).localeCompare(String(dataset.get(kind, b)?.name || b)))) select.append(option(id, dataset.get(kind, id)?.name || id));
-    select.value = boxQuery[key];
+  const suggestions = {
+    species: records.flatMap(record => [record.nickname, dataset.get('species', record.speciesId)?.name || record.displayName]),
+    type: records.flatMap(record => (dataset.get('species', record.speciesId)?.types || []).map(id => dataset.get('types', id)?.name || id)),
+    ability: records.map(record => dataset.get('abilities', record.abilityId)?.name || record.abilityId),
+    move: records.flatMap(record => record.moves.map(move => dataset.get('moves', move.moveId)?.name || move.name))
+  };
+  for (const [key, values] of Object.entries(suggestions)) {
+    byId(`box-${key}-options`).replaceChildren(...[...new Set(values.filter(Boolean))].sort((a, b) => a.localeCompare(b)).map(value => option(value, value)));
   }
+  const ids = new Set(records.map(record => record.itemId).filter(Boolean));
+  if (boxQuery.item && boxQuery.item !== 'none') ids.add(boxQuery.item);
+  const items = byId('box-filter-item');
+  items.replaceChildren(option('', 'Any item'), option('none', 'None'), ...[...ids].sort((a, b) => String(dataset.get('items', a)?.name || a).localeCompare(String(dataset.get('items', b)?.name || b))).map(id => option(id, dataset.get('items', id)?.name || id)));
+  items.value = boxQuery.item;
 }
 
 function renderBoxes() {
@@ -1174,7 +1181,7 @@ function renderBoxes() {
 
 function resetBoxBrowseInputs() {
   byId('box-search').value = boxQuery.search;
-  for (const key of ['type1', 'type2', 'ability', 'move', 'gender', 'item', 'status']) byId(`box-filter-${key}`).value = boxQuery[key];
+  for (const key of ['type1', 'type2', 'ability', 'move', 'move2', 'move3', 'move4', 'gender', 'item', 'status']) byId(`box-filter-${key}`).value = boxQuery[key];
   byId('box-sort').value = boxQuery.sort;
   byId('box-sort-direction').value = boxQuery.direction;
 }
@@ -4775,14 +4782,16 @@ function wireEvents() {
     renderBoxes();
   });
   let boxSearchTimer;
-  byId('box-search').addEventListener('input', () => {
-    boxQuery.search = byId('box-search').value;
-    clearTimeout(boxSearchTimer); boxSearchTimer = setTimeout(renderBoxes, 120);
-  });
-  for (const key of ['type1', 'type2', 'ability', 'move', 'gender', 'item', 'status']) byId(`box-filter-${key}`).addEventListener('change', () => { boxQuery[key] = byId(`box-filter-${key}`).value; renderBoxes(); });
+  for (const key of ['search', 'type1', 'type2', 'ability', 'move', 'move2', 'move3', 'move4']) {
+    const control = byId(key === 'search' ? 'box-search' : `box-filter-${key}`);
+    control.addEventListener('input', () => { boxQuery[key] = control.value; clearTimeout(boxSearchTimer); boxSearchTimer = setTimeout(renderBoxes, 120); });
+    control.addEventListener('change', () => { boxQuery[key] = control.value; clearTimeout(boxSearchTimer); renderBoxes(); });
+  }
+  for (const key of ['gender', 'item', 'status']) byId(`box-filter-${key}`).addEventListener('change', () => { boxQuery[key] = byId(`box-filter-${key}`).value; renderBoxes(); });
   byId('box-sort').addEventListener('change', () => { boxQuery.sort = byId('box-sort').value; renderBoxes(); });
   byId('box-sort-direction').addEventListener('change', () => { boxQuery.direction = byId('box-sort-direction').value; renderBoxes(); });
-  byId('box-clear-filters').addEventListener('click', () => { boxQuery = emptyBoxQuery(); resetBoxBrowseInputs(); renderBoxes(); });
+  byId('box-clear-filters').addEventListener('click', () => { clearTimeout(boxSearchTimer); boxQuery = { ...emptyBoxQuery(), sort: boxQuery.sort, direction: boxQuery.direction }; resetBoxBrowseInputs(); renderBoxes(); });
+  byId('box-clear-sort').addEventListener('click', () => { boxQuery.sort = 'order'; boxQuery.direction = 'asc'; resetBoxBrowseInputs(); renderBoxes(); });
   ui['change-starter'].addEventListener('click', openStarterPicker);
   ui['close-starter-dialog'].addEventListener('click', () => ui['starter-dialog'].close());
   ui['starter-dialog'].addEventListener('cancel', event => { if (!selectedStarterId) event.preventDefault(); });

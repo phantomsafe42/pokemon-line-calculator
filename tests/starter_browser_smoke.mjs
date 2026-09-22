@@ -104,7 +104,7 @@ try {
     check(option?.parentElement.label==='Roark Split', 'RP alternative stays in its split');
     await chooseGame('pokemon-ruby'); await chooseStarter('treecko');
     await chooseGame('volt-white-2r');
-    check(!el('starter-dialog').open && el('change-starter').textContent.includes('Snivy'), 'per-game remembered choice');
+    check(!el('starter-dialog').open && el('change-starter').getAttribute('aria-label').includes('Snivy'), 'per-game remembered choice');
     check(JSON.stringify(await store.load())===before, 'starter choice must not add/change Boxes');
     el('boxes-tab').click(); el('change-starter').click(); await chooseStarter('oshawott');
     check(trainerIds().includes('vw2r-trainer-0003') && !trainerIds().includes('vw2r-trainer-0001'), 'Boxes changes future routes');
@@ -114,7 +114,7 @@ try {
   await evaluate(`(async()=>{ ${helpers}
     await wait(()=>el('game-dialog').open, 'reload picker');
     await chooseGame('volt-white-2r');
-    check(!el('starter-dialog').open && el('change-starter').textContent.includes('Oshawott'), 'reload persistence');
+    check(!el('starter-dialog').open && el('change-starter').getAttribute('aria-label').includes('Oshawott'), 'reload persistence');
     // Seed only this disposable browser with an owned party for the active-plan test.
     const {addBox,IndexedDbBoxLibraryStore} = await import('./src/boxes/library.js');
     const species = (await (await fetch('./src/generated/datasets/volt-white-2r/species.json')).json()).records.charmeleon;

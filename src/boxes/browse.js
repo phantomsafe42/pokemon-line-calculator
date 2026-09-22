@@ -2,33 +2,39 @@ import { calculateStats } from '../adapters/combatant_ingest.js';
 
 export const BOX_SORTS = Object.freeze([
   ['order', 'Box order'], ['name', 'Name'], ['dex', 'Pokédex number'], ['level', 'Level'],
-  ['hp', 'HP'], ['atk', 'Attack'], ['def', 'Defense'], ['spa', 'Sp. Atk'], ['spd', 'Sp. Def'], ['spe', 'Speed']
+  ['hp', 'HP'], ['atk', 'Attack'], ['def', 'Defense'], ['spa', 'Sp. Atk'], ['spd', 'Sp. Def'], ['spe', 'Speed'],
+  ['base-hp', 'Base HP'], ['base-atk', 'Base Attack'], ['base-def', 'Base Defense'],
+  ['base-spa', 'Base Sp. Atk'], ['base-spd', 'Base Sp. Def'], ['base-spe', 'Base Speed']
 ]);
-export const emptyBoxQuery = () => ({ search: '', type1: '', type2: '', ability: '', move: '', gender: '', item: '', status: '', sort: 'order', direction: 'asc' });
+export const emptyBoxQuery = () => ({ search: '', type1: '', type2: '', ability: '', move: '', move2: '', move3: '', move4: '', gender: '', item: '', status: '', sort: 'order', direction: 'asc' });
 const text = value => String(value || '').normalize('NFKD').replace(/\p{M}/gu, '').toLowerCase();
+const matches = (id, name, query) => [id, name].some(value => text(value).includes(text(query).trim()));
 
 // Presentation only: never reorder canonical Box records or Party references.
 export function browseBox(box, dataset, query = emptyBoxQuery()) {
   const terms = text(query.search).trim().split(/\s+/u).filter(Boolean);
   const records = box.pokemonOrder.map(id => box.pokemon[id]).filter(Boolean).filter(record => {
     const species = dataset.get('species', record.speciesId);
-    if ([query.type1, query.type2].filter(Boolean).some(type => !species?.types?.includes(type))) return false;
-    if (query.ability && record.abilityId !== query.ability) return false;
-    if (query.move && !record.moves.some(move => move.moveId === query.move)) return false;
+    if ([query.type1, query.type2].filter(value => value?.trim()).some(type => !species?.types?.some(id => matches(id, dataset.get('types', id)?.name, type)))) return false;
+    if (query.ability?.trim() && !matches(record.abilityId, dataset.get('abilities', record.abilityId)?.name, query.ability)) return false;
+    if ([query.move, query.move2, query.move3, query.move4].filter(value => value?.trim()).some(queryMove => !record.moves.some(move => matches(move.moveId, dataset.get('moves', move.moveId)?.name || move.name, queryMove)))) return false;
     if (query.gender && (record.gender || 'unknown') !== query.gender) return false;
     if (query.item && (record.itemId || 'none') !== query.item) return false;
     if (query.status && (record.majorStatus || 'healthy') !== query.status) return false;
     if (!terms.length) return true;
-    const haystack = text([record.nickname, record.displayName, species?.name, species?.num,
-      dataset.get('abilities', record.abilityId)?.name, dataset.get('items', record.itemId)?.name,
-      ...record.moves.map(move => move.name)].filter(value => value != null).join(' '));
+    const haystack = text([record.nickname, record.displayName, species?.name, species?.num].filter(value => value != null).join(' '));
     return terms.every(term => haystack.includes(term));
   });
   if (!query.sort || query.sort === 'order') return query.direction === 'desc' ? records.reverse() : records;
   const stat = ['hp', 'atk', 'def', 'spa', 'spd', 'spe'].includes(query.sort);
+  const baseStat = query.sort.startsWith('base-') && ['hp', 'atk', 'def', 'spa', 'spd', 'spe'].includes(query.sort.slice(5)) ? query.sort.slice(5) : null;
   const values = new Map(records.map(record => {
     let value = null;
     if (stat) { try { value = calculateStats(record, dataset)[query.sort]; } catch { /* Unavailable sorts last, never invented. */ } }
+    else if (baseStat) {
+      const base = record.baseStats?.[baseStat] ?? dataset.get('species', record.speciesId)?.baseStats?.[baseStat];
+      if (base != null && base !== '' && Number(base) > 0) value = Number(base);
+    }
     else if (query.sort === 'level') value = record.level;
     else if (query.sort === 'name') value = text(record.nickname || record.displayName);
     else if (query.sort === 'dex') { const num = Number(dataset.get('species', record.speciesId)?.num); if (num > 0) value = num; }
