@@ -15,7 +15,7 @@ import { SavedDraftStore, savedDraftSnapshot } from "./cache/saved_drafts.js?v=2
 import { reorderCards } from "./ui/reorder_cards.js?v=20260909-public-release-v2";
 import { addFreeCalcBranch, editFreeCalcCombatant, replaceFreeCalcSlot, freeCalcAsNewPlan } from './core/free_calc.js?v=20260921-dataset-identities-v1';
 import { isSandbox, editSandboxCombatant, placeSandboxCombatant, admitSandboxReserve } from './core/sandbox.js?v=20260921-dataset-identities-v1';
-import { sandboxPickerCandidates } from './ui/sandbox_picker.js?v=20260919-sandbox-picker-v2';
+import { sandboxPickerCandidates, orderSandboxCandidates } from './ui/sandbox_picker.js?v=20260921-sandbox-box-order-v1';
 import { makeStableId } from './core/primitives.js';
 import { freeCalcExperience, freeCalcTotalExperience } from './ui/free_calc.js?v=20260918-free-calc-inline-v1';
 import { nodeTreeSections } from './ui/node_tree.js?v=20260918-free-calc-sections-v1';
@@ -610,7 +610,7 @@ function manualPokemonCandidates(side, slot) {
         if (existing.has(JSON.stringify([entry.source.boxId, entry.source.uniqueKey])) || byKey.has(entry.combatantKey)) continue;
         byKey.set(entry.combatantKey, owner ? { ...entry, source: { ...entry.source, partyOwnerId: owner } } : entry);
       }
-      return byKey;
+      return new Map(orderSandboxCandidates(byKey.values(), sandboxBoxRoster()).map(entry => [entry.combatantKey, entry]));
     }
     const boxes = [...new Set(candidates.map(entry => entry.source?.boxId).filter(Boolean))].map(selectedBox).filter(Boolean);
     for (const box of boxes) for (const id of box.pokemonOrder) {
