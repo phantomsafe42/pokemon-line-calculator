@@ -144,8 +144,8 @@ export async function checkFreeCalcInline({ page, evaluate, delay, dataset, temp
             const header=card.querySelector('.combatant-header'),sprite=header.querySelector('.combatant-sprite').getBoundingClientRect();
             const identity=header.children[1].getBoundingClientRect(),hp=header.querySelector('.combatant-corner-stats').getBoundingClientRect();
             const style=getComputedStyle(card),contentWidth=card.clientWidth-parseFloat(style.paddingLeft)-parseFloat(style.paddingRight);
-            return {sameRow:Math.abs(identity.top-sprite.top)<1,beside:identity.left>=sprite.right,
-              hpFits:contentWidth<390 || (Math.abs(hp.top-sprite.top)<1 && hp.left>=identity.right),
+            return {sameRow:identity.top<sprite.bottom && identity.bottom>sprite.top,beside:identity.left>=sprite.right,
+              hpFits:contentWidth<=440 ? hp.top>=Math.max(identity.bottom,sprite.bottom) : hp.left>=identity.right,
               overlaps:identity.left<hp.right && identity.right>hp.left && identity.top<hp.bottom && identity.bottom>hp.top};
           }),
           stackGaps:[...document.querySelectorAll('.action-panel:is(.is-triples,.is-rotation) .action-panel-cards')].map(grid=> {

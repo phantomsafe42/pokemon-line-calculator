@@ -163,6 +163,7 @@ function cdpClient(webSocketDebuggerUrl) {
   let nextId = 0;
   const pending = new Map();
   const events = [];
+  const listeners = [];
   socket.addEventListener("message", event => {
     const message = JSON.parse(event.data);
     if (message.id && pending.has(message.id)) {
@@ -170,7 +171,7 @@ function cdpClient(webSocketDebuggerUrl) {
       pending.delete(message.id);
       clearTimeout(entry.timer);
       message.error ? entry.reject(new Error(`${entry.method}: ${message.error.message}`)) : entry.resolve(message.result);
-    } else events.push(message);
+    } else { events.push(message); for (const listener of listeners) listener(message); }
   });
   const rejectPending = reason => {
     for (const entry of pending.values()) { clearTimeout(entry.timer); entry.reject(new Error(reason)); }
@@ -180,6 +181,7 @@ function cdpClient(webSocketDebuggerUrl) {
   socket.addEventListener("error", () => rejectPending("CDP WebSocket failed"));
   return {
     events,
+    onEvent(listener) { listeners.push(listener); },
     ready: new Promise((resolve, reject) => {
       socket.addEventListener("open", resolve, { once: true });
       socket.addEventListener("error", reject, { once: true });
@@ -234,19 +236,38 @@ try {
   const serverPort = await availablePort();
   server = await startStaticServer(serverPort);
   const debugPort = await availablePort();
-  const appUrl = `http://127.0.0.1:${serverPort}${publicPrefix}`;
+  const localAppUrl = `http://127.0.0.1:${serverPort}${publicPrefix}`;
+  const appUrl = `https://phantomsafe42.github.io${publicPrefix}`;
   const chrome = await findBrowser();
   browser = spawn(chrome, [
     "--headless=new", "--no-sandbox", "--disable-gpu", "--disable-software-rasterizer", "--no-first-run",
     "--no-default-browser-check", "--disable-extensions", `--remote-debugging-port=${debugPort}`, "--remote-allow-origins=*",
-    `--user-data-dir=${profile}`, appUrl
+    `--user-data-dir=${profile}`, 'about:blank'
   ], { windowsHide: true, stdio: "ignore" });
 
-  const target = await waitForTarget(debugPort, appUrl);
+  const target = await waitForTarget(debugPort, 'about:blank');
   const page = cdpClient(target.webSocketDebuggerUrl);
   await page.ready;
   await page.send("Runtime.enable");
   await page.send("Page.enable");
+  // Serve only this candidate's application files at the production origin.
+  // Dataset and Assets requests remain real HTTPS requests with browser CORS.
+  // No public files are written, and the gateway origin policy stays unchanged.
+  const interceptionErrors = [];
+  page.onEvent(event => {
+    if (event.method !== 'Fetch.requestPaused') return;
+    void (async () => {
+      const { requestId, request } = event.params;
+      assert.ok(request.url.startsWith(appUrl));
+      const response = await fetch(localAppUrl + request.url.slice(appUrl.length));
+      await page.send('Fetch.fulfillRequest', {
+        requestId, responseCode: response.status,
+        responseHeaders: [...response.headers].map(([name, value]) => ({name, value})),
+        body: Buffer.from(await response.arrayBuffer()).toString('base64')
+      });
+    })().catch(error => interceptionErrors.push(String(error)));
+  });
+  await page.send('Fetch.enable', { patterns: [{ urlPattern: appUrl + '*', requestStage: 'Request' }] });
   await page.send("Page.addScriptToEvaluateOnNewDocument", { runImmediately: true, source: `
     window.openNewLineForTest = async () => {
       const wait = async fn => { for(let i=0;i<300;i++){if(fn())return;await new Promise(r=>setTimeout(r,50));}throw new Error('New Line flow timed out'); };
@@ -260,6 +281,7 @@ try {
     };
   ` });
   await page.send("Network.enable");
+  await page.send('Page.navigate', {url: appUrl});
   await waitForStableRuntime(page, appUrl);
 
   if (process.env.PLC_TRAINER_SELECTOR_ONLY) {
@@ -715,7 +737,12 @@ try {
     .map(event => event.params.exceptionDetails.exception?.description || event.params.exceptionDetails.text);
   const failedRequests = page.events
     .filter(event => event.method === "Network.loadingFailed")
-    .map(event => `${event.params.errorText}: ${event.params.requestId}`);
+    .map(event => ({
+      error: event.params.errorText,
+      url: page.events.find(request => request.method === 'Network.requestWillBeSent' && request.params.requestId === event.params.requestId)?.params.request.url,
+      cors: event.params.corsErrorStatus,
+      blocked: event.params.blockedReason
+    }));
   const badResponses = page.events
     .filter(event => event.method === "Network.responseReceived" && event.params.response.status >= 400)
     .map(event => `${event.params.response.status} ${event.params.response.url}`);
@@ -737,6 +764,7 @@ try {
     bundledAssetRequests: requestedUrls.filter(url => /\/public-assets\//u.test(new URL(url).pathname)).length
   };
   assert.deepEqual(browserErrors, []);
+  assert.deepEqual(interceptionErrors, []);
   assert.deepEqual(failedRequests, []);
   assert.deepEqual(badResponses, []);
   assert.equal(requestedUrls.some(url => {
@@ -744,7 +772,7 @@ try {
     return pathname.startsWith("/Datasets/") || pathname.startsWith("/Battle%20Mechanics/");
   }), false);
   assert.equal(requestedUrls.some(url => /__stream-tools/i.test(url)), false);
-  assert.ok(requestedUrls.filter(url => url.startsWith(`http://127.0.0.1:${serverPort}/`)).every(url => url.startsWith(appUrl)));
+  assert.equal(requestedUrls.some(url => url.startsWith(`http://127.0.0.1:${serverPort}/`)), false);
   assert.equal(performance.localDatasetRequests, 0, "A healthy hosted release must not mix in checked-in Dataset files");
   assert.equal(performance.hostedCatalogRequests, 1, "The immutable Dataset catalog must be shared through the release cache");
   assert.equal(performance.hostedManifestRequests, 1, "The immutable PLC manifest must be shared through the release cache");
