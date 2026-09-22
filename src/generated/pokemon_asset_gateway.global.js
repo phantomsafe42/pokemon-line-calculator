@@ -3,7 +3,7 @@
 
   const API_VERSION = "pokemon-asset-gateway-client/v1";
   const DEFAULT_ORIGIN = "https://assets.phantomsafe.tv";
-  const DEFAULT_RELEASE_VERSION = "0.8.0-dev.1";
+  const DEFAULT_RELEASE_VERSION = "0.8.2-dev.1";
   const ALLOWED_QUERY_FIELDS = new Set([
     "kind", "assetKind", "species", "nationalDex", "form", "gender", "shiny",
     "view", "back", "spriteType", "profile", "iconFrame", "frame", "appearanceId",
