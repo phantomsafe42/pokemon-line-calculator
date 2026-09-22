@@ -23,6 +23,7 @@ export async function checkDsSaveForms({page,evaluate,delay,dataset}) {
     await wait(`!document.getElementById('save-import-dialog').open && [...document.querySelectorAll('.box-name-input')].some(el=>el.value===${JSON.stringify(name)})`);
     const names=await evaluate(page,`(()=>{
       const box=[...document.querySelectorAll('.box-card')].find(el=>el.querySelector('.box-name-input').value===${JSON.stringify(name)});
+      box.querySelector('.box-expand[aria-expanded="false"]')?.click();
       return [...box.querySelectorAll('.box-pokemon-card h3')].map(el=>el.textContent);
     })()`);
     assert.deepEqual(names,['shellos','shelloseast','gastrodoneast'].map(id=>dataset.get('species',id).name));

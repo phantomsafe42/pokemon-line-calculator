@@ -45,10 +45,11 @@ import { battleCompletionState } from "./core/battle_completion.js?v=20260909-pu
 import {
   addBox, addParty, boxesForGame, createEmptyBoxLibrary, exportBoxLibrary, IndexedDbBoxLibraryStore,
   mergeBoxLibrary, parseBoxLibrary, removeBox, removeParty, removePokemon, renameBox, updateParty, upsertPokemon
-} from "./boxes/library.js?v=20260909-public-release-v2";
+} from "./boxes/library.js?v=20260921-box-transfer-v1";
 import { addImportedPlanParty, bindPlanPlayerPartyToImportedBox } from "./boxes/plan_import.js?v=20260917-partners-release-v1";
 import { applyBranchProgressionToLibrary, branchProgressionSnapshot } from "./boxes/progression.js?v=20260917-partners-release-v1";
 import { exportShowdown, parseShowdown } from "./boxes/showdown.js?v=20260909-public-release-v2";
+import { browseBox, BOX_SORTS, emptyBoxQuery } from './boxes/browse.js?v=20260921-box-browser-v1';
 import { PLC_SAVE_GAME_CONFIGS, parseSave, selectSavePokemon } from "./boxes/save_import.js?v=20260921-ds-save-forms-v1";
 
 const TRAINER_AI_BASE_URL = new URL("./generated/trainer-ai", import.meta.url).href;
@@ -184,6 +185,8 @@ const ui = Object.fromEntries([
   "readiness", "preview-outcomes", "ai-forecast-toggle", "ai-forecast-body", "ai-notes", "notes-toggle", "notes-body", "node-notes", "notes-status", "boxes-list", "save-import", "save-import-dialog", "save-import-filename",
   "save-import-party-summary", "save-import-pc-boxes", "save-import-status", "select-all-save-boxes", "clear-save-boxes",
   "confirm-save-import", "showdown-open", "new-box", "export-boxes", "import-boxes",
+  "open-box-import", "box-import-dialog", "box-import-status", "box-export-dialog", "box-export-format",
+  "box-export-selection", "box-export-status", "select-all-box-export", "clear-box-export", "confirm-box-export",
   "plan-context-dialog", "trainer-select", "battle-format", "battle-format-choice", "variant-field", "variant-select", "plan-name",
   "partner-trainer-field", "partner-trainer-select", "partner-trainer-scope", "partner-trainer-search-field", "partner-trainer-search", "partner-variant-field", "partner-variant-select",
   "initial-weather", "initial-terrain", "context-mode-select", "context-box-field", "context-box-select", "saved-party-field",
@@ -209,6 +212,12 @@ let dataset = null;
 let trainerAi = null;
 let worker = null;
 let boxLibrary = createEmptyBoxLibrary();
+let editingBoxParty = null;
+let boxQuery = emptyBoxQuery();
+let boxView = 'detail';
+let boxBrowseGame = null;
+const expandedBoxes = new Set();
+let partyMembershipSaving = false;
 let plan = null;
 let freeCalcSession = null;
 let draftTreeObservers = [];
@@ -793,6 +802,8 @@ function partyMemberCell(record) {
 function renderParty(box, party) {
   const card = document.createElement("div");
   card.className = "party-card";
+  card.dataset.partyId = party.id;
+  const header = document.createElement("div"); header.className = "party-card-header";
   const name = document.createElement("input");
   name.className = "party-name";
   name.value = party.name;
@@ -810,83 +821,239 @@ function renderParty(box, party) {
     if (!record) continue;
     const member = contextPokemonCard(box, record, true, false, { forContext: false });
     member.dataset.pokemonId = record.id;
-    const actions = document.createElement('div'); actions.className = 'context-pokemon-actions';
-    const removeMember = button('Remove', 'secondary');
-    removeMember.addEventListener('click', async () => {
-      boxLibrary = updateParty(boxLibrary, selectedGameId, box.id, party.id, { pokemonIds: selectedBox(box.id).parties[party.id].pokemonIds.filter(id => id !== record.id) });
-      await saveLibrary('Party member removed.');
-    });
-    actions.append(removeMember);
-    member.append(actions); members.append(member);
+    members.append(member);
   }
   reorderCards(members, async pokemonIds => {
     boxLibrary = updateParty(boxLibrary, selectedGameId, box.id, party.id, { pokemonIds });
     await boxStore.save(boxLibrary);
   });
-  const deleteParty = button('Delete Party', 'danger');
+  const editParty = button('Edit', 'secondary party-edit');
+  editParty.addEventListener('click', () => {
+    editingBoxParty = editingBoxParty?.gameId === selectedGameId && editingBoxParty.boxId === box.id && editingBoxParty.partyId === party.id
+      ? null : { gameId: selectedGameId, boxId: box.id, partyId: party.id };
+    refreshPartySelection();
+  });
+  const deleteParty = button('Delete', 'danger');
   deleteParty.addEventListener('click', async () => {
     if (!confirm(`Delete ${party.name}? Pokémon stay in the Box.`)) return;
     boxLibrary = removeParty(boxLibrary, selectedGameId, box.id, party.id); await saveLibrary('Party deleted.');
   });
-  card.append(name, members, deleteParty);
+  header.append(name, editParty, deleteParty);
+  card.append(header, members);
   return card;
+}
+
+function refreshPartySelection() {
+  const box = editingBoxParty?.gameId === selectedGameId ? selectedBox(editingBoxParty.boxId) : null;
+  const party = box?.parties[editingBoxParty?.partyId];
+  if (!party) editingBoxParty = null;
+  for (const section of ui['boxes-list'].querySelectorAll('.box-card')) {
+    const activeBox = Boolean(party && section.dataset.boxId === box.id);
+    for (const row of section.querySelectorAll('.party-card')) {
+      const active = activeBox && row.dataset.partyId === party.id;
+      row.classList.toggle('is-editing', active);
+      row.querySelector('.party-edit').setAttribute('aria-pressed', String(active));
+    }
+    for (const card of section.querySelectorAll('.box-pokemon-card')) {
+      let select = card.querySelector('.box-party-select');
+      card.classList.toggle('is-party-selectable', activeBox);
+      card.classList.toggle('is-party-selected', activeBox && party.pokemonIds.includes(card.dataset.pokemonId));
+      if (!activeBox) { select?.remove(); continue; }
+      if (!select) {
+        select = button('', 'box-party-select');
+        select.addEventListener('click', () => toggleBoxPartyMember(section.dataset.boxId, card.dataset.pokemonId));
+        card.prepend(select);
+      }
+      select.setAttribute('aria-disabled', String(partyMembershipSaving));
+      select.setAttribute('aria-label', `${recordName(box.pokemon[card.dataset.pokemonId])} in ${party.name}`);
+      select.setAttribute('aria-pressed', String(party.pokemonIds.includes(card.dataset.pokemonId)));
+    }
+  }
+}
+
+async function toggleBoxPartyMember(boxId, pokemonId) {
+  if (partyMembershipSaving || editingBoxParty?.gameId !== selectedGameId || editingBoxParty.boxId !== boxId) return;
+  const box = selectedBox(boxId), party = box?.parties[editingBoxParty.partyId];
+  if (!party || !box.pokemon[pokemonId]) return;
+  const selected = party.pokemonIds.includes(pokemonId);
+  if (!selected && party.pokemonIds.length >= 6) { setStatus(`${party.name} already has six Pokémon. Deselect one first.`, true); return; }
+  const prior = boxLibrary;
+  let updated;
+  partyMembershipSaving = true;
+  try {
+    boxLibrary = updateParty(boxLibrary, selectedGameId, boxId, party.id, {
+      pokemonIds: selected ? party.pokemonIds.filter(id => id !== pokemonId) : [...party.pokemonIds, pokemonId]
+    });
+    updated = boxLibrary;
+    refreshPartySelection();
+    await boxStore.save(boxLibrary);
+    const section = [...ui['boxes-list'].querySelectorAll('.box-card')].find(row => row.dataset.boxId === boxId);
+    const current = selectedBox(boxId);
+    if (section && current) section.querySelector('.party-shelf').replaceChildren(...current.partyOrder.map(id => renderParty(current, current.parties[id])));
+    refreshContextBoxSelect();
+    setStatus('Party membership saved.');
+  } catch (error) {
+    if (boxLibrary === updated) boxLibrary = prior;
+    setStatus(error.message, true);
+  } finally {
+    partyMembershipSaving = false;
+    refreshPartySelection();
+  }
 }
 
 function renderBoxPokemon(box, record) {
   const card = document.createElement("article");
   card.className = "box-pokemon-card";
-  card.append(sprite(record));
-  const body = document.createElement("div");
+  card.dataset.pokemonId = record.id;
+  const body = document.createElement("div"); body.className = "box-pokemon-summary";
+  const header = document.createElement("div"); header.className = "combatant-header";
+  const spriteBox = document.createElement("div"); spriteBox.className = "combatant-sprite"; spriteBox.append(sprite(record));
+  const identity = document.createElement("div"); identity.className = "box-pokemon-identity";
+  const nameRow = document.createElement("div"); nameRow.className = "box-pokemon-name";
   const heading = document.createElement("h3");
+  heading.className = "combatant-name";
   heading.textContent = recordName(record);
-  const detail = document.createElement("p");
+  nameRow.append(heading);
+  if (record.gender === "M" || record.gender === "F") {
+    const gender = document.createElement("span"); gender.className = `combatant-gender gender-${record.gender.toLowerCase()}`;
+    gender.textContent = record.gender === "M" ? "♂" : "♀";
+    gender.setAttribute("aria-label", record.gender === "M" ? "Male" : "Female"); nameRow.append(gender);
+  }
+  if (record.nickname) {
+    const speciesName = document.createElement("span"); speciesName.className = "combatant-species";
+    speciesName.textContent = record.displayName; nameRow.append(speciesName);
+  }
   const species = dataset.get("species", record.speciesId);
-  const expDetail = Number.isInteger(record.experience)
-    ? ` · ${record.experience.toLocaleString()} EXP · ${experienceToNextLevel(record.experience, species?.growthRate, record.level).toLocaleString()} to next`
-    : "";
-  detail.textContent = `${record.displayName} · Lv. ${record.level}${expDetail} · ${record.moves.map(move => move.name).join(", ") || "No moves"}`;
+  const meta = document.createElement("div"); meta.className = "meta-row";
+  const types = document.createElement("div"); types.className = "combatant-types";
+  for (const type of species?.types || []) {
+    const chip = document.createElement("span"); chip.className = "combatant-type";
+    const label = dataset.get("types", type)?.name || type;
+    const icon = document.createElement("img"); icon.alt = label; icon.title = label; icon.width = 31; icon.height = 31;
+    chip.append(icon); types.append(chip);
+    if (pokemonAssetResolver) void pokemonAssetResolver.setAssetImage(icon, { kind: "type-icon", presentation: "symbol", style: "sv", type }, { onUnavailable: () => { chip.textContent = label; } });
+    else chip.textContent = label;
+  }
+  const calculated = calculateStats(record, dataset), nature = dataset.get("natures", record.natureId);
+  const details = document.createElement("div"); details.className = "box-pokemon-details";
+  const level = staticDetail("Level", String(record.level));
+  if (Number.isInteger(record.experience) && species?.growthRate) {
+    const threshold = experienceForLevel(record.level, species.growthRate);
+    const exp = document.createElement("span"); exp.className = "box-pokemon-exp";
+    exp.textContent = record.level < 100
+      ? `(${Math.max(0, record.experience - threshold).toLocaleString()}/${(experienceForLevel(record.level + 1, species.growthRate) - threshold).toLocaleString()})`
+      : "(Max)";
+    level.querySelector("strong").append(document.createTextNode(" "), exp);
+  }
+  details.append(level, staticDetail("HP", String(calculated.hp)),
+    staticDetail("Ability", dataset.get("abilities", record.abilityId)?.name || record.abilityId || "—"),
+    staticDetail("Item", dataset.get("items", record.itemId)?.name || record.itemId || "None"));
+  for (const value of details.querySelectorAll("strong")) value.title = value.textContent;
+  meta.append(types); identity.append(nameRow, meta); header.append(spriteBox, identity, details);
+  const stats = document.createElement("div"); stats.className = "combatant-stats";
+  stats.setAttribute("role", "group"); stats.setAttribute("aria-label", "Stats");
+  const statRow = document.createElement("div"); statRow.className = "combatant-stat-row";
+  for (const stat of STAT_KEYS.filter(key => key !== "hp")) {
+    const cell = document.createElement("div"); cell.className = "combatant-stat"; cell.dataset.stat = stat;
+    const label = document.createElement("span"); label.className = "combatant-stat-label"; label.textContent = STAT_LABELS[stat];
+    if (nature?.boostedStat && nature?.nerfedStat && nature.boostedStat !== nature.nerfedStat) {
+      if (stat === nature.boostedStat) label.classList.add("combatant-stat-name-buff");
+      if (stat === nature.nerfedStat) label.classList.add("combatant-stat-name-debuff");
+    }
+    const value = document.createElement("strong"); value.className = "combatant-stat-value"; value.textContent = calculated[stat];
+    const training = document.createElement("div"); training.className = "combatant-stat-stage box-stat-training";
+    training.setAttribute("aria-label", `${STAT_LABELS[stat]} IV ${record.ivs[stat]}, EV ${record.evs[stat]}`);
+    for (const [kind, number] of [["IV", record.ivs[stat]], ["EV", record.evs[stat]]]) {
+      const segment = document.createElement("span"); segment.title = `${STAT_LABELS[stat]} ${kind}`;
+      const unit = document.createElement("small"); unit.textContent = kind;
+      segment.append(document.createTextNode(String(number)), unit); training.append(segment);
+    }
+    cell.append(label, value, training); statRow.append(cell);
+  }
+  stats.append(statRow); body.append(header, stats);
+  const loadout = document.createElement("div"); loadout.className = "box-pokemon-loadout";
+  const moves = document.createElement("div"); moves.className = "box-pokemon-moves"; moves.setAttribute("aria-label", "Moves");
+  for (let index = 0; index < 4; index++) {
+    const entry = record.moves[index], definition = entry && dataset.get("moves", entry.moveId);
+    const move = document.createElement("div"); move.className = "box-pokemon-move move-button";
+    const copy = document.createElement("span"); copy.className = "move-copy";
+    const title = document.createElement("strong"); title.textContent = entry?.name || definition?.name || "—";
+    copy.append(title);
+    if (entry) {
+      move.dataset.moveType = String(entry.type || definition?.type || "unknown").toLowerCase();
+      const meta = document.createElement("small");
+      meta.textContent = [entry.basePower ? `${entry.basePower} BP` : null, `${entry.pp} PP`].filter(Boolean).join(" · ");
+      copy.append(meta);
+    }
+    move.append(copy);
+    move.setAttribute("aria-label", `Move ${index + 1}: ${entry?.name || definition?.name || "Empty"}`); moves.append(move);
+  }
+  loadout.append(moves);
   const actions = document.createElement("div");
   actions.className = "box-card-actions";
   const edit = button("Edit", "secondary");
   edit.addEventListener("click", () => openPokemonEditor(box.id, record.id));
-  const exportOne = button("Showdown", "secondary");
-  exportOne.addEventListener("click", () => openShowdownExport([record]));
   const erase = button("Erase", "danger");
   erase.addEventListener("click", async () => {
     if (!confirm(`Erase ${recordName(record)} from ${box.name} and every Party in it?`)) return;
     boxLibrary = removePokemon(boxLibrary, selectedGameId, box.id, record.id);
     await saveLibrary("Pokémon erased from its Box and Party references.");
   });
-  actions.append(edit, exportOne, erase);
-  body.append(heading, detail, actions);
-  card.append(body);
-  const membership = document.createElement("div");
-  membership.className = "party-membership";
-  for (const partyId of box.partyOrder) {
-    const party = box.parties[partyId];
-    const label = document.createElement("label");
-    const input = document.createElement("input");
-    input.type = "checkbox";
-    input.checked = party.pokemonIds.includes(record.id);
-    input.addEventListener("change", async () => {
-      let ids = [...selectedBox(box.id).parties[party.id].pokemonIds];
-      if (input.checked && ids.length >= 6) { input.checked = false; setStatus(`${party.name} already has six Pokémon.`, true); return; }
-      ids = input.checked ? [...ids, record.id] : ids.filter(id => id !== record.id);
-      boxLibrary = updateParty(boxLibrary, selectedGameId, box.id, party.id, { pokemonIds: ids });
-      await saveLibrary("Party membership updated.");
-    });
-    label.append(input, document.createTextNode(party.name));
-    membership.append(label);
-  }
-  card.append(membership);
+  actions.append(edit, erase);
+  body.append(actions);
+  card.append(body, loadout);
   return card;
 }
 
-function renderBox(box) {
+function renderSimpleBoxPokemon(box, record) {
+  const card = contextPokemonCard(box, record, false, false, { forContext: false, deferItemOptions: true });
+  card.classList.add('box-pokemon-card', 'box-simple-card');
+  const erase = button('Erase', 'danger');
+  erase.addEventListener('click', async () => {
+    if (!confirm(`Erase ${recordName(record)} from ${box.name} and every Party in it?`)) return;
+    boxLibrary = removePokemon(boxLibrary, selectedGameId, box.id, record.id);
+    await saveLibrary('Pokémon erased from its Box and Party references.');
+  });
+  card.querySelector('.context-pokemon-actions').append(erase);
+  return card;
+}
+
+function renderBoxContents(box, records, content) {
+  const parties = document.createElement('div');
+  parties.className = 'party-shelf';
+  if (!box.partyOrder.length) parties.append(Object.assign(document.createElement('p'), { className: 'empty', textContent: 'No Parties in this Box yet.' }));
+  else for (const partyId of box.partyOrder) parties.append(renderParty(box, box.parties[partyId]));
+  const grid = document.createElement('div');
+  grid.className = `box-pokemon-grid${boxView === 'simple' ? ' is-simple' : ''}`;
+  if (!records.length) grid.append(Object.assign(document.createElement('p'), { className: 'empty', textContent: box.pokemonOrder.length ? 'No Pokémon match these filters.' : 'This Box is empty. Add a Pokémon or import Showdown sets.' }));
+  else for (const record of records) grid.append(boxView === 'simple' ? renderSimpleBoxPokemon(box, record) : renderBoxPokemon(box, record));
+  content.replaceChildren(parties, grid);
+}
+
+function renderBox(box, records) {
   const section = document.createElement("section");
   section.className = "box-card";
+  section.dataset.boxId = box.id;
   const header = document.createElement("div");
   header.className = "box-card-header";
+  const content = document.createElement('div');
+  content.className = 'box-content';
+  content.id = `box-content-${box.id}`;
+  content.hidden = !expandedBoxes.has(box.id);
+  const toggle = button(content.hidden ? '▸' : '▾', 'secondary box-expand');
+  toggle.setAttribute('aria-label', `${content.hidden ? 'Expand' : 'Collapse'} ${box.name}`);
+  toggle.setAttribute('aria-expanded', String(!content.hidden));
+  toggle.setAttribute('aria-controls', content.id);
+  toggle.addEventListener('click', () => {
+    content.hidden = !content.hidden;
+    if (content.hidden) expandedBoxes.delete(box.id);
+    else { expandedBoxes.add(box.id); const current = selectedBox(box.id); renderBoxContents(current, browseBox(current, dataset, boxQuery), content); }
+    toggle.textContent = content.hidden ? '▸' : '▾';
+    toggle.setAttribute('aria-expanded', String(!content.hidden));
+    toggle.setAttribute('aria-label', `${content.hidden ? 'Expand' : 'Collapse'} ${box.name}`);
+    refreshPartySelection();
+  });
+  header.addEventListener('click', event => { if (!event.target.closest('button, input, select, label')) toggle.click(); });
   const name = document.createElement("input");
   name.className = "box-name-input";
   name.value = box.name;
@@ -903,40 +1070,67 @@ function renderBox(box) {
   addPartyButton.addEventListener("click", async () => {
     const result = addParty(boxLibrary, selectedGameId, box.id);
     boxLibrary = result.library;
+    expandedBoxes.add(box.id);
     await saveLibrary("Party added.");
   });
-  const exportBox = button("Showdown Export", "secondary");
-  exportBox.addEventListener("click", () => openShowdownExport(box.pokemonOrder.map(id => box.pokemon[id])));
   const deleteBoxButton = button("Delete Box", "danger");
   deleteBoxButton.addEventListener("click", async () => {
     if (!confirm(`Delete ${box.name}, all of its Pokémon, and all of its Parties?`)) return;
     boxLibrary = removeBox(boxLibrary, selectedGameId, box.id);
     await saveLibrary("Box deleted.");
   });
-  actions.append(addPokemonButton, addPartyButton, exportBox, deleteBoxButton);
-  header.append(name, actions);
-  const parties = document.createElement("div");
-  parties.className = "party-shelf";
-  if (!box.partyOrder.length) parties.append(Object.assign(document.createElement("p"), { className: "empty", textContent: "No Parties in this Box yet." }));
-  else for (const partyId of box.partyOrder) parties.append(renderParty(box, box.parties[partyId]));
-  const grid = document.createElement("div");
-  grid.className = "box-pokemon-grid";
-  if (!box.pokemonOrder.length) grid.append(Object.assign(document.createElement("p"), { className: "empty", textContent: "This Box is empty. Add a Pokémon or import Showdown sets." }));
-  else for (const pokemonId of box.pokemonOrder) grid.append(renderBoxPokemon(box, box.pokemon[pokemonId]));
-  section.append(header, parties, grid);
+  actions.append(addPokemonButton, addPartyButton, deleteBoxButton);
+  const count = document.createElement('span');
+  count.className = 'box-match-count';
+  count.textContent = `${records.length} / ${box.pokemonOrder.length} Pokémon`;
+  header.append(toggle, name, count, actions);
+  if (!content.hidden) renderBoxContents(box, records, content);
+  section.append(header, content);
   return section;
+}
+
+function refreshBoxBrowseControls() {
+  const controls = { type1: 'types', type2: 'types', ability: 'abilities', move: 'moves', item: 'items' };
+  const records = selectedGameBoxes().flatMap(box => box.pokemonOrder.map(id => box.pokemon[id]));
+  for (const [key, kind] of Object.entries(controls)) {
+    const ids = new Set(key.startsWith('type') ? records.flatMap(record => dataset.get('species', record.speciesId)?.types || [])
+      : key === 'move' ? records.flatMap(record => record.moves.map(move => move.moveId))
+      : records.map(record => record[`${key}Id`]).filter(Boolean));
+    if (boxQuery[key] && boxQuery[key] !== 'none') ids.add(boxQuery[key]);
+    const select = byId(`box-filter-${key}`);
+    select.replaceChildren(option('', `Any ${key.startsWith('type') ? 'type' : key}`));
+    if (key === 'item') select.append(option('none', 'None'));
+    for (const id of [...ids].sort((a, b) => String(dataset.get(kind, a)?.name || a).localeCompare(String(dataset.get(kind, b)?.name || b)))) select.append(option(id, dataset.get(kind, id)?.name || id));
+    select.value = boxQuery[key];
+  }
 }
 
 function renderBoxes() {
   if (!selectedGameId) return;
+  if (boxBrowseGame !== selectedGameId) {
+    boxBrowseGame = selectedGameId; boxQuery = emptyBoxQuery(); expandedBoxes.clear();
+    resetBoxBrowseInputs();
+  }
+  refreshBoxBrowseControls();
   const boxes = selectedGameBoxes();
+  const matches = boxes.map(box => browseBox(box, dataset, boxQuery));
+  byId('box-search-status').textContent = `${matches.reduce((sum, records) => sum + records.length, 0)} / ${boxes.reduce((sum, box) => sum + box.pokemonOrder.length, 0)} Pokémon · ${boxes.length} Boxes`;
   if (!boxes.length) {
     ui["boxes-list"].replaceChildren(Object.assign(document.createElement("section"), {
       className: "panel empty-plan", innerHTML: "<h2>No Boxes yet</h2><p>Import a .sav or .dsv, paste Showdown sets, or create an empty Box.</p>"
     }));
+    refreshPartySelection();
     return;
   }
-  ui["boxes-list"].replaceChildren(...boxes.map(renderBox));
+  ui["boxes-list"].replaceChildren(...boxes.map((box, index) => renderBox(box, matches[index])));
+  refreshPartySelection();
+}
+
+function resetBoxBrowseInputs() {
+  byId('box-search').value = boxQuery.search;
+  for (const key of ['type1', 'type2', 'ability', 'move', 'gender', 'item', 'status']) byId(`box-filter-${key}`).value = boxQuery[key];
+  byId('box-sort').value = boxQuery.sort;
+  byId('box-sort-direction').value = boxQuery.direction;
 }
 
 const sortedRecordCache = new WeakMap();
@@ -1230,10 +1424,73 @@ function refreshShowdownDestinations() {
 }
 
 function openShowdownExport(records) {
-  refreshShowdownDestinations();
+  setShowdownMode(true);
   ui["showdown-text"].value = exportShowdown(records, dataset);
-  ui["showdown-status"].textContent = `Exported ${records.length} Pokémon. Copy the text or replace it with sets to import.`;
+  ui["showdown-status"].textContent = `Exported ${records.length} Pokémon. Copy the sets below.`;
   ui["showdown-dialog"].showModal();
+}
+
+function setShowdownMode(exporting) {
+  byId("showdown-title").textContent = exporting ? "Export Showdown" : "Import Showdown";
+  ui["showdown-destination"].closest(".context-grid").hidden = exporting;
+  ui["import-showdown"].hidden = exporting;
+  ui["copy-showdown"].hidden = !exporting;
+  ui["showdown-text"].readOnly = exporting;
+}
+
+function selectedExportBoxIds() {
+  return [...ui["box-export-selection"].querySelectorAll('input:checked')].map(input => input.value);
+}
+
+function updateBoxExportStatus() {
+  const ids = new Set(selectedExportBoxIds());
+  const boxes = selectedGameBoxes().filter(box => ids.has(box.id));
+  const count = boxes.reduce((sum, box) => sum + box.pokemonOrder.length, 0);
+  const emptyShowdown = ui["box-export-format"].value === "showdown" && !count;
+  ui["confirm-box-export"].disabled = !boxes.length || emptyShowdown;
+  ui["box-export-status"].textContent = !selectedGameBoxes().length ? "No Boxes to export in this game."
+    : !boxes.length ? "Select at least one Box."
+    : emptyShowdown ? "Select a Box containing Pokémon to export Showdown sets."
+    : `${boxes.length} ${boxes.length === 1 ? "Box" : "Boxes"} · ${count} Pokémon`;
+}
+
+function openBoxExport() {
+  const options = selectedGameBoxes().map(box => {
+    const label = document.createElement("label");
+    label.className = "save-box-option";
+    const input = document.createElement("input");
+    input.type = "checkbox";
+    input.value = box.id;
+    input.checked = true;
+    input.addEventListener("change", updateBoxExportStatus);
+    const detail = document.createElement("span");
+    const name = document.createElement("strong");
+    name.textContent = box.name;
+    const count = document.createElement("small");
+    count.textContent = `${box.pokemonOrder.length} Pokémon · ${box.partyOrder.length} Parties`;
+    detail.append(name, count);
+    label.append(input, detail);
+    return label;
+  });
+  ui["box-export-selection"].replaceChildren(...options);
+  updateBoxExportStatus();
+  ui["box-export-dialog"].showModal();
+}
+
+function confirmBoxExport() {
+  try {
+    const json = exportBoxLibrary(boxLibrary, selectedGameId, selectedExportBoxIds());
+    if (ui["box-export-format"].value === "showdown") {
+      const boxes = boxesForGame(parseBoxLibrary(json), selectedGameId);
+      const records = boxes.flatMap(box => box.pokemonOrder.map(id => box.pokemon[id]));
+      if (!records.length) throw new Error("Select a Box containing Pokémon.");
+      ui["box-export-dialog"].close();
+      openShowdownExport(records);
+    } else {
+      downloadText(json, `${selectedGameId}-plc-boxes.json`);
+      ui["box-export-dialog"].close();
+    }
+  } catch (error) { ui["box-export-status"].textContent = error.message; }
 }
 
 async function importShowdownText() {
@@ -1536,7 +1793,7 @@ function ensureContextInitial(record) {
   contextSelection.initialConditions[record.id] = { currentHp: calculateStats(record, dataset).hp, majorStatus: record.majorStatus || null };
 }
 
-function contextPokemonCard(box, record, selected, manual, { editable = true, forContext = true } = {}) {
+function contextPokemonCard(box, record, selected, manual, { editable = true, forContext = true, deferItemOptions = false } = {}) {
   const card = document.createElement("article");
   card.className = `context-pokemon${selected ? " is-selected" : ""}`;
   card.dataset.pokemonId = record.id || '';
@@ -1591,7 +1848,15 @@ function contextPokemonCard(box, record, selected, manual, { editable = true, fo
     const heldItem = document.createElement("select");
     heldItem.className = "context-pre-item";
     heldItem.setAttribute("aria-label", `Item for ${recordName(record)}`);
-    fillSelect(heldItem, sortedRecords("items"), { blank: forContext ? "No Item" : "None" });
+    if (deferItemOptions) {
+      heldItem.append(option('', 'None'));
+      if (record.itemId) heldItem.append(option(record.itemId, dataset.get('items', record.itemId)?.name || record.itemId));
+      heldItem.addEventListener('focus', () => {
+        const current = heldItem.value;
+        fillSelect(heldItem, sortedRecords('items'), { blank: 'None' });
+        heldItem.value = current;
+      }, { once: true });
+    } else fillSelect(heldItem, sortedRecords("items"), { blank: forContext ? "No Item" : "None" });
     const initial = forContext ? contextSelection.initialConditions[record.id] : record;
     heldItem.value = Object.hasOwn(initial, "itemId") ? initial.itemId || "" : record.itemId || "";
     heldItem.addEventListener("change", async () => {
@@ -1601,6 +1866,7 @@ function contextPokemonCard(box, record, selected, manual, { editable = true, fo
       } catch (error) { setStatus(error.message, true); }
     });
     actions.append(heldItem, status);
+    if (!forContext) actions.append(edit);
   }
   if (actions.childElementCount) card.append(actions);
   return card;
@@ -4394,6 +4660,23 @@ async function selectGame(gameId) {
 }
 
 function wireEvents() {
+  byId('box-sort').replaceChildren(...BOX_SORTS.map(([value, label]) => option(value, label)));
+  byId('box-view-toggle').addEventListener('click', () => {
+    boxView = boxView === 'detail' ? 'simple' : 'detail';
+    byId('box-view-toggle').textContent = boxView === 'simple' ? 'Simple View' : 'Detail View';
+    byId('box-view-toggle').title = `Switch to ${boxView === 'simple' ? 'Detail' : 'Simple'} View`;
+    byId('box-view-toggle').setAttribute('aria-pressed', String(boxView === 'simple'));
+    renderBoxes();
+  });
+  let boxSearchTimer;
+  byId('box-search').addEventListener('input', () => {
+    boxQuery.search = byId('box-search').value;
+    clearTimeout(boxSearchTimer); boxSearchTimer = setTimeout(renderBoxes, 120);
+  });
+  for (const key of ['type1', 'type2', 'ability', 'move', 'gender', 'item', 'status']) byId(`box-filter-${key}`).addEventListener('change', () => { boxQuery[key] = byId(`box-filter-${key}`).value; renderBoxes(); });
+  byId('box-sort').addEventListener('change', () => { boxQuery.sort = byId('box-sort').value; renderBoxes(); });
+  byId('box-sort-direction').addEventListener('change', () => { boxQuery.direction = byId('box-sort-direction').value; renderBoxes(); });
+  byId('box-clear-filters').addEventListener('click', () => { boxQuery = emptyBoxQuery(); resetBoxBrowseInputs(); renderBoxes(); });
   ui['change-starter'].addEventListener('click', openStarterPicker);
   ui['close-starter-dialog'].addEventListener('click', () => ui['starter-dialog'].close());
   ui['starter-dialog'].addEventListener('cancel', event => { if (!selectedStarterId) event.preventDefault(); });
@@ -4411,7 +4694,13 @@ function wireEvents() {
   ui["plc-tab"].addEventListener("click", () => setTab("plc"));
   ui["boxes-tab"].addEventListener("click", () => setTab("boxes"));
   ui["new-box"].addEventListener("click", async () => { const result = addBox(boxLibrary, selectedGameId); boxLibrary = result.library; await saveLibrary("Box added."); });
-  ui["save-import"].addEventListener("change", () => prepareSaveImport(ui["save-import"].files?.[0]));
+  ui["open-box-import"].addEventListener("click", () => { ui["box-import-status"].textContent = ""; ui["box-import-dialog"].showModal(); });
+  ui["save-import"].addEventListener("change", () => {
+    const file = ui["save-import"].files?.[0];
+    if (!file) return;
+    ui["box-import-dialog"].close();
+    prepareSaveImport(file);
+  });
   ui["select-all-save-boxes"].addEventListener("click", () => {
     for (const input of ui["save-import-pc-boxes"].querySelectorAll('input[type="checkbox"]')) input.checked = true;
     updateSaveImportStatus();
@@ -4425,14 +4714,22 @@ function wireEvents() {
     if (ui["save-import-dialog"].returnValue !== "imported") pendingSaveImport = null;
     ui["save-import-pc-boxes"].replaceChildren();
   });
-  ui["showdown-open"].addEventListener("click", () => { refreshShowdownDestinations(); ui["showdown-text"].value = ""; ui["showdown-status"].textContent = "Paste one or more Showdown sets."; ui["showdown-dialog"].showModal(); });
+  ui["showdown-open"].addEventListener("click", () => { ui["box-import-dialog"].close(); setShowdownMode(false); refreshShowdownDestinations(); ui["showdown-text"].value = ""; ui["showdown-status"].textContent = "Paste one or more Showdown sets."; ui["showdown-dialog"].showModal(); });
   ui["import-showdown"].addEventListener("click", importShowdownText);
   ui["copy-showdown"].addEventListener("click", async () => { try { await navigator.clipboard.writeText(ui["showdown-text"].value); ui["showdown-status"].textContent = "Copied Showdown text."; } catch { ui["showdown-text"].select(); ui["showdown-status"].textContent = "Text selected; press Ctrl+C to copy."; } });
-  ui["export-boxes"].addEventListener("click", () => downloadText(exportBoxLibrary(boxLibrary, selectedGameId), `${selectedGameId}-plc-boxes.json`));
+  ui["export-boxes"].addEventListener("click", openBoxExport);
+  ui["box-export-format"].addEventListener("change", updateBoxExportStatus);
+  for (const [id, checked] of [["select-all-box-export", true], ["clear-box-export", false]]) {
+    ui[id].addEventListener("click", () => {
+      for (const input of ui["box-export-selection"].querySelectorAll("input")) input.checked = checked;
+      updateBoxExportStatus();
+    });
+  }
+  ui["confirm-box-export"].addEventListener("click", confirmBoxExport);
   ui["import-boxes"].addEventListener("change", async () => {
     const file = ui["import-boxes"].files?.[0]; if (!file) return;
-    try { boxLibrary = mergeBoxLibrary(boxLibrary, parseBoxLibrary(await file.text())); await saveLibrary("Portable Boxes JSON imported and merged."); }
-    catch (error) { setStatus(error.message, true); }
+    try { boxLibrary = mergeBoxLibrary(boxLibrary, parseBoxLibrary(await file.text())); await saveLibrary("PLC Box file imported and merged."); ui["box-import-dialog"].close(); }
+    catch (error) { ui["box-import-status"].textContent = error.message; setStatus(error.message, true); }
     finally { ui["import-boxes"].value = ""; }
   });
   ui["trainer-select"].addEventListener("change", updateVariantSelect);

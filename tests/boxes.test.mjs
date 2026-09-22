@@ -38,6 +38,29 @@ function vw2rDataset() {
 
 const dataset = vw2rDataset();
 
+test("selected Box exports preserve complete records and parties without changing the library", () => {
+  const records = parseShowdown('Clefairy @ Eviolite\nLevel: 26\n- Pound', dataset);
+  records[0].experience = 17000;
+  const first = addBox(createEmptyBoxLibrary(), dataset.gameId, { name: 'First', pokemon: records, partyPokemonIds: records.map(record => record.id) });
+  const second = addBox(first.library, dataset.gameId, { name: 'Second' });
+  const third = addBox(second.library, dataset.gameId, { name: 'Third', pokemon: records });
+  const other = addBox(third.library, 'pokemon-platinum', { name: 'Other game' });
+  const before = structuredClone(other.library);
+  const boxes = boxesForGame(before, dataset.gameId);
+  const exported = parseBoxLibrary(exportBoxLibrary(other.library, dataset.gameId, [boxes[2].id, boxes[0].id, boxes[0].id]));
+  assert.deepEqual(Object.keys(exported.games), Object.keys(first.library.games));
+  assert.deepEqual(boxesForGame(exported, dataset.gameId), [boxes[0], boxes[2]]);
+  assert.deepEqual(other.library, before);
+  const merged = mergeBoxLibrary(createEmptyBoxLibrary(), exported);
+  assert.deepEqual(boxesForGame(merged, dataset.gameId), [boxes[0], boxes[2]]);
+  assert.equal(boxesForGame(parseBoxLibrary(exportBoxLibrary(before, dataset.gameId)), dataset.gameId).length, 3);
+  assert.equal(Object.keys(parseBoxLibrary(exportBoxLibrary(before)).games).length, 2);
+  for (const ids of [[], ['missing'], [boxesForGame(before, 'pokemon-platinum')[0].id]]) {
+    assert.throws(() => exportBoxLibrary(before, dataset.gameId, ids), /Select at least|unavailable/);
+  }
+  assert.throws(() => exportBoxLibrary(before, null, [boxes[0].id]), /Select at least/);
+});
+
 test("shared save import registers every public vanilla Generation 3 through 5 game", () => {
   const vanilla = [
     "pokemon-ruby", "pokemon-sapphire", "pokemon-emerald", "pokemon-firered", "pokemon-leafgreen",

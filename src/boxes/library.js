@@ -293,8 +293,16 @@ export function removeBox(libraryValue, gameId, boxId) {
   return changed(library);
 }
 
-export function exportBoxLibrary(libraryValue, gameId = null) {
+export function exportBoxLibrary(libraryValue, gameId = null, boxIds = null) {
   const library = normalizeBoxLibrary(libraryValue);
+  if (boxIds !== null) {
+    if (!gameId || !Array.isArray(boxIds) || !boxIds.length) throw new Error("Select at least one Box to export.");
+    const game = library.games[toId(gameId)];
+    const selected = new Set(boxIds);
+    if (!game || [...selected].some(id => !game.boxes[id])) throw new Error("A selected Box is unavailable in this game.");
+    game.boxOrder = game.boxOrder.filter(id => selected.has(id));
+    game.boxes = Object.fromEntries(game.boxOrder.map(id => [id, game.boxes[id]]));
+  }
   if (!gameId) return JSON.stringify(library, null, 2);
   const selectedId = toId(gameId);
   return JSON.stringify({ ...library, games: library.games[selectedId] ? { [selectedId]: library.games[selectedId] } : {} }, null, 2);

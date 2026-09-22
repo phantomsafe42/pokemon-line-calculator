@@ -7,7 +7,7 @@
   <meta name="pokemon-asset-release-base" content="/Datasets/Pokemon%20Assets/release">
   <title>Pokémon Line Calculator</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./styles.css?v=20260921-ds-save-forms-v1">
+  <link rel="stylesheet" href="./styles.css?v=20260921-box-browser-v2">
 </head>
 <body>
   <header class="app-header">
@@ -116,22 +116,27 @@
     </section>
 
     <section id="boxes-panel" role="tabpanel" aria-labelledby="boxes-tab" hidden>
-      <div class="box-toolbar panel">
-        <div>
-          <h2 id="boxes-heading">Boxes</h2>
-          <button id="change-starter" type="button" class="secondary" disabled>Choose Starter</button>
-          <p class="fine-print">A Pokémon is stored once per Box. Every Party in that Box references the same editable record.</p>
-        </div>
+      <div class="box-toolbar panel" aria-label="Box controls">
         <div class="toolbar-actions">
-          <label class="file-button">Import .sav / .dsv
-            <input id="save-import" type="file" accept=".sav,.dsv,application/octet-stream">
-          </label>
-          <button id="showdown-open" type="button" class="secondary">Showdown Import</button>
+          <button id="change-starter" type="button" class="secondary" disabled>Choose Starter</button>
           <button id="new-box" type="button" class="secondary">New Box</button>
-          <button id="export-boxes" type="button" class="secondary">Export Boxes JSON</button>
-          <label class="file-button secondary">Import Boxes JSON
-            <input id="import-boxes" type="file" accept=".json,application/json">
-          </label>
+          <button id="box-view-toggle" type="button" class="secondary" aria-pressed="false" title="Switch to Simple View">Detail View</button>
+          <button id="open-box-import" type="button" class="secondary">Import</button>
+          <button id="export-boxes" type="button" class="secondary">Export</button>
+        </div>
+        <div class="box-browse-controls" aria-label="Search, filter and sort Boxes">
+        <label class="box-search-label">Search<input id="box-search" type="search" placeholder="Name, species, move, ability, item…"></label>
+        <label>Type<select id="box-filter-type1"><option value="">Any type</option></select></label>
+        <label>Also type<select id="box-filter-type2"><option value="">Any type</option></select></label>
+        <label>Ability<select id="box-filter-ability"><option value="">Any ability</option></select></label>
+        <label>Move<select id="box-filter-move"><option value="">Any move</option></select></label>
+        <label>Gender<select id="box-filter-gender"><option value="">Any gender</option><option value="M">Male</option><option value="F">Female</option><option value="N">Genderless</option><option value="unknown">Unknown</option></select></label>
+        <label>Item<select id="box-filter-item"><option value="">Any item</option></select></label>
+        <label>Status<select id="box-filter-status"><option value="">Any status</option><option value="healthy">Healthy</option><option value="brn">Burned</option><option value="par">Paralyzed</option><option value="psn">Poisoned</option><option value="tox">Badly Poisoned</option><option value="slp">Asleep</option><option value="frz">Frozen</option></select></label>
+        <label>Sort by<select id="box-sort"></select></label>
+        <label>Direction<select id="box-sort-direction"><option value="asc">Ascending</option><option value="desc">Descending</option></select></label>
+        <button id="box-clear-filters" type="button" class="secondary">Reset</button>
+        <p id="box-search-status" class="fine-print" role="status"></p>
         </div>
       </div>
       <div id="boxes-list" class="boxes-list"></div>
@@ -318,6 +323,30 @@
     </form>
   </dialog>
 
+  <dialog id="box-import-dialog" aria-labelledby="box-import-title">
+    <form method="dialog" class="dialog-card">
+      <div class="section-heading"><h2 id="box-import-title">Import Boxes</h2><button type="submit" class="icon-button secondary" aria-label="Close">×</button></div>
+      <div class="box-transfer-formats">
+        <label class="file-button">.sav / .dsv<input id="save-import" type="file" accept=".sav,.dsv,application/octet-stream"></label>
+        <button id="showdown-open" type="button" class="secondary">Showdown</button>
+        <label class="file-button secondary">PLC Box file<input id="import-boxes" type="file" accept=".json,application/json"></label>
+      </div>
+      <p id="box-import-status" class="fine-print" role="status"></p>
+    </form>
+  </dialog>
+
+  <dialog id="box-export-dialog" class="wide-dialog" aria-labelledby="box-export-title">
+    <form method="dialog" class="dialog-card">
+      <div class="section-heading"><h2 id="box-export-title">Export Boxes</h2><button type="submit" class="icon-button secondary" aria-label="Close">×</button></div>
+      <label>Format<select id="box-export-format"><option value="plc">PLC Box file</option><option value="showdown">Showdown</option></select></label>
+      <p class="fine-print">PLC Box files preserve Boxes, Parties and edits. Showdown exports Pokémon sets.</p>
+      <div class="section-heading"><h3>Boxes</h3><div class="toolbar-actions"><button id="select-all-box-export" type="button" class="secondary">Select All</button><button id="clear-box-export" type="button" class="secondary">Clear</button></div></div>
+      <div id="box-export-selection" class="save-box-selection"></div>
+      <p id="box-export-status" class="fine-print" role="status"></p>
+      <div class="dialog-actions"><button type="submit" class="secondary">Cancel</button><button id="confirm-box-export" type="button">Export</button></div>
+    </form>
+  </dialog>
+
   <dialog id="showdown-dialog" aria-labelledby="showdown-title">
     <form method="dialog" class="dialog-card">
       <div class="section-heading"><div><h2 id="showdown-title">Showdown Tool</h2></div><button type="submit" value="cancel" class="icon-button secondary" aria-label="Close">×</button></div>
@@ -352,6 +381,6 @@
   </dialog>
 
   <script src="./src/generated/pokemon_asset_resolver.global.js?v=20260914-assets-v4"></script>
-  <script type="module" src="./src/app.js?v=20260921-dataset-034-v1"></script>
+  <script type="module" src="./src/app.js?v=20260922-release-assembly-v1"></script>
 </body>
 </html>
