@@ -658,3 +658,49 @@ dialog::backdrop { background: rgba(0, 0, 0, .75); }
   .starter-choice strong { font-size: .95rem; }
   .starter-choice span { font-size: .8rem; }
 }
+
+/* Trainer selection is a presentation of the existing encounter navigation. */
+.trainer-selector-dialog { width:800px; max-width:calc(100vw - 32px); max-height:calc(100dvh - 24px); padding:0; }
+.trainer-selector-shell { height:calc(100dvh - 32px); display:flex; flex-direction:column; padding:18px; gap:14px; min-width:0; }
+.trainer-selector-shell > .section-heading { margin:0; flex:none; flex-direction:row; align-items:center; }
+.trainer-split-tabs { display:flex; gap:6px; overflow-x:auto; flex:none; padding:3px 2px 8px; }
+.trainer-split-tabs button { flex:none; white-space:nowrap; }
+.trainer-split-tabs { --split-icon-size:57.6px; }
+.trainer-split-tabs button.has-badge { width:calc(var(--split-icon-size) + 16px); height:calc(var(--split-icon-size) + 16px); padding:7px; display:grid; place-items:center; }
+/* FireRed's previous 48px display size plus 20%; preserve the full image. */
+.trainer-split-badge { width:var(--split-icon-size); height:var(--split-icon-size); object-fit:contain; }
+.trainer-split-tabs .badge-loading .trainer-split-badge { visibility:hidden; }
+.trainer-split-tabs .badge-loading > * { grid-area:1 / 1; }
+.trainer-split-loading-label { font-size:10px; line-height:1.15; white-space:normal; overflow-wrap:anywhere; }
+.trainer-split-tabs [aria-selected="true"] { background:var(--accent); color:white; }
+.trainer-options { display:grid; grid-template-columns:minmax(0,1fr); align-content:start; gap:14px; overflow-y:auto; min-height:0; flex:1; padding:4px; }
+.trainer-selector-footer { display:flex; align-items:center; gap:12px; justify-content:space-between; flex:none; border-top:1px solid var(--line); padding-top:12px; }
+.trainer-search { flex:1; width:0; min-width:0; font-size:13px; }
+.trainer-continue { margin-left:auto; }
+.trainer-option { background:var(--shell); border:2px solid var(--line); border-radius:8px; cursor:pointer; min-width:0; }
+.trainer-option[data-requirement="required"] { border-color:var(--red); }
+.trainer-option[data-requirement="optional"] { border-color:var(--accent); }
+.trainer-option[aria-selected="true"] { outline:3px solid var(--accent-2); outline-offset:1px; }
+.trainer-option:focus-visible { outline:3px solid var(--text); outline-offset:1px; }
+.trainer-block { display:grid; grid-template-columns:160px minmax(0,1fr); gap:12px 18px; padding:16px; }
+.trainer-block + .trainer-block { border-top:1px solid var(--line); }
+.trainer-heading { grid-column:1 / -1; display:flex; align-items:baseline; flex-wrap:wrap; gap:4px 10px; }
+.trainer-name { margin:0; font-size:18px; line-height:1.3; overflow-wrap:anywhere; }
+.trainer-format { color:var(--muted); font-size:13px; white-space:nowrap; }
+.trainer-portrait-frame { position:relative; min-height:90px; width:160px; height:160px; align-self:center; overflow:hidden; }
+.trainer-portrait { position:absolute; object-fit:contain; width:100%; height:100%; image-rendering:pixelated; max-width:none; }
+.trainer-portrait-alternatives { display:flex; gap:4px; }
+.trainer-portrait-alternatives > .trainer-portrait-frame { flex:1; width:0; height:auto; align-self:stretch; min-width:0; }
+.trainer-sprite-missing { display:flex; align-items:center; justify-content:center; height:100%; font-size:12px; color:var(--muted); text-align:center; }
+.trainer-team { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; min-width:0; align-self:center; }
+.trainer-entry { min-width:0; display:flex; flex-direction:column; justify-content:flex-end; }
+.trainer-entry .combatant-slot-heading { text-align:center; margin:0; padding:.35rem .45rem; border:1px solid var(--accent); border-bottom:1px solid var(--line); border-radius:6px 6px 0 0; }
+.trainer-entry.has-slot-heading .context-pokemon { border-top:0; border-radius:0 0 6px 6px; }
+@media(max-width:650px) {
+ .trainer-selector-dialog { max-width:calc(100vw - 16px); }
+ .trainer-selector-shell { height:calc(100dvh - 32px); padding:10px; gap:10px; }
+ .trainer-block { grid-template-columns:76px minmax(0,1fr); gap:10px; padding:10px; }
+ .trainer-portrait-frame { width:76px; height:120px; align-self:center; }
+ .trainer-team { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media(max-width:460px) { .trainer-team { grid-template-columns:1fr; } .trainer-name { font-size:17px; } }

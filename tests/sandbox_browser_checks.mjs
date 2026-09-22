@@ -181,7 +181,7 @@ export async function checkSandbox({ page, evaluate, delay, dataset, tempRoot })
   const image=await page.send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});
   await fs.writeFile(path.join(tempRoot,'sandbox-singles.png'),Buffer.from(image.data,'base64'));
   assert.deepEqual(await readStore('pokemon-line-calculator-boxes','library'),baseline);
-  await evaluate(page,`document.getElementById('new-plan').click()`);
+  await evaluate(page,`window.openNewLineForTest()`,true);
   assert.equal(await evaluate(page,`document.getElementById('context-mode-select').value`),'','New Line requires explicit mode selection');
   assert.equal(await evaluate(page,`document.getElementById('context-box-field').hidden && document.getElementById('saved-party-field').hidden`),true);
   await evaluate(page,`(()=>{
@@ -203,7 +203,7 @@ export async function checkSandbox({ page, evaluate, delay, dataset, tempRoot })
   assert.equal(lead.originalItemId,'leftovers');
   assert.equal(started.stateNodes[started.initialStateNodeId].combatantStates[lead.combatantKey].majorStatus,'tox','Sandbox retains Box status without rendering cards or saving a Party');
   assert.deepEqual(await readStore('pokemon-line-calculator-boxes','library'),baseline,'New Line does not reorder the Box or its Party');
-  await evaluate(page,`document.getElementById('new-plan').click()`);
+  await evaluate(page,`window.openNewLineForTest()`,true);
   assert.equal(await evaluate(page,`document.getElementById('context-mode-select').value`),'');
   await evaluate(page,`document.getElementById('plan-context-dialog').close()`);
   console.log(JSON.stringify({status:'sandbox-browser-valid',formats:4,crossBox:true,history:true,cache:true,newLine:true,boxIsolation:true}));

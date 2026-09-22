@@ -1,3 +1,8 @@
+import { checkTrainerSplitPreload } from './trainer_split_preload_browser_checks.mjs';
+import { checkTrainerSearch } from './trainer_search_browser_checks.mjs';
+import { checkTrainerBadgeRecovery } from './trainer_badge_browser_checks.mjs';
+import { checkTrainerSelector } from './trainer_selector_browser_checks.mjs';
+import { checkVw2rTrainerSprites } from './vw2r_trainer_sprites_browser_checks.mjs';
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
 import fs from "node:fs/promises";
@@ -117,7 +122,9 @@ function startStaticServer(port) {
         response.writeHead(403).end("Forbidden");
         return;
       }
-      const bytes = await fs.readFile(absolute);
+      const candidateRoot = process.env.PLC_TRAINER_SELECTOR_DATASET;
+      const candidateRelative = relativePath.startsWith('src/generated/datasets/') ? relativePath.slice('src/generated/'.length) : null;
+      const bytes = await fs.readFile(candidateRoot && candidateRelative ? path.join(candidateRoot, candidateRelative) : absolute);
       servedRequests.push({ path: relativePath.replaceAll("\\", "/"), bytes: bytes.byteLength });
       response.writeHead(200, {
         "cache-control": "no-store",
@@ -190,7 +197,7 @@ function cdpClient(webSocketDebuggerUrl) {
   };
 }
 
-async function evaluate(client, expression, awaitPromise = false) {
+async function evaluate(client, expression, awaitPromise = true) {
   const result = await client.send("Runtime.evaluate", { expression, awaitPromise, returnByValue: true });
   if (result.exceptionDetails) throw new Error(result.exceptionDetails.exception?.description || result.exceptionDetails.text);
   return result.result.value;
@@ -230,7 +237,7 @@ try {
   const appUrl = `http://127.0.0.1:${serverPort}${publicPrefix}`;
   const chrome = await findBrowser();
   browser = spawn(chrome, [
-    "--headless=new", "--no-sandbox", "--disable-gpu", "--disable-software-rasterizer", "--disable-web-security", "--no-first-run",
+    "--headless=new", "--no-sandbox", "--disable-gpu", "--disable-software-rasterizer", "--no-first-run",
     "--no-default-browser-check", "--disable-extensions", `--remote-debugging-port=${debugPort}`, "--remote-allow-origins=*",
     `--user-data-dir=${profile}`, appUrl
   ], { windowsHide: true, stdio: "ignore" });
@@ -240,9 +247,33 @@ try {
   await page.ready;
   await page.send("Runtime.enable");
   await page.send("Page.enable");
+  await page.send("Page.addScriptToEvaluateOnNewDocument", { runImmediately: true, source: `
+    window.openNewLineForTest = async () => {
+      const wait = async fn => { for(let i=0;i<300;i++){if(fn())return;await new Promise(r=>setTimeout(r,50));}throw new Error('New Line flow timed out'); };
+      document.getElementById('new-plan').click();
+      await wait(() => document.getElementById('destructive-dialog').open || document.getElementById('trainer-selector-dialog').open);
+      if(document.getElementById('destructive-dialog').open) document.getElementById('destructive-discard').click();
+      await wait(() => document.getElementById('trainer-selector-dialog').open);
+      document.querySelector('.trainer-option').click();
+      document.querySelector('.trainer-continue').click();
+      await wait(() => document.getElementById('plan-context-dialog').open);
+    };
+  ` });
   await page.send("Network.enable");
   await waitForStableRuntime(page, appUrl);
 
+  if (process.env.PLC_TRAINER_SELECTOR_ONLY) {
+    if (process.env.PLC_TRAINER_SELECTOR_DATASET) {
+      await page.send('Network.setBlockedURLs', { urls: [datasetLock.hosted.origin + '/*'] });
+      await page.send('Page.reload', {ignoreCache:true});
+    }
+    if (process.env.PLC_TRAINER_SEARCH_ONLY) await checkTrainerSearch({page,evaluate,delay,tempRoot});
+    else if (process.env.PLC_SPLIT_PRELOAD_ONLY) await checkTrainerSplitPreload({page,evaluate,delay,gameId:process.env.PLC_SPLIT_PRELOAD_GAME});
+    else if (process.env.PLC_TRAINER_BADGE_RECOVERY_ONLY) await checkTrainerBadgeRecovery({page,evaluate,delay});
+    else if (process.env.PLC_VW2R_TRAINER_SPRITES_ONLY) await checkVw2rTrainerSprites({page,evaluate,delay,tempRoot});
+    else await checkTrainerSelector({page,evaluate,delay,tempRoot,staged:Boolean(process.env.PLC_TRAINER_SELECTOR_DATASET)});
+    page.close();
+  } else {
   const state = await evaluate(page, `(async () => {
     const wait = (predicate, message) => new Promise((resolve, reject) => {
       const deadline = Date.now() + 30000;
@@ -272,7 +303,7 @@ try {
     await wait(() => document.getElementById('starter-dialog').open, 'Ruby starter selection');
     document.querySelector('[data-starter-id="treecko"]').click();
     if (document.getElementById('plan-context-dialog').open) throw new Error('Game selection must not open New Line');
-    document.getElementById('new-plan').click();
+    await window.openNewLineForTest();
     await wait(() => document.getElementById('plan-context-dialog').open, 'explicit New Line dialog');
     const trainerSelect = document.getElementById('trainer-select');
     const planName = document.getElementById('plan-name');
@@ -285,10 +316,10 @@ try {
     document.getElementById('plan-context-dialog').close();
     if (document.getElementById('new-plan').textContent.trim() !== 'New Line') throw new Error('New Line button label');
     if (document.querySelector('#empty-plan strong')?.textContent.trim() !== 'New Line') throw new Error('New Line empty-state hint');
-    document.getElementById('new-plan').click();
+    await window.openNewLineForTest();
     await wait(() => document.getElementById('plan-context-dialog').open
-      && trainerSelect.value === ''
-      && planName.value === '', 'reset clean-plan title');
+      && trainerSelect.value !== ''
+      && planName.value !== '', 'reset clean-plan title');
     const reopenedPlanName = planName.value;
     const vanilla = {
       status: document.getElementById('app-status').textContent,
@@ -311,7 +342,7 @@ try {
     await wait(() => document.getElementById('starter-dialog').open, 'VW2R starter selection');
     document.querySelector('[data-starter-id="snivy"]').click();
     if (document.getElementById('plan-context-dialog').open) throw new Error('Changing game must not open New Line');
-    document.getElementById('new-plan').click();
+    await window.openNewLineForTest();
     await wait(() => document.getElementById('plan-context-dialog').open, 'explicit VW2R New Line dialog');
     const vw2rTrainerSelect = document.getElementById('trainer-select');
     const neilOption = [...vw2rTrainerSelect.options].find(entry => entry.textContent.startsWith('School Kid Neil ·'));
@@ -406,7 +437,7 @@ try {
     document.getElementById('import-showdown').click();
     await wait(() => !document.getElementById('showdown-dialog').open && document.querySelectorAll('.box-card').length === 2, 'picker fixture import');
     for (const toggle of document.querySelectorAll('.box-expand[aria-expanded="false"]')) toggle.click();
-    document.getElementById('new-plan').click();
+    await window.openNewLineForTest();
     const check = (condition, message) => { if (!condition) throw new Error(message); };
     const change = (element, value) => { element.value = value; element.dispatchEvent(new Event('change', { bubbles: true })); };
     const dialog = document.getElementById('plan-context-dialog');
@@ -457,7 +488,7 @@ try {
     check(partySelect.value === '__new_party__' && grid.children[6].classList.contains('is-selected'), 'edit manual selection preserves chosen member');
     change(partySelect, savedPartyId);
     dialog.close();
-    document.getElementById('new-plan').click();
+    await window.openNewLineForTest();
     check(partySelect.value === '' && grid.children.length === 0 && saveParty.disabled, 'new line resets saved Party to blank');
     check(modeSelect.value === '' && boxSelect.value === '' && boxField.hidden && partyField.hidden, 'new line resets full Mode sequence');
     change(modeSelect, 'sandbox');
@@ -496,7 +527,7 @@ try {
   })()`, true);
 
   assert.equal(state.profile, "public");
-  assert.deepEqual(state.encounterFormats.choices, ["Singles", "Doubles", "Multi"]);
+  assert.deepEqual(state.encounterFormats.choices, ["Single", "Double", "Multi"]);
   assert.ok(state.encounterFormats.sameSplitPartnerCount > 0);
   assert.ok(state.encounterFormats.searchedPartners.every(label => /Lenora/i.test(label)));
   assert.equal(state.encounterFormats.partnerHeading, "Opponent Partner");
@@ -521,10 +552,10 @@ try {
   assert.equal(state.vanilla.name, "Ruby");
   assert.ok(state.vanilla.trainers > 1);
   assert.equal(state.vanilla.saveImportVisible, true);
-  assert.equal(state.vanilla.initialPlanName, "");
+  assert.ok(state.vanilla.initialPlanName);
   assert.equal(state.vanilla.selectedPlanName, state.vanilla.expectedTrainerName);
   assert.equal(state.vanilla.selectedPlanName.endsWith(" Plan"), false);
-  assert.equal(state.vanilla.reopenedPlanName, "");
+  assert.equal(state.vanilla.reopenedPlanName, state.vanilla.initialPlanName);
   assert.equal(state.spriteLoaded, true);
   assert.equal(state.assetApiVersion, "pokemon-asset-gateway-client/v1");
   assert.equal(state.assetOrigin, assetLock.gateway.origin);
@@ -549,7 +580,7 @@ try {
   assert.equal(state.localLabels, false);
   assert.ok(state.scrollWidth <= state.viewport);
 
-  await evaluate(page, `(() => {
+  await evaluate(page, `(async () => {
     [...document.querySelectorAll('.box-card button')].find(button => button.textContent === 'Add Pokémon').click();
     document.getElementById('editor-species').focus();
   })()`);
@@ -582,9 +613,9 @@ try {
   assert.equal(mobile.pickerOpen, true);
   assert.ok(mobile.pickerWidth <= mobile.viewport);
 
-  await evaluate(page, `(() => {
+  await evaluate(page, `(async () => {
     document.getElementById('game-dialog').close();
-    document.getElementById('new-plan').click();
+    await window.openNewLineForTest();
     const change = (id, value) => { const element = document.getElementById(id); element.value = value; element.dispatchEvent(new Event('change', { bubbles: true })); };
     const boxes = document.getElementById('context-box-select');
     change('context-mode-select', 'party-lock');
@@ -596,7 +627,7 @@ try {
   for (const width of [320, 390, 1280, 1920]) {
     await page.send("Emulation.setDeviceMetricsOverride", { width, height: 1000, deviceScaleFactor: 1, mobile: width < 600 });
     await delay(150);
-    const layout = await evaluate(page, `(() => {
+    const layout = await evaluate(page, `(async () => {
       const dialog = document.getElementById('plan-context-dialog');
       return { open: dialog.open, width: dialog.getBoundingClientRect().width, innerWidth, scrollWidth: dialog.scrollWidth, clientWidth: dialog.clientWidth };
     })()`);
@@ -611,7 +642,7 @@ try {
 
   const beforeForecastEventCount = page.events.length;
   // Actual worker-to-panel replacement evidence, in this disposable browser only.
-  await evaluate(page, `(() => {
+  await evaluate(page, `(async () => {
     const trainers = document.getElementById('trainer-select');
     trainers.value = 'renegade-platinum-trainer-0246';
     trainers.dispatchEvent(new Event('change', { bubbles: true }));
@@ -654,7 +685,7 @@ try {
     document.getElementById('showdown-text').value = 'Squirtle\\nLevel: 20\\nHardy Nature\\n- Tackle';
     document.getElementById('import-showdown').click();
     await wait(() => !document.getElementById('showdown-dialog').open, 'Showdown import');
-    document.getElementById('new-plan').click();
+    await window.openNewLineForTest();
     const box = document.getElementById('context-box-select');
     change('context-mode-select', 'party-lock');
     change('context-box-select', [...box.options].find(option => /1 Pokémon/.test(option.textContent)).value);
@@ -762,6 +793,7 @@ try {
   assert.deepEqual(freeCalcErrors, [], 'No exceptions during inline Free Calc checks');
   page.close();
   console.log(JSON.stringify({ status: "public-browser-smoke-valid", state, mobile, performance, screenshot }, null, 2));
+  }
 } finally {
   if (browser && browser.exitCode === null) browser.kill();
   if (server) await new Promise(resolve => server.close(resolve));
