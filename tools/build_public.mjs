@@ -7,6 +7,15 @@ import { build, transform } from "esbuild";
 const here = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(here, "..");
 const outputRoot = path.resolve(projectRoot, "dist");
+const packageDocument = JSON.parse(fs.readFileSync(path.join(projectRoot, "package.json"), "utf8"));
+const packageLock = JSON.parse(fs.readFileSync(path.join(projectRoot, "package-lock.json"), "utf8"));
+const productVersion = packageDocument.version;
+if (!/^\d+\.\d+\.\d+$/.test(productVersion)
+  || packageLock.version !== productVersion
+  || packageLock.packages?.[""]?.version !== productVersion
+  || packageLock.name !== packageDocument.name) {
+  throw new Error("PLC product version must be numeric x.y.z and match the package lock");
+}
 
 function inside(candidate, root) {
   const relative = path.relative(root, candidate);
@@ -144,6 +153,7 @@ fs.writeFileSync(path.join(outputRoot, ".nojekyll"), "");
 const files = listFiles(outputRoot).filter(relativePath => relativePath !== "public-build-manifest.json");
 const manifest = {
   schemaVersion: "plc-public-build/v1alpha1",
+  productVersion,
   files: files.map(relativePath => {
     const bytes = fs.readFileSync(path.join(outputRoot, relativePath));
     return { path: relativePath, bytes: bytes.byteLength, sha256: sha256(bytes) };

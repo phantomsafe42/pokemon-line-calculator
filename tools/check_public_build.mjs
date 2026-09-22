@@ -29,6 +29,14 @@ function listFiles(root) {
 if (!fs.existsSync(manifestPath)) throw new Error("Public build is missing; run npm run build:public");
 const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
 if (manifest.schemaVersion !== "plc-public-build/v1alpha1") throw new Error("Unsupported public-build manifest");
+const packageDocument = JSON.parse(fs.readFileSync(path.join(projectRoot, "package.json"), "utf8"));
+const packageLock = JSON.parse(fs.readFileSync(path.join(projectRoot, "package-lock.json"), "utf8"));
+if (!/^\d+\.\d+\.\d+$/.test(packageDocument.version)
+  || manifest.productVersion !== packageDocument.version
+  || packageLock.version !== packageDocument.version
+  || packageLock.packages?.[""]?.version !== packageDocument.version) {
+  throw new Error("Public-build product version does not match the PLC package and lock");
+}
 const expected = new Set(["public-build-manifest.json", ...manifest.files.map(file => file.path)]);
 const actual = listFiles(outputRoot);
 const extras = actual.filter(relativePath => !expected.has(relativePath));
@@ -126,6 +134,7 @@ for (const token of [assetLock.gateway.origin, assetLock.gateway.releaseVersion,
 
 console.log(JSON.stringify({
   status: "public-build-valid",
+  productVersion: manifest.productVersion,
   files: actual.length,
   bytes: manifest.files.reduce((sum, file) => sum + file.bytes, 0),
   pokemonAssetGateway: assetOrigin,
