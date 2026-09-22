@@ -14,6 +14,9 @@
     "resolverSha256": "5e7521519cfa36cf51c5f775da5d12243a64740510bcdb57c2036471adfc0680",
     "gatewaySha256": "e0940b7c65947351701b05167124a0bfaff65b4f53b0c58bf0b885f97ddac111"
   },
+  "typeIconColors": {
+    "sourceSha256": "00879b04d6441cb05b66cc1b2592c19d9e84fac948afc0f2028742a69615c2ce"
+  },
   "gateway": {
     "contract": "pokemon-asset-gateway/v1",
     "origin": "https://assets.phantomsafe.tv",

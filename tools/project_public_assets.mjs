@@ -142,11 +142,27 @@ for (const client of clients) {
   }));
 }
 
+// The public image gateway returns image bytes, not the type-icon presentation
+// color supplied by the local card-icon projection. Keep that small metadata
+// projection tied to the same immutable Assets release as the images.
+const typeColorSource = "source-data/move-category-icons/type-colors.json";
+const typeColorBytes = gitBytes(lock.release.commit, typeColorSource);
+verifyHash(typeColorBytes, lock.typeIconColors.sourceSha256, "Locked type-icon colors");
+const typeColors = JSON.parse(typeColorBytes);
+if (Object.keys(typeColors).length !== 19
+  || Object.entries(typeColors).some(([type, color]) => !/^[a-z]+$/u.test(type) || !/^#[0-9a-f]{6}$/u.test(color))) {
+  throw new Error("Locked type-icon color table has an unexpected shape");
+}
+syncFile("src/generated/type_icon_colors.js", Buffer.from(
+  `// Generated from Pokemon Assets ${lock.release.tag}:${typeColorSource}. Do not edit.\n`
+  + `export const TYPE_ICON_COLORS = Object.freeze(${JSON.stringify(typeColors, null, 2)});\n`
+));
+
 console.log(JSON.stringify({
   status: mode === "write" ? "asset-clients-synchronized" : "asset-clients-current",
   sourceCommit: lock.clients.sourceCommit,
   releaseCommit: lock.release.commit,
   sourceRelease: lock.release.version,
   gatewayOrigin: lock.gateway.origin,
-  files: clients.length * 2,
+  files: clients.length * 2 + 1,
 }, null, 2));

@@ -1,4 +1,5 @@
 import { starterPresentationType } from './ui/starter_presentation.js?v=20260922-box-design-v1';
+import { TYPE_ICON_COLORS } from './generated/type_icon_colors.js?v=20260922-type-segment-color-v1';
 import { calculateStats, normalizeMultiTrainerRoster, normalizePlayerCollection, normalizePlayerPartnerRoster, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js?v=20260922-public-cards-v1";
 import { HOSTED_DATASET_RELEASE } from "./adapters/hosted_dataset.js?v=20260922-public-cards-v1";
 import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260909-public-release-v2";
@@ -645,6 +646,7 @@ function renderMoveHeading(copy, type, category) {
   for (const [kind, value, className] of [['type-icon', type, 'move-type-icon'], ['move-category-icon', category, 'move-category-icon']]) {
     const cell = document.createElement('span'); cell.className = `move-icon ${className}`;
     const label = String(value || 'Unknown');
+    if (kind === 'type-icon') cell.style.backgroundColor = TYPE_ICON_COLORS[label.toLowerCase()] || '';
     const image = document.createElement('img'); image.alt = label; image.title = label;
     cell.append(image);
     const unavailable = () => { cell.textContent = '?'; cell.title = `${label} icon unavailable`; };

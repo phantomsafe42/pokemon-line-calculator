@@ -63,6 +63,7 @@ export async function checkBoxCards({ page, evaluate, delay, tempRoot }) {
         speciesBelow:rect(species).y>=rect(name).bottom,
         trainingColors:[getComputedStyle(value).color,getComputedStyle(training).color],
         moveColor:getComputedStyle(card.querySelector('.box-pokemon-move')).backgroundColor,
+        typeSegmentColor:getComputedStyle(card.querySelector('.box-pokemon-move .move-type-icon')).backgroundColor,
         next:rect(next),third:rect(next.nextElementSibling),grid:rect(grid),gridScrollWidth:grid.scrollWidth,
         overflow:document.documentElement.scrollWidth>innerWidth};
     })()`);
@@ -81,6 +82,7 @@ export async function checkBoxCards({ page, evaluate, delay, tempRoot }) {
     assert.ok(geometry.speciesBelow,'Species below nickname');
     assert.equal(geometry.trainingColors[0],geometry.trainingColors[1],'IV/EV number color');
     assert.equal(geometry.moveColor,'rgb(58, 80, 52)','Grass move background');
+    assert.equal(geometry.typeSegmentColor,'rgb(63, 161, 41)','Type icon color fills its Box Detail segment');
     if (geometry.grid.width>=1648) assert.equal(geometry.next.y,geometry.card.y,'Whole cards share a row when space permits');
     else assert.ok(geometry.next.y>=geometry.card.bottom,'Whole cards wrap onto another row');
     if (width<900) assert.ok(geometry.gridScrollWidth>geometry.grid.width,'Narrow view scrolls only the Box grid');
