@@ -1,7 +1,7 @@
-import { assertValidPlanDocument } from "../contracts/plan_contract.js?v=20260917-partners-release-v1";
-import { mechanicsCompatibility, validatePlanReferences } from "../contracts/plan_compatibility.js?v=20260920-held-item-release-v3";
-import { upgradeInitialEntryEffects } from "./plan.js?v=20260920-held-item-release-v3";
-import { recalculatePlanDocument } from "./recalculation.js?v=20260920-held-item-release-v3";
+import { assertValidPlanDocument } from "../contracts/plan_contract.js?v=20260922-public-cards-v1";
+import { mechanicsCompatibility, validatePlanReferences } from "../contracts/plan_compatibility.js?v=20260922-public-cards-v1";
+import { upgradeInitialEntryEffects } from "./plan.js?v=20260922-public-cards-v1";
+import { recalculatePlanDocument } from "./recalculation.js?v=20260922-public-cards-v1";
 
 function hasResolvedBranches(plan) {
   return Object.keys(plan.actionGroups || {}).length > 0

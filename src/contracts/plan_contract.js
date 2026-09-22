@@ -168,6 +168,16 @@ function validateGraph(plan, issues) {
         issue(issues, `${combatantPath}.experience`, "must be null or a non-negative integer");
       }
       if (combatantState?.currentStats !== undefined) validateStatTable(combatantState.currentStats, `${combatantPath}.currentStats`, issues);
+      for (const [field, maximum] of [['currentIvs', 31], ['currentEvs', 252]]) {
+        if (combatantState?.[field] === undefined) continue;
+        const table = combatantState[field];
+        if (plan.game?.planningMode !== 'sandbox' || !isPlainObject(table)
+          || Object.keys(table).length !== 6 || ['hp', 'atk', 'def', 'spa', 'spd', 'spe'].some(stat => !Number.isInteger(table?.[stat]) || table[stat] < 0 || table[stat] > maximum)
+          || (field === 'currentEvs' && Object.values(table).reduce((sum, value) => sum + value, 0) > 510)) {
+          issue(issues, `${combatantPath}.${field}`, `must contain valid Sandbox training values (0–${maximum}, EV total at most 510)`);
+        }
+      }
+      if (combatantState?.currentNatureId !== undefined && (plan.game?.planningMode !== 'sandbox' || typeof combatantState.currentNatureId !== 'string' || !combatantState.currentNatureId)) issue(issues, `${combatantPath}.currentNatureId`, 'must identify a Sandbox nature');
     }
     if (state.experienceState !== undefined) {
       if (!isPlainObject(state.experienceState) || !isPlainObject(state.experienceState.participantsByEnemyKey) || !Array.isArray(state.experienceState.rewardedEnemyKeys)) {

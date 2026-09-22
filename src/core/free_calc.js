@@ -1,9 +1,9 @@
-import { clone, exactRange, makeStableId, nowIso, STAGE_KEYS } from './primitives.js?v=20260905-drafts-freecalc-partners-v1';
+import { clone, exactRange, makeStableId, nowIso, STAGE_KEYS, STAT_KEYS } from './primitives.js?v=20260905-drafts-freecalc-partners-v1';
 import { activeKey, activeKeys, activeSlotKeys, setActiveKey, setPendingReplacementSlots } from './battle_slots.js?v=20260905-drafts-freecalc-partners-v1';
-import { createCombatantState, nextCreatedOrder, touchPlan, updateStateHash } from './plan.js?v=20260920-held-item-release-v3';
-import { calculateStats } from '../adapters/combatant_ingest.js?v=20260920-held-item-release-v3';
-import { experienceForLevel, levelFromExperience } from '../rulesets/vw2r_experience.js?v=20260917-partners-release-v1';
-import { assertValidPlanDocument } from '../contracts/plan_contract.js?v=20260917-partners-release-v1';
+import { createCombatantState, nextCreatedOrder, touchPlan, updateStateHash } from './plan.js?v=20260922-public-cards-v1';
+import { calculateStats } from '../adapters/combatant_ingest.js?v=20260922-public-cards-v1';
+import { experienceForLevel, levelFromExperience } from '../rulesets/vw2r_experience.js?v=20260922-public-cards-v1';
+import { assertValidPlanDocument } from '../contracts/plan_contract.js?v=20260922-public-cards-v1';
 import { belongsToSlotParty, eligibleReserves } from './party_ownership.js?v=20260917-partners-release-v1';
 
 export function addFreeCalcBranch(original, stateId, { validate = true } = {}) {
@@ -54,11 +54,33 @@ export function editFreeCalcCombatant(plan, stateId, key, changes, dataset) {
     next.experience = integer(changes.experience, 0, 10000000, 'Total EXP');
     if (mon.growthRate) level = levelFromExperience(next.experience, mon.growthRate);
   }
-  if (level !== Number(next.currentLevel ?? mon.level)) {
-    const stats = calculateStats({ ...mon, speciesId: next.currentSpeciesId || mon.speciesId, level }, dataset);
+  const trainingChanged = ['natureId', 'ivs', 'evs'].some(field => Object.hasOwn(changes, field));
+  if (trainingChanged && plan.game.planningMode !== 'sandbox') throw new Error('Training edits require Sandbox');
+  if (Object.hasOwn(changes, 'natureId')) {
+    if (!dataset.get('natures', changes.natureId)) throw new Error('Invalid nature');
+    next.currentNatureId = changes.natureId;
+  }
+  for (const [field, target, maximum, fallback] of [['ivs', 'currentIvs', 31, 31], ['evs', 'currentEvs', 252, 0]]) {
+    if (!Object.hasOwn(changes, field)) continue;
+    if (!changes[field] || typeof changes[field] !== 'object' || Array.isArray(changes[field])) throw new Error(`Invalid ${field}`);
+    const values = Object.fromEntries(STAT_KEYS.map(stat => [stat, next[target]?.[stat] ?? mon[field]?.[stat] ?? fallback]));
+    for (const [stat, value] of Object.entries(changes[field])) {
+      if (!STAT_KEYS.includes(stat)) throw new Error('Invalid training stat');
+      values[stat] = integer(value, 0, maximum, `${stat.toUpperCase()} ${field === 'ivs' ? 'IV' : 'EV'}`);
+    }
+    if (field === 'evs' && Object.values(values).reduce((sum, value) => sum + value, 0) > 510) throw new Error('Total EVs cannot exceed 510');
+    next[target] = values;
+  }
+  if (trainingChanged || level !== Number(next.currentLevel ?? mon.level)) {
+    const speciesId = next.currentSpeciesId || mon.speciesId;
+    const stats = calculateStats({ ...mon, speciesId, level,
+      baseStats: speciesId === mon.speciesId ? mon.baseStats : dataset.get('species', speciesId)?.baseStats,
+      natureId: next.currentNatureId ?? mon.natureId, ivs: next.currentIvs ?? mon.ivs, evs: next.currentEvs ?? mon.evs }, dataset);
     next.currentLevel = level; next.currentStats = stats;
-    const hp = Math.min(stats.hp, Number(next.hp.max));
-    next.hp = exactRange(hp, stats.hp); next.hpDistribution = [{ value: hp, probability: 1 }];
+    if (next.calculatedStatOverrides) next.calculatedStatOverrides = clone(stats);
+    const clamp = value => Math.min(stats.hp, Number(value));
+    next.hp = { min: clamp(next.hp.min), max: clamp(next.hp.max), maxHp: stats.hp };
+    if (next.hpDistribution) next.hpDistribution = next.hpDistribution.map(entry => ({ ...entry, value: clamp(entry.value) }));
   }
   if (Object.hasOwn(changes, 'hp')) {
     const hp = integer(changes.hp, 0, next.hp.maxHp, 'HP');

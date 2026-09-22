@@ -41,6 +41,9 @@ export function validatePlanReferences(plan, dataset, { throwOnError = true } = 
       if (!dataset.get("moves", move.moveId)) issues.push(`${combatant.combatantKey} references missing move ${move.moveId}`);
     }
   }
+  for (const state of Object.values(plan.stateNodes || {})) for (const [key, current] of Object.entries(state.combatantStates || {})) {
+    if (current.currentNatureId && !dataset.get('natures', current.currentNatureId)) issues.push(`${key} references missing nature ${current.currentNatureId}`);
+  }
   const result = { valid: issues.length === 0, issues };
   if (!result.valid && throwOnError) throw new PlanCompatibilityError(issues);
   return result;

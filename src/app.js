@@ -1,5 +1,5 @@
-import { calculateStats, normalizeMultiTrainerRoster, normalizePlayerCollection, normalizePlayerPartnerRoster, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js?v=20260921-dataset-034-v1";
-import { HOSTED_DATASET_RELEASE } from "./adapters/hosted_dataset.js?v=20260921-dataset-034-v1";
+import { calculateStats, normalizeMultiTrainerRoster, normalizePlayerCollection, normalizePlayerPartnerRoster, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js?v=20260922-public-cards-v1";
+import { HOSTED_DATASET_RELEASE } from "./adapters/hosted_dataset.js?v=20260922-public-cards-v1";
 import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260909-public-release-v2";
 import { createTrainerSelector, displayTrainerName, trainerFormatLabel, preloadTrainerSplitIcons } from './ui/trainer_selector.js?v=20260922-release-assembly-v1';
 import { canonicalSpeciesDisplayName, loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260921-dataset-034-v1";
@@ -13,35 +13,35 @@ import { coalescedTask } from './cache/coalesced_task.js?v=20260920-performance-
 import { TrainerAiForecastCache } from "./cache/trainer_ai_forecast.js?v=20260909-public-release-v2";
 import { SavedDraftStore, savedDraftSnapshot, savedDraftIsCurrent } from "./cache/saved_drafts.js?v=20260921-saved-draft-guard-v1";
 import { reorderCards } from "./ui/reorder_cards.js?v=20260909-public-release-v2";
-import { addFreeCalcBranch, editFreeCalcCombatant, replaceFreeCalcSlot, freeCalcAsNewPlan } from './core/free_calc.js?v=20260921-dataset-identities-v1';
-import { isSandbox, editSandboxCombatant, placeSandboxCombatant, admitSandboxReserve } from './core/sandbox.js?v=20260921-dataset-identities-v1';
-import { sandboxPickerCandidates, orderSandboxCandidates } from './ui/sandbox_picker.js?v=20260921-sandbox-box-order-v1';
+import { addFreeCalcBranch, editFreeCalcCombatant, replaceFreeCalcSlot, freeCalcAsNewPlan } from './core/free_calc.js?v=20260922-public-cards-v1';
+import { isSandbox, editSandboxCombatant, placeSandboxCombatant, admitSandboxReserve } from './core/sandbox.js?v=20260922-public-cards-v1';
+import { sandboxPickerCandidates, orderSandboxCandidates } from './ui/sandbox_picker.js?v=20260922-public-cards-v1';
 import { makeStableId } from './core/primitives.js';
-import { freeCalcExperience, freeCalcTotalExperience } from './ui/free_calc.js?v=20260918-free-calc-inline-v1';
+import { freeCalcExperience, freeCalcTotalExperience } from './ui/free_calc.js?v=20260921-card-design-v1';
 import { nodeTreeSections } from './ui/node_tree.js?v=20260918-free-calc-sections-v1';
 import { toggleMoveSelection } from './ui/move_selection.js?v=20260920-move-toggle-v1';
 import { createEventTimeline } from './core/event_timeline.js?v=20260920-event-hover-v1';
 import { belongsToSlotParty, eligibleReserves, partyOwnerForSlot } from './core/party_ownership.js?v=20260909-public-release-v2';
 import { downloadPlan, exportSelectedPlan, migratePlanDocument, parsePlan } from "./contracts/plan_file.js?v=20260917-partners-release-v1";
-import { assertValidPlanDocument } from "./contracts/plan_contract.js?v=20260917-partners-release-v1";
-import { mechanicsCompatibility, validatePlanReferences } from "./contracts/plan_compatibility.js?v=20260921-download-entry-v1";
+import { assertValidPlanDocument } from "./contracts/plan_contract.js?v=20260922-public-cards-v1";
+import { mechanicsCompatibility, validatePlanReferences } from "./contracts/plan_compatibility.js?v=20260922-public-cards-v1";
 import { actionList, activeKey, activeKeys, activeSlotEntries, actorSlot, pendingReplacementSlots, setActiveKey, slotsPerSide } from "./core/battle_slots.js?v=20260909-public-release-v2";
 import { createBranchEventModel, selectBranchEventOutcome, selectedBranchChoices } from "./core/branch_events.js?v=20260909-public-release-v2";
-import { boundedSlotDamageLabel, highestDamageCandidateKeys, resolvedCombatantMovePreview } from "./core/combatant_moves.js?v=20260909-public-release-v2";
+import { boundedSlotDamageLabel, highestDamageCandidateKeys, resolvedCombatantMovePreview } from "./core/combatant_moves.js?v=20260921-card-design-v1";
 import { exportBranchGroups, planTreeOrder, planTurnTreeOrder, preferredImportedReviewStateId, stateLineage, turnNodeVisuals } from "./core/graph.js?v=20260917-partners-release-v1";
 import { HIDDEN_POWER_TYPES, hiddenPowerTypeFromIvs, resolvedHiddenPowerType } from "./core/hidden_power.js?v=20260909-public-release-v2";
 import { forcedTurnAction } from "./core/forced_actions.js?v=20260909-public-release-v2";
 import { formatDamageRollCounts, healingEventDescription, outcomePanelEvents, protectionEventDescription, readableMechanicName } from "./core/outcome_presentation.js?v=20260920-protect-text-v1";
-import { createPlanDocument, planHasWork, setStateNodeNote, upgradeInitialEntryEffects } from "./core/plan.js?v=20260921-download-entry-v1";
-import { commitForcedReplacement, commitLabel, commitPreview, previewForcedReplacement, refreshUnknownCommittedProbabilities, repairStaleLeafBattleEnd, replacementCommitLabel } from "./core/planner.js?v=20260921-dataset-identities-v1";
-import { recalculatePlanDocument } from "./core/recalculation.js?v=20260921-download-entry-v1";
-import { upgradeImportedPlanForEditing } from "./core/import_upgrade.js?v=20260921-dataset-identities-v1";
+import { createPlanDocument, planHasWork, setStateNodeNote, upgradeInitialEntryEffects } from "./core/plan.js?v=20260922-public-cards-v1";
+import { commitForcedReplacement, commitLabel, commitPreview, previewForcedReplacement, refreshUnknownCommittedProbabilities, repairStaleLeafBattleEnd, replacementCommitLabel } from "./core/planner.js?v=20260922-public-cards-v1";
+import { recalculatePlanDocument } from "./core/recalculation.js?v=20260922-public-cards-v1";
+import { upgradeImportedPlanForEditing } from "./core/import_upgrade.js?v=20260922-public-cards-v1";
 import { moveSupport } from "./rulesets/core_move_support.js?v=20260909-public-release-v2";
 import { effectiveActionSpeed } from "./rulesets/action_order.js?v=20260909-public-release-v2";
 import { areSlotsAdjacent, canSelectShift, shiftWithCenter, triplePositionForSlot, tripleSlotForPosition } from "./rulesets/triple_battle.js?v=20260909-public-release-v2";
 import { rotationFrontKey, rotationFrontSlot } from "./rulesets/rotation_battle.js?v=20260909-public-release-v2";
-import { experienceForLevel, experienceToNextLevel, projectExperience } from "./rulesets/vw2r_experience.js?v=20260917-partners-release-v1";
-import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260921-dataset-034-v1";
+import { experienceForLevel, experienceToNextLevel, projectExperience } from "./rulesets/vw2r_experience.js?v=20260922-public-cards-v1";
+import { ResolverWorkerClient } from "./worker/resolver_client.js?v=20260922-public-cards-v1";
 import { battleCompletionState } from "./core/battle_completion.js?v=20260909-public-release-v2";
 import {
   addBox, addParty, boxesForGame, createEmptyBoxLibrary, exportBoxLibrary, IndexedDbBoxLibraryStore,
@@ -631,6 +631,24 @@ function manualPokemonCandidates(side, slot) {
   return byKey;
 }
 
+function renderMoveHeading(copy, type, category) {
+  const heading = document.createElement('span'); heading.className = 'move-heading'; heading.append(copy);
+  for (const [kind, value, className] of [['type-icon', type, 'move-type-icon'], ['move-category-icon', category, 'move-category-icon']]) {
+    const cell = document.createElement('span'); cell.className = `move-icon ${className}`;
+    const label = String(value || 'Unknown');
+    const image = document.createElement('img'); image.alt = label; image.title = label;
+    cell.append(image);
+    const unavailable = () => { cell.textContent = '?'; cell.title = `${label} icon unavailable`; };
+    if (pokemonAssetResolver) {
+      void Promise.resolve(pokemonAssetResolver.setAssetImage(image, {
+        kind, ...(kind === 'type-icon' ? { type: value, presentation: 'symbol', style: 'sv' } : { category: value, style: 'champions-approved' })
+      }, { onUnavailable: unavailable })).catch(unavailable);
+    } else unavailable();
+    heading.append(cell);
+  }
+  return heading;
+}
+
 function renderFreeCalcControls(side, slot, actorKey) {
   const controls = {};
   const state = selectedState(); const mon = plan.combatants[actorKey]; const current = state.combatantStates[actorKey];
@@ -685,6 +703,24 @@ function renderFreeCalcControls(side, slot, actorKey) {
     input.addEventListener('change', () => apply({ [key]: input.value }));
   }
   const progress = freeCalcExperience(mon, current);
+  if (isSandbox(plan)) {
+    const nature = field('Nature', document.createElement('select'));
+    fillSelect(nature, sortedRecords('natures')); nature.value = current.currentNatureId ?? mon.natureId;
+    nature.addEventListener('change', () => apply({ natureId: nature.value }));
+    controls.training = {};
+    for (const stat of STAT_KEYS) {
+      const row = document.createElement('div'); row.className = `combatant-training${stat === 'hp' ? ' hp-training' : ''}`;
+      for (const [label, key, maximum, value] of [['IV', 'ivs', 31, current.currentIvs?.[stat] ?? mon.ivs?.[stat]], ['EV', 'evs', 252, current.currentEvs?.[stat] ?? mon.evs?.[stat]]]) {
+        const input = field(`${STAT_LABELS[stat]} ${label}`, document.createElement('input'));
+        Object.assign(input, { type: 'number', min: '0', max: String(maximum), step: '1', value: value ?? '' });
+        input.addEventListener('change', () => apply({ [key]: { [stat]: input.value } }));
+        const wrapper = document.createElement('label'); const text = document.createElement('span'); text.textContent = label;
+        wrapper.append(text, input); row.append(wrapper);
+      }
+      controls.training[stat] = row;
+    }
+    controls.evTotal = STAT_KEYS.reduce((sum, stat) => sum + Number(current.currentEvs?.[stat] ?? mon.evs?.[stat] ?? 0), 0);
+  }
   if (side === 'player' && !mon.source?.isPlayerPartner && progress) {
     const input = field('Level EXP', document.createElement('input'));
     Object.assign(input, { type: 'number', min: '0', max: String(progress.threshold), step: '1', value: progress.value, placeholder: 'Unknown' });
@@ -3171,7 +3207,7 @@ function renderCombatantCard(side, slot, { displaySlot = slot, inspection = null
   const committedLevel = Number(committedMonState.currentLevel ?? mon.level);
   const levelChip = document.createElement("span");
   levelChip.className = `combatant-level ${valueTone(state, displayKey, `combatantStates.${displayKey}.currentLevel`, currentLevel !== rootLevel, { previewChanged: previewing && currentLevel !== committedLevel, events: previewEvents })}`.trim();
-  const nature = dataset.get("natures", mon.natureId) || {};
+  const nature = dataset.get("natures", monState.currentNatureId ?? mon.natureId) || {};
   const natureBoostedStat = nature?.boostedStat;
   const natureNerfedStat = nature?.nerfedStat;
   let levelText = `Lv. ${currentLevel}`;
@@ -3199,9 +3235,17 @@ function renderCombatantCard(side, slot, { displaySlot = slot, inspection = null
   const statCornerStack = document.createElement("div");
   statCornerStack.className = "combatant-corner-stats";
   const hpCell = staticDetail("", formatHpRemaining(monState.hp), valueTone(state, displayKey, `combatantStates.${displayKey}.hp`, hpChanged, { previewChanged: previewing && (monState.hp.min !== committedMonState.hp.min || monState.hp.max !== committedMonState.hp.max || monState.hp.maxHp !== committedMonState.hp.maxHp), events: previewEvents }));
+  const hpText = formatHpRemaining(monState.hp);
+  const hpReadout = document.createElement('strong'); hpReadout.className = 'hp-readout';
+  const hpAmount = document.createElement('span'); hpAmount.className = 'hp-amount'; hpAmount.textContent = hpText.split(' (')[0];
+  const hpPercent = document.createElement('span'); hpPercent.className = 'hp-percent'; hpPercent.textContent = hpText.split(' (')[1].replace(')', '');
+  hpReadout.append(hpAmount, hpPercent); hpCell.replaceChildren(hpReadout);
   const statusCell = staticDetail("", monState.majorStatus ? STATUS_LABELS[monState.majorStatus] || monState.majorStatus : "Healthy", valueTone(state, displayKey, `combatantStates.${displayKey}.majorStatus`, statusChanged, { previewChanged: previewing && monState.majorStatus !== committedMonState.majorStatus, events: previewEvents }));
   if (edit) {
-    hpCell.replaceChildren(edit.HP, `/${committedMonState.hp.maxHp}`);
+    const hpEditor = document.createElement('span'); hpEditor.className = 'hp-editor';
+    const maximum = document.createElement('span'); maximum.textContent = `/${committedMonState.hp.maxHp}`;
+    hpEditor.append(edit.HP, maximum); hpAmount.replaceChildren(hpEditor);
+    if (edit.training) hpReadout.append(edit.training.hp);
     statusCell.replaceChildren(edit.Status);
   }
   hpCell.classList.add("combatant-detail-corner");
@@ -3216,6 +3260,10 @@ function renderCombatantCard(side, slot, { displaySlot = slot, inspection = null
   if (edit) {
     details.children[0].querySelector('strong').replaceChildren(edit.Ability);
     details.children[1].querySelector('strong').replaceChildren(edit.Item);
+    if (edit.Nature) {
+      details.classList.add('sandbox-details');
+      const cell = staticDetail('Nature', ''); cell.querySelector('strong').append(edit.Nature); details.append(cell);
+    }
   }
   card.append(details);
   const stats = document.createElement("div"); stats.className = "combatant-stats";
@@ -3248,9 +3296,15 @@ function renderCombatantCard(side, slot, { displaySlot = slot, inspection = null
     const stageCell = document.createElement("div"); stageCell.textContent = stage ? `${stage > 0 ? "+" : ""}${stage}` : "—"; stageCell.className = `combatant-stat-stage ${tone}`;
     stageCell.setAttribute("aria-label", `${STAT_LABELS[stat]} stage ${stage > 0 ? "+" : ""}${stage}`);
     if (edit) stageCell.replaceChildren(edit.stages[stat]);
-    row.append(label, actual, stageCell); statRow.append(row);
+    row.append(label, actual, stageCell);
+    if (edit?.training) row.append(edit.training[stat]);
+    statRow.append(row);
   }
   stats.append(statRow);
+  if (edit?.training) {
+    const summary = document.createElement('div'); summary.className = 'training-summary';
+    summary.textContent = `EV total: ${edit.evTotal}/510 · ${510 - edit.evTotal} remaining`; stats.append(summary);
+  }
   if (edit) {
     const extra = document.createElement('div'); extra.className = 'combatant-stat-extra';
     for (const [stat, label] of [['accuracy', 'Acc'], ['evasion', 'Eva']]) {
@@ -3313,7 +3367,7 @@ function renderCombatantCard(side, slot, { displaySlot = slot, inspection = null
       moveMeta.textContent = `${metaParts.join(" · ")}${support.supported ? "" : " · unsupported"}`;
       moveMeta.className = valueTone(state, displayKey, `combatantStates.${displayKey}.movePp.${entry.moveId}`, currentPp !== rootPp, { previewChanged: previewing && currentPp !== Number(committedMonState.movePp?.[entry.moveId] ?? entry.maxPp), events: previewEvents });
       copy.append(moveName, moveMeta);
-      moveButton.append(copy);
+      moveButton.append(renderMoveHeading(copy, entry.typeOverride || move?.type, move?.category));
       moveButton.addEventListener("click", () => configureMoveDraft(side, slot, actorKey, move, support));
       const moveFace = edit && isSandbox(plan) ? sandboxMovePicker(moveButton, edit[`Move ${moveIndex + 1}`]) : moveButton;
       if (forcedAction?.kind === "recharge" && isForcedMove) {

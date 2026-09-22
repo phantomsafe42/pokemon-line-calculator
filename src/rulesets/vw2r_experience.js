@@ -299,7 +299,8 @@ function applyReward(branch, plan, dataset, reward) {
   }
   if (reward.toLevel > reward.fromLevel) {
     const previousStats = clone(monState.currentStats || mon.calculatedStats);
-    const nextStats = calculateStats({ ...mon, level: reward.toLevel }, dataset);
+    const nextStats = calculateStats({ ...mon, level: reward.toLevel,
+      natureId: monState.currentNatureId ?? mon.natureId, ivs: monState.currentIvs ?? mon.ivs, evs: monState.currentEvs ?? mon.evs }, dataset);
     monState.currentLevel = reward.toLevel;
     monState.currentStats = nextStats;
     changes.push({ path: `combatantStates.${reward.combatantKey}.currentLevel`, from: reward.fromLevel, to: reward.toLevel });

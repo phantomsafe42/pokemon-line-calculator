@@ -61,6 +61,9 @@ function formStats(combatant, state, dataset, speciesId) {
   if (!species?.baseStats) throw new Error(`Species form ${speciesId} is unavailable`);
   return calculateStats({
     ...combatant,
+    natureId: state.currentNatureId ?? combatant.natureId,
+    ivs: state.currentIvs ?? combatant.ivs,
+    evs: state.currentEvs ?? combatant.evs,
     speciesId,
     level: Number(state.currentLevel ?? combatant.level),
     baseStats: speciesId === baseSpeciesId ? combatant.baseStats : species.baseStats

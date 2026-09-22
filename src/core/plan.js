@@ -1,8 +1,8 @@
-import { assertValidPlanDocument, PLAN_SCHEMA_VERSION } from "../contracts/plan_contract.js?v=20260917-partners-release-v1";
+import { assertValidPlanDocument, PLAN_SCHEMA_VERSION } from "../contracts/plan_contract.js?v=20260921-card-design-v1";
 import { clone, exactRange, makeStableId, nowIso, shortHash, stableStringify, toId } from "./primitives.js?v=20260905-drafts-freecalc-partners-v1";
 import { activeKeys, battleFormat as normalizeBattleFormat, slotsPerSide } from "./battle_slots.js?v=20260905-drafts-freecalc-partners-v1";
 import { participatingActiveEntries, participatingActiveKeys } from "../rulesets/rotation_battle.js?v=20260905-drafts-freecalc-partners-v1";
-import { createInitialExperienceState } from "../rulesets/vw2r_experience.js?v=20260917-partners-release-v1";
+import { createInitialExperienceState } from "../rulesets/vw2r_experience.js?v=20260921-card-design-v1";
 import { entryAbilityEffects } from "../rulesets/switch_rules.js?v=20260907-two-turn-immunity-v1";
 import { currentMechanicsFingerprint } from "../rulesets/resolver_profile.js?v=20260921-download-entry-v1";
 import { combatantsAreAdjacent } from "../rulesets/triple_battle.js?v=20260905-drafts-freecalc-partners-v1";
