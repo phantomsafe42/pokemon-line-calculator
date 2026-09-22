@@ -2,16 +2,35 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import http from 'node:http';
 import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const url = process.env.PLC_STARTER_TEST_URL;
-if (!url) throw new Error('Set PLC_STARTER_TEST_URL to the candidate site.');
 const temp = path.join(root, '.codex-tmp');
 await fs.mkdir(temp, { recursive: true });
+const assetLock = JSON.parse(await fs.readFile(path.join(root, 'asset-lock.json'), 'utf8'));
+const assetReleaseBase = `${assetLock.gateway.origin}/v1/releases/${assetLock.gateway.releaseVersion}`;
 const profile = await fs.mkdtemp(path.join(temp, 'starter-browser-'));
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+const server = process.env.PLC_STARTER_TEST_URL ? null : http.createServer(async (request, response) => {
+  try {
+    const pathname = decodeURIComponent(new URL(request.url, 'http://localhost').pathname);
+    const file = path.resolve(root, `.${pathname === '/' ? '/index.html' : pathname}`);
+    if (!file.startsWith(`${root}${path.sep}`)) return response.writeHead(403).end();
+    let bytes = await fs.readFile(file);
+    if (path.basename(file) === 'index.html') {
+      const html = bytes.toString('utf8')
+        .replace('/Datasets/Pokemon%20Assets/release', assetReleaseBase)
+        .replace('  <script src="./src/generated/pokemon_asset_resolver.global.js', '  <script src="./src/generated/pokemon_asset_gateway.global.js"></script>\n  <script src="./src/generated/pokemon_asset_resolver.global.js');
+      bytes = Buffer.from(html);
+    }
+    const contentType = { '.html': 'text/html', '.js': 'text/javascript', '.json': 'application/json', '.css': 'text/css' }[path.extname(file)] || 'application/octet-stream';
+    response.writeHead(200, { 'content-type': contentType, 'cache-control': 'no-store' }).end(bytes);
+  } catch { response.writeHead(404).end(); }
+});
+if (server) await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+const url = process.env.PLC_STARTER_TEST_URL || `http://127.0.0.1:${server.address().port}/`;
 const chrome = process.env.PLC_CHROME_PATH || path.join(process.env.ProgramFiles, 'Google/Chrome/Application/chrome.exe');
 const browser = spawn(chrome, ['--headless=new', '--disable-gpu', '--no-first-run', '--no-default-browser-check',
   '--remote-debugging-port=0', `--user-data-dir=${profile}`, 'about:blank'], { windowsHide: true, stdio: 'ignore' });
@@ -95,9 +114,17 @@ try {
     await wait(()=>el('starter-dialog').open, 'FRO choices');
     const fro = [...el('starter-choices').children].map(c=>c.textContent);
     check(fro.join('|')==='Elekid|Magby|Smoochum', 'FRO species choices');
+    const froVisuals = [...el('starter-choices').children].map(c=>({id:c.dataset.starterId,type:c.dataset.moveType,image:c.querySelector('img')}));
+    for(let n=0;n<100&&!froVisuals.every(row=>row.image.complete&&row.image.naturalWidth>0);n++) await new Promise(resolve=>setTimeout(resolve,100));
+    check(froVisuals.every(row=>row.image.complete&&row.image.naturalWidth>0), 'FRO starter sprites '+JSON.stringify(froVisuals.map(row=>({id:row.id,src:row.image.src,complete:row.image.complete,width:row.image.naturalWidth,className:row.image.className}))));
+    check(JSON.stringify(froVisuals.map(row=>[row.id,row.type]))===JSON.stringify([['elekid','electric'],['magby','fire'],['smoochum','ice']]), 'FRO starter colors');
+    check(froVisuals.every(row=>getComputedStyle(row.image.closest('.starter-choice')).backgroundColor!=='rgba(0, 0, 0, 0)'), 'FRO starter backgrounds');
     await chooseStarter('magby');
     check(trainerIds().includes('fire-red-omega-trainer-0630'), 'FRO route');
-    await chooseGame('pokemon-unbound'); await chooseStarter('gible');
+    await chooseGame('pokemon-unbound');
+    await wait(()=>[...el('starter-choices').querySelectorAll('img')].every(image=>image.complete&&image.naturalWidth>0), 'Unbound starter sprites');
+    check(JSON.stringify([...el('starter-choices').children].map(c=>[c.dataset.starterId,c.dataset.moveType]))===JSON.stringify([['beldum','steel'],['gible','ground'],['larvitar','dark']]), 'Unbound starter colors');
+    await chooseStarter('gible');
     check(trainerIds().includes('pokemon-unbound-trainer-0433') && !trainerIds().includes('pokemon-unbound-trainer-0434'), 'Unbound route');
     await chooseGame('renegade-platinum'); await chooseStarter('chimchar');
     const option = [...el('trainer-select').options].find(o=>o.value==='renegade-platinum-trainer-0852');
@@ -108,7 +135,7 @@ try {
     check(JSON.stringify(await store.load())===before, 'starter choice must not add/change Boxes');
     el('boxes-tab').click(); el('change-starter').click(); await chooseStarter('oshawott');
     check(trainerIds().includes('vw2r-trainer-0003') && !trainerIds().includes('vw2r-trainer-0001'), 'Boxes changes future routes');
-    return {fro, emptyBoxesPreserved:true, testedGames:10, partnerCases:partnerCases.length};
+    return {fro, starterSprites:true, starterColors:true, emptyBoxesPreserved:true, testedGames:10, partnerCases:partnerCases.length};
   })()`);
   await send('Page.reload'); await delay(500);
   await evaluate(`(async()=>{ ${helpers}
@@ -147,8 +174,9 @@ try {
   for (const width of [1280, 390, 320]) {
     await send('Emulation.setDeviceMetricsOverride', { width, height: 960, deviceScaleFactor: 1, mobile: false });
     await delay(200);
-    const layout = await evaluate(`({width:innerWidth,overflow:document.documentElement.scrollWidth>innerWidth,choices:[...document.querySelectorAll('.starter-choice')].map(e=>{const r=e.getBoundingClientRect();return {left:r.left,right:r.right,width:r.width};})})`);
+    const layout = await evaluate(`({width:innerWidth,overflow:Math.max(document.documentElement.scrollWidth,document.body.scrollWidth)>innerWidth,dialogOverflow:(()=>{const d=document.getElementById('starter-dialog');return d.scrollWidth>d.clientWidth;})(),choices:[...document.querySelectorAll('.starter-choice')].map(e=>{const r=e.getBoundingClientRect();return {left:r.left,right:r.right,width:r.width};})})`);
     assert.equal(layout.overflow, false);
+    assert.equal(layout.dialogOverflow, false);
     assert.ok(layout.choices.every(c => c.left >= 0 && c.right <= width && c.width > 50));
     layouts.push(layout);
     const shot = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });
@@ -156,4 +184,8 @@ try {
   }
   assert.deepEqual(errors, []);
   console.log(JSON.stringify({ status: 'starter-browser-valid', routes, active, layouts }, null, 2));
-} finally { socket?.close(); browser.kill(); }
+} finally {
+  socket?.close();
+  browser.kill();
+  if (server) await new Promise(resolve => server.close(resolve));
+}

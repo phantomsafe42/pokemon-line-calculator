@@ -6,6 +6,7 @@ import { createTrainerSelector, displayTrainerName, trainerFormatLabel, preloadT
 import { canonicalSpeciesDisplayName, loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260921-dataset-034-v1";
 import { starterAllows, starterChoice } from './adapters/starter_selection.js?v=20260918-starter-selection-v1';
 import { readStarterPreference, saveStarterPreference } from './cache/starter_preferences.js?v=20260918-starter-selection-v1';
+import { starterPresentationType } from './ui/starter_presentation.js?v=20260921-starter-choice-sprites-v1';
 import { loadTrainerAiBootstrap } from "./adapters/trainer_ai.js?v=20260921-dataset-034-v1";
 import { forecastTargetLabel, replacementForecastLines } from "./ui/ai_forecast.js?v=20260918-replacement-reasons-v2";
 import { hasManualStartingHp } from "./ui/editor_hp.js?v=20260917-editor-hp-v1";
@@ -363,7 +364,11 @@ function openStarterPicker() {
     const control = button('', 'starter-choice secondary');
     control.dataset.starterId = choice.id;
     control.dataset.type = choice.type?.toLowerCase() || '';
+    control.dataset.moveType = starterPresentationType(selectedGameId, choice, dataset.get('species', choice.speciesId)) || '';
     control.setAttribute('aria-pressed', String(choice.id === selectedStarterId));
+    const image = sprite({ speciesId: choice.speciesId, displayName: choice.speciesName });
+    image.loading = 'eager';
+    control.append(image);
     const label = document.createElement('strong');
     label.textContent = choice.label;
     control.append(label);
