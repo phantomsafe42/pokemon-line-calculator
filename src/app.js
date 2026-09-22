@@ -2,7 +2,7 @@ import { starterPresentationType } from './ui/starter_presentation.js?v=20260922
 import { calculateStats, normalizeMultiTrainerRoster, normalizePlayerCollection, normalizePlayerPartnerRoster, normalizeTrainerRoster, snapshotFingerprint } from "./adapters/combatant_ingest.js?v=20260922-public-cards-v1";
 import { HOSTED_DATASET_RELEASE } from "./adapters/hosted_dataset.js?v=20260922-public-cards-v1";
 import { setPokemonAssetImage } from "./adapters/pokemon_assets.js?v=20260909-public-release-v2";
-import { createTrainerSelector, displayTrainerName, trainerFormatLabel, preloadTrainerSplitIcons, preloadTrainerSprites } from './ui/trainer_selector.js?v=20260922-trainer-review-v1';
+import { createTrainerSelector, campaignTrainerGroups, displayTrainerName, displayBattleLabel, trainerFormatLabel, preloadTrainerSplitIcons, preloadTrainerSprites } from './ui/trainer_selector.js?v=20260922-trainer-review-v1';
 import { canonicalSpeciesDisplayName, loadStandardizedDataset } from "./adapters/standardized_dataset.js?v=20260921-dataset-034-v1";
 import { starterAllows, starterChoice } from './adapters/starter_selection.js?v=20260918-starter-selection-v1';
 import { readStarterPreference, saveStarterPreference } from './cache/starter_preferences.js?v=20260918-starter-selection-v1';
@@ -1638,12 +1638,12 @@ function trainerLabel(trainer) {
   try { team = dataset.trainerTeam(trainer.id, null); }
   catch { team = trainer.team || []; }
   const members = team.map(member => `${canonicalSpeciesDisplayName(dataset, member)} Lv. ${member.level}`).join(", ");
-  return `${displayTrainerName(trainer.displayName || trainer.name || trainer.id)}${members ? ` · ${members}` : ""}`;
+  return `${displayTrainerName(trainer.displayName || trainer.name || trainer.id, dataset.gameId)}${members ? ` · ${members}` : ""}`;
 }
 
 function fillTrainerSelect() {
   ui["trainer-select"].replaceChildren(option("", "Select trainer…"));
-  for (const group of dataset.trainerGroups(selectedStarterId)) {
+  for (const group of campaignTrainerGroups(dataset.trainerGroups(selectedStarterId))) {
     const optgroup = document.createElement("optgroup");
     optgroup.label = group.label;
     for (const trainer of group.trainers) optgroup.append(option(trainer.id, trainerLabel(trainer)));
@@ -1665,12 +1665,14 @@ function populateTrainerVariantSelect() {
   const variants = (trainer?.mechanicsVariants || []).filter(v => starterAllows(dataset.starterSelection, selectedStarterId, trainer.id, v.id));
   ui["variant-field"].hidden = !variants.length;
   ui["variant-select"].replaceChildren();
-  for (const variant of variants) ui["variant-select"].append(option(variant.id, variant.displayName || variant.name || `Variant ${variant.id}`));
+  for (const variant of variants) ui["variant-select"].append(option(variant.id, displayBattleLabel(variant.displayName || variant.name || `Variant ${variant.id}`)));
   if ([...ui["variant-select"].options].some(entry => entry.value === previous)) ui["variant-select"].value = previous;
 }
 
 function partnerTrainerGroups() {
-  return dataset?.trainerPartnerGroups(ui["trainer-select"].value, selectedStarterId) || [];
+  if (!dataset) return [];
+  const visible = new Set(campaignTrainerGroups(dataset.trainerGroups(selectedStarterId)).map(group => group.id));
+  return dataset.trainerPartnerGroups(ui["trainer-select"].value, selectedStarterId).filter(group => visible.has(group.id));
 }
 
 function renderPartnerTrainerOptions() {
@@ -1744,7 +1746,7 @@ function updateContextTrainer() {
     const partner = choice?.requiresPartner ? dataset.trainer(ui["partner-trainer-select"].value) : null;
     ui["plan-name"].value = displayTrainerName(partner
       ? `${trainer.displayName || trainer.name} & ${partner.displayName || partner.name}`
-      : trainer.displayName || trainer.name || "");
+      : trainer.displayName || trainer.name || "", dataset.gameId);
   } else {
     ui["battle-format"].value = "Select a trainer";
     ui["plan-name"].value = "";
@@ -2522,7 +2524,7 @@ function combatantFor(side, slot = 0) {
 
 function currentTrainerName() {
   const trainer = plan && dataset?.trainer(plan.game.trainerId);
-  return plan?.game?.enemyTrainerDisplayName || trainer?.displayName || trainer?.name || plan?.game?.trainerId || "Trainer";
+  return displayTrainerName(plan?.game?.enemyTrainerDisplayName || trainer?.displayName || trainer?.name || plan?.game?.trainerId || "Trainer", dataset?.gameId);
 }
 
 function canonicalTarget(move) {
