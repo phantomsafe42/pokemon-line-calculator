@@ -823,9 +823,6 @@ dialog::backdrop { background: rgba(0, 0, 0, .75); }
 .action-panel:not(.is-doubles):not(.is-triples):not(.is-rotation) .sandbox-move-main .move-copy {
   padding-right: 42px;
 }
-.action-panel:not(.is-doubles):not(.is-triples):not(.is-rotation) .sandbox-move-picker {
-  bottom: 41px;
-}
 .action-panel.is-doubles .move-button-group {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -886,13 +883,15 @@ dialog::backdrop { background: rgba(0, 0, 0, .75); }
 .sandbox-move-main .move-heading {
   padding-right: 36px;
 }
-.action-panel .sandbox-move-main .sandbox-move-picker {
+.action-panel .sandbox-move-main:has(.move-heading) .sandbox-move-picker {
   top: 0;
-  bottom: auto;
-  height: 64px;
+  bottom: 0;
+  height: auto;
   border-left: 1px solid var(--control-line);
   border-radius: 0;
 }
+.action-panel .sandbox-move-main:has(.damage-label) .sandbox-move-picker { bottom: 41px; }
+.action-panel .sandbox-move-main:not(:has(.move-heading)) .sandbox-move-picker { bottom: 0; }
 .action-panel .move-button:has(.move-heading) > .damage-label {
   display: grid;
   place-items: center;

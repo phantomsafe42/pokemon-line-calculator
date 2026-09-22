@@ -127,7 +127,7 @@ export async function checkSandbox({ page, evaluate, delay, dataset, tempRoot, p
       assert.equal(await evaluate(page,`[...document.querySelectorAll('.combatant-card .combatant-header')].every(header=>{
         const sprite=header.querySelector('.combatant-sprite').getBoundingClientRect(),identity=header.children[1].getBoundingClientRect();
         const hp=header.querySelector('.combatant-corner-stats').getBoundingClientRect();
-        return Math.abs(identity.top-sprite.top)<1 && identity.left>=sprite.right &&
+        return identity.top<sprite.bottom && identity.bottom>sprite.top && identity.left>=sprite.right &&
           !(identity.left<hp.right && identity.right>hp.left && identity.top<hp.bottom && identity.bottom>hp.top);
       })`),true,`Sandbox identity stays beside its sprite without overlapping HP: ${format} ${width}`);
       if(width===2560 || width===390) {
@@ -135,10 +135,11 @@ export async function checkSandbox({ page, evaluate, delay, dataset, tempRoot, p
         const shot=await page.send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});
         await fs.writeFile(path.join(tempRoot,`sandbox-header-${format}-${width}.png`),Buffer.from(shot.data,'base64'));
       }
-      assert.equal(await evaluate(page,`[...document.querySelectorAll('.sandbox-move-main')].every(main=>{
-        const face=main.querySelector('.move-button').getBoundingClientRect(),select=main.querySelector('select').getBoundingClientRect();
-        return Math.abs(face.top-select.top)<1 && Math.abs(face.right-select.right)<1 && Math.abs(face.bottom-select.bottom)<1 && select.width>=32;
-      })`),true,'Move picker stays inside the right edge of its move box');
+      const pickerGeometry = await evaluate(page,`[...document.querySelectorAll('.sandbox-move-main')].map(main=>{
+        const face=(main.querySelector('.move-heading') || main.querySelector('.move-button')).getBoundingClientRect(),select=main.querySelector('select').getBoundingClientRect();
+        return {name:main.textContent.slice(0,40),top:face.top-select.top,right:face.right-select.right,bottom:face.bottom-select.bottom,width:select.width};
+      })`);
+      assert.ok(pickerGeometry.every(row=>Math.abs(row.top)<=1 && Math.abs(row.right)<=1 && Math.abs(row.bottom)<=1 && row.width>=32),`Move picker stays inside its heading: ${format} ${width} ${JSON.stringify(pickerGeometry)}`);
       if(width===1280 || width===390) {
         await evaluate(page,`document.getElementById('player-action-panel').scrollIntoView({block:'start'})`);
         const shot=await page.send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});
