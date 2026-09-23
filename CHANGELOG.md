@@ -1,6 +1,6 @@
 # Pokemon Line Calculator versions
 
-The current public PLC build is **0.6.1**. Product versions use `x.y.z`:
+The current public PLC build is **0.6.2**. Product versions use `x.y.z`:
 
 - `x` marks a new build generation. The fully distributed build will start at `1.0.0` when its owner approves that milestone.
 - `y` marks a major content addition and resets `z` to zero.
@@ -22,3 +22,9 @@ The owner designated the current public baseline as `0.6.0`, including the subse
 ## 0.6.1 — HP preview display patch
 
 - Preserve the current-turn and prior-turn color classes on the HP fraction/percentage readout when a move preview changes HP. This changes presentation only; damage and battle-state calculations are unchanged.
+
+## 0.6.2 — AI side-condition corrections
+
+- Correct Gen 4 AI hazard presence, hazard layers, and pending Future Sight/Doom Desire checks, plus Gen 5 Toxic Spikes queries.
+- Explain the complete Roar/Whirlwind score-penalty fallback rather than only its final condition.
+- Refresh the immutable Dataset dependency with synchronized trainer AI encounter formats and regeneration regression checks.
