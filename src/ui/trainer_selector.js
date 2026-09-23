@@ -108,7 +108,16 @@ export function trainerSpriteQuery(trainer) {
   if (identity?.status !== 'resolved') return null;
   return { kind: 'trainer-sprite', gameStyle: identity.gameStyle, presentation: identity.presentation,
     subjectKind: identity.subjectKind, subject: identity.subjectId, gender: identity.gender, variant: identity.variant,
-    ...(identity.spriteSet ? { spriteSet: identity.spriteSet } : {}) };
+    ...(identity.spriteSet ? { spriteSet: identity.spriteSet } : {}),
+    ...(identity.edition ? { edition: identity.edition } : {}) };
+}
+
+// Combined encounters carry presentation-only participants, not separate teams.
+export function trainerPortraitParticipants(trainer) {
+  return (trainer?.trainerVisualParticipants || []).map(participant => ({
+    ...participant,
+    displayName: participant.label,
+  }));
 }
 
 export function trainerPortraitFallback(trainer) {
@@ -263,6 +272,18 @@ export function createTrainerSelector({ dialog, dataset, starterId, resolver, re
   };
   const portrait = (trainer) => {
     const frame = element('div', 'trainer-portrait-frame');
+    const participants = trainerPortraitParticipants(trainer);
+    if (participants.length) {
+      frame.classList.add('trainer-portrait-participants');
+      frame.setAttribute('role', 'group');
+      frame.setAttribute('aria-label', 'Trainer portraits');
+      for (const participant of participants) {
+        const child = portrait(participant);
+        child.title = participant.displayName;
+        frame.append(child);
+      }
+      return frame;
+    }
     const identity = trainer.trainerVisualIdentity;
     if (identity?.status === 'ambiguous' && identity.alternatives?.length
       && identity.alternatives.every(choice => choice.status === 'resolved')) {

@@ -10,8 +10,8 @@
     "creditsSha256": "c2b643619e16d88b20a2c64fc810d0120b03c5550ed64cd06664fa2456c57c96"
   },
   "clients": {
-    "sourceCommit": "cfe8abca676220abc8e81343f66b4049221e8265",
-    "resolverSha256": "5e7521519cfa36cf51c5f775da5d12243a64740510bcdb57c2036471adfc0680",
+    "sourceCommit": "e5bf27773595c58b21cc0ef20b12bf615149f032",
+    "resolverSha256": "8a3a43871fd2a5f641b3bd50729f10d9e70727245215d485ff0d99e8c680de34",
     "gatewaySha256": "e0940b7c65947351701b05167124a0bfaff65b4f53b0c58bf0b885f97ddac111"
   },
   "typeIconColors": {
