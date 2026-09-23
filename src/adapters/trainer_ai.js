@@ -732,9 +732,19 @@ export function createPlatinumQueryProvider({ plan, state, dataset, actorEntry, 
   };
   const sideState = (selector, metadata) => state.fieldState?.sides?.[battlerCombatant(selector, metadata)?.side] || {};
   const maskOf = (record, mapping, metadata) => Object.entries(mapping).reduce((mask, [token, keys]) => keys.some(key => Boolean(record?.[key])) ? mask | Number(metadata.profile.constants.numericByToken[token]) : mask, 0);
-  const sideMask = (selector, metadata) => maskOf(sideState(selector, metadata), {
+  const sideMask = (selector, metadata) => {
+    const side = battlerCombatant(selector, metadata)?.side;
+    const current = sideState(selector, metadata);
+    // Planner hazards are nested; the retail AI reads side-wide flags, not
+    // battler volatiles. Future Sight/Doom Desire share a side flag even in
+    // Doubles (the script checks both sides before attempting either move).
+    const conditions = { ...current, ...current.hazards,
+      futureSight: (state.fieldState?.global?.delayedAttacks || []).some(entry => entry.side === side && Number(entry.remainingTurns) > 0)
+    };
+    return maskOf(conditions, {
     SIDE_CONDITION_REFLECT: ['reflect', 'reflectTurns'], SIDE_CONDITION_LIGHT_SCREEN: ['lightScreen', 'lightScreenTurns'], SIDE_CONDITION_SPIKES: ['spikes', 'spikesLayers'], SIDE_CONDITION_TOXIC_SPIKES: ['toxicSpikes', 'toxicSpikesLayers'], SIDE_CONDITION_STEALTH_ROCK: ['stealthRock'], SIDE_CONDITION_SAFEGUARD: ['safeguard', 'safeguardTurns'], SIDE_CONDITION_MIST: ['mist', 'mistTurns'], SIDE_CONDITION_TAILWIND: ['tailwindTurns'], SIDE_CONDITION_LUCKY_CHANT: ['luckyChantTurns'], SIDE_CONDITION_WISH: ['wish'], SIDE_CONDITION_FUTURE_SIGHT: ['futureSight']
-  }, metadata);
+    }, metadata);
+  };
   const effectMask = (selector, metadata) => {
     const mon = battlerState(selector, metadata);
     return maskOf({ ...mon?.volatileConditions, abilitySuppressed: mon?.abilitySuppressed }, {
@@ -810,7 +820,7 @@ export function createPlatinumQueryProvider({ plan, state, dataset, actorEntry, 
     },
     "platinum.command.IfLevel": (operation, metadata) => { const actor = battlerCombatant(1, metadata)?.level, target = battlerCombatant(0, metadata)?.level; return operation === 0 ? actor > target : operation === 1 ? actor < target : operation === 2 && actor === target; },
     "platinum.command.IfBattlerUnderEffect": (selector, effect, metadata) => { const volatile = battlerState(selector, metadata)?.volatileConditions; return effect === 0 ? Boolean(volatile?.disabledTurns || volatile?.disableTurns) : effect === 1 && Boolean(volatile?.encoreTurns); },
-    "platinum.command.LoadSpikesLayers": (selector, condition, metadata) => condition === metadata.profile.constants.numericByToken.SIDE_CONDITION_SPIKES ? Number(sideState(selector, metadata).spikesLayers || 0) : condition === metadata.profile.constants.numericByToken.SIDE_CONDITION_TOXIC_SPIKES ? Number(sideState(selector, metadata).toxicSpikesLayers || 0) : loaded(metadata),
+    "platinum.command.LoadSpikesLayers": (selector, condition, metadata) => condition === metadata.profile.constants.numericByToken.SIDE_CONDITION_SPIKES ? Number(sideState(selector, metadata).hazards?.spikes || 0) : condition === metadata.profile.constants.numericByToken.SIDE_CONDITION_TOXIC_SPIKES ? Number(sideState(selector, metadata).hazards?.toxicSpikes || 0) : loaded(metadata),
     "platinum.command.LoadGender": (selector, metadata) => ({ M: 0, F: 1, N: 2 })[battlerCombatant(selector, metadata)?.gender],
     "platinum.command.LoadStockpileCount": (selector, metadata) => Number(battlerState(selector, metadata)?.volatileConditions?.stockpileCount ?? battlerState(selector, metadata)?.volatileConditions?.stockpileLayers ?? 0),
     "platinum.command.LoadBattleType": metadata => Number(state.trainerAiBattleTypeMask ?? (metadata.profile.constants.numericByToken.BATTLE_TYPE_TRAINER | (plan.game.battleFormat === 'doubles' ? metadata.profile.constants.numericByToken.BATTLE_TYPE_DOUBLES : 0))),
@@ -1066,7 +1076,8 @@ function gen5SideConditionValue(plan, state, actorEntry, metadata, selector, tok
   const id = toId(String(token).replace(/^(side_status|side_cond)\./i, ""));
   const turnFields = { reflect: "reflectTurns", lightscreen: "lightScreenTurns", safeguard: "safeguardTurns", mist: "mistTurns", tailwind: "tailwindTurns", luckychant: "luckyChantTurns", wideguard: "wideGuardTurns", quickguard: "quickGuardTurns", rainbow: "rainbowTurns", seaoffire: "seaOfFireTurns", swamp: "swampTurns" };
   if (turnFields[id]) return Math.max(0, Number(sideState[turnFields[id]] || 0));
-  if (["spikes", "toxicspikes", "stealthrock"].includes(id)) return Math.max(0, Number(sideState.hazards?.[id] ?? sideState.hazards?.[id.replace("rock", "Rock")] ?? 0));
+  const hazardFields = { spikes: "spikes", toxicspikes: "toxicSpikes", stealthrock: "stealthRock" };
+  if (hazardFields[id]) return Math.max(0, Number(sideState.hazards?.[hazardFields[id]] || 0));
   return undefined;
 }
 
