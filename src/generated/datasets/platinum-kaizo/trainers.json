@@ -186015,9 +186015,9 @@
       },
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
-        "status": "unavailable",
+        "status": "resolved",
         "relationship": "base-game-candidate",
-        "gameStyle": "platinum",
+        "gameStyle": "diamond-pearl",
         "presentation": "battle-front",
         "subjectKind": "class",
         "subjectId": "sis-and-bro",
@@ -186027,9 +186027,7 @@
           "kind": "gen4-trainer-class-id",
           "value": 47
         },
-        "unresolvedFields": [
-          "publishedBattleFrontAsset"
-        ],
+        "unresolvedFields": [],
         "evidence": [
           {
             "kind": "user-confirmed-vanilla-class-presentation",
@@ -186041,11 +186039,20 @@
             "source": "tools/imports/hack-trainer-visual-authority.json",
             "sourceTrainerId": 166,
             "token": "TRAINER_CLASS_SIS_AND_BRO"
+          },
+          {
+            "kind": "user-confirmed-specific-artwork",
+            "source": "tools/imports/hack-trainer-visual-authority.json",
+            "decision": "user-selected-dora-and-diego-dp-beta-artwork-20260922",
+            "sourceUrl": "https://archives.bulbagarden.net/media/upload/a/ad/Spr_DP_Sis_and_Bro_Beta.png",
+            "sha256": "5039616c07b532e3f6000f9493ab4cda9ec724f40510a3398df244e77175c5a1"
           }
         ],
         "sourceTrainerIds": [
           166
-        ]
+        ],
+        "spriteSet": "dp",
+        "edition": "beta"
       }
     },
     "platinum-kaizo-trainer-0168": {

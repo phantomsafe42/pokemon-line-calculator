@@ -1,0 +1,2065 @@
+{
+  "schemaVersion": 1,
+  "gameId": "pokemon-unbound",
+  "kind": "trainer-review-report",
+  "profile": "difficult",
+  "status": "passed",
+  "authority": "trainer_review_sources.json",
+  "authoritySha256": "cd66fcb111d7982888793bb85dee4021260e5ad22d9ab563e775bcd45bc577ba",
+  "reviewedOccurrences": 513,
+  "counts": {
+    "mandatory": 106,
+    "optional": 421,
+    "alliedReferences": 4
+  },
+  "refinedLocations": 93,
+  "deferredLocations": [
+    {
+      "trainerId": "pokemon-unbound-trainer-0001",
+      "retainedLocation": "Auburn Waterway",
+      "mapNames": [
+        "Auburn Waterway B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0002",
+      "retainedLocation": "Auburn Waterway",
+      "mapNames": [
+        "Auburn Waterway B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0003",
+      "retainedLocation": "Auburn Waterway",
+      "mapNames": [
+        "Auburn Waterway B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0004",
+      "retainedLocation": "Auburn Waterway",
+      "mapNames": [
+        "Auburn Waterway B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0005",
+      "retainedLocation": "Auburn Waterway",
+      "mapNames": [
+        "Auburn Waterway B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0008",
+      "retainedLocation": "Antisis City",
+      "mapNames": [
+        "Antisis Port â€” map 54:8"
+      ],
+      "statuses": [
+        "Scripted position"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0009",
+      "retainedLocation": "Antisis City",
+      "mapNames": [
+        "Antisis Port â€” map 54:8"
+      ],
+      "statuses": [
+        "Scripted position"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0010",
+      "retainedLocation": "Antisis City",
+      "mapNames": [
+        "Antisis Port â€” map 54:8"
+      ],
+      "statuses": [
+        "Scripted position"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0011",
+      "retainedLocation": "Antisis City",
+      "mapNames": [
+        "Antisis Port â€” map 54:8"
+      ],
+      "statuses": [
+        "Scripted position"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0012",
+      "retainedLocation": "Antisis City",
+      "mapNames": [
+        "Antisis Port â€” map 54:8"
+      ],
+      "statuses": [
+        "Scripted position"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0023",
+      "retainedLocation": "Bellin Town",
+      "mapNames": [
+        "Bellin Town â€” map 5:0"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0025",
+      "retainedLocation": "Blizzard City",
+      "mapNames": [
+        "Blizzard City â€” map 49:11"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0026",
+      "retainedLocation": "Blizzard City",
+      "mapNames": [
+        "Blizzard City â€” map 49:11"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0027",
+      "retainedLocation": "Blizzard City",
+      "mapNames": [
+        "Blizzard City â€” map 49:13"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0028",
+      "retainedLocation": "Blizzard City",
+      "mapNames": [
+        "Blizzard City â€” map 49:11"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0029",
+      "retainedLocation": "Blizzard City",
+      "mapNames": [
+        "Blizzard City â€” map 49:13"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0030",
+      "retainedLocation": "Blizzard City",
+      "mapNames": [
+        "Blizzard City â€” map 49:13"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0034",
+      "retainedLocation": "Cinder Volcano",
+      "mapNames": [
+        "Cinder Volcano 3F 1"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0035",
+      "retainedLocation": "Cinder Volcano",
+      "mapNames": [
+        "Cinder Volcano â€” map 1:49"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0036",
+      "retainedLocation": "Cinder Volcano",
+      "mapNames": [
+        ""
+      ],
+      "statuses": [
+        "Current placement unverified"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0037",
+      "retainedLocation": "Cinder Volcano",
+      "mapNames": [
+        "Cinder Volcano â€” map 1:48"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0038",
+      "retainedLocation": "Cinder Volcano",
+      "mapNames": [
+        "Cinder Volcano 4F 2"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0042",
+      "retainedLocation": "Cinder Volcano",
+      "mapNames": [
+        "Cinder Volcano Shadow 1F"
+      ],
+      "statuses": [
+        "Scripted position"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0051",
+      "retainedLocation": "Crater Town",
+      "mapNames": [
+        "Crater Town â€” map 6:2"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0052",
+      "retainedLocation": "Crater Town",
+      "mapNames": [
+        "Crater Town â€” map 6:2"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0053",
+      "retainedLocation": "Crater Town",
+      "mapNames": [
+        "Crater Town â€” map 6:2"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0054",
+      "retainedLocation": "Crater Town",
+      "mapNames": [
+        "Crater Town â€” map 6:2"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0059",
+      "retainedLocation": "Crystal Peak",
+      "mapNames": [
+        "Crystal Peak â€” map 3:46"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0061",
+      "retainedLocation": "Crystal Peak",
+      "mapNames": [
+        "Crystal Peak â€” map 3:28"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0062",
+      "retainedLocation": "Crystal Peak",
+      "mapNames": [
+        "Crystal Peak â€” map 3:46"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0064",
+      "retainedLocation": "Crystal Peak",
+      "mapNames": [
+        "Crystal Peak â€” map 3:28"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0067",
+      "retainedLocation": "Dehara City",
+      "mapNames": [
+        "Dehara Dept 3F"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0068",
+      "retainedLocation": "Dehara City",
+      "mapNames": [
+        "Dehara Dept 3F"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0069",
+      "retainedLocation": "Dehara City",
+      "mapNames": [
+        "Dehara Dept 3F"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0070",
+      "retainedLocation": "Dehara City",
+      "mapNames": [
+        "Dehara Dept 4F"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0071",
+      "retainedLocation": "Dehara City",
+      "mapNames": [
+        "Dehara Dept 6F"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0072",
+      "retainedLocation": "Dehara City",
+      "mapNames": [
+        "Dehara City â€” map 10:7"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0073",
+      "retainedLocation": "Dehara City",
+      "mapNames": [
+        "Dehara City â€” map 10:7"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0074",
+      "retainedLocation": "Dehara City",
+      "mapNames": [
+        "Dehara City â€” map 10:7"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0075",
+      "retainedLocation": "Dehara City",
+      "mapNames": [
+        "Dehara City â€” map 10:8"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0076",
+      "retainedLocation": "Dehara City",
+      "mapNames": [
+        "Dehara City â€” map 10:8"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0086",
+      "retainedLocation": "Dresco Town",
+      "mapNames": [
+        "Dresco Town â€” map 7:4"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0087",
+      "retainedLocation": "Dresco Town",
+      "mapNames": [
+        "Dresco Town â€” map 7:4"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0088",
+      "retainedLocation": "Dresco Town",
+      "mapNames": [
+        "Dresco Town â€” map 7:3"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0089",
+      "retainedLocation": "Dresco Town",
+      "mapNames": [
+        "Dresco Town â€” map 7:3"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0090",
+      "retainedLocation": "Dresco Town",
+      "mapNames": [
+        "Dresco Town â€” map 7:3"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0091",
+      "retainedLocation": "Dresco Town",
+      "mapNames": [
+        "Dresco Town â€” map 7:3"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0092",
+      "retainedLocation": "Dresco Town",
+      "mapNames": [
+        "Dresco Town â€” map 7:3"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0093",
+      "retainedLocation": "Dresco Town",
+      "mapNames": [
+        "Dresco Town â€” map 7:3"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0094",
+      "retainedLocation": "Fallshore City",
+      "mapNames": [
+        "Fallshore City â€” map 14:11"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0095",
+      "retainedLocation": "Fallshore City",
+      "mapNames": [
+        "Fallshore City â€” map 14:11"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0096",
+      "retainedLocation": "Fallshore City",
+      "mapNames": [
+        "Fallshore City â€” map 14:12"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0097",
+      "retainedLocation": "Fallshore City",
+      "mapNames": [
+        "Fallshore City â€” map 14:12"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0104",
+      "retainedLocation": "Fallshore City",
+      "mapNames": [
+        "Fallshore City â€” map 14:3"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0111",
+      "retainedLocation": "Frozen Forest",
+      "mapNames": [
+        "Blizzard City"
+      ],
+      "statuses": [
+        "Source location mismatch"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0112",
+      "retainedLocation": "Frozen Heights",
+      "mapNames": [
+        "Frozen Heights â€” map 4:4"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0113",
+      "retainedLocation": "Great Desert",
+      "mapNames": [
+        "Great Desert A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0114",
+      "retainedLocation": "Great Desert",
+      "mapNames": [
+        "Great Desert A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0115",
+      "retainedLocation": "Great Desert",
+      "mapNames": [
+        "Great Desert A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0116",
+      "retainedLocation": "Great Desert",
+      "mapNames": [
+        "Great Desert A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0117",
+      "retainedLocation": "Great Desert",
+      "mapNames": [
+        "Great Desert A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0118",
+      "retainedLocation": "Great Desert",
+      "mapNames": [
+        "Great Desert A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0119",
+      "retainedLocation": "Great Desert",
+      "mapNames": [
+        "Great Desert B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0120",
+      "retainedLocation": "Great Desert",
+      "mapNames": [
+        "Great Desert B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0121",
+      "retainedLocation": "Great Desert",
+      "mapNames": [
+        "Great Desert A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0122",
+      "retainedLocation": "Great Desert",
+      "mapNames": [
+        "Great Desert A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0123",
+      "retainedLocation": "Great Desert",
+      "mapNames": [
+        "Great Desert A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0124",
+      "retainedLocation": "Great Desert",
+      "mapNames": [
+        "Great Desert A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0125",
+      "retainedLocation": "Great Desert",
+      "mapNames": [
+        "Great Desert A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0126",
+      "retainedLocation": "Great Desert",
+      "mapNames": [
+        "Great Desert C"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0127",
+      "retainedLocation": "Great Desert",
+      "mapNames": [
+        "Great Desert C"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0136",
+      "retainedLocation": "Icicle Cave",
+      "mapNames": [
+        "Icicle Cave B1F"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0137",
+      "retainedLocation": "Icicle Cave",
+      "mapNames": [
+        "Icicle Cave B2F"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0138",
+      "retainedLocation": "Icicle Cave",
+      "mapNames": [
+        "Icicle Cave B2F"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0139",
+      "retainedLocation": "Icicle Cave",
+      "mapNames": [
+        "Icicle Cave 1F"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0140",
+      "retainedLocation": "Icicle Cave",
+      "mapNames": [
+        "Icicle Cave B3F Alt"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0141",
+      "retainedLocation": "Icicle Cave",
+      "mapNames": [
+        "Icicle Cave B3F Alt"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0142",
+      "retainedLocation": "KBT Expressway",
+      "mapNames": [
+        "Kbt Expressway â€” map 46:1"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0143",
+      "retainedLocation": "KBT Expressway",
+      "mapNames": [
+        "Kbt Expressway â€” map 46:1"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0144",
+      "retainedLocation": "KBT Expressway",
+      "mapNames": [
+        "Kbt Expressway â€” map 46:1"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0145",
+      "retainedLocation": "KBT Expressway",
+      "mapNames": [
+        "Kbt Expressway â€” map 46:1"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0233",
+      "retainedLocation": "Route 9",
+      "mapNames": [
+        "Route 6"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0242",
+      "retainedLocation": "Route 10",
+      "mapNames": [
+        ""
+      ],
+      "statuses": [
+        "Ambiguous source row"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0243",
+      "retainedLocation": "Route 10",
+      "mapNames": [
+        ""
+      ],
+      "statuses": [
+        "Ambiguous source row"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0244",
+      "retainedLocation": "Route 10",
+      "mapNames": [
+        ""
+      ],
+      "statuses": [
+        "Ambiguous source row"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0245",
+      "retainedLocation": "Route 10",
+      "mapNames": [
+        ""
+      ],
+      "statuses": [
+        "Ambiguous source row"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0263",
+      "retainedLocation": "Route 13",
+      "mapNames": [
+        "Route 13 B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0264",
+      "retainedLocation": "Route 13",
+      "mapNames": [
+        "Route 13 B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0265",
+      "retainedLocation": "Route 13",
+      "mapNames": [
+        "Route 13 B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0266",
+      "retainedLocation": "Route 13",
+      "mapNames": [
+        "Route 13 B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0267",
+      "retainedLocation": "Route 13",
+      "mapNames": [
+        "Route 13 B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0268",
+      "retainedLocation": "Route 13",
+      "mapNames": [
+        "Route 13 B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0269",
+      "retainedLocation": "Route 13",
+      "mapNames": [
+        "Route 13 A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0270",
+      "retainedLocation": "Route 13",
+      "mapNames": [
+        ""
+      ],
+      "statuses": [
+        "Current placement unverified"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0271",
+      "retainedLocation": "Route 13",
+      "mapNames": [
+        ""
+      ],
+      "statuses": [
+        "Current placement unverified"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0272",
+      "retainedLocation": "Route 13",
+      "mapNames": [
+        "Route 13 A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0273",
+      "retainedLocation": "Route 13",
+      "mapNames": [
+        "Route 13 A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0274",
+      "retainedLocation": "Route 13",
+      "mapNames": [
+        "Route 13 A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0275",
+      "retainedLocation": "Route 13",
+      "mapNames": [
+        "Route 13 A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0276",
+      "retainedLocation": "Route 13",
+      "mapNames": [
+        "Route 13 A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0277",
+      "retainedLocation": "Route 13",
+      "mapNames": [
+        "Route 13 A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0278",
+      "retainedLocation": "Route 14",
+      "mapNames": [
+        "Route 14 C"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0279",
+      "retainedLocation": "Route 14",
+      "mapNames": [
+        "Route 14 C"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0280",
+      "retainedLocation": "Route 14",
+      "mapNames": [
+        "Route 14 C"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0281",
+      "retainedLocation": "Route 14",
+      "mapNames": [
+        "Route 14 C"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0282",
+      "retainedLocation": "Route 14",
+      "mapNames": [
+        "Route 14 B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0283",
+      "retainedLocation": "Route 14",
+      "mapNames": [
+        "Route 14 B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0284",
+      "retainedLocation": "Route 14",
+      "mapNames": [
+        "Route 14 B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0285",
+      "retainedLocation": "Route 14",
+      "mapNames": [
+        "Route 14 B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0286",
+      "retainedLocation": "Route 14",
+      "mapNames": [
+        "Route 14 A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0287",
+      "retainedLocation": "Route 14",
+      "mapNames": [
+        "Route 14 A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0288",
+      "retainedLocation": "Route 14",
+      "mapNames": [
+        "Route 14 A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0289",
+      "retainedLocation": "Route 14",
+      "mapNames": [
+        "Route 14 A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0290",
+      "retainedLocation": "Route 14",
+      "mapNames": [
+        "Route 14 A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0291",
+      "retainedLocation": "Route 14",
+      "mapNames": [
+        "Route 14 A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0292",
+      "retainedLocation": "Route 14",
+      "mapNames": [
+        "Route 14 A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0315",
+      "retainedLocation": "Route 18",
+      "mapNames": [
+        "Route 18 A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0316",
+      "retainedLocation": "Route 18",
+      "mapNames": [
+        "Route 18 A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0317",
+      "retainedLocation": "Route 18",
+      "mapNames": [
+        "Route 18 A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0318",
+      "retainedLocation": "Route 18",
+      "mapNames": [
+        "Route 18 A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0319",
+      "retainedLocation": "Route 18",
+      "mapNames": [
+        "Route 18 A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0320",
+      "retainedLocation": "Route 18",
+      "mapNames": [
+        "Route 18 A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0321",
+      "retainedLocation": "Route 18",
+      "mapNames": [
+        "Route 18 B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0322",
+      "retainedLocation": "Route 18",
+      "mapNames": [
+        "Route 18 B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0323",
+      "retainedLocation": "Route 18",
+      "mapNames": [
+        "Route 18 B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0324",
+      "retainedLocation": "Route 18",
+      "mapNames": [
+        "Route 18 B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0325",
+      "retainedLocation": "Route 18",
+      "mapNames": [
+        "Route 18 B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0326",
+      "retainedLocation": "Route 18",
+      "mapNames": [
+        "Route 18 B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0328",
+      "retainedLocation": "Seaport City",
+      "mapNames": [
+        "Seaport City â€” map 25:2"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0329",
+      "retainedLocation": "Seaport City",
+      "mapNames": [
+        "Seaport City â€” map 25:2"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0330",
+      "retainedLocation": "Seaport City",
+      "mapNames": [
+        "Seaport City â€” map 25:2"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0331",
+      "retainedLocation": "Seaport City",
+      "mapNames": [
+        "Seaport City â€” map 33:14"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0332",
+      "retainedLocation": "Seaport City",
+      "mapNames": [
+        "Seaport City â€” map 33:14"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0333",
+      "retainedLocation": "Seaport City",
+      "mapNames": [
+        "Seaport City â€” map 33:14"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0340",
+      "retainedLocation": "Shadow Base",
+      "mapNames": [
+        "Shadow Base â€” map 1:42"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0341",
+      "retainedLocation": "Shadow Base",
+      "mapNames": [
+        "Shadow Base â€” map 1:43"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0342",
+      "retainedLocation": "Tarmigan Mansion",
+      "mapNames": [
+        "Tarmigan Mansion â€” map 1:59"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0343",
+      "retainedLocation": "Tarmigan Mansion",
+      "mapNames": [
+        "Tarmigan Mansion â€” map 1:60"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0344",
+      "retainedLocation": "Tarmigan Mansion",
+      "mapNames": [
+        "Tarmigan Mansion â€” map 1:60"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0345",
+      "retainedLocation": "Tarmigan Mansion",
+      "mapNames": [
+        "Tarmigan Mansion â€” map 1:60"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0346",
+      "retainedLocation": "Tarmigan Mansion",
+      "mapNames": [
+        "Tarmigan Mansion â€” map 1:60"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0347",
+      "retainedLocation": "Tarmigan Mansion",
+      "mapNames": [
+        "Tarmigan Mansion â€” map 1:61"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0348",
+      "retainedLocation": "Tarmigan Mansion",
+      "mapNames": [
+        "Tarmigan Mansion â€” map 1:60"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0349",
+      "retainedLocation": "Tarmigan Mansion",
+      "mapNames": [
+        "Tarmigan Mansion â€” map 1:59"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0350",
+      "retainedLocation": "Tarmigan Mansion",
+      "mapNames": [
+        "Tarmigan Mansion â€” map 1:61"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0351",
+      "retainedLocation": "Tarmigan Mansion",
+      "mapNames": [
+        "Tarmigan Mansion â€” map 1:61"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0352",
+      "retainedLocation": "Tarmigan Mansion",
+      "mapNames": [
+        "Tarmigan Mansion â€” map 1:60"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0353",
+      "retainedLocation": "Tarmigan Mansion",
+      "mapNames": [
+        "Tarmigan Mansion â€” map 1:60"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0360",
+      "retainedLocation": "Thundercap Mountain",
+      "mapNames": [
+        "Thundercap Mt 3F 1"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0361",
+      "retainedLocation": "Thundercap Mountain",
+      "mapNames": [
+        "Thundercap Mt 3F 1 Back"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0362",
+      "retainedLocation": "Thundercap Mountain",
+      "mapNames": [
+        "Thundercap Mountain â€” map 53:7"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0363",
+      "retainedLocation": "Thundercap Mountain",
+      "mapNames": [
+        "Thundercap Mountain â€” map 1:11"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0364",
+      "retainedLocation": "Thundercap Mountain",
+      "mapNames": [
+        "Thundercap Mountain â€” map 1:11"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0370",
+      "retainedLocation": "Thundercap Mountain",
+      "mapNames": [
+        "Thundercap Mt 3F 2"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0371",
+      "retainedLocation": "Thundercap Mountain",
+      "mapNames": [
+        "Thundercap Mt 3F 2"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0372",
+      "retainedLocation": "Thundercap Mountain",
+      "mapNames": [
+        "Thundercap Mt 3F 2"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0373",
+      "retainedLocation": "Thundercap Mountain",
+      "mapNames": [
+        "Thundercap Mountain â€” map 53:11"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0374",
+      "retainedLocation": "Thundercap Mountain",
+      "mapNames": [
+        "Thundercap Mountain â€” map 53:11"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0375",
+      "retainedLocation": "Thundercap Mountain",
+      "mapNames": [
+        "Thundercap Mt 4F 2"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0376",
+      "retainedLocation": "Thundercap Mountain",
+      "mapNames": [
+        "Thundercap Mt 4F 2"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0377",
+      "retainedLocation": "Thundercap Mountain",
+      "mapNames": [
+        "Thundercap Mt 4F 2"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0378",
+      "retainedLocation": "Thundercap Mountain",
+      "mapNames": [
+        "Thundercap Mt 4F 2"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0380",
+      "retainedLocation": "Thundercap Mountain",
+      "mapNames": [
+        "Thundercap Mt 3F 3"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0381",
+      "retainedLocation": "Thundercap Mountain",
+      "mapNames": [
+        "Thundercap Mt 3F 3"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0385",
+      "retainedLocation": "Valley Cave",
+      "mapNames": [
+        "Valley Cave B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0386",
+      "retainedLocation": "Valley Cave",
+      "mapNames": [
+        "Valley Cave B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0387",
+      "retainedLocation": "Valley Cave",
+      "mapNames": [
+        "Valley Cave B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0388",
+      "retainedLocation": "Valley Cave",
+      "mapNames": [
+        "Valley Cave B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0389",
+      "retainedLocation": "Victory Road",
+      "mapNames": [
+        "Victory Road Cave B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0390",
+      "retainedLocation": "Victory Road",
+      "mapNames": [
+        "Victory Road Cave B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0391",
+      "retainedLocation": "Victory Road",
+      "mapNames": [
+        "Victory Road Cave B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0392",
+      "retainedLocation": "Victory Road",
+      "mapNames": [
+        "Victory Road Cave B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0393",
+      "retainedLocation": "Victory Road",
+      "mapNames": [
+        "Victory Road Cave B"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0394",
+      "retainedLocation": "Victory Road",
+      "mapNames": [
+        "Victory Road Cave A"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0395",
+      "retainedLocation": "Victory Road",
+      "mapNames": [
+        "Victory Road Cave C"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0400",
+      "retainedLocation": "Victory Road",
+      "mapNames": [
+        "Victory Road Cave D"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0401",
+      "retainedLocation": "Victory Road",
+      "mapNames": [
+        "Victory Road Cave D"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0402",
+      "retainedLocation": "Victory Road",
+      "mapNames": [
+        "Victory Road Cave D"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0403",
+      "retainedLocation": "Victory Road",
+      "mapNames": [
+        "Victory Road Cave D"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0404",
+      "retainedLocation": "Victory Road",
+      "mapNames": [
+        "Victory Road Cave D"
+      ],
+      "statuses": [
+        "Mapped"
+      ],
+      "reason": "Uncertain placement, internal section naming, or floor convention; retain existing label."
+    }
+  ],
+  "locationConflicts": [
+    {
+      "trainerId": "pokemon-unbound-trainer-0134",
+      "previousLocation": "Icicle Cave",
+      "previousLocationName": "Icicle Cave",
+      "previousSetLocations": [
+        "Icicle Cave",
+        "Icicle Cave"
+      ],
+      "location": "Icicle Cave 3F",
+      "evidence": {
+        "kind": "user-reviewed-sheet-location",
+        "mapNames": [
+          "Icicle Cave B1F"
+        ],
+        "sourceStatuses": [
+          "Mapped"
+        ]
+      },
+      "conflict": "User-reviewed 3F takes precedence over internal B1F; no general floor renaming inferred."
+    },
+    {
+      "trainerId": "pokemon-unbound-trainer-0135",
+      "previousLocation": "Icicle Cave",
+      "previousLocationName": "Icicle Cave",
+      "previousSetLocations": [
+        "Icicle Cave",
+        "Icicle Cave"
+      ],
+      "location": "Icicle Cave 3F",
+      "evidence": {
+        "kind": "user-reviewed-sheet-location",
+        "mapNames": [
+          "Icicle Cave B1F"
+        ],
+        "sourceStatuses": [
+          "Mapped"
+        ]
+      },
+      "conflict": "User-reviewed 3F takes precedence over internal B1F; no general floor renaming inferred."
+    }
+  ],
+  "preservedOccurrences": [
+    "pokemon-unbound-occurrence-0043",
+    "pokemon-unbound-occurrence-0093",
+    "pokemon-unbound-occurrence-0122",
+    "pokemon-unbound-occurrence-0202",
+    "pokemon-unbound-occurrence-0248",
+    "pokemon-unbound-occurrence-0290",
+    "pokemon-unbound-occurrence-0388",
+    "pokemon-unbound-occurrence-0414",
+    "pokemon-unbound-occurrence-0458",
+    "pokemon-unbound-occurrence-0464",
+    "pokemon-unbound-occurrence-0499",
+    "pokemon-unbound-occurrence-0500",
+    "pokemon-unbound-occurrence-0501",
+    "pokemon-unbound-occurrence-0502",
+    "pokemon-unbound-occurrence-0503",
+    "pokemon-unbound-occurrence-0522",
+    "pokemon-unbound-occurrence-0523",
+    "pokemon-unbound-occurrence-0525"
+  ],
+  "limitations": [
+    "Vanilla exception retained for Giselle; other profiles are not classified by this Difficult review.",
+    "Unknown room names and disputed internal floor conventions retain broader locations.",
+    "Location refinement does not establish canonical within-location trainer order."
+  ]
+}

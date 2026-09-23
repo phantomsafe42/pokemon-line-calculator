@@ -2,12 +2,12 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-emerald-dataset",
   "source": "Datasets/Pokemon Emerald/source-data",
-  "sourceTreeSha256": "EBDF720DD1BB072C71E9E46D33FE1DD98918C69E6586ED9BBB074195A145542D",
+  "sourceTreeSha256": "E3A64AD415BBD7AF1E57405F0BAD27B468E67D761F17D1614555176A72F165CC",
   "files": [
     {
       "path": "dataset_manifest.json",
-      "bytes": 71287,
-      "sha256": "508AC005AD67EB9D6D126BC49B1E2F85EC235C33B00FE3A597BDD06A885AE433"
+      "bytes": 71211,
+      "sha256": "994876DBE571D968BFABAAE60C06CE8BB465FA63FF35469D36FE839811E655E9"
     },
     {
       "path": "battle_mechanics.json",
@@ -51,8 +51,8 @@
     },
     {
       "path": "trainers.json",
-      "bytes": 7566031,
-      "sha256": "F0F994CB681BD4C56E3036231177317EB997B2766DC64B04A49FC71DC01BA2A4"
+      "bytes": 7562532,
+      "sha256": "808CBD7C3FE62FC331AC337E6D15EE8EE05BC75021A2721E6A4A4841B4BDB17D"
     },
     {
       "path": "trainer_order.json",
@@ -82,7 +82,7 @@
     {
       "path": "starter_selection.json",
       "bytes": 6245,
-      "sha256": "6C520138A470707AF16DB2D587BEF130434CD32BD103EB3F2849213D08263C07"
+      "sha256": "2633AC6F0AF50C73B231E5CB271C76EEFC63B2D578A9809310EFB5F7D998046C"
     }
   ]
 }

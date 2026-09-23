@@ -2,12 +2,12 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-pk-dataset",
   "source": "Datasets/Platinum Kaizo/source-data",
-  "sourceTreeSha256": "6DB3681EF5E6A057FB2FE1E43BAD9D0C2A123F0214278EB0C890E66E1FAA95A9",
+  "sourceTreeSha256": "DFE3D7068DF250C8312D8706AA669EB004F4AA7379B2A6A3AAEB02D087884DA3",
   "files": [
     {
       "path": "dataset_manifest.json",
       "bytes": 18940,
-      "sha256": "79E911F6673A09CFE5141CE0F7E7C084DD836E0AA6963B2A5CF93B37D18BC6E3"
+      "sha256": "7A992CB96B3E344CC58155620FC8793A232D74A723C281611C0BCD6127C75D9E"
     },
     {
       "path": "battle_mechanics.json",
@@ -51,8 +51,8 @@
     },
     {
       "path": "trainers.json",
-      "bytes": 7164468,
-      "sha256": "296F0C3048AB3E412BA5111AE8178994DD69161B904F79744E9A9D37B3D13341"
+      "bytes": 7164908,
+      "sha256": "2902A88CF8FF9126CA5F1F05AC63185A54E5B6EE8C266B3DDD573208095BA4EB"
     },
     {
       "path": "trainer_order.json",
@@ -82,7 +82,7 @@
     {
       "path": "starter_selection.json",
       "bytes": 13642,
-      "sha256": "51779A9A0B4E3F4FA5E81A1BD4F94D048BDA5495BBF5E07D2C878D03D56646E5"
+      "sha256": "B00C4DA67956E5CEAFCC12519C621729EADBF40A9D8CA12D12D15EFC15BDADD4"
     },
     {
       "path": "galactic_squad_visual_sources.json",

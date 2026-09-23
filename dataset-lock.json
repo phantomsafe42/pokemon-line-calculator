@@ -2,36 +2,36 @@
   "schemaVersion": "plc-dataset-lock/v2",
   "repository": "phantomsafe42/pokemon-datasets",
   "visibility": "private-source-public-projection",
-  "tag": "v0.1.38",
-  "commit": "f07b0ff0776f25a202354fd43880cfda2009a9cc",
-  "releaseVersion": "0.1.38",
+  "tag": "v0.1.41",
+  "commit": "237d0b5721460f8658ec5a5578c57b9bdd6291f3",
+  "releaseVersion": "0.1.41",
   "profile": "plc",
   "hosted": {
     "origin": "https://datasets.phantomsafe.tv",
     "catalog": {
       "bytes": 1633,
-      "sha256": "7e76cca76ce36ca95fa1e1ded6134444db220a2dce26b39e8450343b5e15dccf"
+      "sha256": "7eb041924ac238c49ea42ba7f112534f04a8b3e940a25f6871daff0098b7dab5"
     },
     "manifest": {
-      "bytes": 90835,
-      "sha256": "d60b0f63a97a47752aebe2839a4aafbb4085020261d5a41237f5d9f95a3b8929"
+      "bytes": 91323,
+      "sha256": "d7d2da0a889cc2be48809e5af1e103b9a3f9723e0b9537c738ead7003453c253"
     },
     "profileSchemaVersion": "pokemon-line-calculator-dataset/v1alpha1",
     "payload": {
-      "files": 356,
-      "bytes": 321812010,
-      "treeSha256": "6ed333e9beae1b6b2ba5b1903f4171d56c6fd557f2216ff1f85aec7fabdbe4d1"
+      "files": 358,
+      "bytes": 322415629,
+      "treeSha256": "f389f768e42f19c77f8f063bdf2064ad12dfc8585529bac2773612bf9fdfc709"
     },
     "gatewayContract": {
-      "tag": "v0.1.39",
-      "commit": "d771dde48309aded21d44d7842cf96bfbb43e401"
+      "tag": "v0.1.42",
+      "commit": "d820a49a3bad4b03b244bcbfc8206f95de52157c"
     }
   },
   "fallback": {
     "mode": "checked-in-last-known-good",
     "root": "src/generated",
-    "releaseVersion": "0.1.38",
+    "releaseVersion": "0.1.41",
     "profile": "plc",
-    "payloadTreeSha256": "6ed333e9beae1b6b2ba5b1903f4171d56c6fd557f2216ff1f85aec7fabdbe4d1"
+    "payloadTreeSha256": "f389f768e42f19c77f8f063bdf2064ad12dfc8585529bac2773612bf9fdfc709"
   }
 }

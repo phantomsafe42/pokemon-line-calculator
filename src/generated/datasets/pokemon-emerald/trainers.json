@@ -255,24 +255,12 @@
         "unresolvedFields": [],
         "evidence": [
           {
-            "kind": "pinned-documented-class",
-            "source": "documented campaign identity"
-          },
-          {
-            "kind": "non-unique-trainer-order-mechanics-bindings",
+            "kind": "trainer-order-mechanics-binding",
             "trainerIds": [
-              "pokemon-emerald-trainer-0067",
-              "pokemon-emerald-trainer-0068",
-              "pokemon-emerald-trainer-0069",
-              "pokemon-emerald-trainer-0070",
               "pokemon-emerald-trainer-0120",
               "pokemon-emerald-trainer-0121",
               "pokemon-emerald-trainer-0122",
-              "pokemon-emerald-trainer-0123",
-              "pokemon-emerald-trainer-0139",
-              "pokemon-emerald-trainer-0140",
-              "pokemon-emerald-trainer-0141",
-              "pokemon-emerald-trainer-0142"
+              "pokemon-emerald-trainer-0123"
             ]
           }
         ]
@@ -377,20 +365,8 @@
         "unresolvedFields": [],
         "evidence": [
           {
-            "kind": "pinned-documented-class",
-            "source": "documented campaign identity"
-          },
-          {
-            "kind": "non-unique-trainer-order-mechanics-bindings",
+            "kind": "trainer-order-mechanics-binding",
             "trainerIds": [
-              "pokemon-emerald-trainer-0067",
-              "pokemon-emerald-trainer-0068",
-              "pokemon-emerald-trainer-0069",
-              "pokemon-emerald-trainer-0070",
-              "pokemon-emerald-trainer-0120",
-              "pokemon-emerald-trainer-0121",
-              "pokemon-emerald-trainer-0122",
-              "pokemon-emerald-trainer-0123",
               "pokemon-emerald-trainer-0139",
               "pokemon-emerald-trainer-0140",
               "pokemon-emerald-trainer-0141",
@@ -612,37 +588,24 @@
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
-        "status": "ambiguous",
+        "status": "resolved",
         "relationship": "exact-retail",
         "gameStyle": "emerald",
         "presentation": "battle-front",
-        "subjectKind": null,
-        "subjectId": null,
-        "gender": null,
-        "variant": null,
+        "subjectKind": "class",
+        "subjectId": "tuber",
+        "gender": "male",
+        "variant": "default",
         "rawSelector": null,
-        "unresolvedFields": [
-          "subjectKind",
-          "subjectId",
-          "gender",
-          "variant"
-        ],
+        "unresolvedFields": [],
         "evidence": [
           {
-            "kind": "conflicting-trainer-order-mechanics-bindings",
+            "kind": "trainer-order-mechanics-binding",
             "trainerIds": [
               "pokemon-emerald-trainer-0067",
               "pokemon-emerald-trainer-0068",
               "pokemon-emerald-trainer-0069",
-              "pokemon-emerald-trainer-0070",
-              "pokemon-emerald-trainer-0120",
-              "pokemon-emerald-trainer-0121",
-              "pokemon-emerald-trainer-0122",
-              "pokemon-emerald-trainer-0123",
-              "pokemon-emerald-trainer-0139",
-              "pokemon-emerald-trainer-0140",
-              "pokemon-emerald-trainer-0141",
-              "pokemon-emerald-trainer-0142"
+              "pokemon-emerald-trainer-0070"
             ]
           }
         ]
@@ -1525,29 +1488,22 @@
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
-        "status": "ambiguous",
+        "status": "resolved",
         "relationship": "exact-retail",
         "gameStyle": "emerald",
         "presentation": "battle-front",
-        "subjectKind": null,
-        "subjectId": null,
-        "gender": null,
-        "variant": null,
+        "subjectKind": "class",
+        "subjectId": "triathlete",
+        "gender": "male",
+        "variant": "running",
         "rawSelector": null,
-        "unresolvedFields": [
-          "subjectKind",
-          "subjectId",
-          "gender",
-          "variant"
-        ],
+        "unresolvedFields": [],
         "evidence": [
           {
-            "kind": "conflicting-trainer-order-mechanics-bindings",
+            "kind": "trainer-order-mechanics-binding",
             "trainerIds": [
               "pokemon-emerald-trainer-0365",
-              "pokemon-emerald-trainer-0366",
-              "pokemon-emerald-trainer-0370",
-              "pokemon-emerald-trainer-0371"
+              "pokemon-emerald-trainer-0366"
             ]
           }
         ]
@@ -1630,29 +1586,22 @@
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
-        "status": "ambiguous",
+        "status": "resolved",
         "relationship": "exact-retail",
         "gameStyle": "emerald",
         "presentation": "battle-front",
-        "subjectKind": null,
-        "subjectId": null,
-        "gender": null,
-        "variant": null,
+        "subjectKind": "class",
+        "subjectId": "triathlete",
+        "gender": "male",
+        "variant": "running",
         "rawSelector": null,
-        "unresolvedFields": [
-          "subjectKind",
-          "subjectId",
-          "gender",
-          "variant"
-        ],
+        "unresolvedFields": [],
         "evidence": [
           {
-            "kind": "conflicting-trainer-order-mechanics-bindings",
+            "kind": "trainer-order-mechanics-binding",
             "trainerIds": [
               "pokemon-emerald-trainer-0367",
-              "pokemon-emerald-trainer-0368",
-              "pokemon-emerald-trainer-0372",
-              "pokemon-emerald-trainer-0373"
+              "pokemon-emerald-trainer-0368"
             ]
           }
         ]
@@ -2123,27 +2072,20 @@
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
-        "status": "ambiguous",
+        "status": "resolved",
         "relationship": "exact-retail",
         "gameStyle": "emerald",
         "presentation": "battle-front",
-        "subjectKind": null,
-        "subjectId": null,
-        "gender": null,
-        "variant": null,
+        "subjectKind": "class",
+        "subjectId": "triathlete",
+        "gender": "female",
+        "variant": "running",
         "rawSelector": null,
-        "unresolvedFields": [
-          "subjectKind",
-          "subjectId",
-          "gender",
-          "variant"
-        ],
+        "unresolvedFields": [],
         "evidence": [
           {
-            "kind": "conflicting-trainer-order-mechanics-bindings",
+            "kind": "trainer-order-mechanics-binding",
             "trainerIds": [
-              "pokemon-emerald-trainer-0365",
-              "pokemon-emerald-trainer-0366",
               "pokemon-emerald-trainer-0370",
               "pokemon-emerald-trainer-0371"
             ]
@@ -2228,27 +2170,20 @@
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
-        "status": "ambiguous",
+        "status": "resolved",
         "relationship": "exact-retail",
         "gameStyle": "emerald",
         "presentation": "battle-front",
-        "subjectKind": null,
-        "subjectId": null,
-        "gender": null,
-        "variant": null,
+        "subjectKind": "class",
+        "subjectId": "triathlete",
+        "gender": "female",
+        "variant": "running",
         "rawSelector": null,
-        "unresolvedFields": [
-          "subjectKind",
-          "subjectId",
-          "gender",
-          "variant"
-        ],
+        "unresolvedFields": [],
         "evidence": [
           {
-            "kind": "conflicting-trainer-order-mechanics-bindings",
+            "kind": "trainer-order-mechanics-binding",
             "trainerIds": [
-              "pokemon-emerald-trainer-0367",
-              "pokemon-emerald-trainer-0368",
               "pokemon-emerald-trainer-0372",
               "pokemon-emerald-trainer-0373"
             ]
@@ -3034,18 +2969,10 @@
         "unresolvedFields": [],
         "evidence": [
           {
-            "kind": "pinned-documented-class",
-            "source": "documented campaign identity"
-          },
-          {
-            "kind": "non-unique-trainer-order-mechanics-bindings",
+            "kind": "trainer-order-mechanics-binding",
             "trainerIds": [
-              "pokemon-emerald-trainer-0022",
               "pokemon-emerald-trainer-0437",
-              "pokemon-emerald-trainer-0438",
-              "pokemon-emerald-trainer-0718",
-              "pokemon-emerald-trainer-0727",
-              "pokemon-emerald-trainer-0730"
+              "pokemon-emerald-trainer-0438"
             ]
           }
         ]
@@ -3620,8 +3547,7 @@
             "kind": "trainer-order-mechanics-binding",
             "trainerIds": [
               "pokemon-emerald-trainer-0430",
-              "pokemon-emerald-trainer-0431",
-              "pokemon-emerald-trainer-0751"
+              "pokemon-emerald-trainer-0431"
             ]
           }
         ]
@@ -4018,29 +3944,23 @@
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
-        "status": "ambiguous",
+        "status": "resolved",
         "relationship": "exact-retail",
         "gameStyle": "emerald",
         "presentation": "battle-front",
-        "subjectKind": null,
-        "subjectId": null,
-        "gender": null,
-        "variant": null,
+        "subjectKind": "class",
+        "subjectId": "expert",
+        "gender": "female",
+        "variant": "default",
         "rawSelector": null,
-        "unresolvedFields": [
-          "subjectKind",
-          "subjectId",
-          "gender",
-          "variant"
-        ],
+        "unresolvedFields": [],
         "evidence": [
           {
-            "kind": "conflicting-trainer-order-mechanics-bindings",
+            "kind": "trainer-order-mechanics-binding",
             "trainerIds": [
               "pokemon-emerald-trainer-0315",
               "pokemon-emerald-trainer-0316",
-              "pokemon-emerald-trainer-0317",
-              "pokemon-emerald-trainer-0681"
+              "pokemon-emerald-trainer-0317"
             ]
           }
         ]
@@ -5993,7 +5913,6 @@
           {
             "kind": "trainer-order-mechanics-binding",
             "trainerIds": [
-              "pokemon-emerald-trainer-0237",
               "pokemon-emerald-trainer-0239",
               "pokemon-emerald-trainer-0240",
               "pokemon-emerald-trainer-0241"
@@ -6921,29 +6840,22 @@
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
-        "status": "ambiguous",
+        "status": "resolved",
         "relationship": "exact-retail",
         "gameStyle": "emerald",
         "presentation": "battle-front",
-        "subjectKind": null,
-        "subjectId": null,
-        "gender": null,
-        "variant": null,
+        "subjectKind": "class",
+        "subjectId": "triathlete",
+        "gender": "male",
+        "variant": "swimming",
         "rawSelector": null,
-        "unresolvedFields": [
-          "subjectKind",
-          "subjectId",
-          "gender",
-          "variant"
-        ],
+        "unresolvedFields": [],
         "evidence": [
           {
-            "kind": "conflicting-trainer-order-mechanics-bindings",
+            "kind": "trainer-order-mechanics-binding",
             "trainerIds": [
               "pokemon-emerald-trainer-0379",
-              "pokemon-emerald-trainer-0380",
-              "pokemon-emerald-trainer-0388",
-              "pokemon-emerald-trainer-0389"
+              "pokemon-emerald-trainer-0380"
             ]
           }
         ]
@@ -7026,29 +6938,22 @@
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
-        "status": "ambiguous",
+        "status": "resolved",
         "relationship": "exact-retail",
         "gameStyle": "emerald",
         "presentation": "battle-front",
-        "subjectKind": null,
-        "subjectId": null,
-        "gender": null,
-        "variant": null,
+        "subjectKind": "class",
+        "subjectId": "triathlete",
+        "gender": "male",
+        "variant": "swimming",
         "rawSelector": null,
-        "unresolvedFields": [
-          "subjectKind",
-          "subjectId",
-          "gender",
-          "variant"
-        ],
+        "unresolvedFields": [],
         "evidence": [
           {
-            "kind": "conflicting-trainer-order-mechanics-bindings",
+            "kind": "trainer-order-mechanics-binding",
             "trainerIds": [
               "pokemon-emerald-trainer-0381",
-              "pokemon-emerald-trainer-0382",
-              "pokemon-emerald-trainer-0390",
-              "pokemon-emerald-trainer-0391"
+              "pokemon-emerald-trainer-0382"
             ]
           }
         ]
@@ -7131,27 +7036,20 @@
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
-        "status": "ambiguous",
+        "status": "resolved",
         "relationship": "exact-retail",
         "gameStyle": "emerald",
         "presentation": "battle-front",
-        "subjectKind": null,
-        "subjectId": null,
-        "gender": null,
-        "variant": null,
+        "subjectKind": "class",
+        "subjectId": "triathlete",
+        "gender": "female",
+        "variant": "swimming",
         "rawSelector": null,
-        "unresolvedFields": [
-          "subjectKind",
-          "subjectId",
-          "gender",
-          "variant"
-        ],
+        "unresolvedFields": [],
         "evidence": [
           {
-            "kind": "conflicting-trainer-order-mechanics-bindings",
+            "kind": "trainer-order-mechanics-binding",
             "trainerIds": [
-              "pokemon-emerald-trainer-0379",
-              "pokemon-emerald-trainer-0380",
               "pokemon-emerald-trainer-0388",
               "pokemon-emerald-trainer-0389"
             ]
@@ -7236,27 +7134,20 @@
       "displayIdentityStatus": "deterministic-source-presentation-fallback",
       "trainerVisualIdentity": {
         "schemaVersion": "trainer-visual-identity/v1alpha1",
-        "status": "ambiguous",
+        "status": "resolved",
         "relationship": "exact-retail",
         "gameStyle": "emerald",
         "presentation": "battle-front",
-        "subjectKind": null,
-        "subjectId": null,
-        "gender": null,
-        "variant": null,
+        "subjectKind": "class",
+        "subjectId": "triathlete",
+        "gender": "female",
+        "variant": "swimming",
         "rawSelector": null,
-        "unresolvedFields": [
-          "subjectKind",
-          "subjectId",
-          "gender",
-          "variant"
-        ],
+        "unresolvedFields": [],
         "evidence": [
           {
-            "kind": "conflicting-trainer-order-mechanics-bindings",
+            "kind": "trainer-order-mechanics-binding",
             "trainerIds": [
-              "pokemon-emerald-trainer-0381",
-              "pokemon-emerald-trainer-0382",
               "pokemon-emerald-trainer-0390",
               "pokemon-emerald-trainer-0391"
             ]
@@ -231856,9 +231747,9 @@
     "relationship": "exact-retail",
     "status": "passed-with-explicit-fail-closed-records",
     "counts": {
-      "ambiguous": 10,
+      "ambiguous": 0,
       "inapplicable": 0,
-      "resolved": 910,
+      "resolved": 920,
       "unavailable": 1
     }
   }

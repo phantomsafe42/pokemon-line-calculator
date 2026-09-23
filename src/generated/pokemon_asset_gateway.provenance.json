@@ -13,5 +13,5 @@
   "gatewayContract": "pokemon-asset-gateway/v1",
   "gatewayOrigin": "https://assets.phantomsafe.tv",
   "gatewayConfigSha256": "1064d9778a38ff8825c846de59d30ddd741204434df19aa2a641d731ec717a13",
-  "gatewayDeploymentVersion": "4f5058bc-9017-434d-b1ad-696c0b859e56"
+  "gatewayDeploymentVersion": "0c8794b6-8cab-477e-99ea-ab506ed9e831"
 }

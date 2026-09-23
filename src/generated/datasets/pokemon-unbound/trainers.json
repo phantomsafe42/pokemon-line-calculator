@@ -3043,10 +3043,10 @@
       "consumerTrainerId": 14,
       "displayName": "Roughneck Riff",
       "shortName": "Riff",
-      "location": "Antisis City",
+      "location": "Antisis City Gym B1F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Antisis City",
+      "locationName": "Antisis City Gym B1F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -3124,7 +3124,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Antisis City",
+              "location": "Antisis City Gym B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -3205,6 +3205,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Antisis City",
+        "previousLocationName": "Antisis City"
       }
     },
     "pokemon-unbound-trainer-0015": {
@@ -3212,10 +3218,10 @@
       "consumerTrainerId": 15,
       "displayName": "Black Belt Hakawakawak",
       "shortName": "Hakawakawak",
-      "location": "Antisis City",
+      "location": "Antisis City Gym B1F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Antisis City",
+      "locationName": "Antisis City Gym B1F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -3293,7 +3299,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Antisis City",
+              "location": "Antisis City Gym B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -3374,6 +3380,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Antisis City",
+        "previousLocationName": "Antisis City"
       }
     },
     "pokemon-unbound-trainer-0016": {
@@ -3381,10 +3393,10 @@
       "consumerTrainerId": 16,
       "displayName": "Roughneck Griff",
       "shortName": "Griff",
-      "location": "Antisis City",
+      "location": "Antisis City Gym B1F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Antisis City",
+      "locationName": "Antisis City Gym B1F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -3462,7 +3474,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Antisis City",
+              "location": "Antisis City Gym B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -3543,6 +3555,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Antisis City",
+        "previousLocationName": "Antisis City"
       }
     },
     "pokemon-unbound-trainer-0017": {
@@ -3550,10 +3568,10 @@
       "consumerTrainerId": 17,
       "displayName": "Scientist Rodney",
       "shortName": "Rodney",
-      "location": "Antisis Sewers",
+      "location": "Antisis Sewers North",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Antisis Sewers",
+      "locationName": "Antisis Sewers North",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -3631,7 +3649,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Antisis Sewers",
+              "location": "Antisis Sewers North",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -3708,6 +3726,12 @@
             "wikiFile": "Spr Mad Scientist.png"
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Antisis Sewers",
+        "previousLocationName": "Antisis Sewers"
       }
     },
     "pokemon-unbound-trainer-0018": {
@@ -3715,10 +3739,10 @@
       "consumerTrainerId": 18,
       "displayName": "Science Society Scientist",
       "shortName": "Scientist",
-      "location": "Antisis Sewers",
+      "location": "Antisis Sewers North",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Antisis Sewers",
+      "locationName": "Antisis Sewers North",
       "spriteId": null,
       "orientation": null,
       "rewardItem": "X Defense",
@@ -3796,7 +3820,7 @@
               "battleType": "Singles",
               "rewardItem": "X Defense",
               "form": "",
-              "location": "Antisis Sewers",
+              "location": "Antisis Sewers North",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -3875,7 +3899,7 @@
               "battleType": "Singles",
               "rewardItem": "X Defense",
               "form": "",
-              "location": "Antisis Sewers",
+              "location": "Antisis Sewers North",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -3954,7 +3978,7 @@
               "battleType": "Singles",
               "rewardItem": "X Defense",
               "form": "",
-              "location": "Antisis Sewers",
+              "location": "Antisis Sewers North",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -4036,6 +4060,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Antisis Sewers",
+        "previousLocationName": "Antisis Sewers"
       }
     },
     "pokemon-unbound-trainer-0019": {
@@ -4043,10 +4073,10 @@
       "consumerTrainerId": 19,
       "displayName": "Worker Quinn",
       "shortName": "Quinn",
-      "location": "Antisis Sewers",
+      "location": "Antisis Sewers North",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Antisis Sewers",
+      "locationName": "Antisis Sewers North",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -4124,7 +4154,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Antisis Sewers",
+              "location": "Antisis Sewers North",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -4203,7 +4233,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Antisis Sewers",
+              "location": "Antisis Sewers North",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -4282,7 +4312,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Antisis Sewers",
+              "location": "Antisis Sewers North",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -4364,6 +4394,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Antisis Sewers",
+        "previousLocationName": "Antisis Sewers"
       }
     },
     "pokemon-unbound-trainer-0020": {
@@ -4371,10 +4407,10 @@
       "consumerTrainerId": 20,
       "displayName": "Super Nerd Erik",
       "shortName": "Erik",
-      "location": "Antisis Sewers",
+      "location": "Antisis Sewers North",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Antisis Sewers",
+      "locationName": "Antisis Sewers North",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -4452,7 +4488,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Antisis Sewers",
+              "location": "Antisis Sewers North",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -4531,7 +4567,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Antisis Sewers",
+              "location": "Antisis Sewers North",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -4610,7 +4646,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Antisis Sewers",
+              "location": "Antisis Sewers North",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -4692,6 +4728,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Antisis Sewers",
+        "previousLocationName": "Antisis Sewers"
       }
     },
     "pokemon-unbound-trainer-0021": {
@@ -4699,10 +4741,10 @@
       "consumerTrainerId": 21,
       "displayName": "Worker Ramon",
       "shortName": "Ramon",
-      "location": "Antisis Sewers",
+      "location": "Antisis Sewers North",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Antisis Sewers",
+      "locationName": "Antisis Sewers North",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -4780,7 +4822,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Antisis Sewers",
+              "location": "Antisis Sewers North",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -4860,6 +4902,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Antisis Sewers",
+        "previousLocationName": "Antisis Sewers"
       }
     },
     "pokemon-unbound-trainer-0022": {
@@ -4867,10 +4915,10 @@
       "consumerTrainerId": 22,
       "displayName": "Worker Dusty",
       "shortName": "Dusty",
-      "location": "Antisis Sewers",
+      "location": "Antisis Sewers South",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Antisis Sewers",
+      "locationName": "Antisis Sewers South",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -4948,7 +4996,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Antisis Sewers",
+              "location": "Antisis Sewers South",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -5027,7 +5075,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Antisis Sewers",
+              "location": "Antisis Sewers South",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -5108,6 +5156,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Antisis Sewers",
+        "previousLocationName": "Antisis Sewers"
       }
     },
     "pokemon-unbound-trainer-0023": {
@@ -7093,10 +7147,10 @@
       "consumerTrainerId": 31,
       "displayName": "School Kid Max",
       "shortName": "Max",
-      "location": "Cinder Volcano",
+      "location": "Cinder Volcano 2F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Cinder Volcano",
+      "locationName": "Cinder Volcano 2F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -7174,7 +7228,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Cinder Volcano",
+              "location": "Cinder Volcano 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -7254,6 +7308,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Cinder Volcano",
+        "previousLocationName": "Cinder Volcano"
       }
     },
     "pokemon-unbound-trainer-0032": {
@@ -7261,10 +7321,10 @@
       "consumerTrainerId": 32,
       "displayName": "Collector Mark",
       "shortName": "Mark",
-      "location": "Cinder Volcano",
+      "location": "Cinder Volcano 2F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Cinder Volcano",
+      "locationName": "Cinder Volcano 2F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -7342,7 +7402,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Cinder Volcano",
+              "location": "Cinder Volcano 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -7421,7 +7481,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Cinder Volcano",
+              "location": "Cinder Volcano 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -7502,6 +7562,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Cinder Volcano",
+        "previousLocationName": "Cinder Volcano"
       }
     },
     "pokemon-unbound-trainer-0033": {
@@ -7509,10 +7575,10 @@
       "consumerTrainerId": 33,
       "displayName": "Hiker Trent",
       "shortName": "Trent",
-      "location": "Cinder Volcano",
+      "location": "Cinder Volcano 2F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Cinder Volcano",
+      "locationName": "Cinder Volcano 2F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -7590,7 +7656,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Cinder Volcano",
+              "location": "Cinder Volcano 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -7669,7 +7735,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Cinder Volcano",
+              "location": "Cinder Volcano 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -7746,6 +7812,12 @@
             "wikiFile": "Spr Hiker.png"
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Cinder Volcano",
+        "previousLocationName": "Cinder Volcano"
       }
     },
     "pokemon-unbound-trainer-0034": {
@@ -8891,10 +8963,10 @@
       "consumerTrainerId": 39,
       "displayName": "Ruin Maniac Foster",
       "shortName": "Foster",
-      "location": "Cinder Volcano",
+      "location": "Cinder Volcano 2F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Cinder Volcano",
+      "locationName": "Cinder Volcano 2F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -8972,7 +9044,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Cinder Volcano",
+              "location": "Cinder Volcano 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -9052,6 +9124,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Cinder Volcano",
+        "previousLocationName": "Cinder Volcano"
       }
     },
     "pokemon-unbound-trainer-0040": {
@@ -9059,10 +9137,10 @@
       "consumerTrainerId": 40,
       "displayName": "Hiker Clark",
       "shortName": "Clark",
-      "location": "Cinder Volcano",
+      "location": "Cinder Volcano 2F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Cinder Volcano",
+      "locationName": "Cinder Volcano 2F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -9140,7 +9218,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Cinder Volcano",
+              "location": "Cinder Volcano 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -9219,7 +9297,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Cinder Volcano",
+              "location": "Cinder Volcano 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -9300,6 +9378,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Cinder Volcano",
+        "previousLocationName": "Cinder Volcano"
       }
     },
     "pokemon-unbound-trainer-0041": {
@@ -9307,10 +9391,10 @@
       "consumerTrainerId": 41,
       "displayName": "Kindler Axle",
       "shortName": "Axle",
-      "location": "Cinder Volcano",
+      "location": "Cinder Volcano 2F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Cinder Volcano",
+      "locationName": "Cinder Volcano 2F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -9388,7 +9472,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Cinder Volcano",
+              "location": "Cinder Volcano 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -9467,7 +9551,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Cinder Volcano",
+              "location": "Cinder Volcano 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -9548,6 +9632,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Cinder Volcano",
+        "previousLocationName": "Cinder Volcano"
       }
     },
     "pokemon-unbound-trainer-0042": {
@@ -13001,10 +13091,10 @@
       "consumerTrainerId": 55,
       "displayName": "Medium Laurel",
       "shortName": "Laurel",
-      "location": "Crystal Peak",
+      "location": "Crystal Peak 1F Main Room",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Crystal Peak",
+      "locationName": "Crystal Peak 1F Main Room",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -13082,7 +13172,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Crystal Peak",
+              "location": "Crystal Peak 1F Main Room",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -13161,7 +13251,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Crystal Peak",
+              "location": "Crystal Peak 1F Main Room",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -13242,6 +13332,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Crystal Peak",
+        "previousLocationName": "Crystal Peak"
       }
     },
     "pokemon-unbound-trainer-0056": {
@@ -13249,10 +13345,10 @@
       "consumerTrainerId": 56,
       "displayName": "Scientist Rosalind",
       "shortName": "Rosalind",
-      "location": "Crystal Peak",
+      "location": "Crystal Peak 1F Main Room",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Crystal Peak",
+      "locationName": "Crystal Peak 1F Main Room",
       "spriteId": null,
       "orientation": null,
       "rewardItem": "X Speed",
@@ -13330,7 +13426,7 @@
               "battleType": "Singles",
               "rewardItem": "X Speed",
               "form": "",
-              "location": "Crystal Peak",
+              "location": "Crystal Peak 1F Main Room",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -13409,7 +13505,7 @@
               "battleType": "Singles",
               "rewardItem": "X Speed",
               "form": "",
-              "location": "Crystal Peak",
+              "location": "Crystal Peak 1F Main Room",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -13490,6 +13586,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Crystal Peak",
+        "previousLocationName": "Crystal Peak"
       }
     },
     "pokemon-unbound-trainer-0057": {
@@ -13497,10 +13599,10 @@
       "consumerTrainerId": 57,
       "displayName": "Cyclist Lucina",
       "shortName": "Lucina",
-      "location": "Crystal Peak",
+      "location": "Crystal Peak 1F Main Room",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Crystal Peak",
+      "locationName": "Crystal Peak 1F Main Room",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -13578,7 +13680,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Crystal Peak",
+              "location": "Crystal Peak 1F Main Room",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -13657,7 +13759,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Crystal Peak",
+              "location": "Crystal Peak 1F Main Room",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -13738,6 +13840,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Crystal Peak",
+        "previousLocationName": "Crystal Peak"
       }
     },
     "pokemon-unbound-trainer-0058": {
@@ -13745,10 +13853,10 @@
       "consumerTrainerId": 58,
       "displayName": "Light of Ruin Grunt & Grunt",
       "shortName": "Grunt",
-      "location": "Crystal Peak",
+      "location": "Crystal Peak 1F Main Room",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Crystal Peak",
+      "locationName": "Crystal Peak 1F Main Room",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -13826,7 +13934,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Crystal Peak",
+              "location": "Crystal Peak 1F Main Room",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -13905,7 +14013,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Crystal Peak",
+              "location": "Crystal Peak 1F Main Room",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -13984,7 +14092,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Crystal Peak",
+              "location": "Crystal Peak 1F Main Room",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -14124,6 +14232,12 @@
             "reason": "Render each participant; this combined record has no single portrait."
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Crystal Peak",
+        "previousLocationName": "Crystal Peak"
       }
     },
     "pokemon-unbound-trainer-0059": {
@@ -14596,10 +14710,10 @@
       "consumerTrainerId": 60,
       "displayName": "Light of Ruin Grunt & Grunt #3",
       "shortName": "Grunt",
-      "location": "Crystal Peak",
+      "location": "Crystal Peak 3F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Crystal Peak",
+      "locationName": "Crystal Peak 3F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -14677,7 +14791,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Crystal Peak",
+              "location": "Crystal Peak 3F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -14756,7 +14870,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Crystal Peak",
+              "location": "Crystal Peak 3F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -14835,7 +14949,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Crystal Peak",
+              "location": "Crystal Peak 3F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -14914,7 +15028,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Crystal Peak",
+              "location": "Crystal Peak 3F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -15054,6 +15168,12 @@
             "reason": "Render each participant; this combined record has no single portrait."
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Crystal Peak",
+        "previousLocationName": "Crystal Peak"
       }
     },
     "pokemon-unbound-trainer-0061": {
@@ -15695,10 +15815,10 @@
       "consumerTrainerId": 63,
       "displayName": "Black Belt Subaru",
       "shortName": "Subaru",
-      "location": "Crystal Peak",
+      "location": "Crystal Peak 3F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Crystal Peak",
+      "locationName": "Crystal Peak 3F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -15776,7 +15896,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Crystal Peak",
+              "location": "Crystal Peak 3F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -15855,7 +15975,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Crystal Peak",
+              "location": "Crystal Peak 3F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -15934,7 +16054,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Crystal Peak",
+              "location": "Crystal Peak 3F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -16016,6 +16136,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Crystal Peak",
+        "previousLocationName": "Crystal Peak"
       }
     },
     "pokemon-unbound-trainer-0064": {
@@ -16272,10 +16398,10 @@
       "consumerTrainerId": 65,
       "displayName": "Science Society Scientist",
       "shortName": "Scientist",
-      "location": "Crystal Peak",
+      "location": "Crystal Peak Cube Entrance",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Crystal Peak",
+      "locationName": "Crystal Peak Cube Entrance",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -16353,7 +16479,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Crystal Peak",
+              "location": "Crystal Peak Cube Entrance",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -16432,7 +16558,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Crystal Peak",
+              "location": "Crystal Peak Cube Entrance",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -16513,6 +16639,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Crystal Peak",
+        "previousLocationName": "Crystal Peak"
       }
     },
     "pokemon-unbound-trainer-0066": {
@@ -16520,10 +16652,10 @@
       "consumerTrainerId": 66,
       "displayName": "Science Society Scientist #2",
       "shortName": "Scientist",
-      "location": "Crystal Peak",
+      "location": "Crystal Peak Cube Entrance",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Crystal Peak",
+      "locationName": "Crystal Peak Cube Entrance",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -16601,7 +16733,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Crystal Peak",
+              "location": "Crystal Peak Cube Entrance",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -16680,7 +16812,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Crystal Peak",
+              "location": "Crystal Peak Cube Entrance",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -16759,7 +16891,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Crystal Peak",
+              "location": "Crystal Peak Cube Entrance",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -16841,6 +16973,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Crystal Peak",
+        "previousLocationName": "Crystal Peak"
       }
     },
     "pokemon-unbound-trainer-0067": {
@@ -19713,10 +19851,10 @@
       "consumerTrainerId": 77,
       "displayName": "Super Nerd Ezra",
       "shortName": "Ezra",
-      "location": "Dehara City",
+      "location": "Dehara City Gym B1F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Dehara City",
+      "locationName": "Dehara City Gym B1F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -19794,7 +19932,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Dehara City",
+              "location": "Dehara City Gym B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -19873,7 +20011,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Dehara City",
+              "location": "Dehara City Gym B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -19948,6 +20086,12 @@
             "wikiFile": "Spr Super Nerd.png"
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Dehara City",
+        "previousLocationName": "Dehara City"
       }
     },
     "pokemon-unbound-trainer-0078": {
@@ -19955,10 +20099,10 @@
       "consumerTrainerId": 78,
       "displayName": "Worker Humphrey",
       "shortName": "Humphrey",
-      "location": "Dehara City",
+      "location": "Dehara City Gym B1F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Dehara City",
+      "locationName": "Dehara City Gym B1F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -20036,7 +20180,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Dehara City",
+              "location": "Dehara City Gym B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -20115,7 +20259,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Dehara City",
+              "location": "Dehara City Gym B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -20196,6 +20340,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Dehara City",
+        "previousLocationName": "Dehara City"
       }
     },
     "pokemon-unbound-trainer-0079": {
@@ -20203,10 +20353,10 @@
       "consumerTrainerId": 79,
       "displayName": "Guitarist Luca",
       "shortName": "Luca",
-      "location": "Dehara City",
+      "location": "Dehara City Gym 1F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Dehara City",
+      "locationName": "Dehara City Gym 1F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -20284,7 +20434,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Dehara City",
+              "location": "Dehara City Gym 1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -20363,7 +20513,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Dehara City",
+              "location": "Dehara City Gym 1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -20444,6 +20594,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Dehara City",
+        "previousLocationName": "Dehara City"
       }
     },
     "pokemon-unbound-trainer-0080": {
@@ -20451,10 +20607,10 @@
       "consumerTrainerId": 80,
       "displayName": "Scientist Giselle",
       "shortName": "Giselle",
-      "location": "Dehara City",
+      "location": "Dehara City Gym B1F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Dehara City",
+      "locationName": "Dehara City Gym B1F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": "X Sp. Atk",
@@ -20532,7 +20688,7 @@
               "battleType": "Singles",
               "rewardItem": "X Sp. Atk",
               "form": "",
-              "location": "Dehara City",
+              "location": "Dehara City Gym B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -20611,7 +20767,7 @@
               "battleType": "Singles",
               "rewardItem": "X Sp. Atk",
               "form": "",
-              "location": "Dehara City",
+              "location": "Dehara City Gym B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -20692,6 +20848,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Dehara City",
+        "previousLocationName": "Dehara City"
       }
     },
     "pokemon-unbound-trainer-0081": {
@@ -20699,10 +20861,10 @@
       "consumerTrainerId": 81,
       "displayName": "Scientist Jose",
       "shortName": "Jose",
-      "location": "Dehara City",
+      "location": "Dehara City Gym 1F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Dehara City",
+      "locationName": "Dehara City Gym 1F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": "X Sp. Atk",
@@ -20780,7 +20942,7 @@
               "battleType": "Singles",
               "rewardItem": "X Sp. Atk",
               "form": "",
-              "location": "Dehara City",
+              "location": "Dehara City Gym 1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -20859,7 +21021,7 @@
               "battleType": "Singles",
               "rewardItem": "X Sp. Atk",
               "form": "",
-              "location": "Dehara City",
+              "location": "Dehara City Gym 1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -20934,6 +21096,12 @@
             "wikiFile": "Spr Scientist.png"
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Dehara City",
+        "previousLocationName": "Dehara City"
       }
     },
     "pokemon-unbound-trainer-0082": {
@@ -20941,10 +21109,10 @@
       "consumerTrainerId": 82,
       "displayName": "Scientist Jerry",
       "shortName": "Jerry",
-      "location": "Dehara City",
+      "location": "Dehara City Gym B2F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Dehara City",
+      "locationName": "Dehara City Gym B2F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": "X Sp. Atk",
@@ -21022,7 +21190,7 @@
               "battleType": "Singles",
               "rewardItem": "X Sp. Atk",
               "form": "",
-              "location": "Dehara City",
+              "location": "Dehara City Gym B2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -21101,7 +21269,7 @@
               "battleType": "Singles",
               "rewardItem": "X Sp. Atk",
               "form": "",
-              "location": "Dehara City",
+              "location": "Dehara City Gym B2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -21180,7 +21348,7 @@
               "battleType": "Singles",
               "rewardItem": "X Sp. Atk",
               "form": "",
-              "location": "Dehara City",
+              "location": "Dehara City Gym B2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -21262,6 +21430,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Dehara City",
+        "previousLocationName": "Dehara City"
       }
     },
     "pokemon-unbound-trainer-0083": {
@@ -21269,10 +21443,10 @@
       "consumerTrainerId": 83,
       "displayName": "Super Nerd Zack",
       "shortName": "Zack",
-      "location": "Dehara City",
+      "location": "Dehara City Gym 1F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Dehara City",
+      "locationName": "Dehara City Gym 1F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -21350,7 +21524,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Dehara City",
+              "location": "Dehara City Gym 1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -21429,7 +21603,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Dehara City",
+              "location": "Dehara City Gym 1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -21510,6 +21684,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Dehara City",
+        "previousLocationName": "Dehara City"
       }
     },
     "pokemon-unbound-trainer-0084": {
@@ -21517,10 +21697,10 @@
       "consumerTrainerId": 84,
       "displayName": "Collector Ashton",
       "shortName": "Ashton",
-      "location": "Dehara City",
+      "location": "Dehara City Gym B2F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Dehara City",
+      "locationName": "Dehara City Gym B2F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -21598,7 +21778,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Dehara City",
+              "location": "Dehara City Gym B2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -21677,7 +21857,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Dehara City",
+              "location": "Dehara City Gym B2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -21752,6 +21932,12 @@
             "wikiFile": "Spr Collector.png"
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Dehara City",
+        "previousLocationName": "Dehara City"
       }
     },
     "pokemon-unbound-trainer-0085": {
@@ -21759,10 +21945,10 @@
       "consumerTrainerId": 85,
       "displayName": "Worker Bernie",
       "shortName": "Bernie",
-      "location": "Dehara City",
+      "location": "Dehara City Gym B2F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Dehara City",
+      "locationName": "Dehara City Gym B2F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -21840,7 +22026,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Dehara City",
+              "location": "Dehara City Gym B2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -21919,7 +22105,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Dehara City",
+              "location": "Dehara City Gym B2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -21998,7 +22184,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Dehara City",
+              "location": "Dehara City Gym B2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -22080,6 +22266,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Dehara City",
+        "previousLocationName": "Dehara City"
       }
     },
     "pokemon-unbound-trainer-0086": {
@@ -26463,10 +26655,10 @@
       "consumerTrainerId": 98,
       "displayName": "Beauty Lauren",
       "shortName": "Lauren",
-      "location": "Fallshore City",
+      "location": "Fallshore City Gym B2F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Fallshore City",
+      "locationName": "Fallshore City Gym B2F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -26544,7 +26736,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Fallshore City",
+              "location": "Fallshore City Gym B2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -26623,7 +26815,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Fallshore City",
+              "location": "Fallshore City Gym B2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -26702,7 +26894,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Fallshore City",
+              "location": "Fallshore City Gym B2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -26784,6 +26976,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Fallshore City",
+        "previousLocationName": "Fallshore City"
       }
     },
     "pokemon-unbound-trainer-0099": {
@@ -26791,10 +26989,10 @@
       "consumerTrainerId": 99,
       "displayName": "Beauty Lori",
       "shortName": "Lori",
-      "location": "Fallshore City",
+      "location": "Fallshore City Gym B2F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Fallshore City",
+      "locationName": "Fallshore City Gym B2F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -26872,7 +27070,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Fallshore City",
+              "location": "Fallshore City Gym B2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -26951,7 +27149,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Fallshore City",
+              "location": "Fallshore City Gym B2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -27032,6 +27230,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Fallshore City",
+        "previousLocationName": "Fallshore City"
       }
     },
     "pokemon-unbound-trainer-0100": {
@@ -27039,10 +27243,10 @@
       "consumerTrainerId": 100,
       "displayName": "Picnicker Caitlin",
       "shortName": "Caitlin",
-      "location": "Fallshore City",
+      "location": "Fallshore City Gym B2F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Fallshore City",
+      "locationName": "Fallshore City Gym B2F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -27120,7 +27324,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Fallshore City",
+              "location": "Fallshore City Gym B2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -27200,6 +27404,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Fallshore City",
+        "previousLocationName": "Fallshore City"
       }
     },
     "pokemon-unbound-trainer-0101": {
@@ -27207,10 +27417,10 @@
       "consumerTrainerId": 101,
       "displayName": "Beauty Alessia",
       "shortName": "Alessia",
-      "location": "Fallshore City",
+      "location": "Fallshore City Gym B1F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Fallshore City",
+      "locationName": "Fallshore City Gym B1F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -27288,7 +27498,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Fallshore City",
+              "location": "Fallshore City Gym B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -27367,7 +27577,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Fallshore City",
+              "location": "Fallshore City Gym B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -27446,7 +27656,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Fallshore City",
+              "location": "Fallshore City Gym B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -27523,6 +27733,12 @@
             "wikiFile": "Spr Beauty.png"
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Fallshore City",
+        "previousLocationName": "Fallshore City"
       }
     },
     "pokemon-unbound-trainer-0102": {
@@ -27530,10 +27746,10 @@
       "consumerTrainerId": 102,
       "displayName": "Beauty Tamia",
       "shortName": "Tamia",
-      "location": "Fallshore City",
+      "location": "Fallshore City Gym B1F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Fallshore City",
+      "locationName": "Fallshore City Gym B1F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -27611,7 +27827,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Fallshore City",
+              "location": "Fallshore City Gym B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -27690,7 +27906,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Fallshore City",
+              "location": "Fallshore City Gym B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -27771,6 +27987,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Fallshore City",
+        "previousLocationName": "Fallshore City"
       }
     },
     "pokemon-unbound-trainer-0103": {
@@ -27778,10 +28000,10 @@
       "consumerTrainerId": 103,
       "displayName": "Youngster Yasu",
       "shortName": "Yasu",
-      "location": "Fallshore City",
+      "location": "Fallshore City Gym B1F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Fallshore City",
+      "locationName": "Fallshore City Gym B1F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -27859,7 +28081,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Fallshore City",
+              "location": "Fallshore City Gym B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -27938,7 +28160,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Fallshore City",
+              "location": "Fallshore City Gym B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -28017,7 +28239,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Fallshore City",
+              "location": "Fallshore City Gym B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -28099,6 +28321,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Fallshore City",
+        "previousLocationName": "Fallshore City"
       }
     },
     "pokemon-unbound-trainer-0104": {
@@ -28271,10 +28499,10 @@
       "consumerTrainerId": 105,
       "displayName": "Collector Cooper",
       "shortName": "Cooper",
-      "location": "Frost Mountain",
+      "location": "Frost Mountain 1F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Frost Mountain",
+      "locationName": "Frost Mountain 1F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -28352,7 +28580,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Frost Mountain",
+              "location": "Frost Mountain 1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -28431,7 +28659,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Frost Mountain",
+              "location": "Frost Mountain 1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -28510,7 +28738,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Frost Mountain",
+              "location": "Frost Mountain 1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -28592,6 +28820,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Frost Mountain",
+        "previousLocationName": "Frost Mountain"
       }
     },
     "pokemon-unbound-trainer-0106": {
@@ -28599,10 +28833,10 @@
       "consumerTrainerId": 106,
       "displayName": "Painter Morris",
       "shortName": "Morris",
-      "location": "Frost Mountain",
+      "location": "Frost Mountain 1F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Frost Mountain",
+      "locationName": "Frost Mountain 1F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -28674,7 +28908,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Frost Mountain",
+              "location": "Frost Mountain 1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -28757,6 +28991,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Frost Mountain",
+        "previousLocationName": "Frost Mountain"
       }
     },
     "pokemon-unbound-trainer-0107": {
@@ -28764,10 +29004,10 @@
       "consumerTrainerId": 107,
       "displayName": "Black Belt Aaron",
       "shortName": "Aaron",
-      "location": "Frost Mountain",
+      "location": "Frost Mountain 1F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Frost Mountain",
+      "locationName": "Frost Mountain 1F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -28845,7 +29085,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Frost Mountain",
+              "location": "Frost Mountain 1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -28925,6 +29165,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Frost Mountain",
+        "previousLocationName": "Frost Mountain"
       }
     },
     "pokemon-unbound-trainer-0108": {
@@ -28932,10 +29178,10 @@
       "consumerTrainerId": 108,
       "displayName": "Hiker Allen",
       "shortName": "Allen",
-      "location": "Frost Mountain",
+      "location": "Frost Mountain 1F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Frost Mountain",
+      "locationName": "Frost Mountain 1F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -29013,7 +29259,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Frost Mountain",
+              "location": "Frost Mountain 1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -29093,6 +29339,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Frost Mountain",
+        "previousLocationName": "Frost Mountain"
       }
     },
     "pokemon-unbound-trainer-0109": {
@@ -29100,10 +29352,10 @@
       "consumerTrainerId": 109,
       "displayName": "Hiker Eric",
       "shortName": "Eric",
-      "location": "Frost Mountain",
+      "location": "Frost Mountain 2F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Frost Mountain",
+      "locationName": "Frost Mountain 2F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -29181,7 +29433,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Frost Mountain",
+              "location": "Frost Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -29260,7 +29512,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Frost Mountain",
+              "location": "Frost Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -29341,6 +29593,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Frost Mountain",
+        "previousLocationName": "Frost Mountain"
       }
     },
     "pokemon-unbound-trainer-0110": {
@@ -29348,10 +29606,10 @@
       "consumerTrainerId": 110,
       "displayName": "Super Nerd Jovan",
       "shortName": "Jovan",
-      "location": "Frost Mountain",
+      "location": "Frost Mountain 2F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Frost Mountain",
+      "locationName": "Frost Mountain 2F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -29429,7 +29687,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Frost Mountain",
+              "location": "Frost Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -29508,7 +29766,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Frost Mountain",
+              "location": "Frost Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -29589,6 +29847,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Frost Mountain",
+        "previousLocationName": "Frost Mountain"
       }
     },
     "pokemon-unbound-trainer-0111": {
@@ -35634,10 +35898,10 @@
       "consumerTrainerId": 134,
       "displayName": "Youngster Don",
       "shortName": "Don",
-      "location": "Icicle Cave",
+      "location": "Icicle Cave 3F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Icicle Cave",
+      "locationName": "Icicle Cave 3F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -35711,7 +35975,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Icicle Cave",
+              "location": "Icicle Cave 3F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -35790,7 +36054,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Icicle Cave",
+              "location": "Icicle Cave 3F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -35871,6 +36135,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "user-reviewed-sheet-location",
+        "previousLocation": "Icicle Cave",
+        "previousLocationName": "Icicle Cave"
       }
     },
     "pokemon-unbound-trainer-0135": {
@@ -35878,10 +36148,10 @@
       "consumerTrainerId": 135,
       "displayName": "Picnicker Kelly",
       "shortName": "Kelly",
-      "location": "Icicle Cave",
+      "location": "Icicle Cave 3F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Icicle Cave",
+      "locationName": "Icicle Cave 3F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -35959,7 +36229,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Icicle Cave",
+              "location": "Icicle Cave 3F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -36038,7 +36308,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Icicle Cave",
+              "location": "Icicle Cave 3F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -36119,6 +36389,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "user-reviewed-sheet-location",
+        "previousLocation": "Icicle Cave",
+        "previousLocationName": "Icicle Cave"
       }
     },
     "pokemon-unbound-trainer-0136": {
@@ -41070,10 +41346,10 @@
       "consumerTrainerId": 152,
       "displayName": "Fisherman Nicholas",
       "shortName": "Nicholas",
-      "location": "Polder Town",
+      "location": "Polder Town Gym",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Polder Town",
+      "locationName": "Polder Town Gym",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -41151,7 +41427,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Polder Town",
+              "location": "Polder Town Gym",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -41230,7 +41506,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Polder Town",
+              "location": "Polder Town Gym",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -41309,7 +41585,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Polder Town",
+              "location": "Polder Town Gym",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -41391,6 +41667,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Polder Town",
+        "previousLocationName": "Polder Town"
       }
     },
     "pokemon-unbound-trainer-0153": {
@@ -41398,10 +41680,10 @@
       "consumerTrainerId": 153,
       "displayName": "Tuber Savannah",
       "shortName": "Savannah",
-      "location": "Polder Town",
+      "location": "Polder Town Gym",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Polder Town",
+      "locationName": "Polder Town Gym",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -41479,7 +41761,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Polder Town",
+              "location": "Polder Town Gym",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -41558,7 +41840,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Polder Town",
+              "location": "Polder Town Gym",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -41639,6 +41921,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Polder Town",
+        "previousLocationName": "Polder Town"
       }
     },
     "pokemon-unbound-trainer-0154": {
@@ -41646,10 +41934,10 @@
       "consumerTrainerId": 154,
       "displayName": "Ace Trainer Darwin",
       "shortName": "Darwin",
-      "location": "Polder Town",
+      "location": "Polder Town Gym",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Polder Town",
+      "locationName": "Polder Town Gym",
       "spriteId": null,
       "orientation": null,
       "rewardItem": "Hyper Potion",
@@ -41727,7 +42015,7 @@
               "battleType": "Singles",
               "rewardItem": "Hyper Potion",
               "form": "",
-              "location": "Polder Town",
+              "location": "Polder Town Gym",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -41806,7 +42094,7 @@
               "battleType": "Singles",
               "rewardItem": "Hyper Potion",
               "form": "",
-              "location": "Polder Town",
+              "location": "Polder Town Gym",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -41885,7 +42173,7 @@
               "battleType": "Singles",
               "rewardItem": "Hyper Potion",
               "form": "",
-              "location": "Polder Town",
+              "location": "Polder Town Gym",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -41970,6 +42258,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Polder Town",
+        "previousLocationName": "Polder Town"
       }
     },
     "pokemon-unbound-trainer-0155": {
@@ -41977,10 +42271,10 @@
       "consumerTrainerId": 155,
       "displayName": "Ace Trainer Anita",
       "shortName": "Anita",
-      "location": "Polder Town",
+      "location": "Polder Town Gym",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Polder Town",
+      "locationName": "Polder Town Gym",
       "spriteId": null,
       "orientation": null,
       "rewardItem": "Hyper Potion",
@@ -42058,7 +42352,7 @@
               "battleType": "Singles",
               "rewardItem": "Hyper Potion",
               "form": "",
-              "location": "Polder Town",
+              "location": "Polder Town Gym",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -42137,7 +42431,7 @@
               "battleType": "Singles",
               "rewardItem": "Hyper Potion",
               "form": "",
-              "location": "Polder Town",
+              "location": "Polder Town Gym",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -42216,7 +42510,7 @@
               "battleType": "Singles",
               "rewardItem": "Hyper Potion",
               "form": "",
-              "location": "Polder Town",
+              "location": "Polder Town Gym",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -42301,6 +42595,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Polder Town",
+        "previousLocationName": "Polder Town"
       }
     },
     "pokemon-unbound-trainer-0156": {
@@ -43620,10 +43920,10 @@
       "consumerTrainerId": 161,
       "displayName": "Ace Trainer Daisy",
       "shortName": "Daisy",
-      "location": "Redwood Village",
+      "location": "Redwood Village Gym Room 3",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Redwood Village",
+      "locationName": "Redwood Village Gym Room 3",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -43701,7 +44001,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Redwood Village",
+              "location": "Redwood Village Gym Room 3",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -43780,7 +44080,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Redwood Village",
+              "location": "Redwood Village Gym Room 3",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -43861,6 +44161,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Redwood Village",
+        "previousLocationName": "Redwood Village"
       }
     },
     "pokemon-unbound-trainer-0162": {
@@ -43868,10 +44174,10 @@
       "consumerTrainerId": 162,
       "displayName": "Ninja Boy Fuller",
       "shortName": "Fuller",
-      "location": "Redwood Village",
+      "location": "Redwood Village Gym Room 1",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Redwood Village",
+      "locationName": "Redwood Village Gym Room 1",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -43949,7 +44255,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Redwood Village",
+              "location": "Redwood Village Gym Room 1",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -44029,6 +44335,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Redwood Village",
+        "previousLocationName": "Redwood Village"
       }
     },
     "pokemon-unbound-trainer-0163": {
@@ -44036,10 +44348,10 @@
       "consumerTrainerId": 163,
       "displayName": "Expert Tizzy",
       "shortName": "Tizzy",
-      "location": "Redwood Village",
+      "location": "Redwood Village Gym Room 4",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Redwood Village",
+      "locationName": "Redwood Village Gym Room 4",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -44117,7 +44429,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Redwood Village",
+              "location": "Redwood Village Gym Room 4",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -44196,7 +44508,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Redwood Village",
+              "location": "Redwood Village Gym Room 4",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -44277,6 +44589,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Redwood Village",
+        "previousLocationName": "Redwood Village"
       }
     },
     "pokemon-unbound-trainer-0164": {
@@ -44284,10 +44602,10 @@
       "consumerTrainerId": 164,
       "displayName": "Bug Catcher Curtis",
       "shortName": "Curtis",
-      "location": "Redwood Village",
+      "location": "Redwood Village Gym Room 2",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Redwood Village",
+      "locationName": "Redwood Village Gym Room 2",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -44365,7 +44683,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Redwood Village",
+              "location": "Redwood Village Gym Room 2",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -44445,6 +44763,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Redwood Village",
+        "previousLocationName": "Redwood Village"
       }
     },
     "pokemon-unbound-trainer-0165": {
@@ -50904,10 +51228,10 @@
       "consumerTrainerId": 189,
       "displayName": "Pokemon Breeder Annie",
       "shortName": "Annie",
-      "location": "Route 5",
+      "location": "Route 5 PokÃ©mon Day Care",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Route 5",
+      "locationName": "Route 5 PokÃ©mon Day Care",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -50985,7 +51309,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Route 5",
+              "location": "Route 5 PokÃ©mon Day Care",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -51064,7 +51388,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Route 5",
+              "location": "Route 5 PokÃ©mon Day Care",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -51143,7 +51467,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Route 5",
+              "location": "Route 5 PokÃ©mon Day Care",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -51222,7 +51546,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Route 5",
+              "location": "Route 5 PokÃ©mon Day Care",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -51301,7 +51625,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Route 5",
+              "location": "Route 5 PokÃ©mon Day Care",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -51380,7 +51704,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Route 5",
+              "location": "Route 5 PokÃ©mon Day Care",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -51463,6 +51787,12 @@
             "wikiFile": "Spr Breeder F.png"
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Route 5",
+        "previousLocationName": "Route 5"
       }
     },
     "pokemon-unbound-trainer-0190": {
@@ -88283,10 +88613,10 @@
       "consumerTrainerId": 327,
       "displayName": "Shadow Grunt",
       "shortName": "Grunt",
-      "location": "Ruins of Void",
+      "location": "Ruins of Void Exterior",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Ruins of Void",
+      "locationName": "Ruins of Void Exterior",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -88364,7 +88694,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Ruins of Void",
+              "location": "Ruins of Void Exterior",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -88443,7 +88773,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Ruins of Void",
+              "location": "Ruins of Void Exterior",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -88520,6 +88850,12 @@
             "wikiFile": "Spr Shadow Grunt M.png"
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Ruins of Void",
+        "previousLocationName": "Ruins of Void"
       }
     },
     "pokemon-unbound-trainer-0328": {
@@ -91359,10 +91695,10 @@
       "consumerTrainerId": 335,
       "displayName": "Black Ferrothorn Goon & Burglar Milan [Double Battle]",
       "shortName": "Battle]",
-      "location": "Seaport City",
+      "location": "Seaport Warehouse West B1F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Seaport City",
+      "locationName": "Seaport Warehouse West B1F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -91440,7 +91776,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Seaport City",
+              "location": "Seaport Warehouse West B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -91519,7 +91855,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Seaport City",
+              "location": "Seaport Warehouse West B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -91598,7 +91934,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Seaport City",
+              "location": "Seaport Warehouse West B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -91677,7 +92013,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Seaport City",
+              "location": "Seaport Warehouse West B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -91756,7 +92092,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Seaport City",
+              "location": "Seaport Warehouse West B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -91893,6 +92229,12 @@
             "reason": "Render each participant; this combined record has no single portrait."
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Seaport City",
+        "previousLocationName": "Seaport City"
       }
     },
     "pokemon-unbound-trainer-0336": {
@@ -91900,10 +92242,10 @@
       "consumerTrainerId": 336,
       "displayName": "Black Ferrothorn Goon & Burglar Colin [Double Battle]",
       "shortName": "Battle]",
-      "location": "Seaport City",
+      "location": "Seaport Warehouse West B1F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Seaport City",
+      "locationName": "Seaport Warehouse West B1F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -91981,7 +92323,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Seaport City",
+              "location": "Seaport Warehouse West B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -92060,7 +92402,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Seaport City",
+              "location": "Seaport Warehouse West B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -92139,7 +92481,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Seaport City",
+              "location": "Seaport Warehouse West B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -92218,7 +92560,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Seaport City",
+              "location": "Seaport Warehouse West B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -92297,7 +92639,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Seaport City",
+              "location": "Seaport Warehouse West B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -92434,6 +92776,12 @@
             "reason": "Render each participant; this combined record has no single portrait."
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Seaport City",
+        "previousLocationName": "Seaport City"
       }
     },
     "pokemon-unbound-trainer-0337": {
@@ -92441,10 +92789,10 @@
       "consumerTrainerId": 337,
       "displayName": "Black Ferrothorn Goon & Burglar Toby [Double Battle]",
       "shortName": "Battle]",
-      "location": "Seaport City",
+      "location": "Seaport Warehouse West B1F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Seaport City",
+      "locationName": "Seaport Warehouse West B1F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -92522,7 +92870,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Seaport City",
+              "location": "Seaport Warehouse West B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -92601,7 +92949,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Seaport City",
+              "location": "Seaport Warehouse West B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -92680,7 +93028,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Seaport City",
+              "location": "Seaport Warehouse West B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -92759,7 +93107,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Seaport City",
+              "location": "Seaport Warehouse West B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -92896,6 +93244,12 @@
             "reason": "Render each participant; this combined record has no single portrait."
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Seaport City",
+        "previousLocationName": "Seaport City"
       }
     },
     "pokemon-unbound-trainer-0338": {
@@ -92903,10 +93257,10 @@
       "consumerTrainerId": 338,
       "displayName": "Black Ferrothorn Goon & Burglar Fernando [Double Battle]",
       "shortName": "Battle]",
-      "location": "Seaport City",
+      "location": "Seaport Warehouse West B1F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Seaport City",
+      "locationName": "Seaport Warehouse West B1F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -92984,7 +93338,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Seaport City",
+              "location": "Seaport Warehouse West B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -93063,7 +93417,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Seaport City",
+              "location": "Seaport Warehouse West B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -93142,7 +93496,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Seaport City",
+              "location": "Seaport Warehouse West B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -93221,7 +93575,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Seaport City",
+              "location": "Seaport Warehouse West B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -93359,6 +93713,12 @@
             "reason": "Render each participant; this combined record has no single portrait."
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Seaport City",
+        "previousLocationName": "Seaport City"
       }
     },
     "pokemon-unbound-trainer-0339": {
@@ -93366,10 +93726,10 @@
       "consumerTrainerId": 339,
       "displayName": "Shadow Grunt",
       "shortName": "Grunt",
-      "location": "Shadow Base",
+      "location": "Shadow Base Warehouse",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Shadow Base",
+      "locationName": "Shadow Base Warehouse",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -93447,7 +93807,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Shadow Base",
+              "location": "Shadow Base Warehouse",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -93526,7 +93886,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Shadow Base",
+              "location": "Shadow Base Warehouse",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -93607,6 +93967,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Shadow Base",
+        "previousLocationName": "Shadow Base"
       }
     },
     "pokemon-unbound-trainer-0340": {
@@ -97618,10 +97984,10 @@
       "consumerTrainerId": 354,
       "displayName": "Bug Catcher Cary",
       "shortName": "Cary",
-      "location": "Thundercap Mountain",
+      "location": "Thundercap Mountain 2F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Thundercap Mountain",
+      "locationName": "Thundercap Mountain 2F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -97699,7 +98065,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -97778,7 +98144,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -97857,7 +98223,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -97939,6 +98305,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Thundercap Mountain",
+        "previousLocationName": "Thundercap Mountain"
       }
     },
     "pokemon-unbound-trainer-0355": {
@@ -97946,10 +98318,10 @@
       "consumerTrainerId": 355,
       "displayName": "Scientist Davita",
       "shortName": "Davita",
-      "location": "Thundercap Mountain",
+      "location": "Thundercap Mountain 2F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Thundercap Mountain",
+      "locationName": "Thundercap Mountain 2F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": "X Sp.Atk x1",
@@ -98027,7 +98399,7 @@
               "battleType": "Singles",
               "rewardItem": "X Sp.Atk x1",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -98106,7 +98478,7 @@
               "battleType": "Singles",
               "rewardItem": "X Sp.Atk x1",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -98187,6 +98559,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Thundercap Mountain",
+        "previousLocationName": "Thundercap Mountain"
       }
     },
     "pokemon-unbound-trainer-0356": {
@@ -98194,10 +98572,10 @@
       "consumerTrainerId": 356,
       "displayName": "Shadow Grunt",
       "shortName": "Grunt",
-      "location": "Thundercap Mountain",
+      "location": "Thundercap Mountain 2F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Thundercap Mountain",
+      "locationName": "Thundercap Mountain 2F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -98275,7 +98653,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -98354,7 +98732,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -98433,7 +98811,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -98512,7 +98890,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -98589,6 +98967,12 @@
             "wikiFile": "Spr Shadow Grunt M.png"
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Thundercap Mountain",
+        "previousLocationName": "Thundercap Mountain"
       }
     },
     "pokemon-unbound-trainer-0357": {
@@ -98596,10 +98980,10 @@
       "consumerTrainerId": 357,
       "displayName": "Shocker Kirk",
       "shortName": "Kirk",
-      "location": "Thundercap Mountain",
+      "location": "Thundercap Mountain 2F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Thundercap Mountain",
+      "locationName": "Thundercap Mountain 2F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -98677,7 +99061,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -98756,7 +99140,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -98835,7 +99219,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -98914,7 +99298,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -98991,6 +99375,12 @@
             "wikiFile": "Spr Shocker.png"
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Thundercap Mountain",
+        "previousLocationName": "Thundercap Mountain"
       }
     },
     "pokemon-unbound-trainer-0358": {
@@ -98998,10 +99388,10 @@
       "consumerTrainerId": 358,
       "displayName": "Battle Girl Alize",
       "shortName": "Alize",
-      "location": "Thundercap Mountain",
+      "location": "Thundercap Mountain 2F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Thundercap Mountain",
+      "locationName": "Thundercap Mountain 2F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -99079,7 +99469,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -99158,7 +99548,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -99237,7 +99627,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -99319,6 +99709,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Thundercap Mountain",
+        "previousLocationName": "Thundercap Mountain"
       }
     },
     "pokemon-unbound-trainer-0359": {
@@ -99326,10 +99722,10 @@
       "consumerTrainerId": 359,
       "displayName": "Shadow Grunt #2",
       "shortName": "Grunt",
-      "location": "Thundercap Mountain",
+      "location": "Thundercap Mountain 2F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Thundercap Mountain",
+      "locationName": "Thundercap Mountain 2F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -99407,7 +99803,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -99486,7 +99882,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -99565,7 +99961,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -99642,6 +100038,12 @@
             "wikiFile": "Spr Shadow Grunt M.png"
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Thundercap Mountain",
+        "previousLocationName": "Thundercap Mountain"
       }
     },
     "pokemon-unbound-trainer-0360": {
@@ -101035,10 +101437,10 @@
       "consumerTrainerId": 365,
       "displayName": "Shadow Grunt #6",
       "shortName": "Grunt",
-      "location": "Thundercap Mountain",
+      "location": "Thundercap Mountain Summit",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Thundercap Mountain",
+      "locationName": "Thundercap Mountain Summit",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -101116,7 +101518,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain Summit",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -101195,7 +101597,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain Summit",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -101272,6 +101674,12 @@
             "wikiFile": "Spr Shadow Grunt M.png"
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Thundercap Mountain",
+        "previousLocationName": "Thundercap Mountain"
       }
     },
     "pokemon-unbound-trainer-0366": {
@@ -101279,10 +101687,10 @@
       "consumerTrainerId": 366,
       "displayName": "Shadow Grunt #7",
       "shortName": "Grunt",
-      "location": "Thundercap Mountain",
+      "location": "Thundercap Mountain Summit",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Thundercap Mountain",
+      "locationName": "Thundercap Mountain Summit",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -101360,7 +101768,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain Summit",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -101439,7 +101847,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain Summit",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -101516,6 +101924,12 @@
             "wikiFile": "Spr Shadow Grunt M.png"
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Thundercap Mountain",
+        "previousLocationName": "Thundercap Mountain"
       }
     },
     "pokemon-unbound-trainer-0367": {
@@ -101523,10 +101937,10 @@
       "consumerTrainerId": 367,
       "displayName": "Shadow Grunt #8",
       "shortName": "Grunt",
-      "location": "Thundercap Mountain",
+      "location": "Thundercap Mountain Summit",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Thundercap Mountain",
+      "locationName": "Thundercap Mountain Summit",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -101604,7 +102018,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain Summit",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -101683,7 +102097,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain Summit",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -101760,6 +102174,12 @@
             "wikiFile": "Spr Shadow Grunt M.png"
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Thundercap Mountain",
+        "previousLocationName": "Thundercap Mountain"
       }
     },
     "pokemon-unbound-trainer-0368": {
@@ -101767,10 +102187,10 @@
       "consumerTrainerId": 368,
       "displayName": "Shadow Grunt #9",
       "shortName": "Grunt",
-      "location": "Thundercap Mountain",
+      "location": "Thundercap Mountain Summit",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Thundercap Mountain",
+      "locationName": "Thundercap Mountain Summit",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -101848,7 +102268,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain Summit",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -101927,7 +102347,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain Summit",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -102006,7 +102426,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain Summit",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -102083,6 +102503,12 @@
             "wikiFile": "Spr Shadow Grunt M.png"
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Thundercap Mountain",
+        "previousLocationName": "Thundercap Mountain"
       }
     },
     "pokemon-unbound-trainer-0369": {
@@ -102090,10 +102516,10 @@
       "consumerTrainerId": 369,
       "displayName": "Shadow Grunt #10",
       "shortName": "Grunt",
-      "location": "Thundercap Mountain",
+      "location": "Thundercap Mountain Summit",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Thundercap Mountain",
+      "locationName": "Thundercap Mountain Summit",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -102171,7 +102597,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain Summit",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -102250,7 +102676,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain Summit",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -102329,7 +102755,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain Summit",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -102408,7 +102834,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain Summit",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -102485,6 +102911,12 @@
             "wikiFile": "Spr Shadow Grunt M.png"
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Thundercap Mountain",
+        "previousLocationName": "Thundercap Mountain"
       }
     },
     "pokemon-unbound-trainer-0370": {
@@ -105654,10 +106086,10 @@
       "consumerTrainerId": 379,
       "displayName": "Worker Lawton",
       "shortName": "Lawton",
-      "location": "Thundercap Mountain",
+      "location": "Thundercap Mountain 2F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Thundercap Mountain",
+      "locationName": "Thundercap Mountain 2F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -105735,7 +106167,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -105814,7 +106246,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -105893,7 +106325,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -105975,6 +106407,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Thundercap Mountain",
+        "previousLocationName": "Thundercap Mountain"
       }
     },
     "pokemon-unbound-trainer-0380": {
@@ -106558,10 +106996,10 @@
       "consumerTrainerId": 382,
       "displayName": "Expert Saundra",
       "shortName": "Saundra",
-      "location": "Thundercap Mountain",
+      "location": "Thundercap Mountain 2F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Thundercap Mountain",
+      "locationName": "Thundercap Mountain 2F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -106639,7 +107077,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -106718,7 +107156,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -106797,7 +107235,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -106876,7 +107314,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain 2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -106960,6 +107398,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Thundercap Mountain",
+        "previousLocationName": "Thundercap Mountain"
       }
     },
     "pokemon-unbound-trainer-0383": {
@@ -106967,10 +107411,10 @@
       "consumerTrainerId": 383,
       "displayName": "Roughneck Corey",
       "shortName": "Corey",
-      "location": "Thundercap Mountain",
+      "location": "Thundercap Mountain Exterior",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Thundercap Mountain",
+      "locationName": "Thundercap Mountain Exterior",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -107048,7 +107492,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain Exterior",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -107127,7 +107571,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain Exterior",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -107208,6 +107652,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Thundercap Mountain",
+        "previousLocationName": "Thundercap Mountain"
       }
     },
     "pokemon-unbound-trainer-0384": {
@@ -107215,10 +107665,10 @@
       "consumerTrainerId": 384,
       "displayName": "Black Belt Kentaro",
       "shortName": "Kentaro",
-      "location": "Thundercap Mountain",
+      "location": "Thundercap Mountain Exterior",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Thundercap Mountain",
+      "locationName": "Thundercap Mountain Exterior",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -107296,7 +107746,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain Exterior",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -107375,7 +107825,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Thundercap Mountain",
+              "location": "Thundercap Mountain Exterior",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -107456,6 +107906,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Thundercap Mountain",
+        "previousLocationName": "Thundercap Mountain"
       }
     },
     "pokemon-unbound-trainer-0385": {
@@ -110741,10 +111197,10 @@
       "consumerTrainerId": 396,
       "displayName": "Tamer Phil & Dragon Tamer Pierce",
       "shortName": "Pierce",
-      "location": "Victory Road",
+      "location": "Victory Road Grassy Area",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Victory Road",
+      "locationName": "Victory Road Grassy Area",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -110822,7 +111278,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Victory Road",
+              "location": "Victory Road Grassy Area",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -110901,7 +111357,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Victory Road",
+              "location": "Victory Road Grassy Area",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -110980,7 +111436,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Victory Road",
+              "location": "Victory Road Grassy Area",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -111059,7 +111515,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Victory Road",
+              "location": "Victory Road Grassy Area",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -111138,7 +111594,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Victory Road",
+              "location": "Victory Road Grassy Area",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -111276,6 +111732,12 @@
             "reason": "Render each participant; this combined record has no single portrait."
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Victory Road",
+        "previousLocationName": "Victory Road"
       }
     },
     "pokemon-unbound-trainer-0397": {
@@ -111283,10 +111745,10 @@
       "consumerTrainerId": 397,
       "displayName": "Kindler Elmer & Bug Maniac Webster",
       "shortName": "Webster",
-      "location": "Victory Road",
+      "location": "Victory Road Grassy Area",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Victory Road",
+      "locationName": "Victory Road Grassy Area",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -111364,7 +111826,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Victory Road",
+              "location": "Victory Road Grassy Area",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -111443,7 +111905,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Victory Road",
+              "location": "Victory Road Grassy Area",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -111522,7 +111984,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Victory Road",
+              "location": "Victory Road Grassy Area",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -111601,7 +112063,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Victory Road",
+              "location": "Victory Road Grassy Area",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -111739,6 +112201,12 @@
             "reason": "Render each participant; this combined record has no single portrait."
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Victory Road",
+        "previousLocationName": "Victory Road"
       }
     },
     "pokemon-unbound-trainer-0398": {
@@ -111746,10 +112214,10 @@
       "consumerTrainerId": 398,
       "displayName": "Aroma Lady Mya & Tuber Elle",
       "shortName": "Elle",
-      "location": "Victory Road",
+      "location": "Victory Road Grassy Area",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Victory Road",
+      "locationName": "Victory Road Grassy Area",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -111827,7 +112295,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Victory Road",
+              "location": "Victory Road Grassy Area",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -111906,7 +112374,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Victory Road",
+              "location": "Victory Road Grassy Area",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -111985,7 +112453,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Victory Road",
+              "location": "Victory Road Grassy Area",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -112064,7 +112532,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Victory Road",
+              "location": "Victory Road Grassy Area",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -112202,6 +112670,12 @@
             "reason": "Render each participant; this combined record has no single portrait."
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Victory Road",
+        "previousLocationName": "Victory Road"
       }
     },
     "pokemon-unbound-trainer-0399": {
@@ -112209,10 +112683,10 @@
       "consumerTrainerId": 399,
       "displayName": "Pokemon Ranger Jamie",
       "shortName": "Jamie",
-      "location": "Victory Road",
+      "location": "Victory Road Grassy Area",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Victory Road",
+      "locationName": "Victory Road Grassy Area",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -112290,7 +112764,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Victory Road",
+              "location": "Victory Road Grassy Area",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -112369,7 +112843,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Victory Road",
+              "location": "Victory Road Grassy Area",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -112451,6 +112925,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Victory Road",
+        "previousLocationName": "Victory Road"
       }
     },
     "pokemon-unbound-trainer-0400": {
@@ -113621,10 +114101,10 @@
       "consumerTrainerId": 405,
       "displayName": "Ace Trainer Gilbert",
       "shortName": "Gilbert",
-      "location": "Victory Road",
+      "location": "Victory Road Mountainside",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Victory Road",
+      "locationName": "Victory Road Mountainside",
       "spriteId": null,
       "orientation": null,
       "rewardItem": "Full Restore",
@@ -113702,7 +114182,7 @@
               "battleType": "Singles",
               "rewardItem": "Full Restore",
               "form": "",
-              "location": "Victory Road",
+              "location": "Victory Road Mountainside",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -113781,7 +114261,7 @@
               "battleType": "Singles",
               "rewardItem": "Full Restore",
               "form": "",
-              "location": "Victory Road",
+              "location": "Victory Road Mountainside",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -113860,7 +114340,7 @@
               "battleType": "Singles",
               "rewardItem": "Full Restore",
               "form": "",
-              "location": "Victory Road",
+              "location": "Victory Road Mountainside",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -113940,6 +114420,12 @@
             "wikiFile": "Spr Ace Trainer M.png"
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Victory Road",
+        "previousLocationName": "Victory Road"
       }
     },
     "pokemon-unbound-trainer-0406": {
@@ -113947,10 +114433,10 @@
       "consumerTrainerId": 406,
       "displayName": "Ace Trainer Julie",
       "shortName": "Julie",
-      "location": "Victory Road",
+      "location": "Victory Road Mountainside",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Victory Road",
+      "locationName": "Victory Road Mountainside",
       "spriteId": null,
       "orientation": null,
       "rewardItem": "Full Restore",
@@ -114028,7 +114514,7 @@
               "battleType": "Singles",
               "rewardItem": "Full Restore",
               "form": "",
-              "location": "Victory Road",
+              "location": "Victory Road Mountainside",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -114107,7 +114593,7 @@
               "battleType": "Singles",
               "rewardItem": "Full Restore",
               "form": "",
-              "location": "Victory Road",
+              "location": "Victory Road Mountainside",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -114186,7 +114672,7 @@
               "battleType": "Singles",
               "rewardItem": "Full Restore",
               "form": "",
-              "location": "Victory Road",
+              "location": "Victory Road Mountainside",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -114266,6 +114752,12 @@
             "wikiFile": "Spr Ace Trainer F.png"
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Victory Road",
+        "previousLocationName": "Victory Road"
       }
     },
     "pokemon-unbound-trainer-0407": {
@@ -114273,10 +114765,10 @@
       "consumerTrainerId": 407,
       "displayName": "Ruin Maniac Hayes",
       "shortName": "Hayes",
-      "location": "Victory Road",
+      "location": "Victory Road Volcano",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Victory Road",
+      "locationName": "Victory Road Volcano",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -114354,7 +114846,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Victory Road",
+              "location": "Victory Road Volcano",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -114434,6 +114926,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Victory Road",
+        "previousLocationName": "Victory Road"
       }
     },
     "pokemon-unbound-trainer-0408": {
@@ -114441,10 +114939,10 @@
       "consumerTrainerId": 408,
       "displayName": "Light of Ruin Grunt",
       "shortName": "Grunt",
-      "location": "Vivill Warehouse",
+      "location": "Vivill Warehouse 1F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Vivill Warehouse",
+      "locationName": "Vivill Warehouse 1F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -114522,7 +115020,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Vivill Warehouse",
+              "location": "Vivill Warehouse 1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -114602,6 +115100,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Vivill Warehouse",
+        "previousLocationName": "Vivill Warehouse"
       }
     },
     "pokemon-unbound-trainer-0409": {
@@ -114609,10 +115113,10 @@
       "consumerTrainerId": 409,
       "displayName": "Light of Ruin Grunt #2",
       "shortName": "Grunt",
-      "location": "Vivill Warehouse",
+      "location": "Vivill Warehouse B2F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Vivill Warehouse",
+      "locationName": "Vivill Warehouse B2F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -114690,7 +115194,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Vivill Warehouse",
+              "location": "Vivill Warehouse B2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -114769,7 +115273,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Vivill Warehouse",
+              "location": "Vivill Warehouse B2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -114850,6 +115354,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Vivill Warehouse",
+        "previousLocationName": "Vivill Warehouse"
       }
     },
     "pokemon-unbound-trainer-0410": {
@@ -114857,10 +115367,10 @@
       "consumerTrainerId": 410,
       "displayName": "Light of Ruin Grunt #3",
       "shortName": "Grunt",
-      "location": "Vivill Warehouse",
+      "location": "Vivill Warehouse B2F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Vivill Warehouse",
+      "locationName": "Vivill Warehouse B2F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -114938,7 +115448,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Vivill Warehouse",
+              "location": "Vivill Warehouse B2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -115017,7 +115527,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Vivill Warehouse",
+              "location": "Vivill Warehouse B2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -115096,7 +115606,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Vivill Warehouse",
+              "location": "Vivill Warehouse B2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -115178,6 +115688,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Vivill Warehouse",
+        "previousLocationName": "Vivill Warehouse"
       }
     },
     "pokemon-unbound-trainer-0411": {
@@ -115185,10 +115701,10 @@
       "consumerTrainerId": 411,
       "displayName": "Light of Ruin Grunt #4",
       "shortName": "Grunt",
-      "location": "Vivill Warehouse",
+      "location": "Vivill Warehouse B1F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Vivill Warehouse",
+      "locationName": "Vivill Warehouse B1F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -115266,7 +115782,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Vivill Warehouse",
+              "location": "Vivill Warehouse B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -115345,7 +115861,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Vivill Warehouse",
+              "location": "Vivill Warehouse B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -115424,7 +115940,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Vivill Warehouse",
+              "location": "Vivill Warehouse B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -115503,7 +116019,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Vivill Warehouse",
+              "location": "Vivill Warehouse B1F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -115580,6 +116096,12 @@
             "wikiFile": "Spr Light of Ruin Grunt.png"
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Vivill Warehouse",
+        "previousLocationName": "Vivill Warehouse"
       }
     },
     "pokemon-unbound-trainer-0412": {
@@ -115587,10 +116109,10 @@
       "consumerTrainerId": 412,
       "displayName": "Light of Ruin Grunt #5",
       "shortName": "Grunt",
-      "location": "Vivill Warehouse",
+      "location": "Vivill Warehouse B2F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Vivill Warehouse",
+      "locationName": "Vivill Warehouse B2F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -115668,7 +116190,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Vivill Warehouse",
+              "location": "Vivill Warehouse B2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -115747,7 +116269,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Vivill Warehouse",
+              "location": "Vivill Warehouse B2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -115824,6 +116346,12 @@
             "wikiFile": "Spr Light of Ruin Grunt.png"
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Vivill Warehouse",
+        "previousLocationName": "Vivill Warehouse"
       }
     },
     "pokemon-unbound-trainer-0413": {
@@ -115831,10 +116359,10 @@
       "consumerTrainerId": 413,
       "displayName": "Light of Ruin Grunt #6",
       "shortName": "Grunt",
-      "location": "Vivill Warehouse",
+      "location": "Vivill Warehouse B2F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Vivill Warehouse",
+      "locationName": "Vivill Warehouse B2F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -115912,7 +116440,7 @@
               "battleType": "Singles",
               "rewardItem": "",
               "form": "",
-              "location": "Vivill Warehouse",
+              "location": "Vivill Warehouse B2F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -115992,6 +116520,12 @@
             ]
           }
         ]
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "rom-trainer-map-name",
+        "previousLocation": "Vivill Warehouse",
+        "previousLocationName": "Vivill Warehouse"
       }
     },
     "pokemon-unbound-trainer-0414": {
@@ -158226,10 +158760,10 @@
       "consumerTrainerId": 535,
       "displayName": "Light of Ruin Grunt 1 · Crystal Peak pair 1",
       "shortName": "Grunt",
-      "location": "Crystal Peak",
+      "location": "Crystal Peak 1F Main Room",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Crystal Peak",
+      "locationName": "Crystal Peak 1F Main Room",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -158306,7 +158840,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Crystal Peak",
+              "location": "Crystal Peak 1F Main Room",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -158375,6 +158909,12 @@
           "reviewId": "trainer-name-review-20260921",
           "ref": "R01325"
         }
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "verified-battle-group-location",
+        "previousLocation": "Crystal Peak",
+        "previousLocationName": "Crystal Peak"
       }
     },
     "pokemon-unbound-trainer-0536": {
@@ -158382,10 +158922,10 @@
       "consumerTrainerId": 536,
       "displayName": "Light of Ruin Grunt 2 · Crystal Peak pair 1",
       "shortName": "Grunt",
-      "location": "Crystal Peak",
+      "location": "Crystal Peak 1F Main Room",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Crystal Peak",
+      "locationName": "Crystal Peak 1F Main Room",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -158462,7 +159002,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Crystal Peak",
+              "location": "Crystal Peak 1F Main Room",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -158540,7 +159080,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Crystal Peak",
+              "location": "Crystal Peak 1F Main Room",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -158609,6 +159149,12 @@
           "reviewId": "trainer-name-review-20260921",
           "ref": "R01326"
         }
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "verified-battle-group-location",
+        "previousLocation": "Crystal Peak",
+        "previousLocationName": "Crystal Peak"
       }
     },
     "pokemon-unbound-trainer-0537": {
@@ -159084,10 +159630,10 @@
       "consumerTrainerId": 539,
       "displayName": "Light of Ruin Grunt 1 · Crystal Peak pair 3",
       "shortName": "Grunt",
-      "location": "Crystal Peak",
+      "location": "Crystal Peak 3F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Crystal Peak",
+      "locationName": "Crystal Peak 3F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -159164,7 +159710,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Crystal Peak",
+              "location": "Crystal Peak 3F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -159242,7 +159788,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Crystal Peak",
+              "location": "Crystal Peak 3F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -159320,7 +159866,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Crystal Peak",
+              "location": "Crystal Peak 3F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -159389,6 +159935,12 @@
           "reviewId": "trainer-name-review-20260921",
           "ref": "R01329"
         }
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "verified-battle-group-location",
+        "previousLocation": "Crystal Peak",
+        "previousLocationName": "Crystal Peak"
       }
     },
     "pokemon-unbound-trainer-0540": {
@@ -159396,10 +159948,10 @@
       "consumerTrainerId": 540,
       "displayName": "Light of Ruin Grunt 2 · Crystal Peak pair 3",
       "shortName": "Grunt",
-      "location": "Crystal Peak",
+      "location": "Crystal Peak 3F",
       "event": null,
       "sourceType": "regular",
-      "locationName": "Crystal Peak",
+      "locationName": "Crystal Peak 3F",
       "spriteId": null,
       "orientation": null,
       "rewardItem": null,
@@ -159476,7 +160028,7 @@
               "battleType": "Doubles",
               "rewardItem": "",
               "form": "",
-              "location": "Crystal Peak",
+              "location": "Crystal Peak 3F",
               "spriteId": null,
               "orientation": null,
               "hasGender": true
@@ -159545,6 +160097,12 @@
           "reviewId": "trainer-name-review-20260921",
           "ref": "R01330"
         }
+      },
+      "locationEvidence": {
+        "source": "trainer_review_sources.json",
+        "kind": "verified-battle-group-location",
+        "previousLocation": "Crystal Peak",
+        "previousLocationName": "Crystal Peak"
       }
     },
     "pokemon-unbound-trainer-0541": {

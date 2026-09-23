@@ -335,11 +335,11 @@
       },
       {
         "file": "trainers.json",
-        "sha256": "72e6d5d515a0a42b5a2bcaf05d6900f2bc641ec39d5d4b29ea6b1d4f23c6c66e"
+        "sha256": "fcc8de08a4841b35fd041d9c09ed833bf4f4d31ccf2d04859b4f6108dfe2f514"
       },
       {
         "file": "trainer_order.json",
-        "sha256": "11189af58621782f158b254014e324a6c0fc254a4ed87f6606bc0ea1f2e42e4a"
+        "sha256": "4e0f2c561874e879e130fcc147e998999b98537a9db247a0a5e19118c3401dbe"
       }
     ]
   },

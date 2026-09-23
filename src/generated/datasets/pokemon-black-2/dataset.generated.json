@@ -2,12 +2,12 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-black-2-dataset",
   "source": "Datasets/Pokemon Black 2/source-data",
-  "sourceTreeSha256": "3D6254582B48060947D18BD2BEBC0BF52ABD96292645E2913BD37128596D0D14",
+  "sourceTreeSha256": "F6F2DE56BE8021CFDF2F15F5F356D02B1B937FA5AED4A54AE0690392DC368EC7",
   "files": [
     {
       "path": "dataset_manifest.json",
       "bytes": 36549,
-      "sha256": "859369214DAE388A4575B2432810F76AC79CD51B6A5DB0E6447FA6FED7310786"
+      "sha256": "350310A601C7D9DE3C7AFC16F94AAF9D3C65525FD40F9845A25D1DAE0462620E"
     },
     {
       "path": "battle_mechanics.json",

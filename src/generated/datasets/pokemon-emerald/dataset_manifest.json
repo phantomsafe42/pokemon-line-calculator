@@ -762,7 +762,7 @@
       "role": "pinned game-specific battle contract, independent known answers, or validation authority"
     },
     "../../tools/trainer_visual_identity.py": {
-      "sha256": "c8fb45d558cfc16c6a3cea64ece291fd4844963977198f5a6ba2d5b1ec3273e4",
+      "sha256": "56ad13d22b474be8f499494a591a61bf153111537155b8cc07fbf1baa3bfff40",
       "role": "asset-neutral trainer visual identity resolver or schema"
     },
     "../../tools/imports/vanilla/b2w2-trainer-sprite-sets.json": {
@@ -770,7 +770,7 @@
       "role": "asset-neutral trainer visual identity resolver or schema"
     },
     "../../schemas/trainer-visual-identity.schema.json": {
-      "sha256": "283aa92ff7a402c7c4816e6a8a59caddbf5fe4fd23ad779c5b537dba9f4ad0e2",
+      "sha256": "adb004a2d043ce2f8c8eae47aa8428377dd2429b5e66ffe78548e1a42d46e5a2",
       "role": "asset-neutral trainer visual identity resolver or schema"
     },
     "../../tools/imports/vanilla/trainer-visual-identity-authority.json": {
@@ -853,16 +853,13 @@
       "presentation": "battle-front",
       "status": "passed-with-explicit-fail-closed-records",
       "counts": {
-        "ambiguous": 10,
+        "ambiguous": 0,
         "inapplicable": 0,
-        "resolved": 910,
+        "resolved": 920,
         "unavailable": 1
       },
       "unresolvedFieldCounts": {
-        "gender": 10,
-        "subjectId": 10,
-        "subjectKind": 10,
-        "variant": 11
+        "variant": 1
       },
       "records": 921,
       "policy": "unsupported or non-unique identities fail closed; ROM hacks are base-game candidates until hack-owned evidence resolves them"

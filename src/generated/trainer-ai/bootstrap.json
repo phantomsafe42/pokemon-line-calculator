@@ -1192,7 +1192,7 @@
     },
     {
       "path": "Platinum Kaizo/source-data/dataset_manifest.json",
-      "sha256": "79e911f6673a09cfe5141ce0f7e7c084dd836e0aa6963b2a5cf93b37d18bc6e3"
+      "sha256": "7a992cb96b3e344cc58155620fc8793a232d74a723c281611c0bcd6127c75d9e"
     },
     {
       "path": "Platinum Kaizo/source-data/trainer_ai.json",
@@ -1200,7 +1200,7 @@
     },
     {
       "path": "Pokemon Black 2/source-data/dataset_manifest.json",
-      "sha256": "859369214dae388a4575b2432810f76ac79cd51b6a5db0e6447fa6fed7310786"
+      "sha256": "350310a601c7d9de3c7afc16f94aaf9d3c65525fd40f9845a25d1dae0462620e"
     },
     {
       "path": "Pokemon Black 2/source-data/trainer_ai.json",
@@ -1208,7 +1208,7 @@
     },
     {
       "path": "Pokemon Black/source-data/dataset_manifest.json",
-      "sha256": "d0d1228681252e0e6e5c3a09bd331cc13294bd8d661cc40f481aba3bf5f2ee81"
+      "sha256": "c0ccd0553bd25f77c44eefce99ac2adb571449e622a3b60bf08f4b045fda7f30"
     },
     {
       "path": "Pokemon Black/source-data/trainer_ai.json",
@@ -1216,7 +1216,7 @@
     },
     {
       "path": "Pokemon Diamond/source-data/dataset_manifest.json",
-      "sha256": "ec09823f608331bd1226df568182423843bedd10e2c0952ce1fe9cc0bad24c04"
+      "sha256": "12b1e89cf570d516e1574ed2020dc1bdcad0726215eac6748e1ceadb6aae5347"
     },
     {
       "path": "Pokemon Diamond/source-data/trainer_ai.json",
@@ -1224,7 +1224,7 @@
     },
     {
       "path": "Pokemon Emerald/source-data/dataset_manifest.json",
-      "sha256": "508ac005ad67eb9d6d126bc49b1e2f85ec235c33b00fe3a597bdd06a885ae433"
+      "sha256": "994876dbe571d968bfabaae60c06ce8bb465fa63ff35469d36fe839811e655e9"
     },
     {
       "path": "Pokemon Emerald/source-data/trainer_ai.json",
@@ -1232,7 +1232,7 @@
     },
     {
       "path": "Pokemon FireRed/source-data/dataset_manifest.json",
-      "sha256": "c115286a75b310c3c4ce7945858acc42416a2aab3ae9ac7bf0ca666fe7ac94b0"
+      "sha256": "d0744cca20648499f45d60562c63714be07a1c6a83490fced0537127c3438b36"
     },
     {
       "path": "Pokemon FireRed/source-data/trainer_ai.json",
@@ -1240,7 +1240,7 @@
     },
     {
       "path": "Pokemon HeartGold/source-data/dataset_manifest.json",
-      "sha256": "868135bb6940a5e35744366e16b123d03378b651139bd20a5eca7176bcf2a5dc"
+      "sha256": "64eb0325731be6704318066727331a8974d72dd8ba165e910558ae9f291693e5"
     },
     {
       "path": "Pokemon HeartGold/source-data/trainer_ai.json",
@@ -1248,7 +1248,7 @@
     },
     {
       "path": "Pokemon LeafGreen/source-data/dataset_manifest.json",
-      "sha256": "10035f963b6e5a2a47144c81152c3941d2d018ff4a821dc6f67f11d91e5626b4"
+      "sha256": "7de443ff054dfdad49df0a7eaa7ba8af08942170af24147708205d97c7a92ce5"
     },
     {
       "path": "Pokemon LeafGreen/source-data/trainer_ai.json",
@@ -1256,7 +1256,7 @@
     },
     {
       "path": "Pokemon Pearl/source-data/dataset_manifest.json",
-      "sha256": "62716d5c25f1793a9821c1deffa2ba39c1cd94591e412b20511b3a7192ef0bff"
+      "sha256": "64ceeadf8118500b6e25bd5aaed3f05ee5191574852a6f232a8d0a30c06378bb"
     },
     {
       "path": "Pokemon Pearl/source-data/trainer_ai.json",
@@ -1264,7 +1264,7 @@
     },
     {
       "path": "Pokemon Platinum/source-data/dataset_manifest.json",
-      "sha256": "d1242351e2362708ffa3c26e272e65f5718015c32ffc6c56f08703f6f5c5c36e"
+      "sha256": "72a1f9961221a9829d0f03457ead4287a86ce099f6b3afe4e84acf293abcd8f9"
     },
     {
       "path": "Pokemon Platinum/source-data/trainer_ai.json",
@@ -1272,7 +1272,7 @@
     },
     {
       "path": "Pokemon Ruby/source-data/dataset_manifest.json",
-      "sha256": "de010065efbe9e671598a4840c59d9fdb2847df33c581865b550b3bf887602d7"
+      "sha256": "d5e79d79adeba6f65235144602dcf00bc39ce2f00fb0821fe717c45e43c08590"
     },
     {
       "path": "Pokemon Ruby/source-data/trainer_ai.json",
@@ -1280,7 +1280,7 @@
     },
     {
       "path": "Pokemon Sapphire/source-data/dataset_manifest.json",
-      "sha256": "acd13b7139e5102b1a6b0d3dbcb1fb9c65443e3d2ff258c64697b90879f51768"
+      "sha256": "5cb3db9c88a0262b1db5fb5db576db305fd958db0452b8bab92d923ba9187934"
     },
     {
       "path": "Pokemon Sapphire/source-data/trainer_ai.json",
@@ -1288,7 +1288,7 @@
     },
     {
       "path": "Pokemon SoulSilver/source-data/dataset_manifest.json",
-      "sha256": "08e670a72944153dbf86479b21b566da0585d53b3f3ab00d4c6a68568689106e"
+      "sha256": "68cfd35f3705649c371c18d2810a832de3952d9618c96ab35970c8006756507c"
     },
     {
       "path": "Pokemon SoulSilver/source-data/trainer_ai.json",
@@ -1296,7 +1296,7 @@
     },
     {
       "path": "Pokemon Unbound/source-data/dataset_manifest.json",
-      "sha256": "5d43d78ca5a0b153824b019690fd8643c1234f8b96d6676de37f2b2d598f4652"
+      "sha256": "bd51c8e5edae1b38035edd02608f704d6175a4d91a36e577a15606f26aee6582"
     },
     {
       "path": "Pokemon Unbound/source-data/trainer_ai.json",
@@ -1304,7 +1304,7 @@
     },
     {
       "path": "Pokemon White 2/source-data/dataset_manifest.json",
-      "sha256": "2ae62794b30adb21487de8b5b3744d993496107632af50ce3a74f827e6bf6a2b"
+      "sha256": "1db16966c73a21e4cd5386989341a5edfe129c608d777eede0bc9e422e92872f"
     },
     {
       "path": "Pokemon White 2/source-data/trainer_ai.json",
@@ -1312,7 +1312,7 @@
     },
     {
       "path": "Pokemon White/source-data/dataset_manifest.json",
-      "sha256": "960631c3bf2248d55a53ea173b9677c975b1169f0a519cec1e1aa6c070ae2cf9"
+      "sha256": "06998a40a707bdb5b54e13097ef4a4c8dea6854c448d31b3d34c81b0d6523c24"
     },
     {
       "path": "Pokemon White/source-data/trainer_ai.json",
@@ -1344,7 +1344,7 @@
     },
     {
       "path": "consumer_exports.json",
-      "sha256": "6b20dda0fb5f1bf33164b1e7bd60e2899ac443df058f6da71973f1c27b2a024f"
+      "sha256": "b3301dd67efaddf2837cfa465e9bad6c9c1208e075d3332240f05b00995e702c"
     }
   ]
 }

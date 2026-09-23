@@ -281,11 +281,27 @@
       },
       "resolver": {
         "path": "tools/unbound_trainer_visuals.js",
-        "sha256": "85cca44a613d8b11e93eebf74452ecda33840e9a691ee1e57bb432b9423908ed"
+        "sha256": "7ef0cfe4436120385317089f11f1b0fe0694898a39dd317da2e9f1fa21e94fb8"
       },
       "schema": {
         "path": "schemas/trainer-visual-identity-v1alpha2.schema.json",
         "sha256": "9d59c0b88a242b5f73f4f798c60ab7df8f3cbfbe70a0f941a37d0bf672ee79e5"
+      }
+    },
+    "trainerReview": {
+      "required": true,
+      "source": "trainer_review_report.json",
+      "authority": {
+        "path": "trainer_review_sources.json",
+        "sha256": "cd66fcb111d7982888793bb85dee4021260e5ad22d9ab563e775bcd45bc577ba"
+      },
+      "snapshot": {
+        "path": "imports/reference-docs/unbound_trainer_review_20260922.json",
+        "sha256": "3f1a957c32939a51f2dd26e104700155f041c02113632bbeff7954e2fa9f58cd"
+      },
+      "resolver": {
+        "path": "tools/unbound_trainer_review.js",
+        "sha256": "077765f22674fcacc6dcc76605d0c89915bd5d8e9a5f33062c4e504bb8b01992"
       }
     }
   },
@@ -356,7 +372,9 @@
     "raid_encounter_projection.json",
     "acquisition_verification.json",
     "trainer_visual_sources.json",
-    "trainer_visual_identity_report.json"
+    "trainer_visual_identity_report.json",
+    "trainer_review_sources.json",
+    "trainer_review_report.json"
   ],
   "builders": {
     "build": "node ..\\tools\\standardize_unbound.js",

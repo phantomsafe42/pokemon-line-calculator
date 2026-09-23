@@ -228,9 +228,9 @@
       "required": true,
       "source": "trainer_select_visual_report.json",
       "status": "passed",
-      "resolved": 483,
+      "resolved": 484,
       "variantDependent": 0,
-      "unmapped": 6,
+      "unmapped": 5,
       "scope": "FRO uses FireRed art; PK and Renegade Platinum use Platinum art. Exact ROM selectors, not display names, identify the class. This is presentation policy, not proof of identical ROM artwork."
     }
   },

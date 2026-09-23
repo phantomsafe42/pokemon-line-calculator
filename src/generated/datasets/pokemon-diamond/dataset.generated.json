@@ -2,12 +2,12 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-diamond-dataset",
   "source": "Datasets/Pokemon Diamond/source-data",
-  "sourceTreeSha256": "E5AA59834A8B5F34949358EDB0A632E418E7A21320BD2337B3B5A9F20D50998D",
+  "sourceTreeSha256": "ECF710F83C30641762C78FDCB22E29F7D2CB085EE4F50B4120086125515302E9",
   "files": [
     {
       "path": "dataset_manifest.json",
       "bytes": 100397,
-      "sha256": "EC09823F608331BD1226DF568182423843BEDD10E2C0952CE1FE9CC0BAD24C04"
+      "sha256": "12B1E89CF570D516E1574ED2020DC1BDCAD0726215EAC6748E1CEADB6AAE5347"
     },
     {
       "path": "battle_mechanics.json",
