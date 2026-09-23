@@ -1,6 +1,6 @@
 # Pokemon Line Calculator versions
 
-The current public PLC build is **0.6.0**. Product versions use `x.y.z`:
+The current public PLC build is **0.6.1**. Product versions use `x.y.z`:
 
 - `x` marks a new build generation. The fully distributed build will start at `1.0.0` when its owner approves that milestone.
 - `y` marks a major content addition and resets `z` to zero.
@@ -18,3 +18,7 @@ The following commits are the milestones used to establish the current version. 
 | 0.6.0 | Visual overhaul | `456b3a4` |
 
 The owner designated the current public baseline as `0.6.0`, including the subsequent visual patch already on `main`. Future public pushes should update the package version and lock together, and the generated public-build manifest records that product version. PLC product versions are independent of Dataset and Pokemon Assets release versions and of plan-file schema versions. A version number alone does not authorize a push or tag; publication follows the repository's release workflow.
+
+## 0.6.1 — HP preview display patch
+
+- Preserve the current-turn and prior-turn color classes on the HP fraction/percentage readout when a move preview changes HP. This changes presentation only; damage and battle-state calculations are unchanged.
