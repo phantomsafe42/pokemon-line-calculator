@@ -3251,10 +3251,10 @@ function renderCombatantCard(side, slot, { displaySlot = slot, inspection = null
   statCornerStack.className = "combatant-corner-stats";
   const hpCell = staticDetail("", formatHpRemaining(monState.hp), valueTone(state, displayKey, `combatantStates.${displayKey}.hp`, hpChanged, { previewChanged: previewing && (monState.hp.min !== committedMonState.hp.min || monState.hp.max !== committedMonState.hp.max || monState.hp.maxHp !== committedMonState.hp.maxHp), events: previewEvents }));
   const hpText = formatHpRemaining(monState.hp);
-  const hpReadout = document.createElement('strong'); hpReadout.className = 'hp-readout';
+  const hpReadout = hpCell.querySelector('strong'); hpReadout.classList.add('hp-readout');
   const hpAmount = document.createElement('span'); hpAmount.className = 'hp-amount'; hpAmount.textContent = hpText.split(' (')[0];
   const hpPercent = document.createElement('span'); hpPercent.className = 'hp-percent'; hpPercent.textContent = hpText.split(' (')[1].replace(')', '');
-  hpReadout.append(hpAmount, hpPercent); hpCell.replaceChildren(hpReadout);
+  hpReadout.replaceChildren(hpAmount, hpPercent);
   const statusCell = staticDetail("", monState.majorStatus ? STATUS_LABELS[monState.majorStatus] || monState.majorStatus : "Healthy", valueTone(state, displayKey, `combatantStates.${displayKey}.majorStatus`, statusChanged, { previewChanged: previewing && monState.majorStatus !== committedMonState.majorStatus, events: previewEvents }));
   if (edit) {
     const hpEditor = document.createElement('span'); hpEditor.className = 'hp-editor';
