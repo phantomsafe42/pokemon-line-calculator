@@ -2,6 +2,36 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
+export async function checkDoraDiegoPortrait({page,evaluate,tempRoot}) {
+  await page.send('Emulation.setDeviceMetricsOverride',{width:1280,height:1000,deviceScaleFactor:1,mobile:false});
+  const result=await evaluate(page, `(async()=>{
+    const wait=async(fn,label)=>{for(let i=0;i<500;i++){if(fn())return;await new Promise(r=>setTimeout(r,50));}throw Error(label);};
+    await wait(()=>document.querySelector('.game-picker-option[data-game-id="platinum-kaizo"]:not(:disabled)'), 'PK ready');
+    document.querySelector('.game-picker-option[data-game-id="platinum-kaizo"]').click();
+    await wait(()=>document.getElementById('starter-dialog').open,'starter');
+    document.querySelector('[data-starter-id="turtwig"]').click();
+    document.getElementById('new-plan').click();
+    await wait(()=>document.getElementById('trainer-selector-dialog').open,'selector');
+    let row;
+    for(const tab of document.querySelectorAll('.trainer-split-tabs button')) {
+      tab.click();
+      row=document.querySelector('[data-trainer-id="platinum-kaizo-trainer-0166"]');
+      if(row)break;
+    }
+    if(!row)throw Error('Dora and Diego absent');
+    row.scrollIntoView({block:'center'});
+    await wait(()=>row.querySelector('.trainer-portrait')?.naturalWidth>0,'approved portrait loaded');
+    const img=row.querySelector('.trainer-portrait');await img.decode();
+    return {width:img.naturalWidth,height:img.naturalHeight,url:img.src,missing:row.querySelectorAll('.trainer-sprite-missing').length};
+  })()`,true);
+  assert.equal(result.width,80);assert.equal(result.height,80);assert.equal(result.missing,0);
+  assert.equal(new URL(result.url).searchParams.get('edition'),'beta');
+  const shot=await page.send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});
+  await fs.writeFile(path.join(tempRoot,'dora-diego-approved-portrait.png'),Buffer.from(shot.data,'base64'));
+  assert.deepEqual(page.events.filter(event=>event.method==='Runtime.exceptionThrown'),[]);
+  console.log(JSON.stringify({status:'dora-diego-portrait-browser-valid',...result}));
+}
+
 export async function checkTrainerParticipants({page, evaluate, delay, tempRoot}) {
   const records = JSON.parse(await fs.readFile(new URL('../src/generated/datasets/pokemon-unbound/trainers.json', import.meta.url))).records;
   const expected = Object.fromEntries(Object.values(records).filter(r => r.trainerVisualParticipants?.length)

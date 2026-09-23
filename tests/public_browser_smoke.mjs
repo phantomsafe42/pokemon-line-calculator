@@ -1,4 +1,4 @@
-import { checkTrainerParticipants } from './trainer_participants_browser_checks.mjs';
+import { checkTrainerParticipants, checkDoraDiegoPortrait } from './trainer_participants_browser_checks.mjs';
 import { checkTrainerSplitPreload } from './trainer_split_preload_browser_checks.mjs';
 import { checkTrainerSearch } from './trainer_search_browser_checks.mjs';
 import { checkTrainerBadgeRecovery } from './trainer_badge_browser_checks.mjs';
@@ -310,7 +310,8 @@ try {
       await page.send('Network.setBlockedURLs', { urls: [datasetLock.hosted.origin + '/*'] });
       await page.send('Page.reload', {ignoreCache:true});
     }
-    if (process.env.PLC_TRAINER_PARTICIPANTS_ONLY) await checkTrainerParticipants({page,evaluate,delay,tempRoot});
+    if (process.env.PLC_TRAINER_DORA_ONLY) await checkDoraDiegoPortrait({page,evaluate,tempRoot});
+    else if (process.env.PLC_TRAINER_PARTICIPANTS_ONLY) await checkTrainerParticipants({page,evaluate,delay,tempRoot});
     else if (process.env.PLC_TRAINER_SEARCH_ONLY) await checkTrainerSearch({page,evaluate,delay,tempRoot});
     else if (process.env.PLC_SPLIT_PRELOAD_ONLY) await checkTrainerSplitPreload({page,evaluate,delay,gameId:process.env.PLC_SPLIT_PRELOAD_GAME});
     else if (process.env.PLC_TRAINER_BADGE_RECOVERY_ONLY) await checkTrainerBadgeRecovery({page,evaluate,delay});

@@ -108,7 +108,8 @@ export function trainerSpriteQuery(trainer) {
   if (identity?.status !== 'resolved') return null;
   return { kind: 'trainer-sprite', gameStyle: identity.gameStyle, presentation: identity.presentation,
     subjectKind: identity.subjectKind, subject: identity.subjectId, gender: identity.gender, variant: identity.variant,
-    ...(identity.spriteSet ? { spriteSet: identity.spriteSet } : {}) };
+    ...(identity.spriteSet ? { spriteSet: identity.spriteSet } : {}),
+    ...(identity.edition ? { edition: identity.edition } : {}) };
 }
 
 // Combined encounters carry presentation-only participants, not separate teams.

@@ -222,6 +222,15 @@ test('names and art remain display-only; unresolved selectors and unknown mandat
 });
 
 
+test('explicit approved artwork editions reach the resolver while ordinary portraits retain defaults', () => {
+  const trainer={trainerVisualIdentity:{status:'resolved',gameStyle:'diamond-pearl',presentation:'battle-front',subjectKind:'class',subjectId:'sis-and-bro',gender:'default',variant:'default',spriteSet:'dp',edition:'beta'}};
+  assert.equal(trainerSpriteQuery(trainer).edition,'beta');
+  delete trainer.trainerVisualIdentity.edition;
+  assert.equal(Object.hasOwn(trainerSpriteQuery(trainer),'edition'),false);
+  trainer.trainerVisualIdentity.status='unavailable';
+  assert.equal(trainerSpriteQuery(trainer),null);
+});
+
 test('paired portraits preserve participant order and labels without changing encounter teams', () => {
   const dataset = load('pokemon-unbound');
   const records = Object.values(dataset.documents['trainers.json'].records);
