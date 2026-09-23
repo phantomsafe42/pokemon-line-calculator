@@ -78,7 +78,12 @@ export function trainerRequirement(dataset, trainer, splitId) {
   const ids = trainer.encounter?.enemyTrainerIds || [trainer.id];
   const rows = Object.values(dataset.documents['trainer_order.json'].records || {});
   const flags = ids.map(id => {
-    const matches = rows.filter(row => (row.trainerId === id || row.participantTrainerIds?.includes(id)) && (!row.splitId || row.splitId === splitId));
+    // Starter navigation may select an alternative trainer from this occurrence.
+    // Its requirement belongs to the same battle, while rematch splits stay separate.
+    const matches = rows.filter(row => (!row.splitId || row.splitId === splitId) && (
+      row.trainerId === id || row.participantTrainerIds?.includes(id)
+      || row.mechanicsVariants?.some(variant => variant.trainerId === id)
+    ));
     return matches.some(row => row.mandatory === true) ? true : matches.length && matches.every(row => row.mandatory === false) ? false : null;
   });
   return flags.some(value => value === true) ? 'required' : flags.every(value => value === false) ? 'optional' : 'unknown';

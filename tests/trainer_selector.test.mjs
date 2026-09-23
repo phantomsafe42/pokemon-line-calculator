@@ -201,6 +201,37 @@ test('PK paired encounter stays one choice with owner-specific teams, required f
   assert.deepEqual(requiredIds, [trainer.id, 'platinum-kaizo-trainer-0309', 'platinum-kaizo-trainer-0310']);
 });
 
+test('PK Rival borders remain required for every starter across all five campaign splits', () => {
+  const dataset = load('platinum-kaizo');
+  const before = JSON.stringify(dataset.documents);
+  for (const starter of ['turtwig', 'chimchar', 'piplup']) {
+    const groups = campaignTrainerGroups(dataset.trainerGroups(starter));
+    for (const [split, count] of [['roark', 2], ['maylene', 1], ['wake', 1], ['byron', 1], ['elitefour', 1]]) {
+      const rivals = groups.find(group => group.id === split).trainers.filter(trainer => trainer.displayName === 'Rival');
+      assert.equal(rivals.length, count, `${starter}/${split} Rival inventory`);
+      for (const trainer of rivals) assert.equal(trainerRequirement(dataset, trainer, split), 'required', `${starter}/${split}/${trainer.id}`);
+    }
+    for (const group of groups) for (const trainer of group.trainers)
+      assert.notEqual(trainerRequirement(dataset, trainer, group.id), 'unknown', `${starter}/${group.id}/${trainer.id}`);
+  }
+  assert.equal(JSON.stringify(dataset.documents), before, 'Border lookup must not mutate Dataset data');
+});
+
+test('variant requirement lookup respects rematch splits and preserves optional and unknown states', () => {
+  const dataset = {documents: {'trainer_order.json': {records: [
+    {trainerId: 'base-a', splitId: 'first', mandatory: true, mechanicsVariants: [{trainerId: 'variant'}]},
+    {trainerId: 'base-b', splitId: 'rematch', mandatory: false, mechanicsVariants: [{trainerId: 'variant'}]},
+    {trainerId: 'base-c', splitId: 'first', mandatory: null, mechanicsVariants: [{trainerId: 'unclassified'}]}
+  ]}}};
+  assert.equal(trainerRequirement(dataset, {id: 'variant'}, 'first'), 'required');
+  assert.equal(trainerRequirement(dataset, {id: 'variant'}, 'rematch'), 'optional');
+  assert.equal(trainerRequirement(dataset, {id: 'variant'}, 'unrelated'), 'unknown');
+  assert.equal(trainerRequirement(dataset, {id: 'unclassified'}, 'first'), 'unknown');
+  assert.equal(trainerRequirement(dataset, {id: 'missing', displayName: 'Rival'}, 'first'), 'unknown');
+  assert.equal(trainerRequirement(dataset, {encounter: {enemyTrainerIds: ['variant', 'missing']}}, 'first'), 'required');
+  assert.equal(trainerRequirement(dataset, {encounter: {enemyTrainerIds: ['variant', 'missing']}}, 'rematch'), 'unknown');
+});
+
 test('Elesa renders opening slots left to right while retaining canonical party order', () => {
   const dataset = load('volt-white-2r'), trainer = dataset.trainer('vw2r-trainer-0122');
   const before = structuredClone(trainer.team);
