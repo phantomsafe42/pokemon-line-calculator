@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import { fixtureTriplePlan } from './helpers.mjs';
 import { createDatasetContext, REQUIRED_DATASET_SOURCES } from '../src/adapters/standardized_dataset.js';
 import { triplePositionForSlot } from '../src/rulesets/triple_battle.js';
-import { campaignTrainerGroups, displayBattleLabel, displayTrainerName, trainerDisplayBlocks, trainerRequirement, trainerSpriteQuery, trainerSplitBadgeQuery, trainerSearchIndex, searchTrainerIndex, trainerPortraitFallback, trainerSpriteQueries, preloadTrainerSprites } from '../src/ui/trainer_selector.js';
+import { campaignTrainerGroups, displayBattleLabel, displayTrainerName, trainerDisplayBlocks, trainerRequirement, trainerSpriteQuery, trainerSplitBadgeQuery, trainerSearchIndex, searchTrainerIndex, trainerPortraitFallback, trainerPortraitParticipants, trainerSpriteQueries, preloadTrainerSprites } from '../src/ui/trainer_selector.js';
 
 test('portrait preload deduplicates classes, includes alternatives and participants, and bounds concurrent loads', async () => {
   const identity = subjectId => ({status:'resolved',gameStyle:'platinum',presentation:'battle-front',subjectKind:'character',subjectId,gender:'default',variant:'default'});
@@ -219,4 +219,26 @@ test('names and art remain display-only; unresolved selectors and unknown mandat
   assert.equal(trainerRequirement(dataset,{id:'a'},'s'),'optional');
   assert.equal(trainerRequirement(dataset,{id:'a'},'t'),'required');
   assert.equal(trainerRequirement(dataset,{id:'missing'},'s'),'unknown');
+});
+
+
+test('paired portraits preserve participant order and labels without changing encounter teams', () => {
+  const dataset = load('pokemon-unbound');
+  const records = Object.values(dataset.documents['trainers.json'].records);
+  const before = JSON.stringify(records);
+  const pairs = records.filter(row => row.trainerVisualParticipants?.length);
+  assert.equal(pairs.length, 21);
+  for (const pair of pairs) {
+    const portraits = trainerPortraitParticipants(pair);
+    assert.equal(portraits.length, 2);
+    for (const [index, portrait] of portraits.entries()) {
+      assert.equal(portrait.displayName, pair.trainerVisualParticipants[index].label);
+      assert.equal(portrait.slot, index);
+      assert.ok(trainerSpriteQuery(portrait), pair.id);
+      assert.equal(portrait.team, undefined);
+    }
+  }
+  assert.deepEqual(trainerPortraitParticipants({sourceType:'boss-wild'}), []);
+  assert.deepEqual(trainerPortraitParticipants(null), []);
+  assert.equal(JSON.stringify(records), before);
 });

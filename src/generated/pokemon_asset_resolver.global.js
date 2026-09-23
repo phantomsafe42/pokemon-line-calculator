@@ -269,7 +269,16 @@
     blackbelt: "black-belt", blackbeltf: "black-belt", blackbeltm: "black-belt", pokemaniac: "poke-maniac", pkmnmaniac: "poke-maniac",
     pokekid: "poke-kid", pokemonbreeder: "pokemon-breeder", pokemonranger: "pokemon-ranger", pokemontrainer: "pokemon-trainer",
     teamrocket: "team-rocket-grunt", teamrocketgrunt: "team-rocket-grunt", teamplasmagrunt: "team-plasma-grunt",
-    officeworker: "office-worker", clerk: "office-worker"
+    officeworker: "office-worker", clerk: "office-worker", clerkfemale: "office-worker", clerkmale: "office-worker",
+    belleandpa: "belle-and-pa", bellepa: "belle-and-pa", ranchers: "belle-and-pa",
+    teamaqua: "team-aqua-grunt", teammagma: "team-magma-grunt", plasmatgrunt: "team-plasma-grunt",
+    srandjr: "teammates", winstrate: "winstrate-family", cueball: "roughneck", gamer: "pi", officer: "policeman"
+  });
+  // The game's own set disambiguates reused artwork; never cross gameStyle.
+  const TRAINER_PREFERRED_SPRITE_SETS = Object.freeze({
+    "ruby-sapphire": "rs", emerald: "e", "firered-leafgreen": "frlg",
+    "diamond-pearl": "dp", platinum: "pt", "heartgold-soulsilver": "hgss",
+    "black-white": "bw", "black-2-white-2": "b2w2"
   });
   function trainerSlug(value) {
     return String(value ?? "")
@@ -305,7 +314,10 @@
     const defaultPresentation = ["x-y", "omega-ruby-alpha-sapphire", "sun-moon", "ultra-sun-ultra-moon", "lets-go-pikachu-eevee"].includes(gameStyle) ? "versus" : "battle-front";
     const presentation = presentationAliases[normalizeToken(query.presentation ?? query.view ?? defaultPresentation)];
     if (!presentation) return null;
-    const variant = query.variant == null || query.variant === "" ? null : trainerSlug(query.variant);
+    const rawVariant = query.variant == null || query.variant === "" ? null : trainerSlug(query.variant);
+    // Dataset semantic variants and Archive labels describe the same art.
+    const variant = ["ruby-sapphire", "emerald"].includes(gameStyle) && subjectKind === "class" && subject === "triathlete"
+      ? ({ cycling: "biker", running: "runner", swimming: "swimmer" }[rawVariant] || rawVariant) : rawVariant;
     const locale = trainerSlug(query.locale ?? "international");
     const palette = trainerSlug(query.palette ?? "default");
     const edition = trainerSlug(query.edition ?? "retail");
@@ -705,6 +717,13 @@
           const shared = candidates.filter(candidate => candidate.matchedSelectors.gender === "default");
           if (shared.length) candidates = shared;
         }
+        // Apply only to fully specified semantic identities, after exact matching.
+        // An explicit set stays authoritative and missing gender/variant stays ambiguous.
+        if (!requestedSelectors.spriteSet && requestedSelectors.gender && requestedSelectors.variant) {
+          const preferredSet = TRAINER_PREFERRED_SPRITE_SETS[requestedSelectors.gameStyle];
+          const preferred = candidates.filter(candidate => candidate.matchedSelectors.spriteSet === preferredSet);
+          if (preferred.length) candidates = preferred;
+        }
         const matchingCoverageGaps = (index.coverageGaps || []).filter(gap =>
           Object.entries(requestedSelectors).every(([field, value]) => value === null || gap.selectors?.[field] === value)
         );
@@ -972,6 +991,7 @@
     normalizeItemSpriteQuery,
     normalizeStatusConditionIconQuery,
     normalizeBadgeIconQuery,
-    normalizeTrainerSpriteQuery
+    normalizeTrainerSpriteQuery,
+    normalizeTrainerClass
   });
 })(globalThis);

@@ -111,6 +111,14 @@ export function trainerSpriteQuery(trainer) {
     ...(identity.spriteSet ? { spriteSet: identity.spriteSet } : {}) };
 }
 
+// Combined encounters carry presentation-only participants, not separate teams.
+export function trainerPortraitParticipants(trainer) {
+  return (trainer?.trainerVisualParticipants || []).map(participant => ({
+    ...participant,
+    displayName: participant.label,
+  }));
+}
+
 export function trainerPortraitFallback(trainer) {
   // A missing singular portrait can also describe paired human trainers.
   // Only an explicit wild-battle source may be labeled as a wild encounter.
@@ -263,6 +271,18 @@ export function createTrainerSelector({ dialog, dataset, starterId, resolver, re
   };
   const portrait = (trainer) => {
     const frame = element('div', 'trainer-portrait-frame');
+    const participants = trainerPortraitParticipants(trainer);
+    if (participants.length) {
+      frame.classList.add('trainer-portrait-participants');
+      frame.setAttribute('role', 'group');
+      frame.setAttribute('aria-label', 'Trainer portraits');
+      for (const participant of participants) {
+        const child = portrait(participant);
+        child.title = participant.displayName;
+        frame.append(child);
+      }
+      return frame;
+    }
     const identity = trainer.trainerVisualIdentity;
     if (identity?.status === 'ambiguous' && identity.alternatives?.length
       && identity.alternatives.every(choice => choice.status === 'resolved')) {

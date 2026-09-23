@@ -710,6 +710,8 @@ dialog::backdrop { background: rgba(0, 0, 0, .75); }
 .trainer-format { color:var(--muted); font-size:13px; white-space:nowrap; }
 .trainer-portrait-frame { position:relative; min-height:90px; width:160px; height:160px; align-self:center; overflow:hidden; }
 .trainer-portrait { position:absolute; object-fit:contain; width:100%; height:100%; image-rendering:pixelated; max-width:none; }
+.trainer-portrait-frame.trainer-portrait-participants { display:flex; flex-direction:column; gap:8px; height:auto; min-height:0; }
+.trainer-portrait-participants > .trainer-portrait-frame { flex:none; }
 .trainer-portrait-alternatives { display:flex; gap:4px; }
 .trainer-portrait-alternatives > .trainer-portrait-frame { flex:1; width:0; height:auto; align-self:stretch; min-width:0; }
 .trainer-sprite-missing { display:flex; align-items:center; justify-content:center; height:100%; font-size:12px; color:var(--muted); text-align:center; }

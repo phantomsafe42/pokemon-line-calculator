@@ -1,3 +1,4 @@
+import { checkTrainerParticipants } from './trainer_participants_browser_checks.mjs';
 import { checkTrainerSplitPreload } from './trainer_split_preload_browser_checks.mjs';
 import { checkTrainerSearch } from './trainer_search_browser_checks.mjs';
 import { checkTrainerBadgeRecovery } from './trainer_badge_browser_checks.mjs';
@@ -11,7 +12,7 @@ import http from "node:http";
 import { createServer as createNetServer } from "node:net";
 import path from "node:path";
 import process from "node:process";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { createDatasetContext, REQUIRED_DATASET_SOURCES } from "../src/adapters/standardized_dataset.js";
 import { checkFreeCalcInline } from './free_calc_browser_checks.mjs';
 import { checkSandbox } from './sandbox_browser_checks.mjs';
@@ -35,6 +36,17 @@ const datasetLock = JSON.parse(await fs.readFile(path.join(projectRoot, "dataset
 const assetLock = JSON.parse(await fs.readFile(path.join(projectRoot, "asset-lock.json"), "utf8"));
 const hostedReleaseRoot = `${datasetLock.hosted.origin}/v1/releases/${datasetLock.releaseVersion}`;
 const hostedAssetReleaseRoot = `${assetLock.gateway.origin}/v1/releases/${assetLock.gateway.releaseVersion}`;
+// Opt-in owner worktree for isolated image decoding checks. No deployed routes change.
+const stagedAssetRoot = process.env.PLC_TRAINER_ASSET_ROOT;
+let stagedAssetResolver;
+if (stagedAssetRoot) {
+  await import(pathToFileURL(path.resolve(stagedAssetRoot, 'consumer/pokemon_asset_resolver.global.js')));
+  stagedAssetResolver = globalThis.PokemonAssets.createResolver({baseUrl:'https://staged.invalid', fetch:async url=>{
+    const release=path.resolve(stagedAssetRoot,'release'), target=path.resolve(release, '.'+new URL(url).pathname);
+    if(!target.startsWith(release+path.sep)) return new Response('',{status:403});
+    try {return new Response(await fs.readFile(target));} catch {return new Response('',{status:404});}
+  }});
+}
 const vw2rRoot = path.join(projectRoot, "src/generated/datasets/volt-white-2r");
 const readVw2r = async name => JSON.parse(await fs.readFile(path.join(vw2rRoot, name), "utf8"));
 const vw2rContext = createDatasetContext({
@@ -252,13 +264,21 @@ try {
   await page.send("Runtime.enable");
   await page.send("Page.enable");
   // Serve only this candidate's application files at the production origin.
-  // Dataset and Assets requests remain real HTTPS requests with browser CORS.
+  // Dataset and Assets use real HTTPS with browser CORS unless an explicit
+  // staged owner root is supplied for this local integration test.
   // No public files are written, and the gateway origin policy stays unchanged.
   const interceptionErrors = [];
   page.onEvent(event => {
     if (event.method !== 'Fetch.requestPaused') return;
     void (async () => {
       const { requestId, request } = event.params;
+      if (stagedAssetResolver && request.url.startsWith(hostedAssetReleaseRoot+'/asset?')) {
+        const result=await stagedAssetResolver.resolveAsset(Object.fromEntries(new URL(request.url).searchParams));
+        const bytes=result.status==='ok' ? await fs.readFile(path.resolve(stagedAssetRoot,'release',result.path)) : Buffer.from('Unavailable');
+        await page.send('Fetch.fulfillRequest',{requestId,responseCode:result.status==='ok'?200:404,
+          responseHeaders:[{name:'Content-Type',value:result.mediaType||'text/plain'},{name:'Cross-Origin-Resource-Policy',value:'cross-origin'}],body:bytes.toString('base64')});
+        return;
+      }
       assert.ok(request.url.startsWith(appUrl));
       const response = await fetch(localAppUrl + request.url.slice(appUrl.length));
       await page.send('Fetch.fulfillRequest', {
@@ -268,7 +288,7 @@ try {
       });
     })().catch(error => interceptionErrors.push(String(error)));
   });
-  await page.send('Fetch.enable', { patterns: [{ urlPattern: appUrl + '*', requestStage: 'Request' }] });
+  await page.send('Fetch.enable', { patterns: [{ urlPattern: appUrl + '*', requestStage: 'Request' }, ...(stagedAssetResolver?[{urlPattern:hostedAssetReleaseRoot+'/asset?*',requestStage:'Request'}]:[])] });
   await page.send("Page.addScriptToEvaluateOnNewDocument", { runImmediately: true, source: `
     window.openNewLineForTest = async () => {
       const wait = async fn => { for(let i=0;i<300;i++){if(fn())return;await new Promise(r=>setTimeout(r,50));}throw new Error('New Line flow timed out'); };
@@ -290,7 +310,8 @@ try {
       await page.send('Network.setBlockedURLs', { urls: [datasetLock.hosted.origin + '/*'] });
       await page.send('Page.reload', {ignoreCache:true});
     }
-    if (process.env.PLC_TRAINER_SEARCH_ONLY) await checkTrainerSearch({page,evaluate,delay,tempRoot});
+    if (process.env.PLC_TRAINER_PARTICIPANTS_ONLY) await checkTrainerParticipants({page,evaluate,delay,tempRoot});
+    else if (process.env.PLC_TRAINER_SEARCH_ONLY) await checkTrainerSearch({page,evaluate,delay,tempRoot});
     else if (process.env.PLC_SPLIT_PRELOAD_ONLY) await checkTrainerSplitPreload({page,evaluate,delay,gameId:process.env.PLC_SPLIT_PRELOAD_GAME});
     else if (process.env.PLC_TRAINER_BADGE_RECOVERY_ONLY) await checkTrainerBadgeRecovery({page,evaluate,delay});
     else if (process.env.PLC_VW2R_TRAINER_SPRITES_ONLY) await checkVw2rTrainerSprites({page,evaluate,delay,tempRoot});
