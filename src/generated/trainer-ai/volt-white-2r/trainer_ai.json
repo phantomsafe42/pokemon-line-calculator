@@ -8,7 +8,7 @@
     "profileId": "gen5-b2w2-trainer-ai-v1",
     "sourceGameId": "generation-5",
     "sourceFile": "../../Gen 5/source-data/trainer_ai.json",
-    "sourceSha256": "120c32c3b06307d504104d7a94ea8bdbc169e8728383413eb14c8eb13a58b238",
+    "sourceSha256": "232a4b39c2df754d2787880d67d54a983dd6a7bf69aa76023aa6e6103c0ad4d2",
     "verificationReport": "../../Gen 5/source-data/trainer_ai_verification_report.json",
     "verificationReportSha256": "870f3bfb225a6f91d2359f222ef5594c3a0880af841fa6fbf371e6bc87599768",
     "semanticVerificationReport": "../../Gen 5/source-data/trainer_ai_semantics_verification_report.json",
@@ -26,7 +26,7 @@
     "itemBattleParametersSource": "../../Gen 5/source-data/trainer_ai_item_battle_parameters.json",
     "itemBattleParametersSourceSha256": "4ac6d61d2b26a06b3f5592e7bb078429ff3c851082af37ad5db13de9a89aebca",
     "evaluatorVerificationReport": "../../Gen 5/source-data/trainer_ai_evaluator_verification_report.json",
-    "evaluatorVerificationReportSha256": "f0278174dc419e5da94e77a779d08f01a15e922c064f85f9ee2debb0390bf9a7",
+    "evaluatorVerificationReportSha256": "c80b203806bd2051c4e496c5f50b7e6c9bae311e55a48b35cde9993e7b76f6d0",
     "overrides": [],
     "evidence": "The supported final VW2R ROM a/1/6/9 archive is byte-identical to the pinned clean White 2 archive and every bundled flag binary."
   },

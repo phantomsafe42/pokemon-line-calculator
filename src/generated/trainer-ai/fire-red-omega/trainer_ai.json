@@ -4035,7 +4035,7 @@
       "trainerId": "fire-red-omega-trainer-0174",
       "consumerTrainerId": 174,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1,
       "aiFlagIds": [
         "AI_SCRIPT_CHECK_BAD_MOVE"
@@ -4661,7 +4661,7 @@
       "trainerId": "fire-red-omega-trainer-0204",
       "consumerTrainerId": 204,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1,
       "aiFlagIds": [
         "AI_SCRIPT_CHECK_BAD_MOVE"
@@ -9157,7 +9157,7 @@
       "trainerId": "fire-red-omega-trainer-0407",
       "consumerTrainerId": 407,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1,
       "aiFlagIds": [
         "AI_SCRIPT_CHECK_BAD_MOVE"
@@ -9499,7 +9499,7 @@
       "trainerId": "fire-red-omega-trainer-0423",
       "consumerTrainerId": 423,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1,
       "aiFlagIds": [
         "AI_SCRIPT_CHECK_BAD_MOVE"
@@ -10322,7 +10322,7 @@
       "trainerId": "fire-red-omega-trainer-0462",
       "consumerTrainerId": 462,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1,
       "aiFlagIds": [
         "AI_SCRIPT_CHECK_BAD_MOVE"
@@ -12279,7 +12279,7 @@
       "trainerId": "fire-red-omega-trainer-0549",
       "consumerTrainerId": 549,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1,
       "aiFlagIds": [
         "AI_SCRIPT_CHECK_BAD_MOVE"
@@ -14098,7 +14098,7 @@
       "trainerId": "fire-red-omega-trainer-0622",
       "consumerTrainerId": 622,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1,
       "aiFlagIds": [
         "AI_SCRIPT_CHECK_BAD_MOVE"
@@ -14516,7 +14516,7 @@
       "trainerId": "fire-red-omega-trainer-0641",
       "consumerTrainerId": 641,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1,
       "aiFlagIds": [
         "AI_SCRIPT_CHECK_BAD_MOVE"
@@ -15030,7 +15030,7 @@
       "trainerId": "fire-red-omega-trainer-0666",
       "consumerTrainerId": 666,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 7,
       "aiFlagIds": [
         "AI_SCRIPT_CHECK_BAD_MOVE",

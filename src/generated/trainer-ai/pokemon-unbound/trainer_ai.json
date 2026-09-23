@@ -1572,7 +1572,7 @@
       "trainerId": "pokemon-unbound-trainer-0058",
       "consumerTrainerId": 58,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1,
       "aiFlagIds": [
         "AI_SCRIPT_CHECK_BAD_MOVE"
@@ -1599,7 +1599,7 @@
       "trainerId": "pokemon-unbound-trainer-0059",
       "consumerTrainerId": 59,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1,
       "aiFlagIds": [
         "AI_SCRIPT_CHECK_BAD_MOVE"
@@ -1626,7 +1626,7 @@
       "trainerId": "pokemon-unbound-trainer-0060",
       "consumerTrainerId": 60,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1,
       "aiFlagIds": [
         "AI_SCRIPT_CHECK_BAD_MOVE"
@@ -1653,7 +1653,7 @@
       "trainerId": "pokemon-unbound-trainer-0061",
       "consumerTrainerId": 61,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1,
       "aiFlagIds": [
         "AI_SCRIPT_CHECK_BAD_MOVE"
@@ -6522,7 +6522,7 @@
       "trainerId": "pokemon-unbound-trainer-0247",
       "consumerTrainerId": 247,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 3,
       "aiFlagIds": [
         "AI_SCRIPT_CHECK_BAD_MOVE",
@@ -9224,7 +9224,7 @@
       "trainerId": "pokemon-unbound-trainer-0350",
       "consumerTrainerId": 350,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 3,
       "aiFlagIds": [
         "AI_SCRIPT_CHECK_BAD_MOVE",
@@ -9878,7 +9878,7 @@
       "trainerId": "pokemon-unbound-trainer-0375",
       "consumerTrainerId": 375,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1,
       "aiFlagIds": [
         "AI_SCRIPT_CHECK_BAD_MOVE"
@@ -9904,7 +9904,7 @@
       "trainerId": "pokemon-unbound-trainer-0376",
       "consumerTrainerId": 376,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1,
       "aiFlagIds": [
         "AI_SCRIPT_CHECK_BAD_MOVE"
@@ -9930,7 +9930,7 @@
       "trainerId": "pokemon-unbound-trainer-0377",
       "consumerTrainerId": 377,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1,
       "aiFlagIds": [
         "AI_SCRIPT_CHECK_BAD_MOVE"
@@ -9956,7 +9956,7 @@
       "trainerId": "pokemon-unbound-trainer-0378",
       "consumerTrainerId": 378,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1,
       "aiFlagIds": [
         "AI_SCRIPT_CHECK_BAD_MOVE"
@@ -10438,7 +10438,7 @@
       "trainerId": "pokemon-unbound-trainer-0396",
       "consumerTrainerId": 396,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 3,
       "aiFlagIds": [
         "AI_SCRIPT_CHECK_BAD_MOVE",
@@ -10465,7 +10465,7 @@
       "trainerId": "pokemon-unbound-trainer-0397",
       "consumerTrainerId": 397,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1,
       "aiFlagIds": [
         "AI_SCRIPT_CHECK_BAD_MOVE"
@@ -10491,7 +10491,7 @@
       "trainerId": "pokemon-unbound-trainer-0398",
       "consumerTrainerId": 398,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 3,
       "aiFlagIds": [
         "AI_SCRIPT_CHECK_BAD_MOVE",

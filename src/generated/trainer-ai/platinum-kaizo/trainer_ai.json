@@ -518,7 +518,7 @@
       "trainerId": "platinum-kaizo-trainer-0025",
       "consumerTrainerId": 25,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 111,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -568,7 +568,7 @@
       "trainerId": "platinum-kaizo-trainer-0027",
       "consumerTrainerId": 27,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 103,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -615,7 +615,7 @@
       "trainerId": "platinum-kaizo-trainer-0029",
       "consumerTrainerId": 29,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 135,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -639,7 +639,7 @@
       "trainerId": "platinum-kaizo-trainer-0030",
       "consumerTrainerId": 30,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 135,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -2022,7 +2022,7 @@
       "trainerId": "platinum-kaizo-trainer-0119",
       "consumerTrainerId": 119,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 135,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -2046,7 +2046,7 @@
       "trainerId": "platinum-kaizo-trainer-0120",
       "consumerTrainerId": 120,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 135,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -2593,7 +2593,7 @@
       "trainerId": "platinum-kaizo-trainer-0166",
       "consumerTrainerId": 166,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 7,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -2665,7 +2665,7 @@
       "trainerId": "platinum-kaizo-trainer-0173",
       "consumerTrainerId": 173,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 399,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -2715,7 +2715,7 @@
       "trainerId": "platinum-kaizo-trainer-0175",
       "consumerTrainerId": 175,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1159,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -2791,7 +2791,7 @@
       "trainerId": "platinum-kaizo-trainer-0180",
       "consumerTrainerId": 180,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 263,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -3080,7 +3080,7 @@
       "trainerId": "platinum-kaizo-trainer-0201",
       "consumerTrainerId": 201,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1431,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -3107,7 +3107,7 @@
       "trainerId": "platinum-kaizo-trainer-0202",
       "consumerTrainerId": 202,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1047,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -3132,7 +3132,7 @@
       "trainerId": "platinum-kaizo-trainer-0203",
       "consumerTrainerId": 203,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1087,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -3514,7 +3514,7 @@
       "trainerId": "platinum-kaizo-trainer-0239",
       "consumerTrainerId": 239,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 15,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -3970,7 +3970,7 @@
       "trainerId": "platinum-kaizo-trainer-0282",
       "consumerTrainerId": 282,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1159,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -4041,7 +4041,7 @@
       "trainerId": "platinum-kaizo-trainer-0286",
       "consumerTrainerId": 286,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1159,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -4066,7 +4066,7 @@
       "trainerId": "platinum-kaizo-trainer-0288",
       "consumerTrainerId": 288,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1175,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -4092,7 +4092,7 @@
       "trainerId": "platinum-kaizo-trainer-0289",
       "consumerTrainerId": 289,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1183,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -4411,7 +4411,7 @@
       "trainerId": "platinum-kaizo-trainer-0305",
       "consumerTrainerId": 305,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1439,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -4675,7 +4675,7 @@
       "trainerId": "platinum-kaizo-trainer-0320",
       "consumerTrainerId": 320,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1039,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -4912,7 +4912,7 @@
       "trainerId": "platinum-kaizo-trainer-0333",
       "consumerTrainerId": 333,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 7,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -4935,7 +4935,7 @@
       "trainerId": "platinum-kaizo-trainer-0335",
       "consumerTrainerId": 335,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1159,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -4960,7 +4960,7 @@
       "trainerId": "platinum-kaizo-trainer-0337",
       "consumerTrainerId": 337,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1159,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -5104,7 +5104,7 @@
       "trainerId": "platinum-kaizo-trainer-0344",
       "consumerTrainerId": 344,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 15,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -5151,7 +5151,7 @@
       "trainerId": "platinum-kaizo-trainer-0349",
       "consumerTrainerId": 349,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 7,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -5247,7 +5247,7 @@
       "trainerId": "platinum-kaizo-trainer-0359",
       "consumerTrainerId": 359,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 231,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -5345,7 +5345,7 @@
       "trainerId": "platinum-kaizo-trainer-0372",
       "consumerTrainerId": 372,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1679,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -5372,7 +5372,7 @@
       "trainerId": "platinum-kaizo-trainer-0373",
       "consumerTrainerId": 373,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 287,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -5421,7 +5421,7 @@
       "trainerId": "platinum-kaizo-trainer-0378",
       "consumerTrainerId": 378,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 15,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -5445,7 +5445,7 @@
       "trainerId": "platinum-kaizo-trainer-0379",
       "consumerTrainerId": 379,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 167,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -5470,7 +5470,7 @@
       "trainerId": "platinum-kaizo-trainer-0380",
       "consumerTrainerId": 380,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1191,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -5520,7 +5520,7 @@
       "trainerId": "platinum-kaizo-trainer-0383",
       "consumerTrainerId": 383,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1487,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -5548,7 +5548,7 @@
       "trainerId": "platinum-kaizo-trainer-0386",
       "consumerTrainerId": 386,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 7,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -5571,7 +5571,7 @@
       "trainerId": "platinum-kaizo-trainer-0388",
       "consumerTrainerId": 388,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1183,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -5598,7 +5598,7 @@
       "trainerId": "platinum-kaizo-trainer-0390",
       "consumerTrainerId": 390,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1063,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -5623,7 +5623,7 @@
       "trainerId": "platinum-kaizo-trainer-0392",
       "consumerTrainerId": 392,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1183,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -5650,7 +5650,7 @@
       "trainerId": "platinum-kaizo-trainer-0394",
       "consumerTrainerId": 394,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1079,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -5676,7 +5676,7 @@
       "trainerId": "platinum-kaizo-trainer-0395",
       "consumerTrainerId": 395,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1415,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -5702,7 +5702,7 @@
       "trainerId": "platinum-kaizo-trainer-0397",
       "consumerTrainerId": 397,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 23,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -5726,7 +5726,7 @@
       "trainerId": "platinum-kaizo-trainer-0398",
       "consumerTrainerId": 398,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 407,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -5752,7 +5752,7 @@
       "trainerId": "platinum-kaizo-trainer-0399",
       "consumerTrainerId": 399,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 135,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -5799,7 +5799,7 @@
       "trainerId": "platinum-kaizo-trainer-0405",
       "consumerTrainerId": 405,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1159,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -5848,7 +5848,7 @@
       "trainerId": "platinum-kaizo-trainer-0407",
       "consumerTrainerId": 407,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 143,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -5873,7 +5873,7 @@
       "trainerId": "platinum-kaizo-trainer-0408",
       "consumerTrainerId": 408,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1167,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -5949,7 +5949,7 @@
       "trainerId": "platinum-kaizo-trainer-0411",
       "consumerTrainerId": 411,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 287,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -5975,7 +5975,7 @@
       "trainerId": "platinum-kaizo-trainer-0413",
       "consumerTrainerId": 413,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 279,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -6000,7 +6000,7 @@
       "trainerId": "platinum-kaizo-trainer-0414",
       "consumerTrainerId": 414,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 543,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -6026,7 +6026,7 @@
       "trainerId": "platinum-kaizo-trainer-0415",
       "consumerTrainerId": 415,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 199,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -6051,7 +6051,7 @@
       "trainerId": "platinum-kaizo-trainer-0416",
       "consumerTrainerId": 416,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 271,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -6076,7 +6076,7 @@
       "trainerId": "platinum-kaizo-trainer-0417",
       "consumerTrainerId": 417,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1159,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -6101,7 +6101,7 @@
       "trainerId": "platinum-kaizo-trainer-0418",
       "consumerTrainerId": 418,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1423,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -6128,7 +6128,7 @@
       "trainerId": "platinum-kaizo-trainer-0419",
       "consumerTrainerId": 419,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1159,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -6153,7 +6153,7 @@
       "trainerId": "platinum-kaizo-trainer-0420",
       "consumerTrainerId": 420,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1183,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -6252,7 +6252,7 @@
       "trainerId": "platinum-kaizo-trainer-0425",
       "consumerTrainerId": 425,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 135,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -6276,7 +6276,7 @@
       "trainerId": "platinum-kaizo-trainer-0426",
       "consumerTrainerId": 426,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1167,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -6302,7 +6302,7 @@
       "trainerId": "platinum-kaizo-trainer-0427",
       "consumerTrainerId": 427,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1175,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -6328,7 +6328,7 @@
       "trainerId": "platinum-kaizo-trainer-0432",
       "consumerTrainerId": 432,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 143,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -6353,7 +6353,7 @@
       "trainerId": "platinum-kaizo-trainer-0433",
       "consumerTrainerId": 433,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1191,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -6379,7 +6379,7 @@
       "trainerId": "platinum-kaizo-trainer-0435",
       "consumerTrainerId": 435,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1055,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -6405,7 +6405,7 @@
       "trainerId": "platinum-kaizo-trainer-0436",
       "consumerTrainerId": 436,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1055,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -6486,7 +6486,7 @@
       "trainerId": "platinum-kaizo-trainer-0443",
       "consumerTrainerId": 443,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1423,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -6513,7 +6513,7 @@
       "trainerId": "platinum-kaizo-trainer-0447",
       "consumerTrainerId": 447,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1047,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -6538,7 +6538,7 @@
       "trainerId": "platinum-kaizo-trainer-0450",
       "consumerTrainerId": 450,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 527,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -6587,7 +6587,7 @@
       "trainerId": "platinum-kaizo-trainer-0452",
       "consumerTrainerId": 452,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1183,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -6614,7 +6614,7 @@
       "trainerId": "platinum-kaizo-trainer-0453",
       "consumerTrainerId": 453,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 135,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -6638,7 +6638,7 @@
       "trainerId": "platinum-kaizo-trainer-0454",
       "consumerTrainerId": 454,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 2047,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -6669,7 +6669,7 @@
       "trainerId": "platinum-kaizo-trainer-0455",
       "consumerTrainerId": 455,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 2047,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -6723,7 +6723,7 @@
       "trainerId": "platinum-kaizo-trainer-0457",
       "consumerTrainerId": 457,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 159,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -6749,7 +6749,7 @@
       "trainerId": "platinum-kaizo-trainer-0458",
       "consumerTrainerId": 458,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 167,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -6774,7 +6774,7 @@
       "trainerId": "platinum-kaizo-trainer-0459",
       "consumerTrainerId": 459,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1159,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -6799,7 +6799,7 @@
       "trainerId": "platinum-kaizo-trainer-0460",
       "consumerTrainerId": 460,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 7,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -6822,7 +6822,7 @@
       "trainerId": "platinum-kaizo-trainer-0461",
       "consumerTrainerId": 461,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1079,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -6848,7 +6848,7 @@
       "trainerId": "platinum-kaizo-trainer-0462",
       "consumerTrainerId": 462,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1047,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -6873,7 +6873,7 @@
       "trainerId": "platinum-kaizo-trainer-0463",
       "consumerTrainerId": 463,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 175,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -6899,7 +6899,7 @@
       "trainerId": "platinum-kaizo-trainer-0464",
       "consumerTrainerId": 464,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 135,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -7064,7 +7064,7 @@
       "trainerId": "platinum-kaizo-trainer-0492",
       "consumerTrainerId": 492,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 143,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -7089,7 +7089,7 @@
       "trainerId": "platinum-kaizo-trainer-0496",
       "consumerTrainerId": 496,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1167,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -7163,7 +7163,7 @@
       "trainerId": "platinum-kaizo-trainer-0499",
       "consumerTrainerId": 499,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 55,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -7188,7 +7188,7 @@
       "trainerId": "platinum-kaizo-trainer-0500",
       "consumerTrainerId": 500,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1335,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -7215,7 +7215,7 @@
       "trainerId": "platinum-kaizo-trainer-0504",
       "consumerTrainerId": 504,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1423,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -7242,7 +7242,7 @@
       "trainerId": "platinum-kaizo-trainer-0505",
       "consumerTrainerId": 505,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 279,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -7267,7 +7267,7 @@
       "trainerId": "platinum-kaizo-trainer-0506",
       "consumerTrainerId": 506,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 15,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -7291,7 +7291,7 @@
       "trainerId": "platinum-kaizo-trainer-0507",
       "consumerTrainerId": 507,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 527,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -7316,7 +7316,7 @@
       "trainerId": "platinum-kaizo-trainer-0508",
       "consumerTrainerId": 508,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1167,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -7390,7 +7390,7 @@
       "trainerId": "platinum-kaizo-trainer-0511",
       "consumerTrainerId": 511,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1199,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -7440,7 +7440,7 @@
       "trainerId": "platinum-kaizo-trainer-0513",
       "consumerTrainerId": 513,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1423,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -7540,7 +7540,7 @@
       "trainerId": "platinum-kaizo-trainer-0521",
       "consumerTrainerId": 521,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1159,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -7616,7 +7616,7 @@
       "trainerId": "platinum-kaizo-trainer-0527",
       "consumerTrainerId": 527,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 167,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -7641,7 +7641,7 @@
       "trainerId": "platinum-kaizo-trainer-0528",
       "consumerTrainerId": 528,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 231,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -7722,7 +7722,7 @@
       "trainerId": "platinum-kaizo-trainer-0531",
       "consumerTrainerId": 531,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1679,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -7749,7 +7749,7 @@
       "trainerId": "platinum-kaizo-trainer-0532",
       "consumerTrainerId": 532,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 47,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -7872,7 +7872,7 @@
       "trainerId": "platinum-kaizo-trainer-0541",
       "consumerTrainerId": 541,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1039,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -7897,7 +7897,7 @@
       "trainerId": "platinum-kaizo-trainer-0542",
       "consumerTrainerId": 542,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1415,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -8106,7 +8106,7 @@
       "trainerId": "platinum-kaizo-trainer-0551",
       "consumerTrainerId": 551,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1175,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -8132,7 +8132,7 @@
       "trainerId": "platinum-kaizo-trainer-0553",
       "consumerTrainerId": 553,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 15,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -8156,7 +8156,7 @@
       "trainerId": "platinum-kaizo-trainer-0554",
       "consumerTrainerId": 554,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 271,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -8208,7 +8208,7 @@
       "trainerId": "platinum-kaizo-trainer-0557",
       "consumerTrainerId": 557,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 7,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -8231,7 +8231,7 @@
       "trainerId": "platinum-kaizo-trainer-0558",
       "consumerTrainerId": 558,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 39,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -8255,7 +8255,7 @@
       "trainerId": "platinum-kaizo-trainer-0559",
       "consumerTrainerId": 559,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1160,
       "aiFlagIds": [
         "AI_FLAG_SETUP_FIRST_TURN",
@@ -8303,7 +8303,7 @@
       "trainerId": "platinum-kaizo-trainer-0562",
       "consumerTrainerId": 562,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1167,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -8329,7 +8329,7 @@
       "trainerId": "platinum-kaizo-trainer-0564",
       "consumerTrainerId": 564,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 135,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -8353,7 +8353,7 @@
       "trainerId": "platinum-kaizo-trainer-0565",
       "consumerTrainerId": 565,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1031,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -8377,7 +8377,7 @@
       "trainerId": "platinum-kaizo-trainer-0566",
       "consumerTrainerId": 566,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 7,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -8400,7 +8400,7 @@
       "trainerId": "platinum-kaizo-trainer-0567",
       "consumerTrainerId": 567,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 143,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -8498,7 +8498,7 @@
       "trainerId": "platinum-kaizo-trainer-0572",
       "consumerTrainerId": 572,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1495,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -8526,7 +8526,7 @@
       "trainerId": "platinum-kaizo-trainer-0581",
       "consumerTrainerId": 581,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 135,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -8550,7 +8550,7 @@
       "trainerId": "platinum-kaizo-trainer-0582",
       "consumerTrainerId": 582,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1439,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -8578,7 +8578,7 @@
       "trainerId": "platinum-kaizo-trainer-0583",
       "consumerTrainerId": 583,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1439,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -8958,7 +8958,7 @@
       "trainerId": "platinum-kaizo-trainer-0628",
       "consumerTrainerId": 628,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 135,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -8982,7 +8982,7 @@
       "trainerId": "platinum-kaizo-trainer-0629",
       "consumerTrainerId": 629,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 7,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -9005,7 +9005,7 @@
       "trainerId": "platinum-kaizo-trainer-0630",
       "consumerTrainerId": 630,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 7,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -9052,7 +9052,7 @@
       "trainerId": "platinum-kaizo-trainer-0632",
       "consumerTrainerId": 632,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 7,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -9075,7 +9075,7 @@
       "trainerId": "platinum-kaizo-trainer-0638",
       "consumerTrainerId": 638,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 7,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -9145,7 +9145,7 @@
       "trainerId": "platinum-kaizo-trainer-0642",
       "consumerTrainerId": 642,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 263,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -9169,7 +9169,7 @@
       "trainerId": "platinum-kaizo-trainer-0643",
       "consumerTrainerId": 643,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 7,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -9411,7 +9411,7 @@
       "trainerId": "platinum-kaizo-trainer-0688",
       "consumerTrainerId": 688,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1039,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -9436,7 +9436,7 @@
       "trainerId": "platinum-kaizo-trainer-0689",
       "consumerTrainerId": 689,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1167,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -9462,7 +9462,7 @@
       "trainerId": "platinum-kaizo-trainer-0690",
       "consumerTrainerId": 690,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1167,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -9488,7 +9488,7 @@
       "trainerId": "platinum-kaizo-trainer-0691",
       "consumerTrainerId": 691,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1167,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -9514,7 +9514,7 @@
       "trainerId": "platinum-kaizo-trainer-0692",
       "consumerTrainerId": 692,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1167,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -9540,7 +9540,7 @@
       "trainerId": "platinum-kaizo-trainer-0693",
       "consumerTrainerId": 693,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1167,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -9566,7 +9566,7 @@
       "trainerId": "platinum-kaizo-trainer-0694",
       "consumerTrainerId": 694,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1167,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -9592,7 +9592,7 @@
       "trainerId": "platinum-kaizo-trainer-0695",
       "consumerTrainerId": 695,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1167,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -9826,7 +9826,7 @@
       "trainerId": "platinum-kaizo-trainer-0835",
       "consumerTrainerId": 835,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1159,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -9851,7 +9851,7 @@
       "trainerId": "platinum-kaizo-trainer-0836",
       "consumerTrainerId": 836,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1159,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -9971,7 +9971,7 @@
       "trainerId": "platinum-kaizo-trainer-0848",
       "consumerTrainerId": 848,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 287,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -10522,7 +10522,7 @@
       "trainerId": "platinum-kaizo-trainer-0909",
       "consumerTrainerId": 909,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 151,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -10547,7 +10547,7 @@
       "trainerId": "platinum-kaizo-trainer-0910",
       "consumerTrainerId": 910,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 231,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -10742,7 +10742,7 @@
       "trainerId": "platinum-kaizo-trainer-0918",
       "consumerTrainerId": 918,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1311,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -10961,7 +10961,7 @@
       "trainerId": "platinum-kaizo-trainer-0927",
       "consumerTrainerId": 927,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1190,
       "aiFlagIds": [
         "AI_FLAG_EVAL_ATTACK",
@@ -11080,7 +11080,7 @@
       "trainerId": "platinum-kaizo-trainer-0932",
       "consumerTrainerId": 932,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1055,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -11106,7 +11106,7 @@
       "trainerId": "platinum-kaizo-trainer-0933",
       "consumerTrainerId": 933,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1047,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -11131,7 +11131,7 @@
       "trainerId": "platinum-kaizo-trainer-0934",
       "consumerTrainerId": 934,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1159,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -11278,7 +11278,7 @@
       "trainerId": "platinum-kaizo-trainer-0940",
       "consumerTrainerId": 940,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 135,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -11349,7 +11349,7 @@
       "trainerId": "platinum-kaizo-trainer-0943",
       "consumerTrainerId": 943,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 143,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -11374,7 +11374,7 @@
       "trainerId": "platinum-kaizo-trainer-0944",
       "consumerTrainerId": 944,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1615,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -11401,7 +11401,7 @@
       "trainerId": "platinum-kaizo-trainer-0945",
       "consumerTrainerId": 945,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 15,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -11448,7 +11448,7 @@
       "trainerId": "platinum-kaizo-trainer-0947",
       "consumerTrainerId": 947,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1159,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -11497,7 +11497,7 @@
       "trainerId": "platinum-kaizo-trainer-0949",
       "consumerTrainerId": 949,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1167,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -11523,7 +11523,7 @@
       "trainerId": "platinum-kaizo-trainer-0950",
       "consumerTrainerId": 950,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 399,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -11549,7 +11549,7 @@
       "trainerId": "platinum-kaizo-trainer-0951",
       "consumerTrainerId": 951,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1287,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -11644,7 +11644,7 @@
       "trainerId": "platinum-kaizo-trainer-0955",
       "consumerTrainerId": 955,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1159,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -11741,7 +11741,7 @@
       "trainerId": "platinum-kaizo-trainer-0959",
       "consumerTrainerId": 959,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 1175,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
@@ -11790,7 +11790,7 @@
       "trainerId": "platinum-kaizo-trainer-0961",
       "consumerTrainerId": 961,
       "battleProfileId": "default",
-      "battleFormat": "single",
+      "battleFormat": "double",
       "aiMask": 7,
       "aiFlagIds": [
         "AI_FLAG_BASIC",
