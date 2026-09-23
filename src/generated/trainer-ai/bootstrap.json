@@ -1176,15 +1176,15 @@
     },
     {
       "path": "Gen 3/source-data/trainer_ai.json",
-      "sha256": "5b3e7df4a65f002837e528baf37711d3d8d05c1e2333ca42bc7cbadef63de931"
+      "sha256": "ff2fee0883fd3c24ad0f639121236d756fff423a8bcbc6e976b385f5b0c459ed"
     },
     {
       "path": "Gen 4/source-data/trainer_ai.json",
-      "sha256": "272b7392bdbedafd39b26c3895147b09c4fe6caa33f402d2c89518da93ea4bf1"
+      "sha256": "c1952f5cbbae2621fc4911a7acf75bbae285eb326cfd72aada7b18e6d64b7f2a"
     },
     {
       "path": "Gen 5/source-data/trainer_ai.json",
-      "sha256": "120c32c3b06307d504104d7a94ea8bdbc169e8728383413eb14c8eb13a58b238"
+      "sha256": "232a4b39c2df754d2787880d67d54a983dd6a7bf69aa76023aa6e6103c0ad4d2"
     },
     {
       "path": "Gen 5/source-data/trainer_ai_ability_knowledge.json",
@@ -1344,7 +1344,7 @@
     },
     {
       "path": "consumer_exports.json",
-      "sha256": "638c97f338100df9905f2fe302559dd804febfea5fcfd936c44c35503fde8c21"
+      "sha256": "05fa23c6a51490977d8607e87f66293cfc9660aa4d68bc62760f963609d0aefb"
     }
   ]
 }

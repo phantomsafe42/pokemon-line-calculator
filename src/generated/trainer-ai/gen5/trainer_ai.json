@@ -11024,7 +11024,7 @@
       ],
       "scoreReasonBuilder": {
         "file": "../../tools/trainer_ai_score_reasons.js",
-        "sha256": "a3dea563a15e80e7315c9d87ac4047a054f1d1623d7f700a0096740d3db59808"
+        "sha256": "42c772b39678ac3da0aae5a67354863fc7e16042e9f4e094238e8754dc350144"
       }
     },
     "numericModel": {
@@ -305205,7 +305205,7 @@
     "digest": {
       "algorithm": "sha256",
       "canonicalPayload": "JSON.stringify(evaluator without digest)",
-      "value": "805f27727fe4f1778c186b25b6a2ef87f144c4ebf18bb5d18aa94e2720921d42"
+      "value": "cee298bdbe74e05baf818c0e9fb3d85b92663530e3d54056d2e7ac013a54fa63"
     },
     "scoreTitleCoverage": {
       "scoreInstructions": 526,
