@@ -276,8 +276,8 @@ function validateAction(side, slot, action, plan, state, dataset, moveSupport, l
   }
   if (support.operations?.some(operation => operation.kind === "self-switch")) {
     const switchToKey = action.mechanicActivations?.find(entry => entry?.id === "after-move-switch")?.switchToKey;
-    const replacement = plan.combatants[switchToKey];
-    if (!belongsToSlotParty(plan, replacement, side, slot) || activeKeys(state, side).includes(switchToKey) || Number(state.combatantStates[switchToKey]?.hp?.max) <= 0) {
+    const reserves = eligibleReserves(plan, state, side, slot);
+    if ((switchToKey || reserves.length) && !reserves.some(mon => mon.combatantKey === switchToKey)) {
       throw new ResolutionError(`${move.name} needs a legal after-move switch-in`);
     }
   }
@@ -2008,7 +2008,14 @@ function applyStructuredOperation(branch, context, operation) {
     if (Number(branch.state.combatantStates[actorKey]?.hp?.max) <= 0) return [branch];
     const switchToKey = action?.mechanicActivations?.find(entry => entry?.id === "after-move-switch")?.switchToKey;
     const slot = actorSlot(branch.state, side, actorKey);
-    if (slot < 0 || !switchToKey) return [branch];
+    if (slot < 0) return [branch];
+    if (!eligibleReserves(plan, branch.state, side, slot).some(mon => mon.combatantKey === switchToKey)) {
+      if (String(move.category).toLowerCase() === "status") event(branch, {
+        eventType: "move-failed", actorKey, moveId: move.id,
+        metadata: { reason: "no-switch-in", resultLabel: `${move.name} failed: no eligible switch-in` }
+      });
+      return [branch];
+    }
     return applySwitch(branch, side, slot, { actionType: "switch", actorKey, switchToKey, switchKind: "pivot", switchMode: operation.switchMode }, plan, dataset);
   }
   if (operation.kind === "force-switch") {

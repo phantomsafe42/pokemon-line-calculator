@@ -21,6 +21,40 @@ export async function checkMoveSelection({page,evaluate,delay,dataset}) {
     }
     throw new Error('Move toggle fixture import failed');
   };
+  for (const moveId of ['uturn','voltswitch','batonpass']) for (const reserves of [false,true]) {
+    const switchPlayers = structuredClone(reserves ? players.slice(0,2) : players.slice(0,1));
+    switchPlayers[0].moves = [{moveId,maxPp:dataset.get('moves',moveId).pp}];
+    const switchEnemies = structuredClone(enemies);
+    switchEnemies.forEach(mon => { mon.moves = [{moveId:'tackle',maxPp:35}]; });
+    const plan = createPlanDocument({name:`Switch ${moveId} ${reserves}`,dataset,trainerId:trainer.id,
+      playerCombatants:switchPlayers,enemyCombatants:switchEnemies,battleFormat:'singles'});
+    await upload(plan);
+    await evaluate(page,`(() => {
+      document.querySelector('#player-action-panel .move-button').click();
+      document.querySelector('#enemy-action-panel .move-button').click();
+    })()`);
+    await delay(300);
+    const control = await evaluate(page,`(() => {
+      const select=document.querySelector('#player-action-panel .action-aux select');
+      return {disabled:select.disabled,text:select.selectedOptions[0].textContent,count:select.options.length};
+    })()`);
+    assert.equal(control.disabled,!reserves);
+    if (reserves) {
+      assert.equal(await evaluate(page,`document.getElementById('commit-turn').disabled`),true);
+      await evaluate(page,`(() => {
+        const select=document.querySelector('#player-action-panel .action-aux select');
+        select.selectedIndex=1;select.dispatchEvent(new Event('change',{bubbles:true}));
+      })()`);
+    } else assert.match(control.text,moveId==='batonpass'?/Fails/:/No switch/);
+    let ready=false;
+    for(let i=0;i<100;i++) {
+      ready=await evaluate(page,`!document.getElementById('commit-turn').disabled`);
+      if(ready)break;
+      await delay(100);
+    }
+    assert.equal(ready,true,`${moveId} reserves=${reserves} can resolve`);
+    if (!reserves && moveId==='batonpass') assert.match(await evaluate(page,`document.getElementById('preview-outcomes').textContent`),/failed.*no eligible switch-in/i);
+  }
   const modes=['normal','free-calc'];
   if(await evaluate(page,`Boolean(document.querySelector('#context-mode-select option[value="sandbox"]'))`))modes.push('sandbox');
   for(const mode of modes)for(const format of ['singles','doubles','triples','rotation']) {
