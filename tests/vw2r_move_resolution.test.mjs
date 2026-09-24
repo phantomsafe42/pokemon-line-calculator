@@ -48,6 +48,49 @@ function vw2rFixture(moveId) {
   return { ...result, playerKey, enemyKey: result.enemies[0].combatantKey };
 }
 
+for (const moveId of ["uturn", "voltswitch", "batonpass"]) {
+  for (const reserveState of ["absent", "fainted", "other-owner"]) {
+    test(`${moveId} resolves without a switch-in when reserves are ${reserveState}`, () => {
+      const { dataset, plan, playerKey, enemyKey } = vw2rFixture(moveId);
+      const root = plan.stateNodes[plan.initialStateNodeId];
+      root.combatantStates[enemyKey].currentAbilityId = "";
+      for (const mon of Object.values(plan.combatants).filter(mon => mon.side === "player" && mon.combatantKey !== playerKey)) {
+        if (reserveState === "absent") {
+          delete plan.combatants[mon.combatantKey];
+          delete root.combatantStates[mon.combatantKey];
+        } else if (reserveState === "fainted") root.combatantStates[mon.combatantKey].hp = { min: 0, max: 0 };
+        else mon.source.partyOwnerId = "partner";
+      }
+      if (reserveState === "other-owner") {
+        plan.game.partyOwnership = { player: { slotOwnerIds: ["player"] } };
+        plan.combatants[playerKey].source.partyOwnerId = "player";
+      }
+      const pp = root.combatantStates[playerKey].movePp[moveId];
+      const outcomes = resolveTurn({ plan, parentStateNodeId: plan.initialStateNodeId,
+        actions: { player: action(playerKey, moveId, [moveId === "batonpass" ? playerKey : enemyKey]), enemy: action(enemyKey, "tackle", [playerKey]) },
+        dataset, damageAdapter: damageAdapter(() => [10]) });
+      assert.ok(outcomes.length);
+      for (const outcome of outcomes) {
+        assert.equal(outcome.state.active.playerCombatantKeys[0], playerKey);
+        assert.equal(outcome.state.combatantStates[playerKey].movePp[moveId], pp - 1);
+        assert.equal(outcome.events.some(entry => entry.eventType === "move-failed" && entry.moveId === moveId && entry.metadata.reason === "no-switch-in"), moveId === "batonpass");
+        assert.equal(outcome.events.some(entry => entry.eventType === "damage" && entry.moveId === moveId), moveId !== "batonpass");
+      }
+    });
+  }
+  test(`${moveId} still requires and uses an eligible switch-in`, () => {
+    const { dataset, plan, playerKey, enemyKey } = vw2rFixture(moveId);
+    const benchKey = Object.values(plan.combatants).find(mon => mon.side === "player" && mon.combatantKey !== playerKey).combatantKey;
+    const actions = { player: action(playerKey, moveId, [moveId === "batonpass" ? playerKey : enemyKey]), enemy: action(enemyKey, "tackle", [playerKey]) };
+    const run = () => resolveTurn({ plan, parentStateNodeId: plan.initialStateNodeId, actions, dataset, damageAdapter: damageAdapter(() => [10]) });
+    assert.throws(run, /legal after-move switch-in/);
+    actions.player.mechanicActivations = [{ id: "after-move-switch", switchToKey: enemyKey }];
+    assert.throws(run, /legal after-move switch-in/);
+    actions.player.mechanicActivations[0].switchToKey = benchKey;
+    for (const outcome of run()) assert.equal(outcome.state.active.playerCombatantKeys[0], benchKey);
+  });
+}
+
 function teachEnemyMove({ dataset, plan, enemyKey }, moveId) {
   dataset.indexes.moves.set(moveId, vw2rMoves[moveId]);
   plan.combatants[enemyKey].moves = [{ moveId, maxPp: vw2rMoves[moveId].pp }];

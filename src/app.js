@@ -2856,15 +2856,19 @@ function renderActionAux(container, side, slot, actorKey, move, support, draft) 
   }
   const handlerId = support.specialHandlerId;
   const selfSwitch = support.operations?.some(operation => operation.kind === "self-switch");
+  const switchChoices = selfSwitch ? possibleSwitches(state, side, slot) : [];
   const needsCalledMove = ["call-party-move", "call-random-move", "sleep-talk"].includes(handlerId);
   const needsConversion = handlerId === "conversion-2";
   if (selfSwitch || needsCalledMove || needsConversion) {
     const label = document.createElement("label");
     label.textContent = selfSwitch ? "Switch in after move" : needsConversion ? "Resulting type" : "Called move";
     const select = document.createElement("select");
-    select.append(option("", "Select…"));
+    select.append(option("", selfSwitch && !switchChoices.length
+      ? String(move.category).toLowerCase() === "status" ? "Fails — no switch-in available" : "No switch — no switch-in available"
+      : "Select…"));
+    select.disabled = selfSwitch && !switchChoices.length;
     if (selfSwitch) {
-      for (const mon of possibleSwitches(state, side, slot)) select.append(option(mon.combatantKey, recordName(mon)));
+      for (const mon of switchChoices) select.append(option(mon.combatantKey, recordName(mon)));
     } else if (needsConversion) {
       for (const type of sortedRecords("types")) select.append(option(type.id, type.name));
     } else {
@@ -3566,8 +3570,9 @@ function actionFromDraft(side, slot) {
         : draft.targetKey ? [draft.targetKey] : [];
   const selfSwitch = support.operations?.some(operation => operation.kind === "self-switch");
   const special = ["call-party-move", "call-random-move", "sleep-talk", "conversion-2"].includes(support.specialHandlerId);
-  if ((selfSwitch || special) && !draft.mechanicValue) return null;
-  const mechanicActivations = selfSwitch ? [{ id: "after-move-switch", switchToKey: draft.mechanicValue }]
+  const needsSwitch = selfSwitch && possibleSwitches(state, side, slot).length > 0;
+  if ((needsSwitch || special) && !draft.mechanicValue) return null;
+  const mechanicActivations = selfSwitch ? needsSwitch ? [{ id: "after-move-switch", switchToKey: draft.mechanicValue }] : []
     : support.specialHandlerId === "conversion-2" ? [{ id: "conversion-type", typeId: draft.mechanicValue }]
       : special ? [{ id: "called-move", moveId: draft.mechanicValue, ...(targetKeys[0] ? { targetKey: targetKeys[0] } : {}) }] : [];
   return { actionType: "move", actorKey, moveId: draft.moveId, targetKeys, mechanicActivations, declaredAtStateHash: state.stateHash };
