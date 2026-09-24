@@ -29,6 +29,9 @@ export function activeKey(state, side, slot = 0) {
 }
 
 export function setActiveKey(state, side, slot, combatantKey) {
+  if (combatantKey && state.active?.faintedCombatantKeysByPosition?.[side]) {
+    state.active.faintedCombatantKeysByPosition[side][slot] = null;
+  }
   const pluralKey = `${side}CombatantKeys`;
   if (Array.isArray(state.active?.[pluralKey])) {
     state.active[pluralKey][slot] = combatantKey;

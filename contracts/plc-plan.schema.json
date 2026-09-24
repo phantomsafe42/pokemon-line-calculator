@@ -213,6 +213,14 @@
           "properties": {
             "playerCombatantKeys": { "$ref": "#/$defs/activeKeys" },
             "enemyCombatantKeys": { "$ref": "#/$defs/activeKeys" },
+            "faintedCombatantKeysByPosition": {
+              "type": "object",
+              "required": ["player", "enemy"],
+              "properties": {
+                "player": { "$ref": "#/$defs/activeKeys" },
+                "enemy": { "$ref": "#/$defs/activeKeys" }
+              }
+            },
             "playerCombatantKey": { "$ref": "#/$defs/id" },
             "enemyCombatantKey": { "$ref": "#/$defs/id" }
           }

@@ -2,12 +2,12 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-soulsilver-dataset",
   "source": "Datasets/Pokemon SoulSilver/source-data",
-  "sourceTreeSha256": "156AC368178FE05FCAE6B7C8D7CC0A2ABA462ABBA79851B7C2D54802C3C8D1F7",
+  "sourceTreeSha256": "DBFA5F43EB7332A1123D14F72209856A79380B4DFE9526111A927163E05C6407",
   "files": [
     {
       "path": "dataset_manifest.json",
       "bytes": 36778,
-      "sha256": "68CFD35F3705649C371C18D2810A832DE3952D9618C96AB35970C8006756507C"
+      "sha256": "86F8C3C2346E733745B7C33DFC0F356994D71FC6FB0B959695456EE59838A17E"
     },
     {
       "path": "battle_mechanics.json",

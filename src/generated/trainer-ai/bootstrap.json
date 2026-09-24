@@ -7,6 +7,85 @@
     "contract": "schemas/plc-trainer-ai-bootstrap.schema.json"
   },
   "abilityKnowledgeProfiles": {
+    "gen4-field-position-ability-memory-v1": {
+      "schemaVersion": 1,
+      "modelId": "gen4-field-position-ability-memory-v1",
+      "generation": 4,
+      "storage": {
+        "key": "side-and-field-slot",
+        "initialValue": null,
+        "onReveal": "overwrite-current-slot",
+        "onFaint": "clear-current-slot",
+        "onSwitch": "clear-current-slot"
+      },
+      "guess": {
+        "precedence": [
+          "suppressed-none",
+          "own-or-ally-actual",
+          "stored-slot-ability",
+          "actual-trapping-ability",
+          "species-ability-slots"
+        ],
+        "trappingAbilityIds": [
+          "shadowtag",
+          "arenatrap",
+          "magnetpull"
+        ],
+        "includeHiddenSlot": false,
+        "preserveDuplicateSlots": true,
+        "excludeEmptySlots": true,
+        "scope": "instruction",
+        "guessesWriteStorage": false,
+        "allowActualAbilityOutsideSpeciesSlotsWhenUnrevealed": false
+      },
+      "revelation": {
+        "source": "resolved-ability-activation-or-announcement",
+        "merePresenceReveals": false,
+        "entryAnnouncementAbilityIds": [
+          "moldbreaker",
+          "pressure"
+        ],
+        "causeEventTypes": [
+          "ability-activated",
+          "ability-announced",
+          "ability-blocked",
+          "ability-change",
+          "stat-stage-change",
+          "field-change",
+          "form-change",
+          "status-cleared",
+          "status-cured",
+          "status-reflected",
+          "major-status",
+          "heal",
+          "residual-heal",
+          "residual-damage",
+          "volatile-status",
+          "volatile-status-cleared"
+        ],
+        "immunityEventType": "move-immune",
+        "immunityAbilityPath": "metadata.abilityId",
+        "noEffectEventsReveal": false
+      },
+      "evidence": {
+        "authority": "pret/pokeplatinum pinned source; shared by source-equivalent Gen 4 evaluator profiles",
+        "files": [
+          {
+            "file": "imports/trainer-ai/platinum/src/battle/battle_lib.c",
+            "sha256": "6b3a0cf485272d455b34d455a843da2b74803c723c1b61c31d04069037a1d299"
+          },
+          {
+            "file": "imports/trainer-ai/platinum/src/battle/trainer_ai/trainer_ai.c",
+            "sha256": "350859f5469f4581c325a60b8ecd18a0e0ec1064bd7dc163160cbb4515750521"
+          }
+        ],
+        "routines": [
+          "BattleAI_ClearKnownAbility",
+          "BattleSystem_CleanupFaintedMon",
+          "AICmd_LoadBattlerAbility"
+        ]
+      }
+    },
     "gen5-field-position-ability-memory-v1": {
       "schemaVersion": 1,
       "modelId": "gen5-field-position-ability-memory-v1",
@@ -325,7 +404,7 @@
         "blockerCount": 1,
         "activation": "enabled-fail-closed-per-path-readiness"
       },
-      "abilityKnowledgeModelId": null,
+      "abilityKnowledgeModelId": "gen4-field-position-ability-memory-v1",
       "activeAiFlags": [
         {
           "id": "AI_FLAG_BASIC",
@@ -502,7 +581,7 @@
         "blockerCount": 0,
         "activation": null
       },
-      "abilityKnowledgeModelId": null,
+      "abilityKnowledgeModelId": "gen4-field-position-ability-memory-v1",
       "activeAiFlags": [],
       "lazyResources": {
         "gameTrainerAiPath": null,
@@ -601,7 +680,7 @@
         "blockerCount": 2,
         "activation": null
       },
-      "abilityKnowledgeModelId": null,
+      "abilityKnowledgeModelId": "gen4-field-position-ability-memory-v1",
       "activeAiFlags": [],
       "lazyResources": {
         "gameTrainerAiPath": null,
@@ -667,7 +746,7 @@
         "blockerCount": 0,
         "activation": null
       },
-      "abilityKnowledgeModelId": null,
+      "abilityKnowledgeModelId": "gen4-field-position-ability-memory-v1",
       "activeAiFlags": [],
       "lazyResources": {
         "gameTrainerAiPath": null,
@@ -700,7 +779,7 @@
         "blockerCount": 2,
         "activation": null
       },
-      "abilityKnowledgeModelId": null,
+      "abilityKnowledgeModelId": "gen4-field-position-ability-memory-v1",
       "activeAiFlags": [],
       "lazyResources": {
         "gameTrainerAiPath": null,
@@ -799,7 +878,7 @@
         "blockerCount": 2,
         "activation": null
       },
-      "abilityKnowledgeModelId": null,
+      "abilityKnowledgeModelId": "gen4-field-position-ability-memory-v1",
       "activeAiFlags": [],
       "lazyResources": {
         "gameTrainerAiPath": null,
@@ -953,7 +1032,7 @@
         "blockerCount": 2,
         "activation": "enabled-fail-closed-per-path-readiness"
       },
-      "abilityKnowledgeModelId": null,
+      "abilityKnowledgeModelId": "gen4-field-position-ability-memory-v1",
       "activeAiFlags": [
         {
           "id": "AI_FLAG_BASIC",
@@ -1022,7 +1101,7 @@
         "blockerCount": 1,
         "activation": "enabled-fail-closed-per-path-readiness"
       },
-      "abilityKnowledgeModelId": null,
+      "abilityKnowledgeModelId": "gen4-field-position-ability-memory-v1",
       "activeAiFlags": [
         {
           "id": "AI_FLAG_BASIC",
@@ -1180,7 +1259,11 @@
     },
     {
       "path": "Gen 4/source-data/trainer_ai.json",
-      "sha256": "c1952f5cbbae2621fc4911a7acf75bbae285eb326cfd72aada7b18e6d64b7f2a"
+      "sha256": "0d194fea0a64ccd2dc5158ecb0a6bad96866ecfedecbc1aeb66c4071f1bdb1f3"
+    },
+    {
+      "path": "Gen 4/source-data/trainer_ai_ability_knowledge.json",
+      "sha256": "60b8758fb8e996e7c02a9444e43003386ff1d98701158b413b7fa0914f5c847a"
     },
     {
       "path": "Gen 5/source-data/trainer_ai.json",
@@ -1216,11 +1299,11 @@
     },
     {
       "path": "Pokemon Diamond/source-data/dataset_manifest.json",
-      "sha256": "12b1e89cf570d516e1574ed2020dc1bdcad0726215eac6748e1ceadb6aae5347"
+      "sha256": "f2c163a82ef030763d736328c83da71463cf956394da9f697eef4c5c82cc7217"
     },
     {
       "path": "Pokemon Diamond/source-data/trainer_ai.json",
-      "sha256": "6b73516066d2abd681ccd4fa6aa19aeb34c51806871734d0bd8e27dc652237ad"
+      "sha256": "675f7b5e1bbfa87878e032debdbc97d74cc2da0be3075ba946288ef4b845c4db"
     },
     {
       "path": "Pokemon Emerald/source-data/dataset_manifest.json",
@@ -1240,11 +1323,11 @@
     },
     {
       "path": "Pokemon HeartGold/source-data/dataset_manifest.json",
-      "sha256": "64eb0325731be6704318066727331a8974d72dd8ba165e910558ae9f291693e5"
+      "sha256": "651302c4f7aeb8e6acd11290e608f8362ecbac58d9923e563bf272fa62b37c22"
     },
     {
       "path": "Pokemon HeartGold/source-data/trainer_ai.json",
-      "sha256": "a025dc059678e33dc99c5f5833caab7bc3bcbcc441287b0727043fd00977a017"
+      "sha256": "8e30c5b7967775a88961daff3bdeb09cfd18e4d0ed13335ec1e4c737e5968649"
     },
     {
       "path": "Pokemon LeafGreen/source-data/dataset_manifest.json",
@@ -1256,19 +1339,19 @@
     },
     {
       "path": "Pokemon Pearl/source-data/dataset_manifest.json",
-      "sha256": "64ceeadf8118500b6e25bd5aaed3f05ee5191574852a6f232a8d0a30c06378bb"
+      "sha256": "0564289725ef0170f930c16fbda6635a28b98d60ae6f4c4bc8f08c18081418f1"
     },
     {
       "path": "Pokemon Pearl/source-data/trainer_ai.json",
-      "sha256": "312908fa6675b23838c339190c59c5bee2078f1c86466d944ce1cc3c55c51172"
+      "sha256": "9052b98ab6bff83e38466906d0a838840a045ddbfb3899c99910ac27af499ed9"
     },
     {
       "path": "Pokemon Platinum/source-data/dataset_manifest.json",
-      "sha256": "72a1f9961221a9829d0f03457ead4287a86ce099f6b3afe4e84acf293abcd8f9"
+      "sha256": "f4312f728252fc958284a89a0c9e186814c0858dc8d70932410a2d0ae2718c7e"
     },
     {
       "path": "Pokemon Platinum/source-data/trainer_ai.json",
-      "sha256": "752ab28fb5af5a6c0067255a72f9c1dbd0e1610bf291606b092cd7ef64ec5f7d"
+      "sha256": "8f83c73c9e607747988648ff4799159d85211713ec42b5eacb952a335b3be4df"
     },
     {
       "path": "Pokemon Ruby/source-data/dataset_manifest.json",
@@ -1288,11 +1371,11 @@
     },
     {
       "path": "Pokemon SoulSilver/source-data/dataset_manifest.json",
-      "sha256": "68cfd35f3705649c371c18d2810a832de3952d9618c96ab35970c8006756507c"
+      "sha256": "86f8c3c2346e733745b7c33dfc0f356994d71fc6fb0b959695456ee59838a17e"
     },
     {
       "path": "Pokemon SoulSilver/source-data/trainer_ai.json",
-      "sha256": "80aefced7ee822efad299205dab8ab27f5dfe7e2cf8836b4699e5b60580b0201"
+      "sha256": "9541c5428035bafceb3e0af173333fdc00299486e526ac28954113f82babdae3"
     },
     {
       "path": "Pokemon Unbound/source-data/dataset_manifest.json",
@@ -1344,7 +1427,7 @@
     },
     {
       "path": "consumer_exports.json",
-      "sha256": "b3301dd67efaddf2837cfa465e9bad6c9c1208e075d3332240f05b00995e702c"
+      "sha256": "8fc9cbe5920b07f5fab5b39250ab28a6ffa514acf137d3d2814d4b1638199082"
     }
   ]
 }

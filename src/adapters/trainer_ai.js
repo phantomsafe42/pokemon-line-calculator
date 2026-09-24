@@ -558,13 +558,22 @@ function targetPartnerEntry(state, targetEntry) {
   return activeSlotEntries(state, "player").find(entry => entry.combatantKey !== targetEntry.combatantKey) || null;
 }
 
+function gen4PartnerEntry(state, entry) {
+  if (!entry) return null;
+  const slot = entry.slot ^ 1;
+  const side = entry.side || "enemy";
+  const combatantKey = activeSlotEntries(state, side).find(row => row.slot === slot)?.combatantKey
+    || state.active?.faintedCombatantKeysByPosition?.[side]?.[slot];
+  return combatantKey ? { side, slot, combatantKey } : null;
+}
+
 function selectedBattlerEntry(state, actorEntry, metadata, selector) {
   const targetEntry = candidateTargetEntry(state, metadata);
   switch (Number(selector)) {
   case 0: return targetEntry;
   case 1: return actorEntry;
-  case 2: return actorPartnerEntry(state, actorEntry);
-  case 3: return targetPartnerEntry(state, targetEntry);
+  case 2: return gen4PartnerEntry(state, actorEntry);
+  case 3: return gen4PartnerEntry(state, targetEntry);
   default: return gen4EntryByBattlerId(state, selector);
   }
 }
@@ -714,6 +723,7 @@ export function createPlatinumQueryProvider({ plan, state, dataset, actorEntry, 
     if (!entry) return true;
     const explicitMask = state.trainerAiBattlersUnavailableMask;
     if (Number.isInteger(explicitMask)) return Boolean(explicitMask & (1 << gen4BattlerId(plan.combatants[entry.combatantKey].side, entry.slot)));
+    if (!activeSlotEntries(state, plan.combatants[entry.combatantKey].side).some(row => row.combatantKey === entry.combatantKey)) return true;
     if (knownHp(state.combatantStates[entry.combatantKey]) > 0) return false;
     const side = plan.combatants[entry.combatantKey].side;
     const active = new Set(activeSlotEntries(state, side).map(row => row.combatantKey));
@@ -770,7 +780,9 @@ export function createPlatinumQueryProvider({ plan, state, dataset, actorEntry, 
     if (mon.abilitySuppressed) return 0;
     const actual = numericRecordId(dataset, 'abilities', mon.currentAbilityId);
     if ([1, 2].includes(Number(selector))) return actual;
-    if (mon.aiKnownAbilityId) return numericRecordId(dataset, 'abilities', mon.aiKnownAbilityId);
+    const entry = selectedBattlerEntry(state, actorEntry, metadata, selector);
+    const remembered = state.trainerAiBelief?.abilityByPosition?.[entry?.side]?.[entry?.slot];
+    if (remembered) return numericRecordId(dataset, 'abilities', remembered);
     if (['shadowtag', 'arenatrap', 'magnetpull'].includes(toId(mon.currentAbilityId))) return actual;
     const slots = dataset.get('species', mon.currentSpeciesId || combatant.speciesId)?.abilitySlots;
     if (!Array.isArray(slots) || !slots.length) return undefined;
@@ -880,7 +892,7 @@ export function createPlatinumQueryProvider({ plan, state, dataset, actorEntry, 
       // The source exits before calculating the partner's moves. Those damage
       // queries can draw randomness (Magnitude/Psywave), so this is not cosmetic.
       if (own.some(value => value > own[moveSlot(metadata)])) return 1;
-      const partner = actorPartnerEntry(state, actorEntry);
+      const partner = gen4PartnerEntry(state, actorEntry);
       if (!partner) throw new Error('Partner damage comparison requires the source partner battler');
       const other = allDamage(metadata, vary, partner);
       return other.some(value => value > own[moveSlot(metadata)]) ? 1 : 2;

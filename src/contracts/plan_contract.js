@@ -133,6 +133,16 @@ function validateGraph(plan, issues) {
       const active = schemaVersion >= 2 ? state.active?.[`${side}CombatantKeys`] : [state.active?.[`${side}CombatantKey`]];
       if (!Array.isArray(active) || active.length !== slotCount) issue(issues, `${path}.active.${side}CombatantKeys`, `must contain ${slotCount} active combatant keys`);
       const occupied = (active || []).filter(Boolean);
+      const retained = state.active?.faintedCombatantKeysByPosition?.[side];
+      if (state.active?.faintedCombatantKeysByPosition !== undefined) {
+        if (!Array.isArray(retained) || retained.length !== slotCount) issue(issues, `${path}.active.faintedCombatantKeysByPosition.${side}`, "must contain one retained battler per field slot");
+        else for (const [slot, key] of retained.entries()) {
+          if (key === null) continue;
+          if (active?.[slot] || occupied.includes(key) || retained.indexOf(key) !== slot || !plan.combatants?.[key] || plan.combatants[key].side !== side || Number(state.combatantStates?.[key]?.hp?.max) !== 0) {
+            issue(issues, `${path}.active.faintedCombatantKeysByPosition.${side}.${slot}`, "must reference a fainted combatant on this side in an empty slot");
+          }
+        }
+      }
       if (new Set(occupied).size !== occupied.length) issue(issues, `${path}.active.${side}CombatantKeys`, "must contain distinct combatants");
       for (const [slot, combatantKey] of (active || []).entries()) {
         if (combatantKey === null && schemaVersion >= 2 && slotCount > 1) continue;

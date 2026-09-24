@@ -12,6 +12,7 @@ import { fixturePlan, fixtureRotationPlan } from "./helpers.mjs";
 import { trappingAbilityBlocksSwitch } from "../src/rulesets/ability_rules.js";
 import { forecastTargetLabel, replacementReasonLines } from "../src/ui/ai_forecast.js";
 import { slotsPerSide } from "../src/core/battle_slots.js";
+import { initializeAbilityKnowledge, observeAbilityEvent } from "../src/core/ability_knowledge.js";
 import { triplePositionForSlot } from "../src/rulesets/triple_battle.js";
 import { TrainerAiForecastCache } from "../src/cache/trainer_ai_forecast.js";
 
@@ -136,6 +137,7 @@ test('Gen 4 forecast ledgers retain target sides for both enemy actors without c
   plan.game.battleFormat = 'doubles';
   const enemies = Object.values(plan.combatants).filter(mon => mon.side === 'enemy').map(mon => mon.combatantKey);
   state.active.enemyCombatantKeys = enemies.slice(0, 2);
+  state.active.playerCombatantKeys = [state.active.playerCombatantKeys[0], null];
   state.combatantStates[state.active.playerCombatantKeys[0]].currentAbilityId = 'arenatrap';
   dataset.trainer(plan.game.trainerId).battleProfiles.default.bagItemIds = [];
   for (const key of enemies) {
@@ -1074,6 +1076,7 @@ test('Gen 4 replacement evidence preserves RNG draws and candidate weights acros
   state.combatantStates[playerKey].currentTypeIds = ['water'];
   state.combatantStates[second.combatantKey].currentTypeIds = ['grass'];
   state.active.playerCombatantKeys = [playerKey, second.combatantKey];
+  state.active.enemyCombatantKeys = [state.active.enemyCombatantKeys[0], null];
   const ai = await loadTrainerAiDocumentation({ baseUrl: 'http://fixture/trainer-ai', gameId: 'renegade-platinum', generation: 4, fetchImpl: generatedFetch });
   const engine = generatedEvaluator();
   const run = stripEvidence => {
@@ -1353,6 +1356,7 @@ test('Platinum Doubles serializes switch and fainted replacement reservations an
   assert.ok(enemyKeys.length >= 4);
   plan.game.battleFormat = 'doubles';
   state.active.enemyCombatantKeys = enemyKeys.slice(0, 2);
+  state.active.playerCombatantKeys = [state.active.playerCombatantKeys[0], null];
   for (const key of enemyKeys) {
     const mon = state.combatantStates[key];
     mon.currentTypeIds = ['fire']; mon.currentAbilityId = ''; mon.currentItemId = null;
@@ -1380,4 +1384,81 @@ test('Platinum Doubles serializes switch and fainted replacement reservations an
   dataset.trainer(plan.game.trainerId).battleProfiles.default.bagItemIds = ['potion'];
   result = run();
   assert.deepEqual(result.actors.map(row => [row.actions[0].action.itemToken, row.actions[0].action.bagOwner]), [['potion', 0], ['potion', 1]]);
+});
+
+test('Gen 4 ability queries consume revealed field-slot memory before species guesses', async () => {
+  const dataset = await loadStandardizedDataset({ baseUrl: 'http://fixture/rp', fetchImpl: generatedDatasetFetch });
+  const plan = createRenegadeAiPlan(dataset), state = plan.stateNodes[plan.initialStateNodeId];
+  const ai = await loadTrainerAiDocumentation({ baseUrl: 'http://fixture/trainer-ai', gameId: 'renegade-platinum', generation: 4, fetchImpl: generatedFetch });
+  const targetKey = state.active.playerCombatantKeys[0];
+  const mon = state.combatantStates[targetKey];
+  mon.currentSpeciesId = 'bronzong'; mon.currentAbilityId = 'heatproof';
+  const metadata = { profile: ai.evaluatorProfile, context: { candidate: { action: { targetCombatantKey: targetKey } } }, drawRandom: () => 1 };
+  const query = createPlatinumQueryProvider({ plan, state, dataset, actorEntry: { side: 'enemy', slot: 0, combatantKey: state.active.enemyCombatantKeys[0] }, moves: [] });
+  initializeAbilityKnowledge(state, ai.evaluatorProfile.constants.abilityKnowledge);
+  assert.equal(query['platinum.command.LoadBattlerAbility'](0, metadata), dataset.get('abilities', 'levitate').romId);
+  observeAbilityEvent(state, { eventType: 'ability-activated', actorKey: targetKey, metadata: { cause: 'heatproof' } }, ai.evaluatorProfile.constants.abilityKnowledge);
+  metadata.drawRandom = () => { throw new Error('A revealed ability must not draw a guess'); };
+  assert.equal(query['platinum.command.LoadBattlerAbility'](0, metadata), dataset.get('abilities', 'heatproof').romId);
+  mon.abilitySuppressed = true;
+  assert.equal(query['platinum.command.LoadBattlerAbility'](0, metadata), 0);
+});
+
+test('Gen 4 compares retained fainted partner damage after its active slot is emptied', async () => {
+  const dataset = await loadStandardizedDataset({ baseUrl: 'http://fixture/rp', fetchImpl: generatedDatasetFetch });
+  const plan = createRenegadeAiPlan(dataset, 'renegade-platinum-trainer-0246'), state = plan.stateNodes[plan.initialStateNodeId];
+  const [actorKey, partnerKey] = Object.values(plan.combatants).filter(mon => mon.side === 'enemy').map(mon => mon.combatantKey);
+  plan.game.battleFormat = 'doubles';
+  state.active.enemyCombatantKeys = [actorKey, null];
+  state.active.faintedCombatantKeysByPosition = { player: [null, null], enemy: [null, partnerKey] };
+  const actor = state.combatantStates[actorKey], partner = state.combatantStates[partnerKey];
+  actor.moveSetOverride = [{ moveId: 'tackle', maxPp: 35 }];
+  partner.moveSetOverride = [{ moveId: 'icebeam', maxPp: 10 }];
+  partner.hp = { min: 0, max: 0, maxHp: partner.hp.maxHp };
+  for (const mon of Object.values(plan.combatants).filter(mon => mon.side === 'enemy' && mon.combatantKey !== actorKey)) state.combatantStates[mon.combatantKey].hp = { min: 0, max: 0, maxHp: 100 };
+  partner.currentStats = { ...plan.combatants[partnerKey].calculatedStats, spa: 999 };
+  const ai = await loadTrainerAiDocumentation({ baseUrl: 'http://fixture/trainer-ai', gameId: 'renegade-platinum', generation: 4, fetchImpl: generatedFetch });
+  const metadata = { profile: ai.evaluatorProfile, locals: {}, context: { candidate: { action: { canonicalMoveId: 'tackle', moveSlot: 0, targetCombatantKey: state.active.playerCombatantKeys[0] } } } };
+  metadata.evaluateQueryProgram = (programId, input) => generatedEvaluator().evaluateQueryProgram({ profile: ai.evaluatorProfile, programId, state: input });
+  const query = createPlatinumQueryProvider({ plan, state, dataset, actorEntry: { side: 'enemy', slot: 0, combatantKey: actorKey }, moves: actor.moveSetOverride });
+  assert.equal(query['platinum.command.CheckIfHighestDamageWithPartner'](0, metadata), 1, 'the fainted partner still outdamages this move');
+  assert.equal(query['platinum.command.IfBattlerFainted'](2, metadata), true, 'retained data does not make the slot available');
+  delete state.active.faintedCombatantKeysByPosition;
+  assert.throws(() => query['platinum.command.CheckIfHighestDamageWithPartner'](0, metadata), /requires the source partner/);
+});
+
+test('Natural Cure preserves retail guaranteed immunity/resistance counters and parity fallback', async () => {
+  const dataset = await loadStandardizedDataset({ baseUrl: 'http://fixture/rp', fetchImpl: generatedDatasetFetch });
+  const plan = createRenegadeAiPlan(dataset, 'renegade-platinum-trainer-0246'), state = plan.stateNodes[plan.initialStateNodeId];
+  const actorKey = state.active.enemyCombatantKeys[0], targetKey = state.active.playerCombatantKeys[0];
+  const reserve = Object.values(plan.combatants).find(mon => mon.side === 'enemy' && mon.combatantKey !== actorKey);
+  for (const mon of Object.values(plan.combatants).filter(mon => mon.side === 'enemy' && ![actorKey, reserve.combatantKey].includes(mon.combatantKey))) state.combatantStates[mon.combatantKey].hp = { min: 0, max: 0, maxHp: 100 };
+  const actor = state.combatantStates[actorKey], target = state.combatantStates[targetKey], bench = state.combatantStates[reserve.combatantKey];
+  actor.currentAbilityId = 'naturalcure'; actor.majorStatus = 'slp'; actor.hp = { min: 50, max: 50, maxHp: 100 };
+  actor.moveSetOverride = [{ moveId: 'tackle', maxPp: 35 }]; actor.lastHitSourceKey = targetKey;
+  target.currentAbilityId = ''; target.currentTypeIds = ['water'];
+  reserve.originalAbilityId = ''; bench.currentAbilityId = ''; reserve.originalItemId = null; bench.currentItemId = null;
+  const ai = await loadTrainerAiDocumentation({ baseUrl: 'http://fixture/trainer-ai', gameId: 'renegade-platinum', generation: 4, fetchImpl: generatedFetch });
+  const query = createPlatinumQueryProvider({ plan, state, dataset, actorEntry: { side: 'enemy', slot: 0, combatantKey: actorKey }, moves: actor.moveSetOverride });
+  for (const [lastMove, types, reason] of [['watergun', ['grass'], 'last-hit-resisted-counter'], ['tackle', ['ghost'], 'last-hit-immune-counter']]) {
+    actor.lastHitMoveId = lastMove; reserve.originalTypeIds = types; bench.currentTypeIds = types;
+    reserve.moves = [{ moveId: 'absorb', maxPp: 25 }]; bench.moveSetOverride = reserve.moves;
+    for (let draw = 0; draw < 16; draw += 1) {
+      let draws = 0;
+      const metadata = { profile: ai.evaluatorProfile, drawRandom: () => { draws += 1; return draw; } };
+      const result = query['platinum.action.result']('voluntary-switch', metadata);
+      assert.equal(result.reason, reason, `draw ${draw}`);
+      assert.equal(draws, 1, 'modulo 1 still consumes the counter draw');
+    }
+  }
+  actor.lastHitMoveId = 'tackle'; reserve.originalTypeIds = ['normal']; bench.currentTypeIds = ['normal'];
+  reserve.moves = [{ moveId: 'tackle', maxPp: 35 }]; bench.moveSetOverride = reserve.moves;
+  for (let draw = 0; draw < 16; draw += 1) {
+    const metadata = { profile: ai.evaluatorProfile, drawRandom: () => draw };
+    metadata.evaluateQueryProgram = (programId, input) => generatedEvaluator().evaluateQueryProgram({ profile: ai.evaluatorProfile, programId, state: input });
+    const result = query['platinum.action.result']('voluntary-switch', metadata);
+    assert.equal(Boolean(result), Boolean(draw & 1), `fallback draw ${draw}`);
+  }
+  actor.hp = { min: 49, max: 49, maxHp: 100 };
+  assert.equal(query['platinum.action.result']('voluntary-switch', { profile: ai.evaluatorProfile, drawRandom: () => 1 }), null);
 });

@@ -26,6 +26,12 @@ export function clearFaintedAbilityKnowledge(state, policy) {
   }
 }
 
+export function clearSwitchedAbilityKnowledge(state, side, slot, policy) {
+  if (!policy || policy.storage.onSwitch !== "clear-current-slot") return;
+  initializeAbilityKnowledge(state, policy);
+  state.trainerAiBelief.abilityByPosition[side][slot] = null;
+}
+
 export function observeAbilityEvent(state, event, policy) {
   if (!policy) return;
   initializeAbilityKnowledge(state, policy);

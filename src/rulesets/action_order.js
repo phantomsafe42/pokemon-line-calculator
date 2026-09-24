@@ -37,6 +37,25 @@ export function effectiveActionSpeed({
   const fieldState = battleState?.fieldState || {};
   const ability = activeAbilityId(combatantState);
   const status = toId(combatantState?.majorStatus);
+  if (Number(generation) === 4) {
+    // Platinum truncates at each operation, and speed-halving items bypass
+    // Klutz/Embargo. Keep this order for action and spread-target comparisons.
+    const stage = Number(combatantState?.statStages?.spe || 0) * (ability === "simple" ? 2 : 1);
+    let speed = Math.floor(Number(combatantState?.calculatedStatOverrides?.spe ?? combatantState?.currentStats?.spe ?? combatant?.calculatedStats?.spe ?? 0) * stageMultiplier(stage));
+    const weather = weatherId(fieldState, weatherSuppressed);
+    if (ability === "chlorophyll" && weather === "sun" || ability === "swiftswim" && weather === "rain") speed *= 2;
+    const rawItem = combatantState?.itemState === "held" ? toId(combatantState.currentItemId) : "";
+    const item = heldItemId(combatantState, fieldState);
+    if (SLOW_ITEMS.has(rawItem)) speed = Math.floor(speed / 2);
+    if (item === "choicescarf") speed = Math.floor(speed * 1.5);
+    if (item === "quickpowder" && toId(combatantState?.currentSpeciesId || combatant?.speciesId) === "ditto") speed *= 2;
+    if (ability === "quickfeet" && status && status !== "none") speed = Math.floor(speed * 1.5);
+    else if (["par", "paralysis"].includes(status)) speed = Math.floor(speed / 4);
+    if (ability === "slowstart" && Number(battleState?.turnNumber || 0) - Number(combatantState?.enteredTurnNumber || 0) < 5) speed = Math.floor(speed / 2);
+    if (ability === "unburden" && !rawItem && (combatantState?.volatileConditions?.unburden || combatantState?.lastItemId)) speed *= 2;
+    if (side && Number(fieldState?.sides?.[side]?.tailwindTurns || 0) > 0) speed *= 2;
+    return Math.max(0, speed);
+  }
   let speed = Number(combatantState?.currentStats?.spe ?? combatant?.calculatedStats?.spe ?? 0)
     * stageMultiplier(combatantState?.statStages?.spe);
 
@@ -72,6 +91,63 @@ export function effectiveMovePriority({ action, move, combatantState, generation
     if (Number(generation) === 6 || hp.min === hp.maxHp && hp.max === hp.maxHp) priority += 1;
   }
   return priority;
+}
+
+// BattleSystem_SortMonSpeedOrder / CompareBattlerSpeed(..., TRUE). This is
+// rebuilt before each action, ignores move priority, and uses a fresh coin for
+// each tied pair in the retail nested-loop sort (not a uniform permutation).
+export function gen4BattlerSpeedOrders({ plan, state, entries, weatherSuppressed = false, orderItems = {} }) {
+  const trickRoom = Number(state.fieldState?.global?.trickRoomTurns || 0) > 0;
+  let variants = [{ entries: [], probability: 1, orderItems: clone(orderItems) }];
+  for (const entry of [...entries].sort((a, b) => a.slot - b.slot || (a.side === "player" ? -1 : 1))) {
+    const mon = state.combatantStates[entry.combatantKey];
+    const position = `${entry.side}:${entry.slot}`;
+    const ability = activeAbilityId(mon);
+    const item = heldItemId(mon, state.fieldState);
+    const custapThreshold = Math.floor(Number(mon.hp.maxHp) / (ability === "gluttony" ? 2 : 4));
+    if (item === "custapberry" && Number(mon.hp.min) <= custapThreshold && Number(mon.hp.max) > custapThreshold) {
+      throw new Error("Gen 4 spread target order requires resolved HP across the Custap threshold");
+    }
+    const speed = effectiveActionSpeed({ combatant: plan.combatants[entry.combatantKey], combatantState: mon, battleState: state, side: entry.side, generation: 4, weatherSuppressed });
+    variants = variants.flatMap(variant => {
+      const remembered = variant.orderItems[position] || {};
+      const alternatives = item === "quickclaw"
+        ? (remembered.quickclaw === undefined ? [{ active: true, probability: 0.2 }, { active: false, probability: 0.8 }] : [{ active: remembered.quickclaw, probability: 1 }])
+        : [{ active: item === "custapberry" && Number(mon.hp.max) <= custapThreshold
+          || remembered.custapberry && remembered.combatantKey === entry.combatantKey && !mon.turnFlags?.hasMoved, probability: 1 }];
+      return alternatives.map(alternative => ({
+        entries: [...variant.entries, { ...entry, speed, alive: Number(mon.hp.max) > 0, early: Boolean(alternative.active), late: LATE_ITEMS.has(item), stall: ability === "stall" }],
+        probability: variant.probability * alternative.probability,
+        orderItems: { ...variant.orderItems, [position]: { ...remembered, ...(item === "quickclaw" ? { quickclaw: alternative.active } : {}) } }
+      }));
+    });
+  }
+  for (let i = 0; i < entries.length - 1; i += 1) {
+    for (let j = i + 1; j < entries.length; j += 1) {
+      variants = variants.flatMap(variant => {
+        const a = variant.entries[i], b = variant.entries[j];
+        let comparison;
+        if (a.alive !== b.alive) comparison = a.alive ? -1 : 1;
+        else if (a.early !== b.early) comparison = a.early ? -1 : 1;
+        else if (a.early) comparison = b.speed - a.speed;
+        else if (a.late !== b.late) comparison = a.late ? 1 : -1;
+        else if (a.late) comparison = a.speed - b.speed;
+        else if (a.stall !== b.stall) comparison = a.stall ? 1 : -1;
+        else comparison = a.stall || trickRoom ? a.speed - b.speed : b.speed - a.speed;
+        const swapped = { ...variant, entries: [...variant.entries] };
+        [swapped.entries[i], swapped.entries[j]] = [swapped.entries[j], swapped.entries[i]];
+        return comparison > 0 ? [swapped] : comparison < 0 ? [variant]
+          : [{ ...variant, probability: variant.probability / 2 }, { ...swapped, probability: variant.probability / 2 }];
+      });
+    }
+  }
+  const merged = new Map();
+  for (const variant of variants) {
+    const key = JSON.stringify([variant.entries.map(entry => entry.combatantKey), variant.orderItems]);
+    if (merged.has(key)) merged.get(key).probability += variant.probability;
+    else merged.set(key, variant);
+  }
+  return [...merged.values()];
 }
 
 function normalizedHpDistribution(state) {

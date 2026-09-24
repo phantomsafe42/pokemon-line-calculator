@@ -27,7 +27,7 @@ import {
   outgoingSwitchEffects
 } from "../rulesets/switch_rules.js?v=20260907-two-turn-immunity-v1";
 import { applyDefeatedEnemyExperience, registerSwitchExperienceParticipation } from "../rulesets/vw2r_experience.js?v=20260921-card-design-v1";
-import { actionOrderAlternatives, applyActionOrderState, effectiveActionSpeed, effectiveMovePriority } from "../rulesets/action_order.js?v=20260905-drafts-freecalc-partners-v1";
+import { actionOrderAlternatives, applyActionOrderState, effectiveActionSpeed, effectiveMovePriority, gen4BattlerSpeedOrders } from "../rulesets/action_order.js?v=20260905-drafts-freecalc-partners-v1";
 import { adjacentActiveEntries, areSlotsAdjacent, canSelectShift, combatantsAreAdjacent, shiftWithCenter, triplePositionForSlot, tripleSlotForPosition, TRIPLE_POSITIONS } from "../rulesets/triple_battle.js?v=20260905-drafts-freecalc-partners-v1";
 import { participatingActiveEntries, participatingActiveKeys, rotateToActor, rotationFrontKey, rotationFrontSlot } from "../rulesets/rotation_battle.js?v=20260905-drafts-freecalc-partners-v1";
 import {
@@ -42,7 +42,7 @@ import {
 } from "../rulesets/ability_rules.js?v=20260905-drafts-freecalc-partners-v1";
 import { applyCombatantFormState, desiredWeatherAbilityForm, desiredZenModeForm, restoreCombatantIdentityState } from "../rulesets/form_rules.js?v=20260917-partners-release-v1";
 import { afterDamagingMoveItemActivation, damageReductionItemActivation, heldStateItemActivation } from "../rulesets/item_rules.js?v=20260920-held-item-release-v3";
-import { observeAbilityEvent, clearFaintedAbilityKnowledge, entryAbilityAnnouncement } from "./ability_knowledge.js?v=20260911-ability-storage-reimp-v1";
+import { observeAbilityEvent, clearFaintedAbilityKnowledge, clearSwitchedAbilityKnowledge, entryAbilityAnnouncement } from "./ability_knowledge.js?v=20260911-ability-storage-reimp-v1";
 
 const TRACE_BLOCKED_ABILITIES = new Set(["", "flowergift", "forecast", "illusion", "imposter", "multitype", "stancechange", "trace", "wonderguard", "zenmode"]);
 
@@ -811,6 +811,7 @@ function applySwitch(branch, side, slot, action, plan, dataset) {
   delete outgoingState.moveSetOverride;
   delete outgoingState.transformedIntoKey;
   if (outgoingState.majorStatus === "tox") outgoingState.toxicCounter = 1;
+  clearSwitchedAbilityKnowledge(branch.state, side, slot, branch.abilityKnowledgePolicy);
   setActiveKey(branch.state, side, slot, action.switchToKey);
   registerSwitchExperienceParticipation(branch.state, side, action.switchToKey);
   const switchDisplayEvent = event(branch, {
@@ -3603,6 +3604,29 @@ function applyMoveToTarget(branch, { side, action, actorKey, actor, move, descri
 }
 
 function applyMove(branch, side, slot, action, plan, dataset, damageAdapter, moveSupport, isLastAction = false, declaredTargetSlots = null, pendingActions = []) {
+  const move = effectiveCombatantMove(dataset, plan.combatants[action.actorKey], branch.state.combatantStates[action.actorKey], action.moveId);
+  const spread = ["alladjacent", "alladjacentfoes"].includes(canonicalTarget(move));
+  if (branch.generation !== 4 || !spread) return applyMoveInTargetOrder(branch, side, slot, action, plan, dataset, damageAdapter, moveSupport, isLastAction, declaredTargetSlots, pendingActions);
+  const entries = activeEntries(branch.state);
+  for (const side of ["player", "enemy"]) {
+    for (const [slot, combatantKey] of (branch.state.active.faintedCombatantKeysByPosition?.[side] || []).entries()) {
+      if (combatantKey) entries.push({ side, slot, combatantKey });
+    }
+  }
+  const orders = gen4BattlerSpeedOrders({ plan, state: branch.state, entries,
+    weatherSuppressed: weatherIsSuppressed(entries.map(entry => branch.state.combatantStates[entry.combatantKey])), orderItems: branch.gen4OrderItems });
+  return orders.flatMap(order => {
+    const next = clone(branch);
+    next.probability = probabilityProduct(branch.probability, order.probability);
+    next.gen4TargetOrder = order.entries.map(entry => entry.combatantKey);
+    next.gen4OrderItems = order.orderItems;
+    const results = applyMoveInTargetOrder(next, side, slot, action, plan, dataset, damageAdapter, moveSupport, isLastAction, declaredTargetSlots, pendingActions);
+    for (const result of results) delete result.gen4TargetOrder;
+    return results;
+  });
+}
+
+function applyMoveInTargetOrder(branch, side, slot, action, plan, dataset, damageAdapter, moveSupport, isLastAction = false, declaredTargetSlots = null, pendingActions = []) {
   const actorKey = action.actorKey;
   const actorState = branch.state.combatantStates[actorKey];
   if (Number(actorState.hp?.max) <= 0) return skipped(branch, actorKey, "actor-fainted-before-moving");
@@ -3638,7 +3662,8 @@ function applyMove(branch, side, slot, action, plan, dataset, damageAdapter, mov
       current.probabilityStatus = current.probability === null ? "unknown" : "known";
       current.conditions.push(`target-random:${actorKey}:${move.id}:${alternativeIndex + 1}`);
     }
-    const targets = resolution.targetKeys || [];
+    const targets = [...(resolution.targetKeys || [])];
+    if (current.gen4TargetOrder) targets.sort((a, b) => current.gen4TargetOrder.indexOf(a) - current.gen4TargetOrder.indexOf(b));
     const currentActorState = current.state.combatantStates[actorKey];
     currentActorState.lastMoveTargetKeys = [...targets].filter(Boolean);
     recordMoveRedirects(current, actorKey, move.id, resolution.redirects);
@@ -3662,7 +3687,9 @@ function applyMove(branch, side, slot, action, plan, dataset, damageAdapter, mov
     }
     for (const targetKey of targets) {
       branches = branches.flatMap(candidate => applyMoveToTarget(candidate, {
-        side, action, actorKey, actor, move, descriptor, targetKey, targetCount: targets.length, plan, dataset, damageAdapter,
+        side, action, actorKey, actor, move, descriptor, targetKey,
+        targetCount: candidate.generation === 4 ? targets.filter(key => Number(candidate.state.combatantStates[key]?.hp?.max) > 0).length : targets.length,
+        plan, dataset, damageAdapter,
         isLastAction, previousLastMoveId, pendingActions, specialHandlerAlreadyApplied
       }));
     }
@@ -4345,6 +4372,20 @@ function updateBattleBoundary(branch, plan) {
     pending.push(...requiredSlots.map(entry => ({ side, slot: entry.slot })));
     const canLeaveSlotEmpty = slotsPerSide(plan) > 1 && !sideEnded;
     for (const entry of canLeaveSlotEmpty && !chooseReplacementSlot ? faintedSlots.filter(entry => !requiredSlots.includes(entry)) : []) {
+      // Retail keeps battleMons for an unfilled fainted slot. Gen 4 AI still
+      // uses that partner's moves and stats in its highest-damage comparison.
+      if (branch.generation === 4) {
+        const fainted = branch.state.combatantStates[entry.combatantKey];
+        fainted.statStages = { atk: 0, def: 0, spa: 0, spd: 0, spe: 0, accuracy: 0, evasion: 0 };
+        fainted.volatileConditions = createDefaultVolatiles();
+        fainted.lastMoveId = null;
+        fainted.lastHitMoveId = null;
+        fainted.lastHitSourceKey = null;
+        branch.state.active.faintedCombatantKeysByPosition ||= {
+          player: Array(slotsPerSide(plan)).fill(null), enemy: Array(slotsPerSide(plan)).fill(null)
+        };
+        branch.state.active.faintedCombatantKeysByPosition[side][entry.slot] = entry.combatantKey;
+      }
       setActiveKey(branch.state, side, entry.slot, null);
       event(branch, {
         eventType: "slot-emptied",
@@ -4435,7 +4476,7 @@ function mergeEquivalent(branches) {
       .filter(entry => entry.metadata?.criticalHit === true)
       .map(entry => `${entry.eventType}:${entry.actorKey || ""}:${entry.targetKey || ""}:${entry.moveId || ""}:${entry.metadata?.criticalHits || 1}`)
       .join("|");
-    const key = `${branch.state.stateHash}::${criticalSignature}`;
+    const key = `${branch.state.stateHash}::${criticalSignature}::${stableStringify(branch.gen4OrderItems || {})}`;
     const existing = map.get(key);
     if (!existing) {
       map.set(key, branch);
@@ -4552,10 +4593,17 @@ export function resolveTurn({ plan, parentStateNodeId, actions, dataset, damageA
         abilityKnowledgePolicy: dataset.abilityKnowledgePolicy || null,
         generation: Number(dataset.mechanics?.damageGeneration || 5)
       }];
+      if (Number(dataset.mechanics?.damageGeneration) === 4) {
+        branches[0].gen4OrderItems = Object.fromEntries(order.entries.filter(entry => entry.orderAlternative?.orderEvent)
+          .map(entry => [`${entry.side}:${entry.slot}`, { combatantKey: entry.action.actorKey, [entry.orderAlternative.orderEvent.modifierId]: entry.orderAlternative.orderEvent.activated }]));
+      }
       branches = branches.flatMap(branch => resolveActionEntries(branch, order.entries, { plan, dataset, damageAdapter, moveSupport, declaredTargetSlots }));
       branches = branches.flatMap(branch => battleRosterEnded(branch.state, plan) ? [branch] : applyEndOfTurn(branch, dataset, plan, damageAdapter));
       branches = branches.map(branch => applyDefeatedEnemyExperience(branch, plan, dataset));
-      for (const branch of branches) updateBattleBoundary(branch, plan);
+      for (const branch of branches) {
+        updateBattleBoundary(branch, plan);
+        delete branch.gen4OrderItems;
+      }
       resolved.push(...branches);
     }
   }
