@@ -2,7 +2,7 @@
   "schemaVersion": "plc-generated-dataset/v1alpha1",
   "consumer": "plc-heartgold-dataset",
   "source": "Datasets/Pokemon HeartGold/source-data",
-  "sourceTreeSha256": "1578FA0D87058D6EB09D09B7D236249336E1EBEAA75DBE025097C4CF73EB6EC3",
+  "sourceTreeSha256": "4BD6EA02F957D05F77B1D6BFB6F51C05F71ED6B9C2253627259AD98201DAF5C5",
   "files": [
     {
       "path": "dataset_manifest.json",
@@ -36,8 +36,8 @@
     },
     {
       "path": "items.json",
-      "bytes": 386858,
-      "sha256": "423B32A4AA21BCD8FBC21A644BCFBBCEE4224E5ECD04DBACB3FD5417E0B31CE0"
+      "bytes": 495964,
+      "sha256": "DF04C5FA56E9079F1EDFCD7960E3BD9D3F05A78D07CBA7EDBDDBAFBAF80CDA67"
     },
     {
       "path": "natures.json",

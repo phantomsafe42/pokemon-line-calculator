@@ -2,17 +2,17 @@
   "schemaVersion": "plc-generated-battle-mechanics/v1alpha1",
   "consumer": "plc-public-battle-mechanics",
   "source": "Battle Mechanics",
-  "sourceTreeSha256": "F28BC706A98694507E90D1C93E4003F8B93FA6DF52FC3643C63BA72D9D85C5A5",
+  "sourceTreeSha256": "9CE12D515BF26EB50AFF4E76BF18F2C81F1DA0E1AC36ED21D51AD8D7F909D5C0",
   "files": [
     {
       "path": "shared_damage_calculator.js",
-      "sourceSha256": "B9A300E57D9D9D612D89162ABA89EC83839278C2E9542248847571618AE6B993",
+      "sourceSha256": "76626FD128813FA072428A8576B1B43FEE97E530DCAA61AD5C710BDDA6DBE592",
       "transform": {
         "kind": "exclude-calculator-engines",
         "exclusionSetSha256": "D9F67B42D536B723466A68FB663D3EE005D11949AE0495129422709C7C2575E9"
       },
-      "bytes": 43137,
-      "sha256": "1BC598CEF0B78B3CAE2B26E9B6B99FF1B19FA8221F03D85018C527B3E471B435"
+      "bytes": 43559,
+      "sha256": "051E89FF79CE992B9E54845349C966CED4F39FC09E18E10BB5E62627D89F7ED9"
     },
     {
       "path": "trainer_ai/trainer_ai_evaluator.js",
@@ -26,8 +26,8 @@
     },
     {
       "path": "vendor/smogon-calc-0.11.0/engine.production.min.js",
-      "bytes": 127169,
-      "sha256": "E77A129DCCF6812DCD299FC79D1F5DE8AFA77E8EB6DE89BCA283F468C968E124"
+      "bytes": 127333,
+      "sha256": "BE3C7995256F7C3413319EDEDB1B4FDD36266E5BE3B4DCCB4A186FB0E1DD07AF"
     },
     {
       "path": "vendor/smogon-calc-0.11.0/LICENSE",
@@ -36,8 +36,8 @@
     },
     {
       "path": "vendor/smogon-calc-0.11.0/README.md",
-      "bytes": 920,
-      "sha256": "29621D2C3FAAED5C8E69BC989E7CC24948463086D20D12E5335E818B3E476C16"
+      "bytes": 2500,
+      "sha256": "ECEA6617D701B002760799729BA827D9FF07955B8062D9BD2E560659C158397E"
     }
   ]
 }

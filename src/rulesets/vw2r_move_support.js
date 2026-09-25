@@ -274,6 +274,7 @@ export function vw2rMoveSupport(move, dataset = null) {
       ? { willCrit: reference.willCrit === true || move.willCrit === true }
       : {}),
     flags: { ...(reference.flags || {}) },
+    hasSecondaryEffects: Boolean(reference.secondary || reference.secondaries?.length),
     ...(reference.ignoreImmunity !== undefined ? { ignoreImmunity: reference.ignoreImmunity } : {}),
     breaksProtect: reference.breaksProtect === true,
     callbackPaths: reference.callbacks || []

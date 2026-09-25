@@ -43,7 +43,7 @@ export function protectSuccessProbability(generation, streak) {
   return 1 / (divisor ** count);
 }
 
-export function criticalHitProbability({ generation, descriptor, attacker, attackerState, defenderState, defenderSideState }) {
+export function criticalHitProbability({ generation, descriptor, attacker, attackerState, defenderState, defenderSideState, fieldState }) {
   const numericGeneration = Number(generation);
   if (!Number.isInteger(numericGeneration) || numericGeneration < 2) return null;
   if (descriptor?.critRatio === undefined && descriptor?.willCrit === undefined) return 0;
@@ -54,7 +54,7 @@ export function criticalHitProbability({ generation, descriptor, attacker, attac
 
   let ratio = Math.max(1, Number(descriptor?.critRatio || 1));
   if (abilityId(attackerState) === "superluck") ratio += 1;
-  const item = itemId(attackerState);
+  const item = itemId(attackerState, fieldState);
   if (["scopelens", "razorclaw"].includes(item)) ratio += 1;
   const species = toId(attacker?.speciesId || attacker?.species || attacker?.name);
   if (item === "stick" && species === "farfetchd" || item === "luckypunch" && species === "chansey") ratio += 2;
@@ -77,7 +77,8 @@ function abilityId(state) {
   return state.abilitySuppressed ? "" : toId(state.currentAbilityId);
 }
 
-function itemId(state) {
+function itemId(state, fieldState = null) {
+  if (abilityId(state) === 'klutz' || state.volatileConditions?.embargoTurns > 0 || fieldState?.global?.magicRoomTurns > 0) return '';
   return state.itemState === "held" ? toId(state.currentItemId) : "";
 }
 
@@ -92,8 +93,16 @@ export function effectiveAccuracy({ move, attackerState, defenderState, fieldSta
   accuracy *= stage >= 0 ? (3 + stage) / 3 : 3 / (3 - stage);
   if (abilityId(attackerState) === "compoundeyes") accuracy *= 1.3;
   if (abilityId(attackerState) === "hustle" && String(move.category).toLowerCase() === "physical") accuracy *= 0.8;
-  if (itemId(attackerState) === "widelens") accuracy *= 1.1;
-  if (["brightpowder", "laxincense"].includes(itemId(defenderState))) accuracy *= 0.9;
+  const accuracyItems = [];
+  if (itemId(attackerState,fieldState) === 'widelens') accuracyItems.push([1.1,4505]);
+  if (itemId(attackerState,fieldState) === 'zoomlens' && defenderState.turnFlags?.hasMoved) accuracyItems.push([1.2,4915]);
+  const defensiveItem = itemId(defenderState,fieldState);
+  if (['brightpowder','laxincense'].includes(defensiveItem)) accuracyItems.push([Number(generation) === 3 && defensiveItem === 'laxincense' ? .95 : .9,3686]);
+  if (Number(generation) >= 5 && accuracyItems.length) {
+    const modifier = accuracyItems.reduce((value,[,factor]) => Math.floor((value*factor+2048)/4096),4096);
+    accuracy = Math.floor((accuracy*modifier+2047)/4096);
+  } else for (const [multiplier] of accuracyItems) accuracy *= multiplier;
+  if (attackerState.volatileConditions?.micleberry) accuracy = Number(generation) >= 5 ? Math.floor((accuracy*4915+2047)/4096) : accuracy*1.2;
   const weather = conditionId(fieldState?.global?.weather);
   const moveId = toId(move.id || move.name);
   if (weather === "rain" && ["thunder", "hurricane"].includes(moveId) || weather === "hail" && moveId === "blizzard") return 100;
@@ -200,8 +209,8 @@ export function statusResidualRule(state, generation) {
   return { kind: "damage", numerator: counter, denominator: 16, cause: "bad-poison", nextToxicCounter: counter + 1 };
 }
 
-export function itemResidualRule(state) {
-  const item = itemId(state);
+export function itemResidualRule(state, fieldState = null) {
+  const item = itemId(state, fieldState);
   if (item === "leftovers") return { kind: "heal", numerator: 1, denominator: 16, cause: "leftovers" };
   if (item === "blacksludge") {
     return hasType(state, "poison")

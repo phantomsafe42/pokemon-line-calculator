@@ -48,7 +48,7 @@ export function effectiveActionSpeed({
     const item = heldItemId(combatantState, fieldState);
     if (SLOW_ITEMS.has(rawItem)) speed = Math.floor(speed / 2);
     if (item === "choicescarf") speed = Math.floor(speed * 1.5);
-    if (item === "quickpowder" && toId(combatantState?.currentSpeciesId || combatant?.speciesId) === "ditto") speed *= 2;
+    if (item === "quickpowder" && !combatantState?.transformedIntoKey && toId(combatantState?.currentSpeciesId || combatant?.speciesId) === "ditto") speed *= 2;
     if (ability === "quickfeet" && status && status !== "none") speed = Math.floor(speed * 1.5);
     else if (["par", "paralysis"].includes(status)) speed = Math.floor(speed / 4);
     if (ability === "slowstart" && Number(battleState?.turnNumber || 0) - Number(combatantState?.enteredTurnNumber || 0) < 5) speed = Math.floor(speed / 2);
@@ -74,6 +74,7 @@ export function effectiveActionSpeed({
   const ordinaryItem = heldItemId(combatantState, fieldState);
   const klutzIgnoredItem = heldItemId(combatantState, fieldState, { includeKlutzIgnored: true });
   if (ordinaryItem === "choicescarf") speed *= 1.5;
+  if (ordinaryItem === 'quickpowder' && !combatantState?.transformedIntoKey && toId(combatantState?.currentSpeciesId || combatant?.speciesId) === 'ditto') speed *= 2;
   if (ordinaryItem === "ironball" || SLOW_ITEMS.has(klutzIgnoredItem) && klutzIgnoredItem !== "ironball") speed *= 0.5;
 
   if (side && Number(fieldState?.sides?.[side]?.tailwindTurns || 0) > 0) speed *= 2;
@@ -211,6 +212,11 @@ export function actionOrderAlternatives({ action, move, combatantState, battleSt
     ];
   }
   if (item === "custapberry") {
+    const ownSide = battleState?.active?.playerCombatantKeys?.includes(action.actorKey) ? 'player' : 'enemy';
+    const opponentKeys = battleState?.active?.[`${ownSide === 'player' ? 'enemy' : 'player'}CombatantKeys`] || [];
+    if (generation >= 5 && opponentKeys.some(key => battleState.combatantStates[key]?.hp?.max > 0 && activeAbilityId(battleState.combatantStates[key]) === 'unnerve')) {
+      return [{ probability:1, fractionalPriority:baseFractionalPriority, orderEvent:null }];
+    }
     const hp = normalizeRange(combatantState?.hp || { min: 0, max: 0, maxHp: 0 });
     const gluttony = ability === "gluttony";
     const threshold = Math.floor(Number(hp.maxHp) / (gluttony ? 2 : 4));

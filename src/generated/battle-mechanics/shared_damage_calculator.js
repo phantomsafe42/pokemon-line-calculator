@@ -523,6 +523,10 @@
         const overrides = request.moveOverrides;
         const hits = request.moveHits === undefined || request.moveHits === null ? undefined : Number(request.moveHits);
         const criticalHit = request.criticalHit;
+        const timesUsedWithMetronome = request.timesUsedWithMetronome;
+        if (timesUsedWithMetronome !== undefined && (!Number.isInteger(timesUsedWithMetronome) || timesUsedWithMetronome < 0 || timesUsedWithMetronome > 10)) {
+            throw new Error("timesUsedWithMetronome must be an integer from 0 through 10");
+        }
         if (hits !== undefined && (!Number.isInteger(hits) || hits < 1 || hits > 10)) {
             throw new Error("Move hits must be an integer from 1 through 10");
         }
@@ -558,6 +562,7 @@
         const options = {
             ...(Object.keys(moveOverrides).length ? { overrides: moveOverrides } : {}),
             ...(hits === undefined ? {} : { hits }),
+            ...(timesUsedWithMetronome === undefined ? {} : { timesUsedWithMetronome }),
             ...(criticalHit === true ? { isCrit: true } : {})
         };
         return Object.keys(options).length ? options : undefined;

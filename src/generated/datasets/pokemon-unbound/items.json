@@ -879,7 +879,36 @@
       ],
       "mechanicsBase": "Life Orb",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "lifeorb-holder-used-damaging-move-4",
+            "trigger": "holder-used-damaging-move",
+            "timing": "after-move-secondary-self",
+            "conditions": {
+              "battleGenerations": [
+                4,
+                5
+              ],
+              "blockedBySheerForce": true
+            },
+            "effects": [
+              {
+                "kind": "damage-holder",
+                "numerator": 1,
+                "denominator": 10
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "toxicorb": {
       "num": 56,
@@ -895,7 +924,34 @@
       ],
       "mechanicsBase": "Toxic Orb",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "toxicorb-late-residual-4",
+            "trigger": "late-residual",
+            "timing": "late-residual",
+            "conditions": {
+              "battleGenerations": [
+                4,
+                5
+              ]
+            },
+            "effects": [
+              {
+                "kind": "major-status",
+                "statusId": "tox"
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "flameorb": {
       "num": 57,
@@ -911,7 +967,34 @@
       ],
       "mechanicsBase": "Flame Orb",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "flameorb-late-residual-4",
+            "trigger": "late-residual",
+            "timing": "late-residual",
+            "conditions": {
+              "battleGenerations": [
+                4,
+                5
+              ]
+            },
+            "effects": [
+              {
+                "kind": "major-status",
+                "statusId": "brn"
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "blacksludge": {
       "num": 58,
@@ -1819,7 +1902,33 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "eat",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "enigmaberry-holder-hit-4",
+            "trigger": "holder-hit",
+            "timing": "after-damage",
+            "conditions": {
+              "battleGenerations": [
+                4,
+                5
+              ],
+              "requiresSuperEffective": true,
+              "requiresHealingAllowed": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "heal",
+                "numerator": 1,
+                "denominator": 4
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "megacuff": {
@@ -2658,7 +2767,99 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "eat",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "figyberry-holder-state-3",
+            "trigger": "holder-state",
+            "timing": "item-residual",
+            "conditions": {
+              "battleGenerations": [
+                3
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "requiresHealingAllowed": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "heal",
+                "numerator": 1,
+                "denominator": 8
+              },
+              {
+                "kind": "nature-confusion",
+                "dislikedStat": "atk"
+              }
+            ],
+            "consumeOnActivation": true
+          },
+          {
+            "id": "figyberry-holder-state-4",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                4
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "requiresHealingAllowed": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "heal",
+                "numerator": 1,
+                "denominator": 8
+              },
+              {
+                "kind": "nature-confusion",
+                "dislikedStat": "atk"
+              }
+            ],
+            "consumeOnActivation": true
+          },
+          {
+            "id": "figyberry-holder-state-5",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "requiresHealingAllowed": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "heal",
+                "numerator": 1,
+                "denominator": 8
+              },
+              {
+                "kind": "nature-confusion",
+                "dislikedStat": "atk"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "wikiberry": {
@@ -2681,7 +2882,99 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "eat",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "wikiberry-holder-state-3",
+            "trigger": "holder-state",
+            "timing": "item-residual",
+            "conditions": {
+              "battleGenerations": [
+                3
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "requiresHealingAllowed": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "heal",
+                "numerator": 1,
+                "denominator": 8
+              },
+              {
+                "kind": "nature-confusion",
+                "dislikedStat": "spa"
+              }
+            ],
+            "consumeOnActivation": true
+          },
+          {
+            "id": "wikiberry-holder-state-4",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                4
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "requiresHealingAllowed": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "heal",
+                "numerator": 1,
+                "denominator": 8
+              },
+              {
+                "kind": "nature-confusion",
+                "dislikedStat": "spa"
+              }
+            ],
+            "consumeOnActivation": true
+          },
+          {
+            "id": "wikiberry-holder-state-5",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "requiresHealingAllowed": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "heal",
+                "numerator": 1,
+                "denominator": 8
+              },
+              {
+                "kind": "nature-confusion",
+                "dislikedStat": "spa"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "magoberry": {
@@ -2704,7 +2997,99 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "eat",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "magoberry-holder-state-3",
+            "trigger": "holder-state",
+            "timing": "item-residual",
+            "conditions": {
+              "battleGenerations": [
+                3
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "requiresHealingAllowed": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "heal",
+                "numerator": 1,
+                "denominator": 8
+              },
+              {
+                "kind": "nature-confusion",
+                "dislikedStat": "spe"
+              }
+            ],
+            "consumeOnActivation": true
+          },
+          {
+            "id": "magoberry-holder-state-4",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                4
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "requiresHealingAllowed": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "heal",
+                "numerator": 1,
+                "denominator": 8
+              },
+              {
+                "kind": "nature-confusion",
+                "dislikedStat": "spe"
+              }
+            ],
+            "consumeOnActivation": true
+          },
+          {
+            "id": "magoberry-holder-state-5",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "requiresHealingAllowed": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "heal",
+                "numerator": 1,
+                "denominator": 8
+              },
+              {
+                "kind": "nature-confusion",
+                "dislikedStat": "spe"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "aguavberry": {
@@ -2727,7 +3112,99 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "eat",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "aguavberry-holder-state-3",
+            "trigger": "holder-state",
+            "timing": "item-residual",
+            "conditions": {
+              "battleGenerations": [
+                3
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "requiresHealingAllowed": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "heal",
+                "numerator": 1,
+                "denominator": 8
+              },
+              {
+                "kind": "nature-confusion",
+                "dislikedStat": "spd"
+              }
+            ],
+            "consumeOnActivation": true
+          },
+          {
+            "id": "aguavberry-holder-state-4",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                4
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "requiresHealingAllowed": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "heal",
+                "numerator": 1,
+                "denominator": 8
+              },
+              {
+                "kind": "nature-confusion",
+                "dislikedStat": "spd"
+              }
+            ],
+            "consumeOnActivation": true
+          },
+          {
+            "id": "aguavberry-holder-state-5",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "requiresHealingAllowed": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "heal",
+                "numerator": 1,
+                "denominator": 8
+              },
+              {
+                "kind": "nature-confusion",
+                "dislikedStat": "spd"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "iapapaberry": {
@@ -2750,7 +3227,99 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "eat",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "iapapaberry-holder-state-3",
+            "trigger": "holder-state",
+            "timing": "item-residual",
+            "conditions": {
+              "battleGenerations": [
+                3
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "requiresHealingAllowed": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "heal",
+                "numerator": 1,
+                "denominator": 8
+              },
+              {
+                "kind": "nature-confusion",
+                "dislikedStat": "def"
+              }
+            ],
+            "consumeOnActivation": true
+          },
+          {
+            "id": "iapapaberry-holder-state-4",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                4
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "requiresHealingAllowed": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "heal",
+                "numerator": 1,
+                "denominator": 8
+              },
+              {
+                "kind": "nature-confusion",
+                "dislikedStat": "def"
+              }
+            ],
+            "consumeOnActivation": true
+          },
+          {
+            "id": "iapapaberry-holder-state-5",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "requiresHealingAllowed": true,
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "heal",
+                "numerator": 1,
+                "denominator": 8
+              },
+              {
+                "kind": "nature-confusion",
+                "dislikedStat": "def"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "razzberry": {
@@ -3663,7 +4232,93 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "eat",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "lansatberry-holder-state-3",
+            "trigger": "holder-state",
+            "timing": "item-residual",
+            "conditions": {
+              "battleGenerations": [
+                3
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 4
+              },
+              "gluttonyHpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "volatile",
+                "id": "focusenergy"
+              }
+            ],
+            "consumeOnActivation": true
+          },
+          {
+            "id": "lansatberry-holder-state-4",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                4
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 4
+              },
+              "gluttonyHpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "volatile",
+                "id": "focusenergy"
+              }
+            ],
+            "consumeOnActivation": true
+          },
+          {
+            "id": "lansatberry-holder-state-5",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 4
+              },
+              "gluttonyHpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "volatile",
+                "id": "focusenergy"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "lansatberry174": {
@@ -3702,7 +4357,93 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "eat",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "starfberry-holder-state-3",
+            "trigger": "holder-state",
+            "timing": "item-residual",
+            "conditions": {
+              "battleGenerations": [
+                3
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 4
+              },
+              "gluttonyHpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "random-stat-stages",
+                "amount": 2
+              }
+            ],
+            "consumeOnActivation": true
+          },
+          {
+            "id": "starfberry-holder-state-4",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                4
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 4
+              },
+              "gluttonyHpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "random-stat-stages",
+                "amount": 2
+              }
+            ],
+            "consumeOnActivation": true
+          },
+          {
+            "id": "starfberry-holder-state-5",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 4
+              },
+              "gluttonyHpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "random-stat-stages",
+                "amount": 2
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "choiceband": {
@@ -3789,7 +4530,28 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "use",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "whiteherb-holder-state-3",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                3,
+                4,
+                5
+              ],
+              "requiresNegativeStages": true
+            },
+            "effects": [
+              {
+                "kind": "reset-negative-stages"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "machobrace": {
@@ -3872,7 +4634,85 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "use",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "mentalherb-holder-state-3",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                3
+              ],
+              "anyVolatileIds": [
+                "attract"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "clear-volatiles",
+                "ids": [
+                  "attract"
+                ]
+              }
+            ],
+            "consumeOnActivation": true
+          },
+          {
+            "id": "mentalherb-holder-state-4",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                4
+              ],
+              "anyVolatileIds": [
+                "attract"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "clear-volatiles",
+                "ids": [
+                  "attract"
+                ]
+              }
+            ],
+            "consumeOnActivation": true
+          },
+          {
+            "id": "mentalherb-holder-state-5",
+            "trigger": "holder-state",
+            "timing": "state-update",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "anyVolatileIds": [
+                "attract",
+                "taunt",
+                "encore",
+                "torment",
+                "disable",
+                "healblock"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "clear-volatiles",
+                "ids": [
+                  "attract",
+                  "taunt",
+                  "encore",
+                  "torment",
+                  "disable",
+                  "healblock"
+                ]
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "choiceband186": {
@@ -3905,7 +4745,1182 @@
       ],
       "mechanicsBase": "King's Rock",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "kingsrock-flinch-gen3",
+            "trigger": "holder-dealt-hit",
+            "timing": "move-secondary",
+            "conditions": {
+              "battleGenerations": [
+                3
+              ],
+              "moveIds": [
+                "aerialace",
+                "aeroblast",
+                "aircutter",
+                "armthrust",
+                "barrage",
+                "beatup",
+                "bide",
+                "bind",
+                "blastburn",
+                "bonemerang",
+                "bonerush",
+                "bounce",
+                "brickbreak",
+                "bulletseed",
+                "clamp",
+                "cometpunch",
+                "crabhammer",
+                "crosschop",
+                "cut",
+                "dig",
+                "dive",
+                "doubleedge",
+                "doublekick",
+                "doubleslap",
+                "dragonbreath",
+                "dragonclaw",
+                "dragonrage",
+                "drillpeck",
+                "earthquake",
+                "eggbomb",
+                "endeavor",
+                "eruption",
+                "explosion",
+                "extremespeed",
+                "falseswipe",
+                "feintattack",
+                "firespin",
+                "flail",
+                "fly",
+                "frenzyplant",
+                "frustration",
+                "furyattack",
+                "furycutter",
+                "furyswipes",
+                "gust",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "highjumpkick",
+                "hornattack",
+                "hydrocannon",
+                "hydropump",
+                "hyperbeam",
+                "iceball",
+                "iciclespear",
+                "jumpkick",
+                "karatechop",
+                "leafblade",
+                "lowkick",
+                "machpunch",
+                "magicalleaf",
+                "magnitude",
+                "megahorn",
+                "megakick",
+                "megapunch",
+                "meteormash",
+                "muddywater",
+                "mudshot",
+                "nightshade",
+                "outrage",
+                "overheat",
+                "payday",
+                "peck",
+                "petaldance",
+                "pinmissile",
+                "poisontail",
+                "pound",
+                "psychoboost",
+                "psywave",
+                "quickattack",
+                "rage",
+                "rapidspin",
+                "razorleaf",
+                "razorwind",
+                "return",
+                "revenge",
+                "reversal",
+                "rockblast",
+                "rockthrow",
+                "rollingkick",
+                "rollout",
+                "sandtomb",
+                "scratch",
+                "seismictoss",
+                "selfdestruct",
+                "shadowpunch",
+                "shockwave",
+                "signalbeam",
+                "silverwind",
+                "skullbash",
+                "skyattack",
+                "skyuppercut",
+                "slam",
+                "slash",
+                "snore",
+                "solarbeam",
+                "sonicboom",
+                "spikecannon",
+                "spitup",
+                "steelwing",
+                "strength",
+                "struggle",
+                "submission",
+                "surf",
+                "swift",
+                "tackle",
+                "takedown",
+                "thrash",
+                "triplekick",
+                "twister",
+                "uproar",
+                "vinewhip",
+                "visegrip",
+                "vitalthrow",
+                "volttackle",
+                "waterfall",
+                "watergun",
+                "waterpulse",
+                "weatherball",
+                "whirlpool",
+                "wingattack",
+                "wrap"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "flinch-target",
+                "chance": 0.1,
+                "sereneGraceMultiplier": 2
+              }
+            ],
+            "consumeOnActivation": false
+          },
+          {
+            "id": "kingsrock-flinch-gen4",
+            "trigger": "holder-dealt-hit",
+            "timing": "move-secondary",
+            "conditions": {
+              "battleGenerations": [
+                4
+              ],
+              "moveIds": [
+                "aerialace",
+                "aeroblast",
+                "aircutter",
+                "airslash",
+                "aquajet",
+                "aquatail",
+                "armthrust",
+                "assurance",
+                "attackorder",
+                "aurasphere",
+                "avalanche",
+                "barrage",
+                "beatup",
+                "bide",
+                "bind",
+                "blastburn",
+                "bonemerang",
+                "bonerush",
+                "bounce",
+                "bravebird",
+                "brickbreak",
+                "brine",
+                "bugbite",
+                "bulletpunch",
+                "bulletseed",
+                "chargebeam",
+                "clamp",
+                "closecombat",
+                "cometpunch",
+                "crabhammer",
+                "crosschop",
+                "crosspoison",
+                "crushgrip",
+                "cut",
+                "darkpulse",
+                "dig",
+                "discharge",
+                "dive",
+                "doubleedge",
+                "doublehit",
+                "doublekick",
+                "doubleslap",
+                "dracometeor",
+                "dragonbreath",
+                "dragonclaw",
+                "dragonpulse",
+                "dragonrage",
+                "dragonrush",
+                "drainpunch",
+                "drillpeck",
+                "earthpower",
+                "earthquake",
+                "eggbomb",
+                "endeavor",
+                "eruption",
+                "explosion",
+                "extremespeed",
+                "falseswipe",
+                "feintattack",
+                "firefang",
+                "firespin",
+                "flail",
+                "flashcannon",
+                "fly",
+                "forcepalm",
+                "frenzyplant",
+                "frustration",
+                "furyattack",
+                "furycutter",
+                "furyswipes",
+                "gigaimpact",
+                "grassknot",
+                "gunkshot",
+                "gust",
+                "gyroball",
+                "hammerarm",
+                "headsmash",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "highjumpkick",
+                "hornattack",
+                "hydrocannon",
+                "hydropump",
+                "hyperbeam",
+                "iceball",
+                "icefang",
+                "iceshard",
+                "iciclespear",
+                "ironhead",
+                "judgment",
+                "jumpkick",
+                "karatechop",
+                "lastresort",
+                "lavaplume",
+                "leafblade",
+                "leafstorm",
+                "lowkick",
+                "machpunch",
+                "magicalleaf",
+                "magmastorm",
+                "magnetbomb",
+                "magnitude",
+                "megahorn",
+                "megakick",
+                "megapunch",
+                "meteormash",
+                "mirrorshot",
+                "mudbomb",
+                "muddywater",
+                "mudshot",
+                "nightshade",
+                "nightslash",
+                "ominouswind",
+                "outrage",
+                "overheat",
+                "payback",
+                "payday",
+                "peck",
+                "petaldance",
+                "pinmissile",
+                "pluck",
+                "poisonjab",
+                "poisontail",
+                "pound",
+                "powergem",
+                "powerwhip",
+                "psychoboost",
+                "psychocut",
+                "psywave",
+                "punishment",
+                "quickattack",
+                "rage",
+                "rapidspin",
+                "razorleaf",
+                "razorwind",
+                "return",
+                "revenge",
+                "reversal",
+                "roaroftime",
+                "rockblast",
+                "rockclimb",
+                "rockthrow",
+                "rockwrecker",
+                "rollingkick",
+                "rollout",
+                "sandtomb",
+                "scratch",
+                "seedbomb",
+                "seedflare",
+                "seismictoss",
+                "selfdestruct",
+                "shadowclaw",
+                "shadowforce",
+                "shadowpunch",
+                "shadowsneak",
+                "shockwave",
+                "signalbeam",
+                "silverwind",
+                "skullbash",
+                "skyattack",
+                "skyuppercut",
+                "slam",
+                "slash",
+                "snore",
+                "solarbeam",
+                "sonicboom",
+                "spacialrend",
+                "spikecannon",
+                "spitup",
+                "steelwing",
+                "stoneedge",
+                "strength",
+                "struggle",
+                "submission",
+                "suckerpunch",
+                "surf",
+                "swift",
+                "tackle",
+                "takedown",
+                "thrash",
+                "thunderfang",
+                "triplekick",
+                "trumpcard",
+                "twister",
+                "uproar",
+                "uturn",
+                "vacuumwave",
+                "vinewhip",
+                "visegrip",
+                "vitalthrow",
+                "volttackle",
+                "wakeupslap",
+                "waterfall",
+                "watergun",
+                "waterpulse",
+                "weatherball",
+                "whirlpool",
+                "wingattack",
+                "woodhammer",
+                "wrap",
+                "wringout",
+                "xscissor",
+                "zenheadbutt"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "flinch-target",
+                "chance": 0.1,
+                "sereneGraceMultiplier": 2
+              }
+            ],
+            "consumeOnActivation": false
+          },
+          {
+            "id": "kingsrock-flinch-gen5",
+            "trigger": "holder-dealt-hit",
+            "timing": "move-secondary",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "moveIds": [
+                "absorb",
+                "acid",
+                "acidspray",
+                "acrobatics",
+                "aerialace",
+                "aeroblast",
+                "aircutter",
+                "ancientpower",
+                "aquajet",
+                "aquatail",
+                "armthrust",
+                "assurance",
+                "attackorder",
+                "aurasphere",
+                "aurorabeam",
+                "avalanche",
+                "barrage",
+                "beatup",
+                "bide",
+                "bind",
+                "blastburn",
+                "blazekick",
+                "blizzard",
+                "blueflare",
+                "bodyslam",
+                "boltstrike",
+                "bonemerang",
+                "bonerush",
+                "bounce",
+                "bravebird",
+                "brickbreak",
+                "brine",
+                "bubble",
+                "bubblebeam",
+                "bugbite",
+                "bugbuzz",
+                "bulldoze",
+                "bulletpunch",
+                "bulletseed",
+                "chargebeam",
+                "chatter",
+                "chipaway",
+                "circlethrow",
+                "clamp",
+                "clearsmog",
+                "closecombat",
+                "cometpunch",
+                "confusion",
+                "constrict",
+                "counter",
+                "covet",
+                "crabhammer",
+                "crosschop",
+                "crosspoison",
+                "crunch",
+                "crushclaw",
+                "crushgrip",
+                "cut",
+                "dig",
+                "discharge",
+                "dive",
+                "dizzypunch",
+                "doomdesire",
+                "doubleedge",
+                "doublehit",
+                "doublekick",
+                "doubleslap",
+                "dracometeor",
+                "dragonbreath",
+                "dragonclaw",
+                "dragonpulse",
+                "dragonrage",
+                "dragontail",
+                "drainpunch",
+                "dreameater",
+                "drillpeck",
+                "drillrun",
+                "dualchop",
+                "dynamicpunch",
+                "earthpower",
+                "earthquake",
+                "echoedvoice",
+                "eggbomb",
+                "electroball",
+                "electroweb",
+                "ember",
+                "endeavor",
+                "energyball",
+                "eruption",
+                "explosion",
+                "extremespeed",
+                "facade",
+                "falseswipe",
+                "feint",
+                "feintattack",
+                "fierydance",
+                "finalgambit",
+                "fireblast",
+                "firepledge",
+                "firepunch",
+                "firespin",
+                "fissure",
+                "flail",
+                "flameburst",
+                "flamecharge",
+                "flamethrower",
+                "flamewheel",
+                "flareblitz",
+                "flashcannon",
+                "fling",
+                "fly",
+                "focusblast",
+                "focuspunch",
+                "forcepalm",
+                "foulplay",
+                "freezeshock",
+                "frenzyplant",
+                "frostbreath",
+                "frustration",
+                "furyattack",
+                "furycutter",
+                "furyswipes",
+                "fusionbolt",
+                "fusionflare",
+                "futuresight",
+                "geargrind",
+                "gigadrain",
+                "gigaimpact",
+                "glaciate",
+                "grassknot",
+                "grasspledge",
+                "guillotine",
+                "gunkshot",
+                "gust",
+                "gyroball",
+                "hammerarm",
+                "headcharge",
+                "headsmash",
+                "heatcrash",
+                "heatwave",
+                "heavyslam",
+                "hex",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "highjumpkick",
+                "hornattack",
+                "horndrill",
+                "hornleech",
+                "hurricane",
+                "hydrocannon",
+                "hydropump",
+                "hyperbeam",
+                "hypervoice",
+                "iceball",
+                "icebeam",
+                "iceburn",
+                "icepunch",
+                "iceshard",
+                "iciclespear",
+                "icywind",
+                "incinerate",
+                "inferno",
+                "irontail",
+                "judgment",
+                "jumpkick",
+                "karatechop",
+                "knockoff",
+                "lastresort",
+                "lavaplume",
+                "leafblade",
+                "leafstorm",
+                "leaftornado",
+                "leechlife",
+                "lick",
+                "lowkick",
+                "lowsweep",
+                "lusterpurge",
+                "machpunch",
+                "magicalleaf",
+                "magmastorm",
+                "magnetbomb",
+                "magnitude",
+                "megadrain",
+                "megahorn",
+                "megakick",
+                "megapunch",
+                "metalburst",
+                "metalclaw",
+                "meteormash",
+                "mirrorcoat",
+                "mirrorshot",
+                "mistball",
+                "mudbomb",
+                "muddywater",
+                "mudshot",
+                "mudslap",
+                "naturalgift",
+                "nightdaze",
+                "nightshade",
+                "nightslash",
+                "octazooka",
+                "ominouswind",
+                "outrage",
+                "overheat",
+                "paleowave",
+                "payback",
+                "payday",
+                "peck",
+                "petaldance",
+                "pinmissile",
+                "pluck",
+                "poisonfang",
+                "poisonjab",
+                "poisonsting",
+                "poisontail",
+                "polarflare",
+                "pound",
+                "powdersnow",
+                "powergem",
+                "powerwhip",
+                "present",
+                "psybeam",
+                "psychic",
+                "psychoboost",
+                "psychocut",
+                "psyshock",
+                "psystrike",
+                "psywave",
+                "punishment",
+                "pursuit",
+                "quickattack",
+                "rage",
+                "rapidspin",
+                "razorleaf",
+                "razorshell",
+                "razorwind",
+                "relicsong",
+                "retaliate",
+                "return",
+                "revenge",
+                "reversal",
+                "roaroftime",
+                "rockblast",
+                "rockclimb",
+                "rocksmash",
+                "rockthrow",
+                "rocktomb",
+                "rockwrecker",
+                "rollout",
+                "round",
+                "sacredfire",
+                "sacredsword",
+                "sandtomb",
+                "scald",
+                "scratch",
+                "searingshot",
+                "secretpower",
+                "secretsword",
+                "seedbomb",
+                "seedflare",
+                "seismictoss",
+                "selfdestruct",
+                "shadowball",
+                "shadowclaw",
+                "shadowforce",
+                "shadowpunch",
+                "shadowsneak",
+                "shadowstrike",
+                "sheercold",
+                "shockwave",
+                "signalbeam",
+                "silverwind",
+                "skullbash",
+                "skydrop",
+                "skyuppercut",
+                "slam",
+                "slash",
+                "sludge",
+                "sludgebomb",
+                "sludgewave",
+                "smackdown",
+                "smellingsalts",
+                "smog",
+                "snarl",
+                "solarbeam",
+                "sonicboom",
+                "spacialrend",
+                "spark",
+                "spikecannon",
+                "spitup",
+                "steelwing",
+                "stoneedge",
+                "storedpower",
+                "stormthrow",
+                "strength",
+                "struggle",
+                "strugglebug",
+                "submission",
+                "suckerpunch",
+                "superfang",
+                "superpower",
+                "surf",
+                "swift",
+                "synchronoise",
+                "tackle",
+                "tailslap",
+                "takedown",
+                "technoblast",
+                "thief",
+                "thrash",
+                "thunder",
+                "thunderbolt",
+                "thunderpunch",
+                "thundershock",
+                "triattack",
+                "triplekick",
+                "trumpcard",
+                "twineedle",
+                "uproar",
+                "uturn",
+                "vacuumwave",
+                "vcreate",
+                "venoshock",
+                "vinewhip",
+                "visegrip",
+                "vitalthrow",
+                "voltswitch",
+                "volttackle",
+                "wakeupslap",
+                "watergun",
+                "waterpledge",
+                "waterpulse",
+                "waterspout",
+                "weatherball",
+                "whirlpool",
+                "wildcharge",
+                "wingattack",
+                "woodhammer",
+                "wrap",
+                "wringout",
+                "xscissor",
+                "zapcannon"
+              ],
+              "moveIdsWithSheerForce": [
+                "absorb",
+                "acid",
+                "acidspray",
+                "acrobatics",
+                "aerialace",
+                "aeroblast",
+                "aircutter",
+                "airslash",
+                "ancientpower",
+                "aquajet",
+                "aquatail",
+                "armthrust",
+                "assurance",
+                "astonish",
+                "attackorder",
+                "aurasphere",
+                "aurorabeam",
+                "avalanche",
+                "barrage",
+                "beatup",
+                "bide",
+                "bind",
+                "bite",
+                "blastburn",
+                "blazekick",
+                "blizzard",
+                "blueflare",
+                "bodyslam",
+                "boltstrike",
+                "boneclub",
+                "bonemerang",
+                "bonerush",
+                "bounce",
+                "bravebird",
+                "brickbreak",
+                "brine",
+                "bubble",
+                "bubblebeam",
+                "bugbite",
+                "bugbuzz",
+                "bulldoze",
+                "bulletpunch",
+                "bulletseed",
+                "chargebeam",
+                "chatter",
+                "chipaway",
+                "circlethrow",
+                "clamp",
+                "clearsmog",
+                "closecombat",
+                "cometpunch",
+                "confusion",
+                "constrict",
+                "counter",
+                "covet",
+                "crabhammer",
+                "crosschop",
+                "crosspoison",
+                "crunch",
+                "crushclaw",
+                "crushgrip",
+                "cut",
+                "darkpulse",
+                "dig",
+                "discharge",
+                "dive",
+                "dizzypunch",
+                "doomdesire",
+                "doubleedge",
+                "doublehit",
+                "doublekick",
+                "doubleslap",
+                "dracometeor",
+                "dragonbreath",
+                "dragonclaw",
+                "dragonpulse",
+                "dragonrage",
+                "dragonrush",
+                "dragontail",
+                "drainpunch",
+                "dreameater",
+                "drillpeck",
+                "drillrun",
+                "dualchop",
+                "dynamicpunch",
+                "earthpower",
+                "earthquake",
+                "echoedvoice",
+                "eggbomb",
+                "electroball",
+                "electroweb",
+                "ember",
+                "endeavor",
+                "energyball",
+                "eruption",
+                "explosion",
+                "extrasensory",
+                "extremespeed",
+                "facade",
+                "fakeout",
+                "falseswipe",
+                "feint",
+                "feintattack",
+                "fierydance",
+                "finalgambit",
+                "fireblast",
+                "firefang",
+                "firepledge",
+                "firepunch",
+                "firespin",
+                "fissure",
+                "flail",
+                "flameburst",
+                "flamecharge",
+                "flamethrower",
+                "flamewheel",
+                "flareblitz",
+                "flashcannon",
+                "fling",
+                "fly",
+                "focusblast",
+                "focuspunch",
+                "forcepalm",
+                "foulplay",
+                "freezeshock",
+                "frenzyplant",
+                "frostbreath",
+                "frustration",
+                "furyattack",
+                "furycutter",
+                "furyswipes",
+                "fusionbolt",
+                "fusionflare",
+                "futuresight",
+                "geargrind",
+                "gigadrain",
+                "gigaimpact",
+                "glaciate",
+                "grassknot",
+                "grasspledge",
+                "guillotine",
+                "gunkshot",
+                "gust",
+                "gyroball",
+                "hammerarm",
+                "headbutt",
+                "headcharge",
+                "headsmash",
+                "heartstamp",
+                "heatcrash",
+                "heatwave",
+                "heavyslam",
+                "hex",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "highjumpkick",
+                "hornattack",
+                "horndrill",
+                "hornleech",
+                "hurricane",
+                "hydrocannon",
+                "hydropump",
+                "hyperbeam",
+                "hyperfang",
+                "hypervoice",
+                "iceball",
+                "icebeam",
+                "iceburn",
+                "icefang",
+                "icepunch",
+                "iceshard",
+                "iciclecrash",
+                "iciclespear",
+                "icywind",
+                "incinerate",
+                "inferno",
+                "ironhead",
+                "irontail",
+                "judgment",
+                "jumpkick",
+                "karatechop",
+                "knockoff",
+                "lastresort",
+                "lavaplume",
+                "leafblade",
+                "leafstorm",
+                "leaftornado",
+                "leechlife",
+                "lick",
+                "lowkick",
+                "lowsweep",
+                "lusterpurge",
+                "machpunch",
+                "magicalleaf",
+                "magmastorm",
+                "magnetbomb",
+                "magnitude",
+                "megadrain",
+                "megahorn",
+                "megakick",
+                "megapunch",
+                "metalburst",
+                "metalclaw",
+                "meteormash",
+                "mirrorcoat",
+                "mirrorshot",
+                "mistball",
+                "mudbomb",
+                "muddywater",
+                "mudshot",
+                "mudslap",
+                "naturalgift",
+                "needlearm",
+                "nightdaze",
+                "nightshade",
+                "nightslash",
+                "octazooka",
+                "ominouswind",
+                "outrage",
+                "overheat",
+                "paleowave",
+                "payback",
+                "payday",
+                "peck",
+                "petaldance",
+                "pinmissile",
+                "pluck",
+                "poisonfang",
+                "poisonjab",
+                "poisonsting",
+                "poisontail",
+                "polarflare",
+                "pound",
+                "powdersnow",
+                "powergem",
+                "powerwhip",
+                "present",
+                "psybeam",
+                "psychic",
+                "psychoboost",
+                "psychocut",
+                "psyshock",
+                "psystrike",
+                "psywave",
+                "punishment",
+                "pursuit",
+                "quickattack",
+                "rage",
+                "rapidspin",
+                "razorleaf",
+                "razorshell",
+                "razorwind",
+                "relicsong",
+                "retaliate",
+                "return",
+                "revenge",
+                "reversal",
+                "roaroftime",
+                "rockblast",
+                "rockclimb",
+                "rockslide",
+                "rocksmash",
+                "rockthrow",
+                "rocktomb",
+                "rockwrecker",
+                "rollingkick",
+                "rollout",
+                "round",
+                "sacredfire",
+                "sacredsword",
+                "sandtomb",
+                "scald",
+                "scratch",
+                "searingshot",
+                "secretpower",
+                "secretsword",
+                "seedbomb",
+                "seedflare",
+                "seismictoss",
+                "selfdestruct",
+                "shadowball",
+                "shadowclaw",
+                "shadowforce",
+                "shadowpunch",
+                "shadowsneak",
+                "shadowstrike",
+                "sheercold",
+                "shockwave",
+                "signalbeam",
+                "silverwind",
+                "skullbash",
+                "skyattack",
+                "skydrop",
+                "skyuppercut",
+                "slam",
+                "slash",
+                "sludge",
+                "sludgebomb",
+                "sludgewave",
+                "smackdown",
+                "smellingsalts",
+                "smog",
+                "snarl",
+                "snore",
+                "solarbeam",
+                "sonicboom",
+                "spacialrend",
+                "spark",
+                "spikecannon",
+                "spitup",
+                "steamroller",
+                "steelwing",
+                "stomp",
+                "stoneedge",
+                "storedpower",
+                "stormthrow",
+                "strength",
+                "struggle",
+                "strugglebug",
+                "submission",
+                "suckerpunch",
+                "superfang",
+                "superpower",
+                "surf",
+                "swift",
+                "synchronoise",
+                "tackle",
+                "tailslap",
+                "takedown",
+                "technoblast",
+                "thief",
+                "thrash",
+                "thunder",
+                "thunderbolt",
+                "thunderfang",
+                "thunderpunch",
+                "thundershock",
+                "triattack",
+                "triplekick",
+                "trumpcard",
+                "twineedle",
+                "twister",
+                "uproar",
+                "uturn",
+                "vacuumwave",
+                "vcreate",
+                "venoshock",
+                "vinewhip",
+                "visegrip",
+                "vitalthrow",
+                "voltswitch",
+                "volttackle",
+                "wakeupslap",
+                "waterfall",
+                "watergun",
+                "waterpledge",
+                "waterpulse",
+                "waterspout",
+                "weatherball",
+                "whirlpool",
+                "wildcharge",
+                "wingattack",
+                "woodhammer",
+                "wrap",
+                "wringout",
+                "xscissor",
+                "zapcannon",
+                "zenheadbutt"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "flinch-target",
+                "chance": 0.1,
+                "sereneGraceMultiplier": 2
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "silverpowder": {
       "num": 188,
@@ -4407,7 +6422,88 @@
       ],
       "mechanicsBase": "Shell Bell",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "shell-bell-after-move-gen3",
+            "trigger": "holder-dealt-move-damage",
+            "timing": "after-move-secondary-self",
+            "conditions": {
+              "battleGenerations": [
+                3
+              ],
+              "requiresHealingAllowed": false,
+              "blockedBySheerForce": true
+            },
+            "effects": [
+              {
+                "kind": "heal-from-move-damage",
+                "numerator": 1,
+                "denominator": 8,
+                "minimum": 1,
+                "rounding": "floor",
+                "aggregation": "last-target",
+                "includesSubstituteDamage": false
+              }
+            ],
+            "consumeOnActivation": false
+          },
+          {
+            "id": "shell-bell-after-move-gen4",
+            "trigger": "holder-dealt-move-damage",
+            "timing": "after-move-secondary-self",
+            "conditions": {
+              "battleGenerations": [
+                4
+              ],
+              "requiresHealingAllowed": false,
+              "blockedBySheerForce": true
+            },
+            "effects": [
+              {
+                "kind": "heal-from-move-damage",
+                "numerator": 1,
+                "denominator": 8,
+                "minimum": 1,
+                "rounding": "floor",
+                "aggregation": "all-targets",
+                "includesSubstituteDamage": false
+              }
+            ],
+            "consumeOnActivation": false
+          },
+          {
+            "id": "shell-bell-after-move-gen5",
+            "trigger": "holder-dealt-move-damage",
+            "timing": "after-move-secondary-self",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "requiresHealingAllowed": true,
+              "blockedBySheerForce": true
+            },
+            "effects": [
+              {
+                "kind": "heal-from-move-damage",
+                "numerator": 1,
+                "denominator": 8,
+                "minimum": 1,
+                "rounding": "floor",
+                "aggregation": "all-targets",
+                "includesSubstituteDamage": false
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "seaincense": {
       "num": 220,
@@ -4519,7 +6615,36 @@
       ],
       "mechanicsBase": "Rocky Helmet",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "rockyhelmet-holder-hit-5",
+            "trigger": "holder-hit",
+            "timing": "after-damage",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "requiresContact": true,
+              "allowsFaintedHolder": true
+            },
+            "effects": [
+              {
+                "kind": "damage-attacker",
+                "numerator": 1,
+                "denominator": 6
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "weaknesspolicy": {
       "num": 227,
@@ -4605,7 +6730,1016 @@
       ],
       "mechanicsBase": "Razor Fang",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "razorfang-flinch-gen4",
+            "trigger": "holder-dealt-hit",
+            "timing": "move-secondary",
+            "conditions": {
+              "battleGenerations": [
+                4
+              ],
+              "moveIds": [
+                "aerialace",
+                "aeroblast",
+                "aircutter",
+                "airslash",
+                "aquajet",
+                "aquatail",
+                "armthrust",
+                "assurance",
+                "attackorder",
+                "aurasphere",
+                "avalanche",
+                "barrage",
+                "beatup",
+                "bide",
+                "bind",
+                "blastburn",
+                "bonemerang",
+                "bonerush",
+                "bounce",
+                "bravebird",
+                "brickbreak",
+                "brine",
+                "bugbite",
+                "bulletpunch",
+                "bulletseed",
+                "chargebeam",
+                "clamp",
+                "closecombat",
+                "cometpunch",
+                "crabhammer",
+                "crosschop",
+                "crosspoison",
+                "crushgrip",
+                "cut",
+                "darkpulse",
+                "dig",
+                "discharge",
+                "dive",
+                "doubleedge",
+                "doublehit",
+                "doublekick",
+                "doubleslap",
+                "dracometeor",
+                "dragonbreath",
+                "dragonclaw",
+                "dragonpulse",
+                "dragonrage",
+                "dragonrush",
+                "drainpunch",
+                "drillpeck",
+                "earthpower",
+                "earthquake",
+                "eggbomb",
+                "endeavor",
+                "eruption",
+                "explosion",
+                "extremespeed",
+                "falseswipe",
+                "feintattack",
+                "firefang",
+                "firespin",
+                "flail",
+                "flashcannon",
+                "fly",
+                "forcepalm",
+                "frenzyplant",
+                "frustration",
+                "furyattack",
+                "furycutter",
+                "furyswipes",
+                "gigaimpact",
+                "grassknot",
+                "gunkshot",
+                "gust",
+                "gyroball",
+                "hammerarm",
+                "headsmash",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "highjumpkick",
+                "hornattack",
+                "hydrocannon",
+                "hydropump",
+                "hyperbeam",
+                "iceball",
+                "icefang",
+                "iceshard",
+                "iciclespear",
+                "ironhead",
+                "judgment",
+                "jumpkick",
+                "karatechop",
+                "lastresort",
+                "lavaplume",
+                "leafblade",
+                "leafstorm",
+                "lowkick",
+                "machpunch",
+                "magicalleaf",
+                "magmastorm",
+                "magnetbomb",
+                "magnitude",
+                "megahorn",
+                "megakick",
+                "megapunch",
+                "meteormash",
+                "mirrorshot",
+                "mudbomb",
+                "muddywater",
+                "mudshot",
+                "nightshade",
+                "nightslash",
+                "ominouswind",
+                "outrage",
+                "overheat",
+                "payback",
+                "payday",
+                "peck",
+                "petaldance",
+                "pinmissile",
+                "pluck",
+                "poisonjab",
+                "poisontail",
+                "pound",
+                "powergem",
+                "powerwhip",
+                "psychoboost",
+                "psychocut",
+                "psywave",
+                "punishment",
+                "quickattack",
+                "rage",
+                "rapidspin",
+                "razorleaf",
+                "razorwind",
+                "return",
+                "revenge",
+                "reversal",
+                "roaroftime",
+                "rockblast",
+                "rockclimb",
+                "rockthrow",
+                "rockwrecker",
+                "rollingkick",
+                "rollout",
+                "sandtomb",
+                "scratch",
+                "seedbomb",
+                "seedflare",
+                "seismictoss",
+                "selfdestruct",
+                "shadowclaw",
+                "shadowforce",
+                "shadowpunch",
+                "shadowsneak",
+                "shockwave",
+                "signalbeam",
+                "silverwind",
+                "skullbash",
+                "skyattack",
+                "skyuppercut",
+                "slam",
+                "slash",
+                "snore",
+                "solarbeam",
+                "sonicboom",
+                "spacialrend",
+                "spikecannon",
+                "spitup",
+                "steelwing",
+                "stoneedge",
+                "strength",
+                "struggle",
+                "submission",
+                "suckerpunch",
+                "surf",
+                "swift",
+                "tackle",
+                "takedown",
+                "thrash",
+                "thunderfang",
+                "triplekick",
+                "trumpcard",
+                "twister",
+                "uproar",
+                "uturn",
+                "vacuumwave",
+                "vinewhip",
+                "visegrip",
+                "vitalthrow",
+                "volttackle",
+                "wakeupslap",
+                "waterfall",
+                "watergun",
+                "waterpulse",
+                "weatherball",
+                "whirlpool",
+                "wingattack",
+                "woodhammer",
+                "wrap",
+                "wringout",
+                "xscissor",
+                "zenheadbutt"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "flinch-target",
+                "chance": 0.1,
+                "sereneGraceMultiplier": 2
+              }
+            ],
+            "consumeOnActivation": false
+          },
+          {
+            "id": "razorfang-flinch-gen5",
+            "trigger": "holder-dealt-hit",
+            "timing": "move-secondary",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "moveIds": [
+                "absorb",
+                "acid",
+                "acidspray",
+                "acrobatics",
+                "aerialace",
+                "aeroblast",
+                "aircutter",
+                "ancientpower",
+                "aquajet",
+                "aquatail",
+                "armthrust",
+                "assurance",
+                "attackorder",
+                "aurasphere",
+                "aurorabeam",
+                "avalanche",
+                "barrage",
+                "beatup",
+                "bide",
+                "bind",
+                "blastburn",
+                "blazekick",
+                "blizzard",
+                "blueflare",
+                "bodyslam",
+                "boltstrike",
+                "bonemerang",
+                "bonerush",
+                "bounce",
+                "bravebird",
+                "brickbreak",
+                "brine",
+                "bubble",
+                "bubblebeam",
+                "bugbite",
+                "bugbuzz",
+                "bulldoze",
+                "bulletpunch",
+                "bulletseed",
+                "chargebeam",
+                "chatter",
+                "chipaway",
+                "circlethrow",
+                "clamp",
+                "clearsmog",
+                "closecombat",
+                "cometpunch",
+                "confusion",
+                "constrict",
+                "counter",
+                "covet",
+                "crabhammer",
+                "crosschop",
+                "crosspoison",
+                "crunch",
+                "crushclaw",
+                "crushgrip",
+                "cut",
+                "dig",
+                "discharge",
+                "dive",
+                "dizzypunch",
+                "doomdesire",
+                "doubleedge",
+                "doublehit",
+                "doublekick",
+                "doubleslap",
+                "dracometeor",
+                "dragonbreath",
+                "dragonclaw",
+                "dragonpulse",
+                "dragonrage",
+                "dragontail",
+                "drainpunch",
+                "dreameater",
+                "drillpeck",
+                "drillrun",
+                "dualchop",
+                "dynamicpunch",
+                "earthpower",
+                "earthquake",
+                "echoedvoice",
+                "eggbomb",
+                "electroball",
+                "electroweb",
+                "ember",
+                "endeavor",
+                "energyball",
+                "eruption",
+                "explosion",
+                "extremespeed",
+                "facade",
+                "falseswipe",
+                "feint",
+                "feintattack",
+                "fierydance",
+                "finalgambit",
+                "fireblast",
+                "firepledge",
+                "firepunch",
+                "firespin",
+                "fissure",
+                "flail",
+                "flameburst",
+                "flamecharge",
+                "flamethrower",
+                "flamewheel",
+                "flareblitz",
+                "flashcannon",
+                "fling",
+                "fly",
+                "focusblast",
+                "focuspunch",
+                "forcepalm",
+                "foulplay",
+                "freezeshock",
+                "frenzyplant",
+                "frostbreath",
+                "frustration",
+                "furyattack",
+                "furycutter",
+                "furyswipes",
+                "fusionbolt",
+                "fusionflare",
+                "futuresight",
+                "geargrind",
+                "gigadrain",
+                "gigaimpact",
+                "glaciate",
+                "grassknot",
+                "grasspledge",
+                "guillotine",
+                "gunkshot",
+                "gust",
+                "gyroball",
+                "hammerarm",
+                "headcharge",
+                "headsmash",
+                "heatcrash",
+                "heatwave",
+                "heavyslam",
+                "hex",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "highjumpkick",
+                "hornattack",
+                "horndrill",
+                "hornleech",
+                "hurricane",
+                "hydrocannon",
+                "hydropump",
+                "hyperbeam",
+                "hypervoice",
+                "iceball",
+                "icebeam",
+                "iceburn",
+                "icepunch",
+                "iceshard",
+                "iciclespear",
+                "icywind",
+                "incinerate",
+                "inferno",
+                "irontail",
+                "judgment",
+                "jumpkick",
+                "karatechop",
+                "knockoff",
+                "lastresort",
+                "lavaplume",
+                "leafblade",
+                "leafstorm",
+                "leaftornado",
+                "leechlife",
+                "lick",
+                "lowkick",
+                "lowsweep",
+                "lusterpurge",
+                "machpunch",
+                "magicalleaf",
+                "magmastorm",
+                "magnetbomb",
+                "magnitude",
+                "megadrain",
+                "megahorn",
+                "megakick",
+                "megapunch",
+                "metalburst",
+                "metalclaw",
+                "meteormash",
+                "mirrorcoat",
+                "mirrorshot",
+                "mistball",
+                "mudbomb",
+                "muddywater",
+                "mudshot",
+                "mudslap",
+                "naturalgift",
+                "nightdaze",
+                "nightshade",
+                "nightslash",
+                "octazooka",
+                "ominouswind",
+                "outrage",
+                "overheat",
+                "paleowave",
+                "payback",
+                "payday",
+                "peck",
+                "petaldance",
+                "pinmissile",
+                "pluck",
+                "poisonfang",
+                "poisonjab",
+                "poisonsting",
+                "poisontail",
+                "polarflare",
+                "pound",
+                "powdersnow",
+                "powergem",
+                "powerwhip",
+                "present",
+                "psybeam",
+                "psychic",
+                "psychoboost",
+                "psychocut",
+                "psyshock",
+                "psystrike",
+                "psywave",
+                "punishment",
+                "pursuit",
+                "quickattack",
+                "rage",
+                "rapidspin",
+                "razorleaf",
+                "razorshell",
+                "razorwind",
+                "relicsong",
+                "retaliate",
+                "return",
+                "revenge",
+                "reversal",
+                "roaroftime",
+                "rockblast",
+                "rockclimb",
+                "rocksmash",
+                "rockthrow",
+                "rocktomb",
+                "rockwrecker",
+                "rollout",
+                "round",
+                "sacredfire",
+                "sacredsword",
+                "sandtomb",
+                "scald",
+                "scratch",
+                "searingshot",
+                "secretpower",
+                "secretsword",
+                "seedbomb",
+                "seedflare",
+                "seismictoss",
+                "selfdestruct",
+                "shadowball",
+                "shadowclaw",
+                "shadowforce",
+                "shadowpunch",
+                "shadowsneak",
+                "shadowstrike",
+                "sheercold",
+                "shockwave",
+                "signalbeam",
+                "silverwind",
+                "skullbash",
+                "skydrop",
+                "skyuppercut",
+                "slam",
+                "slash",
+                "sludge",
+                "sludgebomb",
+                "sludgewave",
+                "smackdown",
+                "smellingsalts",
+                "smog",
+                "snarl",
+                "solarbeam",
+                "sonicboom",
+                "spacialrend",
+                "spark",
+                "spikecannon",
+                "spitup",
+                "steelwing",
+                "stoneedge",
+                "storedpower",
+                "stormthrow",
+                "strength",
+                "struggle",
+                "strugglebug",
+                "submission",
+                "suckerpunch",
+                "superfang",
+                "superpower",
+                "surf",
+                "swift",
+                "synchronoise",
+                "tackle",
+                "tailslap",
+                "takedown",
+                "technoblast",
+                "thief",
+                "thrash",
+                "thunder",
+                "thunderbolt",
+                "thunderpunch",
+                "thundershock",
+                "triattack",
+                "triplekick",
+                "trumpcard",
+                "twineedle",
+                "uproar",
+                "uturn",
+                "vacuumwave",
+                "vcreate",
+                "venoshock",
+                "vinewhip",
+                "visegrip",
+                "vitalthrow",
+                "voltswitch",
+                "volttackle",
+                "wakeupslap",
+                "watergun",
+                "waterpledge",
+                "waterpulse",
+                "waterspout",
+                "weatherball",
+                "whirlpool",
+                "wildcharge",
+                "wingattack",
+                "woodhammer",
+                "wrap",
+                "wringout",
+                "xscissor",
+                "zapcannon"
+              ],
+              "moveIdsWithSheerForce": [
+                "absorb",
+                "acid",
+                "acidspray",
+                "acrobatics",
+                "aerialace",
+                "aeroblast",
+                "aircutter",
+                "airslash",
+                "ancientpower",
+                "aquajet",
+                "aquatail",
+                "armthrust",
+                "assurance",
+                "astonish",
+                "attackorder",
+                "aurasphere",
+                "aurorabeam",
+                "avalanche",
+                "barrage",
+                "beatup",
+                "bide",
+                "bind",
+                "bite",
+                "blastburn",
+                "blazekick",
+                "blizzard",
+                "blueflare",
+                "bodyslam",
+                "boltstrike",
+                "boneclub",
+                "bonemerang",
+                "bonerush",
+                "bounce",
+                "bravebird",
+                "brickbreak",
+                "brine",
+                "bubble",
+                "bubblebeam",
+                "bugbite",
+                "bugbuzz",
+                "bulldoze",
+                "bulletpunch",
+                "bulletseed",
+                "chargebeam",
+                "chatter",
+                "chipaway",
+                "circlethrow",
+                "clamp",
+                "clearsmog",
+                "closecombat",
+                "cometpunch",
+                "confusion",
+                "constrict",
+                "counter",
+                "covet",
+                "crabhammer",
+                "crosschop",
+                "crosspoison",
+                "crunch",
+                "crushclaw",
+                "crushgrip",
+                "cut",
+                "darkpulse",
+                "dig",
+                "discharge",
+                "dive",
+                "dizzypunch",
+                "doomdesire",
+                "doubleedge",
+                "doublehit",
+                "doublekick",
+                "doubleslap",
+                "dracometeor",
+                "dragonbreath",
+                "dragonclaw",
+                "dragonpulse",
+                "dragonrage",
+                "dragonrush",
+                "dragontail",
+                "drainpunch",
+                "dreameater",
+                "drillpeck",
+                "drillrun",
+                "dualchop",
+                "dynamicpunch",
+                "earthpower",
+                "earthquake",
+                "echoedvoice",
+                "eggbomb",
+                "electroball",
+                "electroweb",
+                "ember",
+                "endeavor",
+                "energyball",
+                "eruption",
+                "explosion",
+                "extrasensory",
+                "extremespeed",
+                "facade",
+                "fakeout",
+                "falseswipe",
+                "feint",
+                "feintattack",
+                "fierydance",
+                "finalgambit",
+                "fireblast",
+                "firefang",
+                "firepledge",
+                "firepunch",
+                "firespin",
+                "fissure",
+                "flail",
+                "flameburst",
+                "flamecharge",
+                "flamethrower",
+                "flamewheel",
+                "flareblitz",
+                "flashcannon",
+                "fling",
+                "fly",
+                "focusblast",
+                "focuspunch",
+                "forcepalm",
+                "foulplay",
+                "freezeshock",
+                "frenzyplant",
+                "frostbreath",
+                "frustration",
+                "furyattack",
+                "furycutter",
+                "furyswipes",
+                "fusionbolt",
+                "fusionflare",
+                "futuresight",
+                "geargrind",
+                "gigadrain",
+                "gigaimpact",
+                "glaciate",
+                "grassknot",
+                "grasspledge",
+                "guillotine",
+                "gunkshot",
+                "gust",
+                "gyroball",
+                "hammerarm",
+                "headbutt",
+                "headcharge",
+                "headsmash",
+                "heartstamp",
+                "heatcrash",
+                "heatwave",
+                "heavyslam",
+                "hex",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "hiddenpower",
+                "highjumpkick",
+                "hornattack",
+                "horndrill",
+                "hornleech",
+                "hurricane",
+                "hydrocannon",
+                "hydropump",
+                "hyperbeam",
+                "hyperfang",
+                "hypervoice",
+                "iceball",
+                "icebeam",
+                "iceburn",
+                "icefang",
+                "icepunch",
+                "iceshard",
+                "iciclecrash",
+                "iciclespear",
+                "icywind",
+                "incinerate",
+                "inferno",
+                "ironhead",
+                "irontail",
+                "judgment",
+                "jumpkick",
+                "karatechop",
+                "knockoff",
+                "lastresort",
+                "lavaplume",
+                "leafblade",
+                "leafstorm",
+                "leaftornado",
+                "leechlife",
+                "lick",
+                "lowkick",
+                "lowsweep",
+                "lusterpurge",
+                "machpunch",
+                "magicalleaf",
+                "magmastorm",
+                "magnetbomb",
+                "magnitude",
+                "megadrain",
+                "megahorn",
+                "megakick",
+                "megapunch",
+                "metalburst",
+                "metalclaw",
+                "meteormash",
+                "mirrorcoat",
+                "mirrorshot",
+                "mistball",
+                "mudbomb",
+                "muddywater",
+                "mudshot",
+                "mudslap",
+                "naturalgift",
+                "needlearm",
+                "nightdaze",
+                "nightshade",
+                "nightslash",
+                "octazooka",
+                "ominouswind",
+                "outrage",
+                "overheat",
+                "paleowave",
+                "payback",
+                "payday",
+                "peck",
+                "petaldance",
+                "pinmissile",
+                "pluck",
+                "poisonfang",
+                "poisonjab",
+                "poisonsting",
+                "poisontail",
+                "polarflare",
+                "pound",
+                "powdersnow",
+                "powergem",
+                "powerwhip",
+                "present",
+                "psybeam",
+                "psychic",
+                "psychoboost",
+                "psychocut",
+                "psyshock",
+                "psystrike",
+                "psywave",
+                "punishment",
+                "pursuit",
+                "quickattack",
+                "rage",
+                "rapidspin",
+                "razorleaf",
+                "razorshell",
+                "razorwind",
+                "relicsong",
+                "retaliate",
+                "return",
+                "revenge",
+                "reversal",
+                "roaroftime",
+                "rockblast",
+                "rockclimb",
+                "rockslide",
+                "rocksmash",
+                "rockthrow",
+                "rocktomb",
+                "rockwrecker",
+                "rollingkick",
+                "rollout",
+                "round",
+                "sacredfire",
+                "sacredsword",
+                "sandtomb",
+                "scald",
+                "scratch",
+                "searingshot",
+                "secretpower",
+                "secretsword",
+                "seedbomb",
+                "seedflare",
+                "seismictoss",
+                "selfdestruct",
+                "shadowball",
+                "shadowclaw",
+                "shadowforce",
+                "shadowpunch",
+                "shadowsneak",
+                "shadowstrike",
+                "sheercold",
+                "shockwave",
+                "signalbeam",
+                "silverwind",
+                "skullbash",
+                "skyattack",
+                "skydrop",
+                "skyuppercut",
+                "slam",
+                "slash",
+                "sludge",
+                "sludgebomb",
+                "sludgewave",
+                "smackdown",
+                "smellingsalts",
+                "smog",
+                "snarl",
+                "snore",
+                "solarbeam",
+                "sonicboom",
+                "spacialrend",
+                "spark",
+                "spikecannon",
+                "spitup",
+                "steamroller",
+                "steelwing",
+                "stomp",
+                "stoneedge",
+                "storedpower",
+                "stormthrow",
+                "strength",
+                "struggle",
+                "strugglebug",
+                "submission",
+                "suckerpunch",
+                "superfang",
+                "superpower",
+                "surf",
+                "swift",
+                "synchronoise",
+                "tackle",
+                "tailslap",
+                "takedown",
+                "technoblast",
+                "thief",
+                "thrash",
+                "thunder",
+                "thunderbolt",
+                "thunderfang",
+                "thunderpunch",
+                "thundershock",
+                "triattack",
+                "triplekick",
+                "trumpcard",
+                "twineedle",
+                "twister",
+                "uproar",
+                "uturn",
+                "vacuumwave",
+                "vcreate",
+                "venoshock",
+                "vinewhip",
+                "visegrip",
+                "vitalthrow",
+                "voltswitch",
+                "volttackle",
+                "wakeupslap",
+                "waterfall",
+                "watergun",
+                "waterpledge",
+                "waterpulse",
+                "waterspout",
+                "weatherball",
+                "whirlpool",
+                "wildcharge",
+                "wingattack",
+                "woodhammer",
+                "wrap",
+                "wringout",
+                "xscissor",
+                "zapcannon",
+                "zenheadbutt"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "flinch-target",
+                "chance": 0.1,
+                "sereneGraceMultiplier": 2
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "reapercloth": {
       "num": 232,
@@ -4757,7 +7891,33 @@
       ],
       "mechanicsBase": "Destiny Knot",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "destiny-knot-reflect-attraction",
+            "trigger": "holder-attracted",
+            "timing": "after-attract",
+            "conditions": {
+              "battleGenerations": [
+                4,
+                5
+              ]
+            },
+            "effects": [
+              {
+                "kind": "reflect-attraction"
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "smoothrock": {
       "num": 240,
@@ -8510,7 +11670,35 @@
       ],
       "mechanicsBase": "Fist Plate",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "fistplate-transfer-gen5",
+            "trigger": "holder-item-transfer",
+            "timing": "before-item-transfer",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ]
+            },
+            "effects": [
+              {
+                "kind": "restrict-transfer",
+                "blockedSpeciesNums": [
+                  493
+                ]
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "skyplate": {
       "num": 497,
@@ -8526,7 +11714,35 @@
       ],
       "mechanicsBase": "Sky Plate",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "skyplate-transfer-gen5",
+            "trigger": "holder-item-transfer",
+            "timing": "before-item-transfer",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ]
+            },
+            "effects": [
+              {
+                "kind": "restrict-transfer",
+                "blockedSpeciesNums": [
+                  493
+                ]
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "toxicplate": {
       "num": 498,
@@ -8542,7 +11758,35 @@
       ],
       "mechanicsBase": "Toxic Plate",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "toxicplate-transfer-gen5",
+            "trigger": "holder-item-transfer",
+            "timing": "before-item-transfer",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ]
+            },
+            "effects": [
+              {
+                "kind": "restrict-transfer",
+                "blockedSpeciesNums": [
+                  493
+                ]
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "earthplate": {
       "num": 499,
@@ -8558,7 +11802,35 @@
       ],
       "mechanicsBase": "Earth Plate",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "earthplate-transfer-gen5",
+            "trigger": "holder-item-transfer",
+            "timing": "before-item-transfer",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ]
+            },
+            "effects": [
+              {
+                "kind": "restrict-transfer",
+                "blockedSpeciesNums": [
+                  493
+                ]
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "stoneplate": {
       "num": 500,
@@ -8574,7 +11846,35 @@
       ],
       "mechanicsBase": "Stone Plate",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "stoneplate-transfer-gen5",
+            "trigger": "holder-item-transfer",
+            "timing": "before-item-transfer",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ]
+            },
+            "effects": [
+              {
+                "kind": "restrict-transfer",
+                "blockedSpeciesNums": [
+                  493
+                ]
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "insectplate": {
       "num": 501,
@@ -8590,7 +11890,35 @@
       ],
       "mechanicsBase": "Insect Plate",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "insectplate-transfer-gen5",
+            "trigger": "holder-item-transfer",
+            "timing": "before-item-transfer",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ]
+            },
+            "effects": [
+              {
+                "kind": "restrict-transfer",
+                "blockedSpeciesNums": [
+                  493
+                ]
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "spookyplate": {
       "num": 502,
@@ -8606,7 +11934,35 @@
       ],
       "mechanicsBase": "Spooky Plate",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "spookyplate-transfer-gen5",
+            "trigger": "holder-item-transfer",
+            "timing": "before-item-transfer",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ]
+            },
+            "effects": [
+              {
+                "kind": "restrict-transfer",
+                "blockedSpeciesNums": [
+                  493
+                ]
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "ironplate": {
       "num": 503,
@@ -8622,7 +11978,35 @@
       ],
       "mechanicsBase": "Iron Plate",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "ironplate-transfer-gen5",
+            "trigger": "holder-item-transfer",
+            "timing": "before-item-transfer",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ]
+            },
+            "effects": [
+              {
+                "kind": "restrict-transfer",
+                "blockedSpeciesNums": [
+                  493
+                ]
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "flameplate": {
       "num": 504,
@@ -8638,7 +12022,35 @@
       ],
       "mechanicsBase": "Flame Plate",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "flameplate-transfer-gen5",
+            "trigger": "holder-item-transfer",
+            "timing": "before-item-transfer",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ]
+            },
+            "effects": [
+              {
+                "kind": "restrict-transfer",
+                "blockedSpeciesNums": [
+                  493
+                ]
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "splashplate": {
       "num": 505,
@@ -8654,7 +12066,35 @@
       ],
       "mechanicsBase": "Splash Plate",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "splashplate-transfer-gen5",
+            "trigger": "holder-item-transfer",
+            "timing": "before-item-transfer",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ]
+            },
+            "effects": [
+              {
+                "kind": "restrict-transfer",
+                "blockedSpeciesNums": [
+                  493
+                ]
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "meadowplate": {
       "num": 506,
@@ -8670,7 +12110,35 @@
       ],
       "mechanicsBase": "Meadow Plate",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "meadowplate-transfer-gen5",
+            "trigger": "holder-item-transfer",
+            "timing": "before-item-transfer",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ]
+            },
+            "effects": [
+              {
+                "kind": "restrict-transfer",
+                "blockedSpeciesNums": [
+                  493
+                ]
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "zapplate": {
       "num": 507,
@@ -8686,7 +12154,35 @@
       ],
       "mechanicsBase": "Zap Plate",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "zapplate-transfer-gen5",
+            "trigger": "holder-item-transfer",
+            "timing": "before-item-transfer",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ]
+            },
+            "effects": [
+              {
+                "kind": "restrict-transfer",
+                "blockedSpeciesNums": [
+                  493
+                ]
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "mindplate": {
       "num": 508,
@@ -8702,7 +12198,35 @@
       ],
       "mechanicsBase": "Mind Plate",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "mindplate-transfer-gen5",
+            "trigger": "holder-item-transfer",
+            "timing": "before-item-transfer",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ]
+            },
+            "effects": [
+              {
+                "kind": "restrict-transfer",
+                "blockedSpeciesNums": [
+                  493
+                ]
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "icicleplate": {
       "num": 509,
@@ -8718,7 +12242,35 @@
       ],
       "mechanicsBase": "Icicle Plate",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "icicleplate-transfer-gen5",
+            "trigger": "holder-item-transfer",
+            "timing": "before-item-transfer",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ]
+            },
+            "effects": [
+              {
+                "kind": "restrict-transfer",
+                "blockedSpeciesNums": [
+                  493
+                ]
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "dracoplate": {
       "num": 510,
@@ -8734,7 +12286,35 @@
       ],
       "mechanicsBase": "Draco Plate",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "dracoplate-transfer-gen5",
+            "trigger": "holder-item-transfer",
+            "timing": "before-item-transfer",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ]
+            },
+            "effects": [
+              {
+                "kind": "restrict-transfer",
+                "blockedSpeciesNums": [
+                  493
+                ]
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "dreadplate": {
       "num": 511,
@@ -8750,7 +12330,35 @@
       ],
       "mechanicsBase": "Dread Plate",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "dreadplate-transfer-gen5",
+            "trigger": "holder-item-transfer",
+            "timing": "before-item-transfer",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ]
+            },
+            "effects": [
+              {
+                "kind": "restrict-transfer",
+                "blockedSpeciesNums": [
+                  493
+                ]
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "pixieplate": {
       "num": 512,
@@ -9093,7 +12701,52 @@
       ],
       "mechanicsBase": "Griseous Orb",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "griseousorb-transfer-gen4",
+            "trigger": "holder-item-transfer",
+            "timing": "before-item-transfer",
+            "conditions": {
+              "battleGenerations": [
+                4
+              ]
+            },
+            "effects": [
+              {
+                "kind": "restrict-transfer",
+                "always": true
+              }
+            ],
+            "consumeOnActivation": false
+          },
+          {
+            "id": "griseousorb-transfer-gen5",
+            "trigger": "holder-item-transfer",
+            "timing": "before-item-transfer",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ]
+            },
+            "effects": [
+              {
+                "kind": "restrict-transfer",
+                "blockedSpeciesNums": [
+                  487
+                ]
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "gracidea": {
       "num": 535,
@@ -9987,7 +13640,65 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "eat",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "micleberry-holder-state-4",
+            "trigger": "holder-state",
+            "timing": "item-residual",
+            "conditions": {
+              "battleGenerations": [
+                4
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 4
+              },
+              "gluttonyHpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "volatile",
+                "id": "micleberry"
+              }
+            ],
+            "consumeOnActivation": true
+          },
+          {
+            "id": "micleberry-holder-state-5",
+            "trigger": "holder-state",
+            "timing": "item-residual",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "hpThreshold": {
+                "numerator": 1,
+                "denominator": 4
+              },
+              "gluttonyHpThreshold": {
+                "numerator": 1,
+                "denominator": 2
+              },
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ]
+            },
+            "effects": [
+              {
+                "kind": "volatile",
+                "id": "micleberry"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "custapberry": {
@@ -10060,7 +13771,33 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "eat",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "jabocaberry-holder-hit-4",
+            "trigger": "holder-hit",
+            "timing": "after-damage",
+            "conditions": {
+              "battleGenerations": [
+                4,
+                5
+              ],
+              "moveCategory": "physical",
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ],
+              "requiresAttackerIndirectDamage": true
+            },
+            "effects": [
+              {
+                "kind": "damage-attacker",
+                "numerator": 1,
+                "denominator": 8
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "rowapberry": {
@@ -10083,7 +13820,33 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "eat",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "rowapberry-holder-hit-4",
+            "trigger": "holder-hit",
+            "timing": "after-damage",
+            "conditions": {
+              "battleGenerations": [
+                4,
+                5
+              ],
+              "moveCategory": "special",
+              "blockedByOpponentAbilityIds": [
+                "unnerve"
+              ],
+              "requiresAttackerIndirectDamage": true
+            },
+            "effects": [
+              {
+                "kind": "damage-attacker",
+                "numerator": 1,
+                "denominator": 8
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "roseliberry": {
@@ -10201,7 +13964,29 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "use",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "absorbbulb-holder-hit-5",
+            "trigger": "holder-hit",
+            "timing": "after-damage",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "moveTypeId": "water"
+            },
+            "effects": [
+              {
+                "kind": "stat-stages",
+                "stages": {
+                  "spa": 1
+                }
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "airballoon": {
@@ -10283,7 +14068,33 @@
       ],
       "mechanicsBase": "Binding Band",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "bindingband-trap-gen5",
+            "trigger": "holder-used-trapping-move",
+            "timing": "move-hit",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ]
+            },
+            "effects": [
+              {
+                "kind": "modify-trap",
+                "damageDivisor": 8
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "cellbattery": {
       "num": 567,
@@ -10305,7 +14116,29 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "use",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "cellbattery-holder-hit-5",
+            "trigger": "holder-hit",
+            "timing": "after-damage",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "moveTypeId": "electric"
+            },
+            "effects": [
+              {
+                "kind": "stat-stages",
+                "stages": {
+                  "atk": 1
+                }
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "ejectbutton": {
@@ -10328,7 +14161,28 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "use",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "ejectbutton-switch",
+            "trigger": "holder-after-move-hit",
+            "timing": "after-move-secondary",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "blockedBySheerForce": true
+            },
+            "effects": [
+              {
+                "kind": "switch-after-hit",
+                "recipient": "holder",
+                "selection": "choice"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "floatstone": {
@@ -10403,7 +14257,50 @@
       ],
       "mechanicsBase": "Grip Claw",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "gripclaw-trap-gen4",
+            "trigger": "holder-used-trapping-move",
+            "timing": "move-hit",
+            "conditions": {
+              "battleGenerations": [
+                4
+              ]
+            },
+            "effects": [
+              {
+                "kind": "modify-trap",
+                "durationTurns": 5
+              }
+            ],
+            "consumeOnActivation": false
+          },
+          {
+            "id": "gripclaw-trap-gen5",
+            "trigger": "holder-used-trapping-move",
+            "timing": "move-hit",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ]
+            },
+            "effects": [
+              {
+                "kind": "modify-trap",
+                "durationTurns": 7
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "ironball": {
       "num": 572,
@@ -10545,7 +14442,28 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "use",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "redcard-switch",
+            "trigger": "holder-after-move-hit",
+            "timing": "after-move-secondary",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "blockedBySheerForce": true
+            },
+            "effects": [
+              {
+                "kind": "switch-after-hit",
+                "recipient": "attacker",
+                "selection": "random"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "ringtarget": {
@@ -10617,7 +14535,53 @@
       ],
       "mechanicsBase": "Sticky Barb",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "stickybarb-late-residual-4",
+            "trigger": "late-residual",
+            "timing": "late-residual",
+            "conditions": {
+              "battleGenerations": [
+                4,
+                5
+              ]
+            },
+            "effects": [
+              {
+                "kind": "damage-holder",
+                "numerator": 1,
+                "denominator": 8
+              }
+            ],
+            "consumeOnActivation": false
+          },
+          {
+            "id": "stickybarb-holder-hit-4",
+            "trigger": "holder-hit",
+            "timing": "after-damage",
+            "conditions": {
+              "battleGenerations": [
+                4,
+                5
+              ],
+              "requiresContact": true
+            },
+            "effects": [
+              {
+                "kind": "transfer-to-empty-attacker"
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "terrainextender": {
       "num": 584,
@@ -10764,7 +14728,26 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "use",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "normalgem-primary-hit",
+            "trigger": "attacker-hit",
+            "timing": "primary-hit",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "moveTypeId": "normal"
+            },
+            "effects": [
+              {
+                "kind": "remove-held-item"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "fightinggem": {
@@ -10788,7 +14771,26 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "use",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "fightinggem-primary-hit",
+            "trigger": "attacker-hit",
+            "timing": "primary-hit",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "moveTypeId": "fighting"
+            },
+            "effects": [
+              {
+                "kind": "remove-held-item"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "flyinggem": {
@@ -10811,7 +14813,26 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "use",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "flyinggem-primary-hit",
+            "trigger": "attacker-hit",
+            "timing": "primary-hit",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "moveTypeId": "flying"
+            },
+            "effects": [
+              {
+                "kind": "remove-held-item"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "poisongem": {
@@ -10834,7 +14855,26 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "use",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "poisongem-primary-hit",
+            "trigger": "attacker-hit",
+            "timing": "primary-hit",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "moveTypeId": "poison"
+            },
+            "effects": [
+              {
+                "kind": "remove-held-item"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "groundgem": {
@@ -10857,7 +14897,26 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "use",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "groundgem-primary-hit",
+            "trigger": "attacker-hit",
+            "timing": "primary-hit",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "moveTypeId": "ground"
+            },
+            "effects": [
+              {
+                "kind": "remove-held-item"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "rockgem": {
@@ -10880,7 +14939,26 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "use",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "rockgem-primary-hit",
+            "trigger": "attacker-hit",
+            "timing": "primary-hit",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "moveTypeId": "rock"
+            },
+            "effects": [
+              {
+                "kind": "remove-held-item"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "buggem": {
@@ -10903,7 +14981,26 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "use",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "buggem-primary-hit",
+            "trigger": "attacker-hit",
+            "timing": "primary-hit",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "moveTypeId": "bug"
+            },
+            "effects": [
+              {
+                "kind": "remove-held-item"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "ghostgem": {
@@ -10926,7 +15023,26 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "use",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "ghostgem-primary-hit",
+            "trigger": "attacker-hit",
+            "timing": "primary-hit",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "moveTypeId": "ghost"
+            },
+            "effects": [
+              {
+                "kind": "remove-held-item"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "steelgem": {
@@ -10949,7 +15065,26 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "use",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "steelgem-primary-hit",
+            "trigger": "attacker-hit",
+            "timing": "primary-hit",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "moveTypeId": "steel"
+            },
+            "effects": [
+              {
+                "kind": "remove-held-item"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "firegem": {
@@ -10972,7 +15107,26 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "use",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "firegem-primary-hit",
+            "trigger": "attacker-hit",
+            "timing": "primary-hit",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "moveTypeId": "fire"
+            },
+            "effects": [
+              {
+                "kind": "remove-held-item"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "watergem": {
@@ -10995,7 +15149,26 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "use",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "watergem-primary-hit",
+            "trigger": "attacker-hit",
+            "timing": "primary-hit",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "moveTypeId": "water"
+            },
+            "effects": [
+              {
+                "kind": "remove-held-item"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "grassgem": {
@@ -11018,7 +15191,26 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "use",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "grassgem-primary-hit",
+            "trigger": "attacker-hit",
+            "timing": "primary-hit",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "moveTypeId": "grass"
+            },
+            "effects": [
+              {
+                "kind": "remove-held-item"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "electricgem": {
@@ -11041,7 +15233,26 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "use",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "electricgem-primary-hit",
+            "trigger": "attacker-hit",
+            "timing": "primary-hit",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "moveTypeId": "electric"
+            },
+            "effects": [
+              {
+                "kind": "remove-held-item"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "psychicgem": {
@@ -11064,7 +15275,26 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "use",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "psychicgem-primary-hit",
+            "trigger": "attacker-hit",
+            "timing": "primary-hit",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "moveTypeId": "psychic"
+            },
+            "effects": [
+              {
+                "kind": "remove-held-item"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "icegem": {
@@ -11087,7 +15317,26 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "use",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "icegem-primary-hit",
+            "trigger": "attacker-hit",
+            "timing": "primary-hit",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "moveTypeId": "ice"
+            },
+            "effects": [
+              {
+                "kind": "remove-held-item"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "dragongem": {
@@ -11110,7 +15359,26 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "use",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "dragongem-primary-hit",
+            "trigger": "attacker-hit",
+            "timing": "primary-hit",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "moveTypeId": "dragon"
+            },
+            "effects": [
+              {
+                "kind": "remove-held-item"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "darkgem": {
@@ -11133,7 +15401,26 @@
         "sourceProfile": "pokemon-showdown-0.11.11-canonical",
         "lifecycle": "consumable",
         "consumptionMethod": "use",
-        "activationStatus": "unmodeled"
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "darkgem-primary-hit",
+            "trigger": "attacker-hit",
+            "timing": "primary-hit",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ],
+              "moveTypeId": "dark"
+            },
+            "effects": [
+              {
+                "kind": "remove-held-item"
+              }
+            ],
+            "consumeOnActivation": true
+          }
+        ]
       }
     },
     "fairygem": {
@@ -11561,7 +15848,35 @@
       ],
       "mechanicsBase": "Burn Drive",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "burndrive-transfer-gen5",
+            "trigger": "holder-item-transfer",
+            "timing": "before-item-transfer",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ]
+            },
+            "effects": [
+              {
+                "kind": "restrict-transfer",
+                "blockedSpeciesNums": [
+                  649
+                ]
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "dousedrive": {
       "num": 635,
@@ -11577,7 +15892,35 @@
       ],
       "mechanicsBase": "Douse Drive",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "dousedrive-transfer-gen5",
+            "trigger": "holder-item-transfer",
+            "timing": "before-item-transfer",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ]
+            },
+            "effects": [
+              {
+                "kind": "restrict-transfer",
+                "blockedSpeciesNums": [
+                  649
+                ]
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "shockdrive": {
       "num": 636,
@@ -11593,7 +15936,35 @@
       ],
       "mechanicsBase": "Shock Drive",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "shockdrive-transfer-gen5",
+            "trigger": "holder-item-transfer",
+            "timing": "before-item-transfer",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ]
+            },
+            "effects": [
+              {
+                "kind": "restrict-transfer",
+                "blockedSpeciesNums": [
+                  649
+                ]
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "chilldrive": {
       "num": 637,
@@ -11609,7 +15980,35 @@
       ],
       "mechanicsBase": "Chill Drive",
       "mechanicsResolution": "pinned-smogon-calc-generation-9-inheritance",
-      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table"
+      "sourceConfidence": "puse-unbound-2.1.1.1-rom-derived-item-table",
+      "heldItemMechanics": {
+        "schemaVersion": "held-item-mechanics/v1",
+        "sourceProfile": "pokemon-showdown-0.11.11-canonical",
+        "lifecycle": "persistent",
+        "consumptionMethod": "none",
+        "activationStatus": "modeled",
+        "activations": [
+          {
+            "id": "chilldrive-transfer-gen5",
+            "trigger": "holder-item-transfer",
+            "timing": "before-item-transfer",
+            "conditions": {
+              "battleGenerations": [
+                5
+              ]
+            },
+            "effects": [
+              {
+                "kind": "restrict-transfer",
+                "blockedSpeciesNums": [
+                  649
+                ]
+              }
+            ],
+            "consumeOnActivation": false
+          }
+        ]
+      }
     },
     "fistmemory": {
       "num": 638,

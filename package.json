@@ -1,9 +1,11 @@
 {
   "name": "pokemon-line-calculator",
-  "version": "0.6.5",
+  "version": "0.6.6",
   "private": true,
   "type": "module",
   "scripts": {
+    "check:items:reference": "node tools/verify_item_reference.mjs",
+    "check:items:sweep": "node tools/verify_held_item_sweep.mjs && node tools/verify_held_item_damage.mjs && node tools/verify_held_item_passive.mjs && node tools/verify_held_item_inventory.mjs",
     "test": "node tools/run_portable_tests.mjs",
     "test:contract": "node --test tests/contract.test.mjs tests/graph.test.mjs",
     "test:browser": "node tests/public_browser_smoke.mjs",

@@ -83,6 +83,8 @@ export function createSharedDamageAdapter(runtime) {
         moveCandidates: [effectiveMoveName, move.name, move.id],
         moveOverrides,
         moveHits,
+        timesUsedWithMetronome: attackerState.currentItemId === 'metronome'
+          ? attackerState.volatileConditions?.metronome?.repeats ?? 0 : undefined,
         criticalHit,
         ...(moveSimulation ? { moveSimulation } : {}),
         attackerSide: attacker.side,
