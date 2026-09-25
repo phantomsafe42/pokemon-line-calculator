@@ -42,5 +42,5 @@ In PLC, set `PLC_ITEM_REFERENCE_ROOT` to the Dataset checkout's `tools/imports/i
 
 Run Battle Mechanics `npm run check` and `npm test`. Its vendor README records the source-built engine procedure and hashes. The local PLC projection was exported from an isolated owner snapshot to exclude unrelated pending owner changes; it is not a projection of every current owner file.
 
-These are local concern-branch candidates. Immutable dependency locks, test-build activation, publication, and runtime readback remain separate steps. The public browser smoke proves the built application loads; its hosted Dataset route does not establish runtime activation of these local Dataset changes.
+The public dependency lock pins Dataset v0.1.47 and gateway contract v0.1.48. The hosted catalog, profile manifest, and payload are verified against their immutable digests. The public browser smoke proves the built application loads; it does not certify every held-item interaction or activate the private test build.
 
