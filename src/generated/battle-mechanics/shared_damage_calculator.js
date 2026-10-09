@@ -344,12 +344,16 @@
             species,
             level: finiteNumber(hasSource ? source[displayedLevelField] ?? source.level ?? display.level : display.level, NaN),
             statCalculationLevelDelta: statLevelDelta,
-            ability: hasSource
-                ? source.ability ?? source.abilityId ?? display.ability ?? runtimeDefaults.ability ?? ""
-                : display.ability || runtimeDefaults.ability || "",
-            item: hasSource
-                ? source.item ?? source.itemId ?? ""
-                : display.item || runtimeDefaults.item || "",
+            ability: observed.ability !== undefined
+                ? observed.ability ?? ""
+                : hasSource
+                    ? source.ability ?? source.abilityId ?? display.ability ?? runtimeDefaults.ability ?? ""
+                    : display.ability || runtimeDefaults.ability || "",
+            item: observed.item !== undefined
+                ? observed.item ?? ""
+                : hasSource
+                    ? source.item ?? source.itemId ?? ""
+                    : display.item || runtimeDefaults.item || "",
             nature: observed.nature || (natureRequired
                 ? ""
                 : hasSource
@@ -508,8 +512,13 @@
 
     function applyCombatantStateOverrides(pokemon, mon) {
         if (Array.isArray(mon.typeOverrides) && mon.typeOverrides.length) {
-            pokemon.types = [...mon.typeOverrides];
-            pokemon.species = { ...pokemon.species, types: [...mon.typeOverrides] };
+            // The pinned engine's Pokemon.clone() merges species overrides by
+            // index. Clear any former second type so a single-type effect such
+            // as Soak cannot regain the original Ground immunity on clone.
+            const types = [...mon.typeOverrides];
+            while (types.length < pokemon.species.types.length) types.push("");
+            pokemon.types = types;
+            pokemon.species = { ...pokemon.species, types: [...types] };
         }
         for (const [stat, value] of Object.entries(mon.statOverrides || {})) {
             const numeric = Number(value);

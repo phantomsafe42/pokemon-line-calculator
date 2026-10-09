@@ -72,13 +72,17 @@ export function createSharedDamageAdapter(runtime) {
       }
       const attackerSource = sideSource(attacker);
       const defenderSource = sideSource(defender);
+      const attackerView = displayCombatant(attacker, attackerState);
+      const defenderView = displayCombatant(defender, defenderState);
       const effectiveMoveName = moveSimulation ? move.id : calculatorMoveName(move);
       const result = runtime.calculate({
         downloadAlreadyResolved: true,
-        attacker: displayCombatant(attacker, attackerState),
-        defender: displayCombatant(defender, defenderState),
-        attackerRuntimeInputs: { nature: attackerState.currentNatureId, ivs: attackerState.currentIvs, evs: attackerState.currentEvs },
-        defenderRuntimeInputs: { nature: defenderState.currentNatureId, ivs: defenderState.currentIvs, evs: defenderState.currentEvs },
+        attacker: attackerView,
+        defender: defenderView,
+        attackerRuntimeInputs: { nature: attackerState.currentNatureId, ivs: attackerState.currentIvs, evs: attackerState.currentEvs,
+          ability: attackerView.ability, item: attackerView.item },
+        defenderRuntimeInputs: { nature: defenderState.currentNatureId, ivs: defenderState.currentIvs, evs: defenderState.currentEvs,
+          ability: defenderView.ability, item: defenderView.item },
         moveName: effectiveMoveName,
         moveCandidates: [effectiveMoveName, move.name, move.id],
         moveOverrides,

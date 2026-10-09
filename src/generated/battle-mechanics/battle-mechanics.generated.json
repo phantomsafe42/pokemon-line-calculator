@@ -2,20 +2,17 @@
   "schemaVersion": "plc-generated-battle-mechanics/v1alpha1",
   "consumer": "plc-public-battle-mechanics",
   "source": "Battle Mechanics",
-  "sourceTreeSha256": "9CE12D515BF26EB50AFF4E76BF18F2C81F1DA0E1AC36ED21D51AD8D7F909D5C0",
+  "sourceTreeSha256": "50EE32DF63ACA7C9B87735F9C949D6CA01F8FC1416642FFB6B9D14C3417755A0",
   "files": [
     {
       "path": "shared_damage_calculator.js",
-      "sourceSha256": "76626FD128813FA072428A8576B1B43FEE97E530DCAA61AD5C710BDDA6DBE592",
-      "transform": {
-        "kind": "exclude-calculator-engines",
-        "exclusionSetSha256": "D9F67B42D536B723466A68FB663D3EE005D11949AE0495129422709C7C2575E9"
-      },
-      "bytes": 43559,
-      "sha256": "051E89FF79CE992B9E54845349C966CED4F39FC09E18E10BB5E62627D89F7ED9"
+      "sourcePath": "public-baselines/plc-v0.6.6-damage-fix/shared_damage_calculator.js",
+      "bytes": 44085,
+      "sha256": "CFF41E09E1165C8C26D64F6BF89381B8BBFBB08772AAF80ABF29416576501ED8"
     },
     {
       "path": "trainer_ai/trainer_ai_evaluator.js",
+      "sourcePath": "public-baselines/plc-v0.6.6/trainer_ai_evaluator.js",
       "bytes": 144262,
       "sha256": "C85E21DAF0CAC21A8F267EC90FDAB09CA561DE53760EA91115AD008A852CF075"
     },

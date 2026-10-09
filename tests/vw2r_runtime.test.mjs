@@ -9,6 +9,8 @@ import { createSharedDamageAdapter } from "../src/adapters/shared_damage_adapter
 import { pokemonAssetAppearanceId, pokemonAssetQuery } from "../src/adapters/pokemon_assets.js";
 import { createDatasetContext, REQUIRED_DATASET_SOURCES } from "../src/adapters/standardized_dataset.js";
 import { createPlanDocument } from "../src/core/plan.js";
+import { addFreeCalcBranch, editFreeCalcCombatant } from "../src/core/free_calc.js";
+import { previewCombatantMove } from "../src/core/combatant_moves.js";
 import { previewTurn } from "../src/core/planner.js";
 import { recalculatePlanDocument } from "../src/core/recalculation.js";
 import { effectiveActionSpeed } from "../src/rulesets/action_order.js";
@@ -79,6 +81,49 @@ test("Download is not reapplied when PLC calculates Virizion into Charles's repl
     assert.equal(result.result.attacker.ability, "Download");
   }
   assert.equal(JSON.stringify({ attacker, defender, attackerState, defenderState }), before);
+});
+
+test("Clay's Nidoking damage uses edited enemy ability, item, and Soak typing", () => {
+  const dataset = loadVw2rDataset();
+  const enemies = normalizeTrainerRoster("vw2r-trainer-0153", null, dataset);
+  const players = normalizePlayerCollection({ party: [{
+    uniqueKey: "clay-damage-test-mew", speciesId: "mew", displayName: "Mew", level: 50,
+    nature: "Hardy", ability: "Synchronize", item: null,
+    ivs: { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31 },
+    evs: { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0 }, moves: ["Thunderbolt", "Soak"]
+  }] }, dataset);
+  const plan = createPlanDocument({ dataset, trainerId: "vw2r-trainer-0153",
+    playerCombatants: players, enemyCombatants: enemies,
+    sourceSnapshot: snapshotFingerprint(players, enemies, "clay-damage-test") });
+  const { plan: freePlan, stateId } = addFreeCalcBranch(plan, plan.initialStateNodeId);
+  const nidoking = enemies.find(mon => mon.speciesId === "nidoking");
+  const mew = players[0];
+  const runtime = SharedDamageCalculator.createFromDocuments({ gameId: dataset.gameId }, loadCalcEngine(), dataset.mechanics, dataset.documents);
+  const adapter = createSharedDamageAdapter(runtime);
+  const damageRange = () => {
+    const state = freePlan.stateNodes[stateId];
+    const result = adapter.calculate({ attacker: nidoking, defender: mew,
+      attackerState: state.combatantStates[nidoking.combatantKey], defenderState: state.combatantStates[mew.combatantKey],
+      move: dataset.get("moves", "sludgewave"), fieldState: state.fieldState, criticalHit: false });
+    assert.equal(result.status, "ok", result.reason);
+    return [Math.min(...result.damage), Math.max(...result.damage)];
+  };
+  assert.deepEqual(damageRange(), [62, 74]);
+  editFreeCalcCombatant(freePlan, stateId, nidoking.combatantKey, { abilityId: "poisonpoint" }, dataset);
+  assert.deepEqual(damageRange(), [47, 56]);
+  editFreeCalcCombatant(freePlan, stateId, nidoking.combatantKey, { abilityId: "sheerforce", itemId: null }, dataset);
+  assert.deepEqual(damageRange(), [48, 57]);
+  editFreeCalcCombatant(freePlan, stateId, nidoking.combatantKey, { abilityId: "poisonpoint" }, dataset);
+  assert.deepEqual(damageRange(), [36, 43]);
+
+  const electricPreview = () => previewCombatantMove({ plan: freePlan, stateNodeId: stateId,
+    actorKey: mew.combatantKey, targetKey: nidoking.combatantKey, moveId: "thunderbolt", dataset,
+    damageAdapter: adapter });
+  assert.equal(electricPreview().status, "immune", "Nidoking is Ground-type before Soak");
+  freePlan.stateNodes[stateId].combatantStates[nidoking.combatantKey].currentTypeIds = ["water"];
+  const soaked = electricPreview();
+  assert.equal(soaked.status, "ok", soaked.reason);
+  assert.ok(soaked.minPercent > 0, "Soak must remove Nidoking's Ground immunity in the damage preview");
 });
 
 test("VW2R form sprites use the centralized asset resolver's canonical appearance IDs", () => {

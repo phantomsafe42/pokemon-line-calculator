@@ -45,7 +45,8 @@ test('Sandbox training validates atomically, recalculates and survives history, 
   const adapter = createSharedDamageAdapter({ready:true, calculate: value => {request=value;return {status:'unavailable',reason:'captured'};}});
   adapter.calculate({attacker:players[0],defender:enemies[0],attackerState:current,defenderState:edited.plan.stateNodes[edited.stateId].combatantStates[enemies[0].combatantKey],move:dataset.get('moves','tackle'),fieldState:edited.plan.stateNodes[edited.stateId].fieldState});
   assert.equal(request.attacker.nature, 'timid'); assert.equal(request.attacker.ivs.atk, 0); assert.equal(request.attacker.evs.atk,252);
-  assert.deepEqual(request.attackerRuntimeInputs, {nature:'timid', ivs:current.currentIvs, evs:current.currentEvs});
+  assert.deepEqual(request.attackerRuntimeInputs, {nature:'timid', ivs:current.currentIvs, evs:current.currentEvs,
+    ability:current.currentAbilityId, item:current.currentItemId || ''});
   const reopened = parsePlan(serializePlan(edited.plan));
   assert.deepEqual(reopened.stateNodes[edited.stateId].combatantStates[key],current);
   const replayed = await recalculatePlanDocument(reopened,{dataset,previewTurnFn:request=>previewTurn({...request,dataset,damageAdapter:damageAdapter(()=>[1])})});
