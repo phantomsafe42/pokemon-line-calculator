@@ -4216,6 +4216,8 @@ function selectReplacementOutcome(stateId) {
 }
 
 function renderTree() {
+  const scrollLeftBySection = new Map([...ui["node-tree"].querySelectorAll(".node-tree-section")]
+    .map(section => [section.dataset.treeSection, section.querySelector(".node-tree-branches")?.scrollLeft || 0]));
   const currentState = selectedState();
   const selectedCommittedStateNodeId = reviewOutcomeStateNodeId || (battleActuallyEnded(currentState) ? cursorStateNodeId : null);
   const selectedLineage = new Set(stateLineage(plan, selectedCommittedStateNodeId || cursorStateNodeId));
@@ -4372,6 +4374,9 @@ function renderTree() {
   return container;
   });
   ui["node-tree"].replaceChildren(...sections);
+  for (const section of sections) {
+    section.querySelector(".node-tree-branches").scrollLeft = scrollLeftBySection.get(section.dataset.treeSection) || 0;
+  }
 }
 
 function prefillActions(suppliedGroup = null) {
