@@ -24,6 +24,7 @@ import { checkDsSaveForms } from './ds_save_forms_browser_checks.mjs';
 import { checkBoxTransfers } from './box_transfer_browser_checks.mjs';
 import { checkBoxCards } from './box_cards_browser_checks.mjs';
 import { checkBoxBrowsing } from './box_browse_browser_checks.mjs';
+import { checkNodeTreeScroll } from './node_tree_scroll_browser_checks.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(here, "..");
@@ -305,7 +306,11 @@ try {
   await page.send('Page.navigate', {url: appUrl});
   await waitForStableRuntime(page, appUrl);
 
-  if (process.env.PLC_TRAINER_SELECTOR_ONLY) {
+  if (process.env.PLC_NODE_TREE_SCROLL_ONLY) {
+    await evaluate(page, `document.getElementById('boxes-tab').click()`);
+    await checkNodeTreeScroll({ page, evaluate, delay, dataset: vw2rContext });
+    page.close();
+  } else if (process.env.PLC_TRAINER_SELECTOR_ONLY) {
     if (process.env.PLC_TRAINER_SELECTOR_DATASET) {
       await page.send('Network.setBlockedURLs', { urls: [datasetLock.hosted.origin + '/*'] });
       await page.send('Page.reload', {ignoreCache:true});
@@ -817,6 +822,7 @@ try {
   await checkBoxTransfers({ page, evaluate, delay, tempRoot });
   await checkBoxCards({ page, evaluate, delay, tempRoot });
   await checkBoxBrowsing({ page, evaluate, delay, dataset: vw2rContext, tempRoot });
+  await checkNodeTreeScroll({ page, evaluate, delay, dataset: vw2rContext });
   if (process.env.PLC_LAYOUT_SNAPSHOT) {
     const snapshot = JSON.parse(await fs.readFile(process.env.PLC_LAYOUT_SNAPSHOT, 'utf8'));
     await page.send('Emulation.setDeviceMetricsOverride', { width: snapshot.view.viewport.width, height: snapshot.view.viewport.height, deviceScaleFactor: 1, mobile: false });
