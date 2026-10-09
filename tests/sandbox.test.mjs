@@ -130,14 +130,37 @@ test('Direct placement preserves outgoing and returning HP/status/PP with no ent
   const edited=editSandboxCombatant(plan,plan.initialStateNodeId,key,{hp:70,status:'par'},dataset);
   edited.plan.stateNodes[edited.stateId].combatantStates[key].movePp.tackle=3;
   const newcomer={...structuredClone(players[1]),combatantKey:'player:box:new',originalAbilityId:'intimidate'};
-  const placed=placeSandboxCombatant(edited.plan,edited.stateId,'player',0,newcomer);
+  const placed=placeSandboxCombatant(edited.plan,edited.stateId,'player',0,newcomer,dataset);
   assert.equal(placed.plan.stateNodes[placed.stateId].combatantStates[key].hp.max,70);
   assert.deepEqual(placed.plan.stateNodes[placed.stateId].resolutionEventIds,[]);
-  const back=placeSandboxCombatant(placed.plan,placed.stateId,'player',0,players[0]);
+  const back=placeSandboxCombatant(placed.plan,placed.stateId,'player',0,players[0],dataset);
   const restored=back.plan.stateNodes[back.stateId].combatantStates[key];
   assert.equal(restored.hp.max,70);assert.equal(restored.majorStatus,'par');assert.equal(restored.movePp.tackle,3);
   assert.equal(Object.keys(back.plan.combatants).length,Object.keys(plan.combatants).length+1);
   assert.equal(plan.combatants[newcomer.combatantKey],undefined);
+});
+
+test('Sandbox Replace applies weather-setting Abilities without a turn or entry hazards',()=>{
+  const {plan,dataset,players,enemies}=sandbox();
+  const root=plan.stateNodes[plan.initialStateNodeId];
+  root.fieldState.sides.player.hazards.spikes=1;
+  const drizzle={...structuredClone(players[1]),combatantKey:'player:box:drizzle',originalAbilityId:'drizzle'};
+  const rainy=placeSandboxCombatant(plan,plan.initialStateNodeId,'player',0,drizzle,dataset);
+  const rainState=rainy.plan.stateNodes[rainy.stateId];
+  assert.deepEqual(rainState.fieldState.global.weather,{id:'rain',source:'ability:drizzle',durationMode:'permanent',remainingTurns:null});
+  assert.equal(rainState.combatantStates[drizzle.combatantKey].hp.max,drizzle.calculatedStats.hp);
+  assert.deepEqual(rainState.resolutionEventIds,[]);
+  assert.equal(parsePlan(serializePlan(rainy.plan)).stateNodes[rainy.stateId].fieldState.global.weather.id,'rain');
+  const later=previewTurn({plan:rainy.plan,parentStateNodeId:rainy.stateId,
+    actions:{player:move(drizzle.combatantKey,enemies[0].combatantKey),enemy:move(enemies[0].combatantKey,drizzle.combatantKey)},
+    dataset,damageAdapter:damageAdapter(()=>[0])});
+  assert.equal(later.outcomes.find(entry=>entry.previewOutcomeId===later.defaultPreviewOutcomeId).state.fieldState.global.weather.id,'rain');
+  const drought={...structuredClone(players[1]),combatantKey:'player:box:drought',originalAbilityId:'drought'};
+  const sunny=placeSandboxCombatant(rainy.plan,rainy.stateId,'player',0,drought,dataset);
+  assert.deepEqual(sunny.plan.stateNodes[sunny.stateId].fieldState.global.weather,
+    {id:'sun',source:'ability:drought',durationMode:'permanent',remainingTurns:null});
+  const ordinary=placeSandboxCombatant(sunny.plan,sunny.stateId,'player',0,players[0],dataset);
+  assert.equal(ordinary.plan.stateNodes[ordinary.stateId].fieldState.global.weather.id,'sun');
 });
 
 test('Box admission does not switch; an ordinary subsequent Switch resolves entry hazards',()=>{
@@ -157,15 +180,15 @@ test('Box admission does not switch; an ordinary subsequent Switch resolves entr
 });
 
 test('Enemy choices and partner-owned slots remain bounded, with other active slots excluded',()=>{
-  const {plan,players,enemies}=sandbox(fixtureDoublesPlan);
+  const {plan,dataset,players,enemies}=sandbox(fixtureDoublesPlan);
   plan.game.partyOwnership={player:{policy:'per-trainer',slotOwnerIds:['player','ally']},enemy:{policy:'per-trainer',slotOwnerIds:['a','b']}};
   players.forEach((mon,i)=>plan.combatants[mon.combatantKey].source.partyOwnerId=i%2?'ally':'player');
   enemies.forEach((mon,i)=>plan.combatants[mon.combatantKey].source.partyOwnerId=i%2?'b':'a');
-  assert.throws(()=>placeSandboxCombatant(plan,plan.initialStateNodeId,'enemy',0,plan.combatants[enemies[3].combatantKey]),/different trainer/);
-  assert.throws(()=>placeSandboxCombatant(plan,plan.initialStateNodeId,'enemy',0,{...plan.combatants[enemies[0].combatantKey],combatantKey:'enemy:new'}),/party/);
+  assert.throws(()=>placeSandboxCombatant(plan,plan.initialStateNodeId,'enemy',0,plan.combatants[enemies[3].combatantKey],dataset),/different trainer/);
+  assert.throws(()=>placeSandboxCombatant(plan,plan.initialStateNodeId,'enemy',0,{...plan.combatants[enemies[0].combatantKey],combatantKey:'enemy:new'},dataset),/party/);
   assert.throws(()=>admitSandboxReserve(plan,plan.initialStateNodeId,'player',1,{...players[2],combatantKey:'player:new',source:{partyOwnerId:'player'}}),/Only player/);
   const normal=sandbox(fixtureDoublesPlan);
-  assert.throws(()=>placeSandboxCombatant(normal.plan,normal.plan.initialStateNodeId,'player',0,normal.players[1]),/another slot/);
+  assert.throws(()=>placeSandboxCombatant(normal.plan,normal.plan.initialStateNodeId,'player',0,normal.players[1],normal.dataset),/another slot/);
 });
 
 test('Fainted and terminal Sandbox states can be edited without losing required replacements',()=>{
@@ -173,7 +196,7 @@ test('Fainted and terminal Sandbox states can be edited without losing required 
   const first=editSandboxCombatant(plan,plan.initialStateNodeId,players[0].combatantKey,{hp:0},dataset);
   const second=editSandboxCombatant(first.plan,first.stateId,players[1].combatantKey,{hp:0},dataset);
   assert.equal(second.plan.stateNodes[second.stateId].pendingReplacementSlots.length,2);
-  const restored=placeSandboxCombatant(second.plan,second.stateId,'player',0,players[2]);
+  const restored=placeSandboxCombatant(second.plan,second.stateId,'player',0,players[2],dataset);
   assert.deepEqual(restored.plan.stateNodes[restored.stateId].pendingReplacementSlots,[{side:'player',slot:1}]);
   let dead=restored;
   for(const player of players) dead=editSandboxCombatant(dead.plan,dead.stateId,player.combatantKey,{hp:0},dataset);

@@ -7,6 +7,7 @@ import { normalizePlayerCollection, snapshotFingerprint } from "../src/adapters/
 import { createSharedDamageAdapter } from "../src/adapters/shared_damage_adapter.js";
 import { createDatasetContext, REQUIRED_DATASET_SOURCES } from "../src/adapters/standardized_dataset.js";
 import { createPlanDocument, upgradeInitialEntryEffects } from "../src/core/plan.js";
+import { placeSandboxCombatant } from "../src/core/sandbox.js";
 import { resolveTurn } from "../src/core/resolver.js";
 import { createBranchEventModel } from "../src/core/branch_events.js";
 
@@ -43,7 +44,7 @@ function combatant(dataset, { side, key, speciesId, abilityId, moves, level = 50
   return record;
 }
 
-function createAbilityPlan({ dataset, players, enemies, battleFormat = "singles", initialConditions = {} }) {
+function createAbilityPlan({ dataset, players, enemies, battleFormat = "singles", planningMode = null, initialConditions = {} }) {
   const sourceSnapshot = snapshotFingerprint(players, enemies, "2026-08-27T00:00:00.000Z");
   return createPlanDocument({
     dataset,
@@ -53,11 +54,32 @@ function createAbilityPlan({ dataset, players, enemies, battleFormat = "singles"
     playerActiveKeys: players.map(record => record.combatantKey),
     enemyActiveKeys: enemies.map(record => record.combatantKey),
     battleFormat,
+    planningMode,
     sourceSnapshot,
     initialConditions,
     now: "2026-08-27T00:00:00.000Z"
   });
 }
+
+test("Sandbox weather placement immediately updates an active Forecast ally", () => {
+  const dataset = loadDataset();
+  const players = [
+    combatant(dataset, { side: "player", key: "lead", speciesId: "bellossom", abilityId: "chlorophyll", moves: ["protect"] }),
+    combatant(dataset, { side: "player", key: "castform", speciesId: "castform", abilityId: "forecast", moves: ["protect"] }),
+    combatant(dataset, { side: "player", key: "drizzle", speciesId: "politoed", abilityId: "drizzle", moves: ["protect"] })
+  ];
+  const enemies = [
+    combatant(dataset, { side: "enemy", key: "enemy-a", speciesId: "audino", abilityId: "regenerator", moves: ["protect"] }),
+    combatant(dataset, { side: "enemy", key: "enemy-b", speciesId: "dusclops", abilityId: "pressure", moves: ["protect"] })
+  ];
+  const plan = createAbilityPlan({ dataset, players, enemies, battleFormat: "doubles", planningMode: "sandbox" });
+  const placed = placeSandboxCombatant(plan, plan.initialStateNodeId, "player", 0, players[2], dataset);
+  const state = placed.plan.stateNodes[placed.stateId];
+  assert.equal(state.fieldState.global.weather.id, "rain");
+  assert.equal(state.combatantStates[players[1].combatantKey].currentSpeciesId, "castformrainy");
+  assert.deepEqual(state.combatantStates[players[1].combatantKey].currentTypeIds, ["water"]);
+  assert.equal(plan.stateNodes[plan.initialStateNodeId].fieldState.global.weather.id, null);
+});
 
 function move(actorKey, moveId, stateHash, targetKeys = []) {
   return { actionType: "move", actorKey, moveId, targetKeys, mechanicActivations: [], declaredAtStateHash: stateHash };

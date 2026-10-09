@@ -387,6 +387,39 @@ export function upgradeInitialEntryEffects(plan, dataset) {
   return { plan: assertValidPlanDocument(next), changed: true };
 }
 
+// Sandbox placement edits the active slot without resolving a switch. Weather
+// Abilities still establish the field condition represented by that edited
+// starting state; hazards and other entry effects remain switch-only.
+export function applyManualPlacementWeather(plan, state, combatantKey, dataset) {
+  const active = participatingActiveEntries(state);
+  if (!active.some(entry => entry.combatantKey === combatantKey)) return false;
+  const enteringState = state.combatantStates[combatantKey];
+  if (Number(enteringState?.hp?.max) <= 0) return false;
+  const effect = entryAbilityEffects({ enteringState, generation: Number(dataset.mechanics?.damageGeneration || 5) })
+    .find(entry => entry.kind === "weather");
+  if (!effect) return false;
+  state.fieldState.global.weather = normalizeFieldCondition("weather", {
+    id: effect.weatherId,
+    source: `ability:${effect.cause}`,
+    durationMode: effect.durationMode,
+    remainingTurns: effect.remainingTurns
+  });
+  const weatherSuppressed = weatherIsSuppressed(active.map(entry => state.combatantStates[entry.combatantKey]));
+  for (const entry of active) {
+    const combatant = plan.combatants[entry.combatantKey];
+    const current = state.combatantStates[entry.combatantKey];
+    const form = desiredWeatherAbilityForm({ combatant, state: current, fieldState: state.fieldState, weatherSuppressed });
+    applyCombatantFormState({ combatant, state: current, dataset, form });
+  }
+  for (const side of ["player", "enemy"]) {
+    state.fieldState.sides[side].isFlowerGift = active.filter(entry => entry.side === side).some(entry => {
+      const current = state.combatantStates[entry.combatantKey];
+      return activeAbilityId(current) === "flowergift" && current.currentSpriteId === "cherrim-sunshine" && Number(current.hp?.max) > 0;
+    });
+  }
+  return true;
+}
+
 function sideSnapshot(side, key, combatants) {
   const mon = combatants[key];
   return {

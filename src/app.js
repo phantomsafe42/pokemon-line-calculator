@@ -16,7 +16,7 @@ import { TrainerAiForecastCache } from "./cache/trainer_ai_forecast.js?v=2026090
 import { SavedDraftStore, savedDraftSnapshot, savedDraftIsCurrent } from "./cache/saved_drafts.js?v=20260921-saved-draft-guard-v1";
 import { reorderCards } from "./ui/reorder_cards.js?v=20260909-public-release-v2";
 import { addFreeCalcBranch, editFreeCalcCombatant, replaceFreeCalcSlot, freeCalcAsNewPlan } from './core/free_calc.js?v=20260922-public-cards-v1';
-import { isSandbox, editSandboxCombatant, placeSandboxCombatant, admitSandboxReserve } from './core/sandbox.js?v=20260922-public-cards-v1';
+import { isSandbox, editSandboxCombatant, placeSandboxCombatant, admitSandboxReserve } from './core/sandbox.js?v=20261008-sandbox-weather-v1';
 import { sandboxPickerCandidates, orderSandboxCandidates } from './ui/sandbox_picker.js?v=20260922-public-cards-v1';
 import { makeStableId } from './core/primitives.js';
 import { freeCalcExperience, freeCalcTotalExperience } from './ui/free_calc.js?v=20260921-card-design-v1';
@@ -3064,7 +3064,7 @@ function renderSwitchStrip(container, side, slot, actorKey, draft, { replacement
       try {
       if (directReplace) {
         if (!isCurrent) {
-          acceptSandboxEdit(placeSandboxCombatant(plan, cursorStateNodeId, side, slot, mon));
+          acceptSandboxEdit(placeSandboxCombatant(plan, cursorStateNodeId, side, slot, mon, dataset));
           actionDraft = emptyActionDraft();
         }
         sandboxReplacePicker = { planId: plan.planId, stateId: cursorStateNodeId, side, slot };
@@ -3106,7 +3106,7 @@ function renderSandboxSwitchControls(container, side, slot, actorKey, draft, { p
     setDraft(side, slot, !replacing && draft.type === 'switch' && !pending ? {} : { type: 'switch', actorKey });
   });
   const replaceButton = button('Replace', 'replace-button');
-  replaceButton.title = 'Change this slot without a turn or switch-in effects';
+  replaceButton.title = 'Change this slot without a turn. Weather-setting Abilities update the field; other switch-in effects do not run.';
   replaceButton.setAttribute('aria-pressed', String(replacing));
   replaceButton.addEventListener('click', () => {
     sandboxReplacePicker = replacing ? null : { planId: plan.planId, stateId: cursorStateNodeId, side, slot };

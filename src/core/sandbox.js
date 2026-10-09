@@ -1,6 +1,7 @@
 import { clone } from './primitives.js';
 import { addFreeCalcBranch, editFreeCalcCombatant, replaceFreeCalcSlot, refreshFreeCalcBoundary } from './free_calc.js?v=20260922-public-cards-v1';
-import { createCombatantState, touchPlan, updateStateHash } from './plan.js';
+import { applyManualPlacementWeather, createCombatantState, touchPlan, updateStateHash } from './plan.js?v=20261008-sandbox-weather-v1';
+import { activeKey } from './battle_slots.js';
 import { belongsToSlotParty } from './party_ownership.js';
 import { assertValidPlanDocument } from '../contracts/plan_contract.js';
 
@@ -32,8 +33,12 @@ export function editSandboxCombatant(plan, stateId, key, changes, dataset) {
   return editBoundary(plan, stateId, (next, id) => editFreeCalcCombatant(next, id, key, changes, dataset));
 }
 
-export function placeSandboxCombatant(plan, stateId, side, slot, combatant) {
-  return editBoundary(plan, stateId, (next, id) => replaceFreeCalcSlot(next, id, side, slot, combatant));
+export function placeSandboxCombatant(plan, stateId, side, slot, combatant, dataset) {
+  return editBoundary(plan, stateId, (next, id) => {
+    const previousKey = activeKey(next.stateNodes[id], side, slot);
+    replaceFreeCalcSlot(next, id, side, slot, combatant);
+    if (previousKey !== combatant.combatantKey) applyManualPlacementWeather(next, next.stateNodes[id], combatant.combatantKey, dataset);
+  });
 }
 
 // Admission only copies a selected Box record into this branch's roster. The
